@@ -1,0 +1,590 @@
+<HTML
+><HEAD
+><TITLE
+>[Chapter 2] 2.2 Starting X</TITLE
+><META
+NAME="DC.title"
+CONTENT="Learning the Unix Operating System"><META
+NAME="DC.creator"
+CONTENT="Jerry Peek, Grace Todino &amp; John Strang"><META
+NAME="DC.publisher"
+CONTENT="O'Reilly &amp; Associates, Inc."><META
+NAME="DC.date"
+CONTENT="1998-08-03T20:48:48Z"><META
+NAME="DC.type"
+CONTENT="Text.Monograph"><META
+NAME="DC.format"
+CONTENT="text/html"
+SCHEME="MIME"><META
+NAME="DC.source"
+CONTENT="1-56592-390-1"
+SCHEME="ISBN"><META
+NAME="DC.language"
+CONTENT="en-US"><META
+NAME="generator"
+CONTENT="Jade 1.1/O'Reilly DocBook 3.0 to HTML 4.0"><LINK
+REV="made"
+HREF="mailto:online-books@oreilly.com"
+TITLE="Online Books Comments"><LINK
+REL="up"
+HREF="ch02_01.htm"
+TITLE="2. Using Window Systems "><LINK
+REL="prev"
+HREF="ch02_01.htm"
+TITLE="2.1 Introduction to Windowing"><LINK
+REL="next"
+HREF="ch02_03.htm"
+TITLE="2.3 Running Programs"></HEAD
+><BODY
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+><DIV
+CLASS="htmlnav"
+><H1
+><IMG
+SRC="gifs/smbanner.gif"
+ALT="Learning the Unix Operating System"
+USEMAP="#srchmap"
+BORDER="0"></H1
+><MAP
+NAME="srchmap"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,466,69"
+HREF="index.htm"
+ALT="Learning the Unix Operating System"><AREA
+SHAPE="RECT"
+COORDS="467,0,514,18"
+HREF="jobjects/fsearch.htm"
+ALT="Search this book"></MAP
+><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch02_01.htm"
+TITLE="2.1 Introduction to Windowing"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 2.1 Introduction to Windowing"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><B
+><FONT
+FACE="ARIEL,HELVETICA,HELV,SANSERIF"
+SIZE="-1"
+>Chapter 2<BR>Using Window Systems </FONT
+></B
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch02_03.htm"
+TITLE="2.3 Running Programs"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 2.3 Running Programs"
+BORDER="0"></A
+></TD
+></TR
+></TABLE
+>&nbsp;<HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"></DIV
+><DIV
+CLASS="SECT1"
+><H2
+CLASS="sect1"
+><A
+CLASS="title"
+NAME="LUX-CH-2-SECT-2"
+>2.2 Starting X</A
+></H2
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-XWINSYSTEM-START"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-834"
+></A
+>There are several ways to start X and its window manager.  This
+section explains a few of the most common ways.
+<A
+CLASS="xref"
+HREF="ch02_02.htm#LUX-CH-2-FIG-1"
+TITLE="Some possibilities"
+>Figure 2.2</A
+>
+shows some steps along a few different paths to starting X.
+If your display is like any of the following, refer to the section
+noted. (If none of these fits your situation, skim through the next
+three sections or ask your system administrator for help.)</P
+><UL
+CLASS="itemizedlist"
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+><A
+CLASS="xref"
+HREF="ch02_02.htm#LUX-CH-2-FIG-1"
+TITLE="Some possibilities"
+>Figure 2.2</A
+>A,
+<B
+CLASS="emphasis.bold"
+>xdm</B
+> is running.
+Start with Section A.</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+><A
+CLASS="xref"
+HREF="ch02_02.htm#LUX-CH-2-FIG-1"
+TITLE="Some possibilities"
+>Figure 2.2</A
+>B,
+you have a standard UNIX login session.
+Start with Section B.</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+><A
+CLASS="xref"
+HREF="ch02_02.htm#LUX-CH-2-FIG-1"
+TITLE="Some possibilities"
+>Figure 2.2</A
+>C,
+X is running but a window manager probably isn't.
+(You can tell because the window doesn't have a &quot;frame&quot; around it.)
+Read Section C.</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+><A
+CLASS="xref"
+HREF="ch02_02.htm#LUX-CH-2-FIG-1"
+TITLE="Some possibilities"
+>Figure 2.2</A
+>D,
+the window has a frame, so X and the window manager
+(in this example, <B
+CLASS="emphasis.bold"
+>mwm</B
+>) are running.
+You can skip ahead to the next main section, &quot;Running Programs.&quot;</P
+></LI
+></UL
+><H4
+CLASS="figure"
+><A
+CLASS="title"
+NAME="LUX-CH-2-FIG-1"
+>Figure 2.2: Some possibilities</A
+></H4
+><IMG
+CLASS="graphic"
+SRC="figs/lu0202.gif"
+ALT="Figure 2.2"><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-2-SECT-2.1"
+>2.2.1 A.  Ready to Run X (with xdm)</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-XWINSYSTEM-XDM"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-XDM-DISMAN"
+></A
+>Some terminals, like the one shown in
+<A
+CLASS="xref"
+HREF="ch02_02.htm#LUX-CH-2-FIG-1"
+TITLE="Some possibilities"
+>Figure 2.2</A
+>A,
+are probably ready to use X.  Your terminal has probably been set up
+to use <B
+CLASS="emphasis.bold"
+>xdm</B
+>, the X display manager; <B
+CLASS="emphasis.bold"
+>xdm</B
+> logs you in to your
+UNIX host and (usually) starts the window manager.</P
+><P
+CLASS="para"
+>When you start, there's a single window in the middle of the screen
+that says something like &quot;X Window System on <EM
+CLASS="emphasis"
+>hostname</EM
+>.&quot;  The
+window has two prompts, &quot;Login:&quot; and &quot;Password:&quot;.  A cursor (a
+vertical bar) sits to the right of the &quot;Login:&quot; line.  Type your
+username (login name) and press
+<KBD
+CLASS="keycap"
+>[RETURN]</KBD
+>.
+Do the same for your password.
+The login window disappears.</P
+><P
+CLASS="para"
+>If a display something like
+<A
+CLASS="xref"
+HREF="ch02_01.htm#LUX-CH-2-FIG-0"
+TITLE="An X display with the mwm window manager"
+>Figure 2.1</A
+>
+or
+<A
+CLASS="xref"
+HREF="ch02_02.htm#LUX-CH-2-FIG-1"
+TITLE="Some possibilities"
+>Figure 2.2</A
+>D
+appears, You're ready to use X!  You can skip ahead to &quot;Running Programs.&quot;</P
+><P
+CLASS="para"
+>If you get a display like
+<A
+CLASS="xref"
+HREF="ch02_02.htm#LUX-CH-2-FIG-1"
+TITLE="Some possibilities"
+>Figure 2.2</A
+>C,
+read Section C below.  Or, if you get a blank display, try pressing
+and releasing your mouse buttons one by one, slowly, to see if a menu
+pops up.<A
+CLASS="indexterm"
+NAME="AUTOID-875"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-876"
+></A
+></P
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-2-SECT-2.2"
+>2.2.2 B.  Starting X from a Standard UNIX Session</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-880"
+></A
+>If your terminal shows something like
+<A
+CLASS="xref"
+HREF="ch02_02.htm#LUX-CH-2-FIG-1"
+TITLE="Some possibilities"
+>Figure 2.2</A
+>B,
+with a standard UNIX &quot;login:&quot; prompt (not in a separate window; the
+whole screen looks like a terminal), then X is not running.  Log in
+(as <A
+CLASS="xref"
+HREF="ch01_01.htm"
+TITLE="Getting Started "
+>Chapter 1, Getting Started </A
+>, explains) and get a shell prompt (like <CODE
+CLASS="literal"
+>%</CODE
+>).
+Next, you need to start X.  The default command is:<A
+CLASS="indexterm"
+NAME="AUTOID-886"
+></A
+></P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>xinit</B
+></CODE
+></PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>though your system may use another command (<B
+CLASS="emphasis.bold"
+>startx</B
+>, for
+instance) instead.  If all goes well, your screen will sprout at least
+one window.  If the window looks like
+<A
+CLASS="xref"
+HREF="ch02_02.htm#LUX-CH-2-FIG-1"
+TITLE="Some possibilities"
+>Figure 2.2</A
+>C,
+without a frame from a window manager, read Section C.  Otherwise,
+your window manager is running; skip ahead to the next main section,
+&quot;Running Programs.&quot;</P
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-2-SECT-2.2.1"
+>2.2.2.1 Problem checklist</A
+></H4
+><P
+CLASS="para"
+></P
+><DL
+CLASS="variablelist"
+><DT
+CLASS="term"
+><EM
+CLASS="emphasis"
+>No windows open. I get the message 
+&quot;Fatal server error: No screens found.&quot;</EM
+></DT
+><DD
+CLASS="listitem"
+><P
+CLASS="para"
+>Your terminal may not be able to run X.
+Ask the system administrator.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-2-SECT-2.3"
+>2.2.3 C.  Starting the Window Manager</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-906"
+></A
+>Once you have a window open with a shell prompt in it (usually
+<CODE
+CLASS="literal"
+>%</CODE
+> or <CODE
+CLASS="literal"
+>$</CODE
+>), you can start the window manager program.
+Your account may have been set up to do this automatically.  If a
+window manager is not running, windows won't have frames (with titles,
+control boxes, and so on).  Also, if you move the pointer to the root
+window (sometimes called the &quot;desktop&quot;) and press the mouse buttons,
+menus won't appear unless the window manager is running.</P
+><P
+CLASS="para"
+>If you need to start the window manager, move your pointer into the
+window. Then enter this command at the shell prompt
+to start the Motif window manager:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>mwm &amp;</B
+></CODE
+>
+[1] 12345
+%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>(To start <B
+CLASS="emphasis.bold"
+>twm</B
+>, <B
+CLASS="emphasis.bold"
+>olwm</B
+>, or another window manager, the command
+you'd type would be the name of that window manager.)
+In a few moments, the window should have a frame.
+(For more about starting programs, refer to &quot;The xterm Window&quot; section,
+later in this chapter.)<A
+CLASS="indexterm"
+NAME="AUTOID-917"
+></A
+></P
+></DIV
+></DIV
+><DIV
+CLASS="htmlnav"
+><P
+></P
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch02_01.htm"
+TITLE="2.1 Introduction to Windowing"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 2.1 Introduction to Windowing"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="book"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"
+><IMG
+SRC="../gifs/txthome.gif"
+ALT="Learning the Unix Operating System"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch02_03.htm"
+TITLE="2.3 Running Programs"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 2.3 Running Programs"
+BORDER="0"></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+>2.1 Introduction to Windowing</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="index"
+HREF="index/idx_0.htm"
+TITLE="Book Index"
+><IMG
+SRC="../gifs/index.gif"
+ALT="Book Index"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+>2.3 Running Programs</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><IMG
+SRC="../gifs/smnavbar.gif"
+USEMAP="#map"
+BORDER="0"
+ALT="The UNIX CD Bookshelf Navigation"><MAP
+NAME="map"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,73,21"
+HREF="../index.htm"
+ALT="The UNIX CD Bookshelf"><AREA
+SHAPE="RECT"
+COORDS="74,0,163,21"
+HREF="../upt/index.htm"
+ALT="UNIX Power Tools"><AREA
+SHAPE="RECT"
+COORDS="164,0,257,21"
+HREF="../unixnut/index.htm"
+ALT="UNIX in a Nutshell"><AREA
+SHAPE="RECT"
+COORDS="258,0,321,21"
+HREF="../vi/index.htm"
+ALT="Learning the vi Editor"><AREA
+SHAPE="RECT"
+COORDS="322,0,378,21"
+HREF="../sedawk/index.htm"
+ALT="sed &amp; awk"><AREA
+SHAPE="RECT"
+COORDS="379,0,438,21"
+HREF="../ksh/index.htm"
+ALT="Learning the Korn Shell"><AREA
+SHAPE="RECT"
+COORDS="439,0,514,21"
+HREF="index.htm"
+ALT="Learning the UNIX Operating System"></MAP
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,2636 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+
+
+
+
+
+
+
+<HTML>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<HEAD>
+
+
+
+
+
+
+
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+
+
+
+
+
+
+	<META NAME="GENERATOR" Content="Visual Page 2.0 for Windows">
+
+
+
+
+
+
+
+	<TITLE>5.1) Operators and assignments</TITLE>
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+<link rel="stylesheet" href="tutor.css"></HEAD>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<BODY bgcolor="#FFFFFF">
+
+<table width=95% border=0 cellpadding=2 cellspacing=0 style="page-break-before: always">
+
+  <col width=147*> <col width=109*> 
+
+  <tr> 
+
+    <td width=57% height=104> 
+
+      <p><a href= "introj2.htm" ><img src= "btnIndex.jpg"  name="Graphic1" alt="Return to Tutorial Index" align=BOTTOM width=55 height=39 border=0></a><a href= "introj2.htm" ><br>
+
+        <br>
+
+        </a><a href= "index.htm" ><img src= "btnHome.jpg"  name="Graphic2" alt="Back to the home page of this site" align=BOTTOM width=55 height=39 border=0></a> 
+
+      </p>
+
+    </td>
+
+    <td width=43%> 
+
+      <p align=RIGHT><img src= "hat.gif"  name="Graphic3" alt="morterboard" align=BOTTOM width=118 height=113 border=0></p>
+
+    </td>
+
+  </tr>
+
+  <tr> 
+
+    <td width=57% height=11> 
+
+      <h1 align=LEFT>Java2 Certification <br>
+
+        Tutorial </h1>
+
+    </td>
+
+    <td width=43% bgcolor="#ff9900"> 
+
+      <p>&nbsp;</p>
+
+    </td>
+
+  </tr>
+
+</table>
+
+<p> You can discuss this topic with others at <a href= "http://www.jchq.net/discus" >http://www.jchq.net/discus</a><br>
+
+  Read reviews and buy a Java Certification book at <a href= "http://www.jchq.net/bookreviews/jcertbooks.htm" >http://www.jchq.net/bookreviews/jcertbooks.htm</a> 
+
+  <br>
+
+</p>
+
+<hr size=5 noshade>
+
+<h1>5)<B><FONT FACE="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">Operators and Assignments</FONT></B></h1>
+
+
+
+
+
+
+
+<H3>Objective 1)</H3>
+
+
+
+
+
+
+
+<P><I><FONT FACE="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">Determine the result of applying any operator including
+
+
+
+
+
+
+
+assignment operators and instanceof to operands of any type class scope or accessibility or any combination of
+
+
+
+
+
+
+
+these.</FONT></I></P>
+
+
+
+
+
+
+
+<P><B><FONT FACE="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">The </FONT><I><FONT FACE="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">instanceof</FONT></I><FONT
+
+
+
+
+
+
+
+FACE="GENEVA, HELVETICA, ARIAL, LUCIDA SANS"> operator</FONT></B></P>
+
+
+
+
+
+
+
+<P>The <I>instanceof</I> operator is a strange beast, in my eyes it looks like it ought to be a method rather than
+
+
+
+
+
+
+
+an operator. You could probably write an great deal of Java code without using it, but you need to know about it
+
+
+
+
+
+
+
+for the purposes of the exam. It returns a boolean value as a test of the type of class at runtime. Effectively
+
+
+
+
+
+
+
+it is used to say</P>
+
+
+
+
+
+
+
+<P><BR>
+
+
+
+
+
+
+
+Is thisclass an <I>instanceof</I> thisotherclasss</P>
+
+
+
+
+
+
+
+<P>If you use it in the following trivial way it does not seem particularly useful</P>
+
+
+
+
+
+
+
+<PRE>public class InOf {
+        public static void main(String argv[]){
+        InOf i = new InOf();
+               if(i instanceof InOf){
+                   System.out.println(&quot;It's an instance of InOf&quot;);
+                }//End if
+        }//End of main
+}
+</PRE>
+
+
+
+
+
+
+
+<P>As you might guess this code will output</P>
+
+
+
+
+
+
+
+<PRE>&quot;It's an instance of InOf&quot;</PRE>
+
+
+
+
+
+
+
+<P>However circumstances may arise where you have access to an object reference that refers to something further
+
+
+
+
+
+
+
+down the hierarchy. Thus you may have a method that takes a Component as a parameter which may actually refer to
+
+
+
+
+
+
+
+a Button, Label or whatever. In this circumstance the <I>instanceof </I>operator can be used to test the type of
+
+
+
+
+
+
+
+the object, perform a matching cast and thus call the appropriate methods. The following example illustrates this</P>
+
+
+
+
+
+
+
+<PRE>import java.awt.*;
+public class InOfComp {
+        public static void main(String argv[]){
+        }//End of main
+        public void mymethod(Component c){
+        if( c instanceof Button){
+                Button bc = (Button) c;
+                bc.setLabel(&quot;Hello&quot;);
+                }
+                else
+        if (c instanceof Label){
+                Label lc = (Label) c;
+                lc.setText(&quot;Hello&quot;);
+                }
+        }//End of mymethod
+}
+
+</PRE>
+
+
+
+
+
+
+
+<P>If the runtime test and cast were not performed the appropriate methods, <I>setLabel</I> and <I>setText</I>
+
+
+
+
+
+
+
+would not be available. Note that <I>instanceof </I>tests against a class name and not against an object reference
+
+
+
+
+
+
+
+for a class.</P>
+
+
+
+
+
+
+
+<P><B><FONT FACE="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">The + operator</FONT></B></P>
+
+
+
+
+
+
+
+<P>As you might expect the + operator will add two numbers together. Thus the following will output 10&nbsp;</P>
+
+
+
+
+
+
+
+<PRE>int p=5;&nbsp; 
+int q=5;&nbsp;</PRE>
+
+
+
+
+
+
+
+<PRE>System.out.println(p+q);&nbsp; </PRE>
+
+
+
+
+
+
+
+<P>The + operator is a rare example of operator overloading in Java. C++ programmers are used to being able to
+
+
+
+
+
+
+
+overload operators to mean whatever they define. This facility is not available to the programmer in Java, but
+
+
+
+
+
+
+
+it is so useful for Strings, that the plus sign is overridden to offer concatenation. Thus the following code will
+
+
+
+
+
+
+
+compile</P>
+
+
+
+
+
+
+
+<PRE>String s = &quot;One&quot;;&nbsp; 
+String s2 = &quot;Two&quot;&nbsp; 
+String s3 = &quot;&quot;;&nbsp;</PRE>
+
+
+
+
+
+
+
+<PRE>s3 = s+s2; &nbsp;</PRE>
+
+
+
+
+
+
+
+<PRE>System.out.println(s3);&nbsp;</PRE>
+
+
+
+
+
+
+
+<P>This will output the string OneTwo. Note there is no space between the two joined strings.&nbsp;</P>
+
+
+
+
+
+
+
+<P>If you are from a Visual Basic background the following syntax may not be familiar</P>
+
+
+
+
+
+
+
+<PRE>s2+=s3&nbsp;</PRE>
+
+
+
+
+
+
+
+<P>This can also be expressed in Java in a way more familiar to a Visual Basic programmer as&nbsp;</P>
+
+
+
+
+
+
+
+<PRE>s2= s2+s3&nbsp;</PRE>
+
+
+
+
+
+
+
+<P>Under certain circumstances Java will make an implicit call to the <I>toString</I> method. This method as it's
+
+
+
+
+
+
+
+name implies tries to convert to a <I>String</I> representation. For an integer this means toString called on the
+
+
+
+
+
+
+
+number 10 will return the string &quot;10&quot;.&nbsp;</P>
+
+
+
+
+
+
+
+<P>This becomes apparent in the following code&nbsp;</P>
+
+
+
+
+
+
+
+<PRE>int p = 10;&nbsp; 
+String s = &quot;Two&quot;;&nbsp; 
+String s2 = &quot;&quot;;&nbsp;</PRE>
+
+
+
+
+
+
+
+<PRE>s2 = s + p;&nbsp; 
+System.out.printlns(s2);&nbsp;</PRE>
+
+
+
+
+
+
+
+<P>This will result in the output</P>
+
+
+
+
+
+
+
+<PRE>Two10&nbsp;</PRE>
+
+
+
+
+
+
+
+<P>Remember that it is only the + operator that is overloaded for Strings. You will cause an error if you try to
+
+
+
+
+
+
+
+use the divide or minus (/ -) operator on Strings.&nbsp;</P>
+
+
+
+
+
+
+
+<P><B><FONT FACE="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">Assigning primitive variables of different types</FONT></B></P>
+
+
+
+
+
+
+
+<P>A boolean cannot be assigned to a variable of any other type than another boolean. For the C/C++ programmers,
+
+
+
+
+
+
+
+remember that this means a boolean cannot be assigned to -1 or 0, as a Java boolean is not substitutable for zero
+
+
+
+
+
+
+
+or non zero.&nbsp;<BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+With that major exception of the boolean type the general principle to learn for this objective is that widening
+
+
+
+
+
+
+
+conversions are allowed, as they do not compromise accuracy. Narrowing conversions are not allowed as they would
+
+
+
+
+
+
+
+result in the loss of precision. By widening I mean that a variable such as a byte that occupies one <I>byte</I>
+
+
+
+
+
+
+
+(eight bits) may be assigned to a variable that occupies more bits such as an integer.&nbsp;<BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+However if you try to assign an integer to a byte you will get a compile time error&nbsp;</P>
+
+
+
+
+
+
+
+<PRE>byte b= 10;&nbsp; 
+int i = 0;&nbsp; 
+b = i;
+</PRE>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="9%"><img src= "key2.gif"  width="106" height="73"
+
+
+
+
+
+
+
+align="bottom" border="0"></td>
+
+
+
+
+
+
+
+    <td width="91%"> 
+
+
+
+
+
+
+
+      <h4><font color="red">Primitives may be assigned to &quot;wider&quot; data 
+
+
+
+
+
+
+
+        types, a boolean can only assigned to another boolean</font> </h4>
+
+
+
+
+
+
+
+    </td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<p></P>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<P>As you might expect you cannot assign primitives to objects or vice versa. This includes the wrapper classes
+
+
+
+
+
+
+
+for primitives. Thus the following would be illegal</P>
+
+
+
+
+
+
+
+<PRE>int j=0;&nbsp; 
+Integer k = new Integer(99);&nbsp; 
+j=k; //Illegal assignment of an object to a primitive&nbsp;</PRE>
+
+
+
+
+
+
+
+<P>An important difference between assigning objects and primitives is that primitives are checked at compile time
+
+
+
+
+
+
+
+whereas objects are checked at runtime. This will be covered later as it can have important implications when an
+
+
+
+
+
+
+
+object is not fully resolved at compile time.&nbsp;</P>
+
+
+
+
+
+
+
+<P>You can, of course, perform a cast to force a variable to fit into a narrower data type. This is often not advisable
+
+
+
+
+
+
+
+as you will loose precision, but if you really want enough rope, Java uses the C/C++ convention of enclosing the
+
+
+
+
+
+
+
+data type with parenthesis i.e. (), thus the following code will compile and run&nbsp;</P>
+
+
+
+
+
+
+
+<PRE>public class Mc{ 
+public static void main(String argv[]){ 
+    byte b=0;  
+    int i = 5000;  
+    b = (byte) i;  
+    System.out.println(b); 
+    }  
+}
+
+The output is&nbsp;</PRE>
+
+
+
+
+
+
+
+<PRE>-120&nbsp;</PRE>
+
+
+
+
+
+
+
+<P>Possibly not what would be required.</P>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<P><B><FONT FACE="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">Assigning object references of different types</FONT></B></P>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<P>When assigning one object reference to another the general rule is that you 
+
+
+
+
+
+
+
+  can assign up the inheritance tree but not down. You can think of this as follows. 
+
+
+
+
+
+
+
+  If you assign an instance of Child to Base, Java knows what methods will be 
+
+
+
+
+
+
+
+  in the Child class. However a child may have additional methods to its base 
+
+
+
+
+
+
+
+  class. You can force the issue by using a cast operation.</P>
+
+
+
+
+
+
+
+<pre></pre>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="9%"><img src= "key2.gif"  width="106" height="73"
+
+
+
+
+
+
+
+align="bottom" border="0"></td>
+
+
+
+
+
+
+
+    <td width="91%"> 
+
+
+
+
+
+
+
+      <h4><font color="red">Object references can be assigned up the hierarchy 
+
+
+
+
+
+
+
+        from Child to Base.</font> </h4>
+
+
+
+
+
+
+
+    </td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<P>The following example illustrates how you can cast an object reference up the 
+
+
+
+
+
+
+
+  hierarchy</P>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<PRE>class Base{}
+public class ObRef extends Base{
+public static void main(String argv[]){
+        ObRef o = new ObRef();
+        Base b = new Base();
+        b=o;//This will compile OK
+        /*o=b; 	This would cause an error indicating
+		an explicit cast is needed to cast Base 
+		to ObRef */
+        }
+}</PRE>
+
+
+
+
+
+
+
+<H3><B><FONT FACE="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">The bit shifting operators</FONT></B></H3>
+
+
+
+
+
+
+
+<P>I hate bit the whole business of bit shifting. It requires filling your brain with a non intuitive capability
+
+
+
+
+
+
+
+that an infinitesimally small number of programmers will ever use. But that's all the more reason to learn it especially
+
+
+
+
+
+
+
+for the exam as you probably won't learn it via any other means. This objective could do with a whole bunch of
+
+
+
+
+
+
+
+warning or banana skin icons, so if anyone has any good ones send them to me.&nbsp; The results can be surprising,
+
+
+
+
+
+
+
+particularly on negative numbers.</P>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<P><BR>
+
+
+
+
+
+
+
+To understand it you have to be fairly fluent in at thinking in binary, ie knowing the value of the bit at each
+
+
+
+
+
+
+
+position i.e.&nbsp;</P>
+
+
+
+
+
+
+
+<PRE>32, 16, 8, 4, 2, 1&nbsp;</PRE>
+
+
+
+
+
+
+
+<P>If you are from a C/C++ background you can take slight comfort from the fact that the meaning of the right shift
+
+
+
+
+
+
+
+operator in Java is less ambiguous than in C/C++. In C/C++ the right shift could be signed or unsigned depending
+
+
+
+
+
+
+
+on the compiler implementation. If you are from a Visual Basic background, welcome to programming at a lower level.&nbsp;</P>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<P>Note that the objective only asks you to understand the results of applying these operators to <I>int</I> values.
+
+
+
+
+
+
+
+This is handy as applying the operators to a <I>byte</I> or <I>short</I>, particularly if negative, can have some
+
+
+
+
+
+
+
+very unexpected results.&nbsp;
+
+
+
+
+
+
+
+<H3>Signed shifting &lt;&lt; and &gt;&gt;</H3>
+
+
+
+
+
+
+
+<P>The left and right shift operators move the bit pattern to the left or right and leave the sign bit alone.&nbsp;</P>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<P>For positive numbers the results are fairly predictable. Thus the signed shift of the positive number gives
+
+
+
+
+
+
+
+the following results <BR>
+
+
+
+
+
+
+
+&nbsp;</P>
+
+
+
+
+
+
+
+<PRE>int x = 14;&nbsp; 
+int y = 0;&nbsp; 
+y = x &gt;&gt;2;&nbsp; 
+
+
+System.out.println(y);&nbsp; </PRE>
+
+
+
+
+
+
+
+<P>Outputs 3, one bit is lost and falls off the right hand side&nbsp;</P>
+
+
+
+
+
+
+
+<PRE>int x = 14;&nbsp; 
+int y = 0;&nbsp; 
+y = x &lt;&lt;2;&nbsp; 
+System.out.println(y);&nbsp; </PRE>
+
+
+
+
+
+
+
+<P>Outputs 56&nbsp;</P>
+
+
+
+
+
+
+
+<P>So what do you expect to get when you right shift a negative number? You might expect the same result as right
+
+
+
+
+
+
+
+shifting a positive number except that the result keeps the negative sign. If we shift 4 places, what actually
+
+
+
+
+
+
+
+happens is that the spaces, left moving the other bits across, take on the value of the most significant bit (i.e.
+
+
+
+
+
+
+
+the sign bit). The effect of this is that each shift still divides a minus number by two. This sounds like it will
+
+
+
+
+
+
+
+be easy enough to understand until you realise the implication of twos complement storage of binary numbers.&nbsp;</P>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<P>Twos complement works a little like a physical odomenter on a cars clock. Imagine you wind back to zero and
+
+
+
+
+
+
+
+then go below zero into the negative numbers. The first number you get to will not be one, but one below the biggest
+
+
+
+
+
+
+
+number you can represent with all the available wheels. If this sounds rather unlikely fire up the windows calculator,
+
+
+
+
+
+
+
+put it into scientific mode, enter a minus number and then switch to binary mode. This will display the bit pattern
+
+
+
+
+
+
+
+for the number you just entered.&nbsp;</P>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<P>If all of this talk of bit patterns and twos complement representation does your head in a bit you may like
+
+
+
+
+
+
+
+to think of the bit shifting as a process of repeated multiplication or division by two. This approach works fine
+
+
+
+
+
+
+
+until you start to shift a negative number to the right so it loses bits from the right hand side.&nbsp;</P>
+
+
+
+
+
+
+
+<H3>Unsigned Right Shift &gt;&gt;&gt;</H3>
+
+
+
+
+
+
+
+<P>The unsigned right shift &gt;&gt;&gt; performs a shift without attaching any significance to the sign bit. Thus
+
+
+
+
+
+
+
+in an integer, all 32 bits are shifted by the value of the operand and padding on the left uses zeros. This also
+
+
+
+
+
+
+
+generally has the effect of making a negative number positive. I say generally because before the shift is performed
+
+
+
+
+
+
+
+a mod 32 operation is performed on the operand(or mod 64 for a long) The unsighed Right Shift can lead can lead
+
+
+
+
+
+
+
+to some very weird results. The following statement</P>
+
+
+
+
+
+
+
+<PRE>System.out.println(-1 &gt;&gt;&gt;1);</PRE>
+
+
+
+
+
+
+
+<P>Results in the following output</P>
+
+
+
+
+
+
+
+<PRE>2147483647</PRE>
+
+
+
+
+
+
+
+<P>The exam probably won't ask you to give the exact result but it might give you some alternatives such as 0,
+
+
+
+
+
+
+
+-1 etc etc and you have to pick the most likely result.</P>
+
+
+
+
+
+
+
+<P>What would you expect the result of the following statement to be?</P>
+
+
+
+
+
+
+
+<P>System.out.println(-1 &gt;&gt;&gt; 32);</P>
+
+
+
+
+
+
+
+<P>If you read that as -1 being shifted 32 places to the right whilst ignoring 
+
+
+
+  the significance of the sign place then the real answer of -1 may be a surprise. 
+
+
+
+  The reason is the mod 32 that is performed on the operand before the shift. 
+
+
+
+  Thus if you divide 32 by 32 you get zero and if you perform an unsigned shift 
+
+
+
+  of zero places to the right you still end up with -1. Don't dismiss this as 
+
+
+
+  an irrelevent peculiarity as it may come up in the exam.</P>
+
+
+
+<table width="100%" border="0">
+
+
+
+  <tr> 
+
+
+
+    <td width="9%"><img src= "key2.gif"  width="106" height="73"
+
+
+
+
+
+
+
+align="bottom" border="0"></td>
+
+
+
+    <td width="91%"> 
+
+
+
+      <h4><font color="red">A mod 32 is performed on the shift operand which affects 
+
+
+
+        shifts of more than 32 places</font></h4>
+
+
+
+    </td>
+
+
+
+  </tr>
+
+
+
+</table>
+
+
+
+<P>I have created an applet that allows you to try out the various shift operations and see both the decimal and
+
+
+
+
+
+
+
+bit pattern results. I have included the source code so you can see how it works, check it out at</P>
+
+
+
+
+
+
+
+<P><a href= "http://www.software.u-net.com/applets/BitShift/BitShiftAr.html" >http://www.software.u-net.com/applets/BitShift/BitShiftAr.html</a></P>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<P>Here is a screen shot of this applet in use
+
+
+
+
+
+
+
+<H3></H3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<H3>BitShift Applet</H3>
+
+
+
+
+
+
+
+<P ALIGN="CENTER"><IMG SRC= "BitShift.gif"  WIDTH="301" HEIGHT="301" ALIGN="BOTTOM" BORDER="0"></P>
+
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="11%"><img src= "Quiz.gif"  width="99" height="101"> </td>
+
+
+
+
+
+
+
+    <td width="89%">&nbsp;</td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+
+
+<h4><b>Question 1)</b></h4>
+
+
+
+
+
+
+
+<p>Given the following classes which of the following will compile without error?</p>
+
+
+
+
+
+
+
+<pre>interface IFace{}
+class CFace implements IFace{}
+class Base{}
+public class ObRef extends Base{
+public static void main(String argv[]){
+        ObRef ob = new ObRef();
+        Base b = new Base();
+        Object o1 = new Object();
+        IFace o2 = new CFace();
+        }
+}
+</pre>
+
+
+
+
+
+
+
+<p>1) o1=o2;<br>
+
+
+
+
+
+
+
+  2) b=ob;<br>
+
+
+
+
+
+
+
+  3) ob=b;<br>
+
+
+
+
+
+
+
+  4) o1=b;</p>
+
+
+
+
+
+
+
+<p> 
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 2)</b> </h4>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<p>Given the following variables which of the following lines will compile without 
+
+
+
+
+
+
+
+  error?</p>
+
+
+
+
+
+
+
+<pre>String s = &quot;Hello&quot;;
+long l = 99;
+double d = 1.11;
+int i = 1;
+int j = 0;</pre>
+
+
+
+
+
+
+
+<pre>1) j= i &lt;&lt;s;
+2) j= i&lt;&lt;j;
+3) j=i&lt;&lt;d;
+4)j=i&lt;&lt;l;</pre>
+
+
+
+
+
+
+
+<p> 
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 3)</b> </h4>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<p>Given the following variables</p>
+
+
+
+
+
+
+
+<pre>char c = 'c';
+int i = 10;
+double d = 10;
+long l = 1;
+String s = &quot;Hello&quot;;</pre>
+
+
+
+
+
+
+
+<p>Which of the following will compile without error?</p>
+
+
+
+
+
+
+
+<p>1) c=c+i; <br>
+
+
+
+
+
+
+
+  2) s+=i; <br>
+
+
+
+
+
+
+
+  3) i+=s; <br>
+
+
+
+
+
+
+
+  4) c+=s; <br>
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 4)</b> </h4>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<p>What will be output by the following statement?</p>
+
+
+
+
+
+
+
+<pre>System.out.println(-1 &gt;&gt;&gt;1);</pre>
+
+
+
+
+
+
+
+<p>1) 0<br>
+
+
+
+
+
+
+
+  2) -1<br>
+
+
+
+
+
+
+
+  3) 1<b><br>
+
+
+
+
+
+
+
+  </b>4)<b> </b>2147483647</p>
+
+
+
+
+
+
+
+<p> 
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 5)</b> </h4>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<p>What will be output by the following statement?</p>
+
+
+
+
+
+
+
+<pre>System.out.println(1 &lt;&lt;32);</pre>
+
+
+
+
+
+
+
+<p>1) 1<br>
+
+
+
+
+
+
+
+  2) -1<br>
+
+
+
+
+
+
+
+  3) 32<br>
+
+
+
+
+
+
+
+  4)-2147483648</p>
+
+
+
+
+
+
+
+<p> 
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<h4><b>Question 6)</b></h4>
+
+
+
+
+
+
+
+<p>Which of the following are valid statements?</p>
+
+
+
+
+
+
+
+<p>1) System.out.println(1+1);<br>
+
+
+
+
+
+
+
+  2) int i= 2+'2';<br>
+
+
+
+
+
+
+
+  3) String s= &quot;on&quot;+'one';<br>
+
+
+
+
+
+
+
+  4) byte b=255; 
+
+
+
+
+
+
+
+<h1>Answers</h1>
+
+
+
+
+
+
+
+<h4><b>Answer 1)</b></h4>
+
+
+
+
+
+
+
+<pre>1)o1=o2;
+2)b=ob;
+4)o1=b; </pre>
+
+
+
+
+
+
+
+<h4><b>Answer 2)</b></h4>
+
+
+
+
+
+
+
+<pre>2)j= i&lt;&lt;j;<b>
+</b>4)j=i&lt;&lt;l;</pre>
+
+
+
+
+
+
+
+<pre></pre>
+
+
+
+
+
+
+
+<h4><b>Answer 3)</b></h4>
+
+
+
+
+
+
+
+<p>2)s+=i;</p>
+
+
+
+
+
+
+
+<h4><b>Answer 4)</b></h4>
+
+
+
+
+
+
+
+<p>4)<b> </b>2147483647</p>
+
+
+
+
+
+
+
+<p>Although you might not be able to come up with that number in your head, understanding 
+
+
+
+
+
+
+
+  the idea of the unsigned right shift will indicate that all the other options 
+
+
+
+
+
+
+
+  are not correct.</p>
+
+
+
+
+
+
+
+<h4><b>Answer 5)</b></h4>
+
+
+
+
+
+
+
+<p>1) 1</p>
+
+
+
+
+
+
+
+<p>With the left shift operator the bits wil &quot;wrap around&quot;. Thus the 
+
+
+
+
+
+
+
+  result of</p>
+
+
+
+
+
+
+
+<pre>System.out.println(1 &lt;&lt;31);
+would be -2147483648</pre>
+
+
+
+
+
+
+
+<h4><b>Answer 6)</b></h4>
+
+
+
+
+
+
+
+<p>1) System.out.println(1+1);<br>
+
+
+
+
+
+
+
+  2) int i= 2+'2';<br>
+
+
+
+
+
+
+
+  Option 3 is not valid because single quotes are used to indicate a character 
+
+
+
+
+
+
+
+  constant and not a string. <br>
+
+
+
+
+
+
+
+  Option 4 will not compile becuase 255 is out of the range of a byte</p>
+
+
+
+
+
+
+
+<p> 
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<table border="1" width="100%" height="170">
+
+
+
+
+
+
+
+  <caption><b>Other sources on this topic</b></caption>
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="100%"><b>The Sun Tutorial<br>
+
+
+
+
+
+
+
+      </b><a href= "http://java.sun.com/docs/books/tutorial/java/nutsandbolts/operators.html" >http://java.sun.com/docs/books/tutorial/java/nutsandbolts/operators.html<br>
+
+
+
+
+
+
+
+      </a>(nothing on <i>instanceof</i> that I could find at Sun)<b><br>
+
+
+
+
+
+
+
+      </b><a href= "http://java.sun.com/docs/books/tutorial/uiswing/events/intro.html" ><br>
+
+
+
+
+
+
+
+      </a><b>Richard Baldwin<br>
+
+
+
+
+
+
+
+      </b><a href= "http://home.att.net/~baldwin.dick/Intro/Java022.htm#bitwiseoperations" >http://home.att.net/~baldwin.dick/Intro/Java022.htm#bitwiseoperations<br>
+
+
+
+
+
+
+
+      </a>(nothing on <i>instanceof</i> that I could find here either)<b><br>
+
+
+
+
+
+
+
+      <br>
+
+
+
+
+
+
+
+      Jyothi Krishnan on this topic at </b><a href= "http://www.geocities.com/SiliconValley/Network/3693/obj_sec5.html#obj15" ><br>
+
+
+
+
+
+
+
+      http://www.geocities.com/SiliconValley/Network/3693/obj_sec5.html#obj15</a></td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<p>Last updated<br>
+
+
+
+
+
+
+
+  7 Jan 2000<br>
+
+
+
+  copyright &copy; Marcus Green 1999</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<h1>&nbsp;</h1>
+
+
+
+
+
+
+
+<P ALIGN="CENTER">&nbsp;</P>
+
+
+
+
+
+
+
+<P></P>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<P><BR>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</BODY>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</HTML>

@@ -1,0 +1,3185 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>db2</title>
+<!--
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> DB2</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">DB2</font></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 NOSAVE >
+<tr NOSAVE>
+<td><b><font color="#CC0000">This page</font></b></td>
+
+<td></td>
+
+<td NOSAVE><b><font color="#CC0000">Other Pages</font></b></td>
+</tr>
+
+<tr NOSAVE>
+<td ALIGN=LEFT VALIGN=TOP NOSAVE>- <a href="#intro">intro, links</a>
+<br>- <a href="#books">books</a>
+<br>- <a href="#tools">tools</a>
+<br>- <a href="#sybase_db2_porting">porting from Sybase to DB2</a>
+<br>- <a href="#db2_getting_help_simple_commands">getting help, simple
+commands</a>
+<br>- <a href="#import_export">import / export</a>
+<br>- <a href="#backup_recovery">backup / recovery</a>
+<br>- <a href="#get_help">get_help</a>
+<br>- <a href="#sql_procedure">SQL procedure</a></td>
+
+<td ALIGN=LEFT VALIGN=TOP NOSAVE>- <a href="#db2_sql_value_s_with_recursive">db2
+SQL: value(), values(), with, recursive SQL</a>
+<br>- <a href="#starting_with_db2">Starting with db2</a>
+<br>- <a href="#db2_instance">db2_instance</a>
+<br>- <a href="#db2_database">db2_database</a>
+<br>- <a href="#db2_tablespaces">db2_tablespaces</a>
+<br>- <a href="#db2_tables_datatypes">db2_tables, data types</a>
+<br>- <a href="#db2_authentication">db2_authentication</a>
+<br>- <a href="#concurrency">db2_concurrency</a>
+<br>- <a href="#db2_sql_1">db2_more_sql_hints</a>
+<br>- <a href="#db2_recursive">db2_sql: recursive, outer joins</a>
+<br>- <a href="#db2_sql_olap">db2 OLAP regression</a>
+<br>- <a href="#db2_sql_3">db2_sql - with, examples, hexadecimal, optimizier</a></td>
+
+<td ALIGN=LEFT VALIGN=TOP BGCOLOR="#FFFFCC" NOSAVE>- <a href="sample_db2.txt">sample_db2.cgi</a>
+<br>- <a href="db2_sql_pl.html">db2_sql_pl</a></td>
+</tr>
+</table>
+
+<p><a NAME="intro"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>intro, links</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#FF0000">DB2</font></b> traditionally was running on
+Mainframe computers (since 1983). But in mid-90s it was ported on Unix
+and other OSs - and now it is called:&nbsp;<b><font color="#FF0000"> UDB</font></b>
+- Universal DataBase
+<br>- <a href="http://www-3.ibm.com/cgi-bin/db2www/data/db2/udb/winos2unix/support/document.d2w/report?fn=db2v7s0frm3toc.htm">http://www-3.ibm.com/cgi-bin/db2www/data/db2/udb/winos2unix/support/document.d2w/report?fn=db2v7s0frm3toc.htm</a>
+- <b><font color="#CC0000">SQL Reference - very good place to use</font></b>
+<br><font color="#000000">- <a href="ftp://ftp.software.ibm.com/ps/products/db2/">ftp://ftp.software.ibm.com/ps/products/db2/</a>
+<b>- </b></font><b><font color="#CC0000">download FTP site</font></b>
+<br>-<font color="#6699CC"> </font><a href="http://www-4.ibm.com/software/data/db2/linux/">www-4.ibm.com/software/data/db2/linux/</a>
+- download version for linux
+<p>-<font color="#6699CC"> </font><font color="#000000"><a href="http://directory.google.com/Top/Computers/Software/Databases/IBM_DB2/">directory.google.com/Top/Computers/Software/Databases/IBM_DB2/</a></font>
+- on Google
+<br>-<font color="#6699CC"> </font><a href="http://www-4.ibm.com/software/data/db2/udb/">www-4.ibm.com/software/data/db2/udb/</a>
+- Official DB2 home page on IBM web site - including downloads, and technical
+libraries.
+<br>-<font color="#6699CC"> </font><a href="http://www-4.ibm.com/cgi-bin/db2www/data/db2/udb/winos2unix/support/v7pubs.d2w/en_main">www-4.ibm.com/cgi-bin/db2www/data/db2/udb/winos2unix/support/v7pubs.d2w/en_main</a>
+- manuals (html &amp; pdf)
+<br>-<font color="#6699CC"> </font><a href="http://www-3.ibm.com/software/data/db2/os390/v7books.html">www-3.ibm.com/software/data/db2/os390/v7books.html</a>
+- HTML &amp; PDFs <b>books</b> for download
+<br>- <a href="http://www-4.ibm.com/software/data/db2/library/">http://www-4.ibm.com/software/data/db2/library/</a>
+- Manuals
+<p>- <a href="http://www.redbooks.ibm.com/">http://www.redbooks.ibm.com/</a>
+- Redbooks
+<br>- <a href="http://www7b.boulder.ibm.com/dmdd/">http://www7b.boulder.ibm.com/dmdd/</a>
+- db2 developer domain
+<br>- <a href="http://www-3.ibm.com/services/learning/spotlight/db2/db2fastpath.html?c=IBM_ChannelNewswatch&n=various&t=aff">http://www-3.ibm.com/services/learning/spotlight/db2/db2fastpath.html?c=IBM_ChannelNewswatch&amp;n=various&amp;t=aff</a>
+- Fastpath -&nbsp; self-study, e-learning course on DB2 UDB (download).
+<p>-<font color="#6699CC"> </font><a href="http://www.webcom.com/raberd/db2info.html">www.webcom.com/raberd/db2info.html</a>-
+Ron Rabe's DB2 Page.
+<p>-<font color="#6699CC"> </font><a href="http://www.db2mag.com/">www.db2mag.com</a>
+- DB2 magazine
+<br>-<font color="#6699CC"> </font><a href="http://www.esj.com">www.esj.com</a>
+- Enterprise Systems Journal (see also <a href="http://www.research.ibm.com/journal/">www.research.ibm.com/journal/</a>
+)
+<br>-<font color="#6699CC"> </font><a href="http://www.idug.org">www.idug.org</a>
+-&nbsp;&nbsp; IDUG: International DB2 Users - IDUG is the International
+DB2 Users Group. IDUG provides information and support to DB2 Users and
+Vendors about DB2 database products, DB2 conferences, other DB2 user groups,
+and other DB2 vendors.
+<p>-<font color="#6699CC"> </font><a href="http://members.aol.com/rexxauthor/sqlbk.htm">members.aol.com/rexxauthor/sqlbk.htm</a>
+-&nbsp;&nbsp; SQL Books - Descriptions and ordering information on books
+about SQL for DB2.
+<br>-<font color="#6699CC"> </font><a href="http://ourworld.compuserve.com/homepages/Graeme_Birchall/HTM_COOK.HTM">ourworld.compuserve.com/homepages/Graeme_Birchall/HTM_COOK.HTM</a>
+-&nbsp;&nbsp; DB2 UDB Cookbook Downloads - Graeme Birchall.
+<p>-<font color="#6699CC"> </font><a href="http://jupiter.ryci.com/archives/db2-l.html">jupiter.ryci.com/archives/db2-l.html</a>
+-&nbsp;&nbsp; Search Archives of DB2-L discussion list.
+<br>-<font color="#6699CC"> </font><a href="http://www.multimania.com/db2usa/eliendb2.htm">www.multimania.com/db2usa/eliendb2.htm</a>
+-&nbsp;&nbsp; DB2usa: DB2 for OS/390 - links.
+<p>-<font color="#6699CC"> </font><a href="http://www.dblinks.net/DB2/">www.dblinks.net/DB2/</a>
+-&nbsp;&nbsp; Links and resources.
+<br>-<font color="#6699CC"> </font><a href="http://www.gseukdb2.org.uk/">www.gseukdb2.org.uk/</a>&nbsp;
+-&nbsp;&nbsp; GSE UK DB2 Working Group -
+<p><b><u>OLAP:</u></b>
+<p>- <a href="http://www-3.ibm.com/cgi-bin/db2www/data/db2/udb/winos2unix/support/document.d2w/report?fn=db2v7s0olapfunc.htm#HDROLAPFUNC">OLAP
+functions</a> - OLAP Functions - from SQL reference
+<br>- <a href="http://www7b.software.ibm.com/dmdd/library/techarticle/lyle/0110lyle.html">http://www7b.software.ibm.com/dmdd/library/techarticle/lyle/0110lyle.html</a>
+- good review of OLAP functions
+<p>- <a href="http://www.almaden.ibm.com/cs/people/peterh/b15.pdf">http://www.almaden.ibm.com/cs/people/peterh/b15.pdf</a>
+- Peter J. Haas DB2 UDB Advanced Analytics for Business Intelligence
+<br>- <a href="http://www.almaden.ibm.com/cs/people/peterh/b16.pdf">http://www.almaden.ibm.com/cs/people/peterh/b16.pdf</a>
+- Peter J. Haas Speeding up DB2 UDB Using Sampling
+<p>- <a href="http://www.ibm.com/search?en=utf&v=11&lang=en&cc=us&lv=c&q=db2+olap+function+reference">http://www.ibm.com/search?en=utf&amp;v=11&amp;lang=en&amp;cc=us&amp;lv=c&amp;q=db2+olap+function+reference</a>
+- search IBM site
+<p>- <a href="http://www.ibm-siebel.com/us/">http://www.ibm-siebel.com/us/</a>
+- IBM - Siebel
+<p><a NAME="books"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>books</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u><font color="#CC0000">DB2 books:</font></u></b>
+<table BORDER COLS=1 WIDTH="100%" BGCOLOR="#FFFFCC" NOSAVE >
+<tr>
+<td><font color="#CC0000">- DB2 Fundamentals Certification for Dummies
+- by Paul C. Zikopoulos, Jennifer Gibbs, Roman B. Melnyk (2001)</font>
+<br><font color="#CC0000">- DB2 : The Complete Reference - by Roman B.
+Melnyk, Paul C. Zikopoulos (2001)</font>
+<br><font color="#CC0000">- DB2 Developer's Guide, Fourth Edition (2000)
+by Craig S. Mullins</font>
+<br><font color="#CC0000">- A Complete Guide to DB2 Universal Database
+- by D. D. Chamberlin (1998)</font>
+<br><font color="#CC0000">- DB2 Universal Database v7.1 for UNIX, Linux,
+Windows and OS/2 Database Administration Certification Guide (4th ed.)
+-&nbsp; by George Baklarz, Bill Wong, Jonathan Cook (2000).</font>
+<br><font color="#CC0000">- DB2 Universal Database in the Solaris Operating
+Environment - by Tetsuya Shirai et al (1999)</font></td>
+</tr>
+</table>
+
+<p>DB2 Magazine - <a href="http://www.db2mag.com/subscribe/">www.db2mag.com/subscribe/</a>
+<br>DB2 resources - <a href="http://www.idug.org/db2/index.html">www.idug.org/db2/index.html</a>
+- <a href="http://www.db2mag.com/resources/">www.db2mag.com/resources/</a>
+<br><a NAME="tools"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>tools</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u><font color="#000000">Tools:</font></u></b>
+<br>You can work fom the pompt (unix or dos). This is good, because you
+can use many convenient shell features - and run commands from a file -
+like this: <b>db2 -tvf myfile</b> .
+<br>Or you can use DB2's own set of graphical tools
+<br>You can also use&nbsp; <b><a href="http://www.mssqlserver.com/products/dbartisan503_p1.asp">DBArtisan</a></b>
+and <a href="http://www.mssqlserver.com/products/rapidsql52_p1.asp">RapidSQL</a>
+from <a href="http://www.embarcadero.com/">embarcadero</a> .
+<p><a NAME="sybase_db2_porting"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Porting from Sybase to DB2</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>As DB2 now (starting ver.7) has Transact SQL, you can easily port from
+Sybase to DB2.
+<br>Read this book: "DB2 UDB V7.1 Porting Guide" - order it from FatBrain.com
+or read / download PDF:
+<br><font color="#6699CC">* </font><a href="http://publib-b.boulder.ibm.com/Redbooks.nsf/RedbookAbstracts/sg246128.html?Open">http://publib-b.boulder.ibm.com/Redbooks.nsf/RedbookAbstracts/sg246128.html?Open</a>
+<br>&nbsp;
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" NOSAVE >
+<tr BGCOLOR="#FFCCFF" NOSAVE>
+<td NOSAVE>Sybase</td>
+
+<td>DB2 UDB</td>
+</tr>
+
+<tr>
+<td>Sybase server</td>
+
+<td>DB2 UDB Instance</td>
+</tr>
+
+<tr>
+<td>database</td>
+
+<td>database</td>
+</tr>
+
+<tr NOSAVE>
+<td>device</td>
+
+<td NOSAVE>table space and containers</td>
+</tr>
+
+<tr>
+<td>segment</td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>login to server</td>
+
+<td>attach to instance (a)</td>
+</tr>
+
+<tr>
+<td>use database</td>
+
+<td>connect to database</td>
+</tr>
+
+<tr>
+<td>master database</td>
+
+<td>system catalogs</td>
+</tr>
+
+<tr>
+<td>empdb&nbsp;</td>
+
+<td>temporary table spaces</td>
+</tr>
+</table>
+
+<p>(a) You can execute the&nbsp; ATTACH command to attach to the DB2 instance
+on the same workstation or remote workstation. To perform instance administrative
+tasks like creating a database, updating the database manager, and killing
+connected database user, you have to attach to the DB2 instance. If you
+have not executed the ATTACH command, all the instance level commands are
+executed against the current instance, specified by the DB2INSTANCE environment
+variable.
+<p>Next table shows common admin tasks (most of them can be also invoked
+from the Sybase Central or, for DB2 - from the Control Center, the Command
+Center or the Stored Procedure Builder (SPB)).
+<br>&nbsp;
+<br>&nbsp;
+<table BORDER WIDTH="90%" BGCOLOR="#FFFFCC" NOSAVE >
+<tr BGCOLOR="#FFCCFF" NOSAVE>
+<td NOSAVE>Task</td>
+
+<td NOSAVE>Sybase</td>
+
+<td NOSAVE>DB2</td>
+</tr>
+
+<tr>
+<td>View the server options</td>
+
+<td>sp_configure</td>
+
+<td>GET DBM CFG</td>
+</tr>
+
+<tr>
+<td>View the database options</td>
+
+<td></td>
+
+<td>GET DB CFG FOR&nbsp; dbname</td>
+</tr>
+
+<tr>
+<td>Update server options</td>
+
+<td>sp_configure 'option_name', new_value</td>
+
+<td>UPDATE DBM CFG USING 'config_parameter', new_value</td>
+</tr>
+
+<tr>
+<td>Update database options</td>
+
+<td></td>
+
+<td>UPDATE DB CFG FOR&nbsp; dbname USING&nbsp; 'config_parameter', new_value</td>
+</tr>
+
+<tr>
+<td>Display active servers or instances</td>
+
+<td>showserver (executed from UNIX shell)</td>
+
+<td>db2ilist (executed from UNIX shell)</td>
+</tr>
+
+<tr>
+<td>Access server or instance</td>
+
+<td>isql -Uuser&nbsp; -Ppswd -Sserver</td>
+
+<td>ATTACH TO&nbsp; instance_name user user_name using&nbsp; pswd</td>
+</tr>
+
+<tr>
+<td>Access database</td>
+
+<td>use&nbsp; dbname</td>
+
+<td>CONNECT TO dbname user user_name using&nbsp; pswd</td>
+</tr>
+
+<tr>
+<td>List databases in server or instance</td>
+
+<td>sp_helpdb</td>
+
+<td>LIST DB DIRECTORY</td>
+</tr>
+
+<tr>
+<td>List devices or files used by the databases</td>
+
+<td>sp_helpdevice</td>
+
+<td>LIST TABLESPACES&nbsp; or LIST TABLESPACE CONTAINERS</td>
+</tr>
+
+<tr>
+<td>Find space used or available space</td>
+
+<td>sp_helpdb dbname or sp_helpsegment segname or sp_spaceused</td>
+
+<td>LIST TABLESPACE CONTAINERS FOR&nbsp; (tsid)&nbsp; SHOW DETAIL or LIST
+TABLESPACES SHOW DETAIL</td>
+</tr>
+
+<tr>
+<td>List database tables</td>
+
+<td>sp_help</td>
+
+<td>LIST TABLES</td>
+</tr>
+
+<tr>
+<td>List table characteristics</td>
+
+<td>sp_help tablename</td>
+
+<td>DESCRIBE TABLE&nbsp;&nbsp; tablename</td>
+</tr>
+
+<tr>
+<td>List source for stored procedures</td>
+
+<td>sp_helptext procname</td>
+
+<td>Use 'Get Source' function of the DB2 Stored Procedure Builder</td>
+</tr>
+
+<tr>
+<td>Administer security</td>
+
+<td>grant revoke sp_helpuser sp_addlogin sp_adduser sp_addalias sp_dropalias
+sp_dropuser sp_droplogin sp_addgroup sp_helpgroup sp_changegroup sp_password</td>
+
+<td>GRANT REVOKE UPDATE DBM CFG USING SYSADM_GROUP&nbsp; group_name UPDATE
+DBM CFG USING SYSCTRL_GROUP&nbsp; group_name UPDATE DBM CFG USING SYSMAINT_GROUP&nbsp;
+group_name All the authentication set up is done by an external security
+mechanism such as Operating System (mkuser, chuser, mkgroup, chgroup, passwd)</td>
+</tr>
+
+<tr>
+<td>Start a server or instance</td>
+
+<td>startserver -fsrvr_name (from UNIX shell)</td>
+
+<td>db2start (from UNIX shell)</td>
+</tr>
+
+<tr>
+<td>Backup database</td>
+
+<td>dump database&nbsp; db_name&nbsp; to '/path/file'</td>
+
+<td>BACKUP DATABASE&nbsp; db_name TO&nbsp; /path/file</td>
+</tr>
+
+<tr>
+<td>Restore database</td>
+
+<td>load database&nbsp; db_name from '/path/file'</td>
+
+<td>RESTORE DATABASE&nbsp; db_name FROM&nbsp; /path/file</td>
+</tr>
+
+<tr>
+<td>Export a text file from a table</td>
+
+<td>bcp&nbsp; table_name&nbsp; out filename
+<br>for example:
+<br><b>bcp</b> dbase..tab1&nbsp; <b>out</b>&nbsp; tab1.dat -S <b>DBSERV1</b>
+-U someuser -P somepasswd -c > /dev/null</td>
+
+<td>EXPORT TO&nbsp; filename&nbsp; OF&nbsp; type SELECT
+<br>for example:
+<br><b><font color="#3366FF">export to</font></b> <b><font color="#FF0000">names.del
+</font><font color="#3366FF">of
+del</font></b>&nbsp; <b><font color="#FF0000">select * from names</font></b></td>
+</tr>
+
+<tr>
+<td>Load a text file into a table</td>
+
+<td>bcp table_name in filename
+<br>for example:
+<br><b>bcp</b> dbase..tab1&nbsp; <b>in</b>&nbsp; tab1.dat -S <b>DBSERV2</b>
+-U someuser -P somepasswd -c > /dev/null</td>
+
+<td>LOAD FROM&nbsp; filename&nbsp; OF&nbsp; type INSERT INTO&nbsp; tablename&nbsp;
+<br>or&nbsp;
+<br>IMPORT FROM&nbsp; filename OF&nbsp; type INSERT INTO&nbsp; tablename
+<br>for example:
+<br><b><font color="#3366FF">import from</font></b> <b><font color="#FF0000">names.del
+</font><font color="#3366FF">of
+del</font></b>&nbsp; <b><font color="#FF0000">replace into names</font></b></td>
+</tr>
+
+<tr>
+<td>List connected users</td>
+
+<td>sp_who</td>
+
+<td>LIST APPLICATIONS</td>
+</tr>
+
+<tr>
+<td>Kill connected users</td>
+
+<td>kill&nbsp; spid_number</td>
+
+<td>FORCE APPLICATION</td>
+</tr>
+
+<tr NOSAVE>
+<td>Generate DDLs</td>
+
+<td>defncopy</td>
+
+<td NOSAVE>db2look -e</td>
+</tr>
+</table>
+
+<p><a NAME="db2_getting_help_simple_commands"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>db2 Getting Help, Simple Commands</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#99FFCC" NOSAVE >
+<tr NOSAVE>
+<td NOSAVE><b><u>add your username into /etc/group file:</u></b>
+<br><font color="#3333FF">db2fadm1:x:104:</font>
+<br><font color="#3333FF">db2iadm1:x:103:db2as,user1,user2,user3</font>
+<br><font color="#3333FF">db2asgrp:x:105:db2inst1,user1,user2,user3</font>
+<p><u>Command-line processor - consists of 2 processes:</u>
+<br><b>db2</b>&nbsp; - frontend shell
+<br><b>db2bp</b> - backend process keeping connection withthe database&nbsp;
+<br><b>db2 terminate</b> - removes db2bp process
+<p><u>Getting help:</u>
+<br>db2 ?
+<br>db2 ? some_command
+<br>db2 ? options
+<br>db2 ? help
+<br>db2 ? error_code
+<p>db2 list command options
+<p>db2 create database test
+<br>db2 drop database test
+<br>db2 create database acct
+<p>db2 connect to acct
+<br>db2 list tables for user
+<br>db2 terminate
+<p>db2 connect to ACCT user db2inst1 using ibmdb2
+<p>db2 "create table test ( col1 varchar(60), col2 int, col3 timestamp)"
+<br>db2 "drop table test"
+<p>db2 "create table test1 ( fname varchar(60),lname varchar(60), age int)"
+<br>db2 "insert into test1 values ('Peter','Johnson',40)"
+<br>db2 'select * from test1 where 1=2'
+<br>db2 'select * from test1'
+<p>db2 "insert into test1 values ('Jayson','Couper',44)"
+<br>db2 "insert into test1 values ('Lev','Smith',50)"
+<br>db2 "update test1 set fname='Michael', age=5 where lname='Smith'"</td>
+</tr>
+</table>
+
+<p><u>update and delete with joins - <b>correlated query</b>:</u>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFFF00" NOSAVE >
+<tr>
+<td><font color="#000000">When you need to update one table based on the
+other table -&nbsp;</font>
+<br><font color="#000000">it is called "correlated update".&nbsp; You have
+to repeat the same "where"</font>
+<br><font color="#000000">logic 2 times.&nbsp;</font>
+<p><font color="#3333FF">update maintab m&nbsp;</font>
+<br><font color="#3333FF">set (m.fname, m.lname) =&nbsp;</font>
+<br><font color="#3333FF">&nbsp;(select u.fname,u.lname from updatetab
+u where m.id=u.id)&nbsp;</font>
+<br><font color="#3333FF">where exists&nbsp;</font>
+<br><font color="#3333FF">&nbsp;(select null from updatetab u where m.id=u.id);&nbsp;</font>
+<p><font color="#000000">or variation: use "in" expression:</font>
+<p><font color="#3333FF">update maintab m&nbsp;</font>
+<br><font color="#3333FF">set (m.fname, m.lname) =</font>
+<br><font color="#3333FF">&nbsp;(select u.fname,u.lname from updatetab
+u where m.id=u.id)&nbsp;</font>
+<br><font color="#3333FF">where m.id in&nbsp;</font>
+<br><font color="#3333FF">&nbsp;(select u.id from updatetab);&nbsp;</font>
+<p><font color="#000000">or delete expression:</font>
+<p><font color="#3333FF">delete from maintab m&nbsp;</font>
+<br><font color="#3333FF">where exists&nbsp;</font>
+<br><font color="#3333FF">&nbsp;(select null from updatetab u where m.id=u.id);&nbsp;</font>
+<p>Note: If you don't include the 2nd "where" clause - then&nbsp; ALL rows
+in the&nbsp;
+<br>main table will be updated (putting NULLs in all rows which are not
+part of the join)
+<br><font color="#009900">======================</font>
+<br><font color="#009900">Please note: the following Sybase syntax <b>DOES
+NOT WORK in DB2</b>:</font>
+<br><i><font color="#009900">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+update maintab</font></i>
+<br><i><font color="#009900">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+set m.fname=u.fname, m.lname=u.lname</font></i>
+<br><i><font color="#009900">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+from&nbsp; maintab m, updates u</font></i>
+<br><i><font color="#009900">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+where m.id=u.id&nbsp;</font></i>
+<br><font color="#009900">======================</font></td>
+</tr>
+</table>
+
+<p>How to insert a row - but only if the row with the value of a file doesn't
+exist:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 BGCOLOR="#FFFF99" >
+<tr>
+<td>insert into mytable (mycolumn)&nbsp;
+<br>select '12345' from table (values 1) as dummy
+<br>where not exists (select 1 from mytable where mycolumn='12345')</td>
+</tr>
+</table>
+
+<p>Many examples:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#99FFCC" NOSAVE >
+<tr>
+<td>insert into test1 (LNAME,FNAME,AGE) values ('LL','FF',7);
+<br>insert into test1 (AGE,LNAME,FNAME) values (8,'LL','FF');
+<br>insert into test1 (age,lnameE,fname) values (9,'LL','FF');
+<br>select * from test1
+<br>db2 -r&nbsp; file1.txt&nbsp; "select * from test3 order by fname"
+<br>db2&nbsp; "select * from test3 order by fname" > file2.txt
+<p>db2 '<b>export</b> to test1.txt of del <b>select</b> * from test1'
+<br>db2 '<b>import</b> from test1.txt of del <b>insert</b> into test1'
+<br>db2 '<b>import</b> from test1.txt of del <b>replace</b> into test1'
+<p><b><u>Saving DDL for the database&nbsp;</u></b>
+<br><b><u>(or for selected tables and their indexes) in a file:</u></b>
+<br>db2look -d acct -e >myfile.txt
+<br>db2look -d acct -e -a -t test1 test2
+<br>db2look -d acct -e -a -t test1 test2 -o myfile.txt
+<br>db2look -d acct -e -a -t test1 test2&nbsp; > myfile.txt
+<p>db2 list database directory
+<br>db2 ? list tables
+<br>db2 list tables for user
+<br>db2 list tables for schema db2inst1
+<p>db2 "select * from test1"
+<br>db2 'select * from test1 fetch first 10 rows only'
+<br>db2 describe table test1
+<br>db2 "select TABNAME from SYSCAT.TABLES where TABNAME like 'A+_%' escape
+'+'"
+<br>db2 "select TABNAME from SYSCAT.TABLES where TABNAME like 'A%'"
+<p>db2 describe table A_ACCOUNT
+<br>db2 "create unique index ia_transactions on a_transactions (tran_id,dt_tran)
+cluster"
+<p>vi test.sql
+<br><font color="#3333FF">select * from test1 where fname='Lev';</font>
+<br><font color="#3333FF">select * from test1 where fname='Vera';</font>
+<p>--&nbsp; run many commands from a file.
+<br>--&nbsp; Don't forget to separate SQL statments with ";"
+<br><b>db2 -tvf test.sql</b>
+<p>db2 "create table session.ss ( fname varchar(60),lname varchar(60),
+age int)"
+<br>db2 "insert into session.ss values ('aa','bb',5)"
+<br>db2 "select * from session.ss"
+<p>db2 list tables for user
+<br>db2 list tables for schema session
+<br>db2 terminate
+<br>exit
+<br>db2 connect to ACCT user db2inst1 using ibmdb2
+<br>db2 list tables for schema session
+<p>-- calling shell commands from inside db2 using '!':
+<br>db2&nbsp; '! ls -ltr'
+<br>db2&nbsp; "! ls -ltr"</td>
+</tr>
+</table>
+
+<p>Some commands for Windows:
+<table BORDER CELLSPACING=0 BGCOLOR="#CCFFFF" NOSAVE >
+<tr NOSAVE>
+<td NOSAVE>db2ic&nbsp; - inform.center
+<br>db2cca -client configuration assistant
+<br>db2cmd - db2 command window</td>
+</tr>
+</table>
+
+<p><a NAME="import_export"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Import / Export</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>There are three utilities for bulk load/unload:&nbsp;&nbsp;&nbsp; <b>Export, Import, Load</b>
+<br>Supported file types:
+<br>&nbsp;&nbsp;&nbsp; <b>DEL</b> - delimited ASCII format - this is what
+you mostly use.
+<br>&nbsp;&nbsp;&nbsp; <b>ASC</b> - for import (1 line => 1 row, column
+selection based on byte position in the line).
+<br>&nbsp;&nbsp;&nbsp; <b>IXF</b> - Integrated Exchange Format (contains
+table def. and data) - you will probably never use it.
+<br>&nbsp;&nbsp;&nbsp; <b>WSF</b> - Work Sheet Format - used with some
+old spreadsheets.
+<p><b><u>EXPORT:</u></b>
+<br><b><font color="#3366FF">export to</font></b> <b><font color="#FF0000">names.del
+</font><font color="#3366FF">of
+del</font></b>&nbsp; <b><font color="#FF0000">select * from names</font></b>
+<br><b><u>IMPORT:</u></b>
+<br>&nbsp; <b>insert</b> - add (append) rows of data
+<br>&nbsp; <b>insert_update</b> - add rows (or update existing data)
+<br>&nbsp; <b>replace</b> - deletes all data from the table - then inserts
+new data
+<br>&nbsp; <b>replace_create</b> - (only with IXF files) - deletes / re-creates
+the table and fill it with data
+<br><b><font color="#3366FF">import from</font></b> <b><font color="#FF0000">names.del
+</font><font color="#3366FF">of
+del</font></b>&nbsp; <b><font color="#FF0000">insert into names</font></b>
+<br><b><font color="#3366FF">import from</font></b> <b><font color="#FF0000">names.del
+</font><font color="#3366FF">of
+del</font></b>&nbsp; <b><font color="#FF0000">replace into names</font></b>
+<p>Here is how to truncate a table:
+<br>&nbsp;&nbsp; <b><font color="#3333FF">import from /dev/null of del&nbsp;
+replace into mytab</font></b>
+<p><b><u>LOAD:</u></b>
+<br>&nbsp; Load utility is faster, than import utility, but import utility
+is logged and is checking constraints
+<br><b><font color="#3366FF">load from</font></b> <b><font color="#FF0000">names.del
+</font><font color="#3366FF">of
+del</font></b>&nbsp; <b><font color="#FF0000">replace into names</font></b>
+<p><u>Modifying a delimiter</u>
+<br>&nbsp; export ...... modified by chardel *
+<p><a NAME="backup_recovery"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Backup / Recovery</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Recovery is a serious issue - consult with administration guides.
+<p><b><u>Two simple commands:</u></b>
+<br>BACKUP DATABASE&nbsp; db_name TO&nbsp; /path/file
+<br>RESTORE DATABASE&nbsp; db_name FROM&nbsp; /path/file
+<p><a NAME="get_help"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>get_help</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#3366FF">db2 ?</font></b>
+<br><b><font color="#3366FF">db2 ? some_command</font></b>
+<br><b><font color="#3366FF">db2 ? options</font></b>
+<br><b><font color="#3366FF">db2 ? help</font></b>
+<br><b><font color="#3366FF">db2 ? error_code</font></b>
+<p>for example:
+<table BORDER BGCOLOR="#FFFFCC" NOSAVE >
+<tr NOSAVE>
+<td NOSAVE><b>&nbsp;> db2 crocodile</b>
+<br>DB21034E&nbsp; The command was processed as an SQL statement because
+it was not a
+<br>valid Command Line Processor command.&nbsp; During SQL processing it
+returned:
+<br>SQL1024N&nbsp; A database connection does not exist.&nbsp; SQLSTATE=08003
+<br><b>&nbsp;> db2 ? SQL1024N</b>
+<p>&nbsp;SQL1024N A database connection does not exist.
+<p>Explanation:&nbsp; There is no connection to a database.&nbsp; Other
+SQL
+<br>statements cannot be processed unless an SQL CONNECT was
+<br>previously executed.
+<p>The command cannot be processed.
+<p>User Response:&nbsp; If the error occurred when disconnecting from the
+<br>database, continue processing.&nbsp; If the error occurred on another
+<br>SQL statement, issue an SQL CONNECT statement and resubmit the
+<br>command or statement.
+<p>sqlcode:&nbsp; -1024
+<p>sqlstate:&nbsp; 08003</td>
+</tr>
+</table>
+
+<p>Another way to get help fast is to copy/paste the error string into
+google (internet search engine). Especially Google Groups is very helpful.
+You usually get the answer on the very first screen.
+<p>Download documentation:
+<br>- <a href="http://www-4.ibm.com/software/data/db2/udb/">www-4.ibm.com/software/data/db2/udb/</a>
+- Official DB2 home page on IBM web site - including downloads, and technical
+libraries.
+<br>- <a href="http://www-4.ibm.com/cgi-bin/db2www/data/db2/udb/winos2unix/support/v7pubs.d2w/en_main">www-4.ibm.com/cgi-bin/db2www/data/db2/udb/winos2unix/support/v7pubs.d2w/en_main</a>
+- manuals (html &amp; pdf)
+<br>- <a href="http://www-3.ibm.com/software/data/db2/os390/v7books.html">www-3.ibm.com/software/data/db2/os390/v7books.html</a>
+- HTML &amp; PDFs <b>books</b> for download
+<p>- <a href="http://publib.boulder.ibm.com/cgi-bin/bookmgr/download/dsnmch11.pdf">http://publib.boulder.ibm.com/cgi-bin/bookmgr/download/dsnmch11.pdf</a>
+- Messages and Codes (~ 7 MB in size)
+<br>- <a href="http://publib.boulder.ibm.com/cgi-bin/bookmgr/download/dsnsqh11.pdf">http://publib.boulder.ibm.com/cgi-bin/bookmgr/download/dsnsqh11.pdf</a>
+- SQL reference (~ 5 MB in size)
+<p>- <a href="http://publib-b.boulder.ibm.com/Redbooks.nsf/RedbookAbstracts/sg246128.html?Open">http://publib-b.boulder.ibm.com/Redbooks.nsf/RedbookAbstracts/sg246128.html?Open</a>
+- "DB2 UDB V7.1 Porting Guide"
+<p><a NAME="sql_procedure"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>SQL procedure</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#99FFCC" NOSAVE >
+<tr NOSAVE>
+<td NOSAVE><font color="#CC6600">-- This is a CLP script that creates an
+SQL procedure.</font>
+<br><font color="#CC6600">-- To create the SQL procedure using this script,
+perform the following steps:</font>
+<br><font color="#CC6600">-- 1. connect to the database</font>
+<br><font color="#CC6600">-- 2. issue the command "db2 -td@ -vf &lt;script-name>"</font>
+<br><font color="#CC6600">--&nbsp;&nbsp;&nbsp; where &lt;script-name> represents
+the name of this script</font>
+<br><font color="#CC6600">--</font>
+<br><font color="#CC6600">-- To call this SQL procedure from the command
+line, perform the following steps:</font>
+<br><font color="#CC6600">-- 1. connect to the database</font>
+<br><font color="#CC6600">-- 2. issue the following command:</font>
+<br><font color="#CC6600">--&nbsp;&nbsp;&nbsp; db2 "CALL create_dept_table
+('D11', ?)"</font>
+<br><font color="#CC6600">--</font>
+<br><font color="#CC6600">-- The sample "dynamic.sqc" demonstrates how
+to call this SQL procedure using</font>
+<br><font color="#CC6600">-- an embedded C client application.</font>
+<p>CREATE PROCEDURE create_dept_table
+<br>(IN deptNumber VARCHAR(3), OUT table_name VARCHAR(30))
+<br>LANGUAGE SQL
+<br>&nbsp; BEGIN
+<br>&nbsp;&nbsp;&nbsp; DECLARE SQLSTATE CHAR(5);
+<br>&nbsp;&nbsp;&nbsp; DECLARE new_name VARCHAR(30);
+<br>&nbsp;&nbsp;&nbsp; DECLARE stmt VARCHAR(1000);
+<p>&nbsp;&nbsp;&nbsp; -- continue if sqlstate 42704 ('undefined object
+name')
+<br>&nbsp;&nbsp;&nbsp; DECLARE CONTINUE HANDLER FOR SQLSTATE '42704'
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SET stmt = '';
+<br>&nbsp;&nbsp;&nbsp; DECLARE CONTINUE HANDLER FOR SQLEXCEPTION
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SET table_name = 'PROCEDURE_FAILED';
+<p>&nbsp;&nbsp;&nbsp; SET new_name = 'DEPT_'||deptNumber||'_T';
+<br>&nbsp;&nbsp;&nbsp; SET stmt = 'DROP TABLE '||new_name;
+<br>&nbsp;&nbsp;&nbsp; PREPARE s1 FROM stmt;
+<br>&nbsp;&nbsp;&nbsp; EXECUTE s1;
+<br>&nbsp;&nbsp;&nbsp; SET stmt = 'CREATE TABLE '||new_name||
+<br>&nbsp;&nbsp;&nbsp;&nbsp; '( empno CHAR(6) NOT NULL, '||
+<br>&nbsp;&nbsp;&nbsp;&nbsp; 'firstnme VARCHAR(12) NOT NULL, '||
+<br>&nbsp;&nbsp;&nbsp;&nbsp; 'midinit CHAR(1) NOT NULL, '||
+<br>&nbsp;&nbsp;&nbsp;&nbsp; 'lastname VARCHAR(15) NOT NULL, '||
+<br>&nbsp;&nbsp;&nbsp;&nbsp; 'salary DECIMAL(9,2))';
+<br>&nbsp;&nbsp;&nbsp; PREPARE s2 FROM STMT;
+<br>&nbsp;&nbsp;&nbsp; EXECUTE s2;
+<br>&nbsp;&nbsp;&nbsp; SET stmt = 'INSERT INTO '||new_name || ' ' ||
+<br>&nbsp;&nbsp;&nbsp;&nbsp; 'SELECT empno, firstnme, midinit, lastname,
+salary '||
+<br>&nbsp;&nbsp;&nbsp;&nbsp; 'FROM employee '||
+<br>&nbsp;&nbsp;&nbsp;&nbsp; 'WHERE workdept = ?';
+<br>&nbsp;&nbsp; PREPARE s3 FROM stmt;
+<br>&nbsp;&nbsp; EXECUTE s3 USING deptNumber;
+<p>&nbsp;&nbsp; SET table_name = new_name;
+<br>END @</td>
+</tr>
+</table>
+
+<p><a NAME="db2_sql_value_s_with_recursive"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>db2 SQL: value(), values(), with, recursive SQL</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>comment:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td>-- comment should be on a separate line outside an SQL statement
+<p>select 1 from (values 1) as aa -- this is not a valid db2 comment
+<br>&nbsp;</td>
+</tr>
+</table>
+
+<p>way to create simple tests against dynamic table:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td>select 'a' as col1,'b' as col2 from table (values 1) as dummy</td>
+</tr>
+</table>
+
+<p>or shorter:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td><b><font color="#3333FF">select 'a','b' from (values 1) qq</font></b></td>
+</tr>
+</table>
+
+<p>In fact, for simple tests you don't even need select and a dummy table.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td><b><font color="#3333FF">values ( 'mama', 1)</font></b></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td><b><font color="#3333FF">values (cast (2.5 as decimal(10,3)) * cast
+(2.5 as decimal(10,3)) )</font></b></td>
+</tr>
+</table>
+
+<p>using cast( ) and values( ), building null values on the fly:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td><font color="#3333FF">select&nbsp;</font>
+<br><font color="#3333FF">&nbsp; 'abc' as col1,&nbsp;</font>
+<br><font color="#3333FF">&nbsp; <b>cast(null as varchar(80)) as col2</b></font>
+<br><font color="#3333FF">from&nbsp;</font>
+<br><font color="#3333FF">&nbsp; table (values (1,2),(3,4)) as dummy</font></td>
+</tr>
+</table>
+
+<p>Hint how to make running tests from the prompt easy:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td>I create 2 aliases:
+<p><font color="#CC0000">alias vv='vi test.sql'</font>
+<br><font color="#CC0000">alias rr='db2 -tvf test.sql'</font>
+<p>Type 'vv' to edit test.sql file (remember - you should end each SQL
+statement with a semicolon ';')
+<br>Then type 'rr' to run this SQL.</td>
+</tr>
+</table>
+
+<p>simple insert:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td>insert into inst1.test (A) values ('a'), ('b'), ('c')</td>
+</tr>
+</table>
+
+<p>using case:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td>select
+<br>&nbsp; case&nbsp;
+<br>&nbsp;&nbsp;&nbsp; when 1&lt;2 then 'mama'
+<br>&nbsp;&nbsp;&nbsp; when 1>2 then 'papa'
+<br>&nbsp; end
+<br>&nbsp; as person
+<br>from table (values 1) as qq</td>
+</tr>
+</table>
+
+<p>concatenating:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td>select 'mama' concat ' papa' from table (values 1) as qq;
+<br>select 'mama' || ' papa' from table (values 1) as qq;</td>
+</tr>
+</table>
+
+<p>union, intersect &amp; except:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td>select .. from T1 union T2 - remove duplicates
+<br>select .. from T1 union all T2&nbsp; -- preserve duplicates
+<br>select .. from T1 intersect T2 - remove duplicates
+<br>select .. from T1 intersect all T2&nbsp; -- contains min number of
+repetition
+<br>select .. from T1 except T2 - remove duplicates, then do except
+<br>select .. from T1 except all T2 do except, then remove duplicates</td>
+</tr>
+</table>
+
+<p>value( ) function:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td>-- value() function - accepts a variable number of parameteres and
+returns a
+<br>first non-null value
+<br>-- parameters should be of compatible types
+<br>-- the actual name for this function is coalesce() - means "to arise
+from a
+<br>combination of distinct elements"
+<br>select value(1,2) from (values 1) as aa&nbsp;
+<br>-- returns 1
+<br>select value(cast(null as int),2) from (values 1) as aa&nbsp;
+<br>-- returns 2
+<br>select value(cast(null as int),cast(null as int),3) from (values 1)
+as aa&nbsp;
+<br>-- returns 3</td>
+</tr>
+</table>
+
+<p>------------------------------------------------------------
+<p>2 ways (common table and inline table expression) to define table dynamically
+in the SQL statement:
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td>with tree (id,pid) as (
+<br>&nbsp;&nbsp;&nbsp; values (1,2), (2,3), (3,4), (4, cast(null as int)),
+(5,3), (6,5)
+<br>&nbsp; )
+<br>select * from tree
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+PID
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+[NULL]
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+5
+<br>-------------------------------------------- another way to do the
+same
+<br>select * from (
+<br>&nbsp; values (1,2), (2,3), (3,4), (4, cast(null as int)), (5,3), (6,5)
+<br>&nbsp; )
+<br>&nbsp; as a</td>
+</tr>
+</table>
+
+<p>Getting root of the tree using recursive SQL:
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td>with&nbsp;
+<p>&nbsp; tree (id,pid) as (
+<br>&nbsp;&nbsp;&nbsp; values (1,2), (2,3), (3,4), (4, cast(null as int)),
+(5,3), (6,5)
+<br>&nbsp; ),
+<p>&nbsp; rr (id,pid) as (
+<br>&nbsp;&nbsp;&nbsp; select tr.id, tr.pid from tree tr where tr.id=1
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; union all
+<br>&nbsp;&nbsp;&nbsp; select tt.id,tt.pid from tree tt, rr
+<br>&nbsp;&nbsp;&nbsp; where tt.id = rr.pid
+<br>&nbsp; )
+<p>select id from rr where rr.pid is null</td>
+</tr>
+</table>
+
+<p>More recursive SQL:
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>We have table storing a tree (each row has id and parent_id).
+<br>To get root id for a given id (12345) we fill out temporary table rr:
+<br>first with given id and its parent_id. Then union with recursively
+calculated
+<br>id and parent_id as we go up the tree:
+<p><font color="#3333FF">&nbsp; with rr (parent_id, id) as</font>
+<br><font color="#3333FF">&nbsp; (</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; select p.parent_id,
+p.id</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; from
+mytree p</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; where p.id
+= 12345</font>
+<br><font color="#3333FF">&nbsp; union all</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; select p.parent_id,
+p.id</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; from
+mytree p, rr</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; where p.id
+= rr.parent_id</font>
+<br><font color="#3333FF">&nbsp; )</font>
+<br><font color="#3333FF">&nbsp; select id ROOT from rr where parent_id
+is null;</font>
+<p>Here is an example going in the oposite direction (down the tree). We
+showing the whole tree under a given id:
+<p><font color="#3333FF">&nbsp; with rr (id, level) as</font>
+<br><font color="#3333FF">&nbsp; (</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; select id, 1</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; from
+mytree&nbsp;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; where id
+= 10001</font>
+<br><font color="#3333FF">&nbsp; union all</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; select child.id,
+parent.level + 1</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; from
+mytree child, rr parent</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; where parent.id
+= child.parent_id</font>
+<br><font color="#3333FF">&nbsp; )</font>
+<br><font color="#3333FF">&nbsp; select * from rr;</font>
+<p>&nbsp; Result:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+LEVEL&nbsp;
+<br>&nbsp; ----------------------------
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10001&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 29361&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 23044&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 25162&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 25302&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3</td>
+</tr>
+</table>
+
+<p>Here is how to combine 2 above queries together:
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>----------------------------------------------------------------------------
+<br>&nbsp; -- Given any node in any tree, this query will drill up to the
+top
+<br>&nbsp; -- level of the tree, and then query down to give all nodes
+that exist
+<br>&nbsp; -- within the tree (i.e. given any node_id, show the whole
+<br>&nbsp; -- tree that contains it).
+<br>&nbsp; --
+<br>&nbsp; -- Note: This query will never go deeper than 'stop_level' levels
+(10).
+<br>&nbsp; ----------------------------------------------------------------------------
+<p><font color="#3333FF">&nbsp; with rec_root (parent_id, child_id, sub_query,
+level, stop_level) as</font>
+<br><font color="#3333FF">&nbsp; (</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; select my_parent_id,
+my_id, 1, 0, 0</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; from
+mydb.mytable</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; where my_id
+= 25162</font>
+<br><font color="#3333FF">&nbsp; union all</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; select parent.my_parent_id,
+parent.my_id, 2, 1, child.level + 1</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; from
+mydb.mytable parent, rec_root child</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; where parent.my_id
+= child.parent_id</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+and sub_query in (1,2)</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+and child.stop_level &lt; 10</font>
+<br><font color="#3333FF">&nbsp; union all</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; select my_parent_id,
+my_id, 3, parent3.level + 1, parent3.level + 1</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+from rec_root parent3, mydb.mytable child3</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; where
+parent3.child_id = child3.my_parent_id</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+and (&nbsp;&nbsp; (parent3.sub_query = 2 and parent3.parent_id is null)</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+or parent3.sub_query = 3</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+)</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+and parent3.stop_level &lt; 10</font>
+<br><font color="#3333FF">&nbsp; )</font>
+<br><font color="#3333FF">&nbsp; select * from rec_root</font>
+<br><font color="#3333FF">&nbsp;&nbsp; where parent_id is null</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or sub_query =
+3;</font></td>
+</tr>
+</table>
+
+<p>Example comparing DB2 and Sybase:
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td><b><u>DB2...</u></b>
+<br><font color="#3333FF">with tt (is_asst) as (</font>
+<br><font color="#3333FF">&nbsp; SELECT 1 is_asst</font>
+<br><font color="#3333FF">&nbsp; FROM TABLE (VALUES 1) AS temp_table_1</font>
+<br><font color="#3333FF">&nbsp; where exists (</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; select 1 from coverage.desk_sales</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; where user_id = 'myuser'</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; and rel_type in ('D',
+'C', 'L', 'A', 'N')</font>
+<br><font color="#3333FF">&nbsp; )</font>
+<br><font color="#3333FF">&nbsp; or exists (</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; select 1 from coverage.regional_sales</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; where user_id = 'myuser'</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; and rel_type in ('D',
+'C', 'L')</font>
+<br><font color="#3333FF">&nbsp; )</font>
+<br><font color="#3333FF">&nbsp; union</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; SELECT 0 is_asst</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; FROM TABLE (VALUES 0)
+AS temp_table_0</font>
+<br><font color="#3333FF">&nbsp; )</font>
+<br><font color="#3333FF">&nbsp; select * from tt order by is_asst desc
+fetch first 1 rows only;</font>
+<p><b><u>Sybase...</u></b>
+<br><font color="#3333FF">create proc is_user_asst</font>
+<br><font color="#3333FF">&nbsp; @kid varchar(20)</font>
+<br><font color="#3333FF">as</font>
+<br><font color="#3333FF">declare @is_asst int</font>
+<br><font color="#3333FF">select @is_asst = 0</font>
+<br><font color="#3333FF">if exists (</font>
+<br><font color="#3333FF">&nbsp;&nbsp; select 1 from cov..desks</font>
+<br><font color="#3333FF">&nbsp;&nbsp; where user_id = @kid</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and rel_type in
+('D', 'C', 'L', 'A', 'N')</font>
+<br><font color="#3333FF">)</font>
+<br><font color="#3333FF">begin&nbsp;</font>
+<br><font color="#3333FF">&nbsp;&nbsp; select @is_asst = 1&nbsp;</font>
+<br><font color="#3333FF">end</font>
+<br><font color="#3333FF">else</font>
+<br><font color="#3333FF">if exists (</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; select 1 from cov..reg_sales</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; where user_id = @kid and rel_type
+in ('D', 'C', 'L')</font>
+<br><font color="#3333FF">)&nbsp;</font>
+<br><font color="#3333FF">begin</font>
+<br><font color="#3333FF">&nbsp; select @is_asst = 1</font>
+<br><font color="#3333FF">end</font>
+<p><font color="#3333FF">select "is_asst" = @is_asst</font></td>
+</tr>
+</table>
+
+<p><a NAME="starting_with_db2"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>starting with db2</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Starting working with DB2 on unix:
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>You have to install dbd2 client software on your unix workstation and
+reboot it.
+<br>You have to source a db2profile file with all necessary environment
+<br>You have to catalog properly, for example:
+<p>&nbsp; db2 catalog tcpip node xxx remote somer_server server some_port
+<br>&nbsp; db2 catalog db some_db at node xxx
+<br>&nbsp; db2 connect to some_db
+<br>&nbsp; db2 list database directory
+<p>&nbsp; db2 catalog db sample at node xxx
+<br>&nbsp; db2 connect to sample
+<br>&nbsp; db2 "select * from syscat.tables fetch first 5 rows only"
+<br>&nbsp;&nbsp;&nbsp;&nbsp; (note the quotes around select - to hide from
+shell processing)
+<p>&nbsp; <b>db2 -tvf myfile.sql</b>&nbsp;&nbsp;&nbsp; - to run many commands
+from a file.&nbsp; Don't forget to separate SQL statments with ";"</td>
+</tr>
+</table>
+
+<p>db2 "select char(reviewed_date, ISO) from oe.OE_contact fetch first
+10 rows only"
+<br>-------------------------------------------------
+<br><a NAME="db2_instance"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>db2 instance</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Instance:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td><u>Creating / updating / dropping the instance (be careful)</u>
+<br><font color="#3333FF">db2icrt&nbsp; &lt;instance_owner_id></font>
+<br><font color="#3333FF">db2icrt -u &lt;fenced_user_id> &lt;instance_owner_id></font>
+<br><font color="#3333FF">db2iupdt &lt;instance_owner_id></font>
+<br><font color="#3333FF">db2idrop &lt;instance_owner_id></font>
+<br><font color="#3333FF">db2ilist&nbsp; - list all instances on the machine</font>
+<p><u><font color="#000000">creating an instance of DAS (db admin server)
+on Windows:</font></u>
+<br><font color="#3333FF">db2admin create /user:&lt;name> /password:&lt;password></font>
+<br><font color="#3333FF">db2admin</font>
+<br><font color="#3333FF">db2admin start</font>
+<br><font color="#3333FF">db2admin stop</font>
+<br><font color="#3333FF">db2admin drop</font>
+<br><font color="#3333FF">dasidrop &lt;das_instance_owner_id></font>
+<br>&nbsp;
+<p><u><font color="#000000">configuring the instance:</font></u>
+<br><font color="#3333FF">db2 get dbm cfg</font>
+<br><font color="#3333FF">db2 get database manager configuration</font>
+<p><font color="#3333FF">db2 update dbm cfg using diaglevel 4</font>
+<br><font color="#3333FF">db2 update database manager configuration using
+&lt;param_name> &lt;new_value></font>
+<p><u><font color="#000000">restart the instance:</font></u>
+<br><font color="#3333FF">db2stop</font>
+<br><font color="#3333FF">db2start</font>
+<br><font color="#3333FF">db2 reset dbm cfg</font>
+<p><u><font color="#000000">instance config commands:</font></u>
+<br><font color="#3333FF">db2 get admin cfg</font>
+<br><font color="#3333FF">db2 update admin cfg using &lt;param_name> &lt;new_value></font>
+<br><font color="#3333FF">db2 reset admin cfg</font></td>
+</tr>
+</table>
+
+<p><a NAME="db2_database"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>db2 database</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Database:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr NOSAVE>
+<td NOSAVE><u><font color="#000000">create database:</font></u>
+<br><font color="#3333FF">db2 create database test</font>
+<br><font color="#3333FF">db2 create database test on /mydir</font>
+<br><font color="#3333FF">db2sampl &lt;location>&nbsp; -- create a sample
+database</font>
+<br><font color="#3333FF">db2 create database test using codeset IBM-1252
+territory US</font>
+<p><u><font color="#000000">using database directories:</font></u>
+<br><font color="#3333FF">db2 list database directory - to view list in
+the System Database Directory</font>
+<br><font color="#3333FF">&nbsp;db2 list database directory on /home/db2inst1
+- to view list of databases residing in certain location</font>
+<br><font color="#3333FF">db2 list database directory on e:&nbsp; - same
+on Windows</font>
+<p><font color="#3333FF">The database directory has the following structure:</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; $DBHOME/instance/NODE0000/SQL00001</font>
+<br><font color="#3333FF">For example:</font>
+<br><font color="#3333FF">myserver : /home/db2inst1/db2inst1/NODE0000 >
+ls</font>
+<br><font color="#3333FF">SQL00001/&nbsp; SQL00002/&nbsp; SQL00003/&nbsp;
+sqldbdir/</font>
+<p><u><font color="#000000">Configuring the database:</font></u>
+<br><font color="#3333FF">db2 get db cfg for &lt;dbname></font>
+<br><font color="#3333FF">db2 get database configuration for &lt;dbname></font>
+<p><font color="#3333FF">db2 update db cfg for &lt;dbname> using locktimeout
+10</font>
+<br><font color="#3333FF">db2 update database configuration for &lt;dbname>
+using locktimeout 10</font>
+<p><font color="#3333FF">deleting a database:</font>
+<br><font color="#3333FF">db2 drop database &lt;dbname></font></td>
+</tr>
+</table>
+
+<p><a NAME="db2_tablespaces"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>&nbsp;db2 tablespaces</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Tablespaces:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr NOSAVE>
+<td NOSAVE><font color="#000000"><u>Tablespace</u> - logical space grouping
+containers to hold db stuff</font>
+<br><font color="#000000"><u>Tablespace containers</u> (physical) - directories,
+files, raw devices</font>
+<p><font color="#000000"><b><u>SMS</u></b> - System Managed Space - directory
+containers managed by the operatin system. Automaticall create a file for
+each new table or index to hold the data - as long as there is enough disk
+space.&nbsp;</font>
+<p><font color="#000000"><b><u>DMS</u></b> - Database Managed Space - managed
+by the database (use command 'add container' to change their size)</font>
+<p><font color="#000000"><b><u>Three (3) default tablespaces</u></b> (created
+with one container each by default):</font>
+<br><font color="#3333FF">&nbsp; SYSCATSPACE - system catalog tables in
+the directory&nbsp;&nbsp; ..../NODE0000/SQL00001/SQLT000<b><u>0</u></b>.0</font>
+<br><font color="#3333FF">&nbsp; TEMPSPACE - temporary tables&nbsp;&nbsp;
+..../NODE0000/SQL00001/SQLT000<b><u>1</u></b>.0</font>
+<br><font color="#3333FF">&nbsp; USERSPACE1 - user tables&nbsp; ..../NODE0000/SQL00001/SQLT000<b><u>2</u></b>.0</font>
+<p><font color="#3333FF">db2 create tablespace myDMSspace managed by database
+using (FILE 'file1' 1000, FILE 'file2' 2000)</font>
+<br><font color="#3333FF">db2 create tablespace mySMSspace managed by system&nbsp;&nbsp;
+using ('directory1', 'directory2')</font>
+<br><font color="#3333FF">db2 drop tablespace &lt;tablespace_name></font>
+<br><font color="#3333FF">db2 'select * from SYSCAT.TABLESPACES' -&nbsp;</font></td>
+</tr>
+</table>
+
+<p><a NAME="db2_tables_datatypes"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>db2 tables, datatypes, indexes, views</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Tables:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+  <tr NOSAVE> 
+    <td NOSAVE><u><font color="#000000">system tables (SYSCATSPACE) may have one 
+      of four (4) schema names:</font></u> <br>
+      <font color="#3333FF">&nbsp; SYSIBM - read-only system tables (e.g. SYSIBM.SYSTABLESPACES, 
+      SYSIBM.SYSTABLES, etc.)</font> <br>
+      <font color="#3333FF">&nbsp; SYSCAT - read-only views on the system tables 
+      (e.g. SYSCAT.TABLESPACES, SYSCAT.TABLES, etc.)</font> <br>
+      <font color="#3333FF">&nbsp; SYSFUN - UDF (User Defined Functions)</font> 
+      <br>
+      <font color="#3333FF">&nbsp; SYSSTAT - hold statistics (e.g. SYSSTAT.TABLES,&nbsp; 
+      SYSSTAT.COLUMNS, SYSSTAT.INDEXES, etc.)</font> <p><font color="#3333FF">db2 
+        list tables for system</font> <br>
+        <font color="#3333FF">db2 list tables for schema db2inst1</font> <br>
+        <font color="#3333FF">db2 list tables</font> 
+      <p><u><font color="#000000">Compare:</font></u> <br>
+        <font color="#3333FF">db2 'select * from SYSIBM.SYSTABLES fetch first 
+        1 rows only'</font> <br>
+        <font color="#3333FF">db2 'select * from SYSCAT.TABLES fetch first 1 rows 
+        only'</font> <br>
+        db2 "select TABNAME from SYSCAT.TABLES where TABNAME like 'A%'" <br>
+        &nbsp; 
+      <table BORDER WIDTH="100%" BGCOLOR="#FFFFCC" NOSAVE >
+        <tr BGCOLOR="#FFCC99" NOSAVE> 
+          <td NOSAVE>Database Object</td>
+          <td>SYSIBM system table</td>
+          <td NOSAVE>SYSCAT system table view</td>
+          <td>SYSSTAT updateable view</td>
+        </tr>
+        <tr> 
+          <td>Tablespace</td>
+          <td>SYSTABLESPACES</td>
+          <td>TABLESPACES</td>
+          <td></td>
+        </tr>
+        <tr> 
+          <td>Table</td>
+          <td>SYSTABLES</td>
+          <td>TABLES</td>
+          <td>TABLES</td>
+        </tr>
+        <tr> 
+          <td>Schema</td>
+          <td>SYSSCHEMATA</td>
+          <td>SCHEMATA</td>
+          <td></td>
+        </tr>
+        <tr> 
+          <td>View</td>
+          <td>SYSVIEWS</td>
+          <td>VIEWS</td>
+          <td></td>
+        </tr>
+        <tr> 
+          <td>Column</td>
+          <td>SYSCOLUMNS</td>
+          <td>COLUMNS</td>
+          <td>COLUMNS</td>
+        </tr>
+        <tr> 
+          <td>Index</td>
+          <td>SYSINDEXES</td>
+          <td>INDEXES</td>
+          <td>INDEXES</td>
+        </tr>
+        <tr> 
+          <td>Data Type</td>
+          <td>SYSDATATYPES</td>
+          <td>DATATYPES</td>
+          <td></td>
+        </tr>
+        <tr> 
+          <td>Check Constraint</td>
+          <td>SYSCHECKS</td>
+          <td>CHECKS</td>
+          <td></td>
+        </tr>
+        <tr> 
+          <td>Referential Integrity</td>
+          <td>SYSRELS</td>
+          <td>REFERENCES</td>
+          <td></td>
+        </tr>
+        <tr> 
+          <td>Function</td>
+          <td>SYSFUNCTIONS</td>
+          <td>FUNCTIONS</td>
+          <td>FUNCTIONS</td>
+        </tr>
+        <tr> 
+          <td>Bufferpool</td>
+          <td>SYSBUFFERPOOLS</td>
+          <td></td>
+          <td>BUFFERPOOLS</td>
+        </tr>
+      </table>
+      <p>User tables - simply tables created by users (permanent tables) <br>
+        Temporary tables:&nbsp; <br>
+        &nbsp;&nbsp; - derived temp.tables - created dynamically by DB2 as needed 
+        in temp. tablespaces. Automatically dropped at the end of transaction. 
+        <br>
+        &nbsp;&nbsp; - declared temporary tables (version 7) - created by user 
+        with the DECLARE command with the schema called SESSION. <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; db2 declare global temporarytable ... ( 
+        ????) 
+      <p><b><u><font color="#3333FF">db2 'select typename from syscat.datatypes'</font></u></b> 
+      <p><font color="#3333FF">TYPENAME</font> <br>
+        <font color="#3333FF">------------------</font> <br>
+        <font color="#3333FF">BIGINT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        (8 bytes)</font> <br>
+        <font color="#3333FF">BLOB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        (Binary Large Object - up to 2 GB - video, sound &amp; pictures)</font> 
+        <br>
+        <font color="#3333FF">BOOLEAN</font> <br>
+        <font color="#3333FF">CHARACTER&nbsp;&nbsp; (char(1) is default, char(n), 
+        where n = 1..254)</font> <br>
+        <font color="#3333FF">CLOB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        (Character Large Object - 32K .. 2 GB) - also DBCLOB to store 2-byte texts 
+        (Chinese, etc.)</font> <br>
+        <font color="#3333FF">DATALINK</font> <br>
+        <font color="#3333FF">DATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        (4 bytes)</font> <br>
+        <font color="#3333FF">DECIMAL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        (decimal(5,0) by default)</font> <br>
+        <font color="#3333FF">DOUBLE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        (similar to real,but 8 bytes)</font> <br>
+        <font color="#3333FF">INTEGER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        (4 bytes)</font> <br>
+        <font color="#3333FF">LONG VARCHAR&nbsp;&nbsp; (old type, when varchar 
+        was shorter)</font> <br>
+        <font color="#3333FF">REAL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        (4 bytes)</font> <br>
+        <font color="#3333FF">REFERENCE</font> <br>
+        <font color="#3333FF">SMALLINT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (2 
+        bytes)</font> <br>
+        <font color="#3333FF">TIME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        (3 bytes)</font> <br>
+        <font color="#3333FF">TIMESTAMP&nbsp;&nbsp;&nbsp; (10 bytes)</font> <br>
+        <font color="#3333FF">VARCHAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (1..32672 
+        bytes)</font> 
+      <p><font color="#3333FF">&nbsp; 17 record(s) selected.</font> <br>
+        There are also some other types (and user-defined types) <br>
+        &nbsp; 
+      <table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#FFFFCC" NOSAVE >
+        <tr> 
+          <td><b><u>Difference between date, time, and timestamp types:</u></b> 
+            <p><b>DATE</b> (4 bytes) <br>
+              <b>TIME</b> (3 bytes)&nbsp; <br>
+              <b>TIMESTAMP</b> (10 bytes) 
+            <p>select <b><font color="#3333FF">CURRENT DATE</font></b> from (values 
+              1) a <br>
+              select <b><font color="#3333FF">CURRENT TIMESTAMP</font></b> from 
+              (values 1) a <br>
+              select <b><font color="#3333FF">CURRENT TIME</font></b> from (values 
+              1) a 
+            <p>select <b><font color="#3333FF">CURRENT SERVER</font></b> from 
+              (values 1) a <br>
+              select <b><font color="#3333FF">user</font></b> from (values 1) 
+              a&nbsp; <br>
+              &nbsp;db2 "values(user)" 
+            <p>create table inst.test (d date, t time, ts timestamp) in inst_4K 
+              <br>
+              insert into inst.test values (<b>date</b>(<b><font color="#3333FF">current 
+              timestamp</font></b>), <b>time</b>(<b><font color="#3333FF">current 
+              timestamp</font></b>), <b>timestamp</b>(<b><font color="#3333FF">current 
+              timestamp</font></b>)) <br>
+              select * from inst.test&nbsp; <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              T&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TS <br>
+              1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2002-04-29&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              09:33:53&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2002-04-29 09:33:53.207283 
+              <br>
+              -------------------------------------------- 
+            <p><b><u>datetime arithmetic:</u></b> 
+            <p><u>labeled:</u> <br>
+              &nbsp; select sales_date, sales_date + 1 YEAR + 2 DAYS from sales 
+            <p><u>date:</u> yyyymmdd - decimal(8,0) <br>
+              &nbsp; select sales date, sales_date + 00010001. from sales <br>
+              &nbsp; select sales_date, char(sales_date - '04/01/1994') from sales 
+            <p><u>time:</u>&nbsp; hhmmss - decimal (6,0) <br>
+              &nbsp; select ... time('12:23:10') - 011005. <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              time('12:23:10') - '01:01:01' 
+            <p><u>timestamp:</u>&nbsp; yyyyMMddHHmmSS.nnnnnn&nbsp;&nbsp; decimal(20,6) 
+              <br>
+              &nbsp; timestamp(20010301171230') - 00000000011005.000022 <br>
+              &nbsp; char( timestamp(20010301171230') - '2001-03-01-16.02.24.999978' 
+              ) 
+            <p><u>useful functions:</u> <br>
+              date(), day(), days(),hour(), minute(), month(), second(), time(), 
+              timestamp(), timestapm_iso(),year()</td>
+        </tr>
+      </table>
+      <p><b><u>Identity columns:</u></b> 
+      <p><font color="#3333FF">create table test_identity (&nbsp;</font> <br>
+        <font color="#3333FF">&nbsp; myid int generated always as identity,</font> 
+        <br>
+        <font color="#3333FF">&nbsp; lname varchar(25),&nbsp;</font> <br>
+        <font color="#3333FF">&nbsp; fname varchar(20)</font> <br>
+        <font color="#3333FF">);&nbsp;</font> <br>
+        <font color="#3333FF">insert into test_identity (lname, fname) values 
+        ('l1','f1');</font> <br>
+        <font color="#3333FF">insert into test_identity&nbsp; (lname, fname) values 
+        ('l2','f2');</font> <br>
+        <font color="#3333FF">insert into test_identity&nbsp; (lname, fname) values 
+        ('l3','f3');</font> <br>
+        <font color="#3333FF">insert into test_identity&nbsp; (lname, fname) values 
+        ('l4','f4');</font> 
+      <p><font color="#3333FF">select * from test_identity</font> 
+      <p>Note: when defining identity column, you can also provide attributes, 
+        for example:
+      <ul>
+        <li><font color="#0000FF">start with NN</font></li>
+        <li><font color="#0000FF">increment by NN</font></li>
+        <li><font color="#0000FF">minvalue NN</font></li>
+        <li><font color="#0000FF">no minvalue</font></li>
+        <li><font color="#0000FF">maxvalue NN</font></li>
+        <li><font color="#0000FF">no maxvalue</font></li>
+        <li><font color="#0000FF">cycle</font></li>
+        <li><font color="#0000FF">no cycle</font></li>
+        <li><font color="#0000FF">cache NN</font></li>
+        <li><font color="#0000FF">order</font></li>
+        <li><font color="#0000FF">no order</font></li>
+      </ul>
+      <p>You can also provide a identity &quot;generation-expression&quot;</p>
+      <p><b><u>not null , with default:</u></b> <br>
+        <font color="#3333FF">create table inventory (</font> <br>
+        <font color="#3333FF">&nbsp; productID int not null with default 12345,</font> 
+        <br>
+        <font color="#3333FF">&nbsp; quantity integer,</font> <br>
+        <font color="#3333FF">&nbsp;&nbsp; price decimal(4,2),</font> <br>
+        <font color="#3333FF">&nbsp;&nbsp; dept smallint with default)</font> 
+      <p><b><u>Table Constraints:</u></b> <br>
+        &nbsp; Primary key, foreign key <br>
+        <font color="#3333FF">db2 alter table salary add constraint chk_salbonus 
+        CHECK (salary + bonus &lt; 200000)</font> <br>
+        <font color="#3333FF">db2 create table salary ( employeeID smallint not 
+        null, ...... ,&nbsp; constraint uempID UNIQUE(employeeID))</font> 
+      <p>Insert rule <br>
+        delete rules&nbsp; (NO ACTION, RESTRICT, CASCADE, SET NULL) <br>
+        update rules (NO ACTION, RESTRICT) 
+      <p><font color="#3333FF">create table tab1 ( id, ...)</font> <br>
+        <font color="#3333FF">create table tab2 (id, ...)</font> <br>
+        <font color="#3333FF">create table tab3 (&nbsp;</font> <br>
+        <font color="#3333FF">&nbsp;&nbsp; a ..,&nbsp;</font> <br>
+        <font color="#3333FF">&nbsp;&nbsp; b ..,</font> <br>
+        <font color="#3333FF">&nbsp;&nbsp; c ..,</font> <br>
+        <font color="#3333FF">&nbsp;&nbsp; constraint ca foreign key(a) references 
+        tab1(id),&nbsp;</font> <br>
+        <font color="#3333FF">&nbsp;&nbsp; constraint cb foreign key(b) references 
+        tab2(id))&nbsp;</font></td>
+</tr>
+</table>
+
+<p><b><u>Indexes:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td><font color="#3333FF">db2 create index&nbsp; i1 on tab1 ( col1 desc)</font>
+<br><font color="#3333FF">db2 create index&nbsp; i2 on tab1 (col1, col2)</font>
+<br><font color="#3333FF">db2 create unique index i1 on tab1(col1)</font>
+<br><font color="#3333FF">db2 create index i1 on tab1(col1) cluster</font>
+<br><font color="#3333FF">db2 create index i1 on tab1(col1) allow reverse
+scans</font>
+<br><font color="#3333FF">db2 alter index ...</font>
+<br><font color="#3333FF">db2 drop index ...</font></td>
+</tr>
+</table>
+
+<p><b><u>Views:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td><font color="#3333FF">db2 "create view as select col1 from tab1 where
+col1 like 'A%' "</font></td>
+</tr>
+</table>
+
+<p>Bufferpools - cache for database pages (see in SYSCAT.BUFFERPOOLS table)
+<br>Log Files - logging can be turned off to speed up operations
+<br>&nbsp;
+<p><a NAME="db2_authentication"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Authentication</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>attach - get access to the instance
+<br>connect - get access to the database
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td><font color="#3333FF">db2 attach to db2inst1 user myuser using mypassword</font>
+<br><font color="#3333FF">db2 connect to mydatabase user myuser using mypassword</font>
+<br><font color="#3333FF">db2 connect to mydatabase user myuser using mypassword
+new newpass confirm newpass</font>
+<p><b><u><font color="#000000">changing auth.type of the database server:</font></u></b>
+<br><font color="#3333FF">db2 update dbm cfg using AUTHENTICATION &lt;authentication_type></font>
+<p><font color="#3333FF">Auth.types:&nbsp;</font>
+<br><font color="#3333FF">&nbsp; SERVER, SERVER_ENCRYPT,</font>
+<br><font color="#3333FF">&nbsp; CLIENT,</font>
+<br><font color="#3333FF">&nbsp; DCE, DCE_SERVER_ENCRYPT (DCE = Distributing
+Computer Environment),&nbsp;</font>
+<br><font color="#3333FF">&nbsp; KERBEROS, KRB_SERVER_ENCRYPT</font>
+<br><font color="#3333FF">&nbsp; DCS, DCS_ENCRYPT (DCS = Database Connection
+Services)</font></td>
+</tr>
+</table>
+
+<p><b><u><font color="#000000">TRUST_ALLCLNTS parameter - YES, NO, DRDAONLY</font></u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td><font color="#3333FF">YES:</font>
+<p><b><u><font color="#3333FF">On the server:</font></u></b>
+<br><font color="#3333FF">db2 update dbm cfg using authentication client</font>
+<br><font color="#3333FF">db2 update dbm cfg using trust_allclnts <u>yes</u></font>
+<br><font color="#3333FF">db2 update dbm cfg using trust_clntauth server</font>
+<p><b><u><font color="#3333FF">On the client:</font></u></b>
+<br><font color="#3333FF">db2 catalog database mydb at node nd1 authentication
+client</font>
+<p><font color="#3333FF">NO:</font>
+<p><b><u><font color="#3333FF">On the server:</font></u></b>
+<br><font color="#3333FF">db2 update dbm cfg using authentication client</font>
+<br><font color="#3333FF">db2 update dbm cfg using trust_allclnts <b><u>no</u></b></font>
+<br><font color="#3333FF">db2 update dbm cfg using trust_clntauth server</font>
+<p><b><u><font color="#3333FF">On the client:</font></u></b>
+<br><font color="#3333FF">db2 catalog database mydb at node nd1 authentication
+client</font></td>
+</tr>
+</table>
+
+<p><b><u>TRUST_CLNTAUTH parameter - CLIENT, SERVER</u></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td><font color="#3333FF">CLIENT:</font>
+<p><b><u><font color="#3333FF">On the server:</font></u></b>
+<br><font color="#3333FF">db2 update dbm cfg using authentication client</font>
+<br><font color="#3333FF">db2 update dbm cfg using trust_allclnts <b>no</b></font>
+<br><font color="#3333FF">db2 update dbm cfg using trust_clntauth client</font>
+<p><b><u><font color="#3333FF">On the client:</font></u></b>
+<br><font color="#3333FF">db2 catalog database mydb at node nd1 authentication
+client</font>
+<p><font color="#3333FF">SERVER:</font>
+<p><b><u><font color="#3333FF">On the server:</font></u></b>
+<br><font color="#3333FF">db2 update dbm cfg using authentication client</font>
+<br><font color="#3333FF">db2 update dbm cfg using trust_allclnts <b><u>yes</u></b></font>
+<br><font color="#3333FF">db2 update dbm cfg using trust_clntauth server</font>
+<p><b><u><font color="#3333FF">On the client:</font></u></b>
+<br><font color="#3333FF">db2 catalog database mydb at node nd1 authentication
+client</font></td>
+</tr>
+</table>
+
+<p><b><u>Gaining authorization = gaining group membership in one of 5 groups:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#99FFCC" NOSAVE >
+<tr>
+<td><b>SYSADM</b> - instance king,
+<br><b>SYSCTRL</b> - instance control - almost as powerful as SYSADM, but
+needs explicitly granted privileges,
+<br><b>SYSMAINT</b> - instance maintenance, can not access user data
+<br><b>DBADM</b> - database-level authority (db - not instance).
+<br><b>LOAD</b> - database-level authority to insert large amounts of data.
+<p>SYS* authorities - can be assigned only to groups, are instance-level
+<br>DBADM, LOAD authorities - can be assigned to group and users, are database-level
+<br>&nbsp;
+<table BORDER CELLSPACING=0 BGCOLOR="#FFCCCC" NOSAVE >
+<tr BGCOLOR="#FFCC33" NOSAVE>
+<td NOSAVE>Opration</td>
+
+<td>SYSADM</td>
+
+<td NOSAVE>SYSCTRL</td>
+
+<td>SYSMAINT</td>
+
+<td>DBADM</td>
+
+<td>LOAD</td>
+</tr>
+
+<tr>
+<td>update dbm cfg</td>
+
+<td>Yes</td>
+
+<td>--</td>
+
+<td>--</td>
+
+<td>--</td>
+
+<td>--</td>
+</tr>
+
+<tr>
+<td>control which group have SYSADM, SYSCTRL, SYSMAINT authority</td>
+
+<td>Yes</td>
+
+<td>--</td>
+
+<td>--</td>
+
+<td>--</td>
+
+<td>--</td>
+</tr>
+
+<tr>
+<td>Control which users or groups have DBADM authority</td>
+
+<td>Yes</td>
+
+<td>--</td>
+
+<td>--</td>
+
+<td>--</td>
+
+<td>--</td>
+</tr>
+
+<tr>
+<td>Create/Drop database</td>
+
+<td>Yes</td>
+
+<td>Yes</td>
+
+<td>--</td>
+
+<td>--</td>
+
+<td>--</td>
+</tr>
+
+<tr>
+<td>Create/Drop tablespace</td>
+
+<td>Yes</td>
+
+<td>Yes</td>
+
+<td>--</td>
+
+<td>--</td>
+
+<td>--</td>
+</tr>
+
+<tr>
+<td>Backup database/Restore/Rollforard</td>
+
+<td>Yes</td>
+
+<td>Yes</td>
+
+<td>Yes</td>
+
+<td>--</td>
+
+<td>--</td>
+</tr>
+
+<tr>
+<td>db2start / db2stop</td>
+
+<td>Yes</td>
+
+<td>Yes</td>
+
+<td>Yes</td>
+
+<td>--</td>
+
+<td>--</td>
+</tr>
+
+<tr>
+<td>update database cfg file</td>
+
+<td>Yes</td>
+
+<td>Yes</td>
+
+<td>Yes</td>
+
+<td>--&nbsp;</td>
+
+<td>--</td>
+</tr>
+
+<tr>
+<td>grant/revoke db privileges</td>
+
+<td>Yes</td>
+
+<td>--</td>
+
+<td>--</td>
+
+<td>Yes</td>
+
+<td>--</td>
+</tr>
+
+<tr>
+<td>grant control privilegeon an object</td>
+
+<td>Yes</td>
+
+<td>--</td>
+
+<td>--</td>
+
+<td>Yes</td>
+
+<td>--</td>
+</tr>
+
+<tr>
+<td>create table</td>
+
+<td>Yes</td>
+
+<td>--</td>
+
+<td>--</td>
+
+<td>Yes</td>
+
+<td>--</td>
+</tr>
+
+<tr>
+<td>load into tables</td>
+
+<td>Yes</td>
+
+<td>--</td>
+
+<td>--</td>
+
+<td>Yes</td>
+
+<td>Yes</td>
+</tr>
+
+<tr>
+<td>runstats</td>
+
+<td>Yes</td>
+
+<td>Yes</td>
+
+<td>Yes</td>
+
+<td>Yes</td>
+
+<td>Yes</td>
+</tr>
+</table>
+
+<p>db2 update dbm cfg using SYSCTRL_GROUP db2grp
+<br>db2update dbm cfg SYSMAINT_GROUP db2mnt
+<p>db2 grant <b>dbadm</b> on database to <b>user</b> &lt;username>
+<br>db2 grant <b>dbadm</b> on database to <b>group</b> &lt;groupname>
+<p>db2 <b>revoke</b> dbadm on database from user &lt;username>
+<br>db2 <b>revoke</b> dbadm on database from group &lt;groupname>
+<p>db2 grant <b>load</b> on database to user &lt;username>
+<br>db2 grant <b>load</b> on database to group &lt;groupname>
+<p>db2 revoke load on database from user &lt;username>
+<br>db2 revoke load on database from group &lt;groupname></td>
+</tr>
+</table>
+
+<p>Privileges - are stored in the database system catalog views:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td><b><u>SYSCAT.DBAUTH</u></b> - databases authorities (db2 get authorization
+- will report the database authorities of the current user)
+<br>&nbsp;&nbsp; <font color="#3333FF">(DBADM, CREATETAB, BINDADD, CONNECT,
+CREATE_NOT_FENCED, IMPLICIT_SCHEMA, LOAD)</font>
+<br><b><u>SYSCAT.TABAUTH</u></b> - table and view priveleges
+<br>&nbsp;&nbsp; <font color="#3333FF">(CONTROL, ALTER, DELETE, INDEX,
+INSERT, SELECT, REFERENCE, UPDATE)</font>
+<br><b><u>SYSCAT.INDEXAUTH</u></b> - index privileges
+<br>&nbsp;&nbsp; <font color="#3333FF">(CONTROL)</font>
+<br><b><u>SYSCAT.SCHMAAUTH</u></b> - schema privileges
+<br>&nbsp;&nbsp; <font color="#3333FF">(ALTERIN, CREATEIN, DROPIN)</font>
+<br><b><u>SYSCAT.PACKAGEAUTH</u></b> - package privileges
+<br>&nbsp;&nbsp; <font color="#3333FF">(CONTROL, BIND, EXECUTE)</font></td>
+</tr>
+</table>
+
+<p><b><u>Here is how to grant/revoke those privileges:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td>db2 grant select on mytable to public
+<p>db2 <b>grant</b> &lt;db_privilege> on database to <b>user</b> &lt;username>
+<br>db2 grant &lt;db_privilege> on database to <b>group</b> &lt;groupname>
+<p>db2 <b>revoke</b> &lt;db_privilege> on database <b>from</b> user &lt;username>
+<br>db2 revoke &lt;db_privilege> on database from group &lt;groupname>
+<p>More examples:
+<br>db2 grant &lt;privilege> on &lt;tbl/vw name> to user &lt;username>
+<br>db2 grant control on index &lt;index_name> to user &lt;user_name>
+<br>db2 grant &lt;privilege> on schema &lt;schema_name> to user &lt;user_name>
+<br>db2 grant &lt;privilege> on package &lt;package_name> to user &lt;user_name>
+<br>2 revoke all privileges on table mytable from myuser</td>
+</tr>
+</table>
+
+<p>Privileges to an object are also granted implicitly when somebody creates
+an object. (database, table, view, etc.).
+<p><a NAME="concurrency"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>concurrency</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>package - executable form of one or more queries - SYSCAT.PACKAGES
+<br>a package is created using PREP and BIND commands.
+<br>You can set level of isolation (or concurrency) of the package
+<br>There are 4 levels: <b><u>UR</u></b> (Uncommitted Reads), <b><u>CS</u></b>
+(Cursor Stability), <b><u>RS</u></b> (Read Stability), <b><u>RR</u></b>
+(Repeatable Read)
+<br>The lowest isolation (highest concurrency) is UR, the highest isolation
+- RR. Default - CS.
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td>db2 prep something.sqc isolation RS
+<br>db2 bind something.bnd isolation RR
+<br>db2 prep something.sqc bindfile using something.bnd isolation RS
+<br>db2 bind something.bnd</td>
+</tr>
+</table>
+
+<p><b><u>Locks</u></b>
+<br>- <b>mode</b> (state) - IN (Intent None), IS (Intent Share), NS (Next
+Key Share), S (Share), IX (Intent Exclusive), SIX (Share with Intent Exclusive),
+U (Update), NX (Next Key Exclusive), NW (Next Key Weak Exclusive), X (Exclusive),
+W (Weak exclusive), Z (Super exclusive)
+<br>- <b>Object</b>,
+<br>- <b>Duration</b>.
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td>db2 lock table test in share mode
+<br>db2 alter table test locksize table
+<br>db2 alter table test locksize row</td>
+</tr>
+</table>
+
+<p><a NAME="db2_sql_1"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>More SQL hints</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b>More SQL: temp.tables, where, order by, aliases, subqueries, column
+&amp; scalar functions, group by, having, union, except, intersect</b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td>create table tab1 ( ... )&nbsp; in userspace1;
+<br>alter table tab1 add primary key (...)
+<br>drop table tab1</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td>declare global temporary table temp1
+<br>like tab1
+<br>on commit preserve rows
+<br>not logged
+<br>in mytempspace</td>
+</tr>
+</table>
+
+<p><b><u>where</u></b> clause:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td>x = y, x &lt;> y, x &lt; y, x > y, x &lt;= y, x >= y,&nbsp;
+<br>IS NULL, IS NOT NULL
+<br>IN, NOT IN
+<br>BETWEEN, NOT BETWEEN
+<br>LIKE, NOT LIKE
+<br>EXISTS, NOT EXISTS
+<p>select name, salary from stuff where salary > 20000
+<p>... where years <b>in</b> (1,2,3)
+<br>... where years not <b>between</b> 3 <b>and</b> 8
+<br>... where name like 'S<b>_____'</b>
+<br>... where name like 'S<b>%'</b>
+<br>... order by salary desc</td>
+</tr>
+</table>
+
+<p><b><u>Aliasses can be used in the "order by":</u></b>
+<br>Bad news is that the name aliases for fields (simple or calculated)
+can not be used in the "where" clause, because the "where" clause is processed
+before the alias name is applied to the result.&nbsp; So you may need to
+repeat the whole expression in the where clause.
+<br>But good news is that the name aliases can be used in the "order by"
+clause.
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td>select&nbsp; value(x.param1, x.param2) myparam
+<br>from test1 x
+<br>where (x.param1, x.param2) >= 40
+<br>order by myparam;</td>
+</tr>
+</table>
+
+<p><b><u>Subquery:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td>select lname&nbsp;
+<br>from employee&nbsp;
+<br>where lname in (<font color="#3333FF">select sperson from sales where
+sales_date &lt; '01/01/1996'</font>)</td>
+</tr>
+</table>
+
+<p><b><u>Column Functions:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td>SUM, AVG, MIN, MAX, COUNT
+<br>note: don't try to specify column functions in a where clause - they
+will NOT work, because where clause is evaluated before the select clause.&nbsp;
+<p><font color="#3333FF">select name, salary&nbsp;</font>
+<br><font color="#3333FF">from employee&nbsp;</font>
+<br><font color="#3333FF">where salary > (select avg(salary) from employee)&nbsp;</font>
+<br><font color="#3333FF">order by salary desc</font></td>
+</tr>
+</table>
+
+<p><b><u>Scalar Functions:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td>ABS, HEX, LENGTH, YEAR, MONTH, DAY, LCASE or LOWER, UCASE or UPPER
+<p>select min(length(deptname) as min, max(length(deptname)) as max from
+dept</td>
+</tr>
+</table>
+
+<p><b><u>group by&nbsp; &amp;&nbsp; having:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td>select sales_date, max(sales) as max_sales
+<br>from sales
+<br>group by sales_date where max(sales) > 25</td>
+</tr>
+</table>
+
+<p><b><u>union, except, intersect:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td>select sales_person from sales where region = 'reg1'
+<br><b>union</b>
+<br>select sales_person from sales where sales > 3
+<p>note: union processes both queries eliminates duplicates between them,
+and returns the final combined result set
+<p>select sales_person from sales where region = 'reg1'
+<br><b>except</b>
+<br>select sales_person from sales where sales > 3
+<p>select sales_person from sales where region = 'reg1'
+<br><b>intersect</b>
+<br>select sales_person from sales where sales > 3</td>
+</tr>
+</table>
+
+<p>insert, update, delete:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td>insert into tab1 values (123,'something',....)
+<br>insert into tab1 select ... from ... where ..
+<p>update tab1 set (a,b) = (123,'something') where ...
+<p>delete from tab1 where ...</td>
+</tr>
+</table>
+
+<p><a NAME="db2_recursive"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>SQL_2 - recursive queries, combined outer joins</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#3333FF">select col1, cast(round(avg(col2),2) as decimal(9,2))
+as aver_col2</font>
+<br><font color="#3333FF">from tab1</font>
+<br><font color="#3333FF">group by col1</font>
+<br><font color="#3333FF">order by col1</font>
+<br>&nbsp;
+<p><b><u>recursive query:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td>with exp1 (col1, col2, col3) as&nbsp;
+<br>(
+<br><font color="#009900">-------- select top nodes</font>
+<br>&nbsp;&nbsp;&nbsp; select ... from tab1 where ...&nbsp;
+<p>union&nbsp;
+<p><font color="#009900">-------- select other nodes recursively</font>
+<br>&nbsp;&nbsp;&nbsp; select ... from tab1, exp1 where ...
+<p>)
+<br>select ... from exp1
+<br>&nbsp;
+<p><b><u>Here is an example:</u></b>
+<p><font color="#3333FF">with exp1 (row_id, par_postn_id, X_POSITION_NAME,
+PARENT_NAME)&nbsp;</font>
+<br><font color="#3333FF">as (</font>
+<p><font color="#CC33CC">&nbsp; select&nbsp;</font>
+<br><font color="#CC33CC">&nbsp;&nbsp;&nbsp; pp.row_id, pp.par_postn_id,&nbsp;</font>
+<br><font color="#CC33CC">&nbsp;&nbsp;&nbsp; pp.X_POSITION_NAME, '' PARENT_NAME</font>
+<br><font color="#CC33CC">&nbsp; from inst1.s_postn pp</font>
+<br><font color="#CC33CC">&nbsp; where pp.par_postn_id is null</font>
+<p><font color="#3333FF">&nbsp; union all</font>
+<p><font color="#CC33CC">&nbsp; select&nbsp;</font>
+<br><font color="#CC33CC">&nbsp;&nbsp;&nbsp; tt.row_id, tt.par_postn_id,&nbsp;</font>
+<br><font color="#CC33CC">&nbsp;&nbsp;&nbsp; tt.X_POSITION_NAME, ee.X_POSITION_NAME
+PARENT_NAME&nbsp;</font>
+<br><font color="#CC33CC">&nbsp; from inst1.s_postn tt, exp1 ee&nbsp;</font>
+<br><font color="#CC33CC">&nbsp; where ee.row_id = tt.par_postn_id</font>
+<p><font color="#3333FF">&nbsp;&nbsp; )&nbsp;</font>
+<p><font color="#3333FF">select&nbsp;</font>
+<br><font color="#3333FF">&nbsp; p.PARENT_NAME, e.Last_Name, e.FST_NAME,&nbsp;</font>
+<br><font color="#3333FF">&nbsp; e.login, e.pager_pin as rep_id, p.X_POSITION_NAME</font>
+<br><font color="#3333FF">from&nbsp;</font>
+<br><font color="#3333FF">&nbsp; inst1.s_employee e,&nbsp;</font>
+<br><font color="#3333FF">&nbsp; inst1.s_emp_postn ep,&nbsp;</font>
+<br><font color="#3333FF">&nbsp; exp1 p</font>
+<br><font color="#3333FF">where e.row_id = ep.emp_id</font>
+<br><font color="#3333FF">&nbsp; and ep.position_id = p.row_id</font>
+<br><font color="#3333FF">order by p.PARENT_NAME, e.Last_Name, e.FST_NAME</font></td>
+</tr>
+</table>
+
+<p><b><u>combined outer joins:</u></b>
+<br><font color="#3333FF">select empno, deptno, projname</font>
+<br><font color="#3333FF">from ( employee left outer join project on respemp=empno
+)</font>
+<br><font color="#3333FF">&nbsp; left outer join department on mgrno =
+empno</font>
+<br><a NAME="db2_sql_olap"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>SQL OLAP</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>- <a href="http://www-3.ibm.com/cgi-bin/db2www/data/db2/udb/winos2unix/support/document.d2w/report?fn=db2v7s0olapfunc.htm#HDROLAPFUNC">OLAP
+functions</a> - OLAP Functions - from SQL reference
+<br>- <a href="http://www7b.software.ibm.com/dmdd/library/techarticle/lyle/0110lyle.html">http://www7b.software.ibm.com/dmdd/library/techarticle/lyle/0110lyle.html</a>
+- good review of OLAP functions
+<p>- <a href="http://www.almaden.ibm.com/cs/people/peterh/b15.pdf">http://www.almaden.ibm.com/cs/people/peterh/b15.pdf</a>
+- Peter J. Haas DB2 UDB Advanced Analytics for Business Intelligence
+<br>- <a href="http://www.almaden.ibm.com/cs/people/peterh/b16.pdf">http://www.almaden.ibm.com/cs/people/peterh/b16.pdf</a>
+- Peter J. Haas Speeding up DB2 UDB Using Sampling
+<p>- <a href="http://www.ibm.com/search?en=utf&v=11&lang=en&cc=us&lv=c&q=db2+olap+function+reference">http://www.ibm.com/search?en=utf&amp;v=11&amp;lang=en&amp;cc=us&amp;lv=c&amp;q=db2+olap+function+reference</a>
+- search IBM site
+<p><b><u>star schema grouping:</u></b>
+<br><font color="#3333FF">select empno, firstname, lastname, sum(sales)
+as tot_sales, (salary + bonus + comm) as compensation</font>
+<br><font color="#3333FF">from employee, sales</font>
+<br><font color="#3333FF">where sex='M' and year(sales_date) = 1996 and
+lastname = sales_person</font>
+<br><font color="#3333FF">group by empno, firstname, lastname, (salary
++ bonus + comm)</font>
+<p><b><u>rollup grouping:</u></b>
+<br><font color="#3333FF">select year(sales_date) as year, count(*) as
+tot_sales</font>
+<br><font color="#3333FF">from sales</font>
+<br><font color="#3333FF">group <b><u>by rollup</u></b> (year(sales_date))</font>
+<p>year&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tot_sales
+<br>-----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -------------
+<br>&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+41
+<br>&nbsp;1995&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5
+<br>&nbsp;1996&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 36
+<p><font color="#3333FF">select year(sales_date) as year, region, count(*)
+as tot_sales</font>
+<br><font color="#3333FF">from sales</font>
+<br><font color="#3333FF">group by rollup (year(sales_date), region)</font>
+<p><font color="#3333FF">select year(sales_date) as year, region, sales_person,
+count(*) as tot_sales</font>
+<br><font color="#3333FF">from sales</font>
+<br><font color="#3333FF">group by rollup (year(sales_date), region, sales_person)</font>
+<p><b><u>cube grouping:</u></b>
+<br><font color="#3333FF">select year(sales_date) as year, region, count(*)
+as tot_sales</font>
+<br><font color="#3333FF">from sales</font>
+<br><font color="#3333FF">group <b><u>by cube</u></b> (year(sales_date),
+region)</font>
+<p><font color="#3333FF">select year(sales_date) as year, region, sales_person,
+count(*) as tot_sales</font>
+<br><font color="#3333FF">from sales</font>
+<br><font color="#3333FF">group by cube (year(sales_date), region, sales_person)</font>
+<br>&nbsp;
+<p><b><u>other OLAP features:</u></b>
+<br>some useful functions: sum, count,average, stddev, corr, regr_* rownumber,
+rank, windows aggregates
+<p><b><u>simple statistics:</u></b>
+<br><font color="#3333FF">select country, year, count(*) as count, sum(amount)
+as sum, avg(amount) as avg, max(amount) as max, stddev(amount) as stddev</font>
+<br><font color="#3333FF">from mytable</font>
+<br><font color="#3333FF">group by country, year</font>
+<p><b><u>Detect transactions which are larger than usual:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#3333FF">create view profile(cust_id, avg_amt, sd_amt)
+as&nbsp;</font>
+<br><font color="#3333FF">select cust_id, avg(charge_amt), stddev(charge_amt)
+from trans</font>
+<br><font color="#3333FF">where date between '2002-0101' and '2002-03-31'</font>
+<br><font color="#3333FF">group by cust_id</font>
+<p><font color="#3333FF">Create trigger big_chrg</font>
+<br><font color="#3333FF">after insert on trans</font>
+<br><font color="#3333FF">referencing new as newrow for each row mode db2sql</font>
+<br><font color="#3333FF">when (newrow.charge_amt > (select avg_amt + 2.0
+* sd_amt from profile where profile.cust_id = newrow.cust_id))</font>
+<br><font color="#3333FF">insert into big_charges (cust_id,charge_amt)</font>
+<br><font color="#3333FF">values(newrow.cust_id, newrow.charge_amt))</font></td>
+</tr>
+</table>
+
+<p><b><u>Equi-width histogram:</u></b>
+<br><font color="#3333FF">with dt as (</font>
+<br><font color="#3333FF">&nbsp; select</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; t.transid,</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; sum(amount) as trans_amt,</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; <b>case</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>when</b>
+sum(amount)/3000 &lt; 0 then 0</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>when</b>
+sum(amount)/3000 >19 then 19</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>else</b>
+int(sum(amount)/3000)</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; <b>end</b> as bucket</font>
+<br><font color="#3333FF">&nbsp; from trans t, transitem ti</font>
+<br><font color="#3333FF">&nbsp; where t.transid=ti.transid</font>
+<br><font color="#3333FF">&nbsp; group by t.transid</font>
+<br><font color="#3333FF">)</font>
+<br><font color="#3333FF">select bucket,count(bucket) as height, (bucket+1)*3000
+as max_amt</font>
+<br><font color="#3333FF">from dt</font>
+<br><font color="#3333FF">group by bucket;</font>
+<p><b><u>Equi-Height histogram:</u></b>
+<br><font color="#3333FF">with dt as (</font>
+<br><font color="#3333FF">&nbsp; select</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; t.transid,</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; sum(amount) as trans_amt,</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; <b>rownumber</b>( ) <b>over</b>(order
+by sum(amount))*10/(select count(distinct transid)+1 from stars.transitem)
+as bucket</font>
+<br><font color="#3333FF">&nbsp; from stars.trans t, stars.transitem ti</font>
+<br><font color="#3333FF">&nbsp; where t.transid=ti.transid</font>
+<br><font color="#3333FF">&nbsp; group by t.transid</font>
+<br><font color="#3333FF">)</font>
+<br><font color="#3333FF">select bucket,count(bucket) as b_count, max(trans_amt)
+as part_value</font>
+<br><font color="#3333FF">from dt</font>
+<br><font color="#3333FF">group by bucket;</font>
+<p><b><u>Note:</u></b>
+<br>There are 3 ranking functions: <b>rank</b>(), <b>denserank</b>(), <b>rownumber</b>().
+<br>&nbsp;- <b>row_number</b>() &amp; <b>rownumber</b> are synonyms. Also
+<b>dense_rank</b>
+&amp; <b>denserank</b> are synonyms.
+<br>The 3 ranking functions are ranking rows, that is, they assign numbers
+(1,2,3, etc). If all results are different - all 3 functions produce the
+same result. If we have duplicates - then:
+<br>- rank() - will give them the same number - and skip the next number(s)
+<br>- denserank() - will give them the same number - and not skip the next
+number(s)
+<br>- rownumber() - will not give same number and will not skip. Will simply
+give different numbers to every row. This is the only ranking function
+that does not require an ordering.
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 BGCOLOR="#99FF99" >
+<tr>
+<td><tt><font color="#3333FF">&nbsp;select empnum, dept, salary,&nbsp;</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp; rank() over(partition by dept&nbsp;</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+order by salary desc <b>nulls last</b>) as rank,&nbsp;</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp; dense_rank() over (<b>partition
+by</b> dept order by salary desc <b>nulls last</b>)as denserank,&nbsp;</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp; row_number() over (<b>partition
+by</b> dept order by salary desc <b>nulls last</b>)as rownumber&nbsp;</font></tt>
+<br><tt><font color="#3333FF">&nbsp; from emptab;&nbsp;</font></tt>
+<p><tt>&nbsp;&nbsp; EMPNUM&nbsp; DEPT SALARY&nbsp; RANK&nbsp; DENSERANK&nbsp;&nbsp;
+ROWNUMBER&nbsp;</tt>
+<br><tt>&nbsp;&nbsp; ------&nbsp; ---- ------&nbsp; ----&nbsp; ---------&nbsp;&nbsp;
+---------&nbsp;</tt>
+<br><tt>&nbsp;&nbsp; 6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;
+78000&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;</tt>
+<br><tt>&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;
+75000&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp;</tt>
+<br><tt>&nbsp;&nbsp; 7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;
+75000&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3&nbsp;</tt>
+<br><tt>&nbsp;&nbsp; 11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;
+53000&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4&nbsp;</tt>
+<br><tt>&nbsp;&nbsp; 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;
+52000&nbsp;&nbsp; 5&nbsp;&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+5&nbsp;</tt>
+<br><tt>&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;
+50000&nbsp;&nbsp; 6&nbsp;&nbsp;&nbsp;&nbsp; 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+6&nbsp;</tt>
+<br><tt>&nbsp; --------------------------------------------------&nbsp;</tt>
+<br><tt>&nbsp;&nbsp; 9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;
+51000&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;</tt>
+<br><tt>&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp;</tt></td>
+</tr>
+</table>
+
+<p><b><u>over()</u></b> - to specify sets. This includes partitionning
+and ordering inside sets (see many examples below).
+<br><font color="#3333FF">&nbsp;&nbsp; partition by</font>
+<br><font color="#3333FF">&nbsp;&nbsp; order by&nbsp;&nbsp;&nbsp; ( asc
+, desc ,&nbsp; nulls last )</font>
+<br><font color="#3333FF">&nbsp;&nbsp; rows</font>
+<br><font color="#3333FF">&nbsp;&nbsp; between ... and ...</font>
+<br><font color="#3333FF">&nbsp;&nbsp; N preceding &amp; N following</font>
+<br><font color="#3333FF">&nbsp;&nbsp; unbound preceding&nbsp; &amp;&nbsp;
+unbound following&nbsp;&nbsp;&nbsp; </font><font color="#000000">(to include
+the entire preceding/following partition(s))</font>
+<br><font color="#3333FF">&nbsp;&nbsp; current row</font>
+<br><font color="#3333FF">&nbsp;&nbsp; range between unbound preceding
+and unbound following</font>
+<br><font color="#000000">&nbsp;&nbsp; </font><font color="#3333FF">range
+between current row and unbound following</font>
+<br>&nbsp;
+<p><b><u>Example: Smoothed Time Series (over 1 week : 3 preceding days
+and 3 following days):</u></b>
+<br><font color="#3333FF">select</font>
+<br><font color="#3333FF">&nbsp; date, symbol, close_price,</font>
+<br><font color="#3333FF">&nbsp; <b>avg</b>(close_price) <b>over</b>(<b>order
+by</b> date <b>rows</b> <b>between</b> 3 <b>preceding</b> <b>and</b> 3
+<b>following</b>)
+as smooth_cp</font>
+<br><font color="#3333FF">from stocktab</font>
+<br><font color="#3333FF">where symbol = 'IBM' and date between '1999-08-01'
+and '1999-09-01';</font>
+<br>&nbsp;
+<p><b><u>Attention:</u></b> adding ordering to the set changes the behaviour
+of calculations to become "cumulative". That means, calculating on the
+current row - and all rows in the set that precede it with respect to the
+ordering.
+<p><b><u>scalar-aggregate functions</u></b> - (ver.7 and up) - perform
+scalar calculations on values from multiple rows within a set to compute
+the result
+<br>&nbsp;
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 BGCOLOR="#CCFFFF" >
+<tr>
+<td><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; select dept, salary,&nbsp;</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+sum(salary) over(partition by dept) as deptsum,&nbsp;</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+avg(salary) over(partition by dept) as avgsal,&nbsp;</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+count(*) over(partition by dept) as deptcount,&nbsp;</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+max(salary) over(partition by dept) as maxsal&nbsp;</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; from emptab;&nbsp;</font></tt>
+<p><tt>&nbsp;&nbsp;&nbsp; DEPT&nbsp; SALARY&nbsp; DEPTSUM&nbsp; AVGSAL&nbsp;
+DEPTCOUNT MAXSAL&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; ----- ------- -------- ------- --------- --------&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp; 50000
+383000&nbsp;&nbsp; 63833&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+6&nbsp;&nbsp;&nbsp; 78000&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp; 75000
+383000&nbsp;&nbsp; 63833&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+6&nbsp;&nbsp;&nbsp; 78000&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp; 52000
+383000&nbsp;&nbsp; 63833&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+6&nbsp;&nbsp;&nbsp; 78000&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp; 78000
+383000&nbsp;&nbsp; 63833&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+6&nbsp;&nbsp;&nbsp; 78000&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp; 75000
+383000&nbsp;&nbsp; 63833&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+6&nbsp;&nbsp;&nbsp; 78000&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp; 53000
+383000&nbsp;&nbsp; 63833&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+6&nbsp;&nbsp;&nbsp; 78000&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-&nbsp; 51000&nbsp;&nbsp; 51000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp;&nbsp;&nbsp; 51000&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp; 51000&nbsp;
+51000&nbsp;&nbsp; 51000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp;&nbsp;&nbsp; 51000&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp; 79000
+209000&nbsp;&nbsp; 69666&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3&nbsp;&nbsp;&nbsp; 79000&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp; 55000
+209000&nbsp;&nbsp; 69666&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3&nbsp;&nbsp;&nbsp; 79000&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp; 75000
+209000&nbsp;&nbsp; 69666&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3&nbsp;&nbsp;&nbsp; 79000&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-&nbsp; 84000&nbsp;&nbsp; 84000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp;&nbsp;&nbsp; 84000&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp; 84000&nbsp;
+84000&nbsp;&nbsp; 84000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp;&nbsp;&nbsp; 84000</tt></td>
+</tr>
+</table>
+
+<p>Note: the query above contains no GROUP BY clause. Instead, the OVER
+clause is used to partition the data so that the sum function is
+<br>&nbsp; computed over rows in the same department, and the sum of all
+the salaries in each department is returned for each row within the department.
+<p><b><u>Adding ordering into a set turns calculations into cummulative
+over the set:</u></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 BGCOLOR="#99FF99" >
+<tr>
+<td><tt><font color="#3333FF">select&nbsp;</font></tt>
+<br><tt><font color="#3333FF">&nbsp; date, sales,&nbsp;</font></tt>
+<br><tt><font color="#3333FF">&nbsp; sum(sales) over(order by date) as
+cume_sum,&nbsp;</font></tt>
+<br><tt><font color="#3333FF">&nbsp; count(*) over(order by date) as setcount&nbsp;</font></tt>
+<br><tt><font color="#3333FF">from sales&nbsp;</font></tt>
+<br><tt><font color="#3333FF">where year(date) = 2000;&nbsp;</font></tt>
+<p><tt>&nbsp;&nbsp;&nbsp; DATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SALES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CUME_SUM&nbsp;&nbsp;&nbsp;&nbsp; SETCOUNT&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; ---------- ------------ ------------ ---------&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 01/01/2000&nbsp;&nbsp;&nbsp; 968871.12&nbsp;&nbsp;&nbsp;
+968871.12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 02/01/2000&nbsp;&nbsp;&nbsp;&nbsp; 80050.05&nbsp;&nbsp;
+1048921.17&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 03/01/2000&nbsp;&nbsp;&nbsp; 757866.14&nbsp;&nbsp;
+1806787.31&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 04/01/2000&nbsp;&nbsp;&nbsp;&nbsp; 58748.13&nbsp;&nbsp;
+1865535.44&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 05/01/2000&nbsp;&nbsp;&nbsp;&nbsp; 40711.69&nbsp;&nbsp;
+1906247.13&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 06/01/2000&nbsp;&nbsp;&nbsp; 241187.78&nbsp;&nbsp;
+2147434.91&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 07/01/2000&nbsp;&nbsp;&nbsp; 954924.16&nbsp;&nbsp;
+3102359.07&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 08/01/2000&nbsp;&nbsp;&nbsp; 502822.96&nbsp;&nbsp;
+3605182.03&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 09/01/2000&nbsp;&nbsp;&nbsp;&nbsp; 97201.45&nbsp;&nbsp;
+3702383.48&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 10/01/2000&nbsp;&nbsp;&nbsp; 853999.45&nbsp;&nbsp;
+4556382.93&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 11/01/2000&nbsp;&nbsp;&nbsp; 358775.59&nbsp;&nbsp;
+4915158.52&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 12/01/2000&nbsp;&nbsp;&nbsp; 437513.35&nbsp;&nbsp;
+5352671.87&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12</tt>
+<p><tt><u>Example for several years:</u></tt>
+<br><tt><font color="#3333FF">select date, sales,&nbsp;</font></tt>
+<br><tt><font color="#3333FF">&nbsp; sum(sales) over(partition by year(date)&nbsp;</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+order by month(date)) as cume_sum&nbsp;</font></tt>
+<br><tt><font color="#3333FF">from sales&nbsp;</font></tt>
+<br><tt><font color="#3333FF">where year(date) >= 2000;</font></tt></td>
+</tr>
+</table>
+
+<p>Note: the order of evaluation of a query is as follows:
+<br>&nbsp;&nbsp;&nbsp; 1.From Clause
+<br>&nbsp;&nbsp;&nbsp; 2.Where Clause
+<br>&nbsp;&nbsp;&nbsp; 3.Group By Clause
+<br>&nbsp;&nbsp;&nbsp; 4.Having Clause
+<br>&nbsp;&nbsp;&nbsp; 5.Select List (over...)
+<p>Example taking advantage of this order:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 BGCOLOR="#CCFFFF" >
+<tr>
+<td><tt>select&nbsp;</tt>
+<br><tt>&nbsp; year(date) as year,&nbsp;</tt>
+<br><tt>&nbsp; sum(sales) as sum,&nbsp;</tt>
+<br><tt>&nbsp; sum(sum(sales)) over(order by year(date)) as cume_sum&nbsp;</tt>
+<br><tt>from sales&nbsp;</tt>
+<br><tt>where year(date) >= 1995&nbsp;</tt>
+<br><tt>group by year(date);&nbsp;</tt></td>
+</tr>
+</table>
+
+<p><b><u>Correlation: ( 1 (or -1) - perfect positive (or negative) relationship
+):</u></b>
+<br><font color="#3333FF">select country, state, <b>correlation</b>(annual_purchases,
+income) as correlation</font>
+<br><font color="#3333FF">from mytab</font>
+<br><font color="#3333FF">group by country, state</font>
+<br><font color="#3333FF">having abs(<b>correlation</b>(annual_purchases,
+income)) > 0.1;</font>
+<p><b><u>Note</u></b>: similar function - covariance()
+<p><font color="#3333FF">select a.custid as custid1, b.custid as custid2,
+<b>corr</b>(a.amount,
+b.amount) as corr</font>
+<br><font color="#3333FF">from mytab a, mytab b</font>
+<br><font color="#3333FF">where a.prodid=b.prodid and a.custid &lt; b.custid</font>
+<br><font color="#3333FF">broup by a.custid, b.custid</font>
+<br><font color="#3333FF">having <b>corr</b>(a.amount, b.amount) >=0.5
+and count(*) > 100</font>
+<br><font color="#3333FF">order by corr desc;</font>
+<br>======
+<br><font color="#3333FF">with</font>
+<br><font color="#3333FF">&nbsp; dt (prod, year, sales0, sales1,sales2)
+as (</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; select</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prod, year, total_sales,</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; max(total_sales)
+<b>over</b>(<b>partitionby</b>
+prod order by year rows between 1 <b>preceding</b> and 1 <b>preceding</b>),</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; max(total_sales)
+<b>over</b>(<b>partitionby</b>
+prod order by year rows between 2 <b>preceding</b> and 2 <b>preceding</b>)</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; from mytab</font>
+<br><font color="#3333FF">&nbsp; )</font>
+<br><font color="#3333FF">select</font>
+<br><font color="#3333FF">&nbsp; prod,</font>
+<br><font color="#3333FF">&nbsp; <b>corr</b>(sales0,sales1)*100 as "corr1(%)",</font>
+<br><font color="#3333FF">&nbsp; <b>corr</b>(sales0,sales2)*100 as "corr2(%)"</font>
+<br><font color="#3333FF">from dt</font>
+<br><font color="#3333FF">group by prod;</font>
+<p><b><u>Least-Squares Fit (Linear Regression):&nbsp;</u></b> y=ax+b&nbsp;&nbsp;
+for a set of non-null (y,x) values:
+<br><font color="#3333FF">select</font>
+<br><font color="#3333FF">&nbsp; regr_count(sales, ad_budget) as num_cities,</font>
+<br><font color="#3333FF">&nbsp; regr_slope(sales, ad_budget) as a,</font>
+<br><font color="#3333FF">&nbsp; regr_icpt(sales, ad_budget) as b,</font>
+<br><font color="#3333FF">&nbsp; regr_r2(sales, ad_budget) as r-squared</font>
+<br><font color="#3333FF">from ad_camp;</font>
+<p>Here R-squared is a measure of the quality of the fit (roughly, the
+square of the corr of x and y)
+<p>If you need y = ax*x + b - use regr_slope(y,x*x)
+<br>etc.
+<p>Note: for non-linear curves you can not compute R-squared like this:
+<br>&nbsp; <font color="#3333FF">select regr_r2(log(hits), log(days)) as
+r2 from traffic_data;</font>
+<br>because it will give you 0.99, instead of 0.95.
+<br>A correct way is to use the with ... expression to:
+<br>&nbsp; 1. calculate the regr_slope and regr_icpt for the model
+<br>&nbsp; 2. calculate the residuals (differences between data and the
+model for each point)
+<br>&nbsp; 3. calculate the r2 like this:
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <font color="#3333FF">select 1e0 - (sum(error*error)/regr_syy(hits,days))
+as r2</font>
+<p>To find if one or two points strogly influence the model - we can use
+HAT Matrix.
+<br><b><u>Here is how to do the HAT Diagonal Computation:</u></b>
+<br><font color="#3333FF">with stats(mx,mx2,sxx) as&nbsp; (</font>
+<br><font color="#3333FF">&nbsp; select</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; regr_avgx(sales,ad_budget),</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; regr_avgx(sales,ad_budget*ad_budget),</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; regr_sxx(sales,ad_budget)</font>
+<br><font color="#3333FF">&nbsp; from mytab</font>
+<br><font color="#3333FF">)</font>
+<br><font color="#3333FF">select d.label as city, (s.mx2 - 2*s.mx*d.x +
+d.x*d.x) / s.sxx as HAT</font>
+<br><font color="#3333FF">from xy_data d, stats s</font>
+<br><font color="#3333FF">order by HAT desc;</font>
+<p><b><u>Fit the line in the form y=ax :</u></b>
+<br>We need to computer a as following: a = (x1*y1 + x2*y2 +..+xn*yn)/(x1^2
++ ... + xn^2)
+<br>Note that regr_sxx = (x1-mx)^2 + ... + (xn-mn)^2
+<br>(And similarly regr_sxy)
+<br>So:
+<br>&nbsp;&nbsp; (x1^2 + ... + xn^2) = regr_sxx + n*mx^2
+<br>&nbsp;&nbsp; (x1*y1 + x2*y2 +..+xn*yn) = regr_sxy + n*mx*my
+<br>Thus we get:
+<p><font color="#3333FF">select</font>
+<br><font color="#3333FF">&nbsp; regr_count(kwh,hours_run) as num_machines,</font>
+<br><font color="#3333FF">&nbsp; (regr_sxy(kwh,hours_run) + regr_count(kwh,hours_run)
+* regr_avgx(kwh,hours_run) * regr_avgy(kwh,hours_run))</font>
+<br><font color="#3333FF">&nbsp;&nbsp; /</font>
+<br><font color="#3333FF">&nbsp; (regr_sxx(kwh,hours_run) + regr_count(kwh,hours_run)
+* regr_avgx(kwh,hours_run) * regr_avgx(kwh,hours_run))</font>
+<br><font color="#3333FF">&nbsp; as a</font>
+<br><font color="#3333FF">from power_data;</font>
+<p><b><u>Example: we want to find cities where add campaign is particularly
+effective.</u></b>
+<br>We use the with ... construct and calculate a,b, and sigma as following:
+<br>&nbsp;&nbsp;&nbsp;&nbsp; regr_slope() as a
+<br>&nbsp;&nbsp;&nbsp;&nbsp; regr_icpt() as b
+<br>&nbsp;&nbsp;&nbsp;&nbsp; sqrt((regr_syy() - (regr_sxy()*regr_sxy()/regr_sxx()))/regr_count()
+- 2)) as sigma
+<p>where all regr functions have 2 arguments: (sales, ad_budget)
+<br>Now we can <font color="#3333FF">select ... where sales > a*ad_budget
++ b + 2e0*sigma</font>
+<p>Same regression functions can also be used to computer other statistical
+data, like F-statistics.
+<p>To compare 2 sets and verify a hypothesis - people have always used
+t-test (which presumes normal distribution).
+<br>Or more modern procedure called Wilcoxon Rank Test which avoids above
+restrictions.
+<br>It is calculated using the <b><font color="#3333FF">rank()</font></b>
+function ( or <b><font color="#3333FF">dense_rank()</font></b> function
+for dealing with duplicate totals)
+<br><b><u>Here are how ranks are calculated:</u></b>
+<br><tt><font color="#3333FF">with</font></tt>
+<br><tt><font color="#3333FF">&nbsp; ranked_sales(city,ranks) as (</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; select city, rank( ) over(order
+by sales) from feb_sales</font></tt>
+<br><tt><font color="#3333FF">&nbsp; )</font></tt>
+<br><tt><font color="#3333FF">select sum(ranks) as W from ranked_sales
+where city = 'B'</font></tt>
+<p>Then one needs tables from some statistics books to compute theresult.
+<p><b>----- Removing duplicates:</b>
+<br><font color="#3333FF">create view aaatemp(rn) as select rownumber()
+over(partition by col1 || '_' || col2) from mytab;</font>
+<br><font color="#3333FF">delete from aaatemp where rn > 1;</font>
+<br><font color="#3333FF">drop view aaatemp;</font>
+<p><u>Note:</u> the view doesn't have any columns of the original table.
+Still deleting from the view does the deletion from the original table
+<p>----- Finding duplicates without creating a view:
+<br><font color="#3333FF">with</font>
+<br><font color="#3333FF">&nbsp; mytemp(name, desc_text, rn) as (</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; select name, desc_text, rownumber()
+over(partition by desc_text) as rn</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; from s_org_ext where cust_stat_cd
+!='Deleted'</font>
+<br><font color="#3333FF">&nbsp; )</font>
+<br><font color="#3333FF">select * from mytemp where rn > 1</font>
+<p><b>----- Delete 100 rows at a time by hand:</b>
+<br><font color="#3333FF">create view aaatemp(rn) as select rownumber()
+over() as rn from mytab where ....;</font>
+<br><font color="#3333FF">delete from aaatemp where rn &lt; 100;</font>
+<p><b>----- Very-very slow way to go 10 at a time:</b>
+<br><font color="#3333FF">select a.row_id from yourtable a</font>
+<br><font color="#3333FF">where 10 > (select count(*) from youtable b where
+a.row_id &lt; b.row_id)</font>
+<br><font color="#3333FF">order by row_id desc</font>
+<p><b>----- Paging through table:</b>
+<br><font color="#3333FF">select myname</font>
+<br><font color="#3333FF">from (select myname, rownumber() over(order by
+myname) as rn from mytable) as tr</font>
+<br><font color="#3333FF">where rn between 10000 and 10020</font>
+<p><b>----- rank:</b>
+<br><font color="#3333FF">select name, dept, salary, rank() over(partition
+by dept order by salary desc) as salary rank</font>
+<br><font color="#3333FF">from staff</font>
+<br><font color="#3333FF">order by dept, salary_rank</font>
+<p><b>----- moving average:</b>
+<br><font color="#3333FF">select sales_date, avg(sales) over(order by sales_date
+rows between 1 preceding and 1 following) as smoothed_sales</font>
+<br><font color="#3333FF">from sales</font>
+<br><font color="#3333FF">where sales_date > '03/28/1996' and sales_person
+= 'LEE' and region =</font>
+<br><font color="#3333FF">"some-region'</font>
+<p><b>----- grouping sets:</b>
+<br><font color="#3333FF">select year(sales_date) as year, region, sales_person,
+count(*) as tot_sales</font>
+<br><font color="#3333FF">from sales</font>
+<br><font color="#3333FF">group by grouping sets (year(sales_date), region,
+sales_person, ( ))</font>
+<br><font color="#3333FF">order by year(sales_date), region, sales_person</font>
+<p><a NAME="db2_sql_3"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>More SQL: examples, with, hexadecimal, optimizer</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Examples,
+<p><b><u>Some SQL examples:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td><font color="#3333FF">select count(*)&nbsp; from tab1.s_employee a&nbsp;</font>
+<br><font color="#3333FF">inner join inst1.s_emp_postn b on a.row_id =
+b.emp_id&nbsp;</font>
+<br><font color="#3333FF">where not login like 'NO-LOGIN%'</font></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td><font color="#3333FF">select count(*)&nbsp; from inst1.s_employee a</font>
+<br><font color="#3333FF">inner join inst1.s_emp_postn b on a.row_id =
+b.emp_id&nbsp;</font>
+<br><font color="#3333FF">inner join inst1.s_postn c on b.position_id =
+c.row_id</font>
+<br><font color="#3333FF">where&nbsp;</font>
+<br><font color="#3333FF">c.created > '2002-03-12-00.00.01.000000'&nbsp;</font>
+<br><font color="#3333FF">and c.created &lt; '2002-03-17-23.59.59.999999'</font>
+<br><font color="#3333FF">and not a.login like 'NO-LOGIN%'&nbsp;</font></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td><font color="#3333FF">select distinct a.login KERBEROS,</font>
+<br><font color="#3333FF">e.name POSITION ,</font>
+<br><font color="#3333FF">value(c.yes,'NO') WITH_COVERAGE&nbsp;</font>
+<br><font color="#3333FF">from inst1.s_employee <b>a</b></font>
+<br><font color="#3333FF">inner join inst1.s_emp_postn <b>b</b> on a.row_id
+= b.emp_id</font>
+<br><font color="#3333FF">inner join inst1.s_postn <b>e</b> on b.position_id
+= e.row_id&nbsp;</font>
+<br><font color="#3333FF">left outer join (select 'YES' yes, position_id
+from inst1.s_accnt_postn) <b>c</b> on e.row_id = c.position_id&nbsp;</font>
+<br><font color="#3333FF">where not a.login like 'NO-LOGIN%'</font></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td>&nbsp;&nbsp;&nbsp; <b>select</b>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; value(z.KERBEROS,Y.KERBEROS) MY_KERBEROS,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; value(Z.FIRST_NAME,Y.FIRST_NAME)
+MY_FIRST_NAME,&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; value(Z.LAST_NAME,Y.LAST_NAME)
+MY_LAST_NAME,&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; value(Z.REP_ID,Y.REP_ID) MY_REP_ID,&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; value(Z.DESK_NAME,Y.DESK_NAME)
+MY_DESK_NAME
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <b>from</b>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#3333FF">(&nbsp;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>select</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+a.login KERBEROS,&nbsp;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+a.FST_NAME FIRST_NAME,&nbsp;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+a.Last_Name LAST_NAME,&nbsp;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+a.PAGER_PIN REP_ID,&nbsp;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+c.X_POSITION_NAME DESK_NAME&nbsp;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>from</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+inst1.s_employee a, inst1.s_postn b, inst1.s_emp_postn d, inst1.s_postn
+c&nbsp;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>where</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+a.row_id = d.emp_id&nbsp; <b>and</b> d.position_id = b.row_id <b>and</b>
+b.PAR_POSTN_ID = c.row_id&nbsp; <b>and</b>&nbsp; a.pager_pin is not null&nbsp;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</font> <b>y</b>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; left outer join
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#3333FF">(&nbsp;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>select</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+a.login KERBEROS,&nbsp;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+a.FST_NAME FIRST_NAME,&nbsp;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+a.Last_Name LAST_NAME,</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+a.PAGER_PIN REP_ID,&nbsp;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+c.X_POSITION_NAME DESK_NAME</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>from</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+inst1.s_employee a, inst1.s_postn b, inst1.s_postn c&nbsp;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>where</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+a.PR_POSTN_ID = b.row_id <b>and</b> b.PAR_POSTN_ID = c.row_id <b>and</b>
+a.pager_pin is not null&nbsp;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</font> <b>z</b>
+<br>&nbsp;&nbsp;&nbsp;&nbsp; on y.KERBEROS = z.KERBEROS
+<br>&nbsp; where value(z.KERBEROS,Y.KERBEROS) not in ('something1','something2')&nbsp;
+<br>&nbsp; ORDER BY MY_REP_ID</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td><font color="#3333FF">select col1 from tab1 group by col1 having count(*)
+> 1</font>
+<p><font color="#3333FF">select * from tab1 where lcase(col1) = 'o''brien'</font></td>
+</tr>
+</table>
+
+<p>Some (non)-trivial examples:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td><font color="#3333FF">I</font><font color="#000000">n Sybase we frequently
+use temp. tables and stored procedure when we need to get a result from
+many tables.</font>
+<br><font color="#000000">For example,</font>
+<p><font color="#3333FF">create temp table #temp1</font>
+<br><font color="#3333FF">insert #temp1 select ... -- populate some of
+its columns with data</font>
+<br><font color="#3333FF">update #temp1 set ...&nbsp; -- populate other
+columns</font>
+<br><font color="#3333FF">update #temp1 set ... -- again</font>
+<br><font color="#3333FF">update #temp1 set ...&nbsp; -- again</font>
+<br><font color="#3333FF">select ... from #temp1 where ...</font>
+<p><u><font color="#000000">in DB2 this can be all expressed as one SQL
+statement like this:</font></u>
+<p><font color="#3333FF">with query1 ( col1, col2, col3, ..., colN) as
+( select ... ),</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; query2 (col,
+....) as (select .. from query1 left outer join ... on ... ),</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; query3 (col,
+....) as (select .. from query2 left outer join ... on ... ),</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; query4 (col,
+....) as (select .. from query3 left outer join ... on ... )</font>
+<br><font color="#3333FF">select&nbsp; ..... from query4 where ...</font>
+<p><font color="#000000">---------------------------- one more query using
+the 'with' construct</font>
+<p><font color="#3333FF">with</font>
+<br><font color="#3333FF">&nbsp; myKid (kid) as (</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; select user_id from ... where
+...</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; union</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; select kid from ... where
+...</font>
+<br><font color="#3333FF">&nbsp; ),</font>
+<br><font color="#3333FF">&nbsp; myAccountIDs (AccountId) as (</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; select distinct AccountId
+from myKid t, ... where ...</font>
+<br><font color="#3333FF">&nbsp; ),</font>
+<br><font color="#3333FF">&nbsp; mySomething (col1, col2, ...) as (</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; select ... from ... where
+...</font>
+<br><font color="#3333FF">&nbsp; )</font>
+<br><font color="#3333FF">select ... from ... where ...</font>
+<br>&nbsp;
+<p><font color="#000000">---------------------------- return 1 if something
+exists, otherwise return 0</font>
+<p><font color="#3333FF">with t1 (is_mgr) as (</font>
+<br><font color="#3333FF">&nbsp; select 1 is_mgr from table (values 1)
+as t2</font>
+<br><font color="#3333FF">&nbsp; where exists (select 1 from ... where
+...)</font>
+<br><font color="#3333FF">&nbsp; union</font>
+<br><font color="#3333FF">&nbsp; select 0 is_mgr from table (values 0)
+as t2</font>
+<br><font color="#3333FF">)</font>
+<br><font color="#3333FF">select * from t1 order by is_mgr desc fetch first
+1 rows only</font>
+<p><font color="#000000">----------------------------&nbsp;</font>
+<p><font color="#3333FF">select distinct ... , cast(NULL as char) as first_name,
+cast(NULL as char) as last_name</font>
+<br><font color="#3333FF">from tab1, table (select ... from ... where ...
+) as T</font>
+<br><font color="#3333FF">where ... = cast(substr(T.user_id,1,locate('_',
+T.user_id) -1_ as int)</font>
+<p><font color="#000000">----------------------------</font>
+<p><font color="#3333FF">select col1 from tab1 group by col1 having count(*)
+> 1</font>
+<p><font color="#3333FF">select * from tab1 where lcase(col1) = 'o''brien'</font>
+<p><font color="#000000">----------------------------&nbsp;</font>
+<p><font color="#3333FF">Get top ten:</font>
+<p><font color="#3333FF">select name, salary from employee a</font>
+<br><font color="#3333FF">where 10 > (select count(*) from employee b where
+a.salary &lt; b.salary)</font>
+<br><font color="#3333FF">order by salary desc</font>
+<p><font color="#3333FF">select name, salary from employee a order by salary
+desc fetch first 10 rows only</font>
+<br>&nbsp;
+<p><font color="#000000">----------------------------&nbsp;</font>
+<p><font color="#3333FF">Get list of pairs with equal values:</font>
+<p><font color="#3333FF">select a.name, a.birthday, b.name</font>
+<br><font color="#3333FF">from employee a, employee b</font>
+<br><font color="#3333FF">where a.birthday = b.birthday</font>
+<br><font color="#3333FF">and a.emp_no > b.emp_no</font>
+<p>&nbsp;</td>
+</tr>
+</table>
+
+<p>Working with hexadecimal:
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#33FF33" NOSAVE >
+<tr>
+<td>values( hex(1024) )
+<br>values ( X'3233' )
+<br>values ( cast(X'3233' as integer) + 2 )
+<br>values ( cast(X'3233' as char(2)) || ' - twenty three' )
+<br>values ( X'4672616E6B' )
+<br>-- Frank
+<br>values ( X'30' )
+<br>-- 0
+<br>values ( X'30313233' )
+<br>-- 0123
+<p>-- now let's get names with a digit 8 in them:
+<br>select name from siebel.s_org_ext&nbsp;
+<br>where name like '%' || X'38' || '%'
+<br>fetch first 10 rows only</td>
+</tr>
+</table>
+
+<p><b><u>Optimizing queries:</u></b>
+<p><font color="#3333FF">db2 -tvf test.sql</font>
+<br><font color="#3333FF">db2 runstats on table mytab with distribution
+and detailed indexes all shrlevel change</font>
+<br>&nbsp;
+<table BORDER CELLSPACING=3 CELLPADDING=3 BGCOLOR="#33FF33" NOSAVE >
+<tr NOSAVE>
+<td NOSAVE>visual explain</td>
+
+<td NOSAVE>A graphical tool available in the db2&nbsp; Command Center (or
+Control Center) - to examine single queries, whether static or dynamic.
+Shows a color-coded tree. Clicking on a node allows you to view the arguments,
+statistics, and cost estimate of the node. You can also jump directly to
+DB2's documentation on that node type. Visual Explain can also be run from
+the command line as db2vexp.exe, though it then lacks static SQL ability.</td>
+</tr>
+
+<tr>
+<td>db2expln</td>
+
+<td>The "bare bones" tool, giving text output from static SQL packages
+only. This can optionally include a character mode graph.</td>
+</tr>
+
+<tr>
+<td>dynexpln</td>
+
+<td>Gives a text-mode analysis of a dynamic SQL query. It actually packages
+the dynamic query and calls db2expln to do the work.&nbsp; From unix command
+line invoke it as:
+<br><b>&nbsp; dynexpln -d mydb -f test.sql</b>
+<br><b>&nbsp; dynexpln -h</b></td>
+</tr>
+
+<tr>
+<td>db2exfmt&nbsp;</td>
+
+<td>A formatter for previously stored explain data.</td>
+</tr>
+</table>
+
+<p>- <a href="http://www.idug.org/member/journal/Nov01/articl05.cfm">http://www.idug.org/member/journal/Nov01/articl05.cfm</a>
+-
+<br>- <a href="http://www.student.math.uwaterloo.ca/~cs448/db2_doc/html/db2n0/frame3.htm">http://www.student.math.uwaterloo.ca/~cs448/db2_doc/html/db2n0/frame3.htm</a>
+-
+<br>- <a href="http://gethelp.devx.com/techtips/db2_pro/10Min1101/gn1101-2.asp">http://gethelp.devx.com/techtips/db2_pro/10Min1101/gn1101-2.asp</a>
+-
+<br>- <a href="http://www.cs.umb.edu/~db2/db2n0/db2n0.htm">http://www.cs.umb.edu/~db2/db2n0/db2n0.htm</a>
+-&nbsp; IBM&nbsp; DB2&nbsp; Command&nbsp; Reference -
+<p>--------------------------------------------
+<br>&nbsp;
+</body>
+</html>

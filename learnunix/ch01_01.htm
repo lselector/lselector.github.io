@@ -1,0 +1,1652 @@
+<HTML
+><HEAD
+><TITLE
+>[Chapter 1] Getting Started </TITLE
+><META
+NAME="DC.title"
+CONTENT="Learning the Unix Operating System"><META
+NAME="DC.creator"
+CONTENT="Jerry Peek, Grace Todino &amp; John Strang"><META
+NAME="DC.publisher"
+CONTENT="O'Reilly &amp; Associates, Inc."><META
+NAME="DC.date"
+CONTENT="1998-08-03T20:47:34Z"><META
+NAME="DC.type"
+CONTENT="Text.Monograph"><META
+NAME="DC.format"
+CONTENT="text/html"
+SCHEME="MIME"><META
+NAME="DC.source"
+CONTENT="1-56592-390-1"
+SCHEME="ISBN"><META
+NAME="DC.language"
+CONTENT="en-US"><META
+NAME="generator"
+CONTENT="Jade 1.1/O'Reilly DocBook 3.0 to HTML 4.0"><LINK
+REV="made"
+HREF="mailto:online-books@oreilly.com"
+TITLE="Online Books Comments"><LINK
+REL="up"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"><LINK
+REL="prev"
+HREF="prf1_06.htm"
+TITLE="Acknowledgments"><LINK
+REL="next"
+HREF="ch01_02.htm"
+TITLE="1.2 Syntax of UNIX Command Lines"></HEAD
+><BODY
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+><DIV
+CLASS="htmlnav"
+><H1
+><IMG
+SRC="gifs/smbanner.gif"
+ALT="Learning the Unix Operating System"
+USEMAP="#srchmap"
+BORDER="0"></H1
+><MAP
+NAME="srchmap"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,466,69"
+HREF="index.htm"
+ALT="Learning the Unix Operating System"><AREA
+SHAPE="RECT"
+COORDS="467,0,514,18"
+HREF="jobjects/fsearch.htm"
+ALT="Search this book"></MAP
+><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="prf1_06.htm"
+TITLE="Acknowledgments"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: Acknowledgments"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><B
+><FONT
+FACE="ARIEL,HELVETICA,HELV,SANSERIF"
+SIZE="-1"
+>Chapter 1</FONT
+></B
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch01_02.htm"
+TITLE="1.2 Syntax of UNIX Command Lines"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 1.2 Syntax of UNIX Command Lines"
+BORDER="0"></A
+></TD
+></TR
+></TABLE
+>&nbsp;<HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+CLASS="chapter"
+><A
+CLASS="title"
+NAME="LUX-CH-1"
+>1. Getting Started </A
+></H1
+><DIV
+CLASS="htmltoc"
+><P
+><B
+>Contents:</B
+><BR><A
+CLASS="sect1"
+HREF="#LUX-CH-1-SECT-1"
+TITLE="1.1 Working in the UNIX Environment"
+>Working in the UNIX Environment</A
+><BR><A
+CLASS="sect1"
+HREF="ch01_02.htm"
+TITLE="1.2 Syntax of UNIX Command Lines"
+>Syntax of UNIX Command Lines</A
+><BR><A
+CLASS="sect1"
+HREF="ch01_03.htm"
+TITLE="1.3 Types of Commands"
+>Types of Commands</A
+><BR><A
+CLASS="sect1"
+HREF="ch01_04.htm"
+TITLE="1.4 The Unresponsive Terminal"
+>The Unresponsive Terminal</A
+></P
+><P
+></P
+></DIV
+><DIV
+CLASS="sect1"
+><H2
+CLASS="sect1"
+><A
+CLASS="title"
+NAME="LUX-CH-1-SECT-1"
+>1.1 Working in the UNIX Environment</A
+></H2
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-1-IX-UNIX-ENV"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-1-IX-ENVIRONMENT-UX"
+></A
+>Before you can start using UNIX, your system administrator has to set
+up a UNIX account for you.  Think of this account as your office&nbsp;- it's
+your place in the UNIX environment.  Other users may also be at work
+on the same system.  At many sites, there will be a whole network of
+UNIX computers.
+So in addition to knowing your account name, you may also need to
+know the
+<EM
+CLASS="emphasis"
+>hostname</EM
+> (name) of the computer that has your account.</P
+><P
+CLASS="para"
+>Each user communicates with the computer from a terminal or a window.
+To get into the UNIX environment, you first connect to the UNIX
+computer.  (You may have a terminal that's already connected to the
+computer.)  Next, you start a session by logging in to your UNIX
+account.  Logging in does two things: it identifies which user is in a
+session, and it tells the computer that you're ready to start working.
+When you've finished working, you log out&nbsp;- and, if necessary, disconnect
+from the UNIX computer.</P
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-1-SECT-1.1"
+>1.1.1 Connecting to the UNIX Computer</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-1-IX-LOGIN"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-1-IX-CONN-UX-TERMS"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-170"
+></A
+>If you turn on your terminal and see a message from the UNIX computer
+that looks something like this:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>login:</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>you can probably skip ahead to the section &quot;Logging In&quot; later in this
+chapter. Otherwise, browse through the next few sections and find the
+one that applies to you.  (We can't cover every user's situation
+exactly.  If none of these suggestions helps you enough, ask another
+UNIX user or your system administrator.)</P
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-1-SECT-1.1.1"
+>1.1.1.1 Connecting from another operating system</A
+></H4
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-179"
+></A
+>If you're using a personal computer to connect to the UNIX system,
+you'll probably need to start a <EM
+CLASS="emphasis"
+>terminal emulation</EM
+> program.
+Some common programs are <B
+CLASS="emphasis.bold"
+>procomm</B
+>, <B
+CLASS="emphasis.bold"
+>qmodem</B
+>, <B
+CLASS="emphasis.bold"
+>kermit</B
+>,
+<B
+CLASS="emphasis.bold"
+>minicom</B
+>, and <B
+CLASS="emphasis.bold"
+>telnet</B
+>.  (There are lots of others.)</P
+><P
+CLASS="para"
+>If you start the program and get a UNIX &quot;login:&quot; prompt, you're ready
+to log in.  But if your screen stays blank or you get another message
+that you don't understand, check with another user or your system
+administrator for help.</P
+></DIV
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-1-SECT-1.1.2"
+>1.1.1.2 Connecting with a data switch</A
+></H4
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-192"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-194"
+></A
+>Your office may have a data switch, a port contender, or another system
+that allows you to select which computer you will connect to.
+Like a telephone switchboard, this connects your terminal to one of a
+number of computers.
+Enter your computer's hostname or code number at the prompt&nbsp;- or choose
+from the menu of hosts.</P
+></DIV
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-1-SECT-1.1.3"
+>1.1.1.3 Connecting from a window system</A
+></H4
+><P
+CLASS="para"
+>If you have an X terminal or a workstation, you should
+read the introductory sections of <A
+CLASS="xref"
+HREF="ch02_01.htm"
+TITLE="Using Window Systems "
+>Chapter 2, Using Window Systems </A
+> to help you find the right steps
+for logging in.</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-1-SECT-1.2"
+>1.1.2 Logging In</A
+></H3
+><P
+CLASS="para"
+>The process of making yourself known to the UNIX computer system and
+getting to your UNIX account is called <EM
+CLASS="emphasis"
+>logging in</EM
+>.  Before you
+can start work, you must connect your terminal or window to the UNIX
+computer (see the previous sections).  Then log in to UNIX and
+identify yourself.  To log in, enter your username (usually your name
+or initials) and a private password.<A
+CLASS="indexterm"
+NAME="AUTOID-204"
+></A
+>
+The password does not appear on the screen as you enter it.</P
+><P
+CLASS="para"
+>When you log in successfully, you will get some system messages and
+finally the UNIX shell prompt (where you can enter UNIX commands).  A
+successful login to the system named <EM
+CLASS="emphasis"
+>nutshell</EM
+> would look
+something like this:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>O'Reilly &amp; Associates, Inc.
+nutshell.oreilly.com: Solaris UNIX version 2.5
+
+login: <CODE
+CLASS="userinput"
+><B
+>john</B
+></CODE
+>
+Password:
+Last login: Mon Nov  3 14:34:51 EST 1997 from joe_pc
+
+------------- NOTICE TO ALL USERS -----------------
+The hosts nutshell, mongo and cruncher will be down
+for maintenance from 6 to 9 PM tonight.
+---------------------------------------------------
+
+My opinions may have changed, but not the fact that I am right.
+Tue Nov  4 12:24:48 EST 1997
+%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>In this example, the system messages include a &quot;fortune&quot; and the date.
+Although this example doesn't show it, you may be asked for your
+<EM
+CLASS="emphasis"
+>terminal type</EM
+>, accounting or chargeback information, and so on.
+The last line to appear is the UNIX shell prompt.
+When you reach this point, you're logged in to your account and
+can start using UNIX commands.</P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-215"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-218"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-220"
+></A
+>Instead of a shell prompt, you may get a menu of choices (&quot;email,&quot; &quot;news,&quot;
+and so on).
+If one of the choices is something like &quot;shell prompt&quot; or
+&quot;command prompt,&quot; select it.
+Then you'll be able to follow the descriptions and examples in this book.</P
+><P
+CLASS="para"
+>The messages that appear when you log in differ from system to system
+and day to day.
+The shell prompt also differs.
+The examples in this book use the percentage sign as a prompt (<CODE
+CLASS="literal"
+>%</CODE
+>).</P
+><P
+CLASS="para"
+>Let's summarize logging in, step by step:</P
+><OL
+CLASS="orderedlist"
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+>If needed, connect your terminal or window to the UNIX system.</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+>If you don't have a &quot;login:&quot; prompt, press the
+<KBD
+CLASS="keycap"
+>[RETURN]</KBD
+>
+key a few times until you see that prompt on the screen.</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+>Type in your username in <EM
+CLASS="emphasis"
+>lowercase letters</EM
+> at the prompt.  For
+example, if your login name is &quot;john,&quot; type:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>login: <CODE
+CLASS="userinput"
+><B
+>john</B
+></CODE
+></PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>Press the
+<KBD
+CLASS="keycap"
+>[RETURN]</KBD
+>
+key.<A
+CLASS="indexterm"
+NAME="AUTOID-240"
+></A
+></P
+><P
+CLASS="para"
+>The system should prompt you to enter your password.
+If passwords aren't used on your system, you can skip the next step.</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+>If you were assigned a password, type it at the prompt.
+For security, your password is not displayed as you type it:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>Password:</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>Press the
+<KBD
+CLASS="keycap"
+>[RETURN]</KBD
+>
+key after you finish typing your password.</P
+></LI
+></OL
+><P
+CLASS="para"
+>The system verifies your account name and password, and, if they're correct,
+logs you in to your account.</P
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-1-SECT-1.2.1"
+>1.1.2.1 Problem checklist</A
+></H4
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-254"
+></A
+></P
+><DL
+CLASS="variablelist"
+><DT
+CLASS="term"
+><EM
+CLASS="emphasis"
+>Nothing seemed to happen after I logged in.</EM
+></DT
+><DD
+CLASS="listitem"
+><P
+CLASS="para"
+>Wait a minute, since the system may just be slow.  If you still don't
+get anything, ask other users if they're having the same problem.</P
+></DD
+><DT
+CLASS="term"
+><EM
+CLASS="emphasis"
+>The system says &quot;login incorrect&quot;.</EM
+></DT
+><DD
+CLASS="listitem"
+><P
+CLASS="para"
+>Try logging in again, taking care to enter the correct name and
+password.  Be sure to type your username at the &quot;login:&quot; prompt and
+your password at the &quot;password:&quot; prompt. Backspacing may not work
+while entering either of these; if you make a mistake, use
+<KBD
+CLASS="keycap"
+>[RETURN]</KBD
+>
+to get a new &quot;login:&quot; prompt and try again. Also make sure to use the
+exact combination of upper- and lowercase letters your password contains.</P
+><P
+CLASS="para"
+>If you still fail after trying to log in a few more times, check with
+your system administrator to make sure you're using the right username
+and password for your account.</P
+></DD
+><DT
+CLASS="term"
+><EM
+CLASS="emphasis"
+>All letters are in UPPERCASE and/or have 
+backslashes</EM
+> (<CODE
+CLASS="literal"
+>\</CODE
+>) <EM
+CLASS="emphasis"
+>before them.</EM
+></DT
+><DD
+CLASS="listitem"
+><P
+CLASS="para"
+>You probably entered your username in uppercase letters.  Type
+<B
+CLASS="emphasis.bold"
+>exit</B
+> and log in again.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-1-SECT-1.3"
+>1.1.3 Remote Logins</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-281"
+></A
+>The computer you log in to may not be the computer you need to use.
+For instance, you might have a workstation on your desk but need to do
+some work on the main computer in another building.  Or you might be a
+professor doing research with a computer at another university.</P
+><P
+CLASS="para"
+>Your UNIX system can probably connect to another computer to let you
+work as if you were sitting at the other computer.  To do this, you
+first log in to your local computer.  Then you start a program on your
+local computer that connects to the remote computer.  Some typical
+programs are <B
+CLASS="emphasis.bold"
+>telnet</B
+> and <B
+CLASS="emphasis.bold"
+>rlogin</B
+> (for connecting over a
+computer network) as well as <B
+CLASS="emphasis.bold"
+>cu</B
+> and <B
+CLASS="emphasis.bold"
+>tip</B
+> (for connecting
+through telephone lines using a modem).  You use the remote system
+until you're done; when you log off the remote computer, the
+remote-login program quits, and then returns you to your local
+computer.</P
+><P
+CLASS="para"
+>The syntax for most remote-login programs is:</P
+><BLOCKQUOTE
+CLASS="blockquote"
+><P
+CLASS="para"
+><EM
+CLASS="emphasis"
+>program-name&nbsp;remote-hostname</EM
+></P
+></BLOCKQUOTE
+><P
+CLASS="para"
+>For example, if Dr. Nelson wanted to connect to the remote computer
+named <EM
+CLASS="emphasis"
+>biolab.medu.edu</EM
+>, she'd log in to her local computer (named
+<EM
+CLASS="emphasis"
+>fuzzy</EM
+>) first.  Next, she'd use the <B
+CLASS="emphasis.bold"
+>telnet</B
+> program to reach
+the remote computer.  Her session might look something like this:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>login: <CODE
+CLASS="userinput"
+><B
+>jennifer</B
+></CODE
+>
+Password: 
+
+NOTICE to all second-floor MDs: meeting in room 304 at 4 PM.
+
+fuzzy% <CODE
+CLASS="userinput"
+><B
+>telnet biolab.medu.edu</B
+></CODE
+>
+
+Medical University Biology Laboratory
+
+biolab.medu.edu login: <CODE
+CLASS="userinput"
+><B
+>jdnelson</B
+></CODE
+>
+Password:
+
+biolab%
+	.
+	.
+	.
+biolab% <CODE
+CLASS="userinput"
+><B
+>exit</B
+></CODE
+>
+Connection closed by foreign host.
+fuzzy%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>Her accounts have shell prompts that include the hostname.  This reminds her
+when she's logged in remotely.  If you use more than one system but
+don't have the hostname in your prompt, references in <A
+CLASS="xref"
+HREF="appa_01.htm"
+TITLE="Reading List "
+>Appendix A, Reading List </A
+>
+(<EM
+CLASS="emphasis"
+>UNIX Power Tools</EM
+>, for example), will show you how to add it.<A
+CLASS="indexterm"
+NAME="AUTOID-305"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-306"
+></A
+></P
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-1-SECT-1.4"
+>1.1.4 The UNIX Shell</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-310"
+></A
+>Once you've logged in, you're working with a program called a <EM
+CLASS="emphasis"
+>shell</EM
+>.
+The shell interprets the commands you enter, runs the program
+you've asked for, and generally coordinates what happens between you and the
+UNIX operating system.
+Common shells include
+Bourne (<B
+CLASS="emphasis.bold"
+>sh</B
+>), Korn (<B
+CLASS="emphasis.bold"
+>ksh</B
+>), and C (<B
+CLASS="emphasis.bold"
+>csh</B
+>) shells, as well
+as <B
+CLASS="emphasis.bold"
+>bash</B
+> and <B
+CLASS="emphasis.bold"
+>tcsh</B
+>.</P
+><P
+CLASS="para"
+>For a beginner, the differences between most shells are slight.  If
+you plan to do a lot of work with UNIX, though, ask your system
+administrator which shell your account uses; you should learn
+more about your shell and its set of special commands.</P
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-1-SECT-1.5"
+>1.1.5 The Shell Prompt</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-322"
+></A
+>When the system finishes running a command, the shell replies with a
+prompt to tell you that you can enter another command line.</P
+><P
+CLASS="para"
+>Shell prompts usually contain <CODE
+CLASS="literal"
+>$</CODE
+> or <CODE
+CLASS="literal"
+>%</CODE
+>.  The prompt can
+be customized, though, so your own shell prompt may be different.</P
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-1-SECT-1.6"
+>1.1.6 Entering a Command Line</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-1-IX-COMMLINE"
+></A
+>Entering a command line at the shell prompt tells the computer what to do.
+Each command line includes the name of a UNIX program.
+When you press
+<KBD
+CLASS="keycap"
+>[RETURN]</KBD
+>,
+the shell interprets your command line and executes the program.</P
+><P
+CLASS="para"
+>The first word that you type at a shell prompt is always a UNIX command
+(program name).
+Like most things in UNIX, command names are case-sensitive; if the command
+name is lowercase (and most are), you must type it in lowercase.
+Some simple command lines have just one word: the command name.</P
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-1-SECT-1.6.1"
+>1.1.6.1 date</A
+></H4
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-337"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-340"
+></A
+>An example single-word command line is <B
+CLASS="emphasis.bold"
+>date</B
+>.
+Entering the command <B
+CLASS="emphasis.bold"
+>date</B
+> displays the current date and time:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>date</B
+></CODE
+>
+Tue Nov  4 13:39:24 EST 1997
+%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>As you type a command line, the system simply collects your input
+from the keyboard.
+Pressing the
+<KBD
+CLASS="keycap"
+>[RETURN]</KBD
+>
+key tells the shell that you have finished entering text
+and that it can start executing the command.</P
+></DIV
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-1-SECT-1.6.2"
+>1.1.6.2 who</A
+></H4
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-353"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-355"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-357"
+></A
+>Another simple command is <B
+CLASS="emphasis.bold"
+>who</B
+>.  It lists each logged-on user's
+username, terminal number, and login time.</P
+><P
+CLASS="para"
+>The <B
+CLASS="emphasis.bold"
+>who</B
+> command can also tell you who is logged in at the
+terminal you're using.  The command line is 
+<B
+CLASS="emphasis.bold"
+> who am i</B
+>.  This
+command line consists of the command (<B
+CLASS="emphasis.bold"
+>who</B
+>) and arguments (<B
+CLASS="emphasis.bold"
+>am
+i</B
+>). (The section &quot;Syntax of UNIX Command Lines,&quot; later in this chapter,
+explains arguments.)</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>who am i</B
+></CODE
+>
+cactus!john     tty23   Nov  6 08:26      (rose)</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>The response shown in this example says that:</P
+><UL
+CLASS="itemizedlist"
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+>&quot;I am&quot; John.</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+>I'm logged on to the computer named &quot;cactus.&quot;</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+>I'm using terminal 23.</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+>I logged in at
+8:26 on the morning of November 6.</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+>I started my login from another computer named &quot;rose.&quot;</P
+></LI
+></UL
+><P
+CLASS="para"
+>Not all versions of <B
+CLASS="emphasis.bold"
+>who am i</B
+> give the same information.</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-1-SECT-1.7"
+>1.1.7 Correcting a Mistake</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-1-IX-COMLINE-CORR-MISTAKES"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-1-IX-TSHOOT-COMMLINE"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-391"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-393"
+></A
+>What if you make a mistake in a command line?  Suppose you typed
+<B
+CLASS="emphasis.bold"
+>dare</B
+> instead of <B
+CLASS="emphasis.bold"
+>date</B
+> and pressed the
+<KBD
+CLASS="keycap"
+>[RETURN]</KBD
+>
+key before you realized your mistake.
+The shell will give you an error message:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>dare</B
+></CODE
+>
+dare: command not found
+%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>Don't be too concerned about getting error messages.  Sometimes you'll
+get an error even if it appears that you typed the command correctly.
+This can be caused by typing control characters that are invisible on
+the screen.  Once the prompt returns, reenter your command.</P
+><P
+CLASS="para"
+>Most modern shells let you recall previous commands and edit command
+lines.  If you'll be doing a lot of work at the shell prompt, it's
+worth learning these handy techniques.  They take more time to learn
+than we can spend here, though.  Ask other users for help or read a
+reference book for your shell (see <A
+CLASS="xref"
+HREF="appa_01.htm"
+TITLE="Reading List "
+>Appendix A</A
+>).  We'll concentrate on
+simple methods that work with all shells.</P
+><P
+CLASS="para"
+>If you see a mistake before you press
+<KBD
+CLASS="keycap"
+>[RETURN]</KBD
+>,
+you can use the<A
+CLASS="indexterm"
+NAME="AUTOID-407"
+></A
+>
+<KBD
+CLASS="keycap"
+>[BACKSPACE]</KBD
+>
+key to erase the mistake and put in the correction.</P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-411"
+></A
+>The <EM
+CLASS="emphasis"
+>erase character</EM
+> differs from system to system and from
+account to account, and can be customized.  The most common erase
+characters are:</P
+><UL
+CLASS="itemizedlist"
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+><KBD
+CLASS="keycap"
+>[BACKSPACE]</KBD
+></P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+><KBD
+CLASS="keycap"
+>[DELETE]</KBD
+>,
+<KBD
+CLASS="keycap"
+>[DEL]</KBD
+>,
+or
+<KBD
+CLASS="keycap"
+>[RUBOUT]</KBD
+>
+key</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+><KBD
+CLASS="keycap"
+>[CTRL-H]</KBD
+></P
+></LI
+></UL
+><P
+CLASS="para"
+><KBD
+CLASS="keycap"
+>[CTRL-H]</KBD
+><A
+CLASS="indexterm"
+NAME="AUTOID-428"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-1-IX-CONTROL-CHARS"
+></A
+>
+is called a <EM
+CLASS="emphasis"
+>control character</EM
+>.
+To type a control character (for example,
+<KBD
+CLASS="keycap"
+>[CTRL-H]</KBD
+>,
+hold down the
+<KBD
+CLASS="keycap"
+>[CTRL]</KBD
+>
+key while pressing the letter &quot;h&quot;.
+(This is like the way you make an uppercase letter:
+hold the
+<KBD
+CLASS="keycap"
+>[SHIFT]</KBD
+>
+key while pressing a letter key.)  In the text, we will write control
+characters as
+<KBD
+CLASS="keycap"
+>[CTRL-H]</KBD
+>,
+but in the examples, we will use the standard notation: <CODE
+CLASS="literal"
+>^H</CODE
+>.
+This is <EM
+CLASS="emphasis"
+>not</EM
+> the same as pressing the <CODE
+CLASS="literal"
+>^</CODE
+> (caret) key, letting
+go, and then typing an H!</P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-442"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-444"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-446"
+></A
+>The key labeled
+<KBD
+CLASS="keycap"
+>[DEL]</KBD
+>
+may be used as the <EM
+CLASS="emphasis"
+>interrupt character</EM
+> instead of the erase
+character.  (It's labeled
+<KBD
+CLASS="keycap"
+>[DELETE]</KBD
+>
+or
+<KBD
+CLASS="keycap"
+>[RUBOUT]</KBD
+>
+on some terminals.)  This key is used to interrupt or cancel a
+command, and can be used in many (but not all) cases when you want to
+quit what you're doing.  Another character often programmed to do the
+same thing is
+<KBD
+CLASS="keycap"
+>[CTRL-C]</KBD
+>.</P
+><P
+CLASS="para"
+>Some other common control characters are:
+
+<DL
+CLASS="variablelist"
+><DT
+CLASS="term"
+><KBD
+CLASS="keycap"
+>[CTRL-U]</KBD
+></DT
+><DD
+CLASS="listitem"
+><P
+CLASS="para"
+>Erases the whole input line; you can start over.</P
+></DD
+><DT
+CLASS="term"
+><KBD
+CLASS="keycap"
+>[CTRL-S]</KBD
+></DT
+><DD
+CLASS="listitem"
+><P
+CLASS="para"
+>Pauses output from a program that is writing to the screen.</P
+></DD
+><DT
+CLASS="term"
+><KBD
+CLASS="keycap"
+>[CTRL-Q]</KBD
+></DT
+><DD
+CLASS="listitem"
+><P
+CLASS="para"
+>Restarts output after a pause by
+<KBD
+CLASS="keycap"
+>[CTRL-S]</KBD
+>.</P
+></DD
+><DT
+CLASS="term"
+><KBD
+CLASS="keycap"
+>[CTRL-D]</KBD
+></DT
+><DD
+CLASS="listitem"
+><P
+CLASS="para"
+> Used to signal end-of-input for some programs (like
+<B
+CLASS="emphasis.bold"
+>cat</B
+> and <B
+CLASS="emphasis.bold"
+>mail</B
+>; see <A
+CLASS="xref"
+HREF="ch03_01.htm"
+TITLE="Your UNIX Account "
+>Chapter 3, Your UNIX Account </A
+>) and return
+you to a shell prompt.  If you type <KBD
+CLASS="keycap"
+>[CTRL-D]</KBD
+> at a shell
+prompt, it may also log you out of the UNIX system.</P
+></DD
+></DL
+></P
+><P
+CLASS="para"
+>Find the erase and interrupt characters for your account and write them down:</P
+><BLOCKQUOTE
+CLASS="blockquote"
+><P
+CLASS="para"
+>_______   Backspace and erase a character</P
+><P
+CLASS="para"
+>_______   Interrupt a command</P
+></BLOCKQUOTE
+><P
+CLASS="para"
+>In <A
+CLASS="xref"
+HREF="ch03_01.htm"
+TITLE="Your UNIX Account "
+>Chapter 3</A
+>, we'll tell you how to change these characters if you like.<A
+CLASS="indexterm"
+NAME="AUTOID-486"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-487"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-488"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-489"
+></A
+></P
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-1-SECT-1.8"
+>1.1.8 Logging Out</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-493"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-495"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-498"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-500"
+></A
+>To end a UNIX session, you must log out.  You should <EM
+CLASS="emphasis"
+>not</EM
+> end a
+session by just turning off your terminal!  To log out, enter the
+command <B
+CLASS="emphasis.bold"
+>exit</B
+>.  (In many cases, the command <B
+CLASS="emphasis.bold"
+>logout</B
+> will
+also work.)  Depending on your shell, you may also be able to log out
+by typing
+<KBD
+CLASS="keycap"
+>[CTRL-D]</KBD
+>.</P
+><P
+CLASS="para"
+>What happens next depends on the place from which you've logged in:</P
+><UL
+CLASS="itemizedlist"
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+>If your terminal is connected directly to the computer,
+the &quot;login:&quot; prompt should appear on the screen.</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+>If you're using a window system, the window will probably close.  If
+you have additional windows open, you'll need to log out or close
+them, too.  You may also need to terminate the window system itself.
+(See <A
+CLASS="xref"
+HREF="ch02_01.htm"
+TITLE="Using Window Systems "
+>Chapter 2</A
+>.)</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+>If you were connected to a remote computer, the system prompt from
+your local computer should reappear on your screen.  (That is, you're
+still logged in to your local computer.)  Repeat the process if you
+want to log out from the local computer.</P
+></LI
+></UL
+><P
+CLASS="para"
+>After you've logged out, you can turn off your terminal or leave it on
+for the next user.</P
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-1-SECT-1.8.1"
+>1.1.8.1 Problem checklist</A
+></H4
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-519"
+></A
+>The first few times you use UNIX, you aren't likely to have any of the
+following problems.  However, you may have these problems later, as
+you start doing more advanced work.</P
+><DL
+CLASS="variablelist"
+><DT
+CLASS="term"
+><EM
+CLASS="emphasis"
+>You get another shell prompt or the system 
+says &quot;: not login shell.&quot;</EM
+></DT
+><DD
+CLASS="listitem"
+><P
+CLASS="para"
+>You've been using a subshell (a shell created by your original login
+shell).  To end each subshell, type <B
+CLASS="emphasis.bold"
+>exit</B
+> (or just type
+<KBD
+CLASS="keycap"
+>[CTRL-D]</KBD
+>
+until you're logged out.</P
+></DD
+><DT
+CLASS="term"
+><EM
+CLASS="emphasis"
+>The system says &quot;There are 
+stopped jobs.&quot;</EM
+></DT
+><DD
+CLASS="listitem"
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-535"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-537"
+></A
+>Many UNIX systems have a feature called <EM
+CLASS="emphasis"
+>job control</EM
+> that lets
+you suspend a program temporarily while it's running.  One or more of
+the programs you ran during your session has not ended, but is stopped
+(paused).  Enter <B
+CLASS="emphasis.bold"
+>fg</B
+> to bring each stopped job into the
+foreground, then quit the program normally.
+(See <A
+CLASS="xref"
+HREF="ch06_01.htm"
+TITLE="Multitasking "
+>Chapter 6, Multitasking </A
+>.)</P
+></DD
+></DL
+><A
+CLASS="indexterm"
+NAME="AUTOID-543"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-544"
+></A
+></DIV
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="htmlnav"
+><P
+></P
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="prf1_06.htm"
+TITLE="Acknowledgments"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: Acknowledgments"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="book"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"
+><IMG
+SRC="../gifs/txthome.gif"
+ALT="Learning the Unix Operating System"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch01_02.htm"
+TITLE="1.2 Syntax of UNIX Command Lines"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 1.2 Syntax of UNIX Command Lines"
+BORDER="0"></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+>Acknowledgments</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="index"
+HREF="index/idx_0.htm"
+TITLE="Book Index"
+><IMG
+SRC="../gifs/index.gif"
+ALT="Book Index"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+>1.2 Syntax of UNIX Command Lines</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><IMG
+SRC="../gifs/smnavbar.gif"
+USEMAP="#map"
+BORDER="0"
+ALT="The UNIX CD Bookshelf Navigation"><MAP
+NAME="map"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,73,21"
+HREF="../index.htm"
+ALT="The UNIX CD Bookshelf"><AREA
+SHAPE="RECT"
+COORDS="74,0,163,21"
+HREF="../upt/index.htm"
+ALT="UNIX Power Tools"><AREA
+SHAPE="RECT"
+COORDS="164,0,257,21"
+HREF="../unixnut/index.htm"
+ALT="UNIX in a Nutshell"><AREA
+SHAPE="RECT"
+COORDS="258,0,321,21"
+HREF="../vi/index.htm"
+ALT="Learning the vi Editor"><AREA
+SHAPE="RECT"
+COORDS="322,0,378,21"
+HREF="../sedawk/index.htm"
+ALT="sed &amp; awk"><AREA
+SHAPE="RECT"
+COORDS="379,0,438,21"
+HREF="../ksh/index.htm"
+ALT="Learning the Korn Shell"><AREA
+SHAPE="RECT"
+COORDS="439,0,514,21"
+HREF="index.htm"
+ALT="Learning the UNIX Operating System"></MAP
+></DIV
+></BODY
+></HTML
+>

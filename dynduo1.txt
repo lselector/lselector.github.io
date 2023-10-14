@@ -1,0 +1,1984 @@
+Dan Steinman    Oct 24, 1999: Oct 24, 1999 
+
+I'm on a new server now, this will give me the opportunity to expand this site tremendously. I have an anonymous ftp site where all downloads will be kept: ftp.dansteinman.com/pub/. I'll probably set up a list server newsletter for the DynAPI and DynDuo in the near future. I'll probably split the forum into 3 separate ones: "DHTML General", "DynAPI Development" "DynAPI Bugs" etc. 
+
+Re-organization: 
+I'm placing much more emphasis on the DynAPI (location has changed), I pulled most of the examples into the DynAPI and flattened the directory structure of the tutorial. If you have any links to specific lessons in this tutorial they are now broken :) I'll work on some specific documentation for the DynAPI in the form of a Package listing with the syntax. Translated versions of the tutorial will work in much nicer now. The translations linked at the top are not in the new format. If those authors or anyone else wants to help convert to the new structure please let me know - I have a few more to put up yet (french, dutch). 
+
+New and Updated Lessons 
+And plenty of them... of particular interest will be: 
+
+  Document Mouse Events - I've extracted the necessary mouse event controls from the Drag and Scroll2, and worked it into a nice DynAPI file to be used for all document-mouse handling, all Drag and Drop and Scroll2 examples are now using this file. 
+
+  Drag and Drop Concepts - changed it around to correspond with the new mouseevents code, and added events such as onDragStart, and I have made a "Drop Target" system to easily determine if a layer has been dropped onto another layer. 
+
+  a completely rewritten DynWindow which is not quite complete yet, stay tuned for updates to this 
+
+   I'm building a dhtml-based web calendar which required a more sophisticated Calendar Object 
+
+   MenuList now supports rollovers, and there's now a cooresponding MenuBar object. 
+
+   a neat ScrollWindow addition: PushPanel 
+
+   Tabs Object for some nice application-like tabs for swapping layers 
+
+Note: These have not been thoroughly tested in IE, I'll probably release another update shortly to correct errors. 
+
+   DHTML Tutorial 
+The Basics 
+
+Overview 
+Cascading Style Sheets Positioning 
+Cross-Browser JavaScript 
+Hiding and Showing 
+Moving 
+Sliding 
+Mouse Click Animation 
+Keystroke Events 
+Clipping Layers 
+Nesting Layers 
+Changing Images/Rollovers 
+Layer Writing 
+Changing Styles 
+External Source Files 
+Working With Forms 
+Page Templates 
+The DynLayer API 
+
+Introduction to Object Oriented DHTML 
+BrowserCheck Object 
+Overview of The DynLayer 
+Initializing DynLayers 
+DynLayerInit Function 
+DynLayer Properties 
+DynLayer Mouse Events 
+Hide, Show, Move Methods 
+Slide Methods 
+Clip Methods 
+Write Method 
+css() and DynLayerTest() Functions 
+How To Extend The DynLayer 
+Common Extensions 
+Wipe Methods 
+Glide Methods 
+DynAPI Components 
+
+Geometric Animation Objects 
+JavaScript GIF Animation 
+Path Animation 
+Using DuoPath 
+Document Mouse Events [updated] 
+Drag and Drop Concepts [updated] 
+Drag Object [updated] 
+Creating and Destroying Layers 
+CGI Communication 
+Audio Controls 
+Generating Layers 
+Using Browser Width/Height 
+Cookie Functions [new] 
+DynAPI Widgets 
+
+Creating Reusable Widgets 
+Scroll 
+ButtonImage 
+Radio Buttons 
+CheckBoxes 
+Scroll Concepts 
+MiniScroll 
+ScrollWindow 
+ScrollBar 
+Scroll2 
+DynWindow [updated] 
+Clock 
+Calendar [updated] 
+NewsTicker 
+List [updated] 
+SelectList 
+ScrollList 
+MenuList [updated] 
+MenuBar [new] 
+CollapseMenu 
+PushPanel [new] 
+Tabs [new] 
+ =======================
+    Download the Tutorial 
+You may download the tutorial for offline reading purposes. In order to browse and use the tutorial as online you must also download the DynAPI (see below). 
+=======================
+Download latest DynDuo: 
+dynduo-19991024.zip 
+=======================
+   DynAPI Project 
+The DynAPI is a library of JavaScript files for building DHTML applications. Most of the lessons in the tutorial make use of these files. 
+=======================
+About the DynAPI 
+API Summary 
+Examples 
+Download latest DynAPI: 
+dynapi-19991024.zip 
+=======================
+   DHTML Demos 
+Bumble Bee 
+Smart Blocks 
+Pull-Out Menus 
+Solar System 
+Bouncing Ball 
+Follow The Leader 
+Search Engine 
+=======================
+     DHTML Games 
+Puzzle Game 
+StarThruster 1000 
+StarThruster 2000 
+JavaScript Tetris 
+=======================
+Visit The Dynamic Duo online at http://www.dansteinman.com/dynduo/ 
+=======================
+DHTML Forum 
+Links to other DHTML resources 
+=======================
+This tutorial is written and maintained by 
+Dan Steinman (dan@dansteinman.com) 
+http://www.dansteinman.com 
+=======================
+Please post general questions about DHTML to my DHTML Forum. I would prefer to answer questions from there. If you have not read the tutorial please do not post questions or email me. This tutorial is very thorough and will likely answer your question somewhere. however do try to debug your code significantly enough to determine what part of your script isn't working properly. And be sure to read through this entire tutorial before posting or e-mailing any questions, . 
+
+I do appreciate any comments or suggestions you have about this tutorial. I am always looking for ways to improve it, so if you have anything to contribute I would be most gracious. 
+
+========================================================
+
+  Overview
+Dynamic HTML 
+
+Dynamic HTML (DHTML) is an all-in-one word for web pages that use Hypertext Markup Language (HTML), Cascading Style Sheets (CSS), and rely on JavaScript to make the web pages interactive. DHTML is a feature of Netscape Communicator 4.0, and Microsoft Internet Explorer 4.0 and 5.0 and is entirely a "client-side" technology. It relies only the browser for the display and manipulation of the web pages and is unrelated to other client-side technologies like Java, Flash. 
+
+Someone once asked me for a non-technical definition of DHTML, my reply was: 
+
+"A way to build web interfaces by using the built-in 
+capabilities of Netscape and Internet Explorer"
+DHTML excels in creating low-bandwidth effects that enhance a web page's functionality. It can be used to create animations, games, applications, provide new ways of navigating through web sites, and create out-of-this world page layouts that simply aren't possible with just HTML. Although many of features of DHTML can be duplicated with either Flash or Java, DHTML provides an alternative that does not require plugins and embeds seamlessly into a web page. 
+
+Although the underlying technologies of DHTML (HTML, CSS, JavaScript) are standardized, the manner in which Netscape and Microsoft have implemented them differ dramatically. For this reason, writing DHTML pages that work in both browsers (referred to as cross-browser DHTML) can be a very complex issue. 
+
+Links for more DHTML information: 
+
+Microsoft DHTML Documentation 
+Netscape DHTML Documentation 
+
+Cascading Style Sheets 
+
+Cascading Style Sheets (CSS) is an addition to HTML that gives developers a sophisticated manner to structure web pages. It does this by separating the content of a web page (the text) from the display (the colors, styles, and positioning). 
+
+Cascading Style Sheets Positioning (CSSP) is an extension to CSS that allows pixel-level control over the position of HTML elements. 
+
+Links for more CSS information: 
+
+W3C CSS-Positioning 
+Builder.com's CSS Guide 
+
+JavaScript 
+
+Contrary to its name, JavaScript is very much unrelated to Java. JavaScript is scripting language built into web browses that controls HTML elements, whereas Java is a high-level programming language for building cross-platform applications (among other things like Applets which are Java programs that can be displayed in a web page). 
+
+JavaScript first appeared in Netscape 2.0, and was primarily for scripting the contents of a web page, and providing added functionality to HTML forms, frames, and windows. Netscape 3.0 added more features like image rollovers and audio/video controls. Microsoft Internet Explorer 3.0 (released shortly after Netscape 3.0) also implemented JavaScript, but marketed it as JScript which is essentially the same as JavaScript with a few minor incompatibilities that Microsoft threw in to lure developers into using their version of JavaScript. 
+
+Extensions to JavaScript were added in Netscape 4.0 and Internet Explorer 4.0 to give developers a way to manipulate DHTML (HTML elements that use CSS). However these extensions were not standardized before the release of the 2 browsers. And as a result we now have two versions of JavaScript that are largely incompatible. 
+
+Links for more JavaScript information: 
+
+Netscape JavaScript Guide 
+JavaScript Reference 
+Microsoft JScript 
+
+The Dynamic Duo 
+
+The Dynamic Duo, is a tutorial written by me, Dan Steinman, and is the result of my experimentation and successes in creating Cross-Browser DHTML. 
+
+This tutorial focuses primarily on the JavaScript issues involved in DHTML. It only covers the portions of CSSP and JavaScript that can be used in both Netscape and Internet Explorer. By no means does this tutorial cover everything, or necessarly offer the best solutions to a particular task, but rather the things that I have tried and have had good results with. 
+
+If you are not unfamiliar with JavaScript and CSS, this tutorial may not be the best starting point for you. However, I do start out slowly and cover much of the ground knowledge needed to understand how DHTML works. The programming concepts in this this tutorial are not extremely complex. However, cross-browser DHTML requires a level of debugging skills that can be quite daunting to a beginner. You will be working with browsers that are only partially compatible, and computer languages that are only partially implemented. You will encounter bugs and limitations not only between the 2 browsers, but between different operating systems, as well as between incremental versions of the browsers. This tutorial only scratches the surface of the problems that you will encounter with building your own DHTML pages... and do believe me on this one, I am not kidding. 
+
+With that said, I have done my best to lay down a set of guidelines that makes cross-browser DHTML feasible. Following the tips and techniques in this tutorial you can create just about anything you can think of. By time you are finished reading, you will understand nearly all the concepts involved in DHTML, learn a rich set of JavaScript programming techniques using my DHTML API (The DynLayer), as well as learn how to build your very own DHTML objects for creating reusable widgets and components for your website. 
+
+I'd appreciate any comments or suggestions you have about this tutorial, I'm always looking for ways to improve it. Also, I'd be very gracious of any contributions you have, including modifications to any code in this tutorial, or any DHTML objects that you've created and want to share with other people. And if you have built a website, game, or application using this tutorial, I would be more than happy to provide a link from my DHTML Resources links page. 
+
+Home Next Lesson: Cascading Style Sheets Positioning 
+ 
+====================================================
+
+  Cascading Style Sheets Positioning
+Cascading Style Sheets (CSS) are the basis for Dynamic HTML in both Netscape Navigator 4.0 and Internet Explorer 4.0. CSS allows a way to create a set of "styles" that define how the elements on your page are rendered. Cascading Style Sheets Positioning (CSS-P) is an extension to CSS that gives a developer pixel-level control over the location of anything on the screen. Due to the fact there are already good CSS and CSS-P documentation and tutorials I won't be duplicating them - rather I'll be building on top of them. 
+
+Here are 2 documents/tutorials that explain the syntax of CSS and CSS-P: 
+
+W3C CSS-Positioning 
+Builder.com's CSS Guide 
+Those sites will give a complete overview of CSS and how to implement it. But I'll just quickly re-iterate the parts of CSS that will be used throughout this tutorial. 
+
+Using DIV Tags: 
+
+When using CSS-Positioning, these properties are usually applied to the DIV (division) tag - an empty, non-formatting tag, that is best suited for CSS. When you put HTML/text into a DIV tag it is commonly referred to as one of: "DIV block", "DIV element", "CSS-layer", or as I say, just a "layer". When you read about Dynamic HTML on websites or in newsgroups, if someone is talking about any of these terms they're all talking about the same thing - some piece of HTML that is inside a positioned "DIV" tag. 
+
+To markup an empty DIV tag is no different than any other tag: 
+
+<DIV>
+This is a DIV tag
+</DIV>
+
+Using DIV tag by itself has the same results as using <P></P> 
+
+But by applying CSS to DIV tags we can define where on the screen this piece of HTML will be displayed, draw squares or lines, or how to display the text that's inside it. You do this by first giving the DIV an ID (sort of like a name): 
+
+<DIV ID="truck">
+This is a truck
+</DIV>
+
+What you use for your ID is up to you. It can be any set of characters (a-z,A-Z,0-9, and underscore), but starting with letter. 
+
+Then you apply your CSS in one of 2 ways: 
+
+Inline CSS: 
+
+Inline is the way most commonly used. And it is the way I will begin showing how to write DHTML and JavaScript. 
+
+<DIV ID="truck" STYLE="styles go here">
+This is a truck
+</DIV>
+
+External STYLE tag: 
+
+Using the external method will work as well, however there are a few issues involved with writing CSS like this, so I suggest you wait until you get to the Nesting Layers lesson before trying it on your own. For right now just take a look to see how it is done... 
+
+<STYLE TYPE="text/css">
+<!--
+#truck {styles go here}
+-->
+</STYLE>
+
+<DIV ID="truck">
+This is a truck
+</DIV>
+
+Notice how the ID is used in the STYLE tag to assign the CSS styles. 
+
+Cross-Browser CSS Properties: 
+
+Because the goal of this site is to produce DHTML that works in both Netscape and Internet Explorer, we are somewhat limited to which CSS styles/properties we can use. Generally, the following properties are the ones that work (fairly closely) to the standards as defined by the W3C. 
+
+position 
+Defines how the DIV tag will be positioned - "relative" means that the DIV tag will flow like any other HTML tag, whereas "absolute" means the DIV will be positioned at specific coordinates. Absolute positioning will be the topic of most of this tutorial. 
+left 
+Left location (the number of pixels from the left edge of the browser window). 
+top 
+Top location (the number of pixels from the top edge of the browser window). 
+width 
+Width of the DIV tag. Any text/html that is inserted into the DIV will wrap according to what this value is. If width is not defined it will all be on one line. 
+Important: 
+When using layers for animation you should always define the width. This is because in IE the default is the entire width of the screen. If you move the layer around the screen a scrollbar will appear at the bottom, which is annoying and causes the animation to slow down. 
+
+height 
+Height of the DIV tag. This property is rarely needed unless you also you want to clip the layer 
+clip 
+Defines the clipping (crop) rectangle for the layer. Makes the DIV into a precisely defined square. You define the size of the rectangle with the values of the four edges: 
+clip:rect(top,right,bottom,left); 
+visibility 
+Determines whether the DIV will be "visible", "hidden", or "inherit" (default). 
+z-index 
+The stacking order of DIV tags. 
+background-color 
+Background color of the DIV. In Netscape this property only applies to the background color of the text. When you want to draw squares with CSS you must also define the layer-background-color property to the same value. 
+layer-background-color 
+Background color of the DIV for Netscape. 
+background-image 
+Background image for Internet Explorer. In Netscape this property only applies to the background-image for the text. 
+layer-background-image 
+Background image of the DIV for Netscape. 
+The syntax for CSS differs from HTML, you use colons to separate the property and it's value, and semi-colons to separate the different properties: 
+
+position: absolute;
+left: 50px;
+top: 100px;
+width: 200px;
+height: 100px;
+clip: rect(0px 200px 100px 0px);
+visiblity: visible;
+z-index: 1;
+background-color:#FF0000;
+layer-background-color:#FF0000;
+background-image:URL(filename.gif);
+layer-background-image:URL(filename.gif);
+
+You have a bit of flexibility when assigning CSS properties. You do not have to define all of them. White space is ingored so you can either have them all on the same line, or on separate lines, tabs between values etc. As well, the default unit value is pixels, so you do not necessarily have to have the "px" after the left, top, width and height values, although it is recommended to do so. 
+
+position:absolute; left:50px; top:100px; width:200px; height:100px; clip:rect(0px 200px 100px 0px); background-color:#FF0000; layer-background-color:#FF0000;
+
+Inline Example: 
+
+<DIV ID="divname" STYLE="position: absolute; left:50px; top:100px; width:200px; height:100px; clip:rect(0px 200px 100px 0px); visiblity:visible; z-index:1;">
+</DIV>
+
+External Example: 
+
+<STYLE TYPE="text/css">
+<!--
+#divname {position: absolute; left:50px; top:100px; width:200px; height:100px; clip:rect(0px 200px 100px 0px); visiblity:visible; z-index:1;}
+-->
+</STYLE>
+
+<DIV ID="divname">
+</DIV>
+
+A demo is worth a thousand words: 
+
+positioning demo 
+positioning and clip/bgcolor demo 
+Home Next Lesson: Cross-Browser JavaScript 
+ 
+====================================================
+
+  Cross-Browser JavaScript
+You can use JavaScript to access and change the properties of your CSS-P element. However, some of the syntax differs between Netscape 4.0 and Internet Explorer 4.0. By knowing where the differences lie, I'll show you an easy way to create cross-browser JavaScripts - scripts that will work in both N4 and IE4. 
+
+Browser Checking:
+I'm now using ns4 and ie4 for browser checking instead of n and ie 
+
+First things first: we have to know how to check which browser someone is using. This little chunk of code will be the standard browser check in nearly all the examples in this tutorial: 
+
+ns4 = (document.layers)? true:false
+ie4 = (document.all)? true:false
+
+The document.layers object is specific to Netscape 4.0, while the document.all object is specific to IE 4.0. So by checking if the object exists we can create the boolean variables ns4 (for Netscape 4.0) and ie4 (for Internet Explorer 4.0) and assign them true or false depending on which browser is being used. Now whenever you need to check which browser someone is using you just have to use if (ns4) or if (ie4): 
+
+function check() {
+	if (ns4) {
+		// do something in Netscape Navigator 4.0
+	}
+	if (ie4) {
+		// do something in Internet Explorer 4.0
+	}
+}
+
+Using JavaScript and CSS-P:
+Say we had a DIV tag that looked like this: 
+
+<DIV ID="blockDiv" STYLE="position:absolute; left:50; top:100; width:30;">
+<IMG SRC="block.gif" WIDTH=30 HEIGHT=30 BORDER=0>
+</DIV>
+
+Remember that this is an example, you can rename blockDiv to whatever you want and it will still work exactly the same. 
+
+For Netscape the general way to access the CSS-P properties is like this: 
+
+document.blockDiv.propertyName
+
+or 
+document.layers["blockDiv"].propertyName
+
+And then for Internet Explorer it's: 
+
+blockDiv.style.propertyName
+
+or 
+document.all["blockDiv"].style.propertyName
+
+Where propertyName can be any one of left, top, visibility, zIndex, width, or any of the other CSS-P properties. 
+
+The Cross-Browser Method (Pointer Variables):
+I've found that the best way to make cross-browser scripts is to have a variable, that depending on whether you're in Netscape or IE, points directly to either document.blockDiv or blockDiv.style, look below. I call these variables, pointer variables. 
+
+if (ns4) block = document.blockDiv
+if (ie4) block = blockDiv.style
+
+You see, after you do this, you can now access the properties using a shortcut way. For example if you wanted to check the left coordinate of our DIV tag called "blockDiv", it would simply be: 
+
+block.left
+
+It doesn't matter which browser is used because for Netscape, block points to document.blockDiv, and in IE, block points to blockDiv.style. 
+
+
+Aside: Throughout this tutorial I will be naming my DIV tags with a "Div" on the end of them (squareDiv, blockDiv etc.). This is because when you initialize a layer using the pointer variable method, you have to choose a variable name that is totally unique - it cannot be the same name as one of your DIV tags. I just make it a standard in my code that all layers that are going to be initialized with pointer variables automatically have a "Div" and I make the pointer variable name without the "Div" - because as you'll see you end up using the pointer variable many more times than the name of the layer itself.  
+
+A Full Example:
+This example will pop up an alert of the left, top and visiibilty properties of a CSS-P element. 
+
+The script: 
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+ns4 = (document.layers)? true:false
+ie4 = (document.all)? true:false
+
+function init() {
+	if (ns4) block = document.blockDiv
+	if (ie4) block = blockDiv.style
+}
+
+//-->
+</SCRIPT>
+
+The HTML: 
+
+<BODY onLoad="init()">
+
+<A HREF="javascript:alert(block.left)">left</A> -
+<A HREF="javascript:alert(block.top)">top</A> -
+<A HREF="javascript:alert(block.visibility)">visibility</A>
+
+<DIV ID="blockDiv" STYLE="position:absolute; left:50px; top:100px; width:30px; height:30px; clip:rect(0px 30px 30px 0px); background-color:red; layer-background-color:red;">
+</DIV>
+
+</BODY>
+
+Example: javascript1.html [source] - to see this example 
+
+
+Important: I call the init() function in the BODY onLoad="" so that it will execute after the rest of the page is completed loading. This is because when defining your pointer variable, the DIV tag must already exist. If you try and define the variable before the page is done loading you'll recieve a JavaScript error like "block is not defined".  
+
+The Differences
+If you open up both Netscape and IE and try that last example in each, you'll notice that you don't recieve the same values. 
+
+Property Netscape 4 Value IE 4 Value 
+left 50 50px 
+top 100 100px 
+visibility show visible 
+
+These differences can cause some problems but in the next few sections I'll show how to get around them. 
+
+Home Next Lesson: Hiding and Showing 
+ 
+=====================================================
+undefined undefined 
+Showing and Hiding
+You might ask yourself: "Why does Netscape display the visibility as 'show'?" 
+
+Well the answer is that Netscape's CSS properties are based around it's proprietory LAYER tag. However, even Netscape is now downplaying it's LAYER tag in favour of the W3C's recommended CSS-P. So the "show" and corresponding "hide" values of the visibility property are left-overs from Netscape's layers. I believe this is the only glaring defect in how Netscape represents CSS-P. 
+
+Until there is a unified standard you'll usually have to write separate code to hide a particular element. 
+
+For Netscape
+To show an element in Netscape you have to use: 
+
+document.divName.visibility = "show"
+
+and to hide it's: 
+
+document.divName.visibility = "hide"
+
+For Internet Explorer
+To show an element in Internet Explorer you have to use: 
+
+divName.style.visibility = "visible"
+
+and to hide it's: 
+
+divName.style.visibility = "hidden"
+
+Generic Show and Hide Functions
+Instead of always rewriting the same code over and over again to show and hide elements, you can use the following functions: 
+
+function showObject(obj) {
+	if (ns4) obj.visibility = "show"
+	else if (ie4) obj.visibility = "visible"
+}
+
+function hideObject(obj) {
+	if (ns4) obj.visibility = "hide"
+	else if (ie4) obj.visibility = "hidden"
+}
+
+These functions must be used along with pointer variables - see the code in the following example. 
+
+Whenever you want to change the visibility of an element, you just go: 
+
+showObject(objectName)
+
+or 
+
+hideObject(objectName)
+
+Where objectName is your pointer variable to a particular DIV tag. 
+
+Example: showhide1.html [source] - to see this example using these functions. 
+
+Show/Hide Functions Without Pointer Variables
+I've been finding that it's not always necessary, and sometimes cumbersome if you have a lot of layers that need only to be hidden and shown. I've showed the pointer variable technique first because that is general idea that I'll be building on to make more powerful JavaScripts in further lessons. But on occasions where you won't need to have any more functionality, the following simplified functions can also be used: 
+
+// Show/Hide functions for non-pointer layer/objects
+function show(id) {
+	if (ns4) document.layers[id].visibility = "show"
+	else if (ie4) document.all[id].style.visibility = "visible"
+}
+
+function hide(id) {
+	if (ns4) document.layers[id].visibility = "hide"
+	else if (ie4) document.all[id].style.visibility = "hidden"
+}
+
+To use these are similar except now the exact name of the layer must be used and it also must be in quotes: 
+
+show("divID")
+
+or 
+
+hide("divID")
+
+Where divID is the ID of the DIV tag that you want to show/hide. 
+
+Example: showhide2.html [source] - uses these show/hide functions 
+
+Home Next Lesson: Moving 
+ 
+======================================================
+
+undefined undefined 
+Moving
+There is generally no compatibility problems when assigning a new location for your CSS-P element. 
+
+To move an element named "myelement" to the coordinate (100,50), you simply assign new left and top values: 
+
+myelement.left = 100
+myelement.top = 50
+
+But don't forget that myelement must be a pointer variable defined something like this: 
+function init() {
+	if (ns4) myelement = document.myelementDiv
+	if (ie4) myelement = myelementDiv.style
+}
+
+From now on, this will be inherent in all examples so don't forget! 
+
+As I said, there is no compatibility issues with assigning a new location, however there is a problem when capturing the current location of an element. It's due to fact that IE stores it's locations with a "px" at the end of the values (as seen in the Cross-Browser Javascript example). 
+
+To get rid of the "px" you can parse the value into an integer. 
+
+So instead of just writing 
+
+myelement.left
+
+You have to write 
+
+parseInt(myelement.left)
+
+For example, if you wanted to pop up an alert of the current left and top location you'd write: 
+
+alert(parseInt(myelement.left) + ", " + parseInt(myelement.top))
+
+Adding New Properties
+Now believe me, to always have to write parseInt() before all your variables will tend to get very annoying. You will soon ask yourself if there is a better way... and I think I have a pretty good answer to that. 
+
+There is nothing stopping you from adding more properties onto our pointer variable, or object, as I will tend to call it from now on. 
+
+What I suggest you do, is keep the current location of the element in separate properties aside from the left and top properties. To make these new properties you just directly assign them. I'd start by setting them to actual location: 
+
+myelement.xpos = parseInt(myelement.left)
+myelement.ypos = parseInt(myelement.top)
+
+Now after this point, if you ever need to find out the left or top position, you just check the value of myelement.xpos and myelement.ypos respectively. Our new alert() would look like so: 
+
+alert(myelement.xpos + "," + myelement.ypos)
+
+And The Catch?
+When you want to change the location of the element, you FIRST have to change the values of xpos and ypos. THEN you set the left and top values equal to xpos and ypos respectively. For example: 
+
+function move() {
+	myelement.xpos = 200
+	myelement.ypos = -40
+	myelement.left = myelement.xpos
+	myelement.top = myelement.ypos
+}
+
+You must always keep the xpos and ypos values in synch with the left and top values. That way when you check myelement.xpos, you know that it will always be the same as myelement.left. 
+
+Example: moving1.html [source] - a simple moving example. 
+
+Not too difficult right? This idea will be the basis for everything I'll show in future examples. It may seem a little dumb to have these extra variables but once you get into more complicated things you'll find this technique does help smooth out your code. 
+
+
+
+
+Aside: 
+You may be wondering why am using xpos and ypos as my properties instead of just x and y... Well I did that for a reason. It is a little known fact that Netscape has already included these properties into CSS-P. I found that if you use x and y then your values will always be stored as integers. Now you may think "who cares?"... but there are instances where you need to store the current left and top positions with more than just integers (ie. real numbers with decimals and everything) and this is just not possible if you use x and y.  
+
+Generic Move Functions
+In that last example I "hard-coded" the movements - I wrote separate functions for each movement. Now of course if you want to move many different layers to various locations you don't always want to keep writing more functions. So what we can do is create some generic functions that will take care of most types of movements. 
+
+The moveTo() Function 
+
+The moveTo() function takes your layer/object and moves it directly to a new location. 
+
+function moveTo(obj,x,y) {
+	obj.xpos = x
+	obj.left = obj.xpos
+	obj.ypos = y
+	obj.top = obj.ypos
+}
+
+To use the function is really easy - all you do is tell it what layer/object to use and the new x and y locations. For example, if you initialize your layer with: 
+
+if (ns4) mysquare = document.mysquareDiv
+if (ie4) mysquare = mysquareDiv.style
+mysquare.xpos = parseInt(mysquare.left)
+mysquare.ypos = parseInt(mysquare.top)
+
+Then to move the square to a new location you'd write: 
+moveTo(mysquare,50,100)
+
+The moveBy() Function 
+
+MoveBy works exactly the same but instead of moving it directly to a new location it shifts the layer by a given number of pixels. 
+
+function moveBy(obj,x,y) {
+	obj.xpos += x
+	obj.left = obj.xpos
+	obj.ypos += y
+	obj.top = obj.ypos
+}
+
+To shift mysquare 5 pixels right, and 10 pixels up you'd write: 
+
+moveBy(mysquare,5,-10)
+
+Example: moving2.html [source] - uses moveBy() and moveTo() 
+
+Home Next Lesson: Sliding 
+ 
+========================================================
+
+  Sliding
+Sliding is just what I call a animated movement or scrolling effect. By using looping (or iterating) functions and moving the layer in small increments, you can put together any sort of animated movement you can think of. 
+
+The basic idea is that you have your movement code: 
+
+block.xpos += 5
+block.left = block.xpos
+
+Which moves the layer 5 pixels to the right. Then you stick that code into a looping function: 
+
+function slide() {
+	if (block.xpos < 300) {
+		block.xpos += 5
+		block.left = block.xpos
+		setTimeout("slide()",30)
+	}
+}
+
+The if statement is there to determine when to stop the animation. In this case the function will stop when the x-position is at or over 300 pixels. The setTimeout() is what creates the loop. After a certain amount of milliseconds, it will execute whatever's inside the quotes. So this function will repeat itself every 30 milliseconds. 
+
+Example: sliding1.html 
+
+Of course it's not much more difficult to move on a diagonal - you just change both the xpos (left) and the ypos (top) values. 
+
+Example: sliding2.html - on a diagonal 
+
+Moving at a Given Angle
+Using some high school trigonometry we can figure out how to move an element on any angle. In case you forgot, here's a quick diagram to refresh your memory: 
+
+
+Now to initialize your object to include angles you'll need 4 new properties: 
+
+object.angle = 30
+object.xinc = 5*Math.cos(object.angle*Math.PI/180)
+object.yinc = 5*Math.sin(object.angle*Math.PI/180)
+object.count = 0
+
+We calculate the x and y incrementation and use them to determine how far to move the left and top values. You have to multiply the angle by Math.PI/180 to convert the angle into radians - sin and cos are always calculated in radians. The count property will be used in the iterating function to determine how many times to loop. 
+
+Using my block example again, here's some full code to move an element at a given angle. 
+
+function init() {
+	if (ns4) block = document.blockDiv
+	if (ie4) block = blockDiv.style
+	block.xpos = parseInt(block.left)
+	block.ypos = parseInt(block.top)
+	block.angle = 30
+	block.xinc = 5*Math.cos(block.angle*Math.PI/180)
+	block.yinc = 5*Math.sin(block.angle*Math.PI/180)
+	block.count = 0
+}
+
+function slide() {
+	if (block.count < 25) {
+		block.xpos += block.xinc
+		block.ypos -= block.yinc
+		block.left = block.xpos
+		block.top = block.ypos
+		block.count += 1
+		setTimeout("slide()",30)
+	}
+	else block.count = 0
+}
+
+The if (block.count < 25) means that the function will execute 25 times before stopping - ie4. the block will slide a total 125 pixels units. 
+
+Example: sliding3.html - at a given angle 
+
+I've also created another angle example that allows you to change the angle. 
+
+Example: sliding4.html 
+
+Home Next Lesson: Mouse Click Animation 
+ 
+========================================================
+
+  Mouse Click Animation
+Using clever mouse events we can use a single hyperlink to start and stop an animation. When pressed the hyperlink will slide a block and when released the slide will stop. 
+
+The slide script is nothing new. We'll need an active variable in there again, and the move function is a carbon copy of previous functions: 
+
+function init() {
+	if (ns4) block = document.blockDiv
+	if (ie4) block = blockDiv.style
+	block.xpos = parseInt(block.left)
+	block.active = false
+}
+
+function slide() {
+	if (block.active) {
+		block.xpos += 5
+		block.left = block.xpos
+		setTimeout("slide()",30)
+	}
+}
+
+The trick is with what I do with the hyperlink: 
+
+<A HREF="javascript:void(null)" onMouseDown="block.active=true; slide(); return false;" onMouseUp="block.active=false" onMouseOut="block.active=false">move</A>
+
+The onMouseDown sets the active variable to true, and then calls the slide() function which begins our animation. While the link is held, nothing changes. It continues to slide until you release the hyperlink - and hence execute whatever is in the onMouseUp handler. It sets the active variable to false which stops the slide. 
+
+The onMouseOut also sets the active variable to false for error proofing reasons. I found that if you move the mouse off the link and then release, it wouldn't stop the animation - because you're not executing an MouseUp over the link. But if you include the onMouseOut it accounts for this loop-hole. 
+
+Click here to view this example 
+
+Home Next Lesson: Keystroke Events 
+ 
+===================================================
+
+  Keystroke Events
+Capturing keystrokes is the most powerful type of interaction you have at your disposal. You can have total control over (almost) any key that has been pressed or released. Note however, Netscape did not include the ability to capture Keystroke events into the Unix versions of Communicator 4.0. If you're planning on using keystrokes in a JavaScript game it will not be playable on any version of Unix including Linux. 
+
+The first thing that you have to understand is how to initialize your events. Here is a basic initialization for the "onkeydown" event. 
+
+document.onkeydown = keyDown
+
+When this code is read by the browser it will know that whenever a key is pressed, the keyDown() function will be called. It doesn't matter what function you call, and the code does not need the brakets after the funtion name. 
+
+To capture what key was pressed works a little bit differently between the browsers. So I'll first show each individually. 
+
+Netscape
+Netscape is a little more picky than IE is with respect to event handling. You have to put an extra line in to tell Netscape to always check for the keydown event. If you don't have this line, it will mess up when other events like mousedown occur. 
+
+document.onkeydown = keyDown
+if (ns4) document.captureEvents(Event.KEYDOWN)
+
+Your keyDown() has to pass a hidden variable - I'll use the letter "e" because that is what's commonly used. 
+
+function keyDown(e)
+
+This "e" represents the key that was just pressed. To find out out what key that is, you can use the which property: 
+
+e.which
+
+This will give the index code for the key - not what letter or number was pressed. To convert the index to the letter or number value, you use: 
+
+String.fromCharCode(e.which)
+
+So putting it all together, we can make a function that pops up a message telling the keycode and the real key values of the key that was pressed: 
+
+function keyDown(e) {
+	var keycode = e.which
+	var realkey = String.fromCharCode(e.which)
+	alert("keycode: " + keycode + "\nrealkey: " + realkey)
+}
+
+document.onkeydown = keyDown
+document.captureEvents(Event.KEYDOWN)
+
+View this example (Netscape only) 
+
+Internet Explorer
+IE works similarly except you don't need to pass the "e" value. 
+Instead of using e.which, you use window.event.keyCode. 
+
+And conversion to the real key value is the same: String.fromCharCode(event.keyCode). 
+
+function keyDown() {
+	var keycode = event.keyCode
+	var realkey = String.fromCharCode(event.keyCode)
+	alert("keycode: " + keycode + "\nrealkey: " + realkey)
+}
+
+document.onkeydown = keyDown
+
+document.onkeydown = keyDown
+
+View this example (Internet Explorer only) 
+
+Combining the Two
+Now, if you were to open both browsers and compare the examples, you'll realize the results are not always the same. The keycodes are different because each browser uses a different character set. Because of this you'll always have to make separate code for each browser - there's no way around it. 
+
+What I'd suggest is totally forgetting about the real key values entirely, and only work with the keycodes. The following chunk of code will assign nKey to the keycode and ieKey to 0 if you're using Netscape or or it will set ieKey to the keycode and nKey to 0 if you're using Internet Explorer. Then it shows an alert of both values: 
+
+function keyDown(e) {
+	if (ns4) {var nKey=e.which; var ieKey=0}
+	if (ie4) {var ieKey=event.keyCode; var nKey=0}
+	alert("nKey:"+nKey+" ieKey:" + ieKey)
+}
+
+document.onkeydown = keyDown
+if (ns4) document.captureEvents(Event.KEYDOWN)
+
+View this example 
+
+Now on to the good stuff.... 
+
+Moving Elements with the Keyboard
+Now you can activate your movement functions from the keyboard. You do a check of which key was pressed, and then call the appropriate function to move your object. For the following example I use the "A" key to initiate a sliding function. For the "A" key, the nKey value is 97, and the ieKey is 65. So I do a check for those values in order to call the "slide" function. 
+
+function init() {
+	if (ns4) block = document.blockDiv
+	if (ie4) block = blockDiv.style
+	block.xpos = parseInt(block.left)
+
+	document.onkeydown = keyDown
+	if (ns4) document.captureEvents(Event.KEYDOWN)
+}
+
+function keyDown(e) {
+	if (ns4) {var nKey=e.which; var ieKey=0}
+	if (ie4) {var ieKey=event.keyCode; var nKey=0}
+	if (nKey==97 || ieKey==65) {   // if "A" key is pressed
+		slide()
+	}
+}
+
+function slide() {
+	block.xpos += 5
+	block.left = block.xpos
+	status = block.xpos       // not needed, just for show
+	setTimeout("slide()",30)
+}
+
+View this example 
+
+Understanding "Active" Variables
+That last script is somewhat limited. After the movement is started, there's no way to stop it, and if you hit the key several times it moves faster and faster. So we'll have fix that up. 
+
+I've developed a technique of using what I call "active" variables to represent the current state of movement... is it moving? or is it not moving? Once you get used to working with them, they can be very handy. Because most movement functions are recursive, they have no built in way of stopping, and that's where the active variables come into play. By inserting the appropriate "if" statment into the slide function, you can have control of whether that function will repeat or not. Usually you make the function something like this: 
+
+function slide() {
+	if (myobj.active) {
+		myobj.xpos += 5
+		myojb.left = myobj.xpos
+		setTimeout("slide()",30)
+	}
+}
+
+In this case, the slide() function will only operate when the myobj.active value is true. Once you set myobj.active to false the movement function will stop. Knowing this, we can insert some code into our script that will give us more control of what's happening. 
+Using onKeyUp and "Active" Variables
+The onkeyup event works exactly the same way the onkeydown did. You can initialize both keydown and keyup with the following: 
+
+document.onkeydown = keyDown
+document.onkeyup = keyUp
+if (ns4) document.captureEvents(Event.KEYDOWN | Event.KEYUP)
+
+And the keyUp() function is the same too. But we want to make so that when a key is released, it will stop whatever movement is currently running. To do that we can set our block's active variable to 0: 
+
+function keyUp(e) {
+	if (ns4) var nKey = e.which
+	if (ie4) var ieKey = window.event.keyCode
+	if (nKey==97 || ieKey==65) block.active = false
+}
+
+But to totally "error" proof our code, we have to put some more checks into the other functions. Take a look at the code below and see if you can understand what I'm doing. In the keyDown function, the && !block.active is to make sure that we can only call the function if the block is not active. In other words, if the block is moving we do not execute the slide() function again. Then we set the active value to true and move the block. The slide() function has the if (block.active) statement so that it only moves when the block.active value is true - that way when we release a key it will stop executing. 
+
+function init() {
+	if (ns4) block = document.blockDiv
+	if (ie4) block = blockDiv.style
+	block.xpos = parseInt(block.left)
+	block.active = false
+
+	document.onkeydown = keyDown
+	document.onkeyup = keyUp
+	if (ns4) document.captureEvents(Event.KEYDOWN | Event.KEYUP)
+}
+
+function keyDown(e) {
+	if (ns4) {var nKey=e.which; var ieKey=0}
+	if (ie4) {var ieKey=event.keyCode; var nKey=0}
+	if ((nKey==97 || ieKey==65) && !block.active) {   // if "A" key is pressed
+		block.active = true
+		slide()
+	}
+}
+function keyUp(e) {
+	if (ns4) {var nKey=e.which; var ieKey=0}
+	if (ie4) {var ieKey=event.keyCode; var nKey=0}
+	if (nKey==97 || ieKey==65) {
+		block.active = false   // if "A" key is released
+	}
+}
+
+function slide() {
+	if (block.active) {
+		block.xpos += 5
+		block.left = block.xpos
+		status = block.xpos       // not needed, just for show
+		setTimeout("slide()",30)
+	}
+}
+
+View this example 
+
+What Keys can I use?
+As I mentioned earlier, the character sets for Netscape and Internet Explorer differ. In general, all letters, numbers, symbols, Space, and Enter will work fine. For a quick way to find out the nKey and ieKey values of particular keys you can view my nKey and ieKey Finder. 
+
+Game Controls
+Here are a few "bare-bone" demos that show how a gaming environment can be made from these techniques: 
+
+Game Controls 1 - utilizes left/right/up/down keys to move an object in any direction 
+Game Controls 2 - the controls behind my Follow the Leader demo 
+Game Controls 3 - the controls behind my StarThruster game 
+Home Next Lesson: Clipping Layers 
+ 
+ 
+  Clipping Layers
+Clipping refers to what part of the layer will be visible. You have understand the difference between the clip values, and the width and height - they are not the same. Width and Height really just tell the browser how to wrap the HTML elements inside it. Whereas clipping makes a window to view the layer through - it has no effect on any of the other properties of the layer (left or top location, width, height, visibility, etc.). 
+
+The clipping region is defined as a square by setting the clip value for each of the 4 edges (top, right, bottom, left). For each edge you can clip a portion of the viewing space away, or to add extra viewing space. All the clip values are with respect to that layer - the values are taken from the top-left location of the layer. 
+
+ 
+
+The CSS syntax for clipping is: 
+
+clip:rect(top,right,bottom,left)
+
+Where the top, right, bottom, and left values are in pixels. And don't forget the order that they go in - it will be confusing if you mess them up. 
+
+Here's a DIV tag using clipping to define the viewable area: 
+
+<DIV ID="blockDiv" STYLE="position:absolute; left:50; top:80; width:100; height:50; clip:rect(-10,110,60,-10); background-color:#FF0000; layer-background-color:#FF0000;">
+</DIV>
+
+In this case it creates an extra 10 pixel border around the edge of the layer because clip top is -10 and clip left is -10. The clip right is 110 which is 10 more than our width, and the clip bottom is 60 which is 10 more than the height. 
+
+I put a few extra CSS properties in there too. The background-color (for ie4) and layer-background-color (for Netscape) are used to do just that - color the entire layer in whatever color you wish. This enables us to see our layer as a square and will help to visualize what's going on when we clip it. Usually you don't have to have the height of the layer, but when you're using clipping you should put it in because if you don't IE won't color the extra space below the last element in the layer. 
+
+You can also have a background image in your layer. The CSS for IE is background-image:URL(filename.gif) and for Netscape it's layer-background-image:URL(fildname.gif). But in order for Netscape to display it properly you must have one more CSS property repeat:no. Here's the full CSS for a layer with a background images: 
+
+<DIV ID="blockDiv" STYLE="position:absolute; left:50; top:80; width:100; height:50; clip:rect(-10,110,60,-10); background-image:URL(filename.gif); layer-background-image:URL(filename.gif); repeat:no;}
+
+JavaScript and Clipping
+Once you've clipped the layer can then obtain or change those clip values using JavaScript just like we can the location. 
+
+Clipping in Netscape: 
+
+In Netscape, you can obtain or change any of the clip values individually: 
+
+document.divName.clip.top
+document.divName.clip.right
+document.divName.clip.bottom
+document.divName.clip.left
+
+To show an alert of the top clip value you'd write: 
+
+alert(document.divName.clip.top)
+
+Then to change the top clip value to 50 pixels you'd write: 
+
+document.divName.clip.top = 50
+
+Clipping in Internet Explorer: 
+
+In IE you have to obtain all the clip values at the same time. For example you could pop up an alert showing the clip value: 
+
+alert(divName.style.clip)
+
+That will return a string which represents what the clip values were defined as. Here's an example of what would be returned: 
+
+"rect(0px 50px 100px 0px)"
+
+When you want the change the clip values you cannot just clip one of the edges like you can in Netscape - you must reset all your clip values at the same time: 
+
+divName.style.clip = "rect(0px 100px 50px 0px)"
+
+This makes it a little awkward to clip in ie4. I've come up with a generic function that you can use to check the clip value for both browsers: 
+
+The clipValues() Function
+The clipValues() function can be used to obtain the clip values for each edge of a layer. 
+
+function clipValues(obj,which) {
+	if (ns4) {
+		if (which=="t") return obj.clip.top
+		if (which=="r") return obj.clip.right
+		if (which=="b") return obj.clip.bottom
+		if (which=="l") return obj.clip.left
+	}
+	else if (ie4) {
+		var clipv = obj.clip.split("rect(")[1].split(")")[0].split("px")
+		if (which=="t") return Number(clipv[0])
+		if (which=="r") return Number(clipv[1])
+		if (which=="b") return Number(clipv[2])
+		if (which=="l") return Number(clipv[3])
+	}
+}
+
+What you do is tell it what layer (defined as a pointer variable) and what edge you want to find the clip value for. For example, once we've defined a pointer variable for a "blockDiv" layer, we show an alert of the top clip value by writting: 
+
+alert(clipValues(block,"t"))
+
+The edge that you want to check only has to be the first letter in quotes - "t" (top), "r" (right), "b" (bottom), "l" (left). 
+
+Example: clipping1.html 
+
+Changing the Clip Values
+To change the clip values I've written 2 generic functions that can be used pretty easily. 
+
+The clipTo() Function: 
+
+clipTo() allows you to re-clip the layer to specific values. 
+
+function clipTo(obj,t,r,b,l) {
+	if (ns4) {
+		obj.clip.top = t
+		obj.clip.right = r
+		obj.clip.bottom = b
+		obj.clip.left = l
+	}
+	else if (ie4) obj.clip = "rect("+t+"px "+r+"px "+b+"px "+l+"px)"
+}
+
+To use it you must tell it what layer/object to use, and the clip value for each edge - top, right, bottom, left respectively. 
+
+clipTo(block,0,100,100,0)
+
+The clipBy() Function: 
+
+clipBy() allows you to shift the clip value by a given amount of pixels - it adds or subtracts from the current clip value for the edges: 
+
+function clipBy(obj,t,r,b,l) {
+	if (ns4) {
+		obj.clip.top = clipValues(obj,'t') + t
+		obj.clip.right = clipValues(obj,'r') + r
+		obj.clip.bottom = clipValues(obj,'b') + b
+		obj.clip.left = clipValues(obj,'l') + l
+	}
+	else if (ie4) obj.clip = "rect("+(this.clipValues(obj,'t')+t)+"px "+(this.clipValues(obj,'r')+r)+"px "+Number(this.clipValues(obj,'b')+b)+"px "+Number(this.clipValues(obj,'l')+l)+"px)"
+}
+
+Similar to the clipTo() function you just set how much you want to clip each edge by: 
+
+clipBy(block,0,10,5,0)
+
+This will add 10 pixels to the right and 5 pixels to the bottom. 
+
+Example: clipping2.html - using both clipTo() and clipBy() 
+
+Netscape is probably better to view that example with because of how it deals with the layer's background color - it will always show the layer's color no matter where it's been clipped. But in IE when you clip outside of the layer's boundaries (adding extra borders) you can't see the edges of the layer. 
+
+Animated Clipping (Wiping)
+By putting clipBy() commands into looping functions you can create all those neat wiping effects that I'm sure you've seen before. I'll tell you right now it's probably easiest if you make your own wipe() functions. It is possible to make a generic wipe function but I've included that into the Dynamic Layer Object as an add-on method (read the Wipe Method lesson for more info). The truth is though it's probably easier and much less code if you just write your own little function to wipe your layers. You do it in the same manner as you do slides with. Create a looping function that re-clips the layer: 
+
+function wipe1() {
+	clipBy(block,0,5,0,0)
+	setTimeout("wipe1()",30)
+}
+
+But we have to have a way of stopping the wipe so just do a check to see if the edge has reached the desired value: 
+
+function wipe1() {
+	if (clipValues(block,'r')<200) {
+		clipBy(block,0,5,0,0)
+		setTimeout("wipe1()",30)
+	}
+}
+
+Example: clipping3.html - uses wipes 
+
+Home Next Lesson: Nesting Layers 
+ 
+==================================================================
+  Nesting Layers
+I chose to leave the topic of nesting layers until now because they will effect your scripts in a number of places. 
+
+Nesting refers to when you want to group several layers together into one uniform element. In other words, nested layers are "layers within layers". 
+
+When you do this the child layers will be positioned with respect to their parent layer. Also, if the parent layer is clipped the child layers will appear as if in a window or like a plugin. If the child layers go outside the boundaries (the clip edges) of the parent layer they will become invisible - their visibility property will not change but they will appear as if they are offscreen: 
+
+ 
+
+I've found nesting comes in handy when you get into more complicated positioning. Since all the locations of the child layers are with respect to the parent layer, they are permanently "locked" into position. If you later want to move the location of the parent layer, you don't have to change the locations of the child layers because they will move accordingly. This is also true in sliding animations - all the child layers will slide in unison. 
+
+The JavaScript for nested layers differs quite dramatically between Netscape and Internet Explorer. I'll admit it is a bit of pain to make scripts with nested layers to work properly in both browsers - and that is the reason you don't see nesting used that often on the web. However I've developed some really great techniques to get around these problems so bear with me here as I assure you that nesting is so useful that once you start using it, you'll want to do just about everything that way. 
+
+Stylesheets and Nesting: 
+
+To nest layers all you do is wrap the parent DIV around all the child DIV's: 
+
+<DIV ID="parent1Div">
+
+	<DIV ID="child1Div"></DIV>
+	
+	<DIV ID="child2Div"></DIV>
+	
+</DIV>
+
+I have noticably left out the styles for these DIV tags. This is because Netscape does not let you nest layers if the styles have been defined using the "inline" method like I have been using for this tutorial up until now. Netscape seems to only allow one set of nested layers, if you use any more then it will totally ignore all the styles for all the layers after it. So right off the bat we're going to ALWAYS define the styles using the STYLE tag. All the examples from this point forward will be done this way. 
+
+The CSS is basically the same except it's separated from the DIV tags: 
+
+<STYLE TYPE="text/css">
+<!--
+#parent1Div {position:absolute; left:100; top:80; width:230; height:120; clip:rect(0,230,120,0); background-color:#C0C0C0; layer-background-color:#C0C0C0;}
+#child1Div {position:absolute; left:-20; top:40; width:70; height:70; clip:rect(0,70,70,0); background-color:#FF0000; layer-background-color:#FF0000;}
+#child2Div {position:absolute; left:180; top:70; width:70; height:70; clip:rect(0,70,70,0); background-color:#0000FF; layer-background-color:#0000FF;}
+-->
+</STYLE>
+
+<DIV ID="parent1Div">
+
+	<DIV ID="child1Div"></DIV>
+	
+	<DIV ID="child2Div"></DIV>
+	
+</DIV>
+
+Example: nesting1.html 
+
+I also included the clip regions to define the squares. In most cases where you use nesting you usually have to define the clip values and color the layers. 
+
+JavaScript and Nesting: 
+
+Nesting is where the JavaScript for Netscape and Internet Explorer go in completely opposite directions. In IE, there's no difference whether a layer is nested or not, you access the properties of the layer in the same manner as before: 
+
+childLayer.style.properyName
+
+However in Netscape when you want to access the properties of a nested layer (a child layer) you have to reference it with respect to it's parent layer: 
+
+document.parentLayer.document.childLayer.propertyName
+
+The extra "document" before the layer names are due to the fact Netscape treates layers as separate documents - a child layer is part of the document of it's parent layer. 
+
+It is possible to nest layers an unlimited number of times as well - you just keep wrapping the DIV's over and over again. Say we changed that example set so that child2Div is inside child1Div 
+
+<DIV ID="parent1Div">
+
+	<DIV ID="child1Div">
+	
+	<DIV ID="child2Div"></DIV>
+	
+	</DIV>
+	
+</DIV>
+
+In that case to access the properties of child2Div you'd have to write: 
+
+document.parent1Div.document.child1Div.document.child2Div.propertyName
+
+This concept will have to be incorporated into our pointer variables. Here's the way I'd define the pointer variables for that original example set: 
+
+function init() {
+	if (ns4) {
+		parent1 = document.parent1Div
+		child1 = document.parent1Div.document.child1Div
+		child2 = document.parent1Div.document.child2Div
+	}
+	if (ie4) {
+		parent1 = parent1Div.style
+		child1 = child1Div.style
+		child2 = child2Div.style
+	}
+}
+
+Now onto some more problems... 
+
+CSS Properties Revisited: 
+
+Unfortunately Internet Explorer has a little technicality that poses quite a dilemma that had me baffled for quite a while. When you define the styles for your layers using the STYLE tag, IE does not let you read any the properties initially. So in IE if you were to check the current location of parent1 using: 
+
+alert(parent1.left)
+
+You will find that you don't receive any value. This is true for all the CSS properties (left, top, width, height, visibility etc.). 
+
+Example: nesting2.html - checks the properties of the layers. In Netscape everything works fine but in IE the alerts will show absolutely nothing. 
+
+I am still unclear why Microsoft made IE this way. It only occurs when you use the STYLE tag, and only effects the initial values of properties. Once you start changing the properties in JavaScript you can then access them without problems. 
+
+How does this affect our situation? Well, if we want to assign other properties as we did earlier (xpos and ypos) we need a way to find the current location of the layer in some different way for IE4. It's fortunate that Microsoft included some extra non-standard CSS properties into IE4: 
+
+offsetX 
+offsetY 
+offsetWidth 
+offsetHeight 
+These extra properties are not effected by the IE4 STYLE tag problem so we can use those to obtain the current location of the layer. So here's our new code to add our xpos and ypos properties onto our pointer variables: 
+
+function init() {
+	if (ns4) {
+		parent1 = document.parent1Div
+		parent1.xpos = parent1.left
+		parent1.ypos = parent1.top
+		child1 = document.parent1Div.document.child1Div
+		child1.xpos = child1.left
+		child1.ypos = child1.top
+		child2 = document.parent1Div.document.child2Div
+		child2.xpos = child2.left
+		child2.ypos = child2.top
+	}
+	if (ie4) {
+		parent1 = parent1Div.style
+		parent1.xpos = parent1.offsetX
+		parent1.ypos = parent1.offsetY
+		child1 = child1Div.style
+		child1.xpos = child1.offsetX
+		child1.ypos = child1.offsetY
+		child2 = child2Div.style
+		child2.xpos = child2.offsetX
+		child2.ypos = child2.offsetY
+	}
+}
+
+Click here to view this example. 
+
+Once you've done that you can change the locations of the layers as before. 
+
+Click here to view an example using this function to move the parent and child layers. 
+
+Visibility and Nesting: 
+
+Again, if you use the STYLE tag to define your layers you will not be able to obtain the original visibility value in IE4. But in my experience, obtaining the visibility is very rarely necessary. Usually you already know if a layer is visible or not. And remember that only effects the initial visibility - after you change the visibility in JavaScript you will then be able to find the value. 
+
+Showing and hiding nested layers works pretty much the way you'd expect. Once you've defined the pointer variables you can use the same show/hide functions that I explained in the Showing and Hiding lesson. 
+
+But there is one thing that I should point out. If you don't define the visibility for the child layers, their visibility is "inherited" - it takes on the value of the parent layer's visibility. In that case when if you then hide or show the parent layer, all the child layers do the same. BUT... in Netscape if you either define the visibility for the child layers, or you start changing the visibility in JavaScript you lose the ability to hide or show all the child layers at once. In that case when you hide the parent layer, any child layer that is visible will still show through. 
+
+To avoid this situation, you have to set the visibility back to "inherit" instead of "visible" ("show" for Netscape). So instead of using the showObj() function, you have to manually set the visibility property: 
+
+mychild.visibility = "inherit"
+
+Putting it back to inherit means if the parent is shown, the child layer will also be shown, and if the parent is hidden, it will also be hidden. 
+
+Home Next Lesson: Changing Images (Rollovers) 
+ 
+
+========================================================
+
+  Changing Images
+To create truly dynamic animations and demos you will eventually have to master the art of changing images on command. 
+
+For this lesson, I will dynamically change "imageA" into "imageB":  
+imageA.gif  
+imageB.gif 
+
+
+You must make sure that both images are exactly the same dimensions, otherwize when you change them, the new image will stretch itself to fit in the same area. In situations where you want to change images that are of different sizes you will not be able to use this type of code - you will have to resort to simply hiding and showing separate layers. 
+
+To start off, you have to initially show one of the images - so I decided to have a DIV tag named "imgDiv" with "imageA" inside it: 
+
+<DIV ID="imgDiv">
+<IMG NAME="myImg" SRC="imageA.gif" WIDTH=75 HEIGHT=75 BORDER=0>
+</DIV>
+
+Notice that I assigned a NAME to the image (myImg), this name will be used when changing the image. The name must be totally unique, ie4. don't name the image the same as the DIV that it's inside otherwise it won't work. Usually what I do is append "Img" to the end of it as I append "Div" to the ID of a layer so that no naming conflicts occur. 
+
+Preloading Images
+Before you can change the image, you have to preload the image into the browsers cache. This is the basic code to preload an image: 
+
+imagename = new Image();
+imagename.src = "imagefilename.gif";
+
+What this does is create an image object. Nothing to it really, just now we have an object by which we can access the image at any time. Whenever we need to switch an image it will already be available - you won't have to wait for the image to download because it will be cached. Since we'll be needing both imageA and imageB in the cache I have to have code to preload both of them: 
+
+imageA = new Image();
+imageA.src = "imageA.gif";
+imageB = new Image();
+imageB.src = "imageB.gif";
+
+The preload() Function
+The more images you have to preload, the more you'll dislike having to rewrite the two lines each time. So instead of writing two lines, let's cut that down to one by using a generic preload() function: 
+
+function preload(imgObj,imgSrc) {
+	if (document.images) {
+		eval(imgObj+' = new Image()')
+		eval(imgObj+'.src = "'+imgSrc+'"')
+	}
+}
+
+where: 
+
+imgObj - the name of the object associated with the image 
+imgSrc - the source filename (url) of the image 
+Examples: 
+
+preload('imageA','imageA.gif')
+preload('imageB','imageB.gif')
+
+It's best to preload your images while the page is loading rather than waiting until after the page loads, so I'd recommend always calling the preload function immediately after defining it. 
+
+Changing the Image
+Once you've preloaded the images you can the access and change any image on the page. Changing images that are inside layers works a little differently between Netscape and IE so first I'll show the explicit code for changing each, then I will show a generic function that you can use in any situation. 
+
+If the image is not in a layer, the general way to change an image is this: 
+
+document.images["imageName"].src = imageObject.src
+
+Where imageName is the name you supplied in the IMG tag, and imageObject is the name of the preloaded image object. 
+
+So in my case I could use: 
+
+document.images["myImg"].src = imageB.src
+
+But remember, that is if the image is not in a layer, as soon as it's in a layer things change. 
+
+In Netscape, you have to reference what DIV tag it is in. In my case it's in the imgDiv layer so you have to append document.imgDiv.document in front of the code: 
+
+if (ns4) document.imgDiv.document.images["myImg"].src = imageB.src
+
+The extra "document" between the name of the DIV and the images is necessary because Netscape treats DIV's as a totally separate document. 
+
+But in Internet Explorer you don't have to do this, you just access it as if it weren't in a layer at all: 
+
+if (ie4) document.images["myImg"].src = imageB.src
+
+And there you have it. All you gotta do now is put that code into a separate function and call that function when you want to change it: 
+
+function changeToA() {
+	if (ns4) document.imgDiv.document.images["myImg"].src = imageA.src
+	if (ie4) document.images["myImg"].src = imageA.src
+}
+
+function changeToB() {
+	if (ns4) document.imgDiv.document.images["myImg"].src = imageB.src
+	if (ie4) document.images["myImg"].src = imageB.src
+}
+
+View images1.html for a quick example using these 2 functions. 
+
+The changeImage() Function
+The changeImage() function eliminates the need to have separate functions for each time you want to change an image. You just send it the layer it is in, the name of the image, and the name of the preloaded image object - layer, imgName and imgObj respectively: 
+
+function changeImage(layer,imgName,imgObj) {
+	if (document.layers && layer!=null) eval('document.'+layer+'.document.images["'+imgName+'"].src = '+imgObj+'.src');
+	else document.images[imgName].src = eval(imgObj+".src");
+}
+
+In my situation, I can replace the changeToA() function with simply: 
+
+changeImage('imgDiv','myImg','imageA')
+
+And the same for imageB: 
+
+changeImage('imgDiv','myImg','imageB')
+
+View images2.html for an example using the changeImage() function. 
+
+Notes: 
+
+The changeImage() function can also be used for nested layers, for the layer argument you can insert parentLayer.document.childLayer similarly to how the Dynamic Layer object handles nested layers. 
+
+You can use this function for images thar aren't even in layers, just pass null for the layer argument: 
+
+changeImage(null,'myImg','imageB')
+
+Also, the changeImage() function is backward compatible. If you have a layers page and view it in Netscape 3, the function will still work properly. You can try it out by viewing any of these examples with that browser. No other browser is capable of changing images, so if you wanted to error check for the ability to change images you can use this alteration of the changeImage() function: 
+
+function changeImage(layer,imgName,imgObj) {
+	if (document.images) {
+		if (document.layers && layer!=null) eval('document.'+layer+'.document.images["'+imgName+'"].src = '+imgObj+'.src')
+		else document.images[imgName].src = eval(imgObj+".src")
+	}
+}
+
+Both the changeImage() and preload() functions are part of the DynAPI and are in the images.js file: 
+
+Source Code 
+
+images.js 
+
+Mouse Rollovers
+I figured that the topic of mouse rollovers has kinda been beaten to death so I didn't bother covering it previously. However due to the number of people that asked me about it I'll quickly show how to do it using my changeImage() function. 
+
+The idea behind rollovers is dead simple, when you put the mouse over an image, it changes to a different image, and when you move your mouse out of the image, it changes back. To accomplish this you have to surround the IMG tag with an an anchor/hyperlink and call the changeImage() function using the onMouseOver and onMouseOut events. The onMouseOver and onMouseOut events have to be called from the hyperlink because in Netscape the IMG tag does not have those events built into it. 
+
+Remember though, you have to point the anchor to somewhere before you can use it. Most often rollovers are used in toolbars so you just stick in the page you want it to go to. But in situations where you don't want the hyperlink to go anywhere, you can instead insert javascript:void(null) for the HREF. That is is just a command that does absolutely nothing. The hyperlink will still exist - it just executes a javascript command that does nothing. 
+
+<DIV ID="imgDiv">
+<A HREF="javascript:void(null)"
+onMouseOver="changeImage('imgDiv','myImg','imageB')"
+onMouseOut="changeImage('imgDiv','myImg','imageA')">
+<IMG NAME="myImg" SRC="imageA.gif" WIDTH=75 HEIGHT=75 BORDER=0></A>
+</DIV>
+
+View images3.html for a mouse rollover. 
+
+Home Next Lesson: Layer Writing  
+ 
+
+========================================================
+
+  Layer Writing
+The contents of your layers (the text and HTML) can be re-written like a variable by using a trick. It's well known that Internet Explorer has the ability to change what's inside a DIV tag, but you can do a similar thing in Netscape - and that's to use document.write's to re-write the entire layer. 
+
+Internet Explorer 4.0: 
+
+In Explorer, you can access the HTML inside a DIV tag (or any other tag for that matter) by writing: 
+
+document.all.divID.innerHTML = "your new text"
+
+Where divID is the ID of the DIV tag you want to change. You can also write it another way which I prefer more: 
+
+document.all["divID"].innerHTML = "your new text"
+
+This way it evaluates "divID" as a string which will be more useful for making it cross-browser capable. 
+
+Netscape Navigator 4.0: 
+
+Since each layer is essentially it's own document, it has most of the capabilities that the main document does. Importantly for this lesson you can re-write what's in that document. 
+
+Now to normally re-write a document, you'd use the document.write() command for the text, and the document.close() command to signal that the writing process has finished: 
+
+document.open()
+document.write("my text here")
+document.close()
+
+For a CSS layer, you can use the Netscape Layers() array before using document.write() and document.close(): 
+
+document.layers["divID"].document.open()
+document.layers["divID"].document.write("my text here")
+document.layers["divID"].document.close()
+
+Putting Them Together 
+
+The syntax differences between IE and Netscape lend themselves very nicely to being included in one generic function that can do both at the same time: 
+
+function layerWrite(id,nestref,text) {
+	if (ns4) {
+		var lyr = (nestref)? eval('document.'+nestref+'.document.'+id+'.document') : document.layers[id].document
+		lyr.open()
+		lyr.write(text)
+		lyr.close()
+	}
+	else if (ie4) document.all[id].innerHTML = text
+}
+
+Using this function all you have to do is tell it what layer to change, and what text to change it too: 
+
+layerWrite("mylayer",null,"my text here")
+
+View writing1-function.html for a layer-writing example 
+
+Home Next Lesson: Changing Styles 
+ 
+
+=========================================================
+
+  Changing Styles
+Internet Explorer's revolutionary DOM (Document Object Model) allows almost all the styles of a page element to be both readable and writeable at any time. This makes IE 4.0's Dynamic HTML system fundamentally superior. Most likely in the version 5 of the browsers this will be put on more even ground. However it is possible to mimic IE 4.0's functionality in Netscape 4.0 by using some clever tricks and document.write()-ing new layers with different styles. That is what most of this lesson is based around. 
+
+
+Changing the Background Color of a Layer
+In Netscape to change the background color of a layer you have to set the bgcolor property of it's document object: 
+
+document.layer["layerName"].document.bgColor = "red"
+
+In IE, you set the backgroundColor property of the layer: 
+
+document.all["layerName"].style.backgroundColor = "red"
+
+So a cross-browser function for both would look like this: 
+
+function setBGColor(id,nestref,color) {
+	if (ns4) {
+		var lyr = (nestref)? eval('document.'+nestref+'.document.'+id):document.layers[id]
+		lyr.document.bgColor = color
+	}
+	else if (ie4) {
+		document.all[id].style.backgroundColor = color
+	}
+}
+
+View bgcolor1.html for a background color example. 
+
+Font Colors
+To change the color of the text in a layer in IE is dead simple. Again, you'd just change the CSS color style of the element: 
+
+document.all[id].style.color = "#FF0000"
+
+But to do the same in Netscape will require a document.write() to rewrite the layer with a different style. One way that works pretty good is to use the antient FONT tag: 
+
+<DIV ID="mytext"><FONT COLOR="#FF8000">My Text</FONT></DIV>
+
+And then using the layerWrite() function, rewrite that layer with a new color: 
+
+layerWrite('mytext',null,'<FONT COLOR="#008000">My Text</FONT>')
+
+However, I will pass that over and avoid the FONT tag altogether. The other general way to accomplish the task, is to predefine the styles you're going to use: 
+
+<STYLE TYPE="text/css">
+<!--
+.orange {color:#FF8000;}
+.green {color:#008000;}
+#mytext {position:absolute; left:50; top:100;}
+-->
+</STYLE>
+
+And instead of using the FONT tag, I'll use the SPAN tag: 
+
+<DIV ID="mytext"><SPAN CLASS="orange">My Text</SPAN></DIV>
+
+Then my javascript function rewrites the layer and has the CSS CLASS as an argument: 
+
+function mytextColor(color) {
+	layerWrite('mytext',null,'<SPAN CLASS="'+color+'">My Text</SPAN>')
+}
+
+In my case I can execute the function with either of the following commands: 
+
+mytextColor('orange')
+mytextColor('green')
+
+View fontcolor1.html for this font color example 
+
+Text Rollovers
+The primary use for changing font colors is to create text-based rollovers to replace the need for image-based rollovers. I've successfully created a system for doing this, however it's not a perfect solution, tedius and a little ugly. I'll show the way I first tried to do it, however I'll admit it doesn't work all that good. Still though I believe it's important to show you the thought process involved in fixing such problems. 
+
+Like the font color example, I just manually coded each of the styles I wanted to use. In my case I have 4 layers each containing the link which will change color when you roll over and off them: 
+
+<STYLE TYPE="text/css">
+<!--
+A.red {color:red;}
+A.blue {color:blue;}
+#link0Div {position:absolute; left:50; top:50;}
+#link1Div {position:absolute; left:50; top:70;}
+#link2Div {position:absolute; left:50; top:90;}
+#link3Div {position:absolute; left:50; top:110;}
+-->
+</STYLE>
+
+Since this is just a demo, I've used generic links and names for the layers: 
+
+<DIV ID="link0Div"><A CLASS="blue" HREF="page1.html" onMouseOver="linkOn('link0Div','page1.html','Link 1')">Link 1</A></DIV>
+<DIV ID="link1Div"><A CLASS="blue" HREF="page2.html" onMouseOver="linkOn('link1Div','page2.html','Link 2')">Link 2</A></DIV>
+<DIV ID="link2Div"><A CLASS="blue" HREF="page3.html" onMouseOver="linkOn('link2Div','page3.html','Link 3')">Link 3</A></DIV>
+<DIV ID="link3Div"><A CLASS="blue" HREF="page4.html" onMouseOver="linkOn('link3Div','page4.html','Link 4')">Link 4</A></DIV>
+
+Notice in the links I've only stated the onMouseOver events. This was a little trick I came up with. First it displays the onMouseOver, and when the link changes color, I rewrite the contents of the layer but replace the onMouseOver with an onMouseOut. That way there's never any interuption in the rollover sequence. 
+
+I have a separate JavaScript function for each state of the link: 
+
+function linkOver(id,link,text) {
+	layerWrite(id,null,'<A CLASS="red" HREF="'+link+'" onMouseOut="linkOut(\''+id+'\',\''+link+'\',\''+text+'\')">'+text+'</A>')
+}
+
+function linkOut(id,link,text) {
+	layerWrite(id,null,'<A CLASS="blue" HREF="'+link+'" onMouseOver="linkOver(\''+id+'\',\''+link+'\',\''+text+'\')">'+text+'</A>')
+}
+
+The format of each of my links are the same, so I only needed to make the layerName (id), hyperlink location (link), and the displayed text (text), variables. 
+
+View textrollover1.html for this text rollover example 
+
+However, in Netscape that example doesn't seem to work quite properly. The onMouseOut's don't seem activate if you roll between links too quickly. You need a way of double-checking to see if some of links are still "on". So I decided to change how I set things up. I built a 2-dimensional array to keep track of the layer names, links, text, and a flag (true/fase) to indicate whether link is highlighted or not highlighted respectively. 
+
+link = new Array()
+link[0] = new Array('link0Div','link1.html','Link 1',false)
+link[1] = new Array('link1Div','link2.html','Link 2',false)
+link[2] = new Array('link2Div','link3.html','Link 3',false)
+link[3] = new Array('link3Div','link4.html','Link 4',false)
+
+Now we have a way of accessing any of the layer/links by numbers (0,1,2,3). To access any one of the link values I just write link[x][0] for the layer name, link[x][1] for the hyperlink etc. where x is the number of the link. 
+
+The linkOver() and linkOut() functions have to be updated to account for these changes. In those functions I added a line to set the flag value of the link (the link[x][3]) - true meaning "on" and false meaning "off". It was when onMouseOut occured that Netscape had the problems with. So to correct it, I do a little check the next time you do an onMouseOver (and hence call the linkOn() function) it goes through a loop to check the value of the flag of each link, if it's true it automatically calls the linkOut() function to force the link off. 
+
+function linkOver(num) {
+	if (ns4) {
+		for (var i=0;i<link.length;i++) {
+			if (link[i][3]==true) linkOut(i)
+		}
+	}
+	link[num][3] = true
+	layerWrite(link[num][0],null,'<A CLASS="red" HREF="'+link[num][1]+'" onMouseOut="linkOut('+num+')">'+link[num][2]+'</A>')
+}
+
+function linkOut(num) {
+	link[num][3] = true
+	layerWrite(link[num][0],null,'<A CLASS="blue" HREF="'+link[num][1]+'" onMouseOver="linkOver('+num+')">'+link[num][2]+'</A>')
+}
+
+The HTML for the links also have to be updated, the linkOver() and linkOut() functions only need to pass the index of the link now. 
+
+<DIV ID="link0Div"><A CLASS="blue" HREF="page1.html" onMouseOver="linkOver(0)">Link 1</A></DIV>
+<DIV ID="link1Div"><A CLASS="blue" HREF="page2.html" onMouseOver="linkOver(1)">Link 2</A></DIV>
+<DIV ID="link2Div"><A CLASS="blue" HREF="page3.html" onMouseOver="linkOver(2)">Link 3</A></DIV>
+<DIV ID="link3Div"><A CLASS="blue" HREF="page4.html" onMouseOver="linkOver(3)">Link 4</A></DIV>
+
+And there we have it, a working text rollover. 
+
+View textrollover2.html to view this text rollover example. 
+
+Of course, this technique can be used to change more than just the color, you can change other properties of the text by just defining your CSS values differently. The following makes the underline disappear, and when the link is on it makes the text in italics: 
+
+A.blue {color:blue; text-decoration:none;}
+A.red {color:red; text-decoration:none; font-style:italic;}
+
+View textrollover3.html') for a text rollover with italics. 
+
+Font Scaling
+Font scaling (making text grow or shrink) is technically possible with Dynamic HTML, however the truth is it by no means is the best technology to accomplish it with. Something like Flash is much better and faster, and with the upcoming Flash 3.0 vector graphics/animation format it looks like it'll definately be the choice of developers in the next version of the browsers. But until that time, you can certainly play around and accomplish something similar with just plain old JavaScript and CSS. 
+
+The concept of font scaling is exactly the same as the technique for changing colors. You first pre-define the CSS styles you're going to use: 
+
+.s10 {font-size:10pt;}
+.s15 {font-size:15pt;}
+.s20 {font-size:20pt;}
+.s26 {font-size:26pt;}
+
+And have a layer that first displays one of them: 
+
+<DIV ID="welcomeDiv"><SPAN CLASS="s10">Welcome</SPAN></DIV>
+
+Then is just a matter of writing a function that re-writes that layer pointing to different style: 
+
+function fontScale(size) {
+	layerWrite('welcomeDiv',null,'<SPAN CLASS="s'+size+'">Welcome</SPAN>')
+}
+
+For the following example I just have simple links that make the text bigger or smaller: 
+
+<A HREF="javascript:fontScale(10)">10 pt</A>
+<BR><A HREF="javascript:fontScale(15)">15 pt</A>
+<BR><A HREF="javascript:fontScale(20)">20 pt</A>
+<BR><A HREF="javascript:fontScale(26)">26 pt</A>
+
+View fontscaling1.html for this font scaling example. 
+
+But of course that's not very fun. We can of course animate our font scaling so that the text appears to grow, or shrink if we want. To do that we'll need a lot of styles defined - one for each step in the sequence. It's easiest to do that in a loop to write out each style. I decided to have a font-scaling which goes from 10 to 50 points: 
+
+var sizestr = '<STYLE TYPE="text/css">\n'
+for (var i=10;i<=50;i++) sizestr += '.s'+i+' {font-size:'+i+'pt;}\n'
+sizestr += '</STYLE>'
+document.writeln(sizestr)
+
+I kept the function for cycling through the styles pretty simple. I just have a variable size which keeps track of which style is currently shown, and increment that by one each iteration. The if statement (if (size<50)) will determine when to end the loop. 
+
+var size = 10
+function scaleWelcome() {
+	if (size<50) {
+		size++
+		layerWrite('welcomeDiv',null,'Welcome')
+		setTimeout('scaleWelcome()',30)
+	}
+}
+
+Then just activate the function and it'll make the text grow incrementally larger. 
+
+View fontscaling2.html for an animated font-scaling. 
+
+That example has the text stuck to the left - as the text grows it doesn't re-adjust to the new size and ends up looking a little awkward. To solve that problem you can center the text by using either <DIV ALIGN="CENTER"> or the old <CENTER> tag. Although when you do this it's probably best to have a container layer with which you control the position with, then your text layer resides within it and centered. In the following example I've shown how to set that up. 
+
+View fontscaling3.html for a "centered" font-scaling. 
+
+Home Next Lesson: External Source Files 
+ 
+
+=========================================================
+
+  External Source Files
+The content shown in your layer can be called from an external file. However, the way you do it in Netscape is totally different than for IE so you will have to create totally browser specific code to do it. 
+
+There are 2 ways to accomplish this task: 
+
+Technique 1: Using LAYER and IFRAME
+The CSS 1 standard does not have the ability to have it's contents to be initially called from an external file. But both browsers have a way that you can accomplish the same thing without using CSS at all. 
+
+Netscape's antiquated LAYER tag has an attribute (SRC) by which you can call an external file to be it's contents. Here's an example: 
+
+<LAYER NAME="textLayer" SRC="text.html" LEFT=50 TOP=50 WIDTH=300 HEIGHT=200 CLIP="0,0,300,200"></LAYER>
+
+Layers work exactly the same way that CSS works, except the styles are made into attributes of the Layer tag. 
+
+However IE does not recognize the LAYER tag because it is a proprietory tag that Netscape introduced. When it reads the layer tag it will ignore it. But IE has it's own way of calling external files using the IFRAME tag. IFRAME, an inline frame, works just like normal frames except it's embedded into the page like a plug-in does. You can then position the IFRAME using CSS to put it anywhere on the page thereby mimicing what the LAYER tag does. 
+
+<STYLE TYPE="text/css">
+#textDiv {position:absolute; left:50; top:50; width:300; height;200; clip:rect(0,300,200,0);}
+</STYLE>
+
+<DIV ID="textDiv">
+<IFRAME SRC="text.html" NAME="textFrame" SCROLLING="No" WIDTH="300" HEIGHT="200" MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER="No"></IFRAME>
+</DIV>
+
+By combining these 2 techniques you can have a page which loads the contents automatically. 
+
+Example: source1-layeriframe.html [source] - for a LAYER-IFRAME example. The external file is source1-layeriframe-text.html. 
+
+Changing the Source File 
+
+In Netscape, to change the source for the Layer you change the .src property: 
+
+document.layerName.src = "newfile.html"
+
+In IE, you change the src of the frame as if it were a normal frame: 
+
+parent.frameName.document.location = "newfile.html"
+
+For the last example we can make one unified function that will do both the Netcape and IE code at once: 
+
+function load(page) {
+	if (ns4) document.textLayer.src = page
+	else if (ie4) parent.textFrame.document.location = page
+}
+
+Using this function we can change the page by writing: 
+
+load("newpage.html")
+
+Example: source2-change.html [source] - allows you to swap the contents 
+external files: source2-change-text1.html and source2-change-text2.html 
+
+Advantages: 
+
+the contents for the layer/div will immediately be available 
+the content pages can contain other JavaScript functions as long as you put in a few extra commands once in a while 
+For example, to call a function in the main document you have to use parent.functionName() instead of just functionName(). This is because remember in IE, the contents are in another frame even though it doesn't look like it. 
+
+Disadvantages: 
+
+the IFRAME has the same disadvantages as using normal frames, they are totally opaque and you cannot lay other layers on top of them 
+for the same reason the IFRAME-layer cannot be transparent, and cannot be nicely manipulated (slid, clipped, etc.) because it causes flickering when IE tries to redraw it. 
+Hopefully the next version of the browsers they'll include a new CSS property like source:URL(filename.html) which will solve these problems. But for a neat hack to get around using IFRAME in the normal manner you can use technique 2... 
+
+Technique 2: Using IFRAME as a Buffer
+With IE's ability to replace content by using it's innerHTML property, you can transfer the content from an IFRAME to a regular DIV thereby avoiding many of the display problems that IFRAME has. The only real disadvantage in using this technique is that the HTML you see will not be the real HTML - it will be a "virtual" layer. This makes your content pages less flexible. Doing JavaScript in the content pages will be very complex - I'm not even going to go into it. I'd only recommend using this technique if your content pages are mostly static. 
+
+First off we need an IFRAME that will be the "buffer". You could do it in this manner: 
+
+<SCRIPT LANGUAGE="JavaScript">
+if (ie4) document.write('<IFRAME STYLE="display:none" NAME="bufferFrame"></IFRAME>')
+</SCRIPT>
+
+Then you place one DIV which the content file will be loaded into: 
+
+<DIV ID="contents"></DIV>
+
+Now for the Javascript. Here's a function to accomplish the task: 
+
+function loadSource(id,nestref,url) {
+	if (ns4) {
+		var lyr = (nestref)? eval('document.'+nestref+'.document.'+id) : document.layers[id]
+		lyr.load(url,lyr.clip.width)
+	}
+	else if (ie4) {
+		parent.bufferFrame.document.location = url
+	}
+}
+function loadSourceFinish(id) {
+	if (ie4) document.all[id].innerHTML = parent.bufferFrame.document.body.innerHTML
+}
+
+The main part of the function will load the DIV directly with the external file in Netscape. But in IE will it will load the buffer frame named bufferFrame with the external file. The next obstacle is that you need a way to determine when the external file is completely loaded, so that you can then transfer the contenst of the frame to the DIV. There is hack that will work in IE (see Inside DHTML), but it won't work in Netscape. I forsee that it will be necessary for this to be done in Netscape so I will resort to using BODY onLoad in the external file. You merely call the loadSourceFinish() function and pass what DIV needs to be updated: 
+
+<BODY onLoad="parent.loadSourceFinish(id)">
+
+This is done in the external file. This is the external file I used in the example below. 
+
+<HTML>
+<HEAD>
+<TITLE>Content Page</TITLE>
+</HEAD>
+
+<BODY onLoad="parent.loadSourceFinish('contents')">
+
+This is my text. This is my text. This is my text. This is my text. 
+This is my text. This is my text. This is my text. This is my text. 
+
+</BODY>
+</HTML>
+
+Example: source3-buffer.html [source] - iframe buffer 
+
+The DynLayer Load Method
+The DynLayer Object implements it's own load method which is an alernative to using the above function. 
+
+Home Next Lesson: Working With Forms 
+ 
+
+=========================================================
+
+  Working With Forms
+For Netscape, forms and layers don't work so well together. Again since Netsape layers are essentially a whole different document, a form that crosses over several layers cannot be accomplished. For example, the following will work fine in IE, but in Netscape it won't work: 
+
+<FORM>
+
+<DIV ID="layer1">
+<INPUT TYPE="Text" NAME="field1" SIZE="10">
+</DIV>
+
+<DIV ID="layer2">
+<INPUT TYPE="Text" NAME="field2" SIZE="10">
+</DIV>
+
+</FORM>
+
+The solution is that you have put a form into each layer: 
+
+<DIV ID="layer1">
+<FORM NAME="form1">
+<INPUT TYPE="Text" NAME="field1" SIZE="10">
+</FORM>
+</DIV>
+
+<DIV ID="layer2">
+<FORM NAME="form2">
+<INPUT TYPE="Text" NAME="field2" SIZE="10">
+</FORM>
+</DIV>
+
+But this poses a problem when you want to capture the values of the fields in JavaScript or if you want to send the information to a CGI program. What you end up having to do is "glue" the data together using JavaScript and then doing whatever want with that information. 
+
+Remember in Netscape you have to reference the form with whatever layer it's within: 
+
+document.layerName.document.formName.fieldName.value
+
+But in IE you just reference it as if it weren't in a layer: 
+
+document.formName.fieldName.value
+
+Using this idea you can create some code that will extract the data from each field: 
+
+if (ns4) {
+	field1value = document.layer1.document.form1.field1.value
+	field2value = document.layer2.document.form2.field2.value
+}
+if (ie4) {
+	field1value = document.form1.field1.value
+	field2value = document.form2.field2.value
+}
+
+But what if you want to then send that information to a CGI program? CGI's can only accept values from one form. So what you can do is create yet another form with hidden fields: 
+
+<FORM NAME="mainForm" ACTION="/cgi-bin/inputform.pl" METHOD="POST">
+<INPUT TYPE="Hidden" NAME="field1">
+<INPUT TYPE="Hidden" NAME="field2">
+</FORM>
+
+<DIV ID="layer1">
+<FORM NAME="form1">
+<INPUT TYPE="Text" NAME="field1" SIZE="10">
+</FORM>
+</DIV>
+
+<DIV ID="layer2">
+<FORM NAME="form2">
+<INPUT TYPE="Text" NAME="field2" SIZE="10">
+</FORM>
+</DIV>
+
+The hidden fields in mainForm can be assigned the values from the other forms. Then you can send that form to a CGI to interperet the data: 
+
+function sendForm() {
+	if (ns4) {
+		document.mainForm.field1.value = document.layer1.document.form1.field1.value
+		document.mainForm.field2.value = document.layer2.document.form2.field2.value
+	}
+	if (ie4) {
+		document.mainForm.field1.value = document.form1.field1.value
+		document.mainForm.field2.value = document.form2.field2.value
+	}
+	document.mainForm.submit()
+}
+
+I've made a simple demo that should show how this can be used in a real application. It's a simple 6-element form that could be used in a feedback form of some sort. I've also created a Perl script that simply returns back what was sent to it in a generated HTML page. 
+
+forms1.html - has each element split up into different forms and a function to glue the data together and send it to the Perl script. This was just to make sure my JavaScript and Perl scripts were working properly. 
+
+forms2.html - has each form in different layers and then allows you to flip between them by simply hiding and showing the appropriate layers. Then when you get to the last field you can submit the form. 
+
+forms-dhtml.txt source code for the perl script I used. 
+
+Home Next Lesson: Page Templates 
+ 
+
+=========================================================
+
+  Page Templates
+Using JavaScript/CSS page templates makes it easier to create an entire web site that has consistent features that are "site-wide" such as toolbars and default styles. 
+
+By linking each of your pages to external stylesheets (.css files) and using external JavaScript files (.js files) to write out your layers you can assemble your pages on the fly and have a central location for changing parts of your pages throughout your website. This is similar to what Server-Side Includes (SSI) do but when you use JavaScript files you have a lot more control over what gets written to the browser. For example you can determine what browser is being used and change the look of the page accordingly, or you can do other things like center all the layers (as in the Generating Layers lesson). 
+
+Also page templates, if used properly, can render the use of frames almost totally obsolete. When you use frames in unison with layers, you are limited in that your layers cannot cross over the frame borders. But by dynamically writing layers throughout your site you can do anything that you can in a single layers page. 
+
+Your CSS can be linked from one source file by using the LINK tag: 
+
+<LINK REL=STYLESHEET HREF="filename.css" TYPE="text/css">
+
+That file can contain any stylesheet information that needs to be implemented across any number of html files (each of which must contain that LINK tag). 
+
+And similarly you can assign the source file for your JavaScript by using the SRC attribute: 
+
+<SCRIPT LANGUAGE="JavaScript" SRC="filename.js"></SCRIPT>
+
+When you're developing page templates, I'd suggest you develop them as normal (all in one file) and then once you've got everything working, cut and paste the pieces into separate files. The following page is setup so that it's easy to extract the styles and the JavaScript which writes out the standard links for the page: 
+
+<HTML>
+<HEAD>
+<TITLE>The Dynamic Duo - Page Templates Demo 1</TITLE>
+<STYLE TYPE="text/css">
+<!--
+#title {position:absolute; left:100; top:10; width:300; font-size:18pt; font-weight:bold;}
+#links {position:absolute; left:10; top:40; width:100; font-size:12pt;}
+#content {position:absolute; left:100; top:55; width:400; font-size:10pt;}
+
+BODY {font-family:"Arial";}
+-->
+</STYLE>
+</HEAD>
+
+<BODY>
+
+<DIV ID="title">This is the Title</DIV>
+
+<SCRIPT LANGUAGE="JavaScript">
+document.writeln('<DIV ID="links">');
+document.writeln('<B>Links:</B>');
+document.writeln('<BR><A HREF="#">Page 1</A>');
+document.writeln('<BR><A HREF="#">Page 2</A>');
+document.writeln('<BR><A HREF="#">Page 3</A>');
+document.writeln('</DIV>');
+</SCRIPT>
+
+<DIV ID="content">
+<P>This is the body content....
+</DIV>
+
+</BODY>
+</HTML>
+
+Example: templates1.html [source] 
+
+Once that works, you can then make the CSS and JavaScript separate files that you link to: 
+
+<HTML>
+<HEAD>
+<TITLE>The Dynamic Duo - Page Templates Demo 2 [External Files]</TITLE>
+<LINK REL=STYLESHEET HREF="mystyles.css" TYPE="text/css">
+</HEAD>
+
+<BODY>
+
+<DIV ID="title">This is the Title</DIV>
+
+<SCRIPT LANGUAGE="JavaScript" SRC="mylinks.js"></SCRIPT>
+
+<DIV ID="content">
+<P>This is the body content...
+</DIV>
+
+</BODY>
+</HTML>
+
+Example: templates2.html [source] 
+
+An easy concept to understand. However your pages will certainly be more complicated than this, so be carefull! 
+
+Home Next Lesson: Creating New Objects 
+ 
+=========================================================
+

@@ -1,0 +1,525 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN"> 
+
+
+
+ 
+
+
+
+<HTML>
+
+
+
+ 
+
+
+
+<HEAD>
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1"> 
+
+
+
+<META NAME="GENERATOR" CONTENT="Visual Page 2.0 for Windows"> 
+
+
+
+<TITLE>9.2) String Immutability</TITLE>
+
+
+
+<STYLE TYPE="text/css">
+
+
+
+<!--
+
+
+
+
+
+
+
+-->
+
+
+
+</STYLE>
+
+
+
+<link rel="stylesheet" href="tutor.css"></HEAD>
+
+
+
+ 
+
+
+
+<BODY bgcolor="#FFFFFF">
+
+<table width=95% border=0 cellpadding=2 cellspacing=0 style="page-break-before: always">
+
+  <col width=147*> <col width=109*> 
+
+  <tr> 
+
+    <td width=57% height=104> 
+
+      <p><a href= "introj2.htm" ><img src= "btnIndex.jpg"  name="Graphic1" alt="Return to Tutorial Index" align=BOTTOM width=55 height=39 border=0></a><a href= "introj2.htm" ><br>
+
+        <br>
+
+        </a><a href= "index.htm" ><img src= "btnHome.jpg"  name="Graphic2" alt="Back to the home page of this site" align=BOTTOM width=55 height=39 border=0></a> 
+
+      </p>
+
+    </td>
+
+    <td width=43%> 
+
+      <p align=RIGHT><img src= "hat.gif"  name="Graphic3" alt="morterboard" align=BOTTOM width=118 height=113 border=0></p>
+
+    </td>
+
+  </tr>
+
+  <tr> 
+
+    <td width=57% height=11> 
+
+      <h1 align=LEFT>Java2 Certification <br>
+
+        Tutorial </h1>
+
+    </td>
+
+    <td width=43% bgcolor="#ff9900"> 
+
+      <p>&nbsp;</p>
+
+    </td>
+
+  </tr>
+
+</table>
+
+<p> You can discuss this topic with others at <a href= "http://www.jchq.net/discus" >http://www.jchq.net/discus</a><br>
+
+  Read reviews and buy a Java Certification book at <a href= "http://www.jchq.net/bookreviews/jcertbooks.htm" >http://www.jchq.net/bookreviews/jcertbooks.htm</a> 
+
+  <br>
+
+</p>
+
+<hr size=5 noshade>
+
+<H2>9) <B><FONT FACE="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">The java.lang package</FONT></B></H2>
+
+
+
+<H3>Objective 2)</H3>
+
+
+
+<H3>Note on this objective</H3>
+
+<p><font face="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">Descibe the significance 
+
+  of the immutability of String objects</font></p>
+
+<P>The theory of the immutability of the String class says that once created, a
+
+
+
+string can never be changed. Real life experience with Java programming implies
+
+
+
+that this is not true.&nbsp;<BR>
+
+
+
+<BR>
+
+
+
+Take the following code</P>
+
+
+
+<PRE>public class ImString{
+public static void main(String argv[]){
+        String s1 = new String(&quot;Hello&quot;); 
+        String s2 = new String(&quot;There&quot;); 
+        System.out.println(s1); 
+        s1=s2;
+        System.out.println(s1);
+        }
+}
+</PRE>
+
+
+
+<P>If Strings cannot be changed then <I>s1</I> should still print out Hello,
+
+
+
+but if you try this snippet you will find that the second output is the string
+
+
+
+&quot;There&quot;. What gives?<BR>
+
+
+
+<BR>
+
+
+
+The immutability really refers to what the String reference points to. When
+
+
+
+<I>s2</I> is assigned to <I>s1</I> in the example, the String containing
+
+
+
+&quot;Hello&quot; in the String pool is no longer referenced and <I>s1</I> now
+
+
+
+points to the same string as <I>s2</I>. The fact that the &quot;Hello&quot;
+
+
+
+string has not actually been modified is fairly theorectical as you can no
+
+
+
+longer &quot;get at it&quot;.</P>
+
+
+
+<P><BR>
+
+  The objective asks you to recognise the implications of the immutability of 
+
+  strings, and the main one seems to be that if you want to chop and change the 
+
+  contents of &quot;strings&quot; the StringBuffer class comes with more built 
+
+  in methods for the purpose.<BR>
+
+  <BR>
+
+  Because concatenating string causes a new string to be instantiated &quot;behind 
+
+  the scenes&quot;, there can be a performance overhead if you are manipulating 
+
+  large numbers of strings, such as reading in a large text file. Generally String 
+
+  immutability doesn't affect every day programming, but it will be questioned 
+
+  on the exam. Remember whatever round about way the question asks it, once created 
+
+  a String itself cannot be changed even if the reference to it is changed to 
+
+  point to some other String. This topic is linked to the way Strings are created 
+
+  in a &quot;String pool&quot;, allowing identical strings to be re-used. This 
+
+  is covered in topic 5.2 as part of how the=operator and <I>equals</I> method 
+
+  acts when used with strings. Although neither the Java2 nor Java 1.1 objectives 
+
+  specifically mention it I am fairly confident that some questions require a 
+
+  knowledge of the StringBuffer class.</P>
+
+
+
+<table width="100%" border="0">
+
+  <tr> 
+
+    <td width="33%"><img src= "Quiz.gif"  width="99" height="101"> </td>
+
+    <td width="67%">&nbsp;</td>
+
+  </tr>
+
+</table>
+
+<hr>
+
+<p>&nbsp;</p>
+
+<h1>Questions</h1>
+
+<h4><B>Question 1)</B></h4>
+
+
+
+<P> <BR>
+
+
+
+  You have created two strings containing names. Thus<BR>
+
+
+
+  <BR>
+
+
+
+  String fname=&quot;John&quot;;<BR>
+
+
+
+  String lname=&quot;String&quot;<BR>
+
+
+
+  <BR>
+
+
+
+  How can you go about changing these strings to take new values within the same 
+
+
+
+  block of code?<BR>
+
+
+
+  <BR>
+
+
+
+  1)<BR>
+
+
+
+  fname=&quot;Fred&quot;;<BR>
+
+
+
+  lname=&quot;Jones&quot;;<BR>
+
+
+
+  2)<BR>
+
+
+
+  String fname=new String(&quot;Fred&quot;);<BR>
+
+
+
+  String lname=new String(&quot;Jones&quot;);<BR>
+
+
+
+  <BR>
+
+
+
+  3)<BR>
+
+
+
+  StringBuffer fname=new StringBuffer(fname);<BR>
+
+
+
+  StringBuffer lname=new StringBuffer(lname);<BR>
+
+
+
+  <BR>
+
+
+
+  <BR>
+
+
+
+  4) None of the above</P>
+
+
+
+<P> </P>
+
+
+
+<P> </P>
+
+
+
+<HR ALIGN="CENTER">
+
+
+
+<H4><B>Question 2)</B></H4>
+
+
+
+<P>You are creating a program to read in an 8MB text file. Each new line read
+
+
+
+adds to a String object but you are finding the performance sadly lacking.
+
+
+
+Which is the most likely explanation?<BR>
+
+
+
+<BR>
+
+
+
+1) Java I/O is designed around a lowest common denominator and is inherently
+
+
+
+slow<BR>
+
+
+
+2) The String class is unsuitable for I/O operations, a character array would
+
+
+
+be more suitable<BR>
+
+
+
+3) Because strings are immutable a new String is created with each read,
+
+
+
+changing to a StringBuffer may increase performance<BR>
+
+
+
+4) None of the above</P>
+
+
+
+<P> </P>
+
+
+
+<P> </P>
+
+
+
+<HR ALIGN="CENTER">
+
+
+
+<H1>Answers</H1>
+
+
+
+<H4><B>Answer 1)</B></H4>
+
+
+
+<P>4) None of the above<BR>
+
+  Once created a String is read only and cannot be changed Each one of the options 
+
+  actually creates a new string &quot;behind the scenes&quot; and does not change 
+
+  the original. If that seems to go against your experience and understanding 
+
+  read through information on the immuatbility of strings</P>
+
+
+
+<H4></H4>
+
+
+
+<P> </P>
+
+
+
+<P> </P>
+
+
+
+<HR ALIGN="CENTER">
+
+
+
+<h4><B>Answer 2)</B></h4>
+
+
+
+<P>3) Because strings are immutable a new String is created with each read, changing 
+
+  to a StringBuffer may increase performance<BR>
+
+  <BR>
+
+  I hope none of you C programmers suggested a character array? </P>
+
+<h3>Other sources on this topc</h3>
+
+<p><b>This topic is covered in the Sun Tutorial at </b><br>
+
+  <a
+
+
+
+ href= "http://java.sun.com/docs/books/tutorial/essential/strings/stringsAndJavac.html" >http://java.sun.com/docs/books/tutorial/essential/strings/stringsAndJavac.html<br>
+
+  </a>(doesn't go into much detail)</p>
+
+<p><b>Jyothi Krishnan on this topic at<br>
+
+  </b><a
+
+
+
+href= "http://www.geocities.com/SiliconValley/Network/3693/obj_sec9.html#obj29" >http://www.geocities.com/SiliconValley/Network/3693/obj_sec9.html#obj29</a> 
+
+</p>
+
+
+
+<P>Last updated<BR>
+
+  16 Sep 2000<BR>
+
+
+
+  copyright &copy; Marcus Green 2000 <br>
+
+  most recent version at www.jchq.net</P>
+
+
+
+<P>&nbsp;</P>
+
+
+
+</BODY>
+
+
+
+</HTML>
+
+
+
+ 
+
+
+

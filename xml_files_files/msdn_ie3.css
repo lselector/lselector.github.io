@@ -1,0 +1,66 @@
+BODY {
+	FONT: 85% "Verdana"
+}
+H1 {
+	FONT-FAMILY: verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 85%
+}
+H2 {
+	FONT-FAMILY: verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 85%
+}
+H3 {
+	FONT-FAMILY: verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 85%
+}
+H4 {
+	FONT-FAMILY: verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 85%
+}
+P {
+	COLOR: black; FONT: 85% "Verdana"
+}
+CODE {
+	FONT: 100% "courier new"
+}
+PRE {
+	FONT: 100% "courier new"
+}
+PRE CODE {
+	FONT-SIZE: 110%
+}
+TD {
+	COLOR: black; FONT-SIZE: 85%
+}
+A:link {
+	COLOR: #0000ff
+}
+A:visited {
+	COLOR: #660066
+}
+.label {
+	FONT-WEIGHT: bold
+}
+.tl {
+	MARGIN-BOTTOM: 6pt
+}
+.atl {
+	MARGIN-BOTTOM: 0pt; MARGIN-LEFT: 0.25in
+}
+.cfe {
+	FONT-WEIGHT: bold
+}
+.mini {
+	FONT-SIZE: 65%
+}
+LI {
+	COLOR: #000000
+}
+LI UL {
+	MARGIN-BOTTOM: 9pt; MARGIN-TOP: 9pt
+}
+LI OL {
+	MARGIN-BOTTOM: 9pt; MARGIN-TOP: 9pt
+}
+.dt {
+	MARGIN-BOTTOM: -9pt
+}
+.indent {
+	MARGIN-LEFT: 0.25in
+}

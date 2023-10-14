@@ -1,0 +1,2158 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>sql_sybase</title>
+<!--
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+<style type="text/css">
+<!--
+.style1 {color: #3333FF}
+.style2 {color: #FF0000}
+-->
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> SQL_sybase</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<b><font color="#CC0000">Sybase SQL Server 11</font></b>
+<p><b><font color="#CC0000">On this page:</font></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 WIDTH="95%" NOSAVE >
+<tr NOSAVE>
+<td>&nbsp;</td>
+
+<td ALIGN=LEFT VALIGN=TOP NOWRAP NOSAVE><font color="#6699CC">*
+</font><b><a href="#intro">intro</a></b>
+<br><font color="#6699CC">*
+</font><b><a href="#freq_used_comands">freq.used
+commands</a></b>
+<br><font color="#6699CC">*
+</font><b><a href="#select">select</a></b>
+<br><font color="#6699CC">*
+</font><b><a href="#join">join</a></b></td>
+
+<td ALIGN=LEFT VALIGN=TOP NOWRAP><font color="#6699CC">*
+</font><b><a href="#select_into_insert_update_delete">select
+into, insert, update, delete</a></b>
+<br><font color="#6699CC">*
+</font><b><a href="#datatypes">datatypes</a></b>
+<br><font color="#6699CC">*
+</font><b><a href="#views_and_temp_tables">views
+and temp.values</a></b>
+<br><font color="#6699CC">*
+</font><b><a href="#rules_and_defaults">rules
+and defaults</a></b></td>
+
+<td ALIGN=LEFT VALIGN=TOP NOWRAP><font color="#6699CC">*
+</font><b><a href="#indexes_and_constraints">indexes
+and constraints</a></b>
+<br><font color="#6699CC">*
+</font><b><a href="#t-sql_constructs">t-sql
+constructs</a></b>
+<br><font color="#6699CC">*
+</font><b><a href="#triggers">triggers</a></b>
+<br><font color="#6699CC">*
+</font><b><a href="#stored_procedures">stored
+procedures</a></b>
+<br><font color="#6699CC">*
+</font><b><a href="#transactions">transactions</a></b></td>
+
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">*
+</font><b><a href="#sys_tables">sys.tables</a></b>
+<br><font color="#6699CC">*
+</font><b><a href="#cursor">cursor</a></b>
+<br><font color="#6699CC">*
+</font><b><a href="#script_to_copy_data_between_databases">script
+to copy data</a></b>
+<br><font color="#6699CC">*
+</font><b><a href="#misc">misc</a></b>
+<br><font color="#6699CC">*
+</font><b><a href="#SQL_tuning">SQL tuning</a></b></td>
+</tr>
+</table>
+<a NAME="intro"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Introduction</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Sybase SQL Server 11
+<br>&nbsp;- Has a Single-Process, Multi-threaded Database Engine
+<br>&nbsp;- Includes a query optimizer
+<br>Standard SQL:
+<br>&nbsp;&nbsp;&nbsp; * DDL (Data Definition language),
+<br>&nbsp;&nbsp;&nbsp; * DML (Data Modification langiage),
+<br>&nbsp;&nbsp;&nbsp; * DCL (Data Control Language)
+<br>Transact-SQL = SQL + flow-control (if and while), local variables,
+etc..
+<p>4 main verbs:&nbsp; <b>select, insert, update, delete</b>.
+<p>But even before these words - here are some often used commands (working
+with Sybase:
+<p><a NAME="freq_used_comands"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>FUC - Frequently Used Commands</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#3333FF">isql -Sserver -Uuser -Ppassword</font>
+<br><font color="#3333FF">1> use some_database</font>
+<br><font color="#3333FF">1> select db_name()</font>
+<br><font color="#3333FF">1> select @@servername</font>
+<br><font color="#3333FF">1> select user_name()</font>
+<br><font color="#3333FF">1> sp_helpdb</font>
+<br><font color="#3333FF">1> sp_helpdb dbname</font>
+<br><font color="#3333FF">1> sp_help</font>
+<br><font color="#3333FF">1> sp_help tablename</font>
+<br><font color="#3333FF">1> set rowcount 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- to limit number of rows</font>
+<br><font color="#3333FF">1> set rowcount 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- remove rowcount limitation</font>
+<br><font color="#3333FF">1> select * from sometable where 1=2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- to see column names</font>
+<br><font color="#3333FF">1> vi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- to edit command</font>
+<br><font color="#3333FF">1>select name from sysobjects where type = "V"</font>
+<br><font color="#3333FF">1> quit</font>
+<p><b><u><font color="#000000">Here are useful help commands:</font></u></b>
+<br><font color="#3333FF">select name from sysobjects</font>
+<br><font color="#3333FF">where name like "sp_help%"</font>
+<p><font color="#3333FF">name</font>
+<br><font color="#3333FF">1 sp_help</font>
+<br><font color="#3333FF">2 sp_help_rep_agent</font>
+<br><font color="#3333FF">3 sp_help_resource_limit</font>
+<br><font color="#3333FF">4 sp_helpartition</font>
+<br><font color="#3333FF">5 sp_helpcache</font>
+<br><font color="#3333FF">6 sp_helpconfig</font>
+<br><font color="#3333FF">7 sp_helpconstraint</font>
+<br><font color="#3333FF">8 sp_helpdb</font>
+<br><font color="#3333FF">9 sp_helpdevice</font>
+<br><font color="#3333FF">10 sp_helpextendedproc</font>
+<br><font color="#3333FF">11 sp_helpexternlogin</font>
+<br><font color="#3333FF">12 sp_helpgroup</font>
+<br><font color="#3333FF">13 sp_helpindex</font>
+<br><font color="#3333FF">14 sp_helpjoins</font>
+<br><font color="#3333FF">15 sp_helpkey</font>
+<br><font color="#3333FF">16 sp_helplanguage</font>
+<br><font color="#3333FF">17 sp_helplog</font>
+<br><font color="#3333FF">18 sp_helpobjectdef</font>
+<br><font color="#3333FF">19 sp_helpremotelogin</font>
+<br><font color="#3333FF">20 sp_helprotect</font>
+<br><font color="#3333FF">21 sp_helpsegment</font>
+<br><font color="#3333FF">22 sp_helpserver</font>
+<br><font color="#3333FF">23 sp_helpsort</font>
+<br><font color="#3333FF">24 sp_helptext</font>
+<br><font color="#3333FF">25 sp_helpthreshold</font>
+<br><font color="#3333FF">26 sp_helpuser</font>
+<br><a NAME="select"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>SELECT</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>select &lt;column-list> from &lt;table-name></u></b>
+<br><font color="#3333FF">select au_lname, au_fname from authors</font>
+<br><font color="#3333FF">select title_id, type, price, price * .1 from
+titles</font>
+<br><font color="#3333FF">select * from publishers</font>
+<br>&nbsp;<i> (not recommended)</i>
+<p><b><u>string concatenation:</u></b>
+<br><font color="#3333FF">select au_lname + ", " + au_fname from authors</font>
+<p><b><u>name ouput columns yourself - column alias</u></b>
+<br><font color="#3333FF">select title_id, type, price <b>"original price"</b>,
+price * .1 <b>discount</b> from titles</font>
+<br><font color="#3333FF">select <b>"Full Author Name"</b> = au_lname +",
+" + au_fname from authors</font>
+<p><b><u>remove duplicates with <i>distinct</i>:</u></b>
+<br><font color="#3333FF">select distinct type from titles</font>
+<br><font color="#3333FF">select distinct city, state from authors</font>
+<br>&nbsp; <i>(here distinct refers to a combination of city and state,
+so that each column by itself may have duplicate entries)</i>
+<p><b><u>filtering rows with <i>where</i></u></b>
+<br>select &lt;column-list> from &lt;table-name> where &lt;condition>
+<br><font color="#3333FF">select au_lname, au_fname from authors where
+state="CA"</font>
+<p><b><u>equality and inequality operators: = , &lt;>&nbsp; or != , > ,
+>= , &lt; , &lt;= , !&lt; , !></u></b>
+<br><font color="#3333FF">select type, title_id, price from titles where
+price * total_sales &lt; advance</font>
+<br>(can be applied to string&nbsp; comparison - default sorting order
+is ASCII)
+<p><b><u>logical <i>OR</i> and <i>AND</i></u></b>
+<br><font color="#3333FF">select au_id, city, state</font>
+<br><font color="#3333FF">from authors</font>
+<br><font color="#3333FF">where state="CA" or city="Salt Lake City"</font>
+<p><b><u><i>between</i> and Ranges of Data:</u></b>
+<br>&lt;expression> between &lt;expression> and &lt;expression>
+<br><font color="#3333FF">select title_id, price from titles where price
+between $5 and $10</font>
+<br>equivalent to
+<br><font color="#3333FF">select title_id, price from titles where price
+>= $5 and price &lt;= $10</font>
+<p><b><i><u>not between:</u></i></b>
+<br><font color="#3333FF">select title_id, price from titles where price
+not between $5 and $10</font>
+<br>equivalent to
+<br><font color="#3333FF">select title_id, price from titles where price
+>= $5 and price &lt;= $10</font>
+<p><b><i><u>in (...) :</u></i></b>
+<br><font color="#3333FF">select title_id, price from titles where type
+in ("mod_cook", "trad_cook", "business")</font>
+<br>equivalent to
+<br><font color="#3333FF">select title_id, price from titles where type
+= "mod_cook"</font>
+<br><font color="#3333FF">&nbsp; or type = "trad_cook" or type = "business"</font>
+<p><b><u>not in (...)</u></b>
+<br><font color="#3333FF">select title_id, price from titles where type
+<b>not
+in</b> ("mod_cook", "trad_cook", "business")</font>
+<p><b><u>wildcards with like:</u></b>
+<br>% - any number (0 to many) of any characters
+<br>_ (underscore) - any single character
+<br>[ ]&nbsp;&nbsp; any single character from those listed in the brackets
+(this is only for Sybase)
+<br>[%[ - actually match the % character
+<br>[^A-C] - matches any character except A,B,C
+<p><font color="#3333FF">select au_lname, au_fname, city, state from authors
+where city like "Spring%"</font>
+<br><font color="#3333FF">select type, title_id, price from titles where
+title_id like "B_1342"</font>
+<br><font color="#3333FF">select type, title_id, price from titles where
+title_id like "B[A-Za-z0]1342</font>
+<br>&nbsp;&nbsp;&nbsp;&nbsp; Note - if you need to include the '_' character
+in your pattern - use 'escape' word, for example:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<font color="#3333FF">select * from titles where title_id like 'ABC\_%'
+escape('\')</font>
+<p><b><u>ordering result sets with <i>order by</i>:</u></b>
+<br><font color="#3333FF">select au_lname, au_fname from authors order
+by au_lname</font>
+<br><font color="#3333FF">select au_lname, au_fname from authors order
+by au_lname, au_fname</font>
+<p><b><u><i>order by</i> position in the select list:</u></b>
+<br><font color="#3333FF">select title_id, price, total_sales, price*total_sales
+"total dollar sales"</font>
+<br><font color="#3333FF">from titles</font>
+<br><font color="#3333FF">order by 4</font>
+<p><b><u>Ascending and Descending Ordering</u></b>
+<br><font color="#3333FF">select title_id, price, total_sales, price*total_sales
+"total dollar sales"</font>
+<br><font color="#3333FF">from titles</font>
+<br><font color="#3333FF">order by price*total_sales
+<b>desc</b></font>
+<p><b><u>default sort order is ascending. Example: sort by type (ascending)
+and then by total_sales (desc):</u></b>
+<br><font color="#3333FF">select title_id, price, total_sales</font>
+<br><font color="#3333FF">from titles</font>
+<br><font color="#3333FF">order by type, total_sales desc</font>
+<p><b><u>order by columns not Appearing in the Select List:</u></b>
+<br><font color="#3333FF">select au_lname, au_fname from authors order
+by city, state</font>
+<p><b><u>agregate functions:</u></b>
+<br>sum( ) - total numeric,
+<br>avg( ) - average numeric,
+<br>min( ) - lowest numeric or sorting string or earliest date,
+<br>max( ) - highest numeric or sorting string or latest date,
+<br>count( ) - returns the number of non-null expressions,
+<br>count(*) - returns number of rows found
+<p><font color="#3333FF">select avg(price) from title</font>
+<br><font color="#3333FF">select avg(price) "avg" from titles where type
+= "business"</font>
+<p><font color="#3333FF">select avg(price) "avg", sum(price) "sum" from
+titles</font>
+<br><font color="#3333FF">where type in ("business","mod_cook")</font>
+<p><b><u>counting rows with <i>count(*)</i>:</u></b>
+<br><font color="#3333FF">select count(*) from authors where state="CA"</font>
+<p>agregates functions discard null values
+<p><b><u>sub-agregates with <i>group by</i>:</u></b>
+<br><font color="#3333FF">select type, avg(price) "avg", sum(price) "sum"
+from titles</font>
+<br><font color="#3333FF">where type in ("_business", "mod_cook")</font>
+<br><font color="#3333FF">group by type</font>
+<p><b><u>When two or more columns are included in <i>group by</i> statement,
+agregates are based on unique combinations of these columns:</u></b>
+<br><font color="#3333FF">select <b>type, pub_id</b>, avg(price) "avg",
+sum(price) "sum" from titles</font>
+<br><font color="#3333FF">where type in ("_business", "mod_cook")</font>
+<br><font color="#3333FF">group by <b>type, pub_id</b></font>
+<p>In order for aggregates to properly subtotal (or subaverage or subcount)
+by non-aggregate values, all non-aggregate columns in the select list should
+be repeated in the group by clause (see color above).
+<p><b><u>Filtering results with <i>having</i>:</u></b>
+<br><u>where - selects rows before averaging:</u>
+<br><font color="#3333FF">select type, avg(price) from titles where price
+> $10 group by type</font>
+<br><u>having select rows from the result set:</u>
+<br><font color="#3333FF">select type, avg(price) from titles where price
+> $10 group by type having avg(price) > $20</font>
+<p><u>Example: find duplicates of au_id:</u>
+<br><font color="#3333FF">select au_id, count(*) from authors</font>
+<br><font color="#3333FF">group by au_id</font>
+<br><font color="#3333FF">having count(*) > 1</font>
+<p>Worktable - a temporary table which is created before distinct, having
+or order by are applied.
+<p><font color="#3333FF">select type, avg(price) from titles where pub_id="1289"</font>
+<br><font color="#3333FF">group by type</font>
+<br><font color="#3333FF">having avg(price) > $15</font>
+<br><font color="#3333FF">order by avg(price) desc</font>
+<br><a NAME="join"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>JOIN</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<p><b><u>JOIN Operations:</u></b>
+  <br>
+  <u>join using common key (or join key):</u>
+  <br>
+  <font color="#3333FF">select title, pub_name</font>
+  <br>
+  <font color="#3333FF">from titles, publishers</font>
+  <br>
+    <font color="#3333FF">where titles.pub_id = publishers.pub_id<br>
+    <br>
+    select title, pub_name</font> <br>
+  <font color="#3333FF">from titles t<br>
+inner join  publishers p on t.pub_id = p.pub_id</font></p>
+<p><font color="#3333FF">select au_lname, au_fname, title</font>
+  <br>
+  <font color="#3333FF">from authors a, titles t, titleauthor ta</font>
+  <br>
+  <font color="#3333FF">where ta.title_id = t.title.id</font>
+  <br>
+  <font color="#3333FF">and a.au_id = ta.au_id</font>
+  <br>
+<font color="#3333FF">and type="psychology"</font></p>
+<p><font color="#3333FF">select t.*, pub_name</font>
+<br><font color="#3333FF">from titles t, publishers p</font>
+<br><font color="#3333FF">where t.pub_id = p.pub_id</font>
+<p><b><u><font color="#000000">Outer join: left (*=) or right (=*):</font></u></b>
+<br><font color="#3333FF">select pub_name, title from publishers p, titles
+t</font>
+<br>
+<font color="#3333FF">where p.pub_id *= t.pub_id<br>
+and ...<br>
+<br>
+</font><font color="#3333FF">select pub_name, title </font><font color="#3333FF">from publishers p<br>
+  left outer join  titles
+  t on </font> <font color="#3333FF">p.pub_id = t.pub_id</font><br>
+  <font color="#3333FF">where ...<br></font><p>This query retrieves all pub_names from publishers.&nbsp; For any row
+that doesn't join successfully with titles, the title column will contain
+a null for that row in the output.
+<p><b><u>Subqueries - to be used instead of a constant:</u></b>
+<br><font color="#3333FF">select title from titles</font>
+<br><font color="#3333FF">where pub_id =</font>
+<br><font color="#3333FF">&nbsp; ( select pub_id from publishers where
+pub_name = "Algodata Infosystems")</font>
+<p><b><u>Subqueries with <i>IN</i> (or
+<i>NOT IN</i>) can return multiple
+rows:</u></b>
+<br><font color="#3333FF">select pub_name from publishers</font>
+<br><font color="#3333FF">where pub_id in</font>
+<br><font color="#3333FF">&nbsp; (select pub_id from titles where type
+= "business")</font>
+<p><b><u>subquery can be rewritten as a <i>JOIN</i>:</u></b>
+<br><font color="#3333FF">select pub_name from publishers p, titles t</font>
+<br><font color="#3333FF">where p.pub_id = t.pub_id and type = "business"</font>
+<p><b><u>Subqueries with <i>exists</i> - the best way to eliminate duplicates:</u></b>
+<br><font color="#3333FF">select pub_name from publishers p</font>
+<br><font color="#3333FF">where exists</font>
+<br><font color="#3333FF">&nbsp; (select * from titles t where p.pub_id
+= t.pub_id and type = "business")</font>
+<p><b><u><i>not exists</i> and <i>not in</i> :</u></b>
+<br><font color="#3333FF">select pub_name from publishers p</font>
+<br><font color="#3333FF">where <b>not exists</b></font>
+<br><font color="#3333FF">&nbsp; (select * from titles t where p.pub_id
+= t.pub_id and type = "business")</font>
+<p>Unfortunately the &quot;not exists&quot; construct runs very slowly.<br>
+  A better (much-much faster) way (in 12.5) is to use the new syntax: 
+
+<p class="style1">select pub_name from publishers p <br>
+  left outer join titles t on p.pub_id = t.pub_id and t.type = &quot;business&quot;<br>
+  where t.pub_id is null<br>
+</p>
+<p>This following syntax I don't like - create problems (char/varchar, nulls):<br>
+</p>
+<p><font color="#3333FF">select pub_name from publishers</font>
+  <br>
+  <font color="#3333FF">where pub_id
+  <b>not in</b></font>
+  <br>
+  <font color="#3333FF">&nbsp; (select pub_id from titles where type
+= "business")</font>
+<p><b><u>Subqueries with agregates in the where clauses:</u></b>
+<br><font color="#3333FF">select type, price from titles</font>
+<br><font color="#3333FF">where price &lt; (select avg(price) from titles)</font>
+<p><b><u><i>union</i> operations:</u></b>
+<br><font color="#3333FF">select <b>city, state</b> from authors</font>
+<br><font color="#3333FF">union</font>
+<br><font color="#3333FF">select <b>city, state</b> from publishers</font>
+<p>(duplicates will be automatically removed from the result unless you
+use <b><u>union all</u></b> )
+<p><u>Here is one more example:</u>
+<br><font color="#3333FF">select <b>95</b> "year", month, sum(dollar_sales)</font>
+<br><font color="#3333FF">from salescurrent</font>
+<br><font color="#3333FF">group by month</font>
+<br><b><font color="#3333FF">union</font></b>
+<br><font color="#3333FF">select <b>94</b> "year", month, sum(dollar_sales)</font>
+<br><font color="#3333FF">from salescurrent</font>
+<br><font color="#3333FF">group by month</font>
+<br><b><font color="#3333FF">order by year, month</font></b>
+<br><a NAME="select_into_insert_update_delete"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>select into, insert, update, delete</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<b><u>Using <i>select into</i>:</u></b>
+<br><u>creates a table on the fly instead of returning the the output to
+the user:</u>
+<br><font color="#3333FF">select distinct type</font>
+<br><font color="#3333FF">into type_lookup</font>
+<br><font color="#3333FF">from titles</font>
+<p><u>Example: create an empty copy of an existing table:</u>
+<br><font color="#3333FF">select * into new_salesdetail</font>
+<br><font color="#3333FF">from salesdetail</font>
+<br><font color="#3333FF">where 1 = 2</font>
+<p><b><u>Adding rows with insert:</u></b>
+<br><font color="#3333FF">insert authors (au_id, au_lname, au_fname, phone)</font>
+<br><font color="#3333FF">values ("123-45-6789","Jones","Mary","212-555-1212")</font>
+<p>Columns that are not specified will be set to their default values
+<br>If you don't specify column names at all (which is very bad practice
+and dangerous) - then you have to provide values for ALL columns an in
+the right order:
+<p><font color="#3333FF">insert publishers</font>
+<br><font color="#3333FF">values ("1235","New World Printing","GA","Atlanta")</font>
+<br>&nbsp;
+<p><b><u>inserting several rows with select:</u></b>
+<br><font color="#3333FF">insert authors_archive (au_id, au_lname, au_fname,
+phone, city, state, zip)</font>
+<br><font color="#3333FF">select au_id, au_lname, au_fname, phone, city,
+state, zip from authors</font>
+<br><font color="#3333FF">where state="CA"</font>
+<p><b><u>modifying rows with update:</u></b>
+<br><font color="#3333FF">update publishers</font>
+<br><font color="#3333FF">set pub_name = "Joe's Press"</font>
+<br><font color="#3333FF">where pub_id = "1234"</font>
+<p><u>Example: update based on a join:</u>
+<br><font color="#3333FF">update titles</font>
+<br><font color="#3333FF">set full_name = isnull(u.full_name,'')</font>
+<br><font color="#3333FF">from db1..titles tit, db2..users u</font>
+<br><font color="#3333FF">where tit.kid *= u.kid</font>
+<p><u>Example: double all prices in the table:</u>
+<br><font color="#3333FF">update titles</font>
+<br><font color="#3333FF">set price=price*2</font>
+<p><u>update several columns simultaneously:</u>
+<br><font color="#3333FF">update contacts</font>
+<br><font color="#3333FF">set address1 = "5 W. Main St.",</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; address2 = "Apt.3D",</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; state="CT",</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; zip="03838"</font>
+<br><font color="#3333FF">where contract_id = 17938</font>
+<p><b><u>remove rows with delete:</u></b>
+<br><font color="#3333FF">delete titles</font>
+<br><font color="#3333FF">where type = "business"</font>
+<p><b><u>Clearing the table:</u></b>
+<br><font color="#3333FF">delete title</font>
+<br>&nbsp; or
+<br><font color="#3333FF">truncate table titles</font>
+<p>truncate is faster, but it doesn't log individual deletions - thus the
+ability to recover database is compromised.
+<br><a NAME="datatypes"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Datatypes</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Datatypes:</u></b>
+<br>
+Once you create a column of certain datatype - you can not&nbsp; change
+it without dropping and re-creating the table ????
+<p><font color="#3333FF">create table my_table (</font>
+<br><font color="#3333FF">&nbsp;&nbsp; id int not null</font>
+<br><font color="#3333FF">&nbsp;&nbsp; value float not null</font>
+<br><font color="#3333FF">&nbsp;&nbsp; description varchar(30) null</font>
+<br><font color="#3333FF">)</font>
+<p><b><u>Storing strings:</u></b>
+<br>char - fixed length strings&nbsp; (max length - 255)
+<br>varchar - variable-length strings&nbsp; (max length - 255)
+<br>nchar - multi-byte character strings
+<br>nvarchar - variable-length multi-byte char strings
+<br>text - for very large strings (up to 2 GB of text per row)
+<p><b><u>Storing binary data:</u></b>
+<br>binary - for fixed-length binary strings
+<br>varbinary - for variable-length binary strings
+<br>image - for storing large binary strings (up to 2 GB of image data
+per row)
+<p><font color="#3333FF">insert b_table (id, bin_col) values (19, 0xa134c2ff)</font>
+<p><b><u>using timestamp:</u></b>
+<br><font color="#3333FF">create table timestamp_example</font>
+<br><font color="#3333FF">&nbsp;( id int not null,</font>
+<br><font color="#3333FF">&nbsp;&nbsp; code char(3) not null,</font>
+<br><font color="#3333FF">&nbsp;&nbsp; ts timestamp not null )</font>
+<p><font color="#3333FF">insert timestamp_example (id, code) values (17,
+"AAA")</font>
+<p><font color="#000000">The server uses the unique transaction-log-row
+id as a timestamp. You can not specify this value.</font>
+<p><b><u><font color="#000000">Optimistic locking:</font></u></b>
+<br><font color="#000000">using tsequal() function to check the locking</font>
+<p><font color="#3333FF">Storing BLOBs (binary large objects) using text
+and image datatypes:</font>
+<br><font color="#3333FF">create table texts (</font>
+<br><font color="#3333FF">&nbsp; id numeric(5,0) identity,</font>
+<br><font color="#3333FF">&nbsp; item int not null,</font>
+<br><font color="#3333FF">&nbsp; textstring text null</font>
+<br><font color="#3333FF">)</font>
+<p><b><u><font color="#000000">using insert:</font></u></b>
+<p><font color="#3333FF">insert texts (item, textstring) values (1, null)</font>
+<br><font color="#3333FF">insert texts (item, textstring) values (2)</font>
+<br><font color="#3333FF">insert texts (item, textstring) values (3, "some
+text")</font>
+<br><font color="#3333FF">insert texts (item, textstring) values (4, "some
+very long text")</font>
+<p><font color="#000000">insert statement will not insert more than 1,200
+bytes.</font>
+<br><font color="#000000">string concatenation on strings longer than 255
+chars is illegal</font>
+<p><b><u><font color="#000000">using writetext and readtext:</font></u></b>
+<br><font color="#000000">The idea is to get the pointer to the text chain
+and to write directly to this chain without modifying the underlying row.</font>
+<br><font color="#000000">To do this you should start with a non-null popinter
+stored in the row itself.</font>
+<p><u><font color="#000000">Here is how to retrieve the pointer for a row:</font></u>
+<br><font color="#3333FF">select id, textptr(textstring) textptr,</font>
+<br><font color="#3333FF">&nbsp; datalength(textstring) datalength</font>
+<br><font color="#3333FF">from texts</font>
+<p><u><font color="#000000">to write a new textstring value to the 3rd
+row:</font></u>
+<br><font color="#3333FF">declare @pageptr varbinary(16)</font>
+<br><font color="#3333FF">select @pageptr = textptr(textstring)</font>
+<br><font color="#3333FF">&nbsp; from texts</font>
+<br><font color="#3333FF">&nbsp; where id = 3</font>
+<br><font color="#3333FF">writetext&nbsp; texts.textstring @pageptr "some
+very long string"</font>
+<p><u><font color="#000000">to read 50 bytes starting from position 4000:</font></u>
+<br><font color="#3333FF">declare @pageptr varbinary(16)</font>
+<br><font color="#3333FF">select @pageptr = textptr(textstring)</font>
+<br><font color="#3333FF">&nbsp; from texts</font>
+<br><font color="#3333FF">&nbsp; where id = 3</font>
+<br><font color="#3333FF">readtext&nbsp; texts.textstring @pageptr 4000
+50</font>
+<br><font color="#3333FF">textstring</font>
+<p><b><u><font color="#000000">Date/Time datatypes:</font></u></b>
+<br><font color="#000000">datetime&nbsp; (3 millisecons, 8 bytes)</font>
+<br><font color="#000000">smalldatetime (1 min, 4 bytes)</font>
+<p><font color="#3333FF">create table date_example (</font>
+<br><font color="#3333FF">&nbsp; id int not null</font>
+<br><font color="#3333FF">&nbsp; dateval&nbsp; datetime not null)</font>
+<p><font color="#3333FF">insert date_example (id, dateval) values (19,
+"September 25, 1996 3:15PM")</font>
+<p><font color="#000000">you can use other forms of format, for example:&nbsp;
+4/15/99</font>
+<p><font color="#3333FF">select * from date_table where date = "9/3/95"</font>
+<br><font color="#3333FF">select * from date_table where date >= "9/3/95"
+and&nbsp; date &lt; "9/4/95"</font>
+<p><font color="#000000">timestamp - a binary, ticks of some sort, it is
+not datetime</font>
+<p><font color="#3333FF">drop table #test</font>
+<p><font color="#3333FF">create table #test (</font>
+<br><font color="#3333FF">&nbsp;id numeric(18,0) identity,</font>
+<br><font color="#3333FF">&nbsp;ts timestamp,</font>
+<br><font color="#3333FF">&nbsp;dt datetime,</font>
+<br><font color="#3333FF">&nbsp;sm smalldatetime</font>
+<br><font color="#3333FF">)</font>
+<p><font color="#3333FF">&nbsp;insert #test(dt,sm) values (getdate(), getdate())</font>
+<p><font color="#3333FF">&nbsp;select * from #test</font>
+<p><font color="#3333FF">datediff(dd,"15-Apr-2000","15-Apr-2001") - returns
+'365'</font>
+<p><font color="#3333FF">where LastActivityDate > dateadd(yy,-2,getdate())</font>
+<br><font color="#3333FF">where LastActivityDate > dateadd(dd, -90, getdate())</font>
+<br>&nbsp;
+<p><b><u><font color="#000000">Logical datatype: bit - can not be indexed
+and can not be null:</font></u></b>
+<br><font color="#3333FF">create table bit_sample (id int not null, description
+varchar(30) null, active bit not null)</font>
+<p><b><u><font color="#000000">Numeric datatypes:</font></u></b>
+<br><font color="#000000"><b>int</b> - 4 bytes signed</font>
+<br><font color="#000000"><b>smallint</b>&nbsp; - 2 bytes signed</font>
+<br><font color="#000000"><b>tinyint</b> - unsigned byte (0..255)</font>
+<br><font color="#000000"><b>float</b> - 8 bytes</font>
+<br><font color="#000000"><b>real</b>&nbsp; - 4 bytes</font>
+<br><font color="#000000"><b>numeric</b>(7,2) - you can indicate total
+number of digits and number of digits after decimal point. Can be used
+with identity (automatic counter)</font>
+<br><font color="#000000"><b>decimal</b> - similar to numeric, but can't
+be used with identity</font>
+<br><font color="#000000"><b>money</b> - 8 bytes</font>
+<br><font color="#000000"><b>smallmoney</b> - 4 bytes (+/-214,748.3647)</font>
+<p><font color="#3333FF">create table numeric_example (</font>
+<br><font color="#3333FF">&nbsp; id numeric(8,0) identity,</font>
+<br><font color="#3333FF">&nbsp; num_col numeric(7,2))</font>
+<p><font color="#3333FF">insert dollar_table (id, dollars) values (95,
+$12345.93)</font>
+<p><font color="#000000">=================================================================================</font>
+<br><font color="#3333FF">create table table_name ( ...)</font>
+<br><font color="#3333FF">drop table table_name</font>
+<br><font color="#3333FF">sp_help</font>
+<br><font color="#3333FF">sp_help table_name</font>
+<p><b><u><font color="#000000">object's full name:</font></u></b>
+<br><font color="#000000">database_name.owner_name.object_name</font>
+<p><font color="#3333FF">pubs.dbo.authors</font>
+<p><u><font color="#000000">Columns can have following properties: Null,
+Not null, Identity</font></u>
+<br><a NAME="views_and_temp_tables"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Views and Temporary Tables</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+-
+<br><b><u><font color="#000000">Views - logical way of looking at data
+(you can treat them as tables):</font></u></b>
+<br><font color="#3333FF"><b>create view</b> author_name <b>as</b></font>
+<br><font color="#3333FF">&nbsp; select last = au_lname, first = au_fname
+from authors</font>
+<p><font color="#3333FF"><b>select</b> * from author_name</font>
+<br><font color="#3333FF"><b>drop view</b> author_name</font>
+<p>* <font color="#000000">note: dropping a view doesn't change data</font>
+<br>* <b>views</b> - help security by limiting access to tables
+<br>* <b>views</b> - help make queries simpler
+<br>* <b>views</b> can contain aggregate functions and grouping, joins,
+other views and a distinct clause.
+<br>* <b>views</b> CAN NOT include "select into" , a compute clause, a
+union clause, and "order by" clause.
+<br>* You can insert into, update and delete from views (restriction: allowed
+to affect only one base table).
+<br>* If <b>view</b> includes columns from several tables, you can't delete
+rows from view or update columns from more than 1 table in a single update
+statement
+<br>* You can not update, delete or insert into a view containing the distinct
+clause.
+<p><b><font color="#3333FF">sp_help</font></b> - lists all objects (including
+tables and views)
+<br><b><u>to get a list of just the views:</u></b>
+<br><font color="#3333FF">select name from sysobjects where type = "V"</font>
+<p><b><u>to see a list of columns in a view:</u></b>
+<br><font color="#3333FF">sp_help&nbsp; view_name</font>
+<p><b><u>Renaming objects (tables, views, columns.) using&nbsp; <i>sp_rename</i>:</u></b>
+<br><font color="#3333FF">sp_rename old_name new_name</font>
+<br><font color="#3333FF">sp_rename 'table_name.old_col_name' , 'new_col_name'</font>
+<p><b><u>Adding columns to a table using
+<i>alter</i>:</u></b>
+<br><font color="#3333FF">alter table tt add</font>
+<br><font color="#3333FF">&nbsp; middle_name varchar(20) null,</font>
+<br><font color="#3333FF">&nbsp; fax varchar(15) null</font>
+<p>NOTE: You can only add columns with null values.
+<br>NOTE: You can't remove columns using alter. You have to recreate the
+table and indexes and insert data again, for example:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#99FF99" >
+<tr>
+<td><font color="#3333FF">create table lev1 (c1 int not null,c2 int null)</font>
+<br><font color="#3333FF">CREATE UNIQUE CLUSTERED INDEX lev1_idx ON lev1(c1)</font>
+<br><font color="#3333FF">CREATE NONCLUSTERED INDEX lev1_qib_idx ON lev1(c1,c2)</font>
+<p><font color="#3333FF">insert lev1 values (1,2)</font>
+<br><font color="#3333FF">insert lev1 values (2,2)</font>
+<br><font color="#3333FF">insert lev1 values (3,2)</font>
+<p>-------&nbsp; add columns&nbsp; -----------------
+<br><font color="#3333FF">alter table lev1 add c3 int null, c4 int null</font>
+<br>-------&nbsp; remove columns&nbsp; -------------
+<br><font color="#3333FF">exec sp_rename 'lev1','lev1_tmp'</font>
+<br><font color="#3333FF">-- sp_rename 'lev1_tmp.lev1_idx', 'lev1_tmp_idx'</font>
+<br><font color="#3333FF">-- sp_rename 'lev1_tmp.lev1_qib_idx', 'lev1_tmp_qib_idx'</font>
+<p><font color="#3333FF">create table lev1 (c1 int null, c2 int null)</font>
+<br><font color="#3333FF">CREATE UNIQUE CLUSTERED INDEX lev1_idx ON lev1(c1)</font>
+<br><font color="#3333FF">CREATE NONCLUSTERED INDEX lev1_qib_idx ON lev1(c1,c2)</font>
+<p><font color="#3333FF">insert into lev1 select c1,c2 from lev1_tmp</font>
+<br><font color="#3333FF">drop table lev1_tmp&nbsp;&nbsp; -- this will
+automatically drop indexes</font></td>
+</tr>
+</table>
+
+<p><b><u>Temporary Tables - are real tables created in the tempdb database.</u></b>&nbsp;
+They have '#' before table name.&nbsp; They exist only for the duration
+of a user session (or stored procedure) and only accessible to this session.
+These tables are not recoverable (in case of a crush).
+<br><font color="#3333FF">select au_lname, au_fname, title, pub_id</font>
+<br><font color="#3333FF">&nbsp; into #titles_and_authors</font>
+<br><font color="#3333FF">&nbsp; from authors a, titleauthor ta, titles
+t</font>
+<br><font color="#3333FF">&nbsp; where a.au_id = ta.au_id and t.title_id
+= ta.title_id</font>
+<p>Creating permanent Temporary table in tempdb:
+<br><font color="#3333FF">&nbsp;&nbsp; select * into tempdb..titles from
+pubs2..titles</font>
+<br><a NAME="rules_and_defaults"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Rules &amp; Defaults</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+-
+<br><b><u>Rules:</u></b>
+<br><font color="#3333FF">create rule order_quantity as</font>
+<br><font color="#3333FF">&nbsp; @quantity between 100 and 150000</font>
+<p><font color="#3333FF">create rule color_rule as</font>
+<br><font color="#3333FF">&nbsp; @color in ('black', 'brown', 'red')</font>
+<p><font color="#3333FF">create rule pub_id_rule as</font>
+<br><font color="#3333FF">&nbsp; @pubid like ('99[0-9][0-9]')</font>
+<br><font color="#3333FF">&nbsp; or @pubid in ('0736', '0877', '1389')</font>
+<p><font color="#3333FF">create rule date_rule as</font>
+<br><font color="#3333FF">&nbsp; @date >= getdate()</font>
+<p><font color="#3333FF">drop rule key_rule</font>
+<p><b><u>Binding rule to a column:</u></b>
+<br><font color="#3333FF">sp_bindrule rule_name, 'table.column_name'</font>
+<br><font color="#3333FF">sp_unbindrule 'table.column_name'</font>
+<p><b><u>Defaults:</u></b>
+<br><font color="#3333FF">create default country_default as 'USA'</font>
+<br><font color="#3333FF">create default age_default as 16</font>
+<br><font color="#3333FF">create default time_default as getdate( )</font>
+<p><b><u>binding default to columns in a table:</u></b>
+<br><font color="#3333FF">sp_binddefault default_name, 'table.column_name'</font>
+<br><font color="#3333FF">sp_bindefault country_default, 'demographics.country'</font>
+<br><font color="#3333FF">sp_unbindefault&nbsp; 'demographics.country'</font>
+<p>you can define default for a column when you create a table.
+<br>later you can change it using later table:
+<br><font color="#3333FF">alter table items</font>
+<br><font color="#3333FF">&nbsp; replace price default null</font>
+<p><font color="#3333FF">alter table items</font>
+<br><font color="#3333FF">&nbsp; replace item_code default "N/A"</font>
+<p><b><u>To list all rules and defaults in a database:</u></b>
+<br><font color="#3333FF">select name from sysobjects where type in ("R",
+"D")</font>
+<p><u>To examine the rules and defaults bound to the column in a table:</u>
+<br><font color="#3333FF">sp_help table_name</font>
+<p><font color="#3333FF">sp_helptext object_name</font>
+<p><b><u>Creating User-defined Datatypes:</u></b>
+<br><font color="#3333FF">sp_addtype ssn_type, 'char(9)', "not null"</font>
+<br><a NAME="indexes_and_constraints"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Indexes and Constraints</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+-
+<br><b><u>Indexes:</u></b>
+<br>2 types of indexes - clustered and nonclustered. Both are B-tree.
+<br>Clustered - only one clustered index per table can exist (data is maintained
+in clustered index order).
+<br>Nonclustered indexes - you can have 249 of them per table. They maintain
+pointers to rows (not data pages).
+<br>An index can contain up to 16 columns, but toal index width &lt;= 255.
+<p><b><u>Creating indexes:</u></b>
+<br><font color="#3333FF">create unique clustered index name_index&nbsp;
+on authors (au_lname, au_fname)</font>
+<br><font color="#3333FF">create index fname_index on authors (au_fname,
+au_lname)</font>
+<br>***********************-
+<br><b><u>Constraints:</u></b>
+<br>Primary Key and Unique Constraints
+<br>Check Constraints
+<br>Referential-integrity Constraints
+<br>Primary-Key Constraints
+<br>Foreign-Key Constraints
+<br>Modifying Constraints
+<br>Adding Constraints
+<br>Removing Constraints
+<br><u>Information on Constraints:</u>
+<br><font color="#3333FF">sp_helpconstraint</font>
+<br>***********************-
+<br><b><u>Comparing Data-integrity Methods:</u></b>
+<br>Rules, Defaults, Indexes, Constraints, Keys (Primary Key, Foreign Key
+(primary key from another table), Common key)
+<br><a NAME="t-sql_constructs"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>T-SQL programming constructs</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+-
+<br><b><u>T-SQL programming constructs:</u></b>
+<br><b><u>standard arithmetic operations</u></b> ( + - * / ^)
+<br><b><u>string functions:</u></b> datalength(), substring(), right(),
+upper(), lower(), space(), replicate(), stuff(), reverse(), ltrim(), rtrim(),
+ascii(), char(), str(), soundex(), difference(), charindex(), patindex()
+<p>note: to include quotes into string you can repeat it 2 times (or one
+time if the surrounding quote is of different type):
+<p><b><font color="#3333FF">"&nbsp;&nbsp;&nbsp; ""&nbsp;&nbsp;&nbsp;&nbsp;
+"</font></b>
+<br><b><font color="#3333FF">'&nbsp;&nbsp;&nbsp;&nbsp; ''&nbsp;&nbsp;&nbsp;&nbsp;
+'</font></b>
+<br><b><font color="#3333FF">"&nbsp;&nbsp;&nbsp; '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"</font></b>
+<br><b><font color="#3333FF">'&nbsp;&nbsp;&nbsp; "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp; 'I don''t know'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"I don't know"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; " Title ""The Title""&nbsp;
+was on sale"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ' Title "The Title"&nbsp;
+was on sale'</font></b>
+<p><b><u>math.functions:</u></b> abs(), ceiling(), exp(), floor(), pi(),
+power(), rand(), round(), sign(), sqrt()
+<br>date functions: getdate(), datename(), datepart(), datediff(), dateadd()
+<p><u><b><i>convert</i></b> - to convert data types:</u>
+<br>select "Advance = " + convert (char(12), advance) from titles
+<br>(can also convert dates)
+<p><b><u>system functions:</u></b>&nbsp; host_id(), host_name(), suser_id(),
+suser_name(), user_id(), user_name(), user, show_role(), db_id(), db_name(),
+object_id(), object_name(), col_name(), col_length(), index_col(), valid_name(),
+datalength(), tsequal()
+<p><b><u>compute, compute by:</u></b>
+<br>allows to include both detail and summary info in a single result set
+<p><b><u>isnull</u></b> - function tells to treat null values as zero or
+something else.
+<p><b><u>Batches:</u></b>
+<br>&nbsp; several commands followed by 'go' command
+<br><b><u>Comments:</u></b>&nbsp; /*&nbsp; */&nbsp;&nbsp;&nbsp; or *
+<br><b><u>Local variables:</u></b>
+<br><font color="#3333FF">&nbsp;&nbsp; declare @variable_name datatype</font>
+<br><font color="#3333FF">&nbsp;&nbsp; declare @myname varchar(30), @type
+int</font>
+<br><font color="#3333FF">&nbsp;&nbsp; select @myname=12</font>
+<br><font color="#3333FF">&nbsp;&nbsp; go</font>
+<p>note: name length is limited to 30 char (including @)
+<p><b><u>Global variables</u></b> - can not be defined by users.
+<br>&nbsp;(examples:&nbsp; <font color="#3333FF">@@rowcount, @@error, @@trancount,
+@@transtate,</font> ...)
+<p><b><u>Message handling:</u></b>
+<br><font color="#3333FF">&nbsp; print "this is a message"</font>
+<br><font color="#3333FF">&nbsp; declare @msg varchar(30)</font>
+<br><font color="#3333FF">&nbsp; select @msg = "Hello " + user_name()</font>
+<br><font color="#3333FF">&nbsp; print @msg</font>
+<br><b><u>Error handling:</u></b>
+<br><font color="#3333FF">&nbsp;&nbsp; raiserror 52345 'Row not found'</font>
+<br><b><u>if .. else:</u></b>
+<br><font color="#3333FF">if (select ...)</font>
+<br><font color="#3333FF">&nbsp; print "sometext"</font>
+<br><font color="#3333FF">else</font>
+<br><font color="#3333FF">&nbsp; print "some_other_text"</font>
+<br><b><u>while:</u></b>
+<br><font color="#3333FF">while(select ...)</font>
+<br><font color="#3333FF">&nbsp; begin</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; update ...</font>
+<p><font color="#3333FF">&nbsp;&nbsp;&nbsp; continue</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; break</font>
+<p><font color="#3333FF">&nbsp; end</font>
+<br><b><u>goto:</u></b>
+<br><font color="#3333FF">metka: select ...</font>
+<br><font color="#3333FF">...</font>
+<br><font color="#3333FF">goto metka</font>
+<br><b><u>waitfor:</u></b>
+<br><font color="#3333FF">waitfor time "22:00:00"</font>
+<br><font color="#3333FF">while 1&lt;2</font>
+<br><font color="#3333FF">begin</font>
+<br><font color="#3333FF">&nbsp; waitfor delay "00:00:30"</font>
+<br><font color="#3333FF">&nbsp; exec sp_who</font>
+<br><font color="#3333FF">end</font>
+<br><b><u>return:</u></b>
+<br>to exit the batch
+<br><b><u>set:</u></b>
+<br><font color="#3333FF">set rowcount 100</font>
+<br><font color="#3333FF">set statistics time on</font>
+<br><font color="#3333FF">set nocount on</font>
+<br>...
+<br>Cursors - allow custom processing for each row:
+<br><font color="#3333FF">declare leads_curs
+<b>cursor for</b></font>
+<br><font color="#3333FF">select cust_id, ets-sale&nbsp; from leads</font>
+<br><font color="#3333FF"><b>for</b> read only</font>
+<br><font color="#3333FF">go</font>
+<p><font color="#3333FF">open leads_curs</font>
+<br><font color="#3333FF">while () begin .. end</font>
+<br><font color="#3333FF">close leads_curs</font>
+<br><font color="#3333FF">deallocate leads_curs</font>
+<br><font color="#3333FF">go</font>
+<p>You can do also custom updating with cursors.
+<br>In general you should avoid cursors - try to substitute them sith complex
+select statements (usually will run x10 faster)
+<br><a NAME="triggers"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Triggers</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<p><font color="#000000">***************-</font></p>
+<p class="code">create trigger [owner.]trigger_name <br>
+  on [owner.]table_name <br>
+  {for {insert, update, delete} <br>
+as SQL_statements</p>
+<p>  Or, using the <span class="code">if update</span> clause:</p>
+<p class="code">create trigger [owner.]trigger_name <br>
+  on [owner.]table_name <br>
+  for {insert, update} <br>
+  as<br>
+  [if update (column_name ) 
+  [{and | or} update (column_name)]...] <br>
+  &nbsp;&nbsp;&nbsp;SQL_statements<br>
+[if update (column_name) 
+  [{and | or} update (column_name )]... <br>
+&nbsp;&nbsp;&nbsp;SQL_statement ]<br>
+...</p>
+<p>Example:</p>
+<p><font color="#3333FF">create trigger titles_trigger</font>
+  <br>
+  <font color="#3333FF">&nbsp; on titles</font>
+  <br>
+  <font color="#3333FF">&nbsp; for insert</font>
+  <br>
+  <font color="#3333FF">as</font>
+  <br>
+  <font color="#3333FF">print "title inserted"</font>
+  <br>
+  <font color="#3333FF">return</font>
+  <br>
+  <font color="#3333FF">***************-</font>
+  <br>
+  <font color="#3333FF">drop trigger trigger_name</font>
+  <br>
+  <font color="#3333FF">***************-</font>
+  <br>
+  <font color="#3333FF">create trigger cascade_del_trigger</font>
+  <br>
+  <font color="#3333FF">&nbsp; on publishers</font>
+  <br>
+  <font color="#3333FF">&nbsp; for delete</font>
+  <br>
+  <font color="#3333FF">as</font>
+  <br>
+  <font color="#3333FF">if @@rowcount = 0 -- no rows deleted, exit trigger</font>
+  <br>
+  <font color="#3333FF">&nbsp; return</font>
+  <br>
+  <font color="#3333FF">delete titles from titles t, deleted d where
+    t.pub_id = d.pub_id</font>
+</p>
+<p><font color="#3333FF">if @@error != 0</font>
+<br><font color="#3333FF">&nbsp; begin</font>
+<br><font color="#3333FF">&nbsp; print "Error occurred during deleting
+related titles"</font>
+<br><font color="#3333FF">&nbsp; end</font>
+<p><font color="#3333FF">return</font>
+<br><font color="#3333FF">***************-</font>
+<br><font color="#3333FF">create trigger tr1 on ... for insert, update
+as</font>
+<br><font color="#3333FF">declare @rows int</font>
+<br><font color="#3333FF">select @rows = @@rowcount</font>
+<br><font color="#3333FF">...</font>
+<br><font color="#3333FF">if (.. )</font>
+<br><font color="#3333FF">&nbsp; ...</font>
+<br><font color="#000000">***************-</font>
+<br>In triggers you CAN NOT do these:
+<br>&nbsp; create, drop, alter table/database, grant, revoke, select into,
+truncate table, update statistics, reconfigure, load database/transaction,
+disk init/mirror/reinit/refit/remirror/unmirror
+<br><font color="#000000">***************-</font>
+<br>Triggers During transactions:
+<br><font color="#3333FF">...</font>
+<br><font color="#3333FF">begin tran add_titles</font>
+<br><font color="#3333FF">insert ...</font>
+<br><font color="#3333FF">insert ...</font>
+<br><font color="#3333FF">commit tran</font>
+<br><font color="#000000">***************-</font>
+<br><b><u>rollback trigger</u></b> - command to rollback the trigger
+<p><b><u>Nested Triggers</u></b> - 16 levels of nesting max
+, <br><a NAME="stored_procedures"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Stored procedures</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<b>Stored Procedures:</b>
+<br>* faster (precompiled in memory)
+<br>* reduced network traffic
+<br>* modular programming
+<br>* restricted access to tables
+<br>* reduced operator error
+<br>* enforced consistency
+<br>* automated complex or sensitive transactions
+<br><font color="#000000">***************-</font>
+<br><font color="#3333FF">create proc pub_titles as select .. from ...
+where ... return</font>
+<p><b><u>To execute a stored procedure:</u></b>
+<br>call by name if it is a first command in the batch
+<br>or use "exec" (or "execute" command):
+<br>&nbsp; <font color="#3333FF">exec proc_name</font>
+<p><b><u>To delete the procedure:</u></b>
+<br><font color="#3333FF">drop proc proc_name</font>
+<p><b><u><font color="#000000">To change the procedure:</font></u></b>
+<br><font color="#3333FF">if exists (select * from sysobjects where name
+= "titles_for_a_pub" and type = "P" and uid=user_id())</font>
+<br><font color="#3333FF">&nbsp; drop proc titles_for_a_pub</font>
+<br><font color="#3333FF">go</font>
+<br><font color="#3333FF">create proc titles_for_a_pub as ...</font>
+<p><b><u>To display the text of the procedure:</u></b>
+<br><font color="#3333FF">sp_helptext proc_name</font>
+<p><b><u>passing parameters:</u></b>
+<br><font color="#3333FF">create proc tt (@pub_name varchar(40)) as</font>
+<br><font color="#3333FF">select ...where ...</font>
+<br><font color="#3333FF">return</font>
+<p><font color="#3333FF">declare @my_pname&nbsp;&nbsp; varchar(40)</font>
+<br><font color="#3333FF">select @my_pname ="Some text"</font>
+<br><font color="#3333FF">exec tt @my_pname</font>
+<p><b><u>Default Parameter Values:</u></b>
+<br><font color="#3333FF">create proc proc_name</font>
+<br><font color="#3333FF">&nbsp;&nbsp; p_name datatype = default_value</font>
+<br><font color="#3333FF">&nbsp;&nbsp; , ....</font>
+<br><font color="#3333FF">as</font>
+<br><font color="#3333FF">SQL Statements</font>
+<br><font color="#3333FF">return ...</font>
+<p><b><u>----- Output parameters:</u></b>
+<br><font color="#3333FF">create proc tt (</font>
+<br><font color="#3333FF">&nbsp;&nbsp; @par1 varchar(80) = null,</font>
+<br><font color="#3333FF">&nbsp;&nbsp; @par2 int output)</font>
+<br><font color="#3333FF">as</font>
+<br><font color="#3333FF">-- some T-SQL statements go here</font>
+<br><font color="#3333FF">return</font>
+<p><font color="#3333FF">declare @myoutput int</font>
+<br><font color="#3333FF">exec&nbsp; tt</font>
+<br><font color="#3333FF">&nbsp;&nbsp; @par1 = 'sometext',</font>
+<br><font color="#3333FF">&nbsp;&nbsp; @par2 = @myoutput&nbsp; output</font>
+<br><font color="#3333FF">go</font>
+<p><b><u>----- Returning procedure status:</u></b>
+<br>return some_int_value
+<br>0 - no errors
+<br>*1 .. -99 - detected errors (page 194 - list of error status codes)
+<br>other values - whatever you like
+<p><font color="#3333FF">declare @staatus_var int</font>
+<br><font color="#3333FF">exec @staatus_var = proc_name</font>
+<p><b><u>Note</u></b>: A stored procedure may NOT: create views, defaults,
+rules, triggers or procedures, or issue the use statement
+<br><b><u>Note</u></b>: If stored procedure references a table, and the
+table was changed - you may have to drop procedure, change it and re-create
+it.
+<br>When created, stored procedure is transformed into a cashed sequenced
+of SQL statements. If procedure has "with recompile" - it forces the optimizer
+to generate a new query plan for each execution.
+<p><b><u>----- Returning data from one SP into a caller-SP:</u></b>
+<br>-----------------------------------
+<br>----- transparent passing the result value
+<br>-----------------------------------
+<br><font color="#3333FF">create proc test1 as select count(1) N from OE</font>
+<br><font color="#3333FF">create proc test2 as exec test1</font>
+<br><font color="#3333FF">exec test2</font>
+<br>-----------------------------------
+<br>----- catch the output value in the caller SP:
+<br>-----------------------------------
+<br><font color="#3333FF">create proc test3(@a int, @b int output) as select
+@b = @a*@a</font>
+<p><font color="#3333FF">create proc test4 as</font>
+<br><font color="#3333FF">begin</font>
+<br><font color="#3333FF">&nbsp; declare @par_in int</font>
+<br><font color="#3333FF">&nbsp; declare @par_out int</font>
+<br><font color="#3333FF">&nbsp; declare @ret_status int</font>
+<br><font color="#3333FF">&nbsp; select @par_in = 3</font>
+<br><font color="#3333FF">&nbsp; exec @ret_status = test3 @par_in, @par_out
+output</font>
+<br><font color="#3333FF">&nbsp; if not @ret_status=0 begin select @par_out
+= 0 end</font>
+<br><font color="#3333FF">&nbsp; select @par_out</font>
+<br><font color="#3333FF">&nbsp; select @par_out+1</font>
+<br><font color="#3333FF">end</font>
+<p><font color="#3333FF">exec test4</font>
+<br>-----------------------------------
+<br>----- transparent passing the result set
+<br>-----------------------------------
+<br><font color="#3333FF">create proc test5 as select * from mytab</font>
+<br><font color="#3333FF">create proc test6 as exec test5</font>
+<br><font color="#3333FF">exec test6</font>
+<p>-----------------------------------
+<br>----- handling errors, transactions
+<br>-----------------------------------
+<br><font color="#3333FF">create proc mysp</font>
+<br><font color="#3333FF">as</font>
+<br><font color="#3333FF">begin</font>
+<br><font color="#3333FF">&nbsp;&nbsp; declare @tran_cnt int</font>
+<br><font color="#3333FF">&nbsp;&nbsp; declare @errs int</font>
+<br><font color="#3333FF">&nbsp;&nbsp; declare @rows int</font>
+<br><font color="#3333FF">&nbsp;&nbsp; select @tran_cnt = @@trancount</font>
+<p><font color="#3333FF">&nbsp;&nbsp; if @tran_cnt = 0</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; begin transaction
+mytran</font>
+<br><font color="#3333FF">&nbsp;&nbsp; else</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; save transaction
+mytran</font>
+<p><font color="#3333FF">&nbsp;&nbsp; -- do something useful</font>
+<br><font color="#3333FF">&nbsp;&nbsp; -- then check for errors</font>
+<br><font color="#3333FF">&nbsp;&nbsp; select @errs = @@error</font>
+<br><font color="#3333FF">&nbsp;&nbsp; if (@errs != 0)</font>
+<br><font color="#3333FF">&nbsp;&nbsp; begin</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; rollback transaction
+sbl_upd_ticker</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; return @errs</font>
+<br><font color="#3333FF">&nbsp;&nbsp; end</font>
+<p><font color="#3333FF">&nbsp;&nbsp; select @loc=loc, @idx=idx from mytab</font>
+<br><font color="#3333FF">&nbsp;&nbsp; if not @@rowcount=1</font>
+<br><font color="#3333FF">&nbsp;&nbsp; begin</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rollback transaction
+mytran</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; raiserror 30200</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 30200</font>
+<br><font color="#3333FF">&nbsp;&nbsp; end</font>
+<p><font color="#3333FF">&nbsp;&nbsp; if @tran_cnt = 0</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; commit transaction
+mytran</font>
+<p><font color="#3333FF">&nbsp;&nbsp; select @my_id = (@loc * 10000000)
++ @idx</font>
+<br><font color="#3333FF">&nbsp;&nbsp; return 0</font>
+<br><font color="#3333FF">end</font>
+<p><b><u>Objects referenced in a procedure:</u></b>
+<br>exec sp_depends proc_name
+<br>exec sp_depends table_name
+<br><a NAME="transactions"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Transactions</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<b>Transactions</b> - several statements grouped together and either commited
+or rollbacked all together
+<br>(all individual steps are recorded into a transaction log for recovery
+in case of a crash)
+<br><b>begin tran</b>
+<br><b>save tran</b>
+<br><b>rollback tran</b>
+<br><b>commit tran</b>
+<br><b>set chained</b>
+<br>&nbsp;&nbsp; <b>@@tranchained</b>&nbsp; 0 - chained mode is off, 1
+- chained mode is on
+<p><font color="#3333FF">begin transaction</font>
+<br><font color="#3333FF">&nbsp;&nbsp; update something</font>
+<br><font color="#3333FF">&nbsp;&nbsp; insert something</font>
+<br><font color="#3333FF">if ...</font>
+<br><font color="#3333FF">&nbsp; begin&nbsp; ... <b>commit transaction</b>
+end</font>
+<br><font color="#3333FF">else</font>
+<br><font color="#3333FF">&nbsp; begin ... <b>rollback transaction</b>
+end</font>
+<p><font color="#000000">Note: transactions put locks on pages (2K blocks
+of data)</font>
+<p><b><u>savepoints inside transaction:</u></b>
+<br><font color="#3333FF">save tran item999</font>
+<br><font color="#3333FF">...</font>
+<br><font color="#3333FF">rollback tran item999</font>
+<p><b><u>Nested Transactions:</u></b>
+<br><font color="#3333FF">@@trancount</font>
+<p><b><u>stored procedure with a transaction inside</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td>create proc p1
+<br>as
+<br>declare @trncnt int
+<br>select @trncnt = @@trancount&nbsp;&nbsp;&nbsp;&nbsp; -- save value
+<br>if @trncnt = 0
+<br>&nbsp; begin tran p1
+<br>else
+<br>&nbsp; save tran p1
+<p>/* do some work here */
+<p>if (@@transtate = 2)&nbsp; -- or other error condition
+<br>&nbsp; begin
+<br>&nbsp; rollback tran p1
+<br>&nbsp; return 25&nbsp;&nbsp;&nbsp; -- error code indicating rollback
+<br>&nbsp; end
+<p>/* some more processing if required */
+<p>if @trncnt = 0
+<br>&nbsp; commit tran p1
+<p>return 0&nbsp; -- success</td>
+</tr>
+</table>
+
+<p><b><u>nesting transactions</u></b> - batch with transaction calls a
+stored procedure with a transaction inside
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td>&nbsp; .....
+<p>declare @status_val int,&nbsp; @trncnt int
+<br>select @trncnt = @@trancount&nbsp;&nbsp;&nbsp;&nbsp; -- save value
+<br>if @trncnt = 0
+<br>&nbsp; begin tran t1
+<br>else
+<br>&nbsp; save tran t1
+<p>/* do some work here */
+<p>if (@@transtate = 2)&nbsp; -- or other error condition
+<br>&nbsp; begin
+<br>&nbsp; rollback tran t1
+<br>&nbsp; return&nbsp;&nbsp;&nbsp;&nbsp; -- exit batch&nbsp;
+<br>&nbsp; end
+<p>execute @status_val = p1&nbsp; -- call procedure with transaction from
+inside transaction - thus nesting transactions
+<p>if @status_val = 25&nbsp; -- if proc p1 performed rollback
+<br>&nbsp; begin
+<br>&nbsp; rollback tran t1
+<br>&nbsp; return
+<br>&nbsp; end
+<p>if @trncnt = 0
+<br>&nbsp; commit tran t1 -- decrements @@trancount to 0
+<p>return&nbsp;</td>
+</tr>
+</table>
+
+<p>triggers may be part of a transaction:
+<p><font color="#3333FF">begin tran</font>
+<br><font color="#3333FF">&nbsp; update titles</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; set price=$99</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; where title_id = "BU1234"</font>
+<br><font color="#3333FF">commit tran</font>
+<p>rollback transaction in a trigger
+<br>rollback trigger<br>
+<p><strong>Transation modes:</strong>
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>- <strong>chained mode</strong> - This is ANSI standard. You are always in a transaction.  You never have to issue BEGIN TRANs because it is issued implicitly as soon as you connect, and then  as soon as you finish previous transaction. So as soon as you  issue explicit COMMIT TRAN or ROLLBACK TRAN - you will get into a new transaction. It looks strange - you only close transactions with commit or rollback - and never have to open it,  because it is always already  opened for you.</p>
+      <p>- <strong>unchained mode (default for Sybase)</strong> - Each individual statement is atomic. If you want to put several statements in one transactions - you have to explicitly issue BEGIN TRAN and at the end do COMMIT or ROLLBACK.</p>
+      <p>Stored procedures remember in which mode they were compiled - and will not run in a different mode - unless you define them with &quot;anymode&quot;.</p>
+    </td>
+  </tr>
+</table>
+<p><a NAME="sys_tables"></a>
+  <br>
+  &nbsp;
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Getting info from sys. tables</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>some examples using sys tables
+<p>--------------------------------------------------------
+<br>select name from sysobjects
+<br>where sysstat &amp; 7 = 3
+<br>order by name
+<br>--------------------------------------------------------
+<br>select
+<br>&nbsp; rowcnt(t2.doampg),
+<br>&nbsp; (reserved_pgs(t2.id, t2.doampg) + reserved_pgs(t2.id,t2.ioampg)),
+<br>&nbsp; (t3.low), data_pgs(t2.id, t2.doampg), data_pgs(t2.id,t2.ioampg),
+<br>&nbsp; (
+<br>&nbsp;&nbsp;&nbsp;&nbsp; (reserved_pgs(t2.id, t2.doampg) + reserved_pgs(t2.id,t2.ioampg))
+-
+<br>&nbsp;&nbsp;&nbsp;&nbsp; (data_pgs(t2.id, t2.doampg) + data_pgs(t2.id,t2.ioampg))
+<br>&nbsp; )
+<br>from sysobjects t1, sysindexes t2, master.dbo.spt_values t3
+<br>where t2.id = object_id('myTableName')
+<br>&nbsp; and t1.id = object_id('myTableName')
+<br>&nbsp; and t3.number = 1 and t3.type = 'E'
+<br>-------------------------------------------------------
+<br>select t1.name, t2.name, t1.length, t1.status
+<br>from syscolumns t1, systypes t2
+<br>where t1.id = object_id('my_name')
+<br>and t1.usertype *= t2.usertype
+<br>--------------------------------------------------------
+<br>select t1.indid, t1.name
+<br>from sysindexes t1
+<br>where t1.id = object_id('my_name')
+<br>and t1.indid > 0 and t1.indid &lt; 255
+<br>--------------------------------------------------------
+<br>select index_col('my_name', indid_buf, keyid_buf, ...)
+<br>--------------------------------------------------------
+<br>select t1.name
+<br>from master.dbo.spt_values t1, sysindexes t2
+<br>where t2.status &amp; t1.number = t1.number
+<br>and t2.id = object_id('my_name')
+<br>and t2.indid = my_some_indid_buf
+<br>and t1.type = 'I'
+<br>and t1.number = 2
+<br>--------------------------------------------------------
+<br>select t1.name
+<br>from syssegments t1, sysindexes t2
+<br>where t1.segment = t2.segment
+<br>and t2.id = object_id('my_name')
+<br>and t2.indid = my_some_indid_buf
+<br>--------------------------------------------------------
+<br>select replstat = convert(bit, (t1.sysstat &amp; -32768))
+<br>from sysobjects t1
+<br>where t1.id = object_id('my_name')
+<br>--------------------------------------------------------
+<br><a NAME="cursor"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Stored procedure with a cursor</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>if exists (select 1 from sysobjects
+<br>where name = "myname")
+<br>&nbsp;&nbsp; drop proc myname
+<br>go
+<p>create proc myname
+<br>as
+<br>begin
+<br>&nbsp; declare @my_id int
+<br>&nbsp; declare @root_my_id int
+<br>&nbsp; declare mycursor cursor for (select my_id from MT)
+<br>&nbsp; open mycursor
+<br>&nbsp; fetch mycursor into @my_id
+<br>&nbsp; while ((@@sqlstatus = 0))
+<br>&nbsp; begin
+<br>&nbsp;&nbsp;&nbsp; exec @root_my_id = MT_get_root @my_id
+<br>&nbsp;&nbsp;&nbsp; insert into MT_root_map_tmp (my_id, root_my_id)
+<br>&nbsp;&nbsp;&nbsp; values (@my_id, @root_my_id)
+<br>&nbsp;&nbsp;&nbsp; fetch mycursor into @my_id
+<br>&nbsp; end
+<br>&nbsp; close mycursor
+<br>&nbsp; deallocate cursor mycursor
+<br>end
+<br>go
+<br>&nbsp;
+<p><a NAME="script_to_copy_data_between_databases"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>script to copy data between databases</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>You can copy data between databases using migrate utility in DBArtisan.
+<br>Or you can use this script (it accepts table name as a parameter):
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FFCC" NOSAVE >
+<tr>
+<td>#!/bin/sh -v
+<p>if [ $# != 1 ]&nbsp;
+<br>then&nbsp;
+<br>&nbsp;&nbsp;&nbsp; echo "Usage: $0 &lt;table>"&nbsp;
+<br>&nbsp;&nbsp;&nbsp; exit 1
+<br>fi&nbsp;
+<p>table=$1&nbsp;
+<p>PROD="-S SERV1 -U user1 -P pass1"
+<br>DEV="-S SERV2 -U user2 -P pass2"
+<p>bcp mydb..$table out $table.dat $PROD -n > /dev/null
+<p>isql $DEV -w250 &lt;&lt;EOF
+<br>use mydb
+<br>go
+<br>delete $table
+<br>go
+<br>EOF
+<p>bcp mydb..$table in&nbsp; $table.dat $DEV -n > /dev/null
+<p>isql $DEV -w250 &lt;&lt;EOF
+<br>use mydb
+<br>go
+<br>update statistics $table
+<br>go
+<br>EOF</td>
+</tr>
+</table>
+
+<p><a NAME="misc"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>misc</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>count distinct types:
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=3 COLS=2 WIDTH="100%" BGCOLOR="#CCFFFF" >
+<tr>
+<td>select dept, count(*) from mytable
+<br>where dept is null
+<br>group by dept
+<br>union
+<br>select distinct dept, count(*) from mytable
+<br>where dept is not null
+<br>group by dept</td>
+
+<td>select distinct dept, count(isnull(dept,'0'))&nbsp;
+<br>from mytable
+<br>group by isnull(dept,'0')</td>
+</tr>
+
+<tr>
+<td>when you joining tables - they join only on not null values.
+<p>The common situation is joining 2 tables through a middle table which
+maps keys between the side 2 tables. This works good for normal inner joins:&nbsp;
+<br><b><font color="#3333FF">select ... where A.x = B.x and B.y = C.y</font></b>
+<p>But what if you want all values from A - and just fill with nulls other
+columns. You try left join - but it doesn' work:
+<br><b><font color="#3333FF">select ... where A.x = B.x and B.y = C.y&nbsp;
+-- doesn't work</font></b>
+<p>You can either do it in 2 steps (make a temporary table) - or use union:
+<p>&nbsp;</td>
+
+<td>example of a union:
+<p><b><font color="#CC0000">select #t1.*&nbsp;</font></b>
+<br><b><font color="#CC0000">from #t1,#t2&nbsp;</font></b>
+<br><b><font color="#CC0000">where #t1.bb = #t2.bb</font></b>
+<br><b><font color="#CC0000">union</font></b>
+<br><b><font color="#CC0000">select t1.*&nbsp;</font></b>
+<br><b><font color="#CC0000">from #t1 t1</font></b>
+<br><b><font color="#CC0000">where not exists (</font></b>
+<br><b><font color="#CC0000">&nbsp;&nbsp;&nbsp; select *</font></b>
+<br><b><font color="#CC0000">&nbsp;&nbsp;&nbsp; from #t2 t2&nbsp;</font></b>
+<br><b><font color="#CC0000">&nbsp;&nbsp;&nbsp; where t1.bb = t2.bb</font></b>
+<br><b><font color="#CC0000">&nbsp; )</font></b></td>
+</tr>
+</table>
+
+<p><b><u>Getting date difference as part of the year in Sybase</u></b>
+<p>-- select convert(numeric(6,2), datediff(mm, '4/1/02', '1/1/03'))/12.00
+<br>-- select convert(numeric(6,2), datediff( dy, '4/1/02', '1/1/03' ))/365.00
+<br>-- select convert(numeric(6,2), datediff( dy, '4/1/02', '7/1/02' ))/365.00
+<p><b><u>Catching special characters:</u></b>
+<p>select count(*) from mytab where charindex(char(10), myname) !=0
+<p>The simple way to find all occurencies of special characters is to use
+a short perl script.
+<br>Below is the code (do_query is a self-made subroutine returning the
+result set as an array of hashes):
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FFCC" NOSAVE >
+<tr>
+<td><tt>my ($sql,$result,$row,$oe_id,$name,@ar,%hh);</tt>
+<br><tt>$sql = qq{&nbsp;</tt>
+<br><tt>&nbsp; select id, name from mytab&nbsp;</tt>
+<br><tt>&nbsp; where name like '%[^0-9A-Za-z -_.,''""%]%' };&nbsp;</tt>
+<br><tt>$result = &amp;do_query($dbh, $sql);</tt>
+<br><tt>for $row (@$result) {</tt>
+<br><tt>&nbsp; $id = $row->{id};</tt>
+<br><tt>&nbsp; $name = $row->{name};</tt>
+<br><tt>&nbsp; @ar = unpack('C*', $name);</tt>
+<br><tt>&nbsp; %hh = ();</tt>
+<br><tt>&nbsp; for(@ar) {if($_&lt;32 or $_>127){$hh{$_}++}}</tt>
+<br><tt>&nbsp; for(sort keys %hh){print"id &lt;$id>: code $_ - $hh{$_}
+times\n"}</tt>
+<br><tt>}</tt></td>
+</tr>
+</table>
+
+<p class="style1">declare @a varchar(30) 
+<p><span class="style1">select @a = &quot;a b&quot; <br>
+  select @a = str_replace(@a, char(32), rtrim('')) <br>
+  select @a <br>
+  -- the above returns 'ab' in Sybase 12.5.1 and later, but returns NULL in 12.5.0, which is a bug <br>
+  -- The alternative is to use a while loop: <br>
+  declare @ss varchar(10) select @ss=&quot;a b&quot; <br>
+  while (charindex(&quot; &quot;,@ss) &gt; 0) select @ss = substring(@ss, 1, charindex(&quot; &quot;,@ss)-1) + substring(@ss, charindex(&quot; &quot;,@ss)+1, 255) <br>
+  select @ss </span><br>
+  ===========================<br></p>
+<p>Using 'union' to do logical operations in single statement without creating
+  temporary tables:
+<p>Let's say we have a table with 2 columns (a,b):
+<p>create table #t (a int null, b int null)
+<br>insert #t (a,b) values (-1,6)
+<br>insert #t (a,b) values (0,5)
+<br>insert #t (a,b) values (1,4)
+<br>insert #t (a,b) values (2,3)
+<br>insert #t (a,b) values (3,2)
+<p>and we&nbsp; want to return max(a) or max(b) depending on which one
+is larger.
+<br>Here is how this could be done
+<br>&nbsp;
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FFCC" NOSAVE >
+<tr>
+<td>select max(b) mm from #t&nbsp;
+<br>having max(b) > (select max(a) from #t)
+<br>union
+<br>select max(a) mm from #t&nbsp;
+<br>having max(b) > (select max(b) from #t)</td>
+</tr>
+</table>
+
+<p><a NAME="SQL_tuning"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>tune your SQL</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Query Tuning Options</u></b>
+<br><b>set forceplan on</b>&nbsp; -&nbsp; forces SQL Server to join the
+tables in a query in the order in which they are listed in the <b>from</b>
+clause.
+<br><b>set table count</b>&nbsp; -&nbsp; allows you to specify the number
+of tables that are considered at once as joins are optimized.
+<br><b>sp_cachestrategy</b>&nbsp; -&nbsp; disables and reenables cache
+strategies and large I/O for individual objects.
+<br>specify the index, cache strategy, or I/O size for a query (for example:
+<b>select
+* from mytab (index mytab_idx) where ...</b>)
+<br><b>set prefetch</b>&nbsp; -&nbsp; allows you to enable or disable large
+I/O for a session.
+<p>Benchmarking your query by hand:
+<br>
+<span class="style1">&nbsp;&nbsp; set statistics time on <br>
+&nbsp;&nbsp; set statistics IO on </span><br>&nbsp;&nbsp;
+
+<p>Help your optimizer to make sure it has correct information about your
+table and uses it for queries and stored procedures. This info may me incorrect,
+for example, after bulk loads:
+<br>
+<span class="style1">&nbsp;&nbsp; update statistics&nbsp; tabname <br>
+&nbsp;&nbsp; sp_recompile&nbsp; tabname </span>
+<p>Examine the showplan of your query:
+<br>
+<span class="style1">&nbsp; set showplan on <br>
+&nbsp; go <br>
+&nbsp; set noexec on <br>
+&nbsp; go </span>
+<p>or for a stored procedure
+<br>
+<span class="style1">&nbsp;&nbsp; set showplan on <br>
+&nbsp;&nbsp; go <br>
+&nbsp;&nbsp; set fmtonly on <br>
+ &nbsp; go </span>
+<p>Note: do not mix <b>set noexec</b>&nbsp;&nbsp; &amp;&nbsp;&nbsp; <b>set&nbsp;
+fmtonly</b>
+<p>Run your code - examine the output - look where table scans are made
+instead of using indexes. Sometimes index is not used because:
+<br>&nbsp; -&nbsp; it doesn't exist on the column used in the where clause
+or in a join
+<br>&nbsp; -&nbsp; there is a datatype mismatch in the join (like integer
+joined to numeric)
+<br>&nbsp; -&nbsp; if the query is not restrictive enough and returns significant
+portion of the table.&nbsp; The optimizer then will choose to use table
+scan.
+<br>&nbsp; -&nbsp; the indexes are very complex - so Optimizer decides
+that it is less costly to just read the table itself
+<br>&nbsp; -&nbsp; some where cluases may cause problems: order by, group
+by, having, between, like, calculations in where clauses.
+<br>&nbsp; -&nbsp; sometimes table scan is really more effective and you
+don't need to eliminate it.
+<p>Note, that database can cashes data, so repeating the query may get
+the results faster.
+<br>Simple solution - vary the query.
+<p>dbcc traceon(302, 310, 3604)
+<br>sp_sysmon
+<br>etc.
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+  <tr>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+    <td ALIGN=LEFT><b>Dynamic SQL</b></td>
+    <td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+      of the page</a> - </b>
+        <spacer type=block width=1 height=1></td>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+<p>-- &quot;dynamic SQL&quot; in Sybase is called &quot;execute-immediate&quot; (EI) 
+
+<p>exec(&quot;select getdate()&quot;) <br>
+  declare @c varchar(25) <br>
+  select @c = &quot;select getdate()&quot; <br>
+  exec (@c) <br>
+  select @c = 'mycolumn' <br>
+  execute( 'select ' + @c + ' from mytable where 1=2' ) <br>
+  -- You can do line continuation like this: <br>
+  exec (' \ <br>
+  create procedure myproc \ <br>
+  @part1 int \ <br>
+  as \ <br>
+  select KeyCol, Attrib \ <br>
+  from MyTable \ <br>
+  where KeyCol = @par1 \ <br>
+  ') <br>
+  -- Note: <br>
+  -- temp tables (#mytemp) created inside are dropped on exit <br>
+  -- local variables created outside can not be used inside - and vice versa <br>
+  -- some commands are not allowed inside: <br>
+  use, set, dbcc, connect, begin transaction, commit, rollback, dump transaction <br>
+  -- can't call EI from inside another EI, inside a trigger, <br>
+  -- statements executed in EI can't access tables &quot;inserted&quot; and &quot;deleted&quot; <br>
+  -- and EI doesn't return the result status <br>
+  -- cursor usage is limited (and pointless) <br>
+  -- Passing info back from EI - via table <br>
+  -- EI sets @@rowcount and @@error as any other SQL </p>
+<p>Real-life example (extracted from the middle of a long stored proc):</p>
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>declare @mysql varchar(1024)<br>
+      select @mysql = &quot;insert #client1cas (id_cas) &quot;<br>
+      select @mysql = @mysql + &quot;select  w.id_cas &quot;<br>
+      select @mysql = @mysql + &quot;from jds_words_cas w (index IX_words) &quot;<br>
+      select @mysql = @mysql + &quot;where w.words like '&quot; + @client_str + &quot;%' &quot;<br>
+      select @mysql = @mysql + &quot;  and w.id_cas != null and w.id_cas != '' &quot;</p>
+      <p>set rowcount @max_mid_rows<br>
+        execute(@mysql)<br>
+        select @myrowcount = @@rowcount<br>
+        set rowcount 0<br>
+        if (@mydebug = 1) print &quot;________ inserted %1! rows&quot;, @myrowcount<br>
+        if(@rows_cas &gt;= @max_mid_rows) begin select @many_clients_flag = 1 goto RETURN_RESULTS end<br>
+    </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+  <tr>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+    <td ALIGN=LEFT><b>Getting Info About Rows and Sizes of Tables</b></td>
+    <td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+      of the page</a> - </b>
+        <spacer type=block width=1 height=1></td>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+<p>select Table_Name=object_name(id), <br>
+&quot;Rows&quot;=convert(int,sum(rowcnt(doampg))), <br>
+&quot;ReservedKB&quot;=sum(reserved_pgs(id,doampg))*2+ sum(reserved_pgs(id,ioampg))*2, <br>
+&quot;Data&quot;=sum(data_pgs(id,doampg))*2 , <br>
+&quot;Index&quot;=sum(data_pgs(id,ioampg))*2 <br>
+from sysindexes <br>
+where id in (select id from sysobjects where type='U') <br>
+group by object_name(id) 
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+  <tr>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+    <td ALIGN=LEFT><b>Testing Outer Joins</b></td>
+    <td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+      of the page</a> - </b>
+        <spacer type=block width=1 height=1></td>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+<p>When chaining joins, <br>
+  &gt;&gt; , =&gt;, &lt;&gt; are OK, <br>
+  but <br>
+  &gt;= is not allowed (even on a different key) 
+<p>-- testing outer joins <br>
+  create table #t1 (c1 varchar(10) null, c2 varchar(10) null) <br>
+  create table #t2 (c1 varchar(10) null, c2 varchar(10) null) <br>
+  create table #t3 (c1 varchar(10) null, c2 varchar(10) null) <br>
+  go <br>
+  -- row.col <br>
+  insert #t1 values('1.1','1.2') <br>
+  insert #t1 values('2.1','2.2') <br>
+  insert #t1 values('3.1','3.2') <br>
+  insert #t2 values('1.1','1.2') <br>
+  insert #t2 values('2.1','2.2') <br>
+  insert #t2 values('4.1','4.2') <br>
+  insert #t3 values('1.1','1.2') <br>
+  insert #t3 values('2.1','2.2') <br>
+  insert #t3 values('5.1','5.2') <br>
+  <br>
+  select t1.*, t2.* from #t1 t1, #t2 t2 where t1.c1  = t2.c1 <br>
+  select t1.*, t2.* from #t1 t1, #t2 t2 where t1.c1 *= t2.c1 <br>
+  <br>
+  -- t1 &lt; t2 &gt; t3 <br>
+  select t1.*, t2.*, t3.* from #t1 t1, #t2 t2, #t3 t3 where t1.c1 =* t2.c1 and t2.c1 *= t3.c1 <br>
+  <br>
+  -- t1 &gt; t2 &gt; t3 <br>
+  select t1.*, t2.*, t3.* from #t1 t1, #t2 t2, #t3 t3 where t1.c1 *= t2.c1 and t2.c1 *= t3.c1 <br>
+  <br>
+  -- t1 &lt; t2 = t3 <br>
+select t1.*, t2.*, t3.* from #t1 t1, #t2 t2, #t3 t3 where t1.c1 =* t2.c1 and t2.c1 = t3.c1 <br>
+<br>
+  <span class="style2">-- t1 &gt; t2 &lt; t3 - meaningless</span> <br>
+  select t1.*, t2.*, t3.* from #t1 t1, #t2 t2, #t3 t3 where t1.c1 *= t2.c1 and t2.c1 =* t3.c1 <br>
+  <br>
+  <span class="style2">-- t1 &gt; t2 = t3 - not allowed</span> <br>
+  select t1.*, t2.*, t3.* from #t1 t1, #t2 t2, #t3 t3 where t1.c1 *= t2.c1 and t2.c1 = t3.c1 <br>
+  <br>
+  <span class="style2">-- t1 &gt; t2 = t3 - not allowed even on a different key </span><br>
+  select t1.*, t2.*, t3.* from #t1 t1, #t2 t2, #t3 t3 where t1.c1 *= t2.c1 and t2.c2 = t3.c2 <br>
+</p>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+  <tr>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+    <td ALIGN=LEFT><strong>print, raiserror</strong></td>
+    <td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+      of the page</a> - </b>
+        <spacer type=block width=1 height=1></td>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+-
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>===============================================<BR>
+              Example of using print   with formatting   string:<BR>
+              ===============================================<BR>
+              declare @a   varchar(20)<BR>
+              select @a = convert(varchar(20),getdate(),112)<BR>
+              print @a </p>
+                <p>declare @b varchar(20)<BR>
+                  select @b = 'I am b'<BR>
+                  print @b </p>
+              <p>print "MYMY %1! and %2! MYMY", @a, @b </p>
+              <p>===============================================<BR>
+                Few words about   raiserror<BR>
+                ===============================================<BR>
+                raiserror is   similar to print command, but it also <BR>
+                sets the @@error global variable to a   int nubmer.<BR>
+                Sybase has its own errors with numbers &lt;20000.<BR>
+                (see their   descriptions in table master..sysmessages) </p>
+              <p>select count(1) from master..sysmessages<BR>
+                select count(1) from   master..sysusermessages </p>
+              <p>You can create your own custom errors - either in sysusermessages - or on the   fly<BR>
+                Examples of usage </p>
+              <p>if @@error != 0<BR>
+                begin<BR>
+                raiserror 300004 , "some message"<BR>
+                return   -1<BR>
+                end </p>
+              <p>raiserror 300002 , "MYMY %s MYMY ", @myvar<BR>
+                raiserror 300002 , "MYMY %1!   MYMY ", @myvar<BR>
+              </p>
+              <p>-- error 300006 doesn't exist in the sysusermessages table.<BR>
+                -- so we call   it without a comma after the error number and specify the message </p>
+    <p>raiserror 300006 "MYMY %1! MYMY", @myvar </p>
+          </td>
+  </tr>
+</table>
+<p>Empty strings: 
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>select @country = isnull(rtrim(ltrim(@country)),&quot;&quot;)</p>
+      <p>note that empty chars are expanded inside the char_length() function.<br>
+        Thus<br>
+        char_length(&quot;&quot;+&quot;&quot;) = 2</p>
+      <p>A workaround this is to rtrim everything inside the char_length - and use isnull outside the char_length:<br>
+        isnull(rtrim(@nm_lst)),0)</p>
+      <p>Note here that rtim(&quot;&quot;) returns null, so char_length(rtrim(&quot;&quot;)) is null also, and not zero.<br>
+        Isn't Sybase great, intuitive and easy to understand !!! </p>
+      <p>Replacing in a string:<br>
+        select @nm_frst = str_replace(@nm_frst, &quot;'&quot;, &quot;''&quot;) <br>
+    </p></td>
+  </tr>
+</table>
+<p>Example of Printing:
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>exec myprint @mydebug,63,&quot;starting&quot;<br>
+if (@mydebug = 1) print &quot;We limit the rowcount globally to %1! rows&quot;,@set_glob_rowcount</p></td>
+  </tr>
+</table>
+<p>-
+
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p> create procedure myprint (<br>
+@myflag int = 1,            -- 1 or 0 - to print or not<br>
+@myline int = 0,            -- the line number<br>
+@mystring varchar(200) = &quot;&quot; -- the message string<br>
+) as<br>
+begin<br>
+----------------------------------<br>
+-- usage<br>
+--    myprint 1,57,&quot;some message&quot;<br>
+-- or in stored proc:<br>
+--    myprint @mydebug, 57,&quot;some message&quot;<br>
+----------------------------------<br>
+if (@myflag != 1)<br>
+return<br>
+declare @mydate varchar(30)<br>
+select @mydate=convert(varchar(30),getdate(),109)<br>
+print &quot;%1! === line ~ %2! === %3!&quot;, @mydate, @myline, @mystring<br>
+end </p></td>
+  </tr>
+</table>
+<p>Example of reporting a duration of some process:
+
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>declare @mysec datetime <br>
+      select @mysec = getdate() <br>
+      <br>
+      -- do something <br>
+      <br>
+      if(@mydebug=1) <br>
+begin <br>
+select @ss = &quot;FINISHED, total run time = &quot; + convert(varchar(20),datediff(ss,@mysec,getdate())) + &quot; seconds&quot; <br>
+exec myprint @mydebug,1012,@ss <br>
+end </p></td>
+  </tr>
+</table>
+<p>Example populating a &quot;suffix&quot; table (chopping words from the beginning until nothing left). This table is used as an index table to speed up search of words/phrases inside the string.  It allows to use &quot;starts with&quot; logic ( ... where ss like 'xxx%' ), which uses index - thus it is fast.
+
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>CREATE PROCEDURE dbo.ins_words (<br>
+@words varchar(100) = null,<br>
+@id    varchar(32)  = null,<br>
+) as <br>
+BEGIN</p>
+      <p> -- clean the @words<br>
+        select @words = upper(rtrim(ltrim(@words)))<br>
+        select @words = str_replace(@words, char(10), &quot; &quot;) -- \n<br>
+        select @words = str_replace(@words, char(9),  &quot; &quot;) -- \t<br>
+        select @words = str_replace(@words, &quot;|&quot;,      &quot; &quot;) -- we do this to be able to bcp<br>
+        select @words = str_replace(@words, &quot;-&quot;,      &quot; &quot;) -- dash is also a separator<br>
+        while (charindex('  ',@words)&gt;0) <br>
+        select @words = str_replace(@words, &quot;  &quot;,   &quot; &quot;) -- remove double spaces</p>
+      <p> -- we insert the whole string (even if it is empty - we still want to enter the id to make future updates easier)<br>
+        insert mytab (words,  id) values (@words, @id_cas)<br>
+        if (rtrim(@words) = null)<br>
+        return</p>
+      <p> declare @pos int<br>
+        select @pos = charindex(' ', @words)<br>
+        while (@pos &gt; 0)  -- have to insert substring(s)<br>
+        begin<br>
+        insert mytab (words,id) values (substring(@words,(@pos+1),200), @id)<br>
+        select @words = substring(@words,(@pos+1),200)<br>
+        select @pos = charindex(' ', @words)<br>
+        end</p>
+      <p>END</p></td>
+  </tr>
+</table>
+<p>Update with variables technique:
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>-- Example 1<br>
+      declare @mycount int select @mycount=0<br>
+      update jds_contact set @mycount = @mycount + 1<br>
+      select @mycount </p>
+      <p>-- We can do more interesting things - for example, concatenate values for the same id.<br>
+        let's say we have 2 columns (id, name).<br>
+        first, we create a temporary work table with 4 columns:<br>
+        (id, id_prev, name, names) </p>
+      <p>This table should have only fixed-width fields (no varchar). This is necessary so that the table will be written to the same place - thus preserving th order of rows.<br>
+        Next we insert data into this table (order by id).<br>
+        Next we update the id_prev field:<br>
+      </p>
+      <p> select @prev = 0<br>
+        update #work set id_prev = @prev, @prev = id </p>
+      <p>Next we do concatenation: </p>
+      <p> select @ss=&quot;&quot;<br>
+        update #work<br>
+        set names = case when id != id_prev then rtrim(name) else rtrim(@names)+', '+rtrim(name) end,<br>
+        @ss   = case when id != id_prev then rtrim(name) else rtrim(@names)+', '+rtrim(name) end </p>
+      <p>Finaly select the result:<br>
+      </p>
+      <p> select id, max(names) from #work<br>
+      </p></td>
+  </tr>
+</table>
+<p>
+Example of batch inserting using id:
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p> declare @myrowcount int select @myrowcount=1<br>
+declare @min_id int, @max_id int, @base_id int<br>
+    </p>
+      <p> select @min_id = min(id), @max_id = max(id) from source<br>
+        select @base_id = @min_id - 1<br>
+        select * into #batch from dest where 1=2<br>
+      </p>
+      <p> set rowcount 5000 </p>
+      <p>while (@myrowcount &gt; 0) </p>
+      <p>begin<br>
+        delete #batch</p>
+      <p> insert #batch<br>
+        select * from source t<br>
+        where t.id &gt; @base_id <br>
+        order by t.id</p>
+      <p> select @myrowcount = @@rowcount</p>
+      <p> select @base_id = max(id) from #batch</p>
+      <p> if (@myrowcount &gt; 0)<br>
+        begin<br>
+        insert dest select * from #batch<br>
+        print &quot;inserted = %1! (max = %2!)&quot;, @base_id, @max_id<br>
+        end</p>
+      <p> end</p>
+      <p>set rowcount 0 <br>
+      </p></td>
+  </tr>
+</table>
+<p>Reducing the locking problem.
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>Read - put shared lock, update or insert - exclusive lock. </p>
+      <p>        Table locks may be a result of lock promotion, but more often they happen because of your SQL / indexes. Normally table read puts a shared lock. But  if you have an UPDATE or a DELETE with a WHERE clause which has a table scan - you will get an exclusive table lock without any lock promotion, regardless of locking scheme.</p>
+      <p>Switching to row level locking (DATAROWS  locking scheme) may not solve your problem and is very expensive: your data takes up more space, UPDATES start causing a lot more fragmentation, and you need A LOT more locks. Lock promotion works by number of locks used, and since DATAROWS uses considerably more locks, you'll hit promotion threshold much sooner. Also if you run out of locks &ndash; you will also get a promotion to a table lock. Also, if you are committing more rows at a time than the HWM (high lock promotion threshold) &ndash; then you will still get lock promotion even with datarows locking scheme.</p>
+      <p>There are 3 locking schemes: <br>
+        -    ALLPAGES  (data and indexes)<br>
+        -    DATAPAGES (only data)<br>
+        -    DATAROWS (only data, row-level locking)</p>
+      <p>Use sp_lock and sp_objectstats to see if multiple connections/users attempt locks on rows on the same page. Use sp_sysmon  to detect lock promotion.</p>
+      <p>Lock promotion thresholds :<br>
+        LWM = 200 - never attempt a promotion below 200 locks<br>
+        HWM = 200 - always attempt promotion once 200 are reached<br>
+        (HLW - High WaterMark, LWM - Low WaterMark)<br>
+        Number of locks = 35,000</p>
+      <p>Note: Switching to DATAROWS might help your blocking, but maybe the problem isn't that people are trying to read the same row, or even different rows on the same page. It might be that they're blocking on data vs index access. DATAPAGES is a good first step to try since it eliminates index locking and usually this is all you need. It has most of the benefits of DATAROWS without the extreme overhead. It's always a good idea to try DATAPAGES first.</p>
+      <p>Also, the solution to avoid table locks may be simply to increase the lock promotion thresholds.</p>
+      <p>Note: changing from ALLPAGES to DATAPAGES or DATAROWS is an expensive operation. Switching between DATAPAGES and DATAROWS is very easy and fast.</p>
+      <p>Note: if a WHERE clause has local variables &ndash; optimizer will not use index, thus causing a table scan. </p>
+      <p>Example:Modifying locking scheme: </p>
+      <p>alter table authors lock datarows<br>
+      </p>
+      <p></p></td>
+  </tr>
+</table>
+<p>Isolation Level
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>You can change isolation level using a command like this:</p>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>set transaction isolation level 0</strong></p>
+      <p>The value is stored in variable <strong>@@isolation</strong></p>
+      <p>Possible values:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;0 - read uncommitted changes to data (allow dirty reads).<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;1 - read committed only (default)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;2 - repeatable read - The transaction can repeat the same query, and no rows <strong>that have been read by the transaction</strong> will have been updated or deleted.<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;3 - serializable read - The transaction can repeat the same query, and receive exactly the same results. <strong>No rows can be inserted</strong> that would appear in the 
+      result set.</p>
+      <p>You can override the isolation level by adding a hint to the end of SQL statement:</p>
+      <p><strong>with holdlock</strong> - force level 3<br>
+        <strong>with noholdlock</strong> - force level 1</p>
+    </td>
+  </tr>
+</table>
+<p>
+AutoCommit
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>set autocommit - the client-side commant to set autocommit on | off | 0 | 1 - turns autocommit on or off.</p></td>
+  </tr>
+</table>
+<p>Duplicates
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p><strong>ignore_dup_key</strong>  - hint to skip duplicate keys while doing insert or update. Note - you cannot create a unique index on a column that includes duplicate values or more than one null value, whether or not ignore_dup_key is set. If you attempt to do so, Adaptive Server prints an error message that displays the first of the duplicate values. <strong>You must eliminate duplicates before Adaptive Server can create a unique index on the column.</strong></p>
+      <p><strong>ignore_dup_row</strong> - 
+        allows you to create a new, nonunique clustered index on a table that includes duplicate rows. ignore_dup_row <strong>deletes the duplicate rows from the table</strong>, and cancels any insert or update that would create a duplicate row, <strong>but does not roll back the entire transaction</strong>. <br>
+        <br>
+      Example: to delete duplicate rows:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;create  index index_name on table_name  with ignore_dup_row</p>
+      <p><strong>allow_dup_row</strong> - 
+  allows you to create a nonunique clustered index on a table that includes duplicate rows, and allows you to duplicate rows with update and insert statements.</p>
+    </td>
+  </tr>
+</table>
+<p>
+tempdb, transaction log, 
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>You may have many databases on the same server. But until ver. 12.* there was only 1 tempdb database. This was creating problems, as many sessions were competing for it. Starting with ver. 12 you may have several database - thus distributing the load.</p>
+    <p>Usuallythe size of tempdb is ~2 GBytes, however I've seen it as big as 12.5 GBytes - and completely buffered (mapped to memory).</p>
+    <p>When you have large transactions - you may want to increase the sizes of both tempdb and transaction log. But if you have replication - you want to limit the size of transactions to ~ 3,000 rows.</p>
+    </td>
+  </tr>
+</table>
+<p>Checkpoint event
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>Approximately once a minute, the checkpoint task checks each database on the server to see how many records have been added to the transaction log since the last checkpoint. If the server estimates that the time required to recover these transactions is greater than the database&rsquo;s recovery interval, Adaptive Server issues a checkpoint. The modified pages are written from cache onto the database devices, and the checkpoint event is recorded in the transaction log. Then, the checkpoint task &ldquo;sleeps&rdquo; for another minute. To see the checkpoint task, execute sp_who. The checkpoint task is usually displayed as &ldquo;CHECKPOINT SLEEP&rdquo; in the &ldquo;cmd&rdquo; column.<br>
+      </p>
+      </td>
+  </tr>
+</table>
+<p>
+Working with big tables
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>don't create a clustered index, because when you will need to drop and create it  - ASE will lock the whole table.<br>
+      use range partitions to load data (starting with ver 15), and use local indexes (index on a partition) instead of global indexes.</p>
+      </td>
+  </tr>
+</table>
+<p>xxx<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>xxxxxx </p></td>
+  </tr>
+</table>
+<p>xxx<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>xxxxxx </p></td>
+  </tr>
+</table>
+<p>xxx<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>xxxxxx </p></td>
+  </tr>
+</table>
+<p>
+<p>
+<p>
+</body>
+</html>

@@ -1,0 +1,9 @@
+// Return true if object o is an instance of class (constructor) c.
+function instanceOf(o, c) {
+    var p = o.__proto__;
+    while(p != null) {
+        if (p == c.prototype) return true;
+        p = p.__proto__;
+    }
+    return false;
+}

@@ -1,0 +1,483 @@
+<HTML
+><HEAD
+><TITLE
+>[Chapter 6] 6.3 Cancelling a Process</TITLE
+><META
+NAME="DC.title"
+CONTENT="Learning the Unix Operating System"><META
+NAME="DC.creator"
+CONTENT="Jerry Peek, Grace Todino &amp; John Strang"><META
+NAME="DC.publisher"
+CONTENT="O'Reilly &amp; Associates, Inc."><META
+NAME="DC.date"
+CONTENT="1998-08-03T20:53:09Z"><META
+NAME="DC.type"
+CONTENT="Text.Monograph"><META
+NAME="DC.format"
+CONTENT="text/html"
+SCHEME="MIME"><META
+NAME="DC.source"
+CONTENT="1-56592-390-1"
+SCHEME="ISBN"><META
+NAME="DC.language"
+CONTENT="en-US"><META
+NAME="generator"
+CONTENT="Jade 1.1/O'Reilly DocBook 3.0 to HTML 4.0"><LINK
+REV="made"
+HREF="mailto:online-books@oreilly.com"
+TITLE="Online Books Comments"><LINK
+REL="up"
+HREF="ch06_01.htm"
+TITLE="6. Multitasking "><LINK
+REL="prev"
+HREF="ch06_02.htm"
+TITLE="6.2 Checking on a Process"><LINK
+REL="next"
+HREF="ch07_01.htm"
+TITLE="7. Where to Go from Here "></HEAD
+><BODY
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+><DIV
+CLASS="htmlnav"
+><H1
+><IMG
+SRC="gifs/smbanner.gif"
+ALT="Learning the Unix Operating System"
+USEMAP="#srchmap"
+BORDER="0"></H1
+><MAP
+NAME="srchmap"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,466,69"
+HREF="index.htm"
+ALT="Learning the Unix Operating System"><AREA
+SHAPE="RECT"
+COORDS="467,0,514,18"
+HREF="jobjects/fsearch.htm"
+ALT="Search this book"></MAP
+><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch06_02.htm"
+TITLE="6.2 Checking on a Process"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 6.2 Checking on a Process"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><B
+><FONT
+FACE="ARIEL,HELVETICA,HELV,SANSERIF"
+SIZE="-1"
+>Chapter 6<BR>Multitasking </FONT
+></B
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="CHAPTER"
+HREF="ch07_01.htm"
+TITLE="7. Where to Go from Here "
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 7. Where to Go from Here "
+BORDER="0"></A
+></TD
+></TR
+></TABLE
+>&nbsp;<HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"></DIV
+><DIV
+CLASS="SECT1"
+><H2
+CLASS="sect1"
+><A
+CLASS="title"
+NAME="LUX-CH-6-SECT-3"
+>6.3 Cancelling a Process</A
+></H2
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-6-IX-CANCELLING-BGR-PROCESSES"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-6-IX-CANCELLING-PROCESSES"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-6-IX-PROCESSES-BKGR-CANCELLING"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-6-IX-COMMANDS-CANCELLING"
+></A
+>You may decide that you shouldn't have put a
+process in the background.
+Or you decide that the process is taking
+too long to execute.
+You can cancel a background process if you know its process ID.</P
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-6-SECT-3.0.1"
+>6.3.1 kill</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-4305"
+></A
+>The <B
+CLASS="emphasis.bold"
+>kill</B
+> command aborts a process.
+The command's format is:</P
+><BLOCKQUOTE
+CLASS="blockquote"
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>kill</B
+> <EM
+CLASS="emphasis"
+>PID(s)</EM
+></P
+></BLOCKQUOTE
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>kill</B
+> terminates the designated process IDs (shown under the PID heading in
+the <B
+CLASS="emphasis.bold"
+>ps</B
+> listing).
+If you do not know the process ID, do a <B
+CLASS="emphasis.bold"
+>ps</B
+> first to display the status of
+your processes.</P
+><P
+CLASS="para"
+>In the following example, the &quot;<B
+CLASS="emphasis.bold"
+>sleep</B
+> 
+<EM
+CLASS="emphasis"
+>n</EM
+>&quot; command
+simply causes a process to &quot;go to
+sleep&quot; for <EM
+CLASS="emphasis"
+>n</EM
+> number of seconds.
+We enter two commands, <B
+CLASS="emphasis.bold"
+>sleep</B
+> and <B
+CLASS="emphasis.bold"
+>who</B
+>,
+on the same line, as a background process.</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>(sleep 60; who)&amp;</B
+></CODE
+>
+[1] 21087
+% <CODE
+CLASS="userinput"
+><B
+>ps</B
+></CODE
+>
+ PID    TTY   TIME  COMMAND
+20055    4    0:10  sh
+21087    4    0:01  sh
+21088    4    0:00  sleep
+21089    4    0:02  ps
+% <CODE
+CLASS="userinput"
+><B
+>kill 21088</B
+></CODE
+>
+Terminated
+% tom     tty2   Aug 30  11:27
+grace   tty4   Aug 30  12:24
+tim     tty5   Aug 30  07:52
+dale    tty7   Aug 30  14:34</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>We decided that 60 seconds was too long a time to wait for the output
+of <B
+CLASS="emphasis.bold"
+>who</B
+>.
+The <B
+CLASS="emphasis.bold"
+>ps</B
+> listing showed that <B
+CLASS="emphasis.bold"
+>sleep</B
+> had the process ID number
+21088, so we used
+this PID to kill the <B
+CLASS="emphasis.bold"
+>sleep</B
+> process.
+You should see a message like &quot;terminated&quot; or &quot;killed&quot;; if you don't,
+use another <B
+CLASS="emphasis.bold"
+>ps</B
+> command to be sure the process has been killed.</P
+><P
+CLASS="para"
+>The <B
+CLASS="emphasis.bold"
+>who</B
+> command is executed immediately, since it is no longer waiting on
+<B
+CLASS="emphasis.bold"
+>sleep</B
+>; it lists the users logged into the system.</P
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-6-SECT-3.0.2"
+>6.3.2 Problem checklist</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-4339"
+></A
+></P
+><DL
+CLASS="variablelist"
+><DT
+CLASS="term"
+><EM
+CLASS="emphasis"
+>The process didn't die when I told it to.</EM
+></DT
+><DD
+CLASS="listitem"
+><P
+CLASS="para"
+>Some processes can be hard to kill.  If a normal kill of these
+processes is not working, 
+enter &quot;<B
+CLASS="emphasis.bold"
+>kill -9</B
+> 
+<EM
+CLASS="emphasis"
+>PID</EM
+>&quot;.  This is
+a sure kill and can destroy almost anything, including the shell that
+is interpreting it.</P
+><P
+CLASS="para"
+>In addition, if you've run an interpreted program (like a shell
+script), you may not be able to kill all dependent processes by
+killing the interpreter process that got it all started; you may need
+to kill them individually.  However, killing a process that is feeding
+data into a pipe will generally kill any processes receiving that
+data.</P
+></DD
+></DL
+><A
+CLASS="indexterm"
+NAME="AUTOID-4351"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4352"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4353"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4354"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4355"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4356"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4357"
+></A
+></DIV
+></DIV
+><DIV
+CLASS="htmlnav"
+><P
+></P
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch06_02.htm"
+TITLE="6.2 Checking on a Process"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 6.2 Checking on a Process"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="book"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"
+><IMG
+SRC="../gifs/txthome.gif"
+ALT="Learning the Unix Operating System"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="CHAPTER"
+HREF="ch07_01.htm"
+TITLE="7. Where to Go from Here "
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 7. Where to Go from Here "
+BORDER="0"></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+>6.2 Checking on a Process</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="index"
+HREF="index/idx_0.htm"
+TITLE="Book Index"
+><IMG
+SRC="../gifs/index.gif"
+ALT="Book Index"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+>7. Where to Go from Here </TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><IMG
+SRC="../gifs/smnavbar.gif"
+USEMAP="#map"
+BORDER="0"
+ALT="The UNIX CD Bookshelf Navigation"><MAP
+NAME="map"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,73,21"
+HREF="../index.htm"
+ALT="The UNIX CD Bookshelf"><AREA
+SHAPE="RECT"
+COORDS="74,0,163,21"
+HREF="../upt/index.htm"
+ALT="UNIX Power Tools"><AREA
+SHAPE="RECT"
+COORDS="164,0,257,21"
+HREF="../unixnut/index.htm"
+ALT="UNIX in a Nutshell"><AREA
+SHAPE="RECT"
+COORDS="258,0,321,21"
+HREF="../vi/index.htm"
+ALT="Learning the vi Editor"><AREA
+SHAPE="RECT"
+COORDS="322,0,378,21"
+HREF="../sedawk/index.htm"
+ALT="sed &amp; awk"><AREA
+SHAPE="RECT"
+COORDS="379,0,438,21"
+HREF="../ksh/index.htm"
+ALT="Learning the Korn Shell"><AREA
+SHAPE="RECT"
+COORDS="439,0,514,21"
+HREF="index.htm"
+ALT="Learning the UNIX Operating System"></MAP
+></DIV
+></BODY
+></HTML
+>

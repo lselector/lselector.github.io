@@ -1,0 +1,891 @@
+<HTML
+><HEAD
+><TITLE
+>[Chapter 2] 2.3 Running Programs</TITLE
+><META
+NAME="DC.title"
+CONTENT="Learning the Unix Operating System"><META
+NAME="DC.creator"
+CONTENT="Jerry Peek, Grace Todino &amp; John Strang"><META
+NAME="DC.publisher"
+CONTENT="O'Reilly &amp; Associates, Inc."><META
+NAME="DC.date"
+CONTENT="1998-08-03T20:48:58Z"><META
+NAME="DC.type"
+CONTENT="Text.Monograph"><META
+NAME="DC.format"
+CONTENT="text/html"
+SCHEME="MIME"><META
+NAME="DC.source"
+CONTENT="1-56592-390-1"
+SCHEME="ISBN"><META
+NAME="DC.language"
+CONTENT="en-US"><META
+NAME="generator"
+CONTENT="Jade 1.1/O'Reilly DocBook 3.0 to HTML 4.0"><LINK
+REV="made"
+HREF="mailto:online-books@oreilly.com"
+TITLE="Online Books Comments"><LINK
+REL="up"
+HREF="ch02_01.htm"
+TITLE="2. Using Window Systems "><LINK
+REL="prev"
+HREF="ch02_02.htm"
+TITLE="2.2 Starting X"><LINK
+REL="next"
+HREF="ch02_04.htm"
+TITLE="2.4 Working with a Mouse"></HEAD
+><BODY
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+><DIV
+CLASS="htmlnav"
+><H1
+><IMG
+SRC="gifs/smbanner.gif"
+ALT="Learning the Unix Operating System"
+USEMAP="#srchmap"
+BORDER="0"></H1
+><MAP
+NAME="srchmap"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,466,69"
+HREF="index.htm"
+ALT="Learning the Unix Operating System"><AREA
+SHAPE="RECT"
+COORDS="467,0,514,18"
+HREF="jobjects/fsearch.htm"
+ALT="Search this book"></MAP
+><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch02_02.htm"
+TITLE="2.2 Starting X"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 2.2 Starting X"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><B
+><FONT
+FACE="ARIEL,HELVETICA,HELV,SANSERIF"
+SIZE="-1"
+>Chapter 2<BR>Using Window Systems </FONT
+></B
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch02_04.htm"
+TITLE="2.4 Working with a Mouse"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 2.4 Working with a Mouse"
+BORDER="0"></A
+></TD
+></TR
+></TABLE
+>&nbsp;<HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"></DIV
+><DIV
+CLASS="SECT1"
+><H2
+CLASS="sect1"
+><A
+CLASS="title"
+NAME="LUX-CH-2-SECT-3"
+>2.3 Running Programs</A
+></H2
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-PROGS-RUN-X"
+></A
+>One of the most important X features is that windows can come either
+from programs running on another computer or
+from an operating system other than UNIX.
+So, if your favorite MS-DOS program doesn't run under UNIX but has
+an X interface, you can run the program under MS-DOS and display
+its windows with X on your UNIX computer.
+Researchers can run graphical data analysis programs on supercomputers
+in other parts of the country and see the results in their offices.
+There's much more than we could cover here.
+The O'Reilly &amp; Associates book <EM
+CLASS="emphasis"
+>X Window System User's Guide, Volume Three,
+OSF/Motif Edition</EM
+> has all the details.</P
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-2-SECT-3.1"
+>2.3.1 Setting Focus</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-928"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-931"
+></A
+>Of all the windows on your screen, only one window receives the keystrokes
+you type.
+This window is usually highlighted in some way.
+By default in the <B
+CLASS="emphasis.bold"
+>mwm</B
+> window manager, for instance, the frame of the
+window that receives your input is a darker shade of grey.
+In X jargon, choosing the window you type to is called<A
+CLASS="indexterm"
+NAME="AUTOID-935"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-937"
+></A
+>
+&quot;setting the <EM
+CLASS="emphasis"
+>input focus</EM
+>.&quot;
+Most window managers can be configured to set the focus in one of the
+following two ways:</P
+><UL
+CLASS="itemizedlist"
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+>Point to the window and click a mouse button (usually the first
+button).
+You may need to click on the titlebar at the top of the window.</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+>Simply move the pointer inside the window.</P
+></LI
+></UL
+><P
+CLASS="para"
+>When you use <B
+CLASS="emphasis.bold"
+>mwm</B
+>, any new windows will get the input focus automatically
+as they pop up.</P
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-2-SECT-3.2"
+>2.3.2 The xterm Window</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-XTERM-WINDOWS"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-TERM-EMUL-FOR"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-UNIX-XTWINS-FOR"
+></A
+>One of the most important windows is an <B
+CLASS="emphasis.bold"
+>xterm</B
+> window.
+<B
+CLASS="emphasis.bold"
+>xterm</B
+> makes a terminal emulator window with a UNIX login session inside,
+just like a miniature terminal.
+You can have several <B
+CLASS="emphasis.bold"
+>xterm</B
+> windows at once, each doing something
+different.
+To enter a UNIX command or answer a prompt in a window, set the focus there
+and type.
+Programs in other windows will keep running; if they need input from you,
+they'll wait just as they would on a separate terminal.</P
+><P
+CLASS="para"
+><A
+CLASS="xref"
+HREF="ch02_02.htm#LUX-CH-2-FIG-1"
+TITLE="Some possibilities"
+>Figure 2.2</A
+>D
+and
+<A
+CLASS="xref"
+HREF="ch02_05.htm#LUX-CH-2-FIG-3"
+TITLE="A window running with the Motif Window Manager"
+>Figure 2.4</A
+>
+show a single <B
+CLASS="emphasis.bold"
+>xterm</B
+> window with a shell prompt (<CODE
+CLASS="literal"
+>%</CODE
+>) inside.
+If you enter a UNIX command (like <B
+CLASS="emphasis.bold"
+>date</B
+>), it will run just as it would on
+a non-window terminal.</P
+><P
+CLASS="para"
+>You can also start separate X-based window programs (typically called
+<EM
+CLASS="emphasis"
+>clients</EM
+>) by entering commands in an <B
+CLASS="emphasis.bold"
+>xterm</B
+> window.
+Although you can start new clients (<B
+CLASS="emphasis.bold"
+>xterm</B
+>, <B
+CLASS="emphasis.bold"
+>xcalc</B
+>, and so
+on) from any open <B
+CLASS="emphasis.bold"
+>xterm</B
+> window on your computer, we recommend
+starting all of them from the first window that you opened.  If you do
+that, and if your shell has job control (see <A
+CLASS="xref"
+HREF="ch06_01.htm"
+TITLE="Multitasking "
+>Chapter 6, Multitasking </A
+>), it's easy to
+find and control all the clients.</P
+><P
+CLASS="para"
+>Here's an example.<A
+CLASS="indexterm"
+NAME="AUTOID-976"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-978"
+></A
+>
+To start the calculator called <B
+CLASS="emphasis.bold"
+>xcalc</B
+>, enter:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>xcalc &amp;</B
+></CODE
+>
+[1] 12345
+%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>The shell will print a PID number like 12345.
+(<A
+CLASS="xref"
+HREF="ch06_01.htm"
+TITLE="Multitasking "
+>Chapter 6</A
+> has more information on this subject.)
+If you forget to add the ampersand (<CODE
+CLASS="literal"
+>&amp;</CODE
+>) at the end of the line,
+kill (terminate) <B
+CLASS="emphasis.bold"
+>xcalc</B
+> with your interrupt character (like
+<KBD
+CLASS="keycap"
+>[CTRL-C]</KBD
+>
+to get another shell prompt&nbsp;- then enter the command correctly.</P
+><P
+CLASS="para"
+>The new window may be placed and get the focus automatically.
+Or, the window (or an outline of it) may &quot;float&quot; above the display,
+following the pointer&nbsp;- until you point somewhere and click the mouse
+button to place the window.</P
+><P
+CLASS="para"
+>You can also start a new <B
+CLASS="emphasis.bold"
+>xterm</B
+> from an existing <B
+CLASS="emphasis.bold"
+>xterm</B
+>.
+Just enter <B
+CLASS="emphasis.bold"
+>xterm &amp;</B
+> (don't forget the ampersand) at the shell prompt.</P
+><P
+CLASS="para"
+>The same method works for starting other X programs.<A
+CLASS="indexterm"
+NAME="AUTOID-995"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-996"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-997"
+></A
+></P
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-2-SECT-3.3"
+>2.3.3 The Root Menu</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-1001"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1003"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-ROOT-MENU"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-XWINSYSTEM-ROOT-MENU"
+></A
+>If you move the pointer onto the root window (the &quot;desktop&quot; behind the
+windows) and press the correct mouse button (usually the first or third button,
+depending on your setup), you should see the <EM
+CLASS="emphasis"
+>root menu</EM
+>.
+You may need to hold down the button to keep the menu visible.
+The root menu has commands for controlling windows.
+The menu's commands may differ depending on the system.</P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-1013"
+></A
+>Your system administrator (or you, if you study your window manager)
+can add commands to the root menu.
+These can be window manager operations or commands to open other windows.
+For example, a &quot;New Window&quot; menu item can open a new <B
+CLASS="emphasis.bold"
+>xterm</B
+> window
+for you.
+A &quot;Calculator&quot; item could start <B
+CLASS="emphasis.bold"
+>xcalc</B
+>.</P
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-2-SECT-3.3.1"
+>2.3.3.1 Exercise</A
+></H4
+><P
+CLASS="para"
+><TABLE
+CLASS="informaltable"
+><TBODY
+CLASS="tbody"
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Change to your home 
+directory.</P
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Enter <CODE
+CLASS="userinput"
+><B
+>cd</B
+></CODE
+></P
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Open two <CODE
+CLASS="userinput"
+><B
+>xterm</B
+></CODE
+> 
+windows.</P
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Enter <CODE
+CLASS="userinput"
+><B
+>xterm &amp;</B
+></CODE
+> twice or select
+that item twice on the root menu.</P
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Practice setting focus on both
+new windows and entering
+UNIX commands in each.</P
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Click on window and/or move
+pointer there.  Enter <CODE
+CLASS="userinput"
+><B
+>who am i</B
+></CODE
+>, etc.</P
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Start the clock from one 
+window.</P
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Enter <CODE
+CLASS="userinput"
+><B
+>oclock &amp;</B
+></CODE
+></P
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Start the calculator from one
+window and try it.</P
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Enter <CODE
+CLASS="userinput"
+><B
+>xcalc &amp;</B
+></CODE
+></P
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Change working directory (see 
+<A
+CLASS="xref"
+HREF="ch03_01.htm"
+TITLE="Your UNIX Account "
+>Chapter 3, Your UNIX Account </A
+>) in only <EM
+CLASS="emphasis"
+>one</EM
+> window.</P
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Enter <CODE
+CLASS="userinput"
+><B
+>cd /bin</B
+></CODE
+></P
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Check working directory (see 
+<A
+CLASS="xref"
+HREF="ch03_01.htm"
+TITLE="Your UNIX Account "
+>Chapter 3</A
+>) in <EM
+CLASS="emphasis"
+>both</EM
+> windows.</P
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Enter <CODE
+CLASS="userinput"
+><B
+>pwd</B
+></CODE
+></P
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Terminate <B
+CLASS="emphasis.bold"
+>xcalc</B
+>.</P
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Set focus on the <B
+CLASS="emphasis.bold"
+>xcalc</B
+>, and type
+your interrupt character (such as
+<KBD
+CLASS="keycap"
+>[CTRL-C]</KBD
+></P
+></TD
+></TR
+></TBODY
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-2-SECT-3.3.2"
+>2.3.3.2 Problem checklist</A
+></H4
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-1082"
+></A
+></P
+><DL
+CLASS="variablelist"
+><DT
+CLASS="term"
+><EM
+CLASS="emphasis"
+>When I try to start a client, I see 
+&quot;connection refused by server&quot; or &quot;client is not authorized to connect to server.&quot;</EM
+></DT
+><DD
+CLASS="listitem"
+><P
+CLASS="para"
+>You may need to run the <B
+CLASS="emphasis.bold"
+>xhost</B
+> command.
+See your system administrator or an experienced X user.</P
+></DD
+><DT
+CLASS="term"
+><EM
+CLASS="emphasis"
+>When I try to start a client, I see &quot;Error: Can't open display.&quot;</EM
+></DT
+><DD
+CLASS="listitem"
+><P
+CLASS="para"
+>Your DISPLAY environment variable may not be set correctly or you may
+need to use the <B
+CLASS="emphasis.bold"
+>-display</B
+> option.  Ask for help or refer to the
+<EM
+CLASS="emphasis"
+>X Window System User's Guide, Volume 3</EM
+>.</P
+></DD
+></DL
+><A
+CLASS="indexterm"
+NAME="AUTOID-1099"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1100"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1101"
+></A
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="htmlnav"
+><P
+></P
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch02_02.htm"
+TITLE="2.2 Starting X"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 2.2 Starting X"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="book"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"
+><IMG
+SRC="../gifs/txthome.gif"
+ALT="Learning the Unix Operating System"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch02_04.htm"
+TITLE="2.4 Working with a Mouse"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 2.4 Working with a Mouse"
+BORDER="0"></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+>2.2 Starting X</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="index"
+HREF="index/idx_0.htm"
+TITLE="Book Index"
+><IMG
+SRC="../gifs/index.gif"
+ALT="Book Index"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+>2.4 Working with a Mouse</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><IMG
+SRC="../gifs/smnavbar.gif"
+USEMAP="#map"
+BORDER="0"
+ALT="The UNIX CD Bookshelf Navigation"><MAP
+NAME="map"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,73,21"
+HREF="../index.htm"
+ALT="The UNIX CD Bookshelf"><AREA
+SHAPE="RECT"
+COORDS="74,0,163,21"
+HREF="../upt/index.htm"
+ALT="UNIX Power Tools"><AREA
+SHAPE="RECT"
+COORDS="164,0,257,21"
+HREF="../unixnut/index.htm"
+ALT="UNIX in a Nutshell"><AREA
+SHAPE="RECT"
+COORDS="258,0,321,21"
+HREF="../vi/index.htm"
+ALT="Learning the vi Editor"><AREA
+SHAPE="RECT"
+COORDS="322,0,378,21"
+HREF="../sedawk/index.htm"
+ALT="sed &amp; awk"><AREA
+SHAPE="RECT"
+COORDS="379,0,438,21"
+HREF="../ksh/index.htm"
+ALT="Learning the Korn Shell"><AREA
+SHAPE="RECT"
+COORDS="439,0,514,21"
+HREF="index.htm"
+ALT="Learning the UNIX Operating System"></MAP
+></DIV
+></BODY
+></HTML
+>

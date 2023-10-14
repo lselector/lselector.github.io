@@ -1,0 +1,21 @@
+<!-- Here's some HTML.  We're going to animate the color of the named H1. -->
+<DIV CLASS="WARNING">
+<H2 ID="WARNING1" STYLE="color:red; text-align:center">Red Alert!</H2>
+The Web server is on fire!
+</DIV>
+
+<SCRIPT>
+// Animate the color of the element with ID="WARNING1", by 
+// setting properties of its style object every half second.
+var colors = ["red", "orange", "black"];  // Cycle through these colors.
+var nextcolor = 0;
+
+// Invoke this function to change to the next color.
+function changecolor() {
+    document.all.WARNING1.style.color = colors[nextcolor++];
+    nextcolor = nextcolor % colors.length;
+}
+
+// Arrange to call changecolor() every half second.
+setInterval("changecolor()", 500);
+</SCRIPT>

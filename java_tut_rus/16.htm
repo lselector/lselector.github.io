@@ -1,0 +1,1369 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<title>Глава 16</title>
+</head>
+
+<body>
+<font FACE="Times New Roman" SIZE="4"><b>
+
+<p>Глава 16</p>
+
+<p>Набор абстракций для работы с окнами</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Трудность при создании независимой от
+платформы библиотеки заключается в том, что ее
+разработчикам либо приходится требовать, чтобы
+все приложения на всех платформах вели себя и
+выглядели одинаково, либо для поддержки, скажем,
+трех различных разновидностей интерфейса
+приходится писать в три раза больше кода.</font><font
+SIZE="2"> </font><font FACE="Times New Roman" SIZE="2">Существуют два
+взгляда на эту проблему. Один подход заключается
+в том, что упор делается на графику низкого
+уровня — рисование пикселей, при этом
+разработчики библиотеки сами заботятся о
+внешнем виде каждого компонента. При другом
+подходе создаются абстракции, подходящие для
+библиотек каждой из операционных систем, и
+именно “родные” пакеты данной операционной
+системы служат подъемной силой для
+архитектурно-нейтральной библиотеки на каждой
+из платформ</font><font SIZE="2">. </font><font FACE="Times New Roman" SIZE="2">В
+</font><font SIZE="2">Java </font><font FACE="Times New Roman" SIZE="2">при
+создании библиотеки </font><font SIZE="2">Abstraction Window Toolkit
+(AWT) </font><font FACE="Times New Roman" SIZE="2">выбран второй подход</font><font
+SIZE="2">.</p>
+</font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Классы Graphics и Fonts мы уже обсуждали в </font><a
+HREF="15.htm"><font FACE="Times New Roman" SIZE="2" COLOR="#0000ff"><u>главе 15</u></font></a><font
+FACE="Times New Roman" SIZE="2">. В </font><a HREF="18.htm"><font FACE="Times New Roman"
+SIZE="2" COLOR="#0000ff"><u>главе 18</u></font></a><font FACE="Times New Roman"
+SIZE="2"> будут обсуждаться различные возможности
+работы с изображениями. В данной главе мы
+пройдемся по базовой архитектуре AWT, касающейся
+интерфейсных объектов</font><font SIZE="2">. </p>
+</font><font FACE="Arial"><b>
+
+<p>Компоненты</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Component — это абстрактный класс, который
+инкапсулирует все атрибуты визуального
+интерфейса - обработка ввода с клавиатуры,
+управление фокусом, взаимодействие с мышью,
+уведомление о входе/выходе из окна, изменения
+размеров и положения окон, прорисовка своего
+собственного графического представления</font><font
+SIZE="2">, </font><font FACE="Times New Roman" SIZE="2">сохранение
+текущего текстового шрифта</font><font SIZE="2">, </font><font
+FACE="Times New Roman" SIZE="2">цветов фона и переднего плана
+(более 10 методов)</font><font SIZE="2">. </font><font FACE="Times New Roman"
+SIZE="2">Перейдем к некоторым конкретным подклассам
+класса</font><font SIZE="2"> Component.</p>
+</font><font FACE="Arial" SIZE="2"><b>
+
+<p>Container</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Container — это абстрактный подкласс
+класса Component, определяющий дополнительные
+методы, которые дают возможность помещать в него
+другие компоненты, что дает возможность
+построения иерархической системы визуальных
+объектов. Container отвечает за расположение</font><font
+SIZE="2"> </font><font FACE="Times New Roman" SIZE="2">содержащихся в нем
+компонентов</font><font SIZE="2"> </font><font FACE="Times New Roman" SIZE="2">с
+помощью интерфейса LayoutManager, описание которого
+будет позднее в этой главе.</p>
+</font><font FACE="Arial" SIZE="2"><b>
+
+<p>Panel</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Класс Panel — это очень простая
+специализация класса Container. В отличие от
+последнего, он не является абстрактным классом.
+Поэтому о Panel можно думать, как о допускающем
+рекурсивную вложенность экранном компоненте.</font><font
+SIZE="2"> </font><font FACE="Times New Roman" SIZE="2">С помощью метода add
+в объекты Panel можно добавлять другие компоненты.
+После того, как в него добавлены какие-либо
+компоненты, можно вручную задавать их положение
+и изменять размер с помощью методов move, resize и reshape
+класса Component. </p>
+
+<p ALIGN="JUSTIFY">В предыдущей главе мы уже использовали
+один из подклассов Panel — Applet. Каждый раз, когда мы
+создавали Applet, методы paint и update рисовали его
+изображение на <i>поверхности</i> объекта Panel.
+Прежде, чем мы углубимся в методы Panel, давайте
+познакомимся с компонентом Canvas, который можно
+вставлять в пустую Panel при работе с объектом Applet.</p>
+</font><font SIZE="2"><b>
+
+<p>Canvas</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Основная идея использования объектов
+Canvas в том, что они являются семантически
+свободными компонентами. Вы можете придать
+объекту Canvas любое поведение и любой желаемый
+внешний вид. Его имя</font><font SIZE="2"> </font><font
+FACE="Times New Roman" SIZE="2">подразумевает, что этот класс
+является пустым холстом, на котором вы можете
+“нарисовать” любой компонент — такой, каким вы
+его себе представляете.</p>
+
+<p ALIGN="JUSTIFY">Произведем от Canvas подкласс GrayCanvas,
+который будет просто закрашивать себя серым
+цветом определенной насыщенности. Наш апплет
+будет создавать несколько таких объектов, каждый
+со своей интенсивностью серого цвета.</p>
+</font><font SIZE="2">
+
+<p>&nbsp;</p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>/* &lt;applet code = “PanelDemo”</p>
+
+<p>width=300</p>
+
+<p>height=300&gt;</p>
+
+<p>&lt;/applet&gt;</p>
+
+<p>*/</b></i></font><font SIZE="2"> </p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>import java.awt.*;</p>
+
+<p>import java.applet.*;</p>
+
+<p>class GrayCanvas extends Canvas { </p>
+
+<p>Color gray;</p>
+
+<p>public GrayCanvas(float g) { </p>
+
+<p>gray = new Color(g, g, g);</p>
+
+<p>}</p>
+
+<p>public void paint(Graphics g) { </p>
+
+<p>Dimension size = size();</p>
+
+<p>g.setColor(gray);</p>
+
+<p>g.fillRect(0, 0, size.width, size.height);</p>
+
+<p>g.setColor(Color.black);</p>
+
+<p>g.drawRect(0, 0, size.width-1, size.height-1);</p>
+
+<p>} }</p>
+
+<p>public class PanelDemo extends Applet { </p>
+
+<p>static final int n = 4;</p>
+
+<p>public void init() { </p>
+
+<p>setLayout(null);</p>
+
+<p>int width = Integer.parseInt(getParameter(&quot;width&quot;));</p>
+
+<p>int height = Integer.parseInt(getParameter(&quot;height&quot;));</p>
+
+<p>for (int i = 0; i &lt; n; i++) { </p>
+
+<p>for (int j = 0; j &lt; n; j++) {</p>
+
+<p>float g = (i * n + j) / (float) (n * n);</p>
+
+<p>Canvas с = new GrayCanvas(g);</p>
+
+<p>add(c);</p>
+
+<p>c.resize(width / n, height / n);</p>
+
+<p>c.move(i * width / n, j * height / n);</p>
+
+<p>} </p>
+
+<p>}</p>
+
+<p>} }</p>
+</b></i></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Вот как этот апплет выглядит на экране
+– </font><a HREF="examples/16/PanelDemo.html"><font SIZE="2" COLOR="#0000ff"><u>PanelDemo.html</u></font></a><font
+FACE="Times New Roman" SIZE="2">. Мы устанавливаем размер
+каждого из объектов Canvas на основе значения,
+полученного с помощью метода size, который
+возвращает объект класса Dimension. Обратите
+внимание на то, что для размещения объектов Canvas в
+нужные места используются методы resize и move. Такой
+способ станет очень утомительным, когда мы
+перейдем к более сложным компонентам и более
+интересным вариантам расположения. А пока в
+нашем апплете для выключения упомянутого
+механизма использован вызов метода setLayout(null).</p>
+</font><font FACE="Arial" SIZE="2"><b>
+
+<p>Label</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Функциональность класса Label сводится к
+тому, что он знает, как нарисовать объект String —
+текстовую строку, выровняв ее нужным образом.
+Шрифт и цвет, которыми отрисовывается строка
+метки, являются частью базового определения
+класса Component. Для работы с этими атрибутами
+предусмотрены пары методов getFont/setFont и getForegroun</font><font
+SIZE="2">d/setForeground. </font><font FACE="Times New Roman" SIZE="2">Задать или
+изменить текст строки после создания объекта с
+помощью метода setText. Для</font><font SIZE="2"> </font><font
+FACE="Times New Roman" SIZE="2">задания режимов</font><font SIZE="2"> </font><font
+FACE="Times New Roman" SIZE="2">выравнивания в классе</font><font
+SIZE="2"> </font><font FACE="Times New Roman" SIZE="2">Label определены три
+константы — LEFT, RIGHT и CENTER.</font><font SIZE="2"> </font><font
+FACE="Times New Roman" SIZE="2">Ниже приведен пример, в котором
+создаются три метки, каждая — со своим режимом
+выравнивания.</p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>/* &lt;applet code = “LabelDemo” width=100 height=100&gt;</p>
+
+<p>&lt;/applet&gt;</p>
+
+<p>*/</b></i></font><font SIZE="2"> </p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>import java.awt.*;</p>
+
+<p>import java.applet.*;</p>
+
+<p>public class LabelDemo extends Applet { </p>
+
+<p>public void init() {</p>
+
+<p>setLayout(null);</p>
+
+<p>int width = Integer.parseInt(getParameter(&quot;width&quot;));</p>
+
+<p>int height = Integer.parseInt(getParameter(&quot;height&quot;));</p>
+
+<p>Label left = new Label(&quot;Left&quot;, Label.LEFT);</p>
+
+<p>Label right = new Label(&quot;Right&quot;, Label.RIGHT);</p>
+
+<p>Label center = new Label(&quot;Center&quot;, Label.CENTER);</p>
+
+<p>add(left);</p>
+
+<p>add(right);</p>
+
+<p>add(center);</p>
+
+<p>left.reshape(0, 0, width, height / 3);</p>
+
+<p>right.reshape(0, height / 3, width, height / 3);</p>
+
+<p>center.reshape(0, 2 * height / 3, width, height / 3);</p>
+
+<p>} }</p>
+</b></i></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">На этот раз, чтобы одновременно
+переместить и изменить размер объектов Label, мы
+использовали метод reshape. Ширина каждой из меток
+равна полной ширине апплета, высота — 1/3 высоты
+апплета. Вот как этот апплет должен выглядеть,
+если его запустить</font><font SIZE="2"> – </font><a
+HREF="examples/16/LabelDemo.html"><font SIZE="2" COLOR="#0000ff"><u>LabelDemo.html</u></font></a><font
+SIZE="2">.</p>
+</font><font FACE="Arial" SIZE="2"><b>
+
+<p>Button</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Объекты-кнопки помечаются строками,
+причем эти строки нельзя выравнивать подобно
+строкам объектов Label (они всегда центрируются
+внутри кнопки</font><font SIZE="2">)</font><font FACE="Times New Roman"
+SIZE="2">. Позднее в данной главе речь пойдет о том,
+как нужно обрабатывать события, возникающие при
+нажатии и отпускании пользователем кнопки. Ниже
+приведен пример, в котором создаются три
+расположенные по вертикали кнопки.</p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>/* &lt;applet code = “ButtonDemo” width=100 height=100&gt;</p>
+
+<p>&lt;/applet&gt;</p>
+
+<p>*/</b></i></font><font SIZE="2"> </p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>import java.awt.*;</p>
+
+<p>import java.applet.*;</p>
+
+<p>public class ButtonDemo extends Applet {</p>
+
+<p>public void init() {</p>
+
+<p>setLayout(null);</p>
+
+<p>int width = Integer.parseInt(getParameter(&quot;width&quot;));</p>
+
+<p>int height = Integer.parseInt(getParameter(&quot;height&quot;));</p>
+
+<p>Button yes = new Button(&quot;Yes&quot;);</p>
+
+<p>Button no = new Button(&quot;No&quot;);</p>
+
+<p>Button maybe = new Button(&quot;Undecided&quot;);</p>
+
+<p>add(yes);</p>
+
+<p>add(no);</p>
+
+<p>add(maybe);</p>
+
+<p>yes.reshape(0, 0, width, height / 3);</p>
+
+<p>no.reshape(0, height / 3, width, height / 3);</p>
+
+<p>maybe.reshape(0, 2 * height / 3, width, height / 3);</p>
+
+<p>} }</p>
+</b></i></font><font FACE="Times New Roman" SIZE="2">
+
+<p>Вот как выглядит работающий апплет – </font><a
+HREF="examples/16/ButtonDemo.html"><font SIZE="2" COLOR="#0000ff"><u>ButtonDemo.html</u></font></a><font
+SIZE="2">. </p>
+<b>
+
+<p>Checkbox</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Класс Checkbox часто используется для
+выбора одной из двух возможностей. При создании
+объекта Checkbox ему передается текст метки и
+логическое значение, чтобы задать исходное
+состояние окошка с отметкой. Программно можно
+получать и устанавливать состояние окошка с
+отметкой с помощью методов getState и setState. Ниже
+приведен пример с тремя объектами Checkbox,
+задаваемое в этом примере исходное состояние
+соответствует отметке в первом объекте.</p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>/* &lt;applet code = “CheckBoxDemo” width=120 height=100&gt;</p>
+
+<p>&lt;/applet&gt;</p>
+
+<p>*/</b></i></font><font SIZE="2"> </p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>import java.awt.*;</p>
+
+<p>import java.applet.*;</p>
+
+<p>public class CheckboxDemo extends Applet { </p>
+
+<p>public void init() { </p>
+
+<p>setLayout(null);</p>
+
+<p>int width = Integer.parseInt(getParameter(&quot;width&quot;));</p>
+
+<p>int height = Integer.parseInt(getParameter(&quot;height&quot;));</p>
+
+<p>Checkbox win95 = new Checkbox(&quot;Windows 95/98&quot;, null, true);</p>
+
+<p>Checkbox Solaris = new Checkbox(&quot;Solaris 2.5&quot;);</p>
+
+<p>Checkbox mac = new Checkbox(&quot;MacOS 7.5&quot;);</p>
+
+<p>add(win95);</p>
+
+<p>add(solaris);</p>
+
+<p>add(mac);</p>
+
+<p>win95.reshape(0, 0, width, height / 3);</p>
+
+<p>Solaris.reshape(0, height / 3, width, height / 3);</p>
+
+<p>mac.reshape(0, 2 * height / 3, width, height / 3);</p>
+
+<p>} }</p>
+</b></i></font><font FACE="Times New Roman" SIZE="2">
+
+<p>Ниже приведен внешний вид работающего апплета</font><font
+SIZE="2"> – </font><a HREF="examples/16/CheckBoxDemo.html"><font SIZE="2"
+COLOR="#0000ff"><u>CheckBoxDemo.html</u></font></a><font SIZE="2">.</p>
+</font><font FACE="Arial" SIZE="2"><b>
+
+<p>CheckboxGroup</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Второй параметр конструктора Checkbox (в
+предыдущем примере мы ставили там </font><font SIZE="2">null)
+</font><font FACE="Times New Roman" SIZE="2">используется для
+группирования нескольких объектов Checkbox. Для
+этого сначала создается объект CheckboxGroup, затем он
+передается в качестве параметра любому
+количеству конструкторов Checkbox, при этом
+предоставляемые этой группой варианты выбора
+становятся взаимоисключающими</font><font SIZE="2"> (</font><font
+FACE="Times New Roman" SIZE="2">только один может быть
+задействован</font><font SIZE="2">)</font><font FACE="Times New Roman"
+SIZE="2">. Предусмотрены и методы, которые позволяют
+получить и установить группу, к которой
+принадлежит конкретный объект Checkbox — getCheckboxGroup и
+setCheckboxGroup. Вы можете пользоваться методами getCurrent
+и setCurrent для получения и установки состояния
+выбранного в данный момент объекта Checkbox. Ниже
+приведен пример, отличающийся от предыдущего
+тем, что теперь различные варианты выбора в нем
+взаимно исключают друг друга.</p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>/* &lt;applet code = “CheckboxGroupDemo” width=120 height=100&gt;</p>
+
+<p>&lt;/applet&gt;</p>
+
+<p>*/</b></i></font><font SIZE="2"> </p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>import java.awt.*;</p>
+
+<p>import java.applet.*;</p>
+
+<p>public class CheckboxGroupDemo extends Applet {</p>
+
+<p>public void init() {</p>
+
+<p>setLayout(null);</p>
+
+<p>int width = Integer.parseInt(getParameter(&quot;width&quot;));</p>
+
+<p>int height = Integer.parseInt(getParameter(&quot;height&quot;));</p>
+
+<p>CheckboxGroup g = new CheckboxGroup();</p>
+
+<p>Checkbox win95 = new Checkbox(&quot;Windows 95/98&quot;, g, true);</p>
+
+<p>Checkbox solaris = new Checkbox(&quot;Solaris 2.5&quot;, g, false);</p>
+
+<p>Checkbox mac = new Checkbox(&quot;MacOS 7.5&quot;, g, false);</p>
+
+<p>add(win95);</p>
+
+<p>add(solaris);</p>
+
+<p>add(mac);</p>
+
+<p>win95.reshape(0, 0, width, height / 3);</p>
+
+<p>solaris. reshape(0, height / 3, width, height / 3);</p>
+
+<p>mac.reshape(0, 2 * height / 3, width, height / 3);</p>
+
+<p>} }</p>
+</b></i></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Обратите внимание — окошки изменили
+свою форму, теперь они не квадратные, а круглые – </font><a
+HREF="examples/java/CheckboxGroupDemo.html"><font SIZE="2" COLOR="#0000ff"><u>CheckboxGroupDemo.html</u></font></a><font
+SIZE="2">.</p>
+</font><font FACE="Arial" SIZE="2"><b>
+
+<p>Choice</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Класс Choice (выбор) используется при
+создании раскрывающихся списочных меню
+(выпадающих списков типа </font><font SIZE="2">ComboBox </font><font
+FACE="Times New Roman" SIZE="2">в Windows). Компонент Choice занимает
+ровно столько места, сколько требуется для
+отображения выбранного в данный момент элемента,
+когда пользователь щелкает мышью на нем,
+раскрывается меню со всеми элементами, в котором
+можно сделать выбор. Каждый элемент меню — это
+строка, которая выводится, выровненная по левой
+границе. Элементы меню выводятся в том порядке, в
+котором они были добавлены в объект Choice. Метод
+countItems возвращает количество пунктов в меню
+выбора. Вы можете задать пункт, который выбран в
+данный момент, с помощью метода select, передав ему
+либо целый индекс (пункты меню перечисляются с
+нуля), либо строку, которая совпадает с меткой
+нужного пункта меню. Аналогично, с помощью
+методов getSelectedItem и getSelectedIndex можно получить,
+соответственно, строку-метку и индекс выбранного
+в данный момент пункта меню. Вот очередной
+простой пример, в</font><font SIZE="2"> </font><font FACE="Times New Roman"
+SIZE="2">котором создается два объекта Choice.</p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>/* &lt;applet code = “ChoiceDemo” width=200 height=100&gt;</p>
+
+<p>&lt;/applet&gt;</p>
+
+<p>*/</b></i></font><font SIZE="2"> </p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>import java.awt.*;</p>
+
+<p>import java.applet.*;</p>
+
+<p>public class ChoiceDemo extends Applet { </p>
+
+<p>public void init() { </p>
+
+<p>setLayout(null);</p>
+
+<p>int width = Integer.parseInt(getParameter(&quot;width&quot;));</p>
+
+<p>int height = Integer.parseInt(getParameter(&quot;height&quot;));</p>
+
+<p>Choice os = new Choice();</p>
+
+<p>Choice browser = new Choice();</p>
+
+<p>os.addItem(&quot;Windows 95/98&quot;);</p>
+
+<p>os.addItem(&quot;Solaris 2.5&quot;);</p>
+
+<p>os.addItem(“MacOS 7.5&quot;);</p>
+
+<p>browser.addItem(&quot;Netscape Navigator 3.0&quot;);</p>
+
+<p>browser.addItem(&quot;Netscape Communicator 4.5&quot;);</p>
+
+<p>browser.addItem(“Internet Explorer 3.0&quot;);</p>
+
+<p>browser.addItem(&quot;Mosaic 3.0&quot;);</p>
+
+<p>browser.addItem(&quot;Lynx 2.4&quot;);</p>
+
+<p>browser.select(&quot;Netscape Communicator 4.5&quot;);</p>
+
+<p>add(os);</p>
+
+<p>add(browser);</p>
+
+<p>os.reshape(0, 0, width, height / 2);</p>
+
+<p>browser.reshape(0, height / 2, width, height / 2);</p>
+
+<p>} }</p>
+</b></i></font><font FACE="Times New Roman" SIZE="2">
+
+<p>А вот как выглядят эти выпадающие списки – </font><a
+HREF="examples/16/ChoiceDemo.html"><font SIZE="2" COLOR="#0000ff"><u>ChoiceDemo.html</u></font></a><font
+SIZE="2">.</p>
+</font><font FACE="Arial" SIZE="2"><b>
+
+<p>List</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Класс List представляет собой
+компактный список с возможностью выбора
+нескольких вариантов и с прокруткой (аналог </font><font
+SIZE="2">ListBox </font><font FACE="Times New Roman" SIZE="2">в Windows). Ниже
+приведен пример с двумя списками выбора, один из
+которых допускает выбор нескольких элементов, а
+второй — выбор единственного элемента.</p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>/* &lt;applet code = “ListDemo” width=200 height=100&gt;</p>
+
+<p>&lt;/applet&gt;</p>
+
+<p>*/</b></i></font><font SIZE="2"> </p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>import java.awt.*;</p>
+
+<p>import java.applet.*;</p>
+
+<p>public class ListDemo extends Applet { </p>
+
+<p>public void init() { setLayout(null);</p>
+
+<p>int width = Integer.parseInt(getParameter(&quot;width&quot;));</p>
+
+<p>int height = Integer.parseInt(getParameter(&quot;height&quot;));</p>
+
+<p>List os = new List(0, true);</p>
+
+<p>List browser = new List(0, false);</p>
+
+<p>os.addItem(&quot;Windows 95/98&quot;);</p>
+
+<p>os.addItem(&quot;Solaris 2.5&quot;);</p>
+
+<p>os.addItem(&quot;MacOS 7.5&quot;);</p>
+
+<p>browser.addItem(&quot;Netscape Navigator 3.0&quot;);</p>
+
+<p>browser.addItem(&quot;Netscape Communicator 4.5&quot;);</p>
+
+<p>browser.addItem(&quot;lnternet Explorer 4.0&quot;);</p>
+
+<p>browser.addItem(&quot;Mosaic 3.0&quot;);</p>
+
+<p>browser.addItem(&quot;Lynx 2.4&quot;);</p>
+
+<p>browser.select(1);</p>
+
+<p>add(os);</p>
+
+<p>add(browser);</p>
+
+<p>os.reshape(0, 0, width, height / 2);</p>
+
+<p>browser.reshape(0, height / 2, width, height / 2);</p>
+
+<p>} }</p>
+</b></i></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Заметьте, что у нижнего списка имеется
+линейка прокрутки, поскольку все его элементы не
+уместились в заданный нами размер – </font><a
+HREF="examples/16/ListDemo.html"><font SIZE="2" COLOR="#0000ff"><u>ListDemo.html</u></font></a><font
+SIZE="2">.</p>
+</font><font FACE="Arial" SIZE="2"><b>
+
+<p>Scrollbar</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Объекты Scrollbar (линейки прокрутки)
+используются для выбора подмножества значений
+между заданными минимумом и максимумом.
+Визуально у линейки прокрутки есть несколько
+органов управления, ориентированных либо
+вертикально, либо горизонтально. Стрелки на
+каждом из ее концов показывают, что, нажав на них,
+вы можете продвинуться на один шаг в
+соответствующем направлении. Текущее положение
+отображается с помощью движка линейки прокрутки,
+которым пользователь также может управлять,
+устанавливая требуемое положение линейки. </p>
+
+<p ALIGN="JUSTIFY">Конструктор класса Scrollbar позволяет
+задавать ориентацию линейки прокрутки — для
+этого предусмотрены константы VERTICAL и HORIZONTAL.
+Кроме того с помощью конструктора можно задать
+начальное положение и размер движка, а так же
+минимальное и максимальное значения, в пределах
+которых линейка прокрутки может изменять
+параметр. Для получения и установки текущего
+состояния линейки прокрутки используются методы
+getValue и setValue. Кроме того воспользовавшись
+методами getMinimum и getMaximum, вы можете получить
+рабочий диапазон объекта. Ниже приведен пример, в
+котором создается и вертикальная, и
+горизонтальная линейки прокрутки. </p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>/* &lt;applet code = “ScrollbarDemo” width=200 height=100&gt;</p>
+
+<p>&lt;/applet&gt;</p>
+
+<p>*/</b></i></font><font SIZE="2"> </p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>import java.awt.*;</p>
+
+<p>import java.applet.*;</p>
+
+<p>public class ScrollbarDemo extends Applet { </p>
+
+<p>public void init() { </p>
+
+<p>setLayout(null);</p>
+
+<p>int width = Integer.parseInt(getParameter(&quot;width&quot;));</p>
+
+<p>int height = Integer. parseInt(getParameter(&quot;height&quot;));</p>
+
+<p>Scrollbar hs = new Scrollbar(Scrollbar.HORIZONTAL, 50, width / 10, 0, 100);</p>
+
+<p>Scrollbar vs = new Scrollbar(Scrollbar.VERTICAL, 50, height / 2, 0, 100);</p>
+
+<p>add(hs);</p>
+
+<p>add(vs);</p>
+
+<p>int thickness = 16;</p>
+
+<p>hs.reshape(0, height - thickness, width - thickness, thickness);</p>
+
+<p>vs.reshape(width - thickness, 0, thickness, height - thickness);</p>
+
+<p>} }</p>
+</b></i></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">В этом примере скроллируется, конечно,
+пустая область – </font><a HREF="examples/16/ScrollbarDemo.html"><font
+SIZE="2" COLOR="#0000ff"><u>ScrollbarDemo.html</u></font></a><font SIZE="2">. </p>
+</font><font FACE="Arial" SIZE="2"><b>
+
+<p>TextField</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Класс TextField представляет собой
+реализацию однострочной области для ввода
+текста. Такие области часто используются в
+формах для пользовательского ввода. Вы можете
+“заморозить” содержимое объекта TextField с помощью
+метода setEditable, а метод isEditable сообщит вам, можно ли
+редактировать текст в данном объекте. Текущее
+значение объекта можно получить методом getText</font><font
+SIZE="2"> </font><font FACE="Times New Roman" SIZE="2">и установить
+методом setText. С помощью метода select можно выбрать
+фрагмент строки, задавая его начало и конец,
+отсчитываемые с нуля. Для выбора всей строки
+используется метод selectAll.</p>
+
+<p ALIGN="JUSTIFY">Метод setEchoChar задает символ, который
+будет выводиться вместо любых вводимых символов.
+Вы можете проверить, находится ли объект TextField в
+этом режиме, с помощью метода echoCharIsSet, и узнать,
+какой именно символ задан для эхо-печати, с
+помощью метода getEchoChar.</font><font SIZE="2"> </font><font
+FACE="Times New Roman" SIZE="2">Вот пример, в котором создаются
+классические поля для имени пользователя и
+пароля.</p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>/* &lt;applet code = “TextFieldDemo” width=200 height=100&gt;</p>
+
+<p>&lt;/applet&gt;</p>
+
+<p>*/</b></i></font><font SIZE="2"> </p>
+</font><b><font FACE="Courier New" SIZE="2"><i>
+
+<p>import java.awt.*;</p>
+
+<p>import java.applet.*;</p>
+
+<p>public class TextFieldDemo extends Applet { </p>
+
+<p>public void init() {</p>
+
+<p>setLayout(null);</p>
+
+<p>int width = Integer.parseInt(getParameter(&quot;width&quot;));</p>
+
+<p>int height = Integer.parseInt(getParameter(&quot;height&quot;));</p>
+
+<p>Label namep = new Label(&quot;Name : &quot;, Label.RIGHT);</p>
+
+<p>Label passp = new Label(&quot;Password : &quot;, Label.RIGHT);</p>
+
+<p>TextField name = new Text Field(8);</p>
+
+<p>TextField pass = new TextField(8);</p>
+
+<p>pass.setEchoChar('*');</p>
+
+<p>add(namep);</p>
+
+<p>add(name);</p>
+
+<p>add(passp);</p>
+
+<p>add(pass);</p>
+
+<p>int space = 25;</p>
+
+<p>int w1 = width / 3;</p>
+
+<p>namep.setBounds(0, (height - space) / 2, w1, space);</p>
+
+<p>name.setBounds(w1, (height - space) / 2, w1, space);</p>
+
+<p>passp.setBounds(0, (height + space) / 2, w1, space);</p>
+
+<p>pass.setBounds(w1, (height + space) / 2, w1, space);</p>
+
+<p>} }</p>
+</i></font></b><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Обратите внимание, что в этом примере
+мы заменили устаревший в </font><font SIZE="2">JDK 1.1 <b>reshape</b>
+</font><font FACE="Times New Roman" SIZE="2">на </font><font SIZE="2"><b>setBounds</b>
+– </font><a HREF="examples/16/TextFieldDemo.html"><font SIZE="2" COLOR="#0000ff"><u>TextFieldDemo.html</u></font></a><font
+SIZE="2">. </font><font FACE="Times New Roman" SIZE="2">Вообще, в примерах
+могут встречаться вызовы </font><font SIZE="2">Deprecated API, </font><font
+FACE="Times New Roman" SIZE="2">за что автор приносит извинения
+(после выхода Java 1.2, возможно, некоторые
+устаревшие функции будут действительно удалены,
+и тогда все примеры будут пересмотрены).</p>
+</font><font SIZE="2"><b>
+
+<p>TextArea</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Порой одной строки текста оказывается
+недостаточно для конкретной задачи. AWT включает в
+себя очень простой многострочный редактор
+обычного текста, называемый TextArea. Конструктор
+класса TextArea воспринимает значение типа String в
+качестве начального текста объекта. Кроме того, в
+конструкторе указывается число колонок и строк
+текста, которые нужно выводить. Есть три метода,
+которые позволяют программе модифицировать
+содержимое объекта TextArea: appendText добавляет
+параметр типа String в конец буфера; insertText вставляет
+строку в заданное отсчитываемым от нуля индексом
+место в буфере; rеplaceText копирует строку-параметр в
+буфер, замещая ею текст, хранящийся в буфере
+между первым и вторым параметрами-смещениями.
+Ниже приведена программа, создающая объект TextArea
+и вставляющая в него строку.</p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>/* &lt;applet code = “TextAreaDemo” width=200 height=100&gt;</p>
+
+<p>&lt;/applet&gt;</p>
+
+<p>*/</b></i></font><font SIZE="2"> </p>
+</font><b><font FACE="Courier New" SIZE="2"><i>
+
+<p>import java.awt.*;</p>
+
+<p>import java.applet.*;</p>
+
+<p>public class TextAreaDemo extends Applet { </p>
+
+<p>public void init() { </p>
+
+<p>setLayout(null);</p>
+
+<p>int width = Integer.parseInt(getParameter(&quot;width&quot;));</p>
+
+<p>int height = Integer.parseInt(getParameter(&quot;height&quot;));</p>
+
+<p>String val = &quot;There are two ways of constructing &quot; + </p>
+
+<p>&quot;a software design.\n&quot; + </p>
+
+<p>&quot;One way is to make it so simple\n&quot; + </p>
+
+<p>&quot;that there are obviously no deficiencies.\n&quot; + </p>
+
+<p>&quot;And the other way is to make it so complicated\n&quot; +</p>
+
+<p>&quot;that there are no obvious deficiencies.\n\n&quot; + </p>
+
+<p>“C.A.R. Hoare\n\n&quot; +</p>
+
+<p>&quot;There's an old story about the person who wished\n&quot; +</p>
+
+<p>&quot;his computer were as easy to use as his telephone. \n&quot; +</p>
+
+<p>&quot;That wish has come true,\n&quot; +</p>
+
+<p>&quot;since I no longer know how to use my telephone. \n\n&quot; +</p>
+
+<p>“Bjarne Stroustrup, AT&amp;T (inventor of C++)&quot;;</p>
+
+<p>TextArea text = new TextArea(val, 80, 40);</p>
+
+<p>add(text);</p>
+
+<p>text.setBounds(0, 0, width, height);</p>
+
+<p>}}</p>
+</i></font></b><font FACE="Times New Roman" SIZE="2">
+
+<p>Прочитайте (можете подредактировать) этот
+текст с юмором – </font><a HREF="examples/16/TextAreaDemo.html"><font
+SIZE="2" COLOR="#0000ff"><u>TextAreaDemo.html</u></font></a><font SIZE="2">. </p>
+</font><font FACE="Arial"><b>
+
+<p>Layout</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Все компоненты, с которыми мы работали
+до сих пор в этой главе, размещались “вручную”. И
+в каждом примере мы вызывали загадочный метод
+setLayout(null). Этот вызов запрещал использование
+предусмотренного по умолчанию механизма
+управления размещением компонентов. Для решения
+подобных задач в AWT предусмотрены диспетчеры
+размещения (layout managers). </p>
+</font><font SIZE="2"><b>
+
+<p ALIGN="JUSTIFY">LayoutManager.</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Каждый класс, реализующий интерфейс
+LayoutManager, следит за списком компонентов, которые
+хранятся с именами типа String. Всякий раз, когда вы
+добавляете компонент в Panel, диспетчер размещения
+уведомляется об этом. Если требуется изменить
+размер объекта Panel, то идет обращение к
+диспетчеру посредством методов minimumLayoutSize и
+preferredLayoutSize. В каждом компоненте, который
+приходится обрабатывать диспетчеру, должны
+присутствовать реализации методов prefe</font><font
+SIZE="2">r</font><font FACE="Times New Roman" SIZE="2">redSize и minimumSize. Эти
+методы должны возвращать предпочтительный и
+минимальный размеры для прорисовки компонента,
+соответственно. Диспетчер размещения по
+возможности будет пытаться удовлетворить эти
+запросы, в то же время заботясь о целостности
+всей картины взаимного расположения
+компонентов.</p>
+
+<p>В Java есть несколько предопределенных классов —
+диспетчеров размещения, описываемых ниже.</p>
+</font><font SIZE="2"><b>
+
+<p>FlowLayout</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Класс FlowLayout реализует простой стиль
+размещения, при котором компоненты
+располагаются, начиная с левого верхнего угла,
+слева направо и сверху вниз. Если в данную строку
+не помещается очередной компонент, он
+располагается в левой позиции новой строки.
+Справа, слева, сверху и снизу компоненты
+отделяются друг от друга небольшими
+промежутками. Ширину</font><font SIZE="2"> </font><font
+FACE="Times New Roman" SIZE="2">этого промежутка можно задать в
+конструкторе FlowLayout. Каждая строка с компонентами
+выравнивается по левому или правому краю, либо
+центрируется в зависимости от того, какая из
+констант LEFT, RIGHT или CENTER была передана
+конструктору. Режим выравнивания по умолчанию —
+CENTER, используемая по умолчанию ширина промежутка
+— 5 пикселей.</p>
+
+<p ALIGN="JUSTIFY">Ниже приведен пример, в котором в Panel
+включается несколько компонентов Label. Объект Panel
+использует FlowLayout с выравниванием RIGHT.</p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>/* &lt;applet code = “FlowLayoutDemo” width=200 height=100&gt;</p>
+
+<p>&lt;/applet&gt;</p>
+
+<p>*/</b></i></font><font SIZE="2"> </p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>import java.awt.*;</p>
+
+<p>import java.applet.*;</p>
+
+<p>import java.util.*;</p>
+
+<p>public class FlowLayoutDemo extends Applet {</p>
+
+<p>public void init() {</p>
+
+<p>setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 3));</p>
+
+<p>int width = Integer.parseInt(getParameter(&quot;width&quot;));</p>
+
+<p>int height = Integer.parseInt(getParameter(&quot;height&quot;));</p>
+
+<p>String val = &quot;Data is not information &quot; +</p>
+
+<p>&quot;is not knowledge is not wisdom.&quot;;</p>
+
+<p>StringTokenizer st = new StringTokenizer(val);</p>
+
+<p>while (st.hasMoreTokens()) {</p>
+
+<p>add(new Button(st.nextToken()));</p>
+
+<p>}</p>
+
+<p>} }</p>
+</b></i></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Необходимо вызвать пример для двух
+различных размеров</font><font SIZE="2"> – </font><a
+HREF="examples/16/FlowLayoutDemo1.html"><font SIZE="2" COLOR="#0000ff"><u>FlowLayoutDemo1.html</u></font></a><font
+SIZE="2">, </font><a HREF="examples/16/FlowLayoutDemo2.html"><font SIZE="2"
+COLOR="#0000ff"><u>FlowLayoutDemo2.html</u></font></a><font SIZE="2"> </font><font
+FACE="Times New Roman" SIZE="2">для того, чтобы
+проиллюстрировать, как объекты Label перетекают из
+строки в строку, и при этом строки выравниваются
+по правому краю (или Вы можете изменять размеры
+окнa </font><font SIZE="2">appletViewer).</p>
+<b>
+
+<p>BorderLayout</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Класс BorderLayout реализует обычный стиль
+размещения для окон верхнего уровня, в котором
+предусмотрено четыре узких компонента
+фиксированной ширины по краям, и одна большая
+область в центре, которая может расширяться и
+сужаться в двух направлениях, занимая все
+свободное пространство окна. У каждой из этих
+областей есть строки-имена: String.North,</font><font SIZE="2"> </font><font
+FACE="Times New Roman" SIZE="2">String.South, String.East и String.West
+соответствуют четырем краям, a Center — центральной
+области. Ниже приведен пример BorderLayout с
+компонентом в каждой из названных областей.</p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>/* &lt;applet code = “BorderLayoutDemo” width=300 height=200&gt;</p>
+
+<p>&lt;/applet&gt;</p>
+
+<p>*/</b></i></font><font SIZE="2"> </p>
+</font><b><font FACE="Courier New" SIZE="2"><i>
+
+<p>import java.awt.*;</p>
+
+<p>import java.applet.*;</p>
+
+<p>import java.util.*;</p>
+
+<p>public class BorderLayoutDemo extends Applet { </p>
+
+<p>public void init() {</p>
+
+<p>setLayout(new BorderLayout());</p>
+
+<p>int width = Integer.parseInt(getParameter(&quot;width&quot;));</p>
+
+<p>int height = Integer.parseInt(getParameter(&quot;height&quot;));</p>
+
+<p>add(&quot;North&quot;, new Button(&quot;This is across the top&quot;));</p>
+
+<p>add(&quot;South&quot;, new Label(&quot;The footer message might go here&quot;));</p>
+
+<p>add(&quot;East&quot;, new Button(&quot;Left&quot;));</p>
+
+<p>add(&quot;West&quot;, new Button(&quot;Right&quot;));</p>
+
+<p>String msg = &quot;The reasonable man adapts &quot; +</p>
+
+<p>&quot;himself to the world;\n&quot; + </p>
+
+<p>&quot;the unreasonable one persists in &quot; +</p>
+
+<p>&quot;trying to adapt the world to himself.\n&quot; +</p>
+
+<p>&quot;Therefore all progress depends &quot; +</p>
+
+<p>&quot;on the unreasonable rnan.\n\n&quot; +</p>
+
+<p>“George Bernard Shaw\n\n&quot;;</p>
+
+<p>add(&quot;Center&quot;, new TextArea(msg));</p>
+
+<p>} }</p>
+</i></font></b><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Опять читаем фразу со смыслом (спасибо
+Бернарду Шоу) – </font><a HREF="examples/16/BorderLayoutDemo.html"><font
+SIZE="2" COLOR="#0000ff"><u>BorderLayoutDemo.html</u></font></a><font SIZE="2">.</p>
+<b>
+
+<p>GridLayout</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Класс GridLayout размещает компоненты в
+простой равномерной сетке. Конструктор этого
+класса позволяет задавать количество строк и
+столбцов. Ниже приведен пример, в котором GridLayout
+используется для создания сетки 4х4, 15 квадратов
+из 16 заполняются кнопками, помеченными
+соответствующими индексами. Как вы уже, наверное,
+поняли, это — панель для игры в “пятнашки”</font><font
+SIZE="2">.</p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>/* &lt;applet code = “GridLayoutDemo” width=200 height=200&gt;</p>
+
+<p>&lt;/applet&gt;</p>
+
+<p>*/</b></i></font><font SIZE="2"> </p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>import java.awt.*;</p>
+
+<p>import java.applet.*;</p>
+
+<p>public class GridLayoutDemo extends Applet { </p>
+
+<p>static final int n = 4;</p>
+
+<p>public void init() {</p>
+
+<p>setLayout(new GridLayout(n, n));</p>
+
+<p>setFont(new Font(&quot;Helvetica&quot;, Font.BOLD, 24));</p>
+
+<p>int width = Integer.parseInt(getParameter(&quot;width&quot;));</p>
+
+<p>int height = Integer.parseInt(getParameter(&quot;height”)); </p>
+
+<p>for (int i = 0; i &lt; n; i++) { </p>
+
+<p>for (int j = 0; j &lt; n; j++) { </p>
+
+<p>int k = i * n + j;</p>
+
+<p>if (k &gt; 0)</p>
+
+<p>add(new Button(&quot;&quot; + k));</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>} }</p>
+</b></i></font><font FACE="Times New Roman" SIZE="2">
+
+<p>Если доработать этот пример – получится
+неплохая игра – </font><a HREF="examples/16/GridLayoutDemo.html"><font
+SIZE="2" COLOR="#0000ff"><u>GridLayoutDemo.html</u></font></a><font SIZE="2">.</p>
+<b>
+
+<p>Insets</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Класс Insets используется для того, чтобы
+вставлять в объект Panel границы, напоминающие
+горизонтальные и вертикальные промежутки между
+объектами, которые делает диспетчер размещения.
+Для того, чтобы добиться вставки границ в объект
+Panel, нужно заместить метод Insets реализацией,
+возвращающей новый объект Insets с четырьмя целыми
+значениями, соответствующими ширине верхнего,
+нижнего, левого и правого краев.</p>
+</font><b><font FACE="Courier New" SIZE="2"><i>
+
+<p>public Insets insets() {</p>
+
+<p>return new Insets(10, 10, 10, 10);</p>
+
+<p>}</p>
+</i></font><font SIZE="2">
+
+<p>CardLayout</p>
+</font></b><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Класс CardLayout по своему уникален. Он
+отличается от других программ управления
+размещением компонентов тем, что представляет
+несколько различных вариантов размещения,
+которые можно сравнить с колодой карт. Колоду
+можно тасовать так, чтобы в данный момент времени
+наверху была только одна из карт. Это может быть
+полезно при создании интерфейсов пользователя, в
+которых есть необязательные компоненты,
+включаемые и выключаемые динамически в
+зависимости от реакции пользователя. </p>
+</font><font SIZE="2"><b>
+
+<p>Window</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Класс Window во многом напоминает Panel за
+тем исключением, что он создает свое собственное
+окно верхнего уровня. Большая часть
+программистов скорее всего будет использовать
+не непосредственно класс Window, а его подкласс Frame.</p>
+</font><font SIZE="2"><b>
+
+<p>Frame</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Frame — это как раз то, что обычно и
+считают окном на рабочей поверхности экрана. У
+объекта Frame есть строка с заголовком, управляющие
+элементы для изменения размера и линейка меню.
+Для того, чтобы вывести/спрятать изображение
+объекта Frame, нужно использовать методы show и hide.
+Ниже приведен пример апплета, который показывает
+объект Frame с содержащимся в нем компонентом Tex</font><font
+SIZE="2">tArea.</p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>/* &lt;applet code = “FrameDemo” width=200 height=200&gt;</p>
+
+<p>&lt;/applet&gt;</p>
+
+<p>*/</b></i></font><font SIZE="2"> </p>
+</font><i><b><font FACE="Courier New" SIZE="1">
+
+<p>import java.awt.*;</p>
+
+<p>import java.applet.*;</p>
+</font><font FACE="Courier New" SIZE="2">
+
+<p>public class FrameDemo extends Applet { </p>
+
+<p>public void init() {</p>
+
+<p>int width = Integer.parseInt(getParameter(&quot;width&quot;));</p>
+
+<p>int height = Integer.parseInt(getParameter(&quot;height&quot;));</p>
+
+<p>String val = &quot;There are two ways of constructing &quot; +</p>
+
+<p>&quot;a software design.\n&quot; +</p>
+
+<p>&quot;One way is to make it so simple\n&quot; +</p>
+
+<p>&quot;that there are obviously no deficiencies.\n&quot; +</p>
+
+<p>&quot;And the other way is to make it so complicated&quot; +</p>
+
+<p>&quot;that there are no obvious deficiencies.\n\n&quot; +</p>
+
+<p>“C.A.R. Hoare\n\n&quot;;</p>
+
+<p>TextArea text = new TextArea(val, 80, 40);</p>
+
+<p>Frame f = new Frame(&quot;Demo Frame&quot;);</p>
+
+<p>f.setSize(width, height);</p>
+
+<p>f.add(&quot;Center&quot;, text);</p>
+
+<p>f.show();</p>
+</font><font FACE="Courier New" SIZE="1">
+
+<p>} }</p>
+</font></b></i><font FACE="Times New Roman" SIZE="2">
+
+<p>Уже знакомая фраза во фрейме – </font><a
+HREF="examples/16/FrameDemo.html"><font SIZE="2" COLOR="#0000ff"><u>FrameDemo.html</u></font></a><font
+SIZE="2">.</p>
+</font><font FACE="Times New Roman"><b>
+
+<p>Меню</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">С каждым окном верхнего уровня может
+быть связана линейка меню. Объект MenuBar может
+включать в себя несколько объектов Menu. Последние,
+в свою очередь, содержат в себе список вариантов
+выбора — объектов MenuItem. Menu — подкласс MenuItem, так
+что объекты Menu также могут включаться в этот
+список, что позволяет создавать иерархически
+вложенные подменю. Вот пример, в котором к окну
+добавлены несколько вложенных меню.</p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>/* &lt;applet code = “MenuDemo” width=200 height=200&gt;</p>
+
+<p>&lt;/applet&gt;</p>
+
+<p>*/</b></i></font><font SIZE="2"> </p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>import java.awt.*;</p>
+
+<p>import java.applet. *;</p>
+
+<p>public class MenuDemo extends Applet { </p>
+
+<p>public void init() {</p>
+
+<p>int width = Integer.parseInt(getParameter(&quot;width&quot;));</p>
+
+<p>int height = Integer.parseInt(getParameter(&quot;height&quot;));</p>
+
+<p>Frame f = new Frame(&quot;Demo Frame&quot;);</p>
+
+<p>f.setSize(width, height);</p>
+
+<p>MenuBar mbar = new MenuBar();</p>
+
+<p>f.setMenuBar(mbar);</p>
+
+<p>Menu file = new Menu(&quot;File&quot;);</p>
+
+<p>file.add(new MenuItem(&quot;New... &quot;));</p>
+
+<p>file.add(new MenuItem(&quot;0pen...&quot;));</p>
+
+<p>file.add(new MenuItem(&quot;Close&quot;));</p>
+
+<p>file.add(new MenuItem(&quot;-&quot;));</p>
+
+<p>file.add(new MenuItem(&quot;Quit...&quot;));</p>
+
+<p>mbar.add(file);</p>
+
+<p>Menu edit = new Menu(&quot;Edit&quot;);</p>
+
+<p>edit.add(new MenuItem(&quot;Cut&quot;));</p>
+
+<p>edit.add(new MenuItem(&quot;Copy&quot;));</p>
+
+<p>edit.add(new Menultem(&quot;Paste&quot;));</p>
+
+<p>edit.add(new MenuItem(&quot;-&quot;));</p>
+
+<p>Menu sub = new Menu(&quot;Special&quot;);</p>
+
+<p>sub.add(new MenuItem(&quot;First&quot;));</p>
+
+<p>sub.add(new MenuItem(&quot;Second&quot;));</p>
+
+<p>sub.add(new MenuItem(&quot;Third&quot;));</p>
+
+<p>edit.add(sub);</p>
+
+<p>edit.add(new CheckBoxMenuItem(&quot;Debug&quot;));</p>
+
+<p>edit.add(new CheckBoxMenuItem(&quot;Testing&quot;));</p>
+
+<p>mbar.add(edit);</p>
+
+<p>f.show();</p>
+
+<p>} }</p>
+</b></i></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Посмотрим на практически классическое
+меню – </font><a HREF="examples/16/MenuDemo.html"><font SIZE="2" COLOR="#0000ff"><u>MenuDemo.html</u></font></a><font
+SIZE="2">.</p>
+</font><font FACE="Times New Roman"><b>
+
+<p>AWT при свете дня</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">AWT в своем нынешнем виде делает
+прекрасную работу, являясь общим знаменателем -
+библиотекой, единой для всех платформ. Некоторый
+недостаток AWT в том, что, поскольку</font><font SIZE="2"> </font><font
+FACE="Times New Roman" SIZE="2">каждый из AWT-компонентов
+реализован на основе соответствующего
+компонента базовой</font><font SIZE="2"> </font><font
+FACE="Times New Roman" SIZE="2">операционной системы, их
+поведение и внешний вид может меняться при смене
+платформы. Хорошо известны расширения и аналоги </font><font
+SIZE="2">AWT – Swing, Java Foundation Classes (Netscape), Application Foundation Classes
+(Microsoft).</p>
+</font>
+</body>
+</html>

@@ -1,0 +1,466 @@
+<HTML
+><HEAD
+><TITLE
+>[Chapter 2] 2.4 Working with a Mouse</TITLE
+><META
+NAME="DC.title"
+CONTENT="Learning the Unix Operating System"><META
+NAME="DC.creator"
+CONTENT="Jerry Peek, Grace Todino &amp; John Strang"><META
+NAME="DC.publisher"
+CONTENT="O'Reilly &amp; Associates, Inc."><META
+NAME="DC.date"
+CONTENT="1998-08-03T20:49:17Z"><META
+NAME="DC.type"
+CONTENT="Text.Monograph"><META
+NAME="DC.format"
+CONTENT="text/html"
+SCHEME="MIME"><META
+NAME="DC.source"
+CONTENT="1-56592-390-1"
+SCHEME="ISBN"><META
+NAME="DC.language"
+CONTENT="en-US"><META
+NAME="generator"
+CONTENT="Jade 1.1/O'Reilly DocBook 3.0 to HTML 4.0"><LINK
+REV="made"
+HREF="mailto:online-books@oreilly.com"
+TITLE="Online Books Comments"><LINK
+REL="up"
+HREF="ch02_01.htm"
+TITLE="2. Using Window Systems "><LINK
+REL="prev"
+HREF="ch02_03.htm"
+TITLE="2.3 Running Programs"><LINK
+REL="next"
+HREF="ch02_05.htm"
+TITLE="2.5 Working with Windows"></HEAD
+><BODY
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+><DIV
+CLASS="htmlnav"
+><H1
+><IMG
+SRC="gifs/smbanner.gif"
+ALT="Learning the Unix Operating System"
+USEMAP="#srchmap"
+BORDER="0"></H1
+><MAP
+NAME="srchmap"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,466,69"
+HREF="index.htm"
+ALT="Learning the Unix Operating System"><AREA
+SHAPE="RECT"
+COORDS="467,0,514,18"
+HREF="jobjects/fsearch.htm"
+ALT="Search this book"></MAP
+><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch02_03.htm"
+TITLE="2.3 Running Programs"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 2.3 Running Programs"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><B
+><FONT
+FACE="ARIEL,HELVETICA,HELV,SANSERIF"
+SIZE="-1"
+>Chapter 2<BR>Using Window Systems </FONT
+></B
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch02_05.htm"
+TITLE="2.5 Working with Windows"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 2.5 Working with Windows"
+BORDER="0"></A
+></TD
+></TR
+></TABLE
+>&nbsp;<HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"></DIV
+><DIV
+CLASS="SECT1"
+><H2
+CLASS="sect1"
+><A
+CLASS="title"
+NAME="LUX-CH-2-SECT-4"
+>2.4 Working with a Mouse</A
+></H2
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-WINDOW-SYSTEMS-MOUSE"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-MOUSE"
+></A
+>Let's look at some basics of using a mouse or other pointing device.</P
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-2-SECT-4.1"
+>2.4.1 Pointer Shape</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-1113"
+></A
+>As you move the mouse pointer
+[1]
+from the root window onto other windows or menus, the shape of the
+pointer will change.  For instance, on the root window, the pointer is
+a big X.  The pointer may change to an hourglass shape to tell you to
+wait.  When you resize a window, the pointer changes to a cross with
+arrows.</P
+><BLOCKQUOTE
+CLASS="footnote"
+><P
+CLASS="para"
+>[1] The correct word for this symbol is <EM
+CLASS="emphasis"
+>cursor</EM
+>.  But <B
+CLASS="emphasis.bold"
+>xterm</B
+> and<A
+CLASS="indexterm"
+NAME="AUTOID-1119"
+></A
+>
+some other windows also have separate cursors to show where text will
+be entered. To avoid confusion, we use the word &quot;pointer&quot; for the
+cursor that moves all across the display under control of the mouse.</P
+></BLOCKQUOTE
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-2-SECT-4.2"
+>2.4.2 Pointing, Clicking, and Dragging</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-1124"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1126"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1128"
+></A
+>What's &quot;pointing and clicking&quot;?  That's when you move the pointer to a
+place (usually over part of a window), then quickly press and release
+a mouse button (usually the first button).  It's the same idea as
+pressing a button on a telephone or another electronic appliance.</P
+><P
+CLASS="para"
+>Something else you'll do is &quot;dragging.&quot;  That means moving the pointer
+to a place (such as the corner of a window), then pressing a mouse
+button and holding it down while you move the pointer.  This is called
+&quot;dragging&quot; a pointer or object, because the object will be dragged
+along with the pointer until you let go of the mouse button.</P
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-2-SECT-4.3"
+>2.4.3 Using a Mouse with xterm Windows</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-XTERM-WINS-MOUSE"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-TERM-EMUL-FOR-S"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-UNIX-XTWINS-ON"
+></A
+><B
+CLASS="emphasis.bold"
+>Xterm</B
+> windows have an advantage over plain UNIX terminals in
+that you can copy and paste text within a window or between windows.
+To get started, move the pointer inside an <B
+CLASS="emphasis.bold"
+>xterm</B
+> window and
+select the window (set the focus there).  Notice that the pointer<A
+CLASS="indexterm"
+NAME="AUTOID-1145"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1147"
+></A
+>
+changes to an &quot;I-beam&quot; shape.  There's also a block cursor.  As you
+type, notice that text you input appears at the block-shaped cursor,
+just like it would on a standard terminal.  So, think of the block
+cursor as the window's input point.</P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-1150"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1152"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1155"
+></A
+>The I-beam pointer selects text for copying.
+Let's try it.
+Point to the first character of a command line (not the prompt) and click the
+first mouse button.
+Next, move the pointer to the end of the text you want to select and
+click the third button.
+The text between the first and third clicks should be highlighted.
+(If you accidentally click another button, you may need to start over.)
+Your <B
+CLASS="emphasis.bold"
+>xterm</B
+> window should look something like
+<A
+CLASS="xref"
+HREF="ch02_04.htm#LUX-CH-2-FIG-2"
+TITLE="Copying and pasting a command line"
+>Figure 2.3</A
+>.</P
+><P
+CLASS="para"
+>Next, click (don't hold) the second (middle) mouse button.
+The selected text will be copied into the window at the block cursor,
+just as if you had typed it in.
+Press
+<KBD
+CLASS="keycap"
+>[RETURN]</KBD
+>
+to run the command line; otherwise, backspace over it to get back to the
+prompt.</P
+><P
+CLASS="para"
+>You can also select text by clicking in an <B
+CLASS="emphasis.bold"
+>xterm</B
+> window.
+Point to a word and double-click (click twice, quickly) the first button;
+the word should be highlighted.
+Point to a line and triple-click to highlight the whole line.
+You can select and copy any text, not just command lines.</P
+><H4
+CLASS="figure"
+><A
+CLASS="title"
+NAME="LUX-CH-2-FIG-2"
+>Figure 2.3: Copying and pasting a command line</A
+></H4
+><IMG
+CLASS="graphic"
+SRC="figs/lu0203.gif"
+ALT="Figure 2.3"><P
+CLASS="para"
+>The same copying and pasting works between <B
+CLASS="emphasis.bold"
+>xterm</B
+> windows and between
+many other (but not all) windows that handle text.
+You can select text in one window and paste it into the other window.
+This is very handy for text editing.<A
+CLASS="indexterm"
+NAME="AUTOID-1169"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1170"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1171"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1172"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1173"
+></A
+></P
+></DIV
+></DIV
+><DIV
+CLASS="htmlnav"
+><P
+></P
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch02_03.htm"
+TITLE="2.3 Running Programs"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 2.3 Running Programs"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="book"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"
+><IMG
+SRC="../gifs/txthome.gif"
+ALT="Learning the Unix Operating System"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch02_05.htm"
+TITLE="2.5 Working with Windows"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 2.5 Working with Windows"
+BORDER="0"></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+>2.3 Running Programs</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="index"
+HREF="index/idx_0.htm"
+TITLE="Book Index"
+><IMG
+SRC="../gifs/index.gif"
+ALT="Book Index"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+>2.5 Working with Windows</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><IMG
+SRC="../gifs/smnavbar.gif"
+USEMAP="#map"
+BORDER="0"
+ALT="The UNIX CD Bookshelf Navigation"><MAP
+NAME="map"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,73,21"
+HREF="../index.htm"
+ALT="The UNIX CD Bookshelf"><AREA
+SHAPE="RECT"
+COORDS="74,0,163,21"
+HREF="../upt/index.htm"
+ALT="UNIX Power Tools"><AREA
+SHAPE="RECT"
+COORDS="164,0,257,21"
+HREF="../unixnut/index.htm"
+ALT="UNIX in a Nutshell"><AREA
+SHAPE="RECT"
+COORDS="258,0,321,21"
+HREF="../vi/index.htm"
+ALT="Learning the vi Editor"><AREA
+SHAPE="RECT"
+COORDS="322,0,378,21"
+HREF="../sedawk/index.htm"
+ALT="sed &amp; awk"><AREA
+SHAPE="RECT"
+COORDS="379,0,438,21"
+HREF="../ksh/index.htm"
+ALT="Learning the Korn Shell"><AREA
+SHAPE="RECT"
+COORDS="439,0,514,21"
+HREF="index.htm"
+ALT="Learning the UNIX Operating System"></MAP
+></DIV
+></BODY
+></HTML
+>

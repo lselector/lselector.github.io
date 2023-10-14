@@ -1,0 +1,170 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>teradata</title>
+<!--
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+<style type="text/css">
+<!--
+.style1 {
+	color: #CC0000;
+	font-weight: bold;
+}
+.code {color: #0000FF}
+.comment {color: #669900}
+-->
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1>
+<b><a href="index.html">home</a>
+> Teradata</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Teradata</font></b> (page under construction - still you may find it very useful)
+<table width="95%" border="0" cellpadding="3" cellspacing="0">
+  <tr>
+    <td><span class="style1">On This Page</span></td>
+    <td class="style1">Other Pages</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p>
+- <a href="#intro">intro</a><br>
+- <a href="#data_types">data types</a><br>
+- <a href="#data_load_utilities">data load utilities</a><br>
+- <a href="#teradata_api">teradata api</a><br>
+- <a href="#perl_dbd_teradata">perl dbd teradata</a><br>
+- <a href="#xx">xx</a><br>
+    </p>    </td>
+    <td valign="top">
+    <p>
+- <a href="#xx">xx</a><br>
+- <a href="#xx">xx</a><br>
+- <a href="#xx">xx</a><br>
+- <a href="#xx">xx</a><br>
+    </p>    </td>
+  </tr>
+</table>
+<p class="sectionheader"><a NAME="intro"></a>Intro ------------------------------</p>
+  <p>  - <a href="http://www.teradata.com">http://www.teradata.com</a> - Teradata - database engine optimized for Datawarehousing (for reading, not for inserting).  Used for huge data warehouses (Fortune 100 companies, for example, major arilines). Over 25 years of experience implementing over 1,900 data warehouses worldwide. 	</p>
+  <p>Examples of clients: PayPal (migrated to Teradata form Oracle), Verizon Wireless (~50 mln clients), Wachovia Bank, Delta Airlines (consolidated 27 data-marts into one data-warehouse), American Red Cross, CVS/ Pharmacy, United States Airforce.</p>
+  <p>90% of the Top Global Telecommunications Companies<br>
+    50% of the Top Global Retailers<br>
+    70% of the Top Global Airlines<br>
+    60% of the Top Global Transportation Logistics Companies<br>
+    40% of the Top Global Commercial and Savings Banks</p>
+  <p>Teradata was spun-off from NCR in 2007 (NCR = National Cash Register: <a href="http://www.ncr.com">http://www.ncr.com</a>). </p>
+  <p><a href="http://www.info.teradata.com/">http://www.info.teradata.com/</a> - documentation.</p>
+  <p>Basically it is a SQL database specifically enginnered for building big datawarehouses.  Uses parrallel processing for everything. It can scale in all dimensions almost infinitely. Can run on Unix and Windows servers.</p>
+  <ul>
+    <li>It uses architecture of independent and self-sufficient nodes. Performance grows linearly with the number of added nodes (processors, servers). Performance does not deteriorate with increasing numbers of simultaneously working users.</li>
+    <li>Unlimited  parallelism between nodes / servers leads to unlimited efficiency (time to get 100 rows can be the same as to get million rows).</li>
+    <li>Up to 64 joins in a query.</li>
+  </ul>
+  <p class="sectionheader"><a name="data_types"></a>Data Types:</p>
+  <ul>
+    <li>char, varchar, long varchar</li>
+    <li>integer, decimal, float, byte, long varbyte, byteint</li>
+    <li>date, time, timestamp</li>
+    <li>interval day, interval day to hour, interval day to minute, interval day to second, interval hour, interval hour to minute, interval hour to second, interval minute, interval minute to second, interval second, interval month, interval year,  interval year to month, timestamp with time zone, time with time zone</li>
+  </ul>
+  <p class="sectionheader"><a name="data_load_utilities"></a>Data Load Utilities</p>
+  <p> <a href="http://www.teradata.com/t/page/44083/index/html">http://www.teradata.com/t/page/44083/index/html</a></p>
+  <ul>
+    <li> Basic Teradata Query facility (BTEQ) - general-purpose command-line tool - to run (sql, import/export) commands from prompt or to call from batch/shell scripts.</li>
+    <li>FastLoad - initial load into empty table, ver fast, parrallel</li>
+    <li>  FastExport - very fast export from tables or views</li>
+    <li>MultiLoad - uses block-level operations for fast updates, inserts, upserts, and deletes large volumes of data in tables.</li>
+    <li>TPump - continuously load data into Teradata tables without 
+    locking the affected table.</li>
+    <li> Teradata Parallel Transporter - combines FastLoad, FastExport, MultiLoad, and TPump</li>
+    <li> Teradata Replication Solutions</li>
+  </ul>
+  <p class="sectionheader"><a name="teradata_api" id="teradata_api"></a>Teradata API</p>
+  <p>    Teradata provides a number of standardized interfaces: <a href="http://www.teradata.com/t/page/44083/index/html">http://www.teradata.com/t/page/44083/index/html</a></p>
+  <ul>
+    <li>ODBC Driver for Teradata</li>
+    <li> the JDBC Driver for Teradata</li>
+    <li> the OLE DB Data Provider for Teradata</li>
+    <li> the Microsoft .NET Data Provider for Teradata</li>
+    <li> the Teradata Call-Level Interface (CLI)</li>
+    <li>the TS/API, which permits applications that normally access IBM DB2 to run against Teradata.</li>
+    <li> interfaces for Sybase Open Server,  Open Client, etc.</li>
+  </ul>
+  <p class="sectionheader"><a name="perl_dbd_teradata" id="perl_dbd_teradata"></a>Access from Perl</p>
+  <p>DBD::Teradata</p>
+  <ul>
+    <li><a href="http://search.cpan.org/dist/DBD-Teradata/lib/DBD/Teradata.pm">http://search.cpan.org/dist/DBD-Teradata/lib/DBD/Teradata.pm</a></li>
+    <li> <a href="http://search.cpan.org/src/DARNOLD/DBD-Teradata-1.50/doc/tdatdbd.html">http://search.cpan.org/src/DARNOLD/DBD-Teradata-1.50/doc/tdatdbd.html</a> - docs and examples</li>
+    <li><a href="http://search.cpan.org/src/DARNOLD/DBD-Teradata-1.50/doc/tdatdbdfl.html">http://search.cpan.org/src/DARNOLD/DBD-Teradata-1.50/doc/tdatdbdfl.html</a> - using Fastload with DBD::Teradata</li>
+    <li><a href="http://search.cpan.org/src/DARNOLD/DBD-Teradata-1.50/doc/tdatdbdfx.html">http://search.cpan.org/src/DARNOLD/DBD-Teradata-1.50/doc/tdatdbdfx.html</a> - using Fastexport with DBD::Teradata</li>
+    <li><a href="http://search.cpan.org/src/DARNOLD/DBD-Teradata-1.50/doc/tdatdbdml.html">http://search.cpan.org/src/DARNOLD/DBD-Teradata-1.50/doc/tdatdbdml.html</a> - using Multiload with DBD::Teradata</li>
+  </ul>
+  <p><span class="code">use DBI;<br>
+  $dbh = DBI-&gt;connect('dbi:Teradata:hostname', 'user', 'password');<br>
+  ... (standard DBI syntax)</span><br>
+  </p>
+  <p>--------------------</p>
+  <p>&nbsp;</p>
+</body>
+</html>

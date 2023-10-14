@@ -1,0 +1,482 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="KeyWords" content="Description">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <title>xhtml1</title>
+<style>
+A:hover { COLOR: #FF0000; background: #FFA; TEXT-DECORATION: underline } 
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<b><font face="Verdana"><font color="#990000"><font size=-1>XHTML
+1.0: Where XML and HTML meet.</font></font></font></b>
+<br><font face="Verdana"><font color="#000099"><font size=-1>Short 1-page
+introduction into XHTML.</font></font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>What is it?</font></font>
+<br><font face="Verdana"><font size=-1>The XHTML family is a reformulation
+of HTML 4 in XML. It represents the next step in the evolution of the Internet.
+It lets you enter the XML world, creating content that is both backward
+and future compatible. XHTML became an official W3C recommendation on January
+26, so when you read this you are on the cutting edge of it all.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Benefits and transition path</font></font>
+<br><font face="Verdana"><font size=-1>Old HTML sins to overcome</font></font>
+<br><font face="Verdana"><font size=-1>Old HTML sins (continued)</font></font>
+<br><font face="Verdana"><font size=-1>Backwards compatibility to HTML</font></font>
+<br><font face="Verdana"><font size=-1>Transition pains from HTML to XHTML</font></font>
+<br><font face="Verdana"><font size=-1>Modularization of XHTML</font></font>
+<br><font face="Verdana"><font size=-1>Extension Modules</font></font>
+<br><font face="Verdana"><font size=-1>Document Profiles and Conclusion</font></font>
+<br><font face="Verdana"><font size=-1>Why all this? What is the problem
+with good old HTML?</font></font>
+<br><font face="Verdana"><font size=-1>We explored the shortcomings of
+HTML a while ago, in a nutshell:</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>HTML has a fixed set of elements,
+so it is not easily extended to different needs</font></font>
+<br><font face="Verdana"><font size=-1>HTML was designed with the PC in
+mind, not taking into account the multitude of alternative platforms coming
+to the Web, like <b><font color="#CC0000">TVs, mobile phones and digital
+tablets.</font></b></font></font>
+<br><font face="Verdana"><font size=-1>HTML is defined relatively sloppily,
+requiring parsers to be quite forgiving and intelligent in fixing problematic
+markup on the fly. This intelligence weighs in heavy on your hard disk
+with your favorite browser.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>So what is there to gain?</font></font>
+<br><font face="Verdana"><font size=-1>Citing the W3C recommendation on
+XHTML (in rearranged order of my humbly perceived importance):</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>"Document developers and user agent
+designers are constantly discovering new ways to express their ideas through
+new markup. In XML, it is relatively easy to introduce new elements or
+additional element attributes. The XHTML family is designed to accommodate
+these extensions through XHTML modules and techniques for developing new
+XHTML-conforming modules (described in the forthcoming XHTML Modularization
+specification). These modules will permit the combination of existing and
+new feature sets when developing content and when designing new user agents.</font></font>
+<br><font face="Verdana"><font size=-1>Alternate ways of accessing the
+Internet are constantly being introduced. Some estimates indicate that
+by the year 2002, 75% of Internet document viewing will be carried out
+on these alternate platforms. The XHTML family is designed with general
+user agent interoperability in mind. Through a new user agent and document
+profiling mechanism, servers, proxies, and user agents will be able to
+perform best effort content transformation. Ultimately, it will be possible
+to develop XHTML-conforming content that is usable by any XHTML-conforming
+user agent.</font></font>
+<br><font face="Verdana"><font size=-1>XHTML documents conform to the XML
+standard, so they are readily viewed, edited, and validated with standard
+XML tools.</font></font>
+<br><font face="Verdana"><font size=-1>XHTML documents can still be written
+to operate as well or better than they did before in existing HTML 4-conforming
+user agents as well as in new, XHTML 1.0 conforming user agents.</font></font>
+<br><font face="Verdana"><font size=-1>XHTML documents can utilize applications
+(e.g. scripts and applets) that rely upon either the HTML Document Object
+Model or the XML Document Object Model [DOM].</font></font>
+<br><font face="Verdana"><font size=-1>As the XHTML family evolves, documents
+conforming to XHTML 1.0 will be more likely to interoperate within and
+among various XHTML environments."</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>How do HTML documents become XHTML?</font></font>
+<br><font face="Verdana"><font size=-1>An XHTML document must:</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>validate against one of the three
+DTDs.</font></font>
+<br><font face="Verdana"><font size=-1>start with the root element &lt;html>.</font></font>
+<br><font face="Verdana"><font size=-1>refer to the XHTML namespace http://www.w3.org/1999/xhtml
+in its root element.</font></font>
+<br><font face="Verdana"><font size=-1>contain one of the following DOCTYPE
+declaration prior to the root element:</font></font>
+<br><font face="Verdana"><font color="#3333FF"><font size=-1>&lt;!DOCTYPE
+html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd"></font></font></font>
+<br><font face="Verdana"><font color="#3333FF"><font size=-1>&lt;!DOCTYPE
+html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd"></font></font></font>
+<br><font face="Verdana"><font color="#3333FF"><font size=-1>&lt;!DOCTYPE
+html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "DTD/xhtml1-frameset.dtd"></font></font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Here is an example of a minimal XHTML
+document:</font></font>
+<br><b><font face="Verdana"><font color="#CC0000"><font size=-1>&lt;?xml
+version="1.0" encoding="UTF-8"?></font></font></font></b>
+<br><b><font face="Verdana"><font color="#CC0000"><font size=-1>&lt;!DOCTYPE
+html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd"></font></font></font></b>
+<br><b><font face="Verdana"><font color="#CC0000"><font size=-1>&lt;html
+xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"></font></font></font></b>
+<br><b><font face="Verdana"><font color="#CC0000"><font size=-1>&nbsp;
+&lt;head></font></font></font></b>
+<br><b><font face="Verdana"><font color="#CC0000"><font size=-1>&nbsp;&nbsp;&nbsp;
+&lt;title>My first XHTML page&lt;/title></font></font></font></b>
+<br><b><font face="Verdana"><font color="#CC0000"><font size=-1>&nbsp;
+&lt;/head></font></font></font></b>
+<br><b><font face="Verdana"><font color="#CC0000"><font size=-1>&nbsp;
+&lt;body></font></font></font></b>
+<br><b><font face="Verdana"><font color="#CC0000"><font size=-1>&nbsp;&nbsp;&nbsp;
+&lt;p>Hello XHTML world!&lt;/p></font></font></font></b>
+<br><b><font face="Verdana"><font color="#CC0000"><font size=-1>&nbsp;
+&lt;/body></font></font></font></b>
+<br><b><font face="Verdana"><font color="#CC0000"><font size=-1>&lt;/html></font></font></font></b><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>=====================================================</font></font>
+<br><font face="Verdana"><font size=-1>Which old HTML sins to overcome?</font></font>
+<br><font face="Verdana"><font size=-1>The Ten Commandments of XHTML are:</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Fix up all documents that are not
+well-formed</font></font>
+<br><font face="Verdana"><font size=-1>Well-formedness is a new concept
+introduced by XML. Essentially this means that all elements must be properly
+nested. Although overlapping is illegal in SGML, it was widely tolerated
+in existing browsers.</font></font>
+<br><b><font face="Verdana"><font size=-1>NOT: &lt;p>this is &lt;em>emphasized&lt;/p>&lt;/em></font></font></b>
+<br><b><font face="Verdana"><font size=-1>BUT: &lt;p>this is &lt;em>emphasized&lt;/em>&lt;/p></font></font></b><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Change all tags and attribute names
+to lower case</font></font>
+<br><font face="Verdana"><font size=-1>XHTML documents must use lower case
+for all HTML element and attribute names. XML is case-sensitive, so for
+instance <b>&lt;li> and &lt;LI> are different tags</b>.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Add end tags for non-empty elements</font></font>
+<br><font face="Verdana"><font size=-1>In SGML-based HTML 4 certain elements
+were permitted to omit the end tag; with the elements that followed implying
+closure. This omission is not permitted in XML-based XHTML. All elements
+other than those declared in the DTD as EMPTY must have an end tag.</font></font>
+<br><b><font face="Verdana"><font size=-1>NOT: &lt;p>one&lt;p>two</font></font></b>
+<br><b><font face="Verdana"><font size=-1>BUT: &lt;p>one&lt;/p>&lt;p>two&lt;/p></font></font></b><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Quote all attribute values</font></font>
+<br><font face="Verdana"><font size=-1>All attribute values must be quoted,
+even those which appear to be numeric.</font></font>
+<br><b><font face="Verdana"><font size=-1>NOT: &lt;table rows=3></font></font></b>
+<br><b><font face="Verdana"><font size=-1>BUT: &lt;table rows="3"></font></font></b><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Unminimize attributes</font></font>
+<br><font face="Verdana"><font size=-1>XML does not support attribute minimization,
+attribute-value pairs must be written in full. Attribute names such as
+compact and checked cannot occur in elements without their value being
+specified.</font></font>
+<br><b><font face="Verdana"><font size=-1>NOT: &lt;dl compact></font></font></b>
+<br><b><font face="Verdana"><font size=-1>BUT: &lt;dl compact="compact"></font></font></b><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Correctly tag empty elements</font></font>
+<br><font face="Verdana"><font size=-1>Empty elements must either have
+an end tag or the start tag must end with />. For instance, &lt;br/> or
+&lt;hr>&lt;/hr>. See below for information on ways to ensure this is backward
+compatible with HTML 4 user agents.</font></font>
+<br><b><font face="Verdana"><font size=-1>NOT: &lt;br>&lt;hr></font></font></b>
+<br><b><font face="Verdana"><font size=-1>BUT: &lt;br/>&lt;hr/></font></font></b><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Pay attention to whitespace handling
+in attribute values</font></font>
+<br><font face="Verdana"><font size=-1>In attribute values, user agents
+will strip leading and trailing whitespace from attribute values and map
+sequences of one or more whitespace characters (including line breaks)
+to a single inter-word space (an ASCII space character for western scripts).</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Escape or externalize script and
+style elements</font></font>
+<br><font face="Verdana"><font size=-1>In XHTML, the script and style elements
+are declared as having parsed character content. As a result, <b>&lt; and
+&amp;</b> will be treated as the start of markup, and entities such as
+<b>&amp;lt; and &amp;amp;</b> will be recognized as entity references by
+the XML processor to <b>&lt; and &amp;</b> respectively. Wrapping the content
+of the script or style element within a <b>CDATA</b> marked section avoids
+the expansion of these entities.</font></font>
+<br><b><font face="Verdana"><font size=-1>&lt;script></font></font></b>
+<br><b><font face="Verdana"><font size=-1>&nbsp;&lt;![CDATA[</font></font></b>
+<br><b><font face="Verdana"><font size=-1>&nbsp;... unescaped script content
+...</font></font></b>
+<br><b><font face="Verdana"><font size=-1>&nbsp;]]></font></font></b>
+<br><b><font face="Verdana"><font size=-1>&nbsp;&lt;/script></font></font></b><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>CDATA sections are recognized by
+the XML processor and appear as nodes in the Document Object Model. An
+alternative is to use external script and style documents.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Stick to the existing SGML exclusions</font></font>
+<br><font face="Verdana"><font size=-1>SGML gives the writer of a DTD the
+ability to exclude specific elements from being contained within an element.
+Such prohibitions (called "exclusions") are not possible in XML. For example,
+the HTML 4 Strict DTD <b>does not allow the nesting of an 'a' element within
+another 'a' element</b>. It is not possible to express this in XML. Even
+though these restrictions cannot be defined in the DTD, certain elements
+should not be nested.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Use <b>id</b> for fragment identifiers,
+not name</font></font>
+<br><font face="Verdana"><font size=-1>HTML 4 defined the name attribute
+for the elements a, applet, form, frame, iframe, img, and map. HTML 4 also
+introduced the id attribute. Both of these attributes are designed to be
+used as fragment identifiers.</font></font>
+<br><font face="Verdana"><font size=-1>In XML, fragment identifiers are
+of type ID, and there can only be a single attribute of type ID per element.
+Therefore, in XHTML 1.0 the id attribute is defined to be of type ID. In
+order to ensure that XHTML 1.0 documents are well-structured XML documents,
+XHTML 1.0 documents <b>must use the id attribute</b> when defining fragment
+identifiers, even on elements that historically have also had a name attribute.
+In XHTML 1.0, the <b>name attribute</b> of these elements<b> is formally
+deprecated</b>, and will be removed in a subsequent version of XHTML.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>=====================================================</font></font>
+<br><font face="Verdana"><font size=-1>How to ensure backwards compatibility?</font></font>
+<br><font face="Verdana"><font size=-1>Here are some design guidelines
+to follow for XHTML documents to render correctly in existing HTML user
+agents.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Properly format empty elements I</font></font>
+<br><font face="Verdana"><font size=-1><b><u>Include a space before the
+trailing / and > of empty elements</u></b>, e.g. &lt;br />, &lt;hr /> and
+&lt;img src="photo.jpg" alt="Photo" />. Also, use the minimized tag syntax
+for empty elements, e.g. &lt;br />, as the alternative syntax &lt;br>&lt;/br>
+allowed by XML gives uncertain results in many existing user agents.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Properly format empty elements II</font></font>
+<br><font face="Verdana"><font size=-1>Given an empty instance of an element
+whose content model is not EMPTY (for example, an empty title or paragraph)
+do not use the minimized form (e.g. <b>use &lt;p> &lt;/p> and not &lt;p
+/></b>).</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Eliminate embedded Style Sheets and
+Scripts</font></font>
+<br><font face="Verdana"><font size=-1><b>Use external style sheets and
+scripts if they use &lt; or &amp; or ]]> or •.</b> <u>XML parsers are permitted
+to silently remove the contents of comments</u>, so the historical practice
+of "hiding" scripts and style sheets within comments to make the documents
+backward compatible is likely to not work as expected in XML-based implementations.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><b><font face="Verdana"><font size=-1>Avoid Line Breaks within Attribute
+Values</font></font></b>
+<br><font face="Verdana"><font size=-1>Avoid line breaks and multiple whitespace
+characters within attribute values. These are handled inconsistently by
+user agents.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><b><font face="Verdana"><font size=-1>Use only one isindex element</font></font></b>
+<br><font face="Verdana"><font size=-1>Don't include more than one isindex
+element in the document head. It is deprecated in favor of the input element.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Use the <b>lang</b> and <b>xml:lang</b>
+Attributes</font></font>
+<br><font face="Verdana"><font size=-1>Use both the lang and xml:lang attributes
+when specifying the language of an element.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Fix up Fragment Identifiers</font></font>
+<br><font face="Verdana"><font size=-1>In XML, URIs [RFC2396] that end
+with fragment identifiers <b>of the form "#target" do not refer to elements
+with an attribute name="target"</b>; rather, they refer to elements with
+an attribute defined to be of <b><u>type ID</u></b>, e.g., the id attribute
+in HTML 4. Many existing HTML clients don't support the use of ID-type
+attributes in this way, so identical values may be supplied for both of
+these attributes to ensure maximum forward and backward compatibility (e.g.,
+<b><u>&lt;a id="target" name="target">...&lt;/a></u></b>).</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Add the XML Character Encoding declaration</font></font>
+<br><font face="Verdana"><font size=-1>To specify a character encoding
+in the document, use both the encoding attribute specification on the xml
+declaration (e.g. <u>&lt;?xml version="1.0" encoding="EUC-JP"?></u>) and
+a meta http-equiv statement (e.g. <u>&lt;meta http-equiv="Content-type"
+content='text/html; charset="EUC-JP"' ></u>).</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Use Ampersand entities in Attribute
+Values</font></font>
+<br><font face="Verdana"><font size=-1>When an attribute value contains
+an ampersand, it must be expressed as a character entity reference (e.g.
+"&amp;amp"). For example, when the href attribute of the a element refers
+to a CGI script that takes parameters, it must be expressed as</font></font>
+<br><b><font face="Verdana"><font size=-1>NOT: http://webref.com/cgi-bin/xml/demo1.pl?style=none&amp;name=user</font></font></b>
+<br><b><font face="Verdana"><font size=-1>BUT: http://webref.com/cgi-bin/xml/demo1.pl?style=none&amp;amp;name=user</font></font></b><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>=====================================================</font></font>
+<br><font face="Verdana"><font size=-1>Any transition pains?</font></font>
+<br><font face="Verdana"><font size=-1>Unfortunately, yes. Some of the
+subtle differences in HTML and XML encoding cause some difficulties:</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Boolean Attributes</font></font>
+<br><font face="Verdana"><font size=-1>Some browsers cannot interpret <b>boolean
+attributes when these appear in their full, non-minimized form, as required
+by XML 1.0</b>. This problem doesn't affect user agents compliant with
+HTML 4, though. The following attributes are involved: <u>compact, nowrap,
+ismap, declare, noshade, checked, disabled, readonly, multiple, selected,
+noresize, defer</u> .</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Document Object Model and XHTML</font></font>
+<br><font face="Verdana"><font size=-1>The Document Object Model level
+1 Recommendation defines document object model interfaces for XML and HTML
+4. <u>The HTML 4 document object model specifies that HTML element and
+attribute names are returned <b>in upper-case</b></u>. The XML document
+object model specifies that element and attribute names are returned in
+the case they are specified. In XHTML 1.0, elements and attributes are
+specified<b> in <u>lower-case</u></b>. This apparent difference can be
+addressed in two ways:</font></font>
+<br><font face="Verdana"><font size=-1>Applications that access XHTML documents
+served as Internet media type text/html via the DOM can use the HTML DOM,
+and can rely upon element and attribute names being returned in upper-case
+from those interfaces.</font></font>
+<br><font face="Verdana"><font size=-1>Applications that access XHTML documents
+served as Internet media types text/xml or application/xml can also use
+the XML DOM. Elements and attributes will be returned in lower-case. Also,
+some XHTML elements may or may not appear in the object tree because they
+are optional in the content model (e.g. the tbody element within table).
+This occurs because in HTML 4 some elements were permitted to be minimized
+such that their start and end tags are both omitted (an SGML feature).
+This is not possible in XML. Rather than require document authors to insert
+extraneous elements, XHTML has made the elements optional. Applications
+need to adapt to this accordingly.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>XML Processing Instructions</font></font>
+<br><font face="Verdana"><font size=-1>Be aware that <b><i><u>processing
+instructions are rendered on some user agents</u></i></b>. However, also
+note that when the XML declaration is not included in a document, the document
+can only use the default character encodings UTF-8 or UTF-16.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Cascading Style Sheets (CSS) and
+XHTML</font></font>
+<br><font face="Verdana"><font size=-1>The <b><u>Cascading Style Sheets
+level 2 Recommendation [CSS2]</u></b> defines style properties which are
+applied to the <b><u>parse tree of the HTML or XML document</u></b>. Differences
+in parsing will produce different visual or aural results, depending on
+the selectors used. The following hints will reduce this effect for documents
+which are served without modification as both media types:</font></font>
+<br><font face="Verdana"><font size=-1>CSS style sheets for XHTML should
+use <u>lower case element and attribute names</u>. <u>In tables, the tbody
+element will be inferred by the parser of an HTML user agent, but not by
+the parser of an XML user agent</u>. Therefore you should always explicitly
+add a tbody element if it is referred to in a CSS selector.</font></font>
+<br><font face="Verdana"><font size=-1>Within the XHTML name space, user
+agents are expected to recognize the <b><u>"id"</u></b> attribute as an
+attribute of type <b><u>ID</u></b>. Therefore, style sheets should be able
+to <u>continue using the shorthand "#" selector syntax</u> even if the
+user agent does not read the DTD.</font></font>
+<br><font face="Verdana"><font size=-1>Within the XHTML name space, user
+agents are expected to recognize the <b><u>"class" attribute</u></b>. Therefore,
+style sheets should be able to continue using the shorthand "." selector
+syntax.</font></font>
+<br><font face="Verdana"><font size=-1>CSS defines different conformance
+rules for HTML and XML documents; be aware that</font></font>
+<br><b><font face="Verdana"><font color="#CC0000"><font size=-1>&nbsp;
+the HTML rules apply to XHTML documents delivered as HTML</font></font></font></b>
+<br><b><font face="Verdana"><font color="#CC0000"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;
+and</font></font></font></b>
+<br><b><font face="Verdana"><font color="#CC0000"><font size=-1>&nbsp;
+the XML rules apply to XHTML documents delivered as XML.</font></font></font></b><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>=====================================================</font></font>
+<br><b><font face="Verdana"><font size=-1>XHTML Modules</font></font></b>
+<br><font face="Verdana"><font size=-1>XHTML modules specify well-defined
+<b><u>sets of XHTML elements</u></b> that can be combined and extended
+to deliver content on a greater number and diversity of platforms.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Modularizing XHTML provides a means
+for product designers to specify which elements are supported by a device
+using standard building blocks and standard methods for specifying which
+building blocks are used. It is not economically feasible for content developers
+to tailor content to each and every permutation of XHTML elements. By specifying
+a standard, either software processes can autonomously tailor content to
+a device, or the device can automatically load the software required to
+process a module.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Modularization also allows for the
+extension of XHTML's layout and presentation capabilities, using the extensibility
+of XML, without breaking the XHTML standard. This development path provides
+a stable, useful, and implementable framework for content developers and
+publishers to manage the rapid pace of technological change on the Web.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>The modules themselves are not yet
+finalized, nevertheless it is useful to get a feeling for the proposed
+granularity of those modules, and I personally do not expect significant
+changes to the final recommendation.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><b><u><font face="Verdana"><font size=-1>Basic Modules</font></font></u></b>
+<br><font face="Verdana"><font size=-1>The basic modules are modules that
+are required to be present in any XHTML Family Conforming Document Type.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><b><u><font face="Verdana"><font size=-1>Structure Module</font></font></u></b>
+<br><font face="Verdana"><font size=-1>The Structure Module defines the
+major structural elements for XHTML. These elements effectively act as
+the basis for the content model of many XHTML family document types. The
+elements and attributes included in this module are:</font></font><font face="Verdana"><font size=-1></font></font>
+<p><b><font face="Verdana"><font size=-1>html</font></font></b>
+<br><b><font face="Verdana"><font size=-1>head</font></font></b>
+<br><b><font face="Verdana"><font size=-1>title</font></font></b>
+<br><b><font face="Verdana"><font size=-1>body</font></font></b>
+<br><font face="Verdana"><font size=-1>This module is the basic structural
+definition for XHTML content. The html element acts as the root element
+for all XHTML Family Document Types.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><b><u><font face="Verdana"><font size=-1>Basic Text Module</font></font></u></b>
+<br><font face="Verdana"><font size=-1>This module defines all of the basic
+text container elements, attributes, and their content model. Some prominent
+examples are the headings <b><font color="#CC0000">h1, h2, h3, h4, h5,
+h6, block directives address, blockquote, div, p, pre, and inline tags
+abbr, acronym, br, cite, code, dfn, em, kbd, q, samp, span, strong, var</font></b>.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><b><u><font face="Verdana"><font size=-1>Hypertext Module</font></font></u></b>
+<br><font face="Verdana"><font size=-1>This module adds the a element to
+the Inline content set of the Basic Text Module.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><b><u><font face="Verdana"><font size=-1>List Module</font></font></u></b>
+<br><font face="Verdana"><font size=-1>As its name suggests, the List Module
+provides list-oriented elements. Specifically, the List Module supports
+the elements:</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b>dl</b>, containing <b>dt</b>'s
+and <b>dd</b>'s</font></font>
+<br><font face="Verdana"><font size=-1><b>ol</b>, containg <b>li</b>'s</font></font>
+<br><font face="Verdana"><font size=-1><b>ul</b>, containing <b>li</b>'s</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>=====================================================</font></font>
+<br><b><u><font face="Verdana"><font size=-1>Extension Modules</font></font></u></b>
+<br><font face="Verdana"><font size=-1>While all user agents have to support
+the former, they may or may not support any of the following modules, many
+of which contain only one or two elements:</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u>Applet</u></b>: supports the
+applet and param elements</font></font>
+<br><font face="Verdana"><font size=-1><b><u>Text extension</u></b>: defines
+a variety of additional textual markup modules</font></font>
+<br><font face="Verdana"><font size=-1><b><u>Presentation</u></b>: contains
+character modifiers like b, big, i, small, sub, sup, tt, and the horizontal
+ruler hr.</font></font>
+<br><font face="Verdana"><font size=-1><b><u>Edit</u></b>: deletions and
+insertions with del and ins for citations, dates, or inline content.</font></font>
+<br><font face="Verdana"><font size=-1><b><u>BDO</u></b>: can be used to
+declare the bi-directional rules for the element's content.</font></font>
+<br><font face="Verdana"><font size=-1><b><u>Forms</u></b>: There is one
+module for the forms features found in HTML 3.2, and one for those in HTML
+4.0.</font></font>
+<br><font face="Verdana"><font size=-1><b><u>Tables</u></b>: One basic
+module for the table-related elements table, td, tr, th and caption, and
+a more advanced one for table-related elements that improve access with
+non-visual user agents.</font></font>
+<br><font face="Verdana"><font size=-1><b><u>Images</u></b>: basic image
+embedding with the img tag, and may be used in some implementations independently
+of client side image maps.</font></font>
+<br><font face="Verdana"><font size=-1><b><u>Client-side Image Maps</u></b>:
+the area and map elements for client side image maps. It requires that
+the Image Module (or another module that supports the img element) be included.</font></font>
+<br><font face="Verdana"><font size=-1><b><u>Server-side Image Maps</u></b>:
+provides support for image-selection and transmission of selection coordinates.
+It requires that the Image Module (or another module that supports the
+img element) be included. The Server-side Image Map Module adds the ismap
+attribute to the img tag.</font></font>
+<br><font face="Verdana"><font size=-1><b><u>Objects</u></b>: elements
+for general-purpose object inclusion. Specifically, the Object Module sports
+the object and param tags.</font></font>
+<br><font face="Verdana"><font size=-1><b><u>Frames</u></b>: all frame-related
+elements like frameset, frame, noframes.</font></font>
+<br><font face="Verdana"><font size=-1><b><u>Iframes</u></b>: the iframe
+element that can be used to define a base URL against which relative URIs
+in the document will be resolved.</font></font>
+<br><font face="Verdana"><font size=-1><b><u>Events</u></b>: all of the
+well-known onXXX event handler attributes such as onload, onfocus.</font></font>
+<br><font face="Verdana"><font size=-1><b><u>Metainformation</u></b>: the
+meta element that describes information within the declarative portion
+of a document (in XHTML within the head element).</font></font>
+<br><font face="Verdana"><font size=-1><b><u>Scripting</u></b>: elements
+that are used to contain information pertaining to executable scripts or
+the lack of support for executable scripts, namely script and noscript.</font></font>
+<br><font face="Verdana"><font size=-1><b><u>Stylesheet Module</u></b>:
+enables style sheet processing with the style element.</font></font>
+<br><font face="Verdana"><font size=-1><b><u>Link Module</u></b>: used
+to define links to external resources with the link element.</font></font>
+<br><font face="Verdana"><font size=-1><b><u>URL base</u></b>: the base
+element that can be used to define a base URL against which relative URIs
+in the document will be resolved.</font></font>
+<br><font face="Verdana"><font size=-1><b><u>Legacy</u></b>: elements and
+attributes that were deprecated in previous versions of HTML and XHTML,
+namely <b><font color="#CC0000">font, s, strike, u, body attributes background,
+bgcolor, text, link, vlink, alink, br attribute clear, strike, and u</font></b>.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>=====================================================</font></font>
+<br><font face="Verdana"><font size=-1>Document Profiles</font></font>
+<br><font face="Verdana"><font size=-1>With the modularization of XHTML
+we have solved one problem: The increasingly proliferating types of Web
+clients can pick and choose specific subsets of the HTML standard to meaningfully
+support them given their form factors and display capabilities. But we
+created two new problems:</font></font><font face="Verdana"><font size=-1></font></font>
+<p><u><font face="Verdana"><font size=-1>How does a client advertise its
+rendering capabilities to a server?</font></font></u>
+<br><u><font face="Verdana"><font size=-1>How does a document express the
+modules used for its content?</font></font></u>
+<br><font face="Verdana"><font size=-1>The latter will be adressed through
+<b><u>not yet specified document profiles</u></b>, but will the former
+remain the art of mapping user-agent-strings to capabilities? Who knows...
+you?</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Conclusion</font></font>
+<br><font face="Verdana"><font size=-1>The reformulation of HTML in XML
+is an elegant way to bring both worlds together in a future-oriented but
+compatible way. While it is unlikely that every hand-written HTML page
+will be upgraded to XHTML, writing new pages in XHTML and improving the
+templates of page generators like ASP and JSP will give your documents
+a much wider audience in the brave new world of non-PC Web clients. Make
+sure you do the best you can to make it happen:</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>If you are a Web master, start planning
+the migration of your site to XHTML now!</font></font>
+<br><font face="Verdana"><font size=-1>If you are an HTML tool author,
+upgrade your tool to support document creation in XHTML now!</font></font>
+<br><font face="Verdana"><font size=-1>If you write HTML documents, adhere
+to the XHTML rules and DTDs now! Use the W3C validator to be sure you got
+it right. (Ja, this document has been validated. The remaining errors in
+line 30, 84, and 92 are caused by server-side includes not under my direct
+control.)</font></font>
+<br><font face="Verdana"><font size=-1>Thank you, in the name of all current
+and future owners of <b><font color="#CC0000">Web-enabled PDAs, phones,
+TVs, and toasters!</font></b></font></font>
+<br><font face="Verdana"><font size=-1>=====================================================</font></font>
+<br><font face="Verdana"><font size=-1></font></font>&nbsp;
+</body>
+</html>

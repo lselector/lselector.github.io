@@ -1,0 +1,1817 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="ProgId" content="Word.Document">
+<meta name="Generator" content="Microsoft Word 9">
+<meta name="Originator" content="Microsoft Word 9">
+<link rel="File-List" href="./09%20files/filelist.xml">
+<xml:namespace ns="urn:schemas-microsoft-com:vml" prefix="v"/>
+<xml:namespace ns="urn:schemas-microsoft-com:office/office" prefix="o"/>
+<xml:namespace ns="urn:schemas-microsoft-com:office/word" prefix="w"/>
+<!--#if VML#><!#if ! VMLRender#>
+
+<object id="VMLRender" classid="CLSID:10072CEC-8CC1-11D1-986E-00A0C955B42E"
+ width="0" height="0">
+</object>
+
+<style>
+v\:* { behavior: url(#VMLRender); }
+o\:* { behavior: url(#VMLRender); }
+w\:* { behavior: url(#VMLRender); }
+.shape { behavior: url(#VMLRender); }
+</style>
+<!#endif#><!#endif#-->
+<title>Глава 9 Работа со строками</title>
+<!--#if gte mso 9#><xml>
+ <o:DocumentProperties>
+  <o:Author>Картузов Александр</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>Картузов Александр</o:LastAuthor>
+  <o:Revision>1</o:Revision>
+  <o:TotalTime>1</o:TotalTime>
+  <o:Created>19981013T14:58:00Z</o:Created>
+  <o:LastSaved>19981013T14:59:00Z</o:LastSaved>
+  <o:Pages>8</o:Pages>
+  <o:Words>2817</o:Words>
+  <o:Characters>16058</o:Characters>
+  <o:Company>ЧКИ МУПК</o:Company>
+  <o:Lines>133</o:Lines>
+  <o:Paragraphs>32</o:Paragraphs>
+  <o:CharactersWithSpaces>19720</o:CharactersWithSpaces>
+  <o:Version>9.1819</o:Version>
+ </o:DocumentProperties>
+</xml><!#endif#--><!--#if gte mso 9#><xml>
+ <w:WordDocument>
+  <w:View>Print</w:View>
+  <w:Compatibility>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+  </w:Compatibility>
+ </w:WordDocument>
+</xml><!#endif#-->
+<style>
+<!--
+/* Font Definitions */
+@font-face {
+	font-family: "Arial Narrow";
+	panose-1: 2 11 5 6 2 2 2 3 2 4;
+	mso-font-charset: 0;
+	mso-generic-font-family: swiss;
+	mso-font-pitch: variable;
+	mso-font-signature: 647 0 0 0 159 0;
+}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal {
+	mso-style-parent: "";
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	font-size: 10.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+}
+h1 {
+	mso-style-next: Normal;
+	margin-top: 12.0pt;
+	margin-right: 0cm;
+	margin-bottom: 3.0pt;
+	margin-left: 0cm;
+	mso-pagination: widow-orphan;
+	page-break-after: avoid;
+	mso-outline-level: 1;
+	font-size: 14.0pt;
+	font-family: Arial;
+	mso-ascii-font-family: Arial;
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: Arial;
+	mso-bidi-font-family: "Times New Roman";
+	mso-font-kerning: 14.0pt;
+	mso-bidi-font-size: 10.0pt;
+	mso-bidi-font-weight: normal;
+}
+h2 {
+	mso-style-next: Normal;
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	text-align: center;
+	mso-pagination: widow-orphan;
+	page-break-after: avoid;
+	mso-outline-level: 2;
+	font-size: 14.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+	mso-bidi-font-size: 10.0pt;
+	mso-bidi-font-weight: normal;
+}
+h3 {
+	mso-style-next: Normal;
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	page-break-after: avoid;
+	mso-outline-level: 3;
+	font-size: 12.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+	mso-bidi-font-size: 10.0pt;
+	mso-bidi-font-weight: normal;
+}
+h4 {
+	mso-style-next: Normal;
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	page-break-after: avoid;
+	mso-outline-level: 4;
+	font-size: 10.0pt;
+	font-family: Arial;
+	mso-ascii-font-family: Arial;
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: Arial;
+	mso-bidi-font-family: "Times New Roman";
+	mso-bidi-font-size: 10.0pt;
+	mso-bidi-font-weight: normal;
+}
+h5 {
+	mso-style-next: Normal;
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	page-break-after: avoid;
+	mso-outline-level: 5;
+	font-size: 10.0pt;
+	font-family: "Courier New";
+	mso-ascii-font-family: "Courier New";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Courier New";
+	mso-bidi-font-family: "Times New Roman";
+	mso-bidi-font-style: italic;
+	font-style: italic;
+}
+p.MsoFooter, li.MsoFooter {
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	tab-stops: center 207.65pt right 415.3pt;
+	font-size: 10.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+}
+p.MsoBodyText, li.MsoBodyText {
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	mso-pagination: widow-orphan;
+	font-size: 10.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+}
+p.MsoBodyText2, li.MsoBodyText2 {
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	mso-pagination: widow-orphan;
+	font-size: 10.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+}
+a:link, span.MsoHyperlink {
+	color: blue;
+	text-decoration: underline;
+	text-underline: single;
+}
+a:visited, span.MsoHyperlinkFollowed {
+	color: purple;
+	text-decoration: underline;
+	text-underline: single;
+}
+strong { font-weight: bold; }
+p.MsoPlainText, li.MsoPlainText {
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	font-size: 10.0pt;
+	font-family: "Courier New";
+	mso-ascii-font-family: "Courier New";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Courier New";
+	mso-bidi-font-family: "Times New Roman";
+}
+p.FR1, li.FR1 {
+	mso-style-name: FR1;
+	mso-style-parent: "";
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 58.0pt;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	mso-pagination: widow-orphan;
+	font-size: 9.0pt;
+	font-family: Arial;
+	mso-ascii-font-family: Arial;
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: Arial;
+	mso-bidi-font-family: "Times New Roman";
+	mso-ansi-language: RU;
+	mso-fareast-language: RU;
+	layout-grid-mode: line;
+}
+p.FR2, li.FR2 {
+	mso-style-name: FR2;
+	mso-style-parent: "";
+	margin-top: 12.0pt;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 18.0pt;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	font-size: 11.0pt;
+	font-family: Arial;
+	mso-ascii-font-family: Arial;
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: Arial;
+	mso-bidi-font-family: "Times New Roman";
+	mso-ansi-language: RU;
+	mso-fareast-language: RU;
+	layout-grid-mode: line;
+	font-weight: bold;
+}
+@page Section1 {
+	size: 595.3pt 841.9pt;
+	margin: 72.0pt 90.0pt 72.0pt 90.0pt;
+	mso-header-margin: 36.0pt;
+	mso-footer-margin: 36.0pt;
+	mso-forms-protection: yes;
+	mso-paper-source: 0;
+}
+div.Section1 { page: Section1; }
+/* List Definitions */
+@list l0 {
+	mso-list-id: 109398536;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l0:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l1 {
+	mso-list-id: 112093460;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l1:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l2 {
+	mso-list-id: 380398631;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l2:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l3 {
+	mso-list-id: 508519629;
+	mso-list-template-id: -1300598436;
+	mso-list-type: simple;
+}
+@list l3:level1 {
+	mso-level-start-at: 0;
+	mso-level-number-format: bullet;
+	mso-level-text: \F0B7;
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+	mso-ascii-font-family: Symbol;
+	mso-hansi-font-family: Symbol;
+}
+@list l4 {
+	mso-list-id: 1101028986;
+	mso-list-template-id: -979304872;
+	mso-list-type: simple;
+}
+@list l4:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l5 {
+	mso-list-id: 1220900427;
+	mso-list-template-id: -979304872;
+	mso-list-type: simple;
+}
+@list l5:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l6 {
+	mso-list-id: 1259289235;
+	mso-list-template-id: 68747265;
+	mso-list-type: simple;
+}
+@list l6:level1 {
+	mso-level-number-format: bullet;
+	mso-level-text: \F0B7;
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+	mso-ascii-font-family: Symbol;
+	mso-hansi-font-family: Symbol;
+}
+@list l7 {
+	mso-list-id: 1434129171;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l7:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l8 {
+	mso-list-id: 1686974182;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l8:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l9 {
+	mso-list-id: 1871871804;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l9:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+ol { margin-bottom: 0cm; }
+ul { margin-bottom: 0cm; }
+-->
+</style>
+</head>
+
+<body link="blue" vlink="purple" style='tab-interval: 36.0pt'>
+
+<div class="Section1">
+
+<p class="MsoNormal"><b><span style='font-size: 14.0pt'>Глава 9 Работа со
+строками&#13;</span></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>В этой главе обсуждаются
+средства языка Java для работы со строками. В язы­ках С и C++ отсутствует
+встроенная поддержка такого объекта, как строка. В них при необхо­димости
+передается адрес последовательности байтов, содержимое которых трактуется как
+символы до тех пор, пока не будет встречен нулевой байт, отмечающий конец
+строки<span lang="RU" style='mso-ansi-language: RU'>. </span>В пакет java.lang
+встроен класс, инкапсулирующий структуру данных, соответ­ствующую строке. Этот
+класс, называемый <b><span style='mso-bidi-font-weight: bold'>String</span></b>,
+не что иное, как объ­ектное представление неизменяемого символьного массива.<span
+lang="RU" style='mso-ansi-language: RU'> </span>В этом классе есть методы,
+которые позволяют сравнивать строки, осуществлять в них поиск и извлекать
+определенные символы и <span style='mso-bidi-font-style: italic'>подстроки</span><i>.
+</i><span lang="RU" style='mso-ansi-language: RU'>Кл</span>асс <b><span
+style='mso-bidi-font-weight: bold'>StringBuffer<span lang="RU"
+style='mso-ansi-language: RU'> </span></span></b><span lang="RU"
+style='mso-ansi-language: RU'>исп</span>ользу<span lang="RU"
+style='mso-ansi-language: RU'>е</span>тся тогда, когда строку после создания
+требу­ется изменять. &#13;</p>
+
+<p class="MsoNormal">ВНИМАНИЕ&#13;</p>
+
+<p class="MsoBodyText"><span style='font-family: Arial'>И String, и StringBuffer
+объявлены final, что означает, что ни от одного из этих классов нельзя
+производить подклассы. Это было сделано для того, чтобы можно было применить
+некоторые виды оптимизации по­зволяющие увеличить производительность при
+выполнении операций обработки строк.</span><span style='font-family: Arial'>&#13;</span></p>
+
+<p class="MsoNormal"><b><span lang="RU" style='font-size: 12.0pt;
+font-family: Arial; mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span></b><b><span
+lang="RU" style='font-size: 12.0pt; font-family: Arial; mso-ansi-language: RU'>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt; font-family: Arial'>Конструкторы</span></b><span
+style='font-size: 12.0pt'>&#13;</span></p>
+
+<p class="MsoBodyText">Как и в случае любого другого класса, вы можете
+создавать объекты типа String с помощью оператора new. Для создания пустой
+строки ис­пользуется конструктор без параметров:&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>String s = new
+String():</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal" style='text-align: justify'><span lang="RU"
+style='mso-ansi-language: RU'>П</span>риведенный ниже фрагмент кода создает объект
+s типа String иници­ализируя его строкой из трех символов, переданных
+конструктору в ка­честве параметра в символьном массиве. <span lang="RU"
+style='mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>char chars[] = { 'а',
+'b', 'с' }:</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>String s = new
+String(chars);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(s):</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal">Этот фрагмент кода выводит строку «abc». Итак, у этого
+конструктора — 3 параметра:&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>String(char chars[],
+int начальныйИндекс, int числоСимволов);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal">Используем такой способ инициализации в нашем очередном
+примере:&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>char chars[] = { 'a',
+'b', 'с', 'd', 'e', 'f' }:</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>String s = new
+String(chars,2,3);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(s);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal">Этот фрагмент выведет «cde»<span lang="RU"
+style='mso-ansi-language: RU'>.&#13;</span></p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'>Специальный синтаксис
+для работы со строками&#13;</span></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>В Java включено несколько
+приятных синтаксических дополнений<span lang="RU" style='mso-ansi-language:
+RU'>,</span> цель которых — помочь программистам в выполнении операций со
+строками. В числе таких операций создание объектов типа String слияние
+нескольких строк и преобразование других типов данных в символьное
+представление. <span lang="RU" style='mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><b>Создание строк&#13;</b></p>
+
+<p class="MsoBodyText">Java включает в себя стандартное сокращение для этой
+опера­ции — запись в виде литерала, в которой содержимое строки заключа­ется в
+пару двойных кавычек. Приводимый ниже фрагмент кода экви­валентен одному из
+предыдущих, в котором строка инициализировалась массивом типа char.&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>String s =
+&quot;abc&quot;;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(s);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal">Один из общих методов, используемых с объектами String —
+метод length, возвращающий число символов в строке. Очередной фрагмент вы­водит
+число 3, поскольку в используемой в нем строке — 3 символа.&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>String s =
+&quot;abc&quot;;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(s.length);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal">В Java интересно то, что для каждой строки-литерала
+создается свой представитель класса String, так что вы можете вызывать методы
+этого класса непосредственно со строками-литералами, а не только со ссылоч­ными
+переменными. Очередной пример также выводит число 3.&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;abc&quot;.Length</span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>()</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span lang="RU" style='font-family: "Arial Narrow";
+mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+lang="RU" style='font-family: "Arial Narrow"; mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><b>Слияние строк</b>&#13;</p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'>С</span>троку&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>String s = «Не is » +
+age + &quot; years old.&quot;;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoBodyText">в которой с помощью оператора + три строки объединяются
+в одну, про­честь и понять безусловно легче, чем ее эквивалент, записанный с яв­ными
+вызовами тех самых методов, которые неявно были использованы в первом примере:&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>String s = new
+StringBuffer(&quot;He is &quot;).append(age);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>s.append(&quot; years
+old.&quot;).toString();</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoBodyText">По определению каждый объект класса String не может
+изменять­ся. Нельзя ни вставить новые символы в уже существующую строку, ни
+поменять в ней одни символы на другие. И добавить одну строку в конец другой
+тоже нельзя. Поэтому транслятор Java преобразует опера­ции, выглядящие, как
+модификация объектов String, в операции с род­ственным классом StringBuffer. &#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><span style='font-family: Arial'>ЗАМЕЧАНИЕ</span><span
+style='font-family: Arial'>&#13;</span></p>
+
+<p class="MsoBodyText"><span style='font-family: Arial'>Все это может
+показаться вам необоснованно сложным. А почему нельзя обойтись одним классом
+String, позволив ему вести себя при­мерно так же, как StringBuffer? Все дело в
+производительности. Тот факт, что объекты типа String в Java неизменны,
+позволяет транслято­ру применять к операциям с ними различные способы
+оптимизации. </span><span style='font-family: Arial'>&#13;</span></p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b>Последовательность выполнения операторов</b>&#13;</p>
+
+<p class="MsoNormal">Давайте еще раз обратимся к нашему последнему примеру:&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>String s = &quot;Не is
+&quot; + age + &quot; years old.&quot;;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoBodyText">В том случае, когда age — не String, а переменная,
+скажем, типа int, в этой строке кода заключено еще больше магии транслятора.
+Целое значение переменной int передается совмещенному методу append класса
+StringBuffer, который преобразует его в текстовый вид и добавляет в конец
+содержащейся в объекте строки. Вам нужно быть вниматель­ным при совместном использовании
+целых выражений и слияния строк, в противном случае результат может получиться
+совсем не тот, который вы ждали. Взгляните на следующую строку:&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>String s = &quot;four:
+&quot; + 2 + 2;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>Быть может, вы надеетесь, что
+в s будет записана строка «four: 4»? Не угадали — с вами сыграла злую шутку
+последовательность выпол­нения операторов. Так что в результате получа­ется <span
+style='font-size: 8.0pt'>&quot;four: 22&quot;<span lang="RU"
+style='mso-ansi-language: RU'>.</span></span><span lang="RU"
+style='mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal">Для того, чтобы первым выполнилось сложение целых чисел,
+нужно использовать скобки<span lang="RU" style='mso-ansi-language: RU'> </span>:&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>String s </span></i></b><b><i><sup><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>=</span></sup></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'> &quot;four: &quot; + (2 + 2);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></b></p>
+
+<p class="MsoNormal"><b>Преобразование строк</b><span lang="RU"
+style='mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoBodyText">В каждом классе String есть метод toString — либо своя
+собственная реализация, либо вариант по умолчанию, наследуемый от класса
+Object. Класс в нашем очередном примере замещает наследуемый метод toStrring
+своим собственным, что позволяет ему выводить значения переменных объекта.&#13;</p>
+
+<p class="MsoNormal"><span lang="RU" style='font-size: 8.0pt; mso-ansi-language:
+RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class Point { </span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int х, у;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point(int x, int у) {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>this.x = х;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>this.у = у;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public String
+toString() {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>return
+&quot;Point[&quot; + x + &quot;, &quot; + у + &quot;]&quot;;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'> </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>} </span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class toStringDemo {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) { </span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point p = new Point(10,
+20);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;p
+= &quot; + p);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal">Ниже приведен результат, полученный при запуске этого
+примера.&#13;</p>
+
+<h5><span style='font-family: "Times New Roman"; mso-bidi-font-weight: normal;
+mso-bidi-font-style: normal; font-weight: normal; font-style: normal'>С:\&gt;
+Java toStringDemo</span><span
+lang="RU" style='font-family: "Times New Roman"; mso-ansi-language: RU;
+mso-bidi-font-weight: normal; mso-bidi-font-style: normal; font-weight: normal;
+font-style: normal'>&#13;</span></h5>
+
+<h5>p = Point[10, 20]&#13;</h5>
+
+<p class="MsoNormal"><b><span lang="RU" style='font-size: 12.0pt;
+mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'>Извлечение символов&#13;</span></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>Для того, чтобы извлечь
+одиночный символ из строки, вы можете со­слаться непосредственно на индекс
+символа в строке с помощью метода charAt. Если вы хотите в один прием извлечь
+несколько символов, можете воспользоваться методом getChars<span lang="RU"
+style='mso-ansi-language: RU'>. </span>В приведенном ниже фрагменте показано,
+как следует извлекать массив символов из объекта типа String.&#13;</p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class getCharsDemo {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>String s = &quot;This
+is a demo of the getChars method.&quot;;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int start = 10;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int end = 14;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>char buf[] = new
+char[end - start];</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>s.getChars(start, end,
+buf, 0);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(buf);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span lang="RU" style='font-family: "Courier New";
+mso-ansi-language: RU; mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoBodyText">Обратите внимание — метод getChars не включает в
+выходной буфер символ с индексом end. Это хорошо видно из вывода нашего примера
+— выводимая строка состоит из 4 символов.&#13;</p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'>С:\&gt; java getCharsDemo<span
+lang="RU" style='mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>demo</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal" style='text-align: justify'>Для удобства работы в String
+есть еще одна функция — toCharArray, которая возвращает в выходном массиве типа
+char всю строку.<span lang="RU" style='mso-ansi-language: RU'> </span>Альтернативная
+форма того же самого механизма позволяет записать содержимое строки в массив
+типа byte, при этом значения старших бай­тов в 16-битных символах
+отбрасываются. Соответствующий метод на­зывается getBytes, и его параметры
+имеют тот же смысл, что и пара­метры getChars, но с единственной разницей — в
+качестве третьего параметра надо использовать массив типа byte.&#13;</p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'>Сравнение&#13;</span></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>Если вы хотите узнать,
+одинаковы ли две строки, вам следует воспользоваться методом equals класса
+String. Альтернативная форма этого метода называется equalsIgnoreCase, при ее
+использовании различие ре­гистров букв в сравнении не учитывается<span lang="RU"
+style='mso-ansi-language: RU'>. </span>Ниже приведен пример, иллюстрирующий
+использование обоих методов:&#13;</p>
+
+<p class="MsoNormal"><span lang="RU" style='font-family: "Arial Narrow";
+mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+lang="RU" style='font-family: "Arial Narrow"; mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class equalDemo {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) { </span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>String s1 =
+&quot;Hello&quot;;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>String s2 =
+&quot;Hello&quot;;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>String s3 =
+&quot;Good-bye&quot;;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>String s4 =
+&quot;HELLO&quot;;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(s1
++ &quot; equals &quot; + s2 + &quot; -&gt; &quot; + s1.equals(s2));</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(s1
++ &quot; equals &quot; + s3 + &quot; -&gt; &quot; + s1.equals(s3));</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(s1
++ &quot; equals &quot; + s4 + &quot; -&gt; &quot; + s1.equals(s4));</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(s1
++ &quot; equalsIgnoreCase &quot; + s4 + &quot; -&gt; &quot; +<span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>s1.equalsIgnoreCase(s4));</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal">Результат запуска этого примера :&#13;</p>
+
+<p class="MsoNormal">С:\&gt; java equalsDemo&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Hello equals Hello
+-&gt; true</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Hello equals Good-bye
+-&gt; false</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Hello equals HELLO
+-&gt; false</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Hello equalsIgnoreCase
+HELLO -&gt; true</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal" style='text-align: justify'>В классе String реализована
+группа сервисных методов, являющихся специализированными версиями метода
+equals. <span lang="RU" style='mso-ansi-language: RU'>М</span>етод
+regionMatches используется для сравнения подстроки в исходной строке с
+подстрокой в строке-параметре. <span lang="RU" style='mso-ansi-language: RU'>М</span>етод
+startsWith проверяет, начинается ли данная подстрока фрагментом, переданным
+методу в качестве параметра. <span lang="RU" style='mso-ansi-language: RU'>М</span>етод
+endsWith проверяет совпадает ли с параметром конец строки. <span lang="RU"
+style='mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal"><b>Равенство</b>&#13;</p>
+
+<p class="MsoBodyText">Метод equals и оператор == выполняют две совершенно
+различных проверки. Если метод equal сравнивает символы внутри строк, то опе­ратор
+== сравнивает две переменные-ссылки на объекты и проверяет, указывают ли они на
+разные объекты или на один и тот же. В очеред­ном нашем примере это хорошо
+видно — содержимое двух строк оди­наково, но, тем не менее, это — различные
+объекты, так что equals и == дают разные результаты.&#13;</p>
+
+<p class="MsoNormal"><span lang="RU" style='font-family: "Arial Narrow";
+mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+lang="RU" style='font-family: "Arial Narrow"; mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class EqualsNotEqualTo
+{</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) { </span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>String s1 =
+&quot;Hello&quot;;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>String s2 = new
+String(s1);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(s1
++ &quot; equals &quot; + s2 + &quot; -&gt; &quot; + s1.equals(s2));</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(s1
++ &quot; == &quot; + s2 + &quot;, -&gt; &quot; + (s1 == s2));</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'> </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal">Вот результат запуска этого примера:&#13;</p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'>C:\&gt; java EqualsNotEqualTo&#13;</p>
+
+<h5>Hello equals Hello -&gt; true&#13;</h5>
+
+<h5>Hello == Hello -&gt; false&#13;</h5>
+
+<p class="MsoNormal"><b><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</b></p>
+
+<p class="MsoNormal"><b>Упорядочение</b>&#13;</p>
+
+<p class="MsoNormal" style='text-align: justify'>Зачастую бывает недостаточно
+просто знать, являются ли две строки идентичными. Для приложений, в которых
+требуется сортировка, нужно знать, какая из двух строк меньше другой. Для
+ответа на этот вопрос нужно воспользоваться методом compareTo класса String.
+Если целое значение, возвращенное методом, отрицательно, то строка, с которой
+был вызван метод, меньше строки-параметра, если положительно — больше. Если же
+метод compareTo вернул значение 0, строки идентичны. Ниже приведена программа,
+в которой выполняется пузырьковая сорти­ровка массива строк, а для сравнения
+строк используется метод compareTo.<span lang="RU" style='mso-ansi-language:
+RU'> </span>Эта программа выдает отсортированный в алфавитном порядке список
+строк<span lang="RU" style='mso-ansi-language: RU'>.&#13;</span></p>
+
+<p class="MsoNormal"><span style='font-family: Arial'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: Arial'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class SortString {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>static String arr[] =
+{&quot;Now&quot;, &quot;is&quot;, &quot;the&quot;, &quot;time&quot;,
+&quot;for&quot;, &quot;all&quot;,<span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp; </span></span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>&quot;good&quot;, &quot;men&quot;, &quot;to&quot;, &quot;come&quot;,
+&quot;to&quot;, &quot;the&quot;,<span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp; </span></span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>&quot;aid&quot;, &quot;of&quot;, &quot;their&quot;, &quot;country&quot;
+};</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) { </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>for (int j = 0; i &lt;
+arr.length; j</span></i></b><b><i><span style='font-family: "Courier New";
+font-variant: small-caps; mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>++)
+</span></i></b><b><i><span style='font-family: "Courier New"; mso-bidi-font-weight:
+bold; mso-bidi-font-style: italic'>{</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp; </span>for (int i = j</span></i></b><b><i><span
+style='font-family: "Courier New"; font-variant: small-caps; mso-bidi-font-weight:
+bold; mso-bidi-font-style: italic'> </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>+ 1; i &lt; arr.length; i++) { </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>if
+(arr[i].compareTo(arr[j]) &lt; 0) { </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>String t = arr[j];</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>arr[j] = arr[i];</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>arr[i] = t;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>} </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun:
+yes">&nbsp;</span>}<span style="mso-spacerun: yes">&nbsp; </span></span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;
+</span>System.out.println(arr[j]);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'>indexOf и lastIndexOf&#13;</span></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>В класс String включена
+поддержка поиска определенного символа или подстроки, для этого в нем имеются
+два метода — indexOf и lastIndexOf. Каждый из этих методов возвращает индекс
+того символа, который вы хотели найти, либо индекс начала ис­комой подстроки. В
+любом случае, если поиск оказался неудачным ме­тоды возвращают значение -1. В
+очередном примере показано, как пользоваться<span lang="RU"
+style='mso-ansi-language: RU'> </span>различными<span lang="RU"
+style='mso-ansi-language: RU'> </span>вариантами этих методов поиска.&#13;</p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><span lang="RU"
+style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class indexOfDemo {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>String s = &quot;Now
+is the time for all good men</span></i></b><b><i><span lang="RU"
+style='font-family: "Courier New"; mso-ansi-language: RU; mso-bidi-font-weight:
+bold; mso-bidi-font-style: italic'> </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&quot; +</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span lang="RU" style='font-family: "Courier New";
+mso-ansi-language: RU; mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&quot;to come to the aid of their country</span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'> </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&quot;</span></i></b><b><i><span lang="RU"
+style='font-family: "Courier New"; mso-ansi-language: RU; mso-bidi-font-weight:
+bold; mso-bidi-font-style: italic'> </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>+</span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span lang="RU" style='font-family: "Courier New";
+mso-ansi-language: RU; mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&quot;and pay their due taxes.&quot;;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(s);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;indexOf(t)
+= &quot; + s.indexOf('f’));</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;lastlndexOf(t)
+= &quot; + s.lastlndexOf('f’));</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;indexOf(the)
+= &quot; + s.indexOf(&quot;the&quot;));</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;lastlndexOf(the)
+= &quot; + s.lastlndexOf(&quot;the&quot;));</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;indexOf(t,
+10) = &quot; + s.indexOf('f’ , 10));</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;lastlndexOf(t,
+50) = &quot; + s.lastlndexOf('f’ , 50));</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;indexOf(the,
+10) = &quot; + s.indexOf(&quot;the&quot;, 10));</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;lastlndexOf(the,
+50) = &quot; + s.lastlndexOf(&quot;the&quot;, 50));</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal" style='text-align: justify'>Ниже приведен результат работы
+этой программы.<span lang="RU" style='mso-ansi-language: RU'> </span>Обратите
+внимание на то, что индексы в строках начинаются с нуля.&#13;</p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><span style='font-family: Arial'>С:&gt;
+java indexOfDemo</span><span style='font-family: Arial'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Now is the time for
+all good men to come to the aid of their country</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>and pay their due
+taxes.</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>indexOf(t) = 7</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>lastlndexOf(t) = 87</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>indexOf(the) = 7</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>lastlndexOf(the) = 77</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>index0f(t, 10) = 11</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>lastlndex0f(t, 50) =
+44</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>index0f(the, 10) = 44</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>lastlndex0f(the, 50) =
+44</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'>Модификация строк при
+копировании&#13;</span></b></p>
+
+<p class="MsoBodyText">Поскольку объекты класса String нельзя изменять, всякий
+раз, когда вам захочется модифицировать строку, придется либо копировать ее в
+объект типа StringBuffer, либо использовать один из описываемых ниже методов
+класса String, которые создают новую копию строки, внося в нее ваши изменения.&#13;</p>
+
+<p class="MsoNormal"><b><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</b></p>
+
+<p class="MsoNormal"><b>substring&#13;</b></p>
+
+<p class="MsoBodyText">Вы можете извлечь подстроку из объекта String, используя
+метод <b><span style='mso-bidi-font-weight: bold'>sub­string</span></b>. Этот
+метод создает новую копию символов из того диапазона ин­дексов оригинальной
+строки, который вы указали при вызове. Можно указать только индекс первого
+символа нужной подстроки — тогда будут скопированы все символы, начиная с
+указанного и до конца строки. Также можно указать и начальный, и конечный индексы
+— при этом в новую строку будут скопированы все символы, начиная с первого ука­занного,
+и до (но не включая его) символа, заданного конечным индек­сом.&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&quot;Hello
+World&quot;.substring(6) -&gt; &quot;World&quot; </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&quot;Hello
+World&quot;.substring(3,8) -&gt; &quot;lo Wo&quot;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</b></p>
+
+<p class="MsoNormal"><b>concat&#13;</b></p>
+
+<p class="MsoBodyText">Слияние, или конкатенация строк выполняется с помощью
+метода concat. Этот метод создает новый объект String, копируя в него содер­жимое
+исходной строки и добавляя в ее конец строку, указанную в параметре метода.&#13;</p>
+
+<h5>&quot;Hello&quot;.concat(&quot; World&quot;) -&gt; &quot;Hello World&quot;&#13;</h5>
+
+<p class="MsoNormal"><b><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</b></p>
+
+<p class="MsoNormal"><b>replace&#13;</b></p>
+
+<p class="MsoBodyText">Методу replace в качестве параметров задаются два
+символа. Все сим­волы, совпадающие с первым, заменяются в новой копии строки на
+вто­рой символ.&#13;</p>
+
+<h5>&quot;Hello&quot;.replace('l' , 'w') -&gt; &quot;Hewwo&quot;&#13;</h5>
+
+<p class="MsoNormal"><b><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</b></p>
+
+<p class="MsoNormal"><b>toLowerCase и toUpperCase&#13;</b></p>
+
+<p class="MsoBodyText">Эта пара методов преобразует все символы исходной строки
+в нижний и верхний регистр, соответственно.&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&quot;Hello&quot;.toLowerCase()
+-&gt; &quot;hello&quot;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&quot;Hello&quot;.toUpperCase()
+-&gt; &quot;HELLO&quot;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</b></p>
+
+<p class="MsoNormal"><b>trim&#13;</b></p>
+
+<p class="MsoNormal">И, наконец, метод trim убирает из исходной строки все
+ведущие и замыкающие пробелы.&#13;</p>
+
+<h5>“Hello World<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;
+</span>“.trirn() -&gt; &quot;Hello World&quot;&#13;</h5>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'>valueOf&#13;</span></b></p>
+
+<p class="MsoBodyText">Если вы имеете дело с каким-либо типом данных и хотите
+вывести значение этого типа в удобочитаемом виде, сначала придется преобразо­вать
+это значение в текстовую строку. Для этого существует метод val­ueOf. Такой
+статический метод определен для любого существующего в Java типа данных (все
+эти методы совмещены, то есть используют одно и то же имя). Благодаря этому не
+составляет труда преобразовать в стро­ку значение любого типа. &#13;</p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'>StringBuffer</span></b>&#13;</p>
+
+<p class="MsoBodyText">StringBuffer — близнец класса String, предоставляющий
+многое из того, что обычно требуется при работе со строками. Объекты класса
+String представляют собой строки фиксированной длины, которые нельзя изме­нять.
+Объекты типа StringBuffer представляют собой последовательности символов,
+которые могут расширяться и модифицироваться. Java активно ис­пользует оба
+класса, но многие программисты предпочитают работать только с объектами типа
+String, используя оператор +. При этом Java вы­полняет всю необходимую работу
+со StringBuffer за сценой.&#13;</p>
+
+<p class="MsoNormal"><b><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</b></p>
+
+<p class="MsoNormal"><b>Конструкторы</b>&#13;</p>
+
+<p class="MsoBodyText">Объект StringBuffer можно создать без параметров, при
+этом в нем будет зарезервировано место для размещения 16 символов без возмож­ности
+изменения длины строки. Вы также можете передать конструкто­ру целое число, для
+того чтобы явно задать требуемый размер буфера. И, наконец, вы можете передать
+конструктору строку, при этом она будет скопирована в объект и дополнительно к
+этому в нем будет заре­зервировано место еще для 16 символов. Текущую длину
+StringBuffer можно определить, вызвав метод <b><span style='mso-bidi-font-weight:
+bold'>length</span></b>, а для определения всего места, зарезервированного под
+строку в объекте StringBuffer нужно воспользоваться методом <b><span
+style='mso-bidi-font-weight: bold'>capacity</span></b>. Ниже приведен пример,
+поясняющий это:&#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class StringBufferDemo
+{</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>StringBuffer sb = new
+StringBuffer(&quot;Hello&quot;);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;buffer
+= &quot; + sb);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;length
+= &quot; + sb.length());</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.
+println(&quot;capacity = &quot; + sb.capacity());</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoBodyText">Вот вывод этой программы, из которого видно, что в
+объекте String-Buffer для манипуляций со строкой зарезервировано дополнительное
+место.&#13;</p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'>С:\&gt; java StringBufferDemo&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>buffer = Hello</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>length = 5</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>capacity = 21</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</b></p>
+
+<p class="MsoNormal"><b>ensureCapacity</b>&#13;</p>
+
+<p class="MsoNormal" style='text-align: justify'>Если вы после создания объекта
+StringBuffer захотите зарезервировать в нем место для определенного количества
+символов, вы можете <i>для</i> установки размера буфера воспользоваться методом
+<b><span style='mso-bidi-font-weight: bold'>ensureCapacity</span></b>. Это
+бывает полезно, когда вы заранее знаете, что вам придется добавлять к буферу
+много небольших строк.&#13;</p>
+
+<p class="MsoNormal"><b><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</b></p>
+
+<p class="MsoNormal"><b>setLength</b>&#13;</p>
+
+<p class="MsoNormal" style='text-align: justify'>Если вам вдруг понадобится в
+явном виде установить длину строки в буфере, воспользуйтесь методом setLength.
+Если вы зададите значение, большее чем длина содержащейся в объекте строки,
+этот метод заполнит <span lang="RU" style='mso-ansi-language: RU'>ко</span>нец
+новой, расширенной строки символами с кодом нуль. В приводимой чуть дальше
+программе setCharDemo метод sstLength используется для укорачивания буфера.&#13;</p>
+
+<p class="MsoNormal"><b><span lang="RU" style='font-size: 12.0pt;
+mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'>charAt и setCharAt</span></b><span
+style='font-size: 12.0pt'>&#13;</span></p>
+
+<p class="MsoNormal" style='text-align: justify'>Одиночный символ может быть
+извлечен из объекта StringBuffer с помощью метода <b><span
+style='mso-bidi-font-weight: bold'>charAt</span></b>. Другой метод <b><span
+style='mso-bidi-font-weight: bold'>setCharAt</span></b> позволяет записать в
+заданную позицию строки нужный символ. Использование обоих этих методов
+проиллюстрировано в примере:&#13;</p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><span lang="RU"
+style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class setCharAtDemo { </span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>StringBuffer sb = new
+StringBuffer(&quot;Hello&quot;);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;buffer
+before = &quot; + sb);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;charAt(1)
+before = &quot; + sb.charAt(1));</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>sb.setCharAt(1, 'i');</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>sb.setLength(2);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;buffer
+after = &quot; + sb);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;charAt(1)
+after = &quot; + sb.charAt(1));</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'> </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal">Вот вывод, полученный при запуске этой программы.&#13;</p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'>C:\&gt; java setCharAtDemo<span
+lang="RU" style='mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>buffer before = Hello</span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>charAt(1) before = e </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>buffer after = Hi </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>charAt(1) after = i</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'>append&#13;</span></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>Метод <b><span
+style='mso-bidi-font-weight: bold'>append</span></b> класса StringBuffer обычно
+вызывается неявно при ис­пользовании оператора + в выражениях со строками. Для
+каждого параметра вызывается метод String.valueOf и его результат до­бавляется
+к текущему объекту StringBuffer. К тому же при каждом вы­зове метод append
+возвращает ссылку на объект StringBuffer, с которым он был вызван. Это позволяет
+выстраивать в цепочку последовательные вызовы метода, как это показано в
+очередном примере.&#13;</p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class appendDemo {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) { </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>String s;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int a = 42;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>StringBuffer sb = new
+StringBuffer(40);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>s = sb.append(&quot;a
+= &quot;).append(a).append(&quot;!&quot;).toString();</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(s);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal">Вот вывод этого примера:&#13;</p>
+
+<p class="MsoNormal">С:\&gt; Java appendDemo<b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>а = 42!</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'>insert&#13;</span></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>Метод <b><span
+style='mso-bidi-font-weight: bold'>insert</span></b> идентичен методу append в
+том смысле, что для каждого возможного типа данных существует своя совмещенная
+версия этого ме­тода. Правда, в отличие от append, он не добавляет символы,
+возвра­щаемые методом String.valueOf, в конец объекта StringBuffer, а встав­ляет
+их в определенное место в буфере, задаваемое первым его параметром. В очередном
+нашем примере строка &quot;there&quot; вставляется между &quot;hello&quot; и
+&quot;world!&quot;.&#13;</p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class insertDemo {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void<span
+style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>main(String
+args[]) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>StringBuffer sb = new
+StringBuffer(&quot;hello world !&quot;);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>sb.insert(6,&quot;there
+&quot;);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(sb);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal">При запуске эта программа выводит следующую<span
+style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>строку:&#13;</p>
+
+<p class="MsoNormal">С:\&gt; java insertDemo&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>hello there world!</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'>Без строк не обойдешься&#13;</span></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>Почти любой аспект
+программирования в Java на каком либо этапе подразумевает использование классов
+String и StringBuffer. Они понадо­бятся и при отладке, и при работе с текстом,
+и при указании имен фай­лов и адресов URL в качестве параметров методам. Каждый
+второй байт большинства строк в Java — нулевой (Unicode <span lang="RU"
+style='mso-ansi-language: RU'>пока используется редко</span>). То, что строки в
+Java требуют вдвое больше памяти, чем обыч­ные ASCII, не очень пугает, пока вам
+для эффективной работы с текстом в редакторах и других подобных приложениях не
+придется напрямую работать с огромным массивом типа char. &#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+</div>
+
+</body>
+
+</html>

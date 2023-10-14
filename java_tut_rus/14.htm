@@ -1,0 +1,150 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Глава 14 Сетевые средства</TITLE>
+</HEAD>
+<BODY>
+
+<B><FONT FACE="Times New Roman" SIZE=4><P>Глава 14 Сетевые средства</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Эта глава посвящена описанию пакета java.net. Java поддерживает протокол TCP/IP, во-первых, расширяя свой интерфейс потоков ввода-вывода, описанного в предыдущей главе, и во вторых, добавляя возможности, необходимые для построения объектов ввода-вывода при работе в сети. </P>
+</FONT><B>
+<P>InetAddress</P>
+</B><FONT SIZE=2><P ALIGN="JUSTIFY">J</FONT><FONT FACE="Times New Roman" SIZE=2>ava поддерживает адреса абонентов, принятые в Internet, с помощью класса InetAddress. Для адресации в Internet используются служебные функции, работающие с обычными, легко запоминающимися символическими именами, эти функции преобразуют символические имена</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>в 32-битные адреса.</P>
+</FONT><B><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Фабричные методы</P>
+</B><P ALIGN="JUSTIFY">В классе InetAddress нет доступных пользователю конструкторов. Для создания объектов этого класса нужно воспользоваться одним из его фабричных методов. Фабричные методы — это</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>обычные статические методы, которые возвращают ссылку на объект класса, которому они принадлежат. В данном случае, у класса InetAddress есть три метода, которые можно использовать для создания представителей. Это методы getLocalHost, getByName и getAllByName.</P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">В приведенном ниже примере выводятся адреса и имена локальной машины, локального почтового узла и WWW-узла компании, в которой работает автор.</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>InetAddress Address = InetAddress.getLocalHost();</P>
+<P>System.out.println(Address);</P>
+<P>Address = InetAddress.getByName("mailhost");</P>
+<P>System.out.println(Address);</P>
+<P>InetAddress SW[] = InetAddress.getAllByNarne(“www.starwave.com");</P>
+<P>System.out.println(SW);</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">У класса InetAddress также есть несколько нестатических методов, которые можно использовать с объектами, возвращаемыми только что названными фабричными методами</FONT><FONT SIZE=2>:</P>
+
+<UL>
+</FONT><FONT FACE="Times New Roman" SIZE=2><LI>getHostName() возвращает строку, содержащую символическое имя узла, соответствующее хранящемуся в данном объекте адресу Internet.</LI>
+<LI>getAddress() возвращает байтовый массив из четырех элементов, в котором в порядке, используемом в сети, записан адрес Internet, хранящийся в данном объекте.</LI>
+<LI>toString() возвращает строку, в которой записано имя узла и его адрес.</LI></UL>
+
+</FONT><B>
+<FONT FACE="Times New Roman"><P>Дейтаграммы</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Дейтаграммы, или пакеты протокола UDP (User Datagram Protocol) — это пакеты информации, пересылаемые в сети по принципу “fire-and-forget” (выстрелил и забыл). Если вам надо добиться оптимальной производительности, и вы в состоянии минимизировать затраты на проверку целостности информации, пакеты UDP могут оказаться весьма полезными.</P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">UDP не предусматривает проверок и подтверждений при передаче информации. При передаче пакета UDP по какому-либо адресу нет никакой гарантии того, что он будет принят, и даже того, что по этому адресу вообще есть кому принимать такие пакеты. Аналогично, когда вы получаете дейтаграмму, у вас нет никаких гарантий, что она не была повреждена в пути или что ее отправитель все еще ждет от вас подтверждения ее получения.</P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Java реализует дейтаграммы на базе протокола UDP, используя для этого два класса. Объекты класса </FONT><B><FONT SIZE=2>DatagramPacket</B></FONT><FONT FACE="Times New Roman" SIZE=2> представляют собой контейнеры с данными, a </FONT><B><FONT SIZE=2>DatagramSocket</B></FONT><FONT FACE="Times New Roman" SIZE=2> — это механизм, используемый при передаче и получении объектов DatagramPacket.</P>
+</FONT><B>
+<FONT FACE="Times New Roman"><P>Сокеты “для клиентов”</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">TCP/IP-сокеты используются для реализации надежных двунаправленных, ориентированных на работу с потоками соединений точка-точка между узлами Internet. Сокеты можно использовать для соединения системы ввода-вывода Java с программами, которые могут выполняться либо на локальной машине, либо на любом другом узле Internet. В отличие от класса DatagramSocket, объекты класса Socket реализуют высоконадежные устойчивые соединения между клиентом и сервером.</P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">В пакете java.net классы Socket и ServerSocket сильно отличаются друг от друга. Первое отличие в том, что ServerSocket ждет, пока клиент не установит с ним соединение, в то время, как обычный Socket трактует недоступность чего-либо, с чем он хочет соединиться, как ошибку.</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>Одновременно с созданием объекта Socket устанавливается соединение между узлами Internet. Для создания сокетов вы можете использовать два конструктора:</P>
+
+<UL>
+</FONT><FONT SIZE=2><P ALIGN="JUSTIFY"><LI>Socket(Strin</FONT><FONT FACE="Times New Roman" SIZE=2>g host, int port) устанавливает соединение между локальной машиной и указанным портом узла Internet, имя которого было передано конструктору. Этот конструктор может возбуждать исключения UnknownHostException и IOException.</LI></P>
+</FONT><FONT SIZE=2><P ALIGN="JUSTIFY"><LI>Socket(InetAddress address, int </FONT><FONT FACE="Times New Roman" SIZE=2>port) выполняет ту же работу, что и первый конструктор, но узел, с которым требуется установить соединение, задается не строкой, а объектом InetAddress. Этот конструктор может возбуждать только IOException.</LI></P></UL>
+
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Из объекта Socket в любое время можно извлечь информацию об адресе Internet и номере порта, с которым он соединен. Для этого служат следующие методы:</P>
+
+<UL>
+<LI>getInetAddressQ возвращает объект InetAddress, связанный с данным объектом Socket.</LI>
+<LI>getPort() возвращает номер порта на удаленном узле, с которым установлено соединение.</LI>
+<LI>getLocalPort() возвращает номер локального порта, к которому присоединен данный объект.</LI></UL>
+
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">После того, как объект Socket создан, им можно воспользоваться для того, чтобы получить доступ к связанным с ним входному и выходному потокам. Эти потоки используются для приема и передачи данных точно так же, как и обычные потоки ввода-вывода, которые мы видели в предыдущей главе:</P>
+
+<UL>
+<LI>getInputStream() возвращает InputStream, связанный с данным объектом.</LI>
+<LI>getOutputStream() возвращает OutputStream, связанный с данным</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>объектом.</LI>
+<LI>close() закрывает входной и выходной потоки объекта Socket.</LI></UL>
+
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Приведенный ниже очень простой пример открывает соединение с портом 880 сервера “timehost” и выводит полученные от него данные.</P>
+</FONT><FONT SIZE=2>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>import java.net.*;</P>
+<P>import java.io.*;</P>
+<P>class TimeHost {</P>
+<P>public static void main(String args[]) throws Exception { </P>
+<P>int c;</P>
+<P>Socket s = new Socket("timehost.starwave.com",880);</P>
+<P>InputStream in = s.getInputStream();</P>
+<P>while ((c = in.read()) != -1) { </P>
+<P>System.out.print( (char) c);</P>
+<P>}</P>
+<P>s.close();</P>
+<P>} }</P>
+</I></FONT>
+<FONT FACE="Times New Roman"><P>Сокеты “для серверов”</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Как уже упоминалось ранее, Java поддерживает сокеты серверов. Для создания серверов Internet надо использовать объекты класса </FONT><B><FONT SIZE=2>ServerSocket</B></FONT><FONT FACE="Times New Roman" SIZE=2>. Когда вы создаете объект ServerSocket, он регистрирует себя в системе, говоря о том, что он готов обслуживать соединения клиентов. У этого класса есть один дополнительный метод accept(), вызов которого блокирует подпроцесс до тех пор, пока какой-нибудь клиент не установит соединение по соответствующему порту. После того, как соединение установлено, метод</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>accept() возвращает вызвавшему его подпроцессу обычный объект Socket.</P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Два конструктора класса ServerSocket позволяют задать, по какому порту вы хотите соединяться с клиентами, и (необязательный параметр) как долго вы готовы ждать, пока этот порт не освободится. </P>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>ServerSocket(int port) создает сокет сервера для заданного порта.</LI></P>
+<P ALIGN="JUSTIFY"><LI>ServerSocket(int port, int count) создает сокет сервера для заданного порта. Если этот порт занят, метод будет ждать его освобождения максимум count миллисекунд.</LI></P></UL>
+
+</FONT><FONT SIZE=2>
+</FONT><B><P>URL</P>
+</B><FONT SIZE=2><P ALIGN="JUSTIFY">URL (Uniform Re</FONT><FONT FACE="Times New Roman" SIZE=2>source Locators — однородные указатели ресурсов) — являются наиболее фундаментальным компонентом “Всемирной паутины”. Класс URL предоставляет простой и лаконичный программный интерфейс для доступа к информации в Internet с помощью URL.</P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">У класса URL из библиотеки Java </FONT><FONT SIZE=2>-</FONT><FONT FACE="Times New Roman" SIZE=2> четыре конструктора</FONT><FONT SIZE=2>. </FONT><FONT FACE="Times New Roman" SIZE=2>В наиболее часто используемой форме конструктора URL адрес ресурса задается в строке, идентичной той, которую вы используете при работе с браузером:</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>URL(String spec)</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Две следующих разновидности конструкторов позволяют задать URL, указав его отдельные компоненты:</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>URL(String protocol, String host, int port, String file)</P>
+<P>URL(String protocol, String host, String file)</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Четвертая, и последняя форма конструктора позволяет использовать существующий URL в качестве ссылочного контекста, и создать на основе этого контекста новый URL.</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>URL(URL context, String spec)</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">В приведенном ниже примере создается URL, адресующий www-страницу (поставьте туда свой адрес), после чего программа печатает свойства этого объекта.</P>
+</FONT><FONT SIZE=2>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>import java.net.URL;</P>
+<P>class myURL {</P>
+<P>public static void main(String args[]) throws Exception {</P>
+<P>URL hp = new URL("http://coop.chuvashia.edu");</P>
+<P>System.out. println("Protocol: " + hp.getProtocol());</P>
+<P>System.out.printin("Port: " +&#9;hp.getPort());</P>
+<P>System.out.println("Host: " +&#9;hp.getHost());</P>
+<P>System.out.println("File: " +&#9;hp.getFile());</P>
+<P>System.out.println("Ext: " + hp.toExternaLForm());</P>
+<P>} }</P>
+</B></I></FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Для того, чтобы извлечь реальную информацию, адресуемую данным URL, необходимо на основе URL создать объект URLConnection, воспользовавшись для этого методом openConnection().</P>
+</FONT><B>
+<P>URLConnection</P>
+</B><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">URLConnection — объект, который мы используем либо для проверки свойств удаленного ресурса, адресуемого URL, либо для получения его содержимого. В приведенном ниже примере мы создаем URLConnection с помощью метода openConnection, вызванного с объектом URL. После этого мы используем созданный объект для получения содержимого и свойств документа.</P>
+</FONT><FONT SIZE=2>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>import java.net.*;</P>
+<P>import java.io.*;</P>
+<P>class localURL {</P>
+<P>public static void main(String args[]) throws Exception {</P>
+<P>int c;</P>
+<P>URL hp = new URL("http", "127.0.0.1", 80, "/");</P>
+<P>URLConnection hpCon = hp.openConnection();</P>
+<P>System.out.println("Date: " + hpCon.getDate());</P>
+<P>System.out.println("Type: " + hpCon.getContentType());</P>
+<P>System.out.println("Exp: " + hpCon.getExpiration());</P>
+<P>System.out.println( "Last M: " + hpCon.getLastModified());</P>
+<P>System.out.println("Length: " + hpCon.getContentLength());</P>
+<P>if (hpCon.getContentLength() &gt; 0) {</P>
+<P>System.out.println("=== Content ===");</P>
+<P>InputStream input = hpCon.getInputStream();</P>
+<P>int i=hpCon.getContentLength();</P>
+<P>while (((c = input. read()) != -1) &amp;&amp; (--i &gt; 0)) {</P>
+<P>System.out.print((char) c);</P>
+<P>}</P>
+<P>input.close();</P>
+<P>}</P>
+<P>else {</P>
+<P>System.out.println("No Content Available");</P>
+<P>}</P>
+<P>} }</P>
+</B></I></FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Эта программа устанавливает HTTP-соединение с локальным узлом по порту 80 (у вас на машине должен быть установлен </FONT><FONT SIZE=2>Web-</FONT><FONT FACE="Times New Roman" SIZE=2>сервер) и запрашивает документ по умолчанию, обычно это </FONT><FONT SIZE=2>-</FONT><FONT FACE="Times New Roman" SIZE=2> index.html. После этого программа выводит значения заголовка, запрашивает и выводит содержимое документа.</P>
+</FONT><B>
+<FONT FACE="Times New Roman"><P>Сеть и только сеть</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Сетевые классы Java предоставляют ясный и простой в использовании интерфейс для работы в Internet. Фундамент, заложенный в пакете java.net </FONT><FONT SIZE=2>-</FONT><FONT FACE="Times New Roman" SIZE=2> хорошая база для дальнейшего развития, которая позволит Java эволюционировать вместе с Internet.</P>
+</FONT><FONT SIZE=2></FONT></BODY>
+</HTML>

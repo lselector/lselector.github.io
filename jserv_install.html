@@ -1,0 +1,169 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Stefano Mazzocchi">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (Win98; U) [Netscape]">
+   <title>How to install Apache JServ on win32 systems</title>
+</head>
+<body bgcolor="#FFFFFF">
+&nbsp;
+<center>
+<h1>
+How to install Apache JServ on win32 systems</h1></center>
+
+<h3>
+Introduction</h3>
+This section guides you through the installation process for win32 systems
+in the case you didn't use the self-installation <i>typical</i> mode or
+in case you did so but something went wrong and you choose the <i>custom</i>
+installation which doesn't automatically connect Apache JServ with the
+Apache Web Server.
+<h3>
+Requirements</h3>
+The following requirements exist for building Apache JServ:
+<ul>
+<li>
+<b><u>Disk Space</u></b></li>
+
+<p><br>The complete Apache JServ installation requires less than 2Mb of
+hard disk space. The compiled, not-compressed jar archive is more or less
+100Kb.
+<li>
+<b><u>Apache HTTP Server</u></b></li>
+
+<p><br>Apache JServ works only with the <a href="http://www.apache.org/">Apache
+HTTP Server</a> 1.3.1 or higher. (latest version is highly recommended).
+<li>
+<b><u>Java Runtime Environment</u></b></li>
+
+<p><br>A fully compliant Java 1.1 Runtime Environment is required for Apache
+JServ to execute. The official <a href="http://java.sun.com/cgi-bin/java-ports.cgi">list
+of compatible ports</a> is found on the JavaSoft web site.
+<p><b>Note:</b> since Apache JServ uses <u>only</u> standard Java APIs
+(<tt>java.*</tt>), please, do not submit a bug report if your Java virtual
+machine fails to execute Apache JServ because of broken compliance. Send
+it to your Java virtual machine implementers.
+<li>
+<b><u>Java Servlet Development Kit 2.0</u></b></li>
+
+<p><br>The JavaSoft JSDK 2.0 is required by Apache JServ for proper servlet
+execution. This package is freely available from the JavaSoft web site
+(<a href="http://java.sun.com/products/servlet/index.html" target="_top">http://java.sun.com/products/servlet/index.html</a>)
+<p><b>Note:</b> this version of Apache JServ requires <u>exactly</u> the
+specified version of the JSDK in order to operate properly. Any other version
+(past, present or future) is not supported.
+<li>
+<b><u>Java Compiler</u></b></li>
+
+<p><br>Since the distribution include the precompiled Java binary archive,
+compilation of the Java source is optional.
+<p><b>Note</b>: a Java compiler is needed to build servlets if you plan
+to write your own.
+<li>
+<b><u>C Compiler</u></b></li>
+
+<p><br>Even if win32 distribution comes with precompiled binaries, the
+mod_jserv module and the native wrapper need a C compiler in order to operate
+correctly. Currently only Microsoft Visual C++ (version 5.0 or higher)
+is supported.</ul>
+
+<h3>
+Overview</h3>
+The Apache JServ servlet engine is composed by two main parts, the servlet
+engine server application (written in 100% pure Java) and the web server
+module (mod_jserv, written in C). This module is communication layer that
+allows the web server to request servlets to the servlet engine.
+<p>Even if many different ways of installing Apache JServ exist, in this
+section we concentrate to the basic installation (called integrated or
+automatic mode) where the servlet engine process is spawned and controlled
+by the web server itself and, consequently, both the web server and the
+servlet engine share the same system resources.
+<p>This document assumes you have your Apache Web Server already installed
+and configured.
+<h3>
+Installing the servlet engine</h3>
+The servlet engine is a 100% pure Java server application with its own
+configuration files. jserv.properties is the main configuration file while
+zone.properties is an example servlet zone configuration file (see the
+<a href="jserv_servlets.html">servlet zone howto</a> for more info on servlet
+zones). You need to edit a few directives in the jserv.properties file
+to let the JVM spawner (either the module or the wrapper) where to find
+things.
+<p>These are the properties you should edit:
+<blockquote>
+<pre>wrapper.bin=@JAVA@ (the name of the JVM interpreter, absolute if not in PATH)</pre>
+
+<pre>wrapper.classpath=@JSERV_CLASSES@ (the path to ApacheJServ.jar)
+wrapper.classpath=@JSDK_CLASSES@ (the path to jsdk.jar)</pre>
+
+<pre>root.properties=@ZONE_CONF@ (the path to ./conf/zone.properties)</pre>
+
+<pre>log.file=@JSERV_LOG@ (the path to ./logs/jserv.log)</pre>
+</blockquote>
+
+<h3>
+Installing the web server module</h3>
+The Apache web server communicates with the servlet engine using the Apache
+JServ module named ApacheModuleJServ.dll (found in the \bin\c directory
+of the distribution). This file must be copied under the \modules directory
+of your existing Apache installation.
+<p>After you have copied the file in the module directory, you should append
+the configuration template file \conf\httpd.conf to your existing Apache
+configuration file (usually httpd.conf). This template helps you configure
+the module and the web server.
+<p>The first thing to do is to uncomment the loadmodule directive to let
+Apache know about the new module
+<blockquote>
+<pre># Tell Apache on win32 to load the Apache JServ communication module
+LoadModule jserv_module modules/ApacheModuleJServ.dll</pre>
+</blockquote>
+After this, you should specify the servlet engine configuration file (usually
+jserv.properties) and the module log file with the directives
+<blockquote>
+<pre>ApJServProperties &lt;full path to ./conf/jserv.properties>
+ApJServLogFile &lt;full path to ./logs/jserv.module.log></pre>
+</blockquote>
+The log file will be created if not existing or logs will be appended to
+an existing file.
+<h3>
+Checking the installation</h3>
+You are ready to test your Apache JServ installation: simply run the Apache
+Web Server and request the URL <a href="http://127.0.0.1/jserv/" target="_top">http://127.0.0.1/jserv/</a>.
+<p>If the web server returns a File not found error code, this means that
+your module is not properly installed or that you disabled the <a href="jserv_status.html">jserv-status
+handler</a>. Otherwise you see the dynamic Apache JServ configuration pages
+that show you the status of your servlet environment.
+<p>The page you are seeing is created by the ApacheModuleJServ.dll module.
+To see if the servlet engine is working, go to the servlet engine section
+and follow the link. If everything is successful, you see the dynamic page
+generated by Apache JServ showing his configurations, otherwise, if you
+get an internal server error, this means your servlet engine is not working.
+<h3>
+Troubleshooting</h3>
+If you get an internal server error while connecting to the servlet engine,
+you should check your log files for problems.
+<p>If the <i>jserv.log</i> file was not created this means that Apache
+JServ did not even start. Usually this is due to a dirty or broken <i>classpath</i>
+passed to the spawned virtual machine. Check out the <i>jserv.module.log</i>
+file and the Apache <i>error.log</i> file for clues on what the problem
+is. Just to make sure, you could try using absolute paths instead of relative
+ones because the different processes may see different working directories.
+<p>When the classpath is correct and Apache JServ starts, the <i>jserv.log</i>
+file is created. Look at that file for description of eventual other problems.
+<h3>
+Installing servlets</h3>
+After your servlet engine is up and running, you need to install your servlets.
+To do this you need to learn about <a href="jserv_servlets.html">servlet
+zones and their usage</a>. Later on, more advanced users may want to learn
+<a href="jserv_security.html">how to secure their servlets</a> and servlet
+engines.
+<center>
+<p><font size=-1>Copyright (c) 1997-99 <a href="http://java.apache.org/" target="_top">The
+Java Apache Project</a>.</font>
+<br><font size=-1>$Id: howto.win32_install.html,v 1.7 1999/09/29 03:23:57
+admin Exp $</font>
+<br><font size=-1>All rights reserved.</font></center>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+
+
+
+
+
+while($file=<*.htm>) {
+        open (IN,"$file");
+        undef $/; $sss = <IN>;
+        close(IN);
+
+        if ($sss =~ s|</title>(.*)?</head>|</title></head>|si) {print "*";}
+        open (OUT,">$file");
+        print OUT $sss;
+        close(OUT);
+}
+this is a test
+

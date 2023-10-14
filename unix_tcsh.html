@@ -1,0 +1,802 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>tcsh</title>
+<!--
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> tcsh&nbsp;</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<b><font color="#CC0000">tcsh</font></b>
+<br><font color="#6699CC">• <a href="#intro">intro</a></font>
+<br><font color="#6699CC">• <a href="#intro">basics</a></font>
+<br><font color="#6699CC">• <a href="#history">history</a></font>
+<br><font color="#6699CC">• <a href="#patterns">patterns</a></font>
+<br><font color="#6699CC">• <a href="#complete">complete</a></font>
+<br><font color="#6699CC">• <a href="#misc">misc</a></font>
+<br><a NAME="intro"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>intro</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">tcsh</font></b> - was born at Ohio State circa
+1983, and Paul Placeway was its dad.
+<br>&nbsp;&nbsp;&nbsp; Since 1987 is maintained by Christos Zoulas (<a href="mailto:christos@ee.cornell.edu">christos@ee.cornell.edu</a>).
+<br>&nbsp;&nbsp;&nbsp; See more here: <a href="http://www.tac.nyc.ny.us/mirrors/tcsh-book/tcsh.html/AUTHORS.html">www.tac.nyc.ny.us/mirrors/tcsh-book/tcsh.html/AUTHORS.html</a>
+<p><font color="#6699CC">• </font><b><a href="http://www.tcsh.org/page?Home">www.tcsh.org/page?Home</a></b>
+- tcsh home page
+<br><font color="#6699CC">• </font><a href="http://www.tcsh.org">www.tcsh.org</a>
+- tcsh home page.
+<br><font color="#6699CC">• </font><b><a href="http://www.tac.nyc.ny.us/mirrors/tcsh-book/tcsh.html/index.html">www.tac.nyc.ny.us/mirrors/tcsh-book/tcsh.html/index.html</a></b>
+- <b><font color="#CC0000">tcsh manual page</font></b>
+<br><font color="#6699CC">• </font><a href="http://www.engin.umich.edu/htbin/mangate?manpage=tcsh">www.engin.umich.edu/htbin/mangate?manpage=tcsh</a>
+- tcsh
+<br><font color="#6699CC">• </font><a href="http://www.tac.nyc.ny.us/mirrors/tcsh-book/bindings.html">www.tac.nyc.ny.us/mirrors/tcsh-book/bindings.html</a>
+- tcsh Command Editor Commands
+<br><font color="#6699CC">• </font><a href="http://www.blackie.dk/dotfile/">www.blackie.dk/dotfile/</a>
+- TDG - The Dotfile Generator ( also read article <a href="http://www.flug.dk/lg/issue17/dotfile.html">here</a>
+)
+<br><font color="#6699CC">• </font><b><a href="http://www.dubois.ws/software/csh-tcsh-book/">www.dubois.ws/software/csh-tcsh-book/</a></b>
+- Archive for "Using csh &amp; tcsh" book by <a href="http://www.dubois.ws/people/paul/">Paul
+DuBois</a> - who also has written more good books: <a href="http://www.kitebird.com/mysql-book/">MySQL</a>,
+<a href="http://www.kitebird.com/mysql-perl/">MySQL
+and Perl for the Web</a>,
+<a href="http://www.oreilly.com/catalog/imake2/">Software
+Portability with imake</a>,&nbsp; <a href="http://www.kitebird.com/mysql-cookbook/">The
+MySQL Cookbook</a> -
+<br>&nbsp;This page has excellent links, for example an old article (1994):
+<a href="http://www.dubois.ws/software/csh-tcsh-book/csh-whynot">Tom
+Christiansen's article</a> ( <a href="http://www.tac.nyc.ny.us/mirrors/tcsh-book/csh-whynot">same
+at another address</a> ) - why csh (and tcsh) should not be used for writing
+shell scripts.
+<p><font color="#6699CC">• </font><a href="http://www.flug.dk/lg/issue12/tcsh.html">http://www.flug.dk/lg/issue12/tcsh.html</a>
+- Features of the TCSH Shell - By Jesper Kj&aelig;r Pedersen
+<br><a NAME="basics"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>basics</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFFFCC" >
+<tr>
+<td>left-right arrows - move left-right in the line&nbsp; (^B, ^F),&nbsp;
+<br>up/down arrows - move up-down in the history (^P, ^N)</td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">bindkey</font></b> - shows the list of shortcuts
+you can use.
+<table BORDER CELLSPACING=0 CELLPADDING=2 COLS=3 BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><b><u>Standard key bindings</u></b>
+<br>"^@"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+set-mark-command
+<br>"^A"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+beginning-of-line
+<br>"^B"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->
+<b>backward-char</b>
+<br>"^C"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+tty-sigintr
+<br>"^D"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->
+<b>delete-char</b>-or-<b>list</b>-or-<b>eof</b>
+<br>"^E"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+end-of-line
+<br>"^F"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->
+<b>forward-char</b>
+<br>"^G"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+is undefined
+<br>"^H"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+backward-delete-char
+<br>"^I"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+complete-word (<b><font color="#CC0000">TAB</font></b>)
+<br>"^J"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+newline
+<br>"^K"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+kill-line
+<br>"^L"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+clear-screen
+<br>"^M"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+newline
+<br>"^N"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->
+<b>down-history</b>
+<br>"^O"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+tty-flush-output
+<br>"^P"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->
+<b>up-history</b>
+<br>"^Q"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+tty-start-output
+<br>"^R"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+redisplay
+<br>"^S"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+tty-stop-output
+<br>"^T"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+transpose-chars
+<br>"^U"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+kill-whole-line
+<br>"^V"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+quoted-insert
+<br>"^W"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+kill-region
+<br>"^X"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+sequence-lead-in
+<br>"^Y"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+yank
+<br>"^Z"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+tty-sigtsusp
+<br>"^["&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+sequence-lead-in
+<br>"^\"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+tty-sigquit
+<br>"^]"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+tty-dsusp
+<br>" "&nbsp; to "/"&nbsp;&nbsp;&nbsp; ->&nbsp; self-insert-command
+<br>"0"&nbsp; to "9"&nbsp;&nbsp;&nbsp; ->&nbsp; digit
+<br>":"&nbsp; to "~"&nbsp;&nbsp;&nbsp; ->&nbsp; self-insert-command
+<br>"^?"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp;
+backward-delete-char
+<br>"^&Auml;"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+->&nbsp; list-choices
+<br>"^&Egrave;"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+->&nbsp; backward-delete-word
+<br>"^&Eacute;"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+->&nbsp; complete-word
+<br>"^&Igrave;"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+->&nbsp; clear-screen
+<br>"^&Uacute;"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+->&nbsp; run-fg-editor
+<br>"^&Ucirc;"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+->&nbsp; complete-word
+<br>"^&szlig;"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+->&nbsp; copy-prev-word
+<br>"\240"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->&nbsp; expand-history
+<br>"&iexcl;"&nbsp; to "&yuml;"&nbsp;&nbsp;&nbsp; ->&nbsp; self-insert-command&nbsp;</td>
+
+<td ALIGN=LEFT VALIGN=TOP><b><u>Alternative key bindings</u></b>
+<br><b><u>Multi-character bindings</u></b>
+<br>"^[[A"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> up-history
+<br>"^[[B"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> down-history
+<br>"^[[C"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> forward-char
+<br>"^[[D"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> backward-char
+<br>"^[OA"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> up-history
+<br>"^[OB"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> down-history
+<br>"^[OC"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> forward-char
+<br>"^[OD"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> backward-char
+<br>"^[^D"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> list-choices
+<br>"^[^H"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> backward-delete-word
+<br>"^[^I"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> complete-word
+<br>"^[^L"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> clear-screen
+<br>"^[^Z"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> run-fg-editor
+<br>"^[^["&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> complete-word
+<br>"^[^_"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> copy-prev-word
+<br>"^[ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> expand-history
+<br>"^[!"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> expand-history
+<br>"^[$"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> spell-line
+<br>"^[/"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> dabbrev-expand
+<br>"^[0"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> digit-argument
+<br>"^[1"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> digit-argument
+<br>"^[2"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> digit-argument
+<br>"^[3"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> digit-argument
+<br>"^[4"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> digit-argument
+<br>"^[5"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> digit-argument
+<br>"^[6"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> digit-argument
+<br>"^[7"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> digit-argument
+<br>"^[8"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> digit-argument
+<br>"^[9"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> digit-argument
+<br>"^[?"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> which-command
+<br>"^[B"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> backward-word
+<br>"^[C"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> capitalize-word
+<br>"^[D"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> delete-word
+<br>"^[F"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> forward-word
+<br>"^[H"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> run-help
+<br>"^[L"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> downcase-word
+<br>"^[N"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> history-search-forward
+<br>"^[P"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> history-search-backward
+<br>"^[R"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> toggle-literal-history
+<br>"^[S"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> spell-word
+<br>"^[U"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> upcase-word
+<br>"^[W"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> copy-region-as-kill</td>
+
+<td ALIGN=LEFT VALIGN=TOP>"^[_"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-> insert-last-word
+<br>"^[b"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> backward-word
+<br>"^[c"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> capitalize-word
+<br>"^[d"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> delete-word
+<br>"^[f"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> forward-word
+<br>"^[h"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> run-help
+<br>"^[l"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> downcase-word
+<br>"^[n"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> <b>history-search-forward</b>
+<br>"^[p"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> <b>history-search-backward</b>
+<br>"^[r"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> toggle-literal-history
+<br>"^[s"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> spell-word
+<br>"^[u"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> upcase-word
+<br>"^[w"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> copy-region-as-kill
+<br>"^[^?"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> backward-delete-word
+<br>"^X^X"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> exchange-point-and-mark
+<br>"^X*"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> expand-glob
+<br>"^X$"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> expand-variables
+<br>"^XG"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> list-glob
+<br>"^Xg"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> list-glob
+<br>"^Xn"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> normalize-path
+<br>"^XN"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> normalize-path
+<br>"^X?"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> normalize-command
+<br>"^X^I"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> complete-word-raw
+<br>"^X^D"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> list-choices-raw
+<p><b><u>Arrow key bindings</u></b>
+<br>down&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->
+down-history
+<br>up&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-> up-history
+<br>left&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ->
+backward-char
+<br>right&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> forward-char</td>
+</tr>
+</table>
+
+<p><b><u>Autocomplete:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFFFCC" >
+<tr>
+<td>Press <b><font color="#CC0000">tab</font></b> key to autocomplete the
+name of the file or a directory. If more than one match exists - you can
+see the list if you have variable "autolist" set up:
+<br>&nbsp;&nbsp; <b><font color="#CC0000">set autolist</font></b>
+<br><b><font color="#CC0000">&nbsp;&nbsp; set autolist=ambiguous</font></b>:
+<br>Note:&nbsp;
+<br>&nbsp;&nbsp;&nbsp; in csh you need to do <b><font color="#CC0000">set
+filec</font></b>&nbsp; in your <b><font color="#CC0000">~/.cshrc</font></b>&nbsp;
+file.
+<br>Note:&nbsp;
+<br>&nbsp;&nbsp; with autolsit set, you can also get a list of commands
+if you press <b><font color="#CC0000">tab</font></b> when typing a command.</td>
+</tr>
+</table>
+
+<p><b><u>3 uses of ctrl-D:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFFFCC" >
+<tr>
+<td>^D on an empty line - exit the shell
+<br>^D in the middle of the line - delete on char (under the cursor)
+<br>^D at the end of a line - list the matching names. To get a list of
+names when the cursor is in the middle of a line (or
+<br>on an empty line), type Escape followed by ^D).&nbsp;</td>
+</tr>
+</table>
+
+<p>. - current directory
+<br>.. - parent directory
+<br>~ - home directory
+<br>~somelogin - home directory of user with login 'somelogin'
+<p><b><u>Names whith spaces:</u></b> - use quotes or escape spaces:
+<br>more 'abc def'
+<br>more abc\ def
+<br><a NAME="history"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>history</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<b><u>Accessing history in tcsh:</u></b>
+<br>type "history" to see history of commands
+<p><b><u><font color="#CC0000">Event specifiers:</font></u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=4 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#CC0000">!n</font></b></td>
+
+<td>This refers to the history event, with index <tt>n</tt></td>
+</tr>
+
+<tr>
+<td><b><font color="#CC0000">!-n</font></b></td>
+
+<td>This refers to the history event, which was executed, <tt>n</tt> times
+ago: <tt>!-1</tt> for the previous command, <tt>!-2</tt> for the one before
+the previous command etc.</td>
+</tr>
+
+<tr>
+<td><b><font color="#CC0000">!!</font></b></td>
+
+<td>This refers to the previous command</td>
+</tr>
+
+<tr>
+<td><b><font color="#CC0000">!#</font></b></td>
+
+<td>This refers to the current command</td>
+</tr>
+
+<tr>
+<td><b><font color="#CC0000">!s</font></b></td>
+
+<td>This refers to the most recent command, whose first word begins with
+the string <tt>s</tt></td>
+</tr>
+
+<tr>
+<td NOWRAP><b><font color="#CC0000">!?s?</font></b></td>
+
+<td>This refers to the most recent command, which contain the sting
+<tt>s</tt></td>
+</tr>
+</table>
+
+<p>For example, just type <tt>!!</tt>, to re-execute the previous command.
+<p>But how can you re-execute some part of a previous command, with some
+new elements added? Use&nbsp; the following <b><i><font color="#CC0000">word
+designators</font></i></b>, which is appended to the event specifier, with
+a colon:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=4 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#CC0000">0</font></b></td>
+
+<td>The first word (i.e. the command name)</td>
+</tr>
+
+<tr>
+<td><b><font color="#CC0000">n</font></b></td>
+
+<td>The <tt>n</tt>th word</td>
+</tr>
+
+<tr>
+<td><b><font color="#CC0000">$</font></b></td>
+
+<td>The last argument</td>
+</tr>
+
+<tr>
+<td><b><font color="#CC0000">%</font></b></td>
+
+<td>The word matched by an <tt>?s?</tt> search</td>
+</tr>
+
+<tr>
+<td><b><font color="#CC0000">x-y</font></b></td>
+
+<td>Argument range from x to y</td>
+</tr>
+
+<tr>
+<td><b><font color="#CC0000">*</font></b></td>
+
+<td>All the arguments to the command (equal to ^-$)</td>
+</tr>
+</table>
+Now it's possible to get the last argument from the previous command, by
+typing <b><tt><font color="#CC0000">!!:$</font></tt></b>.
+<br>If no event specifier is given, the previous command is used. This
+means that instead of writing <b><tt><font color="#CC0000">!!:$</font></tt></b>,
+you may only write <b><tt><font color="#CC0000">!$</font></tt></b>.
+<br>Note: more words designators exists, and it's even possible to edit
+the words with different commands.
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=4 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#CC0000">!*</font></b></td>
+
+<td>Repat all arguments from previous command</td>
+</tr>
+
+<tr>
+<td><b><font color="#CC0000">!^</font></b></td>
+
+<td>Repeat firt argument</td>
+</tr>
+
+<tr>
+<td><b><font color="#CC0000">!$</font></b></td>
+
+<td>Repeat last argument</td>
+</tr>
+</table>
+
+<p>Example:
+<br>grep ERROR file1 file2 file3
+<br>grep -i !*
+<p><b><u>You can also repeat words from the current command:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=4 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#CC0000">!#*</font></b></td>
+
+<td>All arguments</td>
+</tr>
+
+<tr>
+<td><b><font color="#CC0000">!#^</font></b></td>
+
+<td>First argument</td>
+</tr>
+
+<tr>
+<td><b><font color="#CC0000">!#$</font></b></td>
+
+<td>Last argument</td>
+</tr>
+
+<tr>
+<td><b><font color="#CC0000">!#:n</font></b></td>
+
+<td>Argument n</td>
+</tr>
+</table>
+
+<p><b><u>You can repeat the words from previous commands while editing
+by pressing:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=4 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#CC0000">ESC _</font></b></td>
+
+<td>Repat last argument from previous command</td>
+</tr>
+
+<tr>
+<td><b><font color="#CC0000">ESC ^_</font></b></td>
+
+<td>Repeat previous word from <b><u>current</u></b> command</td>
+</tr>
+
+<tr>
+<td><b><font color="#CC0000">ESC /</font></b></td>
+
+<td>Repeat most recent word from my history list that matches the word
+to the left of the cursor</td>
+</tr>
+</table>
+
+<p><b><u>NOTE:</u></b>
+<br>It is possible to expand the history references on the command line
+before you evaluate them by pressing
+<tt>ESC-SPC</tt> or <tt>ESC-!</tt>
+(This is: first the escape key, and next the space key or the <tt>!</tt>
+key). On some keyboards you may use the meta key instead of the escape
+key. I.e.<tt> M-SPC</tt> (One keystroke!). <b><u>Here is an example:</u></b>
+<table BORDER=0 CELLSPACING=2 CELLPADDING=3 BGCOLOR="#FFFFCC" >
+<tr BGCOLOR="#FFCC99">
+<td><b>Before</b></td>
+
+<td BGCOLOR="#3333FF"></td>
+
+<td><b>After</b></td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP NOWRAP>% sed 's/^\(...\) *\([0-9][0-9]*\)/\2
+\1/' data1 > temp
+<br>% anova Height Weight &lt; temp | more
+<br>% anova Height Weight &lt; temp | lpr
+<br>% sed 's/^\(...\) *\([0-9][0-9]*\)/\2 \1/' data2 > temp
+<br>% anova Height Weight &lt; temp | more
+<br>% anova Height Weight &lt; temp | lpr</td>
+
+<td BGCOLOR="#3333FF"></td>
+
+<td ALIGN=LEFT VALIGN=TOP NOWRAP>% sed 's/^\(...\) *\([0-9][0-9]*\)/\2
+\1/' data1 > temp
+<br>% anova Height Weight &lt; !$ | more
+<br>% ^more^lpr
+<br>% !sed:sdata1/data2
+<br>% !?more
+<br>% !?lpr</td>
+</tr>
+</table>
+<a NAME="patterns"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>patterns</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<b><u>Patterns:</u></b>
+<br>Many operations in the shell often works on many files, e.g. all files
+ending with <tt>.tex</tt> or starting with <tt>test-</tt>. Tcsh has the
+opportunity to <i>type</i> all these files for you, with file patterns.
+The following list shows which possibilities there exists:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=4 BGCOLOR="#FFFFCC" >
+<tr>
+<td VALIGN=TOP><b><font color="#CC0000">*</font></b></td>
+
+<td VALIGN=TOP>Match any number of characters</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP><b><font color="#CC0000">?</font></b></td>
+
+<td VALIGN=TOP>Match a single character</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP><b><font color="#CC0000">[...]</font></b></td>
+
+<td VALIGN=TOP>Match any single character in the list
+<br><b><font color="#CC0000">[x-y]</font></b> - match any character within
+the range
+<br><b><font color="#CC0000">[^...]</font></b> - match elements which doesn't
+match the list</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP><b><font color="#CC0000">{...}</font></b></td>
+
+<td VALIGN=TOP>This expands to all the words listed. There's no need that
+they match. See examples below.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP><b><font color="#CC0000">^...</font></b></td>
+
+<td VALIGN=TOP><font color="#000000"><tt>^ </tt>in the beginning of a pattern
+negates the pattern.</font></td>
+</tr>
+</table>
+
+<p><b><u>Examples:</u></b>
+<table CELLSPACING=0 CELLPADDING=6 BGCOLOR="#CCFFFF" >
+<tr>
+<td>*.tex</td>
+
+<td>match all files ending with .tex</td>
+</tr>
+
+<tr>
+<td>^*.tex</td>
+
+<td>match all files which does not end with .tex</td>
+</tr>
+
+<tr>
+<td>xxx{ab,cde,hifj}yy</td>
+
+<td>match xxxabyy xxxcdeyy and xxxhifjyy</td>
+</tr>
+
+<tr>
+<td>*.[ch] or *.{c,h}</td>
+
+<td>match all .c and .h files</td>
+</tr>
+</table>
+
+<p>NOTE:
+<br><u>The shell expand patterns</u> before the program will get it. For
+example, if you use:
+<p><tt>&nbsp;&nbsp; <b><font color="#CC0000">somecommand a:* /tmp</font></b></tt>
+<p><tt>it will try to expand the star before passing arguments to the command.
+If you really want to pass the star itself to the command - escape it:</tt>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><tt><font color="#CC0000">somecommand
+a:\* /tmp</font></tt></b>
+<p><u>NOTE:</u>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFFFCC" >
+<tr>
+<td>Use <b><font color="#CC0000">ctrl-x</font></b> followed by '<b><font color="#CC0000">g</font></b>'
+key to list all pattern matches without actually executing the command.
+<br>Or use <b><font color="#CC0000">ctrl-x</font></b> followed by '<b><font color="#CC0000">*</font></b>'
+to expand * right on the command line.</td>
+</tr>
+</table>
+<a NAME="complete"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>complete</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFFFCC" >
+<tr>
+<td>complete</td>
+
+<td>display all completion definitions</td>
+</tr>
+
+<tr BGCOLOR="#FFCC99">
+<td NOWRAP>complete name
+<br>uncomplete name
+<br>uncomplete *</td>
+
+<td>display completion definition for command 'name'
+<br>delete completion rule for one (or all) names</td>
+</tr>
+
+<tr>
+<td>complete cd 'p/1/d/'</td>
+
+<td><b>p</b> - apply to a word at a given position
+<br>1 - first position (first after command itself)
+<br>d - complete as a directory name</td>
+</tr>
+
+<tr BGCOLOR="#FFCC99">
+<td>complete rmdir 'p/*/d/'</td>
+
+<td><b>p</b> - position
+<br>* - any position
+<br>d - as directory</td>
+</tr>
+
+<tr>
+<td>complete alias 'p/1/a/'</td>
+
+<td>complete alias with alias name</td>
+</tr>
+
+<tr BGCOLOR="#FFCC99">
+<td>complete ftp 'p/1/(serv1.edu&nbsp; serv2.edu)/'</td>
+
+<td>complete with server names</td>
+</tr>
+
+<tr>
+<td NOWRAP>complete find 'c/-/(user group type name print exec mtime fstype
+perm size)/'</td>
+
+<td>c - match the first thing (dash in this case) and complete it with
+the second thing from the lsit (use TAB or ^D)</td>
+</tr>
+
+<tr BGCOLOR="#FFCC99">
+<td NOWRAP>complete find \
+<br>&nbsp; 'c/-/(user group type name print exec mtime fstype perm size)/'
+<br>&nbsp; 'n/-user/u/' \
+<br>&nbsp; 'n/-group/g/'</td>
+
+<td>n means "match first thing - and complete it something of a type of
+a second thing (in this case u - user names, g- group names)"</td>
+</tr>
+
+<tr>
+<td>complete {cd,pushd}&nbsp; 'p/1/d/'</td>
+
+<td>same complete rule for 2 commands</td>
+</tr>
+
+<tr>
+<td>complete gunzip 'p/*/f:*.{z,gz,Z}/'</td>
+
+<td>restrict completion words by a pattern</td>
+</tr>
+
+<tr>
+<td>complete elm 'c@=@F:/usr/staff/dubois/Mail@'</td>
+
+<td>you can use other characters (in this case - @) as a delimiter
+<br>complete '=' with the name of actual file</td>
+</tr>
+</table>
+
+<p><font color="#6699CC">• </font><a href="http://www.dubois.ws/software/csh-tcsh-book/complete.tcsh">www.dubois.ws/software/csh-tcsh-book/complete.tcsh</a>
+- many examples of using complete
+<br><a NAME="misc"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>misc</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Making Aliases</u></b>
+<br>Aliases can often be a bit hard to create since one often wants history/variable
+references expanded at time of use, and not at the definition time.
+<br>This has been done easier with The Dot Generator (TDG).
+<p>Script example:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td>#!/bin/tcsh
+<p>&nbsp;foreach f (*.py *.java)
+<br>&nbsp;echo ================================================
+<br>&nbsp;echo $f
+<br>&nbsp;echo ================================================
+<br>&nbsp;cat $f
+<br>&nbsp;end</td>
+</tr>
+</table>
+
+</body>
+</html>

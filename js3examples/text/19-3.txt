@@ -1,0 +1,19 @@
+<HEAD>
+<SCRIPT LANGUAGE="JavaScript1.2">
+// If JavaScript 1.2 is supported, extract a new URL from the portion of
+// our URL following the question mark, and load that new URL in.
+location.replace(location.search.substring(1));
+
+// Enter a really long, empty, loop so that the body of this document 
+// doesn't get displayed while the new document is loading.
+for(var i = 0; i < 10000000; i++);
+</SCRIPT>
+</HEAD>
+<BODY>
+<HR SIZE=4>
+<H1>This Page Requires JavaScript 1.2</H1>
+Your browser cannot run this page. Please upgrade to a browser that
+supports JavaScript 1.2, such as Netscape Navigator 4 or Internet
+Explorer 4.
+<HR SIZE=4>
+</BODY>

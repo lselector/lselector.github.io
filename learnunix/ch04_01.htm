@@ -1,0 +1,374 @@
+<HTML
+><HEAD
+><TITLE
+>[Chapter 4] File Management </TITLE
+><META
+NAME="DC.title"
+CONTENT="Learning the Unix Operating System"><META
+NAME="DC.creator"
+CONTENT="Jerry Peek, Grace Todino &amp; John Strang"><META
+NAME="DC.publisher"
+CONTENT="O'Reilly &amp; Associates, Inc."><META
+NAME="DC.date"
+CONTENT="1998-08-03T20:51:10Z"><META
+NAME="DC.type"
+CONTENT="Text.Monograph"><META
+NAME="DC.format"
+CONTENT="text/html"
+SCHEME="MIME"><META
+NAME="DC.source"
+CONTENT="1-56592-390-1"
+SCHEME="ISBN"><META
+NAME="DC.language"
+CONTENT="en-US"><META
+NAME="generator"
+CONTENT="Jade 1.1/O'Reilly DocBook 3.0 to HTML 4.0"><LINK
+REV="made"
+HREF="mailto:online-books@oreilly.com"
+TITLE="Online Books Comments"><LINK
+REL="up"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"><LINK
+REL="prev"
+HREF="ch03_06.htm"
+TITLE="3.6 Customizing Your Account"><LINK
+REL="next"
+HREF="ch04_02.htm"
+TITLE="4.2 File and Directory Names"></HEAD
+><BODY
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+><DIV
+CLASS="htmlnav"
+><H1
+><IMG
+SRC="gifs/smbanner.gif"
+ALT="Learning the Unix Operating System"
+USEMAP="#srchmap"
+BORDER="0"></H1
+><MAP
+NAME="srchmap"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,466,69"
+HREF="index.htm"
+ALT="Learning the Unix Operating System"><AREA
+SHAPE="RECT"
+COORDS="467,0,514,18"
+HREF="jobjects/fsearch.htm"
+ALT="Search this book"></MAP
+><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch03_06.htm"
+TITLE="3.6 Customizing Your Account"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 3.6 Customizing Your Account"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><B
+><FONT
+FACE="ARIEL,HELVETICA,HELV,SANSERIF"
+SIZE="-1"
+>Chapter 4</FONT
+></B
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch04_02.htm"
+TITLE="4.2 File and Directory Names"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 4.2 File and Directory Names"
+BORDER="0"></A
+></TD
+></TR
+></TABLE
+>&nbsp;<HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+CLASS="chapter"
+><A
+CLASS="title"
+NAME="LUX-CH-4"
+>4. File Management </A
+></H1
+><DIV
+CLASS="htmltoc"
+><P
+><B
+>Contents:</B
+><BR><A
+CLASS="sect1"
+HREF="#LUX-CH-4-SECT-1"
+TITLE="4.1 Methods of Creating Files"
+>Methods of Creating Files</A
+><BR><A
+CLASS="sect1"
+HREF="ch04_02.htm"
+TITLE="4.2 File and Directory Names"
+>File and Directory Names</A
+><BR><A
+CLASS="sect1"
+HREF="ch04_03.htm"
+TITLE="4.3 File and Directory Wildcards"
+>File and Directory Wildcards</A
+><BR><A
+CLASS="sect1"
+HREF="ch04_04.htm"
+TITLE="4.4 Managing Your Files"
+>Managing Your Files</A
+><BR><A
+CLASS="sect1"
+HREF="ch04_05.htm"
+TITLE="4.5 Printing Files"
+>Printing Files</A
+></P
+><P
+></P
+></DIV
+><DIV
+CLASS="sect1"
+><H2
+CLASS="sect1"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-1"
+>4.1 Methods of Creating Files</A
+></H2
+><P
+CLASS="para"
+>You'll usually create a text file with a text editor.
+An editor lets you add, change, and rearrange text easily.
+Two common UNIX editors are <B
+CLASS="emphasis.bold"
+>vi</B
+> (pronounced &quot;vee-eye&quot;)
+and <B
+CLASS="emphasis.bold"
+>emacs</B
+> (&quot;ee-macs&quot;).</P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-2611"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2614"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2616"
+></A
+>Neither of those editors has the same features as popular word
+processing software on personal computers.  Instead of being designed
+for making documents, envelopes, and so on, <B
+CLASS="emphasis.bold"
+>vi</B
+> and <B
+CLASS="emphasis.bold"
+>emacs</B
+>
+are very sophisticated, extremely flexible editors for all kinds of
+text files: programs, email messages, and so on.  Many UNIX systems
+also support easy-to-use word processors.  Ask your system
+administrator what's available.  <B
+CLASS="emphasis.bold"
+>Pico</B
+> is a simple editor (not
+word processor) that has been added to many UNIX systems.</P
+><P
+CLASS="para"
+>Since there are several editor programs, you can choose one you're
+comfortable with.  <B
+CLASS="emphasis.bold"
+>vi</B
+> is probably the best choice because almost
+all UNIX systems have it, but <B
+CLASS="emphasis.bold"
+>emacs</B
+> is also widely available.
+The O'Reilly &amp; Associates books <EM
+CLASS="emphasis"
+>Learning the vi Editor</EM
+> and
+<EM
+CLASS="emphasis"
+>Learning GNU Emacs</EM
+> cover those editors in detail.  If you'll be
+doing only simple editing, however, <B
+CLASS="emphasis.bold"
+>pico</B
+> is a great choice.
+Although <B
+CLASS="emphasis.bold"
+>pico</B
+> is much less powerful than <B
+CLASS="emphasis.bold"
+>emacs</B
+> or
+<B
+CLASS="emphasis.bold"
+>vi</B
+>, it's also a lot easier to learn.</P
+><P
+CLASS="para"
+>You can also create a file by using a UNIX feature called <EM
+CLASS="emphasis"
+>input/output
+redirection</EM
+>, as <A
+CLASS="xref"
+HREF="ch05_01.htm"
+TITLE="Redirecting I/O "
+>Chapter 5, Redirecting I/O </A
+>, explains.
+This sends the output of a command directly to a file&nbsp;- to make a new
+file or make an existing file larger.</P
+></DIV
+></DIV
+><DIV
+CLASS="htmlnav"
+><P
+></P
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch03_06.htm"
+TITLE="3.6 Customizing Your Account"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 3.6 Customizing Your Account"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="book"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"
+><IMG
+SRC="../gifs/txthome.gif"
+ALT="Learning the Unix Operating System"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch04_02.htm"
+TITLE="4.2 File and Directory Names"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 4.2 File and Directory Names"
+BORDER="0"></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+>3.6 Customizing Your Account</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="index"
+HREF="index/idx_0.htm"
+TITLE="Book Index"
+><IMG
+SRC="../gifs/index.gif"
+ALT="Book Index"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+>4.2 File and Directory Names</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><IMG
+SRC="../gifs/smnavbar.gif"
+USEMAP="#map"
+BORDER="0"
+ALT="The UNIX CD Bookshelf Navigation"><MAP
+NAME="map"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,73,21"
+HREF="../index.htm"
+ALT="The UNIX CD Bookshelf"><AREA
+SHAPE="RECT"
+COORDS="74,0,163,21"
+HREF="../upt/index.htm"
+ALT="UNIX Power Tools"><AREA
+SHAPE="RECT"
+COORDS="164,0,257,21"
+HREF="../unixnut/index.htm"
+ALT="UNIX in a Nutshell"><AREA
+SHAPE="RECT"
+COORDS="258,0,321,21"
+HREF="../vi/index.htm"
+ALT="Learning the vi Editor"><AREA
+SHAPE="RECT"
+COORDS="322,0,378,21"
+HREF="../sedawk/index.htm"
+ALT="sed &amp; awk"><AREA
+SHAPE="RECT"
+COORDS="379,0,438,21"
+HREF="../ksh/index.htm"
+ALT="Learning the Korn Shell"><AREA
+SHAPE="RECT"
+COORDS="439,0,514,21"
+HREF="index.htm"
+ALT="Learning the UNIX Operating System"></MAP
+></DIV
+></BODY
+></HTML
+>

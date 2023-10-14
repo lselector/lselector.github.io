@@ -1,0 +1,161 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Stefano Mazzocchi">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (Win98; U) [Netscape]">
+   <title>jserv_servlets</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<center>
+<h1>
+How to install servlets</h1></center>
+
+<h3>
+Introduction</h3>
+After the installation of your Apache JServ servlet engine is complete,
+your servlet environment is empty and waits for you to add some juicy servlets
+to execute. In this section you will learn how to install, configure and
+manage your servlets in this particular servlet environment. This is not
+intended to be a servlet tutorial or an introduction to servlet techniques
+even if a deep servlet knowledge is not required in order to install and
+run your first servlets.
+<h3>
+Partitioning your servlet environment</h3>
+Apache JServ has the ability to divide its execution environment into separate
+areas, called <i>servlet zones</i>, that act as independent virtual servlet
+engines. Like virtual hosts for web servers. Before you begin, it's a good
+thing to design your servlet environment to separate servlets depending
+on the owner, security privileges, generated load, etc... Nevertheless,
+most configurations don't need such advanced features and use one simple
+servlet zone for all of their servlets.
+<p>Note: Apache JServ is designed in such a way that servlets are handled
+by the servlet zones, not by the servlet engine itself. For this reason,
+at least one servlet zone is needed.
+<p>Let us suppose that you need two different servlet zones, one for production
+and one for development. Simply enough we will call the first zone <i>production</i>
+and the second <i>development</i>. Let us also suppose that you already
+had the servlet engine up and running.
+<h3>
+Creating the servlet zones</h3>
+Apache JServ has one main configuration file (usually called <i>jserv.properties</i>)
+that is used for general information and one configuration file for each
+servlet zone that is managed by the servlet engine. For this reason, we
+create two copies of the sample zone configuration file (<i>zone.properties</i>)
+and, for clarity, we name them <i>production.properties</i> and <i>development.properties</i>.
+<p>Then we edit the jserv.properties file and add these two simple directives:
+<blockquote>
+<pre># List of servlet zones Apache JServ manages
+
+zones=production,development
+
+
+
+# Configuration file for each servlet zone (one per servlet zone)
+
+production.properties=/servlets/production/production.properties
+
+development.properties=/servlets/development/development.properties</pre>
+</blockquote>
+When Apache JServ starts up, it reads the list of servlet zones and looks
+for the specified zone configuration file. We suggest to use absolute paths
+for these values since broken behavior with relative paths has been reported.
+<h3>
+Configuring your servlet zone</h3>
+Once the servlet engine knows about your servlet zones, you should tell
+the servlet zones where to look for its servlets. To do this, we simply
+add these directives to each of your zone configuration file
+<blockquote>
+<pre># The list of servlet repositories controlled by this servlet zone
+
+repositories=/servlets/production/project1/
+
+repositories=/servlets/production/project2.zip
+
+repositories=/servlets/production/shared_servlets.jar</pre>
+</blockquote>
+In this example, the <i>production </i>servlet zone had three servlet repositories:
+a directory (project1) a zip archive (project2.zip) and a java archive
+(shared_servlets.jar). These directives tell the servlet zone's classloader
+where to look for the requested servlet.
+<h3>
+Mapping servlets</h3>
+Since servlets are Java classes and each servlet zone has its own classloader,
+servlets are accessed, mapped and named using their fully-qualified Java
+name (like in the classpath) using the package name followed by the class
+name. Note that these mapping rules do not take into account the location
+on the file system (like web servers do). In fact servlets located in different
+servlet repositories but sharing the same package are seen in the same
+directory by the classloader.
+<p>For example, the servlet <i>/servlets/production/project1/Hello.class</i>
+belonging to the <i>org.dummy.project1</i> Java package has a fully-qualified
+Java name of <i>org.apache.project1.Hello</i>, independently its location.
+<p>This absolute ordering based on package names alone is used to avoid
+class name collisions inside servlet zones. Note that if two servlet zones
+share the same servlet repository, collisions are avoided by the use of
+different classloaders. These create different instances of the same servlets
+residing in their own address space and remove any collision problem. Note
+that the <i>.class</i> extension is always removed to form the fully qualified
+name to avoid conflicts with packages named <i>class</i>.
+<h3>
+Servlet aliases</h3>
+Even if this class addressing is very successful in ordering and avoiding
+collisions, it generates big and deep names for servlets. For this reason,
+alias facilities are provided by the servlet zones to simplify the naming
+process. To avoid big names, aliased servlets may be used instead of the
+original fully-qualified ones. Note, however, than these two servlets are
+now seen as two separate things and calling the two names generates two
+different instances of the same servlet.
+<p>For example, to call the class <i>org.dummy.project1.Hello</i> simply
+by <i>hello</i> you need to add this line to the proper zone configuration
+file.
+<blockquote>
+<pre>servlet.hello.code=org.dummy.project1.Hello</pre>
+</blockquote>
+
+<h3>
+Startup servlets</h3>
+During normal operation, a servlet is instantiated and initialized when
+the first request for that particular servlet is made. This guarantees
+lower memory consumption even if the first request is a little slower than
+successive requests. To avoid this overhead, or simply to have your servlet
+running as soon as the servlet engine is started, you should place your
+servlet in the startup servlets list for your servlet zone.
+<p>To do this, simply add the following line to your servlet zone configuration
+file:
+<blockquote>
+<pre>servlets.startup=org.dummy.project1.Hello</pre>
+</blockquote>
+Note that both fully-qualified servlet names (as in this case) or servlet
+aliases can be used.
+<h3>
+Servlet initialization arguments (initArgs)</h3>
+Like any other forms of executable code (application, applets), servlets
+need some initialization arguments. Every servlet may have an unlimited
+number of initArgs, placed in the servlet zone configuration file, or in
+a separate file. For example, our servlet <i>hello </i>may need some initialization
+arguments such as <i>message</i> and<i> color</i>. This is done by adding
+these lines to the servlet zone configuration file
+<blockquote>
+<pre>servlet.hello.initArgs=message="Hello world to everyone"
+
+servlet.hello.initArgs=color=red</pre>
+</blockquote>
+
+<h3>
+Global initialization arguments (default initArgs)</h3>
+Sometimes all the servlets in a servlet zone must share a common initialization
+argument. To do this, simply use the <i>default</i> servlet name like this
+<blockquote>
+<pre>servlets.default.initArgs=path_to_docs=/usr/local/docs/html</pre>
+</blockquote>
+
+<center><font size=-1>Copyright (c) 1997-99 <a href="http://java.apache.org/" target="_top">The
+Java Apache Project</a>.</font>
+<br><font size=-1>$Id: howto.servlets.html,v 1.5 1999/06/09 05:21:27 jonbolt
+Exp $</font>
+<br><font size=-1>All rights reserved.</font></center>
+
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>java_serverside.html</title>
+<!--
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Java</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<a NAME="servlets"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 WIDTH="80%" >
+<tr>
+<td WIDTH="100"></td>
+
+<td COLSPAN="3" NOWRAP WIDTH="80%"><b><font color="#CC0000">On this page:&nbsp;</font></b></td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP WIDTH="100"><img SRC="images/javalogo.gif" HSPACE=6 VSPACE=6 BORDER=0 height=31 width=84></td>
+
+<td><font color="#6699CC">• </font><b><font color="#000099"><a href="#servlets">servlets</a>,
+<a href="#jsp">JSP</a></font></b>
+<br><font color="#6699CC">• </font><b><font color="#000099"><a href="#servlet_engines">servlet_engines</a></font></b>
+<br><font color="#6699CC">• </font><b><font color="#000099"><a href="#apache_java">apache_java</a></font></b>
+<br><font color="#6699CC">• </font><b><font color="#000099"><a href="#EJB_J2EE">EJB_J2EE</a></font></b></td>
+
+<td></td>
+
+<td></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Servlets</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#6699CC">• </font><font color="#000000"><b>Servlets</b>
+- server side, replacement for CGI scripts (serving dynamic web content,
+maintaining state information, session tracking, database connectivity
+using JDBC, applet-servlet communication). "Third-party Servlet containers
+are available for Apache Web Server, iPlanet Web Server (formerly Netscape
+Enterprise Server), Microsoft IIS, and others. Servlet containers can also
+be integrated with web-enabled application servers, such as BEA WebLogic
+Application Server, IBM WebSphere, Netscape Application Server, and others."</font>
+<br><font color="#6699CC">• </font><font color="#000000"><a href="http://www.webdevelopersjournal.com/articles/intro_to_servlets.html">www.webdevelopersjournal.com/articles/intro_to_servlets.html</a>&nbsp;
+-&nbsp; introduction to servlets</font>
+<br><font color="#6699CC">• </font><font color="#000000"><a href="http://java.sun.com/products/servlet/">java.sun.com/products/servlet/</a>
+- Java Servlet API home page, the first stop for any servlet developer.</font>
+<br><font color="#6699CC">• </font><font color="#000000"><a href="http://java.sun.com/products/jsp/syntax.html">java.sun.com/products/jsp/syntax.html</a>&nbsp;
+- short JSP reference (in PDF)</font>
+<br><font color="#6699CC">• </font><font color="#000000"><a href="http://www.servletcentral.com">Servlet
+Central</a>, an independent on-line magazine dedicated to servlets and
+server-side Java programming.</font>
+<br><font color="#6699CC">• </font><font color="#000000"><a href="http://www.servlets.com">Servlets.com</a>,
+a site primarily dedicated to promoting Jason Hunter's book, "Java Servlet
+Programming" (O'Reilly &amp; Associates, 1998), which is an excellent resource
+and highly recommended for all servlet programmers.</font>
+<br><font color="#6699CC">• </font><font color="#000000"><a href="http://www.servlets.com/resources/urls/articles.html">www.servlets.com/resources/urls/articles.html</a>
+- good source</font>
+<br><font color="#6699CC">• </font><font color="#000000"><a href="http://www.javaexchange.com">www.javaexchange.com</a>/
+- Java Exchange - servlet-based database access (Oracle &amp; Solid).</font>
+<br><font color="#6699CC">• </font><font color="#000000"><a href="http://www.apl.jhu.edu/~hall/java/Servlet-Tutorial/">Tutorial
+on Servlets and JavaServer Pages (JSP)</a>, by Marty Hall. A comprehensive
+resource with free source code examples.</font>
+<br><font color="#6699CC">• </font><a href="http://www.javaworld.com/javaworld/jw-12-1999/jw-12-ssj-jspmvc_p.html">www.javaworld.com/javaworld/jw-12-1999/jw-12-ssj-jspmvc_p.html</a>
+- Understanding JavaServer Pages Model 2 architecture. Very good article.
+<br><font color="#6699CC">• </font><a href="http://www.javaworld.com/javaworld/jw-03-2000/jw-03-pushlet_p.html">www.javaworld.com/javaworld/jw-03-2000/jw-03-pushlet_p.html</a>-
+pushlets
+<br><a NAME="jsp"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>JSP</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>JSP or Template engines?</u></b>
+<br><font color="#6699CC">• </font><a href="http://www.servlets.com/soapbox/problems-jsp.html">www.servlets.com/soapbox/problems-jsp.html</a>
+- "The Problems with JSP" (by Jason Hunter).
+<br><font color="#6699CC">• </font><a href="http://www.servlets.com/soapbox/problems-jsp-reaction.html">www.servlets.com/soapbox/problems-jsp-reaction.html</a>
+- follow-up on "The Problems with JSP"
+<br><font color="#6699CC">• </font><a href="http://webmacro.org">webmacro.org</a>
+- WebMacro
+<br><font color="#6699CC">• </font><a href="http://xml.apache.org/cocoon/">xml.apache.org/cocoon/</a>
+- Cocoon
+<br><font color="#6699CC">• </font><a href="http://java.apache.org/turbine/">java.apache.org/turbine/</a>
+- Turbine
+<br><font color="#6699CC">• </font><a href="http://freemarker.sourceforge.net/">freemarker.sourceforge.net/</a>
+- freemarker
+<br><font color="#6699CC">• </font><a href="http://www.meangene.com/otembo/">www.meangene.com/otembo/</a>
+- OTembo - an Open Template-Based Servlet System
+<br><font color="#6699CC">• </font><a href="http://java.apache.org/ecs/">java.apache.org/ecs/</a>
+- ECS
+<br><font color="#6699CC">• </font><a href="http://www.enhydra.org">www.enhydra.org</a>
+- XMLC
+<br><font color="#6699CC">• </font><a href="http://staff.plugged.net.au/dwood/xmlc/index.html">staff.plugged.net.au/dwood/xmlc/index.html</a>
+- XMLC
+<br><font color="#6699CC">• </font><a href="http://www.xslt.com">www.xslt.com</a>
+- XSLT
+<br><font color="#6699CC">• </font><a href="http://jakarta.apache.org/struts/">http://jakarta.apache.org/struts/</a>
+- Struts Framework (open source) - to build web applications with Servlets
+and JSP
+<br><a NAME="servlet_engines"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Servlet Engines</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Which servlet engine to use?</u></b>
+<br><font color="#6699CC">• </font><a href="http://java.apache.org/jserv/index.html">java.apache.org/jserv/</a>
+- JServ from Apache ( <a href="jserv_install.html">installation</a> )
+<br><font color="#6699CC">• </font><a href="http://jakarta.apache.org/tomcat/jakarta-tomcat/src/doc/uguide/tomcat_ug.html">jakarta.apache.org/tomcat/jakarta-tomcat/src/doc/uguide/tomcat_ug.html</a>
+-
+<br>Q: What is the Difference Between Tomcat and Jserv? Isn't Tomcat==Jserv?
+-
+<br>A: "This is a common misunderstanding.
+<br><font color="#6699CC">-- </font><b>Jserv</b> is a Servlet API 2.0-compliant
+container that was created to be used with Apache. It doesn't have JSP
+support.
+<br><font color="#6699CC">-- </font><b>Tomcat</b> is a reference implementation,
+a complete re-write and is a Servlet API 2.2 and JSP 1.1-compliant container.
+Tomcat uses some of the code written for Jserv, especially Jserv's Apache
+server adapter, but this is where the similarities end."
+<br><font color="#6699CC">• </font>Apache + jrun ( <a href="http://www.allaire.com/products/jrun/">www.allaire.com/products/jrun/</a>
+) - servlet + JSP support
+<br><font color="#6699CC">• </font><a href="http://www.caucho.com/">www.caucho.com/</a>
+- Resin (free)
+<br><font color="#6699CC">• </font><a href="http://www.newatlanta.com/">www.newatlanta.com/</a>
+- ServeltExec (low cost)
+<p>Here are interesting comparisons:
+<br>&nbsp;<font color="#6699CC">• </font><a href="http://www.chamas.com/hello_world.html">www.chamas.com/hello_world.html</a>
+<br>&nbsp;<font color="#6699CC">• </font><a href="http://www.caucho.com/articles/benchmark.html">www.caucho.com/articles/benchmark.html</a>
+- according to these benchmarks, their own product (Resin, free open source
+JSP/Servlet engine) is faster than mod_perl !!
+<br><a NAME="apache_java"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Apache - Java Related Projects</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#6699CC">• </font><a href="http://java.apache.org/jserv/index.html">JServ
+- servlet engine</a> - 100% pure Java servlet engine fully compliant with
+the JavaSoft Java Servlet APIs 2.0 specification. Works on any "version
+1.1 compliant" Java Virtual Machine and may execute any Java servlet compliant
+with version 2.0.
+<br><font color="#6699CC">• </font><a href="http://xml.apache.org/cocoon/">Cocoon
+- XML project</a> - Cocoon.&nbsp; The most common use of Cocoon is the
+automatic creation of HTML through the processing of statically or dynamically
+generated XML files. Cocoon is also able to perform more sophisticated
+formatting, such as XSL:FO rendering on PDF, client-depending transformations
+such as WML formatting for WAP-enabled devices or direct XML serving to
+XML and XSL aware clients.
+<p><font color="#6699CC">• </font><a href="http://jakarta.apache.org/">Jakarta
+- Servlet &amp; JSP</a> - The flagship product, <b><u><font color="#CC0000">Tomcat</font></u></b>,
+is a reference implementation of the Java Servlet and JSP (Java Server
+Pages) Specifications which can run standalone as well as integrated into
+the Apache Web Server.
+<p><font color="#6699CC">• </font><a href="http://xml.apache.org/">xml.apache.org/</a>
+- <b><u>Xerces</u></b> - XML parsers in Java, C++ (with Perl and COM bindings)
+(see much more XML stuff at <a href="xml.html">my XML page</a>.
+<p><font color="#6699CC">• </font>Xalan - Apache's Xalan provides an XSL
+transformation (XSLT) engine -
+<br><a NAME="EJB_J2EE"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>EJB, J2EE</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><img SRC="images/snail.gif" height=100 width=366 align=RIGHT><b><font color="#990000">Java
+Beans</font></b> - Java's component architecture.
+<br><b><font color="#990000">EJB- Enterprise JavaBeans</font></b> - a standard
+for server-side components (specification 1.0 was introduced in March 1998).
+Currently EJB is part of <b><font color="#990000">J2EE (Java 2 Enterprise
+Edition)</font></b>.
+<br>EJB run inside a <b>container</b> (<b>application server</b>) such
+as IBM WebSphere, BEA WebLogic, and others.
+<p>There are 2 types of EJB:
+<br><font color="#6699CC">• </font>session beans - function similar to
+servlets
+<br><font color="#6699CC">• </font>entity beans - has persistence (usually
+via mapping to a database). Thus entity beans are slow.
+<p>Using EJB compliant distributed business objects:
+<br><font color="#6699CC">• </font>significantly simplifies development
+<br><font color="#6699CC">• </font>automatically assures security, resource
+pooling, persistence, concurrency and transactional integrity.
+<p>Compare:
+<center><table BORDER CELLSPACING=0 >
+<tr BGCOLOR="#CCCCCC">
+<td></td>
+
+<td>Old-fassion 3-tier architecture:</td>
+
+<td>Modern approach:</td>
+</tr>
+
+<tr>
+<td>presentation</td>
+
+<td>"green screen" (dumb terminal)</td>
+
+<td>presentation = GUI (Java, browser-based, etc.)</td>
+</tr>
+
+<tr>
+<td>business logic</td>
+
+<td>procedural program in COBOL or PL/1</td>
+
+<td>servlets, EJB-compliant distributed business objects</td>
+</tr>
+
+<tr>
+<td>database</td>
+
+<td>DB2</td>
+
+<td>database(s)</td>
+</tr>
+</table></center>
+
+<p><b><u>Books:</u></b>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=2 COLS=1 WIDTH="100%" BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#6699CC">• </font><a href="http://www.oreilly.com/catalog/entjbeans/">www.oreilly.com/catalog/entjbeans/</a>
+- Enterprise Javabeans by Richard Monson-Haefel (2nd ed.)&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp; - also his web site <font color="#6699CC"><a href="http://www.ejbnow.com">www.ejbnow.com</a></font>
+<br><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp; - <a href="ftp://ftp.oreilly.com/examples/java/ejb/2nd_edition/">ftp://ftp.oreilly.com/examples/java/ejb/2nd_edition/</a>
+- download examples</font>
+<br><font color="#6699CC">• </font>Mastering Enterprise JavaBeans and the
+Java 2 Platform, Enterprise Edition
+<br><font color="#6699CC">• </font>Java 2 Platform, Enterprise Edition
+(By Shannon, et al)
+<br><font color="#6699CC">• </font>Designing Enterprise Applications with
+the Java 2 Platform, Enterprise Edition (by N.Kassern et al)
+<br><font color="#6699CC">• </font>Professional Java Server Programming:
+with Servlets, JavaServer Pages (JSP), XML, Enterprise JavaBeans (EJB),
+JNDI, CORBA, Jini and Javaspaces (by Andrew Patzer et al)
+<br><font color="#6699CC">• </font>Professional Java 2 Enterprise Edition
+with BEA WebLogic Server -- Francisco Gomez, Peter Zadrozny; Paperback</td>
+</tr>
+</table>
+
+<p><b>EJB</b> is roughly similar to Microsoft's <b>COM </b>/ <b>DCOM</b>
+(Component Object Model/Distributed Component Object Model architecture),
+but EJBs can be deployed across all major operating systems, not just Windows.
+<p><font color="#6699CC">• </font><a href="http://java.sun.com/products/ejb/index.html">java.sun.com/products/ejb/index.html</a>
+- Enterprise JavaBeans home page
+<br><font color="#6699CC">• </font><a href="http://java.sun.com/products/ejb/tools1.html">java.sun.com/products/ejb/tools1.html</a>
+- a list of EJB application server providers
+<br><font color="#6699CC">• </font><a href="http://www.weblogic.com">www.weblogic.com</a>
+- BEA Systems' <b>WebLogic</b>
+<br><font color="#6699CC">• </font><a href="http://www.ibm.com/websphere">www.ibm.com/websphere</a>
+- WebSphere Application Server
+<br><font color="#6699CC">• </font><a href="http://java.sun.com/products/ejb/newspec.html">java.sun.com/products/ejb/newspec.html</a>
+- The Enterprise JavaBeans Specification 1.1
+<br><font color="#6699CC">• </font><a href="http://developer.java.sun.com/developer/onlineTraining/Beans/EJBTutorial/index.html">developer.java.sun.com/developer/onlineTraining/Beans/EJBTutorial/index.html</a>
+- Enterprise JavaBeans Tutorial: Building Your First Stateless Session
+Bean
+<br>&nbsp;
+</body>
+</html>

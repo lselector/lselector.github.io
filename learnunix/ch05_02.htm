@@ -1,0 +1,1199 @@
+<HTML
+><HEAD
+><TITLE
+>[Chapter 5] 5.2 Pipes and Filters</TITLE
+><META
+NAME="DC.title"
+CONTENT="Learning the Unix Operating System"><META
+NAME="DC.creator"
+CONTENT="Jerry Peek, Grace Todino &amp; John Strang"><META
+NAME="DC.publisher"
+CONTENT="O'Reilly &amp; Associates, Inc."><META
+NAME="DC.date"
+CONTENT="1998-08-03T20:52:39Z"><META
+NAME="DC.type"
+CONTENT="Text.Monograph"><META
+NAME="DC.format"
+CONTENT="text/html"
+SCHEME="MIME"><META
+NAME="DC.source"
+CONTENT="1-56592-390-1"
+SCHEME="ISBN"><META
+NAME="DC.language"
+CONTENT="en-US"><META
+NAME="generator"
+CONTENT="Jade 1.1/O'Reilly DocBook 3.0 to HTML 4.0"><LINK
+REV="made"
+HREF="mailto:online-books@oreilly.com"
+TITLE="Online Books Comments"><LINK
+REL="up"
+HREF="ch05_01.htm"
+TITLE="5. Redirecting I/O "><LINK
+REL="prev"
+HREF="ch05_01.htm"
+TITLE="5.1 Standard Input and Standard Output"><LINK
+REL="next"
+HREF="ch06_01.htm"
+TITLE="6. Multitasking "></HEAD
+><BODY
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+><DIV
+CLASS="htmlnav"
+><H1
+><IMG
+SRC="gifs/smbanner.gif"
+ALT="Learning the Unix Operating System"
+USEMAP="#srchmap"
+BORDER="0"></H1
+><MAP
+NAME="srchmap"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,466,69"
+HREF="index.htm"
+ALT="Learning the Unix Operating System"><AREA
+SHAPE="RECT"
+COORDS="467,0,514,18"
+HREF="jobjects/fsearch.htm"
+ALT="Search this book"></MAP
+><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch05_01.htm"
+TITLE="5.1 Standard Input and Standard Output"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 5.1 Standard Input and Standard Output"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><B
+><FONT
+FACE="ARIEL,HELVETICA,HELV,SANSERIF"
+SIZE="-1"
+>Chapter 5<BR>Redirecting I/O </FONT
+></B
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="CHAPTER"
+HREF="ch06_01.htm"
+TITLE="6. Multitasking "
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 6. Multitasking "
+BORDER="0"></A
+></TD
+></TR
+></TABLE
+>&nbsp;<HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"></DIV
+><DIV
+CLASS="SECT1"
+><H2
+CLASS="sect1"
+><A
+CLASS="title"
+NAME="LUX-CH-5-SECT-2"
+>5.2 Pipes and Filters</A
+></H2
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-5-IX-FILTERS"
+></A
+>In addition to redirecting input/output to a named file, you can connect two
+commands together so that the output from one program becomes the input of
+the next program.
+Two or more commands connected in this way form a <EM
+CLASS="emphasis"
+>pipe</EM
+>.<A
+CLASS="indexterm"
+NAME="LUX-CH-5-IX-PIPE-REDIR"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-5-IX-VERBAR-FOR-IO-REDIR"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-5-IX-COMMANDS-REDIR-OUTPUT"
+></A
+>
+To make a pipe, put a vertical bar (<CODE
+CLASS="literal"
+>|</CODE
+>) on the command line between two
+commands.
+When a pipe is set up between two commands, the standard output of the
+command to the left of the pipe symbol becomes the standard input of the
+command to the right of the pipe symbol.
+Any two programs can form a pipe as long as the first program writes to
+standard output and the second program reads from standard input.</P
+><P
+CLASS="para"
+>When a program takes its input from another program, performs some operation
+on that input, and writes the result to the standard output (which may be
+piped to yet another program), it is referred to as a <EM
+CLASS="emphasis"
+>filter</EM
+>.
+One of the most common uses of filters is to modify output.
+Just as a common filter culls unwanted items, the UNIX filters can be
+used to restructure output.</P
+><P
+CLASS="para"
+>Almost all UNIX commands can be used to form pipes.
+Some programs that are commonly used as filters are described below.
+Note that these programs aren't used only as filters or parts of pipes.
+They're also useful on their own.</P
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-5-SECT-2.0.1"
+>5.2.1 grep</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-5-IX-GREP-COMMAND"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-5-IX-SEARCH-HIN-FILES"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-5-IX-FILES-SEARCHING-IN"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-5-IX-TEXT-SEARCH-FILES-FOR"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-5-IX-FINDING-TXT"
+></A
+>The <B
+CLASS="emphasis.bold"
+>grep</B
+> program searches a file or files for lines that have a
+certain pattern.  The syntax is:</P
+><BLOCKQUOTE
+CLASS="blockquote"
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>grep</B
+> <EM
+CLASS="emphasis"
+>pattern file(s)</EM
+></P
+></BLOCKQUOTE
+><P
+CLASS="para"
+>The name &quot;grep&quot; derives from the <B
+CLASS="emphasis.bold"
+>ed</B
+> (a UNIX line editor) command
+<B
+CLASS="emphasis.bold"
+>g/re/p</B
+> which means &quot;<EM
+CLASS="emphasis"
+>g</EM
+>lobally search for a
+<EM
+CLASS="emphasis"
+>r</EM
+>egular <EM
+CLASS="emphasis"
+>e</EM
+>xpression and <EM
+CLASS="emphasis"
+>p</EM
+>rint all lines
+containing it.&quot;  A <EM
+CLASS="emphasis"
+>regular expression</EM
+> is either some plain text
+(a word, for example) and/or special characters used for pattern
+matching.  When you learn more about regular expressions, you can use
+them to specify complex patterns of text. See <EM
+CLASS="emphasis"
+>Mastering Regular
+Expressions</EM
+>, by Jeffrey Friedl (O'Reilly &amp; Associates, 1997), and
+the references in <A
+CLASS="xref"
+HREF="appa_01.htm"
+TITLE="Reading List "
+>Appendix A, Reading List </A
+>.</P
+><P
+CLASS="para"
+>The simplest use of <B
+CLASS="emphasis.bold"
+>grep</B
+> is to look for a pattern consisting of
+a single word.  It can be used in a pipe so that only those lines of
+the input files containing a given string are sent to the standard
+output.  If you don't give <B
+CLASS="emphasis.bold"
+>grep</B
+> a filename to read, it reads its
+standard input; that's the way all filter programs work:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>ls -l | grep &quot;Aug&quot;</B
+></CODE
+>
+-rw-rw-rw-   1 john  doc     11008 Aug  6 14:10 ch02
+-rw-rw-rw-   1 john  doc      8515 Aug  6 15:30 ch07
+-rw-rw-r--   1 john  doc      2488 Aug 15 10:51 intro
+-rw-rw-r--   1 carol doc      1605 Aug 23 07:35 macros
+%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>First, our example runs <B
+CLASS="emphasis.bold"
+>ls -l</B
+> to list your directory.
+The standard output of <B
+CLASS="emphasis.bold"
+>ls -l</B
+> is piped to <B
+CLASS="emphasis.bold"
+>grep</B
+>, which
+only outputs lines that contain the string &quot;Aug&quot;
+(that is, files that were last modified in August).
+Because the standard output of <B
+CLASS="emphasis.bold"
+>grep</B
+> isn't redirected,
+those lines go to the terminal screen.</P
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>grep</B
+> options let you modify the search.
+<A
+CLASS="xref"
+HREF="ch05_02.htm#LUX-CH-5-TAB-0"
+TITLE="Some grep Options"
+>Table 5.1</A
+>
+lists some of the options.</P
+><TABLE
+CLASS="table"
+><CAPTION
+CLASS="table"
+><A
+CLASS="title"
+NAME="LUX-CH-5-TAB-0"
+>Table 5.1: Some grep Options</A
+></CAPTION
+><THEAD
+CLASS="thead"
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TH
+CLASS="entry"
+ALIGN="LEFT"
+ROWSPAN="1"
+COLSPAN="1"
+>Option</TH
+><TH
+CLASS="entry"
+ALIGN="LEFT"
+ROWSPAN="1"
+COLSPAN="1"
+>Description</TH
+></TR
+></THEAD
+><TBODY
+CLASS="tbody"
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>-v</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Print all lines that do not match pattern.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>-n</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Print the matched line and its line number.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>-l</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Print only the names of files with matching lines 
+(letter &quot;l&quot;).</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>-c</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Print only the count of matching lines.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>-i</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Match either upper- or lowercase.</TD
+></TR
+></TBODY
+></TABLE
+><P
+CLASS="para"
+>Next, let's use a regular expression that tells <B
+CLASS="emphasis.bold"
+>grep</B
+> to find
+lines with &quot;carol&quot;, followed by zero or more other characters
+(abbreviated in a regular expression as &quot;.*&quot;), then followed by &quot;Aug&quot;.
+For more about regular expressions, see the references in 
+<A
+CLASS="xref"
+HREF="appa_01.htm"
+TITLE="Reading List "
+>Appendix A</A
+>.</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>ls -l | grep &quot;carol.*Aug&quot;</B
+></CODE
+>
+-rw-rw-r--   1 carol doc      1605 Aug 23 07:35 macros
+%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-3993"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3994"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3995"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3996"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3997"
+></A
+></P
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-5-SECT-2.0.2"
+>5.2.2 sort</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-5-IX-SORT-PROGRAM"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-5-IX-TEXT-SORT-LINES-OF"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-5-IX-FILES-SORTING-LL"
+></A
+>The <B
+CLASS="emphasis.bold"
+>sort</B
+> program arranges lines of text alphabetically or
+numerically.  The example below sorts the lines in the <EM
+CLASS="emphasis"
+>food</EM
+> file
+(from <A
+CLASS="xref"
+HREF="ch04_01.htm"
+TITLE="File Management "
+>Chapter 4, File Management </A
+>) alphabetically.  <B
+CLASS="emphasis.bold"
+>sort</B
+> doesn't modify the file
+itself; it reads the file and writes the sorted text to the standard
+output.</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>sort food</B
+></CODE
+>
+Afghani Cuisine
+Bangkok Wok
+Big Apple Deli
+Isle of Java
+Mandalay
+Sushi and Sashimi
+Sweet Tooth
+Tio Pepe's Peppers</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>sort</B
+> arranges lines of text alphabetically by default.
+There are many options that control the sorting.
+Some of these are given in
+<A
+CLASS="xref"
+HREF="ch05_02.htm#LUX-CH-5-TAB-1"
+TITLE="Some sort Options"
+>Table 5.2</A
+>.</P
+><TABLE
+CLASS="table"
+><CAPTION
+CLASS="table"
+><A
+CLASS="title"
+NAME="LUX-CH-5-TAB-1"
+>Table 5.2: Some sort Options</A
+></CAPTION
+><THEAD
+CLASS="thead"
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TH
+CLASS="entry"
+ALIGN="LEFT"
+ROWSPAN="1"
+COLSPAN="1"
+>Option</TH
+><TH
+CLASS="entry"
+ALIGN="LEFT"
+ROWSPAN="1"
+COLSPAN="1"
+>Description</TH
+></TR
+></THEAD
+><TBODY
+CLASS="tbody"
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>-n</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Sort numerically (example: 10 will sort after 2), ignore blanks and tabs.</P
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>-r</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Reverse the order of sort.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>-f</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Sort upper- and lowercase together.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>+<EM
+CLASS="emphasis"
+>x</EM
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Ignore first <EM
+CLASS="emphasis"
+>x</EM
+> fields when sorting.</TD
+></TR
+></TBODY
+></TABLE
+><P
+CLASS="para"
+>More than two commands may be linked up into a pipe.
+Taking a previous pipe example using <B
+CLASS="emphasis.bold"
+>grep</B
+>, we can further sort the files
+modified in August by order of size.
+The following pipe consists of the commands <B
+CLASS="emphasis.bold"
+>ls</B
+>, <B
+CLASS="emphasis.bold"
+>grep</B
+>, and <B
+CLASS="emphasis.bold"
+>sort</B
+>:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>ls -l | grep &quot;Aug&quot; | sort +4n</B
+></CODE
+>
+-rw-rw-r--  1 carol doc      1605 Aug 23 07:35 macros
+-rw-rw-r--  1 john  doc      2488 Aug 15 10:51 intro
+-rw-rw-rw-  1 john  doc      8515 Aug  6 15:30 ch07
+-rw-rw-rw-  1 john  doc     11008 Aug  6 14:10 ch02
+%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>This pipe sorts all files in your directory modified in August by
+order of size, and prints them to the terminal screen.  The <B
+CLASS="emphasis.bold"
+>sort</B
+>
+option <B
+CLASS="emphasis.bold"
+>+4n</B
+> skips four fields (fields are separated by blanks)
+then sorts the lines in numeric order.  So, the output of <B
+CLASS="emphasis.bold"
+>ls</B
+>
+(actually, the output of <B
+CLASS="emphasis.bold"
+>grep</B
+>) is sorted by the file size (the
+fifth column, starting with 1605).
+Both <B
+CLASS="emphasis.bold"
+>grep</B
+> and <B
+CLASS="emphasis.bold"
+>sort</B
+> are used here as filters to modify the output
+of the <B
+CLASS="emphasis.bold"
+>ls -l</B
+> command.<A
+CLASS="indexterm"
+NAME="AUTOID-4058"
+></A
+>
+If you wanted to email this listing to someone, you could add a final
+pipe to the <B
+CLASS="emphasis.bold"
+>mail</B
+> command.
+Or you could print the listing by piping the <B
+CLASS="emphasis.bold"
+>sort</B
+> output
+to your printer command (like <B
+CLASS="emphasis.bold"
+>lp</B
+> or <B
+CLASS="emphasis.bold"
+>lpr</B
+>).<A
+CLASS="indexterm"
+NAME="AUTOID-4065"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4066"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4067"
+></A
+></P
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-5-SECT-2.0.3"
+>5.2.3 pg and more</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-5-IX-PG-COMMAND"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-5-IX-SCRPRT-FILES-PG-COMMAND"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-5-IX-SCRPRT-FILES-MORE-COMMAND"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-5-IX-MORE-COMMAND"
+></A
+>The <B
+CLASS="emphasis.bold"
+>more</B
+> and <B
+CLASS="emphasis.bold"
+>pg</B
+> programs that you saw earlier can also be used as
+filters.
+A long output would normally zip by you on the screen, but if you run text
+through <B
+CLASS="emphasis.bold"
+>more</B
+> or <B
+CLASS="emphasis.bold"
+>pg</B
+> as a filter, the display stops after
+each screenful of text.</P
+><P
+CLASS="para"
+>Let's assume that you have a long directory listing.
+(If you want to try this example and need a directory with lots of
+files, use <B
+CLASS="emphasis.bold"
+>cd</B
+> first to change to a system directory like
+<EM
+CLASS="emphasis"
+>/bin</EM
+> or <EM
+CLASS="emphasis"
+>/usr/bin</EM
+>.)
+To make it easier to read the sorted listing,
+pipe the output through <B
+CLASS="emphasis.bold"
+>more</B
+>:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>ls -l | grep &quot;Aug&quot; | sort +4n | more</B
+></CODE
+>
+-rw-rw-r--  1 carol doc      1605 Aug 23 07:35 macros
+-rw-rw-r--  1 john  doc      2488 Aug 15 10:51 intro
+-rw-rw-rw-  1 john  doc      8515 Aug  6 15:30 ch07
+-rw-rw-r--  1 john  doc     14827 Aug  9 12:40 ch03
+	.
+	.
+	.
+-rw-rw-rw-  1 john  doc     16867 Aug  6 15:56 ch05
+--More--(74%)</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>The screen will fill up with one screenful of text consisting of lines sorted
+by order of file size.
+At the bottom of the screen is the <B
+CLASS="emphasis.bold"
+>more</B
+> prompt where you can type
+a command to move through the sorted text.
+When you're done with this screen, you can use any of the commands listed
+in the discussion of the <B
+CLASS="emphasis.bold"
+>more</B
+> program.<A
+CLASS="indexterm"
+NAME="AUTOID-4096"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4097"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4098"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4099"
+></A
+></P
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-5-SECT-2.0.4"
+>5.2.4 Exercise: Redirecting input/output</A
+></H3
+><P
+CLASS="para"
+>In the following exercises you'll redirect output, create a simple pipe,
+and use filters to modify output.
+
+<TABLE
+CLASS="informaltable"
+><TBODY
+CLASS="tbody"
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Redirect output to a file.</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Enter <CODE
+CLASS="userinput"
+><B
+>who &gt; users</B
+></CODE
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Sort output of a command.</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Enter <CODE
+CLASS="userinput"
+><B
+>who | sort</B
+></CODE
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Append sorted output to a file.</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Enter <CODE
+CLASS="userinput"
+><B
+>who | sort &gt;&gt; users</B
+></CODE
+></P
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+> Display output to screen.</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Enter <CODE
+CLASS="userinput"
+><B
+>more users</B
+></CODE
+> or
+<CODE
+CLASS="userinput"
+><B
+>pg users</B
+></CODE
+></P
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Display long output to screen.</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Enter <CODE
+CLASS="userinput"
+><B
+>ls -l /bin | more</B
+></CODE
+>
+or <CODE
+CLASS="userinput"
+><B
+>ls -l /bin | pg</B
+></CODE
+></P
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Format and print a file with <CODE
+CLASS="userinput"
+><B
+>pr</B
+></CODE
+>.</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Enter <CODE
+CLASS="userinput"
+><B
+>pr users | lp</B
+></CODE
+> or
+<CODE
+CLASS="userinput"
+><B
+>pr users | lpr</B
+></CODE
+></P
+></TD
+></TR
+></TBODY
+></TABLE
+><A
+CLASS="indexterm"
+NAME="AUTOID-4138"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4139"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4140"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4141"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4142"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4143"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4144"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4145"
+></A
+></P
+></DIV
+></DIV
+><DIV
+CLASS="htmlnav"
+><P
+></P
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch05_01.htm"
+TITLE="5.1 Standard Input and Standard Output"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 5.1 Standard Input and Standard Output"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="book"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"
+><IMG
+SRC="../gifs/txthome.gif"
+ALT="Learning the Unix Operating System"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="CHAPTER"
+HREF="ch06_01.htm"
+TITLE="6. Multitasking "
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 6. Multitasking "
+BORDER="0"></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+>5.1 Standard Input and Standard Output</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="index"
+HREF="index/idx_0.htm"
+TITLE="Book Index"
+><IMG
+SRC="../gifs/index.gif"
+ALT="Book Index"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+>6. Multitasking </TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><IMG
+SRC="../gifs/smnavbar.gif"
+USEMAP="#map"
+BORDER="0"
+ALT="The UNIX CD Bookshelf Navigation"><MAP
+NAME="map"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,73,21"
+HREF="../index.htm"
+ALT="The UNIX CD Bookshelf"><AREA
+SHAPE="RECT"
+COORDS="74,0,163,21"
+HREF="../upt/index.htm"
+ALT="UNIX Power Tools"><AREA
+SHAPE="RECT"
+COORDS="164,0,257,21"
+HREF="../unixnut/index.htm"
+ALT="UNIX in a Nutshell"><AREA
+SHAPE="RECT"
+COORDS="258,0,321,21"
+HREF="../vi/index.htm"
+ALT="Learning the vi Editor"><AREA
+SHAPE="RECT"
+COORDS="322,0,378,21"
+HREF="../sedawk/index.htm"
+ALT="sed &amp; awk"><AREA
+SHAPE="RECT"
+COORDS="379,0,438,21"
+HREF="../ksh/index.htm"
+ALT="Learning the Korn Shell"><AREA
+SHAPE="RECT"
+COORDS="439,0,514,21"
+HREF="index.htm"
+ALT="Learning the UNIX Operating System"></MAP
+></DIV
+></BODY
+></HTML
+>

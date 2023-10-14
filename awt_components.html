@@ -1,0 +1,395 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>awt_components</title>
+<!--
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> AWT_components</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">AWT Components</font></b>
+<br>&nbsp;
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>AWT packages</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>AWT (Abstract Windowing Toolkit) - original old library for building
+GUI interfaces.&nbsp; Now there is a better library (Swing), but AWT is
+still used in Applets.
+<br>Packages:
+<br>&nbsp; <b><font color="#CC0000">java.awt</font></b> - set of 95 interfaces,
+classes, exceptions and errors
+<br>&nbsp; <b><u>Other packages starting with java.awt.&nbsp; :</u></b>
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <font color="#CC0000">color, datatransfer,
+dnd (drag and drop), event, font, geom, im (input method), im.spi (input
+method framework specification), image, image.renderable, print</font>
+<br>&nbsp;
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>java.awt.Component</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>java.awt.Component</u></b> - abstract class
+<br>&nbsp; setBounds( ), setLocation( ), setSize( ), Rectangle getBounds(
+), boolean contains( ),
+<br>&nbsp; setBackground( ), setForeground( ), setFont( ), setCursor( ),
+<br>&nbsp; setEnabled( ), setVisible( )
+<p>&nbsp; long mask = AWTEvent.ACTION_EVENT_MASK | AWTEvent.FOCUS_EVENT_MASK
+<br>&nbsp; void disableEvents(long bitmask)
+<br>&nbsp; void enableEvents(long bitmask)
+<p><b><u>Subclasses of Component:</u></b>
+<br>Button
+<br>Canvas
+<br>Checkbox (with CheckboxGroup will appear as <u>radio buttons</u>)
+<br>Choice (pop-up menu)
+<br>Container (<font color="#3333FF">Window, Frame, Applet, Panel, Dialog,
+ScrollPane</font>)
+<br>Label
+<br>List - scrollable list of selectable items
+<br>Scrollbar
+<br>TextComponent
+<br>&nbsp;&nbsp; <font color="#3333FF">setEditable( ), setText( ), getText(
+), getSelectedText( ) - can be enabled, but not editable (user can move
+cursor and select text)</font>
+<p><b><u>Interfaces of Component:</u></b>
+<br>ImageObserver -
+<br>MenuContainer -
+<br>Serializable -
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Window, Frame</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Window - extends Container - top-level objects without menu bar or window
+controls.
+<br>&nbsp; 2 subclasses: Frame &amp; Dialog
+<br>&nbsp; Window should be constructed from a Frame or another Window
+( Window(Frame owner) or Window(Window owner))
+<p><b><u>java.awt.Frame class</u></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 BGCOLOR="#CCFFFF" >
+<tr>
+<td>import java.awt.*;
+<br>import java.awt.event.*;
+<p>class FrameDemo extends Frame {
+<p>&nbsp; public static void main (String[] args) {
+<br>&nbsp;&nbsp;&nbsp; new FrameDemo().show( );
+<br>&nbsp; }
+<p>&nbsp; // constructor&nbsp;
+<br>&nbsp; FrameDemo( ) {
+<br>&nbsp;&nbsp;&nbsp; super("Example Frame");
+<br>&nbsp;&nbsp;&nbsp; setBounds(10,10,200,150); // on the screen
+<br>&nbsp;&nbsp;&nbsp; addWindowListener( new WindowAdapter( ) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void windowClosing( WindowEvent
+e ) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setVisible( false );
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dispose( );
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.exit(0);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+<br>&nbsp;&nbsp;&nbsp; } );&nbsp; // end calling addWindowListener method&nbsp;
+<br>&nbsp; } // end constructor
+<br>} // end class</td>
+</tr>
+</table>
+
+<p>java.awt.Dialog - can be modal or not&nbsp; (FileDialog - always modal)
+<br>Dialog constructor requires Frame or another dialog owner.
+<br>For applet the browser provides a Frame - here how to get it:
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 BGCOLOR="#CCFFFF" >
+<tr>
+<td>public void showDlg( ) {
+<br>&nbsp; Container c = getParent( );
+<br>&nbsp; while( c != null ) {
+<br>&nbsp;&nbsp;&nbsp; if ( c instanceof Frame ) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; myDlg = new TestDialog((Frame) c );
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; myDlg.show( ); return;
+<br>&nbsp;&nbsp;&nbsp; }
+<br>&nbsp;&nbsp;&nbsp; c = c.getParent( ); // try next parent
+<br>&nbsp; }
+<br>}</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Menu</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Almost everything can have a menu, because Component, Frame, Menu, MenuBar
+- all implement MenuContainer interface.
+<p><font color="#3333FF">java.lang.Object</font>
+<br><font color="#3333FF">&nbsp; |</font>
+<br><font color="#3333FF">&nbsp; +--java.awt.MenuComponent</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +--java.awt.MenuItem</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
++--java.awt.Menu</font>
+<p><u>All Implemented Interfaces:</u>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; Accessible, MenuContainer,
+Serializable</font>
+<p><u>Direct Known Subclasses:</u>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; PopupMenu</font><font color="#000000"></font>
+<p><b><u><font color="#000000">To create standard menu:</font></u></b>
+<br><font color="#000000">&nbsp; create a MenuBar object</font>
+<br><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp; add Menu objects that
+contain MenuItem objects.&nbsp; (MenuItem objects create ActionEvent)</font>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#000000">MenuBar mb = new MenuBar( );</font><font color="#000000"></font>
+<p><font color="#000000">&nbsp; Menu fileMenu = new Menu("File");</font>
+<br><font color="#000000">&nbsp; fileMenu.add( new Menuitem("New") );</font>
+<br><font color="#000000">&nbsp; fileMenu.addSeparator( );</font>
+<br><font color="#000000">&nbsp; fileMenu.add( new Menuitem("Exit") );</font>
+<br><font color="#000000">&nbsp; mb.add( fileMenu );</font><font color="#000000"></font>
+<p><font color="#000000">&nbsp; Menu helpMenu = new Menu("Help");</font>
+<br><font color="#000000">&nbsp; helpMenu.add( new Menuitem("About") );</font>
+<br><font color="#000000">&nbsp; mb.add( helpMenu );</font><font color="#000000"></font>
+<p><font color="#000000">&nbsp; setMenuBar ( mb );</font></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Geometric Utility Classes</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#000000">Dimension, Point, Rectangle, Polygon</font>
+<br><font color="#000000"></font>&nbsp;
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Graphics</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#000000">java.awt.Color, Cursor, Font, FontMetrics, Graphics,
+Graphics2D, GraphicsEnvironment</font><font color="#000000"></font>
+<p><font color="#000000">Font myFont = new Font( "Serif", Font.BOLD, 50
+);</font>
+<br><font color="#000000">&nbsp; // Serif, SansSerif, Monospaced</font><font color="#000000"></font>
+<p><font color="#000000">Graphics object - to draw: Component, clipping
+Rectangle, current drawing Color, current Font</font>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#000000">public void update( Graphics g ) {</font>
+<br><font color="#000000">&nbsp; g.clearRect(0,0,width,height);</font>
+<br><font color="#000000">&nbsp; paint(g);</font>
+<br><font color="#000000">}</font></td>
+</tr>
+</table>
+<font color="#000000"></font>
+<p><b><u><font color="#000000">Other methods in Graphics class:</font></u></b>
+<br><font color="#3333FF">&nbsp; drawLine(x1,y1,x2,y2)</font>
+<br><font color="#3333FF">&nbsp; drawRect(x,y,w,h), fillRect(x,y,w,h)</font>
+<br><font color="#3333FF">&nbsp; drawOval(x,y,w,h), drawArc(x,y,w,h,startAngle,
+endAngle), fillArc(x,y,w,h,startAngle, endAngle)</font>
+<br><font color="#3333FF">&nbsp; drawPolygon( Polygon p), fillPolygon(
+Polygon p)</font>
+<br><font color="#000000">&nbsp; boolean drawImage(img,x,y,obs) // where
+obs - ImageObserver</font>
+<br><font color="#000000">&nbsp; boolean drawImage(img,x,y,w,h,obs) //
+scales to w,h</font>
+<br><font color="#000000">&nbsp; Graphics getGraphics( ) // can call only
+after something is shown on the sceen</font>
+<br><font color="#000000">&nbsp; dispose( )</font><font color="#000000"></font>
+<p><font color="#000000">Double buffering:</font>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#000000">Image imgA = createimage(200,150); // method
+in Component</font>
+<br><font color="#000000">Graphicsc gr = imgA.getGraphics( );</font>
+<br><font color="#000000">// now draw this off-screen image</font>
+<br><font color="#000000">...</font>
+<br><font color="#000000">// now draw it on the screen</font>
+<br><font color="#000000">getGraphics().drawImage(imgA, x,y, this);</font></td>
+</tr>
+</table>
+<font color="#000000"></font>
+<p><font color="#000000">Example of paint method:</font>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#000000">public void paint( Graphics g ) {</font>
+<br><font color="#000000">&nbsp; String str = "Hello";</font>
+<br><font color="#000000">&nbsp; g.setColor( Color.darkgray );</font>
+<br><font color="#000000">&nbsp; g.drawString( str, 30, 120 );</font>
+<br><font color="#000000">}</font></td>
+</tr>
+</table>
+<font color="#000000"></font>
+<p><font color="#000000">repaint method in Component class = update-paint
+sequence</font>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#000000">public void run( ) {</font>
+<br><font color="#000000">&nbsp; while( true ) {</font>
+<br><font color="#000000">&nbsp;&nbsp;&nbsp; doAnimationMoves( );</font>
+<br><font color="#000000">&nbsp;&nbsp;&nbsp; animCanvas.repaint( );</font>
+<br><font color="#000000">&nbsp;&nbsp;&nbsp; try {</font>
+<br><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Thread.yield(
+); // to allow to paint</font>
+<br><font color="#000000">&nbsp;&nbsp;&nbsp; } catch(InterruptedException
+e) {}</font>
+<br><font color="#000000">&nbsp; }</font>
+<br><font color="#000000">}</font></td>
+</tr>
+</table>
+<font color="#000000"></font>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Layouts</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#000000">2 interfaces: java.awt.LayoutManager &amp; LayoutManager2</font><font color="#000000"></font>
+<p><font color="#000000">public void setLayout(LayoutManager m);</font>
+<br><font color="#000000">Panel p2 = new Panel( new BorderLayout() );</font>
+<br><font color="#000000">LayoutManager getLayout( );</font>
+<br><font color="#000000">void addLayoutComponent(name, component );</font>
+<br><font color="#000000">void removeLayoutComponent( component );</font>
+<br><font color="#000000">void layoutContainer(parent)</font>
+<br><font color="#000000">Dimension minimumLayoutSize(parent)</font>
+<br><font color="#000000">Dimension preferredLayoutSize(parent)</font><font color="#000000"></font>
+<p><u><font color="#000000">LayoutManager2 interface:</font></u>
+<br><font color="#000000">void addLayoutComponent(Component c, Object constraints)</font>
+<br><font color="#000000">Borderlayout</font>
+<br><font color="#000000">CardLayout</font>
+<br><font color="#000000">GridBagLayout</font>
+<br><font color="#000000">...</font><font color="#000000"></font>
+<p><font color="#000000">Panel, Applet - FlowLayout</font>
+<br><font color="#000000">Window,Frame,Dialog - BorderLayout</font><font color="#000000"></font>
+<p><font color="#000000">FlowLayout f3 = new FlowLayout (FlowLayout.RIGHT,
+10, 2);&nbsp; // 10 - horizontal gap, 2 - vertical gap</font>
+<br><font color="#000000">GridLayout g3 = new GridLayout(rows, cols, hgap,
+vgap);</font><font color="#000000"></font>
+<p><font color="#000000">GridBagLayout( )</font>
+<br><font color="#000000">gridBagConstraints( )&nbsp; //&nbsp; gridx, gridy,
+gridwidth, gridheight, insets (Insets object), weightx, weighty</font><font color="#000000"></font>
+<p><font color="#000000">setlayout( null );&nbsp; // working without layout
+manager</font>
+<br><font color="#000000"></font>&nbsp;
+</body>
+</html>

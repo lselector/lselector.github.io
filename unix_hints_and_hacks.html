@@ -1,0 +1,204 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>unix_os</title>
+<!--
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Unix Hints and Hacks</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<b><font color="#CC0000">Unix Hints &amp; Hacks</font></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=6 >
+<tr>
+<td><b><font color="#CC0000">On this page:</font></b></td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">• <a href="#intro">intro,
+manpages, tutorials</a></font>
+<br><font color="#6699CC">•&nbsp;</font></td>
+</tr>
+</table>
+<a NAME="intro"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>- <a href="http://www.ugu.com">http://www.ugu.com</a> - Unix Guru Universe
+<br>- <a href="http://www.MagniComp.com/sysinfo/">http://www.MagniComp.com/sysinfo/</a>
+- SysInfo home page
+<p><b><u>Collecting system information:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td><u>Hostname:</u>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % hostname
+<br><u>Hostname aliases:</u>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % grep `hostname` /etc/hosts | awk '{
+print $3 }'
+<br><u>Host network addresses:</u>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % grep `hostname` /etc/hosts | awk '{
+print $1 }'
+<br><u>Host ID:</u>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % hostid
+<br><u>CPU type, application architecture, kernel architecture and version,
+operatin system name and version:</u>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % uname -a
+<br><u>Amount of main memory - can be found at boot time:</u>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % dmesg
+<br><u>Disk configuration (available space, etc.):</u>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % df
+<br><u>Other pieces:</u>
+<br>&nbsp; A copy of all NFS mounted filesystems
+<br>&nbsp; NIS/YP configuration
+<br>&nbsp; A listing of all OS packages installed
+<br>&nbsp; A listing of all paches installed
+<br>&nbsp; Complete disk drive settings and configuration
+<br>&nbsp; All relevant software license keys and codes
+<br>&nbsp; Any custom soft links that were created
+<br>&nbsp; A copy of the setting and configuration for all defined printers</td>
+</tr>
+</table>
+
+<p><b><u>Backup some important files:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td><u>Kernel:</u>
+<br>&nbsp; /kernel&nbsp; or&nbsp; /unix&nbsp; or&nbsp; /vmunix
+<br><u>Passwd File:</u>
+<br>&nbsp; /etc/passwd
+<br><u>Group file:</u>
+<br>&nbsp; /etc/group
+<br><u>Host Table:</u>
+<br>&nbsp; /etc/hosts
+<br><u>Filesystem Table:</u>
+<br>&nbsp; /etc/fstab&nbsp; or etc/vfstab
+<br><u>Sendmail Config Files:</u>
+<br>&nbsp; /usr/lib/sendmail.cf, /usr/lib/sendmail.fc,&nbsp; /usr/lib/sendmail.mc
+<br><u>Inetd Configs:</u>
+<br>&nbsp; /etc/inetd.conf
+<br><u>TTY settings:</u>
+<br>&nbsp; /etc/ttys
+<br><u>Start Up Scripts:</u>
+<br>&nbsp; files residing in /etc/init.d&nbsp; or /etc/rc#.d directories</td>
+</tr>
+</table>
+
+<p><b><u>Executing script on the last day of the month (backups, filtering
+of log files, system utilization, etc.):</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br>FILE = `runme`
+<br>if test `TZ=EST -24 date +%d` = 1; then
+<br>&nbsp; $FILE
+<br>fi</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/usr/bin/perl
+<br>use POSIX;
+<br>@mydate = localtime(time);
+<br>++$mydate[3];&nbsp; # add one day to the date
+<br>$new_day_of _the_month = (localtime (POSIX::mktime (@mydate)))[3];
+<br>if ($new_day_of _the_month == 1) {&nbsp;
+<br>&nbsp; do_end_fo_the _month_stuff();&nbsp;
+<br>}</td>
+</tr>
+</table>
+
+<p><b><u>Using named pipes:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>You can create named pipes using <b><u>mknod</u></b> or <b><u>mkfifo</u></b>
+commands, for example:
+<p><font color="#3333FF">#!/bin/sh</font>
+<br><font color="#3333FF">mkfifo /tmp/testpipe</font>
+<br><font color="#3333FF">echo "This is a test" > /tmp/testpipe &amp;</font>
+<br><font color="#3333FF">cat /tmp/testpipe</font>
+<br><font color="#3333FF">rm /tmp/testpipe</font>
+<p>Here is a more elaborate example using 2 pipes to dump information
+<br>from Oracle into a series of 10MB compressed files.
+<p><font color="#3333FF">$ mknod pipe1 p</font>
+<br><font color="#3333FF">$ mknod pipe2 p</font>
+<br><font color="#3333FF">$ nohup sqlplus user passwd @some_script_writing_into_pipe1
+&amp;</font>
+<br><font color="#3333FF">$ nohup compress &lt; pipe1 > pipe2 &amp;</font>
+<br><font color="#3333FF">$ nohup split -b 10245k &lt; pipe2 &amp;</font></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<br>&nbsp;
+</body>
+</html>

@@ -1,0 +1,619 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>middleware</title>
+<!--
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Middleware</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Middleware</font></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 >
+<tr>
+<td></td>
+
+<td><b><font color="#CC0000">On this page:</font></b></td>
+
+<td></td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP NOWRAP></td>
+
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">• </font><b><font color="#CC0000"><a href="#three_tier">Three-tier
+architecture</a></font></b>
+<br><font color="#6699CC">•</font><b><font color="#CC0000"> <a href="#big_companies">Big
+companies love application servers</a></font></b>
+<br><font color="#6699CC">•</font><b><font color="#CC0000"> <a href="#as">Application
+servers</a></font></b>
+<br><font color="#6699CC">•</font><b><font color="#CC0000"> <a href="#mom">Messaging
+Middleware</a></font></b>
+<br><font color="#6699CC">• </font><b><font color="#CC0000"><a href="#tibco">Tibco</a></font></b>
+<br><font color="#6699CC">•</font><b><font color="#CC0000"> <a href="#mq">MQSeries</a></font></b></td>
+
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">•</font><b><font color="#CC0000"><a href="#citrix_server">Citrix</a></font></b>
+<br><font color="#6699CC">•</font><b><font color="#CC0000"> <a href="#marimba">Marimba</a></font></b>
+<br><font color="#6699CC">•</font><b><font color="#CC0000"> <a href="#p2p">p2p</a></font></b>
+<br><font color="#6699CC">•</font><b><font color="#CC0000"> <a href="#tivoli">Tivoli</a></font></b></td>
+</tr>
+</table>
+<a NAME="three_tier"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Three Tier Architectures</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>The absolute majority of business application today can be described
+as consisting of at least 3 layers (<b><u>3-tier architecture</u></b>):
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 COLS=1 WIDTH="100%" BGCOLOR="#CCFFFF" >
+<tr>
+<td>• <b><u>Front-end</u></b> (text, forms, etc.) - delivering and presenting
+the data, getting input from the user.&nbsp; This layer also called "client"
+and can be done differently, for example: browser,&nbsp; Java application,
+MS Excel, etc.&nbsp; Web server is usually also included into this layer.
+<p>• <b><u>Middle</u></b> - some programms connecting the front-end with
+the back-end. These programs can be written as scripts (shell, Perl, Tcl
+,etc.), scripts imbedded into templates (JSP, ASP, PHP, etc.), compiled
+programs (C-CGI programs, C++, Java), beans or servlets running inside
+applications servers (Java servlet containers and application servers,
+etc.).&nbsp; There are many options here - see below.
+<p>• <b><u>Back-end</u></b> - data (database, SQL).</td>
+</tr>
+</table>
+
+<p>Sometimes to achieve independence of the back-end database and of the
+front-end browser / mobile client, developers add extra abstraction layers
+on both sides:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 COLS=1 WIDTH="100%" BGCOLOR="#CCFFFF" >
+<tr>
+<td>• <b><u>Front-end</u></b>
+<br><font color="#3333FF">• presentation objects layer</font>
+<br>• <b><u>Middle</u></b> - logic
+<br><font color="#3333FF">• bus. objects layer</font>
+<br>• <b><u>Back-end</u></b> - data&nbsp;</td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Architecture of business applications mostly
+vary in how the middle layer is implemented.</font></b>
+<p>• <u>Sometimes it is implemented as simple CGI scripts (written in shell
+or Perl or even in C).</u>
+<br>• <u>Sometimes middle layer is imbedded into the front layer:</u>
+<br>&nbsp; - Tcl script imbedded into AOL web server
+<br>&nbsp; - Perl scripts imbedded into Apache web server with mod_perl
+module
+<br>&nbsp; - C-extensions for Netscape Enterprise server
+<br>&nbsp; - java applet in the browser talking directly to the database
+<br>• <u>Sometimes it is imbedded into the back end (like Oracle or Sybase).</u>
+<br>• <u>Sometimes it is implemented as an independent middle-layer server</u>
+<br>&nbsp;&nbsp; - Fast CGI
+<br>&nbsp;&nbsp; - Java servlets container
+<br>&nbsp;&nbsp; - Application server (running Java servlets, JSP, EJB)
+<p>This list can go on and on (Microsoft's ASP, Open Source PHP and Zope,
+etc.)
+<p>In real life you can see more than 3 layers.&nbsp; For example you can
+see something like this:
+<br>&nbsp;&nbsp; Browser •- web server •- servlet •- XML >> MQSeries_Messaging
+&lt;&lt; XML •- Appl.server •- Database
+<br><a NAME="big_companies"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Big companies love application servers</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><img SRC="images/kaban3s.jpg" HSPACE=12 VSPACE=6 BORDER=0 height=178 width=144></td>
+
+<td ALIGN=LEFT VALIGN=TOP>Big companies love application servers (AS).&nbsp;
+AS-s are usually big programs designed to run Enterprise Java Beans (EJB),
+Java servlets and JSP.&nbsp;
+<p>The big promise of AS-s is to make it easier for programmers to develop
+and maintain big distributed enterprise systems.&nbsp; This is accomplished
+by putting a lot of responsibility on the AS. Things like naming service,
+support for distributed operation, support for transactions, messaging,
+persistence, fine-granulated security access, etc.&nbsp;
+<p>Looking into the future, Java and AS-s seem like a very good choice.&nbsp;
+But today using AS-s is a difficult task.
+<p>&nbsp;</td>
+</tr>
+</table>
+
+<p>Here are some negatives as of today:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 WIDTH="100%" BGCOLOR="#CCFFFF" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp; - AS-s usually consume huge amounts of CPU and memory.
+And even given latest fastest servers, they are still slow.
+<br>&nbsp;&nbsp;&nbsp; - Using AS-s is very expensive.&nbsp; They may cost
+$30,000 and more per CPU.&nbsp; With average installation having 4 computers,
+each having 4 CPUs - we come to $500,000 just to install the software.&nbsp;
+Plus you need a good database. Plus you need a bunch of expensive Java
+consultants to make the whole thing work. So only big companies (mostly
+financial) can afford to use AS-s.
+<br>&nbsp;&nbsp;&nbsp; - AS-s are not very easy to program. It takes substantial
+time to develop a system.&nbsp; There are many reasons why.&nbsp; As-s
+are just too new on the market.&nbsp; They are growing and changing very
+fast.&nbsp; There is always a deficit of books and qualified specialists.&nbsp;
+It is difficult to find answers to your questions on the Internet.&nbsp;
+No convenient development tools.&nbsp; Incompatibility between different
+AS-s.
+<br>&nbsp;&nbsp;&nbsp; - AS-s are still not very reliable. And not very
+convenient.&nbsp; For example, IBM's Web Sphere has an administration console
+which can't work with many developers simultaneously.</td>
+</tr>
+</table>
+
+<p>Many developers believe that using AS-s gives more problems than provide
+benefits. A very clear analysis is done by Phillip Greenspun:&nbsp; <a href="http://www.arsdigita.com/asj/application-servers">www.arsdigita.com/asj/application-servers</a>.&nbsp;
+On the other side, they can already be successfully used for <a href="distributed_computing.html">distributed
+applications in large companies</a>.
+<br><a NAME="as"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Application Servers</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><img SRC="images/comfrog.gif" BORDER=0 height=63 width=80></td>
+
+<td ALIGN=LEFT VALIGN=TOP>So, large companies use expensive application
+servers (AS) as a middle layer between the web server (as front end) and
+database (backend).</td>
+</tr>
+</table>
+
+<p>Review of several AS-s: <a href="http://webreview.com/wr/pub/app_servers">webreview.com/wr/pub/app_servers</a>
+<p><b><u>Some AS-s:</u></b>
+<br>• <b><font color="#FF0000">WebLogic</font></b> - <a href="http://www.weblogic.com/">www.weblogic.com/</a>
+=&nbsp; <a href="http://www.beasys.com/">www.beasys.com/</a>=&nbsp; Java
+application server
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (see more on my <a href="weblogic.html">WebLogic
+page</a>.)
+<br>• <b><font color="#FF0000">Dynamo</font></b> Application Server 4.0
+(DAS)
+<a href="http://www.atg.com">http://www.atg.com</a> - Art Technology
+Group, Boston, MA
+<br>&nbsp;&nbsp;&nbsp; • <a href="http://webreview.com/pub/p/Dynamo_Application_Server_4.0_(DAS)">http://webreview.com/pub/p/Dynamo_Application_Server_4.0_(DAS)</a>
+- read review
+<br>• IBM <b><font color="#FF0000">WebSphere</font></b> - <a href="http://www.software.ibm.com/webservers">www.software.ibm.com/webservers</a>
+<br>• <b><font color="#FF0000">Oracle</font></b> Application Server - <a href="http://www.oracle.com/asd/oas/oas.html">www.oracle.com/asd/oas/oas.html</a>
+<br>• <b><font color="#FF0000">iPlanet</font></b> (Netscape/Sun) Application
+Server (former Kiva)&nbsp; <a href="http://www.kivasoft.com/">www.kivasoft.com</a>
+<br>&nbsp;&nbsp;&nbsp; • <a href="nas_fsq.html">nas_fsq.html</a> - NAS
+Frequently Searched Questions
+<br>&nbsp;&nbsp;&nbsp; • <a href="http://docs.iplanet.com/docs/manuals/enterprise.html">http://docs.iplanet.com/docs/manuals/enterprise.html</a>
+- NES docs
+<br>• <b><font color="#FF0000">Silver Stream</font></b> - <a href="http://www.silverstream.com/">www.SilverStream.com</a>
+<br>• Sun <b><font color="#FF0000">NetDynamics</font></b> AS - <a href="http://www.netdynamics.com/">www.netdynamics.com/</a>
+<br>• <b><font color="#FF0000">Sybase</font></b> Enterprise AS - <a href="http://www.sybase.com/products/application_servers/">www.sybase.com/products/application_servers/</a>
+<br>• <b><font color="#FF0000">Microsoft</font></b> MTS - <a href="http://www.microsoft.com/">www.microsoft.com/</a>
+<br>• <b><font color="#FF0000">Cold Fusion</font></b> -&nbsp; <a href="http://www.allaire.com/">www.allaire.com</a>
+<br>• <b><font color="#FF0000">EJB</font></b> (Enterprise Java Beans) -
+<a href="http://java.sun.com/products/ejb">java.sun.com/products/ejb</a>
+<br>• <b><font color="#FF0000">Hahtsite</font></b> - <a href="http://www.hahtsite.com/">www.hahtsite.com</a>
+<p>• <a href="http://www.resonate.com/">www.resonate.com/</a> - site management
+(load balancing, advanced traffic management and service level control)
+<p><a NAME="mom"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Messaging Middleware</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>There are 2 ways how applications can talk to each other:
+<br>1. Connecting point-to-point (Internet sockets) and talking in real
+time.
+<br>2. Sending messages (similar to sending email) - via a 3rd party products
+like Tibco, MQSeries or others.
+<p>Messaging services have advantage of de-coupling parts of the system,
+thus making it more robust and easy to program and maintain. You can use
+different type of messages (for example, broadcasting, publish-subscribe,
+guaranteed delivery, etc.)
+<p>Lately all vendors of messaging services rush to announce that their
+products are JMS compliant.
+<br>JMS stands for Java Messaging Service. It is NOT a product - it is
+just a standard API (like JDBC for databases).
+<p>Today's favorite approach is to use XML messages to pass data and for
+remote procedure calls (RPC) and callbacks. Notable implementation of this
+philosophy - .NET from Microsoft, SOAP.
+<p>Before XML took over, the favorite way of communication was by exchanging
+objects - CORBA, RMI (Java only), COM/DCOM (Windows). This method was more
+difficult in programming and maintenance, because it usually requires that
+both sides have the same version of software for binary compatibility.
+<p>Some links for finding out about asynchoronous events and messaging
+middleware:
+<br>• CORBA Event and Notification Services at the <a href="http://www.omg.org/">OMG</a>
+(Object Management Group)
+<br>• <a href="http://www.cl.cam.ac.uk/Research/SRG/opera/publications/Papers/usenix98.ps.gz">CORBA
+Based Event Architecture (COBEA)</a> from the <a href="http://www.cl.cam.ac.uk/Research/SRG/opera/">OPERA
+Group</a>, University of Cambridge Computer Laboratory
+<p>Workshop on Internet Scale Event Notification:<a href="http://www.ics.uci.edu/IRUS/twist/wisen98/">http://www.ics.uci.edu/IRUS/twist/wisen98/</a>
+<br>Workshop on Internet Scale Namespaces:<a href="http://www.ics.uci.edu/IRUS/twist/twist99/">http://www.ics.uci.edu/IRUS/twist/twist99/</a>
+<br>• <a href="http://www.e-speak.hp.com/">Hewlett-Packard's E-Speak architecture</a>
+<br>Message Oriented Middleware (MOM) / Asynchronous Messaging:
+<br>• <a href="http://www.hursley.ibm.com/mqseries/">IBM MQSeries</a>.
+IBM also a lot of useful information on MQSeries in their collection of
+free <a href="http://www.redbooks.ibm.com/">IBM Redbooks</a> which provide
+technical and marketing information on their products.&nbsp; There is also
+a redbook related to "patterns for e-business" at the Redbooks site.
+<br>• <a href="http://www.sun.com/workshop/jmq/">Sun's Java Message Queue
+(JMQ)</a>,
+<br>• <a href="http://msdn.microsoft.com/library/psdk/msmq/msmq_overview_4ilh.htm">Microsoft
+Message Queue (MSMQ)</a>,
+<br>• objectEvents ??
+<br>• <a href="http://www.middleware.org/">Middleware.org</a>: Includes
+information on Message Oriented Middleware and Message Queueing Middleware
+<br>• <a href="http://www.messageq.com/">http://www.messageq.com/</a>
+<br>• <a href="http://www.distributedcomputing.com/">Distributed Computing
+online</a>
+<br>• DSOnline ??
+<br>• <a href="http://www.search400.com/">www.search400.com/</a> - place
+to search
+<br>• <a href="http://www.sybase.com/products/middleware/">www.sybase.com/products/middleware/</a>
+- Sybase Middleware Products
+<br>• BEA Systems, a developer of middleware products, provides a publication
+called <a href="http://www.beasys.com/pubs/inside_mw/3_index.html" target="_top">Inside
+Middleware</a>.
+<br>• <a href="http://www.openlink.co.uk/" target="_top">OpenLink Software</a>
+offers middleware products that support Open Database Connectivity (ODBC),
+allowing applications to access multiple databases using SQL queries. OpenLinks
+also supports Java Database Connectivity (JDBC) and Universal Database
+Connectivity (UDBC).
+<br>• XIPC is middleware from <a href="http://www.level8.com/" target="_top">Level
+8 Systems</a> that manages multi-thread process communication across a
+distributed network (MOM - "message-oriented middleware").
+<br><i>• ORBIX - </i><a href="http://www.iona-iportal.com/suite/orbix.htm">http://www.iona-iportal.com/suite/orbix.htm</a>
+<br>• <a href="http://www.internet2.edu/html/middleware.html">www.internet2.edu/html/middleware.html</a>
+- Internet2 Middleware - consortium by over 170 universities.
+<br>• <a href="http://www.compaq.com/products/software/middleware.html">www.compaq.com/products/software/middleware.html</a>
+- Compaq
+<br>• <a href="http://www.research.ibm.com/Middleware2000/">www.research.ibm.com/Middleware2000/</a>
+- Conference
+<p>• <a href="http://java.sun.com/pr/1999/06/pr990615-09.html">http://java.sun.com/pr/1999/06/pr990615-09.html</a>
+- Sun's messaging product
+<br>• <a href="http://www.gii.co.jp/english/wg4842_ms_middleware_messaging.html">www.gii.co.jp/english/wg4842_ms_middleware_messaging.html</a>
+- report
+<br>Companies:&nbsp; BEA Systems, BMC, Candle, CommerceQuest, Integrasolv,
+IBM, Landmark, Level 8 Systems, MQ Software, New Era of Networks, SAP,
+Software AG, Saga Software, STC, Tibco
+<br>• <a href="http://www.gii.co.jp/english/wg4842_ms_middleware_messaging_toc.html">www.gii.co.jp/english/wg4842_ms_middleware_messaging_toc.html</a>
+- toc of report
+<br>• <a href="http://www.censa.org/html/weblinks/Software-and-Application-Development-Systems-and-Tools/Middleware-and-Messaging-Systems.html">www.censa.org/html/weblinks/</a>
+<br><a href="http://www.censa.org/html/weblinks/Software-and-Application-Development-Systems-and-Tools/Middleware-and-Messaging-Systems.html">Software-and-Application-Development-Systems-and-Tools/</a>
+<br><a href="http://www.censa.org/html/weblinks/Software-and-Application-Development-Systems-and-Tools/Middleware-and-Messaging-Systems.html">Middleware-and-Messaging-Systems.html</a>
+- middleware links
+<br>&nbsp;• <a href="http://www.middlewarespectra.com/abstracts/8_94_01.htm">www.middlewarespectra.com/abstracts/8_94_01.htm</a>
+- Middleware Spectra - by Spectrum Reports
+<br>&nbsp;• <a href="http://solutions.sun.com/catalogs/all/Software_Development_Tools/Embedded_System_Tools/40330.html">http://solutions.sun.com/catalogs/all/Software_Development_Tools/</a>
+<br><a href="http://solutions.sun.com/catalogs/all/Software_Development_Tools/Embedded_System_Tools/40330.html">Embedded_System_Tools/40330.html</a>
+- iBus messaging for Java
+<p>&nbsp;• <a href="http://www.roguewave.com/">www.roguewave.com</a> -
+Rogue Wave components (cross platform C++ components, middleware, XML,
+Linux)
+<br><a NAME="tibco"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Tibco</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>&nbsp;• <a href="http://www.tibco.com">www.tibco.com</a> - <b><font color="#CC0000">TIBCO
+Inc.</font></b> - messaging system. No central server - it is a distributed
+system. Typically $4K/box software, for faster service typically uses separate
+network (2nd netowrk cards in the computers) - UDP.
+<br>Tibco is a provider of real-time infrastructure software for the Internet
+and enterprise that enables business to dynamically link internal operations,
+business partners and customer channels.
+<br>&nbsp;• <a href="http://www.rv.tibco.com/filetran/index.html">http://www.rv.tibco.com/filetran/index.html</a>
+- downloads, documentation
+<p>TIBCO Enterprise Transaction Express(tm) (<b>TIBCO ETX</b>(tm)) software
+extends TIB functionality to provide a transactional form of publish/subscribe
+for distributed organizations. It is being adopted by financial institutions
+seeking secure, real-time, guaranteed data delivery across applications
+in heterogeneous computer environments.
+<br><a NAME="mq"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>MQSeries</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Probably the best is messaging, and ~70% of messaging market belongs
+to IBM software called <b><u>MQSeries</u></b>.
+<br>• <a href="http://www-4.ibm.com/software/ts/mqseries/about/">http://www-4.ibm.com/software/ts/mqseries/about/</a>
+- The IBM MQSeries family provides an open, scalable, industrial-strength
+messaging and information infrastructure (covers 66% of this niche market):
+<p>Main idea - exchange messages using a big central messaging server.
+<p>- <b><u>MQSeries messaging</u></b> (Heterogeneous any-to-any connectivity
+from desktop to mainframe (over 35 platforms supported). Assured one-time
+delivery. Has 65% market share, used by over 7000 customers, including
+70 of the Fortune 100 and two thirds of the world's leading banks. More
+than 350 of IBM's top 500 customers use MQSeries. One major US organization
+uses MQSeries to transmit over 250 million messages per day. There are
+more than 2000 Certified MQSeries Specialists working for more than 650
+different companies worldwide.)
+<p>- <b><u>MQSeries Integrator</u></b> - centralizes and applies the rules
+for operating your business (simplifies adding, extending, or replacing
+applications in an MQSeries network, applies intelligent routing, adds
+application-to-application message transformation, supports custom built
+and predefined application libraries, supports PeopleSoft GL, SAP R/3,
+and S.W.I.F.T. templates from New Era of Networks Inc. (NEON))
+<p>- <b><u>MQSeries Workflow</u></b> enables you to capture, visualize,
+and automate your business processes (MQSeries &amp; XML).
+<p><b><u>Books:</u></b>
+<br>Len Gilman's Distributed Computing with IBM MQSeries
+<br>Alan Dickman's Designing Applications with MSMQ
+<br><a NAME="citrix_server"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Citrix server</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>- <a href="http://www.citrix.com">www.citrix.com</a>/&nbsp; - Citrix
+Systems, Inc. offers today's version of a mainframe dumb-terminal architecture.&nbsp;
+The application runs on the Citrix <b><u>MetaFrame</u></b> server (<u>Windows
+Terminal Server</u> or <u>Unix</u>). Special technology (<u>ICA - Independent
+Computing Architecture</u>) is used to deliver the screens to the client,
+and to deliver client's actions (mouse movements, key pressing) back to
+the application on the server.
+<br>Features:
+<br><font color="#3333FF">&nbsp; - Very low bandwidth requirements (as
+low as a 28.8Kbps connection)</font>
+<br><font color="#3333FF">&nbsp; - Any client platofrm can be easily supported
+(Win32, Unix, Mac, handheld, etc.).</font>
+<br><font color="#3333FF">&nbsp; - Security (RSA RC5 encryption).</font>
+<p><b><u>Program Neighborhood</u></b>: control which users have access
+to specific applications, and “push” the applications out to the ICA Client.
+<br><b><u>Citrix Nfuse&reg;&nbsp;</u></b> - dynamically “pushing” applications
+out to users without the need of the full ICA Client.&nbsp; Using nothing
+more than a web browser, users can receive customized dynamic application
+lists, by user, and run these applications directly from their web browser.
+<br><b><u>Citrix Load Balancing Services</u></b> - to create distributed
+server “farms” (for load balancing &amp; redundancy in the event of a failure).
+<p>- <a href="http://download2.citrix.com/ctxlibrary/products/pdf/APPLICATION_SERVING_WP_0700.PDF">APPLICATION_SERVING_WP_0700.PDF</a>
+- a 14 pages brochure
+<br>- <a href="http://www.altotraining.com/Systems/Courses/CTX410.asp">http://www.altotraining.com/Systems/Courses/CTX410.asp</a>
+- training
+<br>- <a href="http://www.atrioncomm.com/solutions/citrix.htm">http://www.atrioncomm.com/solutions/citrix.htm</a>&nbsp;
+-
+<br>- <a href="http://www.integtech.com/products_citrix.htm">http://www.integtech.com/products_citrix.htm</a>
+-
+<p><b><u>ICA</u></b> = Citrix's <b><u>Independent Computing Architecture</u></b>:
+<br>- <a href="http://www.newtechgrp.com/resources/thinclientsrvr/thin_ica.htm">http://www.newtechgrp.com/resources/thinclientsrvr/thin_ica.htm</a>
+-
+<br>- <a href="http://www.citrix.com/products/clients/ica/technology.asp">http://www.citrix.com/products/clients/ica/technology.asp</a>
+-
+<br>- <a href="http://www.ucalgary.ca/library/access97/darnell/tsld004.htm">http://www.ucalgary.ca/library/access97/darnell/tsld004.htm</a>
+- ICA also known as "Intelligent Console Architechture"
+<p>Microsoft Windows Terminal Server (WTS) is a server program running
+on its Windows NT 4.0 (or higher)
+<br>&nbsp;operating system that provides the graphical user interface (GUI)
+of the Windows desktop to user terminals that
+<br>&nbsp;don't have this capability themselves. The latter include the
+relatively low-cost NetPC or "thin client" that some
+<br>&nbsp;companies are purchasing as alternatives to the autonomous and
+more expensive PC with its own operating
+<br>&nbsp;system and applications. The Windows Terminal Server was code-named
+"Hydra" during development.
+<br><a NAME="marimba"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Marimba</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>• <a href="http://www.marimba.com/">http://www.marimba.com/</a> - <b>Marimba
+Inc.</b> - software to distribute, manage, and maintain applications over
+corporate LANs&nbsp; (including mobile devices).&nbsp; Distributing and
+managing of mission-critical applications, documents and data.&nbsp; Distribution
+may use encryption, authentication and digital certificate technologies.
+<br><b><u>Examples of usage:</u></b>
+<br>• distribute applications in any major languages including Java, Visual
+Basic, C/C++, and SmallTalk.
+<br>• distribute MS Office to a desktop using Castanet or a WTS server
+using Timbale. Marimba's Application Packager accurately tracks intricate
+DLL and registry changes within Windows applications to ensure successful
+distribution and management of applications and updates.
+<br><b><u>Marimba committed to standards:</u></b>
+<br>• W3C standards,
+<br>• Microsoft OSD (Open Software Description) -a compact software language
+for describing the contents and dependencies of software packages
+<br>• in-house technology called DRP (Distribution and Replication Protocol)
+- a W3C draft.
+<br><b><u>Marimba products:</u></b>
+<br>• the <b>Castanet</b> product family - a robust framework to distribute,
+update and manage applications and related content over corporate Intranets,
+extranets and the Internet to multiple endpoints.
+<br>Also there are <b>DocService</b>, and <b>Timbale</b> product family.
+<br>• <a href="http://www.marimba.com/products/products.htm">http://www.marimba.com/products/products.htm</a>
+- <b>Marimba</b> products and services
+<br><a NAME="p2p"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>p2p</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>• <a href="http://conferences.oreillynet.com/cs/p2pweb2001/pub/w/16/tutorials.html">http://conferences.oreillynet.com/cs/p2pweb2001/pub/w/16/tutorials.html</a>
+- The O'Reilly Peer-to-Peer and Web Services Conference - Washington, D.C.
+-- September 18-21, 2001
+<br>• <a href="http://jxtaperl.jxta.org/project/www/docs/DomainFAQ.html">http://jxtaperl.jxta.org/project/www/docs/DomainFAQ.html</a>
+- Project JXTA - technologies for distributed network computing using peer-to-peer
+topology.&nbsp; Project started at Sun - and then posted under the Apache
+Software License.
+<br>• <a href="http://jxtaperl.jxta.org/servlets/ProjectHome">http://jxtaperl.jxta.org/servlets/ProjectHome</a>
+- JXTA in Perl
+<p><a NAME="tivoli"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Tivoli</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>• <a href="http://www.tivoli.com/">www.tivoli.com/</a> - Tivoli Systems
+is an IBM-owned soft.devel. company.&nbsp; Tools to help large organization
+to keep track of and upgrading computer equipment and various levels of
+operating systems and applications.
+<p>- E-business infrastructure management
+<br>- E-marketplace solutions
+<br>- Industry-specific solutions
+<br>- Service provider capabilities
+<br>- Availability and application management
+<br>- Network management
+<br>- Operations management
+<br>- OS/390 management
+<br>- Pervasive management (management of mobile devices and point-of-sale
+terminals)
+<br>- Storage and storage area network (SAN) management
+<br>- Security management
+<br>- Service management
+<br>- Web management
+<br>&nbsp;
+<br>&nbsp;
+</body>
+</html>

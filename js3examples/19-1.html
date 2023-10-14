@@ -1,0 +1,26 @@
+<!-- This example is from JavaScript: The Definitive Guide, 3rd Edition.   -->
+<!-- That book and this example were Written by David Flanagan.            -->
+<!-- They are Copyright (c) 1996, 1997, 1998 O'Reilly & Associates.        -->
+<!-- This example is provided WITHOUT WARRANTY either expressed or implied.-->
+<!-- You may study, use, modify, and distribute it for any purpose,        -->
+<!-- as long as this notice is retained.                                   -->
+
+<!-- Set a variable to determine what version of JavaScript we support. -->
+<!-- This technique can be extended to any number of language versions. -->
+<SCRIPT LANGUAGE="JavaScript"> var _version = 1.0; </SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.1">  _version = 1.1; </SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2">  _version = 1.2; </SCRIPT>
+
+<!-- Run this code on any JavaScript-enabled browser.  -->
+<!-- If the version is not high enough, display a message. -->
+<SCRIPT LANGUAGE="JavaScript">
+  if (_version < 1.1) {
+    document.write('<HR><H1>This Page Requires JavaScript 1.1</H1>');
+    document.write('Your JavaScript 1.0 browser cannot run this page.<HR>');
+  }
+</SCRIPT>
+
+<!-- Now run the actual program only on JavaScript 1.1 browsers. -->
+<SCRIPT LANGUAGE="JavaScript1.1">
+    // The actual JavaScript 1.1 code goes here.
+</SCRIPT>

@@ -1,0 +1,288 @@
+<HTML
+><HEAD
+><TITLE
+>[Chapter 7] 7.2 Shell Aliases and Functions</TITLE
+><META
+NAME="DC.title"
+CONTENT="Learning the Unix Operating System"><META
+NAME="DC.creator"
+CONTENT="Jerry Peek, Grace Todino &amp; John Strang"><META
+NAME="DC.publisher"
+CONTENT="O'Reilly &amp; Associates, Inc."><META
+NAME="DC.date"
+CONTENT="1998-08-03T20:53:15Z"><META
+NAME="DC.type"
+CONTENT="Text.Monograph"><META
+NAME="DC.format"
+CONTENT="text/html"
+SCHEME="MIME"><META
+NAME="DC.source"
+CONTENT="1-56592-390-1"
+SCHEME="ISBN"><META
+NAME="DC.language"
+CONTENT="en-US"><META
+NAME="generator"
+CONTENT="Jade 1.1/O'Reilly DocBook 3.0 to HTML 4.0"><LINK
+REV="made"
+HREF="mailto:online-books@oreilly.com"
+TITLE="Online Books Comments"><LINK
+REL="up"
+HREF="ch07_01.htm"
+TITLE="7. Where to Go from Here "><LINK
+REL="prev"
+HREF="ch07_01.htm"
+TITLE="7.1 Standard UNIX Documentation"><LINK
+REL="next"
+HREF="ch07_03.htm"
+TITLE="7.3 Programming"></HEAD
+><BODY
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+><DIV
+CLASS="htmlnav"
+><H1
+><IMG
+SRC="gifs/smbanner.gif"
+ALT="Learning the Unix Operating System"
+USEMAP="#srchmap"
+BORDER="0"></H1
+><MAP
+NAME="srchmap"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,466,69"
+HREF="index.htm"
+ALT="Learning the Unix Operating System"><AREA
+SHAPE="RECT"
+COORDS="467,0,514,18"
+HREF="jobjects/fsearch.htm"
+ALT="Search this book"></MAP
+><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch07_01.htm"
+TITLE="7.1 Standard UNIX Documentation"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 7.1 Standard UNIX Documentation"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><B
+><FONT
+FACE="ARIEL,HELVETICA,HELV,SANSERIF"
+SIZE="-1"
+>Chapter 7<BR>Where to Go from Here </FONT
+></B
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch07_03.htm"
+TITLE="7.3 Programming"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 7.3 Programming"
+BORDER="0"></A
+></TD
+></TR
+></TABLE
+>&nbsp;<HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"></DIV
+><DIV
+CLASS="SECT1"
+><H2
+CLASS="sect1"
+><A
+CLASS="title"
+NAME="LUX-CH-7-SECT-2"
+>7.2 Shell Aliases and Functions</A
+></H2
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-4435"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4437"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4439"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4441"
+></A
+>If you type command names that are hard for you to remember, or
+command lines that seem too long, you'll want to learn about <EM
+CLASS="emphasis"
+>shell
+aliases and functions</EM
+>.  These shell features let you abbreviate
+commands, command lines, and long series of commands.  In most cases,
+you can replace them with a single word or a word and a few arguments.
+For example, one of the long pipelines in <A
+CLASS="xref"
+HREF="ch05_01.htm"
+TITLE="Redirecting I/O "
+>Chapter 5, Redirecting I/O </A
+>, could be replaced
+by an alias or function named (for instance) &quot;aug&quot;.  When you type
+<B
+CLASS="emphasis.bold"
+>aug</B
+> at a shell prompt, the shell would list files modified
+in August, sorted by size.</P
+><P
+CLASS="para"
+>Making an alias or function is almost as simple as typing in the
+command line or lines that you want to run.  The references in
+<A
+CLASS="xref"
+HREF="appa_01.htm"
+TITLE="Reading List "
+>Appendix A, Reading List </A
+>, have more information. Shell aliases and functions are
+actually a simple case of shell programming.</P
+></DIV
+><DIV
+CLASS="htmlnav"
+><P
+></P
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch07_01.htm"
+TITLE="7.1 Standard UNIX Documentation"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 7.1 Standard UNIX Documentation"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="book"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"
+><IMG
+SRC="../gifs/txthome.gif"
+ALT="Learning the Unix Operating System"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch07_03.htm"
+TITLE="7.3 Programming"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 7.3 Programming"
+BORDER="0"></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+>7.1 Standard UNIX Documentation</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="index"
+HREF="index/idx_0.htm"
+TITLE="Book Index"
+><IMG
+SRC="../gifs/index.gif"
+ALT="Book Index"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+>7.3 Programming</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><IMG
+SRC="../gifs/smnavbar.gif"
+USEMAP="#map"
+BORDER="0"
+ALT="The UNIX CD Bookshelf Navigation"><MAP
+NAME="map"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,73,21"
+HREF="../index.htm"
+ALT="The UNIX CD Bookshelf"><AREA
+SHAPE="RECT"
+COORDS="74,0,163,21"
+HREF="../upt/index.htm"
+ALT="UNIX Power Tools"><AREA
+SHAPE="RECT"
+COORDS="164,0,257,21"
+HREF="../unixnut/index.htm"
+ALT="UNIX in a Nutshell"><AREA
+SHAPE="RECT"
+COORDS="258,0,321,21"
+HREF="../vi/index.htm"
+ALT="Learning the vi Editor"><AREA
+SHAPE="RECT"
+COORDS="322,0,378,21"
+HREF="../sedawk/index.htm"
+ALT="sed &amp; awk"><AREA
+SHAPE="RECT"
+COORDS="379,0,438,21"
+HREF="../ksh/index.htm"
+ALT="Learning the Korn Shell"><AREA
+SHAPE="RECT"
+COORDS="439,0,514,21"
+HREF="index.htm"
+ALT="Learning the UNIX Operating System"></MAP
+></DIV
+></BODY
+></HTML
+>

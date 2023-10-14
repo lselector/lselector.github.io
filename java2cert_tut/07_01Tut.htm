@@ -1,0 +1,1406 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+
+
+
+
+
+
+<head>
+
+
+
+
+
+
+
+<title>7.1) Thread creation</title>
+
+
+
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META name="GENERATOR" content="IBM WebSphere Homepage Builder V4.0.0 for Linux">
+<STYLE TYPE="text/css">
+
+
+
+
+
+
+
+<!--
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+</STYLE>
+
+
+
+
+
+
+
+<link rel="stylesheet" href="tutor.css"></head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body bgcolor="#FFFFFF">
+
+<table width=95% border=0 cellpadding=2 cellspacing=0 style="page-break-before: always">
+
+  <col width=147*> <col width=109*> 
+
+  <tr> 
+
+    <td width=57% height=104> 
+
+      <p><a href= "introj2.htm" ><img src= "btnIndex.jpg"  name="Graphic1" alt="Return to Tutorial Index" align=BOTTOM width=55 height=39 border=0></a><a href= "introj2.htm" ><br>
+
+        <br>
+
+        </a><a href= "index.htm" ><img src= "btnHome.jpg"  name="Graphic2" alt="Back to the home page of this site" align=BOTTOM width=55 height=39 border=0></a> 
+
+      </p>
+
+    </td>
+
+    <td width=43%> 
+
+      <p align=RIGHT><img src= "hat.gif"  name="Graphic3" alt="morterboard" align=BOTTOM width=118 height=113 border=0></p>
+
+    </td>
+
+  </tr>
+
+  <tr> 
+
+    <td width=57% height=11> 
+
+      <h1 align=LEFT>Java2 Certification <br>
+
+        Tutorial </h1>
+
+    </td>
+
+    <td width=43% bgcolor="#ff9900"> 
+
+      <p>&nbsp;</p>
+
+    </td>
+
+  </tr>
+
+</table>
+
+<p> You can discuss this topic with others at <a href= "http://www.jchq.net/discus" >http://www.jchq.net/discus</a><br>
+
+  Read reviews and buy a Java Certification book at <a href= "http://www.jchq.net/bookreviews/jcertbooks.htm" >http://www.jchq.net/bookreviews/jcertbooks.htm</a> 
+
+  <br>
+
+</p>
+
+<hr size=5 noshade>
+
+<h1>7) <font face="GENEVA, HELVETICA, ARIAL, LUCIDA SANS"><b>Threads</b></font> 
+
+
+
+</h1>
+
+
+
+
+
+
+
+<h1>Objective 1) </h1>
+
+
+
+
+
+
+
+<p><font face="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">Write code to define, instantiate 
+
+
+
+
+
+
+
+  and start new threads using both java.lang.Thread and java.lang.Runnable</font></p>
+
+
+
+
+
+
+
+<h3>What is a thread? </h3>
+
+
+
+
+
+
+
+<p>Threads are lightweight processes that appear to run in parallel with your 
+
+
+
+
+
+
+
+  main program. Unlike a process a thread shares memory and data with the rest 
+
+
+
+
+
+
+
+  of the program. The word thread is a contraction of &quot;thread of execution&quot;, 
+
+
+
+
+
+
+
+  you might like to imagine a rope from which you have frayed the end and taken 
+
+
+
+
+
+
+
+  one thread. It is still part of the main rope, but it can be separated from 
+
+
+
+
+
+
+
+  the main and manipulated on its own. An example of where threads can be useful 
+
+
+
+
+
+
+
+  is in printing. When you click on a print button you probably don't want the 
+
+
+
+
+
+
+
+  main program to stop responding until printing has finished. What would be nice 
+
+
+
+
+
+
+
+  is that the printing process started running &quot;in the background&quot; and 
+
+
+
+
+
+
+
+  allowed you to continue using the main portion of the program. <br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  It would also be useful if the main program would respond if the printing thread 
+
+
+
+
+
+
+
+  encountered a problem. A common example used to illustrate threads is to create 
+
+
+
+
+
+
+
+  a GUI application that launches a bouncing ball every time a button is clicked. 
+
+
+
+
+
+
+
+  Unlike most language threading is embedded at the heart of the Java language, 
+
+
+
+
+
+
+
+  much of it at the level of the ultimate ancestor class called Object.</p>
+
+
+
+
+
+
+
+<h3>The two ways of creating a thread </h3>
+
+
+
+
+
+
+
+<p>Of the two methods of creating a new thread the use of Runnable is probably 
+
+
+
+
+
+
+
+  more common, but you must know about both for the purpose of the exam. Here 
+
+
+
+
+
+
+
+  is an example of a class created with the Runnable interface.</p>
+
+
+
+
+
+
+
+<pre>class MyClass implements Runnable{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void run(){//Blank Body}
+}</pre>
+
+
+
+
+
+
+
+<p>Creating the thread of execution.</p>
+
+
+
+
+
+
+
+<pre>MyClass mc = new MyClass();</pre>
+
+
+
+
+
+
+
+<p><br>
+
+
+
+
+
+
+
+  Any class that implements an interface must create a method to match all of 
+
+
+
+
+
+
+
+  the methods in the interface. The methods need not do anything sensible, i.e. 
+
+
+
+
+
+
+
+  they may have blank bodies, but they must be there. Thus I include the method 
+
+
+
+
+
+
+
+  <i>run</i> even in this little example, because you must include a run method 
+
+
+
+
+
+
+
+  if you implement Runnable. Not including a run method will cause a compile time 
+
+
+
+
+
+
+
+  error.&nbsp;</p>
+
+
+
+
+
+
+
+<p>To do anything useful when you create a thread of execution from a class you 
+
+
+
+
+
+
+
+  would, of course need to put something where I have put</p>
+
+
+
+
+
+
+
+<pre>//Blank Body.</pre>
+
+
+
+
+
+
+
+<p>The other method for creating a thread is to create a class that is descended 
+
+
+
+
+
+
+
+  from Thread. This is easy to do but it means you cannot inherit from any other 
+
+
+
+
+
+
+
+  class, as Java only supports single inheritance.&nbsp;Thus if you are creating 
+
+
+
+
+
+
+
+  a Button you cannot add threading via this method because a Button inherits 
+
+
+
+
+
+
+
+  from the AWT Button class and that uses your one shot at inheritance. There 
+
+
+
+
+
+
+
+  is some debate as to which way of creating a thread is more truly object oriented, 
+
+
+
+
+
+
+
+  but you do need to go into this for the purpose of the exam. 
+
+
+
+
+
+
+
+<h3>Instantiating and starting a Thread </h3>
+
+
+
+
+
+
+
+<p>Although the code that runs in your thread is in a method called run, you do 
+
+
+
+
+
+
+
+  not call this method directly, instead you call the start method of the thread 
+
+
+
+
+
+
+
+  class. The Runnable interface does not contain a start method, so to get at 
+
+
+
+
+
+
+
+  this and the other useful methods for threads (sleep, suspend etc etc), you 
+
+
+
+
+
+
+
+  pass your class with the Runnable interface as the constructor to an instance 
+
+
+
+
+
+
+
+  of the Thread class.</p>
+
+
+
+
+
+
+
+<p>Thus to cause the thread to execute from a class that implements Runnable you 
+
+
+
+
+
+
+
+  would call the following</p>
+
+
+
+
+
+
+
+<pre>MyClass mc = new MyClass();</pre>
+
+
+
+
+
+
+
+<pre>Thread t = new Thread(mc);
+t.start();
+</pre>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="9%"><img src= "key2.gif"  width="106" height="73"
+
+
+
+
+
+
+
+align="bottom" border="0"></td>
+
+
+
+
+
+
+
+    <td width="91%"> 
+
+
+
+
+
+
+
+      <h4><font color="red">Although it is the <i>run</i> method code that executes, 
+
+
+
+
+
+
+
+        a thread is actually <br>
+
+
+
+
+
+
+
+        started via the <i>start</i> method</font> </h4>
+
+
+
+
+
+
+
+    </td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<p>Again note that was a call to <i>start</i>, not a call to <i>run</i>, even 
+
+
+
+
+
+
+
+  though it is the code in the <i>run</i> method in your class that actually executes.<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  If you create your class as a sub class of Thread you can simply call the start 
+
+
+
+
+
+
+
+  method. The drawback of sub classing the Thread class is that due to only supporting 
+
+
+
+
+
+
+
+  single inheritance you cannot inherit the functionality of any other class.<br>
+
+
+
+
+
+
+
+</p>
+
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="11%"><img src= "Quiz.gif"  width="99" height="101"></td>
+
+
+
+
+
+
+
+    <td width="89%">&nbsp;</td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<h1>Questions</h1>
+
+
+
+
+
+
+
+<h4><b>Question 1)</b></h4>
+
+
+
+
+
+
+
+<p>What will happen when you attempt to compile and run this code?</p>
+
+
+
+
+
+
+
+<pre>public class Runt implements Runnable{
+public static void main(String argv[]){
+        Runt r = new Runt();
+        Thread t = new Thread(r);
+        t.start();
+        }
+        public void start(){
+        for(int i=0;i&lt;100;i++)
+                System.out.println(i);
+        }
+}
+</pre>
+
+
+
+
+
+
+
+<p>1) Compilation and output of count from 0 to 99<br>
+
+
+
+
+
+
+
+  2) Compilation and no output<br>
+
+
+
+
+
+
+
+  3) Compile time error: class Runt is an abstract class. It can't be instantiated.<br>
+
+
+
+
+
+
+
+  4) Compile time error, method <i>start</i> cannot be called directly<br>
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 2)</b> </h4>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<p>Which of the following statements are true?</p>
+
+
+
+
+
+
+
+<p>1) Directly sub classing Thread gives you access to more functionality of the 
+
+
+
+
+
+
+
+  Java threading capability than using the Runnable interface<br>
+
+
+
+
+
+
+
+  2) Using the Runnable interface means you do not have to create an instance 
+
+
+
+
+
+
+
+  of the Thread class and can call <i>run</i> directly<br>
+
+
+
+
+
+
+
+  3) Both using the Runnable interface and subclassing of Thread require calling 
+
+
+
+
+
+
+
+  <i>start</i> to begin execution of a Thread<br>
+
+
+
+
+
+
+
+  4) The Runnable interface requires only one method to be implemented, this is 
+
+
+
+
+
+
+
+  called <i>run<br>
+
+
+
+
+
+
+
+  </i> 
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 3)</b> </h4>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<p>What will happen when you attempt to compile and run the following code?</p>
+
+
+
+
+
+
+
+<pre>public class Runt extends Thread{
+public static void main(String argv[]){
+        Runt r = new Runt();
+        r.run();
+        }
+
+        public void run(){
+        for(int i=0;i&lt;100;i++)
+                System.out.println(i);
+        }
+}</pre>
+
+
+
+
+
+
+
+<p>1) Compilation and output of count from 0 to 99<br>
+
+
+
+
+
+
+
+  2) Compilation and no output<br>
+
+
+
+
+
+
+
+  3) Compile time error: class Runt is an abstract class. It can't be instantiated.<br>
+
+
+
+
+
+
+
+  4) Compile time error, method <i>start</i> has not been defined<br>
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 4)</b> </h4>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<p>Which of the following statements are true?</p>
+
+
+
+
+
+
+
+<p>1) To implement threading in a program you must import the class java.io.Thread<br>
+
+
+
+
+
+
+
+  2) The code that actually runs when you start a thread is placed in the <i>run</i> 
+
+
+
+
+
+
+
+  method<br>
+
+
+
+
+
+
+
+  3) Threads may share data between one another<br>
+
+
+
+
+
+
+
+  4) To start a Thread executing you call the <i>start</i> method and not the 
+
+
+
+
+
+
+
+  <i>run</i> method 
+
+
+
+
+
+
+
+<h1>Answers</h1>
+
+
+
+
+
+
+
+<h4><b>Answer 1)</b></h4>
+
+
+
+
+
+
+
+<p><b> </b>3) Compile time error: class Runt is an abstract class. It can't be 
+
+
+
+
+
+
+
+  instantiated.<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  The class implements Runnable but does not define the run method.</p>
+
+
+
+
+
+
+
+<h4> <b>Answer 2)</b></h4>
+
+
+
+
+
+
+
+<p><b> </b>3) Both using the Runnable interface and subclassing of Thread require 
+
+
+
+
+
+
+
+  calling <i>start</i> to begin execution of a Thread<br>
+
+
+
+
+
+
+
+  4) The Runnable interface requires only one method to be implemented, this is 
+
+
+
+
+
+
+
+  called <i>run</i></p>
+
+
+
+
+
+
+
+<h4> <b>Answer 3)</b></h4>
+
+
+
+
+
+
+
+<p><b> </b>1) Compilation and output of count from 0 to 99<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  However, note that this code does not start the execution of the Thread and 
+
+
+
+
+
+
+
+  the run method should not be called in this way.</p>
+
+
+
+
+
+
+
+<h4> <b>Answer 4)</b></h4>
+
+
+
+
+
+
+
+<p> 2) The code that actually runs when you start a thread is placed in the <i>run</i> 
+
+
+
+
+
+
+
+  method<br>
+
+
+
+
+
+
+
+  3) Threads may share data between one another<br>
+
+
+
+
+
+
+
+  4) To start a Thread executing you call the <i>start</i> method and not the 
+
+
+
+
+
+
+
+  <i>run</i> method<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  You do not need to import any classes as Threading is an integral part of the 
+
+
+
+
+
+
+
+  Java language<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+</p>
+
+
+
+
+
+
+
+<hr align="CENTER">
+<H4 align="center">Other sources on this topic</H4>
+<P><B>This topic is covered in the Sun Tutorial
+at </B><BR>
+<A href= "http://java.sun.com/docs/books/tutorial/essential/threads/customizing.html" >http://java.sun.com/docs/books/tutorial/essential/threads/customizing.html</A><BR>
+<BR>
+<B>Richard Baldwin Covers this topic at </B><A href= "http://www.geocities.com/Athens/Acropolis/3797/Java058.htm#two ways to thread" ><BR>
+http://www.Geocities.com/Athens/Acropolis/3797/Java058.htm#two
+ways to thread</A><B><BR>
+<BR>
+Jyothi Krishnan on this topic at <BR>
+</B><A href= "http://www.geocities.com/SiliconValley/Network/3693/obj_sec7.html#obj22" >http://www.geocities.com/SiliconValley/Network/3693/obj_sec7.html#obj22</A><BR>
+<BR>
+Thread part of of Elliot Rusty Harolds Tutorial
+Course<BR>
+<A href= "http://www.ibiblio.org/javafaq/course/week11/index.html" >
+http://www.ibiblio.org/javafaq/course/week11/index.html</A><BR>
+</P>
+<p>Last updated<br>
+9 November 2000<br>
+copyright &copy; Marcus Green 2000</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>
+
+
+
+
+
+
+

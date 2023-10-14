@@ -1,0 +1,2717 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (X11; U; Linux 2.4.18-4GB i686) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>javascript</title>
+<!--
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Javascript</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Javascript</font></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 WIDTH="80%" >
+<tr>
+<td><b><font color="#CC0000">On this page:</font></b></td>
+
+<td></td>
+
+<td></td>
+
+<td></td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP NOWRAP WIDTH="20%"><font color="#6699CC">*
+</font><b><font color="#000099"><a href="#main_sites">main_sites</a></font></b>
+<br><font color="#6699CC">*
+<b><a href="#books">books</a></b></font>
+<br><font color="#6699CC">*
+<b><a href="#examples">examples &amp; references</a></b></font>
+<br>
+<font color="#6699CC">*
+<b><a href="#debugging">debugging</a></b></font>
+<br>
+<font color="#6699CC">*
+<b><a href="#objects">objects</a></b></font>
+<br><font color="#6699CC">*
+<b><a href="#image_rollovers">image rollovers</a></b></font></td>
+
+<td ALIGN=LEFT VALIGN=TOP NOWRAP><font color="#6699CC">*
+<b><a href="#misc_examples">misc.examples</a></b></font>
+<br><font color="#000000"><a href="#misc_break_lines">break lines</a>,
+<a href="#misc_alert">alerts</a>,
+<a href="#misc_form">form</a>,
+<a href="#misc_digital_clock">clock</a>,</font>
+<br><font color="#000000"><a href="#misc_hidden_frameset">hidden frame</a>,
+<a href="#misc_select">select</a>,&nbsp;</font>
+<br><font color="#000000"><a href="#no_multithreading">no multithreading</a>,&nbsp;</font>
+<br><font color="#000000"><a href="#misc_regex">regex</a>,
+<a href="#misc_hash">hash</a>,</font>
+<br><font color="#000000"><a href="#misc_reverse_string">reverse</a>,
+<a href="#misc_reference">reference</a>,</font>
+<br><font color="#000000"><a href="#misc_location">location</a>, <a href="#misc_caching">caching</a>,
+<a href="#misc_colors">colors</a>,</font>
+<br><font color="#000000"><a href="#misc_java_applets">java applet &lt;=>
+script</a>,</font></td>
+
+<td ALIGN=LEFT VALIGN=TOP NOWRAP><font color="#6699CC">*
+<b><a href="#add_to_favorites">add
+to favorites</a></b></font>
+<br><font color="#6699CC">*
+<b><a href="#loan">loan payments</a></b></font>
+<br><font color="#6699CC">*
+<b><a href="#list2list">list2list</a></b></font>
+<br><font color="#6699CC">*
+<b><a href="#win2win">win2win</a></b></font>
+<br><font color="#6699CC">*
+<b><a href="#radio-buttons">radio buttons</a></b></font>
+<br><font color="#6699CC">*
+<b><a href="#formcopy">formcopy</a></b></font>
+<br><font color="#6699CC">*
+<b><a href="#cookies">cookies</a></b></font>
+<br><font color="#6699CC">*
+<b><a href="#date_pickers">date_pickers</a></b></font></td>
+
+<td ALIGN=LEFT VALIGN=TOP NOWRAP><font color="#6699CC">*
+<b><a href="#string_object">String
+object</a></b></font>
+<br><font color="#6699CC">*
+<b><a href="#math_object">Math</a></b>*<b><a href="#number_object">Number</a></b></font>
+<br><font color="#6699CC">*
+<b><a href="#array_object">array</a></b></font>
+<br><font color="#6699CC">*
+<b><a href="#functions">misc_functions</a></b></font>
+<br><font color="#6699CC">*
+<b><a href="#object_object">Object</a></b></font></td>
+</tr>
+</table>
+
+<p>See more on using Javascript in DHTML on my <a href="front_end.html">html/dhtml
+page</a> 
+<table width="99%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>Note (2009):
+    <p>This page was first created in 1999. Today (2009) it is definitely outdated,  although still may be useful.  Javascript made a lot of progress in the last 10 years. And there is much more information on the web. You can look on wikipedia, or you can search for javascript tutorials or javascript interview questions, or you can search for specific topic, for example: javascript closures, etc. Here are some good pages:
+      <ul>
+        <li><a href="http://en.wikipedia.org/wiki/JavaScript">http://en.wikipedia.org/wiki/JavaScript</a> </li>
+        <li><a href="http://en.wikipedia.org/wiki/JavaScript_library">http://en.wikipedia.org/wiki/JavaScript_library</a> ( <a href="http://www.prototypejs.org/">Prototype</a>, <a href="http://script.aculo.us/">script.aculo.us</a>,  <a href="http://jquery.com/">jQuery</a>,   <a href="http://extjs.com/">Ext</a>,  <a href="http://www.dojotoolkit.org/">Dojo Toolkit</a>, etc.)</li>
+        <li><a href="http://blog.morrisjohns.com/javascript_closures_for_dummies" eudora="autourl">http://blog.morrisjohns.com/javascript_closures_for_dummies</a></li>
+        <li><a href="http://en.wikipedia.org/wiki/Ajax_(programming)">http://en.wikipedia.org/wiki/Ajax_(programming)</a> ( Asynchronous JavaScript and XML )</li>
+        <li><a href="http://en.wikipedia.org/wiki/Json">http://en.wikipedia.org/wiki/Json</a> ( JavaScript Object Notation )</li>
+      </ul>
+    <p>Note (2014):</p>
+    <p>Nowadays you can use javascript both on the server side and on front end, and you can write html5/javascript apps which work in browser and on mobile devices:</p>
+    <ul>
+      <li>node.js - <a href="http://en.wikipedia.org/wiki/Node.js">http://en.wikipedia.org/wiki/Node.js</a></li>
+      <li>node.js express - <a href="http://en.wikipedia.org/wiki/Express.js">http://en.wikipedia.org/wiki/Express.js</a></li>
+      <li>jade template language - <a href="http://jade-lang.com">http://jade-lang.com</a></li>
+      <li>bootstrap - <a href="http://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)">http://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)</a></li>
+      <li>JQuery - <a href="http://en.wikipedia.org/wiki/JQuery">http://en.wikipedia.org/wiki/JQuery</a></li>
+      <li>underscore.js - <a href="http://en.wikipedia.org/wiki/Underscore.js">http://en.wikipedia.org/wiki/Underscore.js</a></li>
+      <li>      coffeescript - <a href="http://en.wikipedia.org/wiki/CoffeeScript">http://en.wikipedia.org/wiki/CoffeeScript</a></li>
+      <li> reactjs      - <a href="http://facebook.github.io/react/">http://facebook.github.io/react/</a> - from Facebook</li>
+      <li>      angularjs - <a href="http://www.w3schools.com/angular/">http://www.w3schools.com/angular/</a></li>
+      <li>      backbone - <a href="http://backbonejs.org">http://backbonejs.org</a></li>
+      <li>pandas for JavaScript -  <a href="http://wq.io/docs/pandas-js">http://wq.io/docs/pandas-js</a></li>
+      <li>D3 - for data visualization 
+        - <a href="http://schoolofdata.org/2013/08/12/climbing-the-d3-js-visualisation-stack/">http://schoolofdata.org/2013/08/12/climbing-the-d3-js-visualisation-stack/</a> </li>
+      <li>Angular - <a href="http://en.wikipedia.org/wiki/AngularJS">http://en.wikipedia.org/wiki/AngularJS</a> </li>
+      <li>        Backbone - <a href="http://en.wikipedia.org/wiki/Backbone.js">http://en.wikipedia.org/wiki/Backbone.js</a></li>
+      <li>        Ember JS - <a href="http://en.wikipedia.org/wiki/Ember.js">http://en.wikipedia.org/wiki/Ember.js</a></li>
+      <li>        Stapes - <a href="http://stackoverflow.com/tags/stapes.js/info">http://stackoverflow.com/tags/stapes.js/info</a></li>
+      <li>        Meteor - <a href="http://en.wikipedia.org/wiki/Meteor_(web_framework)">http://en.wikipedia.org/wiki/Meteor_(web_framework)</a> </li>
+      <li>Drywall - a website and user system for node.js - <a href="http://jedireza.github.io/drywall/">http://jedireza.github.io/drywall/</a></li>
+      </ul>
+    <p>Here's your homework:</p>
+    <ul>
+      <li>Get an account on heroku (<a href="https://www.heroku.com">https://www.heroku.com</a> - cloud application platform).</li>
+      <li>        Go through the node.js tutorial on heroku and install node, etc.</li>
+      <li>        Install drywall </li>
+      <li>        Look through the drywall code and see if you can understand how it works. It has pretty all of the trendiest tools like boostrap, backbone, express etc.</li>
+    </ul></td>
+  </tr>
+</table>
+<p>--</p>
+<p>It would be nice to be able to make HTML page clever enough to do something
+  meaningful or to interact with the user without running to the server every
+  time. For example, if user has made a mistake filling out the form, the
+  validation can be done using some programming embedded into HTML page.&nbsp;
+  This kind of programming is usually done using Javascript.
+<p>The idea of having a script embedded into a static HTML page to add
+functionality is very powerful. Many scripting languages were used for
+this purpose. The embedded scripts can be interpreted
+<br>&nbsp;- either on the side of the web server (Server side Javascript,
+ASP, PHP, JSP, etc.),
+<br>&nbsp;- or on the client browser (client-side Javascript, JScript,
+VBScript, Perlscript, etc.).
+<p>Below we will talk about client-side (browser) Javascript.
+<p>Javascript is a lightweight interpreted programming language.&nbsp;
+It allows to:
+<br>&nbsp;- Detect the browser type, access some properties of the browser,
+window, and HTML document
+<br>&nbsp;- Control (to some extent) elements of the browser window and
+document (for example, images, layers, etc.).
+<br>&nbsp;- Interact with the user, read and write cookies, interact with
+java applets
+<br>&nbsp;- Do misc. math. calculations, processing with regular expressions,
+- and much more.
+<p>Javascript syntax is similar to C, C++ and java.&nbsp; You see similar
+if/else statements, for/while loops, &amp;&amp; operator, {&nbsp; } blocks,
+/* ..*/&nbsp; and // comments, etc. But there are also many differences:
+<br>&nbsp;- JavaScript is an untyped language. Same variable can be a number
+or a multi-line text (similar to perl).
+<br>&nbsp;- Objects in JavaScript are more like Perl's associative arrays.
+<p><b><u>Cross-browser pains:</u></b>
+<br>Different versions of browsers on different platforms vary dramatically
+in how they support Javascript.&nbsp; Everything is different: object models
+of the browsers and documents in them (DOM), and how to access document
+elements, event handling, etc. Designing a cross-browser Javascript is
+a painful process, because you have to detect the type and version of the
+browser and write 2 or more versions of the same code embedded in the same
+document. Plus after every change you have to test it on different browsers
+and platforms as well.
+<br><a NAME="main_sites"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Main Sites</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 COLS=1 WIDTH="100%" BGCOLOR="#CCFFFF" >
+<tr>
+<td><b><font color="#CC0000">Dan Steinman's tutorial and API (not updated
+after October 1999):</font></b>
+<br><font color="#6699CC">* </font><b><a href="http://www.dansteinman.com/dynduo/">www.dansteinman.com/dynduo/</a></b>
+- CrossBrowser DHTML Tutorial and API
+<br><font color="#6699CC">* </font><b><a href="http://www.dansteinman.com">dansteinman.com</a></b>
+<br><font color="#6699CC">&nbsp;&nbsp;&nbsp;&nbsp; *</font><a href="http://www.dansteinman.com/dynduo/en/links.html">/dynduo/en/links.html</a>
+- Dan's DHTML links
+<br><font color="#6699CC">&nbsp;&nbsp;&nbsp;&nbsp; *</font><a href="http://www.dansteinman.com/dynapi/js/">/dynapi/js/</a>
+- collection of javascripts,&nbsp;
+<br><font color="#6699CC">&nbsp;&nbsp;&nbsp;&nbsp; *</font><a href="http://ddart.pe.kr/dhtml/dynduo/">ddart.pe.kr/dhtml/dynduo/</a>
+- mirror site
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><font color="#CC0000">Download the
+tutorial and API:</font></b>
+<br><font color="#6699CC">&nbsp;&nbsp;&nbsp;&nbsp; * </font><a href="http://www.dansteinman.com/downloads/dynduo/dynduo-19991024.zip">/downloads/dynduo/dynduo-19991024.zip</a>
+- tutorial in HTML
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (local <a href="dynduo1.txt">basics</a>
+and <a href="dynduo2.txt">DynLayer API</a> as txt to copy into editor for
+printing)
+<br><font color="#6699CC">&nbsp;&nbsp;&nbsp;&nbsp; * </font><a href="http://www.dansteinman.com/downloads/dynapi/dynapi-19991024.zip">/downloads/dynapi/dynapi-19991024.zip</a>
+- APIs
+<br><font color="#6699CC">&nbsp;&nbsp;&nbsp;&nbsp; * </font><a href="http://www.dansteinman.com/downloads/dynduo/pdf/dynduo-19991024.pdf">/downloads/dynduo/pdf/dynduo-19991024.pdf</a>
+- 123 page printable tutorial
+<p><b><font color="#CC0000">See (and download) next generation API here
+(frequently updated):</font></b>
+<br><font color="#6699CC">* </font><b><a href="http://dynapi.sourceforge.net/index.php">dynapi.sourceforge.net/index.php</a></b>
+- DynAPI - library and tutorials</td>
+</tr>
+
+<tr>
+<td><font color="#6699CC">* </font><b><a href="http://www.dynamicdrive.com">DynamicDrive</a></b>
+- very good examples and convenient to use</td>
+</tr>
+
+<tr>
+<td><font color="#6699CC">* </font><b><a href="http://www.brainjar.com/">www.brainjar.com</a></b>
+- Javascript</td>
+</tr>
+</table>
+
+<p><font color="#6699CC">* </font><font color="#000000"><a href="http://developer.netscape.com/docs/manuals/communicator/jsguide4/index.htm">developer.netscape.com/docs/manuals/communicator/jsguide4</a>
+- Netscape's JavaScript Guide</font>
+<br><font color="#6699CC">* </font><font color="#000000"><a href="http://home.netscape.com/eng/mozilla/3.0/handbook/javascript/index.html">home.netscape.com/eng/mozilla/3.0/handbook/javascript</a>
+- Netscape's JavaScript Handbook</font>
+<br><font color="#6699CC">* </font><a href="http://www.insidedhtml.com">Inside
+DHTML</a> -
+<br><font color="#6699CC">* </font><a href="http://www.ruleweb.com/dhtml/">www.ruleweb.com/dhtml/</a>
+- Jeff Rule's Dynamic HTML and SMIL Site
+<br><font color="#6699CC">* </font><a href="http://www.HotScripts.com">HotScripts.com</a>
+-
+<br><font color="#6699CC">* </font><a href="http://www.javascripts.com">Javascripts.com</a>
+-
+<br><font color="#6699CC">* </font><font color="#000000"><a href="http://www.javascript.com/">JavaScript.com</a>
+-</font>
+<p><font color="#6699CC">* </font><a href="http://www.scriptsearch.com">www.scriptsearch.com</a>
+-
+<br><font color="#6699CC">* </font><a href="http://www.dhtmlzone.com">www.dhtmlzone.com</a>
+-
+<br><font color="#6699CC">* </font><a href="http://www.developer.com" target="_top">www.developer.com</a>
+- eathweb
+<br><font color="#6699CC">* </font><a href="http://www.builder.com">www.builder.com</a>
+- CNET
+<br><font color="#6699CC">* </font><a href="http://www.stars.com/" target="_top">www.stars.com</a>
+- the Web Developer's Virtual Library -
+<br><font color="#6699CC">* </font><a href="http://www.webreference.com/" target="_top">WebReference.com</a>
+-
+<br><font color="#6699CC">* </font><font color="#000000"><a href="http://www.webcoder.com/">www.WebCoder.com</a>
+- JavaScript and Dynamic HTML</font>
+<br><font color="#6699CC">* </font><a href="http://javascript.internet.com/">javascript.internet.com/</a>
+- <font color="#000000">The Javascript Source, tons of "cut and paste"</font>
+<br><font color="#6699CC">* </font><font color="#000000"><a href="http://www.irt.org/articles/script.htm">www.irt.org/articles/script.htm</a>
+- Javascript articles</font>
+<br><font color="#6699CC">* </font><font color="#000000"><a href="http://www.ecma.ch/stand/ECMA-262.htm">JavaScript
+Standard</a> -</font>
+<br><font color="#6699CC">* </font><font color="#000000"><a href="news://usenet/comp.lang.javascript" class="link">news://usenet/comp.lang.javascript</a>
+- Usenet Javascript newsgroup</font>
+<br><font color="#6699CC">* </font><font color="#000000"><a href="http://home.earthlink.net/~oxherder/" class="link">home.earthlink.net/~oxherder/</a>
+- The Way of Javascript - A brief JavaScript tutorial inspired by the 12th
+century verse of the Zen Patriarch, Kakuan - commenting on this set of
+Taoist drawings.</font>
+<br><font color="#6699CC">* </font><a href="http://www.wilsonmar.com/1javascr.htm">www.wilsonmar.com/1javascr.htm</a><font color="#000000">
+- </font>sophisticated processing on the browser using Javascript (see
+also XML and DOM - Document Object Model)
+<br><font color="#6699CC">* </font><a href="http://www.irt.org/articles/js211/index.htm">www.irt.org/articles/js211/index.htm</a>
+- article on multi-dialogue forms
+<p><font color="#6699CC">* </font><a href="http://developer.netscape.com">developer.netscape.com</a>&nbsp;&nbsp;
+JavaScript (on Netscape site)
+<br><font color="#6699CC">* </font><a href="http://rummelplatz.uni-mannheim.de/~skoch/js/script.htm">rummelplatz.uni-mannheim.de/~skoch/js/script.htm</a>
+- JavaScript tutorial
+<br><font color="#6699CC">* </font><a href="http://www.hudziak.com/haznet/">www.hudziak.com/haznet/</a>
+- more JavaScripts
+<br><font color="#6699CC">* </font><a href="http://www.zdnet.com/devhead/resources/scriptlibrary/index.html">www.zdnet.com/devhead/resources/scriptlibrary/index.html</a>
+- more JavaScripts
+<br><font color="#6699CC">* </font><a href="http://www.javagoodies.com">www.javagoodies.com</a>
+- Javascript, etc.
+<br><font color="#6699CC">* </font><a href="http://www.w3-tech.com/crash/CrashCourse.html">www.w3-tech.com/crash/CrashCourse.html</a>
+- crash courses in HTML, Java, JavaScript
+<p><b><u>More javascript:</u></b>
+<br><font color="#6699CC">*</font><font color="#000000"><a href="http://www.thefreesite.com/Free_Java_JavaScript/">www.thefreesite.com/Free_Java_JavaScript</a>
+- free Javascript/ Java</font>
+<br><font color="#6699CC">* </font><a href="http://www.web-hosting.com/javalinks.html">Javascript
+Links</a>
+<br><font color="#6699CC">* </font><a href="http://javascript.internet.com/">Javascript
+Source</a>
+<br><font color="#6699CC">* </font><a href="http://www.javascripts.com/toc.cfm">Earthweb
+Javascript</a>
+<br><font color="#6699CC">* </font><a href="http://www.pageresource.com/jscript">PageResource
+Page</a>
+<br><font color="#6699CC">* </font><a href="http://docs.iplanet.com/docs/manuals/ssjs.html">ServerSide
+Javascript</a>
+<br><a NAME="books"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Books</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a>-
+<a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Books:</font></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 COLS=1 WIDTH="100%" BGCOLOR="#FFFFCC" >
+<tr>
+<td><p><font color="#6699CC">* </font><font color="#000000">Javascript for
+  the World Wide Web (Visual Quickstart Guide) by Tom Negrino, Dori Smith
+  - simple intro.</font>
+      <br>
+  <font color="#6699CC">* </font><font color="#000000">Javascript Bible
+    by Danny Goodman, Brendan Eich - The absolute MUST HAVE book. Has a tutorial
+    and a reference. ( also print out this 4 page diagram - <a href="http://devedge.netscape.com/viewsource/goodman_roadmap/jsbible3/NS4_Obj.pdf">http://devedge.netscape.com/viewsource/goodman_roadmap/jsbible3/NS4_Obj.pdf</a>
+    )</font>
+      <br>
+  <font color="#6699CC">* </font><font color="#000000" class="style1">Javascript : The
+    Definitive Guide (Dave Flanagan) - One of the most popular books on Javascript.
+    It's more of a reference than a tutorial, but Flanagan is an excellent
+    technical writer.</font>
+      <br>
+  <font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp; ( code examples from <a href="ftp://ftp.oreilly.com/pub/examples/nutshell/javascript/">ftp://ftp.oreilly.com/pub/examples/nutshell/javascript/</a>
+    )</font>
+      <br>
+  <font color="#6699CC">* </font><font color="#000000">Dynamic Html :
+    The Definitive Reference by Danny Goodman, 1998&nbsp;</font>
+      <br>
+  <font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp; ( code examples from <a href="ftp://ftp.oreilly.com/pub/examples/nutshell/dynamic_html/">ftp://ftp.oreilly.com/pub/examples/nutshell/dynamic_html/</a>
+    )</font>
+      <br>
+  <font color="#6699CC">* </font><font color="#000000">JavaScript Application
+    Cookbook by Jerry Bradenbaugh, 1999&nbsp;</font>
+      <br>
+  <font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp; ( code examples from <a href="ftp://ftp.oreilly.com/examples/misc/jscook">ftp://ftp.oreilly.com/examples/misc/jscook/</a>
+    )</font>
+      <br>
+  <font color="#6699CC">* </font>Web Design in a Nutshell : A Desktop
+  Quick Reference by Jennifer Niederst, Richard Koman, 1998&nbsp;
+  <br>
+  <font color="#6699CC">* </font>Webmaster in a Nutshell, 2nd Edition
+  By Stephen Spainhour &amp; Robert Eckstein, 1999 <br>
+  <font color="#6699CC">* </font>Designing with JavaScript By Nick Heinle,
+  1997&nbsp;
+  <br>
+  &nbsp; (code examples - <a href="ftp://ftp.oreilly.com/examples/misc/designjs/">ftp://ftp.oreilly.com/examples/misc/designjs/</a>
+  )<br>
+  <font color="#6699CC">* </font> <span class="style1">Prototype and script.aculo.us - by Christophe Porteneuve (2007)</span></p>
+  </td>
+</tr>
+</table>
+<a NAME="examples"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Examples &amp; References</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#6699CC">* </font><font color="#000000"><a href="js3examples/index.html">examples
+from Javascript : The Definitive Guide</a> - Looking through these examples
+is the best way to learn Javascript</font>
+<br><font color="#6699CC">* </font><font color="#000000"><a href="javascript_ref.html">reference_page
+from Web Master in a Nutshell</a> - 200 KB of Javascript reference on 1
+page!!&nbsp; Excellent!!</font>
+<br><font color="#6699CC">* </font><a href="http://www.dansteinman.com/dynduo/">www.dansteinman.com/dynduo/</a>
+- read first part (Basics) - best intro into DHTML
+<p><font color="#000000">Download more examples:</font>
+<br><font color="#6699CC">* </font><font color="#000000"><a href="ftp://ftp.oreilly.com/pub/examples/nutshell/javascript/">ftp://ftp.oreilly.com/pub/examples/nutshell/javascript/</a></font>
+<br><font color="#6699CC">* </font><font color="#000000"><a href="ftp://ftp.oreilly.com/pub/examples/nutshell/dynamic_html/">ftp://ftp.oreilly.com/pub/examples/nutshell/dynamic_html/</a></font>
+<br><font color="#6699CC">* </font><font color="#000000"><a href="ftp://ftp.oreilly.com/examples/misc/jscook">ftp://ftp.oreilly.com/examples/misc/jscook/</a></font>
+<br><font color="#6699CC">* </font><a href="ftp://ftp.oreilly.com/examples/misc/designjs/">ftp://ftp.oreilly.com/examples/misc/designjs/</a>
+<br><a NAME="debugging" id="debugging"></a>
+<br>
+&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Debugging</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Some debugging tools  -added September 2008
+<ul>
+  <li><a href="http://getfirebug.com/">http://getfirebug.com/</a> - excellent debugging tool for Mozilla Firefox (also <a href="http://en.wikipedia.org/wiki/Firebug_(Firefox_extension)">http://en.wikipedia.org/wiki/Firebug_(Firefox_extension)</a>)</li>
+  <li><a href="http://www.jarrodgoddard.com/web-development/internet-explorer-7-javascript-debugging">http://www.jarrodgoddard.com/web-development/internet-explorer-7-javascript-debugging</a> - debugging javascript in IE </li>
+  <li><a href="http://www.jonathanboutelle.com/mt/archives/2006/01/howto_debug_jav.html">http://www.jonathanboutelle.com/mt/archives/2006/01/howto_debug_jav.html</a> - debugging javascript in IE using Microsoft Script Editor</li>
+  <li><a href="http://www.berniecode.com/blog/2007/03/08/how-to-debug-javascript-with-visual-web-developer-express/">http://www.berniecode.com/blog/2007/03/08/how-to-debug-javascript-with-visual-web-developer-express/</a> - way to debug javascript in IE</li>
+</ul>
+<p>Old notes (~2000):</p>
+<p>Javascript is very sensitive and sometimes tricky to debug. For example,
+  I found that it doesn't like underscores in the names - so don't use them.
+  For example this:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; <b><font color="#3333FF">this.form.t_payee.value&nbsp;&nbsp;
+// will not work</font></b>
+<p>will not work, but this is OK:
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp; <font color="#3333FF">this.form.tpayee.value&nbsp;
+// OK</font></b>
+<p>A common way to debug javascript is to type "javascript:" in location
+field of Netscape Communicator to pop-up Netscape Communicator Console.
+<p>While debugging, it may be convenient to ouput some information.
+<br>You can do this using layers: <a href="mem/js_dhtml/show_debug_info.html">mem/js_dhtml/show_debug_info.html</a>
+<br>Or you can simply print to a small window as shown below:
+<br><b>Debug window:</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>&lt;html>
+<br>&lt;head>
+<br>&lt;script>
+<br>&nbsp; var dwin = null;
+<p>&nbsp; function debug(msg) {
+<br>&nbsp;&nbsp;&nbsp; if ((dwin == null) || (dwin.closed)) {&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dwin = window.open("","debug_console","scrollbars=yes,resizable=yes,height=100,width=300");
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dwin.document.open("text/plain");
+<br>&nbsp;&nbsp;&nbsp; }
+<br>&nbsp;&nbsp;&nbsp; dwin.document.writeln(msg);
+<br>&nbsp;&nbsp;&nbsp; dwin.scrollTo(0,10000);
+<br>&nbsp;&nbsp;&nbsp; // dwin.document.close();&nbsp; // uncomment this
+to see only last message
+<br>&nbsp; }
+<br>&nbsp; &lt;/script>
+<p>&nbsp; &lt;script>var n = 0;&lt;/script>
+<br>&lt;/head>
+<br>&lt;body>
+<br>&nbsp; &lt;a href="javascript:debug('You have pushed me:\t' + ++n +
+' times.');">press me&lt;/a>
+<br>&lt;/body>
+<br>&lt;/html></td>
+</tr>
+</table>
+<a NAME="objects"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Examples - objects</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b>Working with objects:</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 BGCOLOR="#99FF99" >
+<tr>
+<td>function MyClassName (paramA, paramB) {
+<br>&nbsp; property1 = "prop1 is read only";
+<br>&nbsp; propertyA = paramA;
+<br>&nbsp; propertyB = paramB;
+<p>&nbsp; // method pointers:
+<br>&nbsp; this.getPropertyA = _getA;
+<br>&nbsp; this.getPropertyB = _getB;
+<p>&nbsp; // methods:
+<br>&nbsp; function _getA() { return propertyA; }
+<br>&nbsp; function _getB() { return propertyB; }
+<p>&nbsp; // private methods:
+<br>&nbsp; function aPrivateMethod() { return "I am a private method";
+}
+<br>}
+<br>&nbsp;
+<p>var objMyClass = null;
+<br>objMyClass = new MyClassName("A","B");
+<br>alert(objMyClass.getPropertyA());&nbsp; // displays "A"
+<p><font color="#CC0000">// accessing private method fails - Netscape quietly
+bombs:</font>
+<br><font color="#CC0000">alert(objMyClass.aPrivateMethod());&nbsp; //
+fails</font></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td><b><u>// Defining Method:</u></b>
+<br>function PrintCard() {&nbsp;
+<br>&nbsp;&nbsp; document.write("Name: ", this.name, "\n");&nbsp;
+<br>&nbsp;&nbsp; document.write("Address: ", this.address, "\n");&nbsp;
+<br>}&nbsp;
+<p><b><u>// Defining Object (constructor function):</u></b>
+<br>function Card(name,address,work,home) {&nbsp;
+<br>&nbsp;&nbsp; this.name = name;&nbsp;
+<br>&nbsp;&nbsp; this.address = address;&nbsp;
+<br>&nbsp;&nbsp; this.PrintCard = PrintCard;&nbsp;
+<br>}&nbsp;
+<p><b><u>// Creating Instances of Objects:</u></b>
+<br>tom = new Card("Tom Jones", "123 Elm Street", "555-1234", "555-9876");&nbsp;
+<p><b><u>// Calling method on an object:</u></b>
+<br>tom.PrintCard();&nbsp;
+<p><b><u>// Extending Objects Dynamically:</u></b>
+<p>function my_update() {&nbsp;
+<br>&nbsp;&nbsp; this.name = prompt("Enter the correct name:", this.name);&nbsp;
+<br>&nbsp;&nbsp; this.address = prompt("Enter the address for " + this.name,
+this.address);&nbsp;
+<br>}&nbsp;
+<p><b>// add "Class" variable:</b>
+<p>Card.pi = 3.14159;
+<p><b>// extend instance without touching prototype:</b>
+<p>tom.myupdate = my_update;&nbsp;
+<br>tom.country = 'USA';
+<p><b>// or extend prototype:</b>
+<p>Card.prototype.myupdate = my_update;&nbsp;
+<br>Card.prototype.country = '___';
+<p><b>// Another way to add function to a prototype:</b>
+<p>Card.prototype.myupdate = function() {
+<br>&nbsp;&nbsp; this.name = prompt("Enter the correct name:", this.name);&nbsp;
+<br>&nbsp;&nbsp; this.address = prompt("Enter the address for " + this.name,
+this.address);&nbsp;
+<br>};
+<p><b>//Now you can call:</b>
+<p>&nbsp;&nbsp;&nbsp; tom.my_update();&nbsp;</td>
+</tr>
+</table>
+<a NAME="image_rollovers"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Examples - image rollovers</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b>Image rollovers:</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td><b><u>// Preload images can be done as a function called from body
+onload() event:</u></b>
+<p>&nbsp;imageA = new Image();
+<br>&nbsp;imageA.src = "imageA.gif";
+<p><b><u>// If there are many images - you can preload them in a loop:</u></b>
+<p>var images = new Array(10);
+<br>for(var i = 0; i &lt; 10; i++) {
+<br>&nbsp;&nbsp;&nbsp; images[i] = new Image();
+<br>&nbsp;&nbsp;&nbsp; images[i].src = "images/" + i + ".gif";
+<br>}
+<p><b><u>// You can make your own preload function for convenience:</u></b>
+<p>function preload(imgObj,imgSrc) {
+<br>&nbsp;if (document.images) {
+<br>&nbsp; eval(imgObj+' = new Image()')
+<br>&nbsp; eval(imgObj+'.src = "'+imgSrc+'"')
+<br>&nbsp;}
+<br>}
+<p><b><u>// And call it like this:</u></b>
+<br>&nbsp; preload('imageA','imageA.gif')
+<br>&nbsp; preload('imageB','imageB.gif')
+<p><b><u>// Once images are preloaded - all you have to do to change the
+image is this:</u></b>
+<p>document.images["imageName"].src = imageObject.src
+<p><b><u>// You can wrap this into a function ( call it&nbsp; changeImage())&nbsp;</u></b>
+<br><b><u>// To do rollovers on mouse events make a link associated with
+this image:</u></b>
+<p>&lt;A HREF="javascript:void(null)"
+<br>&nbsp; onMouseOver="changeImage('imgDiv','myImg','imageB')"
+<br>&nbsp; onMouseOut="changeImage('imgDiv','myImg','imageA')">
+<br>&nbsp; &lt;IMG NAME="myImg" SRC="imageA.gif" WIDTH=75 HEIGHT=75 BORDER=0>&lt;/A></td>
+</tr>
+</table>
+<a NAME="misc_examples"></a><a NAME="misc_break_lines"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Misc. examples</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b>Breaking program lines into 2 to keep them short - tested on both
+IE and Netscape browsers:</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>&lt;html>
+<br>&lt;script>
+<p><b><font color="#CC0000">// NOTE: be careful - it is not Perl.</font></b>
+<br><b><font color="#CC0000">// You can't start a string on one line -
+and finish on another:</font></b>
+<br><b><font color="#CC0000">//&nbsp; s = " word1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// <i>ERROR - </i>unterminated string literal</font></b>
+<br><b><font color="#CC0000">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+word2";&nbsp;</font></b>
+<p>// Another example of the same:
+<br>// In plain html you can break a long list of parameters in a URL like
+this:
+<br>//&nbsp; &lt;a href="http://somedomain/test.cgi?
+<br>// par1=val1
+<br>// &amp;
+<br>// par2=val2">test&lt;/a>
+<br>//
+<br>// As you see, this makes a long string where parenthesis start on
+one line - and finish on another.
+<br>// <b><font color="#CC0000">This will not work in JavaScript !</font></b>
+<br>&nbsp;
+<p><b><font color="#009900">// You can split variable assignment near the
+"="</font></b>
+<br>a&nbsp;
+<br>&nbsp; =
+<br>&nbsp;&nbsp;&nbsp; 'mama1 ';
+<br>alert(a);&nbsp;
+<p><b><font color="#009900">// you can initialize several variables on
+one line</font></b>
+<br>var i=2, j=3;
+<p><b><font color="#009900">// you can split list of function parameters
+into several lines</font></b>
+<br>var arr = new Array( "one",
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"two",
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"three");
+<p><b><font color="#009900">// and split list in for loop</font></b>
+<br>for (i=0;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i&lt;3;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i++)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alert
+(arr[i]);
+<p><b><font color="#009900">// you can split definition of a long string
+using '+'</font></b>
+<br>mystr =&nbsp; "word1.1 "
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + "word1.2\n"
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + "word2.1 "
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + "word2.2";
+<br>alert(mystr);
+<p><b><font color="#009900">// you can split long logic in if into several
+lines in if() or while()</font></b>
+<br><b><font color="#009900">// note: you can also split concatenations
+of strings</font></b>
+<br><b><font color="#009900">//&nbsp;&nbsp; into several strings even inside
+a function call</font></b>
+<br>if (j==3
+<br>&nbsp;&nbsp;&nbsp; &amp;&amp;
+<br>&nbsp;&nbsp;&nbsp; i==2) {
+<br>&nbsp; alert('OK '
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + 'OK')
+<br>} else {
+<br>&nbsp; alert('Not '
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + 'OK')
+<br>}
+<p><b><font color="#009900">// you can split new window definition into
+several lines.</font></b>
+<br><b><font color="#009900">// then if you splitting the long string with
+window parameters and concatenate with '+' sign</font></b>
+<br>newWindow=window.open("http://www.yahoo.com",
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"newWin",
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"toolbar=yes,scrollbars=yes,"
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
++ "resizable=yes,height=400,width=400");
+<p>&lt;/script>
+<br>mama
+<br>&lt;/html></td>
+</tr>
+</table>
+<a NAME="misc_alert"></a>
+<p><b>Alert , confirm &amp; prompt:</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>&lt;html>
+<br>&lt;head>
+<br>&lt;script>
+<br>function myalert() {
+<br>&nbsp; ss = "First "
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + "line\n"
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + "Second "
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + "Line";
+<br>&nbsp; alert(ss);&nbsp;
+<br>}
+<p>function myconfirm() {
+<br>&nbsp; var msg = "some message";
+<br>&nbsp; if (confirm(msg))&nbsp;
+<br>&nbsp;&nbsp;&nbsp; location.replace("awesome_page.html");
+<br>&nbsp; else
+<br>&nbsp;&nbsp;&nbsp; location.replace("lame_page.html");
+<br>}
+<p>function myprompt() {
+<br>&nbsp; var name = prompt("What is your name?", "");
+<br>&nbsp; alert("Welcome to my home page, " + name);
+<br>}
+<p>&lt;/script>
+<br>&lt;/head>
+<br>&lt;body>
+<br>&lt;br>&lt;a href="javascript:myalert()">press to see alert&lt;/a>
+<br>&lt;br>&lt;a href="javascript:myconfirm()">press to see alert&lt;/a>
+<br>&lt;br>&lt;a href="javascript:myprompt()">press to see alert&lt;/a>
+<br>&lt;/body>
+<br>&lt;/html></td>
+</tr>
+</table>
+<a NAME="misc_form"></a>
+<p><b>Form (with data validation):</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>&lt;html>
+<br>&lt;head>
+<br>&lt;script>
+<p>function myvalidate() {
+<br>&nbsp; var f1 = document.form1;
+<br>&nbsp; var nn = f1.elements.length;
+<br>&nbsp; for (var j=0; j&lt;nn;j++){
+<br>&nbsp;&nbsp;&nbsp; if (f1.elements[j].value.length==0) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alert("Please fill out ALL fields");
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return false;
+<br>&nbsp;&nbsp;&nbsp; }
+<br>&nbsp; }
+<br>&nbsp; return true;
+<br>}
+<p>function mysubmit(){
+<br>&nbsp; if (!myvalidate()) return;
+<br>&nbsp; document.form1.submit();
+<br>}
+<p>&lt;/script>
+<br>&lt;/head>
+<br>&lt;body>
+<br>&lt;form name="form1" method="POST" action="some_action">
+<br>&nbsp; &lt;br>1: &lt;input type="text" name="name1" value="">
+<br>&nbsp; &lt;br>2: &lt;input type="text" name="name2" value="">
+<br>&nbsp; &lt;br>&lt;input type="button" value="click me" onClick="mysubmit()">
+<br>&nbsp; &lt;br>&lt;input type="reset" value="reset">
+<br>&lt;/form>
+<br>&lt;/body>
+<br>&lt;/html></td>
+</tr>
+</table>
+
+<p><b><u><font color="#CC0000">Other ways to submit a form:</font></u></b>
+<p>use submit button:&nbsp; <font color="#3333FF">&lt;input type="submit"
+value"click me"></font>
+<br>or image as a button:&nbsp; <font color="#3333FF">&lt;input type="image"
+src="mybutton.gif"></font>
+<p>To do data validation in these cases, you will have to add onsubmit
+handler into the &lt;form> tag.
+<br><font color="#3333FF">&lt;form name="form1" method="POST" action="some_action"
+onsubmit="mysubmit();return false;"></font>
+<br>or like this:
+<br><font color="#3333FF">&lt;form name="form1" method="POST" action="some_action"
+onsubmit="mysubmit2();"></font>
+<br>where
+<br><font color="#3333FF">function mysubmit2(){</font>
+<br><font color="#3333FF">&nbsp; // some data validation here</font>
+<br><font color="#3333FF">&nbsp; if (everything_OK) return true else return
+false;</font>
+<br><font color="#3333FF">}</font>
+<br><a NAME="misc_digital_clock"></a>
+<p><b>Digital clock in status line:</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>&lt;html>
+<br>&nbsp; &lt;head>
+<br>&nbsp; &lt;script>
+<p>&nbsp; var timeout_id = null; // This will be used to hide clock
+<p>&nbsp; function show_clock() {
+<br>&nbsp;&nbsp;&nbsp; var d = new Date();
+<br>&nbsp;&nbsp;&nbsp; var h = d.getHours();
+<br>&nbsp;&nbsp;&nbsp; var m = d.getMinutes();
+<br>&nbsp;&nbsp;&nbsp; var ampm = (h >= 12)?"PM":"AM";
+<br>&nbsp;&nbsp;&nbsp; if (h > 12) h -= 12;
+<br>&nbsp;&nbsp;&nbsp; if (h == 0) h = 12;
+<br>&nbsp;&nbsp;&nbsp; if (m &lt; 10) m = "0" + m;
+<br>&nbsp;&nbsp;&nbsp; var t = h + ':' + m + ' ' + ampm;
+<br>&nbsp;&nbsp;&nbsp; defaultStatus = t;&nbsp; // Display it in the status
+line.
+<br>&nbsp;&nbsp;&nbsp; timeout_id = setTimeout("display_time_in_status_line()",
+60000); // 60000 ms is 1 minute.
+<br>&nbsp; }
+<p>&nbsp; function hide_clock() {
+<br>&nbsp;&nbsp;&nbsp; clearTimeout(timeout_id);
+<br>&nbsp;&nbsp;&nbsp; timeout_id = null;
+<br>&nbsp;&nbsp;&nbsp; defaultStatus = '';
+<br>&nbsp; }
+<p>&lt;/script>
+<br>&lt;/head>
+<br>&lt;body>
+<br>To test click on the "show" link and remove mouse from it.
+<br>&lt;br>&lt;a href="javascript:show_clock()";>show clock&lt;/a>
+<br>&lt;br>&lt;a href="javascript:hide_clock()";>hide clock&lt;/a>
+<br>&lt;/body>
+<br>&lt;/html></td>
+</tr>
+</table>
+<a NAME="misc_hidden_frameset"></a>
+<p><b>Hidden frameset (to store some javascript functions and objects):</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>&lt;html>&lt;head>&lt;title>some title&lt;/title>&lt;/head>&nbsp;
+<br>&lt;frameset name="my_top" rows="0,160,*"&nbsp; frameborder="1" border="1">
+<br>&nbsp;&lt;frameset name="my_hidden_frameset" COLS="0,0" frameborder="0"
+border="0" noresize scrolling="NO">
+<br>&nbsp; &lt;frame name="my_hidden_frame1" src="my_hidden_frame1.pl"
+frameborder="0" border="0" scrolling="NO" noresize>
+<br>&nbsp; &lt;frame name="my_hidden_frame2" src="my_hidden_frame2.pl"
+frameborder="0" border="0" scrolling="NO" noresize>
+<br>&nbsp;&lt;/frameset>
+<br>&nbsp;&lt;frame name="my_head" src="my_head.pl" frameborder="0" border="0"
+scrolling="NO">
+<br>&nbsp;&lt;frame name="my_main" src="my_main.pl" frameborder="1" border="1"
+scrolling="YES">
+<br>&lt;/frameset>
+<br>&lt;noframes>
+<br>Your browser cannot display frames.
+<br>&lt;/noframes>
+<br>&lt;/html>
+<br>&nbsp;
+<p><b><u>frame addressing using frame name:</u></b>
+<br>If all frameset definitions are made in one file - then all frames
+are accessible via one frames array&nbsp; (even in nested framesets) may
+be accessed by their name from top:
+<br>&nbsp;&nbsp;&nbsp; <font color="#3333FF">top.frames["</font><font color="#000000">some_frame</font><font color="#3333FF">"].location='</font><font color="#000000">http://www.yahoo.com</font><font color="#3333FF">'</font>
+<p>But if internal frameset (f2) is loaded into a frame of an external
+frameset (f1), then there are 2 separate frame arrays, and addressing should
+go like this:
+<br>&nbsp;&nbsp;&nbsp; <font color="#3333FF">top.frames["</font><font color="#000000">frame_in_f1</font><font color="#3333FF">"].frames["</font><font color="#000000">frame_in_f2</font><font color="#3333FF">"].location='</font><font color="#000000">http://www.yahoo.com</font><font color="#3333FF">'</font>
+<p>If your frameset may be called from another frameset, then "top" will
+not be your "top" - but the one of the caller frameset.&nbsp; Then you
+can use "parent" instead of "top".&nbsp; For example, to address hidden
+frame from "my_main" frame you would do something like this:
+<br>&nbsp;&nbsp;&nbsp; <font color="#3333FF">parent.frames["</font><font color="#000000">my_hidden_frame1</font><font color="#3333FF">"]</font>.document.bgColor
+= "#CCCCCC"; // make frame size&nbsp; >0 to see that it works</td>
+</tr>
+</table>
+<a NAME="misc_select"></a>
+<p><b>Select onChange handling:</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>&lt;select name="subject"&nbsp;
+<br>&nbsp; onChange="javascript:<b>top.window.frames['my_main_frame']</b>.location
+= this.options[this.selectedIndex].value">
+<br>&lt;option value="main_summary.html" SELECTED>Summary&lt;/option>
+<br>&lt;option value="main_positions.html">Positions&lt;/option>
+<br>&lt;/select></td>
+</tr>
+</table>
+<a NAME="no_multithreading"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFFFCC" >
+<tr>
+<td>What if you press a button which started a javascript function (via
+onClick event processing) - and while this function is working - you press
+another button (or the same button) which similarly should call a function.
+Will this function run simultaneously with the first one? Or it will wait
+until the first one finishes?
+<p><b>The answer: the 2nd function will wait. <a href="javascript_order_of_processing.html">here
+is a test page that demonstrates this</a></b>.
+<p>If you want to emulate parallel execution - your function can use setTimeout()
+to call itself after a delay, during which delay another function (or same
+function) have a chance to execute.</td>
+</tr>
+</table>
+<a NAME="misc_regex"></a>
+<p><b>Regular Expressions:</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>function check(num){&nbsp;&nbsp;&nbsp;&nbsp; // checks if all are digits
+<br>&nbsp;&nbsp; var str=num.value
+<br>&nbsp;&nbsp; var re=/\D+/g
+<br>&nbsp;&nbsp; if (re.test(str)|| (str=='')){
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // do something
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return
+<br>&nbsp;&nbsp; }
+<br>&nbsp;&nbsp; flag_calculate=1
+<br>}
+<p>function commafy(num){&nbsp;&nbsp;&nbsp; // adds "," in front of each
+3 digits
+<br>&nbsp;&nbsp; num=num+'';&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // convert number
+to string
+<br>&nbsp;&nbsp; var re = /(\d+)(\d{3})/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// define regex
+<br>&nbsp;&nbsp; while (re.test(num)) {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// apply regex, memorize into $1, $2
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; num=num.replace(re, "$1,$2")&nbsp; //
+add ","
+<br>&nbsp;&nbsp; }
+<br>&nbsp;&nbsp; return num
+<br>}</td>
+</tr>
+</table>
+<a NAME="misc_hash"></a>
+<p><b>Hash:</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>function dosave () {
+<br>&nbsp;&nbsp; //validate
+<br>&nbsp;&nbsp; var result;
+<br>&nbsp;&nbsp; var t;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // text
+<br>&nbsp;&nbsp; var m = "Duplicate nicknames are not permitted.\\n Please
+edit your nickname entries and resubmit this form. ";
+<br>&nbsp;&nbsp; for (i = 2; i &lt; document.forms.mainForm.elements.length;
+i++) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp; t = document.forms.mainForm.elements[i].value;
+<br>&nbsp;&nbsp;&nbsp;&nbsp; t = t.replace(/\s/g, '_');
+<br>&nbsp;&nbsp;&nbsp;&nbsp; eval("if (hash." + t + "== 1) {alert('" +
+m + "'); result = false} else {hash." + t + " = '1'}");
+<br>&nbsp;&nbsp; }
+<br>&nbsp;&nbsp; if (result != false) {
+<br>&nbsp;&nbsp;&nbsp; document.forms.mainForm.submit();
+<br>&nbsp;&nbsp; }
+<br>}</td>
+</tr>
+</table>
+<a NAME="misc_reverse_string"></a>
+<p><b>Reverse the string:</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>var mystring = 'word1 word2';
+<br>var myregexp = /\s/ ;&nbsp;
+<br>&nbsp; // or you can make myregexp=''&nbsp; to split after every char
+<br>var newArray = mystring.split(myregexp);
+<br>newArray.reverse();
+<br>var my_out_string = unescape(newArray.join(''));</td>
+</tr>
+</table>
+<a NAME="misc_reference"></a>
+<p><b>Value and reference:</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>var xmas1 = new Date(96, 11, 25);&nbsp;
+<br>var xmas2 = xmas;&nbsp;&nbsp;&nbsp;&nbsp; // Both variables now refer
+to the same object value.
+<br>xmas2.setDate(21);&nbsp;&nbsp; // we change this object using 2nd ref.
+<br>xmas1.getDate();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Returns 21, not the
+original value of 25.
+<br>var xmas3 = new Date(96, 11, 25);&nbsp;
+<br>(xmas1 == xmas2)&nbsp;&nbsp;&nbsp;&nbsp; // Evaluates to true
+<br>(xmas1 != xmas3)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Evaluates to true.
+2 DIFFERENT objects contain the same date.
+<p>// passing arrays to functions: they passed by copy of a reference as
+objects
+<br>// everything passed as copy of value (value of references for objects
+and arrays)
+<br>function add_base(arr, base) {
+<br>&nbsp;&nbsp;&nbsp; for (i=0;i&lt;arr.length;i++) arr[i] += base;
+<br>}
+<p>// Strings compared by value:
+<br>var s1 = "hello";
+<br>var s2 = "hell" + "o";
+<br>if (s1 == s2) alert("Strings compared by value");</td>
+</tr>
+</table>
+<a NAME="misc_location"></a>
+<p><b>Location, Links &amp; Anchors:</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>parent.frames[0].history.back();
+<br>parent.frames[0].history.forward();
+<br>parent.frames[0].location = "http://www.yahoo.com";
+<br>var ss = parent.frames[0].location.href;
+<p>d= window.document;
+<br>d.links.length
+<br>d.links[i].href
+<br>d.anchors.length
+<p>var text;
+<br>var a = d.anchors[i];
+<br>ns4 = (document.layers)? true:false;&nbsp;
+<p>if (ns4) text = a.text;
+<br>else text = a.innerText;
+<br>if ((text == null) || (text == '')) text = a.name;</td>
+</tr>
+</table>
+<a NAME="misc_caching"></a>
+<p><b>When using "location", how you can make sure that the browser will
+not use the cached version?</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td>The solution which I use is to tag the url with a dummy parameter with
+the date in it - thus tricking the brower into thinking that you are requesting
+a different page.
+<br>&nbsp; // -------------------------------
+<br>&nbsp; var pageLink ='some_domain/cgi-bin/some_script.cgi?key1=value1&amp;key2=value2';
+<br>&nbsp;&nbsp; // here it goes
+<br>&nbsp;&nbsp; var today = new Date();
+<br>&nbsp;&nbsp; var ms = today.getTime();&nbsp; // time in ms
+<br>&nbsp;&nbsp; var cc = '&amp;';&nbsp;&nbsp;&nbsp; // use '?' if this
+will be the first parameter&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pageLink += cc + 'ms=' + ms;&nbsp;&nbsp;
+// I add this parameter to force reload of the page
+<br>&nbsp;&nbsp; some_window.location.href = pageLink ;
+<br>&nbsp;&nbsp; <font color="#009900">// some_window.location.href&nbsp;
+= pageLink + '&amp;ms=' + (new Date()).getTime();</font>
+<br>&nbsp;&nbsp; some_window.focus() ;
+<br>&nbsp;&nbsp; // -------------------------------
+<p>You may tag this way any kind of a URL (even static html pages).
+<p>Other methods, which not always work or desirable:
+<br>&nbsp; - use meta-tags in the headers of HTML pages.&nbsp;
+<br>You can read more here: <a href="http://support.microsoft.com/support/kb/articles/Q234/0/67.ASP">http://support.microsoft.com/support/kb/articles/Q234/0/67.ASP</a>
+<br>There are 2 metatags:&nbsp;
+<br>&nbsp;&nbsp; &lt;meta http-equiv="Pragma" content="no-cache">&nbsp;
+<br>&nbsp;&nbsp; &lt;meta http-equiv="expires" content="0">&nbsp;
+<p>&nbsp; - Use javascript location.reload(true) command - doesn't necessarily
+work</td>
+</tr>
+</table>
+
+<p><a NAME="misc_colors"></a>
+<p><b>Colors:</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>function setcolor(w) {
+<br>&nbsp;&nbsp;&nbsp; var r = (Math.random() * 256).toString(16);
+<br>&nbsp;&nbsp;&nbsp; var g = (Math.random() * 256).toString(16);
+<br>&nbsp;&nbsp;&nbsp; var b = (Math.random() * 256).toString(16);
+<br>&nbsp;&nbsp;&nbsp; var colorString = "#" + r + g + b;
+<br>&nbsp;&nbsp;&nbsp; w.document.bgColor = colorString;
+<br>&nbsp;&nbsp;&nbsp; setTimeout('setcolor(' + w.name + ')', 1000);
+<br>}</td>
+</tr>
+</table>
+<a NAME="misc_java_applets_and_javascript"></a>
+<p><b>Java Applets:</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>// In both browsers (IE &amp; NS) javascript can call public methods
+in java applet.
+<br>// The method can accept and return numbers, strings and boolean values&nbsp;
+<br>// (as parameters and return values).
+<p><font color="#3333FF">var s1 = document.applets["myapplet"].public_java_method(p1,p2,...);</font>
+<br><font color="#3333FF">or</font>
+<br><font color="#3333FF">var s1 = document.myapplet.public_java_method(p1,p2,...);</font>
+<p>// where
+<p><font color="#3333FF">&lt;applet code="Applet1.class" width=300 height=300
+name="myapplet">...&lt;/applet></font>
+<p>In Netscape browser you can also pass back and forth objects&nbsp;
+<br>(both Java and Javascript objects) using LiveConnect.</td>
+</tr>
+</table>
+<a NAME="add_to_favorites"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Add to favorites</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Instruction to add the page to favorites
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td>var msg = '';
+<br>if ((navigator.appName == "Microsoft Internet Explorer") &amp;&amp;
+(parseInt(navigator.appVersion) >= 4)) {
+<br>&nbsp; var url="http://www.yourdomain.com";
+<br>&nbsp; var title="Your Label";
+<br>&nbsp;&nbsp; var msg =&nbsp; '&lt;A HREF="javascript:window.external.AddFavorite(url,title);"
+'
+<br>&nbsp;&nbsp;&nbsp; + 'onMouseOver=" window.status='&nbsp;
+<br>&nbsp;&nbsp;&nbsp; + "'Add this site to your favorites!'; return true
+"
+<br>&nbsp;&nbsp;&nbsp; + '"onMouseOut=" window.status='
+<br>&nbsp;&nbsp;&nbsp; + "' '; return true "
+<br>&nbsp;&nbsp;&nbsp; + '">Click on this &lt;font color="#993399">link&lt;/font>
+'
+<br>&nbsp;&nbsp;&nbsp; + 'to add this web page to your favourites - it
+means you can come here more easily in future.&lt;/a>';
+<br>} else {
+<br>var msg = "Press CTRL and D at the same time now. "
+<br>&nbsp;&nbsp; +"That will add this web page to your bookmarks - it means
+you can come here more easily in future";
+<br>}
+<br>document.write(msg);</td>
+</tr>
+</table>
+
+<p><b><u>Here it is actually working: (text below should be different in
+IE and Netscape)</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td><script>
+var msg = '';
+ if ((navigator.appName == "Microsoft Internet Explorer") && (parseInt(navigator.appVersion) >= 4)) {
+   var url="http://www.LevSelector.com";
+   var title="LevSelector.com";
+    var msg =  '<A HREF="javascript:window.external.AddFavorite(url,title);" '
+     + 'onMouseOver=" window.status=' 
+     + "'Add this site to your favorites!'; return true "
+     + '"onMouseOut=" window.status='
+     + "' '; return true "
+     + '">Click on this <font color="#993399">link</font> '
+     + 'to add this web page to your favourites - it means you can come here more easily in future.</a>';
+ } else {
+ var msg = "Press CTRL and D at the same time now. "
+    +"That will add this web page to your bookmarks - it means you can come here more easily in future";
+ }
+ document.write(msg);
+</script>
+</td>
+</tr>
+</table>
+<a NAME="loan"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Loan Payments example</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b>Loan Payments Calculator: <a href="js3examples/1-3.html">running
+example</a></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>&lt;form name="loandata">
+<br>&nbsp; &lt;table>
+<br>&nbsp;&nbsp;&nbsp; &lt;tr>&lt;td colspan=3>&lt;big>&lt;b>Enter Loan
+Information:&lt;/b>&lt;/big>&lt;/td>&lt;/tr>
+<br>&nbsp;&nbsp;&nbsp; &lt;tr>&lt;td>1)&lt;/td>&lt;td>Amount of the loan
+(any currency):&lt;/td>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td>&lt;input type=text
+NAME=principal SIZE=12 onChange="calculate()">&lt;/td>
+<br>&nbsp;&nbsp;&nbsp; &lt;/tr>
+<br>&nbsp;&nbsp;&nbsp; &lt;tr>&lt;td>2)&lt;/td>&lt;td>Annual percentage
+rate of interest:&lt;/td>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td>&lt;input type=text
+NAME=interest SIZE=12 onChange="calculate()">&lt;/td>
+<br>&nbsp;&nbsp;&nbsp; &lt;/tr>
+<br>&nbsp;&nbsp;&nbsp; &lt;tr>&lt;td>3)&lt;/td>&lt;td>Repayment period
+in years:&lt;/td>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td>&lt;input type=text NAME=years
+SIZE=12 onChange="calculate()">&lt;/td>
+<br>&nbsp;&nbsp;&nbsp; &lt;/tr>
+<p>&nbsp;&nbsp;&nbsp; &lt;tr>&lt;TD COLSPAN=3>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;BIG>&lt;B>&lt;INPUT TYPE=button
+VALUE="Compute" onClick="calculate()">
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Payment Information:&lt;/B>&lt;/BIG>
+<br>&nbsp;&nbsp;&nbsp; &lt;/td>&lt;/tr>
+<br>&nbsp;&nbsp;&nbsp; &lt;tr>&lt;td>4)&lt;/td>&lt;td>Your monthly payment
+will be:&lt;/td>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td>&lt;input type=text
+NAME=payment SIZE=12>&lt;/td>
+<br>&nbsp;&nbsp;&nbsp; &lt;/tr>
+<br>&nbsp;&nbsp;&nbsp; &lt;tr>&lt;td>5)&lt;/td>&lt;td>Your total payment
+will be:&lt;/td>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td>&lt;input type=text
+NAME=total SIZE=12>&lt;/td>
+<br>&nbsp;&nbsp;&nbsp; &lt;/tr>
+<br>&nbsp;&nbsp;&nbsp; &lt;tr>&lt;td>6)&lt;/td>&lt;td>Your total interest
+payments will be:&lt;/td>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td>&lt;input type=text
+NAME=totalinterest SIZE=12>&lt;/td>
+<br>&nbsp;&nbsp;&nbsp; &lt;/tr>
+<br>&nbsp; &lt;/table>
+<br>&lt;/form>
+<p>&lt;script>
+<p>function round(x) { return Math.round(x*100)/100; }
+<p>function calculate() {
+<br>&nbsp;&nbsp;&nbsp; var principal = document.loandata.principal.value;
+<br>&nbsp;&nbsp;&nbsp; var interest = document.loandata.interest.value
+/ 100 / 12;
+<br>&nbsp;&nbsp;&nbsp; var payments = document.loandata.years.value * 12;
+<p>&nbsp;&nbsp;&nbsp; var x = Math.pow(1 + interest, payments);
+<br>&nbsp;&nbsp;&nbsp; var monthly = (principal*x*interest)/(x-1);
+<p>&nbsp;&nbsp;&nbsp; if (!isNaN(monthly) &amp;&amp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (monthly != Number.POSITIVE_INFINITY)
+&amp;&amp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (monthly != Number.NEGATIVE_INFINITY))
+{
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.loandata.payment.value
+= round(monthly);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.loandata.total.value
+= round(monthly * payments)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.loandata.totalinterest.value
+=&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+round((monthly * payments) - principal);
+<br>&nbsp;&nbsp;&nbsp; }
+<br>&nbsp;&nbsp;&nbsp; else {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.loandata.payment.value
+= "";
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.loandata.total.value
+= "";
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.loandata.totalinterest.value
+= "";
+<br>&nbsp;&nbsp;&nbsp; }
+<br>}
+<p>&lt;/script></td>
+</tr>
+</table>
+<a NAME="list2list"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>List to List&nbsp;</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b>Copy selected items between 2 lists:</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>&lt;html>&lt;head>&lt;script>
+<p>// ------------------------------------
+<br>function selectAll(aList, state) {
+<br>&nbsp; for (var i=0; i&lt;aList.options.length; i++) {
+<br>&nbsp;&nbsp;&nbsp; aList.options[i].selected = state;
+<br>&nbsp; }
+<br>}
+<p>// ------------------------------------
+<br>function compare(aText, bText) {
+<br>&nbsp; var&nbsp; i = 0;
+<br>&nbsp; aString = aText.toString(); aString.toLowerCase();
+<br>&nbsp; bString = bText.toString(); bString.toLowerCase();
+<br>&nbsp; if (aString &lt; bString) return -1;
+<br>&nbsp; else if (aString > bString) return 1;
+<br>&nbsp; return 0;
+<br>}
+<p>// ------------------------------------
+<br>// removeItems() - remove selected options from a &lt;SELECT> list
+<br>// ------------------------------------
+<br>function removeItems( sel ) {
+<br>&nbsp; if( sel.selectedIndex &lt; 0 ) return 0;
+<br>&nbsp; var len = sel.options.length;
+<br>&nbsp; var oo=0;&nbsp; // oo - old indexes
+<br>&nbsp; var nn=0;&nbsp; // nn - new indexes
+<br>&nbsp; while (oo &lt; len) {
+<br>&nbsp;&nbsp;&nbsp; // go through the list skipping selected options
+<br>&nbsp;&nbsp;&nbsp; if( ! sel.options[oo].selected ) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sel.options[nn].text = sel.options[oo].text;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sel.options[nn].value = sel.options[oo].value;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sel.options[nn].selected = false;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nn++;
+<br>&nbsp;&nbsp;&nbsp; }
+<br>&nbsp;&nbsp;&nbsp; oo++;
+<br>&nbsp; }
+<br>&nbsp; sel.options.length = nn; // cut the length to new smaller value
+<br>&nbsp; return 1; // returns 1 on success, 0 on failure
+<br>}
+<p>// --------------------------------------
+<br>// moveItems(fromList, toList, toSort, toSelect)
+<br>//&nbsp;&nbsp; - moves selected items from from List to toList
+<br>//&nbsp;&nbsp; toSort (boolean) - sort the toList if true
+<br>//&nbsp;&nbsp; toSelect (boolean) - select moved items in toList if
+true
+<br>//
+<br>//&nbsp;&nbsp; needs these functions:
+<br>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; selectAll(), compare(),&nbsp;
+removeItems()
+<br>// --------------------------------------
+<br>function moveItems(fromList, toList, toSort, toSelect) {
+<br>&nbsp; if (fromList.selectedIndex &lt; 0) return;
+<br>&nbsp; selectAll(toList, false);
+<br>&nbsp; for(var i=0; i &lt; fromList.options.length; i++) {
+<br>&nbsp;&nbsp;&nbsp; if (! fromList.options[i].selected) continue;
+<br>&nbsp;&nbsp;&nbsp; addOption = fromList.options[i];
+<br>&nbsp;&nbsp;&nbsp; var exist = false;
+<br>&nbsp;&nbsp;&nbsp; for( var l = 0; l &lt; toList.options.length; l++
+) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if( (addOption.text == toList.options[l].text)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &amp;&amp; (addOption.value
+== toList.options[l].value) ) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+exist = true;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+break;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+<br>&nbsp;&nbsp;&nbsp; }
+<p>&nbsp;&nbsp;&nbsp; if( exist ) continue;
+<p>&nbsp;&nbsp;&nbsp; var newOption =
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; new Option(addOption.text, addOption.value,
+false, toSelect);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// text,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; value,&nbsp;&nbsp; defaultSelected,
+selected
+<p>&nbsp;&nbsp;&nbsp; if (toSort) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var j;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var to_length = toList.length;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; toList.options[to_length] = new Option('tt','vv');
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (j=0; j&lt;to_length; j++) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (compare(newOption.text,
+toList[j].text) &lt; 0) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (k=to_length;
+k>j; k--) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+toList.options[k].value = toList.options[k-1].value;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+toList.options[k].text = toList.options[k-1].text;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; toList.options[j] = newOption;
+<br>&nbsp;&nbsp;&nbsp; } else { // no sorting
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; toList.options[toList.options.length]
+= newOption; // add to the end
+<br>&nbsp;&nbsp;&nbsp; }
+<p>&nbsp; } // for cycle
+<p>&nbsp; removeItems(fromList); // remove selected items from the fromList
+<br>&nbsp; return 1; // success
+<p>}
+<br>&nbsp;
+<p><font color="#CC0000">// <b><u>note about creating new options and assigning
+them values/text in Internet Explorer:</u></b></font>
+<br><font color="#CC0000">//&nbsp;&nbsp; 1. you have to create a new object
+for each new option (you can't use the same object for more than one option)</font>
+<br><font color="#CC0000">//&nbsp;&nbsp; 2. you can't write option[i]=option[j];&nbsp;
+you have to explicitely assign each property:</font>
+<br><font color="#CC0000">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+option[i].text=option[j].text;</font>
+<br><font color="#CC0000">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+option[i].value=option[j].value;</font>
+<p><font color="#CC0000">// <b><u>Note about removing options from select
+lists:</u></b></font>
+<br><font color="#CC0000">// The standard documented way to remove list
+items from a select-list is to set them to null:</font>
+<br><font color="#CC0000">//&nbsp;</font>
+<br><font color="#CC0000">//&nbsp;&nbsp; some_select.options[i] = null&nbsp;</font>
+<br><font color="#CC0000">//</font>
+<br><font color="#CC0000">//&nbsp; This works fine in IE and in most cases
+in Netscape.</font>
+<br><font color="#CC0000">// But sometimes (not always) Netscape crashes
+when:</font>
+<br><font color="#CC0000">//&nbsp; - multiple items (as little as 2) were
+selected for removal</font>
+<br><font color="#CC0000">//&nbsp;&nbsp; AND</font>
+<br><font color="#CC0000">//&nbsp; - they were selected in the middle of
+the list</font>
+<br><font color="#CC0000">//</font>
+<p>&lt;/script>&lt;/head>&lt;body>
+<br>&lt;form>
+<p>&lt;table cellpadding=10>&lt;tr> &lt;td>
+<br>&nbsp;&nbsp; &lt;select name=s1 multiple size=8>
+<br>&nbsp;&nbsp;&nbsp; &lt;option value=1>item1&lt;/option>&nbsp;
+<br>&nbsp;&nbsp;&nbsp; &lt;option value=2>item2&lt;/option>
+<br>&nbsp;&nbsp;&nbsp; &lt;option value=3>item3&lt;/option>
+<br>&nbsp;&nbsp;&nbsp; &lt;option value=4>item4&lt;/option>
+<br>&nbsp;&nbsp; &lt;/select>&nbsp;
+<br>&nbsp; &lt;/td>&lt;td>
+<br>&nbsp;&nbsp; &lt;input type=button name=b1 value=">>" onClick="moveItems(this.form.s1,
+this.form.s2, false, false )"> &lt;br>
+<br>&nbsp;&nbsp; &lt;input type=button name=b2 value="&lt;&lt;" onClick="moveItems(this.form.s2,
+this.form.s1, false, false )"> &lt;br>
+<br>&nbsp;&nbsp; &lt;input type=button name=b3 value="del in list 2" onClick="removeItems(this.form.s2)">
+<br>&nbsp; &lt;/td>&lt;td>
+<br>&nbsp;&nbsp;&nbsp; &lt;select name=s2 multiple size=8>
+<br>&nbsp;&nbsp;&nbsp; &lt;option value=5>item5&lt;/option>
+<br>&nbsp;&nbsp;&nbsp; &lt;option value=6>item6&lt;/option>
+<br>&nbsp;&nbsp;&nbsp; &lt;option value=7>item7&lt;/option>
+<br>&nbsp;&nbsp;&nbsp; &lt;option value=8>item8&lt;/option>
+<br>&nbsp;&nbsp; &lt;/select>&nbsp;
+<br>&nbsp; &lt;/td>&lt;/tr>&lt;/table>
+<br>&lt;/form>
+<br>&lt;/body>&lt;/html></td>
+</tr>
+</table>
+
+<p><b><u>Sorting a list of options in a select box:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td>// ------------------------------------
+<br>// ------------------------------------
+<br>function compare(aText, bText) {
+<br>&nbsp;&nbsp;&nbsp; i = 0;
+<br>&nbsp;&nbsp;&nbsp; aString = aText.toString(); aString.toLowerCase();
+<br>&nbsp;&nbsp;&nbsp; bString = bText.toString(); bString.toLowerCase();
+<br>&nbsp;&nbsp;&nbsp; if (aString &lt; bString) { return -1; }
+<br>&nbsp;&nbsp;&nbsp; else if (aString > bString) { return 1; }
+<br>&nbsp;&nbsp;&nbsp; return 0;
+<br>}
+<p>// ------------------------------------
+<br>// this actually takes forever on long lists
+<br>// ------------------------------------
+<br>function sortOptions(mylist) {
+<br>&nbsp; var copyOption = new Array();
+<p>&nbsp; for (var i=0;i&lt;mylist.options.length;i++)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; copyOption[i] = new Array(mylist[i].value,
+mylist[i].text);
+<p>&nbsp; copyOption.sort(function(a,b) { return compare(a[0],b[0]); });
+<p>&nbsp; for (var i=mylist.options.length-1; i>-1; i--)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mylist.options[i] = null;
+<font color="#CC0000">//
+this may bomb in Netscape</font>
+<p>&nbsp; for (var i=0; i&lt;copyOption.length; i++) {
+<br>&nbsp;&nbsp;&nbsp; mylist.options[mylist.length] = new Option( copyOption[i][1],
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; copyOption[i][0], false, false );
+<br>&nbsp;&nbsp;&nbsp; mylist.options[mylist.length-1].selected = false;
+<br>&nbsp; }
+<br>}</td>
+</tr>
+</table>
+<a NAME="win2win"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Win2win example</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u><font color="#CC0000">Win 2 Win Examples:</font></u></b>
+<p><b>Open Window:</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>&lt;script>
+<br>NS4 = (document.layers) ? 1 : 0;
+<br>IE4 = (document.all) ? 1 : 0;
+<p>var menuWindow
+<br>function view_menu(){
+<br>&nbsp; if (! menuWindow || menuWindow.closed) {&nbsp;
+<br>&nbsp;&nbsp;&nbsp; menuWindow = window.open("popup_menu.html","menuWindow","scrollbars=yes,resizable=yes,height=300,width=500")
+<br>&nbsp;&nbsp;&nbsp; // menuWindow.moveTo(200,200);
+<br>&nbsp; }&nbsp;
+<br>&nbsp; else {&nbsp;
+<br>&nbsp;&nbsp;&nbsp; menuWindow.focus()
+<br>&nbsp; }
+<br>}
+<br>&lt;/script>
+<p>&lt;style>
+<br>TD {FONT-FAMILY: arial, geneva, helvetica; FONT-SIZE: 9pt;}
+<br>&lt;/style></td>
+</tr>
+</table>
+
+<p><b>Update Opener from popup menu:</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>&lt;html>&lt;head>&lt;title>some info&lt;/title>
+<br>&lt;script language="JavaScript">
+<br>&nbsp; function updateParent(newURL) {
+<br>&nbsp;&nbsp;&nbsp; opener.document.location=newURL; self.close()&nbsp;
+<br>&nbsp; }
+<br>&lt;/script>
+<br>&lt;/head>
+<br>&lt;body>&lt;p>&lt;p>
+<br>Click
+<br>&lt;a href="javascript:updateParent('http://www.google.com')">here&lt;/a>
+<br>to change main window to Google&lt;br>
+<br>&lt;/body>&lt;/html></td>
+</tr>
+</table>
+
+<p><b>Win2win:</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>&lt;html>
+<br>&lt;head>
+<br>&lt;title> some &lt;/title>
+<br>&lt;script language="JavaScript">
+<br>var newWindow
+<br>function makeWindow(){
+<br>&nbsp;newWindow=window.open("","newWin","toolbar=yes,scrollbars=yes,resizable=yes,height=200,width=200")
+<br>&nbsp;var str="&lt;html>&lt;head>&lt;title>small window&lt;/title>"
+<br>&nbsp;str+="&lt;script language='JavaScript'>"
+<br>&nbsp;str+="function updateParent(newURL) { opener.document.location=newURL;
+self.close() }"
+<br>&nbsp;str+="&lt;\/script>&lt;\/head>"
+<br>&nbsp;str+="&lt;body>Type text and press the button to send text back
+to opener&lt;p>"
+<br>&nbsp;str+="&lt;form onsubmit = 'return false'>"
+<br>&nbsp;str+="&lt;input type='text' name='info' value=''>&lt;br>"
+<br>&nbsp;str+="&lt;input type='button' value='send info' onClick="
+<br>&nbsp;str+="'self.opener.document.forms[0].result.value=this.form.info.value'>"
+<br>&nbsp;str+="&lt;input type='button' value='close window' onClick="
+<br>&nbsp;str+="'self.close()'>&lt;br>"
+<br>&nbsp;str+="&lt;A HREF = \"javascript:updateParent('http://www.yahoo.com')\">goto
+yahoo and close menu&lt;/A>&lt;br>"
+<br>&nbsp;str+="&lt;/form>&lt;/body>&lt;/html>"
+<br>&nbsp;newWindow.document.write(str)
+<br>&nbsp;newWindow.document.close()
+<br>}
+<br>&lt;/script>
+<br>&lt;/head>
+<br>&lt;body>&lt;p>
+<br>Sample application showing how to exchange data between 2 windows&lt;p>
+<br>&lt;form onsubmit = 'return false'>
+<br>&lt;input type="button" value="Make new window" onClick="makeWindow()">&lt;p>
+<br>&lt;input type="text" name="result" value="">&lt;br>
+<br>&lt;input type='button' value='send info'&nbsp;
+<br>onClick='newWindow.document.forms[0].info.value=this.form.result.value'>
+<br>&lt;/form>
+<br>&lt;/body>
+<br>&lt;/html></td>
+</tr>
+</table>
+<a NAME="radio-buttons"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Radio Buttons Example</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Radio Buttons Example:</font></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>&lt;html>&lt;head>&lt;script>
+<br>&nbsp; // ------------------------------------
+<br>&nbsp; function myshow(ff) {
+<br>&nbsp;&nbsp;&nbsp; var ss = "";
+<p>&nbsp;&nbsp;&nbsp; for (var ii=0 ; ii&lt; ff.group1.length ; ii++) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ss += ff.group1[ii].value
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ss += " " + ff.group1[ii].checked +"\n";
+<br>&nbsp;&nbsp;&nbsp; }
+<br>&nbsp;&nbsp;&nbsp; ss += "\n";
+<br>&nbsp;&nbsp;&nbsp; for (var ii=0 ; ii&lt; ff.group2.length ; ii++)
+{
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ss += ff.group2[ii].value
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ss += " " + ff.group2[ii].checked +"\n";
+<br>&nbsp;&nbsp;&nbsp; }
+<br>&nbsp;&nbsp;&nbsp; ff.mytext.value=ss;
+<br>&nbsp; }
+<p>&nbsp; &lt;/script>&lt;/head>&lt;body bgColor=#FFFFFF>
+<br>&nbsp; &lt;form name='form1'>
+<br>&nbsp; &lt;TEXTAREA NAME="mytext" ROWS="6" COLS="55" onclick='myshow()'>&lt;/TEXTAREA>
+<p>&nbsp; &lt;br>
+<br>&nbsp; &lt;input type='radio' name = 'group1' value='one' onclick='myshow(this.form)'
+CHECKED >rb11
+<br>&nbsp; &lt;input type='radio' name = 'group1' value='two' onclick='myshow(this.form)'>rb12
+<br>&nbsp; &lt;br>
+<br>&nbsp; &lt;input type='radio' name = 'group2' value='one' onclick='myshow(this.form)'
+CHECKED >rb21
+<br>&nbsp; &lt;input type='radio' name = 'group2' value='two' onclick='myshow(this.form)'>rb22
+<p>&nbsp; &lt;br>&lt;a href='javascript:myshow(this.form)'>show&lt;/a>
+<br>&nbsp; &lt;/form>&lt;/body>&lt;/html></td>
+</tr>
+</table>
+<a NAME="formcopy"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Formcopy function example</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Form Copy function example:</font></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>&lt;script>
+<p>function formcopy(f1,f2) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var ii=0;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var ll = f1.elements.length;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var myvalue='';
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (ii=0;ii&lt;ll;ii++)
+{
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+var myname=f1.elements[ii].name;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+var mytype=f1.elements[ii].type;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+myvalue='';
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+switch (mytype) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+case "hidden":
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+myvalue=f1.elements[ii].value;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+eval("f2."+myname).value=myvalue;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+break;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+case "text":
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+myvalue=f1.elements[ii].value;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+eval("f2."+myname).value=myvalue;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+break;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+case "textarea":
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+myvalue=f1.elements[ii].value;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+eval("f2."+myname).value=myvalue;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+break;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+case "radio":
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+myvalue=f1.elements[ii].value;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if (f1.elements[ii].checked == true) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+eval("f2."+myname).value=myvalue;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+break;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+case "checkbox":
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+myvalue=f1.elements[ii].value;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if (f1.elements[ii].checked == true) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+eval("f2."+myname).value=myvalue;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+break;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+case "select-multiple":
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+var jj;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+var v = '';
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+var mysep = '::::';
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+for (jj=0;jj&lt;f1.elements[ii].options.length; jj++) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if (f1.elements[ii].options[jj].selected == true) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+v=f1.elements[ii].options[jj].value;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if (myvalue.length > 0) myvalue += mysep;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+myvalue += v;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+}
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+eval("f2."+myname).value=myvalue;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+break;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+case "select-one":
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+var jj;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+var v = '';
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+for (jj=0;jj&lt;f1.elements[ii].options.length; jj++) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if (f1.elements[ii].options[jj].selected == true) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+myvalue=f1.elements[ii].options[jj].value;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+eval("f2."+myname).value=myvalue;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+break;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+default:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+break;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}
+<br>&nbsp; }
+<br>&nbsp; return true;
+<br>}
+<br>&lt;/script></td>
+</tr>
+</table>
+<a NAME="cookies"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Cookies</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>A cookie is information that a Web site puts on your hard disk so that
+it can remember something about you at a later time.
+<br><font color="#6699CC">*
+</font><a href="mem/perl_cgi/cookie.html">www.LevSelector.com/mem/perl_cgi/cookie.html</a>
+- short Perl/Javascript/Java examples
+<br><font color="#6699CC">*
+</font>do search for <b><u>cookielib</u></b>
+on search engines ( <a href="http://www.google.com/search?q=cookielib">www.google.com/search?q=cookielib</a>
+) - Matt's Script Archive: HTTP Cookie Library.
+<br><font color="#6699CC">*
+</font><a href="http://www.zdnet.com/devhead/resources/scriptlibrary/javascript/cookies.html">www.zdnet.com/devhead/resources/scriptlibrary/javascript/cookies.html</a>
+-
+<br><font color="#6699CC">*
+</font><a href="http://www.hidaho.com/cookies/cookie.txt">www.hidaho.com/cookies/cookie.txt</a>
+-
+<br><font color="#6699CC">*
+</font><a href="http://www.cookiecentral.com/">www.cookiecentral.com/</a>
+-
+<br><font color="#6699CC">*
+</font><a href="http://www.worldwidemart.com/scripts/cookielib.shtml">www.worldwidemart.com/scripts/cookielib.shtml</a>
+-
+<br><font color="#6699CC">*
+</font><a href="http://home.netscape.com/newsref/std/cookie_spec.html">home.netscape.com/newsref/std/cookie_spec.html</a>
+-
+<br><font color="#6699CC">*
+</font><a href="http://www.netscapeworld.com/netscapeworld/nw-07-1996/nw-07-cookies.html">www.netscapeworld.com/netscapeworld/nw-07-1996/nw-07-cookies.html</a>
+-
+<br><a NAME="date_pickers"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Date pickers</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>There are many examples of javascript date pickers:
+<br><font color="#6699CC">*
+</font><a href="http://www.google.com/search?q=javascript+date+picker">http://www.google.com/search?q=javascript+date+picker</a>
+-
+<br><font color="#6699CC">*
+</font><a href="http://javascript.internet.com/calendars/popup-date-picker.html">http://javascript.internet.com/calendars/popup-date-picker.html</a>-
+<br><font color="#6699CC">*
+</font><a href="http://www.softricks.com/js/Calendar/Calendar.html">http://www.softricks.com/js/Calendar/Calendar.html</a>
+-
+<br>&nbsp;&nbsp; <font color="#6699CC">*
+</font><a href="http://www.softricks.com/js/Calendar/tutorial.html">http://www.softricks.com/js/Calendar/tutorial.html</a>
+-
+<br>&nbsp;&nbsp; <font color="#6699CC">*
+</font><a href="http://www.softricks.com/js/Calendar/faqs.html">http://www.softricks.com/js/Calendar/faqs.html</a>
+-
+<br><font color="#6699CC">*
+</font><a href="http://html_help4u.tripod.com/datepick.html">http://html_help4u.tripod.com/datepick.html</a>
+-
+<br><font color="#6699CC">*
+</font><a href="http://uts.cc.utexas.edu/~esuez/cal5.html">http://uts.cc.utexas.edu/~esuez/cal5.html</a>
+-
+<br><font color="#6699CC">*
+</font><a href="http://www.siteexperts.com/tips/elements/ts29/page1.asp">http://www.siteexperts.com/tips/elements/ts29/page1.asp</a>
+-
+<br><a NAME="string_object"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>String</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>String Object</u></b> and <b><u>string datatype</u></b> are not
+the same - but in most cases JavaScript converts between them automatically.
+For example, when you invoke a String object method on a string value,
+JavaScript converts that value to a temporary String object, allowing the
+method to be invoked.
+<p><b>Properties</b> - only one - length:
+<table BORDER CELLSPACING=0 WIDTH="100%" BGCOLOR="#FFFFCC" >
+<tr>
+<td>length</td>
+
+<td>The number of characters in the string.&nbsp;
+<br>For any string <b>s</b>, the index of the last character is <b>s.length-1</b>.</td>
+</tr>
+</table>
+
+<p><b>Methods:</b>
+<table BORDER CELLSPACING=0 WIDTH="100%" BGCOLOR="#FFFFCC" >
+<tr>
+<td>anchor()</td>
+
+<td>Returns a copy of the string, enclosed within &lt;a name="name"> and
+&lt;/a> HTML tags.</td>
+</tr>
+
+<tr>
+<td>big()&nbsp;</td>
+
+<td>Returns a copy of the string, enclosed between &lt;big> and &lt;/big>
+HTML tags.</td>
+</tr>
+
+<tr>
+<td>blink()&nbsp;</td>
+
+<td>Returns a copy of the string, enclosed between &lt;blink> and &lt;/blink>
+HTML tags.</td>
+</tr>
+
+<tr>
+<td>bold()</td>
+
+<td>Returns a copy of the string, enclosed between &lt;b> and &lt;/b> HTML
+tags.</td>
+</tr>
+
+<tr>
+<td>charAt()&nbsp;</td>
+
+<td>string.charAt(n)&nbsp;&nbsp;&nbsp;&nbsp; //n is the index of the character
+to be returned
+<p>Extracts the <b>n-</b>th character from a string. The first character
+of the string is numbered 0. If n is not between 0 and string.length-1,
+then this method returns an empty string. Note that JavaScript does not
+have a character datatype that is distinct from the string type, so the
+returned character is a string of length 1.</td>
+</tr>
+
+<tr>
+<td>fixed()&nbsp;</td>
+
+<td>Returns a copy of the string, enclosed between &lt;tt> and &lt;/tt>
+HTML tags.</td>
+</tr>
+
+<tr>
+<td>fontcolor()&nbsp;</td>
+
+<td>string.fontcolor(color)
+<p>Returns a copy of the string, enclosed between &lt;font color="color">
+and &lt;/font> HTML tags. The color argument is a string specifying the
+color name or value to be used as the value of the color attribute in the
+&lt;font> HTML tag. Colors are specified either as one of the standard
+color names recognized by JavaScript, or as red, green, and blue color
+values, expressed as six hexadecimal digits (RRGGBB).</td>
+</tr>
+
+<tr>
+<td>fontsize()&nbsp;</td>
+
+<td>string.fontsize(size)
+<p>Returns a copy of the string, enclosed between &lt;font size="size">
+and &lt;/font> HTML tags. The size argument is an integer between 1 and
+7 or a string that begins with a + or - sign followed by a digit between
+1 and 7. If an integer is specified, it is an absolute font size specification.
+If a string is specified, the font specification is relative to the &lt;basefont>
+size.</td>
+</tr>
+
+<tr>
+<td>indexOf()&nbsp;</td>
+
+<td>string.indexOf(substring)&nbsp;
+<br>string.indexOf(substring, start)
+<p>Searches the string for an occurrence of substring. The search begins
+at position start within string, or at the beginning if no start is specified.
+start is an integer between 0 and string.length-1. Returns the position
+of the first occurrence of substring after the start position, or -1 if
+no occurrence is found.</td>
+</tr>
+
+<tr>
+<td>italics()&nbsp;</td>
+
+<td>Returns a copy of the string, enclosed between &lt;i> and &lt;/i> HTML
+tags.</td>
+</tr>
+
+<tr>
+<td>lastIndexOf()&nbsp;</td>
+
+<td>string.lastIndex(substring)&nbsp;
+<br>string.lastIndex(substring, start)
+<p>Searches the string backwards for an occurrence of substring. The search
+begins at position start within string, or at the end, if no start is specified.
+start is an integer between 0 and string.length-1. Returns the position
+of the first occurrence of substring before the start position, or -1 if
+no occurrence is found.</td>
+</tr>
+
+<tr>
+<td>link()&nbsp;</td>
+
+<td>string.link(href)
+<p>Returns a copy of the string, enclosed between &lt;a href="size"> and
+&lt;/a> HTML tags. href specifies the URL target of the hypertext link
+that is to be added to the string. This string argument specifies the value
+of the HREF attribute of the &lt;a> HTML tag.</td>
+</tr>
+
+<tr>
+<td>small()&nbsp;</td>
+
+<td>Returns a copy of the string, enclosed between &lt;small> and &lt;/small>
+HTML tags.</td>
+</tr>
+
+<tr>
+<td>split()&nbsp;</td>
+
+<td>string.split()&nbsp;
+<br>string.split(delimiter)
+<p>Converts a string to an array of strings, using a specified delimiter
+character/string at which the string will be split. If no delimiter is
+specified, then the returned array has only one element, the string itself.
+Note that the String.split() method is the inverse of the Array.join()
+method.</td>
+</tr>
+
+<tr>
+<td>strike()&nbsp;</td>
+
+<td>Returns a copy of the string, enclosed within &lt;strike> and &lt;/strike>
+HTML tags.</td>
+</tr>
+
+<tr>
+<td>sub()</td>
+
+<td>Returns a copy of the string, enclosed within &lt;sub> and &lt;/sub>
+HTML tags.</td>
+</tr>
+
+<tr>
+<td>substring()&nbsp;</td>
+
+<td>string.substring(from, to)
+<p>Extracts a substring of a string. from is a value between 0 and string.length-1.
+to is an optional integer that is one greater than the position within
+string of the last character of the desired substring. to must be between
+1 and string.length. The character at position from is included in the
+substring, while the character at position to is not. The returned string
+contains characters copied from positions from to to-1 of string.</td>
+</tr>
+
+<tr>
+<td>sup()&nbsp;</td>
+
+<td>Returns a copy of the string, enclosed within &lt;sup> and &lt;/sup>
+HTML tags.</td>
+</tr>
+
+<tr>
+<td>toLowerCase()&nbsp;</td>
+
+<td>Returns a copy of the string, with all characters converted to lowercase.</td>
+</tr>
+
+<tr>
+<td>toUpperCase()&nbsp;</td>
+
+<td>Returns a copy of the string, with all characters converted to uppercase.</td>
+</tr>
+
+<tr>
+<td>valueOf()&nbsp;</td>
+
+<td>Returns the string value contained in the String object; Netscape 3.0
+and later. See Object.valueOf().</td>
+</tr>
+</table>
+
+<p><b><u><font color="#CC0000">Examples of usage:</font></u></b>
+<p>A number of the String methods are used for creating HTML:
+<p><font color="#3333FF">&nbsp;&nbsp;&nbsp; link_text = "My Home Page".bold();</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; document.write(link_text.link("http://www.djf.com/~david"));</font>
+<p>The code above code embeds the following string into the HTML document
+that is currently being parsed:
+<p>&nbsp;&nbsp; <font color="#3333FF">&lt;A HREF="http://www.djf.com/~david">&lt;B>My
+Home Page&lt;/B>&lt;/A></font>
+<p>The following code extracts the 3rd through 5th characters of a string
+and converts them to upper-case letters:
+<p>&nbsp;&nbsp; <font color="#3333FF">s.substring(2,5).toUpperCase();</font>
+<br><a NAME="math_object"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Math object</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Math Object is a read-only reference to a placeholder object that contains
+mathematical functions and constants. Math is itself an object, not a class
+of objects, so its constants and methods are invoked directly through it.
+Math is actually a global property of the Window object, and as such, is
+usually referred to as Math, rather than as window.Math. See also Number
+<p>There are functions and constants:
+<p>Math.constant
+<br>Math.function()
+<p><font color="#3333FF">area = radius * radius * Math.PI;</font>
+<br><font color="#3333FF">y = Math.sin(x);</font>
+<p><b>Constants:</b>
+<table BORDER CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td>Math.E</td>
+
+<td>e = the base of natural logarithms</td>
+</tr>
+
+<tr>
+<td>Math.LN2</td>
+
+<td>The natural logarithm of 2</td>
+</tr>
+
+<tr>
+<td>Math.LN10</td>
+
+<td>The natural logarithm of 10</td>
+</tr>
+
+<tr>
+<td>Math.LOG10E</td>
+
+<td>The base-10 logarithm of e</td>
+</tr>
+
+<tr>
+<td>Math.LOG2E</td>
+
+<td>The base-2 logarithm of $e$</td>
+</tr>
+
+<tr>
+<td>Math.PI</td>
+
+<td>The constant pi</td>
+</tr>
+
+<tr>
+<td>Math.SQRT2</td>
+
+<td>The square-root of 2</td>
+</tr>
+
+<tr>
+<td>Math.SQRT1_2</td>
+
+<td>The reciprocal of the square-root of 2</td>
+</tr>
+</table>
+
+<p><b>Methods (Functions):</b>
+<table BORDER CELLSPACING=0 WIDTH="100%" BGCOLOR="#FFFFCC" >
+<tr>
+<td>abs</td>
+
+<td>Math.abs(x)&nbsp;&nbsp; // x is any numeric value or expression</td>
+
+<td>Computes an absolute value.</td>
+</tr>
+
+<tr>
+<td>acos</td>
+
+<td>Math.acos(x)&nbsp; // x is a numeric value or expression between -1.0
+and 1.0 radians</td>
+
+<td>Computes an arc cosine (inverse cosine). Return value is between 0
+and pi radians.</td>
+</tr>
+
+<tr>
+<td>asin</td>
+
+<td>Math.asin(x)&nbsp; // x is a numeric value or expression between -1.0
+and 1.0 radians</td>
+
+<td>Computes an arc sine (inverse sine). The return value is between -pi/2
+and pi/2 radians.</td>
+</tr>
+
+<tr>
+<td>atan</td>
+
+<td>Math.atan(x)&nbsp; //x is any numeric value or expression</td>
+
+<td>Computes an arc tangent (inverse tangent) in radians. The return value
+is between -pi/2 and pi/2 radians.</td>
+</tr>
+
+<tr>
+<td>atan2</td>
+
+<td>Math.atan2(x, y)&nbsp;&nbsp;&nbsp; // x, y are the coordinates of the
+point</td>
+
+<td>Computes the counter-clockwise angle from the positive X axis to a
+point (x, y). Performs half of the conversion between Cartesian coordinates
+and polar coordinates; computes and returns the angle theta of an (x, y)
+point.</td>
+</tr>
+
+<tr>
+<td>ceil</td>
+
+<td>Math.ceil(x)&nbsp; // x is any number or numeric expression</td>
+
+<td>Rounds a number up to the closest integer (i.e., computes the ceiling
+function); negative numbers are rounded up to 0.</td>
+</tr>
+
+<tr>
+<td>cos</td>
+
+<td>Math.cos(x)&nbsp;&nbsp; // x is any number or numeric expression, in
+radians</td>
+
+<td>Computes a cosine; the return value will be between -1.0 and 1.0 radians.</td>
+</tr>
+
+<tr>
+<td>exp</td>
+
+<td>Math.exp(x)&nbsp;&nbsp; // x is a number or numeric expression to be
+used as exponent</td>
+
+<td>Computes an exponent of $e$.</td>
+</tr>
+
+<tr>
+<td>floor</td>
+
+<td>Math.floor(x) // x is any numeric value or expression</td>
+
+<td>Rounds a number down to the closest integer (i.e., computes the floor
+function); negative numbers are rounded to be more negative.</td>
+</tr>
+
+<tr>
+<td>log</td>
+
+<td>Math.log(x)&nbsp;&nbsp; // x is any numeric value or expression greater
+than 0</td>
+
+<td>Computes a natural logarithm.</td>
+</tr>
+
+<tr>
+<td>max</td>
+
+<td>Math.max(a, b)&nbsp; // a, b are any two numeric values or expressions</td>
+
+<td>Returns the larger of two values.</td>
+</tr>
+
+<tr>
+<td>min</td>
+
+<td>Math.min(a, b)&nbsp; // a, b are any two numeric values or expressions</td>
+
+<td>Returns the smaller of two values.</td>
+</tr>
+
+<tr>
+<td>pow</td>
+
+<td>Math.pow(x, y)</td>
+
+<td>Computes $x sup y$. (Raises its first argument to the power of its
+second argument and returns the result.)</td>
+</tr>
+
+<tr>
+<td>random</td>
+
+<td>var r = (Math.random() * 256).toString(16);</td>
+
+<td>Computes a random number;&nbsp;</td>
+</tr>
+
+<tr>
+<td>round</td>
+
+<td>Math.round(x) // x is any numeric value or expression</td>
+
+<td>Rounds to the closest integer</td>
+</tr>
+
+<tr>
+<td>sin</td>
+
+<td>Math.sin(x)&nbsp;&nbsp; // x is an angle, in radians</td>
+
+<td>Computes a sine.</td>
+</tr>
+
+<tr>
+<td>sqrt</td>
+
+<td>Math.sqrt(x)&nbsp; // x is any numeric value or expression greater
+than or equal to 0</td>
+
+<td>Computes a squareroot.</td>
+</tr>
+
+<tr>
+<td>tan</td>
+
+<td>Math.tan(x)</td>
+
+<td>Computes a tangent.</td>
+</tr>
+
+<tr>
+<td>atan</td>
+
+<td>Math.atan(x)&nbsp; // x is an angle, in radians</td>
+
+<td>Opposite to tan</td>
+</tr>
+</table>
+<a NAME="number_object"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Number object</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b>Number Object</b>
+<p>Numbers are a basic, primitive data type in JavaScript.
+<p>The Number() constructor:
+<br><font color="#3333FF">&nbsp; new Number(value)</font>
+<br>is actually more commonly used as a placeholder for five useful numeric
+constants. Note that these values are properties of the Number() constructor
+function itself, not of individual number objects. For example, you use
+the MAX_value property as follows:
+<p><font color="#3333FF">biggest = Number.MAX_value</font>
+<p>not like this:
+<br><font color="#3333FF">n = new Number(2);</font>
+<br><font color="#3333FF">biggest = n.MAX_value&nbsp; // wrong</font>
+<p><b>Constants:</b>
+<table BORDER CELLSPACING=0 WIDTH="100%" BGCOLOR="#FFFFCC" >
+<tr>
+<td>MAX_value</td>
+
+<td>The largest representable number.</td>
+</tr>
+
+<tr>
+<td>MIN_value&nbsp;</td>
+
+<td>The smallest (i.e., closest to zero, not most negative) number representable
+in JavaScript.</td>
+</tr>
+
+<tr>
+<td>NaN</td>
+
+<td>Special Not-a-Number value. JavaScript prints the Number.NaN value
+as NaN. Note that the NaN value always compares unequal to any other number,
+including itself. Thus, you cannot check for the not-a-number value by
+comparing to Number.NaN. Use the isNaN() function instead.</td>
+</tr>
+
+<tr>
+<td>NEGATIVE_INFINITY</td>
+
+<td>Special negative infinite value; returned on overflow. JavaScript displays
+the NEGATIVE_INFINITY value as -Inf. This value behaves mathematically
+like an infinity.</td>
+</tr>
+
+<tr>
+<td>POSITIVE_INFINITY&nbsp;</td>
+
+<td>Special infinite value; returned on overflow. JavaScript displays the
+POSITIVE_INFINITY value as Inf. This value behaves mathematically like
+an infinity.</td>
+</tr>
+</table>
+
+<p><b>Methods:</b>
+<table BORDER CELLSPACING=0 WIDTH="100%" BGCOLOR="#FFFFCC" >
+<tr>
+<td>toString()</td>
+
+<td>number.toString(radix)&nbsp; // radix is an integer between 2 and 16</td>
+
+<td>Converts a number to a string, using a specified radix (base).</td>
+</tr>
+</table>
+
+<p>By contrast, the toString() method of the Number object is a method
+of each Number object, not of the Number() constructor function. JavaScript
+implicitly invokes the Number() constructor to convert the number to a
+temporary Number object for which the toString() method can be invoked.
+Thus you can use the toString method with a variable that holds a number,
+even though that value is not actually an object:
+<p><font color="#3333FF">var n = 1234;</font>
+<br><font color="#3333FF">var binary_string = n.toString(2);</font>
+<br><font color="#3333FF">var hex_string =&nbsp; n.toString(16);</font>
+<br><a NAME="array_object"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Array object</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b>Array Object</b>
+<p>new Array()&nbsp;&nbsp;&nbsp;&nbsp; // with no arguments, length field
+is set to 0
+<br>new Array(size)&nbsp;&nbsp; //&nbsp;&nbsp;&nbsp; size = number of elements;
+sets length
+<br>new Array(element0, element1, ..., elementn) // length set to number
+of elements
+<p>Properties:
+<table BORDER CELLSPACING=0 WIDTH="100%" BGCOLOR="#FFFFCC" >
+<tr>
+<td>length</td>
+
+<td>a = new Array();&nbsp;&nbsp;&nbsp;&nbsp; //&nbsp; a.length initialized
+to 0
+<br>b = new Array(10);&nbsp; // b.length initialized to 10
+<br>c = new Array("one", "two", "three");&nbsp;&nbsp; // c.length initialized
+to 3
+<br>c[3] = "four";&nbsp;&nbsp;&nbsp; // c.length updated to 4
+<br>c[10] = "blastoff";&nbsp;&nbsp;&nbsp; // c.length becomes 11</td>
+
+<td>You can also set the value
+<br>of the length property to change
+<br>the size of an array&nbsp;
+<br>(i.e., truncate elements or add "undefined" ones).</td>
+</tr>
+</table>
+
+<p>Example: make multidimensional array as an array of arrays:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>&lt;html>&lt;head>
+<br>&lt;script>
+<p>arr = new Array([1,2,3], [4,5,6,61,62], [7,8,9]);
+<br>ss = '';
+<p>ss+="total length: " + arr.length + " elements&lt;br>\n";
+<p>for (i=0;i&lt;3;i++) {
+<br>&nbsp; var len = (arr[i]).length;
+<br>&nbsp; ss += i + " => " + len + " elements: ";
+<br>&nbsp; for (j=0;j&lt;len;j++)&nbsp;
+<br>&nbsp;&nbsp;&nbsp; ss+=arr[i][j]+', ';
+<br>&nbsp; ss+="&lt;br>\n";
+<br>}&nbsp;
+<p>ss+="&lt;br>\n";
+<br>document.write(ss);
+<br>document.close();
+<p>/*
+<br>This script will produce the following output:
+<p>total length: 3 elements
+<br>0 => 3 elements: 1, 2, 3,&nbsp;
+<br>1 => 5 elements: 4, 5, 6, 61, 62,&nbsp;
+<br>2 => 3 elements: 7, 8, 9,&nbsp;
+<br>*/
+<p>&lt;/script>
+<br>&lt;/head>&lt;body>&lt;/body>&lt;/html></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<p>Methods
+<table BORDER CELLSPACING=0 WIDTH="100%" BGCOLOR="#FFFFCC" >
+<tr>
+<td>join</td>
+
+<td>array.join()
+<br>array.join(separator)&nbsp;</td>
+
+<td>If no separator, the empty string is used.&nbsp; Converts each of the
+elements of an array to a string, and then concatenates those strings,
+inserting the specified separator string between the elements. Returns
+the resulting string. You can split a string up into array elements--with
+the split() method of the String object.</td>
+</tr>
+
+<tr>
+<td>reverse</td>
+
+<td></td>
+
+<td>Reverse, in place (i.e., without creating a new array), the order of
+the elements of an array.</td>
+</tr>
+
+<tr>
+<td>sort</td>
+
+<td>array.sort()
+<br>array.sort(orderfunc)&nbsp;&nbsp; // orderfunc - optional comparison
+function</td>
+
+<td>With no arguments, sorts by asc; You may supply a function that compares
+two values (a &amp; b) and returns a number&nbsp; (-1, 0 or 1) indicating
+if a is less, eq. or greater than b.</td>
+</tr>
+</table>
+<a NAME="functions"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Some functions</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b>Some Functions</b>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 WIDTH="100%" BGCOLOR="#FFCCCC" >
+<tr>
+<td>escape( )</td>
+
+<td>escape("Hello World!");&nbsp; // returns Hello%20World%</td>
+
+<td>returns a new string that contains an encoded version of s to allow
+transmission of data. Commonly used to encode cookie values. See also String,
+unescape().</td>
+</tr>
+
+<tr>
+<td>eval()</td>
+
+<td>eval(code)</td>
+
+<td>Executes Javascript code in its string argument. Returns the value
+<br>of the last expression in code that it evaluates.</td>
+</tr>
+
+<tr>
+<td>isNaN( )</td>
+
+<td>isNaN(x)</td>
+
+<td>Tests whether an argument (x) is "not a number". Commonly
+<br>used to test the results of parseFloat() and parseInt() to see if they
+represent legal numbers, or to check for arithmetic errors, such as division
+by zero.</td>
+</tr>
+
+<tr>
+<td>parseFloat( )</td>
+
+<td>parseFloat(s) // s is the string to be parsed and coverted to a number</td>
+
+<td>Parses and returns the first number that occurs in s (i.e., converts
+a string to a number). Parsing stops, and the value is returned, when parseFloat()
+encounters a character in s that is not a valid part of the number (i.e.,
+a sign, a digit, decimal point, exponent, etc.). If s does not begin with
+a number that parseInt() can parse, then the function returns NaN.</td>
+</tr>
+
+<tr>
+<td>parseInt( )</td>
+
+<td>parseInt(s)
+<br>parseInt(s, radix)&nbsp;
+<br>&nbsp; //s is the string to be parsed
+<br>&nbsp; //radix is the integer base of the number to be parsed
+<br>&nbsp; // radix can be any value between 2 and 36.</td>
+
+<td>Parses and returns the first number that occurs in the string s (i.e.,
+it converts a string to an integer). Parsing stops, and the value is returned,
+when parseInt() encounters a character in s that is not a valid numeral
+for the specified radix. If s does not begin with a number that parseInt()
+can parse, then the function returns NaN.
+<p>If radix is 0, or if it is not specified, parseInt() tries to determine
+the radix of the number from s. If s begins with 0x, then parseInt() parses
+the remainder of s as a hexadecimal number. If s begins with a 0, then
+parseInt() parses the number in octal. Otherwise, if s begins with a digit
+1 through 9, then parseInt() parses it as a decimal number.</td>
+</tr>
+
+<tr>
+<td>unescape( )</td>
+
+<td>unescape ('Hello%20World%21')&nbsp;
+<br>&nbsp; // returns&nbsp; Hello World!</td>
+
+<td>decodes a string encoded with escape() and returns the decoded copy.&nbsp;
+<br>unescape() decodes s by finding and replacing character sequences of
+the form %xx, where xx is two hexadecimal digits.</td>
+</tr>
+</table>
+<a NAME="object_object"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Object Object</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Object Object - serves as the "superclass" for all other JavaScript
+objects, and therefore methods of the Object object are also methods of
+all other object types. The behavior of the Object object is also shared
+by all other object types. When an Object object is newly created, it has
+no properties defined; <b><u>you can add a property definition to an object
+simply by assigning a value to the property</u></b>.
+<b><u>Objects can
+also be used</u></b>
+<br><b><u>as associative arrays</u></b>.
+<p>new Object();
+<br>new Object(value);
+<p>Methods:
+<table BORDER CELLSPACING=0 COLS=3 WIDTH="100%" BGCOLOR="#FFFFCC" >
+<tr>
+<td>assign()&nbsp;</td>
+
+<td>object.assign(value)&nbsp;&nbsp;&nbsp; // value is the value to be
+assigned</td>
+
+<td>If defined, used to implement the JavaScript assignment operator (=).</td>
+</tr>
+
+<tr>
+<td>eval()&nbsp;</td>
+
+<td>eval(code)&nbsp;
+<br>window.eval(code)</td>
+
+<td>Evaluates a string of JavaScript code in the context of the given object.</td>
+</tr>
+
+<tr>
+<td>toString()</td>
+
+<td>&nbsp;&nbsp; .</td>
+
+<td>If defined, used to convert an object to a string.</td>
+</tr>
+
+<tr>
+<td>valueOf()&nbsp;</td>
+
+<td>&nbsp;&nbsp; .</td>
+
+<td>Returns the primitive value of the object, if any. For objects of type
+Object, this method simply returns the object itself. For other object
+types, such as Number and Boolean, this method returns the primitive value
+associated with the object.</td>
+</tr>
+</table>
+
+<p><b><u>Example:</u></b>
+<br>Defining the toString(), method, and also the less frequently used
+assign() and valueOf() methods of an object, is most efficiently done in
+a
+<br>constructor method for your object type, or with the prototype object
+of your object.
+<p>// define a constructor for the Complex object type
+<br><font color="#3333FF">&nbsp;&nbsp; function Complex(x,y) { this.x =
+x; this.y = y; }</font>
+<p>// give it a toString() method
+<br><font color="#3333FF">&nbsp;&nbsp; Complex.prototype.toString = new
+Function("return '{' + this.x + ',' + this.y + '}';");</font>
+<p>// Create an object of this new Complex type
+<br><font color="#3333FF">&nbsp;&nbsp; c = new Complex(2, 2);</font>
+<p>// Convert the object to a string, implicitly invoking the toString()
+method, and display the string.
+<br><font color="#3333FF">&nbsp;&nbsp; alert("c = " + c);</font>
+<br>&nbsp;
+<p>---------------------------------------
+<br>&nbsp;
+<br>&nbsp;
+</body>
+</html>

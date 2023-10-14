@@ -1,0 +1,1049 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="lev selector">
+   <title>weblogic_ejb_tom_valseky.html</title>
+<!--
+
+
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+
+
+
+-->
+<style>
+
+
+
+A:hover { COLOR: #FF0000; background: #FFA; TEXT-DECORATION: underline } 
+
+
+
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Verdana"><font color="#CC0000"><font size=-1>LevSelector.com</font></font></font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font face="Verdana"><font color="#CC0000"><font size=-1>New
+York</font></font></font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<font face="Verdana"><font size=-1></font></font>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<font face="Verdana"><font size=-1></font></font>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><font face="Verdana"><font size=-1><a href="index.html">home</a>
+> WebLogic</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font face="Verdana"><font size=-1></font></font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<font face="Verdana"><font size=-1></font></font>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<font face="Verdana"><font size=-1></font></font>
+<p><b><font face="Verdana"><font color="#CC0000"><font size=-1>Enterprise
+Javabeans : Developing Component-Based Distributed Applications.</font></font></font></b>
+<br><b><font face="Verdana"><font color="#CC0000"><font size=-1>by Thomas
+C. Valesky</font></font></font></b><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>My Conspectus.</font></font>
+<br><font face="Verdana"><font size=-1>Chapters</font></font>
+<br><b><font face="Verdana"><font size=-1><a href="#ch1">_1_</a> - (pp.1-16)
+started and finished 11/11/00</font></font></b>
+<br><b><font face="Verdana"><font size=-1><a href="#ch2">_2_</a> - (pp.17-48)</font></font></b>
+<br><b><font face="Verdana"><font size=-1><a href="#ch3">_3_</a> -</font></font></b>
+<br><b><font face="Verdana"><font size=-1><a href="#ch4">_4_</a> -</font></font></b>
+<br><b><font face="Verdana"><font size=-1><a href="#ch5">_5_</a> -</font></font></b>
+<br><b><font face="Verdana"><font size=-1><a href="#ch6">_6_</a> -</font></font></b>
+<br><b><font face="Verdana"><font size=-1><a href="#ch7">_7_</a> -</font></font></b>
+<br><b><font face="Verdana"><font size=-1><a href="#ch8">_8_</a> -</font></font></b>
+<br><b><font face="Verdana"><font size=-1><a href="#ch9">_9_</a> -</font></font></b>
+<br><b><font face="Verdana"><font size=-1><a href="#ch10">_10</a>_ -</font></font></b><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Preface:</font></font>
+<br><font face="Verdana"><font size=-1><font color="#6699CC">• </font><a href="http://www.awl.com/cseng/titles/0-201-60446-9/">http://www.awl.com/cseng/titles/0-201-60446-9/</a>
+- online supplement to this book</font></font>
+<br><a NAME="ch1"></a>
+<br><font face="Verdana"><font size=-1></font></font>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Verdana"><font size=-1>Chapter 1</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Verdana"><font size=-1><a href="index.html">home</a>
+- <a href="#top">top of the page</a> - </font></font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u><font color="#FF0000">Chapter
+1 The Big Picture</font></u></b> 1</font></font>
+<br><font face="Verdana"><font size=-1>Introduction 1</font></font>
+<br><b><u><font face="Verdana"><font size=-1>Transaction Processors</font></font></u></b>
+<br><font face="Verdana"><font size=-1>&nbsp; - Example with money transfer
+between 2 accounts</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp; - begin transaction, commit
+or rollaback</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp; - logging mechanism to protect
+transaction even in case of a system failure</font></font>
+<br><font face="Verdana"><font size=-1><b><u>ACID Properties of Transactions</u></b>
+3</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp; = <b><u><font color="#FF0000">A</font></u></b>tomicity
+(all actions will either commit or not together)</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp; = <b><u><font color="#FF0000">C</font></u></b>onsistency
+(database is always in reasonable state and can survive system failure)</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp; = <b><u><font color="#FF0000">I</font></u></b>solation
+(state of transaction is hidden until it is completed)</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp; = <b><u><font color="#FF0000">D</font></u></b>urability
+(results are stored permanently)</font></font>
+<br><font face="Verdana"><font size=-1><b><u>OLTP Versus OLAP</u></b> 3</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;<b><font color="#FF0000">OLTP</font></b>
+- Online Transaction Processing</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp; - used to update database,
+typically high volume, response time is important</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp; OLTP is
+where EJB is mostly aimed to be used.</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;<b><font color="#FF0000">OLAP</font></b>
+- Online Analytical Processing (also called DSS - Decision Support Systems,
+EIS - Enterprise Information Systems)</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp; - used to help review
+and analyse information in the database. Typically doesn't update database.
+Queries may be complicated and long.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u>Two-Tier, Client-Server Architecture</u></b>
+4</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp; - database server contains
+data</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp; - client contains both
+presentation logic and business rules</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>&nbsp;&nbsp; Problem - every time
+business logic is changed - we have to distribute new software to all clients.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u>Three-Tier Architecture</u></b>
+7</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp; - database server contains
+data</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp; - middle-tier server
+- contains business rules</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp; - client contains presentation
+logic</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>3-tier can be implemented using:
+Sockets, RPCs, CORBA, RMI, OLE/DCOM, Message Queues</font></font>
+<br><font face="Verdana"><font size=-1></font></font>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 COLS=1 WIDTH="100%" BGCOLOR="#CCFFFF" >
+<tr>
+<td><font face="Verdana"><font size=-1><b><u>Sockets</u></b> 8</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;<b><font color="#FF0000">Sockets</font></b>
+act as an interface&nbsp; to networking services. All internet is build
+on top of sockets.</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;Address = IP address + port.</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;A socket client and server
+must have an agreed-upon protocol for conversation.</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;The server should be able
+to handle many concurrent connections.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u>RPC</u></b>s 9</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp; <b><font color="#FF0000">RPC</font></b>
+(Remote Procedure Call) - a thin layer on top of sockets, allowing you
+to call a remote procedure as if it were any other procedure in your program.
+You actually call a routine called a "<b><font color="#FF0000">stub</font></b>".&nbsp;
+Stubs a typically generated by a compiler using an <b><font color="#FF0000">IDL</font></b>
+(Interface Definition Language) to describe the procedure, arguments and
+return types.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u>CORBA</u></b> 9</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp; <b><font color="#FF0000">CORBA</font></b>
+- Common Object Request Broker Architecture. It is a Object-Oriented RPC
+mechanism, it also uses IDL, but it includes objects descriptions. The
+IDL compiler generates <b><font color="#FF0000">stubs</font></b> and <b><font color="#FF0000">skeletons</font></b>
+(<u>skeleton is a server-side stub</u>).&nbsp;</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><font color="#FF0000">Marshalling</font></b>
+- process of taking parameters and transforming them into a format suitable
+for network transmission.</font></font>
+<br><font face="Verdana"><font size=-1><b><font color="#FF0000">Unmarshalling</font></b>
+- process of transforming data received via network into "normal" data
+types.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><font color="#FF0000">ORB</font></b>
+- Object Request Broker - sits between client and server. Client and server
+can be written in different languages, but still communicate via ORB.&nbsp;
+EJB includes a CORBA mapping allowing misc. clients to talk to EJB.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u>RMI</u></b> 10</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp; <b><font color="#FF0000">RMI</font></b>
+- Remote Method Invocation - a java-only version of CORBA.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u>OLE/DCOM</u></b> 11</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp; <b><font color="#FF0000">OLE/DCOM</font></b>
+- Microsoft version of distributed computing (doesn't mix well with EJB).</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp; OLE = Object
+Linking and Embedding,&nbsp;</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp; DCOM =
+Distributed Component Object Model)</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp; DNA - Distributed
+interNetworking Architecture</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u>Message Queues</u></b> 11</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp; <b><font color="#FF0000">MQ</font></b>
+is a server to receive and forward messages between client and server.
+If the server is busy, the message will wait in a queue. Thus communication
+is asynchronous, like email. In java - JMS (Java Message Service).</font></font></td>
+</tr>
+</table>
+<font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u>Distributed Transaction Processing</u></b>
+12</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp; A <b><font color="#FF0000">distributed
+transaction</font></b> is the one involving several participants (<b><font color="#FF0000">TP</font></b>
+= transaction processors) on the network.</font></font>
+<br><font face="Verdana"><font size=-1>The usual approach is <b><u><font color="#FF0000">"two-phase
+commit"</font></u></b>:</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp; 1st phase - <b><font color="#FF0000">TC</font></b>
+(Transaction Coordinator) tells each TP to prepare the transaction (write
+it to a log). Each TP replies with "vote commit" or "vote rollback".</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp; 2nd phase - TC notifies
+each TP to commit (rollback) the transaction.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>&nbsp;Transactions can be <b><font color="#FF0000">nested</font></b>
+in each other (or <b><font color="#FF0000">flat</font></b>).</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u>EJB's Role</u></b> 13</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp; - EJB specifies a container
+(execution environment) to provide services to EJB, such as</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp; - support for
+transactions,</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp; - support for
+persistence,</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp; - management
+of multiple instances of a given bean</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp; - proxy object
+for each bean to communicate with the client</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp; - EJB exists in the middle
+tier (typically EJB consists of methods)</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp; - EJB support transactions
+(making programming easy)</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp; - EJB can maintain state
+accross several method invocations.</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(or, if you need, you can also have stateless beans).</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp; - EJBs are simple (because
+container takes care of everything).</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp; - EJBs are portable
+(platform-independent)</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp; - EJBs supported
+by many vendors</font></font>
+<br><font face="Verdana"><font size=-1><b><u>Conclusion</u></b> 16</font></font>
+<br><a NAME="ch2"></a>
+<br><font face="Verdana"><font size=-1></font></font>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Verdana"><font size=-1>Chapter 2</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Verdana"><font size=-1><a href="index.html">home</a>
+- <a href="#top">top of the page</a> - </font></font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u><font color="#FF0000">Chapter
+2 EJB's Architecture</font></u></b> 17</font></font>
+<br><font face="Verdana"><font size=-1><b><u>Logical Architecture</u></b>
+17</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp; Client -- EJB Server -- Database</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u>Overview of EJB's Software
+Architecture</u></b> 18</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp; Client --- EJB Server ---
+EJB Container --- EJB Home and Remote Interfaces -- EJB Bean</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u>EJB Servers</u></b> 19</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp; EJB Server is a "container
+container" - it contains the EJB container.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u>EJB Containers</u></b> 21</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp; EJB Containers provide:</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp; - <u>transaction
+support</u>: beans requirements for transaction support can be <b><u><font color="#FF0000">declared</font></u></b>
+in the "<b><font color="#FF0000">deployment descriptor</font></b>": (for
+example: TX_NOT_SUPPORTED, TX_BEAN_MANAGED, TX_REQUIRED, TX_SUPPORTS, TX_REQUIRES_NEW,
+TX_MANDATORY).&nbsp; EJB transactions are not nested.</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp; - <u>Support
+for management of multiple instances</u>:</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- <b><font color="#FF0000">instance passivation</font></b>, (temporarily
+swap out the bean if container needs resources)</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- <b><font color="#FF0000">instance pooling</font></b>, (share stateless
+beans among clients)</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- <b><font color="#FF0000">database connection pooling</font></b>,</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- <b><font color="#FF0000">precached instances</font></b>, (to avoid unnecessary
+loading info from DB)</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- <b><font color="#FF0000">optimized method invocations</font></b>.(A typical
+EJB communication is the same whether it is with another EJB or a client
+and uses remote invocation as follows:</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- use a naming service to locate the EJB's home interface,</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- make a call to this home interface to gain access to its remote interface,</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-- make calls to the business methods against the remote interface</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+If both communicating parties are EJBs in the same container, it is possible
+to avoid overhead of this remote invocation thus making communication much
+faster - but it still should go through a proxy object.)</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp; - <u>Support
+for persistence</u>: Entity beans are persistent (stored in a database).
+Persistence can be container- or bean-managed.</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp; - <u>Support
+for security</u>: ACL (Access Control List) - list of persons or groups
+and their permissions. ACLs can be specified for a bean's methods or for
+a bean as a whole.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>&nbsp;==============================================================</font></font>
+<p><font face="Verdana"><font size=-1><b><u>Enterprise Beans</u></b> 26</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp; Session beans - Stateful
+or Stateless?&nbsp; Session Synchronization ?</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp; Entity Beans - Bean
+Managed or Container-Managed Persistance? Re-entrant?</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>&nbsp;&nbsp; <u>EJB Home Interface</u>:</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+must extend EJBHome interface</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public interface javax.ejb.<b>EJBHome</b> extends java.rmi.Remote {</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public abstract EJBMetaData getEJBMetaData();</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public abstract void remove(Handle handle);</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public abstract void remove(Object primaryKey);</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>&nbsp;--------------------------------------------------------------</font></font>
+<p><font face="Verdana"><font color="#3333FF"><font size=-1>&nbsp;&nbsp;
+When the client uses a naming service (JNDI - Java Naming and Direcoty
+Interface) to look up an EJB bean, the naming service returns a reference
+to an object which implements the bean's home interface.</font></font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>&nbsp;&nbsp; There are 3 methods
+in this interface:</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b><font color="#FF0000">getEJBMetaData()</font></b> - returns a reference
+to an object that implements the <b>EJBMetaData</b> interface:</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public interface javax.ejb.EJBMetaData {</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public abstract EJBHome <b>getEJBHome</b>();</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public abstract Class <b>getHomeInterfaceClass</b>();</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public abstract Class <b>getPrimaryKeyClass</b>();</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public abstract Class <b>getRemoteInterfaceClass</b>();</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public abstract boolean <b>isSession</b>();</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp; Other 2 methods
+remove an EJB object using a Handle or primaryKey (onloy an Entity bean
+may have a primary key):</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b><font color="#FF0000">remove(Handle handle)</font></b></font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b><font color="#FF0000">remove(Object primaryKey)</font></b></font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp; EJBHome interface
+doesn't provide any methods to create new beans or look up exising ones.
+Instead the EJB developer must write the method signatures for these tasks
+in their own interfaces, and they are different for Session and Entity
+beans.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>&nbsp;--------------------------------------------------------------</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>The <b><font color="#FF0000">EJBObject</font></b>
+interface:</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public interface javax.ejb.<b>EJBObject</b> extends java.rmi.Remote {</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public abstract EJBHome <b>getEJBHome();</b>&nbsp; // this method returns
+ref. to home</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public abstract Handle <b>getHandle();</b></font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public abstract Object <b>getPrimaryKey();</b></font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public abstract boolean <b>isIdentical(EJBObject obj);</b></font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public abstract void <b>remove();</b></font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b><font color="#FF0000">getEJBHome()</font></b> - returns a reference
+to an object implementing the EJB's object home interface</font></font><b><font face="Verdana"><font size=-1></font></font></b>
+<p><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b><font color="#FF0000">getHandle()</font></b> - returns a <b><font color="#FF0000">handle</font></b>,
+<u>which is a serializable reference to the object</u></font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(The Handle interface specifies one method - getEJBObject() to recreate
+a remote reference from a handle)</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b><font color="#FF0000">getPrimaryKey()</font></b> - returns the primary
+key (for Entity bean only)</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b><font color="#FF0000">isIdentical(EJBObject obj)</font></b> - test if
+2 references refer to the same EJB object</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b><font color="#FF0000">remove()</font></b> - to remove the remote EJB
+object</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>&nbsp;--------------------------------------------------------------</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>The <b><font color="#FF0000">EnterpriseBean</font></b>
+Interface</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public interface javax.ejb.<b>EnterpriseBean</b> extends java.io.Serializable
+{</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>This interface serves as a common
+point of ancestry for SessionBean and EntityBean interfaces (and requires
+them to be serializable).</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>&nbsp;--------------------------------------------------------------</font></font>
+<br><b><font face="Verdana"><font color="#3333FF"><font size=-1>Session
+Bean - implements SessionBean inerface:</font></font></font></b>
+<br><font face="Verdana"><font size=-1>&nbsp;--------------------------------------------------------------</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public interface javax.ejb.SessionBean extends javax.ejb.EnterpriseBean
+{</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public abstract void <b>ejbActivate()</b>;</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public abstract void <b>ejbPassivate()</b>;</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public abstract void <b>remove()</b>;</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public abstract void <b>setSessionContext(SessionContext ctx)</b>;</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>&nbsp; All the methods in this interface
+are callback methods - they invoked by the container.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b><font color="#FF0000">ejbActivate()</font></b> - is called by container
+right after restoring a Session bean from storage.</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(can be used to restore any resources that were closed before being passivated)</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b><font color="#FF0000">ejbPassivate()</font></b> - is called by container
+immediately before swapping session bean into storage</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(enabling the session bean to perform necessary cleanup, for example close
+files, etc.)</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+passivation itself is accomplished via serialization and storing (to a
+database)</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b><font color="#FF0000">remove()</font></b> - invokes ejbRemove() method
+of the instance (to do final cleanup)</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b><font color="#FF0000">setSessionContext(SessionContext ctx)</font></b>
+- called at the beginning of Session bean life.</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+The bean receives from the container an SessionContext object and stores
+it.</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Later it can use this object to interract with container-provided services</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(security and transaction management).</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>&nbsp;--------------------------------------------------------------</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public interface javax.ejb.<b>EJBContext</b> {</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public abstract Identity&nbsp;&nbsp;&nbsp;&nbsp; <b>getCallerIdentity</b>();</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public abstract EJBHome&nbsp;&nbsp;&nbsp; <b>getEJBHome</b>();</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public abstract Properties&nbsp; <b>getEnvironment</b>();</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public abstract boolean&nbsp;&nbsp;&nbsp;&nbsp; <b>getRollbackOnly</b>();</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public abstract UserTransaction <b>getUserTransaction</b>();</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public abstract boolean&nbsp;&nbsp;&nbsp;&nbsp; <b>isCallerInRole</b>(Identity
+role);</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public abstract void&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>setRollbackOnly</b>();</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b><font color="#FF0000">getCallerIdentity()</font></b> - used to get java.security.Identity
+object (identity of the client)</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(the better way to control access is using ACLs on the EJB container)</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b><font color="#FF0000">getEJBHome()</font></b> - for a bean to get a
+reference to its own home interface</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b><font color="#FF0000">getEnvironment()</font></b> - returns EJB's environment
+properties</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b><font color="#FF0000">getRollbackOnly()</font></b> - check if transaction
+is marked as RollbackOnly</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b><font color="#FF0000">getUserTransaction()</font></b> - returns object
+which implements javax.jts.UserTransaction interface</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(this interface has 10 STATUS constants, begin(), commit(), rollback(),
+getStatus(), etc. methods)</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b><font color="#FF0000">isCallerInRole(Identity role)</font></b> - to
+check the caller's role (for example "user" or "manager")</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b><font color="#FF0000">setRollbackOnly()</font></b> - sets current transaction
+to "rollback only"</font></font>
+<p><font face="Verdana"><font size=-1>&nbsp;--------------------------------------------------------------</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp; <b><font color="#FF0000">SessionContext</font></b>
+interface:</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>&nbsp;&nbsp; public interface javax.ejb.<b>SessionContext</b>
+extends javax.ejb.EJBContext {</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public
+abstract EJBObject getEJBObject();</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp; }</font></font><font face="Verdana"><font size=-1></font></font>
+<p><u><font face="Verdana"><font size=-1>How a new Session bean is created:</font></font></u>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp; - a client calls
+a create() method in the bean's home interface</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp; - container instantiates
+the object</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp; - containers
+calls the object's setSessionContext() method</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp; - container calls
+the ejbCreate() method whose signature matches the create() method invoked
+by the client.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><u><font face="Verdana"><font size=-1>Each Session EJB must provide
+3 classes:</font></font></u>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp; - The EJB class itself&nbsp;
+- <i>Session bean interface, business methods, ejbCreate() method</i></font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp; - The home interface
+- <i>inherit from EJBHome interface, provide method signatures for create()
+methods</i></font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp; - The remote interface
+- <i>Inherit from EJBObject interface, provide method signatures for business
+methods</i></font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><u>Statefull and Stateless Session
+beans</u>: - later</font></font><font face="Verdana"><font size=-1></font></font>
+<p><u><font face="Verdana"><font size=-1>The <b><font color="#FF0000">SessionSynchronization</font></b>
+Interface:</font></font></u><font face="Verdana"><font size=-1> - may or
+may not be implemented. Used to be notified by the container about the
+state of the transaction. Only for stateful Session bean.</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>&nbsp;&nbsp; public interface javax.ejb.<b><font color="#000000">SessionSynchronization</font></b>
+{</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public
+abstract void afterBegin();</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public
+abstract void afterCompletion(boolean committed);</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public
+abstract void beforeCompletion();</font></font>
+<br><font face="Verdana"><font size=-1>&nbsp;&nbsp; }</font></font>
+<br><font face="Verdana"><font size=-1></font></font>&nbsp;
+<p><font face="Verdana"><font size=-1>&nbsp;--------------------------------------------------------------</font></font>
+<br><b><font face="Verdana"><font color="#3333FF"><font size=-1>&nbsp;Entity
+Bean - implements EntityBean inerface:</font></font></font></b>
+<br><font face="Verdana"><font size=-1>&nbsp;--------------------------------------------------------------</font></font>
+<br><font face="Verdana"><font size=-1>??????????????????????</font></font>
+<br><font face="Verdana"><font size=-1></font></font>&nbsp;
+<br><font face="Verdana"><font size=-1></font></font>&nbsp;<font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>&nbsp;==============================================================</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>A High-Level View of an EJB Conversation
+41</font></font>
+<br><font face="Verdana"><font size=-1>Finding the Bean 42</font></font>
+<br><font face="Verdana"><font size=-1>Getting Access to a Bean 43</font></font>
+<br><font face="Verdana"><font size=-1>Calling the Bean's Methods 43</font></font>
+<br><font face="Verdana"><font size=-1>Getting Rid of the Bean 43</font></font>
+<br><font face="Verdana"><font size=-1>RMI Clients 43</font></font>
+<br><font face="Verdana"><font size=-1>CORBA Clients 44</font></font>
+<br><font face="Verdana"><font size=-1>Building and Deploying EJBs 45</font></font>
+<br><font face="Verdana"><font size=-1>Writing the EJB 45</font></font>
+<br><font face="Verdana"><font size=-1>Deploying the EJB 46</font></font>
+<br><font face="Verdana"><font size=-1>Connecting to the EJB 46</font></font>
+<br><font face="Verdana"><font size=-1>Roles in EJB 46</font></font>
+<br><font face="Verdana"><font size=-1>Enterprise Bean Provider 46</font></font>
+<br><font face="Verdana"><font size=-1>Deployer 47</font></font>
+<br><font face="Verdana"><font size=-1>Application Assembler 47</font></font>
+<br><font face="Verdana"><font size=-1>EJB Server Provider 47</font></font>
+<br><font face="Verdana"><font size=-1>EJB Container Provider 48</font></font>
+<br><font face="Verdana"><font size=-1>System Administrator 48</font></font>
+<br><a NAME="ch3"></a>
+<br><font face="Verdana"><font size=-1></font></font>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Verdana"><font size=-1>Chapter 3</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Verdana"><font size=-1><a href="index.html">home</a>
+- <a href="#top">top of the page</a> - </font></font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u><font color="#FF0000">Chapter
+3 Hello, EJB!</font></u></b> 49</font></font>
+<br><font face="Verdana"><font size=-1>Requirements 49</font></font>
+<br><font face="Verdana"><font size=-1>Design 50</font></font>
+<br><font face="Verdana"><font size=-1>Implementation 51</font></font>
+<br><font face="Verdana"><font size=-1>Step 1: Create the Remote Interface
+for the Bean 51</font></font>
+<br><font face="Verdana"><font size=-1>Step 2: Create the Bean's Home Interface
+54</font></font>
+<br><font face="Verdana"><font size=-1>Step 3: Create the Bean's Implementation
+Class 56</font></font>
+<br><font face="Verdana"><font size=-1>Step 4: Compile the Remote Interface,
+Home Interface, and Implementation Class 59</font></font>
+<br><font face="Verdana"><font size=-1>Step 5: Create a Session Descriptor
+59</font></font>
+<br><font face="Verdana"><font size=-1>Step 6: Create a Manifest 62</font></font>
+<br><font face="Verdana"><font size=-1>Step 7: Create an ejb-jar File 63</font></font>
+<br><font face="Verdana"><font size=-1>Step 8: Deploy the ejb-jar File
+63</font></font>
+<br><font face="Verdana"><font size=-1>Step 9: Write a Client 64</font></font>
+<br><font face="Verdana"><font size=-1>Step 10: Run the Client 67</font></font>
+<br><font face="Verdana"><font size=-1>What's Really Going on Here? 68</font></font>
+<br><font face="Verdana"><font size=-1>Conclusion 70</font></font>
+<br><a NAME="ch4"></a>
+<br><font face="Verdana"><font size=-1></font></font>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Verdana"><font size=-1>Chapter 4</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Verdana"><font size=-1><a href="index.html">home</a>
+- <a href="#top">top of the page</a> - </font></font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u><font color="#FF0000">Chapter
+4 Writing EJB Session Beans</font></u></b> 71</font></font>
+<br><font face="Verdana"><font size=-1>When to Use Session Beans 71</font></font>
+<br><font face="Verdana"><font size=-1>Constraints on Session Beans 71</font></font>
+<br><font face="Verdana"><font size=-1>Session Bean Life Cycle 73</font></font>
+<br><font face="Verdana"><font size=-1>Transactions and EJB 78</font></font>
+<br><font face="Verdana"><font size=-1>Stateful Session Bean Example 80</font></font>
+<br><font face="Verdana"><font size=-1>Requirements 80</font></font>
+<br><font face="Verdana"><font size=-1>Design 81</font></font>
+<br><font face="Verdana"><font size=-1>Implementation 83</font></font>
+<br><font face="Verdana"><font size=-1>Summing Up the Stateful Session
+Bean Example 91</font></font>
+<br><font face="Verdana"><font size=-1>Stateless Session Bean Example 91</font></font>
+<br><font face="Verdana"><font size=-1>Requirements 91</font></font>
+<br><font face="Verdana"><font size=-1>Design 92</font></font>
+<br><font face="Verdana"><font size=-1>Implementation 92</font></font>
+<br><font face="Verdana"><font size=-1>Deploying the Example 100</font></font>
+<br><font face="Verdana"><font size=-1>Conclusion 101</font></font>
+<br><a NAME="ch5"></a>
+<br><font face="Verdana"><font size=-1></font></font>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Verdana"><font size=-1>Chapter 5</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Verdana"><font size=-1><a href="index.html">home</a>
+- <a href="#top">top of the page</a> - </font></font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u><font color="#FF0000">Chapter
+5 Writing EJB Entity Beans</font></u></b> 103</font></font>
+<br><font face="Verdana"><font size=-1>When to Use Entity Beans 103</font></font>
+<br><font face="Verdana"><font size=-1>Concurrent Use by Several Clients
+104</font></font>
+<br><font face="Verdana"><font size=-1>Long Lifetime 104</font></font>
+<br><font face="Verdana"><font size=-1>Survival of Server Crashes 104</font></font>
+<br><font face="Verdana"><font size=-1>Direct Representation of Data in
+an Underlying Database 105</font></font>
+<br><font face="Verdana"><font size=-1>Bean-Managed Versus Container-Managed
+Persistence 105</font></font>
+<br><font face="Verdana"><font size=-1>Primary Keys 106</font></font>
+<br><font face="Verdana"><font size=-1>Entity Bean Life Cycle 106</font></font>
+<br><font face="Verdana"><font size=-1>Nonexistence 107</font></font>
+<br><font face="Verdana"><font size=-1>The Pooled State 108</font></font>
+<br><font face="Verdana"><font size=-1>The Ready State 108</font></font>
+<br><font face="Verdana"><font size=-1>Reentrant Instances 109</font></font>
+<br><font face="Verdana"><font size=-1>Example: Container-Managed Persistence
+109</font></font>
+<br><font face="Verdana"><font size=-1>Requirements 109</font></font>
+<br><font face="Verdana"><font size=-1>Design 109</font></font>
+<br><font face="Verdana"><font size=-1>Implementation 110</font></font>
+<br><font face="Verdana"><font size=-1>Example: Bean-Managed Persistence
+116</font></font>
+<br><font face="Verdana"><font size=-1>Requirements 116</font></font>
+<br><font face="Verdana"><font size=-1>Design 116</font></font>
+<br><font face="Verdana"><font size=-1>Implementation 117</font></font>
+<br><font face="Verdana"><font size=-1>Conclusion 124</font></font>
+<br><a NAME="ch6"></a>
+<br><font face="Verdana"><font size=-1></font></font>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Verdana"><font size=-1>Chapter 6</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Verdana"><font size=-1><a href="index.html">home</a>
+- <a href="#top">top of the page</a> - </font></font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u><font color="#FF0000">Chapter
+6 EJB Clients</font></u></b> 125</font></font>
+<br><font face="Verdana"><font size=-1>An EJB Bean as a Client to Another
+Bean 125</font></font>
+<br><font face="Verdana"><font size=-1>The Home Interface 125</font></font>
+<br><font face="Verdana"><font size=-1>The Remote Interface 126</font></font>
+<br><font face="Verdana"><font size=-1>The EJB Client Bean 126</font></font>
+<br><font face="Verdana"><font size=-1>The Client 128</font></font>
+<br><font face="Verdana"><font size=-1>Serializing a Handle 129</font></font>
+<br><font face="Verdana"><font size=-1>The Client 129</font></font>
+<br><font face="Verdana"><font size=-1>Invoking the Client 134</font></font>
+<br><font face="Verdana"><font size=-1>Transactions in Clients 134</font></font>
+<br><font face="Verdana"><font size=-1>Authentication in Clients 137</font></font>
+<br><font face="Verdana"><font size=-1>Getting Metadata 139</font></font>
+<br><font face="Verdana"><font size=-1>A Servlet Client 143</font></font>
+<br><font face="Verdana"><font size=-1>HTML to Make a Call to the Servlet
+146</font></font>
+<br><font face="Verdana"><font size=-1>Setting Up WebLogic Servlets 149</font></font>
+<br><font face="Verdana"><font size=-1>An Applet Client 149</font></font>
+<br><font face="Verdana"><font size=-1>The Applet Tag 152</font></font>
+<br><font face="Verdana"><font size=-1>CORBA Client Example 153</font></font>
+<br><font face="Verdana"><font size=-1>What to Look for in a CORBA-Compliant
+EJB</font></font>
+<br><font face="Verdana"><font size=-1>Implementation 156</font></font>
+<br><font face="Verdana"><font size=-1>HTTP Tunneling and SSL 156</font></font>
+<br><font face="Verdana"><font size=-1>Conclusion 157</font></font>
+<br><a NAME="ch7"></a>
+<br><font face="Verdana"><font size=-1></font></font>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Verdana"><font size=-1>Chapter 7</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Verdana"><font size=-1><a href="index.html">home</a>
+- <a href="#top">top of the page</a> - </font></font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u><font color="#FF0000">Chapter
+7 Deployment</font></u></b> 159</font></font>
+<br><font face="Verdana"><font size=-1>The DeploymentDescriptor Class 159</font></font>
+<br><font face="Verdana"><font size=-1>The AccessControlEntry Class 161</font></font>
+<br><font face="Verdana"><font size=-1>Back to the DeploymentDescriptor
+Class (I) 162</font></font>
+<br><font face="Verdana"><font size=-1>The ControlDescriptor Class 163</font></font>
+<br><font face="Verdana"><font size=-1>"Run-as" Modes 164</font></font>
+<br><font face="Verdana"><font size=-1>Back to the DeploymentDescriptor
+Class (II) 165</font></font>
+<br><font face="Verdana"><font size=-1>The SessionDescriptor Class 165</font></font>
+<br><font face="Verdana"><font size=-1>The EntityDescriptor Class 167</font></font>
+<br><font face="Verdana"><font size=-1>Example Program 168</font></font>
+<br><font face="Verdana"><font size=-1>The Home Interface 168</font></font>
+<br><font face="Verdana"><font size=-1>The Remote Interface 168</font></font>
+<br><font face="Verdana"><font size=-1>The Bean Implementation Class 169</font></font>
+<br><font face="Verdana"><font size=-1>The Client 170</font></font>
+<br><font face="Verdana"><font size=-1>Using Roles at Runtime 173</font></font>
+<br><font face="Verdana"><font size=-1>The ReadDD Class 174</font></font>
+<br><font face="Verdana"><font size=-1>The Deployment Descriptor 177</font></font>
+<br><font face="Verdana"><font size=-1>Setting Up Access Control Lists
+178</font></font>
+<br><font face="Verdana"><font size=-1>Container-Managed Finder Methods
+178</font></font>
+<br><font face="Verdana"><font size=-1>Other Deployment Issues 179</font></font>
+<br><font face="Verdana"><font size=-1>Caching Issues 179</font></font>
+<br><font face="Verdana"><font size=-1>Persistent Storage 180</font></font>
+<br><font face="Verdana"><font size=-1>Properties 180</font></font>
+<br><font face="Verdana"><font size=-1>Other Administrative Issues 180</font></font>
+<br><font face="Verdana"><font size=-1>Conclusion 182</font></font>
+<br><a NAME="ch8"></a>
+<br><font face="Verdana"><font size=-1></font></font>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Verdana"><font size=-1>Chapter 8</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Verdana"><font size=-1><a href="index.html">home</a>
+- <a href="#top">top of the page</a> - </font></font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u><font color="#FF0000">Chapter
+8 Tips, Tricks, and Traps for Building Distributed and Other Systems</font></u></b>
+183</font></font>
+<br><font face="Verdana"><font size=-1>Expect Your Network Connections
+to Fail 183</font></font>
+<br><font face="Verdana"><font size=-1>Test Catastrophic Failure 184</font></font>
+<br><font face="Verdana"><font size=-1>Avoid Remote Method Invocations
+Where Possible 184</font></font>
+<br><font face="Verdana"><font size=-1>Treat Transactions and Database
+Connections as Precious Resources 184</font></font>
+<br><font face="Verdana"><font size=-1>Monitor the Granularity of Objects
+185</font></font>
+<br><font face="Verdana"><font size=-1>Monitor the Granularity of Methods
+185</font></font>
+<br><font face="Verdana"><font size=-1>Isolate Vendor-Specific Code 185</font></font>
+<br><font face="Verdana"><font size=-1>Avoid Making Entity Beans Reentrant
+185</font></font>
+<br><font face="Verdana"><font size=-1>Observe Programming Restrictions
+on EJB Beans 186</font></font>
+<br><font face="Verdana"><font size=-1>Don't Implement the Bean's Remote
+Interface in Its Implementation Class 186</font></font>
+<br><font face="Verdana"><font size=-1>Use Relatively Small and Well-Defined
+Queries 187</font></font>
+<br><font face="Verdana"><font size=-1>Don't Keep Database Cursors Open
+187</font></font>
+<br><font face="Verdana"><font size=-1>Minimize Transactions 187</font></font>
+<br><font face="Verdana"><font size=-1>Minimize Distributed Transactions
+188</font></font>
+<br><font face="Verdana"><font size=-1>Avoid Indexing Your Tables 188</font></font>
+<br><font face="Verdana"><font size=-1>Remember That Memory Is Cheap 188</font></font>
+<br><font face="Verdana"><font size=-1>Build in Upward-Scalability 188</font></font>
+<br><font face="Verdana"><font size=-1>Wrap Entity Beans with Session Beans
+189</font></font>
+<br><font face="Verdana"><font size=-1>Streamline Your Middleware Methods
+189</font></font>
+<br><font face="Verdana"><font size=-1>Put Your Business Logic in the Middle
+Tier 189</font></font>
+<br><font face="Verdana"><font size=-1>Understand the Tradeoffs Between
+Isolation Level and Concurrency 189</font></font>
+<br><font face="Verdana"><font size=-1>Avoid Extensive Object Allocation
+and Deallocation 190</font></font>
+<br><font face="Verdana"><font size=-1>Prototype, Prototype, Prototype
+190</font></font>
+<br><font face="Verdana"><font size=-1>Do Load Testing 190</font></font>
+<br><font face="Verdana"><font size=-1>Monitor the Size of Your User Base
+When Designing an Architecture 190</font></font>
+<br><font face="Verdana"><font size=-1>Separate Transaction-Processing
+Tables from Reporting Tables 191</font></font>
+<br><font face="Verdana"><font size=-1>If a Database Query Runs Slowly,
+Review Its Query Plan 191</font></font>
+<br><font face="Verdana"><font size=-1>Keep Joins Simple 191</font></font>
+<br><font face="Verdana"><font size=-1>Have a Database Administrator 192</font></font>
+<br><font face="Verdana"><font size=-1>Use Prepared Statements 192</font></font>
+<br><font face="Verdana"><font size=-1>Have Your Development Environment
+Mirror Your Production Environment 192</font></font>
+<br><font face="Verdana"><font size=-1>During Load Testing, Use a Sniffer
+to Monitor Network Traffic 192</font></font>
+<br><font face="Verdana"><font size=-1>Use the Facade Pattern for Interfacing
+with Legacy Systems 193</font></font>
+<br><font face="Verdana"><font size=-1>Use Patterns 193</font></font>
+<br><font face="Verdana"><font size=-1>Keep Network Topology in Mind 194</font></font>
+<br><font face="Verdana"><font size=-1>Design Security in from the Start
+194</font></font>
+<br><font face="Verdana"><font size=-1>Work Closely with Network Personnel
+194</font></font>
+<br><font face="Verdana"><font size=-1>Be Aware of Internal Politics 194</font></font>
+<br><font face="Verdana"><font size=-1>Be Aware of the Organizational Culture
+195</font></font>
+<br><font face="Verdana"><font size=-1>Be Prepared for Requirements Changes
+195</font></font>
+<br><font face="Verdana"><font size=-1>Build One Slice at a Time 196</font></font>
+<br><font face="Verdana"><font size=-1>Build the Difficult Components First
+196</font></font>
+<br><font face="Verdana"><font size=-1>Talk to Your Users 196</font></font>
+<br><font face="Verdana"><font size=-1>Keep It Simple 197</font></font>
+<br><font face="Verdana"><font size=-1>Conduct Walkthroughs 197</font></font>
+<br><font face="Verdana"><font size=-1>Use Version Control 198</font></font>
+<br><font face="Verdana"><font size=-1>Use a Code Profiler 198</font></font>
+<br><font face="Verdana"><font size=-1>Establish Your Interfaces Early
+198</font></font>
+<br><font face="Verdana"><font size=-1>Build Early and Often 199</font></font>
+<br><font face="Verdana"><font size=-1>Perform Regression Testing 199</font></font>
+<br><font face="Verdana"><font size=-1>Choose Appropriate Test Cases 200</font></font>
+<br><font face="Verdana"><font size=-1>Generate Test Cases While Implementing
+the Application 200</font></font>
+<br><font face="Verdana"><font size=-1>Automate Everything 200</font></font>
+<br><font face="Verdana"><font size=-1>Understand the Role of Testing 201</font></font>
+<br><a NAME="ch9"></a>
+<br><font face="Verdana"><font size=-1></font></font>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Verdana"><font size=-1>Chapter 9</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Verdana"><font size=-1><a href="index.html">home</a>
+- <a href="#top">top of the page</a> - </font></font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u><font color="#FF0000">Chapter
+9 A Nontrival Example</font></u></b> 203</font></font>
+<br><font face="Verdana"><font size=-1>Requirements 203</font></font>
+<br><font face="Verdana"><font size=-1>Design 204</font></font>
+<br><font face="Verdana"><font size=-1>Relationships in EJB 204</font></font>
+<br><font face="Verdana"><font size=-1>Relationships in General 205</font></font>
+<br><font face="Verdana"><font size=-1>Detailed Design 205</font></font>
+<br><font face="Verdana"><font size=-1>Database Design 208</font></font>
+<br><font face="Verdana"><font size=-1>Detailed Design of the TimeTracker
+Class 209</font></font>
+<br><font face="Verdana"><font size=-1>Detailed Design of the Employee
+Class 211</font></font>
+<br><font face="Verdana"><font size=-1>Designing the TimeSheetHash Class
+212</font></font>
+<br><font face="Verdana"><font size=-1>Designing the Client 213</font></font>
+<br><font face="Verdana"><font size=-1>Implementation 213</font></font>
+<br><font face="Verdana"><font size=-1>Building the Database 214</font></font>
+<br><font face="Verdana"><font size=-1>Setting Up the Access Control Lists
+214</font></font>
+<br><font face="Verdana"><font size=-1>Implementing the Employee Bean 215</font></font>
+<br><font face="Verdana"><font size=-1>The Final Product 218</font></font>
+<br><font face="Verdana"><font size=-1>Employee Home Interface 218</font></font>
+<br><font face="Verdana"><font size=-1>Employee Remote Interface 219</font></font>
+<br><font face="Verdana"><font size=-1>Employee Implementation 220</font></font>
+<br><font face="Verdana"><font size=-1>Employee Primary Key Class 220</font></font>
+<br><font face="Verdana"><font size=-1>EmployeeInfo Class 221</font></font>
+<br><font face="Verdana"><font size=-1>MyIdentity Class 221</font></font>
+<br><font face="Verdana"><font size=-1>TimeSheetLine Class 222</font></font>
+<br><font face="Verdana"><font size=-1>TimeSheetHash Class 222</font></font>
+<br><font face="Verdana"><font size=-1>The Deployment Descriptor 223</font></font>
+<br><font face="Verdana"><font size=-1>Implementing the TimeTracker Bean
+223</font></font>
+<br><font face="Verdana"><font size=-1>The Home Interface 225</font></font>
+<br><font face="Verdana"><font size=-1>The Remote Interface 225</font></font>
+<br><font face="Verdana"><font size=-1>Exceptions 226</font></font>
+<br><font face="Verdana"><font size=-1>Notes About the Implementation Class
+227</font></font>
+<br><font face="Verdana"><font size=-1>The Deployment Descriptor 227</font></font>
+<br><font face="Verdana"><font size=-1>Implementing the Real Client 227</font></font>
+<br><font face="Verdana"><font size=-1>The Client Implementation Class
+228</font></font>
+<br><font face="Verdana"><font size=-1>An Applet to Run the Client 228</font></font>
+<br><font face="Verdana"><font size=-1>Deployment Issues 229</font></font>
+<br><font face="Verdana"><font size=-1>Conclusion 229</font></font>
+<br><a NAME="ch10"></a>
+<br><font face="Verdana"><font size=-1></font></font>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Verdana"><font size=-1>Chapter 10</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Verdana"><font size=-1><a href="index.html">home</a>
+- <a href="#top">top of the page</a> - </font></font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u><font color="#FF0000">Chapter
+10 Implementations and Future Directions</font></u></b> 231</font></font>
+<br><font face="Verdana"><font size=-1>EJB Implementations 231</font></font>
+<br><font face="Verdana"><font size=-1>WebLogic 231</font></font>
+<br><font face="Verdana"><font size=-1>EJBHome 232</font></font>
+<br><font face="Verdana"><font size=-1>Other EJB Vendors 232</font></font>
+<br><font face="Verdana"><font size=-1>Future Directions for EJB 236</font></font>
+<br><font face="Verdana"><font size=-1>Sun's EJB Roadmap 237</font></font>
+<br><font face="Verdana"><font size=-1>A Bit of Stargazing 238</font></font><font face="Verdana"><font size=-1></font></font>
+<p><a NAME="ch1"></a>
+<br><font face="Verdana"><font size=-1></font></font>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Verdana"><font size=-1>Conclusion and Appendices&nbsp;</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Verdana"><font size=-1><a href="index.html">home</a>
+- <a href="#top">top of the page</a> - </font></font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><font color="#FF0000">Conclusion</font></b>
+238</font></font>
+<br><font face="Verdana"><font size=-1></font></font>&nbsp;<font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u><font color="#FF0000">Appendix
+A Source Code for Chapter 4</font></u></b> 241</font></font>
+<br><font face="Verdana"><font size=-1>Home Interface for Bag Example 241</font></font>
+<br><font face="Verdana"><font size=-1>Remote Interface for the Bag Example
+241</font></font>
+<br><font face="Verdana"><font size=-1>InventoryItem Class 242</font></font>
+<br><font face="Verdana"><font size=-1>ItemNotFoundException Exception
+242</font></font>
+<br><font face="Verdana"><font size=-1>BagBean Implementation Class 242</font></font>
+<br><font face="Verdana"><font size=-1>BagBean Client 249</font></font>
+<br><font face="Verdana"><font size=-1>Bag2 Home Interface 251</font></font>
+<br><font face="Verdana"><font size=-1>Bag2 Remote Interface 251</font></font>
+<br><font face="Verdana"><font size=-1>Bag2 Bean Implementation 252</font></font>
+<br><font face="Verdana"><font size=-1>Bag2 Client 258</font></font>
+<br><font face="Verdana"><font size=-1></font></font>&nbsp;<font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u><font color="#FF0000">Appendix
+B Source Code for Chapter 5</font></u></b> 261</font></font>
+<br><font face="Verdana"><font size=-1>Implementation of OrderBean (Container-Managed
+Persistence) 261</font></font>
+<br><font face="Verdana"><font size=-1>Client for Container-Managed Entity
+Bean 263</font></font>
+<br><font face="Verdana"><font size=-1>Implementation Bean for Bean-Managed
+Persistence 264</font></font>
+<br><font face="Verdana"><font size=-1>Client for the Bean-Managed Persistence
+Example 270</font></font>
+<br><font face="Verdana"><font size=-1></font></font>&nbsp;<font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1><b><u><font color="#FF0000">Appendix
+C Source Code for Chapter 9</font></u></b> 273</font></font>
+<br><font face="Verdana"><font size=-1>Implementation of the Employee Entity
+Bean 273</font></font>
+<br><font face="Verdana"><font size=-1>Deployment Descriptor for the Employee
+Entity Bean 283</font></font>
+<br><font face="Verdana"><font size=-1>Implementation Class for the TimeTracker
+Session Bean 287</font></font>
+<br><font face="Verdana"><font size=-1>Deployment Descriptor for the TimeTracker
+Session Bean 293</font></font>
+<br><font face="Verdana"><font size=-1>TimeTracker Client Implementation
+298</font></font><font face="Verdana"><font size=-1></font></font>
+<p><font face="Verdana"><font size=-1>Glossary 305</font></font>
+<br><font face="Verdana"><font size=-1>Index 311</font></font>
+<br><font face="Verdana"><font size=-1>CD-ROM Warranty 325</font></font>
+<br><font face="Verdana"><font size=-1></font></font>&nbsp;
+<br><font face="Verdana"><font size=-1></font></font>&nbsp;
+</body>
+</html>

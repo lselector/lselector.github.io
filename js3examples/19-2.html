@@ -1,0 +1,23 @@
+<!-- This example is from JavaScript: The Definitive Guide, 3rd Edition.   -->
+<!-- That book and this example were Written by David Flanagan.            -->
+<!-- They are Copyright (c) 1996, 1997, 1998 O'Reilly & Associates.        -->
+<!-- This example is provided WITHOUT WARRANTY either expressed or implied.-->
+<!-- You may study, use, modify, and distribute it for any purpose,        -->
+<!-- as long as this notice is retained.                                   -->
+
+<!-- Check whether JavaScript 1.2 is supported. -->
+<SCRIPT LANGUAGE="JavaScript1.2">var _js12_ = 1.2</SCRIPT>
+
+<!-- Now avoid the problems with JavaScript 1.2 on Navigator by running -->
+<!-- the following code on any browser that supports JavaScript 1.1. If -->
+<!-- the browser does not support JavaScript 1.2, however, we'll display -->
+<!-- an error message and suppress any syntax errors that occur. -->
+<SCRIPT LANGUAGE="JavaScript1.1">
+// If JavaScript 1.2 is not supported, fail gracefully.
+if (!_js12_) {
+    alert("This program requires a browser with JavaScript 1.2 support");
+    window.onerror = new Function("return true;");
+}
+
+// Now proceed with the JavaScript 1.2 code. 
+</SCRIPT>

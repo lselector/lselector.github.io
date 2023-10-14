@@ -1,0 +1,658 @@
+<html>
+
+
+
+
+
+
+
+<head>
+
+
+
+
+
+
+
+<title>4.2) Command Line arguments</title>
+
+
+
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="tutor.css"></head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body bgcolor="#FFFFFF">
+
+<table width=95% border=0 cellpadding=2 cellspacing=0 style="page-break-before: always">
+
+  <col width=147*> <col width=109*> 
+
+  <tr> 
+
+    <td width=57% height=104> 
+
+      <p><a href= "introj2.htm" ><img src= "btnIndex.jpg"  name="Graphic1" alt="Return to Tutorial Index" align=BOTTOM width=55 height=39 border=0></a><a href= "introj2.htm" ><br>
+
+        <br>
+
+        </a><a href= "index.htm" ><img src= "btnHome.jpg"  name="Graphic2" alt="Back to the home page of this site" align=BOTTOM width=55 height=39 border=0></a> 
+
+      </p>
+
+    </td>
+
+    <td width=43%> 
+
+      <p align=RIGHT><img src= "hat.gif"  name="Graphic3" alt="morterboard" align=BOTTOM width=118 height=113 border=0></p>
+
+    </td>
+
+  </tr>
+
+  <tr> 
+
+    <td width=57% height=11> 
+
+      <h1 align=LEFT>Java2 Certification <br>
+
+        Tutorial </h1>
+
+    </td>
+
+    <td width=43% bgcolor="#ff9900"> 
+
+      <p>&nbsp;</p>
+
+    </td>
+
+  </tr>
+
+</table>
+
+<p> You can discuss this topic with others at <a href= "http://www.jchq.net/discus" >http://www.jchq.net/discus</a><br>
+
+  Read reviews and buy a Java Certification book at <a href= "http://www.jchq.net/bookreviews/jcertbooks.htm" >http://www.jchq.net/bookreviews/jcertbooks.htm</a> 
+
+  <br>
+
+</p>
+
+<hr size=5 noshade>
+
+<h1>4) <font face="GENEVA, HELVETICA, ARIAL, LUCIDA SANS"><b>Language Fundamentals</b></font> 
+
+
+
+
+
+
+
+</h1>
+
+
+
+
+
+
+
+<h2>Objective 2) </h2>
+
+
+
+
+
+
+
+<p><font face="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">State the correspondence 
+
+
+
+
+
+
+
+  between index values in the argument array passed to a main method and command 
+
+
+
+
+
+
+
+  line arguments.</font></p>
+
+
+
+
+
+
+
+<p><i>Note: This seems to be a tiny subject hardly worth an objective of its own.</i></p>
+
+
+
+
+
+
+
+<p>This objective can catch out the more experienced C/C++ programmer because 
+
+
+
+
+
+
+
+  the first element of argv[] is the first string after the name of the program 
+
+
+
+
+
+
+
+  on the command line. Thus if a program was run as follows&nbsp;</p>
+
+
+
+
+
+
+
+<pre>java myprog myparm&nbsp;</pre>
+
+
+
+
+
+
+
+<p>the element argv[0] would contain &quot;myparm&quot;. If you are from a C/C++ 
+
+
+
+
+
+
+
+  background you might expect it to contain &quot;java&quot;. Java does not contain 
+
+
+
+
+
+
+
+  the Visual Basic equivalent of Option Base and arrays will always start from 
+
+
+
+
+
+
+
+  element zero.&nbsp;</p>
+
+
+
+
+
+
+
+<p>Take the following example</p>
+
+
+
+
+
+
+
+<pre>public class MyParm{
+public static void main(String argv[]){
+        String s1 = argv[1];
+        System.out.println(s1);
+        }
+}
+</pre>
+
+
+
+
+
+
+
+<p>I have placed argument one into a String just to highlight that argv is a <i>String</i> 
+
+
+
+
+
+
+
+  array. If you run this program with the command</p>
+
+
+
+
+
+
+
+<pre>java MyParm hello there</pre>
+
+
+
+
+
+
+
+<p>The output will be <i>there, </i>and not <i>MyParm </i>or<i> hello</i> 
+
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="11%"><img src= "Quiz.gif"  width="99" height="101"></td>
+
+
+
+
+
+
+
+    <td width="89%">&nbsp;</td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<h3><b>Question 1)</b></h3>
+
+
+
+
+
+
+
+<p>Given the following main method in a class called Cycle and a command line 
+
+
+
+
+
+
+
+  of</p>
+
+
+
+
+
+
+
+<pre>java Cycle one two</pre>
+
+
+
+
+
+
+
+<p>what will be output?</p>
+
+
+
+
+
+
+
+<pre>public static void main(String bicycle[]){
+	System.out.println(bicycle[0]);
+}</pre>
+
+
+
+
+
+
+
+<p>1) None of these options<br>
+
+
+
+
+
+
+
+  2) Cycle<br>
+
+
+
+
+
+
+
+  3) one<br>
+
+
+
+
+
+
+
+  4) two<br>
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h3> <b>Question 2)</b> </h3>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<p>How can you retrieve the values passed from the command line to the main method?</p>
+
+
+
+
+
+
+
+<p>1) Use the <i>System.getParms()</i> method<br>
+
+
+
+
+
+
+
+  2) Assign an element of the argument to a string<br>
+
+
+
+
+
+
+
+  3) Assign an element of the argument to a char array<br>
+
+
+
+
+
+
+
+  4) None of these options 
+
+
+
+
+
+
+
+<h1>Answers</h1>
+
+
+
+
+
+
+
+<h3><b>Answer 1)</b></h3>
+
+
+
+
+
+
+
+<p> <br>
+
+
+
+
+
+
+
+  3) one
+
+
+
+
+
+
+
+<h3> <br>
+
+
+
+
+
+
+
+  <b>Answer 2)</b></h3>
+
+
+
+
+
+
+
+<p><b> <br>
+
+
+
+
+
+
+
+  </b>2) Assign an element of the argument to a string
+
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+
+
+<p>&nbsp;
+
+
+
+
+
+
+
+<table border="1" width="100%">
+
+
+
+
+
+
+
+  <caption><b>Other sources on this topic</b></caption>
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="100%"><b>This topic is covered in the Sun Tutorial at </b><br>
+
+
+
+
+
+
+
+      <a href= "http://java.sun.com/docs/books/tutorial/essential/attributes/cmdLineArgs.html" >http://java.sun.com/docs/books/tutorial/essential/attributes/cmdLineArgs.html</a></td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+Last updated<br>
+
+
+
+
+
+
+
+28 Dec 1999<br>
+
+
+
+copyright &copy; Marcus Green 1999 
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>
+
+
+
+
+
+
+

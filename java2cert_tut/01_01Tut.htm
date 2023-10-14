@@ -1,0 +1,403 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+	<TITLE>1.1) Declarations and access control</TITLE>
+<META name="GENERATOR" content="IBM WebSphere Homepage Builder V4.0.0 for Linux">
+<META NAME="CREATED" CONTENT="20000722;7281981">
+	<META NAME="CHANGED" CONTENT="16010101;0">
+	<STYLE>
+	<!--
+	-->
+	</STYLE>
+<link rel="stylesheet" href="tutor.css"></HEAD>
+<BODY BGCOLOR="#ffffff">
+<TABLE WIDTH=95% BORDER=0 CELLPADDING=2 CELLSPACING=0 STYLE="page-break-before: always">
+	<COL WIDTH=147*>
+	<COL WIDTH=109*>
+	<TR>
+		<TD WIDTH=57% HEIGHT=104>
+			<P><A HREF= "introj2.htm" ><IMG SRC= "btnIndex.jpg"  NAME="Graphic1" ALT="Return to Tutorial Index" ALIGN=BOTTOM WIDTH=55 HEIGHT=39 BORDER=0></A><A HREF= "introj2.htm" ><BR><BR></A><A HREF= "index.htm" ><IMG SRC= "btnHome.jpg"  NAME="Graphic2" ALT="Back to the home page of this site" ALIGN=BOTTOM WIDTH=55 HEIGHT=39 BORDER=0></A>
+						</P>
+		</TD>
+		<TD WIDTH=43%>
+			<P ALIGN=RIGHT><IMG SRC= "hat.gif"  NAME="Graphic3" ALT="morterboard" ALIGN=BOTTOM WIDTH=118 HEIGHT=113 BORDER=0></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=57% HEIGHT=11>
+			<H1 ALIGN=LEFT>Java2 Certification <BR>Tutorial 
+			</H1>
+		</TD>
+		<TD WIDTH=43% BGCOLOR="#ff9900">
+			<P>&nbsp;</P>
+		</TD>
+	</TR>
+</TABLE>
+<p> You can discuss this topic with others at <a href= "http://www.jchq.net/discus" >http://www.jchq.net/discus</a><br>
+  Read reviews and buy a Java Certification book at <a href= "http://www.jchq.net/bookreviews/jcertbooks.htm" >http://www.jchq.net/bookreviews/jcertbooks.htm</a> 
+  <br>
+</p>
+<HR SIZE=5 noshade>
+<H1><B><FONT FACE="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">1)
+Declarations and Access Control</FONT></B> 
+</H1>
+<H4>Objective 1) 
+</H4>
+<P ALIGN=LEFT>Write code that declares, constructs and initializes
+arrays of any base type using any of the permitted forms, both for
+declaration and for initialization.</P>
+<H3><B>Arrays</B> 
+</H3>
+<P ALIGN=LEFT>Arrays in Java are similar in syntax to arrays in other
+languages such as C/C++ and Visual Basic. However, Java removes the
+feature of C/C++ whereby you can bypass the [] style accessing of
+elements and get under the hood using pointers. This capability in
+C/C++ , although powerful, makes it easy to write buggy software.
+Because Java does not support this direct manipulation of pointers,
+this source of bugs is removed.</P>
+<P>An array is a type of object that contains values called elements.
+This gives you a convenient bag or holder for a group of values that
+can be moved around a program, and allows you to access and change
+values as you need them. Unlike variables which are accessed by a
+name, elements are accessed by numbers starting from zero. Because of
+this you can &quot;walk&quot; through an array, accessing each
+element in turn. 
+</P>
+<P>Every element of an array must be of the same type The type of the
+elements of an array is decided when the array is declared. If you
+need a way of storing a group of elements of different types, you can
+use the collection classes which are a new feature in the Java2 exam,
+and are discussed in section 10. 
+</P>
+<H3><B>Declaration without allocation</B> 
+</H3>
+<P>The declaration of an array does not allocate any storage, it just
+announces the intention of creating an array. A significant
+difference to the way C/C++ declares an array is that no size is
+specified with the identifier. Thus the following will cause a
+compile time error</P>
+<PRE STYLE="margin-bottom: 0.2in">int num[5];</PRE><P>
+The size of an array is given when it is actually created with the
+<I>new</I> operator thus</P>
+<PRE STYLE="margin-bottom: 0.2in">int num[];
+num = new int[5];
+
+
+</PRE><H3>
+Simultaneous declaration and creation</H3>
+<P>This can be compressed into one line as</P>
+<PRE STYLE="margin-bottom: 0.2in">int num[] = new int[5];</PRE><P>
+Also the square brackets can be placed either after the data type or
+after the name of the array. Thus both of the following are legal</P>
+<PRE>int[] num;
+
+int num[];</PRE>
+<P ALIGN=LEFT> You can read these as either</P>
+<ul>
+  <li> 
+    <div align="left"> An integer array named num </div>
+  </li>
+  <li>
+    <div align="left">An integer type in an array called num. </div>
+  </li>
+</ul>
+<p>You might also regard it as enough choice to cause confusion </p>
+<H3>Java vs C/C++ arrays 
+</H3>
+<TABLE WIDTH=100% BORDER=0 CELLPADDING=2 CELLSPACING=0>
+	<COL WIDTH=33*>
+	<COL WIDTH=223*>
+	<TR>
+		<TD WIDTH=13%>
+			
+      <h1><IMG SRC= "key2.gif"  NAME="Graphic4" ALIGN=BOTTOM WIDTH=106 HEIGHT=73 BORDER=0></h1>
+		</TD>
+		<TD WIDTH=87%>
+			<H4><FONT COLOR="#ff0000">Java arrays know how big they are, and
+			the language provides protection from accidentally walking off the
+			end of them.</FONT></H4>
+		</TD>
+	</TR>
+</TABLE>
+<P>This is particularly handy if you are from a Visual Basic
+background and are not used to constantly counting from 0. It also
+helps to avoid one of the more insidious bugs in C/C++ programs where
+you walk off the end of an array and are pointing to some arbitrary
+area of memory.<BR><BR>Thus the following will cause a run time
+error,<BR><I>ArrayIndexOutOfBoundsException</I></P>
+<PRE>int[] num= new int[5];
+for(int i =0; i&lt;6; i++){
+        num[i]=i*2;
+        }</PRE><P>
+The standard idiom for walking through a Java array is to use the
+<I>length</I> member of the array thus</P>
+<PRE>int[] num= new int[5];
+for(int i =0; i&lt;num.length; i++){
+        num[i]=i*2;
+}</PRE><H3>
+Arrays know their own size 
+</H3>
+<P>Just in case you skipped the C/C++ comparison, arrays in Java
+always know how big they are, and this is represented in the <I>length</I>
+field. Thus you can dynamically populate an array with the following
+code</P>
+<PRE STYLE="margin-bottom: 0.2in">int myarray[]=new int[10];
+for(int j=0; j&lt;myarray.length;j++){
+myarray[j]=j;
+}</PRE><P>
+Note that arrays have a <I>length</I> field not a <I>length()</I>
+method. When you start to use <I>Strings</I> you will use the string,
+<I>length</I> method, as in<BR>s.length();</P>
+<P>With an array the length is a field (or property) not a method. 
+</P>
+<H3>Java vs Visual Basic Arrays 
+</H3>
+<P>Arrays in Java always start from zero. Visual Basic arrays may
+start from 1 if the <I>Option base</I> statement is used. There is no
+Java equivalent of the Visual Basic <I>redim preserve</I> command
+whereby you change the size of an array without deleting the
+contents. You can of course create a new array with a new size and
+copy the current elements to that array.</P>
+<P>An array declaration can have multiple sets of square brackets.
+Java does not formally support multi dimensional arrays, however it
+does support arrays of arrays, also known as nested arrays.</P>
+<P><BR>The important difference between multi dimensional arrays, as
+in C/C++ and nested arrays, is that each array does not have to be of
+the same length. If you think of an array as a matrix, the matrix
+does not have to be a rectangle. According to the Java Language
+Specification</P>
+<P><A HREF= "http://java.sun.com/docs/books/jls/html/10.doc.html#27805" >(http://java.sun.com/docs/books/jls/html/10.doc.html#27805)</A><BR><BR><I>&quot;The
+number of bracket pairs indicates the depth of array nesting.&quot;</I><BR><BR>In
+other languages this would correspond to the dimensions of an array.
+Thus you could set up the squares on a map with an array of 2
+dimensions thus</P>
+<PRE STYLE="margin-bottom: 0.2in">int i[][];</PRE><P>
+The first dimension could be X and second Y coordinates. 
+</P>
+<H3>Combined declaration and initialization 
+</H3>
+<P>Instead of looping through an array to perform initialisation, an
+array can be created and initialised all in one statement. This is
+particularly suitable for small arrays. The following will create an
+array of integers and populate it with the numbers 0 through 4</P>
+<PRE STYLE="margin-bottom: 0.2in">int k[]=new int[] {0,1,2,3,4};</PRE><P>
+Note that at no point do you need to specify the number of elements
+in the array. You might get exam questions that ask if the following
+is correct.</P>
+<PRE STYLE="margin-bottom: 0.2in">int k=new int[5] {0,1,2,3,4} //Wrong, will not compile!</PRE><P>
+You can populate and create arrays simultaneously with any data type,
+thus you can create an array of strings thus</P>
+<PRE STYLE="margin-bottom: 0.2in">String s[]=new String[] {&quot;Zero&quot;,&quot;One&quot;,&quot;Two&quot;,&quot;Three&quot;,&quot;Four&quot;};</PRE><P>
+<BR>The elements of an array can be addressed just as you would in
+C/C++ thus</P>
+<PRE STYLE="margin-bottom: 0.2in">String s[]=new String[] {&quot;Zero&quot;,&quot;One&quot;,&quot;Two&quot;,&quot;Three&quot;,&quot;Four&quot;};
+System.out.println(s[0]);</PRE><P>
+<BR>This will output the string Zero. 
+</P>
+<H3><B>Default values of arrays</B></H3>
+<TABLE WIDTH=100% BORDER=0 CELLPADDING=2 CELLSPACING=0>
+	<COL WIDTH=33*>
+	<COL WIDTH=223*>
+	<TR>
+		<TD WIDTH=13%>
+			
+      <h1><IMG SRC= "key2.gif"  NAME="Graphic5" ALIGN=BOTTOM WIDTH=106 HEIGHT=73 BORDER=0></h1>
+		</TD>
+		<TD WIDTH=87%>
+			<H4><FONT COLOR="#ff0000">The elements of arrays are always set to
+			default values wherever the array is created</FONT></H4>
+		</TD>
+	</TR>
+</TABLE>
+<P>Unlike other variables that act differently between class level
+creation and local method level creation, Java arrays are always set
+to default values. Thus an array of integers will all be set to zero,
+an array of boolean values will always be set to false. 
+</P>
+<P STYLE="margin-bottom: 0in">&nbsp; 
+</P>
+<HR>
+<H3>Exercise 1)</H3>
+<P STYLE="margin-bottom: 0in">Create a class with a method that
+simultaneously creates and initialises a String array. Initialise the
+array with four names, then print out the first name in the array. 
+</P>
+<HR>
+<H3>Exercise 2)</H3>
+<P>Create a class that creates a 5 element array of Strings called
+Fruit at class level but do not initialise with any values. Create a
+method called amethod. In amethod initialise the first four elements
+with the names of fruit. Create another method called modify and
+change the contents of the first element of the Fruit array to
+contain the string &quot;bicycle&quot;. Within the modify method
+create a for loop that prints out every element of the Fruit array.</P>
+<HR>
+<H3>Suggested solution to exercise 1)</H3>
+<PRE>public class Bevere{
+
+public static void main(String argv[]){
+        Bevere b = new Bevere();
+        b.Claines();
+        }
+
+        public void Claines(){
+        String[] names= new String[]{&quot;Peter&quot;,&quot;John&quot;,&quot;Balhar&quot;,&quot;Raj&quot;};
+        System.out.println(names[0]);      
+        }
+}</PRE><P>
+<BR>Note: The syntax for simultaneous creation and initialisation is
+not obvious and is worth practising. I asked for the first name to be
+printed out to ensure you did not request names[1]. 
+</P>
+<HR>
+<H3>Suggested solution to exercise 2)</H3>
+<PRE>public class Barbourne{
+String Fruit[]= new String[5];
+public static void main(String argv[]){
+        Barbourne b = new Barbourne();
+        b.amethod();
+        b.modify();
+        }
+        public void amethod(){
+                Fruit[0]=&quot;Apple&quot;;
+                Fruit[1]=&quot;Orange&quot;;
+                Fruit[2]=&quot;Bannana&quot;;
+                Fruit[3]=&quot;Mango&quot;;
+
+        }
+
+        public void modify(){
+                Fruit[0]=&quot;Bicycle&quot;;
+                for(int i=0; i&lt; Fruit.length; i++){
+                        System.out.println(Fruit[i]);
+                }
+     
+        }
+}</PRE><P>
+Note: that when the loop executes the output for the final elements
+is null</P>
+<HR>
+<h1><IMG SRC= "Quiz.gif"  NAME="Graphic6" ALIGN=BOTTOM WIDTH=99 HEIGHT=101 BORDER=0> 
+</h1>
+<H1>Questions</H1>
+<H4><B>Question 1)</B></H4>
+<P>How can you re-size an array in a single statement whilst keeping
+the original contents?</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<HR>
+<H4><B>Question 2)</B></H4>
+<P>You want to find out the value of the last element of an array.
+You write the following code. What will happen when you compile and
+run it?</P>
+<PRE>public class MyAr{
+public static void main(String argv[]){
+        int[] i = new int[5];
+        System.out.println(i[5]);
+        }
+}</PRE>
+<HR>
+<H4><BR><B>Question 3)</B></H4>
+<P>You want to loop through an array and stop when you come to the
+last element. Being a good java programmer, and forgetting everything
+you ever knew about C/C++ you know that arrays contain information
+about their size. Which of the following can you use?</P>
+<PRE>1)myarray.length();
+2)myarray.length;
+3)myarray.size
+4)myarray.size();</PRE>
+<HR>
+<H4><B>Question 4)</B></H4>
+<P>Your boss is so pleased that you have written HelloWorld he she
+has given you a raise. She now puts you on an assignment to create a
+game of TicTacToe (or noughts and crosses as it was when I were a wee
+boy). You decide you need a multi dimensioned array to do this. Which
+of the following will do the job?</P>
+<PRE>1) int i=new int[3][3];
+2) int[] i=new int[3][3];
+3) int[][] i=new int[3][3];
+4) int i[3][3]=new int[][];</PRE>
+<HR>
+<H4><B>Question 5)</B></H4>
+<PRE>You want to find a more elegant way to populate your array than looping through    with a <I>for</I> statement. Which of the following will do this?
+
+   
+
+   1)
+myArray{
+
+   [1]=&quot;One&quot;;
+
+   [2]=&quot;Two&quot;;
+
+   [3]=&quot;Three&quot;;
+
+   end with
+
+   
+
+   2)String s[5]=new String[] {&quot;Zero&quot;,&quot;One&quot;,&quot;Two&quot;,&quot;Three&quot;,&quot;Four&quot;};
+   3)String s[]=new String[] {&quot;Zero&quot;,&quot;One&quot;,&quot;Two&quot;,&quot;Three&quot;,&quot;Four&quot;};
+   4)String s[]=new String[]={&quot;Zero&quot;,&quot;One&quot;,&quot;Two&quot;,&quot;Three&quot;,&quot;Four&quot;};  </PRE>
+<HR>
+<H1>Answers</H1>
+<H4><B>Answer 1)</B></H4>
+<P><BR>You cannot &quot;resize&quot; and array. You need to create a
+new temporary array of a different size and populate it with the
+contents of the original. Java provides resizable containers with
+classes such as Vector or one of the members of the collection
+classes.</P>
+<HR>
+<H4><BR><BR><B>Answer 2)</B></H4>
+<P>You will get a runtime error as you attempt to walk off the end of
+the array. Because arrays are indexed from 0 the final element will
+be i[4], not i[5]</P>
+<HR>
+<H4><BR><BR><B>Answer 3)</B></H4>
+<P><B><BR></B>2) myarray.length;</P>
+<HR>
+<H4><BR><BR><B>Answer 4)</B></H4>
+<PRE><B> </B>
+
+<B>   </B>3) int[][] i=new int[3][3];
+
+   
+
+ </PRE>
+<HR>
+<H4><BR><BR><B>Answer 5)</B></H4>
+<PRE><B> </B>
+
+<B>   </B>3)String s[]=new String[] {&quot;Zero&quot;,&quot;One&quot;,&quot;Two&quot;,&quot;Three&quot;,&quot;Four&quot;};  </PRE><H3>&nbsp;
+</H3>
+<HR>
+<P ALIGN=CENTER STYLE="margin-bottom: 0in"><B>Other sources on this
+topic</B></P>
+<TABLE WIDTH=100% BORDER=1 CELLPADDING=2 CELLSPACING=3>
+	<COL WIDTH=256*>
+	<TR>
+		<TD WIDTH=100%>
+			<P><B>This topic is covered in the Sun Tutorial
+			at</B><BR><A HREF= "http://java.sun.com/docs/books/tutorial/java/data/arrays.html" >http://java.sun.com/docs/books/tutorial/java/data/arrays.html</A><A HREF= "http://java.sun.com/docs/books/tutorial/java/data/arraysAndStrings.html" ><BR></A><B>Richard
+			Baldwin covers this topic at
+			</B><BR><A HREF= "http://www.geocities.com/Athens/Acropolis/3797/Java028.htm" >http://www.Geocities.com/Athens/Acropolis/3797/Java028.htm<BR></A><B>Jyothi
+			Krishnan on this topic
+			at<BR></B><A HREF= "http://www.geocities.com/SiliconValley/Network/3693/obj_sec1.html#obj1" >http://www.geocities.com/SiliconValley/Network/3693/obj_sec1.html#obj1
+			<BR></A><B>Bruce Eckel Thinking In
+			Java<BR></B><A HREF= "http://codeguru.earthweb.com/java/tij/tij0053.shtml" >http://codeguru.earthweb.com/java/tij/tij0053.shtml</A><BR><A HREF= "http://codeguru.earthweb.com/java/tij/tij0087.shtml" >http://codeguru.earthweb.com/java/tij/tij0087.shtml
+			</A>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<P><BR>Last updated<BR>10 July 2000<BR>copyright &copy; Marcus Green
+2000<BR>most recent copy at http://www.jchq.net</P>
+<P>&nbsp;</P>
+<P><BR><BR>
+</P>
+<H3><BR><BR>
+</H3>
+<P>&nbsp;</P>
+</BODY>
+</HTML>

@@ -1,0 +1,1925 @@
+<html>
+
+
+
+
+
+
+
+<head>
+
+
+
+
+
+
+
+<title>7.3) Threads synchronisation, wait/notify</title>
+
+
+
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+
+
+
+
+
+
+<STYLE TYPE="text/css">
+
+
+
+
+
+
+
+<!--
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+</STYLE>
+
+
+
+
+
+
+
+<link rel="stylesheet" href="tutor.css"></head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body bgcolor="#FFFFFF">
+
+<table width=95% border=0 cellpadding=2 cellspacing=0 style="page-break-before: always">
+
+  <col width=147*> <col width=109*> 
+
+  <tr> 
+
+    <td width=57% height=104> 
+
+      <p><a href= "introj2.htm" ><img src= "btnIndex.jpg"  name="Graphic1" alt="Return to Tutorial Index" align=BOTTOM width=55 height=39 border=0></a><a href= "introj2.htm" ><br>
+
+        <br>
+
+        </a><a href= "index.htm" ><img src= "btnHome.jpg"  name="Graphic2" alt="Back to the home page of this site" align=BOTTOM width=55 height=39 border=0></a> 
+
+      </p>
+
+    </td>
+
+    <td width=43%> 
+
+      <p align=RIGHT><img src= "hat.gif"  name="Graphic3" alt="morterboard" align=BOTTOM width=118 height=113 border=0></p>
+
+    </td>
+
+  </tr>
+
+  <tr> 
+
+    <td width=57% height=11> 
+
+      <h1 align=LEFT>Java2 Certification <br>
+
+        Tutorial </h1>
+
+    </td>
+
+    <td width=43% bgcolor="#ff9900"> 
+
+      <p>&nbsp;</p>
+
+    </td>
+
+  </tr>
+
+</table>
+
+<p> You can discuss this topic with others at <a href= "http://www.jchq.net/discus" >http://www.jchq.net/discus</a><br>
+
+  Read reviews and buy a Java Certification book at <a href= "http://www.jchq.net/bookreviews/jcertbooks.htm" >http://www.jchq.net/bookreviews/jcertbooks.htm</a> 
+
+  <br>
+
+</p>
+
+<hr size=5 noshade>
+
+<h1> 7)Threads </h1>
+
+
+
+<h1>Objective 3) </h1>
+
+
+
+
+
+
+
+<p><font face="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">Write code using synchronized 
+
+
+
+
+
+
+
+  wait <i>notify</i> and <i>notifyAll</i> to protect against concurrent access 
+
+
+
+
+
+
+
+  problems and to communicate between threads. Define the interaction between 
+
+
+
+
+
+
+
+  threads and between threads and object locks when executing synchronized wait 
+
+
+
+
+
+
+
+  <i>notify</i> or <i>notifyAll</i>.</font></p>
+
+
+
+
+
+
+
+<h3><font face="GENEVA, HELVETICA, ARIAL, LUCIDA SANS"><b>Why do you need the 
+
+
+
+
+
+
+
+  wait/notify protocol?</b></font> </h3>
+
+
+
+
+
+
+
+<p>One way to think of the <i>wait/notify</i> protocol is to imagine an item of 
+
+
+
+
+
+
+
+  data such as an integer variable as if it were a field in a database. If you 
+
+
+
+
+
+
+
+  do not have some locking mechanism in the database you stand a chance of corruption 
+
+
+
+
+
+
+
+  to the data. <br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  Thus one user might retrieve the data and perform a calculation and write back 
+
+
+
+
+
+
+
+  the data. If in the meantime someone else has retrieved the data, performed 
+
+
+
+
+
+
+
+  the calculation and written it back, the second users calculations will be lost 
+
+
+
+
+
+
+
+  when the first person writes back to the database. In the way that a database 
+
+
+
+
+
+
+
+  has to handle updates at unpredictable times, so a multi threaded program has 
+
+
+
+
+
+
+
+  to cater for this possibility.</p>
+
+
+
+
+
+
+
+<h3><font face="GENEVA, HELVETICA, ARIAL, LUCIDA SANS"><b>The <i>synchronized</i> 
+
+
+
+
+
+
+
+  keyword</b></font> </h3>
+
+
+
+
+
+
+
+<p>The <i>synchronized</i> keyword can be used to mark a statement or block of 
+
+
+
+
+
+
+
+  code so that only one thread may execute an instance of the code at a time. 
+
+
+
+
+
+
+
+  Entry to the code is protected by a monitor lock around it. This process is 
+
+
+
+
+
+
+
+  implemented by a system of locks. You may also see the words monitor, or mutex 
+
+
+
+
+
+
+
+  (mutually exclusive lock) used. A lock is assigned to the object and ensures 
+
+
+
+
+
+
+
+  only one thread at a time can access the code. Thus when a thread starts to 
+
+
+
+
+
+
+
+  execute a synchronized block it grabs the lock on it. Any other thread will 
+
+
+
+
+
+
+
+  not be able to execute the code until the first thread has finished and released 
+
+
+
+
+
+
+
+  the lock. Note that the lock is based on the object and not on the method.</p>
+
+
+
+
+
+
+
+<p>For a method the <i>synchronized</i> keyword is placed before the method thus</p>
+
+
+
+
+
+
+
+<pre>synchronized void amethod() { /* method body */}</pre>
+
+
+
+
+
+
+
+<p>For a block of code the synchronized keyword comes before opening and closing 
+
+
+
+
+
+
+
+  brackets thus.</p>
+
+
+
+
+
+
+
+<pre>synchronized (ObjectReference) { /* Block body */ }</pre>
+
+
+
+
+
+
+
+<p>The value in parentheses indicates the object or class whose monitor the code 
+
+
+
+
+
+
+
+  needs to obtain. It is generally more common to synchronize the whole method 
+
+
+
+
+
+
+
+  rather than a block of code.<br>
+
+
+
+
+
+
+
+  &nbsp;</p>
+
+
+
+
+
+
+
+<p>When a synchronized block is executed, its object is locked and it cannot be 
+
+
+
+
+
+
+
+  called by any other code until the lock is freed.</p>
+
+
+
+
+
+
+
+<pre>synchronized void first();</pre>
+
+
+
+
+
+
+
+<pre>synchronized void second();</pre>
+
+
+
+
+
+
+
+<p>There is more to obtaining the benefits of synchronization than placing the 
+
+
+
+
+
+
+
+  keyword synchronized before a block of code. It must be used in conjunction 
+
+
+
+
+
+
+
+  with code that manages the lock on the synchronized code . 
+
+
+
+
+
+
+
+<h3><font face="GENEVA, HELVETICA, ARIAL, LUCIDA SANS"><i><b>wait/notify</b></i></font> 
+
+
+
+
+
+
+
+</h3>
+
+
+
+
+
+
+
+<p>In addition to having a lock that can be grabbed and released, each object 
+
+
+
+
+
+
+
+  has a system that allows it to pause or <i>wait</i> whilst another thread takes 
+
+
+
+
+
+
+
+  over the lock. This allows Threads to communicate the condition of readiness 
+
+
+
+
+
+
+
+  to execute. Because of the single inheritance nature of Java, every object is 
+
+
+
+
+
+
+
+  a child of the great grand ancestor <i>Object</i> class from which it gets this 
+
+
+
+
+
+
+
+  Thread communication capability.</p>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="9%"><img src= "key2.gif"  width="106" height="73"
+
+
+
+
+
+
+
+align="bottom" border="0"></td>
+
+
+
+
+
+
+
+    <td width="91%"> 
+
+
+
+
+
+
+
+      <h3><font color="red"><i>wait</i> and <i>notify</i> should be placed within 
+
+
+
+
+
+
+
+        synchronized code to ensure that <br>
+
+
+
+
+
+
+
+        the current code owns the monitor</font> </h3>
+
+
+
+
+
+
+
+    </td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<p>A call to <i>wait</i> from within synchronized code causes the thread to give 
+
+
+
+
+
+
+
+  up its lock and go to sleep. This normally happens to allow another thread to 
+
+
+
+
+
+
+
+  obtain the lock and continue some processing. The <i>wait</i> method is meaningless 
+
+
+
+
+
+
+
+  without the use of <i>notify</i> or <i>notifyAll</i> which allows code that 
+
+
+
+
+
+
+
+  is waiting to be notified that it can wake up and continue executing. A typical 
+
+
+
+
+
+
+
+  example of using the <i>wait/notify</i> protocol to allow communication between 
+
+
+
+
+
+
+
+  Threads appears to involve apparently endless loops such as</p>
+
+
+
+
+
+
+
+<pre>//producing code
+while(true){
+try{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wait();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }catch (InterruptedException e) {}
+}
+
+//some producing action goes here
+notifyAll();</pre>
+
+
+
+
+
+
+
+<p>As <i>true</i> is notorious for staying true this, code looks at first glance 
+
+
+
+
+
+
+
+  like it will just loop forever. The wait method however effectively means <i>give 
+
+
+
+
+
+
+
+  up the lock</i> on the object and wait until the notify or <i>notifyAll</i> 
+
+
+
+
+
+
+
+  method tells you to wake up. 
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="9%"><img src= "key2.gif"  width="106" height="73"
+
+
+
+
+
+
+
+align="bottom" border="0"></td>
+
+
+
+
+
+
+
+    <td width="91%"> 
+
+
+
+
+
+
+
+      <h3><font color="red">Thread scheduling is implementation dependent and 
+
+
+
+
+
+
+
+        cannot be relied on to <br>
+
+
+
+
+
+
+
+        act in the same way on every JVM</font> </h3>
+
+
+
+
+
+
+
+    </td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<p>Unlike most aspects of Java, Threading does not act the same on different platforms. 
+
+
+
+
+
+
+
+  Two areas of difference are Thread scheduling and Thread priorities. The two 
+
+
+
+
+
+
+
+  approaches to scheduling are</p>
+
+
+
+
+
+
+
+<ul>
+
+
+
+
+
+
+
+  <li>
+
+
+
+
+
+
+
+    <div align="left">Preemptive </div>
+
+
+
+
+
+
+
+  <li>
+
+
+
+
+
+
+
+    <div align="left">Time slicing </div>
+
+
+
+
+
+
+
+</ul>
+
+
+
+
+
+
+
+<p>In a pre-emptive system one program can &quot;pre-empt&quot; another to get 
+
+
+
+
+
+
+
+  its share of CPU time. In a time sliced system each thread gets a &quot;slice&quot; 
+
+
+
+
+
+
+
+  of the CPU time and then gets moved to the ready state. This ensures against 
+
+
+
+
+
+
+
+  a single thread getting all of the CPU time. The downside is that you cannot 
+
+
+
+
+
+
+
+  be certain how long a Thread might execute or even when it will be running. 
+
+
+
+
+
+
+
+  Although Java defines priorities for threads from the lowest at 1 to the highest 
+
+
+
+
+
+
+
+  at 10, some platforms will accurately recognise these priorities whereas others 
+
+
+
+
+
+
+
+  will not.</p>
+
+
+
+
+
+
+
+<p><br>
+
+
+
+
+
+
+
+  The <i>notify</i> method will wake up one thread waiting to reacquire the monitor 
+
+
+
+
+
+
+
+  for the object. You cannot be certain which thread gets woken. If you have only 
+
+
+
+
+
+
+
+  one waiting thread then you do not have a problem. If you have multiple waiting 
+
+
+
+
+
+
+
+  threads then it will probably the thread that has been waiting the longest that 
+
+
+
+
+
+
+
+  will wake up. However you cannot be certain, and the priorities of the threads 
+
+
+
+
+
+
+
+  will influence the result. As a result you are generally advised to use <i>notifyAll</i> 
+
+
+
+
+
+
+
+  instead of notify, and not to make assumptions about scheduling or priorities. 
+
+
+
+
+
+
+
+  Of course this is not always possible and you may have to try to test your code 
+
+
+
+
+
+
+
+  on as many platforms as possible. &nbsp; 
+
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="11%"><img src= "Quiz.gif"  width="99" height="101"></td>
+
+
+
+
+
+
+
+    <td width="89%">&nbsp;</td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<h1>Questions</h1>
+
+
+
+
+
+
+
+<h4><b>Question 1)</b></h4>
+
+
+
+
+
+
+
+<p><b> </b>Which of the following keywords indicates a thread is releasing its 
+
+
+
+
+
+
+
+  Object lock?<b><br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  </b>1) release<br>
+
+
+
+
+
+
+
+  2) wait<br>
+
+
+
+
+
+
+
+  3) continue<br>
+
+
+
+
+
+
+
+  4) notifyAll</p>
+
+
+
+
+
+
+
+<p> 
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 2)</b></h4>
+
+
+
+
+
+
+
+<p><b> </b>Which best describes the <i>synchronized</i> keyword?</p>
+
+
+
+
+
+
+
+<p> <br>
+
+
+
+
+
+
+
+  1) Allows more than one Thread to access a method simultaneously <br>
+
+
+
+
+
+
+
+  2) Allows more than one Thread to obtain the Object lock on a reference<br>
+
+
+
+
+
+
+
+  3) Gives the notify/<i>notifyAll</i> keywords exclusive access to the monitor<br>
+
+
+
+
+
+
+
+  4) Means only one thread at a time can access a method or block of code </p>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<p> 
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 3)</b></h4>
+
+
+
+
+
+
+
+<p>What will happen when you attempt to compile and run the following code? </p>
+
+
+
+
+
+
+
+<pre>public class WaNot{
+int i=0;
+public static void main(String argv[]){
+        WaNot w = new WaNot();
+        w.amethod();
+        }
+        public void amethod(){
+	while(true){
+		try{ 
+        		wait();
+		    }catch (InterruptedException e) {}
+		i++;
+	    }//End of while
+
+	}//End of amethod
+}//End of class
+</pre>
+
+
+
+
+
+
+
+<pre>1)Compile time error, no matching notify within the method
+2)Compile and run but an infinite looping of the while method
+3)Compilation and run
+4)Runtime Exception &quot;IllegalMonitorStatException&quot;</pre>
+
+
+
+
+
+
+
+<p> 
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 4)</b></h4>
+
+
+
+
+
+
+
+<p>How can you specify which thread is notified with the wait/notify protocol?</p>
+
+
+
+
+
+
+
+<p>1) Pass the object reference as a parameter to the <i>notify</i> method<br>
+
+
+
+
+
+
+
+  2) Pass the method name as a parameter to the <i>notify</i> method<br>
+
+
+
+
+
+
+
+  3) Use the <i>notifyAll</i> method and pass the object reference as a parameter<br>
+
+
+
+
+
+
+
+  4) None of the above</p>
+
+
+
+
+
+
+
+<p> 
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 5)</b> </h4>
+
+
+
+
+
+
+
+<p>Which of the following are true</p>
+
+
+
+
+
+
+
+<p>1) Java uses a time-slicing scheduling system for determining which Thread 
+
+
+
+
+
+
+
+  will execute<br>
+
+
+
+
+
+
+
+  2) Java uses a pre-emptive, co-operative system for determining which Thread 
+
+
+
+
+
+
+
+  will execute<br>
+
+
+
+
+
+
+
+  3) Java scheduling is platform dependent and may vary from one implementation 
+
+
+
+
+
+
+
+  to another<br>
+
+
+
+
+
+
+
+  4) You can set the priority of a Thread in code 
+
+
+
+
+
+
+
+<h1>Answers</h1>
+
+
+
+
+
+
+
+<h4><b>Answer 1)</b></h4>
+
+
+
+
+
+
+
+<h4><br>
+
+
+
+
+
+
+
+  2) wait<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  <b>Answer 2)</b></h4>
+
+
+
+
+
+
+
+<p><b> </b>4) Means only one thread at a time can access a method or block of 
+
+
+
+
+
+
+
+  code</p>
+
+
+
+
+
+
+
+<h4> <br>
+
+
+
+
+
+
+
+  <b>Answer 3)</b></h4>
+
+
+
+
+
+
+
+<p><b> <br>
+
+
+
+
+
+
+
+  </b>4) Runtime Exception &quot;IllegalMonitorStateException&quot;<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  The wait/notify protocol can only be used within code that is synchronized. 
+
+
+
+
+
+
+
+  In this case calling code does not have a lock on the object and will thus cause 
+
+
+
+
+
+
+
+  an Exception at runtime.</p>
+
+
+
+
+
+
+
+<h4> <br>
+
+
+
+
+
+
+
+  <b>Answer 4)</b></h4>
+
+
+
+
+
+
+
+<p><b> <br>
+
+
+
+
+
+
+
+  </b>4) None of the above. <br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  The wait/notify protocol does not offer a method of specifying which thread 
+
+
+
+
+
+
+
+  will be notified. </p>
+
+
+
+
+
+
+
+<h4><br>
+
+
+
+
+
+
+
+  <b>Answer 5)</b></h4>
+
+
+
+
+
+
+
+<p><b> </b>3) Java scheduling is platform dependent and may vary from one implementation 
+
+
+
+
+
+
+
+  to another<br>
+
+
+
+
+
+
+
+  4) You can set the priority of a Thread in code</p>
+
+
+
+
+
+
+
+<table border="1" width="100%">
+
+
+
+
+
+
+
+  <caption><b>Other sources on this topic</b></caption>
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="100%"><b>This topic is covered in the Sun Tutorial at </b><br>
+
+
+
+
+
+
+
+      <a href= "http://java.sun.com/docs/books/tutorial/essential/threads/waitAndNotify.html" >http://java.sun.com/docs/books/tutorial/essential/threads/waitAndNotify.html</a><br>
+
+
+
+
+
+
+
+      <a href= "http://java.sun.com/docs/books/tutorial/java/javaOO/accesscontrol.html" ><br>
+
+
+
+
+
+
+
+      </a><b>Richard Baldwin Covers this topic at</b><br>
+
+
+
+
+
+
+
+      <a href= "http://www.geocities.com/Athens/Acropolis/3797/Java058.htm" >http://www.geocities.com/Athens/Acropolis/3797/Java058.htm</a><a
+
+
+
+
+
+
+
+						href= "http://www.geocities.com/Athens/Acropolis/3797/Java040.htm" ><br>
+
+
+
+
+
+
+
+      <br>
+
+
+
+
+
+
+
+      </a><b>Jyothi Krishnan on this topic at </b><br>
+
+
+
+
+
+
+
+      <a href= "http://www.geocities.com/SiliconValley/Network/3693/obj_sec7.html#obj24" >http://www.geocities.com/SiliconValley/Network/3693/obj_sec7.html#obj24</a><a
+
+
+
+
+
+
+
+						href= "http://www.geocities.com/SiliconValley/Network/3693/obj_sec1.html#obj2" ><br>
+
+
+
+
+
+
+
+      <br>
+
+
+
+
+
+
+
+      </a><b>Bruce Eckel Thinking in Java<br>
+
+
+
+
+
+
+
+      </b>Chapter 14</td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<p>Last updated<br>
+
+
+
+
+
+
+
+  20 Jan 2000<br>
+
+
+
+  copyright &copy; Marcus Green 1999</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>
+
+
+
+
+
+
+

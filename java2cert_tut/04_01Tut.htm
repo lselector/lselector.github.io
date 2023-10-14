@@ -1,0 +1,2340 @@
+<html>
+
+
+
+
+
+
+
+<head>
+
+
+
+
+
+
+
+<title>4.1) Language Fundamentals, Interfaces,Packages and Inner classes</title>
+
+
+
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="tutor.css"></head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body bgcolor="#FFFFFF">
+
+<table width=95% border=0 cellpadding=2 cellspacing=0 style="page-break-before: always">
+
+  <col width=147*> <col width=109*> 
+
+  <tr> 
+
+    <td width=57% height=104> 
+
+      <p><a href= "introj2.htm" ><img src= "btnIndex.jpg"  name="Graphic1" alt="Return to Tutorial Index" align=BOTTOM width=55 height=39 border=0></a><a href= "introj2.htm" ><br>
+
+        <br>
+
+        </a><a href= "index.htm" ><img src= "btnHome.jpg"  name="Graphic2" alt="Back to the home page of this site" align=BOTTOM width=55 height=39 border=0></a> 
+
+      </p>
+
+    </td>
+
+    <td width=43%> 
+
+      <p align=RIGHT><img src= "hat.gif"  name="Graphic3" alt="morterboard" align=BOTTOM width=118 height=113 border=0></p>
+
+    </td>
+
+  </tr>
+
+  <tr> 
+
+    <td width=57% height=11> 
+
+      <h1 align=LEFT>Java2 Certification <br>
+
+        Tutorial </h1>
+
+    </td>
+
+    <td width=43% bgcolor="#ff9900"> 
+
+      <p>&nbsp;</p>
+
+    </td>
+
+  </tr>
+
+</table>
+
+<p> You can discuss this topic with others at <a href= "http://www.jchq.net/discus" >http://www.jchq.net/discus</a><br>
+
+  Read reviews and buy a Java Certification book at <a href= "http://www.jchq.net/bookreviews/jcertbooks.htm" >http://www.jchq.net/bookreviews/jcertbooks.htm</a> 
+
+  <br>
+
+</p>
+
+<hr size=5 noshade>
+
+<h1>4) <b>Language Fundamentals</b> </h1>
+
+
+
+
+
+
+
+<h2>Objective 1) </h2>
+
+
+
+
+
+
+
+<p><font face="Arial, Helvetica">Identify correctly constructed package declarations 
+
+
+
+
+
+
+
+  import statements class declarations (of all forms including inner classes) 
+
+
+
+
+
+
+
+  interface declarations and implementations (for java.lang.Runnable or other 
+
+
+
+
+
+
+
+  interface described in the test) method declarations (including the main method 
+
+
+
+
+
+
+
+  that is used to start execution of a class) variable declarations and identifiers.</font></p>
+
+
+
+
+
+
+
+<h3>Note on this objective </h3>
+
+
+
+
+
+
+
+<p><i>This is a strangely phrased objective. It seems to be asking you to understand 
+
+
+
+
+
+
+
+  where, how and why you can use import and package statements and where you should 
+
+
+
+
+
+
+
+  place the interface statement and variable statements. The 1.1 objective seemed 
+
+
+
+
+
+
+
+  to make more sense in that they asked you to &quot;distinguish legal and illegal 
+
+
+
+
+
+
+
+  orderings&quot; of various statements. I have a feeling that they did not re-write 
+
+
+
+
+
+
+
+  every question in the bank to match the new objectives so you will get similar 
+
+
+
+
+
+
+
+  questions for the Java2 exam.</i></p>
+
+
+
+
+
+
+
+<h3>The package statement </h3>
+
+
+
+
+
+
+
+<p>The name <i>package</i> implies a collection of classes, somewhat like a library. 
+
+
+
+
+
+
+
+  In use a package is also a little like a directory. If you place a package statement 
+
+
+
+
+
+
+
+  in a file it will only be visible to other classes in the same package. You 
+
+
+
+
+
+
+
+  can place a comment before the package statement but nothing else. You may get 
+
+
+
+
+
+
+
+  exam questions that place an import statement before the package statement</p>
+
+
+
+
+
+
+
+<pre>//You can place a comment before the package statement
+package MyPack;
+public class MyPack{}</pre>
+
+
+
+
+
+
+
+<p>The following will cause an error</p>
+
+
+
+
+
+
+
+<pre>import java.awt.*;
+//Error: Placing an import statement before the package 
+//statement will cause a compile time error
+package MyPack;
+public class MyPack{}</pre>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="9%"><img src= "key2.gif"  width="106" height="73"
+
+
+
+
+
+
+
+align="bottom" border="0"></td>
+
+
+
+
+
+
+
+    <td width="91%"> 
+
+
+
+
+
+
+
+      <h4><font color="red">If a source file has a package statement it must <br>
+        come before any other statement </font><font color="red">apart from comments</font> 
+      </h4>
+
+
+
+
+
+
+
+      </td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<p>The <i>package</i> statement may include the dot notation to indicate a package 
+
+
+
+
+
+
+
+  hierarchy. Thus the following will compile without error</p>
+
+
+
+
+
+
+
+<pre>package myprogs.MyPack;
+public class MyPack{}</pre>
+
+
+
+
+
+
+
+<p>Remember that if you do not place a package statement in a source file it will 
+
+
+
+
+
+
+
+  be considered to have a default package which corresponds to the current directory. 
+
+
+
+
+
+
+
+  This has implications for visibility which is covered in <i>Section 1.2 Declarations 
+
+
+
+
+
+
+
+  and access control.</i> 
+
+
+
+
+
+
+
+<h3>The import statement </h3>
+
+
+
+
+
+
+
+<p><i>Import</i> statements must come after any <i>package</i> statements and 
+
+
+
+
+
+
+
+  before any code. Import statements cannot come within classes, after classes 
+
+
+
+
+
+
+
+  are declared or anywhere else. <br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  The <i>import</i> statement allows you to use a class directly instead of fully 
+
+
+
+
+
+
+
+  qualifying it with the full package name. An example of this is that the classname 
+
+
+
+
+
+
+
+  <i>java.awt.Button</i> is normally referred to simply as <i>Button</i>, so long 
+
+
+
+
+
+
+
+  as you have put in the statement at the top of the file as follows</p>
+
+
+
+
+
+
+
+<pre>import java.awt.*;</pre>
+
+
+
+
+
+
+
+<p>Note that using a class statement does not result in a performance overhead 
+
+
+
+
+
+
+
+  or a change in the size of the .<i>class</i> output file. 
+
+
+
+
+
+
+
+<h3>Class and inner class declarations </h3>
+
+
+
+
+
+
+
+<p>A file can only contain one outer <i>public</i> class. If you attempt to create 
+
+
+
+  a file with more than one <i>public</i> class the compiler will complain with 
+
+
+
+  a specific error. A file can contain multiple non public classes, but bear in 
+
+
+
+  mind that this will produce separate .<i>class</i> output files for each class.&nbsp;It 
+
+
+
+  does not matter where in the file the public class is placed, so long as there 
+
+
+
+  is only one of them in the file.</p>
+
+
+
+
+
+
+
+<p>Inner classes were introduced with JDK 1.1. The idea is to allow one class 
+
+
+
+
+
+
+
+  to be defined within another, to be defined within a method and for the creation 
+
+
+
+
+
+
+
+  of anonymous inner classes. This has some interesting affects, particularly 
+
+
+
+
+
+
+
+  on visibility.</p>
+
+
+
+
+
+
+
+<p><br>
+
+
+
+
+
+
+
+  Here is a simple example of an inner class</p>
+
+
+
+
+
+
+
+<pre>class Outer{
+         class inner{}
+}
+</pre>
+
+
+
+
+
+
+
+<p>This results in the generation of class files with the names</p>
+
+
+
+
+
+
+
+<pre>Outer.class
+Outer$Inner.class</pre>
+
+
+
+
+
+
+
+<p>The definition of the inner class is only visible within the context of an 
+
+
+
+
+
+
+
+  existing Outer class. Thus the following will cause a compile time error</p>
+
+
+
+
+
+
+
+<p> 
+
+
+
+
+
+
+
+<pre>class Outer{
+          class Inner{}
+}
+class Another{
+public void amethod(){
+        Inner i = new Inner();
+        }
+}</pre>
+
+
+
+
+
+
+
+<p>So far as the class <i>Another</i> is concerned, the class Inner does not exist. 
+
+
+
+
+
+
+
+  It can only exist in the context of an instance of the class Outer. Thus the 
+
+
+
+
+
+
+
+  following code works fine because there is an instance of <i>this</i> for the 
+
+
+
+
+
+
+
+  outer class at the time of creation of the instance of Inner</p>
+
+
+
+
+
+
+
+<pre>class Outer{
+          public void mymethod(){
+                  Inner i = new Inner();
+          }
+          public class Inner{}
+}
+</pre>
+
+
+
+
+
+
+
+<p>But what happens if there is no existence of <i>this </i>for the class Outer. 
+
+
+
+
+
+
+
+  To make sense of the rather odd syntax provided for this try to think of the 
+
+
+
+
+
+
+
+  keyword <i>new</i> as used in the above example as belonging to the current 
+
+
+
+
+
+
+
+  insistence of <i>this.</i></p>
+
+
+
+
+
+
+
+<p>Thus you could change the line that creates the instance of this to read</p>
+
+
+
+
+
+
+
+<p> 
+
+
+
+
+
+
+
+<pre>Inner i = this.new Inner();</pre>
+
+
+
+
+
+
+
+<p>Thus if you need to create an instance of <i>Inner</i> from a <i>static</i> 
+
+
+
+
+
+
+
+  method or somewhere else where there is no <i>this</i> object you can use <i>new</i> 
+
+
+
+
+
+
+
+  as a method belonging to the outer class</p>
+
+
+
+
+
+
+
+<p> 
+
+
+
+
+
+
+
+<pre>class Outer{
+          public class Inner{}
+}
+class another{
+public void amethod(){
+        Outer.Inner i = new Outer().new Inner();
+       }
+}</pre>
+
+
+
+
+
+
+
+<p>Despite my glib explanations, I find this syntax unintuitive and forget it 
+
+
+
+
+
+
+
+  five minutes after learning it. It is very likely that you will get a question 
+
+
+
+
+
+
+
+  on this in the exam, so give it extra attention. </p>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="9%"><img src= "Skull.gif"  align="BOTTOM" border="0"></td>
+
+
+
+
+
+
+
+    <td width="91%"> 
+
+
+
+
+
+
+
+      <h4><font color="red">You can gain access to an inner class by using the 
+
+
+
+
+
+
+
+        syntax<br>
+
+
+
+
+
+
+
+        <i>Outer.Inner i = new Outer().new Inner(); </i><br>
+
+
+
+
+
+
+
+        </font></h4>
+
+
+
+
+
+
+
+    </td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<p>&nbsp;
+
+
+
+
+
+
+
+<p>One of the benefits of inner classes is that an inner class generally gets 
+
+
+
+
+
+
+
+  access to the fields of its enclosing (or outer) class. Unlike an outer class 
+
+
+
+
+
+
+
+  an inner class may be <i>private</i> or <i>static</i>. The examiners seem to 
+
+
+
+
+
+
+
+  like to ask simple questions that boil down to &quot;<i>can an inner class be 
+
+
+
+
+
+
+
+  static or private</i>&quot;. Marking an inner class static <br>
+
+
+
+
+
+
+
+  has some interesting effects with regards to accessing the fields of the enclosing 
+
+
+
+
+
+
+
+  class. The effect of marking it as <i>static</i> means there is only one instance 
+
+
+
+
+
+
+
+  of any variables, no matter how many instances of the outer class are created. 
+
+
+
+
+
+
+
+  In this situation how could the static inner class know which variables to access 
+
+
+
+
+
+
+
+  of its non static outer class. Of course the answer is that it could not know, 
+
+
+
+
+
+
+
+  and thus an <i>static</i> inner class cannot access instance variables of its 
+
+
+
+
+
+
+
+  enclosing class.</p>
+
+
+
+
+
+
+
+<p>The methods of an static inner class can of course access any static fields 
+
+
+
+
+
+
+
+  of its enclosing class as there will only ever be one instance of any of those 
+
+
+
+
+
+
+
+  fields.</p>
+
+
+
+
+
+
+
+<h3>Inner classes declared within methods </h3>
+
+
+
+
+
+
+
+<p>Inner classes can be created within methods. This is something that GUI builders 
+
+
+
+
+
+
+
+  like Borland JBuilder do a great deal of when creating Event handlers.</p>
+
+
+
+
+
+
+
+<p>Here is an example of such automatically generated code</p>
+
+
+
+
+
+
+
+<p> 
+
+
+
+
+
+
+
+<pre>buttonControl1.addMouseListener(new java.awt.event.MouseAdapter() {
+      public void mouseClicked(MouseEvent e) {
+        buttonControl1_mouseClicked(e);
+      }
+    });</pre>
+
+
+
+
+
+
+
+<p>Note the keyword <i>new </i>just after the first parenthesis. This indicates 
+
+
+
+
+
+
+
+  that an anonymous inner class is being defined within the method <i>addMouseListener. 
+
+
+
+
+
+
+
+  </i>This class could have been defined normally with a name which might make 
+
+
+
+
+
+
+
+  it easier for a human to read, but as no processing is done with it anywhere 
+
+
+
+
+
+
+
+  else, having a name does not help much.</p>
+
+
+
+
+
+
+
+<p>If you create such code by hand, it is easy to get confused over the number 
+
+
+
+
+
+
+
+  and level of brackets and parentheses. Note how the whole structure ends with 
+
+
+
+
+
+
+
+  a semi colon, as this is actually the end of a method call.</p>
+
+
+
+
+
+
+
+<p>As you might guess an anonymous class cannot have a constructor. Think about 
+
+
+
+
+
+
+
+  it, a constructor is a method with no return value and the same name as the 
+
+
+
+
+
+
+
+  class. Duh! we are talking about classes without names. An anonymous class may 
+
+
+
+
+
+
+
+  extend another class or implement a single interface. This peculiar limit does 
+
+
+
+
+
+
+
+  not seem to be tested in the exam. 
+
+
+
+
+
+
+
+<h3>Field visibility for classes defined within a method </h3>
+
+
+
+
+
+
+
+<p>A class defined within a method can only access fields in the enclosing method 
+
+
+
+
+
+
+
+  if they have been defined as final. This is because variables defined within 
+
+
+
+
+
+
+
+  methods normally are considered <i>automatic, </i>ie they only exist whilst 
+
+
+
+
+
+
+
+  the method is executing. Fields defined within a class created within a method 
+
+
+
+
+
+
+
+  may outlive the enclosing method.</p>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="9%"><img src= "key2.gif"  width="106" height="73"
+
+
+
+
+
+
+
+align="bottom" border="0"></td>
+
+
+
+
+
+
+
+    <td width="91%"> 
+
+
+
+
+
+
+
+      <h4><font color="red">A class defined within a method can only access final 
+
+
+
+
+
+
+
+        fields of the enclosing method.</font> </h4>
+
+
+
+
+
+
+
+    </td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<p>Because a final variable cannot be changed the JVM can be sure that the value 
+
+
+
+
+
+
+
+  will stay constant even after the outer method has ceased to execute. You are 
+
+
+
+
+
+
+
+  very likely to get questions on this in the exam, including questions that query 
+
+
+
+
+
+
+
+  the status of variables passed as a parameter to the method (yes, they too must 
+
+
+
+
+
+
+
+  be final)</p>
+
+
+
+
+
+
+
+<h3>Creating an interface </h3>
+
+
+
+
+
+
+
+<p>Interfaces are the way Java works around the lack of multiple inheritance. 
+
+
+
+
+
+
+
+  Interestingly Visual Basic uses the keyword interface and uses the concept in 
+
+
+
+
+
+
+
+  a manner similar to Java. The interface approach is sometimes known as programming 
+
+
+
+
+
+
+
+  by contract. An interface is used via the keyword &quot;implements&quot;. Thus 
+
+
+
+
+
+
+
+  a class can be declared as </p>
+
+
+
+
+
+
+
+<pre>class Malvern implements Hill,Well{
+   public 
+   }
+</pre>
+
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="11%"><img src= "Quiz.gif"  width="99" height="101"></td>
+
+
+
+
+
+
+
+    <td width="89%">&nbsp;</td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<h4><b>Question 1)</b></h4>
+
+
+
+
+
+
+
+<p>Given the following code</p>
+
+
+
+
+
+
+
+<pre>public class FinAc{
+        static int l = 4;
+        private int k=2;
+public static void main(String argv[]){
+        FinAc a = new FinAc();
+        a.amethod();
+        }
+     public void amethod(){
+        final int i = 99;
+        int j = 6;
+        class CInMet{
+                public void mymethod(int q){
+                                //Here
+                     }//end of mymethod
+                }//End of CInMet
+                CInMet c = new CInMet();
+                c.mymethod(i);
+     }//End of amthod
+}</pre>
+
+
+
+
+
+
+
+<p>Which of the following variables are visible on the line marked with the comment 
+
+
+
+
+
+
+
+  //Here?</p>
+
+
+
+
+
+
+
+<p>1) l<br>
+
+
+
+
+
+
+
+  2) k<br>
+
+
+
+
+
+
+
+  3) i<br>
+
+
+
+
+
+
+
+  4) j</p>
+
+
+
+
+
+
+
+<p> 
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 2)</b> </h4>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<p>Which of the following will compile correctly?</p>
+
+
+
+
+
+
+
+<p>1)</p>
+
+
+
+
+
+
+
+<pre>//A Comment
+import java.awt.*;
+class Base{};</pre>
+
+
+
+
+
+
+
+<p>2)</p>
+
+
+
+
+
+
+
+<pre>import java.awt.*;
+package Spot;
+class Base();</pre>
+
+
+
+
+
+
+
+<p>3)</p>
+
+
+
+
+
+
+
+<pre>//Another comment
+package myprogs.MyPack;
+public class MyPack{}</pre>
+
+
+
+
+
+
+
+<p>4)</p>
+
+
+
+
+
+
+
+<pre>class Base{}
+import java.awt.*;
+public class Tiny{}</pre>
+
+
+
+
+
+
+
+<p> 
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 3)</b> </h4>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<p>Which of the following statements are true?</p>
+
+
+
+
+
+
+
+<p>1) An inner class may be defined as static<br>
+
+
+
+
+
+
+
+  2) An inner class may NOT be define as private<br>
+
+
+
+
+
+
+
+  3) An anonymous class may have only one constructor<br>
+
+
+
+
+
+
+
+  4) An inner class may extend another class</p>
+
+
+
+
+
+
+
+<p> 
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 4)</b> </h4>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<p>From code that has no current <i>this </i>reference how can you create an instance 
+
+
+
+
+
+
+
+  of an inner class?</p>
+
+
+
+
+
+
+
+<p>1) Outer.Inner i = new Outer().new Inner(); <br>
+
+
+
+
+
+
+
+  2) Without a this reference an inner class cannot be created<br>
+
+
+
+
+
+
+
+  3) Outer.Inner i = Outer().new new Inner();<br>
+
+
+
+
+
+
+
+  4) Outer i = Outer.new().Inner(); 
+
+
+
+
+
+
+
+<h1>Answers</h1>
+
+
+
+
+
+
+
+<h4><b>Answer 1)</b></h4>
+
+
+
+
+
+
+
+<p>1) l<br>
+
+
+
+
+
+
+
+  2) k<br>
+
+
+
+
+
+
+
+  3) i<br>
+
+
+
+
+
+
+
+  A class defined within a method can only see final fields from its enclosing 
+
+
+
+
+
+
+
+  method. However it can see the fields in its enclosing class including private 
+
+
+
+
+
+
+
+  fields. The field j was not defined as final.</p>
+
+
+
+
+
+
+
+<h4><b>Answer 2)</b></h4>
+
+
+
+
+
+
+
+<p>1)</p>
+
+
+
+
+
+
+
+<pre>//A Comment
+import java.awt.*;
+class Base{};
+</pre>
+
+
+
+
+
+
+
+<p>3)</p>
+
+
+
+
+
+
+
+<pre>//Another comment
+package myprogs.MyPack;
+public class MyPack{}</pre>
+
+
+
+
+
+
+
+<p>Any package statement must be the first item in a file (apart from comments). 
+
+
+
+
+
+
+
+  An import statement must come after any package statement and before any code.</p>
+
+
+
+
+
+
+
+<h4><br>
+
+
+
+
+
+
+
+  <b>Answer 3)</b></h4>
+
+
+
+
+
+
+
+<p>1) An inner class may be defined as static<br>
+
+
+
+
+
+
+
+  4) An inner class may extend another class</p>
+
+
+
+
+
+
+
+<p>How could an anonymous class have a constructor? Inner classes may be defined 
+
+
+
+
+
+
+
+  as private.</p>
+
+
+
+
+
+
+
+<h4><br>
+
+
+
+
+
+
+
+  <b>Answer 4)</b></h4>
+
+
+
+
+
+
+
+<p>1) Outer.Inner i = new Outer().new Inner();</p>
+
+
+
+
+
+
+
+<p> 
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<table border="1" width="100%" height="170">
+
+
+
+
+
+
+
+  <caption><b>Other sources on this topic</b></caption>
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="100%"><b>The Sun Tutorial<br>
+
+
+
+
+
+
+
+      </b><a href= "http://java.sun.com/docs/books/tutorial/java/more/nested.html" >http://java.sun.com/docs/books/tutorial/java/more/nested.html</a><a
+
+
+
+
+
+
+
+						href= "http://java.sun.com/docs/books/tutorial/uiswing/events/intro.html" ><br>
+
+
+
+
+
+
+
+      <br>
+
+
+
+
+
+
+
+      </a><b>Richard Baldwin<br>
+
+
+
+
+
+
+
+      </b><a href= "http://www.geocities.com/Athens/7077/Java094.htm" >http://www.Geocities.com/Athens/7077/Java094.htm</a><a
+
+
+
+
+
+
+
+						href="http://www.Geocities.com/Athens/7077/Java080.htm#design goals of the jdk 1.1 delegation"><br>
+
+
+
+
+
+
+
+      </a>and also<br>
+
+
+
+
+
+
+
+      <a href= "http://www.geocities.com/Athens/7077/Java095.htm" >http://www.Geocities.com/Athens/7077/Java095.htm</a><a
+
+
+
+
+
+
+
+						href="http://www.Geocities.com/Athens/7077/Java080.htm#design goals of the jdk 1.1 delegation"><br>
+
+
+
+
+
+
+
+      </a><b><br>
+
+
+
+
+
+
+
+      Jyothi Krishnan on this topic at </b><a href="http://www.Geocities.com/Athens/7077/Java080.htm#design goals of the jdk 1.1 delegation"><br>
+
+
+
+
+
+
+
+      </a><a href= "http://www.geocities.com/SiliconValley/Network/3693/obj_sec4.html#obj9" >http://www.geocities.com/SiliconValley/Network/3693/obj_sec4.html#obj9<br>
+
+
+
+
+
+
+
+      <br>
+
+
+
+
+
+
+
+      </a><b>A tutorial on packages</b><br>
+
+
+
+
+
+
+
+      <a href= "http://v2ma09.gsfc.nasa.gov/JavaPackages.html" >http://v2ma09.gsfc.nasa.gov/JavaPackages.html<br>
+
+
+
+
+
+
+
+      <br>
+
+
+
+      </a><b>The Java Language Specification on interfaces</b><br>
+
+
+
+
+
+
+
+      <a href= "http://java.sun.com/docs/books/jls/html/9.doc.html#238680" >http://java.sun.com/docs/books/jls/html/9.doc.html#238680</a></td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+Last updated<br>
+12 November 2000<br>
+copyright &copy; Marcus Green 2000<br>
+most recent version at http://www.jchq.net<br>
+
+
+
+
+
+
+
+<h3>&nbsp;</h3>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<h1>&nbsp;</h1>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,811 @@
+<HTML
+><HEAD
+><TITLE
+>[Chapter 2] 2.5 Working with Windows</TITLE
+><META
+NAME="DC.title"
+CONTENT="Learning the Unix Operating System"><META
+NAME="DC.creator"
+CONTENT="Jerry Peek, Grace Todino &amp; John Strang"><META
+NAME="DC.publisher"
+CONTENT="O'Reilly &amp; Associates, Inc."><META
+NAME="DC.date"
+CONTENT="1998-08-03T20:49:21Z"><META
+NAME="DC.type"
+CONTENT="Text.Monograph"><META
+NAME="DC.format"
+CONTENT="text/html"
+SCHEME="MIME"><META
+NAME="DC.source"
+CONTENT="1-56592-390-1"
+SCHEME="ISBN"><META
+NAME="DC.language"
+CONTENT="en-US"><META
+NAME="generator"
+CONTENT="Jade 1.1/O'Reilly DocBook 3.0 to HTML 4.0"><LINK
+REV="made"
+HREF="mailto:online-books@oreilly.com"
+TITLE="Online Books Comments"><LINK
+REL="up"
+HREF="ch02_01.htm"
+TITLE="2. Using Window Systems "><LINK
+REL="prev"
+HREF="ch02_04.htm"
+TITLE="2.4 Working with a Mouse"><LINK
+REL="next"
+HREF="ch02_06.htm"
+TITLE="2.6 Other X Clients"></HEAD
+><BODY
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+><DIV
+CLASS="htmlnav"
+><H1
+><IMG
+SRC="gifs/smbanner.gif"
+ALT="Learning the Unix Operating System"
+USEMAP="#srchmap"
+BORDER="0"></H1
+><MAP
+NAME="srchmap"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,466,69"
+HREF="index.htm"
+ALT="Learning the Unix Operating System"><AREA
+SHAPE="RECT"
+COORDS="467,0,514,18"
+HREF="jobjects/fsearch.htm"
+ALT="Search this book"></MAP
+><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch02_04.htm"
+TITLE="2.4 Working with a Mouse"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 2.4 Working with a Mouse"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><B
+><FONT
+FACE="ARIEL,HELVETICA,HELV,SANSERIF"
+SIZE="-1"
+>Chapter 2<BR>Using Window Systems </FONT
+></B
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch02_06.htm"
+TITLE="2.6 Other X Clients"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 2.6 Other X Clients"
+BORDER="0"></A
+></TD
+></TR
+></TABLE
+>&nbsp;<HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"></DIV
+><DIV
+CLASS="SECT1"
+><H2
+CLASS="sect1"
+><A
+CLASS="title"
+NAME="LUX-CH-2-SECT-5"
+>2.5 Working with Windows</A
+></H2
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-WINDOW-MANAGERS"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-MWM-WINDOW-MANAGER"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-WINDOWS-MANAGING"
+></A
+>A window manager program helps you control windows.
+This section explains how <B
+CLASS="emphasis.bold"
+>mwm</B
+> manages windows.
+Other window managers do the same kinds of things&nbsp;- but 
+with some variation.
+Let's start by looking at
+<A
+CLASS="xref"
+HREF="ch02_05.htm#LUX-CH-2-FIG-3"
+TITLE="A window running with the Motif Window Manager"
+>Figure 2.4</A
+>,
+a typical window under <B
+CLASS="emphasis.bold"
+>mwm</B
+>.</P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-WINDOWS-TITLEBAR"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-TITLEBAR-WINDOW"
+></A
+>The top part of every window has a <EM
+CLASS="emphasis"
+>titlebar</EM
+> with the title of
+the window and three buttons.
+The edges of the window can be used to resize the window.
+(See the Note in &quot;Resizing Windows,&quot; later in this chapter.)</P
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-2-SECT-5.1"
+>2.5.1 Using the Titlebar</A
+></H3
+><P
+CLASS="para"
+>The top part of a window
+has three buttons (see <A
+CLASS="xref"
+HREF="ch02_05.htm#LUX-CH-2-FIG-3"
+TITLE="A window running with the Motif Window Manager"
+>Figure 2.4</A
+>).</P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-1199"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1202"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1205"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1207"
+></A
+>The two buttons at the top right corner have boxes inside them.
+Clicking the button with the small box makes the window as small as
+possible; the window turns into an <EM
+CLASS="emphasis"
+>icon</EM
+>.  &quot;Iconifying&quot; puts
+unneeded windows out of the way without quitting the program inside
+them; it also keeps you from accidentally typing into a window.  
+(<A
+CLASS="xref"
+HREF="ch02_01.htm#LUX-CH-2-FIG-0"
+TITLE="An X display with the mwm window manager"
+>Figure 2.1</A
+> shows an icon.)
+The button with the big square <EM
+CLASS="emphasis"
+>maximizes</EM
+> a
+window.  That makes it as big as the client will allow, often as big
+as the screen.</P
+><H4
+CLASS="figure"
+><A
+CLASS="title"
+NAME="LUX-CH-2-FIG-3"
+>Figure 2.4: A window running with the Motif Window Manager</A
+></H4
+><IMG
+CLASS="graphic"
+SRC="figs/lu0204.gif"
+ALT="Figure 2.4"><P
+CLASS="para"
+>The left button opens the window menu; this is explained in &quot;The
+Window Menu&quot; section later in this chapter.<A
+CLASS="indexterm"
+NAME="AUTOID-1216"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1217"
+></A
+></P
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-2-SECT-5.2"
+>2.5.2 Moving Windows and Icons</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-1221"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1224"
+></A
+>To move a window, start by pointing to the titlebar.  To move an icon,
+point to it.  Hold down the first mouse button and drag to the new
+location&nbsp;- then let go of the button.  You can also start the move from
+the window menu (see the following section on the window menu), but we
+think this way is easier.</P
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-2-SECT-5.3"
+>2.5.3 Resizing Windows</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-1230"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1232"
+></A
+>If you have the pointer inside a window and then move the pointer to
+an edge, the pointer will change to an arrow shape.  The arrow points
+the direction that you can resize the window.  If you pointed to one
+of the corners, you can resize both sides that meet at the corner.  To
+resize when you have the arrow pointer, press and hold the first
+button, then drag the window border until the window size is what you
+want and release the button.  If you don't get quite the size you
+want, just do it again.</P
+><BLOCKQUOTE
+CLASS="note"
+><P
+CLASS="para"
+><STRONG
+>NOTE:</STRONG
+> On some versions of UNIX and with some programs, changing the size of
+an <B
+CLASS="emphasis.bold"
+>xterm</B
+> window may confuse programs currently running in that
+window.  Also, remember that many UNIX terminals are 80 characters
+wide; if you're editing text in a window and change its width to
+something other than 80 characters, that can cause trouble later when the
+file is viewed on a standard 80-character-wide terminal.</P
+></BLOCKQUOTE
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-2-SECT-5.4"
+>2.5.4 The Window Menu</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-WINDOWS-MENUS-MWM"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-MWM-WINMAN-WINMENU"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-MENU-WINDOW-MWM-S"
+></A
+>Under <B
+CLASS="emphasis.bold"
+>mwm</B
+>, each window can be controlled by its own <EM
+CLASS="emphasis"
+>window menu</EM
+>.
+There are lots of ways to get a window menu.
+Here are two:
+click on the menu button at the top left corner of a frame 
+(<A
+CLASS="xref"
+HREF="ch02_05.htm#LUX-CH-2-FIG-3"
+TITLE="A window running with the Motif Window Manager"
+>Figure 2.4</A
+>), or click on an icon.
+<A
+CLASS="xref"
+HREF="ch02_05.htm#LUX-CH-2-FIG-4"
+TITLE="The mwm window menu"
+>Figure 2.5</A
+>
+shows a window menu.
+When the menu pops up, you can point to one of the items and click it:</P
+><H4
+CLASS="figure"
+><A
+CLASS="title"
+NAME="LUX-CH-2-FIG-4"
+>Figure 2.5: The mwm window menu</A
+></H4
+><IMG
+CLASS="graphic"
+SRC="figs/lu0205.gif"
+ALT="Figure 2.5"><UL
+CLASS="itemizedlist"
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>Restore</B
+> restores a minimized (icon) or maximized window to its original
+size.<A
+CLASS="indexterm"
+NAME="AUTOID-1259"
+></A
+>
+In
+<A
+CLASS="xref"
+HREF="ch02_05.htm#LUX-CH-2-FIG-4"
+TITLE="The mwm window menu"
+>Figure 2.5</A
+>,
+the <B
+CLASS="emphasis.bold"
+>Restore</B
+> entry is in a lighter typeface;
+this means you can't select it.
+(The window is already its normal size; restoring it wouldn't do anything.)</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>Move</B
+> lets you reposition a window on the screen.<A
+CLASS="indexterm"
+NAME="AUTOID-1266"
+></A
+></P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-1270"
+></A
+><B
+CLASS="emphasis.bold"
+>Size</B
+> lets you change a window's size.
+(See the preceding Note.)</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-1275"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1277"
+></A
+>The <B
+CLASS="emphasis.bold"
+>Minimize</B
+> and <B
+CLASS="emphasis.bold"
+>Maximize</B
+> operations are explained in &quot;Using
+the Titlebar,&quot; earlier in this chapter.</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-1283"
+></A
+><B
+CLASS="emphasis.bold"
+>Lower</B
+> moves a window to the bottom of
+the stack, if it's in a stack of windows.</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-1288"
+></A
+><B
+CLASS="emphasis.bold"
+>Close</B
+> terminates the window and the program in it.  Use this as
+a last resort.  If the program has a separate menu or quit command
+(for example, entering <B
+CLASS="emphasis.bold"
+>exit</B
+> at a shell prompt in an <B
+CLASS="emphasis.bold"
+>xterm</B
+>
+window), use it instead of <B
+CLASS="emphasis.bold"
+>Close</B
+>. (See &quot;Quitting,&quot; later in this
+chapter, for explanation.)</P
+></LI
+></UL
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-1295"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1297"
+></A
+>On the menu, a <EM
+CLASS="emphasis"
+>keyboard shortcut</EM
+> follows each command.
+You don't have to use the mouse to choose commands.
+For example, to <B
+CLASS="emphasis.bold"
+>Minimize</B
+> (iconify) a window, hold down the
+<KBD
+CLASS="keycap"
+>[ALT]</KBD
+>
+(or
+<KBD
+CLASS="keycap"
+>[META]</KBD
+>
+key and press the
+<KBD
+CLASS="keycap"
+>[F9]</KBD
+>
+key.
+The shortcut for bringing up the window menu (and taking it away) is to hold
+the
+<KBD
+CLASS="keycap"
+>[SHIFT]</KBD
+>
+key and press the
+<KBD
+CLASS="keycap"
+>[ESC]</KBD
+>
+(ESCAPE) key.  If your keyboard doesn't have all of those keys, the
+menu can be customized to use different keys.  O'Reilly &amp; Associates'
+<EM
+CLASS="emphasis"
+>X Window System User's Guide, Volume 3M</EM
+>, explains how.</P
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-2-SECT-5.4.1"
+>2.5.4.1 Exercise</A
+></H4
+><TABLE
+CLASS="informaltable"
+><TBODY
+CLASS="tbody"
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Copy and paste part 
+of a command line.</P
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Type <CODE
+CLASS="userinput"
+><B
+>who am i;date</B
+></CODE
+> and press
+<KBD
+CLASS="keycap"
+>[RETURN]</KBD
+> in one <B
+CLASS="emphasis.bold"
+>xterm</B
+> window.
+Highlight the <CODE
+CLASS="userinput"
+><B
+>who am i</B
+></CODE
+>,
+set focus to the other <B
+CLASS="emphasis.bold"
+>xterm</B
+> window, and copy
+the command there.</P
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Move a window.</P
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Grab and drag the window by its titlebar.</P
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Iconify a window from 
+the titlebar.</P
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Use the Mimimize button.</P
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Restore the icon.</P
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Select <B
+CLASS="emphasis.bold"
+>Restore</B
+> from the window menu.</P
+></TD
+></TR
+></TBODY
+></TABLE
+><A
+CLASS="indexterm"
+NAME="AUTOID-1338"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1339"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1340"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1341"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1342"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1343"
+></A
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="htmlnav"
+><P
+></P
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch02_04.htm"
+TITLE="2.4 Working with a Mouse"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 2.4 Working with a Mouse"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="book"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"
+><IMG
+SRC="../gifs/txthome.gif"
+ALT="Learning the Unix Operating System"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch02_06.htm"
+TITLE="2.6 Other X Clients"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 2.6 Other X Clients"
+BORDER="0"></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+>2.4 Working with a Mouse</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="index"
+HREF="index/idx_0.htm"
+TITLE="Book Index"
+><IMG
+SRC="../gifs/index.gif"
+ALT="Book Index"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+>2.6 Other X Clients</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><IMG
+SRC="../gifs/smnavbar.gif"
+USEMAP="#map"
+BORDER="0"
+ALT="The UNIX CD Bookshelf Navigation"><MAP
+NAME="map"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,73,21"
+HREF="../index.htm"
+ALT="The UNIX CD Bookshelf"><AREA
+SHAPE="RECT"
+COORDS="74,0,163,21"
+HREF="../upt/index.htm"
+ALT="UNIX Power Tools"><AREA
+SHAPE="RECT"
+COORDS="164,0,257,21"
+HREF="../unixnut/index.htm"
+ALT="UNIX in a Nutshell"><AREA
+SHAPE="RECT"
+COORDS="258,0,321,21"
+HREF="../vi/index.htm"
+ALT="Learning the vi Editor"><AREA
+SHAPE="RECT"
+COORDS="322,0,378,21"
+HREF="../sedawk/index.htm"
+ALT="sed &amp; awk"><AREA
+SHAPE="RECT"
+COORDS="379,0,438,21"
+HREF="../ksh/index.htm"
+ALT="Learning the Korn Shell"><AREA
+SHAPE="RECT"
+COORDS="439,0,514,21"
+HREF="index.htm"
+ALT="Learning the UNIX Operating System"></MAP
+></DIV
+></BODY
+></HTML
+>

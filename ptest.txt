@@ -1,0 +1,2078 @@
+# -------------------------------------------------------------
+# Below are 100+ basic python/pandas questions/answers
+# -------------------------------------------------------------
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas1
+How to install/upgrade pandas module
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+pandas stands for "Panel Data"
+http://pandas.pydata.org/
+It is a python module which is great for  analytical calculations.
+Installation:
+  - easiest is to get ipython, pandas, pandas, and other cool stuff by
+    installing enthought Canopy Express from
+      https://enthought.com/downloads/
+
+Old ways were to get enthought python from here:
+    http://enthought.com/repo/free/
+    or start here:
+    http://enthought.com/products/epd_free.php
+Then:
+  on Mac and unix - run those 2 commands (wait - let them finish)
+    easy_install Cython
+    easy_install pandas
+    easy_install -U pandas          - this is to upgrade existing version
+    easy_install pandas==0.12.0     - install specific version
+    pip-2.7 install pandas==0.12.0  - pip is better than easy_install
+
+http://stackoverflow.com/questions/3220404/why-use-pip-over-easy-install
+    
+  on Windows - use binary installer from this page:
+    http://pypi.python.org/pypi/pandas
+
+  There is also pip for windows. It works well:
+
+https://sites.google.com/site/pydatalog/python/pip-for-windows
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python1
+
+Write a small python script which imports myutil.py module
+add function mysort(mylist=[], numflag=False) which sorts 
+and returns the list. By default it should do alphabetic sort, 
+but if numflag==True - it should do numeric sort. 
+In the main execution portion:
+ - create a list
+ - call the function to sort it numerically - print the result
+ - call the function to sort it alphabetically - print the result
+ - print "DONE"
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+#!/bin/env python2.7
+import myutil.py
+from myutil import *
+reload(myutil)
+
+def mysort(mylist=[], numflag=False):
+    if numflag == False:
+        mylist.sort()
+    else:
+        mylist.sort(key=int)
+    return mylist
+
+# RESULTS
+mylist(a,0)    #  [1,100,11,2,21,3,31]
+mylist(a,1)    #  [1,2,3,11,21,31,100]
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python1
+make a function which revert a dictionary
+(keys become values, values become keys)
+   
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+def inv_dict (my_dict):
+    my_dict = dict((mydict[k], k) for k in mydict)
+    return my_dict
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python1
+ - Converting between int, float, str
+ - What is the difference between str and string ?
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+# string into nubmers:
+aa = 1 + int('2');
+aa = 1.1 + float('1.1');
+
+# number to string
+ss = 'aaa' + str(1.1) + str(2)
+
+str is a built-in class with many string functions available for any string object.
+string is a standard module with even more functions - you have to import it to use it.
+import string
+str.<TAB>
+string.<TAB>
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python1
+make a copy of an array 
+make a copy of a dict
+use id() function to prove that they are copies
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+# list
+import copy
+aa = [1,2,3]
+bb = aa 
+cc = copy.copy(aa)
+dd = aa[:]
+id(aa) # 38915752
+id(bb) # 38915752 (same id, this is not copy)
+id(cc) # 38939392 ( different id)
+id(dd) # also different
+
+# dict
+dd={'c1': 'v1', 'c2': 'v2', 'c3': 'v3'
+ee = dd
+ff = dd.copy()
+id(dd)  # 39170976
+id(ee)  # 39170976 - same id
+id(ff)  # 39172320 - different id
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python1
+Given 2 dictionaries - find common keys.
+Provide 2 solutions: using sets or looping through keys
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+ 
+d1 = {'a': 1, 'c': 3, 'b': 2}
+d2 = {'a': 1, 'b': 2}
+
+# using sets:
+common_keys = list(set(d1) & set(d2))
+
+# using for-loop
+common_keys = []
+for kk in d1:
+    if kk in d2:
+        common_keys.append(kk)
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python1
+remove duplicates from a list
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+aa = [1,2,3,4,5,4,3,6,3,2,7]
+bb=list(set(aa))
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python1
+open a text file, read it, print, close it
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+fh = open('sample.txt','r')
+txt  = fh.read() # read the whole file into a variable
+fh.close()
+lines = txt.split('\n')
+for line in lines:
+    print line
+
+# or
+
+for line in open('sample.txt','r'):
+    line = line.rstrip() # remove "\n" at the end
+    print ">>>" + line + "<<<"
+
+# or
+
+with open(...) as fh:
+    for line in fh:
+        line = line.rstrip() # remove "\n" at the end
+        print ">>>" + line + "<<<"
+
+Note:
+Looks like in both previous cases
+the file will be closed automatically.
+http://stackoverflow.com/questions/1478697/for-line-in-openfilename
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python1
+write a list to a file - one element per line close the file
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+aa = [400,502,503,604,705]
+fh = open('out.txt', 'w')
+for ii in aa:
+    fh.write("%d\n" % ii)
+fh.close()
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python1
+use glob.glob() to get a list of certain files 
+in a directory using a pattern
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+import glob
+flist = glob.glob('*.py')
+flist = glob.glob('./[0-9].txt')
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python1
+check if a file exists in a directory
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+fname = 'sample.txt'
+if not os.path.exists(fname):
+    print "file %s doesn't exist" % fname
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas1
+a) How to test the type of the variable (is it an int? float? str?, list? dict? etc.) 
+b) How to test type of a column in a DataFrame 
+c) How to list types of all columns in a dataFrame
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+a) 
+def print_type(obj):
+    if type(obj) == int:
+        print "int"
+    elif type(obj) == float:
+        print "float"
+    elif type(obj) == str:
+        print "str"
+    else:
+        print "unknown type"
+
+(b)
+aa = ddd()
+aa.f1.dtype
+
+c)
+aa.dtypes
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python1
+create a 2-dimensional matrix (as a list of rows,
+where rows are also lists).
+Use for loop inside for loop to populate it with some numbers,
+for example:
+     1 2 3
+     4 5 6
+     7 8 9
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+matrix = []
+n = 0
+for row in range(3):
+    r=[]
+    for col in range(3):
+        r.append(n)
+        n = n + 1
+    matrix.append(r)
+
+print matrix
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python1
+explain the meaning of those: 
+    sys.exit(0)
+    return
+    break
+    continue
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+sys.exit(status) - stop execution and exits (status=0 - success, status=1 - error)
+return           - return from a function (can return nothing, or value or object/tuple)
+break            - break out of a loop statement
+continue         - skip the rest of the statements in the current loop block 
+                   and to continue to the next iteration of the loop.
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python1
+
+How to break out of nested loops
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+# ---------------------------
+# 1st method - set a flag
+
+break_flag=False
+for x in range(5):
+    print "x =", x
+    for y in range(5):
+        print "    y =", y
+        if y > 1:
+            break_flag = True
+            break
+    if break_flag:
+        break
+
+# ---------------------------
+# 2nd method - use for .. else syntax
+
+for x in range(5):
+    print "x =", x
+    for y in range(5):
+        print "    y =", y
+        if y > 1:
+            break
+    else:
+        continue  # executed if the loop ended normally (no break)
+    break         # executed if 'continue' was skipped (break)
+
+# ---------------------------
+# 3rd method - wrap loops in a function - and use "return"
+
+def myfunc(...):
+    for x in range(5):
+        print "x =", x
+        for y in range(5):
+            print "    y =", y
+            if y > 1:
+                return
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python1
+write a text of a simple python function in a text editor
+how to copy/paste it onto ipython prompt to make it work?
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+1)  on ipython prompt type %cpaste <ENTER>
+2)  copy text from editor into clipboard
+3)  paste into ipython
+4)  press <ENTER>--<ENTER> (or Ctrl-D)
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python1
+what is the difference between
+    import somemodule
+    from somemodule import *
+    reload(somemodule)
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+import somesodule         # functions imported, but has to be prefixed with module name: somemodule.somefinction()
+from somemodule import *  # functions imported - and their names imported. Can call simply by name: somefinction()
+reload(somemodule)        # forces reload. Useful when you are debugging scripts from ipython. 
+                          # pyhon keeps track of which modules have been imported. 
+                          # If a module was modified, it will not be reloaded unless you explicitly do so with reload() statement.
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas1
+How to take a value from a particular cell of a dataframe
+    - using df[][]
+    - using df.ix
+    - using df.iloc
+    - df.loc
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+aa['i2'][1]    # order: column(s), row(s)
+aa.ix[1,'i2']  # order: row(s), column(s)
+
+loc - by labels
+iloc - by integer numbers of rows/columns
+ix - can do both
+
+aa = ddd()
+aa = aa[['id','i1','i2']]
+aa.index = aa.index.map(lambda x: 'm' + str(x))
+
+    id  i1  i2
+m0   0   6   6
+m1   1   5   5
+m2   2   4   4
+m3   3   3   4
+m4   4   2   1
+m5   5   1   1
+m6 NaN   0   0
+
+aa.loc['m2','i2']  # 4
+aa.iloc['m2','i2'] # ERROR
+aa.iloc[2,2]       # 4
+aa.ix['m2','i2']   # 4
+aa.ix[2,'i2']      # 4
+aa.ix[2,2]         # 4.0
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas1
+Extract a row from a DataFrame into a regular python list
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+aa.ix[1].tolist()
+aa.ix[len(aa)-1].tolist()
+OR
+aa.ix[1,:].values.tolist()
+list(aa.ix[1,:])
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas1
+Extract a column or a row from a DataFrame into a regular python list
+Hint - use .ix to convert col/row into a Series
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+list(aa.ix[:,'i2'])
+aa.ix[2].tolist()
+
+# for col you can also do:
+aa['i2'].tolist() 
+aa['i2'].values.tolist()
+list(aa['i2'])
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas1
+a) How to find rows which has the same value in a particular column ?
+b) How to use value_counts()  ?
+c) How to count number of times each unique value appears in group, and for multiple columns? 
+d) what is np.unique - and how to use it?
+e) Procedure to extract duplicate rows (by one or more columns)
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+a) 
+aa.duplicated(['f3'])  # creates true/false mask
+
+b)
+aa['f3'].value_counts()
+Returns Series containing counts of unique values (excluding NaN)
+in descending order (the first element is the most frequently occuring).
+
+c)
+source = DataFrame([
+  ['amazon.com',  'correct',   'correct'  ], 
+  ['amazon.com',  'incorrect', 'correct'  ], 
+  ['walmart.com', 'incorrect', 'correct'  ], 
+  ['walmart.com', 'incorrect', 'incorrect']
+], columns=['domain', 'price', 'product'])
+source.groupby('domain').apply(lambda x: x[['price','product']].apply(lambda y: y.value_counts())).fillna(0)
+
+d)
+np.unique is a Numpy function which shows unique values in a column,
+    and where they were found first time.
+  
+e)
+def show_duplicates(df, cols=[], include_nulls=True):
+    """
+    # accepts a dataframe df and a column (or list of columns)
+    # if list of columns is not provided - uses all df columns
+    # returns a dataframe consisting of rows of df
+    # which have duplicate values in "cols"
+    # sorted by "cols" so that duplciates are next to each other
+    # Note - doesn't change index values of rows
+    """
+    # ---------------------------------
+    aa = df.copy()
+    mycols = cols
+    # ---------------------------------
+    if len(mycols) <= 0:
+        mycols = aa.columns.tolist()
+    elif type(mycols) != list:
+        mycols = list(mycols)
+    # ---------------------------------
+    if not include_nulls:
+        mask = False
+        for mycol in mycols:
+            mask = mask | (aa[mycol] != aa[mycol])  # test for null values
+        aa = aa[~mask]                              # remove rows with nulls in mycols
+    if len(aa) <= 0:
+        return aa[:0]
+    # ---------------------------------
+    # duplicated() method returns Boolean Series denoting duplicate rows
+    mask = aa.duplicated(cols=mycols, take_last=False).values \
+         | aa.duplicated(cols=mycols, take_last=True).values
+    aa = aa[mask]
+    if len(aa) <= 0:
+        return aa[:0]
+    # ---------------------------------
+    # sorting to keep duplicates together
+    # Attention - can not sort by nulls
+    # bb contains mycols except for cols which are completely nulls
+    bb = aa[mycols]
+    bb = bb.dropna(how='all',axis=1)
+    # sort aa by columns in bb (thus avoiding nulls)
+    aa = aa.sort_index(by=bb.columns.tolist())
+    # ---------------------------------
+    # sorting skips nulls thus messing up the order. 
+    # Let's put nulls at the end
+    mask = False
+    for mycol in mycols:
+        mask = mask | (aa[mycol] != aa[mycol])  # test for null values
+    aa1 = aa[~mask]
+    aa2 = aa[mask]
+    aa = aa1.append(aa2)
+
+    return aa
+
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas1
+How to append a list of data to a dataframe
+How to append a series as a row to a database
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+aa = ddd()               # create test DataFrame
+bb = aa.ix[1].tolist()   # take 2nd row as a list
+
+# append list
+aa = aa.append(DataFrame([bb], columns=aa.columns))
+
+# append Series by converting Series to a list
+aa = aa.append(DataFrame([ss.tolist()], columns=aa.columns))
+
+# alternatively you can make 1-column dataframe - and transpose it
+bb=DataFrame(ss)
+bb.index = aa.columns
+aa.append(bb.T)
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas1
+How to remove duplicate rows (duplicate is defined as having save value in a list of columns)
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+aa = aa.drop_duplicates(['i2']) 
+or
+aa = aa.drop_duplicates(['i2'], take_last=True) 
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas1
+How to use a mask using   &, |, ~, .isin(), .isnull()
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+mask = aa.f2.isnull()
+aa[mask]
+
+mask = aa.i1.isin([1,3,5])
+aa[mask]
+aa[~mask] # shows the records where mask is False
+
+mask = (aa.id==1) & (aa.i2 == 4)
+mask = (aa.id==1) | (aa.i2 == 4)
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas1
+Give an example of using a map() function
+on a pandas DataFrame column
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+aa['yy'] = aa.yy.map(int)
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas1
+Give example using map with lambda for dataframe operations
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+aa['s2'] = aa.ss + '__' + aa.i1.map(lambda x: str(x))
+
+# make a list of values in column 'yy' rounded to 2 digits after dot
+aa['yy'].map(lambda x: round(x,2)).tolist()
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas1
+Give example using  groupby().sum()
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+cc = aa.groupby(['i2'], as_index=False).sum()
+
+# note - groupby().sum() will usually remove all 
+# string columns from the result. To avoid it, you can
+# use agg():
+
+cc = aa.groupby('i2', as_index=False).agg({'i1':np.sum,'ss':np.max})
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas1
+Give example using groupby().aggregate()
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+bb = aa.groupby('i2', as_index=True).aggregate({'yy':np.sum, 'xx':np.max}) 
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas1
+How to sort a dataframe by a list of columns
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+cc = aa.sort_index(by=['i2','yy'])
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas1
+How to delete some rows from dataframe - and reindex.
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+aa = aa.drop([3,4])
+
+mask = aa['id'].map(lambda x: x > 3)
+aa = aa[~mask]
+
+aa.reindex() # doesn't change index
+             # unless you provide it 
+aa.index = range(len(aa))
+
+mask = aa['id'].map(lambda x: x in (0,1,4))
+aa = aa[~mask]
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas1
+How to add rows to a dataframe (add 2 dataframes together vertically)
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+aa = aa.append(bb,ignore_index=True)
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas1
+How to write dataframe to csv file, and how to read it back
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+aa.to_csv('data.csv',sep='|',header=True, index=False)
+bb = read_csv('data.csv', sep='|')
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas1
+  - how to add columns to pandas DataFrame
+  - how to calculate column values from numeric/string values in other columns.
+  - how to delete one or more columns
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+df['c4']=None         # populate with same value
+col2=[1,2,3,4,5,6,7]
+df['c4']=col2         # list becomes a column
+df['c4'] = "-"
+df['c2'] = 0
+
+# adding a column - and populating it using vectorized operation on columns
+df['c5']= 2*df['c1'] + 3*df['c2'] + 5
+
+# calculating column values from other columns:
+df['c4']= 2*df['c1'] + 3*df['c2'] + 5
+aa['s2'] = aa.ss + '__' + aa.i1.map(lambda x: str(x))
+
+# Deleting one column
+del ff['s5']
+
+# Deleting many columns
+ff = ff.drop(['c1','c2',c3'], axis=1)  
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas1
+How to calculate a pandas DataFrame column 
+as a linear combination of some other columns
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+ff['c4']= 2*ff['i1'] + 3*ff['i2'] + 5 
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas1
+How to calculate a DataFrame column 
+from several other columns while using str() and int().
+Hint - use map(lambda ..)
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+ff['s3'] = ff['yy'].map(lambda x: int(x)) 
+ff['s4']= '>>>' + ff.s3.map(lambda x: str(x)) + '<<<'
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas1
+String operations on columns
+How to define a mask using a regular expression
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+mask = aa.ss.map(lambda x: True if re.search(r's[1,3]',str(x)) else False)
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas1
+How to define a mask using regex on one column, and numeric comparison on the other column
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+mask = (aa.i2.map(lambda x: True if re.search(r'4',str(x)) else False)) & (aa.xx > 2)
+mask = ( df.a == 1) & (df.b == 2)
+mask = ( df.a == 1) | (df.b == 2)
+mask = ( df.a == 1) | df.b.isin([1,2,3])
+mask = ( df.a == 1) | df.b.map(lambda x: ......)
+mask = ( df.a == 1) | df.b.map(lambda x: ......)  |  df.c.map(lambda x: ......) 
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas2
+How to change the order of columns in a dataframe
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+aa = DataFrame({'a':range(3),'b':range(3),'c':range(3)})
+col_list_ordered = ['a','b','c']
+aa = aa[col_list_ordered]
+# or (notice double-brackets)
+aa = aa[['a','b','c']]
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas2
+How to check if a dataframe has a column with a particular name
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+    if 'i2' in aa.columns:
+        print "true"
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas2
+select rows of a pandas DataFrame which have null values (in any column)
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+def rows_with_nulls(df):
+    mask=False
+    for col in df.columns: mask = mask | df[col].isnull()
+    return df[mask]
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas2
+a) how to substitute null values in a column ? 
+b) in the whole dataframe ?
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+    aa.ss.fillna(0.0)
+    aa.ss.fillna(0)
+    aa.ss.fillna('-')
+
+    aa.fillna(0)
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas2
+Can an integer column in pandas DataFrame have a NaN value?
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+No. Float column can.
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas2
+How to convert value type of a column to int64 or float64 ?
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+    aa.mycol = aa.mycol.astype(np.float64)
+    aa.mycol = aa.mycol.astype(np.int64)
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python1
+Calculate sum of numbers of 3.. N
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+ss=0
+for ii in range(3,N+1): ss += ii
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python1
+Calculate number of particular chars in a string
+using a for loop or using a regex.
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+ss = """  rqwe rqwer we rqer qwer qwer """
+
+# using for loop
+nn=0
+for cc in ss:
+    if cc == 'e':
+        nn += 1
+
+# using regex
+nn = len(re.findall(r'e',ss))
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python1
+Calculate N! (factorial)
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+fact=1
+for ii in range(2,N+1):
+    fact *= ii
+print fact
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python1
+Write a function which checks if a number is prime
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+import math
+
+def is_prime(n):
+    m=int(math.sqrt(n))
+    ii=2  
+    while ii <= m:
+        if n % ii == 0:
+            return False
+        ii += 1
+    return True
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python1
+Write a procedure to calculate number pi (3.14159) 
+using one of the formulas here:
+http://www.linuxtopia.org/online_books/programming_books/python_programming/python_ch08s05.html
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+# we will use this formula:
+# pi = 4.0 * ( 1 - 1/3 + 1/5 - 1/7 + ... )
+
+N = int(1e6)
+mypi = 4.0
+for ii in range(1,N): 
+    mypi += (-1)**ii * 4.0/(2.0*ii+1.0)
+print mypi
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python1
+Write a procedure to calculate number e 
+(base of natural logarithms 2.718281828459045) 
+using formula e = sum (1/k!) 
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+N=100
+member = 1.0
+val    = 1.0
+for ii in range(1,N):
+    member = member/ii
+    val   += member
+print val
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python2
+Write a procedure which reads a text file 
+and returns 3 numbers like unix wc utility: 
+    number of lines, 
+    number of words, 
+    number of characters.
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+Nlines = len(text.split('\n'))
+Nwords = len(text.split())
+Nchars = len(list(text))
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python2
+John has $300 at the start, he saves $100 per month, and $500 every 6 months. 
+Write a procedure returning his savings after N months. 
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+def john_savings(nn):
+    ss=300
+    for mm in range(nn):
+        ss +=100
+        if mm % 6 == 5:
+            ss +=500
+    return ss
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python2
+Write a procedure which finds the Greatest Common Divisor of 2 numbers, 
+which is defined as the largest number which will evenly divide two other numbers. 
+Examples: GCD( 5, 10 ) = 5, GCD( 21, 28 ) = 7.
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+def gcd(aa,bb):
+    small = aa if aa < bb else bb
+    mmm = 1
+    for nn in range(1,small+1):
+        if (aa % nn == 0) and (bb % nn == 0):
+            mmm = nn
+    return mmm
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python2
+find longest common substring in words in text
+(substring should belong to two different words).
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+ss = "aa bb aaa bbbbbb"
+words = ss.split()
+# make big list of tuples.
+# each tuple consist of 2 elements - the substring 
+# and a word from which it is derived
+biglist = []
+for word in words:
+    N=len(word)
+    for nn in range(0,N):
+        for mm in range(nn+1,N+1):
+            substr = word[nn:mm]
+            biglist.append((substr,word))
+
+# remove duplicates
+biglist = list(set(biglist))
+
+# sort by length (reverse) and within length sort alphabetically
+# key is provided as a tuple
+biglist = sorted(biglist, key = lambda x: (-len(x[0]), x[0]))
+print biglist
+
+# finally go through list from top to bottom
+# stop when you find 2 elements with the same substring
+nn=1
+result = ''
+while nn < len(biglist):
+    print biglist[nn]
+    if (biglist[nn-1][0] == biglist[nn][0]) and (biglist[nn-1][1] != biglist[nn][1]):
+        result = biglist[nn][0]
+        break
+    nn += 1
+
+print result
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python2
+mydebug.py - module to do debugging
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+def run_from_ipython():
+    try:
+        __IPYTHON__
+        return True
+    except NameError:
+        return False
+
+if run_from_ipython():
+from IPython.core.debugger import Tracer
+    debug_here = Tracer()
+
+from your program:
+
+import mydebug
+from mydebug import *
+. . . 
+debug_here()
+. . . 
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python2
+Split text into words 
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+# use str.split()
+ss="""   \n  mama's \n papa son cat\n"""
+aa = ss.split()
+print aa
+
+bb=[x for x in aa.split() if len(x) >= 2]
+print bb
+
+# use re
+import re
+ss="""   \n  mama's \n papa son cat\n"""
+r=re.compile(r'\s+')    # type = _sre.SRE_Pattern
+aa=r.split(ss.strip())  # split by empty space
+print aa
+
+r=re.compile(r'\W+')
+aa=r.split(ss.strip())  # split by non-word characters
+print aa
+
+
+bb = re.findall(r'(\b\w+\b)',ss.strip())  # find all words
+print bb
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python2
+ftplib
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+import ftplib
+ftp = ftplib.FTP(myserver)
+ftp.login(mylogin, mypasswd)
+ftp.dir()   # show long listing
+ftp.<tab> # show available methods
+ftp.cwd(mypath)
+ftp.pwd()
+data = []
+ftp.dir(data.append)
+print data[0:10]
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python2
+substring operations
+    get first char
+    get last char
+    get substring
+    remove substring
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+ss = """a green crocodile likes to walk"""
+aa = ss[0]            # first char
+aa = ss[-1]           # last char
+aa = ss[5:7]          # substring
+aa = ss[:5] + ss[7:]  # remove substring
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas2
+Take first several rows for a dataframe (regardless of index)
+Take last several rows of a dataframe (regardless of index)
+Take group of rows in the middle (regardless of index)
+
+Take one row as a list (first / last / middle)
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+# first rows as dataframe:
+aa.head()
+aa.head(1)
+aa[:5]
+aa[:1]
+
+# last rows rows as dataframe:
+aa.tail()
+aa.tail(1)
+aa[-5:]
+aa[-1:]
+
+# rows in the middle as dataframe
+aa[2:4]
+
+# Take one row as a list (first / last / middle)
+# for this we use DF.ix[] construct, because for 1 row it returns a Series
+aa.ix[aa.index[0]].tolist()
+aa.ix[aa.index[-1]].tolist()
+aa.ix[aa.index[3]].tolist()
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas2
+Take first row of a DataFrame as a list or dict
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+aa.ix[aa.index[0]].tolist()
+aa.ix[aa.index[0]].to_dict()
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python2
+give examples of comprehensions for list, set, dict, generator
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+# list comprehension:
+[3*x for x in range(10)]  #  [0, 3, 6, 9, 12, 15, 18, 21, 24, 27]
+[3*x for x in range(10) if x % 3 == 0]  # [0, 9, 18, 27]
+
+# set comprehension:
+{x for x in 'abracadabra' if x not in 'abc'}    #  set(['r', 'd'])
+
+# dict comprehension
+{x: x**2 for x in (2, 4, 6)}  # {2: 4, 4: 16, 6: 36}
+
+# Generator comprehension
+for ii in (x**2 for x in xrange(4)): print ii
+
+mygen = (x**2 for x in xrange(4))
+print type(mygen)
+for ii in mygen: print ii
+for ii in mygen: print ii  # second time it is empty
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python2
+
+How to convert string to all upper or all lower chars.
+Also how to remove empty spaces and line-feed chars form the end or from both ends.
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+'MAma'.upper()
+'MAma'.lower()
+' \n mama \n \n '.strip()
+' \n mama \n \n '.rstrip()
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python2
+
+What is True or False ?
+What is the difference between None and NaN ?
+How to test if a variable is None or NaN
+Is NaN True or False ?
+How to create a NaN value (for testing)?
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+False = None, False, any zero, empty string,
+        empty sequence or mapping - (),[],{}
+
+Not A Number (we will use name NaN) is True  (go figure).
+
+a == a is True for None, but False for NaN 
+
+def is_nan(num):
+    return num != num
+
+Two ways to create a NaN value:
+aa = 1e400*0
+
+import numpy as np
+aa = np.nan
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python2
+
+How to write a function which changes a string?
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+When passing parameters into functions:
+  - simple types (int, float, etc.) a passed "by value", 
+    so changing them inside doesn't change them outside.
+  - all objects (except strings) are passed by reference, 
+    so changing them inside also changs them outside
+    def modifyList(aList):
+      N=len(aList)
+      for ii in range(N):
+        aList[ii] *= 2
+
+  - strings are passed by reference, but changing the string inside doesn't change it outside.
+    You have to "return" the string from the function
+    (or pass it inside of a container - for example in a list).
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python2
+What are default values of function arguments?
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+Example:
+def say(message, times = 1):
+    print message * times
+
+say('Hello')
+say('World', 5)
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python2
+How to use a module's __name__
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+if __name__ == '__main__':
+    print 'This program is being run by itself'
+else:
+    print 'I am being imported from another module'
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python2
+How to undefine a variable?
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+print dir()     # shows big list of variables/objects
+aaa = 5         # create new variable
+'aaa' in dir()  # True
+del aaa         # removed this variable
+aaa in dir()    # False, because aaais not longer in the list
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python2
+What is a tuple?
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+mytuple = (1, 2, 'aa', 'bb')
+one_element_tuple = ('a',)
+
+Tuples are just like lists except that they are immutable
+like strings i.e. you cannot modify tuples.
+You can use tuples as keys in dictionaries or as elements in sets
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python2
+What is a sequence?
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+Sequences are things that can be indexed and sliced.
+Lists, tuples and strings are examples of sequences.
+Here are examples of indexing / slicing:
+  [i1:i2]   # i1, i1+1, ...  i2-1 (does NOT include i2) 
+  [i:]      # i, i+1, ... to the end
+  [:i]      # 0,1,2,... i-1 (does NOT include i)
+  [:]       # everything
+  [i]       # returns list with just one element
+  [i:i]     # returns [] empty list (i:i indicates empty position right after i)
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python2
+How to reverse a list?
+How to reverse a string?
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+# reversing a list
+mylist = range(0,15,3)
+print mylist[::-1]           # [12, 9, 6, 3, 0]
+print list(reversed(mylist)) # [12, 9, 6, 3, 0] 
+
+# Note: reversed(mylist) creates an iterator
+# you have to be careful with iterators,
+# you can use them only once after creation
+
+aa = reversed(mylist)
+print list(aa)  # [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+print list(aa)  # []  - second time iterator can not be used
+
+# for strings unfortunately there is no method for reversing.
+# two common workarounds: using extended slice syntax with negative step
+# or converting to list, reversing, converting back to string:
+
+print 'hello'[::-1]                     # 'olleh'
+print ''.join(reversed(list('hello')))  # 'olleh'
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python2
+How to use standard functions 
+    filter(func, seq)
+    map   (func, seq)
+    reduce(func, seq)
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+# filter - similar to unix grep,
+# returns string for string, tuple for tuple, list for anything else
+def f(x): return x % 2 != 0 and x % 3 != 0
+a = filter(f, range(2, 25))  # [5, 7, 11, 13, 17, 19, 23]
+
+# map - applies function to one or more sequences
+def cube(x): return x**3
+a = map(cube, range(1, 5)) # [1, 8, 27, 64, 125]
+
+# reduce - applies function to first 2 elements, then to the result and next element, etc.
+def add(x,y): return x+y
+reduce(add, range(1, 11)) # 55
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python2
+make script which asks for input
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+resp = raw_input('Enter a digit form 1 to 9 : ')
+resp = resp.strip()
+res = re.search(r'(\d+)',resp)
+N_entered = None
+if res:
+    N_entered = int(res.group(1)[0])
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python2
+Show simple class definition - and usage
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+class Person:
+    def __init__(self, name):
+        self.name = name
+    def sayHi(self):
+        print 'Hello, my name is', self.name
+
+p = Person('John')
+p.sayHi()
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python3
+What is Pickling/Unpickling
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+# --------------------------------------
+Python provides a standard module called 'pickle' using which
+you can store any Python object in a file - and restore it back.
+cPickle is a fast version of pickle
+    import cPickle as p
+    p.dump(myobj,fh)
+    myobj = p.load(fh)
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python3
+How to re-throw an exception?
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+try:
+    do_something_dangerous()
+except:
+    do_something_to_apologize()
+    raise
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python3
+
+How to use *  or ** to unpack list or dictionary into function arguments
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+If a function accepts several arguments, you can
+prepare arguments in some external list
+and then pass this list to the function all at once
+(instead of passing individual argumentss).
+When passing the list to a function, prepend it with '*'
+to tell python to expand the list into function arguments.
+Similarly you may put named arguments into a dictionary,
+and pass it to function prepending it with '**'
+
+def __init__(self, *args, **kwargs):
+    pass
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python3
+
+how to copy key-value pairs form a dict
+into local variables of a function?
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+def myfunc(par):
+    # copy key-values into local varialbes
+    for kk in par:
+        exec '%s = par[kk]' % kk
+    # now you can use them
+    print aa
+    print bb
+
+par = {}
+par['aa'] = 55
+par['bb'] = 33
+myfunc(par)
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python3
+
+Give example of 3 typical usage of regular expression
+(search, findall, sub)
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+ss = 'aa bb cc'
+res = re.search( r'(\w+)\s+(\w+)', ss, re.M|re.I)
+# the above regex matches 2 first words
+if res:
+    print "res.group()  : ", res.group()    # full string
+    print "res.group(1) : ", res.group(1)   # aa
+    print "res.group(2) : ", res.group(2)   # bb
+
+res = re.findall(r'(\b\w+\b)',ss)
+
+ss2 = re.sub(r'bb', "", ss)
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python3
+
+How to parse cmd arguments
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+argparse - best way to parse options starting ver. 2.7
+
+import argparse
+
+parser = argparse.ArgumentParser(description='Some description string.')
+parser.add_argument('--file', '-f', '-i', '--input', action="store", dest="lev", 
+                    help='store input file name to lev')
+results = parser.parse_args()
+print results.lev
+
+# try this script like this:
+> python test.py -f 5 
+> python test.py -f=5 
+> python test.py -f5  
+> python test.py -h
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python3
+
+How to test/set env variables
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+import os
+import re
+
+user = os.environ['USER']
+os.environ["MY_PATH"]="/path/to/program"
+
+keys = os.environ.keys() 
+for key in keys: 
+    if not re.search("MY_PATH", key): 
+        os.environ["MY_PATH"]="/path/to/program" 
+
+print os.getenv('MY_PATH')
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python3
+
+How to unbuffer file output
+How to unbuffer stdout
+How to write to stderr
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+# To unbuffer file output - open file handler with zero as the buffer size
+fh = open('file.log','w',0)
+
+# To unbuffer stdout - reopen it with zero buffer size
+import sys
+import os
+sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
+print "unbuffered text"
+
+sys.stderr.write('some error message\n')
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python3
+
+What is the difference between exec an eval
+How to run external programs
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+exec - execute statement(s) from a string
+eval - returns the value of an expression
+
+exec 'print "Hello World"' # Hello World
+print eval('2*3')          # 6
+
+import subprocess
+output = subprocess.check_output("ls -alF", shell=True)
+print output
+
+retcode = subprocess.call("mycmd  myarg", shell=True)
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python3
+
+How to sleep half a second?
+How to get number of epoch seconds (since 1970)
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+import time
+time.sleep(10) - sleep 10 seconds
+time.sleep(0.2) - sleep 0.2 seconds
+time.time() - epoch seconds (in UTC, floating point number)
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python3
+
+How to convert date into epoch seconds
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+import time
+date_str = '2013-09-09'
+time_obj = time.strptime(date_str, '%Y-%m-%d')
+epoch_secs = int(time.mktime(time_obj))
+
+# Note - the above method shows epoch seconds 
+# passed from beginning of 1970 in UTC.
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python3
+
+How to read/write 2003 excel files
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+Two modules:
+    xlrd - excel read
+    xlwt - excel write
+
+    book = xlrd.open_workbook(fname)
+    sh = book.sheet_by_index(idx)
+    sh.nrows
+    sh.ncols
+    mytype = sh.cell_type(myrow, mycol)
+    cval   = sh.cell_value(myrow, mycol)
+
+pandas has methods to write/read dataframes to/from Excel worksheets
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python3
+How to write/read binary files
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+import struct
+
+buff = struct.pack('4i', 1,2,3,4)
+fh = open('junk', 'wb')
+fh.write(buff)
+fh.close()
+
+fh = open('junk', 'rb')
+buf= ''
+while True:
+    buf = fh.read(4)
+    if len(buf) <= 0:
+        break
+    print struct.unpack('i', buf)[0]
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python3
+How to find installed modules
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+import <TAB>
+
+import pkgutil
+mod1 = sorted([x[1] for x in pkgutil.iter_modules()])
+
+import sys
+sys.modules  # this shows only already imported modules
+
+!pydoc modules
+
+!pip freeze
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python3
+How to convert python structures to json and back
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+JSON = JavaScript Object Notation
+
+myobj = {'aa':range(4), 'bb':'crocodile', 'cc': {'cc1':'mama','cc2': 3.14159}}
+
+import json
+
+ss = json.dumps(myobj)  # convert structure into a json string
+print ss # '{"aa": [0, 1, 2, 3], "cc": {"cc1": "mama", "cc2": 3.14159}, "bb": "crocodile"}'
+
+dd = json.loads(ss)  # create an object form a json string
+print dd # {u'aa': [0, 1, 2, 3], u'cc': {u'cc1': u'mama', u'cc2': 3.14159}, u'bb': u'crocodile'}
+
+# even better to use simplejson
+
+import simplejson
+ss = simplejson.dumps(myobj) 
+dd = simplejson.loads(ss)
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python3
+How to read html page from url
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+Use urllib, urllib2, or httplib2 to get the page.
+Use BeautifulSoup to parse the HTML
+
+import urllib
+url = "http://www.selectorweb.com"
+sock = urllib.urlopen(url)
+page = sock.read()
+sock.close()
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python3
+How to send a simple text email
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+import smtplib
+from email.mime.text import MIMEText
+
+email_from     = 'john.smith@gmail.com'
+email_to       = 'gena.crocodil@gmail.com'
+
+msg            = MIMEText(text_of_your_email)
+msg['Subject'] = 'my subject string'
+msg['From']    = email_from
+msg['To']      = email_to
+
+s = smtplib.SMTP('some.smtp.server.com')
+s.sendmail(email_from, [email_to], msg.as_string())
+s.quit()
+
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python3
+How to go though elements of a dictionary
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+d = {'k1':'v1','k2':'v2','k3':'v3'}
+
+for k    in d.iterkeys()   : print k
+for v    in d.itervalues() : print v
+for k, v in d.iteritems()  : print k, v
+
+# also
+
+for k    in d          : print k
+for k    in d.keys()   : print k
+for v    in d.values() : print v
+for k    in d          : print d[k] 
+for k, v in d.items()  : print k,v
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas2
+How to combine data of two pandas DataFrames ?
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+merge(df1,df2, on=[..], how='inner')  # like joining 2 tables in SQL, inner,outer,left
+aa.append(bb,ignore_index=True)
+concat([s1,s2,s3])      - stacks together objects along an axis (vertically)
+concat([aa,bb],axis=1) - stacking horizontally
+df.combine_first() - splices together overlapping data to fill missing values
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas2
+pandas stack()/unstack() functions
+grouping by mask
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+xx = pandas.DataFrame([["Jan","name1",1,2,3],   ["Jan","name2",4,5,6],
+                       ["Mar","name1",11,12,13],["Mar","name2",14,15,16]],
+                       columns=["Month","name","c1","c2","c3"])
+
+wide = xx.set_index(["Month","name"]).stack(1).unstack('Month')
+
+Month     Jan  Mar
+name              
+name1 c1    1   11
+      c2    2   12
+      c3    3   13
+name2 c1    4   14
+      c2    5   15
+      c3    6   16
+
+mask = wide.Jan > 3
+wide.groupby(by=mask).sum()
+
+Month  Jan  Mar
+Jan            
+False    6   36
+True    15   45
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas2
+pandas DataFrame - pivot()
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+aa = DataFrame({
+   'foo':3*['one'] + 3*['two'],
+   'bar':2*['A','B','C'],
+   'baz':[1,2,3,4,5,6] })
+aa = aa[['foo','bar','baz']]
+
+#       foo bar  baz
+#    0  one   A    1
+#    1  one   B    2
+#    2  one   C    3
+#    3  two   A    4
+#    4  two   B    5
+#    5  two   C    6
+
+xx.pivot('foo','bar','baz')
+# or
+xx.pivot('foo', 'bar')['baz']
+
+#    bar  A  B  C
+#    foo         
+#    one  1  2  3
+#    two  4  5  6
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas2
+pandas DataFrame - create and populate with data
+    from dict of columns,
+    from list
+    from numpy array, 
+    from list of serieses
+    from list of list
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+df = DataFrame({'x'  : 3 * ['a'] + 2 * ['b'],
+                'nn' : np.arange(5, dtype=np.float64), 
+                'y'  : np.random.normal(size=5),
+                'z'  : range(5)})
+
+df = DataFrame([[1,2,3]], columns=['A','B','C'])
+
+df = DataFrame(np.arange(12).reshape((3,4)),
+               index = ['A','B','C'],
+               columns = ['AA','BB','CC','DD'])
+
+nrows  = 10
+ncols  =  5
+mydata = np.random.rand(nrows, ncols)
+#mydata = np.random.randn(nrows, ncols)
+aa = DataFrame(data=mydata)
+aa = DataFrame(data=mydata, 
+               index=range(nrows), 
+               columns=[chr(65+x)*2 for x in range(ncols)])
+
+aa = DataFrame( np.random.normal(size=12).reshape((3,4)), 
+                index = ['A','B','C'], 
+                columns = ['AA','BB','CC','DD'])
+
+s1 = Series({'x':1,'y':2})
+s2 = Series({'x':3,'y':4})
+aa = DataFrame([s1,s2])   # s1 and s2 - rows
+
+mydata = [[1,2],[3,4],[5,6]]
+aa = DataFrame(mydata, columns=['AA','BB'])
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas2
+How to generate random numbers to populate DataFrame
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+np.random.randn(rows, cols)
+np.random.rand(rows, cols)
+np.random.normal(size=25).reshape(5,5)
+np.random.normal(loc=0.0, scale=1.0, size=None)
+np.random.<TAB>
+np.random.seed(int)
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas2
+pandas DataFrame - transform a row using flexible 
+    custom function operating on all columns.
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+aa = DataFrame({'aa':range(5), 'bb':range(5)})
+
+def fn(df):
+    dd = df.ix[df.index[0]].to_dict()
+    df['lev'] = str(dd['aa']**2) + '_' + str(dd['bb']**2)
+    return df
+
+bb = aa.groupby(aa.index,as_index=False).apply(fn)
+print bb
+   aa  bb    lev
+0   0   0    0_0
+1   1   1    1_1
+2   2   2    4_4
+3   3   3    9_9
+4   4   4  16_16
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas2
+how to loop through rows of pandas DataFrame?
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+aa=ddd()
+for rr in aa.itertuples(): print rr
+for rr in aa.itertuples(index=False): print rr
+
+DataFrame.iterrows()  - a generator
+    yields tuple (index, row_as_Series)
+    Slow, because needs to create a Series from each row.
+  
+for row in df.iterrows():
+    ind = row[0]
+    ser = row[1]
+    cols = list(ser.index)
+    vals = list(ser)
+    print "ind = ",ind,", vals = ",vals
+
+for row in df.iterrows():   print row[1].values
+for row in df.iterrows():   print list(row[1].values)
+
+# Another way:
+for ii in df.index: do_something(df.ix[ii])
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas2
+String operations on columns
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+aa = DataFrame({
+    'ss':['aa1','bb2','cc3',np.nan],
+    'ff':['  11.11  ','  22.22  ','  33.33  ','  44.44  '],
+    'ii':['  11     ','  22     ','  33     ','  44     ']})
+
+# use str method on Series/Column:
+aa.ss.str.<TAB>
+aa.ss.str.contains('bb')
+aa.ss.str[:2]   # first 2 characters
+aa.ss.str.upper()
+aa.ss.str.len()
+# etc.
+
+# using regular expression
+mask = aa.ss.map(lambda x: True if re.search(r's[1,3]',str(x)) else False)
+
+# convert from string to number and back
+aa['zz'] = aa.ff.astype(np.int64) # error
+aa['zz'] = aa.ff.map(lambda x: int(float(x)) if x==x else np.nan).astype(np.int64)
+aa['zz'] = aa.ii.astype(np.int64) # works
+print aa.zz.dtype
+aa['zz'] = aa.ff.astype(np.float64) # works
+aa['zz'] = aa.ii.astype(np.float64) # works
+print aa.zz.dtype
+aa['zz'] = aa.ii.str.strip().astype(float)
+print aa.zz.dtype
+aa['zz'] = aa.ii.str.strip().str[0].astype(int)
+print aa.zz.dtype
+aa['zz'] = aa.ff.astype(object)  # use this to work with a string
+print aa.zz.dtype
+aa['zz'] = aa.ff.astype(str)     # silent error
+print aa.zz.dtype
+
+# mask = aa.ss.str.match(r'1|3') - doesn't work yet
+# mask = aa.ss.get(label) # ?? 
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas2
+Making histogram (cutting data into bins)
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+aa=np.random.normal(size=100)
+aa
+bins=[-3, -2.5, -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5, 3]
+vals = pandas.cut(aa,bins)
+pandas.value_counts(vals)
+
+# also look at pandas.qcut
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas2
+How to get a short summary of data in the numeric DataFrame?
+How to remove outliers (values which are too big or small)
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+aa = ddd()
+print aa,describe()
+
+np.random.seed(12345)
+data = DataFrame(np.random.randn(1000, 4), columns=['A','B','C','D'])
+data
+data.describe()
+data.describe().index  # [count, mean, std, min, 25%, 50%, 75%, max]
+
+# look at outliers (numbers more than 3)
+print data[(np.abs(data) > 3).any(1)]
+
+# remove outliers
+data[(np.abs(data) > 3)] = np.sign(data) * 3
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: pandas2
+How to search and replace values in a column in a DataFrame
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+# most common way is in 2 steps:
+#   step1 - create a mask to identify rows in hwich we need to do change
+#   step2 - do the change to the column using the mask
+
+# alternative may be to use replace based on value(s)
+aa.ss.replace(list_of_values, replacing_value)
+#or
+aa.ss.replace({val1:repl1, val2:repl2, etc.})
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python3
+How to combine a list of sets into one sorted list
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+gg = [{1,2,3},{2,3,4},{3,4,5}]
+print sorted(set.union(*gg))
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python3
+Write a python script as following:
+ - Write a function that takes two arguments:
+  imp_data = [[123, 45875, 8484049], [456, 78135, 984563],
+              [789, 80135, 7754212], [212, 63157, 135795],
+              [310, 54870, 63269402],[658, 40386, 72130456]]
+
+  member_names = {789 : "eBay", 823 : "Amazon", 456 : "CPX", 
+                  212 : "Kitara", 123 : "Adgorithms", 
+                  658 : "Bizo", 310: "YHMG"}
+
+   function should go through the inputed list and find the
+   member_id (very first member of each sublist) who has 
+   the most imps, but only if that number is above 50 million.
+   Then, go through the dictionary of member_names to find
+   the corresponding member name and have the function return it.
+   If no members meet the criteria, return Criteria not met.
+
+  - Have your program (separate from the function) take the 
+    returned name and print out: 
+      The member with the highest impressions, over 50 million, is: <member_name>
+      Use string formatting to pass in the name
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+# -------------------------------------
+def myfunc(mylist,mydict):
+    """some coment"""
+    mid=0
+    mmax=0
+    for sublist in mylist:
+        mm=sublist[0]
+        nn=sublist[2]
+        if nn > 5e7 and nn > mmax:
+            mid = mm
+            mmax = nn
+    if mid == 0:
+        return "Criteria not met"
+    else:
+        return mydict[mid]
+
+# -------------------------------------
+# main execution
+# -------------------------------------
+imp_data = [[123, 45875, 8484049], [456, 78135, 984563],
+    [789, 80135, 7754212], [212, 63157, 135795],
+    [310, 54870, 63269402], [658, 40386, 72130456]]
+
+member_names = {789 : "eBay", 823 : "Amazon", 456 : "CPX", 
+    212 : "Kitara", 123 : "Adgorithms", 658 : "Bizo", 310: "YHMG"}
+
+ss = myfunc(imp_data, member_names)
+print "The member with the highest impressions, over 50 million, is: %s" % ss
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python3
+    what are the main modules to handle date and time
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+python modules: datetime, 
+          also: time, calendar, dateutil
+types in datetime:  date, time, datetime, timedelta
+
+import datetime
+from datetime import date, time, datetime, timedelta
+date.today()
+datetime.now()
+str(date.today()).split('-')[0]  # current year YYYY
+str(date.today()).split('-')[1]  # current month MM
+str(date.today()).split('-')[2]  # current date of the month DD
+
+from dateutil.parser import parse
+parse('2011-01-03') # creates datetime.datetime object
+
+ss = '2011-12-31'
+mydt = datetime.strptime(ss,'%Y-%m-%d') # str-parse-time  - parse string into datetime object
+ss2  = mydt.strftime('%Y-%m-%d')        # str-format-time - formats datetime object back into a string using a format
+
+# pandas has its own convenience method which creates tseries index  
+tt = pandas.to_datetime(['7/6/2011','8/6/2011']) 
+type(tt) # pandas.tseries.index.DatetimeIndex
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python3
+  Given date as 'YYYY-MM-DD' calculate next and previous dates
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+ss      = '2011-12-31'
+ss_next = (datetime.strptime(ss,'%Y-%m-%d') + timedelta(1)).strftime('%Y-%m-%d')
+ss_prev = (datetime.strptime(ss,'%Y-%m-%d') - timedelta(1)).strftime('%Y-%m-%d')
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python4
+  timeseries - a series indexed by datetime objects (or similar objects)
+  give examples of creating a timeseries
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+mydates = [datetime(2011,1,2), datetime(2011,1,5), datetime(2011,1,7), datetime(2011,1,8), datetime(2011,1,10), datetime(2011,1,12)]
+
+ts = Series(np.random.randn(6), index=mydates) 
+
+ts = Series(np.random.randn(1000), index = pandas.date_range('1/1/2000',periods=1000, normalize=True))
+#   note: in above we use normalize=True to zero-out times. 
+#   so ts.index = [2000-01-01 00:00:00, ..., 2002-09-26 00:00:00]
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python4
+    how to sort dictionary keys by keys or by values ?
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+dd={11:5,22:4,33:3,44:2,55:1}
+sorted(dd)               # [11, 22, 33, 44, 55]
+sorted(dd,key=dd.get)    # [55, 44, 33, 22, 11]
+sorted(dd,key=dd.get, reverse=True) # [11, 22, 33, 44, 55]
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python4
+    understand sorted() function
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+sorted(iterable, cmp=None, key=None, reverse=False) - returns new sorted list
+
+aa=[1,2,3,11,12,13]
+sorted(aa)                # [1, 2, 3, 11, 12, 13]
+sorted(aa,key=str)        # [1, 11, 12, 13, 2, 3]
+sorted(aa,key=int)        # [1, 2, 3, 11, 12, 13]
+sorted(aa,key=int,reverse=True)  # [13, 12, 11, 3, 2, 1]
+sorted(aa,key=str,reverse=True)  # [3, 2, 13, 12, 11, 1]
+
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+group: python4
+    how to see variables I have deefined in current ipython session
+    (dir(), locals(), globals() return too much)
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+use magic command %who to print the list
+use magic command %who_ls to return the list
+
+mylist = %who_ls
+print mylist
+
+
+
+## adding 2 time-serieses - aligning dates, filling with NaN
+## ts.resample('D')
+## ts can have duplicates in index
+## date_range
+## frequencies and date offsets (page299) 
+##=======================================
+##df.groupby(...).size()
+##=======================================
+##for name, group in df.groupby(..): ...
+##=======================================
+##dict(list(df.groupby(...)
+##=======================================
+##what's the difference between quantiles and buckets?
+##median as a quantile
+##=======================================
+## difference between agg and apply
+## df.groupby(...).agg(fn) - fn to work on an array
+## df.groupby(...).apply(fn) - fn to work on a DataFrame
+## you can provide args to fn in apply:
+##  .apply(fn, args)
+## ser.apply(fn) - apply can be use on a Series - but I prefer map for this 
+##=======================================
+##OLS = Ordinary Least Squares
+##=======================================
+##pivot vs crosstab

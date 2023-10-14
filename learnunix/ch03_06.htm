@@ -1,0 +1,601 @@
+<HTML
+><HEAD
+><TITLE
+>[Chapter 3] 3.6 Customizing Your Account</TITLE
+><META
+NAME="DC.title"
+CONTENT="Learning the Unix Operating System"><META
+NAME="DC.creator"
+CONTENT="Jerry Peek, Grace Todino &amp; John Strang"><META
+NAME="DC.publisher"
+CONTENT="O'Reilly &amp; Associates, Inc."><META
+NAME="DC.date"
+CONTENT="1998-08-03T20:50:44Z"><META
+NAME="DC.type"
+CONTENT="Text.Monograph"><META
+NAME="DC.format"
+CONTENT="text/html"
+SCHEME="MIME"><META
+NAME="DC.source"
+CONTENT="1-56592-390-1"
+SCHEME="ISBN"><META
+NAME="DC.language"
+CONTENT="en-US"><META
+NAME="generator"
+CONTENT="Jade 1.1/O'Reilly DocBook 3.0 to HTML 4.0"><LINK
+REV="made"
+HREF="mailto:online-books@oreilly.com"
+TITLE="Online Books Comments"><LINK
+REL="up"
+HREF="ch03_01.htm"
+TITLE="3. Your UNIX Account "><LINK
+REL="prev"
+HREF="ch03_05.htm"
+TITLE="3.5 Changing Your Password"><LINK
+REL="next"
+HREF="ch04_01.htm"
+TITLE="4. File Management "></HEAD
+><BODY
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+><DIV
+CLASS="htmlnav"
+><H1
+><IMG
+SRC="gifs/smbanner.gif"
+ALT="Learning the Unix Operating System"
+USEMAP="#srchmap"
+BORDER="0"></H1
+><MAP
+NAME="srchmap"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,466,69"
+HREF="index.htm"
+ALT="Learning the Unix Operating System"><AREA
+SHAPE="RECT"
+COORDS="467,0,514,18"
+HREF="jobjects/fsearch.htm"
+ALT="Search this book"></MAP
+><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch03_05.htm"
+TITLE="3.5 Changing Your Password"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 3.5 Changing Your Password"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><B
+><FONT
+FACE="ARIEL,HELVETICA,HELV,SANSERIF"
+SIZE="-1"
+>Chapter 3<BR>Your UNIX Account </FONT
+></B
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="CHAPTER"
+HREF="ch04_01.htm"
+TITLE="4. File Management "
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 4. File Management "
+BORDER="0"></A
+></TD
+></TR
+></TABLE
+>&nbsp;<HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"></DIV
+><DIV
+CLASS="SECT1"
+><H2
+CLASS="sect1"
+><A
+CLASS="title"
+NAME="LUX-CH-3-SECT-6"
+>3.6 Customizing Your Account</A
+></H2
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-3-IX-CUSTOMIZING-ACCOUNT"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-3-IX-ACCOUNT-CUSTOMIZING"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2503"
+></A
+>As we saw earlier, your home directory may have a hidden file called
+<EM
+CLASS="emphasis"
+>.profile</EM
+>.
+If it doesn't, there'll probably be one or more files named
+<EM
+CLASS="emphasis"
+>.login</EM
+>,
+<EM
+CLASS="emphasis"
+>.cshrc</EM
+>,
+<EM
+CLASS="emphasis"
+>.tshrc</EM
+>,
+<EM
+CLASS="emphasis"
+>.bashrc</EM
+>,
+<EM
+CLASS="emphasis"
+>.bash_profile</EM
+>,
+or
+<EM
+CLASS="emphasis"
+>.bash_login</EM
+>.
+
+
+These file are <EM
+CLASS="emphasis"
+>shell setup files</EM
+>,
+the key to customizing your account.
+Shell setup files contain commands
+that are automatically executed when a new shell starts&nbsp;- especially
+when you log in.</P
+><P
+CLASS="para"
+>Let's take a look at these files.
+Go to your home directory, then use <EM
+CLASS="emphasis"
+>cat</EM
+> to display the file.<A
+CLASS="indexterm"
+NAME="AUTOID-2515"
+></A
+>
+Your <EM
+CLASS="emphasis"
+>.profile</EM
+> might look something like this:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>PATH=/bin:/usr/bin:/usr/local/bin:
+export PATH
+/usr/games/fortune
+date
+umask 002
+stty erase ^H intr ^C</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-2521"
+></A
+>A <EM
+CLASS="emphasis"
+>.login</EM
+> file might look something like this:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>set path = (/bin /usr/bin /usr/local/bin .)
+/usr/games
+date
+umask 002
+stty erase ^H intr ^C</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-2527"
+></A
+>As you can see, these sample setup files contain commands to print a
+&quot;fortune&quot; and the date&nbsp;- just what happened earlier when we logged in!
+(<EM
+CLASS="emphasis"
+>/usr/games/fortune</EM
+> is a useless but entertaining program that
+prints a randomly selected saying from its collection.  <B
+CLASS="emphasis.bold"
+>fortune</B
+>
+isn't available on all systems.)</P
+><P
+CLASS="para"
+>But what are these other commands?</P
+><UL
+CLASS="itemizedlist"
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-2535"
+></A
+>The line with <CODE
+CLASS="literal"
+>PATH=</CODE
+> or <CODE
+CLASS="literal"
+>set path =</CODE
+> tells the shell
+which directories to search for UNIX commands.
+This saves you the trouble of typing the complete pathname for each program
+you run.
+(Notice that <EM
+CLASS="emphasis"
+>/usr/games</EM
+> isn't part of the path, so we had to use
+the absolute pathname to get our daily dose of wisdom
+from the <B
+CLASS="emphasis.bold"
+>fortune</B
+> command.)</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-2543"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2545"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2549"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2553"
+></A
+>The <B
+CLASS="emphasis.bold"
+>umask</B
+> command sets the default file permissions
+assigned to all files you create.
+Briefly, a value of 022 sets the permissions <CODE
+CLASS="literal"
+>rw-r--r--</CODE
+>
+(read-write by owner, but read-only by everyone else),
+and 002 will produce <CODE
+CLASS="literal"
+>rw-rw-r--</CODE
+>
+(read-write by owner and group, but read-only by everyone else).
+If this file is a program or a directory, both <B
+CLASS="emphasis.bold"
+>umasks</B
+> will also give
+execute (<CODE
+CLASS="literal"
+>x</CODE
+>) permission to all users.
+See one of the books in <A
+CLASS="xref"
+HREF="appa_01.htm"
+TITLE="Reading List "
+>Appendix A</A
+> or your UNIX documentation for details.</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-2564"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2566"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2569"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2571"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2573"
+></A
+>The <B
+CLASS="emphasis.bold"
+>stty</B
+> command sets your terminal control characters&nbsp;- for example, the
+erase and interrupt characters we discussed earlier.</P
+></LI
+></UL
+><P
+CLASS="para"
+>You can execute any of these commands from the command line, as well.
+For example, to change your erase character from
+<KBD
+CLASS="keycap"
+>[BACKSPACE]</KBD
+>
+<KBD
+CLASS="keycap"
+>[(CTRL-H)]</KBD
+>
+to
+<KBD
+CLASS="keycap"
+>[DEL]</KBD
+>
+<KBD
+CLASS="keycap"
+>[CTRL-?]</KBD
+>
+you would enter:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>stty erase ^?</B
+></CODE
+></PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>(The
+<KBD
+CLASS="keycap"
+>[DEL]</KBD
+>
+key actually generates the control code
+<KBD
+CLASS="keycap"
+>[CTRL-?]</KBD
+>
+so that's what you'll see on your screen.)</P
+><P
+CLASS="para"
+>Now pressing
+<KBD
+CLASS="keycap"
+>[DEL]</KBD
+>
+will backspace and erase characters you type.
+(If your account is already set up to use
+<KBD
+CLASS="keycap"
+>[DEL]</KBD
+>
+as the erase character, reverse this example, and change the erase character to
+<KBD
+CLASS="keycap"
+>[BACKSPACE]</KBD
+>.</P
+><P
+CLASS="para"
+>If you experiment with <B
+CLASS="emphasis.bold"
+>stty</B
+>, be careful not to reset the
+erase or interrupt character to a character you'll need otherwise.
+If you do, though, simply log out and then log back in;
+you'll get the default erase and interrupt characters again.</P
+><P
+CLASS="para"
+>UNIX has many other configuration commands to learn about;
+the references in <A
+CLASS="xref"
+HREF="appa_01.htm"
+TITLE="Reading List "
+>Appendix A</A
+> list some of them.
+One popular configuration is to change your screen colors.
+On some Linux systems (and others), for example, the command<A
+CLASS="indexterm"
+NAME="AUTOID-2595"
+></A
+>
+<B
+CLASS="emphasis.bold"
+>setterm -background blue</B
+> makes a blue background.
+Unfortunately, different systems do this in different ways;
+ask a local expert or someone who has a colored screen.</P
+><P
+CLASS="para"
+>Just as you can execute the setup commands from the command line,
+the converse is true:
+any command that you can execute from the
+command line can be executed automatically when you log in by placing it in
+your setup file.
+(Running interactive commands like <B
+CLASS="emphasis.bold"
+>mail</B
+> from your setup file
+isn't a good idea, though.)</P
+><P
+CLASS="para"
+>You probably shouldn't edit your setup files yet,
+but it's good
+to know what's in them.
+Later, when you know more about UNIX, feel free to add or
+change commands in this file.<A
+CLASS="indexterm"
+NAME="AUTOID-2601"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2602"
+></A
+></P
+></DIV
+><DIV
+CLASS="htmlnav"
+><P
+></P
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch03_05.htm"
+TITLE="3.5 Changing Your Password"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 3.5 Changing Your Password"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="book"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"
+><IMG
+SRC="../gifs/txthome.gif"
+ALT="Learning the Unix Operating System"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="CHAPTER"
+HREF="ch04_01.htm"
+TITLE="4. File Management "
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 4. File Management "
+BORDER="0"></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+>3.5 Changing Your Password</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="index"
+HREF="index/idx_0.htm"
+TITLE="Book Index"
+><IMG
+SRC="../gifs/index.gif"
+ALT="Book Index"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+>4. File Management </TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><IMG
+SRC="../gifs/smnavbar.gif"
+USEMAP="#map"
+BORDER="0"
+ALT="The UNIX CD Bookshelf Navigation"><MAP
+NAME="map"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,73,21"
+HREF="../index.htm"
+ALT="The UNIX CD Bookshelf"><AREA
+SHAPE="RECT"
+COORDS="74,0,163,21"
+HREF="../upt/index.htm"
+ALT="UNIX Power Tools"><AREA
+SHAPE="RECT"
+COORDS="164,0,257,21"
+HREF="../unixnut/index.htm"
+ALT="UNIX in a Nutshell"><AREA
+SHAPE="RECT"
+COORDS="258,0,321,21"
+HREF="../vi/index.htm"
+ALT="Learning the vi Editor"><AREA
+SHAPE="RECT"
+COORDS="322,0,378,21"
+HREF="../sedawk/index.htm"
+ALT="sed &amp; awk"><AREA
+SHAPE="RECT"
+COORDS="379,0,438,21"
+HREF="../ksh/index.htm"
+ALT="Learning the Korn Shell"><AREA
+SHAPE="RECT"
+COORDS="439,0,514,21"
+HREF="index.htm"
+ALT="Learning the UNIX Operating System"></MAP
+></DIV
+></BODY
+></HTML
+>

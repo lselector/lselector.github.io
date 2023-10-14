@@ -1,0 +1,447 @@
+<HTML
+><HEAD
+><TITLE
+>[Chapter 6] 6.2 Checking on a Process</TITLE
+><META
+NAME="DC.title"
+CONTENT="Learning the Unix Operating System"><META
+NAME="DC.creator"
+CONTENT="Jerry Peek, Grace Todino &amp; John Strang"><META
+NAME="DC.publisher"
+CONTENT="O'Reilly &amp; Associates, Inc."><META
+NAME="DC.date"
+CONTENT="1998-08-03T20:53:04Z"><META
+NAME="DC.type"
+CONTENT="Text.Monograph"><META
+NAME="DC.format"
+CONTENT="text/html"
+SCHEME="MIME"><META
+NAME="DC.source"
+CONTENT="1-56592-390-1"
+SCHEME="ISBN"><META
+NAME="DC.language"
+CONTENT="en-US"><META
+NAME="generator"
+CONTENT="Jade 1.1/O'Reilly DocBook 3.0 to HTML 4.0"><LINK
+REV="made"
+HREF="mailto:online-books@oreilly.com"
+TITLE="Online Books Comments"><LINK
+REL="up"
+HREF="ch06_01.htm"
+TITLE="6. Multitasking "><LINK
+REL="prev"
+HREF="ch06_01.htm"
+TITLE="6.1 Running a Command in the Background"><LINK
+REL="next"
+HREF="ch06_03.htm"
+TITLE="6.3 Cancelling a Process"></HEAD
+><BODY
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+><DIV
+CLASS="htmlnav"
+><H1
+><IMG
+SRC="gifs/smbanner.gif"
+ALT="Learning the Unix Operating System"
+USEMAP="#srchmap"
+BORDER="0"></H1
+><MAP
+NAME="srchmap"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,466,69"
+HREF="index.htm"
+ALT="Learning the Unix Operating System"><AREA
+SHAPE="RECT"
+COORDS="467,0,514,18"
+HREF="jobjects/fsearch.htm"
+ALT="Search this book"></MAP
+><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch06_01.htm"
+TITLE="6.1 Running a Command in the Background"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 6.1 Running a Command in the Background"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><B
+><FONT
+FACE="ARIEL,HELVETICA,HELV,SANSERIF"
+SIZE="-1"
+>Chapter 6<BR>Multitasking </FONT
+></B
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch06_03.htm"
+TITLE="6.3 Cancelling a Process"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 6.3 Cancelling a Process"
+BORDER="0"></A
+></TD
+></TR
+></TABLE
+>&nbsp;<HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"></DIV
+><DIV
+CLASS="SECT1"
+><H2
+CLASS="sect1"
+><A
+CLASS="title"
+NAME="LUX-CH-6-SECT-2"
+>6.2 Checking on a Process</A
+></H2
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-6-IX-CHECKING-PROCESSES"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-6-IX-PROCESSES-BKGR-CHECKING"
+></A
+>If a background process takes too long, or you
+change your mind and want to stop a process, you can check the status of the
+process and even cancel it.</P
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-6-SECT-2.0.1"
+>6.2.1 ps</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-6-IX-PS-COMMAND"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4230"
+></A
+>When you enter the single-word command <B
+CLASS="emphasis.bold"
+>ps</B
+>,
+you can see how long a process has
+been running.
+The output of <B
+CLASS="emphasis.bold"
+>ps</B
+> also tells you the process ID of the background
+process and the terminal from which it was run.</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>ps</B
+></CODE
+>
+PID     TTY     TIME   COMMAND
+8048    020     0:12   sh
+8699    020     0:02   ps
+%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>In its basic form, <B
+CLASS="emphasis.bold"
+>ps</B
+> lists the following:</P
+><DL
+CLASS="variablelist"
+><DT
+CLASS="term"
+><EM
+CLASS="emphasis"
+>Process ID (PID)</EM
+></DT
+><DD
+CLASS="listitem"
+><P
+CLASS="para"
+>A unique number assigned by UNIX to the process.</P
+></DD
+><DT
+CLASS="term"
+><EM
+CLASS="emphasis"
+>Terminal line (TTY)</EM
+></DT
+><DD
+CLASS="listitem"
+><P
+CLASS="para"
+>The terminal number from which the process was started.</P
+></DD
+><DT
+CLASS="term"
+><EM
+CLASS="emphasis"
+>Run time (TIME)</EM
+></DT
+><DD
+CLASS="listitem"
+><P
+CLASS="para"
+>The amount of computer time (in minutes and seconds) that the process has used.</P
+></DD
+><DT
+CLASS="term"
+><EM
+CLASS="emphasis"
+>Command (COMMAND)</EM
+></DT
+><DD
+CLASS="listitem"
+><P
+CLASS="para"
+>The name of the process.</P
+></DD
+></DL
+><P
+CLASS="para"
+>At the very least, <B
+CLASS="emphasis.bold"
+>ps</B
+> will list one process: <B
+CLASS="emphasis.bold"
+>ps</B
+> itself.
+You should also see the names of any other programs running in the
+background and the name of your shell's process (<B
+CLASS="emphasis.bold"
+>sh</B
+>, <B
+CLASS="emphasis.bold"
+>csh</B
+>,
+and so on).</P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-4267"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4270"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4272"
+></A
+>You should be aware that there are two types of programs on UNIX
+systems: directly executable programs and interpreted programs.
+Directly executable programs are written in a programming language
+like C or Pascal and stored in a file that the system can read
+directly. Interpreted programs, such as shell scripts, are sequences
+of commands that are read by an interpreter program.  If you execute
+an interpreted program, you will see an additional command (like
+<B
+CLASS="emphasis.bold"
+>perl</B
+>, <B
+CLASS="emphasis.bold"
+>sh</B
+>, or <B
+CLASS="emphasis.bold"
+>csh</B
+>) in the <B
+CLASS="emphasis.bold"
+>ps</B
+> listing, as well
+as any UNIX commands that the interpreter is executing now.<A
+CLASS="indexterm"
+NAME="AUTOID-4278"
+></A
+></P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-4280"
+></A
+>Shells with job control have a command called
+<B
+CLASS="emphasis.bold"
+>jobs</B
+> which lists background processes started from that shell.
+As mentioned above, there are commands to change the foreground/background
+status of jobs.
+There are other job control commands as well.
+See the references in <A
+CLASS="xref"
+HREF="appa_01.htm"
+TITLE="Reading List "
+>Appendix A, Reading List </A
+>, for details.<A
+CLASS="indexterm"
+NAME="AUTOID-4284"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4285"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4286"
+></A
+></P
+></DIV
+></DIV
+><DIV
+CLASS="htmlnav"
+><P
+></P
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch06_01.htm"
+TITLE="6.1 Running a Command in the Background"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 6.1 Running a Command in the Background"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="book"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"
+><IMG
+SRC="../gifs/txthome.gif"
+ALT="Learning the Unix Operating System"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch06_03.htm"
+TITLE="6.3 Cancelling a Process"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 6.3 Cancelling a Process"
+BORDER="0"></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+>6.1 Running a Command in the Background</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="index"
+HREF="index/idx_0.htm"
+TITLE="Book Index"
+><IMG
+SRC="../gifs/index.gif"
+ALT="Book Index"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+>6.3 Cancelling a Process</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><IMG
+SRC="../gifs/smnavbar.gif"
+USEMAP="#map"
+BORDER="0"
+ALT="The UNIX CD Bookshelf Navigation"><MAP
+NAME="map"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,73,21"
+HREF="../index.htm"
+ALT="The UNIX CD Bookshelf"><AREA
+SHAPE="RECT"
+COORDS="74,0,163,21"
+HREF="../upt/index.htm"
+ALT="UNIX Power Tools"><AREA
+SHAPE="RECT"
+COORDS="164,0,257,21"
+HREF="../unixnut/index.htm"
+ALT="UNIX in a Nutshell"><AREA
+SHAPE="RECT"
+COORDS="258,0,321,21"
+HREF="../vi/index.htm"
+ALT="Learning the vi Editor"><AREA
+SHAPE="RECT"
+COORDS="322,0,378,21"
+HREF="../sedawk/index.htm"
+ALT="sed &amp; awk"><AREA
+SHAPE="RECT"
+COORDS="379,0,438,21"
+HREF="../ksh/index.htm"
+ALT="Learning the Korn Shell"><AREA
+SHAPE="RECT"
+COORDS="439,0,514,21"
+HREF="index.htm"
+ALT="Learning the UNIX Operating System"></MAP
+></DIV
+></BODY
+></HTML
+>

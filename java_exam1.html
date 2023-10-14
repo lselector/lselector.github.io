@@ -1,0 +1,2162 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <title>Mock Java Certification Exam</title>
+</head>
+<body bgcolor="#CCFFFF">
+
+<h1>
+<b>Java Programmer Certification Mock Exam No 1</b></h1>
+
+<h3>
+<b>Last Updated 10 July 2000</b></h3>
+
+<p><br>This is my mock Exam No 1 based on the Objectives for the Sun Java
+Programmers Exam. It was created by Marcus Green (<a href="mailto:mail@marcusgreen.co.uk">mail@marcusgreen.co.uk</a>)
+and may be freely distributed so long as it is unmodified. Please email
+me if you have any corrections or comments, but please read this document
+first
+<p><a href="http://www.software.u-net.com/getanswers.htm">http://www.software.u-net.com/getanswers.htm</a>
+<p>If you obtained this exam from some other source please email me to
+let me know and check out the latest version at <a href="http://www.jchq.net/">http://www.jchq.net/</a>
+<h3>
+It really does come with answers</h3>
+Yes, this is a long document (around 35 pages), if you cannot see the answers
+then you have not got the entire document, try reloading it untill you
+can see the answer to Question 60 and the words "End of document". The
+answers contain references to approximately which objective the question
+relates to. If you have a query about any of these questions, please, please
+include the full answer with the question.
+<h3>
+Why not discuss this exam with other people ?</h3>
+You can post a message on the discussion forum at <a href="http://www.jchq.net/discus">http://www.jchq.net/discus</a>
+(scroll down the messages to find the create new conversation button).
+You could also send me your question but I get heaps of email and my answer
+is likely to be slow and terse.
+<h3>
+How does this compare with the real thing?</h3>
+The questions are of a similar format to the real questions, though you
+get a few "fill in the text box" questions on the real thing. You should
+assume that the real thing will be harder though many people have told
+me that they get similar marks in the real thing to my exams..
+<h3>
+Where can you find other Mock Exams?</h3>
+Check out my FAQ at <a href="http://www.jchq.net/faq/jcertfaq.htm">http://www.jchq.net/faq/jcertfaq.htm</a>
+for links to other mock exams You will find links to many good mock exams
+that add up to hundreds of questions. You can check out my second mock
+exam that contains 60 question at <a href="http://www.jchq.net/mockexams/exam2.htm">http://www.jchq.net/mockexams/exam2.htm</a>
+<h3>
+If you think you have found an error:-</h3>
+Please include which exam you are referring to, ie 1 or 2 (and maybe soon
+3)
+<h3>
+Read the questions carefully</h3>
+I have tried to make the questions unambiguous (the meaning should be obvious),
+but make sure you have read what I have written now what you think I might
+have written. Thus if it says "Classes can be declared with the private
+modifier ", it means It is possible to declare a class with the private
+modifier and not that all classes in all situations can be declared as
+private. Each question may have one or more correct Answers.
+<h2>
+Questions</h2>
+
+<h2>
+
+<hr align=center></h2>
+
+<h4>
+<a NAME="Question 1)"></a>Question 1)</h4>
+Which of the following lines will compile without warning or error.
+<p>1) float f=1.3;
+<br>2) char c="a";
+<br>3) byte b=257;
+<br>4) boolean b=null;
+<br>5) int i=10;
+<br>&nbsp;
+<p><a href="java_exam1.html#Answer 1)">Answer to
+Question 1</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 2)"></a>Question 2)</h4>
+What will happen if you try to compile and run the following code
+<pre>public class MyClass {&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public static void main(String arguments[]) {&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; amethod(arguments);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void amethod(String[] arguments) {&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(arguments);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(arguments[1]);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+}</pre>
+1) error Can't make static reference to void amethod.
+<br>2) error method main not correct
+<br>3) error array must include parameter
+<br>4) amethod must be declared with String
+<p><a href="java_exam1.html#Answer 2)">Answer to
+Question 2</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 3)"></a>Question 3)</h4>
+Which of the following will compile without error
+<p>1)
+<pre>import java.awt.*;&nbsp;
+package Mypackage;&nbsp;
+class Myclass {}</pre>
+2)
+<pre>package MyPackage;&nbsp;
+import java.awt.*;&nbsp;
+class MyClass{}</pre>
+3)
+<pre>/*This is a comment */&nbsp;
+package MyPackage;&nbsp;
+import java.awt.*;&nbsp;
+class MyClass{}</pre>
+&nbsp;
+<p>&nbsp;
+<p><a href="java_exam1.html#Answer 3)">Answer to
+Question 3</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 4)"></a>Question 4)</h4>
+A byte can be of what size
+<p>1) -128 to 127
+<br>2) (-2 power 8 )-1 to 2 power 8
+<br>3) -255 to 256
+<br>4)depends on the particular implementation of the Java Virtual machine
+<p><a href="java_exam1.html#Answer 4)">Answer to
+Question 4</a>
+<br>
+<hr align=center>
+<h4>
+<a NAME="Question 5)"></a>Question 5)</h4>
+What will be printed out if this code is run with the following command
+line?
+<pre>java myprog good morning</pre>
+
+<pre>public class myprog{&nbsp;
+public static void main(String argv[])</pre>
+
+<pre>{&nbsp;
+System.out.println(argv[2])&nbsp;
+}</pre>
+
+<pre>}</pre>
+1) myprog
+<br>2) good
+<br>3) morning
+<br>4) Exception raised: "java.lang.ArrayIndexOutOfBoundsException: 2"
+<br>&nbsp;
+<p><a href="java_exam1.html#Answer 5)">Answer to
+Question 5</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 6)"></a>Question 6)</h4>
+Which of the following are keywords or reserved words in Java?
+<p>1) if
+<br>2) then
+<br>3) goto
+<br>4) while
+<br>5) case
+<p><a href="java_exam1.html#Answer 6)">Answer to
+Question 6</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 7)"></a>Question 7)</h4>
+Which of the following are legal identifiers
+<p>1) 2variable
+<br>2) variable2
+<br>3) _whatavariable
+<br>4) _3_
+<br>5) $anothervar
+<br>6) #myvar
+<p><a href="java_exam1.html#Answer 7)">Answer to
+Question 7</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 8)"></a>Question 8)</h4>
+What will happen when you compile and run the following code?
+<br>&nbsp;
+<pre>public class MyClass{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; static int i;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public static void main(String argv[]){&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(i);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+}</pre>
+1) Error Variable i may not have been initialized
+<br>2) null
+<br>3) 1
+<br>4) 0
+<p><a href="java_exam1.html#Answer 8)">Answer to
+Question 8</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 9)"></a>Question 9)</h4>
+What will happen if you try to compile and run the following code?
+<pre>public class Q {&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public static void main(String argv[]){&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int anar[]=new int[]{1,2,3};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(anar[1]);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+}</pre>
+1) 1
+<br>2) Error anar is referenced before it is initialized
+<br>3) 2
+<br>4) Error: size of array must be defined
+<br>&nbsp;
+<p><a href="java_exam1.html#Answer 9)">Answer to
+Question 9</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 10)"></a>Question 10)</h4>
+
+<p><br>What will happen if you try to compile and run the following code?
+<pre>public class Q {&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public static void main(String argv[]){&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int anar[]=new int[5];
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(anar[0]);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+}</pre>
+1) Error: anar is referenced before it is initialized
+<br>2) null
+<br>3) 0
+<br>4) 5
+<p><a href="java_exam1.html#Answer 10)">Answer
+to Question 10</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 11)"></a>Question 11)</h4>
+
+<p><br>What will be the result of attempting to compile and run the following
+code?
+<pre>abstract class MineBase {&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; abstract void amethod();&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; static int i;&nbsp;
+}</pre>
+
+<pre>public class Mine extends MineBase&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public static void main(String argv[]){&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int[] ar=new int[5];&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(i=0;i &lt; ar.length;i++)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(ar[i]);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+}</pre>
+1) a sequence of 5 0's will be printed
+<br>2) Error: ar is used before it is initialized
+<br>3) Error Mine must be declared abstract
+<br>4) IndexOutOfBoundes Error
+<p><a href="java_exam1.html#Answer 11)">Answer
+to Question 11</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 12)"></a>Question 12)</h4>
+What will be printed out if you attempt to compile and run the following
+code ?
+<pre>int i=1;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; switch (i) {&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 0:&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("zero");&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 1:&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("one");&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 2:&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("two");&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; default:&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("default");&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</pre>
+1) one
+<br>2) one, default
+<br>3) one, two, default
+<br>4) default
+<p><a href="java_exam1.html#Answer 12)">Answer
+to Question 12</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 13)"></a>Question 13)</h4>
+What will be printed out if you attempt to compile and run the following
+code?
+<pre>int i=9;&nbsp;
+switch (i) {&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; default:&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("default");&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 0:&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("zero");&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 1:&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("one");&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 2:&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("two");&nbsp;
+}</pre>
+1) default
+<br>2) default, zero
+<br>3) error default clause not defined
+<br>4) no output displayed
+<p><a href="java_exam1.html#Answer 13)">Answer
+to Question 13</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 14)"></a>Question 14)</h4>
+Which of the following lines of code will compile without error
+<p>1)
+<pre>int i=0;&nbsp;
+if(i) {&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("Hello");&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</pre>
+2)
+<pre>boolean b=true;&nbsp;
+boolean b2=true;&nbsp;
+if(b==b2) {&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("So true");&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</pre>
+3)
+<pre>int i=1;&nbsp;
+int j=2;&nbsp;
+if(i==1|| j==2)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("OK");</pre>
+4)
+<pre>int i=1;&nbsp;
+int j=2;&nbsp;
+if(i==1 &amp;| j==2)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("OK");</pre>
+<a href="java_exam1.html#Answer 14)">Answer to
+Question 14</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 15)"></a>Question 15)</h4>
+What will be output if you try to compile and run the following code, but
+there is
+<br>no file called Hello.txt in the current directory?.
+<pre>import java.io.*;&nbsp;
+public class Mine {&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public static void main(String argv[]){</pre>
+
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mine m=new Mine();&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(m.amethod());&nbsp;
+}</pre>
+
+<pre>public int amethod() {&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FileInputStream dis=new FileInputStream("Hello.txt");&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }catch (FileNotFoundException fne) {&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("No such file found");&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return -1;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }catch(IOException ioe) {&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } finally{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("Doing finally");&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+}</pre>
+1) No such file found
+<br>2 No such file found ,-1
+<br>3) No such file found, Doing finally, -1
+<br>4) 0
+<p><a href="java_exam1.html#Answer 15)">Answer
+to Question 15</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 16)"></a>Question 16)</h4>
+Which of the following statements are true?
+<p>1) Methods cannot be overriden to be more private
+<br>2) Static methods cannot be overloaded
+<br>3) Private methods cannot be overloaded
+<br>4) An overloaded method cannot throw exceptions not checked in the
+base class
+<p><a href="java_exam1.html#Answer 16)">Answer
+to Question 16</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 17)"></a>Question 17)</h4>
+What will happen if you attempt to compile and run the following code?
+<p>1) Compile and run without error
+<br>2) Compile time Exception
+<br>3) Runtime Exception
+<br>&nbsp;
+<pre>class Base {}&nbsp;
+class Sub extends Base {}&nbsp;
+class Sub2 extends Base {}</pre>
+
+<pre>public class CEx{</pre>
+
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public static void main(String argv[]){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Base b=new Base();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sub s=(Sub) b;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</pre>
+
+<pre>}</pre>
+<a href="java_exam1.html#Answer 17)">Answer to
+Question 17</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 18)"></a>Question 18)</h4>
+Which of the following statements are true?
+<p>1) System.out.println( -1 >>> 2);will output a result larger than 10
+<br>2) System.out.println( -1 >>> 2); will output a positive number
+<br>3) System.out.println( 2 >> 1); will output the number 1
+<br>4) System.out.println( 1 &lt;&lt;&lt; 2); will output the number 4
+<br>&nbsp;
+<p><a href="java_exam1.html#Answer 18)">Answer
+to Question 18</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 19)"></a>Question 19)</h4>
+You are browsing the Java HTML documentation for information on the
+<br>java.awt.TextField component. You want to create Listener code to respond
+to focus
+<br>events. The only Listener method listed is addActionListener. How do
+you go about
+<br>finding out about Listener methods?
+<p>1) Define your own Listener interface according to the event to be tracked
+<br>2) Use the search facility in the HTML documentation for the listener
+needed
+<br>3) Move up the hierarchy in the HTML documentation to locate methods
+in base
+<br>classes
+<br>4) Subclass awt.event with the appropriate Listener method
+<p><a href="java_exam1.html#Answer 19)">Answer
+to Question 19</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 20)"></a>Question 20)</h4>
+
+<p><br>What will be displayed when you attempt to compile and run the following
+code
+<pre>//Code start&nbsp;
+import java.awt.*;</pre>
+
+<pre>public class Butt extends Frame{</pre>
+
+<pre>public static void main(String argv[]){&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Butt MyBut=new Butt();&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</pre>
+
+<pre>Butt(){&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Button HelloBut=new Button("Hello");&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Button ByeBut=new Button("Bye");&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; add(HelloBut);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; add(ByeBut);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setSize(300,300);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setVisible(true);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+}&nbsp;
+//Code end</pre>
+1) Two buttons side by side occupying all of the frame, Hello on the left
+and Bye on
+<br>the right
+<br>2) One button occupying the entire frame saying Hello
+<br>3) One button occupying the entire frame saying Bye
+<br>4) Two buttons at the top of the frame one saying Hello the other saying
+Bye
+<p><a href="java_exam1.html#Answer 20)">Answer
+to Question 20</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 21)"></a>Question 21)</h4>
+
+<p><br>What will be output by the following code?
+<pre>public class MyFor{
+public static void main(String argv[]){&nbsp;
+&nbsp;&nbsp;&nbsp; int i;&nbsp;
+&nbsp;&nbsp;&nbsp; int j;&nbsp;
+&nbsp;&nbsp;&nbsp; outer:&nbsp;
+&nbsp;&nbsp;&nbsp; for (i=1;i &lt;3;i++)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; inner:&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(j=1; j&lt;3; j++) {&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (j==2)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; continue outer;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("Value for i=" + i + " Value for j=" +j);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+}</pre>
+1) Value for i=1 value for j=1
+<br>2) Value for i=2 value for j=1
+<br>3) Value for i=2 value for j=2
+<br>4) Value for i=3 value for j=1
+<p><a href="java_exam1.html#Answer 21)">Answer
+to Question 21</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 22)"></a>Question 22)</h4>
+
+<p><br>If g is a graphics instance what will the following code draw on
+the screen?.
+<br>&nbsp;
+<pre>g.fillArc(45,90,50,50,90,180);</pre>
+1) An arc bounded by a box of height 45, width 90 with a centre point of
+50,50, starting
+<br>at an angle of 90 degrees traversing through 180 degrees counter clockwise.
+<p>2) An arc bounded by a box of height 50, width 50, with a centre point
+of 45,90 starting
+<br>at an angle of 90 degrees traversing through 180 degrees clockwise.
+<p>3) An arc bounded by a box of height 50, width 50, with a top left at
+coordinates of 45,
+<br>90, starting at 90 degrees and traversing through 180 degrees counter
+clockwise.
+<p>4) An arc starting at 45 degrees, traversing through 90 degrees clockwise
+bounded by a
+<br>box of height 50, width 50 with a centre point of 90, 180.
+<p><a href="java_exam1.html#Answer 22)">Answer
+to Question 22</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 23)"></a>Question 23)</h4>
+
+<p><br>Which of the following methods can be legally inserted in place
+of the comment //Method Here ?
+<pre>class Base{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void amethod(int i) {&nbsp; }
+}&nbsp;
+public class Scope extends Base{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public static void main(String argv[]){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+&nbsp;&nbsp;&nbsp; //Method Here
+}</pre>
+1) void amethod(int i) throws Exception {}
+<br>2) void amethod(long i)throws Exception {}
+<br>3) void amethod(long i){}
+<br>4) public void amethod(int i) throws Exception {}
+<p><a href="java_exam1.html#Answer 23)">Answer
+to Question 23</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 24)"></a>Question 24)</h4>
+
+<p><br>Which of the following will output -4.0
+<p>1) System.out.println(Math.floor(-4.7));
+<br>2) System.out.println(Math.round(-4.7));
+<br>3) System.out.println(Math.ceil(-4.7));
+<br>4) System.out.println(Math.min(-4.7));
+<p><a href="java_exam1.html#Answer 24)">Answer
+to Question 24</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 25)"></a>Question 25)</h4>
+
+<p><br>What will happen if you attempt to compile and run the following
+code?
+<pre>Integer ten=new Integer(10);&nbsp;
+Long nine=new Long (9);</pre>
+
+<pre>System.out.println(ten + nine);&nbsp;
+int i=1;</pre>
+
+<pre>System.out.println(i + ten);</pre>
+1) 19 followed by 20
+<br>2) 19 followed by 11
+<br>3) Error: Can't convert java lang Integer
+<br>4) 10 followed by 1
+<p><a href="java_exam1.html#Answer 25)">Answer
+to Question 25</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 26)"></a>Question 26)</h4>
+
+<p><br>If you run the code below, what gets printed out?
+<pre>String s=new String("Bicycle");&nbsp;
+int iBegin=1;&nbsp;
+char iEnd=3;&nbsp;
+System.out.println(s.substring(iBegin,iEnd));</pre>
+1) Bic
+<br>2) ic
+<br>3) icy
+<br>4) error: no method matching substring(int,char)
+<p><a href="java_exam1.html#Answer 26)">Answer
+to Question 26</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 27)"></a>Question 27)</h4>
+If you wanted to find out where the position of the letter v (ie return
+2) in the string s
+<br>containing "Java", which of the following could you use?
+<p>1) mid(2,s);
+<br>2) charAt(2);
+<br>3) s.indexOf('v');
+<br>4) indexOf(s,'v');
+<p><a href="java_exam1.html#Answer 27)">Answer&nbsp;
+to Question 27</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 28)"></a>Question 28)</h4>
+Given the following declarations
+<pre>String s1=new String("Hello")&nbsp;
+String s2=new String("there");&nbsp;
+String s3=new String();</pre>
+Which of the following are legal operations?
+<p>1) s3=s1 + s2;
+<br>2) s3=s1-s2;
+<br>3) s3=s1 &amp; s2;
+<br>4) s3=s1 &amp;&amp; s2
+<p><a href="java_exam1.html#Answer 28)">Answer
+to Question 28</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 29)"></a>Question 29)</h4>
+What is the result of the following operation?
+<p>System.out.println(4 | 3);
+<p>1) 6
+<br>2) 0
+<br>3) 1
+<br>4) 7
+<p><a href="java_exam1.html#Answer 29)">Answer
+to Question 29</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 30)"></a>Question 30)</h4>
+
+<pre>public class MyClass1 {</pre>
+
+<pre>public static void main(String argv[]){ }</pre>
+
+<pre>/*Modifier at XX */ class MyInner {}</pre>
+
+<pre>}</pre>
+What modifiers would be legal at XX in the above code?
+<p>1) public
+<br>2) private
+<br>3) static
+<br>4) friend
+<p><a href="java_exam1.html#Answer 30)">Answer
+to Question 30</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 31)"></a>Question 31)</h4>
+
+<p><br>How would you go about opening an image file called MyPicture.jpg
+<p>1) Graphics.getGraphics("MyPicture.jpg");
+<br>2) Image image=Toolkit.getDefaultToolkit().getImage("MyPicture.jpg");
+<br>3) Graphics.openImage("MyPicture");
+<br>4) Image m=new Image("MyPicture");
+<p><a href="java_exam1.html#Answer 31)">Answer
+to Question 31</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 32)"></a>Question 32)</h4>
+An Applet has its Layout Manager set to the default of FlowLayout. What
+code would be correct to change to another Layout Manager.
+<p>1) setLayoutManager(new GridLayout());
+<br>2) setLayout(new GridLayout(2,2));
+<br>3) setGridLayout(2,2);
+<br>4) setBorderLayout();
+<p><a href="java_exam1.html#Answer 32)">Answer
+to Question 32</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 33)"></a>Question 33)</h4>
+
+<p><br>What will happen when you attempt to compile and run the following
+code?.
+<p>1) It will compile and the run method will print out the increasing
+value of i.
+<br>2) It will compile and calling start will print out the increasing
+value of i.
+<br>3) The code will cause an error at compile time.
+<br>4) Compilation will cause an error because while cannot take a parameter
+of true.
+<pre>class Background implements Runnable{&nbsp;
+&nbsp; int i=0;&nbsp;
+&nbsp; public int run(){&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while(true){&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i++;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("i="+i);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } //End while
+
+&nbsp;&nbsp;&nbsp;&nbsp; return 1;
+&nbsp;&nbsp;&nbsp;&nbsp; }//End run&nbsp;
+}//End class</pre>
+
+<p><br><a href="java_exam1.html#Answer 33)">Answer
+to Question 33</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 34)"></a>Question 34)</h4>
+You have created an applet that draws lines. You have overriden the paint
+operation and used the graphics drawLine method, and increase one of its
+parameters to multiple lines across the screen. When you first test the
+applet you find that the news lines are redrawn, but the old lines are
+erased. How can you modify your code to allow the old lines to stay on
+the screen instead of being cleared.
+<p>1) Override repaint thus
+<pre>public void repaint(Graphics g){&nbsp;
+&nbsp;&nbsp;&nbsp; paint(g);&nbsp;
+&nbsp;&nbsp;&nbsp; }</pre>
+2)Override update thus
+<pre>public void update(Graphics g) {&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; paint(g);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</pre>
+3) turn off clearing with the method setClear();
+<p>4) Remove the drawing from the paint Method and place in the calling
+code
+<p><a href="java_exam1.html#Answer 34)">Answer
+to Question 34</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 35)"></a>Question 35)</h4>
+
+<p><br>What will be the result when you attempt to compile and run the
+following code?.
+<pre>public class Conv{
+&nbsp;&nbsp;&nbsp; public static void main(String argv[]){&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Conv c=new Conv();&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String s=new String("ello");&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c.amethod(s);&nbsp;
+&nbsp;&nbsp;&nbsp; }&nbsp;
+public void amethod(String s){&nbsp;
+&nbsp;&nbsp;&nbsp; char c='H';&nbsp;
+&nbsp;&nbsp;&nbsp; c+=s;&nbsp;
+&nbsp;&nbsp;&nbsp; System.out.println(c);&nbsp;
+&nbsp;&nbsp;&nbsp; }&nbsp;
+}</pre>
+1) Compilation and output the string "Hello"
+<br>2) Compilation and output the string "ello"
+<br>3) Compilation and output the string elloH
+<br>4) Compile time error
+<p><a href="java_exam1.html#Answer 35)">Answer
+to Question 35</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 36)"></a>Question 36)</h4>
+Given the following code, what test would you need to put in place of the
+comment line?
+<p>//place test here
+<p>to result in an output of
+<pre>Equal</pre>
+
+<pre>public class EqTest{&nbsp;
+&nbsp;&nbsp;&nbsp; public static void main(String argv[]){&nbsp;
+&nbsp;&nbsp;&nbsp; EqTest e=new EqTest();&nbsp;
+&nbsp;&nbsp;&nbsp; }
+EqTest(){&nbsp;
+&nbsp;&nbsp;&nbsp; String s="Java";&nbsp;
+&nbsp;&nbsp;&nbsp; String s2="java";&nbsp;
+&nbsp;&nbsp;&nbsp; //place test here {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("Equal");&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }else&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("Not equal");&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;
+}</pre>
+1) if(s==s2)
+<br>2) if(s.equals(s2)
+<br>3) if(s.equalsIgnoreCase(s2))
+<br>4)if(s.noCaseMatch(s2))
+<p><a href="java_exam1.html#Answer 36)">Answer
+to Question 36</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 37)"></a>Question 37)</h4>
+Given the following code
+<pre>import java.awt.*;
+public class SetF extends Frame{
+public static void main(String argv[]){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SetF s=new SetF();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; s.setSize(300,200);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; s.setVisible(true);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+}</pre>
+How could you set the frame surface color to pink
+<p>1)s.setBackground(Color.pink);
+<br>2)s.setColor(PINK);
+<br>3)s.Background(pink);
+<br>4)s.color=Color.pink
+<p><a href="java_exam1.html#Answer 37)">Answer
+to Question 37</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 38)"></a>Question 38)</h4>
+
+<p><br>How can you change the current working directory using an instance
+of the File class called FileName?
+<br>1) FileName.chdir("DirName")
+<br>2) FileName.cd("DirName")
+<br>3) FileName.cwd("DirName")
+<br>4) The File class does not support directly changing the current directory.
+<p><a href="java_exam1.html#Answer 38)">Answer
+to Question 38</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 39)"></a>Question 39)</h4>
+If you create a TextField&nbsp; with a constructor to set it to occupy
+5 columns, what difference will it make if you use it with a proportional
+font (ie Times Roman) or a fixed pitch typewriter style font (Courier).
+<p>1)With a fixed font you will see 5 characters, with a&nbsp; proportional
+it will depend on the width of the characters
+<br>2)With a fixed font you will see 5 characters,with a&nbsp; proportional
+it will cause the field to expand to fit the text
+<br>3)The columns setting does not affect the number of characters displayed
+<br>4)Both will show exactly 5 characters
+<p><a href="java_exam1.html#Answer 39)">Answer
+to Question 39</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 40)"></a>Question 40)</h4>
+
+<p><br>Given the following code how could you invoke the Base constructor
+that will print out the string "base constructor";
+<pre>class Base{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Base(int i){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("base constructor");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Base(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+}
+public class Sup extends Base{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public static void main(String argv[]){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sup s= new Sup();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //One
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sup()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Two
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void derived()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Three
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+}</pre>
+1) On the line After //One put Base(10);
+<br>2) On the line After //One put super(10);
+<br>3) On the line After //Two put super(10);
+<br>4) On the line After //Three put super(10);
+<p><a href="java_exam1.html#Answer 40)">Answer
+to Question 40</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 41)"></a>Question 41)</h4>
+Given the following code what will be output?
+<pre>public class Pass{
+static int j=20;
+public static void main(String argv[]){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int i=10;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pass p = new Pass();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p.amethod(i);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(i);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(j);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void amethod(int x){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x=x*2;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; j=j*2;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+}</pre>
+1) Error: amethod parameter does not match variable
+<br>2) 20 and 40
+<br>3) 10 and 40
+<br>4) 10, and 20
+<p><a href="java_exam1.html#Answer 41)">Answer
+to Question 41</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 42)"></a>Question 42)</h4>
+
+<p><br>What code placed after the comment //For loop would populate the
+elements of the array ia[] with values of the variable i.?
+<pre>public class Lin{
+public static void main(String argv[]){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lin l = new Lin();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; l.amethod();&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void amethod(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int ia[] = new int[4];
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Start For loop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ia[i]=i;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(ia[i]);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</pre>
+
+<pre>}</pre>
+1) for(int i=0; i &lt; ia.length() -1; i++)
+<br>2) for (int i=0; i&lt; ia.length(); i++)
+<br>3) for(int i=1; i &lt; 4; i++)
+<br>4) for(int i=0; i&lt; ia.length;i++)
+<p><a href="java_exam1.html#Answer 42)">Answer
+to Question 42</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 43)"></a>Question 43)</h4>
+
+<p><br>What will be the result when you try to compile and run the following
+code?
+<pre>private class Base{
+Base(){
+&nbsp;&nbsp;&nbsp;&nbsp; int i = 100;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(i);
+&nbsp;&nbsp;&nbsp;&nbsp; }
+}
+public class Pri extends Base{
+static int i = 200;
+public static void main(String argv[]){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pri p = new Pri();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(i);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+}</pre>
+1) Error at compile time
+<br>2) 200
+<br>3) 100 followed by 200
+<br>4) 100
+<p><a NAME="answer"></a><a href="java_exam1.html#Answer 43)">Answer
+to Question 43</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 44)"></a>Question 44)</h4>
+What will the following code print out?
+<pre>public class Oct{
+public static void main(String argv[]){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Oct o = new Oct();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o.amethod();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void amethod(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int oi= 012;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(oi);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+}</pre>
+1)12
+<br>2)012
+<br>3)10
+<br>4)10.0
+<br>&nbsp;
+<p><a href="java_exam1.html#Answer 44)">Answer
+to Question 44</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 45"></a>Question 45</h4>
+What will happen when you try compiling and running this code?
+<pre>public class Ref{
+public static void main(String argv[]){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ref r = new Ref();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; r.amethod(r);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void amethod(Ref r){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int i=99;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; multi(r);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(i);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void multi(Ref r){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; r.i = r.i*2;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+}</pre>
+1) Error at compile time
+<br>2) An output of 99
+<br>3) An output of 198
+<br>4) An error at runtime
+<p><a href="java_exam1.html#Answer 45">Answer to
+Question 45</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 46)"></a>Question 46)</h4>
+You need to create a class that will store a unique object elements. You
+do not need to sort these elements but they must be unique.
+<p>What interface might be most suitable to meet this need?
+<p>1)Set
+<br>2)List
+<br>3)Map
+<br>4)Vector
+<br>&nbsp;
+<p><a href="java_exam1.html#Answer 46)">Answer
+to Question 46</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 47)"></a>Question 47)</h4>
+Which of the following will successfully create an instance of the Vector
+class and add an element?
+<p>1) Vector v=new Vector(99);
+<br>v[1]=99;
+<br>&nbsp;
+<p>2) Vector v=new Vector();
+<br>v.addElement(99);
+<br>&nbsp;
+<p>3) Vector v=new Vector();
+<br>v.add(99);
+<br>&nbsp;
+<p>4 Vector v=new Vector(100);
+<br>v.addElement("99");
+<p><a href="java_exam1.html#Answer 47)">Answer
+to Question 47</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 48)"></a>Question 48)</h4>
+You have created a simple Frame and overridden the paint method as follows
+<pre>public void paint(Graphics g){
+&nbsp;g.drawString("Dolly",50,10);
+}</pre>
+
+<p><br>What will be the result when you attempt to compile and run the
+program?
+<p>1) The string "Dolly" will be displayed at the centre of the frame
+<br>2) An error at compilation complaining at the signature of the paint
+method
+<br>3) The lower part of the word Dolly will be seen at the top of the
+frame, with the top hidden.
+<br>4) The string "Dolly" will be shown at the bottom of the frame.
+<p><a href="java_exam1.html#Answer 48)">Answer
+to Question 48</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 49)"></a>Question 49)</h4>
+What will be the result when you attempt to compile this program?
+<pre>public class Rand{
+public static void main(String argv[]){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int iRand;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iRand = Math.random();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(iRand);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+}</pre>
+1) Compile time error referring to a cast problem
+<br>2) A random number between 1 and 10
+<br>3) A random number between 0 and 1
+<br>4) A compile time error about random being an unrecognised method
+<p><a href="java_exam1.html#Answer 49)">Answer
+to Question 49</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 50)"></a>Question 50)</h4>
+Given the following code
+<pre>import java.io.*;
+public class Th{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public static void main(String argv[]){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Th t = new Th();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; t.amethod();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void amethod(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ioCall();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }catch(IOException ioe){}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</pre>
+What code would be most likely for the body of the ioCall method
+<pre>1) public void ioCall ()throws IOException{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DataInputStream din = new DataInputStream(System.in);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; din.readChar();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</pre>
+
+<pre>2) public void ioCall ()throw IOException{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DataInputStream din = new DataInputStream(System.in);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; din.readChar();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</pre>
+
+<pre>3) public void ioCall (){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DataInputStream din = new DataInputStream(System.in);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; din.readChar();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</pre>
+
+<pre>4) public void ioCall throws IOException(){&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; DataInputStream din = new DataInputStream(System.in);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; din.readChar();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</pre>
+<a href="java_exam1.html#Answer 50">Answer to Question
+50</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 51)"></a>Question 51)</h4>
+What will happen when you compile and run the following code?
+<pre>public class Scope{
+private int i;
+public static void main(String argv[]){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Scope s = new Scope();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; s.amethod();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }//End of main
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public static void amethod(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(i);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }//end of amethod
+}//End of class</pre>
+1) A value of 0 will be printed out
+<br>2) Nothing will be printed out
+<br>3) A compile time error
+<br>4) A compile time error complaining of the scope of the variable i
+<p><a href="java_exam1.html#Answer 51)">Answer
+to Question 51</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 52)"></a>Question 52)</h4>
+
+<p><br>You want to lay out a set of buttons horizontally but with more
+space between the first button and the rest. You are going to use the <font size=-1>GridBag</font>Layout
+manager to control the way the buttons are set out. How will you modify
+the way the GridBagLayout acts in order to change the spacing around the
+first button?
+<br>&nbsp;
+<p>1) Create an instance of the GridBagConstraints class, call the weightx()
+method and then pass the GridBagConstraints instance with the component
+to the setConstraints method of the GridBagLayout class.
+<p>2) Create an instance of the GridBagConstraints class, set the weightx
+field and then pass the GridBagConstraints instance with the component
+to the setConstraints method of the GridBagLayout class.
+<p>3) Create an instance of the GridBagLayout class, set the weightx field
+and then call the setConstraints method of the GridBagLayoutClass with
+the component as a parameter.
+<p>4) Create an instance of the GridBagLayout class, call the setWeightx()
+method and then pass the GridBagConstraints instance with the component
+to the setConstraints method of the GridBagLayout class.
+<p><a href="java_exam1.html#Answer 52)">Answer
+to Question 52</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 53)"></a>Question 53)</h4>
+
+<p><br>Which of the following can you perform using the File class?
+<p>1) Change the current directory
+<br>2) Return the name of the parent directory
+<br>3) Delete a file
+<br>4) Find if a file contains text or binary information
+<p><a href="java_exam1.html#Answer 53)">Answer
+to Question 53</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 54)"></a>Question 54)</h4>
+Which of the following code fragments will compile without error
+<p>1)
+<pre>public void paint(Graphics g){
+&nbsp; int polyX[] = {20,150,150};
+&nbsp; int polyY[]= {20,20,120};
+&nbsp; g.drawPolygon(polyX, polyY,3);
+&nbsp; }</pre>
+
+<pre>2)</pre>
+
+<pre>public void paint(Graphics g){
+&nbsp; int polyX[] = {20,150,150};
+&nbsp; int polyY[]= {20,20,120};
+&nbsp; g.drawPolygon(polyX, polyY);
+&nbsp; }</pre>
+
+<pre>3)</pre>
+
+<pre>public void paint(Graphics g){
+&nbsp; int polyX[3] = {20,150,150};
+&nbsp; int polyY[3]= {20,20,120};
+&nbsp; g.drawPolygon(polyX, polyY,3);
+&nbsp; }</pre>
+
+<pre>4)</pre>
+
+<pre>public void paint(Graphics g){
+&nbsp; int polyX[] = {20,150,150};
+&nbsp; int polyY[]= {20,20,120};
+&nbsp; drawPolygon(polyX, polyY);
+&nbsp; }</pre>
+<a href="java_exam1.html#Answer 54)">Answer to
+Question 54</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 55)"></a>Question 55)</h4>
+You are concerned that your program may attempt to use more memory than
+is available. To avoid this situation you want to ensure that the Java
+Virtual Machine will run its garbage collection just before you start a
+complex routine. What can you do to be certain that garbage collection
+will run when you want .
+<p>1) You cannot be certain when garbage collection will run
+<br>2) Use the Runtime.gc() method to force garbage collection
+<br>3) Ensure that all the variables you require to be garbage collected
+are set to null
+<br>4) Use the System.gc() method to force garbage collection
+<p><a href="java_exam1.html#Answer 54)">Answer
+to Question 55</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 56)"></a>Question 56)</h4>
+You are using the GridBagLayout manager to place a series of buttons on
+a Frame. You want to make the size of one of the buttons bigger than the
+text it contains. Which of the following will allow you to do that?
+<p>1) The GridBagLayout manager does not allow you to do this
+<br>2) The setFill method of the GridBagLayout class
+<br>3) The setFill method of the GridBagConstraints class
+<br>4) The fill field of the GridBagConstraints class
+<br>&nbsp;
+<p><a href="java_exam1.html#Answer 56)">Answer
+to Question 56</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 57)"></a>Question 57)</h4>
+Which of the following most closely describes a bitset collection?
+<p>1) A class that contains groups of unique sequences of bits
+<br>2) A method for flipping individual bits in instance of a primitive
+type
+<br>3) An array of boolean primitives that indicate zeros or ones
+<br>4) A collection for storing bits as on-off information, like a vector
+of bits
+<p><a href="java_exam1.html#Answer 57)">Answer
+to Question 57</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 58)"></a>Question 58)</h4>
+
+<p><br>You have these files in the same directory. What will happen when
+you attempt to compile and run Class1.java if you have not already compiled
+Base.java
+<pre>//Base.java</pre>
+
+<pre>package Base;
+class Base{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; protected void amethod(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("amethod");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }//End of amethod
+}//End of class base</pre>
+
+<pre>package Class1;</pre>
+
+<pre>//Class1.java
+public class Class1 extends Base{
+
+public static void main(String argv[]){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Base b = new Base();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b.amethod();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }//End of main
+}//End of Class1</pre>
+1) Compile Error: Methods in Base not found
+<br>2) Compile Error: Unable to access protected method in base class
+<br>3) Compilation followed by the output "amethod"
+<br>4)Compile error: Superclass Class1.Base of class Class1.Class1 not
+found
+<p><a href="java_exam1.html#Answer 58)">Answer
+to Question 58</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 59)"></a>Question 59)</h4>
+What will happen when you attempt to compile and run the following code
+<pre>class Base{
+private void amethod(int iBase){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("Base.amethod");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+}
+
+class Over extends Base{
+
+
+public static void main(String argv[]){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Over o = new Over();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int iBase=0;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o.amethod(iBase);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void amethod(int iOver){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("Over.amethod");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+
+}</pre>
+1) Compile time error complaining that Base.amethod is private
+<br>2) Runtime error complaining that Base.amethod is private
+<br>3) Output of "Base.amethod"
+<br>4) Output of "Over.amethod"
+<br>&nbsp;
+<p><a href="java_exam1.html#Answer 59)">Answer
+to Question 59</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Question 60)"></a>Question 60)</h4>
+You are creating an applet with a Frame that contains buttons. You are
+using the GridBagLayout manager and you have added Four buttons. At the
+moment the buttons appear in the centre of the frame from left to right.
+You want them to appear one on top of the other going down the screen.
+What is the most appropriate way to do this.
+<br>&nbsp;
+<p>1) Set the gridy value of the GridBagConstraint class to a value increasing
+from 1 to 4
+<br>2) set the fill value of the GridBagConstraint class to VERTICAL
+<br>3) Set the ipady value of the GridBagConstraint class to a value increasing
+from 0 to 4
+<br>4) Set the fill value of the GridBagLayout class to GridBag.VERTICAL
+<p><a href="java_exam1.html#Answer 60)">Answer
+to Question 60</a>
+<p>If you have a copy of the Roberts and Heller Java2 Guide that says the
+exam does not cover the GridBagLayout, this is an error. You can confirm
+this by looking at the online errata at
+<p><a href="http://www.sybex.com/cgi-bin/rd_err_temp.pl?2463err.html">http://www.sybex.com/cgi-bin/rd_err_temp.pl?2463err.html</a>
+<p>
+<hr align=center noShade SIZE=10>
+<center>
+<h1>
+Answers</h1></center>
+
+<center>
+<h1>
+
+<hr align=center></h1></center>
+
+<h4>
+<a NAME="Answer 1)"></a>Answer 1)</h4>
+<a href="java_exam1.html#Question 1)">Back to question
+1)</a>
+<br>Objective 4.5)
+<p>5) int i=10;
+<p>explanation:
+<br>1) float f=1.3;
+<br>Will not compile because the default type of a number with a floating
+point component is a double. This would compile with a cast as in
+<p>float f=(float) 1.3
+<br>&nbsp;
+<p>2) char c="a";
+<p>Will not compile because a char (16 bit unsigned integer) must be defined
+with single quotes. This would compile if it were in the form
+<p>char c='a';
+<p>3) byte b=257;
+<p>Will not compile because a byte is eight bits. Take of one bit for the
+sign component you can define numbers between
+<p>-128 to +127
+<p>4) a boolean value can either be true of false, null is not allowed.
+<br>
+<hr align=center>
+<h4>
+<a NAME="Answer 2)"></a>Answer 2)</h4>
+<a href="java_exam1.html#Question 2)">Back to question
+2)</a>
+<p>Objective 4.1
+<p>1) Can't make static reference to void amethod.
+<p>Because main is defined as static you need to create an instance of
+the class in order to call any non-static methods. Thus a typical way to
+do this would be.
+<br>&nbsp;
+<p>MyClass m=new MyClass();
+<p>m.amethod();
+<br>&nbsp;
+<p>Answer 2 is an attempt to confuse because the convention is for a main
+method to be in the form
+<p>String argv[]
+<p>That argv is just a convention and any acceptable identifier for a string
+array can be used. Answers 3 and 4 are just nonsense.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 3)"></a>Answer 3)</h4>
+<a href="java_exam1.html#Question 3)">back to Question
+3)</a>
+<br>Objective 4.1)
+<p>2 and 3 will compile without error.
+<br>&nbsp;
+<p>1 will not compile because any package declaration must come before
+any other code. Comments may appear anywhere.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 4)"></a>Answer 4)</h4>
+<a href="java_exam1.html#Question 4)">Back to question
+4)</a>
+<br>Objective 4.5)
+<p>1) A byte is a signed 8 bit integer.
+<br>
+<hr align=center>
+<h4>
+<a NAME="Answer 5)"></a>Answer 5)</h4>
+<a href="java_exam1.html#Question 5)">Back to question
+5)</a>
+<br>Objective 4.2)
+<p>4) Exception raised: "java.lang.ArrayIndexOutOfBoundsException: 2"
+<p>Unlike C/C++ java does not start the parameter count with the program
+name. It does however start from zero. So in this case zero starts with
+good, morning would be 1 and there is no parameter 2 so an exception is
+raised.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 6)"></a>Answer 6)</h4>
+<a href="java_exam1.html#Question 6)">Back to question
+6)</a>
+<br>Objective 1.5)
+<p>1) if
+<br>3) goto
+<br>4) while
+<br>5) case
+<br>&nbsp;
+<p><i>then</i> is not a Java keyword, though if you are from a VB background
+you might think it was. Goto is a reserved word in Java.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 7)"></a>Answer 7)</h4>
+<a href="java_exam1.html#Question 7)">Back to Question
+7)</a>
+<br>Objective 1.10)
+<p>2) variable2
+<br>3) _whatavariable
+<br>4) _3_
+<br>5) $anothervar
+<br>&nbsp;
+<p>An identifier can begin with a letter (most common) or a dollar sign($)
+or an underscore(_). An identifier cannot start with anything else such
+as a number, a hash, # or a dash -. An identifier cannot have a dash in
+its body, but it may have an underscore _. Choice 4) _3_ looks strange
+but it is an acceptable, if unwise form for an identifier.
+<br>
+<hr align=center>
+<h4>
+<a NAME="Answer 8)"></a>Answer 8)</h4>
+<a href="java_exam1.html#Question 8)">Back to Question
+8)</a>
+<br>Objective 1.6)
+<p>4) 0
+<p>Class level variables are always initialised to default values. In the
+case of an int this will be 0. Method level variables are not given default
+values and if you attempt to use one before it has been initialised it
+will cause the
+<pre>Error Variable i may not have been initialized</pre>
+type of error.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 9)"></a>Answer 9)</h4>
+<a href="java_exam1.html#Question 9)">Back to Question
+9)</a>
+<br>Objective 1.7,3.4)
+<p>3 ) 2
+<p>No error will be triggered.
+<p>Like in C/C++, arrays are always referenced from 0. Java allows an array
+to be populated at creation time. The size of array is taken from the number
+of initializers. If you put a size within any of the square brackets you
+will get an error.
+<br>
+<hr align=center>
+<h4>
+<a NAME="Answer 10)"></a>Answer 10)</h4>
+<a href="java_exam1.html#Question 10)">Back to
+question 10)</a>
+<br>Objective 1.7)
+<p>3) 0
+<p>Arrays are always initialised when they are created. As this is an array
+of ints it will be initalised with zeros.
+<br>
+<hr align=center>
+<h4>
+<a NAME="Answer 11)"></a>Answer 11)</h4>
+<a href="java_exam1.html#Question 11)">Back to
+Question 11)</a>
+<br>Objective 3.6
+<p>3) Error Mine must be declared abstract
+<br>&nbsp;
+<p>A class that contains an abstract method must itself be declared as
+abstract. It may however contain non abstract methods. Any class derived
+from an abstract class must either define all of the abstract methods or
+be declared abstract itself.
+<br>
+<hr align=center>
+<h4>
+<a NAME="Answer 12)"></a>Answer 12)</h4>
+<a href="java_exam1.html#Question 12)">Back to
+Question 12)</a>
+<br>Objective 4.1)
+<p>3) one, two, default
+<p>Code will continue to fall through a case statement until it encounters
+a break.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 13)"></a>Answer 13)</h4>
+<a href="java_exam1.html#Question 13)">Back to
+Question 13)</a>
+<br>Objective 4.1)
+<p>2) default, zero
+<p>Although it is normally placed last the default statement does not have
+to be the last item as you fall through the case block. Because there is
+no case label found matching the expression the default label is executed
+and the code continues to fall through until it encounters a break.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 14)"></a>Answer 14)</h4>
+<a href="java_exam1.html#Question 14)">Back to
+Question 14)</a>
+<br>Objective 4.2,
+<p>2,3
+<p>Example 1 will not compile because if must always test a boolean. This
+can catch out C/C++ programmers who expect the test to be for either 0
+or not 0.
+<br>
+<hr align=center>
+<h4>
+<a NAME="Answer 15)"></a>Answer 15)</h4>
+<a href="java_exam1.html#Question 15)">Back to
+Question 15)</a>
+<br>Objective 4.5)
+<p>3) No such file found, doing finally, -1
+<p>The no such file found message is to be expected, however you can get
+caught out if you are not aware that the finally clause is almost always
+executed, even if there is a return statement.
+<p>
+<hr align=center>
+<h3>
+<a NAME="Answer 16)"></a>Answer 16)</h3>
+
+<p><br>Objective
+<p><a href="java_exam1.html#Question 16)">Back
+to Question 16)</a>
+<p>1) Methods cannot be overriden to be more private
+<p>Static methods cannot be overriden but they can be overloaded. There
+is no logic or reason why private methods should not be overloaded. Option
+4 is a jumbled up version of the limitations of exceptions for overriden
+methods
+<br>
+<hr align=center>
+<h4>
+<a NAME="Answer 17)"></a>Answer 17)</h4>
+&nbsp;<a href="java_exam1.html#Question 17)">Back
+to Question 17)</a>
+<br>Objective 5.8 (sort of)
+<p>3) Runtime Exception
+<p>Without the cast to sub you would get a compile time error. The cast
+tells the compiler that you really mean to do this and the actual type
+of b does not get resolved until runtime. Casting down the object hierarchy
+as the compiler cannot be sure what has been implemented in descendent
+classes. Casting up is not a problem because sub classes will have the
+features of the base classes. This can feel counter intuitive if you are
+aware that with primitives casting is allowed for widening operations (ie
+byte to int).
+<br>
+<hr align=center>
+<h3>
+<a NAME="Answer 18)"></a>Answer 18)</h3>
+<a href="java_exam1.html#Question 18)">Back to
+question 18)</a>
+<br>Objective 5.1)
+<p>1) System.out.println( -1 >>> 2);will output a result larger than 10
+<br>2) System.out.println( -1 >>> 2); will output a positive number
+<br>3) System.out.println( 2 >> 1); will output the number 1
+<p>You can test this with the following class
+<pre>public class shift{
+static int i=2;
+public static void main(String argv[]){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println( -1&nbsp; >>> 2);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println( -1&nbsp; >>> 2);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println( 2&nbsp; >> 1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+}</pre>
+Java does not have a &lt;&lt;&lt; operator. The operation 1 &lt;&lt; 2
+would output 4
+<p>Because of the way twos complement number representation works the unsigned
+right shift operation means a small shift in a negative number can return
+a very large value so the output of option 1 will be much larger than 10.
+<p>The unsigned right shift places no significance on the leading bit that
+indicates the sign. For this shift the value 1 of the bit sign is replaced
+with a zero turning the result into a positive number for option 2.
+<br>
+<hr align=center>
+<h4>
+<a NAME="Answer 19)"></a>Answer 19)</h4>
+<a href="java_exam1.html#Question 19)">Back to
+Question 19)</a>
+<br>Objective 1.1)
+<br>&nbsp;
+<p>3) Move up the hierarchy in the HTML documentation to locate methods
+in base
+<br>classes
+<p>The documentation created by JavaDoc is based on tags placed into the
+sourcecode. The convention for documentation is that methods and fields
+of ancestors are not duplicated in sub classes. So if you are looking for
+something and it does not appear to be there, you move up the class hierarchy
+to find it.
+<br>
+<hr align=center>
+<h4>
+<a NAME="Answer 20)"></a>Answer 20)</h4>
+<a href="java_exam1.html#Question 20)">Back to
+Question 20)</a>
+<br>Objective 10.4)
+<p>3) One button occupying the entire frame saying Bye
+<p>The default layout manager for a Frame is a border layout. If directions
+are not given (ie North, South, East or West), any button will simply go
+in the centre and occupy all the space. An additional button will simply
+be placed over the previous button. What you would probably want in a real
+example is to set up a flow layout as in
+<pre>setLayout(new FlowLayout());</pre>
+
+<p><br>Which would allow the buttons to both appear side by side, given
+the appropriate font and size.
+<br>Applets and panels have a default FlowLayout manager
+<br>&nbsp;
+<br>&nbsp;
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 21)"></a>Answer 21)</h4>
+<a href="java_exam1.html#Question 21)">Back to
+Question 21)</a>
+<br>Objective 4.4)
+<p>1,2
+<p>Value for i=1 Value for j=1
+<br>Value for i=2 Value for j=1
+<br>&nbsp;
+<p>The statement continue outer causes the code to jump to the label outer
+and the for loop increments to the next number.
+<br>
+<hr align=center>
+<h4>
+<a NAME="Answer 22)"></a>Answer 22)</h4>
+<a href="java_exam1.html#Question 22)">Back to
+Question 22)</a>
+<br>Objective 9.5)
+<p>3) An arc bounded by a box of height 50, width 50, with a top left at
+coordinates of 45,
+<br>90, starting at 90 degrees and traversing through 180 degrees counter
+clockwise.
+<p>fillArc(int x, int y, int width, int height, int startDegrees, int arcDegrees)
+<p>The fillArc function draws an arc in a box with a top left at coordinates
+X &amp; Y.
+<br>If the ArcDegrees is a positive number the arc is drawn counter clockwise.
+<br>
+<hr align=center>
+<h4>
+<a NAME="Answer 23)"></a>Answer 23)</h4>
+<a href="java_exam1.html#Question 23)">Back to
+Question 23)</a>
+<br>Objective 4.7)
+<p>2,3
+<p>Options 1, &amp; 4 will not compile as they attempt to throw Exceptions
+not declared in the base class. Because options 2 and 4 take a parameter
+of type long they represent overloading not overriding and there is no
+such limitations on overloaded methods.
+<br>
+<hr align=center>
+<h4>
+<a NAME="Answer 24)"></a>Answer 24)</h4>
+<a href="java_exam1.html#Question 24)">Back to
+Question 24)</a>
+<br>Objective 8.1)
+<p>3) System.out.println(Math.ceil(-4.7));
+<p>Options 1 and 2 will produce -5 and option 4 will not compile because
+the min method requires 2 parameters.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 25)"></a>Answer 25)</h4>
+<a href="java_exam1.html#Question 25)">Back to
+Question 25</a>
+<br>Objective 2.2
+<p>3) Error: Cant convert java lang Integer
+<p>The wrapper classes cannot be used like primitives.
+<p>Wrapper classes have similar names to primitives but all start with
+upper case letters.
+<br>Thus in this case we have int as a primitive and Integer as a wrapper.
+The objectives do not specifically mention the wrapper classes but don't
+be surprised if they come up.
+<br>
+<hr align=center>
+<h4>
+<a NAME="Answer 26)"></a>Answer 26)</h4>
+<a href="java_exam1.html#Question 26)">Back to
+Question 26)</a>
+<br>Objective 8.2)
+<p>2) ic
+<p>This is a bit of a catch question. Anyone with a C/C++ background would
+figure out that addressing in strings starts with 0 so that 1 corresponds
+to i in the string Bicycle. The catch is that the second parameter returns
+the endcharacter minus 1. In this case it means instead of the "icy" being
+returned as intuition would expect it is only "ic".
+<br>
+<hr align=center>
+<h4>
+<a NAME="Answer 27)"></a>Answer 27)</h4>
+<a href="java_exam1.html#Question 27)">Back to
+Question 27)</a>
+<br>Objective 8.2)
+<p>3) s.indexOf('v');
+<p>charAt returns the letter at the position rather than searching for
+a letter and returning the position, MID is just to confuse the Basic Programmers,
+indexOf(s,'v'); is how some future VB/J++ nightmare hybrid, might perform
+such a calculation.
+<br>
+<hr align=center>
+<h4>
+<a NAME="Answer 28)"></a>Answer 28)</h4>
+Objective 2.2
+<br><a href="java_exam1.html#Question 28)">Back
+to Question 28</a>
+<p>1) s3=s1 + s2;
+<p>Java does not allow operator overloading as in C++, but for the sake
+of convenience the + operator is overridden for strings.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 29)"></a>Answer 29)</h4>
+<a href="java_exam1.html#Question 29)">Back to
+Question 29)</a>
+<br>Objective 2.5)
+<p>4) 7
+<p>The | is known as the Or operator, you could think of it as the either/or
+operator. Turning the numbers into binary gives
+<p>4=100
+<p>3=011
+<p>For each position, if either number contains a 1 the result will contain
+a result in that position. As every position contains a 1 the result will
+be
+<p>111
+<p>Which is decimal 7.
+<br>
+<hr align=center>
+<h4>
+<a NAME="Answer 30)"></a>Answer 30)</h4>
+<a href="java_exam1.html#Question 30)">Back to
+Question 30</a>
+<br>Objective 3.7)
+<p>1,2,3
+<p>public, private, static are all legal access modifiers for this inner
+class.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 31)"></a>Answer 31)</h4>
+<a href="java_exam1.html#Question 31)">Back to
+Question 31</a>
+<br>Objective 9.6)
+<p>Opening an image file requires an Image object, The Image class has
+no constructor that takes the name of an image file . For an application
+(rather than an applet) an image is created using the Toolkit class as
+in option 2.
+<p>2) Image image=Toolkit.getDefaultToolkit().getImage("MyPicture.jpg");
+<br>
+<hr align=center>
+<h4>
+<a NAME="Answer 32)"></a>Answer 32)</h4>
+<a href="java_exam1.html#Question 32)">Back to
+Question 32)</a>
+<br>Objective 1.3)
+<br>&nbsp;
+<p>2) setLayout(new GridLayout(2,2));
+<br>&nbsp;
+<p>Changing the layout manager is the same for an Applet or an application.
+Answer 1 is wrong though it might have been a reasonable name for the designers
+to choose. Answers 3 and 4 are incorrect because changing the layout manager
+always requires an instance of one of the Layout Managers and these are
+bogus methods.
+<p>Instead of creating the anonymous instance of the Layout manager as
+in option 2 you can also create a named instance and pass that as a parameter.
+This is often what automatic code generators such as Borland/Inprise JBuilder
+do.
+<br>
+<hr align=center>
+<h4>
+<a NAME="Answer 33)"></a>Answer 33)</h4>
+<a href="java_exam1.html#Question 33)">Back to
+Question 33)</a>
+<br>Objective 7.2)
+<br>&nbsp;
+<p>3) The code will cause an error at compile time
+<p>The error is caused because run should have a void not an int return
+type.
+<p>Any class that is implements an interface must create a method to match
+all of the methods in the interface. The Runnable interface has one method
+called run that has a void return type.The sun compiler gives the error
+<p>Method redefined with different return type: int run() was defined as
+void run();
+<br>
+<hr align=center>
+<h4>
+<a NAME="Answer 34)"></a>Answer 34)</h4>
+<a href="java_exam1.html#Question 34)">Back to
+Question 34)</a>
+<br>Objective 11.1)
+<br>&nbsp;
+<p>2) public void update(Graphics g) {
+<br>paint(g);
+<br>}
+<p>If not overridden the update method clears the background and calls
+paint(); By overriding the update method, any previously drawn graphics
+will not be cleared. This is only a trivial way of preserving any graphics
+drawn. If the application is resized or the drawing area covered in some
+way the graphics will be cleared.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 35)"></a>Answer 35)</h4>
+<a href="java_exam1.html#Question 35)">Back to
+Question 35</a>
+<br>Objective 2.2
+<br>&nbsp;
+<p>4) Compile time error
+<br>&nbsp;
+<p>The only operator overloading offered by java is the + sign for the
+String class. A char is a 16 bit integer and cannot be concatenated to
+a string with the + operator.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 36)"></a>Answer 36)</h4>
+<a href="java_exam1.html#Question 36)">Back to
+Question 36</a>
+<br>Objective 8.2)
+<p>3) if(s.equalsIgnoreCase(s2))
+<p>String comparison is case sensitive so using the equals string method
+will not return a match. Using the==operator just compares where memory
+address of the references and noCaseMatch was just something I made up
+to give me a fourth slightly plausible option.
+<br>
+<hr align=center>
+<h4>
+<a NAME="Answer 37)"></a>Answer 37)</h4>
+<a href="java_exam1.html#Question 37)">Back to
+Question 37</a>
+<br>Objective 9.1)
+<p>1) s.setBackground(Color.pink);
+<p>For speakers of the more British spelt English note that there is no
+letter u in Color. Also the constants for colors are in lower case.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 38)"></a>Answer 38)</h4>
+<a href="java_exam1.html#Question 38)">Back to
+Question 38)</a>
+<br>Objective 13.1)
+<p>4) The File class does not support directly changing the current directory.
+<p>This seems rather surprising to me, as changing the current directory
+is a very common requirement. You may be able to get around this limitation
+by creating a new instance of the File class passing the new directory
+to the constructor as the path name.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 39)"></a>Answer 39)</h4>
+<a href="java_exam1.html#Question 39)">Back to
+Question 39)</a>
+<br>Objective 9.2)
+<p>1)With a fixed font you will see 5 characters, with a&nbsp; proportional
+it will depend on the width of the characters
+<p>With a proportional font the letter w will occupy more space than the
+letter i. So if you have all wide characters you may have to scroll to
+the right to see the entire text of a TextField.
+<h4>
+
+<hr align=center></h4>
+
+<h4>
+<a NAME="Answer 40)"></a>Answer 40)</h4>
+<a href="java_exam1.html#Question 40)">Back to
+Question 40)</a>
+<br>Objective 5.8
+<p>3) On the line After //Two put <font size=-1>super</font>(10);
+<p>Constructors can only be invoked from within constructors.
+<h4>
+
+<hr align=center></h4>
+
+<h4>
+<a NAME="Answer 41)"></a>Answer 41)</h4>
+<a href="java_exam1.html#Question 41)">Back to
+Question 41)</a>
+<br>Objective 2.8)
+<p>3) 10 and 40
+<p>when a parameter is passed to a method the method receives a copy of
+the value. The method can modify its value without affecting the original
+copy. Thus in this example when the value is printed out the method has
+not changed the value.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 42)"></a>Answer 42)</h4>
+<a href="java_exam1.html#Question 42)">Back to
+Question 42</a>
+<br>Objective 3.3
+<p>4) for(int i=0; i&lt; ia.length;i++)
+<p>Although you could control the looping with a literal number as with
+the number 4 used in option 3, it is better practice to use the length
+property of an array. This provides against bugs that might result if the
+size of the array changes. This question also checks that you know that
+arrays starts from zero and not One as option 3 starts from one. Remember
+that array length is a field and not a function like the string size method.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 43)"></a>Answer 43)</h4>
+<a href="java_exam1.html#Question 43)">Back to
+Question 43)</a>
+<br>Objective 3.6 (maybe)
+<p>1) Error at compile time
+<p>This is a slightly sneaky one as it looks like a question about constructors,
+but it is attempting to test knowledge of the use of the private modifier.
+A top level class cannot be defined as private. If you didn't notice the
+modifier private, remember in the exam to be real careful to read every
+part of the question.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 44)"></a>Answer 44)</h4>
+<a href="java_exam1.html#Question 44)">Back to
+Question 44</a>
+<br>Objective 1.11)
+<p>3)10
+<p>The name of the class might give you a clue with this question, Oct
+for Octal. Prefixing a number with a zero indicates that it is in Octal
+format. Thus when printed out it gets converted to base ten. 012 in octal
+means the first column from the right has a value of 2 and the next along
+has a value of one times eight. In decimal that adds up to 10.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 45"></a>Answer 45)</h4>
+<a href="java_exam1.html#Question 45">Back to Question
+45</a>
+<br>Objective 3.5)
+<p>1) Error at compile time
+<p>The variable i is created at the level of amethod and will not be available
+inside the method multi.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 46)"></a>Answer 46)</h4>
+<a href="java_exam1.html#Question 46)">Back to
+Question 46</a>
+<br>Java2 Objective 10.1)
+<p>1) Set
+<p>The Set interface ensures that its elements are unique, but does not
+order the elements. In reality you probably wouldn't create your own class
+using the Set interface. You would be more likely to use one of the JDK
+classes that use the Set interface such as HashSet or TreeSet.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 47)"></a>Answer 47)</h4>
+<a href="java_exam1.html#Question 47)">Back to
+Question 47</a>
+<br>Java2 Objective 10.1)
+<p>4) Vector v=new Vector(100);
+<br>v.addElement("99")
+<p>A vector can only store objects not primitives. The parameter "99" for
+the addElement method pases a string object to the Vector. Option 1) creates
+a vector OK but then uses array syntax to attempt to assign a primitive.
+Option 2 also creates a vector then uses correct Vector syntax but falls
+over when the parameter is a primitive instead of an object.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 48)"></a>Answer 48)</h4>
+Objective 9.5)
+<br><a href="java_exam1.html#Question 48)">Back
+to Question 48</a>
+<p>3) The lower part of the word Dolly will be seen at the top of the form
+<p>The Second parameter to the drawstring method indicates where the baseline
+of the string will be placed. Thus the 3rd parameter of 10 indicates the
+Y coordinate to be 10 pixels from the top of the Frame. This will result
+in just the bottom of the string Dolly showing up or possibly only the
+descending part of the letter y.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 49)"></a>Answer 49)</h4>
+<a href="java_exam1.html#Question 49)">Back to
+Question 49)</a>
+<br>Objective 8.1)
+<p>1) Compile time error referring to a cast problem
+<p>This is a bit of a sneaky one as the Math.random method returns a pseudo
+random number between 0 and 1, and thus option 3 is a plausible Answer.
+However the number returned is a double and so the compiler will complain
+that a cast is needed to convert a double to an int.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 50"></a>Answer 50)</h4>
+Objective 4.6)
+<br><a href="java_exam1.html#Question 50)">Back
+to question 50</a>
+<pre>1) public void ioCall ()throws IOException{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DataInputStream din = new DataInputStream(System.in);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; din.readChar();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</pre>
+If a method might throw an exception it must either be caught within the
+method with a try/catch block, or the method must indicate the exception
+to any calling method by use of the throws statement in its declaration.
+Without this, an error will occur at compile time.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 51)"></a>Answer 51)</h4>
+Objective 3.10)
+<br><a href="java_exam1.html#Question 51)">Back
+to Question 51)</a>
+<p>3) A compile time error
+<p>Because only one instance of a static method exists not matter how many
+instance of the class exists it cannot access any non static variables.
+The JVM cannot know which instance of the variable to access. Thus you
+will get an error saying something like
+<pre>Can't make a static reference to a non static variable</pre>
+
+<hr align=center>
+<h4>
+<a NAME="Answer 52)"></a>Answer 52)</h4>
+Java2 Objective 8.2)
+<br><a href="java_exam1.html#Question 52)">Back
+to Question 52)</a>
+<br>&nbsp;
+<p>2) Create an instance of the GridBagConstraints class, set the weightx
+field and then pass the GridBagConstraints instance with the component
+to the setConstraints method of the GridBagLayout class.
+<br>&nbsp;
+<p>The Key to using the GridBagLayout manager is the GridBagConstraint
+class. This class is not consistent with the general naming conventions
+in the java API as you would expect that weightx would be <i>set</i> with
+a method, whereas it is a simple field (variable).
+<p>If you have a copy of the Roberts and Heller Java2 Guide that says the
+exam does not cover the GridBagLayout, this is an error. You can confirm
+this by looking at the online errata at
+<p><a href="http://www.sybex.com/cgi-bin/rd_err_temp.pl?2463err.html">http://www.sybex.com/cgi-bin/rd_err_temp.pl?2463err.html</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 53)"></a>Answer 53)</h4>
+Objective 13.1)
+<br><a href="java_exam1.html#Question 53)">Back
+to Question 53)</a>
+<p>2) Return the name of the parent directory
+<br>3) Delete a file
+<p>It is surprising that you can't change the current directory. It is
+not so surprising that you can't tell if a file contains text or binary
+information.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 54)"></a>Answer 54)</h4>
+Objective <font size=-1>9.5</font>)
+<br><a href="java_exam1.html#Question 54)">Back
+to Question 54)</a>
+<p>1)
+<pre>public void paint(Graphics g){
+&nbsp; int polyX[] = {20,150,150};
+&nbsp; int polyY[]= {20,20,120};
+&nbsp; g.drawPolygon(polyX, polyY,3);
+&nbsp; }</pre>
+drawPolygon takes three parameters, the first two are arrays of the X,Y
+coordinates and the final is an integer specifying the number of vertices
+(whatever they are).
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 55)"></a>Answer 55)</h4>
+Objective 6.1)
+<br><a href="java_exam1.html#Question 55)">Back
+to Question 55)</a>
+<p>1) You cannot be certain when garbage collection will run
+<p>Although there is a Runtime.gc(), this only suggests that the Java Virtual
+Machine does its garbage collection. You can never be certain when the
+garbage collector will run. Roberts and Heller is more specific abou this
+than Boone. This uncertainty can cause consternation for C++ programmers
+who wish to run finalize methods with the same intent as they use destructor
+methods.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 56)"></a>Answer 56)</h4>
+Java2 Objective 8.2)
+<br><a href="java_exam1.html#Question 56)">Back
+to Question 56)</a>
+<p>4) The fill field of the GridBagConstraints class
+<p>Unlike the GridLayout manager you can set the individual size of a control
+such as a button using the GridBagLayout manager. A little background knowledge
+would indicate that it should be controlled by a setSomethingOrOther method,
+but it isn't.
+<p>If you have a copy of the Roberts and Heller Java2 Guide that says the
+exam does not cover the GridBagLayout, this is an error. You can confirm
+this by looking at the online errata at
+<p><a href="http://www.sybex.com/cgi-bin/rd_err_temp.pl?2463err.html">http://www.sybex.com/cgi-bin/rd_err_temp.pl?2463err.html</a>
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 57)"></a>Answer 57)</h4>
+Java2 Objective 10.1)
+<br><a href="java_exam1.html#Question 57)">Back
+to Question 57)</a>
+<p>4) A collection for storing bits as on-off information, like a vector
+of bits
+<p>This is the description given to a bitset in Bruce Eckels "Thinking
+in Java" book. The reference to unique sequence of bits was an attempt
+to mislead because of the use of the word Set in the name bitset. Normally
+something called a set implies uniqueness of the members, but not in this
+context.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 58)"></a>Answer 58)</h4>
+<a href="java_exam1.html#Question 58)">Back to
+Question 58)</a>
+<br>Objective 3.10)
+<p>4)Compile error: Superclass Class1.Base of class Class1.Class1 not found
+<p>Using the package statement has an effect similar to placing a source
+file into a different directory. Because the files are in different packages
+they cannot see each other. The stuff about File1 not having been compiled
+was just to mislead, java has the equivalent of an "automake", whereby
+if it was not for the package statements the other file would have been
+automatically compiled.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 59)"></a>Answer 59)</h4>
+<a href="java_exam1.html#Question 59)">Back to
+Question 59)</a>
+<br>Objective 5.3)
+<p>4) Output of Over.amethod()
+<p>The names of parameters to an overridden method is not important.
+<p>
+<hr align=center>
+<h4>
+<a NAME="Answer 60)"></a>Answer 60)</h4>
+Java2 Objective 8.2)
+<br><a href="java_exam1.html#Question 60)">Back
+to Question 60)</a>
+<p>1) Set the gridy value of the GridBagConstraint class to a value increasing
+from 1 to 4
+<p>Answer 4 is fairly obviously bogus as it is the GridBagConstraint class
+that does most of the magic in laying out components under the GridBagLayout
+manager. The fill value of the GridBagConstraint class controls the behavior
+inside its virtual cell and the ipady field controls the internal padding
+around a component.
+<p>If you have a copy of the Roberts and Heller Java2 Guide that says the
+exam does not cover the GridBagLayout, this is an error. You can confirm
+this by looking at the online errata at
+<p><a href="http://www.sybex.com/cgi-bin/rd_err_temp.pl?2463err.html">http://www.sybex.com/cgi-bin/rd_err_temp.pl?2463err.html</a>
+<p>
+<hr align=center>
+<p>End of Document
+</body>
+</html>

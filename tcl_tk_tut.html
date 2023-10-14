@@ -1,0 +1,651 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>tcl_tk_tutorial</title>
+<!--
+
+
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+
+
+
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Awk</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">TCL/Tk tutorial</font></b>
+<p><a href="http://homepages.paradise.net.nz/milhous/tcl.htm#Introduction">Introduction</a>
+<br><a href="http://homepages.paradise.net.nz/milhous/tcl.htm#Getting">Getting
+Started</a>
+<br><a href="http://homepages.paradise.net.nz/milhous/tcl.htm#and">Variables
+and Expressions</a>
+<br><a href="http://homepages.paradise.net.nz/milhous/tcl.htm#Flow">Program
+Flow - Selection</a>
+<br><a href="http://homepages.paradise.net.nz/milhous/tcl.htm#Iteration">Program
+Flow - Iteration</a>
+<br><a href="http://homepages.paradise.net.nz/milhous/tcl.htm#Text">Text
+String Handling</a>
+<br><a href="http://homepages.paradise.net.nz/milhous/tcl.htm#Procedures">Procedures</a>
+<br><a href="http://homepages.paradise.net.nz/milhous/tcl.htm#Arrays">Arrays</a>
+<br><a href="http://homepages.paradise.net.nz/milhous/tcl.htm#Math">Math
+Functions</a>
+<p><a NAME="Introduction"></a><b><font color="#FF0000">Introduction</font></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>xxx</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>&nbsp;TCL is essentially a language for the internet. It is a scripting
+language that allows you to do everything from CGI scripting to creating
+applets (or tclets as they are known) to writing full fledged GUI applications.
+More and more internet related jobs are requesting experience with TCL,
+it is still nowhere near as necessary as experience with Perl however.
+I did a search on an Australia/New Zealand job site and got about 30 responses
+for TCL, as opposed to about 200 for Perl and 800 for JAVA. It is always
+a good thing to know just the basics in a language though (so at least
+you can <i>sound</i> intelligent).
+<p>This page doesn't contain all there is to know about TCL, but it gives
+you a reasonable understanding of the language. You should be able to learn
+all this material in about a day.This page actually only contains information
+of TCL, not Tk which is the toolkit extension that comes with TCL. The
+Tk is very useful for creating applications and tclets, and information
+on it should be available elsewhere on the Internet.
+<p>The best books on the subject are:
+<br>&nbsp;
+<table BORDER WIDTH="100%" >
+<tr>
+<td WIDTH="50%"><b><i>Tcl and the Tk Toolkit</i></b>
+<p>Author John Ousterhout
+<p>Addison Wesley, 1994</td>
+
+<td WIDTH="50%">
+<div style="line-height: 100%"><b><i>Web Development with Tcl/Tk 8.1</i></b></div>
+
+
+<p style="line-height: 100%">Author :Steve Holzner
+
+<p style="line-height: 100%">Wiley Computer Publishing, 1999</td>
+</tr>
+</table>
+
+<p><a NAME="Getting"></a><b><font color="#FF0000">Getting Started</font></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>xxx</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>I am using Windows (of course) but this advice should apply if you are
+using a Mac or UNIX.
+<p>All the downloads you will need can be made from <a href="http://scriptics.com">http://scriptics.com</a>
+<p>You need to download and install the file. You will want to use the
+<b>wish </b>program. This starts up the TCL interpreter.
+<p>You can enter code straight into the interpreter, but you will usually
+want to create scripts and feed these into the interpreter. On windows
+you can create them on Notepad, and save the files as <b>.tcl</b>. Once
+you have installed TCL, files saved with the <b>.tcl </b>extension will
+have their own icons.
+<p>You then go to <b>wish</b>, and after the <b>%</b>, enter <b>source
+<i>pathname</i></b>.
+So if you saved the script on your a: drive with the name first.tcl, the
+command would be :
+<p><b>% source a:first.tcl</b>
+<p>The download comes with its own help files, so you can use them for
+more advanced help.
+<p>You will also need to download a plug-in for your browser if you want
+to run tclets (the TCL equivilent of applets). These are available from
+<a href="http://scriptics.com">http://scriptics.com</a> as well. They come
+for both Netscape and Internet Explorer, although I couldn't find one for
+IE 5.0.
+<p><b><font color="#FF0000">Variables&nbsp;<a NAME="and"></a>and Expressions</font></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>xxx</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>The basic command for creating a variable is this :
+<p><b>set <i>variablename variablevalue</i></b>
+<p>So this creates a variable called <b>num1 </b>and gives it the value
+<b>200:</b>
+<p><b>set num1 200</b>
+<p>You can also store a string in the variable:
+<p><b>set string1 Hello</b>
+<p>or if there is more than one word :
+<p><b>set string2 "Hello World"</b>
+<p>Actually, everything is stored as a string in Tcl. Even if you enter
+a number into a variable, such as 200, it will be stored as a string of
+text "200". This doesn't matter though, because Tcl treats variables according
+to their context, so the interpreter will automatically interpret the same
+variable as a string or a number depending on the situation in which it
+is used. This lack of explicit typing is fairly standard for a scripting
+language.
+<p>We can now make statements like this :
+<p><b>puts $string1</b>
+<p>The <b>$ </b>tells the interpreter that you are referring to a variable
+(If you actually need to use $ in a string, simply use \$ instead).
+<p>You can also make statements like this :
+<p>puts "The string says $string1"
+<p>To change the value of a variable just use the <b>set </b>statement
+again
+<p>Using numbers is easy. They can be positive or negative, and they can
+be floating-point or integer. They can then be subjected to all the main
+mathematical operations.
+<p><b>set num 100</b>
+<p><b>expr $num - 40</b>
+<p>This will return <b>60.</b>
+<p>You can also use the following : <b>+, -, *, %, &lt;, >, &lt;=, >=,
+==, !=, &amp;&amp;, ||</b>
+<p>Most are self explanatory, of the ones that aren't, here are their meanings
+:
+<p>% : the mod operator - it returns the remainder in division.
+<p>== and != : the Boolean <b>equal to</b> and <b>not equal to</b> (same
+as in C)
+<p>&amp;&amp;, || : the logical <b>and </b>and <b>or </b>operators.
+<p>There are also many built in math functions, click <a href="http://homepages.paradise.net.nz/milhous/tcl.htm#Math">here</a>
+for a full list
+<p>The example of subtraction above isn't what you always need. You will
+usually want to change the value of <b>num</b>. This is how you would do
+that :
+<p><b>set num [expr $num - 40]</b>
+<p><b>set </b>takes two arguments - the variable name and the new value.
+Because of this we need to group together the expression that creates the
+new value in [ ].
+<p>Here is another example :
+<p>puts "The number is : [expr $num * 100]"
+<p>You can also use <b>append
+</b>to change the value in a variable :
+<p><b>set S1 "Hello"</b>
+<p><b>append S1 " World"</b>
+<p><b>puts $S1</b>
+<p>Another very useful of changing the value of an integer is the <b>incr
+</b>command :
+<p><b>set num1 100</b>
+<p><b>incr num1</b>
+<p>Or we can state by how much we want to increment it :
+<p><b>incr num1 3</b>
+<p>You can also use negative numbers.
+<p>Finally, to delete a variable use <b>unset </b>:
+<p><b>unset num1</b>
+<p><b><font color="#FF0000">Program&nbsp;<a NAME="Flow"></a>Flow - Selection</font></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>xxx</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>This is the basic shape of the <b>if </b>command :
+<p><b>set num 100</b>
+<p><b>if {$num > 50} then {</b>
+<p><b>puts "Greater than 50"</b>
+<p><b>}</b>
+<p>Note that the expression is inside curly brackets, unlike most other
+languages where it is in round brackets. Also note that immediately after
+the <b>that </b>you must have the <b>{</b>, you can't put it on the line
+below.
+<p>You can also add an <b>else
+</b>clause :
+<p><b>if {$num > 200} then {</b>
+<p><b>puts "Greater than 200"</b>
+<p><b>} else {</b>
+<p><b>puts "Less than 200"</b>
+<p><b>}</b>
+<p>For more than two options you need to add one or more <b>elseif </b>clauses
+:
+<p><b>if {$num > 200} then {</b>
+<p><b>puts "Greater than 200"</b>
+<p><b>} elseif {$num > 80} then {</b>
+<p><b>puts "Greater than 80"</b>
+<p><b>} else {</b>
+<p><b>puts "Less than 200"</b>
+<p><b>}</b>
+<p>Once it finds a clause that meets a condition, it executes it's body,
+and leaves the <b>if-then-else </b>clause - so only one option is ever
+executed even if more than one condition is true.
+<p>Like most languages, TCL also has a <b>switch </b>command :
+<p><b>switch $num {</b>
+<p>&nbsp;&nbsp;&nbsp;<b> 20 {puts "Number is twenty"}</b>
+<p>&nbsp;&nbsp;&nbsp;<b> 50 {puts "Number if 50"}</b>
+<p>&nbsp;&nbsp;&nbsp;<b> 100 {puts "Number is 100"}</b>
+<p>&nbsp;&nbsp;&nbsp;<b> default {puts "I don't know what the number is"}</b>
+<p><b>}</b>
+<p><b><font color="#FF0000">Program Flow -&nbsp;<a NAME="Iteration"></a>Iteration</font></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>xxx</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>For loops are no doubt familiar to you from virtually every other language,
+so here is an implementation of one in TCL:
+<p><b>for {set index 1} {$index &lt; 10} {incr index} {</b>
+<p>&nbsp;&nbsp;&nbsp;<b> puts "Number is $index"</b>
+<p><b>}</b>
+<p>Once again, note the use of curly brackets, and also be sure to remember
+the <b>$ </b>in <b>{$index &lt; 10} </b>: this is very easy to forget.
+<p>You can also create nested for loops :
+<p><b>for {set index 1} {$index &lt; 10} {incr index} {</b>
+<p>&nbsp;&nbsp;&nbsp;<b> for {set inner 1} {$inner &lt; 5} {incr inner}
+{</b>
+<p>&nbsp;&nbsp;&nbsp;<b> puts "Outer umber is $index, inner number is $inner"</b>
+<p><b>}}</b>
+<p>Just remember the end brackets for both loops.
+<p>There is also a <b>while </b>loop :
+<p><b>set index 1</b>
+<p><b>while {$index &lt; 10} {</b>
+<p><b>puts "The value is $index"</b>
+<p><b>incr index</b>
+<p><b>}</b>
+<p>This loop is very simple, and needs no expalining.
+<p>You can use <b>continue </b>to jump to the next iteration of the loop,
+and the <b>break </b>command to get out of a loop : this is familiar to
+anyone who has programmed in C. For instance you could have an expression
+in a loop like this :
+<p><b>if {$index == 100} then {break}</b>
+<p>If you use <b>break </b>in a nested loop, you only break out of the
+immediate loop, not any outer loops.
+<p><a NAME="Text"></a><b><font color="#FF0000">Text String Handling</font></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>xxx</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>This is a very important topic in TCL, since, as you have seen, everything
+is handled as a string.
+<p>Firstly, there are some commands that can be added to <b>puts</b>, a
+useful one is this<b> </b>:
+<p><b>puts -nonewline "This will not be followed by a new line."</b>
+<p>There is also a <b>format </b>command for controlling screen output.
+Suppose we have a variable like this :
+<p><b>set num 98.365423</b>
+<p>We can control the precision with which this is printed out like this
+:
+<p><b>format "Two decimal points : %1.2f" $num</b>
+<p>Note : this prints out all numbers to the left of the decimal point
+automatically, it is only numbers trailing the decimal point that are controlled.
+<p>You can also do this with strings :
+<p>set name "Dane"
+<p>format "First two letters %.2s" $name
+<p>To display a number in decimal, use this structure :
+<p><b>set int 40</b>
+<p><b>format "Decimal : %d" $int</b>
+<p>A lot of string operations are done with the <b>string </b>command.
+Here is an example :
+<p><b>string toupper "change this to capitals"</b>
+<p>There are a whole lot of these commands - here are a few more (you can
+either enter strings or variables containing strings) :
+<p><b>string length <i>stringname</i></b>
+<p><b>string tolower <i>stringname</i></b>
+<p><b>string match <i>pattern stringname </i></b>: this returns 1 if it
+matches, otherwise 0.
+<p><b>string compare <i>stringname1 stringname2 </i></b>:Returns -1 if
+<b><i>stringname</i></b>1 is less, 1 if it is greater, or 0 if they are
+equal.
+<p><b>string index <i>stringname number </i></b>: returns the character
+at possition <b><i>number </i></b>in <b><i>stringname</i></b>. 0 is the
+first character.
+<p><b>string last <i>stringname1 stringname2 </i></b>: Searches <b><i>stringname2
+</i></b>for characters that match the characters in <b><i>stringname1</i></b>.
+If found, it returns the index of the last match within <b><i>stringname2</i></b>,
+or it returns -1 if there is no match.
+<p><b>string trim <i>stringname
+</i>[<i>characters</i>] </b>: trims any
+leading or trailing characters from <b><i>stringname
+</i></b>that are contained
+in the set that follows. This can be made to trim only leading or only
+trailing by changing it to <b>trimleft </b>or <b>trimright</b>.
+<p>You can also use <b>append
+</b>to join one string to the end of another
+:
+<p><b>set s1 "Hello "</b>
+<p><b>set s2 "World"</b>
+<p><b>append s1 $s2</b>
+<p>You can also parse a string (break it up into its component parts).
+The basic structure of the command is this:
+<p><b>scan string format varName [varName...]</b>
+<p>The <b>string </b>argument is the string to be operated on. The <b>format
+</b>option lets you chose the format - <b>%</b>. Each <b>varName </b>argument
+is the name of a variable to hold the values scanned by the string. The
+possible formats are - <b>%d </b>(decimal integer) <b>%o </b>(octal integer)
+<b>%x </b>(hexadecimal integer) <b>%c </b>(single character) <b>%s </b>(string)
+<b>%e </b>or <b>%f </b>or <b>%g</b>.
+<p>Here is an example :
+<p><b>scan "split this line up" "%s %s %s %s" word1 word2 word3 word4</b>
+<p>This line returns the value of <b>4 </b>which is the number of variables
+assigned. Now if we write :
+<p><b>puts "$word2"</b>
+<p>the interpreter will return <b>this</b>
+<p>This ability to split a string up is particularly useful when dealing
+with user input.
+<p>We can also use the <b>switch
+</b>command to implement pattern matching.
+<b>switch </b>has options so that the pattern matched doesn't have to be
+exact. Here is a <b>switch </b>statement that tests a variable called <b>input</b>.
+If the value equals <b>"display"</b> it prints something out, and if it
+equals <b>"exit" </b>it exits the program. However, through the <b>-glob
+</b>command within <b>switch </b>we can create a situation whereby the
+<b>input </b>string can be in either capitals or lower case letters :
+<p><b>set input "DIspLay"</b>
+<p><b>switch -glob $input {</b>
+<p><b>[dD][iI][sS][pP][lL][aA][yY] {puts "This is the display"}</b>
+<p><b>[eE][xX][iI][tT] {exit}</b>
+<p><b>default {puts "I don't understand"}</b>
+<p><b>}</b>
+<p>Just as long as each letter of <b>input </b>corresponds to what is in
+the <b>[] </b>for that position, it will work. Note that there shouldn't
+be gaps between the sets of brackets.
+<p>We can also introduce wildcards :
+<p><b>switch -glob $input {</b>
+<p><b>[dD]* {puts "This is the display"}</b>
+<p><b>[eE][xX][iI][tT] {exit}</b>
+<p><b>default {puts "I don't understand"}</b>
+<p><b>}</b>
+<p><b>exit </b>still needs to be typed in full, but anything starting with
+<b>d </b>will count as <b>display</b>. Note that there is no gap between
+the brackets and the wildcard character.
+<p>There is also a far more complex pattern matching option called <b>-regexp</b>.
+This is just a small introduction to what it can do.
+<p>Here is an example that looks for any uppercase characters in a string
+:
+<p><b>switch -regexp $input {</b>
+<p><b>[A-Z] {puts "It contains an upper case character"}</b>
+<p><b>}</b>
+<p>Things can get quite complex. For instance, you might want a variable
+to contain only letters and numbers :
+<p><b>switch -regexp $input {</b>
+<p><b>[^A-Za-z0-9] {puts "It is not a valid string"}</b>
+<p><b>}</b>
+<p>The <b>^ </b>means <b>not </b>of course, so if it contains one of these
+characters the string isn't valid.
+<p>There is another function called <b>regsub </b>that allows you to replace
+a portion of a string with something else - this example changes the string
+<b>Hello World </b>to <b>Hello America </b>:
+<p><b>regsub "World" "Hello World" "America" newstring</b>
+<p><b>newstring </b>is where the new string will be stored. Naturally you
+can use variables containing strings instead of actual strings. <b>"World"
+</b>was the portion of the string we wanted to get rid of, <b>"Hello World"
+</b>was the string we were working on, and <b>"America" </b>is what we
+want put into the string in place of <b>"World"</b>.
+<p>If there is likely to be more than one sub string that you want replaced,
+simply insert an <b>-all :</b>
+<p><b>regsub -all ....</b>
+<p>You can also use some of the other tricks we learned :
+<p><b>regsub {[Ww]orld} "Hello World" "America" newstring</b>
+<p>Now it doesn't matter whether <b>world </b>begins with a capital or
+not.
+<p><a NAME="Procedures"></a><b><font color="#FF0000">Procedures</font></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>xxx</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>As well as all the built in procedures we have already come across,
+TCL lets you create your own procedures.
+<p>The general structure of a procedure is this :
+<p><b>proc <i>procedurename {argument list} {procedure body}</i></b>
+<p>For instance ::
+<p><b>proc firstprocedure {} {</b>
+<p><b>puts "This is my first procedure"</b>
+<p><b>}</b>
+<p>Now, by entering <b>firstprocedure
+</b>the procedure is executed.
+<p>Note that even though this procedure takes no arguments, it still needs
+the empty brackets <b>{}</b>.
+<p>Here is another procedure that accepts an argument and prints it out
+:
+<p><b>proc printout {texttoprint} {</b>
+<p><b>puts $texttoprint</b>
+<p><b>}</b>
+<p>We can now call it like this :
+<p><b>printout "Print out this"</b>
+<p>It is just as easy to pass multiple arguments :
+<p><b>proc multiprint {text1 text2} {</b>
+<p><b>puts $text1</b>
+<p><b>puts $text2</b>
+<p><b>}</b>
+<p>We now call it like this :
+<p><b>multiprint "print this" "and this"</b>
+<p>Procedures can also return values :
+<p><b>proc squarenum {num} {</b>
+<p><b>return [expr $num * $num]</b>
+<p><b>}</b>
+<p>This returns the square of the number sent to it.
+<p>TCL allows for local variables within procedures. Just use <b>set </b>statements
+inside the procedure :
+<p><b>proc createlocal {} {</b>
+<p><b>set localvar 50</b>
+<p><b>puts $localvar</b>
+<p><b>}</b>
+<p>You cannot access <b>localvar
+</b>from outside <b>createlocal</b>.
+<p>It is still possible to create a global variable inside a procedure
+though :
+<p><b>global glvar 100</b>
+<p>This goes against the idea of creating procedures though, so only do
+it if you have to.
+<p>It is also possible to give arguments default values incase the user
+doesn't supply one :
+<p><b>proc squarenum {{num 10}} {</b>
+<p><b>return [expr $num * $num]</b>
+<p><b>}</b>
+<p>Note the extra set of brackets around the argument list.
+<p>Not only can you redefine your own procedures, you can redefine the
+built in ones :
+<p><b>proc exit {} {</b>
+<p><b>puts "No, you can't exit"</b>
+<p><b>}</b>
+<p><a NAME="Arrays"></a><b><font color="#FF0000">Arrays</font></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>xxx</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Arrays are a bit different in TCL than most other languages in the sense
+that they are associative : they work with key values not numeric indices.
+For instance, this is an array named <b>highesttemp</b> with&nbsp; keys
+corresponding to month names (the array could store the highest temperature
+of the month) :
+<p><b>set highesttemp(January) 67</b>
+<p><b>set highesttemp(June) 98</b>
+<p>We can then access those values like this :
+<p><b>puts $highesttemp(June)</b>
+<p>You can use whatever value you want for a key value, just as long as
+it's unique. Also note, that unlike most languages, the array can contain
+data of different types. This isn't entirely true, since everything in
+TCL is a string, but the effect is that anything can be put in any array.
+<p>The great advantage of associative arrays like this is that there is
+no limit on their size. They are expandable, an effect that requires linked
+lists or trees in most other languages.
+<p>There is also an easy way to display all the elements in the array :
+<p><b>parray highesttemp</b>
+<p>The <b>array </b>command is another way to deal with arrays. It is especially
+useful in allowing you to loop through arrays, which is difficult without
+index values. Its general form is this:
+<p><b>array <i>option arrayname [arg1 arg2 ...]</i></b>
+<p>Their are several <b><i>options</i></b>:
+<p>This will loop through the array and print out the values of the key
+items :
+<p><b>foreach keyitem [array names highesttemp] {</b>
+<p><b>puts $highesttemp($keyitem)</b>
+<p><b>}</b>
+<p>Looping through an array searching for a value isn't easy. Here is an
+example that sets up an array holding details on a person. It then searches
+for a particular number representing the date of birth :
+
+<p style="line-height: 150%; margin-right: 0"><b>set person(name) "Dane"</b>
+<br><b>set person(born) 1980</b>
+<br><b>set person(salary) 78000</b>
+<br><b>set search [array startsearch person]</b>
+<br><b>while {[array anymore person $search]} {</b>
+<br><b>set arrayelement [array nextelement person $search]</b>
+<br><b>if {$person($arrayelement) == 1980} then {</b>
+<br><b>puts "Found the date of birth"</b>
+<br><b>}</b>
+<br><b>}</b>
+<p>This is much more complex than an array search in C or Pascal.
+<p>The <b>set search [array startsearch person] </b>will return <b>s-1-person.
+</b>We then use the <b>anymore
+</b>option inside <b>array</b> to create
+a loop where the terminating clause occurs when all the elements have been
+searched. With each iteration the <b>nextelement
+</b>option moves us through
+the array, and we test the value of that element against the value we are
+searching for.
+<p><a NAME="Math"></a><b><font color="#FF0000">Math Functions</font></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>xxx</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>abs : returns absolute value
+<br>acos, asin, atan : returns arccosine etc.
+<br>cos, sin, tan : returns cosine etc.
+<br>exp : returns exponential to power of e.
+<br>fmod : returns floating point modulus.
+<br>int : converts value to integer.
+<br>log : returns log.
+<br>log10 : returns log 10.
+<br>rand : returns random floating-point number between 0 and 1.
+<br>round : rounds a number.
+<br>sqrt : returns the square root.
+<br>&nbsp;
+<br>&nbsp;
+</body>
+</html>

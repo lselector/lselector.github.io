@@ -1,0 +1,1473 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="Microsoft Word 97">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="lev">
+   <title>sh tut</title>
+<!--
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body>
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Unix</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<b><font color="#CC0000">Uni</font></b>
+<p>Bourne Shell Tutorial by Steve Parker ( <a href="http://www.steve-parker.org">www.steve-parker.org</a>
+) - reformatted.
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1.<a href="#INTRO">INTRO</a></b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2.<a href="#Philosophy">PHILOSOPHY</a></b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3.<a href="#A_FIRST_SCRIPT">A FIRST SCRIPT</a></b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4.<a href="#var_p1">VARIABLES - Part I</a></b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+5.<a href="#WILDCARDS">WILDCARDS</a></b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+6.<a href="#ESCAPE_CHARACTERS">ESCAPE CHARACTERS</a></b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+7.<a href="#LOOPS">LOOPS</a></b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+8.<a href="#TEST">TEST</a></b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+9.<a href="#CASE">CASE</a></b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+10.<a href="#vars_p2">VARIABLES - Part II</a></b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+11.<a href="#EXTERNAL_PROGRAMS">EXTERNAL PROGRAMS</a></b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+12.<a href="#FUNCTIONS">FUNCTIONS</a></b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+13.<a href="#HINTS_TIPS">HINTS AND TIPS</a></b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+14.<a href="#CGI_scripting">CGI SCRIPTING</a></b>
+<br><a NAME="INTRO"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>INTRO</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - <a href="mailto:Lev.Selector@gmail.com">email</a></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>The most recent version of this tutorial is available from:
+<a href="http://www.steve-parker.org/sh/sh.shtml">http://www.steve-parker.org/sh/sh.shtml</a>.
+<br>The Bourne shell was written by Steve Bourne - and it appeared in the
+Seventh Edition Bell Labs Research version of Unix.
+<p>Let's get on unix prompt and create a simple 2-line script - store it
+in a file&nbsp; my-script.sh - and run it. Here is what we do (and see)
+on unix prompt:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>$ echo "#!/bin/sh" > my-script.sh
+<br>$ echo "echo Hello World" >> my-script.sh
+<br>$ chmod 755 my-script.sh
+<br>$ ./my-script.sh
+<br>Hello World
+<br>$</td>
+</tr>
+</table>
+
+<p>Here is how the script may look with comments added:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br># This is a comment!
+<br>echo Hello World&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # This is
+a comment, too!</td>
+</tr>
+</table>
+<a NAME="Philosophy"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Philosophy</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - <a href="mailto:Lev.Selector@gmail.com">email</a></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Philosophy</font></b>
+<p>&nbsp; There are a number of factors which can go into good, clean,
+quick, shell scripts.
+<br>&nbsp; The most important criteria must be a clear, readable layout.
+<br>&nbsp; Second is avoiding unnecessary commands.
+<br>&nbsp; A clear layout makes the difference between a shell script appearing
+as "black magic" and one which is easily maintained and understood.
+<br>&nbsp; You may be forgiven for thinking that with a simple script,
+this is not too significant a problem, but two things here are worth bearing
+in mind.
+<br>&nbsp; First, a simple script will, more often than anticipated, grow
+into a large, complex one.
+<br>&nbsp; Secondly, if nobody else can understand how it works, you will
+be lumbered with maintaining it yourself for the rest of your life!
+<br>&nbsp; One of the major weaknesses in many shell scripts is lines such
+as:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<b><font color="#3333FF">cat /tmp/myfile | grep "mystring"</font></b>
+<br>&nbsp; which would run much faster as:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<b><font color="#3333FF">grep "mystring" /tmp/myfile</font></b>
+<br>&nbsp; Not much, you may consider; the OS has to load up the /bin/grep
+executable, which is a reasonably small 75600 bytes on my system, open
+a pipe in memory for the transfer, load and run the /bin/cat executable,
+which is an even smaller 9528 bytes on my system, attach it to the input
+of the pipe, and let it run.
+<br>&nbsp; Of course, this kind of thing is what the OS is there for, and
+it's normally pretty efficient at doing it. But if this command were in
+a loop being run many times over, the saving of not locating and loading
+the cat executable, setting up and releasing the pipe, can make some difference,
+especially in, say, a CGI environment where there are enough other factors
+to slow things down without the script itself being too much of a hurdle.
+<br>&nbsp; As a result of this, you may hear mention of The Award For The
+Most Gratuitous Use Of The Word Cat In A Serious Shell Script being bandied
+about on the <b><font color="#3333FF">comp.os.unix.shell</font></b> newsgroup
+from time to time. This is purely a way of peers keeping each other in
+check, and making sure that things are done right.
+<br>&nbsp; Speaking of which, I would like to reccommend the comp.os.unix.shell
+newsgroup to you, although its signal to noise ratio seems to have increased
+in recent years. There are still some real gurus who hang out there with
+good advice for those of us who need to know more (and that's all of us!).
+Sharing experiences is the key to all of this - the reason behind this
+tutorial itself, and we can all learn from and contribute to open discussions
+about such issues.
+<br>&nbsp; Which leads me nicely on to something else: Don't ever feel
+too close to your own shell scripts; by their nature, the source cannot
+be closed. If you supply a customer with a shell script, s/he can inspect
+it quite easily. So you might as well accept that it will be inspected
+by anyone you pass it to; use this to your advantage with the GPL - encourage
+people to give you feedback and bugfixes for free!
+<br><a NAME="A_FIRST_SCRIPT"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>A FIRST SCRIPT&nbsp;</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - <a href="mailto:Lev.Selector@gmail.com">email</a></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">A First Script</font></b>
+<br>For our first shell script, we'll just write a script which says "Hello
+World". We will then try to get more out of a Hello World program than
+any other tutorial you've ever read :-)
+<br>Create a file (first.sh) as follows:
+<hr noshade align=left width="40%"><b><font color="#3333FF">#!/bin/sh</font></b>
+<br><b><font color="#3333FF"># This is a comment!</font></b>
+<br><b><font color="#3333FF">echo Hello World&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+# This is a comment, too!</font></b>
+<br>
+<hr noshade align=left width="40%">The first line tells Unix that the file
+is to be executed by /bin/sh. This is the standard location of the Bourne
+shell on just about every Unix system.
+<p>The second line begins with a special symbol: #. This marks the line
+as a comment, and it is ignored completely by the shell.
+<br>The only exception is when the <i>very first</i> line of the file starts
+with #! - as ours does. This is a special directive which Unix treats specially.
+It means that even if you are using csh, ksh, or anything else as your
+interactive shell, that what follows should be interpreted by the Bourne
+shell.
+<p>The third line runs a command: echo, with two parameters, or arguments
+- the first is "Hello"; the second is "World".
+<br>Note that echo will automatically put a single space between its parameters.
+<br>The # symbol still marks a comment; the # and anything following it
+is ignored by the shell.
+<p>now run <b><font color="#3333FF">chmod 755 first.sh</font></b> to make
+the text file executable, and run <b><font color="#3333FF">./first.sh</font></b>.
+<br>Your screen should then look like this:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>$ chmod 755 first.sh
+<br>$ ./first.sh
+<br>Hello World
+<br>$</td>
+</tr>
+</table>
+
+<p>You will probably have expected that! You could even just run:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>$ echo Hello World
+<br>Hello World
+<br>$</td>
+</tr>
+</table>
+
+<p>Now let's make a few changes.
+<br>First, note that echo puts ONE space between its parameters. Put a
+few spaces between "Hello" and "World". What do you expect the output to
+be? What about putting a TAB character between them?
+<br>As always with shell programming, try it and see.
+<br>The output is exactly the same! We are calling the echo program with
+two arguments; it doesn't care any more than cp does about the gaps in
+between them.
+<br>Now modify the code again:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br># This is a comment!
+<br>echo "Hello&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; World"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+# This is a comment, too!</td>
+</tr>
+</table>
+
+<p>This time it works. You probably expected that, too, if you have experience
+of other programming languages. But the key to understanding what is going
+on with more complex command and shell script, is to understand and be
+able to explain: WHY?
+<br>echo has now been called with just ONE argument - the string "Hello&nbsp;&nbsp;&nbsp;
+World". It prints this out exactly.
+<br>The point to understand here is that the shell parses the arguments
+BEFORE passing them on to the program being called. In this case, it strips
+the quotes but passes the string as one argument.
+<br>As a final example, type in the following script. Try to predict the
+outcome before you run it:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br># This is a comment!
+<br>echo "Hello&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; World"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+# This is a comment, too!
+<br>echo "Hello World"
+<br>echo "Hello * World"
+<br>echo Hello * World
+<br>echo Hello&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; World
+<br>echo "Hello" World
+<br>echo Hello "&nbsp;&nbsp;&nbsp;&nbsp; " World
+<br>echo "Hello \"*\" World"
+<br>echo `hello` world
+<br>echo 'hello' world</td>
+</tr>
+</table>
+Is everything as you expected? If not, don't worry! These are just some
+of the things we will be covering in this tutorial ... and yes, we will
+be using more powerful commands than echo!
+<br><a NAME="var_p1"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>VARIABLES - Part I</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - <a href="mailto:Lev.Selector@gmail.com">email</a></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Variables - Part I</font></b>
+<br>Just about every programming language in existance has the concept
+of <i>variables</i> - a symbolic name for a chunk of memory to which we
+can assign values, read and manipulate its contents. The bourne shell is
+no exception, and this section introduces idea. This is taken further in
+<a href="#vars_p2">Variables
+- Part II</a> which looks into variables which are set for us by the environment.
+<br>Let's look back at our first Hello World example. This could be done
+using variables (though it's such a simple example that it doesn't really
+warrant it!)
+<br>Enter the following code into var1.sh:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br>MY_MESSAGE="Hello World"
+<br>echo $MY_MESSAGE</td>
+</tr>
+</table>
+
+<p>This assigns the string "Hello World" to the variable MY_MESSAGE then
+echoes out the value of the variable.
+<br>Note that we need the quotes around the string Hello World. Whereas
+we could get away with echo Hello World because echo will take any number
+of parameters, a variable can only hold one value, so a string with spaces
+must be quoted to that the shell knows to treat it all as one.
+<p>The shell does not care about types of variables; they may store strings,
+integers, real numbers - anything you like. In truth, these are all stored
+as strings, but routines which expect a number can treat them as such.
+Of course, if you assign a string to a variable then try to add&nbsp;&nbsp;
+1&nbsp;&nbsp; to it, the results may be surprising! But there is no syntactic
+difference between:
+<br><font color="#3333FF">MY_MESSAGE="Hello World"</font>
+<br><font color="#3333FF">MY_NUMBER=1</font>
+<br><font color="#3333FF">MY_OTHER_NUMBER=3.142</font>
+<br><font color="#3333FF">MY_OTHER_NUMBER="3.142"</font>
+<br><font color="#3333FF">MY_SOMETHING=123abc</font>
+<br>Note though that special characters must be properly escaped to avoid
+interpretation by the shell. This is discussed further in <a href="#ESCAPE_CHARACTERS">Escape
+Characters</a>.
+<p>We can interactively set variable names using the read command; the
+following script asks you for your name then greets you personally:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br>read USER_NAME
+<br>echo Hello there, $USER_NAME - how are you today?</td>
+</tr>
+</table>
+
+<p>This is using the shell-builtin command <b><font color="#CC0000">read</font></b>
+which reads a line from standard input into the variable supplied.
+<p>Note that even if you give it your full name and don't use double quotes
+around the echo command, it still outputs correctly. How is this done?
+With the MY_MESSAGE variable earlier we had to put double quotes around
+it to set it.
+<br>What happens, is that the read command automatically places quotes
+around its input, so that spaces are treated correctly.
+<p><u>Scope of Variables:</u> - Variables in the bourne shell do not have
+to be declared, as they do in languages like C. But if you try to read
+an <b><u>undeclared varable, the result is the empty string</u></b>.
+<p>There is a command called <b><font color="#CC0000">export</font></b>
+which has a fundamental effect on the scope of variables. In order to really
+know what's going on with your variables, you will need to understand something
+about how this is used.
+<p>Create a small shell script, myvar.sh:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br>echo "MYVAR is: $MYVAR"
+<br>MYVAR="hi there"
+<br>echo "MYVAR is: $MYVAR"</td>
+</tr>
+</table>
+
+<p>Now run the script:
+<br><font color="#3333FF">$ ./myvar.sh</font>
+<br><font color="#3333FF">MYVAR is:</font>
+<br><font color="#3333FF">MYVAR is: hi there</font>
+<p>MYVAR hasn't been set to any value, so it's blank.
+<br>Now run:
+<br><font color="#3333FF">$ MYVAR=hello</font>
+<br><font color="#3333FF">$ ./myvar.sh</font>
+<br><font color="#3333FF">MYVAR is:</font>
+<br><font color="#3333FF">MYVAR is: hi there</font>
+<p>It's still not been set! What's going on?!
+<p>When you call myvar.sh from your interactive shell, a new shell is spawned
+to run the script. <b><u>We need to export the variable for it to be inherited
+by the shell script itself</u></b>. Type:
+<br><font color="#3333FF">$ export MYVAR</font>
+<br><font color="#3333FF">$ ./myvar.sh</font>
+<br><font color="#3333FF">MYVAR is: hello</font>
+<br><font color="#3333FF">MYVAR is: hi there</font>
+<br>Now look at line 3 of the script: this is changing the value of MYVAR.
+<b><u>But
+there is no way that this will be passed back to your interactive shell.</u></b>
+Try reading the value of MYVAR:
+<br><font color="#3333FF">$ echo $MYVAR</font>
+<br><font color="#3333FF">hello</font>
+<br><font color="#3333FF">$</font>
+<br><b><u>Once the shell script exits, its environent is destroyed.</u></b>
+But MYVAR keeps its value of hello within your interactive shell.
+<br>In order to receive environment changes back from the script, we must
+<b><i><u><font color="#CC0000">source</font></u></i></b>
+the script - this effectively runs the script within our own interactive
+shell, instead of spawning another shell to run it.
+<br>We can source a script via the <b><font color="#CC0000">"." command:</font></b>
+<br><font color="#3333FF">$ MYVAR=hello</font>
+<br><font color="#3333FF">$ export MYVAR</font>
+<br><font color="#3333FF">$ echo MYVAR</font>
+<br><font color="#3333FF">hello</font>
+<br><font color="#3333FF">$ . ./myvar.sh</font>
+<br><font color="#3333FF">MYVAR is: hello</font>
+<br><font color="#3333FF">MYVAR is: hi there</font>
+<br><font color="#3333FF">$ echo $MYVAR</font>
+<br><font color="#3333FF">hi there</font>
+<p>The change has now made it out into our shell again! This is how your
+<b><font color="#CC0000">.profile</font></b>
+file works, for example.
+<p>One other thing worth mentioning at this point about variables, is to
+consider the following shell script:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br>echo "What is your name?"
+<br>read USER_NAME
+<br>echo "Hello $USER_NAME"
+<br>echo "I will create you a file called $USER_NAME_file"
+<br>touch $USER_NAME_file</td>
+</tr>
+</table>
+
+<p>This will cause an error unless there is a variable called USER_NAME_file.
+The shell does not know where the variable begins and the rest starts.
+How can we define this?
+<br>The answer is, that we enclose the variable itself in curly brackets:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br>echo "What is your name?"
+<br>read USER_NAME
+<br>echo "Hello $USER_NAME"
+<br>echo "I will create you a file called ${USER_NAME}_file"
+<br>touch ${USER_NAME}_file</td>
+</tr>
+</table>
+
+<p>The shell now knows that we are referring to the variable USER_NAME
+and that we want it suffixed with _file. This can be the downfall of many
+a new shell script programmer, as the source of the problem can be difficult
+to track down.
+<br><a NAME="WILDCARDS"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>WILDCARDS</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - <a href="mailto:Lev.Selector@gmail.com">email</a></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Wildcards</font></b>
+<p>Wildcards are really nothing new if you have used Unix at all before.
+It is not necessarily obvious how they are useful in shell scripts though.
+This section is really just to get the old grey cells thinking how things
+look when you're in a shell script - predicting what the effect of using
+different syntaxes are. This will be used later on, particularly in the
+<a href="#LOOPS">Loops</a>
+section.
+<p>Think first how you would copy all the files from <b><font color="#CC0000">/tmp/a</font></b>&nbsp;
+into&nbsp; <b><font color="#CC0000">/tmp/b</font></b>. All the <b><font color="#CC0000">.txt</font></b>
+files? All the <b><font color="#CC0000">.html</font></b> files?
+<br>Hopefully you will have come up with:
+<br><font color="#3333FF">$ cp /tmp/a/* /tmp/b/</font>
+<br><font color="#3333FF">$ cp /tmp/a/*.txt /tmp/b/</font>
+<br><font color="#3333FF">$ cp /tmp/a/*.html /tmp/b/</font>
+<p>Now how would you list the files in <b><font color="#CC0000">/tmp/a/</font></b>
+without using <b><font color="#CC0000">ls /tmp/a/</font></b>?
+<br>How about <b><font color="#CC0000">echo /tmp/a/*</font></b>? What are
+the two key differences between this and the ls output? How can this be
+useful? Or a hinderance?
+<br>How could you rename all <b><font color="#CC0000">.txt</font></b> files
+to <b><font color="#CC0000">.bak</font></b>? Note that
+<br>$ <font color="#3333FF">mv *.txt *.bak</font>
+<br><b><u>will not have the desired effect</u></b>; think about how this
+<b><u>gets
+expanded by the shell before it is passed to mv</u></b>.
+<br>We will look into this further later on, as it uses a few concepts
+not yet covered.
+<br><a NAME="ESCAPE_CHARACTERS"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>ESCAPE CHARACTERS</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - <a href="mailto:Lev.Selector@gmail.com">email</a></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Escape Characters</font></b>
+<p>Certain characters are significant to the shell; we have seen, for example,
+that the use of double quotes (") characters affect how spaces and TAB
+characters are treated, for example:
+<br><font color="#3333FF">$ echo Hello&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+World</font>
+<br><font color="#3333FF">Hello World</font>
+<br><font color="#3333FF">$ echo "Hello&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+World"</font>
+<br><font color="#3333FF">Hello&nbsp;&nbsp;&nbsp;&nbsp; World</font>
+<p>So how do we display: <font color="#CC0000">Hello&nbsp;&nbsp;&nbsp;
+"World"</font> ?
+<br><font color="#3333FF">$ echo "Hello&nbsp;&nbsp; \"World\""</font>
+<p>The first and last " characters wrap the whole lot into one parameter
+passed to echo so that the spacing between the two words is kept as is.
+But the code:
+<br><font color="#3333FF">$ echo "Hello&nbsp;&nbsp; "World""</font>
+<br>would be interpreted as three parameters:
+<br><font color="#3333FF">"Hello&nbsp;&nbsp; "</font>
+<br><font color="#3333FF">World</font>
+<br><font color="#3333FF">""</font>
+<br>So the output would be
+<br><font color="#3333FF">Hello&nbsp;&nbsp;&nbsp; World</font>
+<p>Note that we lose the quotes entirely. The first and second quotes mark
+off the Hello and following spaces; the second argument is an unquoted
+"World" and the third argument is the empty string; "".
+<p>Most characters (*, ', etc) are not interpreted (ie, they are taken
+literally) by means of placing them in double quotes ("). They are taken
+as is and passed on the the command being called.
+<br>However, ", $, `, and \ are still interpreted by the shell, even when
+they're in double quotes.
+<br>The backslash (\) character is used to mark these special characters
+so that they are not interpreted by the shell, but passed on to the command
+being run (for example, echo).
+<br>So to output the string: "A quote is ", backslash is \, backtick is
+`, a few spaces are&nbsp;&nbsp;&nbsp;&nbsp; and dollar is $", we would
+have to write:
+<br><font color="#3333FF">$ echo "A quote is \", backslash is \\, backtick
+is \`, a few spaces are&nbsp;&nbsp;&nbsp; and dollar is \$"</font>
+<br><font color="#3333FF">A quote is ", backslash is \, backtick is `,
+a few spaces are&nbsp;&nbsp;&nbsp; and dollar is $</font>
+<p>We have seen why the " is special for preserving spacing. Dollar is
+special because it marks a variable, so $MY_VAR is replaced by the shell
+with the contents of the variable MY_VAR. Backslash is special because
+it is itself used to mark other characters off; we need the following options
+for a complete shell:
+<br><font color="#3333FF">$ echo "This is \\ a backslash"</font>
+<br><font color="#3333FF">This is \ a backslash</font>
+<br><font color="#3333FF">$ echo "This is \" a quote and this is \\ a backslash"</font>
+<br><font color="#3333FF">This is " a quote and this is \ a backslash</font>
+<p>So backslash itself must be escaped to show that it is to be taken literally.
+The other special character, the backtick, is discussed later in <a href="#EXTERNAL_PROGRAMS">External
+Programs</a>.
+<br><a NAME="LOOPS"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>LOOPS</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - <a href="mailto:Lev.Selector@gmail.com">email</a></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Loops</font></b>
+<p>Most languages have the concept of loops: If we want to repeat a task
+twenty times, we don't want to have to type in the code twenty times, with
+maybe a slight change each time.
+<p>As a result, we have FOR and WHILE loops in the Bourne shell.
+<p><b><u>for Loops</u></b> - <i>for</i> loops iterate through a set of
+values until the list is exhausted:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br>for i in 1 2 3 4 5
+<br>do
+<br>&nbsp; echo "Looping ... number $i"
+<br>done</td>
+</tr>
+</table>
+Try this code and see what it does.
+<br>Note that the values can be anything at all:
+<p>Another code is well worth trying:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br>for i in hello 1 * 2 goodbye
+<br>do
+<br>&nbsp; echo "Looping ... i is set to $i"
+<br>done</td>
+</tr>
+</table>
+Make sure that you understand what is happening here. Try it without the
+* and grasp the idea, then re-read the <a href="#WILDCARDS">Wildcards</a>
+section and try it again with the * in place. Try it also with the * surrounded
+by double quotes, and try it preceded by a backslash (\*)
+<p><b><u>While Loops</u></b> - <i>while</i> loops can be much more fun!
+(depending on your idea of fun...)
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br>INPUT_STRING=hello
+<br>while [ "$INPUT_STRING" != "bye" ]
+<br>do
+<br>&nbsp; echo "Please type something in (bye to quit)"
+<br>&nbsp; read INPUT_STRING
+<br>&nbsp; echo "You typed: $INPUT_STRING"
+<br>done</td>
+</tr>
+</table>
+What happens here, is that the echo and read statements will run indefinitely
+until you type "bye" when prompted.
+<p>The colon <b>(<font color="#CC0000"> : </font>)</b> always evaluates
+to true; whilst using this can be necessary sometimes, it is preferrable
+to use a real exit condition. Compare quitting the above loop with the
+one below; see which is the more elegant:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br>while :
+<br>do
+<br>&nbsp; echo "Please type something in (^C to quit)"
+<br>&nbsp; read INPUT_STRING
+<br>&nbsp; echo "You typed: $INPUT_STRING"
+<br>done</td>
+</tr>
+</table>
+
+<p>Another useful trick is the <b><u><font color="#CC0000">while&nbsp;
+read&nbsp;&nbsp; f&nbsp;&nbsp; loop</font></u></b>.
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br>while read f
+<br>do
+<br>&nbsp; case $f in
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hello)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+echo English&nbsp;&nbsp;&nbsp; ;;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; howdy)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+echo American&nbsp;&nbsp; ;;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; gday)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+echo Australian ;;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bonjour)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+echo French&nbsp;&nbsp;&nbsp;&nbsp; ;;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "guten tag")&nbsp;&nbsp;&nbsp;
+echo German&nbsp;&nbsp;&nbsp;&nbsp; ;;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+echo Unknown Language: $i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+;;
+<br>&nbsp;&nbsp; esac
+<br>done &lt; myfile.txt</td>
+</tr>
+</table>
+
+<p>Review <a href="#var_p1">Variables - Part I</a> to see why we set INPUT_STRING=hello
+before testing it. This makes it a repeat loop, not a traditional while
+loop.
+<br>We will use while loops further in the <a href="#TEST">Test</a> and
+<a href="#CASE">Case</a>
+sections.
+<br><a NAME="TEST"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>TEST</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - <a href="mailto:Lev.Selector@gmail.com">email</a></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Test</font></b>
+<p>Test is used by virtually every shell script written. It is a simple
+but powerful comparison utility. For full details, run man test on your
+system, but here are some usages and typical examples.
+<p>Test is most often invoked indirectly via the&nbsp; <b><font color="#CC0000">if</font></b>&nbsp;
+and&nbsp; <b><font color="#CC0000">while</font></b>&nbsp; statements. It
+is also the reason you will come into difficulties if you create a program
+called <b><font color="#CC0000">test</font></b> and try to run it, as <b><u>this
+shell builtin will be called instead of your program</u></b>!
+<p>The syntax for <b><font color="#CC0000">if...then...else...</font></b>
+is:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>if [ ... ]
+<br>then
+<br>&nbsp; # if-code
+<br>else
+<br>&nbsp; # else-code
+<br>fi</td>
+</tr>
+</table>
+Note that fi is if backwards! This is used again later with <a href="./case.html">case</a>
+and esac.
+<p>Taking the following code snippet:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>if [ "$X" -lt "0" ]
+<br>then
+<br>&nbsp; echo "X is less than zero"
+<br>fi
+<br>if [ "$X" -gt "0" ]; then
+<br>&nbsp; echo "X is more than than zero"
+<br>fi
+<br>[ "$X" -le "0" ] &amp;&amp; echo "X is less than or equal to&nbsp;
+zero"
+<br>[ "$X" -ge "0" ] &amp;&amp; echo "X is more than or equal to zero"
+<br>[ "$X" = "0" ] &amp;&amp; echo "X is the string or number \"0\""
+<br>[ "$X" = "hello" ] &amp;&amp; echo "X is \"hello\""
+<br>[ "$X" != "hello" ] &amp;&amp; echo "X is not the string \"hello\""
+<br>[ -n "$X" ] &amp;&amp; echo "X is of nonzero length"
+<br>[ -f "$X" ] &amp;&amp; echo "X is the path of a real file" || echo
+"Error: No such file: $X"
+<br>[ -x "$X" ] &amp;&amp; echo "X is the path of an executable file"
+<br>[ "$X" -nt "$Y" ] &amp;&amp; echo "X is a file which is newer than
+Y"</td>
+</tr>
+</table>
+Note that we can use the semicolon (<b> ;</b> ) to join two lines together.
+This is often done to save a bit of space in simple if statements.
+<p>As we see from these examples, test can perform many tests on numbers,
+strings, and filenames.
+<p>There is a simpler way of writing if statements: The &amp;&amp; and
+|| commands give code to run if the result is true.
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br>[ $X -ne 0 ] &amp;&amp; echo "X isn't zero" || echo "X is zero"
+<br>[ -f $X ] &amp;&amp; echo "X is a file" || echo "X is not a file"
+<br>[ -n $X ] &amp;&amp; echo "X is of non-zero length" || echo "X is of
+zero length"</td>
+</tr>
+</table>
+This syntax is possible because there is a file (or shell-builtin) called&nbsp;&nbsp;<b><font color="#CC0000">
+[&nbsp;</font></b>&nbsp; which is linked to test. Be careful using this
+construct, though, as overuse can lead to very hard-to-read code. The if...then...else...
+structure is much more readable. Use of the [...] construct is recommended
+for while loops and trivial sanity checks with which you do not want to
+overly distract the reader.
+<p>We can use test in while loops and the like as follows:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br>X=0
+<br>while [ -n $X ]
+<br>do
+<br>&nbsp; echo "Enter some text (RETURN to quit)"
+<br>&nbsp; read X
+<br>&nbsp; echo "You said: $X"
+<br>done</td>
+</tr>
+</table>
+This code will keep asking for input until you hit RETURN (X is zero length).
+<br><a NAME="CASE"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>CASE</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - <a href="mailto:Lev.Selector@gmail.com">email</a></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Case</font></b>
+<p>The case statement saves going through a whole set of if .. then ..
+else statements. Its syntax is really quite simple:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<p>echo "Please talk to me ..."
+<br>while :
+<br>do
+<br>&nbsp; read INPUT_STRING
+<br>&nbsp; case $INPUT_STRING in
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hello)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+echo "Hello yourself!"
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+;;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bye)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+echo "See you again!"
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+break
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+;;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+echo "Sorry, I don't understand"
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+;;
+<br>&nbsp; esac
+<br>done
+<br>echo
+<br>echo "That's all folks!"</td>
+</tr>
+</table>
+Okay, so it's not the best converstionalist in the world; it's only an
+example!
+<p>Try running it and check how it works...
+<br><font color="#3333FF">$ ./case.sh</font>
+<br><font color="#3333FF">Please talk to me ...</font>
+<br><font color="#3333FF">hello</font>
+<br><font color="#3333FF">Hello yourself!</font>
+<br><font color="#3333FF">what do you think of politics?</font>
+<br><font color="#3333FF">Sorry, I don't understand</font>
+<br><font color="#3333FF">bye</font>
+<br><font color="#3333FF">See you again!</font>
+<p><font color="#3333FF">That's all folks!</font>
+<br><font color="#3333FF">$</font>
+<p>The syntax is quite simple:
+<br>The case line itself is always of the same format, and it means that
+we are testing the value of the variable INPUT_STRING.
+<p>The options we understand are then listed and followed by a right bracket,
+as hello) and bye).
+<br>This means that if INPUT_STRING matches hello then that section of
+code is executed, up to the double semicolon.
+<br>If INPUT_STRING matches bye then the goodbye message is printed and
+the loop exits. Note that if we wanted to exit the script completely then
+we would use the command exit instead of break.
+<br>The third option here, the *), is the default catch-all condition;
+it is not required, but is often useful for debugging purposes even if
+we think we know what values the test variable will have.
+<p>The whole case statement is ended with esac (case backwards!) then we
+end the while loop with a &lt;done>.
+<p>That's about as complicated as case conditions get, but they can be
+a very useful and powerful tool. They are often used to parse the parameters
+passed to a shell script, amongst other uses.
+<br><a NAME="vars_p2"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>VARIABLES - Part II&nbsp;</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - <a href="mailto:Lev.Selector@gmail.com">email</a></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Variables - Part II
+<br>There are a set of variables which are set for you already, and most
+of these cannot have values assigned to them.
+<br>These can contain useful information, which can be used by the script
+to know about the environment in which it is running.
+<p>The first set of variables we will look at are $0 .. $9 and $#.
+<br>The variable $0 is the <i>basename</i> of the program as it was called.
+<br>$1 .. $9 are the first 9 additional parameters the script was called
+with.
+<br>The variable $@ is all parameters $1 .. whatever.
+<br>$# is the number of parameters the script was called with.
+<br>Let's take an example script:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br>echo "I was called with $# parameters"
+<br>echo "My name is $0"
+<br>echo "My first parameter is $1"
+<br>echo "My second parameter is $2"
+<br>echo "All parameters are $@"&nbsp;</td>
+</tr>
+</table>
+Let's look at running this code and see the output:
+<br><font color="#3333FF">$ /home/steve/var2.sh</font>
+<br><font color="#3333FF">I was called with 0 parameters</font>
+<br><font color="#3333FF">My name is /home/steve/var2.sh</font>
+<br><font color="#3333FF">My first parameter is</font>
+<br><font color="#3333FF">My second parameter is</font>
+<br><font color="#3333FF">All parameters are</font>
+<br><font color="#3333FF">$</font>
+<br><font color="#3333FF">$ ./var2.sh hello world earth</font>
+<br><font color="#3333FF">I was called with 3 parameters</font>
+<br><font color="#3333FF">My name is ./var2.sh</font>
+<br><font color="#3333FF">My first parameter is hello</font>
+<br><font color="#3333FF">My second parameter is world</font>
+<br><font color="#3333FF">All parameters are hello world earth</font>
+<p>Note that the value of $0 changes depending on how the script was called.
+$# and $1 .. $2 are set automatically by the shell.
+<p>We can take more than 9 parameters by using the shift command; look
+at the script below:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br>while [ "$#" -gt "0" ]
+<br>do
+<br>&nbsp; echo "\$1 is $1"
+<br>&nbsp; shift
+<br>done&nbsp;</td>
+</tr>
+</table>
+This script keeps on using shift until $# is down to zero, at which point
+the list is empty.
+<p>Another special variable is <b><font color="#CC0000">$?</font></b>.
+This contains the exit value of the last run command. So the code:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br>/usr/local/bin/my-command
+<br>if [ "$?" -ne "0" ]; then
+<br>&nbsp; echo "Sorry, we had a problem there!"
+<br>fi&nbsp;</td>
+</tr>
+</table>
+will attempt to run /usr/local/bin/my-command which should exit with a
+value of zero if all went well, or a nonzero value on failure. We can then
+handle this by checking the value of <b><font color="#CC0000">$?</font></b>
+after calling the command. This helps make scripts robust and more intelligent.
+<p>The other two main variables set for you by the environment are <b><font color="#CC0000">$$</font></b>
+and <b><font color="#CC0000">$!</font></b>. These are both process numbers.
+<br>$$ variable is the PID (Process IDentifier) of the currently running
+shell. This can be useful for creating temporary files, such as <b><font color="#CC0000">/tmp/my-script.$$</font></b>&nbsp;
+which is useful if many instances of the script could be run at the same
+time, and they all need their own temporary files.
+<br>The $! variable is the PID of the last run background process. This
+is useful to keep track of the process as it gets on with its job.
+<p>Another interesting variable is <b><font color="#CC0000">IFS</font></b>.
+This is the <i><u>Internal Field Seperator</u></i>. The default value is
+SPACE TAB NEWLINE, but if you are changing it, it's easier to take a copy,
+as shown:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br>old_IFS="$IFS"
+<br>IFS=:
+<br>echo "Please input some data seperated by colons ..."
+<br>read x y z
+<br>IFS=$old_IFS
+<br>echo "x is $x y is $y z is $z"&nbsp;</td>
+</tr>
+</table>
+This script runs like this:
+<br><font color="#3333FF">$ ./ifs.sh</font>
+<br><font color="#3333FF">Please input some data seperated by colons ...</font>
+<br><font color="#3333FF">hello:how are you:today</font>
+<br><font color="#3333FF">x is hello y is how are you z is today</font>
+<br><a NAME="EXTERNAL_PROGRAMS"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>EXTERNAL PROGRAMS</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - <a href="mailto:Lev.Selector@gmail.com">email</a></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">External Programs</font></b>
+<p>External programs are often used within shell scripts; there are a few
+builtin commands (<b><font color="#CC0000">echo</font></b>, <b><font color="#CC0000">which</font></b>,
+and <b><font color="#CC0000">test</font></b> are commonly builtin), but
+many useful commands are actually Unix utilities, such as <b><font color="#CC0000">tr</font></b>,
+<b><font color="#CC0000">grep</font></b>,
+<b><font color="#CC0000">expr</font></b>
+and <b><font color="#CC0000">cut</font></b>.
+<p>The backtick (`) is also often associated with external commands. Because
+of this, we will discuss the backtick first.
+<br>The backtick is used to indicate that the enclosed text is to be executed
+as a command. This is quite simple to understand. First, use an interactive
+shell to read your full name from /etc/passwd:
+<br><b><font color="#3333FF">$ grep "^${USER}:" /etc/passwd | cut -d: -f5</font></b>
+<br><b><font color="#3333FF">Steve Parker</font></b>
+<p>Now we will grab this output into a variable which we can manipulate
+more easily:
+<br><b><font color="#3333FF">$ MYNAME=`grep "^${USER}:" /etc/passwd | cut
+-d: -f5`</font></b>
+<br><b><font color="#3333FF">$ echo $MYNAME</font></b>
+<br><b><font color="#3333FF">Steve Parker</font></b>
+<p>So we see that the backtick simply catches the standard output from
+any command or set of commands we choose to run. It can also improve performance
+if you want to run a slow command or set of commands and parse various
+bits of its output:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br>find / -name "*.html" -print | grep "/index.html$"
+<br>find / -name "*.html" -print | grep "/contents.html$"&nbsp;</td>
+</tr>
+</table>
+This code could take a long time to run, and we are doing it twice!
+<br>A better solution is:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br>HTML_FILES=`find / -name "*.html" -print`
+<br>echo $HTML_FILES | grep "/index.html$"
+<br>echo $HTML_FILES | grep "/contents.html$"&nbsp;</td>
+</tr>
+</table>
+This way, we are only running the slow find once, roughly halving the execution
+time of the script.
+<br>We discuss specific examples further in the <a href="#HINTS_TIPS">Hints
+and Tips</a> section of this tutorial.
+<br><a NAME="FUNCTIONS"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>FUNCTIONS</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - <a href="mailto:Lev.Selector@gmail.com">email</a></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Functions</font></b>
+<p>One often-overlooked feature of Bourne shell script programming is that
+you can easily write functions for use within your script. This is generally
+done in one of two ways; with a simple script, the function is simply <u>declared
+in the same file</u> as it is called.
+<br>However, when writing a suite of scripts, it is often easier to write
+<u>a
+<font color="#990000">"library"</font>
+of useful functions</u>, and
+<u>source that file</u> at the start of the
+other scripts which use the functions. This will be shown later.
+<br>The method is the same however it is done; we will primarily be using
+the first way here.
+<p>There could be some confusion about whether to call shell functions
+<i>procedures</i>
+or <i>functions</i>; the definition of a function is traditionally that
+is returns a single value, and does not output anything. A procedure, on
+the other hand, does not return a value, but may produce output. A shell
+function may do neither, either or both. It is generally accepted that
+in shell scripts they are called functions.
+<p>A simple script using a function would look like this:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br># A simple script with a function...
+<p>add_a_user()
+<br>{
+<br>&nbsp; USER=$1
+<br>&nbsp; PASSWORD=$2
+<br>&nbsp; shift; shift;
+<br>&nbsp; COMMENTS=$@
+<br>&nbsp; echo "Adding user $USER ..."
+<br>&nbsp; echo useradd -c "$COMMENTS" $USER
+<br>&nbsp; echo passwd $USER $PASSWORD
+<br>&nbsp; echo "Added user $USER ($COMMENTS) with password $PASSWORD"
+<br>}
+<p>###
+<br># Main body of script starts here
+<br>###
+<br>echo "Start of script..."
+<br>add_a_user bob letmein Bob Holness the presenter
+<br>add_a_user fred badpassword Fred Durst the singer
+<br>add_a_user bilko worsepassword Sgt. Bilko the role model
+<br>echo "End of script..."&nbsp;</td>
+</tr>
+</table>
+
+<p>Line 4 identifies itself as a function declaration by ending in ().
+This is followed by {, and everything following to the matching } is taken
+to be the code of that function.
+<p>Note that for this example the useradd and passwd commands have been
+<u>prefixed
+with echo</u> - this is a <u>useful debugging technique</u> to check that
+the right commands would be executed. It also means that you can run the
+script without being root or adding dodgy user accounts to your system!
+<p>So looking through the code, we have been used to the idea that a shell
+script is executed sequentially. This is not so with functions.
+<br>In this case, the function add_a_user is read in and checked for syntax,
+but not executed until it is explicitly called.
+<br>Execution starts with the echo statement "Start of script...". The
+next line, add_a_user bob letmein Bob Holness is recognised as a function
+call so the add_a_user is entered and starts executing with certain additions
+to the environment:
+<br><font color="#006600">$1=bob</font>
+<br><font color="#006600">$2=letmein</font>
+<br><font color="#006600">$3=Bob</font>
+<br><font color="#006600">$4=Holness</font>
+<br><font color="#006600">$5=the</font>
+<br><font color="#006600">$6=presenter</font>
+<br>So whilst within that function, $1 is set to bob, regardless of what
+$1 may be set to outside of the function.
+<br>We use the shift command again to get the $3 and onwards parameters
+into $@.
+<br>The function then adds the user and sets their password. It echoes
+a comment to that effect, and returns control to the next line of the main
+code.
+<p>Note that <b><u>functions can be recusive</u></b> - here's a simple
+example of a factorial function:
+<hr noshade align=left width="40%">
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<p>factorial()
+<br>{
+<br>&nbsp; if [ "$1" -gt "1" ]; then
+<br>&nbsp;&nbsp;&nbsp; i=`expr $1 - 1`
+<br>&nbsp;&nbsp;&nbsp; j=`factorial $i`
+<br>&nbsp;&nbsp;&nbsp; k=`expr $1 \* $j`
+<br>&nbsp;&nbsp;&nbsp; echo $k
+<br>&nbsp; else
+<br>&nbsp;&nbsp;&nbsp; echo 1
+<br>&nbsp; fi
+<br>}
+<br>&nbsp;
+<p>while :
+<br>do
+<br>&nbsp; echo "Enter a number:"
+<br>&nbsp; read x
+<br>&nbsp; factorial $x
+<br>done&nbsp;</td>
+</tr>
+</table>
+
+<p>As promised, we will now briefly discuss using libraries between shell
+scripts. These can also be used to define common variables, as we shall
+see.
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td># common.lib
+<br># Note no #!/bin/sh as this should not spawn an extra shell.
+<br># It's not the end of the world to have one, but clearer not to.
+<br>#
+<br>STD_MSG="About to rename some files..."
+<p>rename()
+<br>{
+<br>&nbsp; # expects to be called as: rename .txt .bak
+<br>&nbsp; FROM=$1
+<br>&nbsp; TO=$2
+<p>&nbsp; for i in *$FROM
+<br>&nbsp; do
+<br>&nbsp;&nbsp;&nbsp; j=`basename $i $FROM`
+<br>&nbsp;&nbsp;&nbsp; mv $i ${j}$TO
+<br>&nbsp; done
+<br>}&nbsp;</td>
+</tr>
+</table>
+
+<hr noshade align=left width="40%">
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br># user1.sh
+<br>. ./common.lib
+<br>echo $STD_MSG
+<br>rename txt bak&nbsp;</td>
+</tr>
+</table>
+
+<hr noshade align=left width="40%">
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br># user2.sh
+<br>. ./common.lib
+<br>echo $STD_MSG
+<br>rename html html-bak&nbsp;</td>
+</tr>
+</table>
+
+<hr noshade align=left width="40%">Here we see two user shell scripts,
+user1.sh and user2.sh, each <i>source</i>ing the common library file common.lib,
+and using variables and functions declared in that file. This is nothing
+too earth-shattering, just an example of how code reuse can be done in
+shell programming.
+<br><a NAME="HINTS_TIPS"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>HINTS AND TIPS</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - <a href="mailto:Lev.Selector@gmail.com">email</a></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Hints and Tips</font></b>
+<p>Unix is full of text manipulating utilities, some of the more powerful
+of which we will now discuss in this section of this tutorial. The significance
+of this, is that virtually everything under Unix <i>is</i> text. Virtually
+any file you can think of is controlled by either a text file, or by a
+command-line-interface (CLI). The only thing you can't automate using a
+shell script is a GUI-only utility or feature. And under Unix, there aren't
+too many of them!
+<p>We have already shown above a use of the simple but effective <b><font color="#CC0000">cut</font></b>
+command. We shall discuss a few examples here some of the more common external
+programs to be used.
+<p><b>grep</b> is an extremely useful utility for the shell script programmer.
+<br>An example of grep would be:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br>steves=`grep -i steve /etc/passwd | cut -d: -f1`
+<br>echo "All users with the word \"steve\" somewhere in their passwd"
+<br>echo "entry are: $steves"&nbsp;</td>
+</tr>
+</table>
+
+<p>This script looks fine if there's only one match. However, if there
+are two lines in /etc/passwd with the word "steve" in them, then the interactive
+shell will display:
+<br><b><font color="#3333FF">$> grep -i steve /etc/passwd</font></b>
+<br><b><font color="#3333FF">steve:x:5062:509:Steve Parker:/home/steve:/bin/bash</font></b>
+<br><b><font color="#3333FF">fred:x:5068:512:Fred Stevens:/home/fred:/bin/bash</font></b>
+<br><b><font color="#3333FF">$> grep -i steve /etc/passwd |cut -d: -f1</font></b>
+<br><b><font color="#3333FF">steve</font></b>
+<br><b><font color="#3333FF">fred</font></b>
+<p>But the script will display:
+<br><b><font color="#3333FF">steve fred</font></b>
+<p><b><u>By putting the result into a variable we have changed the NEWLINEs
+into spaces</u></b>; the sh manpage tells us that the first character in
+$IFS will be used for this purpose. <b><u>IFS is &lt;space>&lt;tab>&lt;cr>
+by default</u></b>. Maybe though we wanted to keep the NEWLINEs: It could
+look better if we made the spaces into NEWLINEs.... This is a job for <b><font color="#3333FF">tr</font></b>:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br>steves=`grep -i steve /etc/passwd | cut -d: -f1`
+<br>echo "All users with the word \"steve\" somewhere in their passwd
+<br>echo "entry are: "
+<br>echo "$steves" | tr ' ' '\012'&nbsp;</td>
+</tr>
+</table>
+Note that tr translated the spaces into octal character 012 (NEWLINE).
+<p>Another common use of tr is its use of range... it can convert text
+to upper or lower case, for example:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br>steves=`grep -i steve /etc/passwd | cut -d: -f1`
+<br>echo "All users with the word \"steve\" somewhere in their passwd
+<br>echo "entry are: "
+<br>echo "$steves" | tr ' ' '\012' | tr '[a-z]' '[A-Z]'&nbsp;</td>
+</tr>
+</table>
+
+<p>Here we have added a translation of [a-z] to [A-Z]. Note that there
+are exactly the same number of values in the range a-z as A-Z. This can
+then translate any character falling into the ASCII range a-z into A-Z
+... in other words, converting lowercase letters into uppercase. tr is
+actually cleverer than this: tr [:lower:] [:upper:] would do the job just
+as well, and possibly more readably. It's also not as portable; not every
+tr can do this.
+<br><a NAME="CGI_scripting"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>CGI Scripting</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - <a href="mailto:Lev.Selector@gmail.com">email</a></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>For CGI programming, there are a couple of extra variables to be aware
+of, and a few tips I've picked up along the way.
+<br>Although the shell may not seem the obvious choice for CGI programming,
+it is quick to write and simple to debug. As such, it makes for an ideal
+prototyping language for CGI scripts, and fine for simple or little-used
+CGI scripts permanently.
+<br><b>fortune.cgi</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#CCFFFF" >
+<tr>
+<td>#!/bin/sh
+<p>echo "Content-type: text/html"
+<br>echo
+<br>echo "&lt;html> &lt;head> &lt;title>Fortune Cookie&lt;/title> &lt;/head>"
+<br>&nbsp;
+<p>oIFS=$IFS
+<br>IFS="&amp;"
+<br>echo $QUERY_STRING|sed s/"%2F"/"\/"/g |sed s/"\%23"/"#"/g> /tmp/cookie.$$
+<br>. /tmp/cookie.$$
+<br>rm /tmp/cookie.$$
+<br>IFS=$oIFS
+<p>cat - &lt;&lt; EOFHTML
+<br>&lt;body text="$textcolour" bgcolor="$bgcolor"> &lt;center> &lt;h1>Fortune
+Cookie&lt;/H1> &lt;/center>&nbsp;
+<br>&lt;BR>
+<br>&lt;PRE>
+<br>EOFHTML
+<br>&nbsp;
+<p>PARM=" "
+<br>echo -n "Reading "
+<p>if [ "$cookiels" = "long" ]
+<br>then
+<br>PARM="-l"&nbsp;
+<br>echo -n "long "
+<br>ckls=">"
+<br>fi
+<p>if [ "$cookiels" = "short" ]
+<br>then
+<br>PARM="-s"&nbsp;
+<br>echo -n "short "
+<br>ckls="&lt;"
+<br>fi
+<p>if [ "$cookiels" = "both" ]
+<br>then
+<br>echo -n "all "
+<br>fi
+<p>if [ "$cookiels" != "both" ]
+<br>then
+<br>PARM="-n ${cookielength} ${PARM}"
+<br>echo -n "(${ckls} ${cookielength} character) "
+<br>fi
+<p>if [ -n "${usegivenfile}" ]
+<br>then
+<br>PARM="${givenfile} ${PARM}"
+<br>echo -n "cookies from ${givenfile} ..."
+<br>else
+<br>PARM="${cookiedirectory} ${PARM}"
+<br>#echo -n "all cookies in ${cookiedirectory} ..."
+<br>echo -n "cookies..."
+<br>fi
+<br>echo
+<br>echo "$ /usr/games/fortune $PARM"
+<br>echo "&lt;HR> &lt;BR> &lt;BR> &lt;BR>"
+<p>/usr/games/fortune ${PARM}
+<br>echo "&lt;/pre>"
+<p>cat -- &lt;&lt; EOFHTML
+<p>&lt;BR> &lt;BR> &lt;BR> &lt;HR>
+<br>&lt;a href="/cgi-bin/cookie.cgi">Choose new settings for cookie&lt;/a>
+<br>&lt;/body>
+<br>&lt;/html>
+<p>EOFHTML</td>
+</tr>
+</table>
+
+<p><b>cookie.cgi</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<p>dir=/usr/share/games/fortunes
+<p>echo "Content-type: text/html"
+<br>echo
+<br>cat - &lt;&lt; EOFHTML
+<br>&lt;html> &lt;head> &lt;title>Fortune Cookie Loader&lt;/title> &lt;/head>
+<br>&lt;body text=white bgcolor=black> &lt;center> &lt;h1>Fortune Cookie
+Loader&lt;/H1> &lt;/center>&nbsp;
+<br>&lt;BR> &lt;BR> &lt;BR>
+<br>&lt;form action=./fortune.cgi method=get>
+<p>From Directory:
+<br>&lt;input type=text name=cookiedirectory value=$dir size=30c>
+<br>&lt;HR>
+<br>Subject:
+<br>&lt;select name=givenfile>
+<p>EOFHTML
+<br>&nbsp;
+<p>for i in `ls -1 ${dir} | grep -v "\.dat$"`
+<br>do
+<br>echo "&lt;option value=${i}>${i}&lt;/option>"
+<br>done
+<p>cat - &lt;&lt; EOFHTML
+<p>&lt;/select>
+<br>&lt;BR>
+<br>Use only this file:&nbsp;
+<br>&lt;input type=checkbox name=usegivenfile>
+<br>&lt;HR>
+<br>Only Long Cookies:
+<br>&lt;input type=radio name=cookiels value=long>
+<br>&lt;BR>
+<br>Only Short Cookies:&nbsp;
+<br>&lt;input type=radio name=cookiels value=short>
+<br>&lt;BR>
+<br>A Short cookie is less than
+<br>&lt;input type=text size=4c name=cookielength value=160>
+<br>characters long
+<br>&lt;BR>
+<br>Both Long and Short Cookies:&nbsp;
+<br>&lt;input type=radio name=cookiels value=both checked>
+<br>&lt;HR>
+<br>Text Colour:&nbsp;
+<br>&lt;select name=textcolour>
+<p>EOFHTML
+<br>for i in lightgreen green black white red yellow
+<br>do
+<br>echo "&lt;option value=$i>$i&lt;/option>"
+<br>done
+<br>echo "&lt;/select> &lt;BR>Background Colour: "
+<br>echo "&lt;select name=bgcolor>"
+<br>for i in black green white red yellow
+<br>do
+<br>echo "&lt;option value=$i>$i&lt;/option>"
+<br>done
+<br>echo "&lt;/select>"
+<p>cat - &lt;&lt; EOFHTML
+<br>&lt;HR>
+<br>&lt;input type=submit value="Show me the Cookies!">
+<br>... or ...
+<br>&lt;input type=reset value="Reset to Defaults">
+<br>&lt;/form>
+<br>&lt;/body>
+<br>&lt;/html>
+<p>EOFHTML</td>
+</tr>
+</table>
+
+<p>Okay, I'll work on this ... Even as a text file, it's reading the Content-type
+stuff from the script! For now, if you don't see code, hit SHIFT-RELOAD
+under Netscape.
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;</td>
+</tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!-- This example is from JavaScript: The Definitive Guide, 3rd Edition.   -->
+<!-- That book and this example were Written by David Flanagan.            -->
+<!-- They are Copyright (c) 1996, 1997, 1998 O'Reilly & Associates.        -->
+<!-- This example is provided WITHOUT WARRANTY either expressed or implied.-->
+<!-- You may study, use, modify, and distribute it for any purpose,        -->
+<!-- as long as this notice is retained.                                   -->
+
+<STYLE TYPE="text/css">
+/* Specify that headings display in blue italic text. */
+H1, H2 { color: blue; font-style: italic }
+
+/* 
+ * Any element of CLASS="WARNING" displays in bold on an 
+ * indented yellow background with a fat red border.
+ */
+.WARNING { 
+        font-weight: bold;
+	background-color: yellow; 
+	margin-left: 1in;
+	margin-right: 1in;
+	border-color: red;
+	border-width: 8;
+	border-style: solid
+}
+
+/*
+ * A H1 or H2 heading within an element with CLASS="WARNING" 
+ * should be centered, in addition to appearing in blue italics.
+ */
+.WARNING H1, .WARNING H2 { text-align: center }
+/* The single element with ID="P23" displays in centered uppercase. */
+#P23 {
+	text-align: center;
+	text-transform: uppercase;
+}
+</STYLE>
+
+<H1>Cascading Style Sheets Demo</H1>
+
+<DIV CLASS="WARNING">
+<H2>Warning</H2>
+This is a warning!
+Notice how it grabs your attention with its bold text and bright colors.
+Also notice that the heading is centered and in blue italics.
+</DIV>
+
+<P ID="P23">
+This paragraph is centered<BR>
+and appears in uppercase letters.<BR>
+<SPAN STYLE="text-transform: none">
+Here we explicitly use an inline style to override the uppercase letters.
+</SPAN>
+</P>

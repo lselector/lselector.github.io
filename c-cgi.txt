@@ -1,0 +1,162 @@
+#include <stdio.h>
+#include <signal.h>
+
+void catch()
+{
+        printf("error=yes\n");
+        exit(1);
+}
+
+main()
+{
+char *buf;
+char *final;
+char addon[100];
+short i;
+short j;
+short k;
+short hex1;
+short hex2;
+void catch();
+int f;
+int g;
+char *tmp_char, *last_amp;
+int thesize = 0;
+
+        tmp_char = (char *) getenv ( "CONTENT_LENGTH" );
+        if ( tmp_char != (char *)NULL ) thesize = atoi ( tmp_char );
+        if ( thesize == 0 ) thesize = 8190;
+        buf = (char *)malloc(thesize+1);
+        final = (char *)malloc(2 * (thesize+1));
+        if ( buf == (char *)NULL || final == (char *)NULL ) {
+                printf ("ERROR=\"Can not malloc\"\n");
+                exit (1);
+        }
+
+        memset ( final, 0, 2*(thesize+1) );
+        memset ( buf, 0, thesize+1 );
+
+        signal(SIGALRM,catch);
+        alarm(5);
+        f=fileno(stdin);
+        g=readn(f,buf,thesize);
+
+        if(g<1){
+                exit(1);
+        }
+        for(g=0;g<thesize;g++)
+                if(buf[g]<32){
+                        buf[g]=0;
+                        break;
+                }
+
+        /* -- Look for special x and y variables -- */
+        memset (addon, 0, sizeof addon);
+        last_amp = buf;
+        while (last_amp != (char *)NULL)
+        {
+                tmp_char = (char *) strpbrk ((last_amp+1), "&.=");
+                if (tmp_char == (char *) NULL)
+                        break;
+                else
+                if ((*tmp_char) == '=') /* -- Regular Variable -- */
+                {
+                        last_amp = (char *) strchr (tmp_char, '&');
+                        continue;
+                }
+                if ((*tmp_char) == '&') /* -- Regular Variable -- */
+                {
+                        last_amp = tmp_char;
+                        continue;
+                }
+                else /* -- This is an image variable to be translated -- */
+                {
+                        (*tmp_char) = 0; tmp_char++;
+                        (*last_amp) = 0; last_amp++;
+                        sprintf (addon, "SelectedButton=\"%s\"\0", last_amp);
+                        tmp_char = (char *) strchr (tmp_char, '&');
+                        if (tmp_char == (char *) NULL)
+                                tmp_char = &buf[g];
+
+                        /* -- Erase the image variable -- */
+                        while (last_amp != tmp_char)
+                        {
+                                (*last_amp) = 0; last_amp++;
+                        }
+                }
+        }
+
+        /* -- Start Main Parsing -- */
+        for(i=0,j=0;i<g;i++){
+                k = buf[i];
+                switch(k){
+                        case 0:
+                                break;
+                        case '+':
+                        case '`':
+                                final[j++]=' ';
+                                break;
+                        case '&':
+                                if (!j) break;
+                                final[j++]='\"';
+                                final[j++]=';';
+                                break;
+                        case '\"':
+                                if (!j) break;
+                                final[j++]='\\';
+                                final[j++]='\"';
+                                break;
+                        case '%':
+                                hex1=buf[++i];
+                                hex2=buf[++i];
+                                if(!isxdigit(hex1)||!isxdigit(hex2)) break;
+                                hex1=toupper(hex1);
+                                hex2=toupper(hex2);
+                                if(isalpha(hex1)){
+                                        k=16*(hex1-'A'+10);
+                                }else{
+                                        k=16*(hex1-'0');
+                                }
+                                if(isalpha(hex2)){
+                                        k+=(hex2-'A'+10);
+                                }else{
+                                        k+=(hex2-'0');
+                                }
+                                if(k=='*'){
+                                        if(j==0||!isalnum(final[j-1]))
+                                                k=32;
+                                }
+                                if(k=='\\'){
+                                        final[j++]=k;
+                                        final[j++]=k;
+                                        final[j++]=k;
+                                }
+                                if(k=='\"'){
+                                        final[j++]='\\';
+                                }
+                                if ( k == '`' ) {
+                                        k = ' ';
+                                }
+                                final[j++]=k;
+                                break;
+                        case '=':
+                                final[j++]='=';
+                                final[j++]='\"';
+                                break;
+                        default:
+                                if(k=='*'){
+                                        if(j==0||(!isalnum(final[j-1])&&final[j-1]!='*'))
+                                                k=32;
+                                }
+                                final[j++]=k;
+                                break;
+                }
+        }
+        if (j)
+                final[j++]='\"';
+        if (j && addon[0])
+                final[j++]=';';
+        strcat (final, addon);
+        printf("%s\n",final);                   /* output piece */
+        fflush(stdout);
+}

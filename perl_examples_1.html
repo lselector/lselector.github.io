@@ -1,0 +1,705 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>perl_examples</title>
+<!--
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Perl examples</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Perl examples</font></b> - Under construction
+- but still useful.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 >
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><b><font color="#CC0000">This page</font></b></td>
+
+<td ALIGN=LEFT VALIGN=TOP></td>
+
+<td ALIGN=LEFT VALIGN=TOP></td>
+
+<td ALIGN=LEFT VALIGN=TOP><b><font color="#CC0000">Other pages</font></b></td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP>- <a href="#first_perl_program">first program</a>
+<br>- <a href="#first_cgi_script">first CGI script</a>
+<br>- <a href="#send_email">send email</a>
+<br>- <a href="#read_file">read file</a>
+<br>- <a href="#extracting_emails_simple">process file</a>
+<br>- <a href="#extracting_emails">extract emails</a></td>
+
+<td ALIGN=LEFT VALIGN=TOP>- <a href="#robots_http_clients">web robots_http_clients</a>
+<br>- <a href="#factorial">factorial</a>
+<br>- <a href="#command_line_args">command line args</a>
+<br>- <a href="#external_programs">external programs</a>
+<br>-
+<br>-</td>
+
+<td ALIGN=LEFT VALIGN=TOP>- <a href="#dbi_oracle">dbi_oracle</a>
+<br>- <a href="#dbi_mysql">dbi_mysql</a>
+<br>- <a href="#dbi_sybase">dbi_sybase</a>
+<br>- <a href="#dbi_db2">dbi_db2</a>
+<br>- <a href="#email_attachments">email_arttachments</a>
+<br>- <a href="#emulating_grep">my grep</a>
+<br>- <a href="#array_hash_init">hash array init</a></td>
+
+<td ALIGN=LEFT VALIGN=TOP>-
+<br>-
+<br>-
+<br>-
+<br>-</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>First programs</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<a NAME="first_perl_program"></a>
+<p>First program prints the word Hello:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#99FF99" >
+<tr>
+<td NOWRAP>#/usr/local/bin/perl
+<br>print "Hello\n";</td>
+
+<td BGCOLOR="#FFFFFF">&nbsp;</td>
+
+<td BGCOLOR="#FFFFCC">first line (also called "shebang-line)- tells where
+perl compiler is
+<br>\n - end of the line (start new line) symbol</td>
+</tr>
+</table>
+<a NAME="first_cgi_script"></a>
+<p>First CGI script:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#99FF99" >
+<tr>
+<td ALIGN=LEFT VALIGN=TOP NOWRAP>#/usr/local/bin/perl
+<br>$|++;
+<br>print "Content-type: text/html\n\n";
+<br>print "&lt;html>Hello&lt;/html>\n";</td>
+
+<td BGCOLOR="#FFFFFF">&nbsp;</td>
+
+<td BGCOLOR="#FFFFCC">$|&nbsp;&nbsp; is a special variable which controls
+bufferring of the output. It has an undef-value by default. It is a good
+idea to set it (increase to 1 in this example) to turn off bufferring.
+<p>Note that the "Content-type" line has 2 "\n" symbols at the end - thus
+there is an empty line between the header and the html itself.</td>
+</tr>
+</table>
+<a NAME="send_email"></a>
+<p>Sending email (simple example using external program sendmail, plain
+text, no attachments):
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td ALIGN=LEFT VALIGN=TOP NOWRAP><font color="#3333FF">$sendmail' => '/usr/sbin/sendmail
+-t -oi';</font>
+<br><font color="#3333FF">open(MAIL,"|$sendmail");</font>
+<br><font color="#3333FF">print MAIL &lt;&lt;EOM;</font>
+<br><font color="#3333FF">From: $from_email ($from_name)</font>
+<br><font color="#3333FF">To: $to_email ($to_name)</font>
+<br><font color="#3333FF">Subject: $subject</font>
+<p><font color="#3333FF">$email_txt</font>
+<br><font color="#3333FF">EOM</font>
+<br><font color="#3333FF">close(MAIL);</font></td>
+</tr>
+</table>
+<a NAME="read_file"></a>
+<p>Read a text file "file1.txt" and print it line by line on the screen:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#99FF99" >
+<tr>
+<td ALIGN=LEFT VALIGN=TOP NOWRAP>#/usr/local/bin/perl
+<br>use strict;
+<br>my $fname = "file1.txt";
+<br>open(IN, $fname) or die "can't open file $fname: $!";
+<br>while (my $line = &lt;IN>) { print $line; }</td>
+
+<td BGCOLOR="#FFFFFF">&nbsp;</td>
+
+<td BGCOLOR="#FFFFCC">"use strict" pragma - always use it when using variables
+<br>variable may contain text or number
+<br>when opening file - provide a way to exit (die) and show the error
+($!).</td>
+</tr>
+</table>
+<a NAME="extracting_emails_simple"></a>
+<p>Extract emails from a text file:
+<br>&nbsp; read a source text file "s.txt",
+<br>&nbsp; find lines which contain '@' in them
+<br>&nbsp; and print only these lines into the destination file "d.txt":
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#99FF99" >
+<tr>
+<td ALIGN=LEFT VALIGN=TOP NOWRAP>#/usr/local/bin/perl
+<br>open(IN, "s.txt") or die "can't open file for reading: $!";
+<br>open(OUT, ">d.txt") or die "can't open file for writing: $!";
+<br>while (&lt;IN>) {&nbsp; if (/@/) { print OUT; }}</td>
+</tr>
+</table>
+<a NAME="extracting_emails"></a>
+<p>Now a longer version of the same email-extracting program.
+<br>It is a real script I used when looking for a job.
+<br>It uses many idioms which were not explained yet:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td ALIGN=LEFT VALIGN=TOP NOWRAP><font color="#009900">&nbsp; #---------------------------------------------------------------</font>
+<br><font color="#009900">&nbsp; # conv.pl - utility to extract emails
+from bunch of text advertisings</font>
+<br><font color="#009900">&nbsp; # The program reads source file &lt;s.txt>,</font>
+<br><font color="#009900">&nbsp; # selects lines with a "@" symbol, cleans
+them, removes duplicates,</font>
+<br><font color="#009900">&nbsp; # and stores in the array</font>
+<br><font color="#009900">&nbsp; # sorts this array of emails by domain
+name (tail after "@")</font>
+<br><font color="#009900">&nbsp; # saves these emails into the file &lt;d.txt>.</font>
+<br><font color="#009900">&nbsp; #---------------------------------------------------------------</font>
+<p><font color="#3333FF">&nbsp; use strict;</font>
+<p><font color="#3333FF">&nbsp; my @data=();</font>
+<br><font color="#3333FF">&nbsp; open (IN,"s.txt");</font>
+<br><font color="#3333FF">&nbsp; while ( &lt;IN> ){</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; if (/@/) { chomp; push @data,
+$_; }</font>
+<br><font color="#3333FF">&nbsp; }</font>
+<br><font color="#3333FF">&nbsp; close (IN);</font>
+<p><font color="#009900">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #-----&nbsp;&nbsp;
+clean emails&nbsp;&nbsp; -----#</font>
+<p><font color="#3333FF">&nbsp; for (@data) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; tr/[A-Z]/[a-z]/;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; s/e(-|:|\s+)?mail:?\s*//;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; s/(^\s+|\s+$)//g;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; s/[.,]$//g;</font>
+<p><font color="#3333FF">&nbsp;&nbsp;&nbsp; s/&lt;br>//g;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; s/&lt;\/a>//g;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; s/^[^@]*?mailto://;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; s/\?subject.*//;</font>
+<br><font color="#3333FF">&nbsp; }</font>
+<p><font color="#009900">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #-----&nbsp;&nbsp;
+remove duplicates&nbsp; -----#</font>
+<p><font color="#3333FF">&nbsp; my %myhash=();</font>
+<br><font color="#3333FF">&nbsp; @myhash{@data} = ();&nbsp; </font><font color="#009900">#
+intialize hash to undef values using slice syntax</font>
+<br><font color="#3333FF">&nbsp; @data =keys %myhash;</font>
+<p><font color="#009900">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #-----&nbsp;&nbsp;
+sort by domain name&nbsp;&nbsp; -----#</font>
+<p><font color="#3333FF">&nbsp; my @sorteddata =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font><font color="#009900"># Schwartzian Transform:</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; map {$_->[0]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font><font color="#009900"># map back</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; sort { $a->[1] cmp $b->[1]
+} </font><font color="#009900"># sort by cleanned element</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; map { m/@([a-zA-Z0-9\-.]*)\b/;
+[$_, $1]}</font><font color="#009900"> # map to a list anon.2-element arrays</font>
+<br><font color="#3333FF">&nbsp; @data;</font>
+<p><font color="#3333FF">&nbsp;</font><font color="#009900">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#-----&nbsp;&nbsp; write to file&nbsp;&nbsp; -----#</font>
+<p><font color="#3333FF">&nbsp; open (OUT,">d.txt");</font>
+<br><font color="#3333FF">&nbsp; map { print $_ , "\n"; print OUT $_ ,
+"\n"; } @sorteddata;</font>
+<br><font color="#3333FF">&nbsp; close (OUT);</font>
+<br><font color="#3333FF">&nbsp; exit(0);</font>
+<br><font color="#3333FF">&nbsp; __END__</font></td>
+</tr>
+</table>
+<a NAME="robots_http_clients"></a>
+<p>With Perl it is easy to make automatic robots browsing Internet.
+<br>Here is how simple it is to get the html source text of some internet
+page:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#99FF99" >
+<tr>
+<td ALIGN=LEFT VALIGN=TOP NOWRAP>use LWP::Simple;&nbsp;
+<br>$text = get('http://www.someaddress.com');</td>
+</tr>
+</table>
+<a NAME="factorial"></a>
+<p>Calculations example: asking for input and calculate factorial
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#99FF99" >
+<tr>
+<td ALIGN=LEFT VALIGN=TOP NOWRAP>use strict;
+<p># ---- recursive function ----
+<br>sub factorial {
+<br>&nbsp; my $k = shift;
+<br>&nbsp; return 1 if $k&lt;=1;
+<br>&nbsp; return $k*factorial($k-1);
+<br>}
+<p>print"Calculating factorial\n";
+<br>while(1) {
+<br>&nbsp; print "Enter number (^C to exit):";
+<br>&nbsp; my $n=&lt;>; chomp($n); $n = int($n);
+<br>&nbsp; if($n&lt;1) { print "need integer >1\n"; next; }&nbsp;
+<br>&nbsp; print "factorial of $n is ",&amp;factorial($n),"\n";
+<br>}</td>
+</tr>
+</table>
+<a NAME="command_line_args"></a>
+<p>Command line parameters:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#99FF99" >
+<tr>
+<td ALIGN=LEFT VALIGN=TOP NOWRAP>use strict;
+<br>if (! @ARGV) {
+<br>&nbsp; print"you entered no parameters\n";&nbsp;
+<br>&nbsp; exit;
+<br>}
+<br>print"you entered ", scalar @ARGV, " parameters:\n";
+<br>for (@ARGV) { print "$_\n"; }</td>
+</tr>
+</table>
+<a NAME="external_programs"></a>
+<p>Run external programs from inside perl - and gather their output:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#99FF99" >
+<tr>
+<td ALIGN=LEFT VALIGN=TOP NOWRAP># --- run another program (returns error
+code)
+<br>&nbsp; system $command, @args;
+<p># --- gather ouput from another program
+<br>&nbsp; $output = `program args`;&nbsp;&nbsp; # backticks
+<br>&nbsp; $output = qx(program args); # same as using backticks
+<br>&nbsp; @aoutput = qx(program args); # collect output into array of
+lines</td>
+</tr>
+</table>
+<a NAME="perl_database_scripts"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>database</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<a NAME="dbi_oracle"></a>
+<p>Here is a CGI script which queries the Oracle database and shows results
+on the browser:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT VALIGN=TOP NOWRAP>#!/usr/local/bin/perl&nbsp;
+<br>$|++;
+<br>use DBI;
+<br>$ENV{ORACLE_HOME}='/usr/local/oracle/8i/u01/app/oracle/product/8.1.6';
+<p>my $dbh = DBI->connect("dbi:Oracle:starter", "scott", "tiger",&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{ RaiseError => 1, PrintError => 1 } )&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+or die $DBI::errstr;
+<p>my $sql = "SELECT * FROM EMP";
+<br>my $sth = $dbh->prepare($sql);
+<br>my $rv&nbsp; = $sth->execute();
+<p>print "Content-Type: text/html\n\n";
+<br>print "&lt;html>&lt;head>&lt;title>test oracle&lt;/title>&lt;/head>&lt;body>&lt;table>\n";
+<p>while(@row = $sth->fetchrow_array) {
+<br>&nbsp; print "&lt;tr>\n";
+<br>&nbsp; map { print "&lt;td>$_&lt;/td>\n"; } @row;
+<br>&nbsp; print "&lt;/tr>\n";
+<br>}
+<p>print "&lt;/table>&lt;/body>&lt;/html>\n";
+<br>$dbh->disconnect;</td>
+</tr>
+</table>
+<a NAME="dbi_mysql"></a>
+<p>Similar example for MySQL:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT VALIGN=TOP NOWRAP>$dbh = DBI->connect( "dbi:mysql:somedatabase",
+"somename", "",
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{ PrintError => 0 })
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or die "Can't connect to mysql
+database: $DBI::errstr\n";
+<p>$in{fname} = 'John';
+<br>$in{lname} = 'Smith';
+<p>$sth = $dbh-> prepare ( "INSERT into MyTable (fname, lname)&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+values ('$in{flname}', '$in{lname}')" );
+<br>$sth->execute();
+<p>$sth = $dbh-> prepare ("select fname, lname from MyTable");
+<br>$sth->execute();
+<p># ....
+<p>while( @data = $sth->fetchrow_array ) {
+<br>&nbsp; print "&lt;tr>&lt;td>$data[0]&lt;/td>&lt;td>$data[1]&lt;/td>&lt;/tr>";
+<br>}</td>
+</tr>
+</table>
+<a NAME="dbi_sybase"></a>
+<p>Similar example for Sybase:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT VALIGN=TOP NOWRAP>#!/usr/bin/perl
+<br>use DBI;
+<br>use strict;
+<p># ....
+<p>$dbh = DBI->connect("dbi:Sybase:$server", "$user", "$password")
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or die "Cannot log into $server\n";
+<br>&nbsp; ($dbh->do("use $dbname") != -2)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or die "Cannot switch to $dbname\n";
+<p>&amp;get_info();
+<br>&amp;finish();
+<p># ------------------------------------------------------------------
+<br># exec_sql()
+<br># ------------------------------------------------------------------
+<br>sub exec_sql {
+<br>&nbsp;&nbsp; my $sql = shift;
+<br>&nbsp;&nbsp; my $sth = $dbh->prepare($sql)&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or die "Can't prepare SQL statement:
+$DBI::errstr\n";
+<br>&nbsp;&nbsp; $sth->execute&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or die "Can't execute SQL statement:
+$DBI::errstr\n";
+<br>&nbsp;&nbsp; return $sth;
+<br>}
+<p># ------------------------------------------------------------------
+<br># get_info()
+<br># ------------------------------------------------------------------
+<br>sub get_kerb {
+<br>&nbsp; my $sql = "select * from somedb..sometbl where fname is not
+null";
+<br>&nbsp; my $sth = exec_sql($sql);
+<br>&nbsp; my $hash_ref = '';
+<br>&nbsp; my @result=();
+<br>&nbsp; while ( $hash_ref = $sth->fetchrow_hashref()) {
+<br>&nbsp;&nbsp;&nbsp; my $kid = $hash_ref->{kid};
+<br>&nbsp;&nbsp;&nbsp; my $fname = $hash_ref->{fname};
+<br>&nbsp;&nbsp;&nbsp; my $lname = $hash_ref->{lname};
+<br>&nbsp;&nbsp;&nbsp; my $email = $hash_ref->{email};
+<br>&nbsp;&nbsp;&nbsp; my $phone = $hash_ref->{work_phone};
+<br>&nbsp;&nbsp;&nbsp; push @result, "$kid - $lname, $fname - $email -
+$phone";
+<br>&nbsp; }
+<br>&nbsp; $sth->finish();
+<br>&nbsp; if (! @result) { print "nothing found\n"; return; }
+<br>&nbsp; for (@result) {print "$_ \n";}
+<br>}
+<p># ------------------------------------------------------------------
+<br># finish()
+<br># ------------------------------------------------------------------
+<br>sub finish {
+<br>&nbsp;&nbsp; debug "finishing\n";
+<br>&nbsp;&nbsp; $dbh->disconnect;
+<br>}
+<p>__END__</td>
+</tr>
+</table>
+<a NAME="dbi_db2"></a>
+<p>Similar for DB2 - here is a comparison side by side: db2 vs Sybase::
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT VALIGN=TOP NOWRAP>#!/usr/local/bin/perl
+<p>use DBI;
+<p>db2_example();
+<br>syb_example();
+<p># ------------------------------------------------------------------
+<br>#&nbsp; db2_example()
+<br># ------------------------------------------------------------------
+<br>sub db2_example {
+<p>&nbsp;&nbsp;&nbsp; my $database = "sample";
+<br>&nbsp;&nbsp;&nbsp; my $dbh = DBI->connect("dbi:DB2:$database")
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; || die "Cannot log
+into $database\n";
+<p>&nbsp;&nbsp;&nbsp; my $sql = "select TABSCHEMA, TABNAME from syscat.tables"
+;
+<p>&nbsp;&nbsp;&nbsp; my $sth = $dbh->prepare($sql)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or die "Can't prepare SQL
+statement: $DBI::errstr\n";
+<p>&nbsp;&nbsp;&nbsp; $sth->execute
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or die "Can't execute SQL
+statement: $DBI::errstr\n";
+<p>#&nbsp;&nbsp;&nbsp; while( @row = $sth->fetchrow ) { print @row; }
+<br>&nbsp;&nbsp;&nbsp; while ($hash_ref = $sth->fetchrow_hashref()) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; foreach $k (keys %$hash_ref)
+{
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+printf("%-30s %-30s\n", $k, $hash_ref->{"$k"});
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print '-' x 77 . "\n";
+<br>&nbsp;&nbsp;&nbsp; }
+<br>&nbsp;&nbsp;&nbsp; $dbh->disconnect;
+<br>}
+<p># ------------------------------------------------------------------
+<br>#&nbsp; syb_example()
+<br># ------------------------------------------------------------------
+<br>sub syb_example {
+<br>&nbsp;&nbsp;&nbsp; my $server = 'xxx'
+<br>&nbsp;&nbsp;&nbsp; my $user&nbsp;&nbsp; = 'yyy';
+<br>&nbsp;&nbsp;&nbsp; my $pass&nbsp;&nbsp; = 'zzz';
+<br>&nbsp;&nbsp;&nbsp; my $dbname = 'mydb';
+<p>&nbsp;&nbsp;&nbsp; my($dbh) = DBI->connect("dbi:Sybase:$server", "$user",
+"$pass")
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; || die "Cannot log
+into $server\n";
+<p>&nbsp;&nbsp;&nbsp; if (defined ($dbname) &amp;&amp; $dbname ne "") {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ($dbh->do("use $dbname")
+!= -2)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|| die "Cannot switch to $dbname\n";
+<br>&nbsp;&nbsp;&nbsp; }
+<p>&nbsp;&nbsp;&nbsp; my $sql = "select name from sysobjects" ;
+<p>&nbsp;&nbsp;&nbsp; my $sth = $dbh->prepare($sql)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or die "Can't prepare SQL
+statement: $DBI::errstr\n";
+<p>&nbsp;&nbsp;&nbsp; $sth->execute
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or die "Can't execute SQL
+statement: $DBI::errstr\n";
+<p>&nbsp;&nbsp;&nbsp; my $hash_ref = $sth->fetchrow_hashref();
+<br>&nbsp;&nbsp;&nbsp; $sth->finish();
+<br>&nbsp;&nbsp;&nbsp; $dbh->disconnect;
+<br>}</td>
+</tr>
+</table>
+<a NAME="email_attachments"></a>
+<p>Sending email with an attachment - this is what I use often:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#99FF99" >
+<tr>
+<td ALIGN=LEFT VALIGN=TOP NOWRAP>#!/usr/local/bin/perl
+<br># mymail - script to send email with attachments
+<br># Usage: mymail &lt;from> &lt;to> &lt;subject> file file ...
+<p>use MIME::Lite;&nbsp;&nbsp; # Standard CPAN module
+<p># ----- Select parameters.
+<br>$from = $ARGV[0];
+<br>$to = $ARGV[1];
+<br>$subj = $ARGV[2];
+<br>@files = @ARGV[3..$#ARGV];
+<p># ----- Define association of some file extensions with mime types
+<br>%mime_type = (
+<br>&nbsp;eps => 'application/postscript',
+<br>&nbsp;ps => 'application/postscript',
+<br>&nbsp;pdf => 'application/pdf',
+<br>&nbsp;log => 'text/plain',
+<br>&nbsp;gif => 'image/gif'
+<br>);
+<p># ----- Create a new multipart message:
+<br>$msg = new MIME::Lite
+<br>&nbsp;From&nbsp;&nbsp;&nbsp; =>$from,
+<br>&nbsp; To&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =>$to,
+<br>&nbsp; Subject =>$subj,
+<br>&nbsp; Type&nbsp;&nbsp;&nbsp; =>'multipart/mixed';
+<p># ----- Attach files
+<br>foreach $file (@files) {
+<br>&nbsp; $file =~ /\.([^.]+)$/;
+<br>&nbsp; $ext = $1;
+<br>&nbsp; $msg->attach(
+<br>&nbsp;&nbsp; Type=>$mime_type{$ext},
+<br>&nbsp;&nbsp; Encoding=>'base64',
+<br>&nbsp;&nbsp; Path=>$file
+<br>&nbsp;);
+<br>}
+<p># ----- Send via sendmail.
+<br>$msg->send;</td>
+</tr>
+</table>
+<a NAME="emulating_grep"></a>
+<p>Emulating built-in functions which accept code ref (like map or grep):
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td NOWRAP>sub mygrep (&amp;@) {
+<br>&nbsp; my $coderef = shift;
+<br>&nbsp; my @result;
+<br>&nbsp; for (@_) {
+<br>&nbsp;&nbsp;&nbsp; push (@result,$_) if &amp;$coderef; # do grep filtering
+here
+<br>&nbsp; }
+<br>&nbsp; return @result;
+<br>}
+<p>my @ar1 = qw(1 2 3 4 5);
+<br>my @ar2 = mygrep { $_ >=3 } @ar1;
+<br>print "@ar2\n";</td>
+</tr>
+</table>
+<a NAME="array_hash_init"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td NOWRAP>use strict;
+<p>my %hh=();
+<br>my @aa = (1..1000);
+<p>## ----- example of initializing a hash using a slice syntax - very
+fast:
+<p>@hh{@aa}=();
+<p>print "created ", scalar keys %hh, " hash elements
+<br>press any key to continue\n";
+<br>&lt;>;
+<p>## ----- example of initializing a hash using a map syntax - fast and
+convenient:
+<p>%hh = map { ($_,1) } @aa;
+<br>for (sort {$a &lt;=> $b} keys %hh) { print "$_ => $hh{$_} \n"; }</td>
+</tr>
+</table>
+
+<p>-----------------------------------------------
+<p>misc examples of idiomatic perl:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>use strict;
+<p>print "---------- default values\n";
+<br>my $val;
+<br>print "defined \$val\n" if (defined $val);
+<br>print "zero value \$val\n" if ($val == 0);&nbsp; # this will print
+<br>print "zero width \$val\n" if ($val eq ""); # this will print
+<p>print "---------- splitting \$_ by whitespace\n";
+<br>$_ = 'aa&nbsp;&nbsp;&nbsp; bb cc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dd&nbsp;&nbsp;&nbsp;
+ee';
+<br>my @aa = split;
+<br>for (@aa) {print"$_\n"}
+<p>print "---------- substitute in \$new but not \$old\n";
+<br>my ($old, $new) = ("bad man","");
+<br>($new = $old) =~ s/bad/good/g;
+<br>print "$old\n";
+<br>print "$new\n";
+<p>print "---------- same on arrays \@new, \@old\n";
+<br>my (@old,@new);
+<br>@old = qw(bad1 bad2 bad3);
+<br>for (@new = @old) {s/bad/good/g}
+<br>print "@old\n";
+<br>print "@new\n";
+<p>print "---------- how many lines started with these 4 words?\n";
+<br>my $words="fee fie foe foo";
+<br>print "$words\n";
+<br>my %seen;
+<br>while(&lt;DATA>) {
+<br>&nbsp; my ($a,$b,$c,$d) = split;
+<br>&nbsp; print unless $seen{$a}{$b}{$c}{$d}++;
+<br>}
+<br>if (my $tmp = $seen{fee}{fie}{foe}{foo}) {
+<br>&nbsp; printf qq(Saw $words %d time%s.\n),
+<br>&nbsp;&nbsp;&nbsp; $tmp, $tmp==1 ? "":"s";
+<br>}
+<br>__END__
+<br>fee fie foe foo&nbsp;&nbsp;&nbsp; aa&nbsp;&nbsp;&nbsp; bb cc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+dd&nbsp;&nbsp;&nbsp; ee
+<br>fee1 fie foe foo&nbsp;&nbsp;&nbsp; aa&nbsp;&nbsp;&nbsp; bb cc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+dd&nbsp;&nbsp;&nbsp; ee
+<br>fee fie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; foe foo&nbsp;&nbsp;&nbsp;
+aa&nbsp;&nbsp;&nbsp; bb cc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dd&nbsp;&nbsp;&nbsp;
+ee
+<br>fee fie2 foe foo&nbsp;&nbsp;&nbsp; aa&nbsp;&nbsp;&nbsp; bb cc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+dd&nbsp;&nbsp;&nbsp; ee
+<br>fee&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fie foe foo&nbsp;&nbsp;&nbsp;
+aa&nbsp;&nbsp;&nbsp; bb cc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dd&nbsp;&nbsp;&nbsp;
+ee
+<br>aa&nbsp; bb cc&nbsp;&nbsp;&nbsp; dd&nbsp;&nbsp;&nbsp; ee</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td NOWRAP>count the number of returned values
+<p>$count = () = function();
+<br>sub aa {return (2,3,4);}
+<br>$count = () = &amp;aa();&nbsp; ## -- cool
+<br>print "$count\n";</td>
+</tr>
+</table>
+
+<p>JAPH - Just Another Perl Hacker - some examples
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td NOWRAP>print map { chr } ('10611711511603209711011111610410'.
+<br>&nbsp;'1114032112101114108032104097099107101114') =~ /.../g;
+<p>tie $" => A; $, = " "; $\ = "\n"; @a = ("") x 2; print map {"@a"} 1
+.. 4;
+<br>sub A::TIESCALAR {bless \my $A => A}
+<br>sub A::FETCH&nbsp;&nbsp;&nbsp;&nbsp; {@q = qw /Just Another Perl Hacker/
+unless @q; shift @q}
+<p><b><u>Here is an explanation for the 2nd one:</u></b>
+<br>tie $" => A;&nbsp; # means calling function A::TIESCALAR
+<br>$, = " "; # to separate words while printing
+<br>$\ = "\n"; # to print "\n" at the end of print statement
+<br>@a = ("") x 2; # creates a dummy array with 2 elements
+<br>print map {"@a"} 1 .. 4; # prints dummy array 4 times
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+# each time a separator $" is inserted between elements
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+# thus each time A::FETCH is called - prints next word
+<p>sub A::TIESCALAR {
+<br>&nbsp; bless \my $A => A # bless reference of "my" variable $A to package
+A
+<br>}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+# and returns it
+<p>sub A::FETCH {
+<br>&nbsp; @q = qw/Just Another Perl Hacker/ unless @q; # creates a 4-element's
+array
+<br>&nbsp; shift @q;&nbsp;&nbsp;&nbsp; # returns next word each time it
+is called
+<br>}</td>
+</tr>
+</table>
+
+<p>for more examples, just search for JAPH on Google.
+<br>You will get hundreds of examples:
+<br>&nbsp; <a href="http://www.perl.com/CPAN-local/misc/japh">www.perl.com/CPAN-local/misc/japh</a>
+<p>----------------------------------
+<br>&nbsp;
+<br>&nbsp;
+</body>
+</html>

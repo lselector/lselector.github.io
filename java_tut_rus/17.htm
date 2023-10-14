@@ -1,0 +1,1164 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Глава 17 Модели обработки событий</TITLE>
+</HEAD>
+<BODY>
+
+<B><FONT FACE="Times New Roman" SIZE=4><P ALIGN="JUSTIFY">Глава 1</FONT><FONT SIZE=4>7 </FONT><FONT FACE="Times New Roman" SIZE=4>Модели обработки событий</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Несмотря на существенные изменения механизма обработки событий в </FONT><FONT SIZE=2>AWT, Java1.1 </FONT><FONT FACE="Times New Roman" SIZE=2>поддерживает обратную совместимость с моделью обработки событий, принятой в </FONT><FONT SIZE=2>Java 1.0. </FONT><FONT FACE="Times New Roman" SIZE=2>Однако такая совместимость относится к типу “все или ничего” – эти две модели настолько отличаются друг от друга, что их невозможно использовать в одном приложении одновременно.</P>
+</FONT><B>
+<FONT FACE="Times New Roman"><P>Модель обработки событий </FONT>Java 1.0</P>
+</B><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Все компоненты, которые мы с вами до сих пор создавали, выглядели неплохо, но были абсолютно бесполезны, поскольку мы не говорили о том, как можно обрабатывать ввод пользователя, осуществляемый с помощью этих управляющих элементов пользовательского интерфейса. </P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Каждый компонент может обрабатывать события, заместив определенные методы, вызываемые используемой по умолчанию реализацией метода handleEvents класса Component. Этот метод вызывается с объектом класса </FONT><B><FONT SIZE=2>Event</B></FONT><FONT FACE="Times New Roman" SIZE=2>, описывающего все возможные типы событий. Наиболее часто используемые события, например, те, что связаны с мышью и клавиатурой, диспетчеризируются другим методам класса Component.</P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Все события, связанные с мышью, вызываются с копией оригинального события, а также с координатами х и у, в которых это событие произошло.</P>
+
+<UL>
+<LI>mouseEnter вызывается в том случае, когда мышь входит в компонент.</LI>
+<LI>mouseExit вызывается при выходе мыши из области компонента.</LI>
+<LI>mouseMove вызывается при перемещении мыши в области компонента.</LI>
+<LI>mouseDown вызывается при нажатии кнопки мыши.</LI>
+<LI>mouseDrag вызывается при перемещении мыши с нажатой кнопкой.</LI>
+<LI>mouseUp вызывается при отпускании кнопки мыши.</LI></UL>
+
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Аналогично, keyDown и keyUp вызываются при каждом нажатии и отпускании клавиши. Событие передается методу вместе с кодом нажатой клавиши. Событие можно проверить, чтобы посмотреть, нажаты ли в данный момент какие либо клавиши-модификаторы, для этой цели можно также пользоваться методами shiftDown, controlDown и metaDown. В классе Event определены десятки констант, позволяющих использовать символические имена, например, PGUP и HOME.</P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Наконец, для работы со специальными событиями, например, с обратными вызовами (callback) из компонентов Button, Scrollbar и Menu, вам придется замещать метод action. Этот метод вызывается с исходным событием и со вторым параметром, который представляет собой компонент пользовательского интерфейса, создавший это событие. Вы должны проверить этот объект, разобраться, какой из компонентов послал вам событие, после чего передать управление соответствующему данному компоненту обработчику. Для того, чтобы перед приведением типа проверить, принадлежит ли объект к определенному классу, например, к классу Button, вы можете использовать оператор instanceof.</P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">А вот и пример на обработку событий. Мы добавили объект Label к примеру с игрой в “пятнашки”, а также заместили метод action для того, чтобы обрабатывать события, возникающие при нажатии кнопок. Точно такой же механизм можно использовать для управления вводом через любой из подклассов Component.</P>
+</FONT><FONT SIZE=2><P ALIGN="JUSTIFY"></P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>/* &lt;applet code = “EventDemo” width=200 height=200&gt;</P>
+<P>   &lt;/applet&gt;</P>
+<P>*/</B></I></FONT><FONT SIZE=2> </P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>import java.awt.*;</P>
+<P>import java.applet.*;</P>
+<P>public class EventDemo extends Applet {</P>
+<P>static final int n = 4;</P>
+<P>Label lab = new Label("?", Label.CENTER);</P>
+<P>public void init() {</P>
+<P>setLayout(new GridLayout(n,  n));</P>
+<P>setFont(new Font("Helvetica", Font.BOLD, 24));</P>
+<P>int width = Integer.parseInt(getParameter("width"));</P>
+<P>int height = Integer.parseInt(getParameter("height"));</P>
+<P>for (int i = 0;  i &lt; n;  i++)  {</P>
+<P>     for (int j = 0;  j  &lt; n;  j++)  {</P>
+<P>          int k = i * n + j;</P>
+<P>          if (k &gt; 0)</P>
+<P>              add(new Button("" + k));</P>
+<P>     }</P>
+<P>}</P>
+<P>lab.setFont(new Font("Helvetica", Font.ITALIC, 24));</P>
+<P>add(lab);</P>
+<P>}</P>
+<P>public boolean action(Event e,  Object o)  {</P>
+<P>if (o instanceof String)  {</P>
+<P>lab.setText((String) o);</P>
+<P>}</P>
+<P>return false;</P>
+<P>} }</P>
+</I></FONT>
+</B><FONT FACE="Times New Roman" SIZE=2><P>Поиграйте с этим примером – </FONT><A HREF="examples/17/EventDemo.html"><U><FONT SIZE=2 COLOR="#0000ff">EventDemo.html</U></FONT></A><FONT SIZE=2>.</P>
+</FONT><B><FONT FACE="Times New Roman"><P>Элементы и связанные с ними события</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">В таблице</FONT><FONT SIZE=2> 5</FONT><FONT FACE="Times New Roman" SIZE=2> для каждого элемента пакета</FONT><FONT SIZE=2> AWT </FONT><FONT FACE="Times New Roman" SIZE=2>перечислены типы событий, которые он может порождать. В первом столбце таблицы указан тип элемента, а во втором</FONT><FONT SIZE=2> —</FONT><FONT FACE="Times New Roman" SIZE=2> тип соответствующего ему события. Тип события представляет собой константу, которая записывается в переменную</FONT><FONT SIZE=2> <I>id</I></FONT><FONT FACE="Times New Roman" SIZE=2> объекта класса</FONT><FONT SIZE=2> Event.</P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">В столбцах с третьего по седьмой указано, устанавливаются ли значения переменных</FONT><FONT SIZE=2> <I>-when</I></FONT><FONT FACE="Times New Roman" SIZE=2> (время события), <I>х</I> (координата <I>х</I> курсора мыши), <I>у </I>(координата <I>у</I> курсора мыши),</FONT><FONT SIZE=2> <I>key</I></FONT><FONT FACE="Times New Roman" SIZE=2> (нажатая кнопка) и</FONT><FONT SIZE=2> <I>modifiers</I></FONT><FONT FACE="Times New Roman" SIZE=2> (специальные клавиши, которые нажаты при этом) для данного события. Если в столбце стоит точка, значит, событие устанавливает значение соответствующей переменной. В восьмом столбце объяснено, что порождает данное событие и приведено значение, которое записывается в переменной</FONT><FONT SIZE=2> <I>arg</I></FONT><FONT FACE="Times New Roman" SIZE=2> объекта класса </FONT><FONT SIZE=2>Event.</P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">События, перечисленные для элементов класса</FONT><FONT SIZE=2> Component,</FONT><FONT FACE="Times New Roman" SIZE=2> применимы ко всем подклассам класса</FONT><FONT SIZE=2> java.awt. Component,</FONT><FONT FACE="Times New Roman" SIZE=2> а события, приведенные для элементов класса</FONT><FONT SIZE=2> window,</FONT><FONT FACE="Times New Roman" SIZE=2> относятся как к подклассам класса</FONT><FONT SIZE=2> window, </FONT><FONT FACE="Times New Roman" SIZE=2>так и к классам</FONT><FONT SIZE=2> Dialog</FONT><FONT FACE="Times New Roman" SIZE=2> и</FONT><FONT SIZE=2> Frame.</P>
+</FONT><I><FONT SIZE=1>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Таблица</FONT><FONT SIZE=2> 5.</FONT><FONT FACE="Times New Roman" SIZE=2> Элементы</FONT><FONT SIZE=2> AWT</FONT><FONT FACE="Times New Roman" SIZE=2> и события</FONT><FONT SIZE=2> Java 1.0,</FONT><FONT FACE="Times New Roman" SIZE=2> которые порождаются ими</P></I></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=2 WIDTH=553>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=65>
+<I><FONT FACE="Times New Roman" SIZE=1><P>Элемент</I></FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" COLSPAN=3 HEIGHT=65>
+<I><FONT FACE="Times New Roman" SIZE=1><P>Тип события</FONT><FONT SIZE=1> (id)</I></FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=65>
+<I><FONT SIZE=1><P>w</P>
+<P>h</P>
+<P>e</P>
+<P>n</P>
+</I></FONT><FONT SIZE=2></FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=65>
+<I><FONT SIZE=1><P>x</I></FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=65>
+<I><FONT SIZE=1><P>y</I></FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=65>
+<I><FONT SIZE=1><P>k</P>
+<P> e y</I></FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=65>
+<I><FONT SIZE=1><P>m </FONT><FONT FACE="Times New Roman" SIZE=1>о</P>
+</FONT><FONT SIZE=1><P>d</P>
+<P>s</I></FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" COLSPAN=2 HEIGHT=65>
+<I><FONT FACE="Times New Roman" SIZE=1><P>Смысл события</I></FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" HEIGHT=65>
+<I><FONT FACE="Times New Roman" SIZE=1><P>Тип и значение переменной </FONT><FONT SIZE=1>arg</I></FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=48>
+<FONT SIZE=1><P>Button </FONT><FONT FACE="Times New Roman" SIZE=1>(кнопка)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<FONT SIZE=1><P>ACTION_EVENT</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=48>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" COLSPAN=2 HEIGHT=48>
+<FONT FACE="Times New Roman" SIZE=1><P>Пользователь нажал кнопку</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" HEIGHT=48>
+<FONT SIZE=1><P>String:</FONT><FONT FACE="Times New Roman" SIZE=1> обозначение кнопки</FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=48>
+<FONT SIZE=1><P>Checkbox </FONT><FONT FACE="Times New Roman" SIZE=1>(флажок)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<FONT SIZE=1><P>ACTION_EVENT</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=48>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" COLSPAN=2 HEIGHT=48>
+<FONT FACE="Times New Roman" SIZE=1><P>Пользователь активизировал флажок</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" HEIGHT=48>
+<FONT SIZE=1><P>Boolean:</FONT><FONT FACE="Times New Roman" SIZE=1> новое состояние флажка</FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=61>
+<FONT SIZE=1><P>Choice </FONT><FONT FACE="Times New Roman" SIZE=1>(список выбора)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" COLSPAN=3 HEIGHT=61>
+<FONT SIZE=1><P>ACTION_EVENT</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=61>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=61>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=61>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=61>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=61>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" COLSPAN=2 HEIGHT=61>
+<FONT FACE="Times New Roman" SIZE=1><P>Пользователь выбрал элемент списка</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" HEIGHT=61>
+<FONT SIZE=1><P>String:</FONT><FONT FACE="Times New Roman" SIZE=1> обозначение выбранного элемента</FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=33>
+<FONT SIZE=1><P>Element </FONT><FONT FACE="Times New Roman" SIZE=1>(элемент)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" COLSPAN=3 HEIGHT=33>
+<FONT SIZE=1><P>GOT_FOCUS</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=33>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=33>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=33>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=33>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=33>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" COLSPAN=2 HEIGHT=33>
+<FONT FACE="Times New Roman" SIZE=1><P>Получение фокуса ввода</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" HEIGHT=33>
+<I><FONT FACE="Times New Roman" SIZE=1><P>не используется</I></FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=76>
+<FONT SIZE=1><P>Element </FONT><FONT FACE="Times New Roman" SIZE=1>(элемент)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>KEY_ACTION</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=2><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=2><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=2><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=2><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=76>
+<FONT SIZE=2><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" COLSPAN=2 HEIGHT=76>
+<FONT FACE="Times New Roman" SIZE=1><P>Пользователь нажал функциональную клавишу</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" HEIGHT=76>
+<I><FONT FACE="Times New Roman" SIZE=1><P>не используется,</I> поскольку </FONT><FONT SIZE=1>key</FONT><FONT FACE="Times New Roman" SIZE=1> содержит константу клавиши</FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=76>
+<FONT SIZE=1><P>Element </FONT><FONT FACE="Times New Roman" SIZE=1>(элемент)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>KEY_ACTION_ RELEASE</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=2><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=2><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=2><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=2><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=76>
+<FONT SIZE=2><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" COLSPAN=2 HEIGHT=76>
+<FONT FACE="Times New Roman" SIZE=1><P>Пользователь отпустил функциональную клавишу</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" HEIGHT=76>
+<I><FONT FACE="Times New Roman" SIZE=1><P>не используется,</I> поскольку </FONT><FONT SIZE=1>key</FONT><FONT FACE="Times New Roman" SIZE=1> содержит константу клавиши</FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=76>
+<FONT SIZE=1><P>Element </FONT><FONT FACE="Times New Roman" SIZE=1>(элемент)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>KEY_PRESS</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=2><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=2><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=2><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=2><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=76>
+<FONT SIZE=2><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" COLSPAN=2 HEIGHT=76>
+<FONT FACE="Times New Roman" SIZE=1><P>Пользователь нажал клавишу</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" HEIGHT=76>
+<I><FONT FACE="Times New Roman" SIZE=1><P>не используется,</I> поскольку </FONT><FONT SIZE=1>key</FONT><FONT FACE="Times New Roman" SIZE=1> содержит</FONT><FONT SIZE=1> ASCII-</FONT><FONT FACE="Times New Roman" SIZE=1>код клавиши</FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=65>
+<FONT SIZE=1><P>Element</FONT><FONT FACE="Times New Roman" SIZE=1> (элемент)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" COLSPAN=3 HEIGHT=65>
+<FONT SIZE=1><P>KEY_RELEASE</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=65>
+<FONT SIZE=2><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=65>
+<FONT SIZE=2><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=65>
+<FONT SIZE=2><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=65>
+<FONT SIZE=2><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=65>
+<FONT SIZE=2><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" COLSPAN=2 HEIGHT=65>
+<FONT FACE="Times New Roman" SIZE=1><P>Пользователь отпустил клавишу</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" HEIGHT=65>
+<I><FONT FACE="Times New Roman" SIZE=1><P>не используется,</I> поскольку </FONT><FONT SIZE=1>key</FONT><FONT FACE="Times New Roman" SIZE=1> содержит</FONT><FONT SIZE=1> ASCII-</FONT><FONT FACE="Times New Roman" SIZE=1>код клавиши</FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=32>
+<FONT SIZE=1><P>Element </FONT><FONT FACE="Times New Roman" SIZE=1>(элемент)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" COLSPAN=3 HEIGHT=32>
+<FONT SIZE=1><P>LOST_FOCUS</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=32>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=32>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=32>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=32>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=32>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" COLSPAN=2 HEIGHT=32>
+<FONT FACE="Times New Roman" SIZE=1><P>Потеря фокуса ввода</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" HEIGHT=32>
+<I><FONT FACE="Times New Roman" SIZE=1><P>не используется</I></FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=78>
+<FONT SIZE=1><P>Element </FONT><FONT FACE="Times New Roman" SIZE=1>(элемент)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" COLSPAN=3 HEIGHT=78>
+<FONT SIZE=1><P>MOUSE_ENTER</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=78>
+<FONT SIZE=2><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=78>
+<FONT SIZE=2><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=78>
+<FONT SIZE=2><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" COLSPAN=3 HEIGHT=78>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="3%" VALIGN="TOP" HEIGHT=78>
+<FONT SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" COLSPAN=2 HEIGHT=78>
+<FONT FACE="Times New Roman" SIZE=1><P ALIGN="JUSTIFY">Курсор мыши попал в область объекта класса</P>
+</FONT><FONT SIZE=1><P>Component</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" HEIGHT=78>
+<I><FONT FACE="Times New Roman" SIZE=1><P>не используется</I></FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=76>
+<FONT SIZE=1><P>Element </FONT><FONT FACE="Times New Roman" SIZE=1>(элемент)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" HEIGHT=76>
+<FONT SIZE=1><P>MOUSE_EXIT</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" HEIGHT=76>
+<FONT FACE="Times New Roman" SIZE=1><P>Курсор мыши вышел из области объекта класса</FONT><FONT SIZE=1> Component</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" COLSPAN=2 HEIGHT=76>
+<I><FONT FACE="Times New Roman" SIZE=1><P>не используется</I></FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=48>
+<FONT SIZE=1><P>Element </FONT><FONT FACE="Times New Roman" SIZE=1>(элемент)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" HEIGHT=48>
+<FONT SIZE=1><P>MOUSE_D0WN</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<FONT SIZE=1><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<FONT SIZE=1><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<FONT SIZE=1><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<FONT SIZE=1><P ALIGN="CENTER">&nbsp;</P>
+<P ALIGN="CENTER">&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<FONT SIZE=1><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" HEIGHT=48>
+<FONT FACE="Times New Roman" SIZE=1><P>Пользователь нажал кнопку мыши</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" COLSPAN=2 HEIGHT=48>
+<I><FONT FACE="Times New Roman" SIZE=1><P>не используется</I></FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=48>
+<FONT SIZE=1><P>Element</P>
+</FONT><FONT FACE="Times New Roman" SIZE=1><P>(элемент)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" HEIGHT=48>
+<FONT SIZE=1><P>MOUSE_UP</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<I><FONT SIZE=1><P ALIGN="CENTER">*</I></FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<I><FONT SIZE=1><P ALIGN="CENTER">*</I></FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<FONT SIZE=1><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<FONT SIZE=1><P ALIGN="CENTER">&nbsp;</P>
+<P ALIGN="CENTER">&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<I><FONT SIZE=1><P ALIGN="CENTER">*</I></FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" HEIGHT=48>
+<FONT FACE="Times New Roman" SIZE=1><P>Пользователь отпустил кнопку мыши</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" COLSPAN=2 HEIGHT=48>
+<I><FONT FACE="Times New Roman" SIZE=1><P>не используется</I></FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=48>
+<FONT SIZE=1><P>Element </FONT><FONT FACE="Times New Roman" SIZE=1>(элемент)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" HEIGHT=48>
+<FONT SIZE=1><P>MOUSE_MOVE</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<FONT SIZE=1><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<I><FONT SIZE=1><P ALIGN="CENTER">*</I></FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<FONT SIZE=1><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<FONT SIZE=1><P ALIGN="CENTER">&nbsp;</P>
+<P ALIGN="CENTER">&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<FONT SIZE=1><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" HEIGHT=48>
+<FONT FACE="Times New Roman" SIZE=1><P>Пользователь переместил мышь</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" COLSPAN=2 HEIGHT=48>
+<I><FONT FACE="Times New Roman" SIZE=1><P>не используется</I></FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=76>
+<FONT SIZE=1><P>Element </FONT><FONT FACE="Times New Roman" SIZE=1>(элемент)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" HEIGHT=76>
+<FONT SIZE=1><P>MOUSE_DRAG</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P ALIGN="CENTER">&nbsp;</P>
+<P ALIGN="CENTER">&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P ALIGN="CENTER">*</P>
+<P ALIGN="CENTER"></FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" HEIGHT=76>
+<FONT FACE="Times New Roman" SIZE=1><P>Пользователь переместил мышь при нажатой кнопке мыши</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" COLSPAN=2 HEIGHT=76>
+<I><FONT FACE="Times New Roman" SIZE=1><P>не используется</I></FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=90>
+<FONT SIZE=1><P>List </FONT><FONT FACE="Times New Roman" SIZE=1>(список)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" HEIGHT=90>
+<FONT SIZE=1><P>ACTION_EVENT</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=90>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=90>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=90>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=90>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=90>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" HEIGHT=90>
+<FONT FACE="Times New Roman" SIZE=1><P>Пользователь выполнил двойной щелчок мыши на элементе списка</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" COLSPAN=2 HEIGHT=90>
+<FONT SIZE=1><P>String:</FONT><FONT FACE="Times New Roman" SIZE=1> обозначение выбранного элемента</FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=62>
+<FONT SIZE=1><P>List </FONT><FONT FACE="Times New Roman" SIZE=1>(список)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" HEIGHT=62>
+<FONT SIZE=1><P>LIST_SELECT</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=62>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=62>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=62>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=62>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=62>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" HEIGHT=62>
+<FONT FACE="Times New Roman" SIZE=1><P>Пользователь выбрал элемент списка</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" COLSPAN=2 HEIGHT=62>
+<FONT SIZE=1><P>Integer:</FONT><FONT FACE="Times New Roman" SIZE=1> индекс выбранного элемента</FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=76>
+<FONT SIZE=1><P>List </FONT><FONT FACE="Times New Roman" SIZE=1>(список)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" HEIGHT=76>
+<FONT SIZE=1><P>LIST_DESELECT</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" HEIGHT=76>
+<FONT FACE="Times New Roman" SIZE=1><P>Пользователь убрал выделение с определенного элемента</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" COLSPAN=2 HEIGHT=76>
+<FONT SIZE=1><P>Integer:</FONT><FONT FACE="Times New Roman" SIZE=1> индекс элемента</FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=62>
+<FONT SIZE=1><P>Menu Item </FONT><FONT FACE="Times New Roman" SIZE=1>(меню)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" HEIGHT=62>
+<FONT SIZE=1><P>ACTION_EVENT</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=62>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=62>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=62>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=62>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=62>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" HEIGHT=62>
+<FONT FACE="Times New Roman" SIZE=1><P>Пользователь выбрал пункт меню</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" COLSPAN=2 HEIGHT=62>
+<FONT SIZE=1><P>String:</FONT><FONT FACE="Times New Roman" SIZE=1> обозначение выбранного пункта</FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=76>
+<FONT SIZE=1><P>Scrollbar </FONT><FONT FACE="Times New Roman" SIZE=1>(полоса прокрутки)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" COLSPAN=2 HEIGHT=76>
+<FONT SIZE=1><P>SCROLL_LINE_UP</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=2 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" HEIGHT=76>
+<FONT FACE="Times New Roman" SIZE=1><P>Пользователь осуществил прокрутку вверх на строку</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" COLSPAN=2 HEIGHT=76>
+<FONT SIZE=1><P>Integer: </FONT><FONT FACE="Times New Roman" SIZE=1>позиция, до которой осуществляется прокрутка</FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=76>
+<FONT SIZE=1><P>Scrollbar </FONT><FONT FACE="Times New Roman" SIZE=1>(полоса прокрутки)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" COLSPAN=2 HEIGHT=76>
+<FONT SIZE=1><P>SCROLL_LINE_</P>
+<P>DOWN</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=2 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" HEIGHT=76>
+<FONT FACE="Times New Roman" SIZE=1><P>Пользователь осуществил прокрутку вниз на строку</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" COLSPAN=2 HEIGHT=76>
+<FONT SIZE=1><P>Integer: </FONT><FONT FACE="Times New Roman" SIZE=1>позиция, до которой осуществляется прокрутка</FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=76>
+<FONT SIZE=1><P>Scrollbar </FONT><FONT FACE="Times New Roman" SIZE=1>(полоса прокрутки)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" COLSPAN=2 HEIGHT=76>
+<FONT SIZE=1><P>SCROLL_PAGE_UP</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=2 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" HEIGHT=76>
+<FONT FACE="Times New Roman" SIZE=1><P>Пользователь осуществил прокрутку вверх на страницу</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" COLSPAN=2 HEIGHT=76>
+<FONT SIZE=1><P>Integer: </FONT><FONT FACE="Times New Roman" SIZE=1>позиция, до которой осуществляется прокрутка</FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=76>
+<FONT SIZE=1><P>Scrollbar </FONT><FONT FACE="Times New Roman" SIZE=1>(полоса прокрутки)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" COLSPAN=2 HEIGHT=76>
+<FONT SIZE=1><P>SCROLL_PAGE_</P>
+<P>DOWN</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=2 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" HEIGHT=76>
+<FONT FACE="Times New Roman" SIZE=1><P>Пользователь осуществил прокрутку вниз на страницу</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" COLSPAN=2 HEIGHT=76>
+<FONT SIZE=1><P>Integer: </FONT><FONT FACE="Times New Roman" SIZE=1>позиция, до которой осуществляется прокрутка</FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=76>
+<FONT SIZE=1><P>Scrollbar </FONT><FONT FACE="Times New Roman" SIZE=1>(полоса прокрутки)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" COLSPAN=2 HEIGHT=76>
+<FONT SIZE=1><P>SCROLL_</P>
+<P>ABSOLUTE</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=2 HEIGHT=76>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" HEIGHT=76>
+<FONT FACE="Times New Roman" SIZE=1><P>Пользователь переместил ползунок полосы прокрутки</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" COLSPAN=2 HEIGHT=76>
+<FONT SIZE=1><P>Integer: </FONT><FONT FACE="Times New Roman" SIZE=1>позиция, до которой осуществляется прокрутка</FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=62>
+<FONT SIZE=1><P>Text Field </FONT><FONT FACE="Times New Roman" SIZE=1>(текст)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" COLSPAN=2 HEIGHT=62>
+<FONT SIZE=1><P>ACTION_EVENT</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=62>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=62>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=62>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=62>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=2 HEIGHT=62>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" HEIGHT=62>
+<FONT FACE="Times New Roman" SIZE=1><P>Пользователь ввел текст и нажал </FONT><FONT SIZE=1>[Return].</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" COLSPAN=2 HEIGHT=62>
+<FONT SIZE=1><P>String:</FONT><FONT FACE="Times New Roman" SIZE=1> введенный текст</FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=33>
+<FONT SIZE=1><P>Window </FONT><FONT FACE="Times New Roman" SIZE=1>(окно)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" COLSPAN=2 HEIGHT=33>
+<FONT SIZE=1><P>WINDOW_</P>
+<P>DESTROY</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=33>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=33>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=33>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=33>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=2 HEIGHT=33>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" HEIGHT=33>
+<FONT FACE="Times New Roman" SIZE=1><P>Окно закрыто</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" COLSPAN=2 HEIGHT=33>
+<I><FONT FACE="Times New Roman" SIZE=1><P>не используется</I></FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=48>
+<FONT SIZE=1><P>Window </FONT><FONT FACE="Times New Roman" SIZE=1>(окно)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" COLSPAN=2 HEIGHT=48>
+<FONT SIZE=1><P>WINDOW_</P>
+<P>ICONIFY</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=48>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=2 HEIGHT=48>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" HEIGHT=48>
+<FONT FACE="Times New Roman" SIZE=1><P>Окно представлено в виде пиктограммы</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" COLSPAN=2 HEIGHT=48>
+<I><FONT FACE="Times New Roman" SIZE=1><P>не используется</I></FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=32>
+<FONT SIZE=1><P>Window </FONT><FONT FACE="Times New Roman" SIZE=1>(окно)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" COLSPAN=2 HEIGHT=32>
+<FONT SIZE=1><P>WINDOW_</P>
+<P>DEICONIFY</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=32>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=32>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=32>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=32>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=2 HEIGHT=32>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" HEIGHT=32>
+<FONT FACE="Times New Roman" SIZE=1><P>Окно восстановлено</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" COLSPAN=2 HEIGHT=32>
+<I><FONT FACE="Times New Roman" SIZE=1><P>не используется</I></FONT></TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="TOP" HEIGHT=36>
+<FONT SIZE=1><P>Window </FONT><FONT FACE="Times New Roman" SIZE=1>(окно)</FONT></TD>
+<TD WIDTH="20%" VALIGN="TOP" COLSPAN=2 HEIGHT=36>
+<FONT SIZE=1><P>WINDOW_MOVED</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=36>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=36>
+<FONT SIZE=1><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=36>
+<FONT SIZE=1><P ALIGN="CENTER">*</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=3 HEIGHT=36>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="4%" VALIGN="TOP" COLSPAN=2 HEIGHT=36>
+<FONT SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</FONT></TD>
+<TD WIDTH="17%" VALIGN="TOP" HEIGHT=36>
+<FONT FACE="Times New Roman" SIZE=1><P>Окно перемещено</FONT></TD>
+<TD WIDTH="32%" VALIGN="TOP" COLSPAN=2 HEIGHT=36>
+<I><FONT FACE="Times New Roman" SIZE=1><P>не используется</I></FONT></TD>
+</TR>
+</TABLE>
+
+<H4></H4>
+<B><FONT FACE="Times New Roman"><P>Рисование "каракулей" в</FONT> Java 1.0</P>
+</B><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Классический апплет, в котором используется модель обработки событий</FONT><FONT SIZE=2> Java 1.0.</FONT><FONT FACE="Times New Roman" SIZE=2> В нем методы</FONT><FONT SIZE=2> mouseDown()</FONT><FONT FACE="Times New Roman" SIZE=2> и</FONT><FONT SIZE=2> mouseDragO </FONT><FONT FACE="Times New Roman" SIZE=2>переопределены таким образом, чтобы пользователь имел возможность рисовать "каракули" с помощью мыши. Также переопределен метод </FONT><FONT SIZE=2>keyDown(),</FONT><FONT FACE="Times New Roman" SIZE=2> чтобы при нажатии клавиши [С] экран очищался, и метод </FONT><FONT SIZE=2>action(),</FONT><FONT FACE="Times New Roman" SIZE=2> чтобы экран очищался после щелчка на кнопке</FONT><B><FONT SIZE=2> Clear.</B> </P>
+</FONT><FONT SIZE=1>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>/* &lt;applet code = “Scribble1” width=200 height=200&gt;</P>
+<P>   &lt;/applet&gt;</P>
+<P>*/</B></I></FONT><FONT SIZE=2> </P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>import java.applet.*;<BR>
+import java.awt.*;<BR>
+/**</FONT><FONT FACE="Courier New" SIZE=2> Простой апплет, в котором используется модель обработки событий</FONT><FONT FACE="Courier New" SIZE=2> 1.0 */<BR>
+public class Scribble1 extends Applet {<BR>
+private int lastx, lasty;    //</FONT><FONT FACE="Courier New" SIZE=2> Хранят координаты курсора мыши.<BR>
+</FONT><FONT FACE="Courier New" SIZE=2>Button clear_button;         //</FONT><FONT FACE="Courier New" SIZE=2> Кнопка </FONT><FONT FACE="Courier New" SIZE=2>Clear.<BR>
+Graphics g;                  //</FONT><FONT FACE="Courier New" SIZE=2> Объект</FONT><FONT FACE="Courier New" SIZE=2> Graphics,</FONT><FONT FACE="Courier New" SIZE=2> который необходимо нарисовать.<BR>
+</FONT><FONT FACE="Courier New" SIZE=2>/**</FONT><FONT FACE="Courier New" SIZE=2> Инициализация кнопки и объекта</FONT><FONT FACE="Courier New" SIZE=2> Graphics */<BR>
+public void init() {<BR>
+clear_button = new Button("Clear");<BR>
+this.add(clear_button);<BR>
+g = this.getGraphics();<BR>
+}<BR>
+/**</FONT><FONT FACE="Courier New" SIZE=2> Реакция на нажатие кнопки мыши</FONT><FONT FACE="Courier New" SIZE=2> */<BR>
+public boolean mouseDown(Event e, int x, int y) {<BR>
+lastx = x; lasty = y;<BR>
+return true;<BR>
+}<BR>
+/**</FONT><FONT FACE="Courier New" SIZE=2> Реакция на перетаскивание с помощью мыши</FONT><FONT FACE="Courier New" SIZE=2> */<BR>
+public boolean mouseDrag(Event e, int x, int y) {<BR>
+g.setColor(Color.black) ;<BR>
+g.drawLine(lastx, lasty, x, y);<BR>
+lastx = x; lasty = y;<BR>
+return true;<BR>
+}<BR>
+/**</FONT><FONT FACE="Courier New" SIZE=2> Реакция на нажатие клавиши [С]</FONT><FONT FACE="Courier New" SIZE=2> */<BR>
+public boolean keyDown(Event e, int key) {<BR>
+if ((e.id == Event.KEY_PRESS) &amp;&amp; (key == '</FONT><FONT FACE="Courier New" SIZE=2>с</FONT><FONT FACE="Courier New" SIZE=2>' ) ) {<BR>
+clear() ;<BR>
+return true;<BR>
+}<BR>
+else return false;<BR>
+}<BR>
+/**</FONT><FONT FACE="Courier New" SIZE=2> Реакция на нажатие кнопки Clear</FONT><FONT FACE="Courier New" SIZE=2> */<BR>
+public boolean action(Event e, Object arg) {<BR>
+if (e.target == clear_button) {<BR>
+clear();<BR>
+return true;<BR>
+}<BR>
+else return false;<BR>
+}<BR>
+/**</FONT><FONT FACE="Courier New" SIZE=2> Метод для стирания каракулей</FONT><FONT FACE="Courier New" SIZE=2> */<BR>
+public void clear() {<BR>
+g.setColor(this.getBackground());<BR>
+g.fillRect(0, 0, bounds().width, bounds().height);<BR>
+} }</P>
+<P>&nbsp;</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P>Экран вроде бы пустой – но на нем можно рисовать ! – </FONT><A HREF="examples/17/Scribble1.html"><U><FONT SIZE=2 COLOR="#0000ff">Scribble1.html</U></FONT></A><FONT SIZE=2>.</P>
+</FONT><B>
+<FONT FACE="Times New Roman"><P>Модель обработки событий </FONT>Java 1.1</P>
+</B><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Новая модель обработки событий представляет собой, по существу, модель обратных вызовов (</FONT><FONT SIZE=2>callback). </FONT><FONT FACE="Times New Roman" SIZE=2>При создании </FONT><FONT SIZE=2>GUI-</FONT><FONT FACE="Times New Roman" SIZE=2>элемента ему сообщается, какой метод или методы он должен вызывать при возникновении в нем определенного события (нажатия кнопки, мыши и т.п.). Эту модель очень легко использовать в </FONT><FONT SIZE=2>C++, </FONT><FONT FACE="Times New Roman" SIZE=2>поскольку этот язык позволяет оперировать указателями на методы (чтобы определить обратный вызов, необходимо всего лишь передать указатель на функцию). Однако в </FONT><FONT SIZE=2>Java </FONT><FONT FACE="Times New Roman" SIZE=2>это недопустимо</FONT><FONT SIZE=2> (</FONT><FONT FACE="Times New Roman" SIZE=2>методы не являются объектами</FONT><FONT SIZE=2>)</FONT><FONT FACE="Times New Roman" SIZE=2>. Поэтому для реализации новой модели необходимо определить класс, реализующий некоторый специальный интерфейс. Затем можно передать экземпляр такого класса </FONT><FONT SIZE=2>GUI-</FONT><FONT FACE="Times New Roman" SIZE=2>элементу, обеспечивая таким образом обратный вызов. Когда наступит ожидаемое событие, </FONT><FONT SIZE=2>GUI-</FONT><FONT FACE="Times New Roman" SIZE=2>элемент вызовет соответствующий метод объекта, определенного ранее.</P>
+<P ALIGN="JUSTIFY">Модель обработки событий</FONT><FONT SIZE=2> Java 1.1</FONT><FONT FACE="Times New Roman" SIZE=2> используется как в пакете</FONT><FONT SIZE=2> AWT,</FONT><FONT FACE="Times New Roman" SIZE=2> так и в</FONT><FONT SIZE=2> JavaBeans API.</FONT><FONT FACE="Times New Roman" SIZE=2> В этой модели разным типам событий соответствуют различные классы</FONT><FONT SIZE=2> Java.</FONT><FONT FACE="Times New Roman" SIZE=2> Каждое событие является подклассом класса </FONT><FONT SIZE=2>java.util.EventObject.</FONT><FONT FACE="Times New Roman" SIZE=2> События пакета</FONT><FONT SIZE=2> AWT,</FONT><FONT FACE="Times New Roman" SIZE=2> которые и рассматриваются в данной главе, являются подклассом</FONT><FONT SIZE=2> java.awt.AWTEvent.</FONT><FONT FACE="Times New Roman" SIZE=2> Для удобства события различных типов пакета</FONT><FONT SIZE=2> AWT</FONT><FONT FACE="Times New Roman" SIZE=2> (например,</FONT><FONT SIZE=2> MouseEvent</FONT><FONT FACE="Times New Roman" SIZE=2> или Ас</FONT><FONT SIZE=2>tionEvent)</FONT><FONT FACE="Times New Roman" SIZE=2> помещены в новый пакет</FONT><FONT SIZE=2> java.awt.event.</P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Для каждого события существует порождающий его объект, который можно получить с помощью метода</FONT><FONT SIZE=2> getSource(),</FONT><FONT FACE="Times New Roman" SIZE=2> и каждому событию пакета</FONT><FONT SIZE=2> AWT</FONT><FONT FACE="Times New Roman" SIZE=2> соответствует определенный идентификатор, который позволяет получить метод</FONT><FONT SIZE=2> getid().</FONT><FONT FACE="Times New Roman" SIZE=2> Это значение используется для того, чтобы отличать события различных типов, которые могут описываться одним и тем же классом событий. Например, для класса</FONT><FONT SIZE=2> FocusEvent</FONT><FONT FACE="Times New Roman" SIZE=2> возможны два типа событий:</FONT><FONT SIZE=2> FocusEvent.FOCUS_GAINED</FONT><FONT FACE="Times New Roman" SIZE=2> и</FONT><FONT SIZE=2> FocusEvent.FOCUS_LOST.</FONT><FONT FACE="Times New Roman" SIZE=2> Подклассы событий содержат информацию, связанную с данным типом события. Например, в классе</FONT><FONT SIZE=2> MouseEvent</FONT><FONT FACE="Times New Roman" SIZE=2> существуют методы</FONT><FONT SIZE=2> getX(), getY()</FONT><FONT FACE="Times New Roman" SIZE=2> и </FONT><FONT SIZE=2>getClickCount ().</FONT><FONT FACE="Times New Roman" SIZE=2> Этот класс наследует, в числе прочих, и методы</FONT><FONT SIZE=2> getModifiers() </FONT><FONT FACE="Times New Roman" SIZE=2>и </FONT><FONT SIZE=2>getWhen().</P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Модель обработки событий</FONT><FONT SIZE=2> Java 1.1</FONT><FONT FACE="Times New Roman" SIZE=2> базируется на концепции слушателя событий. <I>Слушателем события</I> является объект, заинтересованный в получении данного события. В объекте, который порождает событие (в <I>источнике событий),</I> содержится список слушателей, заинтересованных в получении уведомления о том, что данное событие произошло, а также методы, которые позволяют слушателям добавлять или удалять себя из этого списка. Когда источник порождает событие (или когда объект источника зарегистрирует событие, связанное с вводом информации пользователем), он оповещает все объекты слушателей событий о том, что данное событие произошло.</P>
+<P ALIGN="JUSTIFY">Источник события оповещает объект слушателя путем вызова специального метода и передачи ему объекта события (экземпляра подкласса</FONT><FONT SIZE=2> EventObject).</FONT><FONT FACE="Times New Roman" SIZE=2> Для того чтобы источник мог вызвать данный метод, он должен быть реализован для каждого слушателя. Это объясняется тем, что все слушатели событий определенного типа должны реализовывать соответствующий интерфейс. Например, объекты слушателей событий</FONT><FONT SIZE=2> ActionEvent</FONT><FONT FACE="Times New Roman" SIZE=2> должны реализовывать интерфейс</FONT><FONT SIZE=2> ActionListener.</FONT><FONT FACE="Times New Roman" SIZE=2> В пакете</FONT><FONT SIZE=2> Java.awt.event</FONT><FONT FACE="Times New Roman" SIZE=2> определены интерфейсы слушателей для каждого из определенных в нем типов событий (например, для событий</FONT><FONT SIZE=2> MouseEvent</FONT><FONT FACE="Times New Roman" SIZE=2> здесь определено два интерфейса слушателей:</FONT><FONT SIZE=2> MouseListener</FONT><FONT FACE="Times New Roman" SIZE=2> и</FONT><FONT SIZE=2> MouseMotionListener).</FONT><FONT FACE="Times New Roman" SIZE=2> Все интерфейсы слушателей событий являются расширениями интерфейса </FONT><FONT SIZE=2>java.util.EventListener.</FONT><FONT FACE="Times New Roman" SIZE=2> В этом интерфейсе не определяется ни один из методов, но он играет роль интерфейса-метки, в котором однозначно определены все слушатели событий как таковые.</P>
+<P ALIGN="JUSTIFY">В интерфейсе слушателя событий может определяться несколько методов. Например, класс событий, подобный</FONT><FONT SIZE=2> MouseEvent,</FONT><FONT FACE="Times New Roman" SIZE=2> описывает несколько событий, связанных с мышью, таких как события нажатия и отпускания кнопки мыши. Эти события вызывают различные методы соответствующего слушателя. По установленному соглашению, методам слушателей событий может быть передан один единственный аргумент, являющийся объектом того события, которое соответствует данному слушателю. В этом объекте должна содержаться вся информация, необходимая программе для формирования реакции на данное событие. В таблице </FONT><FONT SIZE=2>6</FONT><FONT FACE="Times New Roman" SIZE=2> приведены определенные в пакете</FONT><FONT SIZE=2> java.awt.event</FONT><FONT FACE="Times New Roman" SIZE=2> типы событий, соответствующие им слушатели, а также методы, определенные в каждом интерфейсе слушателя.</P>
+<I><P>Таблица</FONT><FONT SIZE=2> 6.</FONT><FONT FACE="Times New Roman" SIZE=2> Типы событий, слушатели и методы слушателей в</FONT><FONT SIZE=2> Java 1.1</P></I></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=2 WIDTH=461>
+<TR><TD WIDTH="27%" VALIGN="TOP" HEIGHT=24>
+<I><FONT FACE="Times New Roman" SIZE=2><P>Класс события</I></FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP" HEIGHT=24>
+<I><FONT FACE="Times New Roman" SIZE=2><P>Интерфейс слушателя</I></FONT></TD>
+<TD WIDTH="40%" VALIGN="TOP" HEIGHT=24>
+<I><FONT FACE="Times New Roman" SIZE=2><P>Методы слушателя</I></FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP" HEIGHT=21>
+<FONT SIZE=2><P>ActionEvent</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP" HEIGHT=21>
+<FONT SIZE=2><P>ActionListener</FONT></TD>
+<TD WIDTH="40%" VALIGN="TOP" HEIGHT=21>
+<FONT SIZE=2><P>actionPerformed()</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP" HEIGHT=21>
+<FONT SIZE=2><P>AdjustmentEvent</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP" HEIGHT=21>
+<FONT SIZE=2><P>AdjustmentListener</FONT></TD>
+<TD WIDTH="40%" VALIGN="TOP" HEIGHT=21>
+<FONT SIZE=2><P>adjustmentValueChanged()</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP" HEIGHT=64>
+<FONT SIZE=2><P>ComponentEvent</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP" HEIGHT=64>
+<FONT SIZE=2><P>ComponentListener</FONT></TD>
+<TD WIDTH="40%" VALIGN="TOP" HEIGHT=64>
+<FONT SIZE=2><P>componentHidden() componentMoved() componentResized() Cor”componentShown()</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP" HEIGHT=36>
+<FONT SIZE=2><P>ContainerEvent</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP" HEIGHT=36>
+<FONT SIZE=2><P>ContainerListener</FONT></TD>
+<TD WIDTH="40%" VALIGN="TOP" HEIGHT=36>
+<FONT SIZE=2><P>componentAdded() componentRemoved()</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP" HEIGHT=36>
+<FONT SIZE=2><P>FocusEvent</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP" HEIGHT=36>
+<FONT SIZE=2><P>FocusListener</FONT></TD>
+<TD WIDTH="40%" VALIGN="TOP" HEIGHT=36>
+<FONT SIZE=2><P>focusGained()</P>
+<P>focusLost ()</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP" HEIGHT=22>
+<FONT SIZE=2><P>ItemEvent</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP" HEIGHT=22>
+<FONT SIZE=2><P>ItemListener</FONT></TD>
+<TD WIDTH="40%" VALIGN="TOP" HEIGHT=22>
+<FONT SIZE=2><P>itemStateChanged()</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP" HEIGHT=57>
+<FONT SIZE=2><P>KeyEvent</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP" HEIGHT=57>
+<FONT SIZE=2><P>KeyListener</FONT></TD>
+<TD WIDTH="40%" VALIGN="TOP" HEIGHT=57>
+<FONT SIZE=2><P>keyPressed()</P>
+<P>keyReleased()</P>
+<P>keyTyped()</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP" ROWSPAN=2 HEIGHT=94>
+<FONT SIZE=2><P>MouseEvent</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP" HEIGHT=94>
+<FONT SIZE=2><P>MouseListener</FONT></TD>
+<TD WIDTH="40%" VALIGN="TOP" HEIGHT=94>
+<FONT SIZE=2><P>mouseClicked()</P>
+<P>mouseEntered()</P>
+<P>mouseExited()</P>
+<P>mousePressed() mouseReleased()</FONT></TD>
+</TR>
+<TR><TD WIDTH="34%" VALIGN="TOP" HEIGHT=36>
+<FONT SIZE=2><P>MouseMotionListener</FONT></TD>
+<TD WIDTH="40%" VALIGN="TOP" HEIGHT=36>
+<FONT SIZE=2><P>mouseDragged()</P>
+<P>mouseMoved()</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP" HEIGHT=22>
+<FONT SIZE=2><P>TextEvent</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP" HEIGHT=22>
+<FONT SIZE=2><P>TextListener</FONT></TD>
+<TD WIDTH="40%" VALIGN="TOP" HEIGHT=22>
+<FONT SIZE=2><P>textValueChanged()</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP" HEIGHT=108>
+<FONT SIZE=2><P>WindowEvent</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP" HEIGHT=108>
+<FONT SIZE=2><P>WindowListener</FONT></TD>
+<TD WIDTH="40%" VALIGN="TOP" HEIGHT=108>
+<FONT SIZE=2><P>windowActivated() windowClosed() windowClosing() windowDeactivated() windowDeiconified() windowlconified() windowOpened()</FONT></TD>
+</TR>
+</TABLE>
+
+<FONT SIZE=2><P>&nbsp;</P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Для каждого интерфейса слушателей событий, содержащего несколько методов, в пакете</FONT><FONT SIZE=2> java.awt.event</FONT><FONT FACE="Times New Roman" SIZE=2> определен простой класс-адаптер, который обеспечивает пустое тело для каждого из методов соответствующего интерфейса. Когда нужен только один или два таких метода, иногда проще получить подкласс класса-адаптера, чем реализовать интерфейс самостоятельно. При получении подкласса адаптера требуется лишь переопределить те методы, которые нужны, а при прямой реализации интерфейса необходимо определить все методы, в том числе и ненужные в данной программе. Заранее определенные классы-адаптеры называются так же, как и интерфейсы, которые они реализуют, но в этих названиях</FONT><FONT SIZE=2> Listener</FONT><FONT FACE="Times New Roman" SIZE=2> заменяется на </FONT><FONT SIZE=2>Adapter: MouseAdapter, WindowAdapter</FONT><FONT FACE="Times New Roman" SIZE=2> и т.д.</P>
+</FONT><FONT SIZE=2><P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Как только реализован интерфейс слушателя или получены подклассы класса-адаптера, необходимо создать экземпляр нового класса, чтобы определить конкретный объект слушателя событий. Затем этот слушатель должен быть зарегистрирован соответствующим источником событий. В программах пакета</FONT><FONT SIZE=2> AWT</FONT><FONT FACE="Times New Roman" SIZE=2> источником событий всегда является какой-нибудь элемент пакета. В методах регистрации слушателей событий используются стандартные соглашения об именах: если источник событий порождает события типа </FONT><FONT SIZE=2>X,</FONT><FONT FACE="Times New Roman" SIZE=2> в нем существует метод</FONT><FONT SIZE=2> addXListener ()</FONT><FONT FACE="Times New Roman" SIZE=2> для добавления слушателя и метод</FONT><FONT SIZE=2> removeXListener()</FONT><FONT FACE="Times New Roman" SIZE=2> для его удаления. Одной из приятных особенностей модели обработки событий</FONT><FONT SIZE=2> Java 1.1</FONT><FONT FACE="Times New Roman" SIZE=2> является возможность легко определять типы событий, которые могут порождаться данным элементом. Для этого следует просто просмотреть, какие методы зарегистрированы для его слушателя событий. Например, из описания</FONT><FONT SIZE=2> API</FONT><FONT FACE="Times New Roman" SIZE=2> для объекта класса</FONT><FONT SIZE=2> Button</FONT><FONT FACE="Times New Roman" SIZE=2> следует, что он порождает события</FONT><FONT SIZE=2> ActionEvent.</FONT><FONT FACE="Times New Roman" SIZE=2> В таблице</FONT><FONT SIZE=2> 7</FONT><FONT FACE="Times New Roman" SIZE=2> приведен список элементов пакета</FONT><FONT SIZE=2> AWT</FONT><FONT FACE="Times New Roman" SIZE=2> и событий, которые они порождают.</P>
+</FONT><FONT SIZE=2><P ALIGN="JUSTIFY"></P>
+</FONT><I><FONT FACE="Times New Roman" SIZE=2><P ALIGN="RIGHT">Таблица 7. Элементы пакета </FONT><FONT SIZE=2>AWT </FONT><FONT FACE="Times New Roman" SIZE=2>и порождаемые ими события в </FONT><FONT SIZE=2>Java1.1</P></I></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=7 WIDTH=633>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Элемент</FONT></TD>
+<TD WIDTH="22%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Порождаемое событие</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Значение</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="JUSTIFY">Button</FONT></TD>
+<TD WIDTH="22%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="JUSTIFY">ActionEvent</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Пользователь нажал кнопку</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="JUSTIFY">CheckBox</FONT></TD>
+<TD WIDTH="22%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="JUSTIFY">ItemEvent</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Пользователь установил или сбросил флажок</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="JUSTIFY">CheckBoxMenuItem</FONT></TD>
+<TD WIDTH="22%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="JUSTIFY">ItemEvent</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Пользователь установил или сбросил флажок рядом с пунктом меню</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="JUSTIFY">Choice</FONT></TD>
+<TD WIDTH="22%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="JUSTIFY">ItemEvent</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Пользователь выбрал элемент списка или отменил его выбор</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP" ROWSPAN=4 HEIGHT=7>
+<FONT SIZE=2><P ALIGN="JUSTIFY">Component</FONT></TD>
+<TD WIDTH="22%" VALIGN="TOP" HEIGHT=7>
+<FONT SIZE=2><P ALIGN="JUSTIFY">ComponentEvent</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP" HEIGHT=7>
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Элемент либо перемещен, либо он стал скрытым,либо видимым</FONT></TD>
+</TR>
+<TR><TD WIDTH="22%" VALIGN="TOP" HEIGHT=7>
+<FONT SIZE=2><P ALIGN="JUSTIFY">FocusEvent</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP" HEIGHT=7>
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Элемент получил или потерял фокус ввода</FONT></TD>
+</TR>
+<TR><TD WIDTH="22%" VALIGN="TOP" HEIGHT=7>
+<FONT SIZE=2><P ALIGN="JUSTIFY">KeyEvent</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP" HEIGHT=7>
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Пользователь нажал</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>или отпустил клавишу</FONT></TD>
+</TR>
+<TR><TD WIDTH="22%" VALIGN="TOP" HEIGHT=7>
+<FONT SIZE=2><P ALIGN="JUSTIFY">MouseEvent</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP" HEIGHT=7>
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Пользователь нажал</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>или отпустил кнопку мыши, либо курсор мыши вошел или покинул область, занимаемую элементом, либо пользователь просто переместил мышь или переместил мышь при нажатой кнопке мыши</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="JUSTIFY">Container</FONT></TD>
+<TD WIDTH="22%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="JUSTIFY">ContainerEvent</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Элемент добавлен в контейнер или удален из него</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP" ROWSPAN=2 HEIGHT=7>
+<FONT SIZE=2><P ALIGN="JUSTIFY">List</FONT></TD>
+<TD WIDTH="22%" VALIGN="TOP" HEIGHT=7>
+<FONT SIZE=2><P ALIGN="JUSTIFY">ActionEvent</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP" HEIGHT=7>
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Пользователь выполнил двойной щелчок мыши на элементе списка</FONT></TD>
+</TR>
+<TR><TD WIDTH="22%" VALIGN="TOP" HEIGHT=7>
+<FONT SIZE=2><P ALIGN="JUSTIFY">ItemEvent</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP" HEIGHT=7>
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Пользователь выбрал элемент списка или отменил выбор</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="JUSTIFY">MenuItem</FONT></TD>
+<TD WIDTH="22%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="JUSTIFY">ActionEvent</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Пользователь выбрал</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>пункт меню</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="JUSTIFY">Scrollbar</FONT></TD>
+<TD WIDTH="22%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="JUSTIFY">AdjustmentEvent</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Пользователь</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>осуществил прокрутку</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="JUSTIFY">TextComponent</FONT></TD>
+<TD WIDTH="22%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="JUSTIFY">TextEvent</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Пользователь</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>внес изменения в текст элемента</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="JUSTIFY">TextField</FONT></TD>
+<TD WIDTH="22%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="JUSTIFY">ActionEvent</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Пользователь</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>закончил редактирование текста элемента</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="JUSTIFY">Window</FONT></TD>
+<TD WIDTH="22%" VALIGN="TOP">
+<FONT SIZE=2><P ALIGN="JUSTIFY">WindowEvent</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Окно было открыто, закрыто, представлено в виде пиктограммы, восстановлено или требует восстановления</FONT></TD>
+</TR>
+</TABLE>
+
+<FONT SIZE=2><P ALIGN="JUSTIFY"></P>
+</FONT><B><FONT FACE="Times New Roman" SIZE=3><P>Рисование "каракулей" в</FONT><FONT SIZE=3> Java 1.1</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Модель обработки событий</FONT><FONT SIZE=2> Java 1.</FONT><FONT FACE="Times New Roman" SIZE=2>1 является достаточно гибкой и предоставляет пользователю ряд возможностей для структуризации программы обработки событий. Первый из этих способов продемонстрирован в примере</FONT><FONT SIZE=2>.</FONT><FONT FACE="Times New Roman" SIZE=2> В апплете данной версии реализованы интерфейсы</FONT><FONT SIZE=2> MouseListener</FONT><FONT FACE="Times New Roman" SIZE=2> и </FONT><FONT SIZE=2>MouseMotionListener,</FONT><FONT FACE="Times New Roman" SIZE=2> регистрирующие себя с помощью своих же методов </FONT><FONT SIZE=2>addMouseListener()</FONT><FONT FACE="Times New Roman" SIZE=2> и</FONT><FONT SIZE=2> addMouseMotionListener().</P>
+<P ALIGN="JUSTIFY"></P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>/* &lt;applet code = “Scribble2” width=200 height=200&gt;</P>
+<P>   &lt;/applet&gt;</P>
+<P>*/</B></I></FONT><FONT SIZE=2> </P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>import java.applet.*;<BR>
+import java.awt.*;<BR>
+import java.awt.event.*;<BR>
+public class Scribble2 extends Applet implements<BR>
+                                      MouseListener, MouseMotionListener {<BR>
+private int last_x, last_y;<BR>
+public void init() {<BR>
+//</FONT><FONT FACE="Courier New" SIZE=2> Сообщает данному апплету о том, какие объекты<BR>
+</FONT><FONT FACE="Courier New" SIZE=2>//</FONT><FONT FACE="Courier New" SIZE=2> классов MouseListener и</FONT><FONT FACE="Courier New" SIZE=2> MouseMotionListener</FONT><FONT FACE="Courier New" SIZE=2> он должен оповещать<BR>
+</FONT><FONT FACE="Courier New" SIZE=2>//</FONT><FONT FACE="Courier New" SIZE=2> о событиях, связанных с мышью и ее перемещением.<BR>
+</FONT><FONT FACE="Courier New" SIZE=2>//</FONT><FONT FACE="Courier New" SIZE=2> Поскольку интерфейс реализуется в самом апплете,<BR>
+</FONT><FONT FACE="Courier New" SIZE=2>//</FONT><FONT FACE="Courier New" SIZE=2> при этом будут вызываться методы апплета.<BR>
+this.addMouseListener(this) ;<BR>
+this.addMouseMotionListener(this)</FONT><FONT FACE="Courier New" SIZE=2>;<BR>
+}<BR>
+//</FONT><FONT FACE="Courier New" SIZE=2> Метод интерфейса MouseListener. Вызывается при нажатии<BR>
+</FONT><FONT FACE="Courier New" SIZE=2>//</FONT><FONT FACE="Courier New" SIZE=2> пользователем кнопки мыши.<BR>
+public void mousePressed(MouseEvent e)</FONT><FONT FACE="Courier New" SIZE=2> {<BR>
+last_x = e.getX();<BR>
+last_y = e.getY();</P>
+<P>}<BR>
+//</FONT><FONT FACE="Courier New" SIZE=2> Метод интерфейса</FONT><FONT FACE="Courier New" SIZE=2> MouseMotionListener.</FONT><FONT FACE="Courier New" SIZE=2> Вызывается при<BR>
+</FONT><FONT FACE="Courier New" SIZE=2>//</FONT><FONT FACE="Courier New" SIZE=2> перемещении мыши с нажатой кнопкой.<BR>
+</FONT><FONT FACE="Courier New" SIZE=2>public void mouseDragged(MouseEvent e) {<BR>
+Graphics g = this.getGraphics();<BR>
+int x = e.getX(), y = e.getY();<BR>
+g.drawLine(last_x, last_y, x, y);<BR>
+last_x = x; last_y = y;</P>
+<P>}<BR>
+//</FONT><FONT FACE="Courier New" SIZE=2> Другие, не используемые методы интерфейса</FONT><FONT FACE="Courier New" SIZE=2> MouseListener.<BR>
+public void mouseReleased(MouseEvent e) {;}<BR>
+public void mouseClicked(MouseEvent e) {;}<BR>
+public void mouseEntered(MouseEvent e) {;}<BR>
+public void mouseExited(MouseEvent e) {;}<BR>
+//</FONT><FONT FACE="Courier New" SIZE=2> Другой метод интерфейса</FONT><FONT FACE="Courier New" SIZE=2> MouseMotionListener.<BR>
+public void mouseMoved(MouseEvent e) {;}<BR>
+}</P>
+<P>&nbsp;</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P>Рисуйте на здоровье (может у Вас талант) – </FONT><A HREF="examples/17/Scribble2.html"><U><FONT SIZE=2 COLOR="#0000ff">Scribble2.html</U></FONT></A><FONT SIZE=2>.</P>
+</FONT><FONT FACE="Arial" SIZE=1>
+</FONT><B><FONT FACE="Times New Roman"><P>Рисование "каракулей" с использованием встроенных классов</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Модель обработки событий</FONT><FONT SIZE=2> Java 1.1</FONT><FONT FACE="Times New Roman" SIZE=2> разработана с учетом того, чтобы хорошо сочетаться с другой новой особенностью</FONT><FONT SIZE=2> Java 1.1:</FONT><FONT FACE="Times New Roman" SIZE=2> встроенными классами</FONT><FONT SIZE=2> (</FONT><FONT FACE="Times New Roman" SIZE=2>глава, посвященная им, еще не написана </FONT><FONT SIZE=2>;</FONT><FONT FACE="Times New Roman" SIZE=2>-(). В следующем примере</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>показано, как изменится данный апплет, если слушатели событий будут реализованы в виде анонимных встроенных классов. Обратите внимание на компактность данного варианта программы. Новая особенность, добавленная в апплет - кнопка</FONT><B><FONT SIZE=2> Clear.</B></FONT><FONT FACE="Times New Roman" SIZE=2> Для этой кнопки зарегистрирован объект</FONT><FONT SIZE=2> ActionListener,</FONT><FONT FACE="Times New Roman" SIZE=2> а сама она выполняет очистку экрана при наступлении соответствующего события.</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2>
+<P>/* &lt;applet code = “Scribble3” width=200 height=200&gt;</P>
+<P>   &lt;/applet&gt;</P>
+<P>*/</B></I></FONT><FONT SIZE=2> </P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>import java.applet.*;<BR>
+import java.awt.*;<BR>
+import java.awt.event.*;<BR>
+public class Scribble3 extends Applet {<BR>
+int last_x, last_y;<BR>
+public void init() {<BR>
+//</FONT><FONT FACE="Courier New" SIZE=2> Определяет, создает и регистрирует объект MouseListener.<BR>
+this.addMouseListener(new MouseAdapter</FONT><FONT FACE="Courier New" SIZE=2>() {<BR>
+public void mousePressed(MouseEvent e) {<BR>
+last_x = e.getX(); last_y = e.getY();</P>
+<P>}</P>
+<P>});<BR>
+//</FONT><FONT FACE="Courier New" SIZE=2> Определяет, создает и регистрирует объект  MouseMotionListener.</FONT><FONT FACE="Courier New" SIZE=2><BR>
+this.addMouseMotionListener(new MouseMotionAdapter() {<BR>
+public void mouseDragged(MouseEvent e) {<BR>
+Graphics g = getGraphics();<BR>
+int x = e.getX(), y= e.getY();<BR>
+g.setColor(Color.black);<BR>
+g.drawLine(last_x, last_y, x, y);<BR>
+last_x = x; last_y = y;<BR>
+}</P>
+<P>});<BR>
+//</FONT><FONT FACE="Courier New" SIZE=2> Создает кнопку Clea</FONT><FONT FACE="Courier New" SIZE=2>r.<BR>
+Button b = new Button("Clear");<BR>
+//</FONT><FONT FACE="Courier New" SIZE=2> Определяет, создает и регистрирует объект слушателя</FONT><FONT FACE="Courier New" SIZE=2><BR>
+//</FONT><FONT FACE="Courier New" SIZE=2> для обработки события, связанного с нажатием кнопки.</FONT><FONT FACE="Courier New" SIZE=2><BR>
+b.addActionListener(new ActionListener() {<BR>
+public void actionPerformed(ActionEvent e) {<BR>
+//</FONT><FONT FACE="Courier New" SIZE=2> стирание каракулей</FONT><FONT FACE="Courier New" SIZE=2><BR>
+Graphics g = getGraphics();</P>
+<P>g.setColor(getBackground());<BR>
+g.fillRect(0, 0, getSize().width, getSize().height);<BR>
+}</P>
+<P>});<BR>
+//</FONT><FONT FACE="Courier New" SIZE=2> Добавляет кнопку в апплет</FONT><FONT FACE="Courier New" SIZE=2>.<BR>
+this.add(b);</P>
+<P>} }</P>
+<P>&nbsp;</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Еще не нарисовались (может появились новые идеи) – </FONT><A HREF="examples/17/Scribble3.html"><U><FONT SIZE=2 COLOR="#0000ff">Scribble3.html</U></FONT></A><FONT SIZE=2>.</FONT><FONT FACE="Times New Roman" SIZE=2> Обратите внимание, что в этот пример порождает 3 вспомогательных класса </FONT><FONT SIZE=2>: Scribble3$1,2,3.</P>
+</FONT></BODY>
+</HTML>

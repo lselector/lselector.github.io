@@ -1,0 +1,944 @@
+<HTML
+><HEAD
+><TITLE
+>[Chapter 5] Redirecting I/O </TITLE
+><META
+NAME="DC.title"
+CONTENT="Learning the Unix Operating System"><META
+NAME="DC.creator"
+CONTENT="Jerry Peek, Grace Todino &amp; John Strang"><META
+NAME="DC.publisher"
+CONTENT="O'Reilly &amp; Associates, Inc."><META
+NAME="DC.date"
+CONTENT="1998-08-03T20:52:31Z"><META
+NAME="DC.type"
+CONTENT="Text.Monograph"><META
+NAME="DC.format"
+CONTENT="text/html"
+SCHEME="MIME"><META
+NAME="DC.source"
+CONTENT="1-56592-390-1"
+SCHEME="ISBN"><META
+NAME="DC.language"
+CONTENT="en-US"><META
+NAME="generator"
+CONTENT="Jade 1.1/O'Reilly DocBook 3.0 to HTML 4.0"><LINK
+REV="made"
+HREF="mailto:online-books@oreilly.com"
+TITLE="Online Books Comments"><LINK
+REL="up"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"><LINK
+REL="prev"
+HREF="ch04_05.htm"
+TITLE="4.5 Printing Files"><LINK
+REL="next"
+HREF="ch05_02.htm"
+TITLE="5.2 Pipes and Filters"></HEAD
+><BODY
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+><DIV
+CLASS="htmlnav"
+><H1
+><IMG
+SRC="gifs/smbanner.gif"
+ALT="Learning the Unix Operating System"
+USEMAP="#srchmap"
+BORDER="0"></H1
+><MAP
+NAME="srchmap"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,466,69"
+HREF="index.htm"
+ALT="Learning the Unix Operating System"><AREA
+SHAPE="RECT"
+COORDS="467,0,514,18"
+HREF="jobjects/fsearch.htm"
+ALT="Search this book"></MAP
+><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch04_05.htm"
+TITLE="4.5 Printing Files"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 4.5 Printing Files"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><B
+><FONT
+FACE="ARIEL,HELVETICA,HELV,SANSERIF"
+SIZE="-1"
+>Chapter 5</FONT
+></B
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch05_02.htm"
+TITLE="5.2 Pipes and Filters"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 5.2 Pipes and Filters"
+BORDER="0"></A
+></TD
+></TR
+></TABLE
+>&nbsp;<HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+CLASS="chapter"
+><A
+CLASS="title"
+NAME="LUX-CH-5"
+>5. Redirecting I/O </A
+></H1
+><DIV
+CLASS="htmltoc"
+><P
+><B
+>Contents:</B
+><BR><A
+CLASS="sect1"
+HREF="#LUX-CH-5-SECT-1"
+TITLE="5.1 Standard Input and Standard Output"
+>Standard Input and Standard Output</A
+><BR><A
+CLASS="sect1"
+HREF="ch05_02.htm"
+TITLE="5.2 Pipes and Filters"
+>Pipes and Filters</A
+></P
+><P
+></P
+></DIV
+><DIV
+CLASS="sect1"
+><H2
+CLASS="sect1"
+><A
+CLASS="title"
+NAME="LUX-CH-5-SECT-1"
+>5.1 Standard Input and Standard Output</A
+></H2
+><P
+CLASS="para"
+>Many UNIX commands read input (such as a file) and write output.</P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-5-IX-IO-REDIRECTION"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-5-IX-I-O-REDIRECTION"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-5-IX-OUTPUT-REDIRECTING"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-5-IX-REDIRECTING-IO"
+></A
+>In general, if no filename is specified in a command, the shell takes
+whatever you type on your keyboard as input to the command (after you
+press the first
+<KBD
+CLASS="keycap"
+>[RETURN]</KBD
+>
+to start the command running, that is).
+Your terminal keyboard is the command's <EM
+CLASS="emphasis"
+>standard input</EM
+>.<A
+CLASS="indexterm"
+NAME="AUTOID-3714"
+></A
+></P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-3717"
+></A
+>As a command runs, the results are usually displayed on your terminal
+screen.  The terminal screen is the command's <EM
+CLASS="emphasis"
+>standard output</EM
+>.</P
+><P
+CLASS="para"
+>So, by default, each command takes its input from the standard input
+and sends the results to the standard output.</P
+><P
+CLASS="para"
+>These two default cases of input/output can be varied.
+This is called <EM
+CLASS="emphasis"
+>input/output redirection</EM
+>.
+You can use a given file as input to a command that doesn't normally<A
+CLASS="indexterm"
+NAME="AUTOID-3723"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3725"
+></A
+>
+accept filenames by using the &quot;&lt;&quot; (less-than symbol) operator.  For
+example, the following command mails the contents of the file
+<EM
+CLASS="emphasis"
+>to_do</EM
+> to <EM
+CLASS="emphasis"
+>bigboss@corp</EM
+>:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>mail bigboss@corp &lt; to_do</B
+></CODE
+>
+%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>You can also write the results of a command to a named file or some
+other device instead of displaying output on the screen using the<A
+CLASS="indexterm"
+NAME="AUTOID-3733"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3735"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3737"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3739"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3741"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3744"
+></A
+>
+<CODE
+CLASS="literal"
+>&gt;</CODE
+> (greater-than symbol) operator. The pipe operator <CODE
+CLASS="literal"
+>|</CODE
+>
+sends the standard output of one 
+command to the standard input of another command.  Input/output
+redirection is one of the nicest features of UNIX because of its
+tremendous power and flexibility.</P
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-5-SECT-1.1"
+>5.1.1 Putting Text in a File</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-5-IX-TEXT-INSERT-FILES"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-5-IX-FILES-INSERTING-TXT"
+></A
+>Instead of always letting the output of a command come to the screen,
+you can redirect output into a file.  This is useful when you have a
+lot of output that would be hard to read on the screen or when you put
+files together to create a bigger file.</P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-5-IX-CAT-COMMAND"
+></A
+>As we've seen, the <B
+CLASS="emphasis.bold"
+>cat</B
+> command can display a short file.  It can
+also be used to put text into a file, or to create a bigger file out
+of smaller files.</P
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-5-SECT-1.1.1"
+>5.1.1.1 The &gt; operator</A
+></H4
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-5-IX-OUTPT-RDIR-OPERATOR"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-5-IX-OUTPUT-REDIR-OPERATOR"
+></A
+>When you add &quot;&gt; <EM
+CLASS="emphasis"
+>filename</EM
+>&quot; to the end of a command line, the
+results of the command are diverted from the standard output to the
+named file.  The &gt; symbol is called the <EM
+CLASS="emphasis"
+>output redirection
+operator</EM
+>.</P
+><P
+CLASS="para"
+>For example, let's use <B
+CLASS="emphasis.bold"
+>cat</B
+> with this operator.  The contents of
+the file that you'd normally see on the screen (from the standard
+output) are diverted into another file:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>cat /etc/passwd &gt; password</B
+></CODE
+>
+% <CODE
+CLASS="userinput"
+><B
+>cat password</B
+></CODE
+>
+root::0:0:Root:/:/bin/sh
+daemon:NONE:1:1:Admin:/:
+	.
+	.
+	.
+john::128:50:John Doe:/usr/john:/bin/sh
+%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>An example in <A
+CLASS="xref"
+HREF="ch03_01.htm"
+TITLE="Your UNIX Account "
+>Chapter 3, Your UNIX Account </A
+>, showed how <B
+CLASS="emphasis.bold"
+>cat /etc/passwd</B
+> displays
+the file <EM
+CLASS="emphasis"
+>/etc/passwd</EM
+> on the screen.  The example above adds the
+&gt; operator; so the output of <B
+CLASS="emphasis.bold"
+>cat</B
+> goes to a file called
+<EM
+CLASS="emphasis"
+>password</EM
+> in the working directory.  Displaying the file
+<EM
+CLASS="emphasis"
+>password</EM
+> shows that its contents are the same as the file
+<EM
+CLASS="emphasis"
+>/etc/passwd</EM
+> (the effect is the same as the copy command <B
+CLASS="emphasis.bold"
+>cp
+/etc/passwd password</B
+>).</P
+><P
+CLASS="para"
+>You can use the &gt; redirection operator with any command that sends text to
+its standard output&nbsp;- not just with <B
+CLASS="emphasis.bold"
+>cat</B
+>.
+For example:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>who &gt; users</B
+></CODE
+>
+% <CODE
+CLASS="userinput"
+><B
+>date &gt; today</B
+></CODE
+>
+% <CODE
+CLASS="userinput"
+><B
+>ls</B
+></CODE
+>
+password   today   users   ...</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-3793"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3795"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3797"
+></A
+>We've sent the output of <B
+CLASS="emphasis.bold"
+>who</B
+> to a file called <EM
+CLASS="emphasis"
+>users</EM
+> and
+the output of <B
+CLASS="emphasis.bold"
+>date</B
+> to the file named <EM
+CLASS="emphasis"
+>today</EM
+>.  Listing the
+directory shows the two new files.  Let's look at the output from the
+<B
+CLASS="emphasis.bold"
+>who</B
+> and <B
+CLASS="emphasis.bold"
+>date</B
+> commands, regarding these two files:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>cat users</B
+></CODE
+>
+tim     tty1    Aug 12  07:30
+john    tty4    Aug 12  08:26
+% <CODE
+CLASS="userinput"
+><B
+>cat today</B
+></CODE
+>
+Tue Aug 12 08:36:09 EDT 1997
+%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>You can also use the <B
+CLASS="emphasis.bold"
+>cat</B
+> command and the &gt; operator to make a
+small text file.  We told you earlier to type
+<KBD
+CLASS="keycap"
+>[CTRL-D]</KBD
+>
+if you accidentally enter <B
+CLASS="emphasis.bold"
+>cat</B
+> without a filename.  This is
+because the <B
+CLASS="emphasis.bold"
+>cat</B
+> command alone takes whatever you type on the
+keyboard as input.  Thus, the command:</P
+><BLOCKQUOTE
+CLASS="blockquote"
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>cat &gt;</B
+> <EM
+CLASS="emphasis"
+>filename</EM
+></P
+></BLOCKQUOTE
+><P
+CLASS="para"
+>takes input from the keyboard and redirects it to a file.
+Try the following example:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>cat &gt; to_do
+Finish report by noon
+Lunch with Xannie
+Swim at 5:30
+^D</B
+></CODE
+>
+%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>cat</B
+> takes the text that you typed as input, and the &gt; operator
+redirects it to a file called <EM
+CLASS="emphasis"
+>to_do</EM
+>.  Type<A
+CLASS="indexterm"
+NAME="AUTOID-3826"
+></A
+>
+<KBD
+CLASS="keycap"
+>[CTRL-D]</KBD
+>
+on a new line by itself to signal the end of the text.  You should get
+a shell prompt.</P
+><P
+CLASS="para"
+>You can also create a bigger file out of many smaller files using the
+<B
+CLASS="emphasis.bold"
+>cat</B
+> command and the &gt; operator.  The form:</P
+><BLOCKQUOTE
+CLASS="blockquote"
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>cat</B
+> <EM
+CLASS="emphasis"
+>file1 file2 &gt; newfile</EM
+></P
+></BLOCKQUOTE
+><P
+CLASS="para"
+>creates a file <EM
+CLASS="emphasis"
+>newfile</EM
+>, consisting of <EM
+CLASS="emphasis"
+>file1</EM
+> followed by <EM
+CLASS="emphasis"
+>file2</EM
+>.<A
+CLASS="indexterm"
+NAME="AUTOID-3840"
+></A
+></P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>cat today to_do &gt; diary</B
+></CODE
+>
+% <CODE
+CLASS="userinput"
+><B
+>cat diary</B
+></CODE
+>
+Tue Aug 12 08:36:09 EDT 1997
+Finish report by noon
+Lunch with Xannie
+Swim at 5:30
+%</PRE
+></BLOCKQUOTE
+></P
+><BLOCKQUOTE
+CLASS="caution"
+><P
+CLASS="para"
+><STRONG
+>CAUTION:</STRONG
+> If you are using the &gt; (output redirection) operator, you should be
+careful not to overwrite the contents of a file accidentally.  Your
+system may let you redirect output to an existing file.  If so, the
+old file will be deleted (or, in UNIX lingo, &quot;clobbered&quot;).  Be careful
+not to overwrite a much-needed file!  Many shells can protect you from<A
+CLASS="indexterm"
+NAME="AUTOID-3847"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3849"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3852"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3854"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3857"
+></A
+>
+this risk.  In the C shell, use the command <B
+CLASS="emphasis.bold"
+>set noclobber</B
+>.  The
+Korn shell and <B
+CLASS="emphasis.bold"
+>bash</B
+> command is <B
+CLASS="emphasis.bold"
+>set -o noclobber</B
+>.  Enter
+the command at a shell prompt or put it in your shell's startup file
+After that, the shell will not allow you to redirect onto an existing
+file and overwrite its contents.</P
+><P
+CLASS="para"
+>This doesn't protect against overwriting by UNIX commands like
+<B
+CLASS="emphasis.bold"
+>cp</B
+>; it works only with the &gt; redirection operator.  For more
+protection, you can set UNIX file access permissions.</P
+></BLOCKQUOTE
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-3865"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3866"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3867"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3868"
+></A
+></P
+></DIV
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-5-SECT-1.1.2"
+>5.1.1.2 The &gt;&gt; operator</A
+></H4
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-3872"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3875"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3878"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3880"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3882"
+></A
+>You can add more text to the end of an existing file, instead of
+replacing its contents, by using the &gt;&gt; (append redirection) operator.
+Use it like the &gt; (output redirection) operator.
+So,</P
+><BLOCKQUOTE
+CLASS="blockquote"
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>cat</B
+> <EM
+CLASS="emphasis"
+>file2</EM
+> <B
+CLASS="emphasis.bold"
+>&gt;&gt;</B
+> <EM
+CLASS="emphasis"
+>file1</EM
+></P
+></BLOCKQUOTE
+><P
+CLASS="para"
+>appends the contents of <EM
+CLASS="emphasis"
+>file2</EM
+> to the end of <EM
+CLASS="emphasis"
+>file1</EM
+>.
+For an example, let's append the contents of the file <EM
+CLASS="emphasis"
+>users</EM
+>, and also
+the current date and time, to the file <EM
+CLASS="emphasis"
+>diary</EM
+>.
+Then we display the file:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>cat users &gt;&gt; diary</B
+></CODE
+>
+% <CODE
+CLASS="userinput"
+><B
+>date &gt;&gt; diary</B
+></CODE
+>
+% <CODE
+CLASS="userinput"
+><B
+>cat diary</B
+></CODE
+>
+Tue Aug 12 08:36:09 EDT 1997
+Finish report by noon
+Lunch with Xannie
+Swim at 5:30
+tim     tty1    Aug 12  07:30
+john    tty4    Aug 12  08:26
+Tue Aug 12 09:07:24 EDT 1997
+%</PRE
+></BLOCKQUOTE
+></P
+></DIV
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="htmlnav"
+><P
+></P
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch04_05.htm"
+TITLE="4.5 Printing Files"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 4.5 Printing Files"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="book"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"
+><IMG
+SRC="../gifs/txthome.gif"
+ALT="Learning the Unix Operating System"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch05_02.htm"
+TITLE="5.2 Pipes and Filters"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 5.2 Pipes and Filters"
+BORDER="0"></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+>4.5 Printing Files</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="index"
+HREF="index/idx_0.htm"
+TITLE="Book Index"
+><IMG
+SRC="../gifs/index.gif"
+ALT="Book Index"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+>5.2 Pipes and Filters</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><IMG
+SRC="../gifs/smnavbar.gif"
+USEMAP="#map"
+BORDER="0"
+ALT="The UNIX CD Bookshelf Navigation"><MAP
+NAME="map"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,73,21"
+HREF="../index.htm"
+ALT="The UNIX CD Bookshelf"><AREA
+SHAPE="RECT"
+COORDS="74,0,163,21"
+HREF="../upt/index.htm"
+ALT="UNIX Power Tools"><AREA
+SHAPE="RECT"
+COORDS="164,0,257,21"
+HREF="../unixnut/index.htm"
+ALT="UNIX in a Nutshell"><AREA
+SHAPE="RECT"
+COORDS="258,0,321,21"
+HREF="../vi/index.htm"
+ALT="Learning the vi Editor"><AREA
+SHAPE="RECT"
+COORDS="322,0,378,21"
+HREF="../sedawk/index.htm"
+ALT="sed &amp; awk"><AREA
+SHAPE="RECT"
+COORDS="379,0,438,21"
+HREF="../ksh/index.htm"
+ALT="Learning the Korn Shell"><AREA
+SHAPE="RECT"
+COORDS="439,0,514,21"
+HREF="index.htm"
+ALT="Learning the UNIX Operating System"></MAP
+></DIV
+></BODY
+></HTML
+>

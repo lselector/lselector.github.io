@@ -1,0 +1,1359 @@
+  Introduction to Object Oriented DHTML
+Object oriented programming (OOP) takes a little to get used to, but I assure you if you've understood everything up until now, you (probably) won't have any difficulty understanding this lesson. Using Object Oriented DHTML is the next progression and will allow you to build more sophisticated scripts in an organized way. 
+
+You want to use objects whenever you need to create more than one of something. By creating one generic object, you can use it to create any number of them without duplicating much of your code. This has a big impact on your coding because it means you don't have to write as much code, everything is organized nicely, and the JavaScript will execute faster. 
+
+You can view Netscape's JavaScript tutorial for a comprehensive explanation of how to create new objects. On this lesson I'll give a brief overview of OOP and show how to make a simple reusable object for working with layers. Everything I do in this tutorial from this point on will be object-based so it's a good idea to follow along. 
+
+OOP Overview
+When you create objects, really what you are doing is collecting a lot of different variables into a nice neat package which you can then easily access at a later time. Each object is it's own package, and the variables in that package are referred to as properties. You can then write functions which manipulate only the variables (properties) of that object, these are referred to as methods. 
+
+Using objects are helpful because they are designed so that they can be cloned to make many different objects that will be used similarly. Without confusing you yet, say we had a generic object named "block". Then we decided we want to have several blocks (block1, block2, block3 etc.) that all had similar variables (height, width, depth etc.). Using object oriented programming, the variables in the blocks are all collected together in this format: 
+
+Object Name block1 block2 block3 
+property 1 block1.width block2.width block3.width 
+property 2 block1.height block2.height block3.height 
+property 3 block1.depth block2.depth block3.depth 
+
+
+This is the basic set-up for all JavaScript objects: 
+
+function objectName(arguments) {
+	this.propertyName = somevalue
+}
+
+So to create this generic "block" object, the code would look something like this: 
+
+function block(width,height,depth) {
+	this.width = width
+	this.height = height
+	this.depth = depth
+}
+
+Notice that any variable defined with "this" in front of it becomes a property of the object. Many of the properties will initially be assigned values based on those passed in the arguments, but you can also set other default properties to whatever you'd like, for example: 
+
+function block(width,height,depth) {
+	this.width = width
+	this.height = height
+	this.depth = depth
+	this.color = "red"
+}
+
+...would make the width, height, and depth change depending on how it's initialized, but all the blocks would have a color property of "red". 
+
+Once this generic object function is created, you can clone objects based on this code, this is referred to as creating an instance of an object. The format for creating instances of a self-defined object is as follows: 
+
+newObjectName = new objectName(arguments)
+
+So to create the block objects named block1, block2, and block3 you'd write: 
+
+block1 = new block(10,20,30)
+block2 = new block(5,20,10)
+block3 = new block(15,30,15)
+
+After they're defined you can do whatever you'd like with the object, check it's properties, or change them. Properties of an object work exactly the same way as normal variables do. 
+
+Once you've got the object function itself created, you can extend the functionality of the object by creating methods for it. The format for creating a method is as follows: 
+
+function objectName(arguments) {
+	this.propertyName = somevalue
+	this.methodName = methodFunction
+}
+
+function methodFunction(arguments) {
+	// write some code for the object
+}
+
+The methodFunction() works like any other function, except when you call the function you add the name of the object you want to apply the function to: 
+
+newObjectName.methodFunction()
+
+So using this idea, we can add a method to the block object that calculates the volume of the block and returns the value: 
+
+function block(width,height,depth) {
+	this.width = width
+	this.height = height
+	this.depth = depth
+	this.color = "red"
+	this.volume = blockVolume
+}
+function blockVolume() {
+	return this.width*this.height*this.depth
+}
+
+To find the volume of block1 you write: 
+
+block1.volume()
+
+newobjects1.html has this simple block object and allows you to check the values of the properties and the volume using alert's. 
+
+Objects and Layers
+Using the concepts from previous lessons, we can apply object oriented programming to make working with layers a much easier task. Instead of always re-writing initialization code for pointer variables, you can create generic objects that do the same thing with just one line of code. 
+
+Recall again what pointer variables are doing: 
+
+if (ns4) layer1 = document.layer1Div
+else if (ie4) layer1 = layer1Div.style
+
+...which is synonymous with: 
+
+if (ns4) layer1 = document.layers["layer1Div"]
+else if (ie4) layer1 = document.all["layer1Div"].style
+
+In this case, layer1 is a reference variable which points to the CSS properties of the layer named "layer1Div". If you've been using pointer variables on your own, you'll know that to create many pointer variables is rather cumbersome. To solve that problem I'm going to make a generic object that creates a css property which does the same thing as pointer variables do: 
+
+function layerObj(id) {
+	if (ns4) this.css = document.layers[id]
+	else if (ie4) this.css = document.all[id].style
+}
+
+To use this layerObj object, you can now initialize your pointer variables with only: 
+
+layer1 = new layerObj("layer1Div")
+
+Once the layer1 object is initialized you can access the css properties of "layer1Div" by using: 
+
+layer1.css.left
+layer1.css.top
+layer1.css.visibility
+etc....
+
+So all that's really changed is the extra css between everything. We can further extend the layerObj object by automatically defining x and y properties which will represent the left and top properties of the layer: 
+
+function layerObj(id) {
+	if (ns4) {
+		this.css = document.layers[id]
+		this.x = this.css.left
+		this.y = this.css.top
+	}
+	else if (ie4) {
+		this.css = document.all[id].style
+		this.x = this.css.pixelLeft
+		this.y = this.css.pixelTop
+	}
+}
+
+So again if we were to create a layer1 object: 
+
+layer1 = new layerObj("layer1Div")
+
+The layer1 object would have these properties: 
+
+layer1.css
+layer1.x
+layer1.y
+
+Note that we can now use x and y as our properties because this is our own object we're working with. I was using xpos and ypos before because Netscape already included those properties as part of it's own Layer object. Since we're creating a new object we can name the properties whatever we like. 
+
+Example: newobjects2.html shows an example using this object and allows you to check the values of the properties. 
+
+Making Methods
+We can extend the functionality of the layerObj object to make it easy to manipulate layers just as we can create separate individual functions. Recall in the Moving Layers lesson I made a generic functions that can be used to move a layer to any position on the screen: 
+
+function moveBy(obj,x,y) {
+	obj.xpos += x
+	obj.left = obj.xpos
+	obj.ypos += y
+	obj.top = obj.ypos
+}
+function moveTo(obj,x,y) {
+	obj.xpos = x
+	obj.left = obj.xpos
+	obj.ypos = y
+	obj.top = obj.ypos
+}
+
+Those functions translated into methods of the layerObj object look like this: 
+
+function layerObj(id) {
+	if (ns4) {
+		this.css = document.layers[id]
+		this.x = this.css.left
+		this.y = this.css.top
+	}
+	else if (ie4) {
+		this.css = document.all[id].style
+		this.x = this.css.pixelLeft
+		this.y = this.css.pixelTop
+	}
+	this.moveBy = layerObjMoveBy
+	this.moveTo = layerObjMoveTo
+}
+function layerObjMoveBy(x,y) {
+	this.x += x
+	this.css.left = this.x
+	this.y += y
+	this.css.top = this.y
+}
+function layerObjMoveTo(x,y) {
+	this.x = x
+	this.css.left = this.x
+	this.y = y
+	this.css.top = this.y
+}
+
+Again if we were to create a layer1 object: 
+
+layer1 = new layerObj("layer1Div")
+
+We can then move the layer by using either the moveBy() or moveTo() methods: 
+
+layer1.moveBy(-5,10)
+layer1.moveTo(100,100)
+etc.
+
+Example: newobjects3.html shows and example using these methods. 
+
+Where to go from here
+This tiny object would only be used in very specific instances where all you need to do is move the layer around in a simple manner. The way I've made this object doesn't account for nested layers, so if you need to use nested layers you'd have to change the code to include the extra parent layers. The above object is actually deriviative of The Dynamic Layer Object. It is a unified cross-browser object oriented solution for DHTML. 
+
+Home Next Lesson: BrowserCheck Object 
+
+==========================================================
+
+  BrowserCheck Object
+With the advent of new browsers I needed a more sohpisticated browser checking solution - the document.layers and document.all check that I've been using will not suffice when we need to work with Netscape 4.0, 5.0 and Internet Explorer 4.0 and 5.0. We need a way to individually check for them. So I've built the BrowserCheck Object. This object is including within the DynLayer, and as well as a separate js file if you want to use it when you're not using the DynLayer. 
+
+This object will automatically define an instance of itself as "is": 
+
+is = new BrowserCheck()
+
+The is object has the following properties 
+
+is.b - (String) browser name, converted to "ns" if Netscape, "ie" if Internet Explorer 
+is.v - (integer) version number (2,3,4,5 etc.) 
+is.ns - (boolean) Netscape 4 or greater 
+is.ns4 - (boolean) Netscape 4 
+is.ns5 - (boolean) Netscape 5 
+is.ie - (boolean) Internet Explorer 4 or greater 
+is.ie4 - (boolean) Internet Explorer 4 
+is.ie5 - (boolean) Internet Explorer 5 
+is.min - (boolean) Netscape 4 or 5, or Internet Explorer 4 or 5 
+This combination of properties will serve almost all your needs with respect to DHTML - that's all this object is designed to do. You could extend this to check for operating systems and mime-plugins or whatever. 
+
+So now you no longer need the following lines on any pages: 
+
+ns4 = (document.layers)? true:false
+ie4 = (document.all)? true:false
+
+Instead add the browser.js file to your page: 
+
+<script language="JavaScript" src="../dynapi/browsercheck.js"></script>
+
+Or, if you are already using the DynLayer you don't need to do anything. The DynLayer has the BrowserCheck Object in its source. 
+
+Example: browsercheck.html [source] - shows the output of the BrowserCheck Object on your browser. 
+
+Source Code
+browsercheck.js 
+
+Home Next Lesson: Overview of the DynLayer Object 
+
+=========================================================
+
+  The Dynamic Layer Object API
+The Dynamic Layer Object API (DynLayer) is a lightweight object that provides a highly flexible manner of working with layers. Not only does it have common properties and methods for manipulating layers, it is an object based API which opens up a new way of working with layers that far exceeds the traditional way of coding DHTML. I've found it to be the ideal foundation for nearly every application of DHTML including animation, applications, and gaming environments. 
+
+All of the next lessons in this tutorial will use the DynLayer as the basis for accomplishing some other task, so it is important that you understand how it works and how to use it. 
+
+Features of the DynLayer Object: 
+
+an object-based API that is easy to implement and use 
+targets layers in a similar manner that I've used pointers to target layers - to avoid the problems of the different object models between Netscape and IE 
+automatic nested layer handling 
+full support for working with layers in separate frames 
+provides it's own properties and methods for changing the location of the layer - to avoid the position problems associated with Microsoft's proprietory way of changing the location 
+has the handy hide() and show() methods to change the visibility 
+exposes a common event model for layer-based events 
+has built-in slide, clip, and write methods 
+includes css() function to auto-generate CSS syntax 
+easy to make extensions such as wipe, glide, background color, external source files etc. 
+Quick Summary of what the DynLayer Does 
+
+Instead of using the true commands for manipulating layers, you make a DynLayer object and tell it the name of the layer that it will be used for. The DynLayer object will have 3 main properties: 
+
+doc - points to "document.layername.document" in Netscape 4, and "document" in IE and Netscape 5 (Mozilla) 
+elm - points to "document.layername" in Netscape 4, "document.all['layername']" in IE, and "document.getElementById('layername')" in Netscape 5 
+css - points to elm in Netscape 4, elm.style in IE and Netscape 5 
+This manner gives us a similar way to access properties and methods of layers no matter which browser is being used. 
+
+The DynLayer then has other properties such as (x,y) to hold various information needed to operate the DynLayer, and has methods such as hide() show() and slideBy() and slideTo() to manipulate the layer. Read the next sections of the DynLayer for specific usage of these methods. 
+
+Source Code to DynLayer
+dynlayer.js 
+
+Home Next Lesson: DynLayer Extensions 
+copyright 1998 Dan Steinman 
+
+=========================================================
+
+  Initialization of DynLayers
+The DynLayer can be applied to any layer using this general format: 
+
+objectName = new DynLayer(id,nestref,iframe)
+
+Where: 
+objectName 
+Name of the object - how you will reference the DynLayer object. 
+id 
+ID of the layer to which this DynLayer is being applied to, this cannot be the same as the objectName 
+nestref (now optional in most circumstances) 
+Nested reference to that layer 
+iframe 
+Name of the iframe that the layer is contained. This is used when you need to manipulate a layer inside an IFrame. Currently IFrame is only a feature of is.ie. 
+Simple Layer Example: 
+
+Let's say you have a very simple layer with this structure: 
+
+<STYLE>
+#mylayerDiv {position:absolute; left:30; top:50;}
+</STYLE>
+
+<DIV ID="mylayerDiv"></DIV>
+
+To initialize 'mylayerDiv', your javascript will be: 
+
+mylayer = new DynLayer('mylayerDiv')
+
+Notice how I append the 'Div' extension on the ID of the layer. I do this is because the name of the object cannot be the same as the ID of the layer. It's just a nice way to keep your variables separate. 
+
+Nested Layer Example: 
+
+I updated the DynLayer so that in most circumstances working with nested layers is exactly the same as working with non-nested layers. 
+
+If you have nested layers like this: 
+
+<DIV ID="myparentDiv">
+	<DIV ID="mylayerDiv"></DIV>
+</DIV>
+
+If you wanted to use the nestref parameter you could initialize both of them like this:: 
+
+myparent = new DynLayer('myparentDiv')
+mylayer = new DynLayer('mylayerDiv','myparentDiv')
+
+However, nestref is now optional, so you if you don't send the nestref parameter for the nested layer it will still work: 
+
+myparent = new DynLayer('myparentDiv')
+mylayer = new DynLayer('mylayerDiv')
+
+Notice the name of the parent layer is passed for the nestref argument. 
+
+Nestref for Multiple Nesting: 
+
+Again, no difference here, simply send the ID of the layer to the DynLayer and it will take care of the nested referencing itself. But for argument's sake, lets say you had these layers: 
+
+<DIV ID="myparent1Div">
+	<DIV ID="myparent2Div">
+		<DIV ID="mylayerDiv"></DIV>
+	</DIV>
+</DIV>
+
+In this case if you need to use the nestref parameter you must pass the names of all layers in that hierarchy separated by '.document.': 
+
+mylayer = new DynLayer('mylayerDiv','myparent1Div.document.myparent2Div')
+
+The pattern continues no matter how many times it's nested. 
+
+Working with Layers in separate Frames: 
+
+The DynLayer can be used to work with layers that are withing separate Frames, or IFrames (for IE only). In this case sending a nestref parameter for nested layers is manditory. 
+
+Note: This has changed, you must now send the frame reference as an object, no longer as a string 
+
+mylayer = new DynLayer('mylayer',null,parent.myframe)  // send the frame object reference
+
+Assigning DynLayers Using Arrays: 
+
+If you have a sequencial set of layers you could alternatively assign DynLayers to Arrays rather than just variable names. 
+
+<DIV ID="mylayer1"></DIV>
+<DIV ID="mylayer2"></DIV>
+<DIV ID="mylayer3"></DIV>
+<DIV ID="mylayer4"></DIV>
+
+To initialize these you could do: 
+
+mylayer = new Array()
+for (var i=0;i<4;i++) {
+	mylayer[i] = new DynLayer("mylayer" + i)
+}
+
+Initialization Demos: 
+
+Example: dynlayer-initialization1.html for an example showing various initializations, using the nestref parameter. 
+
+Example: dynlayer-initialization2.html for that same example but without using any nestref parameters, notice it still works the same. 
+
+Example: dynlayer-frame1.html for an example of using the DynLayer with frames. You probably should look at how I've set up the two frame pages used: dynlayer-frame1-top.html and dynlayer-frame1-bottom.html. 
+
+Home Next Lesson: DynLayerInit Function 
+
+=========================================================
+
+  DynLayerInit() Function
+Note: This function is now manditory. Even if you do not specifically call this function, the first time you assign a DynLayer, the DynLayerInit() function will automatically be called to assign whatever layers have a "Div" in their ID, as well as find all the nestref's for all layers in the page. So you don't necessarily ever have to call this function manually unless you don't plan on assigning any DynLayers yourself. 
+
+The DynLayerInit() function is used to initialize all your DynLayers at once automatically and is used by the DynLayer to take care of all nested heirarchy work for Netscape. The way it works is by sniffing through the names of all layers in the page. Any layers that contain an ID with a "Div" extension on it will be automtically assigned to a DynLayer. This function does not apply to layers inside Frames or even more advanced circumstances like external files or dynamically generated layers. 
+
+As noted, you only have to call the DynLayerInit() function manually if you do not have any layers that don't have a "Div" extension, and therefore won't need to manually define any layers at all. Just call the function in your default init() function: 
+
+function init() {
+	DynLayerInit()
+}
+
+As long as you follow my lead of appending a "Div" to the names of your layers it will do the same thing as defining your layers manually. For example say you had a layer named "blueDiv" like this: 
+
+<STYLE TYPE="text/css">
+#blueDiv {position:absolute; left:50; top:50;}
+</STYLE>
+<DIV ID="blueDiv"></DIV>
+
+The DynLayerInit() function will automatically execute the code to initialize it: 
+
+blue = new DynLayer("blueDiv")
+
+So any layers that have a "Div" extension never have to be initialized manually. This includes nested layers. Note though, layers that are contained in external files, different frames must be manually assigned. 
+
+Also note, the names of your layers may be something other than with the "Div" extension. However, DynLayerInit() will not automatically define these, although it will find it's nestref value so that you don't have to pass it it. 
+
+Example: dynlayer-dynlayerinit1.html [source] 
+
+The Dynamic Layer Object API 
+
+Initialization 
+DynLayerInit() Function 
+Properties 
+Using Layer-based Events 
+Hide, Show, Move Methods 
+Slide Methods 
+Clip Methods 
+Write Method 
+css() and DynLayerTest() Functions 
+Download: dynlayer.js 
+View Source: dynlayer.js 
+Home Next Lesson: DynLayer Properties 
+
+=========================================================
+
+  DynLayer Properties
+Once you have applied the DynLayer to a layer, you have a unified way of referencing the layer for both Netscape and IE. From that point on you can use the DynLayer to retrieve and change the properties of the layer using a single command. 
+
+Core Properties
+In most cases it is only necessary to have movement control of the layer. The core properties of the DynLayer provide the foundation for controlling the location of a layer. 
+
+css - points to the CSS properties of the layer 
+elm - points to the actual HTML element 
+id - retrieves the ID of the layer/element 
+x - stores the "left" location 
+y - stores the "top" location 
+w - captures the initial width 
+h - captures the initial height 
+doc - points to the document object for the layer 
+obj - a string property of the object which points to itself 
+The css Property: 
+
+The css property is the way you directly reference the CSS properties of the layer. It is the equivalent to how I've used pointers in previous lessons. For Netscape it points to document.layer[id], and for IE it points to document.all[id].style 
+
+When you need to retrieve or change any of the CSS properties you reference the property in this manner: 
+
+objectName.css.propertyName
+
+For example to retrieve the z-index of a "mylayer" DynLayer you'd use: 
+
+mylayer.css.zIndex
+
+This can be done for any of the CSS properties. However in practice it is rarely necessary to call the css property manually because the DynLayer takes care of most of them: left, top, visibility, and clip value. The only property that you'd ever really need to access using the css property is zIndex. 
+
+The elm Property: 
+
+This points to the actual HTML element object. For Netscape it is equivalent to the css property. But for IE it points to document.all[id] rather than document.all[id].style. For basic DHTML animation and such this property isn't necessary, but there are situations where this is needed (check the Using Layer-based Events and Scroll Concepts lesson for an example). 
+
+The x and y Properties: 
+
+The x and y properties always contain the current location of the layer. They are equivalent to how I've been using the xpos and ypos properties in previous lessons. Using these separate properties is a personal preference of mine because I fell it is cleaner (as well as more efficient) to access the location of a layer as a property. 
+
+To retrieve the current location of the layer you use either: 
+
+objectName.x
+or
+objectName.y
+
+As before, you have to ensure that the x and y properties are in synch with the actual left and top properties by copying the values: 
+
+objectName.x += 10
+objectName.left = objectName.x
+
+But you often never have to do that because I've included the moveTo() or moveBy() methods which change the location of the layer for you. 
+
+Instead of having the x and y properties you could optionally write your own methods like getLeft() or getTop() for extracting the current location. But you can do that on your own if you want to. 
+
+The w and h Properties: 
+
+Just as you can retrieve the location of the layer using x and y, you can retrieve the width and height of the layer using w and h: 
+
+objectName.w
+or
+objectName.h
+
+The doc Property: 
+
+The doc property can be used when you want to access other elements inside the layer such as images and forms. In Netscape it points to document.layers[id].document, but in IE it points just to the main document. This is necessary because Netscape handles contents in layers as separate documents. 
+
+Element inside the layer should be called by: 
+
+mylayer.doc.elementName
+
+// changing images
+mylayer.doc.images["myImage"].src = newimage.src
+
+// get form value
+mylayer.doc.myform.myformfield.value
+
+Read the Changing Images and Working With Forms lessons for more thorough explanations on those topics. There is also the image() method extenson. 
+
+The obj Property 
+
+The obj property is a string reference to the DynLayer. This property is necessary when methods use setTimeouts, setInterval, or eval's to call itself. Both of those statements only accept strings. For example you cannot have a setTimeout inside a method when it is set up like this: 
+
+setTimeout(this + ".methodName()",100)
+
+Instead you have to use the obj property: 
+
+setTimeout(this.obj + ".methodName()",100)
+
+The obj property is used by addon methods such as the slide and wipe methods, as well as other objects that use the DynLayer, and all my widget objects. It's extremely useful. 
+
+Example: dynlayer-properties1.html [source] - for an example with an image change and a form value retrieval using the DynLayer properties. 
+
+The Dynamic Layer Object API 
+
+Initialization 
+DynLayerInit() Function 
+Properties 
+Using Layer-based Events 
+Hide, Show, Move Methods 
+Slide Methods 
+Clip Methods 
+Write Method 
+css() and DynLayerTest() Functions 
+Download: dynlayer.js 
+View Source: dynlayer.js 
+Home Next Lesson: DynLayer Mouse Events 
+
+=========================================================
+
+  Using Layer-based Events
+Pre-requisite: You should read the Document Mouse Events lesson before reading this one. 
+
+Using the elm property you can define events for your layer such as onMouseOver, onMouseOut, onMouseDown, onMouseUp, onMouseMove, and onClick. 
+
+In Netscape you can't mark up the event handlers like you can with an anchor: 
+
+<DIV ID="divName" onMouseDown="/*your code*/"></DIV>
+
+However, you can define handlers directly using JavaScript. For Netscape you use: 
+
+document.layer[id].captureEvents(Event.MOUSEDOWN)
+document.layer[id].onmouseover = downHandler
+
+For IE: 
+
+document.all[id].onmouseover = downHandler
+
+For a cross-browser solution you can define the handlers using the DynLayer elm property (which points to the actual element rather than the CSS properties): 
+
+objectName.elm.onmousedown = layerDownHandler
+objectName.elm.onmouseup = layerUpHandler
+objectName.elm.onmouseover = layerOverHandler
+objectName.elm.onmouseout = layerOutHandler
+objectName.elm.onmousemove = layerMoveHandler
+objectName.elm.onclick = layerClickHandler
+if (is.ns) objectName.elm.captureEvents(Event.MOUSEDOWN | Event.MOUSEUP | Event.MOUSEMOVE)
+
+Make sure you define the mouse events using all lowercase. The handler names can be whatever you choose. 
+
+For Netscape you have to manually capture the events that you want to use. You can see in the captureEvents line how to set them up. If you don't need one of them just remove it from the command. You do not need to capture the mouseOver and mouseOut events as it appears they are captured by default. 
+
+Another way to define your handlers is to use the new Function() command. Doing it this way you can pass parameters quite easily. 
+
+objectName.elm.onmousedown = new Function("layerDownHandler('my string!')")
+if (is.ns) objectName.elm.captureEvents(Event.MOUSEDOWN)
+
+function layerDownHandler(string) {
+	status = string
+}
+
+There is yet another way to pass parameters, you can temporarily define sub-properties to the dynlayer event property, and retrieve them in the handler function: 
+
+objectName.elm.string = "my string!"
+objectName.elm.onmousedown = layerDownHandler
+if (is.ns) objectName.elm.captureEvents(Event.MOUSEDOWN)
+
+function layerDownHandler() {
+	status = this.string
+}
+
+Using Mouse Coordinates
+In the handler functions you can retrieve the location of the mouse by using the following commands: 
+
+var x = (is.ns)? e.layerX:event.offsetX
+var y = (is.ns)? e.layerY:event.offsetY
+
+The x and y variables can then be used to do whatever you wish. For example, here's some code that will display the location of the mouse while over the layer: 
+
+function init() {
+	mylayer = new DynLayer("mylayerDiv")
+	mylayer.elm.onmousemove = layerMoveHandler
+	if (is.ns) mylayer.elm.captureEvents(Event.MOUSEMOVE)
+}
+
+function layerMoveHandler(e) {
+	var x = (is.ns)? e.layerX:event.offsetX
+	var y = (is.ns)? e.layerY:event.offsetY
+	status = x+","+y
+}
+
+Example: dynlayer-mouseevents1.html [source] 
+
+The Dynamic Layer Object API 
+
+Initialization 
+DynLayerInit() Function 
+Properties 
+Using Layer-based Events 
+Hide, Show, Move Methods 
+Slide Methods 
+Clip Methods 
+Write Method 
+css() and DynLayerTest() Functions 
+Download: dynlayer.js 
+View Source: dynlayer.js 
+Home Next Lesson: DynLayer Methods 
+
+=========================================================
+
+  Core DynLayer Methods
+The core methods (moveTo(), moveBy(), show(), and hide()) are by default included in the DynLayer. They are always available because they are used quite often. 
+
+The moveTo() Method: 
+
+The moveTo() method moves the layer to a specific coordinate: 
+
+objectName.moveTo(x,y)
+
+If you need to only change one of x or y why you can send null for the value: 
+
+objectName.moveTo(x,null)
+or
+objectName.moveTo(null,y)
+
+Examples: 
+
+mylayer.moveTo(100,50)
+mylayer.moveTo(100,null)
+mylayer.moveTo(null,50)
+
+The moveBy() Method: 
+
+The moveBy() method will shift the location of a layer by a specified number of pixels: 
+
+objectName.moveBy(x,y)
+
+Example: 
+
+mylayer.moveBy(5,0)
+
+The show() and hide() Methods: 
+
+For changing the visibility I've included the methods show() and hide(). Their are no parameters to pass so their usage is simple: 
+
+objectName.show()
+objectName.hide()
+
+In the standard DynLayer I haven't included any way to retrieve the visibility, only because I've found there's very few instances where you need to find the visibility (usually you already know if it's visible or not). But you could of course extend the DynLayer to keep track of that if need be. 
+
+Core Methods Demo: 
+
+Example: dynlayer-methods1.html [source] 
+
+The Dynamic Layer Object API 
+
+Initialization 
+DynLayerInit() Function 
+Properties 
+Using Layer-based Events 
+Hide, Show, Move Methods 
+Slide Methods 
+Clip Methods 
+Write Method 
+css() and DynLayerTest() Functions 
+Download: dynlayer.js 
+View Source: dynlayer.js 
+Home Next Lesson: Slide Methods 
+
+=========================================================
+
+  Slide Methods
+The slide methods provide an easy solution for creating simple straight-line animations. The slide methods are now automatically assigned to all DynLayers, so you can use them at any time. 
+
+The slideTo() Method: 
+
+The slideTo() method will slide the DynLayer to a specific coordinate. 
+
+objectName.slideTo(endx,endy,inc,speed,fn)
+
+
+Where: 
+endx - the final x coordinate 
+endy - the final y coordinate 
+inc - the incrementation amount (the number pixel units to move each repetition) 
+speed - the speed of repetition in milliseconds 
+fn - (optional) the function or statement to be executed when the slide is complete 
+If you want the DynLayer to slide in a horizontal line pass null for the endy value. And if you want the DynLayer to slide in a vertical line pass null for the endx value. 
+
+Examples: 
+
+To slide the DynLayer to coordinate (100,50), in increments of 10 pixel units, at 20 milliseconds per repetition: 
+
+mylayer.slideTo(100,50,10,20)
+
+To slide the DynLayer horizontally to the x-coordinate 80: 
+
+mylayer.slideTo(80,null,5,30)
+
+To pop up alert to notify when a slide is complete: 
+
+mylayer.slideTo(100,50,10,20,'alert("The slide is complete")')
+
+When using the fn property from a hyperlink you must do a trick with the quotes: 
+
+<A HREF="javascript:mylayer.slideTo(100,50,10,20,'alert(\'The slide is complete\')')"></A>  
+
+The slideBy() Method: 
+
+The slideBy() method will slide the DynLayer to another coordinate by defining the amount of pixels to shift from it's current location (similar to moveBy() but animated). The usage is very similar to slideTo(): 
+
+objectName.slideBy(distx,disty,inc,speed,fn)
+
+
+Where: 
+distx - the amount of pixels to shift horizontally 
+disty - the amount of pixels to shift vertically 
+inc - the incrementation amount (the number pixel units to move each repetition) 
+speed - the speed of repetition in milliseconds 
+fn - (optional) the function or statement to be executed when the slide is complete 
+If you want the DynLayer to slide in a horizontal line pass 0 for the endy value. And if you want the DynLayer to slide in a vertical line pass 0 for the endx value. 
+
+Examples: 
+
+To slide the DynLayer on a diagonal 40 pixels left and 60 pixels down: 
+
+mylayer.slideBy(-40,60,5,20)
+
+To slide the DynLayer 50 pixels to the right: 
+
+mylayer.slideBy(50,0,5,20)
+
+Making Sequences: 
+
+I left the fn property so that you always have a way of determining when the slide is complete. By taking advantage of this feature you can link a series of slide()'s together to make a sequence of animations. Here's an easy way to accomplish a sequence: 
+
+seq1 = 0
+function sequence1() {
+	seq1++
+	if (seq1==1) {
+		// commands for first part of sequence
+		// link the slide back to this function to keep it going
+		mylayer.slideBy(50,0,10,20,'sequence1()')
+	}
+	else if (seq1==2) {
+		// commands for seconds part of sequence
+	}
+	else seq1 = 0 // reset to 0 so you can play the sequence again
+}
+
+onSlide Handlers 
+
+I've added 2 event handlers to the Slide Methods: 
+
+onSlide - called in each and every step in the slide 
+onSlideEnd - called when the slide has finished (just like the "fn") 
+I have not put these handlers to large use, but it seems to work pretty well, and are perhaps better to use than the "fn" parameter in the slideBy() and slideTo() methods. 
+
+By default these handlers do nothing, but all you have to do is reset them to some function after calling the slideInit() method: 
+
+mylayer.slideInit()
+mylayer.onSlide = mylayerOnSlide  // some function that runs each step in the slide
+mylayer.onSlideEnd = mylayerOnSlideEnd  // some function that runs when completed the slide
+
+Example: dynlayer-slide1.html [source] - for an example with different variations of the slide methods and sequences. 
+
+Example: dynlayer-slide2.html [source] - for an example showing how to use the onSlide handlers. 
+
+The Dynamic Layer Object API 
+
+Initialization 
+DynLayerInit() Function 
+Properties 
+Using Layer-based Events 
+Hide, Show, Move Methods 
+Slide Methods 
+Clip Methods 
+Write Method 
+css() and DynLayerTest() Functions 
+Download: dynlayer.js 
+View Source: dynlayer.js 
+Home Next Lesson: Clip Methods 
+
+=========================================================
+
+  Clip Methods
+The clip methods give you a simple way to clip your DynLayers in the same manner that I used the clip functions in the Clipping Layers lesson. 
+
+Note: although the clip methods are now automatically assigned to all DynLayers, you may still have to call the clipInit() method to initially clip the layer so that IE will have base clip values to work from. I will be looking into this further to hopefully remove this necessity. 
+
+Initialize The Clip Methods: 
+
+There are 2 different situations when applying the clip methods. 
+
+Situation 1: Clipped to the default values 
+
+This occurs when you have either a) have defined no clip values in your CSS, or b) the values you have defined in your CSS are equal to that of the width and height of the layer. In either case, to use the clip methods you must define the width and the height of the layer in your CSS. To initialize the clip methods in situation 1, you can use: 
+
+objectName.clipInit()
+
+Situation 2: Clipped to arbitrary values 
+
+If you have clipped your layers other than that of the default values you must initialize the clip methods in a different manner. For example if your layer has a width of 100 and a height of 50, but you have clipped your layer to (-10,-10,60,110), then you must pass those values to the clipInit() method: 
+
+objectName.clipInit(clipTop,clipRight,clipBottom,clipLeft)
+
+Example: 
+
+mylayer.clipInit(-10,-10,60,110)
+
+This is necessary because IE cannot initaially determine the clip values, the clipInit() function will re-clip the layer to those values so that they can be determined thereafter. 
+
+Once you have initialized the clip methods, the DynLayer adds 3 additional methods by which you can retrieve or change the clip values. 
+
+The clipValues() Method: 
+
+The clipValues() method is used to retrieve the current clip value for any of the 4 edges. 
+
+objectName.clipValues(which)
+
+For the which argument, you pass the letter in quotes signaling which of the edges you want to find the value of. So there are four different ways of calling the method: 
+
+objectName.clipValues('l')   // clip left value
+objectName.clipValues('r')   // clip right value
+objectName.clipValues('t')   // clip top value
+objectName.clipValues('b')   // clip bottom value
+
+The clipTo() Method: 
+
+The clipTo() method will clip the edges of the layer to the specified values: 
+
+objectName.clipTo(t,r,b,l)
+
+
+Where: 
+t - new clip top value 
+r - new clip right value 
+b - new clip bottom value 
+l - new clip left value 
+For any of the values which you do not want to change pass null for the value. 
+
+Examples: 
+
+mylayer.clipTo(0,25,50,0)
+mylayer.clipTo(null,50,null,null)
+
+The clipBy() Method: 
+
+The clipBy() method clips the edges based on their current value (as moveBy() is to moveTo()). The usage is the same as clipTo(): 
+
+objectName.clipBy(t,r,b,l)
+
+IE 5.0 Notes: 
+
+Unfortunately in IE 5.0, there is no way for the DynLayer to retrieve the initial clip values. So therefore if you want to do any complex clipping (like in the exmple below) you must manually send the clip values when calling clipInit(). 
+
+Clip Methods Demo: 
+
+Example: dynlayer-clip1.html [source] - fvariations of the clip methods 
+
+Warning: IE works differently with respect to clipping. When you clip outside of it's original boundaries (0,width,height,0) the background will not show. The layer will still clip however (inwards), better to view with both browser to see what I'm talking about. If you need to extend the width/height of a layer when it has been clipped you must also change the css.width and css.height values of the layer as well (only for IE because Netscape cannot change the true dimensions on the fly). 
+
+The Dynamic Layer Object API 
+
+Initialization 
+DynLayerInit() Function 
+Properties 
+Using Layer-based Events 
+Hide, Show, Move Methods 
+Slide Methods 
+Clip Methods 
+Write Method 
+css() and DynLayerTest() Functions 
+Download: dynlayer.js 
+View Source: dynlayer.js 
+Home Next Lesson: Write Method  
+
+=========================================================
+
+  Write Method
+I only recently decided to put the Write Method into my "standard" dynlayer (although that's not a good name for it). Generally with the DynLayer you only need to include the stuff that you want, and I wanted this method in there because about 3 or 4 other lessons use this. 
+
+The DynLayer Write method allows you to re-write the contents of the layers by using the document.write() command for Netscape, and the innerHTML property for IE. Please read the Layer Writing lesson for a full explanation of what's really going on when writing a layer. 
+
+Using the write method is very simple: 
+
+mylayer = new DynLayer(id,nestref,iframe)
+mylayer.write(html)
+
+Example: 
+
+mylayer = new DynLayer('mylayerDiv')
+mylayer.write('my new content goes here')
+
+View dynlayer-write1.html for a write method example. 
+
+The Dynamic Layer Object API 
+
+Initialization 
+DynLayerInit() Function 
+Properties 
+Using Layer-based Events 
+Hide, Show, Move Methods 
+Slide Methods 
+Clip Methods 
+Write Method 
+css() and DynLayerTest() Functions 
+Download: dynlayer.js 
+View Source: dynlayer.js 
+Home Next Lesson: DynLayer Functions 
+
+==========================================================
+
+  DynLayer Functions
+There are 2 other functions I need to explain: 
+
+The DynLayerTest() Function 
+
+The DynLayerTest() function was added only as a debugging function. I really should have included this sooner as it really helps you when you get into creating DHTML Objects. This function will automatically double check your initialization (the id and the nestref parameters) to make sure the layer in fact does exist before defining itself. It does not check when you use IFrame, you're on your own with that. 
+
+If you happen to get the initialization wrong, the DynLayerTest() function will show an alert() of what layer in the hierarchy is the problem (<-- this layer cannot be found). This should help you figure out what's wrong with your code. This function is redundant for layers that are initialized by the DynLayerInit() function. 
+
+The css() Function 
+
+I'm including the css() function in the DynLayer because many of the later lessons in this tutorial are using it. This is more a personal preference than a necessity. Read the Generating Layers lesson for an explanation of this function. 
+
+The Dynamic Layer Object API 
+
+Initialization 
+DynLayerInit() Function 
+Properties 
+Using Layer-based Events 
+Hide, Show, Move Methods 
+Slide Methods 
+Clip Methods 
+Write Method 
+css() and DynLayerTest() Functions 
+Download: dynlayer.js 
+View Source: dynlayer.js 
+Home Next Lesson: How to Extend the DynLayer 
+
+=========================================================
+
+  How To Extend The DynLayer
+There are 4 different ways to extend the DynLayer 
+
+DynLayer Add-on Methods 
+DynLayer Add-on Objects 
+Objects Which Encapsulate The DynLayer 
+Objects Which Internally Use The DynLayer 
+DynLayer Add-on Methods
+It is quite easy to add you own methods to the DynLayer. Just create your own function: 
+
+function DynLayerMyNewMethod() {
+	// code for this method
+}
+
+This method is not available to the DynLayer until you "attach" it. There are 3 ways to do this 
+
+Use the prototype command (recommended) 
+This way your method will be available to all DynLayers that you define 
+DynLayer.prototype.myNewMethod = DynLayerMyNewMethod
+
+You can either make your own .js file and include both the function and the prototype call in that function, or include these in the dynlayer.js source file itself. 
+
+
+Include your method in the constructor (not recommended): 
+This will do the same as a prototype but all methods of the DynLayer now use prototyping 
+function DynLayer(id,nestref,frame) {
+	... code in constructor
+	this.myNewMethod = DynLayerMyNewMethod
+}
+
+Assign the method explicitly to a specific DynLayer 
+This way your method will only be available to a specific DynLayer. In some instances this may be preferrable. 
+
+mylayer.myNewMethod = DynLayerNewMethod
+
+DynLayer Add-on Objects
+If you require an addition to the DynLayer which contains it's own set of properties and several methods, you may want to make it it's own object and append it to the DynLayer. What I suggest you do is pass the new object information so that it is still able to update the DynLayer. Do do this the object will require the name of the DynLayer, as well as the name of the add-object: 
+
+objectName = new DynLayer("objectNameDiv")
+objectName.myobject = new MyObject("objectName","myobject")
+
+function MyObject(dynlayer,name) {
+	this.dynlayer = dynlayer
+	this.name = name
+	this.value = eval(this.dynlayer+'.x') + 100  // use eval's to capture data from the Dynlayer
+	this.method = MyObjectMethod
+	this.repeat = MyObjectRepeatMethod  // repeats MyObjectMethod using setTimeout
+}
+function MyObjectMethod() {
+	eval(this.dynlayer+'.moveBy(10,10)')  // use eval's to assemble the name of the DynLayer
+}
+function MyObjectRepeat() {
+	setTimeout(this.dynlayer+'.'+this.name+'.method()',50)  // use eval's to assemble the name of the object's method  
+}
+
+Then to use the add-on object you use this general format: 
+
+objectName.myobject.method()
+or
+objectName.myobject.repeat()
+etc.
+
+This tactic is used by the Geometric Objects, and the Path Object. 
+
+Objects Which Internally Use The DynLayer
+If you want one object to control multiple layers, your best bet is to assign properties which are in fact DynLayers. 
+
+Option 1: Send the object the names of the layers, and let the object define the DynLayers 
+
+myobject = new MyObject('layer1Div','layer2Div')
+
+function MyObject(lyr1,lyr2) {
+	this.lyr1 = new DynLayer(lyr1)
+	this.lyr2 = new DynLayer(lyr2)
+}
+
+This way, the main object (MyObject) can control both those layers by using the properties and methods of those DynLayers. For example you could create a method by which it slides both layers in unison: 
+
+myobject = new MyObject('layer1Div,'layer2Div')
+
+function MyObject(lyr1,lyr2) {
+	this.lyr1 = new DynLayer(lyr1)
+	this.lyr1.slideInit()
+	this.lyr2 = new DynLayer(lyr2)
+	this.lyr2.slideInit()
+	this.slideBoth = MyObjectSlideBoth
+}
+function MyObjectSlideBoth() {
+	this.lyr1.slideBy(-100,0,5,50)
+	this.lyr2.slideBy(100,0,5,50)
+}
+
+This tactic is used by all of the widgets/components, however usually what I do is generate layer names automatically, but it's still the same basic idea. 
+
+Option 2: Pre-define your DynLayers and send the object the names of the DynLayers 
+
+mylayer = new DynLayer("mylayerDiv")
+myobject = new MyObject(mylayer)
+
+function MyObject(dynlayer) {
+	this.dynlayer = dynlayer
+	// do something with this.dynlayer
+}
+
+This tactic is used by the Drag Object. 
+
+Objects Which Encapsulate The DynLayer
+Note: As of the June 23 update to the DynLayer you must also set the prototype of your object to the Dynlayer's prototype in order to attach the methods. 
+
+Perhaps the most powerful way of extending the DynLayer is to , is to make an object encapsulate the DynLayer, in other words to import all the functionality of the DynLayer into that object. 
+
+Be aware, this is not the same thing as the above section. The above section makes the DynLayer a property of an object. Encapsulation means that this object actually becomes a DynLayer that has it's own set of properties and methods. 
+
+To encapsulate the DynLayer, you assign the DynLayer as a method of the object, and immediately call that method, and at the end make your object have the same prototype as the DynLayer. What that does is attach all the methods of the DynLayer to your Object. 
+
+myobject = new MyObject('myObjectDiv',null)
+
+function MyObject(id,nestref) {
+	this.dynlayer = DynLayer
+	this.dynlayer(id,nestref)
+}
+
+MyObject.prototype = DynLayer.prototype
+
+What this does is assigns all the properties and methods of the DynLayer to this object. It is in fact a DynLayer itself because you work with it in the same manner... 
+
+myobject.hide()
+myobject.moveBy(10,10)
+etc.
+
+So what advantage does this have? Well this is the ultimate way of extending the DynLayer because you can add much more functionality to this object. This technique is the ideal way to make a back-end to a DHTML game, where you need many types of objects that do different tasks, yet they all need to control layers like the Dynlayer does. 
+
+Example: demo-smileyface.html 
+
+For an example of how to use this, look at the source code of . It is a demo which creates a Smiley face object that has it's own properties and methods that are only need when you need to make such a smiley face. 
+
+This tactic is used by the Bumble Bee Demo. 
+
+DynLayer Extensions: 
+
+How To Extend The DynLayer 
+load(), setbg(), img() 
+Wipe Methods 
+Glide Methods 
+Home Next Lesson: Common Extensions  
+
+=========================================================
+
+  DynLayer Extensions [Common]
+These are commonly used additions that you may want to use. Note: these examples are shown for a DynLayer that is named 'mylayer' but they will work for all DynLayers of any name. 
+
+When you want to use these functions all you have to do is include the dynlayer-common.js file after the dynlayer file: 
+
+<SCRIPT LANGUAGE="JavaScript" SRC="dynlayer.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="dynlayer-common.js"></SCRIPT>
+
+Source Code
+dynlayer-common.js 
+
+External File Load - load() 
+
+This method is based on the External Source Files lesson. 
+
+Usage of the load() method: 
+
+mylayer.load('myfile.html',fn)  
+
+The fn parameter is optional, it's used to execute some other function or statment when the external file has been fully loaded into the page. 
+
+In the main HTML document you must have an hidden IFrame named "bufferFrame", this is used to copy the contents of the external file into the layer. 
+
+<IFRAME STYLE="display:none" NAME="bufferFrame"></IFRAME>
+
+The external html file must call the DynLayer's loadFinish() method. Since in IE, the main document is in a different frame, we must call it as "parent". Fortunately this is simultaneously compatible for Netscape because in Netscape it is all the same document, and therefore in that case "parent" is synonymous with "document". 
+
+<BODY onLoad="parent.mylayer.loadFinish()">
+
+Warnings: This method will not work "as-is" if these these files are all to be contained within another frameset. In that case you'd need to send an additional parameter for the name of the frame instead of "parent". Nor will this work if you want to load multiple files simultaneously into separate layers. This function assumes there's only one IFrame, and hence only one file in a buffer-zone. If you wanted multiple files to be buffered like this you'd have to have separate IFrames, and yet another parameter to determine which frame to take the contents from. 
+
+Example: load.html [source] 
+
+Background Color - setbg() 
+
+Simply sets the background color of the layer. Watch out though, you usually have to have the layer clipped, and you'll sometimes run into problems with text that's contained within the layer. I'll leave you to encounter all the "fun" with this function :) 
+
+Usage of the setbg() Method: 
+
+mylayer.setbg('#ff0000')
+
+Change Image - img() 
+
+This one-line method can be used instead of the changeImage() function so that you don't have to worry about nested references: 
+
+Usage of the img() Method: 
+
+myImgObject = new Image()
+myImgObject.src = 'myimg-new.gif'
+
+mylayer.img('myImg','myImgObject')
+
+// image must have a NAME assigned, index values won't work between both browsers
+<div id="mylayerDiv"><img src="myimg.gif" name="myImg"></div>
+
+Get Relative X Location - getRelativeX() 
+
+This function can be used to find the actual left location of the layer (relative to the document). This only has to be used when you've positioned your layer relatively 
+
+In order to set your CSS to make a relatively positioned layer you can use either of the following: 
+
+#mylayer {position:absolute;}   // no left or top defined
+
+css('mylayerDiv',null,null)  // in css() function null,null for x,y means relative positioning
+
+Then to find the actual left location use the getRelativeX() method: 
+
+var x = mylayer.getRelativeX()
+
+Get Relative Y Location - getRelativeY() 
+
+Same as the above but for the top location: 
+
+var y = mylayer.getRelativeY()
+
+Get Content Height - getContentHeight() 
+
+When you don't specify a height in your CSS, you can still obtain what the actual height of the contents of that layer is by using the getContentHeight() method. Note this uses the same tactic as shown in the Scrolling Concepts lesson, however that lesson does the true call for this value explicitly. 
+
+var h = mylayer.getContentHeight()
+
+Get Content Width - getContentWidth() 
+
+Same as above but for the width: 
+
+var w = mylayer.getContentWidth()
+
+DynLayer Extensions: 
+
+How To Extend The DynLayer 
+load(), setbg(), img() 
+Wipe Methods 
+Glide Methods 
+Home Next Lesson: Wipe Methods  
+
+=========================================================
+
+  Wipe Methods
+The wipe methods are animated versions of the clip methods (as slide is to the move methods). 
+
+When you want to use these functions all you have to do is include the dynlayer-wipe.js file after the dynlayer file: 
+
+<SCRIPT LANGUAGE="JavaScript" SRC="dynlayer.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="dynlayer-wipe.js"></SCRIPT>
+
+A change in IE 5.0 causes clipping to be a bit of pain. What I recommend is before you do any wipes, reclip your layer using the clipTo() function - just use your initial CSS clip values. 
+
+objectName.clipTo(t,r,b,l)  // use your CSS values
+// then do your wipe
+
+The wipeTo() Method:
+The wipeTo() method will wipe (clip incrementally) the DynLayer's edges from their current value to specific new value. It can do this for any single edge, or multiple edges at the same time. 
+
+objectName.wipeBy(endt,endr,endb,endl,num,speed,fn)
+
+Where: 
+endt - final clip top value 
+endr - final clip right value 
+endb - final clip bottom value 
+endl - final clip left value 
+num - the total number of steps in the wipe sequence 
+speed - speed of repetition in milliseconds 
+fn - (optional) function or statement to execute when the wipe is complete 
+For any of the edges which you do not wish to be clipped, pass null for it's value. 
+
+Examples: 
+
+To wipe the DynLayer's top edge to 0, right to 100, bottom to 100, and left to 0 (making a square box 100x100), in 10 steps, at 30 milliseconds per step: 
+
+mylayer.wipeTo(0,100,100,0,10,30)
+
+To wipe only the right edge to 100: 
+
+mylayer.wipeTo(null,100,null,null,10,30)
+
+The wipeBy() Method:
+Again the wipeBy() is the same as the wipeTo() except the edges are shifted a given number of pixels: 
+
+objectName.wipeBy(distt,distr,distb,distl,num,speed,fn)
+
+Where: 
+distt - clip top increment 
+distr - clip right increment 
+distb - clip bottom increment 
+distl - clip left increment 
+num - the total number of steps in the wipe sequence 
+speed - speed of repetition in milliseconds 
+fn - (optional) function or statement to execute when the wipe is complete 
+For any of the edges that you do not wish to be clipped pass 0 for it's value. 
+
+Examples: 
+
+Wipe all edges "outward" by 20 pixels: 
+
+mylayer.clipBy(-20,20,20,-20,5,30)
+
+Wipe all edges "inward" by 20 pixels: 
+
+mylayer.clipBy(20,-20,-20,20,5,30)
+
+Wipe the right edge outward by 100 pixels: 
+
+mylayer.clipBy(0,100,0,0,5,30)
+
+When working with the wipe methods you have to keep your orientation correct. Remember how positive and negative values will effect each of the edges: 
+
+Edge Positive Increment Negative Increment 
+left subtracts from the edge adds more to the edge 
+right adds more to the edge subtracts from the edge 
+top subtracts from the edge adds more to the edge 
+bottom adds more to the edge subtracts from the edge 
+
+
+Example: wipe1.html [source] - variations of the wipe methods 
+
+Source Code
+dynlayer-wipe.js 
+
+DynLayer Extensions: 
+
+How To Extend The DynLayer 
+load(), setbg(), img() 
+Wipe Methods 
+Glide Methods 
+Home Next Lesson: Glide Methods  
+
+=========================================================
+
+  Glide Methods
+The Glide methods are almost the same as the Slide Methods except they use a different formula for moving the layer. The Slide methods are simple straight-line animations, whereas the Glide methods use trigonometric math to create a subtle acceleration or deceleration effect. The result is some very slick looking animations. 
+
+As with the Wipe methods, I've made the Glide library a separate javascript file, dynlayer-glide.js. You must call include this file in any code that uses the glide methods: 
+
+<SCRIPT LANGUAGE="JavaScript" SRC="dynlayer.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="dynlayer-glide.js"></SCRIPT>
+
+The glideTo() Method:
+Glides the layer to a specific co-ordinate. The parameters are almost the same as in the slideTo() method: 
+
+objectName.glideTo(startSpeed,endSpeed,endx,endy,angleinc,speed,fn)
+
+
+Where 
+startSpeed - "slow" to begin slowly (acceleration), "fast" to begin fast (deceleration) 
+endSpeed - "slow" to end slowly (decelaration), "fast" to end fast (acceleration) 
+endx - final x-coordinate 
+endy - final y-coordinate 
+angleinc - the angle incrementation (read below) 
+speed - speed of repetition in milliseconds 
+fn - (optional) function or statement to execute when complete 
+The angleinc parameter is probably the only one which isn't obvious. The glide methods use a Sine wave as the basis for the acceleration, and the angleinc simply determines how many degrees to jump each time. The bigger the angleinc, the bigger the jumps it will make. So it is similar to the inc value in the Slide methods - usually a value from 5 to 10 is good to use. 
+
+Example: glides to (50,50), starting slow, ending slow, at 10 degrees, and 20 milliseconds per interval. 
+
+mylayer.glideTo("slow","slow",50,50,10,20)
+
+The glideBy() Method:
+Same as all the others, glideBy() shifts the location by a given number of coordinates: 
+
+objectName.glideBy(startSpeed,endSpeed,distx,disty,angleinc,speed,fn)
+
+Where distx and disty, are now the amount it will shift by. 
+
+Glide Methods Demo:
+Example: glide1.html [source] 
+
+Source Code
+dynlayer-glide.js 
+
+DynLayer Extensions: 
+
+How To Extend The DynLayer 
+load(), setbg(), img() 
+Wipe Methods 
+Glide Methods 
+Home Next Lesson: Geometric Objects  
+
+=========================================================
+
+
+
+
+

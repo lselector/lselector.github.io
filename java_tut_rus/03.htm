@@ -1,0 +1,556 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Глава 3 Введение в язык Java</TITLE>
+</HEAD>
+<BODY>
+
+<B><FONT FACE="Arial" SIZE=6><P>Глава 3 Введение в язык Java</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P>Исходный файл на языке Java - это текстовый файл, содержащий в себе одно или несколько описаний классов. Транслятор Java предполагает,</FONT><B><FONT FACE="Arial" SIZE=1> </B></FONT><FONT FACE="Times New Roman" SIZE=2>что исходный текст программ хранится в файлах с расширениями Java. Получаемый в процессе трансляции код для каждого класса записывается в отдельном выходном файле, с именем совпадающем с именем класса, и расширением class. </P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Прежде всего, в этой главе мы напишем, оттранслируем, и запустим каноническую программу “Hello World”. После этого мы рассмотрим все существенные лексические элементы, воспринимаемые Java-транслятором: пробелы, комментарии, ключевые слова, идентификаторы, литералы, операторы и разделители. К концу главы вы получите достаточно информации для того чтобы самостоятельно ориентироваться в хорошей Java-программе.</P>
+</FONT><B><FONT FACE="Arial" SIZE=4>
+<P>Hello World</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P>Итак, вот ваша первая Java-программа</FONT><FONT SIZE=2>:</P>
+</FONT><FONT FACE="Courier New" SIZE=2>
+<B><I><P>class HelloWorld {</P>
+<P>public static void main (String args []) {</P>
+<P>System. out. println ("Hello World");</P>
+<P>} </P>
+<P>}</P>
+</B></I></FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Для того, чтобы поработать с приведенными в книге примерами вам нужно получить по сети из Sun Microsystems и установить Java Developers Kit — пакет для разработки Java-приложений (</FONT><A HREF="http://java.sun.com/products/jdk"><U><FONT SIZE=2 COLOR="#0000ff">http://java.sun.com/products/jdk</U></FONT></A><FONT SIZE=2>). </FONT><FONT FACE="Times New Roman" SIZE=2>Полное описание утилит пакета </FONT><FONT SIZE=2>JDK – </FONT><FONT FACE="Times New Roman" SIZE=2>в </FONT><A HREF="pril_1.htm"><U><FONT FACE="Times New Roman" SIZE=2 COLOR="#0000ff">Приложении 1</U></FONT></A><FONT SIZE=2>.</P>
+<P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Язык Java требует, чтобы весь программный код был заключен внутри поименованных классов. Приведенный выше текст примера надо записать в файл HelloWorld.java. Обязательно проверьте соответствие прописных букв в имени файла тому же в названии содержащегося в нем класса. Для того, чтобы оттранслировать этот пример необходимо запустить транслятор Java — javac, указав в качестве параметра имя файла с исходным текстом:</P>
+</FONT><FONT SIZE=2><P ALIGN="JUSTIFY"></P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>С:</FONT><FONT FACE="Courier New" SIZE=2> \&gt; javac HelloWorld.Java</P>
+</B></I>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Транслятор создаст файл HelloWorld.class с независимым от процессора байт-кодом нашего примера. Для того, чтобы исполнить полученный код, необходимо иметь среду времени выполнения языка Java (в нашем случае это программа java), в которую надо загрузить новый класс для исполнения. Подчеркнем, что указывается имя класса, а не имя файла, в котором этот класс содержится.</P>
+</FONT><FONT SIZE=2><P ALIGN="JUSTIFY"></P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>С:</FONT><FONT FACE="Courier New" SIZE=2> &gt; java HelloWorld </P>
+</B></I><P>Hello World</P>
+
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Полезного сделано мало, однако мы убедились, что установленный Java-транслятор и среда времени выполнения работают.</P>
+</FONT><FONT SIZE=2>
+</FONT><B><FONT FACE="Arial" SIZE=4><P>Шаг за шагом</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Конечно,</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>HelloWorld — это тривиальный пример. Однако даже такая простая программа новичку в языке</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>Java может показаться пугающе сложной, поскольку она знакомит вас с массой новых понятий и деталей синтаксиса языка Давайте внимательно пройдемся по каждой строке нашего первого примера, анализируя те элементы, из которых состоит Java-программа.</P>
+</FONT><B><FONT FACE="Arial"><P>Строка 1</P>
+</B></FONT><FONT FACE="Courier New" SIZE=2><P>class HelloWorld {</P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">В этой строке использовано зарезервированное слово</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>class. Оно говорит транслятору, что мы собираемся описать новый класс.</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>Полное описание класса располагается между открывающей фигурной скобкой в первой строке и парной ей закрывающей фигурной скобкой в строке 5. Фигурные скобки в</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>Java используются точно так же, как в языках С и С</FONT><FONT FACE="Arial" SIZE=1>++.</P>
+</FONT><B><FONT FACE="Arial"><P>Строка 2</P>
+</B></FONT><FONT FACE="Courier New" SIZE=2><P>public static void main (String args []) {</P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Такая, на первый взгляд, чрезмерно сложная строка примера является следствием важного требования, заложенного при разработке языка Java. Дело в том, что в</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>Java отсутствуют глобальные функции. Поскольку подобные строки будут встречаться в большинстве примеров первой части книги, давайте пристальнее рассмотрим каждый элемент второй строки.</P>
+</FONT><B><FONT FACE="Arial" SIZE=2><P>public</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Разбивая эту строку на отдельные лексемы, мы сразу сталкиваемся с ключевым словом</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>public. Это — <I>модификатор доступа,</I> который позволяет программисту управлять видимостью любого метода и любой переменной. В данном случае модификатор доступа</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>public означает, что метод</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>main виден и доступен любому классу. Существуют еще 2 указателя уровня доступа —</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>private и</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>protected, с которыми мы более детально познакомимся в </FONT><A HREF="08.htm"><U><FONT FACE="Times New Roman" SIZE=2 COLOR="#0000ff">главе 8</U></FONT></A><FONT SIZE=2>.</P>
+</FONT><B><FONT FACE="Arial" SIZE=2><P>static</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Следующее ключевое слово —</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>static. С помощью этого слова объявляются методы и переменные класса, используемые для работы с классом в целом. Методы, в объявлении которых использовано ключевое слово static, могут непосредственно работать только с локальными и статическими переменными. </P>
+</FONT><B><FONT FACE="Arial" SIZE=2><P>void</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">У вас нередко будет возникать потребность в методах, которые возвращают значение того или иного типа: например,</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>int для целых значений, float</FONT><FONT SIZE=2> - </FONT><FONT FACE="Times New Roman" SIZE=2>для вещественных или имя класса для типов данных, определенных программистом. В нашем случае нужно просто вывести на экран строку, а возвращать значение из метода</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>main не требуется. Именно поэтому и был использован модификатор</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>void. Более детально этот вопрос обсуждается в </FONT><A HREF="04.htm"><U><FONT FACE="Times New Roman" SIZE=2 COLOR="#0000ff">главе 4</U></FONT></A><FONT SIZE=2>.</P>
+</FONT><B><FONT FACE="Arial" SIZE=2><P>main</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P>Наконец, мы добрались до имени метода</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>main. Здесь нет ничего необычного, просто все существующие реализации Java-интерпретаторов, получив команду интерпретировать класс, начинают свою работу с вызова метода</FONT><FONT SIZE=2> main.</FONT><FONT FACE="Arial Narrow" SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>Java-транслятор может оттранслировать класс, в котором нет метода main. А вот Java-интерпретатор запускать классы без метода</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>main не умеет. </P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Все параметры, которые нужно передать методу, указываются внутри пары круглых скобок в виде списка элементов, разделенных символами ";" (точка с запятой). Каждый элемент списка параметров состоит из разделенных пробелом типа и идентификатора. Даже если у метода нет параметров, после его имени все равно нужно поставить пару круглых скобок. В примере, который мы сейчас обсуждаем, у метода</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>main только один параметр, правда довольно сложного типа.</P>
+<P ALIGN="JUSTIFY">Элемент</FONT><FONT SIZE=2> String </FONT><FONT FACE="Times New Roman" SIZE=2>args[] объявляет параметр с именем</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>args, который является массивом объектов — представителей класса</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>String. Обратите внимание на квадратные скобки, стоящие после идентификатора args. Они говорят о том, что мы имеем дело с массивом, а не с одиночным элементом указанного типа. Мы вернемся к обсуждению массивов в следующей главе, а пока отметим, что тип</FONT><FONT SIZE=2> String —</FONT><FONT FACE="Times New Roman" SIZE=2> это класс. Более детально о строках мы поговорим в </FONT><A HREF="09.htm"><U><FONT FACE="Times New Roman" SIZE=2 COLOR="#0000ff">главе 9</U></FONT></A><FONT SIZE=2>.</P>
+</FONT><B><FONT FACE="Arial"><P>Строка 3</P>
+</B></FONT><FONT FACE="Courier New" SIZE=2><P>System. out. prlntln("Hello World!");</P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">В этой строке выполняется метод</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>println объекта</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>out. Объект</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>out объявлен в классе</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>OutputStream и статически инициализируется в классе System.</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>В </FONT><A HREF="09.htm"><U><FONT FACE="Times New Roman" SIZE=2 COLOR="#0000ff">главах 9</U></FONT></A><FONT FACE="Times New Roman" SIZE=2> и </FONT><A HREF="13.htm"><U><FONT SIZE=2 COLOR="#0000ff">13</U></FONT></A><FONT FACE="Times New Roman" SIZE=2> у вас будет шанс познакомиться с нюансами работы классов</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>String и</FONT><FONT SIZE=2> OutputStream. </P>
+<P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Закрывающей фигурной скобкой в строке 4 заканчивается объявление метода</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>main, а такая же скобка в строке 5 завершает объявление класса HelloWorld.</P>
+</FONT><B><FONT FACE="Arial" SIZE=4>
+</FONT><FONT FACE="Arial" SIZE=4><P>Лексические основы</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Теперь, когда мы подробно рассмотрели минимальный Java-класс, давайте вернемся назад и рассмотрим общие аспекты синтаксиса этого языка. Программы на</FONT><FONT SIZE=2> Java —</FONT><FONT FACE="Times New Roman" SIZE=2> это набор пробелов, комментариев, ключевых слов, идентификаторов, литеральных констант, операторов и разделителей.</P>
+</FONT><B><FONT FACE="Arial">
+</FONT><FONT FACE="Arial"><P>Пробелы</P>
+</B></FONT><FONT SIZE=2><P ALIGN="JUSTIFY">Java —</FONT><FONT FACE="Times New Roman" SIZE=2> язык, который допускает произвольное форматирование текста программ. Для того, чтобы программа работала нормально, нет никакой необходимости выравнивать ее текст специальным образом. Например, класс</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>HelloWorld можно было записать в двух строках или любым другим способом, который придется вам по душе. И он будет работать точно так же при условии, что между отдельными лексемами (между которыми нет операторов или разделителей) имеется по крайней мере по одному пробелу, символу табуляции или символу перевода строки. </P>
+</FONT><FONT FACE="Courier New" SIZE=2><P ALIGN="JUSTIFY"></P>
+</FONT><B><FONT FACE="Arial"><P>Комментарии                                </P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Хотя комментарии никак не влияют на исполняемый код программы,</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>при правильном использовании они оказываются весьма существенной частью исходного текста. Существует три разновидности комментариев: комментарии в одной строке, комментарии в нескольких строках и, наконец, комментарии для документирования. Комментарии, занимающие одну строку, начинаются с символов // и заканчиваются в конце строки. Такой стиль комментирования полезен для размещения кратких пояснений к отдельным строкам кода:</P>
+</FONT><FONT SIZE=2><P ALIGN="JUSTIFY"></P>
+</FONT><B><FONT FACE="Courier New" SIZE=2><P>а = 42;               // если </FONT><FONT FACE="Courier New" SIZE=2>42</FONT><FONT FACE="Courier New" SIZE=2> - ответ, то каков же был вопрос?</P>
+</B></FONT><FONT FACE="Courier New" SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Для более подробных пояснений вы можете воспользоваться комментариями, размещенными на нескольких строках, начав текст комментариев символами /* и закончив символами */ При этом весь текст между этими парами символов будет расценен как комментарий и транслятор его  проигнорирует.</P>
+</FONT><FONT SIZE=2>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>/*</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>* Этот код несколько замысловат...</P>
+<P>* Попробую объяснить:</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>* ….</P>
+<P>*/</P>
+</B></I>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Третья, особая форма комментариев, предназначена для сервисной программы </FONT><I><FONT SIZE=2>javadoc,</I></FONT><FONT FACE="Times New Roman" SIZE=2> которая использует компоненты Java-транслятора для автоматической генерации документации по интерфейсам классов. Соглашение, используемое для комментариев этого вида, таково: для того, чтобы разместить перед объявлением открытого (public) класса, метода или переменной документирующий комментарий</FONT><FONT SIZE=2>,</FONT><FONT FACE="Times New Roman" SIZE=2> нужно начать его с символов /** (косая черта и две звездочки). Заканчивается такой комментарий точно так же, как и обычный комментарий — символами */. Программа javadoc умеет различать в документирующих комментариях некоторые специальные переменные, имена которых начинаются с символа @. Вот пример такого комментария:</P>
+</FONT><FONT SIZE=2><P ALIGN="JUSTIFY"></P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>/**</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>* Этот класс умеет делать замечательные вещи. Советуем всякому, кто</P>
+<P>* захочет написать еще более совершенный класс, взять его в качестве</P>
+<P>* базового.</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>* @see Java. applet. Applet</P>
+<P>* ©author Patrick Naughton</P>
+<P>* @version 1. 2</P>
+<P>*/</P>
+<P>class CoolApplet extends Applet { /**</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>* У этого метода два параметра:</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>* @param </FONT><FONT FACE="Courier New" SIZE=2>key - это имя параметра.</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>* @param value </FONT><FONT FACE="Courier New" SIZE=2>- это значение параметра с именем</FONT><FONT FACE="Courier New" SIZE=2> key.</P>
+<P>*/ void put (String key, Object value) {</P>
+</I>
+</FONT><FONT FACE="Arial" SIZE=4><P>Зарезервированные ключевые слова</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Зарезервированные ключевые слова — это специальные идентификаторы, которые в языке</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>Java используются для того, чтобы идентифицировать встроенные типы, модификаторы и средства управления выполнением программы. На сегодняшний день в языке</FONT><FONT SIZE=2> J</FONT><FONT FACE="Times New Roman" SIZE=2>ava имеется 59 зарезервированных слов (см. таблицу 2). Эти ключевые слова совместно с синтаксисом операторов и разделителей входят в описание языка</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>Java. Они могут применяться только по назначению, их нельзя использовать в качестве идентификаторов для имен переменных, классов или методов.</P>
+</FONT><FONT SIZE=2><P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="RIGHT">Таблица 2</P>
+</FONT><B><FONT FACE="Times New Roman"><P ALIGN="CENTER">Зарезервированные слова Java</P></B></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=2 WIDTH=567>
+<TR><TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>abstract</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>boolean</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>break</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>byte</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>byvalue</FONT></TD>
+</TR>
+<TR><TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>case</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>cast</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>catch</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>char</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>class</FONT></TD>
+</TR>
+<TR><TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>const</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>continue</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>default</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>do</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>double</FONT></TD>
+</TR>
+<TR><TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>else</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>extends</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>false </FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>final </FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>finally </FONT></TD>
+</TR>
+<TR><TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>float</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>for</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>future</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>generic</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>goto</FONT></TD>
+</TR>
+<TR><TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>if</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>implements</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>import</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>inner</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>instanceof</FONT></TD>
+</TR>
+<TR><TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>int</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>interface</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>long</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>native</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>new</FONT></TD>
+</TR>
+<TR><TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>null</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>operator</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>outer</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>package</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>private</FONT></TD>
+</TR>
+<TR><TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>protected</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>public</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>rest</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>return</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>short</FONT></TD>
+</TR>
+<TR><TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>static</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>super</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>switch</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>syncronized</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>this</FONT></TD>
+</TR>
+<TR><TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>throw</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>throws</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>transient</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>true</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>try</FONT></TD>
+</TR>
+<TR><TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>var</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>void</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>volatile</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>while</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17><P></P></TD>
+</TR>
+</TABLE>
+
+<B><FONT FACE="Arial">
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Отметим, что слова </FONT><FONT SIZE=2>byvalue, cast, const, future, generic, goto, inner, operator, outer, rest, var </FONT><FONT FACE="Times New Roman" SIZE=2>зарезервированы в </FONT><FONT SIZE=2>Java, </FONT><FONT FACE="Times New Roman" SIZE=2>но пока не используются Кроме этого, в </FONT><FONT SIZE=2>Java </FONT><FONT FACE="Times New Roman" SIZE=2>есть зарезервированные имена методов (эти методы наследуются каждым классом, их нельзя использовать, за исключением случаев явного переопределения методов класса </FONT><FONT SIZE=2>Object).</P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="RIGHT">Таблица 3</P>
+</FONT><B><FONT FACE="Times New Roman"><P ALIGN="CENTER">Зарезервированные имена методов</FONT> Java</P></B>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=2 WIDTH=567>
+<TR><TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>clone</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>equals</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>finalize</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>getClass</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>hashCode</FONT></TD>
+</TR>
+<TR><TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>notify</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>notifyAll</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>toString</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17>
+<FONT SIZE=2><P>wait</FONT></TD>
+<TD WIDTH="20%" VALIGN="MIDDLE" HEIGHT=17><P></P></TD>
+</TR>
+</TABLE>
+
+<FONT SIZE=2><P ALIGN="JUSTIFY"></P>
+</FONT><B><FONT FACE="Arial"><P>&nbsp;</P>
+</FONT><FONT FACE="Arial"><P>Идентификаторы</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Идентификаторы используются для именования классов, методов и переменных. В качестве идентификатора может использоваться любая последовательность строчных и прописных букв, цифр и символов _ (подчеркивание) и $ (доллар). Идентификаторы не должны начинаться с цифры, чтобы транслятор не перепутал их с числовыми литеральными константами, которые будут описаны ниже.</FONT><FONT SIZE=2> Java —</FONT><FONT FACE="Times New Roman" SIZE=2> язык, чувствительный к регистру букв. Это означает, что, к примеру,</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>Value и</FONT><FONT SIZE=2> VALUE — </FONT><FONT FACE="Times New Roman" SIZE=2>различные идентификаторы. </P>
+</FONT><FONT SIZE=2>
+</FONT><B><FONT FACE="Arial"><P>Литералы</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Константы в</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>Java задаются их литеральным представлением. Целые числа, числа с плавающей точкой, логические значения, символы и строки можно располагать в любом месте исходного кода. Типы будут рассмотрены в </FONT><A HREF="04.htm"><U><FONT FACE="Times New Roman" SIZE=2 COLOR="#0000ff">главе 4</U></FONT></A><FONT SIZE=2>.</P>
+<P ALIGN="JUSTIFY"></P>
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Целые литералы</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Целые числа — это тип, используемый в обычных программах наиболее часто. Любое целочисленное значение, например, 1, 2, 3, 42 — это целый литерал. В данном примере приведены десятичные числа, то есть числа с основанием 10 — именно те, которые мы повседневно используем вне мира компьютеров. Кроме десятичных, в качестве целых литералов могут использоваться также числа с основанием 8 и 16 — восьмеричные и шестнадцатиричные. Java распознает восьмеричные числа по стоящему впереди нулю. Нормальные десятичные числа не могут начинаться с нуля, так что использование в программе внешне допустимого числа 09 приведет к сообщению об ошибке при трансляции, поскольку 9 не входит в диапазон 0..</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>7, допустимый для знаков восьмеричного числа. Шестнадцатиричная константа различается по стоящим впереди символам нуль-х (0х или 0Х). Диапазон значений шестнадцатиричной цифры — 0..</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>15, причем в качестве цифр для значений 10..</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>15 используются буквы от А до</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>F (или от а до</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>f). С помощью шестнадцатиричных чисел вы можете в краткой и ясной форме представить значения, ориентированные на использование в компьютере, например, написав</FONT><FONT SIZE=2> Oxffff </FONT><FONT FACE="Times New Roman" SIZE=2>вместо 65535.</P>
+<P ALIGN="JUSTIFY">Целые литералы являются значениями типа</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>int, которое в</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>Java хранится в 32-битовом слове. Если вам требуется значение, которое по модулю больше, чем приблизительно 2 миллиарда, необходимо воспользоваться константой типа</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>long. При этом число будет храниться в 64-битовом слове. К числам с любым из названных выше оснований вы можете приписать справа строчную или прописную букву</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>L, указав таким образом, что данное число относится к типу</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>long. Например, Ox7ffffffffffffffL или</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>9223372036854775807L — это значение, наибольшее для числа типа</FONT><FONT SIZE=2> long.</P>
+</FONT><B><FONT FACE="Arial" SIZE=2>
+</FONT><FONT FACE="Arial" SIZE=2><P>Литералы с плавающей точкой</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Числа с плавающей точкой представляют десятичные значения, у которых есть дробная часть. Их можно записывать либо в обычном, либо экспоненциальном форматах. В обычном формате число состоит из некоторого количества десятичных цифр, стоящей после них десятичной точки, и следующих за ней десятичных цифр дробной части. Например, 2.0, 3.14159 и .6667 — это допустимые значения чисел с плавающей точкой, записанных в стандартном формате. В экспоненциальном формате после перечисленных элементов дополнительно указывается десятичный порядок. Порядок определяется положительным или отрицательным десятичным числом, следующим за символом Е или е. Примеры чисел в экспоненциальном формате: 6.022е23, 314159Е-05, 2е+100. В</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>Java числа с плавающей точкой по умолчанию рассматриваются, как значения типа double. Если вам требуется константа типа</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>float, справа к литералу надо приписать символ F или f. Если вы любитель избыточных определений — можете добавлять к литералам типа</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>double символ</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>D или</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>d. Значения используемого по умолчанию типа</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>double хранятся в 64-битовом слове, менее точные значения типа</FONT><FONT SIZE=2> float —</FONT><FONT FACE="Times New Roman" SIZE=2> в 32-битовых.</P>
+</FONT><FONT SIZE=2><P ALIGN="JUSTIFY"></P>
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Логические литералы</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">У логической переменной может быть лишь два значения —</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>true (истина) и</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>false (ложь). Логические значения</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>true и</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>false не преобразуются ни в какое числовое представление. Ключевое слово</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>true в</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>Java не равно 1,</FONT><FONT SIZE=2> a </FONT><FONT FACE="Times New Roman" SIZE=2>false не равно 0. В</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>Java эти значения могут присваиваться только переменным типа boolean либо использоваться в выражениях с логическими операторами.</P>
+</FONT><B><FONT FACE="Arial" SIZE=2>
+</FONT><FONT FACE="Arial" SIZE=2><P>Символьные литералы</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Символы в</FONT><FONT SIZE=2> Java —</FONT><FONT FACE="Times New Roman" SIZE=2> это индексы в таблице символов</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>UNICODE. Они представляют собой 16-битовые значения, которые можно преобразовать в целые числа и к которым можно применять операторы целочисленной арифметики, например, операторы сложения и вычитания. Символьные литералы помещаются внутри пары апострофов (' '). Все видимые символы таблицы</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>ASCII можно прямо вставлять внутрь пары апострофов: -</FONT><FONT SIZE=2> 'a', 'z', </FONT><FONT FACE="Times New Roman" SIZE=2>'@'. Для символов, которые невозможно ввести непосредственно, предусмотрено несколько управляющих последовательностей.</P>
+</FONT><FONT SIZE=1><P ALIGN="JUSTIFY"> </P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Таблица 3.</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>2. Управляющие последовательности символов</P></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=2 WIDTH=496>
+<TR><TD WIDTH="41%" VALIGN="MIDDLE" HEIGHT=33>
+<FONT FACE="Times New Roman" SIZE=2><P>Управляющая последовательность</FONT></TD>
+<TD WIDTH="59%" VALIGN="MIDDLE" HEIGHT=33>
+<FONT FACE="Times New Roman" SIZE=2><P>Описание</FONT></TD>
+</TR>
+<TR><TD WIDTH="41%" VALIGN="MIDDLE" HEIGHT=18>
+<FONT SIZE=2><P> \ddd</FONT></TD>
+<TD WIDTH="59%" VALIGN="MIDDLE" HEIGHT=18>
+<FONT FACE="Times New Roman" SIZE=2><P>Восьмеричный символ</FONT><FONT SIZE=2> (ddd)</FONT></TD>
+</TR>
+<TR><TD WIDTH="41%" VALIGN="MIDDLE" HEIGHT=18>
+<FONT SIZE=2><P>\uxxxx</FONT></TD>
+<TD WIDTH="59%" VALIGN="MIDDLE" HEIGHT=18>
+<FONT FACE="Times New Roman" SIZE=2><P>Шестнадцатиричный символ</FONT><FONT SIZE=2> UNICODE (xxxx)</FONT></TD>
+</TR>
+<TR><TD WIDTH="41%" VALIGN="MIDDLE" HEIGHT=18>
+<FONT SIZE=2><P>\'</FONT></TD>
+<TD WIDTH="59%" VALIGN="MIDDLE" HEIGHT=18>
+<FONT FACE="Times New Roman" SIZE=2><P>Апостроф</FONT></TD>
+</TR>
+<TR><TD WIDTH="41%" VALIGN="MIDDLE" HEIGHT=18>
+<FONT SIZE=2><P>\"</FONT></TD>
+<TD WIDTH="59%" VALIGN="MIDDLE" HEIGHT=18>
+<FONT FACE="Times New Roman" SIZE=2><P>Кавычка</FONT></TD>
+</TR>
+<TR><TD WIDTH="41%" VALIGN="MIDDLE" HEIGHT=18>
+<FONT SIZE=2><P>\\</FONT></TD>
+<TD WIDTH="59%" VALIGN="MIDDLE" HEIGHT=18>
+<FONT FACE="Times New Roman" SIZE=2><P>Обратная косая черта</FONT></TD>
+</TR>
+<TR><TD WIDTH="41%" VALIGN="MIDDLE" HEIGHT=18>
+<FONT SIZE=2><P>\r</FONT></TD>
+<TD WIDTH="59%" VALIGN="MIDDLE" HEIGHT=18>
+<FONT FACE="Times New Roman" SIZE=2><P>Возврат каретки (carriage return)</FONT></TD>
+</TR>
+<TR><TD WIDTH="41%" VALIGN="MIDDLE" HEIGHT=18>
+<FONT SIZE=2><P>\n</FONT></TD>
+<TD WIDTH="59%" VALIGN="MIDDLE" HEIGHT=18>
+<FONT FACE="Times New Roman" SIZE=2><P>Перевод строки (line feed, new line)</FONT></TD>
+</TR>
+<TR><TD WIDTH="41%" VALIGN="MIDDLE" HEIGHT=18>
+<FONT SIZE=2><P>\f</FONT></TD>
+<TD WIDTH="59%" VALIGN="MIDDLE" HEIGHT=18>
+<FONT FACE="Times New Roman" SIZE=2><P>Перевод страницы</FONT><FONT SIZE=2> (form feed)</FONT></TD>
+</TR>
+<TR><TD WIDTH="41%" VALIGN="MIDDLE" HEIGHT=18>
+<FONT SIZE=2><P>\t</FONT></TD>
+<TD WIDTH="59%" VALIGN="MIDDLE" HEIGHT=18>
+<FONT FACE="Times New Roman" SIZE=2><P>Горизонтальная табуляция</FONT><FONT SIZE=2> (tab)</FONT></TD>
+</TR>
+<TR><TD WIDTH="41%" VALIGN="MIDDLE" HEIGHT=22>
+<FONT SIZE=2><P>\b</FONT></TD>
+<TD WIDTH="59%" VALIGN="MIDDLE" HEIGHT=22>
+<FONT FACE="Times New Roman" SIZE=2><P>Возврат на шаг</FONT><FONT SIZE=2> (backspace)</FONT></TD>
+</TR>
+</TABLE>
+
+<B><FONT FACE="Arial" SIZE=2>
+</FONT><FONT FACE="Arial" SIZE=2><P>Строчные литералы</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Строчные литералы в</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>Java выглядят точно также, как и во многих других языках — это произвольный текст, заключенный в пару двойных кавычек (""). Хотя строчные литералы в</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>Java реализованы весьма своеобразно</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>(Java создает объект для каждой строки), внешне это никак не проявляется. Примеры строчных литералов:</FONT><FONT SIZE=2> “Hello </FONT><FONT FACE="Times New Roman" SIZE=2>World!”; "две\строки; \ А это в кавычках\"". Все управляющие последовательности и восьмеричные / шестнадцатиричные формы записи, которые определены для символьных литералов, работают точно так же и в строках. Строчные литералы в</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>Java должны начинаться и заканчиваться в одной и той же строке исходного кода. В этом языке, в отличие от многих других, нет управляющей последовательности для продолжения строкового литерала на новой строке.</P>
+</FONT><B><FONT FACE="Arial">
+</FONT><FONT FACE="Arial"><P>Операторы</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Оператор — это нечто, выполняющее некоторое действие над одним или двумя аргументами и выдающее результат. Синтаксически операторы чаще всего размещаются между идентификаторами и литералами. Детально операторы будут рассмотрены в </FONT><A HREF="05.htm"><U><FONT FACE="Times New Roman" SIZE=2 COLOR="#0000ff">главе 5</U></FONT></A><FONT FACE="Times New Roman" SIZE=2>, их перечень приведен в таблице 3.</FONT><FONT SIZE=2> 3.</P>
+
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Таблица 3.</FONT><B><FONT SIZE=2> </B></FONT><FONT FACE="Times New Roman" SIZE=2>3. Операторы языка</FONT><FONT SIZE=2> Java</P></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=7 WIDTH=509>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>+</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>+=</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>-</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>-=</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>*</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>*=</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>/</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>/=</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>|</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>|=</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>^</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>^=</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>&amp;</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>&amp;=</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>%</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>%=</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>&gt;</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>&gt;=</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>&lt;</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>&lt;=</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>!</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>!=</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>++</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>--</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>&gt;&gt;</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>&gt;&gt;=</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>&lt;&lt;</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>&lt;&lt;=</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>&gt;&gt;&gt;</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>&gt;&gt;&gt;=</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>&amp;&amp;</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>| |</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>==</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>=</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>~</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>?:</FONT></TD>
+</TR>
+<TR><TD WIDTH="25%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>instanceof</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>[ ]</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<B><FONT FACE="Arial">
+</FONT><FONT FACE="Arial"><P>Разделители</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P>Лишь несколько групп символов, которые могут появляться в синтаксически правильной Java-программе, все еще остались неназваннами. Это — простые разделители, которые влияют на внешний вид и функциональность программного кода.</P>
+</FONT><FONT SIZE=2></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=2 WIDTH=494>
+<TR><TD WIDTH="13%" VALIGN="TOP">
+<B><FONT FACE="Times New Roman" SIZE=2><P>Символы</B></FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<B><FONT FACE="Times New Roman" SIZE=2><P>Название</B></FONT></TD>
+<TD WIDTH="62%" VALIGN="TOP">
+<B><FONT FACE="Times New Roman" SIZE=2><P>Для чего применяются</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="13%" VALIGN="TOP">
+<FONT SIZE=2><P>( )</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>круглые скобки</FONT></TD>
+<TD WIDTH="62%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Выделяют списки параметров в объявлении и вызове метода, также используются для задания приоритета операций в выражениях, выделения выражений в операторах управления выполнением программы, и в операторах приведения типов.</FONT></TD>
+</TR>
+<TR><TD WIDTH="13%" VALIGN="TOP">
+<FONT SIZE=2><P>{ }</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>фигурные скобки</P>
+</FONT><FONT SIZE=2></FONT></TD>
+<TD WIDTH="62%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Содержат значения автоматически инициализируемых массивов, также используются для ограничения блока кода в классах, методах и локальных областях видимости.</FONT></TD>
+</TR>
+<TR><TD WIDTH="13%" VALIGN="TOP">
+<FONT SIZE=2><P>[ ]</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>квадратные скобки</P>
+</FONT><FONT SIZE=2></FONT></TD>
+<TD WIDTH="62%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Используются в объявлениях массивов и при доступе к отдельным элементам массива.</P>
+</FONT><FONT SIZE=2></FONT></TD>
+</TR>
+<TR><TD WIDTH="13%" VALIGN="TOP">
+<FONT SIZE=2><P>;   </FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>точка с запятой </FONT></TD>
+<TD WIDTH="62%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Разделяет операторы.</FONT></TD>
+</TR>
+<TR><TD WIDTH="13%" VALIGN="TOP">
+<FONT SIZE=2><P>,</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>запятая</FONT></TD>
+<TD WIDTH="62%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Разделяет идентификаторы в объявлениях переменных, также используется для связи операторов в заголовке цикла</FONT><FONT SIZE=2> for.</FONT></TD>
+</TR>
+<TR><TD WIDTH="13%" VALIGN="TOP">
+<FONT SIZE=2><P>.</P>
+</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>точка</FONT></TD>
+<TD WIDTH="62%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Отделяет имена пакетов от имен подпакетов и классов, также используется для отделения имени переменной или метода от имени переменной.</FONT></TD>
+</TR>
+</TABLE>
+
+<B><FONT FACE="Arial" SIZE=4>
+</FONT><FONT FACE="Arial" SIZE=4><P>Переменные</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Переменная — это основной элемент хранения информации в Java-программе. Переменная характеризуется комбинацией идентификатора, типа и области действия. В зависимости от того, где вы объявили переменную, она может быть локальной, например, для кода внутри цикла for, либо это может быть переменная экземпляра класса, доступная всем методам данного класса. Локальные области действия объявляются с помощью фигурных скобок.</P>
+</FONT><B><FONT FACE="Arial">
+</FONT><FONT FACE="Arial"><P>Объявление переменной</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P>Основная форма объявления переменной такова:</P>
+</FONT><FONT SIZE=2>
+</FONT><I><FONT FACE="Times New Roman" SIZE=2><P>тип идентификатор [ = значение] [, идентификатор [ = значение</I></FONT><FONT SIZE=2> 7...<I>];</P>
+
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Тип —</I> это либо один из встроенных типов, то есть,</FONT><FONT SIZE=2> byte, short, int, long, char, float, double, </FONT><FONT FACE="Times New Roman" SIZE=2>boolean, либо имя класса или интерфейса. Мы подробно обсудим все эти типы в </FONT><A HREF="04.htm"><U><FONT FACE="Times New Roman" SIZE=2 COLOR="#0000ff">следующей главе</U></FONT></A><FONT FACE="Times New Roman" SIZE=2>. Ниже приведено несколько примеров объявления переменных различных типов. Обратите внимание на то, что некоторые примеры включают в себя инициализацию начального значения. Переменные, для которых начальные значения не указаны, автоматически инициализируются нулем.</P>
+</FONT><FONT SIZE=2></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=2 WIDTH=496>
+<TR><TD WIDTH="34%" VALIGN="MIDDLE" HEIGHT=25>
+<FONT SIZE=2><P>int a, </FONT><FONT FACE="Times New Roman" SIZE=2>b, с;</FONT></TD>
+<TD WIDTH="66%" VALIGN="MIDDLE" HEIGHT=25>
+<FONT FACE="Times New Roman" SIZE=2><P>Объявляет три целых переменных а, b, с.</FONT></TD>
+</TR>
+<TR><TD WIDTH="34%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT SIZE=2><P>int d = 3, e, f = 5;</FONT></TD>
+<TD WIDTH="66%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT FACE="Times New Roman" SIZE=2><P>Объявляет еще три целых переменных, инициализирует d и f.</FONT></TD>
+</TR>
+<TR><TD WIDTH="34%" VALIGN="MIDDLE" HEIGHT=22>
+<FONT SIZE=2><P>byte z = 22; </FONT></TD>
+<TD WIDTH="66%" VALIGN="MIDDLE" HEIGHT=22>
+<FONT FACE="Times New Roman" SIZE=2><P>Инициализирует z.</FONT></TD>
+</TR>
+<TR><TD WIDTH="34%" VALIGN="MIDDLE" HEIGHT=21>
+<FONT SIZE=2><P>double pi = 3. 14159;</FONT></TD>
+<TD WIDTH="66%" VALIGN="MIDDLE" HEIGHT=21>
+<FONT FACE="Times New Roman" SIZE=2><P>Объявляет число пи (не очень точное, но все таки пи).</FONT></TD>
+</TR>
+<TR><TD WIDTH="34%" VALIGN="MIDDLE" HEIGHT=24>
+<FONT SIZE=2><P>char x = 'x';</FONT></TD>
+<TD WIDTH="66%" VALIGN="MIDDLE" HEIGHT=24>
+<FONT FACE="Times New Roman" SIZE=2><P>Переменная х получает значение 'х'.</FONT></TD>
+</TR>
+</TABLE>
+
+<FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">В приведенном ниже примере создаются три переменные, соответствующие сторонам прямоугольного треугольника, а затем</FONT><FONT SIZE=2> <I>c </I></FONT><FONT FACE="Times New Roman" SIZE=2>помощью теоремы Пифагора вычисляется длина гипотенузы, в данном случае числа 5, величины гипотенузы классического прямоугольного треугольника со сторонами 3-4-5.</P>
+</FONT><FONT SIZE=2>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>class Variables {</P>
+<P>public static void main (String args []) { </P>
+<P>double a = 3;</P>
+<P>double b = 4;</P>
+<P>double c;</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>с</FONT><FONT FACE="Courier New" SIZE=2> = Math.sqrt (a* a + b* b);</P>
+<P>System.out.println ("c = "+ c);</P>
+<P>} }</P>
+</B></I>
+</FONT><B><FONT FACE="Arial" SIZE=4><P>Ваш первый шаг</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Мы уже многого достигли: сначала написали небольшую программу на языке</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>Java и подробно рассмотрели, из чего она состоит (блоки кода, комментарии). Мы познакомились со списком ключевых слов и операторов, чье назначение будет подробно объяснено в дальнейших главах. Теперь вы в состоянии самостоятельно различать основные части любой Java-программы и готовы к тому, чтобы приступить к чтению </FONT><A HREF="04.htm"><U><FONT FACE="Times New Roman" SIZE=2 COLOR="#0000ff">главы 4</U></FONT></A><FONT FACE="Times New Roman" SIZE=2>, в которой подробно рассматриваются простые типы данных.</P>
+</FONT><FONT SIZE=2></FONT></BODY>
+</HTML>

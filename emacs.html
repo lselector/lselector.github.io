@@ -1,0 +1,718 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>emacs</title>
+<!--
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+<style type="text/css">
+<!--
+.style1 {
+	color: #CC0000;
+	font-weight: bold;
+}
+.code {color: #0000FF}
+.comment {color: #669900}
+.description {font-size: x-small}
+.keys {font-size: x-small; color: #3333FF;  font-weight: bold}
+-->
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1>
+<b><a href="index.html">home</a>
+> Emacs</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Emacs and XEmacs</font></b>
+<table width="95%" border="0" cellpadding="3" cellspacing="0">
+  <tr>
+    <td><span class="style1">On This Page</span></td>
+    <td class="style1">Other Pages</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p>
+- <a href="#intro">intro</a><br>
+- <a href="#emacs_commands_short_ref">emacs_commands_short_ref</a><br>
+    - <a href="#emacs_commands_long_reference">emacs_commands_long_reference</a><br>
+    - <a href="#dot_emacs_file">dot_emacs_file</a><br>
+    </p>
+    </td>
+    <td valign="top">
+    <p>
+- <a href="emacs_short_ref.html">emacs_short_ref</a><br>
+    - <a href="emacs_short_ref.doc">emacs_short_ref.doc</a> - 1-pager, good for printing out<br>
+      <br>
+    </p>
+    </td>
+  </tr>
+</table>
+<p class="sectionheader"><a NAME="intro"></a>Intro ------------------------------</p>
+  <p>Emacs (and its independent &quot;brother&quot; XEmacs) - are  powerful open-source editors. Mostly used as programming editors on Unix (including Apple Macintosh). But you can also effectively use these editors on Windows.</p>
+  <ul>
+    <li><a href="http://en.wikipedia.org/wiki/GNU_Emacs">http://en.wikipedia.org/wiki/GNU_Emacs</a></li>
+    <li><a href="http://en.wikipedia.org/wiki/XEmacs">http://en.wikipedia.org/wiki/XEmacs</a></li>
+  </ul>
+  <p>Get emacs: <br>
+  </p>
+  <ul>
+    <li><a href="http://www.gnu.org/software/emacs/">http://www.gnu.org/software/emacs/</a> - main page for GNU Emacs</li>
+    <li><a href="http://www.xemacs.org/">http://www.xemacs.org/</a> - main page for XEmacs</li>
+    <li><a href="http://www.gnu.org/software/emacs/windows/faq2.html">http://www.gnu.org/software/emacs/windows/faq2.html</a> - where to download it for windows (source or binary) </li>
+    <li><a href="ftp://ftp.gnu.org/gnu/emacs/windows/">ftp://ftp.gnu.org/gnu/emacs/windows/</a> - downloads for windows<br>
+    </li>
+  </ul>
+<p>Install it:</p>
+  <ul>
+    <li>download  some fullbin file, for example: emacs-21.3-fullbin-i386.tar.gz <br>
+    </li>
+    <li>unzip it in some directory, for example: C:\AAA_Downloads\emacs-21.3\ <br>
+    </li>
+    <li>go into the bin subdirectory and make a shortcut of runemacs.exe - and place it on the desktop. </li>
+    <li>run it by double-clicking on it </li>
+</ul>
+
+  <p>Documentation:</p>
+  <p>In addition to tutorials and docs inside the emacs, you can google for tutorials, for example:</p>
+  <ul>
+    <li> <a href="http://www.lib.uchicago.edu/keith/tcl-course/emacs-tutorial.html">http://www.lib.uchicago.edu/keith/tcl-course/emacs-tutorial.html</a></li>
+    <li>      <a href="http://www.cs.cmu.edu/cgi-bin/info2www?(emacs)">http://www.cs.cmu.edu/cgi-bin/info2www?(emacs)</a></li>
+  </ul>
+  <p>Speedbar - allows you to get a listing of files or tags inside files - and easily navigate by clicking on them.</p>
+  <p><a href="http://cedet.sourceforge.net/speedbar.shtml">http://cedet.sourceforge.net/speedbar.shtml</a></p>
+  <p>&nbsp;</p>
+  <p class="sectionheader"><a name="emacs_commands_short_ref" id="emacs_commands_short_ref"></a>emacs commands - short reference</p>
+  <p>Basic emacs is easy to learn. In fact, you can be an effective user in ~30 min. Here are the main commands you need to know. Here Ctrl key is represented with &quot;^&quot;, and Meta key (Alt, Option) is represented by &quot;Alt&quot;.</p>
+  <table WIDTH="100%" BORDER CELLSPACING=0 >
+    <tr bgcolor="#FFCC99">
+      <td ALIGN=LEFT VALIGN=TOP>Exit / get help</td>
+      <td ALIGN=LEFT VALIGN=TOP>Open/Save file</td>
+      <td ALIGN=LEFT VALIGN=TOP> emacs windows and buffers</td>
+    </tr>
+    <tr>
+      <td ALIGN=LEFT VALIGN=TOP><p class="description"><span class="keys">^x^c</span> - close window (exit) <br>
+              <span class="keys">^g</span> - get out (of a command entry) - may be several times <br>
+              <span class="keys">^x u</span> - undo <br>
+              <span class="keys">^x _</span> - undo <br>
+              <span class="keys">^x /</span> - undo </p>
+          <p class="description"> <span class="keys"></span><span class="keys">^h</span> - help<br>
+              <span class="keys">^h^h</span> - Help on help<br>
+              <span class="keys">^h t</span> - tutorial<br>
+              <span class="keys">^h i</span> - info (documentation)<br>
+              <span class="keys">^h k &lt;key&gt;</span> - help on this key <br>
+              <span class="keys">^h k &lt;function&gt;</span> - describe function<br>
+              <span class="keys">Alt-` or ESC` or F10</span> - menubarAlt-x - switch to minibuffer (<span class="keys">^g</span> - out)</p></td>
+      <td ALIGN=LEFT VALIGN=TOP><p><span class="keys">^x^f</span><span class="description"> - open file (press </span><span class="keys">Enter</span><span class="description"> to get file listing)<br>
+          </span><span class="keys">^x d</span><span class="description"> - open a directory <br>
+          </span><span class="keys">^x i</span><span class="description"> - insert text from another file. <br>
+          </span><span class="keys">^x^s</span><span class="description"> - save file <br>
+          </span><span class="keys">C-x C-c y</span><span class="description"> &ndash; exit and save<br>
+          </span><span class="keys">^x^w</span><span class="description"> - write to another file <br>
+          </span><span class="keys">^x^v</span><span class="description"> - find alternate file&nbsp;(with ~)</span>
+          <p class="description"> <span class="keys">Alt-!</span> - run shell command <br>
+              <span class="keys">Alt-x shell</span> - open shell window</td>
+      <td ALIGN=LEFT VALIGN=TOP><p class="description">You can split the main window in several. <br>
+        Each window can be attached to a buffer (file, scratch, etc.)<br>
+        <span class="keys">^x b</span> - change/create buffer <br>
+        <span class="keys">^x^b</span> - list of buffers <br>
+        <span class="keys">^x k</span> - close buffer <br>
+        <span class="keys">^x o</span> - select &quot;other&quot; window</p>
+          <p class="description"><span class="keys">^x0</span> - kill current window <br>
+              <span class="keys">^x1</span> - kill all  windows except current <br>
+              <span class="keys">^x2</span> - split  horizontal <br>
+              <span class="keys">^x3</span> - split vertical&nbsp;<br>
+              <span class="keys">^x40</span> - kill current window and buffer</p>
+        <p class="description">Current window resize:<br>
+              <span class="keys">^x^</span> - taller / <span class="keys">^x-</span> - shorter<br>
+              <span class="keys">^x}</span> - wider / <span class="keys">^x{</span> - narrower<br>
+              <span class="keys">^x +</span> - make all windows same height<br>
+          </p>
+        <p class="description"><span class="keys">^l</span> ( small L ) - redraw the screen</p></td>
+    </tr>
+    <tr bgcolor="#FFCC99">
+      <td ALIGN=LEFT VALIGN=TOP>Move in a window</td>
+      <td ALIGN=LEFT VALIGN=TOP>delete, mark, cut/copy, yank(paste)</td>
+      <td ALIGN=LEFT VALIGN=TOP>more on selecting, ...</td>
+    </tr>
+    <tr>
+      <td ALIGN=LEFT VALIGN=TOP><p class="description">usually arrows work, but PgUp/PgDn don't.<br>
+              <span class="keys">^f, ^b, ^n, ^p</span> (forward, back, next, previous)<br>
+              <br>
+        Move faster:</p>
+          <table width="99%" border="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td>&nbsp;</td>
+              <td>forward, end</td>
+              <td>back, a(bc)</td>
+            </tr>
+            <tr>
+              <td><span class="description">word</span></td>
+              <td><span class="keys">Alt-f</span></td>
+              <td><span class="keys">Alt-b</span></td>
+            </tr>
+            <tr>
+              <td>line</td>
+              <td><span class="keys">^e</span></td>
+              <td><span class="keys">^a</span></td>
+            </tr>
+            <tr>
+              <td><span class="description">sentence</span></td>
+              <td><span class="keys">Alt-e</span></td>
+              <td><span class="keys">Alt-a</span></td>
+            </tr>
+            <tr>
+              <td><span class="description">page</span></td>
+              <td><span class="keys">^x ]</span></td>
+              <td><span class="keys">^x [</span></td>
+            </tr>
+            <tr>
+              <td><span class="description">buffer(file)</span></td>
+              <td><span class="keys">Alt-&gt;</span></td>
+              <td><span class="keys">Alt-&lt;</span></td>
+            </tr>
+            <tr>
+              <td>screen (cursor in mid-screen)</td>
+              <td><span class="keys">^Alt-e</span></td>
+              <td><span class="keys">^Alt-a</span></td>
+            </tr>
+            <tr>
+              <td><span class="description">screen</span></td>
+              <td><span class="keys">^v</span></td>
+              <td><span class="keys">Alt-v</span></td>
+            </tr>
+          </table>
+        <p class="description"><span class="keys">Alt-# n</span> - goto line n.<br>
+              <span class="keys">Alt-x goto-line</span> RET 5 RET - goto line 5</p></td>
+      <td ALIGN=LEFT VALIGN=TOP><p class="description"><span class="keys">^d, Del</span>&nbsp;- del char (forw/back) <br>
+        (note: ^h is for help)<br>
+        <span class="keys">Alt-d, ^Del</span>&nbsp;- word <br>
+        <span class="keys">^k</span> -  rest of the line <br>
+        <span class="keys">^k^k^k^k</span> - cut several lines <br>
+        <span class="keys"></span><span class="keys">Alt-k</span> -  rest of sentence. <br>
+        <span class="keys">^a^k</span> - delete the line </p>
+          <p class="description"><span class="keys">^SPACE ,  ^@</span> - set beginning mark<br>
+              <span class="keys">^x ^x</span> - jump to/from mark point<br>
+              <span class="keys">Alt-@</span> - select word<br>
+              <span class="keys">Alt-h</span> - select paragraph<span class="keys"><br>
+                ^x h</span> - select all (mark-whole-buffer)<br>
+            <br>
+            <span class="keys">^w</span> - cut from current pos. to mark (kill-region - put it on the kill ring)<br>
+            <br>
+            <span class="keys">Alt-w</span>&nbsp;- copy from current pos to mark (kill-ring-save - equivalent to <span class="keys">^w^y</span>)<br>
+            <br>
+            <span class="keys">^y</span> - paste (yank) last killed thing <br>
+            <span class="keys">Alt-y</span> -Yank earlier kills.</p></td>
+      <td ALIGN=LEFT VALIGN=TOP class="description"><p class="description"><span class="keys">^u 0 ^k</span> - kill-line<br>
+              <span class="keys">^u -1 ^k</span> - kill-line including preceding newline<br>
+              <br>
+              <span class="keys">^Alt-k</span> - kill-sexp. Kills the sexp after the cursor.<br>
+              <span class="keys">^u -1 ^Alt-k</span> - kill-sexp. Kills the sexp before the cursor.<br>
+        The command backward-kill-sexp exists, but is not bound to any key by default.</p>
+          <p class="description"><span class="keys">^Alt-@</span> - mark-sexp. Sets the region around matching parenths. 
+            (the same sexp that C-M-f would move to). </p>
+        <p class="description"><span class="keys">^Alt-h</span> - mark-defun. Mark function definnition.</p>
+        <p class="description"><span class="keys">^x^i</span> - indent-rigidly the region by 1 or more chars (default is 1).</p></td>
+    </tr>
+    <tr bgcolor="#FFCC99">
+      <td ALIGN=LEFT VALIGN=TOP>Search</td>
+      <td ALIGN=LEFT VALIGN=TOP>Search and  Replace</td>
+      <td ALIGN=LEFT VALIGN=TOP>Capital/low case, debugger</td>
+    </tr>
+    <tr>
+      <td ALIGN=LEFT VALIGN=TOP><p><span class="keys">^s</span><span class="description"> str RET - isearch-forward (as you type) <br>
+          </span><span class="keys">^r</span><span class="description"> str RET - isearch-backward<br>
+          </span><span class="keys">^s</span><span class="description"> RET str RET - regular search<br>
+          <br>
+          </span><span class="keys">^s</span><span class="description"> - to repeat search<br>
+          <br>
+          </span><span class="keys">^s^w</span><span class="description"> - search for word <br>
+          </span><span class="keys">^s^y</span><span class="description"> - search for the rest of the line <br>
+          </span><span class="keys">^s Alt-y</span><span class="description"> - search for copied text<br>
+          <br>
+            =====================<br>
+            <br>
+            I</span><span class="description">f C-s doesn&rsquo;t work because C-s is &ldquo;stop output&rdquo;, do the following:<br>
+              M-x enable-flow-control<br>
+              Then use C-\ instead of C-s, and C-^ instead of C-q<br>
+              auto-fill-mode<br>
+              C-q C-l &ndash; to enter control-l</span> </td>
+      <td ALIGN=LEFT VALIGN=TOP><p><span class="keys">Alt-%</span><span class="description"> oldstr RET newstr RET. </span> <br>
+          <table width="99%" border="0" cellpadding="2" cellspacing="0">
+            <tr>
+              <td><span class="keys">Space, y</span></td>
+              <td><span class="description">replace oldstr with newstr.</span></td>
+            </tr>
+            <tr>
+              <td><span class="keys">Delete, n</span></td>
+              <td><span class="description">skip to the next occurrence 
+                (without replacing this one). </span></td>
+            </tr>
+            <tr>
+              <td><span class="keys">Enter, Esc, q</span></td>
+              <td><span class="description">exit without any more replacements.</span></td>
+            </tr>
+            <tr>
+              <td><span class="keys">. (period)</span></td>
+              <td><span class="description">replace this occurrence and exit. </span></td>
+            </tr>
+            <tr>
+              <td><span class="keys">^</span></td>
+              <td><span class="description">go back to the location of the&nbsp;<br>
+                previous occurrence if you changed it. </span></td>
+            </tr>
+            <tr>
+              <td><span class="keys">!</span></td>
+              <td><span class="description">replace all remaining occurrences&nbsp;<br>
+                without asking again.</span></td>
+            </tr>
+        </table></td>
+      <td ALIGN=LEFT VALIGN=TOP><p class="description"><span class="keys">^x^u,  ^x^l</span> - convert region to upper / lower case. <br>
+              <span class="keys">Alt-u,  Alt-l</span> - conv. word to upper / lower case. <br>
+              <span class="keys">Alt-c</span>&nbsp;- capitalize the word.<br>
+              <br>
+        Using debugger: <br>
+        <span class="keys">^x3</span> - create second window <br>
+        <span class="keys">Alt-x</span> - perldb RET - enter command perldb <br>
+        n - next <br>
+        q - quit  </td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+<p class="sectionheader"><a name="emacs_commands_long_reference"></a>Emacs Commands - longer version</p>
+  <p class="style1">EMACS commands</p>
+  <ul>
+    <li>'C-h' means: use the CTRL key while pressing the 'h' key. </li>
+    <li> 'M-h' means: use the Meta key (Alt or Option) while pressing the 'h' key. You can also press ESC followed by the character. </li>
+  </ul>
+  <p class="style1">Exiting and getting help:</p>
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><p>C-x C-c  - exit <br>
+        C-g (may be several times) - get out from the middle of some command entry<br>
+        C-x u - undo changes<br>
+        C-x _ - undo<br>
+        C-h - help<br>
+        C-h t - tutorial<br>
+        C-h i - info (documentation)<br>
+        C-h k &lt;somekey&gt; - help on this &lt;somekey&gt; .<br>
+        C-h f  somefunction &ndash; describe somefunction<br>
+        M-` or &lt;ESC&gt;&lt;`&gt; or F10 - Activate menubar. <br>
+        M-x &ndash; switch to minibuffer (C-g &ndash; out)</p>
+      </td>
+    </tr>
+  </table>
+  <p class="style1"> File operations:  </p>
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><p>C-x C-c  y &ndash; exit and save<br>
+        C-x C-s - save<br>
+        C-x C-w - save file as <br>
+        C-x C-f - open file (if you then press enter - it will show you the directory listing from which you can choose a file). <br>
+        C-x C-d - open directory<br>
+      C-x i - insert file<br>
+      ===============================<br>
+M-! - run shell command <br>
+M-x  shell   - open shell window</p>
+      </td>
+    </tr>
+  </table>
+  <p class="style1">    Using windows inside emacs:</p>
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><p>C-x b - to change current buffer in a window <br>
+C-x C-b - to list buffers (to select one) <br>
+C-x 2 - split window into 2 (one above another = split-window-vertically)<br>
+C-x 3 - Split the selected window into two windows side by side (split-window-horizontally)<br>
+C-x o - Select another window (other-window).<br>
+C-x 0 - Delete the selected window (delete-window).<br>
+C-x 1 - Delete all windows in the selected frame except the selected window (delete-other-windows).<br>
+C-x 4 0 - Delete the selected window and kill the buffer that was showing in it (kill-buffer-and-window).<br>
+C-x ^ - Make selected window taller (enlarge-window).<br>
+C-x } - Make selected window wider (enlarge-window-horizontally).<br>
+C-x { - ... narrower (shrink-window-horizontally).<br>
+C-x - - Shrink this window if its buffer doesn't need so many lines (shrink-window-if-larger-than-buffer).<br>
+C-x + - Make all windows the same height (balance-windows).</p></td>
+    </tr>
+  </table>
+  <p class="style1">    Moving in the window:</p>
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><p>usually arrows work, but page-up/down don't.<br>
+C-f - forward-char.<br>
+C-b - backward-char.<br>
+M-f - forward-word.<br>
+M-b - backward-word.<br>
+C-n - next-line.<br>
+C-p - previous-line.<br>
+C-a - beginning-of-line. (a - beginning of the alphabet).<br>
+C-e - end-of-line (e - End).</p>
+        <p>Faster moving:<br>
+          M-a , M-e - sentences<br>
+          M-{ , M-} - paragraphs<br>
+          C-x [ , C-x ] - pages<br>
+          C-v, M-v &ndash; screen down/up<br>
+          CM-e, CM-a &ndash; screen down/up, cursor in mid-screen<br>
+          M-&lt; , M-&gt; - beginning / end of buffer (file).</p>
+      </td>
+    </tr>
+  </table>
+  <p>    Deleting and Yanking:</p>
+<table border="0" cellspacing="0" cellpadding="5">
+  <tr>
+      <td bgcolor="#FFFFCC"><p>C-d - delete-char.<br>
+DEL - delete-backward-char. (Remember, Emacs does not use C-h (aka Backspace) for deletion, but for help!)<br>
+M-d - kill-word. (forward).<br>
+M-DEL - backward-kill-word.<br>
+C-k - kill-line.<br>
+C-u 0 C-k - kill-line. Kills to the beginning of the current line, not including the newline. <br>
+C-u -1 C-k - kills the line including the newline before the line.<br>
+C-M-k - kill-sexp. Kills the sexp after the cursor.<br>
+C-u -1 C-M-k - kill-sexp. Kills the sexp before the cursor.<br>
+The command backward-kill-sexp exists, but is not bound to any key by default. <br>
+C-y (yank) - restore the yanked text. </p>
+      </td>
+    </tr>
+  </table>
+  <p>  Search:</p>
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><p>C-s - Incremental search forward (`isearch-forward').<br>
+C-r - Incremental search backward (`isearch-backward').<br>
+M-% - interactive query-replace. At each match you can:<br>
+SPC - Perform this replacement.<br>
+DEL - Don't perform this replacement. <br>
+RET - Terminate query-replace without performing this replacement.<br>
+ESC - Same as RET.<br>
+. - Perform this replacement but then terminate the query-replace.<br>
+! - Perform this replacement for all the rest in the buffer without asking.</p></td>
+    </tr>
+  </table>
+  <p><br>
+    Select, copy, paste = define region, kill, yank</p>
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><p>C-SPC or C-@ - set the mark<br>
+C-x C-x - jump between the cursor point and the mark point<br>
+C-w - kill-region - put it on the kill ring.<br>
+C-y &ndash; yank (paste)<br>
+M-w - kill-ring-save.  (equivalent to C-w C-y).<br>
+C-x h - mark-whole-buffer  (select ALL).<br>
+M-@ - mark-word.<br>
+M-h - mark-paragraph.<br>
+C-M-@ - mark-sexp. Sets the region around matching parenths. (the same sexp that C-M-f would move to). <br>
+C-M-h - mark-defun. Mark function definnition.<br>
+C-x C-i - indent-rigidly. Rigidly indents the region by as many characters (columns) as you provide as a numeric argument (default is 1 column).<br>
+===============================<br>
+If C-s doesn&rsquo;t work because C-s is &ldquo;stop output&rdquo;, do the following:<br>
+M-x enable-flow-control<br>
+Then use C-\ instead of C-s, and C-^ instead of C-q<br>
+auto-fill-mode<br>
+C-q C-l &ndash; to enter control-l<br>
+M-x goto-line N</p></td>
+    </tr>
+  </table>
+  <p>Search/replace newlines and tabs:</p>
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><p>To search/replace special characters, you need to prefix them with quoting command C-q. </p>
+        <p>For example, to get the new-line character (\n) you need to type :  C-q C-j. <br>
+        And to find a tab you can type: C-q &lt;tab&gt; (or C-q C-i).</p>
+        <p>Convert from Unix to DOS: M-%  C-q C-j &lt;enter&gt;  C-q C-m   C-q C-j&lt;enter&gt;</p>
+      </td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+<p class="sectionheader"><a name="dot_emacs_file"></a>dot_emacs file</p>
+  <p>Example of a <span class="style1">.emacs</span> file</p>
+  <table width="99%" border="0" cellpadding="5" cellspacing="0">
+    <tr>
+      <td bgcolor="#CCFFFF"><pre>(setq list-command-history-max 500)
+(setq comint-input-ring-size 500)</pre>
+        <pre>(add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)</pre>
+        <pre>(setq load-path (append (list &quot;~/lib/cperl&quot;) load-path ) )</pre>
+        <pre>;
+           ; Stolen from mtk
+           ;
+           ;(define-key global-map [up] 'up-one-line)
+           ;(define-key global-map [down] 'down-one-line)
+           ;(define-key global-map [right] 'scroll-right)
+           ;(define-key global-map [left] 'scroll-left)
+           ;
+           ;(defun up-one-line (n) &quot;scroll window up n lines (default 1)&quot;
+           ;  (interactive &quot;p&quot;)
+           ;  (scroll-up (cond ((null n) 1) (t n))))
+           ;(defun down-one-line (n) &quot;scroll window down n lines (default 1)&quot;
+           ;  (interactive &quot;p&quot;)
+           ;  (scroll-down (cond ((null n) 1) (t n))))</pre>
+        <pre>(require 'echistory)
+           (global-set-key &quot;\^x\^[\^[&quot; 'electric-command-history)
+           (global-set-key &quot;\C-xb&quot; 'electric-buffer-list)</pre>
+        <pre>;
+           ; Confirm suspension and exit
+           ;
+           ;(defun my-exit-from-emacs ()
+           ;   (interactive)
+           ;   (if (yes-or-no-p &quot;Do you want to exit &quot;)
+           ;       (save-buffers-kill-emacs)))</pre>
+        <pre>;(defun my-suspend-emacs ()
+           ;  (interactive)
+           ;  (if (yes-or-no-p &quot;Do you want to suspend &quot;)
+           ;      (suspend-emacs)))</pre>
+        <pre>;(global-set-key &quot;\C-z&quot; 'my-suspend-emacs)
+           ;(global-set-key &quot;\C-x\C-z&quot; 'my-suspend-emacs)
+           ;(global-set-key &quot;\C-x\C-c&quot; 'my-exit-from-emacs)</pre>
+        <pre>&nbsp;</pre>
+        <pre>;; =================== from Patrick
+           ;; Activate font lock mode (for all buffers)
+           ;;(global-font-lock-mode t)
+           ;;(transient-mark-mode t)</pre>
+        <pre>;;(add-to-list 'auto-mode-alist '(&quot;\\.\\([pP][Llm]\\|al\\)\\'&quot; . cperl-mode))
+           ;;(add-to-list 'interpreter-mode-alist '(&quot;perl&quot; . cperl-mode))
+           ;;(autoload 'cperl-mode &quot;cperl-mode&quot; &quot;alternate mode for editing Perl programs&quot; t)
+           ;;(require 'cperl-mode)
+           ;; ==================== end Patrick
+         </pre>
+        <pre>; Setting from Damian Conway's book, &quot;Perl Best Practices&quot;
+           ;
+           (defalias 'perl-mode 'cperl-mode)</pre>
+        <pre>;(global-set-key &quot;\r&quot; 'newline-and-indent)
+           (setq-default indent-tabs-mode nil)</pre>
+        <pre>(setq fill-column 78)
+           (setq auto-fill-mode t)</pre>
+        <pre>;; (global-set-key &quot;%&quot; 'match-paren)
+           ;; (defun match-paren (arg)
+           ;;   &quot;Go to the matching paren if on a paren; otherwise insert %.&quot;
+           ;;   (interactive &quot;p&quot;)
+           ;;   (let ((prev-char (char-to-string (preceding-char)))
+           ;;      (next-char (char-to-string (following-char))))
+           ;;     (cond ((string-match &quot;[[{(&lt;]&quot; next-char) (forward-sexp 1))
+           ;;        ((string-match &quot;[\]})&gt;]&quot; prev-char) (backward-sexp 1))
+           ;;        (t self-insert-command (or arg 1)))))</pre>
+        <pre>(defun application-template-pl ()
+   &quot;Inserts the standard Perl application template&quot;
+           (interactive &quot;*&quot;)
+           (switch-to-buffer &quot;application-template-pl&quot;)
+           (insert-file &quot;~/.code_templates/perl_application.pl&quot;))
+           (global-set-key &quot;\C-ca&quot; 'application-template-pl)</pre>
+        <pre>(defun module-template-pm ()
+   &quot;Insert the standard Perl module template&quot;
+           (interactive &quot;*&quot;)
+           (switch-to-buffer &quot;module-template-pm&quot;)
+           (insert-file &quot;~/.code_templates/perl_module.pm&quot;))
+           (global-set-key &quot;\C-cm&quot; 'module-template-pm)</pre>
+        <pre>(abbrev-mode 1)</pre>
+        <pre>(define-abbrev-table 'global-abbrev-table 
+           '(
+           (&quot;pdbg&quot;   &quot;use Data::Dumper qw( Dumper );\nwarn Dumper[];&quot;    nil 1)
+           (&quot;phbp&quot;   &quot;#! /usr/bin/perl -w&quot;                               nil 1)
+           (&quot;pbmk&quot;   &quot;use Benchmark qw( cmpthese );\ncmpthese -10, {};&quot;  nil 1)
+           (&quot;pusc&quot;   &quot;use Smart::Comments;\n\n### &quot;                      nil 1)
+           (&quot;putm&quot;   &quot;use Test::More 'no_plan';&quot;                         nil 1)
+           ))</pre>
+        <pre>(add-hook 'text-mode-lambda (lambda () (abbrev-mode 1)))</pre>
+        <pre>(setq auto-mode-alist (append auto-mode-alist '((&quot;\\.C$&quot; . c-mode)
+           (&quot;\\.perl$&quot; . perl-mode)
+           (&quot;\\.p$&quot; . perl-mode)
+           (&quot;\\.PL$&quot; . perl-mode)
+           (&quot;\\.pod$&quot; . perl-mode)
+           (&quot;\\.doc$&quot; . text-mode)
+           (&quot;\\.txt$&quot; . text-mode)
+           (&quot;\\.cpp$&quot; . c-mode)
+           (&quot;\\.cc$&quot; . c-mode)
+           (&quot;\\.H$&quot; . c-mode)
+           (&quot;\\.x$&quot; . c-mode)
+           (&quot;\\.ec$&quot; . c-mode)
+           (&quot;\\.h$&quot; . c-mode)
+           (&quot;\\.hh$&quot; . c-mode)
+           (&quot;\\.st$&quot; . mst-mode)
+           (&quot;\\.tar$&quot; . tar-mode)
+           (&quot;\\.k?sh$&quot; . ksh-mode)
+           (&quot;\\.t$&quot; . perl-mode)
+           (&quot;\\.ph$&quot; . perl-mode)
+           (&quot;\\.pm$&quot; . perl-mode)
+           (&quot;\\.xs$&quot; . c-mode)
+           (&quot;\\.sql$&quot; . c-mode)
+           (&quot;\\.jar$&quot; . archive-mode)
+           (&quot;\\.Z$&quot; . uncompress-while-visiting))))</pre>
+        <pre>(custom-set-variables
+           ;; custom-set-variables was added by Custom -- don't edit or cut/paste it!
+           ;; Your init file should contain only one such instance.
+           '(case-fold-search t)
+           '(cperl-close-paren-offset -4)
+           '(cperl-continued-statement-offset 4)
+           '(cperl-indent-level 4)
+           '(cperl-indent-parens-as-block t)
+           '(cperl-tab-always-indent t)
+           '(current-language-environment &quot;English&quot;)
+           '(global-font-lock-mode t nil (font-lock)))</pre>
+        <pre>(custom-set-faces
+           ;; custom-set-faces was added by Custom -- don't edit or cut/paste it!
+           ;; Your init file should contain only one such instance.
+           )</pre>
+        <pre>(global-set-key (kbd &quot;&lt;deletechar&gt;&quot;) 'backward-delete-char-untabify)</pre>
+        <pre>;; disable underlining of trailing spaces in cperl mode
+           (setq cperl-invalid-face nil)</pre>
+      <pre>;; always highlight scalars
+           (setq cperl-highlight-variables-indiscriminately t)
+       </pre></td>
+    </tr>
+  </table>
+  <p>yet another example</p>
+  <table width="99%" border="0" cellpadding="5" cellspacing="0">
+    <tr>
+      <td bgcolor="#99FF99"><pre>(setq inhibit-default-init t) 
+         (setq line-number-mode t) 
+         (setq column-number-mode t) 
+         (setq truncate-partial-width-windows nil) 
+         (setq frame-title-format &quot;%*%[%f%]  {emacs}  %s&quot;) 
+         ;;(setq icon-title-format  &quot;%f - Emacs&quot;) </pre>
+        <pre>(add-hook 'c++-mode-hook 
+           '(lambda () 
+           (c-set-style &quot;bsd&quot;) 
+           (c-toggle-auto-state 1) 
+           (c-toggle-hungry-state 1) 
+           (define-key c++-mode-map &quot;\C-t&quot; 'tags-search) 
+           (define-key c++-mode-map &quot;\M-t&quot; 'tags-query-replace) 
+           (define-key c++-mode-map &quot;\C-\M-t&quot; 'tags-apropos) 
+           ) 
+           t) </pre>
+        <pre>(add-hook 'c-mode-hook 
+           '(lambda () 
+           (c-set-style &quot;bsd&quot;) 
+           (c-toggle-auto-state 1) 
+           (c-toggle-hungry-state 1) 
+           (define-key c-mode-map &quot;\C-t&quot; 'tags-search) 
+           (define-key c-mode-map &quot;\M-t&quot; 'tags-query-replace) 
+           (define-key c-mode-map &quot;\C-\M-t&quot; 'tags-apropos) 
+           ) 
+           t) </pre>
+        <pre>;;(autoload 'perl-mode &quot;~/emacs/cperl-mode&quot; &quot;alternative mode for Perl editing&quot; t) </pre>
+        <pre>(add-hook 'cperl-mode-hook 
+           '(lambda () 
+           (cperl-set-style &quot;PerlStyle&quot;) 
+           (define-key perl-mode-map &quot;\C-t&quot; 'tags-search) 
+           (define-key perl-mode-map &quot;\M-t&quot; 'tags-query-replace) 
+           (define-key perl-mode-map &quot;\C-\M-t&quot; 'tags-apropos) 
+           ) 
+           t) 
+   
+         </pre>
+        <pre>;;(setq perl-hairy t) 
+           (setq cperl-hairy t) </pre>
+        <pre>(setq auto-mode-alist 
+           (append '((&quot;\\.\\([pP][lmkL]\\|al\\)$&quot; . cperl-mode))  auto-mode-alist )) </pre>
+        <pre>(setq interpreter-mode-alist (append interpreter-mode-alist 
+           '((&quot;miniperl&quot; . cperl-mode)))) 
+         </pre>
+        <pre>;;(setq message-log-max nil) 
+           ;;(kill-buffer &quot;*Messages*&quot;) </pre>
+        <pre>(setq display-time-24hr-format t) 
+             
+         </pre>
+        <pre>(setq auto-mode-alist (cons '(&quot;\\.html$&quot; . html-helper-mode) auto-mode-alist)) </pre>
+        <pre>(setq default-frame-alist 
+           (append default-frame-alist 
+           '((top . 20) 
+           (left . 35) 
+           (width . 80) 
+           (height . 50) 
+           ;;                (background-color . &quot;White&quot;) 
+           ;;                (background-color . &quot;Black&quot;) 
+           ;;                (foreground-color . &quot;White&quot;) 
+           ;;              (font .  &quot;-misc-fixed-*-*-*-*-13-*-*-*-*-*-*-*&quot;) 
+           ) 
+           ;;              '((font .  &quot;-misc-fixed-*-*-*-*-13-*-*-*-*-*-*-*&quot;) 
+           ;;                (background-color . &quot;White&quot;) 
+           ) 
+           ) </pre>
+        <pre>(setq show-paren-mode 1) 
+           (add-hook 'shell-mode-hook 
+           '(lambda () (setq comint-completion-addsuffix '(&quot;\\&quot; . &quot;&quot;))) 
+           t) </pre>
+        <pre>(define-key global-map [M-S-down-mouse-1] 'imenu) 
+           (global-set-key [home] 'beginning-of-line) 
+           (global-set-key [end] 'end-of-line) 
+           (global-set-key [f8] 'delete-other-windows) 
+           (global-set-key [f9] 'split-window-horizontally) 
+           (global-set-key [f12] 'bury-buffer) 
+           (global-set-key [f11] 'iswitchb-buffer) 
+           (global-set-key [f5] 'replace-string) 
+           (global-set-key [f6] 'goto-line) 
+           ;;(autoload 'follow-mode &quot;follow&quot; 
+           ;;    &quot;Synchronize windows showing the same buffer, minor mode.&quot; t) </pre>
+        <pre>;; Turn on font-lock in all modes that support it 
+           (if (fboundp 'global-font-lock-mode) 
+           (global-font-lock-mode t)) </pre>
+        <pre>;; Maximum colors 
+           (setq font-lock-maximum-decoration t) 
+           (custom-set-variables 
+           '(tab-width 4)) 
+           (custom-set-faces)</pre>        
+      </td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p><br>
+  </p>
+</body>
+</html>

@@ -1,0 +1,2601 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <title>XSL Transformations: XSLT Alleviates XML Schema Incompatibility Headaches -- MSDN Magazine, August 2000</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#003399" vlink="#003399" alink="#003399" leftMargin="0" topMargin="0" MARGINHEIGHT="0" MARGINWIDTH="0">
+<b><font size=+2>XSL Transformations: XSLT
+Alleviates XML Schema Incompatibility Headaches</font></b>
+<br>Don Box, Aaron Skonnard, John Lam
+<p>This article assumes you’re familiar with XML and XPath
+<br>Code for this article: <a href="http://msdn.microsoft.com/msdnmag/issues/0800/code/Box0800.exe">Box0800.exe
+(32KB)</a>
+<p>SUMMARY
+<br>The XSL Transformations (XSLT) specification defines an XML-based language
+for expressing transformation rules that map one XML document to another.
+XSLT has many of the constructs found in traditional programming languages,
+including variables, functions, iteration, and conditional statements.
+In this article you’ll learn how to use the XSLT instructions and template
+rules, manage namespaces, control transformation output, use multiple stylesheets,
+and employ pattern-matching with template rules. A sidebar explains how
+to access XSLT from MSXML using the IXSLTemplate and IXSLProcessor interfaces.
+<p>This article was adapted from the forthcoming book <b><i>Essential XML</i>
+(Chapter 5), by Don Box, Aaron Skonnard, and John Lam</b> &copy; 2000 Addison
+Wesley Longman. Reproduced by permission of Addison Wesley Longman. All
+rights reserved.
+<p>The XML Schema definition language is poised to become the dominant
+way to describe the type and structure of XML documents. XML Schemas provide
+the basic infrastructure for building interoperable systems based on XML
+since they give you a common language for describing XML that is based
+on proven software engineering principles. That stated, the expressiveness
+of XML Schemas makes it possible (if not likely) that multiple organizations
+modeling the same set of domain-specific abstractions will come up with
+different schema documents. Yes, this problem could be solved via industry
+consortia defining canonical schema for each domain, but until that happens,
+dealing with multiple schema definitions of the same basic information
+will be a fact of life. Enter XSL Transformations (XSLT).
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The XSLT specification
+defines an XML-based language for expressing transformation rules from
+one class of XML document to another. The XSLT language can be thought
+of as a programming language, and there are at least two XSLT execution
+engines currently available that can directly execute an XSLT document
+as a program. But, XSLT documents are also useful as a general-purpose
+language for expressing transformations from one schema type to another.
+In fact, we could imagine using an XSLT document as one form of input to
+an arbitrary XML translation engine.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>XSLT excels
+at mapping one XML-based representation onto another. Consider the XML
+document shown in <a href="http://msdn.microsoft.com/msdnmag/issues/0800/XSLT/xsltfigs.asp#fig1" class="clsFigs" target="window">Figure
+1</a> (which will be referred to often throughout our discussion).
+<p>----------------------------------------
+<br>Figure 1
+<br>XML Source Document
+<p>&lt;?xml version="1.0"?>
+<br>&lt;product title="Essential XML" xmlns="http://awl.com">
+<br>&nbsp; &lt;writer name='Don Box' />
+<br>&nbsp; &lt;writer name='Aaron Skonnard'/>
+<br>&nbsp; &lt;writer name='John Lam'/>
+<br>&lt;/product>
+<br>----------------------------------------
+<p>Note that the element names belong to a namespace (and schema) defined
+by Addison Wesley Longman (the publisher of our book). Now consider this
+second representation of the same information:
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version="1.0"?>
+&lt;content xmlns="http://www.develop.com/Schemas/book">
+&nbsp; &lt;name>Essential XML&lt;/name>
+&nbsp; &lt;contributors>
+&nbsp;&nbsp;&nbsp; &lt;staff principal="true">Don Box&lt;/staff>
+&nbsp;&nbsp;&nbsp; &lt;staff>Aaron Skonnard&lt;/staff>
+&nbsp;&nbsp;&nbsp; &lt;staff>John Lam&lt;/staff>
+&nbsp; &lt;/contributors>
+&lt;/content></pre>
+</td>
+</tr>
+</table>
+
+<p>This time the element names belong to a namespace (and schema) defined
+by DevelopMentor (the home of the authors).
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The two documents
+just shown appear to contain roughly the same information. However, appearances
+can often be deceiving. Without human intervention, it is impossible to
+algorithmically determine whether there is any correlation whatsoever between
+the two underlying schema, even in the presence of similar or identical
+local element and attribute names. Once a human capable of understanding
+the semantics of the two schema has determined that there is in fact some
+relationship, it would be useful to have a language for describing the
+transformations necessary to convert instances of one schema into instances
+of the other.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>One way to
+describe these transformations is to simply write code in a traditional
+programming language. <a href="http://msdn.microsoft.com/msdnmag/issues/0800/XSLT/xsltfigs.asp#fig2" class="clsFigs" target="window">Figure
+2</a> shows an example of a Document Object Model (DOM)-based program written
+in the Java language that translates the first document into the second.
+<p>----------------------------------------
+<br>Figure 2
+<br>DOM-based Translation
+<br>----------------------------------------
+<br>import org.w3c.dom.*;
+<br>Document transform(Document source) throws Exception {
+<br>&nbsp; String tns = "http://www.develop.com/Schemas/book";
+<br>&nbsp; DOMImplementation dom = source.getImplementation();
+<br>&nbsp; Document target = dom.createDocument(tns, "content",
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+null);
+<br>&nbsp; Element sourceRoot = source.getDocumentElement();
+<br>&nbsp; String title = sourceRoot.getAttribute("title");
+<br>&nbsp; Element e1 = target.createElementNS(tns, "name");
+<br>&nbsp; e1.appendChild(target.createTextNode(title));
+<br>&nbsp; target.getDocumentElement().appendChild(e1);
+<br>&nbsp; e1 = target.createElementNS(tns,"contributors");
+<br>&nbsp; boolean bFirst = false;
+<br>&nbsp; for (Node author = sourceRoot.getFirstChild();
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; author != null; author = author.getNextSibling())
+{
+<br>&nbsp;&nbsp;&nbsp; if (author.getNodeType() != Node.ELEMENT_NODE)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; continue;
+<br>&nbsp;&nbsp;&nbsp; String name = ((Element)author).getAttribute("name");
+<br>&nbsp;&nbsp;&nbsp; Element e2 = target.createElementNS(tns, "staff");
+<br>&nbsp;&nbsp;&nbsp; e2.appendChild(target.createTextNode(name));
+<br>&nbsp;&nbsp;&nbsp; if (!bFirst)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; e2.setAttributeNS("", "principal", "true");
+<br>&nbsp;&nbsp;&nbsp; e1.appendChild(e2);
+<br>&nbsp;&nbsp;&nbsp; bFirst = true;
+<br>&nbsp; }
+<br>&nbsp; target.getDocumentElement().appendChild(e1);
+<br>&nbsp; return target;
+<br>}
+<br>----------------------------------------
+<p>While this program is functional, it is only readable by virtual machines
+and, assuming the source code is provided, humans that can read Java-language
+code. Moreover, this program is very brittle and would require a significant
+amount of modification to track the independent evolution of both the source
+and target schemas.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>In contrast,
+consider the XSLT document in <a href="http://msdn.microsoft.com/msdnmag/issues/0800/XSLT/xsltfigs.asp#fig3" class="clsFigs" target="window">Figure
+3</a> that accomplishes the same task as the previous Java-language program.
+<p>----------------------------------------
+<br>Figure 3
+<br>XSLT Translation
+<br>----------------------------------------
+<pre>&lt;?xml version="1.0"?>
+&lt;content xmlns="http://www.develop.com/Schemas/book"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xsl:exclude-result-prefixes='src'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xsl:version='1.0'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlns:src="http://awl.com">
+&nbsp; &lt;name>&lt;xsl:value-of select="/src:product/@title"/>&lt;/name>
+&nbsp; &lt;contributors>
+&nbsp;&nbsp;&nbsp; &lt;xsl:for-each select='/src:product/src:writer'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;xsl:if test='position() = 1' >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;staff principal='true'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; >&lt;xsl:value-of select="@name"/>&lt;/staff>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/xsl:if>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;xsl:if test='position() > 1'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;staff>&lt;xsl:value-of select="@name"/>&lt;/staff>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/xsl:if>
+&nbsp;&nbsp;&nbsp; &lt;/xsl:for-each>
+&nbsp; &lt;/contributors>
+&lt;/content>
+----------------------------------------</pre>
+This XML document reflects both the source and target schemas and can be
+fed to an XSLT processor to translate instances of the source schema into
+instances of the target schema. As shown here, schema transformations are
+described by implementing an exemplar of the target schema in terms of
+its changes from the source. More importantly, this document can be read
+using a standard XML parser and can act as input to a wide variety of processing
+software, not just XSLT transformation engines.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>As <a href="http://msdn.microsoft.com/msdnmag/issues/0800/XSLT/xsltfigs.asp#fig3" class="clsFigs" target="window">Figure
+3</a> illustrates, simply using XML does not ensure inter-operation. Yes,
+the world now agrees on where the angle brackets go. But being able to
+interpret anything beyond that is a much tougher problem to solve. XML
+Schemas give you the tool for representing type definitions, but in the
+absence of a common schema, human intervention is still needed to bridge
+organizational boundaries. XSLT provides an XML-centric way to build that
+bridge.
+<p><b><u>XSLT Basics</u></b>
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>XSLT is an
+XML-based language that describes transformations from XML documents into
+arbitrary text-based formats (which may or may not be XML). As shown in
+Figure 4, XSLT assumes that three documents are in use: the source document,
+the XSLT stylesheet document, and the result document. The source document
+is simply a well-formed XML document that provides the input for the transformation.
+The stylesheet document is an XML document that uses the XSLT vocabulary
+for expressing transformation rules. The result document is a text document
+that is produced by running the source document through the transformations
+found in the XSLT stylesheet.
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<table>
+<tr>
+<td BGCOLOR="#FFFFFF"><img SRC="xslt_files/xsltfig04.gif" ALT="Figure 4 XSLT Transformation Process" height=416 width=340></td>
+</tr>
+
+<tr>
+<td>Figure 4. XSLT Transformation Process</td>
+</tr>
+</table>
+
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The XSLT stylesheet
+contains one or more XSLT templates. A template is a collection of literal
+result elements and XSLT instructions. Literal result elements are elements
+that are copied more or less verbatim into the result document. XSLT instructions
+are well-known elements that alter the processing of the template. <a href="http://msdn.microsoft.com/msdnmag/issues/0800/XSLT/xsltfigs.asp#fig5" class="clsFigs" target="window">Figure
+5</a> shows the complete list of XSLT instructions. XSLT instructions and
+other constructs are always qualified by the XSLT namespace URI (http://www.w3.org/1999/XSL/Transform),
+which is typically mapped to the namespace prefix xsl.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>An XSLT stylesheet
+can be written as either a single-template literal result element or as
+an explicit stylesheet. The former is simply an exemplar of the target
+schema with namespace-qualified XSLT instructions added. The latter is
+an XSLT-specific document format whose root element is xsl:stylesheet.
+The explicit stylesheet will be discussed in the Template-based Programming
+section later in this article.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Literal result
+element-based stylesheets support a simple subset of the more flexible
+and expressive xsl:stylesheet vocabulary. The following is the simplest
+possible XSLT stylesheet written as a literal result element:
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;doc>Hello, World&lt;/doc></pre>
+</td>
+</tr>
+</table>
+
+<p>This stylesheet produces the same result document independent of the
+source document. Like the classic program from Kernighan and Richie, this
+version is extremely useless and produces the same output no matter what
+input is fed to it.
+<p><b><u>The xsl-copy and xsl-value Instructions</u></b>
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The easiest
+way to include content from the source document is via the <b><u>xsl:copy-of</u></b>
+instruction. This instruction works much like XInclude's include element
+(which is remotely similar to external parsed entities). The primary difference
+is that xsl:copy-of is integrated into the XPath context used by XSLT.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Consider the
+following XSLT literal result element:
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;doc xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
+&nbsp;&nbsp;&nbsp;&nbsp; xsl:version='1.0'
+>&lt;<b>xsl:copy-of</b> select='/book/author'/>&lt;/doc></pre>
+</td>
+</tr>
+</table>
+
+<p>The rules of XSLT indicate that the <b><u>xsl:copy-of</u></b> element
+will be replaced by the node-set produced by the select XPath expression.
+Assuming that the following source document is supplied as input
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version="1.0"?>
+&lt;book title="Essential XML" >
+&nbsp; &lt;author name='Don'&nbsp;&nbsp; age='25' canadian='false'/>
+&nbsp; &lt;author name='Aaron' age='19' canadian='false'/>
+&nbsp; &lt;author name='John'&nbsp; age='20' canadian='true'/>
+&lt;/book></pre>
+</td>
+</tr>
+</table>
+
+<p>the result document would look like this:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;doc>
+&nbsp; &lt;author name='Don'&nbsp;&nbsp; age='25' canadian='false'/>
+&nbsp; &lt;author name='Aaron' age='19' canadian='false'/>
+&nbsp; &lt;author name='John'&nbsp; age='20' canadian='true'/>
+&lt;/doc></pre>
+</td>
+</tr>
+</table>
+
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The <b><u>xsl:copy-of</u></b>
+instruction is ideal for copying node-sets, however, it is somewhat cumbersome
+for copying text from the source document. For this, XSLT provides two
+mechanisms: one for including source text as attribute [children], the
+other for including source text as element [children].
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>All attributes
+of literal result elements are interpreted as attribute value templates,
+which are simply strings that contain embedded XPath expressions that are
+evaluated to produce result text. XSLT treats the { and } characters specially
+when they appear as attribute [children]. When the { character is encountered,
+the subsequent characters (up to the closing }) are interpreted as a string-value
+XPath expression. For example, had the following attribute appeared in
+the literal result element
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>bookname='The book is {/book/@title}'</pre>
+</td>
+</tr>
+</table>
+
+<p>the corresponding attribute in the result document would look like this:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>bookname='The book is Essential XML'</pre>
+</td>
+</tr>
+</table>
+
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>To escape
+the { and } characters in attribute [children], you must use a redundant
+{ or } character to signal that no attribute value template is present.
+For example, the following attribute from a literal result element
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>curlies='{{}}'</pre>
+</td>
+</tr>
+</table>
+
+<p>would expand to this in the result document:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>curlies='{}'</pre>
+</td>
+</tr>
+</table>
+
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Attribute
+value templates are also allowed on a small subset of XSLT instructions.
+(You can tell immediately whether a given XSLT instruction attribute accepts
+attribute value templates by the presence of the surrounding { } in the
+syntax guide for that instruction and attribute in the XSLT specification
+or the chart in <a href="xslt_instructions.html" class="clsFigs" target="window">Figure
+5</a>.)
+<p>----------------------------------------
+<br>Figure 5
+<br>XSLT Instructions
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=3 WIDTH="100%" BGCOLOR="#336699" >
+<tr>
+<td VALIGN=TOP BGCOLOR="#99CCFF">Instruction</td>
+
+<td VALIGN=TOP BGCOLOR="#99CCFF">Syntax</td>
+
+<td VALIGN=TOP BGCOLOR="#99CCFF">Description</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF">xsl:copy-of</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">
+<pre>&lt;xsl:copy-of
+&nbsp;select = expression /></pre>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">Emits the node-set corresponding to the
+select expression.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF">xsl:value-of</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">
+<pre>&lt;xsl:value-of
+&nbsp;select = string-expression
+&nbsp;disable-output-escaping = "yes"
+&nbsp;| "no" /></pre>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">Emits the string corresponding to the
+select expression.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF">xsl:if</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">
+<pre>&lt;xsl:if
+&nbsp;test = boolean-expression>
+&nbsp;&lt;!- - Content: template - ->
+&lt;/xsl:if>
+
+</pre>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">Evaluates the template if and only if
+the test expression evaluates to true.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF">xsl:choose</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">
+<pre>&lt;xsl:choose>
+&nbsp;&lt;!- - Content: (xsl:when+, xsl:otherwise?) - ->
+&lt;/xsl:choose></pre>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">Evaluates the template from the first
+xsl:when clause whose test expression evaluates to true. If none of the
+test expressions evaluate to true, then the template contained in the xsl:otherwise
+clause is evaluated.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF">xsl:for-each</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">
+<pre>&lt;xsl:for-each
+&nbsp;select = node-set-expression>
+&nbsp;&lt;!- - Content: (xsl:sort*, template) - ->
+&lt;/xsl:for-each></pre>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">Evaluates the template against each node
+in node-set returned by the select expression. The order of evaluation
+can be influenced using one or more xsl:sorts.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF">xsl:call-template</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">
+<pre>&lt;xsl:call-template
+&nbsp;name = qname>
+&nbsp;&lt;!- - Content: xsl:with-param* - ->
+&lt;/xsl:call-template></pre>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">Invokes the template rule named by name.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF">xsl:variable</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">
+<pre>&lt;xsl:variable
+&nbsp;name = qname&nbsp;
+&nbsp;select = expression>
+&nbsp;&lt;!- - Content: template - ->
+&lt;/xsl:variable></pre>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">Declares a variable named name and initializes
+it using the select expression or template.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF">xsl:text</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">
+<pre>&lt;xsl:text
+&nbsp;disable-output-escaping = "yes" | "no">
+&nbsp;&lt;!- - Content: #PCDATA - ->
+&lt;/xsl:text></pre>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">Emits the text found in #PCDATA. Escaping
+of the five built-in entities is controlled using disable-output-escaping.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF">xsl:number</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">
+<pre>&lt;xsl:number
+&nbsp;level = "single" | "multiple" | "any"
+&nbsp;count = pattern&nbsp;
+&nbsp;from = pattern&nbsp;
+&nbsp;value = number-expression&nbsp;
+&nbsp;format = { string }
+&nbsp;lang = { nmtoken }
+&nbsp;letter-value = { "alphabetic" | "traditional" }
+&nbsp;grouping-separator = { char }
+&nbsp;grouping-size = { number } /></pre>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">Emits a number based on the XPath number
+expression found in value.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF">xsl:copy</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">
+<pre>&lt;xsl:copy
+&nbsp;use-attribute-sets = qnames>
+&nbsp;&lt;!- - Content: template - ->
+&lt;/xsl:copy></pre>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">Copies the current context node (and associated
+namespace nodes) to the result tree fragment.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF">xsl:apply-templates</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">
+<pre>&lt;xsl:apply-templates
+&nbsp;select = node-set-expression&nbsp;
+&nbsp;mode = qname>
+&nbsp;&lt;!- - Content: (xsl:sort | xsl:with-param)* - ->
+&lt;/xsl:apply-templates></pre>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">Invokes the best-match template rules
+against the node-set returned by the select expression.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF">xsl:apply-imports</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">&lt;xsl:apply-imports /></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">Promotes the current stylesheet in import
+precedence.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF">xsl:message</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">
+<pre>&lt;xsl:message
+&nbsp;terminate = "yes" | "no">
+&nbsp;&lt;!- - Content: template - ->
+&lt;/xsl:message></pre>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">Emits a message in a processor-dependent
+manner.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF">xsl:fallback</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">
+<pre>&lt;xsl:fallback>
+&nbsp;&lt;!- - Content: template - ->
+&lt;/xsl:fallback></pre>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">Evaluates the template when the parent
+instruction/directive is not supported by the current processor.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF">xsl:comment</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">
+<pre>&lt;xsl:comment>
+&nbsp;&lt;!- - Content: template - ->
+&lt;/xsl:comment></pre>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">Emits an XML comment containing the template
+as its character data.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF">xsl:processing-instruction</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">
+<pre>&lt;xsl:processing-instruction
+&nbsp;name = { ncname }>
+&nbsp;&lt;!- - Content: template - ->
+&lt;/xsl:processing-instruction></pre>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">Emits an XML processing instruction whose
+[target] is name and whose [children] are based on template.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF">xsl:element</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">
+<pre>&lt;xsl:element
+&nbsp;name = { qname }
+&nbsp;namespace = { uri-reference }
+&nbsp;use-attribute-sets = qnames>
+&nbsp;&lt;!- - Content: template - ->
+&lt;/xsl:element></pre>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">Emits an XML element whose [local name]
+is name, whose [namespace URI] is namespace, and whose [children] are based
+on template.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF">xsl:attribute</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">
+<pre>&lt;xsl:attribute
+&nbsp;name = { qname }
+&nbsp;namespace = { uri-reference }>
+&nbsp;&lt;!- - Content: template - ->
+&lt;/xsl:attribute></pre>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF">Emits an XML attribute whose [local name]
+is name, whose [namespace URI] is namespace, and whose [children] are based
+on template.</td>
+</tr>
+</table>
+
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The { and
+} only receive special treatment when they appear as attribute [children].
+To include source text as element [children], you must use the <b><u>xsl:value-of</u></b>
+instruction. This instruction is similar to <b><u>xsl:copy-of</u></b>,
+the primary difference being that the <b><u>xsl:value-of</u></b> select
+expression is converted to a string prior to replacement.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Consider the
+following literal result element:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;doc xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
+&nbsp;&nbsp;&nbsp;&nbsp; xsl:version='1.0'&nbsp;
+>&lt;xsl:value-of select='/book'/>&lt;/doc></pre>
+</td>
+</tr>
+</table>
+
+<p>This XSLT stylesheet indicates that the content of the doc element should
+consist of the text found by running the XPath expression /book against
+the source document. Since the select expression is a node-set, it is implicitly
+converted to a string prior to insertion using the XPath conversion rules.
+The following is the result document that corresponds to this XSLT stylesheet:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;doc/></pre>
+</td>
+</tr>
+</table>
+
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Note that
+because the source document contained no character data as element [children],
+the select expression /book yielded the empty string. Had the select expression
+been /book/author/@name, the result document would have looked like this
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;doc>Don&lt;/doc></pre>
+</td>
+</tr>
+</table>
+
+<p>since the node-set to string conversion rules state that the first node
+is converted to a string-value.
+<p><b><u>Conditional Evaluation Instructions</u></b>
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The <b>xsl:copy-of</b>
+and related instructions are simple mechanisms for importing content from
+the source document. XSLT also provides a set of conditional evaluation
+instructions that should be familiar to developers coming from procedural
+programming languages. The <b><u>xsl:if</u></b> instruction is equivalent
+to the if statement in C++ and the Java language. The <b><u>xsl:choose</u></b>,
+<b><u>xsl:when</u></b>,
+and <b><u>xsl:otherwise</u></b> instructions are the equivalent to switch,
+case, and default commands in C++ and the Java language.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The simplest
+of these is, of course, the <b><u>xsl:if</u></b> instruction. An element
+representing an xsl:if instruction must have a test attribute that contains
+a Boolean XPath expression. If this expression evaluates to true, then
+the [children] of the <b><u>xsl:if</u></b> element (which is itself an
+XSLT template) will be processed. If the expression evaluates to false,
+then the [children] of the <b><u>xsl:if</u></b> element are ignored.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Consider the
+following XSLT literal result element:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;doc xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
+&nbsp;&nbsp;&nbsp;&nbsp; xsl:version='1.0'>
+&nbsp; &lt;<b>xsl:if</b> test='count(//author) &amp;gt; 4'>
+&nbsp;&nbsp;&nbsp; &lt;cacophony/>
+&nbsp; &lt;/<b>xsl:if</b>>
+&lt;/doc></pre>
+</td>
+</tr>
+</table>
+
+<p>This XSLT stylesheet uses the xsl:if instruction to test the number
+of author elements. If the source document has more than four author elements,
+the result document will look like this:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;doc>&lt;cacophony/>&lt;/doc></pre>
+</td>
+</tr>
+</table>
+
+<p>If the source document has four or fewer author elements, the result
+document will look like this:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;doc/></pre>
+</td>
+</tr>
+</table>
+
+<p>Note that the XPath expression used in the test attribute is a Boolean
+expression similar to that found in an XPath predicate, rather than a full-blown
+XPath location path.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The <b><u>xsl:choose</u></b>
+instruction provides the functionality of a Java-language or C++ switch
+statement. The xsl:choose instruction has one or more <b><u>xsl:when</u></b>
+clauses and an optional <b><u>xsl:otherwise</u></b> clause. The <b><u>xsl:when</u></b>
+and <b><u>xsl:otherwise</u></b> elements are represented as [children]
+of a containing <b><u>xsl:choose</u></b> element. Each <b><u>xsl:when</u></b>
+element can have a test attribute that contains a Boolean XPath expression.
+Unlike a Java-language or C++ switch, multiple <b><u>xsl:when</u></b> clauses
+may have tests that evaluate to true. To resolve the case of having more
+than one clause being true, XSLT only allows the first xsl:when clause
+whose test is successful to be processed.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Take a look
+at the following XSLT literal result element:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;doc xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
+&nbsp;&nbsp;&nbsp;&nbsp; xsl:version='1.0'>
+&nbsp; &lt;xsl:choose>
+&nbsp;&nbsp;&nbsp; &lt;xsl:when test='count(//author) = 1'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;soloist/>
+&nbsp;&nbsp;&nbsp; &lt;/xsl:when>
+&nbsp;&nbsp;&nbsp; &lt;xsl:when test='count(//author) &amp;lt; 5'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;ensemble/>
+&nbsp;&nbsp;&nbsp; &lt;/xsl:when>
+&nbsp;&nbsp;&nbsp; &lt;xsl:otherwise>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;cacophony/>
+&nbsp;&nbsp;&nbsp; &lt;/xsl:otherwise>
+&nbsp; &lt;/xsl:choose>
+&lt;/doc></pre>
+</td>
+</tr>
+</table>
+
+<p>If the source document has exactly one author element, the result document
+will look like this:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;doc>&lt;soloist/>&lt;/doc></pre>
+</td>
+</tr>
+</table>
+
+<p>If instead the source document has between two and four author elements
+(or no author elements at all), the result document will look like this:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;doc>&lt;ensemble/>&lt;/doc></pre>
+</td>
+</tr>
+</table>
+
+<p>Under any other circumstances, the result document will look like this:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;doc>&lt;cacophony/>&lt;/doc></pre>
+</td>
+</tr>
+</table>
+
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Note that
+the <b><u>xsl:otherwise</u></b> has no test clause and fills the role of
+the default clause from a Java-language or C++ switch statement. Also note
+that the order of <b><u>xsl:when</u></b> clauses is important. Had the
+two <b><u>xsl:when</u></b> clauses appeared in reverse order, the &lt;soloist/>
+element would never be emitted, as the expression
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>count(//author) = 1</pre>
+</td>
+</tr>
+</table>
+
+<p>would be masked by the expression ahead of it
+<br>&nbsp;
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>count(//author) &lt; 5</pre>
+</td>
+</tr>
+</table>
+
+<p>since 1 is less than 5.
+<p><b><u>Repetition and Looping Instructions</u></b>
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>In addition
+to conditional instructions, XSLT also provides instructions for <u>repetition
+and looping</u>. The most basic of these instructions is <b><u>xsl:for-each</u></b>,
+which relies on an XPath expression to produce a node-set that controls
+the iteration of the loop. When an <b><u>xsl:for-each</u></b> element is
+encountered, the XPath expression found in its select attribute is evaluated.
+Each node from the resultant node-set is then fed into the [children] of
+the <b><u>xsl:for-each</u></b> element for further processing.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Consider this
+XSLT literal result element:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;doc xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
+&nbsp;&nbsp;&nbsp;&nbsp; xsl:version='1.0'>
+&nbsp; &lt;xsl:for-each select='/book/author'>
+&nbsp;&nbsp;&nbsp; &lt;by/>
+&nbsp; &lt;/xsl:for-each>
+&lt;/doc></pre>
+</td>
+</tr>
+</table>
+
+<p>Assuming the source document in <a href="http://msdn.microsoft.com/msdnmag/issues/0800/XSLT/xsltfigs.asp#fig1" class="clsFigs" target="window">Figure
+1</a>, the following result document will be produced:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;doc>&lt;by/>&lt;by/>&lt;by/>&lt;/doc></pre>
+</td>
+</tr>
+</table>
+
+<p>This <b><u>xsl:for-each</u></b> example is not all that interesting
+because its content does not rely on the selected node from the node-set.
+Accessing content from within an xsl:for-each instruction requires a bit
+more explanation.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>XPath expressions
+that appear in XSLT stylesheets are evaluated relative to a context. This
+context consists of at least an XPath node and node-set. For absolute location
+paths, this context is largely immaterial. For relative location paths,
+however, this context means everything. For example, the following XSLT
+instruction requires some notion of which node you are talking about and
+the node-set to which it belongs:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:value-of select='position()' /></pre>
+</td>
+</tr>
+</table>
+
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>For the examples
+shown prior to this discussion of the <b><u>xsl:for-each</u></b> instruction,
+the context node is the root node of the source document and the context
+node-set is the set that contains only the root node. But certain XSLT
+constructs can change the context used to evaluate XPath expressions. The
+xsl:for-each instruction is one such construct.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The xsl:for-each
+instruction alters the context of all XPath expressions found in its [children].
+The context node-set is the node-set returned from the select expression.
+The context node changes for each iteration of the loop. For the nth iteration
+of the loop, the context node is the nth node of the context node-set.
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>For example,
+take at look at this XSLT literal result element:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;doc xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
+&nbsp;&nbsp;&nbsp;&nbsp; xsl:version='1.0'>
+&nbsp; &lt;xsl:for-each select='/book/author'>
+&nbsp;&nbsp;&nbsp; &lt;by id='{position()}'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;xsl:value-of select='@name' />
+&nbsp;&nbsp;&nbsp; &lt;/by>
+&nbsp; &lt;/xsl:for-each>
+&lt;/doc></pre>
+</td>
+</tr>
+</table>
+
+<p>The two XPath expressions that appear inside of the xsl:for-each instruction,
+position() and @name, will be evaluated against the current node from the
+node-set produced by the select expression. Given this XSLT stylesheet
+and the source document from <a href="http://msdn.microsoft.com/msdnmag/issues/0800/XSLT/xsltfigs.asp#fig1" class="clsFigs" target="window">Figure
+1</a>, the result document would look like this:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;doc>&lt;by id='1'>Don&lt;/by>&lt;by id='2'>Aaron&lt;/by>&lt;by id='3'&nbsp;
+>John&lt;/by>&lt;/doc></pre>
+</td>
+</tr>
+</table>
+
+<p>Note that in this case the node-set produced by the xsl:for-each select
+expression contained each of the author elements from the source document.
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>By default,
+the xsl:for-each instruction iterates over its node-set in document order.
+This behavior can be changed using the xsl:sort instruction. The xsl:sort
+instruction elements must appear as the initial [children] of an xsl:for-each
+element and must adhere to the following syntax:
+<br>&nbsp;
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:sort
+&nbsp; select = string-expression
+&nbsp; lang = { nmtoken }
+&nbsp; data-type = { "text" | "number" | qname-but-not-ncname }
+&nbsp; order = { "ascending" | "descending" }
+&nbsp; case-order = { "upper-first" | "lower-first" } /></pre>
+</td>
+</tr>
+</table>
+
+<p>The most important attribute is the select attribute, which specifies
+an XPath expression that is used as the sort key for the node-set. In the
+absence of a select attribute, the XSLT processor assumes "." as the select
+expression.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>To see xsl:sort
+in action, consider the following XSLT literal result element:
+<br>&nbsp;
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;doc xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
+&nbsp;&nbsp;&nbsp;&nbsp; xsl:version='1.0'>
+&nbsp; &lt;xsl:for-each select='/book/author'>
+&nbsp;&nbsp;&nbsp; &lt;xsl:sort select='@name' />
+&nbsp;&nbsp;&nbsp; &lt;by>&lt;xsl:value-of select='@name' />&lt;/by>
+&nbsp; &lt;/xsl:for-each>
+&lt;/doc></pre>
+</td>
+</tr>
+</table>
+
+<p>When the source document is fed through this XSLT stylesheet, the following
+result document would be produced:
+<br>&nbsp;
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;doc>&lt;by>Aaron&lt;/by>&lt;by>Don&lt;/by>&lt;by>John&lt;/by>&lt;/doc></pre>
+</td>
+</tr>
+</table>
+
+<p>You should note that the node-set produced by the XPath expression /book/author
+was processed in sorted order based on the name attribute. Had the following
+xsl:sort instruction been used instead
+<br>&nbsp;
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:sort select='@age' order='descending'&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data-type='number' /></pre>
+</td>
+</tr>
+</table>
+
+<p>the node-set would have been processed in descending order based on
+the age attribute, resulting in this document:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;doc>&lt;by>Don&lt;/by>&lt;by>John&lt;/by>&lt;by>Aaron&lt;/by>&lt;/doc></pre>
+</td>
+</tr>
+</table>
+
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The data-type
+attribute controls how the ordering of the value space is to be interpreted.
+There are two built-in constants, text and number, whose meaning is obvious.
+Additionally, the QName referring to an XML Schema datatype is supported
+in XSLT, but at the time of this writing no processors supported sorting
+based on schema types.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The xsl:sort
+instruction can also be used to specify more than one sort key for a node-set.
+The first xsl:sort instruction encountered within the content of an xsl:for-each
+instruction is considered the primary sort key. Subsequent xsl:sort instructions
+are interpreted as secondary sort keys. For example, consider the following
+XSLT literal result element:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;doc xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
+&nbsp;&nbsp;&nbsp;&nbsp; xsl:version='1.0'>
+&nbsp; &lt;xsl:for-each select='/book/author'>
+&nbsp;&nbsp;&nbsp; &lt;xsl:sort select='@canadian' order='descending'/>
+&nbsp;&nbsp;&nbsp; &lt;xsl:sort select='@name' />
+&nbsp;&nbsp;&nbsp; &lt;by>&lt;xsl:value-of select='@name' />&lt;/by>
+&nbsp; &lt;/xsl:for-each>
+&lt;/doc></pre>
+</td>
+</tr>
+</table>
+
+<p>Due to the multiply sorted xsl:for-each instruction, this XSLT document
+would yield the following result:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;doc>&lt;by>John&lt;/by>&lt;by>Aaron&lt;/by>&lt;by>Don&lt;/by>&lt;/doc></pre>
+</td>
+</tr>
+</table>
+
+<p>Because the canadian attribute is used by the first xsl:sort instruction,
+it dominates the sort order.
+<p><b><u>Template-based Programming</u></b>
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The discussion
+so far has used a literal result element as the stylesheet. This is effective
+for simple transformations, but due to its linear structure it is impossible
+to modularize into smaller chunks of reusable XSLT. For that reason, most
+nontrivial XSLT stylesheets don't use literal result elements as stylesheets.
+Instead they use the explicit xsl:stylesheet format.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>An xsl:stylesheet
+is primarily a collection of one or more template rules. Template rules
+play the role of functions in XSLT and always appear as top-level [children]
+of the xsl:stylesheet element. A template rule binds a QName or pattern
+to a template. As we mentioned earlier, a template is a collection of literal
+result elements and XSLT instructions. The QName is simply a symbolic name
+that is associated with a template. The following is a named XSLT template
+rule:
+<br>&nbsp;
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:template name='emitSignature' >
+&nbsp; &lt;sig>&lt;xsl:value-of select='/book/@title'/>&lt;/sig>
+&lt;/xsl:template></pre>
+</td>
+</tr>
+</table>
+
+<p>This template rule can be called from other templates using the xsl:call-template
+instruction:
+<br>&nbsp;
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:template name='enchilada' >
+&nbsp; &lt;doc>
+&nbsp;&nbsp;&nbsp; &lt;xsl:call-template name='emitSignature' />
+&nbsp; &lt;/doc>
+&lt;/xsl:template></pre>
+</td>
+</tr>
+</table>
+
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Assuming the
+source document in <a href="http://msdn.microsoft.com/msdnmag/issues/0800/XSLT/xsltfigs.asp#fig1" class="clsFigs" target="window">Figure
+1</a>, the enchilada template rule would yield the following result:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;doc>&lt;sig>Essential XML&lt;/sig>&lt;/doc></pre>
+</td>
+</tr>
+</table>
+
+<p>To invoke the enchilada template rule, you simply use an xsl:call-template
+instruction somewhere else in the stylesheet.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Like functions,
+template rules can be invoked with parameters. To support parameters, the
+template rule's [children] may begin with one or more xsl:param instructions
+that declare a named parameter and set its default value. All template
+parameters are added to the context of the template and are available to
+XPath expressions by prefixing the parameter name with a $, as in $arg1.
+The syntax for the xsl:param instruction is defined as follows:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:param
+&nbsp; name = qname&nbsp;
+&nbsp; select = expression>
+&nbsp; &lt;!-- Content: template -->
+&lt;/xsl:param></pre>
+</td>
+</tr>
+</table>
+
+<p>A parameter declaration can use either an XPath expression or a template
+as its [children] to set the default value of the parameter.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The following
+named template rule declares and uses two template parameters:
+<br>&nbsp;
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:template name='emitTop' >
+&nbsp; &lt;xsl:param name='arg1' select='/book/author[2]/@name' />
+&nbsp; &lt;xsl:param name='arg2' >true&lt;/xsl:param>
+&nbsp; &lt;top>
+&nbsp;&nbsp;&nbsp; &lt;xsl:if test='$arg2' >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;sometimes/>
+&nbsp;&nbsp;&nbsp; &lt;/xsl:if>
+&nbsp;&nbsp;&nbsp; &lt;one>&lt;xsl:value-of select='$arg1' />&lt;/one>
+&nbsp; &lt;/top>
+&lt;/xsl:template></pre>
+</td>
+</tr>
+</table>
+
+<p>If this template rule were to be invoked with no parameters, the default
+values would be derived based on either the select attribute or [children]
+of each xsl:param instruction. Given the source document in <a href="http://msdn.microsoft.com/msdnmag/issues/0800/XSLT/xsltfigs.asp#fig1" class="clsFigs" target="window">Figure
+1</a>, that would yield the following result tree fragment:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;top>
+&nbsp; &lt;sometimes/>
+&nbsp; &lt;one>Aaron&lt;/one>
+&lt;/top></pre>
+</td>
+</tr>
+</table>
+
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>To invoke
+a template rule using parameters, simply provide one or more xsl:with-param
+instructions as [children] to the xsl:call-template instruction.
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:call-template name='emitTop' >
+&nbsp; &lt;xsl:with-param name='arg1' >Hello&lt;/xsl:with-param>
+&nbsp; &lt;xsl:with-param name='arg2' select='false()' />
+&lt;/xsl:call-template></pre>
+</td>
+</tr>
+</table>
+
+<p>Other than the element name, the syntax of the xsl:with-param instruction
+is identical to that of the xsl:param instruction. Given this invocation
+of emitTop, the following result tree fragment would be produced:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;top>
+&nbsp; &lt;one>Hello&lt;/one>
+&lt;/top></pre>
+</td>
+</tr>
+</table>
+
+<p>Note that because arg2 evaluated to the Boolean value false, the [children]
+of the xsl:if instruction are never evaluated.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The xsl:param
+element typically appears as [children] of a template rule. XSLT also allows
+the stylesheet itself to accept parameters. These stylesheet-level parameter
+declarations must appear as [children] of the xsl:stylesheet element. Exactly
+how an XSLT processor initializes the values of these parameters is processor-specific.
+The sidebar "<a href="http://msdn.microsoft.com/msdnmag/issues/0800/XSLT/xsltside.asp" target="window">Using
+XSLT from MSXML</a>" explains how MSXML deals with stylesheet-level parameters.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>In addition
+to named parameters, XSLT also supports named variables via the xsl:variable
+instruction. The syntax of the xsl: variable instruction is identical to
+that of xsl:param except for the element name. The difference between xsl:param
+and xsl:variable is that parameters, unlike variables, can have their initial
+values overridden at template invocation time by using xsl:with-param.
+Additionally, xsl:param instructions must appear at the top of the template
+in which they are included; xsl:variable instructions can appear anywhere
+an instruction is allowed. In either case, a given variable or parameter
+name can only be defined once per template. Variables and parameters defined
+as [children] of an xsl:stylesheet element are global in scope and are
+visible across all templates, but a template can hide the global definition
+by defining a variable or parameter with the same name. So this is a legal
+XSLT stylesheet:
+<br>&nbsp;
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:stylesheet version='1.0'&nbsp;
+&nbsp;&nbsp; xmlns:xsl='http://www.w3.org/1999/XSL/Transform'>
+&nbsp; &lt;xsl:param name='bob' select='2' />
+&nbsp; &lt;xsl:template name='steve'>
+&nbsp;&nbsp;&nbsp; &lt;xsl:variable name='bob' select='4'/>
+&nbsp; &lt;/xsl:template>
+&lt;/xsl:stylesheet></pre>
+</td>
+</tr>
+</table>
+
+<p>but the following is not since the name bob is defined more than once
+in the same template:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:stylesheet version='1.0'&nbsp;
+&nbsp;&nbsp; xmlns:xsl='http://www.w3.org/1999/XSL/Transform'>
+&nbsp; &lt;xsl:template name='steve'>
+&nbsp;&nbsp;&nbsp; &lt;xsl:param name='bob' select='2' />
+&nbsp;&nbsp;&nbsp; &lt;xsl:variable name='bob' select='4'/>
+&nbsp; &lt;/xsl:template>
+&lt;/xsl:stylesheet></pre>
+</td>
+</tr>
+</table>
+
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>It is important
+to note that there is no way to modify the value of a variable or parameter
+once it has been defined. This is because XSLT is a functional programming
+language, not an imperative one like C++ or Java. Unlike C++ or Java-language
+functions, XSLT templates cannot have side effects. Rather, they can only
+produce results that act as output of the overall stylesheet or as input
+to other templates. Part of the reason for this is to simplify the XSLT
+processing model. Another reason is to support the parallel or out-of-order
+execution of template rules, as the execution of one rule is guaranteed
+not to interfere with the execution of another.
+<p><b><u>Namespaces and XSLT</u></b>
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The example
+source and stylesheet documents used throughout this article have not used
+namespaces other than the required affiliation of XSLT instructions and
+constructs with the XSLT namespace. This was intentional in order to make
+the literal result elements and XPath expressions more compact and readable.
+In general this is unrealistic as most interesting XML documents rely on
+namespaces quite heavily.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Recall that
+non-prefixed QNames that appear in XPath expression are assumed to be unaffiliated
+with respect to namespaces. This is true irrespective of any default namespace
+declaration that may be in effect. In contrast, prefixed QNames that appear
+in XPath expressions are always expanded prior to being used in a NodeTest
+or other QName-aware construct. Whenever an XPath expression appears as
+an attribute value of an XSLT element, XSLT adds the declarations found
+in the [in-scope namespace declarations] property (sans any default namespace
+declaration that may be in-scope) to the XPath evaluation context.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>When processing
+a literal result element, all namespace declarations that map to http://www.w3.org/1999/XSL/Transform
+are stripped out of the result. (All XSLT-specific attributes that are
+used when a literal result element acts as a stylesheet—such as xsl:version—disappear
+during the translation as well.) However, all other namespace declarations
+that appear in literal result elements are considered significant and will
+appear in the result document. This behavior can be suppressed using the
+xsl:exclude- result-prefixes attribute. This attribute can appear at the
+root element of the stylesheet document and contains a space-delimited
+list of namespace prefixes. Namespace declarations whose prefixes appear
+in this list will not appear in the result document.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>For example,
+here is an XSLT literal result element that makes use of namespaces:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;dm:out xmlns='http://example.com'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlns:dm=' http://www.develop.com/Schemas/doc'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlns:awl='http://awl.com'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xsl:version='1.0'
+>&lt;xsl:value-of select='/awl:product/@title'/>&lt;/dm:out></pre>
+</td>
+</tr>
+</table>
+
+<p>As shown, this stylesheet would produce the following output when it
+is evaluated:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;dm:out xmlns='http://example.com'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlns:dm='http://www.develop.com/Schemas/doc'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlns:awl='http://awl.com'
+>Essential XML&lt;/dm:out></pre>
+</td>
+</tr>
+</table>
+
+<p>Because the awl namespace declaration existed only as context for the
+XPath expression in the template, it is superfluous in the result document.
+To suppress this unnecessary namespace declaration, the literal result
+element could be written as follows:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;dm:out xmlns='http://example.com'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlns:dm=' http://www.develop.com/Schemas/doc'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlns:awl='http://awl.com'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xsl:exclude-result-prefixes='awl'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xsl:version='1.0'
+>&lt;xsl:value-of select='/awl:book/@title'/>&lt;/dm:out></pre>
+</td>
+</tr>
+</table>
+
+<p>This stylesheet would have yielded a result document with no awl namespace
+declaration:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;dm:out xmlns='http://example.com
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlns:dm='http://www.develop.com/Schemas/doc'
+>Essential XML&lt;/dm:out></pre>
+</td>
+</tr>
+</table>
+
+<p>To exclude the default namespace declaration as well, include the pseudo-prefix
+#default in the list of excluded prefixes. Had the exclude-result-prefixes
+attribute from the previous example looked like this
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>xsl:exclude-result-prefixes='awl #default'</pre>
+</td>
+</tr>
+</table>
+
+<p>the result document would have looked like this:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;dm:out xmlns:dm='http://www.develop.com/Schemas/doc'
+>Essential XML&lt;/dm:out></pre>
+</td>
+</tr>
+</table>
+
+<p>Note that when an explicit xsl:stylesheet element is used, the exclude-result-prefixes
+attribute (like the version attribute) must not be prefixed.
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The fact
+that all namespace declarations mapping to the XSLT namespace URI are suppressed
+introduces an interesting puzzle: how do you write a stylesheet that generates
+a stylesheet as its result document? Consider the following stylesheet
+document:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:stylesheet version='1.0'
+&nbsp;&nbsp;&nbsp; xmlns:xsl='http://www.w3.org/1999/XSL/Transform'>
+&nbsp; &lt;xsl:template name='emitStylesheet' >
+&nbsp;&nbsp;&nbsp; &lt;xsl:stylesheet version='1.0'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;xsl:template name='{//@procName}' />
+&nbsp;&nbsp;&nbsp; &lt;/xsl:stylesheet>
+&nbsp; &lt;/xsl:template>
+&lt;/xsl:stylesheet></pre>
+</td>
+</tr>
+</table>
+
+<p>The intent of the previous stylesheet is to produce the following result
+document:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:stylesheet version='1.0'
+&nbsp;&nbsp;&nbsp; xmlns:xsl='http://www.w3.org/1999/XSL/Transform'>
+&nbsp; &lt;xsl:template name='func2' />
+&lt;/xsl:stylesheet></pre>
+</td>
+</tr>
+</table>
+
+<p>However, there are two problems. First, the xsl:stylesheet element may
+not legally appear as [children] of an xsl:template. Second, any namespace
+declarations binding the XSLT namespace URI will be suppressed in the result
+document. Both of these problems are addressed by xsl:namespace-alias.
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The xsl:namespace-alias
+instruction alters the namespace URI of one namespace declaration by associating
+it with a second namespace declaration that provides the actual namespace
+URI to be used in the result document. The syntax of the xsl:namespace-alias
+is as follows:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:namespace-alias
+&nbsp;&nbsp;&nbsp; stylesheet-prefix = prefix | "#default"
+&nbsp;&nbsp;&nbsp; result-prefix = prefix | "#default"
+/></pre>
+</td>
+</tr>
+</table>
+
+<p>The result-prefix indicates which namespace declaration contains the
+actual namespace URI that will appear in the result document. The stylesheet-prefix
+indicates which namespace declaration should be redeclared prior to emitting
+the result document.
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Consider
+the following stylesheet document:
+<br>&nbsp;
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xslt:stylesheet version='1.0'
+
+&nbsp;&nbsp;&nbsp; xmlns:xslt='http://www.w3.org/1999/XSL/Transform'
+&nbsp;&nbsp;&nbsp; xmlns:xsl='urn:fake:uri'>
+&nbsp; &lt;xslt:namespace-alias stylesheet-prefix='xsl'&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; result-prefix='xslt' />
+&nbsp; &lt;xslt:template name='emitStylesheet' >
+&nbsp;&nbsp;&nbsp; &lt;xsl:stylesheet version='1.0'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;xsl:template name='{//@procName}' />
+&nbsp;&nbsp;&nbsp; &lt;/xsl:stylesheet>
+&nbsp; &lt;/xslt:template>
+&lt;/xslt:stylesheet></pre>
+</td>
+</tr>
+</table>
+
+<p>Because the [children] of the emitStylesheet template are no longer
+affiliated with the XSLT namespace, they are treated as literal result
+elements. However, any namespace declarations for the urn:fake:uri namespace
+URI will be transformed into declarations for the http://www.w3.org/1999/XSL/Transform
+namespace URI. That means that the emitStylesheet template would produce
+the following result document:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:stylesheet version='1.0'
+&nbsp;&nbsp;&nbsp; xmlns:xsl='http://www.w3.org/1999/XSL/Transform'>
+&nbsp; &lt;xsl:template name='func2' />
+&lt;/xsl:stylesheet></pre>
+</td>
+</tr>
+</table>
+
+<p>Had the xsl:namespace-alias instruction not appeared in the stylesheet,
+the result document would have looked like this:
+<br>&nbsp;
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:stylesheet version='1.0'
+&nbsp;&nbsp;&nbsp; xmlns:xsl='urn:fake:uri'>
+&nbsp; &lt;xsl:template name='func2' />
+&lt;/xsl:stylesheet></pre>
+</td>
+</tr>
+</table>
+
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>While it is
+possible to use namespace aliases with other namespaces, the XSLT namespace
+URI is the most obvious use of this instruction.
+<p><b><u>Generated Output</u></b>
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>There is a
+class of transformations that cannot be achieved using literal result elements.
+If the local name or namespace URI of an element or attribute needs to
+be calculated based on XSLT processing, a literal result element cannot
+be used. Conditionally emitting attributes is also complicated when using
+literal result elements. Additionally, any processing instructions or comments
+that appear in templates are stripped away during processing.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>XSLT defines
+four instructions that can be used to algorithmically generate specific
+output nodes (xsl:comment, xsl:processing-instruction, xsl:element, and
+xsl:attribute). These instructions can be used in place of literal result
+elements. Because they make extensive use of attribute value templates,
+they are highly suited to dynamic output formats. Of the four, xsl:comment
+and xsl:processing-instruction are the easiest to understand. The syntax
+for these two instructions is as follows:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:comment>
+&nbsp; &lt;!-- Content: template -->
+&lt;/xsl:comment>
+
+&lt;xsl:processing-instruction
+&nbsp; name= { ncname }>
+&nbsp; &lt;!-- Content: template -->
+&lt;/xsl:processing-instruction></pre>
+</td>
+</tr>
+</table>
+
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Note that
+the name attribute of xsl:processing-instruction is an attribute value
+template, which allows the [target] of the processing instruction to be
+dynamically generated. To see these instructions in action, consider the
+following named template:
+<br>&nbsp;
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:template name='annotated' >
+&nbsp; &lt;!-- comment number one -->
+&nbsp; &lt;?Magnum PI?>
+&nbsp; &lt;xsl:comment>comment number two&lt;/xsl:comment>
+&nbsp; &lt;xsl:processing-instruction name='A'>
+&nbsp; PI&lt;/xsl:processing-instruction>
+&lt;/xsl:template></pre>
+</td>
+</tr>
+</table>
+
+<p>When executed, this named template emits the following:
+<br>&nbsp;
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;!--comment number two-->&lt;?A PI?></pre>
+</td>
+</tr>
+</table>
+
+<p>As mentioned earlier, literal comments and processing instructions that
+appear in templates are not emitted into the result document.
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The xsl:attribute
+instruction adds an attribute to the [attributes] property of the current
+result element. The syntax for the xsl:attribute instruction is shown in
+<a href="http://msdn.microsoft.com/msdnmag/issues/0800/XSLT/xsltfigs.asp#fig5" class="clsFigs" target="window">Figure
+5</a>. The xsl:attribute element's [children] are interpreted as text to
+produce the [children] of the resultant attribute. The xsl:attribute instruction
+may not be used after [children] have been added to the current result
+element.
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Take a look
+at the following named template:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:template name='simple' >
+&nbsp; &lt;bob>&lt;xsl:attribute name='id'>32&lt;/xsl:attribute>&lt;x/>&lt;/bob>
+&lt;/xsl:template></pre>
+</td>
+</tr>
+</table>
+
+<p>Because the xsl:attribute instruction appears as [children] of the bob
+element, the attribute will be associated with that element in the result
+document. This named template will produce the following result:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;bob id='32'>&lt;x/>&lt;/bob></pre>
+</td>
+</tr>
+</table>
+
+<p>Note that the [children] of the id attribute were generated by evaluating
+the [children] of the xsl:attribute instruction as a template.
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The power
+of the xsl:attribute instruction lies in the fact that it is dynamic. Consider
+the following named template that uses xsl:if and attribute value templates:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:template name='fancy' >
+&nbsp; &lt;xsl:param name='sAttName' select='bob' />
+&nbsp; &lt;xsl:param name='bUseAttribute' select='true()' />
+&nbsp; &lt;xsl:param name='sAttValue' />
+&nbsp; &lt;bob>
+&nbsp;&nbsp;&nbsp; &lt;xsl:if test='$bUseAttribute' >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;xsl:attribute name='{$sAttName}'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;xsl:value-of select='$sAttValue' />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/xsl:attribute>
+&nbsp;&nbsp;&nbsp; &lt;/xsl:if>&lt;x/>
+&nbsp; &lt;/bob>
+&lt;/xsl:template></pre>
+</td>
+</tr>
+</table>
+
+<p>When this named template is invoked like so
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:call-template name='fancy' >
+&nbsp; &lt;xsl:with-param name='sAttName' >myAttr&lt;/xsl:with-param>
+&nbsp; &lt;xsl:with-param name='bUseAttribute' select='true()' />
+&nbsp; &lt;xsl:with-param name='sAttValue'>Hi, XSLT&lt;/xsl:with-param>
+&lt;/xsl:call-template></pre>
+</td>
+</tr>
+</table>
+
+<p>the following code would be generated as the result:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;bob myAttr='Hi, XSLT'>&lt;x/>&lt;/bob></pre>
+</td>
+</tr>
+</table>
+
+<p>As shown here, xsl:attribute provides a great deal of flexibility.
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>By default,
+the xsl:attribute emits an attribute that is not affiliated with any namespace.
+This behavior can be altered in one of two ways. The simplest way to affiliate
+an xsl:attribute instruction with a namespace is to use the namespace attribute:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:template name='ns1' >
+&nbsp; &lt;bob>
+&nbsp;&nbsp;&nbsp; &lt;xsl:attribute namespace='http://b.com'
+&nbsp;&nbsp;&nbsp;&nbsp; name='id' >32&lt;/xsl:attribute>
+&nbsp; &lt;/bob>
+&lt;/xsl:template></pre>
+</td>
+</tr>
+</table>
+
+<p>This template will produce the following result:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;bob xmlns:auto-ns1='http://b.com' auto-ns1:id='32/></pre>
+</td>
+</tr>
+</table>
+
+<p>Note that because only the [local name] property was provided, the XSLT
+processor needed to manufacture a namespace declaration and prefix. The
+prefix used can be controlled by specifying a QName instead of an NCName
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:template name='ns1' >
+&nbsp; &lt;bob>
+&nbsp;&nbsp;&nbsp; &lt;xsl:attribute namespace='http://b.com'
+&nbsp;&nbsp;&nbsp;&nbsp; name='b:id' >32&lt;/xsl:attribute>
+&nbsp; &lt;/bob>
+&lt;/xsl:template></pre>
+</td>
+</tr>
+</table>
+
+<p>which produces the following result:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;bob xmlns:b='http://b.com' b:id='32/></pre>
+</td>
+</tr>
+</table>
+
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>An alternative
+method for affiliating an xsl:attribute instruction with a namespace is
+to simply use a QName with no corresponding namespace attribute. This causes
+the XSLT processor to look at the [in-scope namespace declarations] property
+to derive the namespace URI.
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:template name='ns1' xmlns:b='http://b.com'>
+&nbsp; &lt;bob>
+&nbsp;&nbsp;&nbsp; &lt;xsl:attribute name='b:id' >32&lt;/xsl:attribute>
+&nbsp; &lt;/bob>
+&lt;/xsl:template></pre>
+</td>
+</tr>
+</table>
+
+<p>This template produces a result that is identical to the previous example
+result.
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The fourth
+instruction in this family is xsl:element. It is an alternative to the
+literal result element. Both the xsl:element instruction and the literal
+result element cause an element to be emitted in the result document. Only
+the xsl:element instruction can generate the element name dynamically using
+XPath expressions. The syntax for the xsl:element instruction is shown
+in <a href="http://msdn.microsoft.com/msdnmag/issues/0800/XSLT/xsltfigs.asp#fig5" class="clsFigs" target="window">Figure
+5</a>.
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The basic
+usage model of xsl:element is the same as for a literal result element.
+For example, the following named template that uses a literal result element
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:template name='elems' >
+&nbsp; &lt;bob xmlns='http://example.com'>&lt;steve/>&lt;/bob>
+&lt;/xsl:template></pre>
+</td>
+</tr>
+</table>
+
+<p>could be rewritten like this
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:template name='elems' >
+&nbsp;&lt;xsl:element name='bob' namespace='http://example.com'>
+&nbsp; &lt;xsl:element name='steve' namespace='http://example.com'/>
+&nbsp;&lt;/xsl:element>
+&lt;/xsl:template></pre>
+</td>
+</tr>
+</table>
+
+<p>or using this hybrid style:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:template name='elems' >
+&nbsp; &lt;xsl:element name='bob' namespace='http://example.com'>
+&nbsp;&nbsp;&nbsp; &lt;steve xmlns='http://example.com'/>
+&nbsp; &lt;/xsl:element>
+&lt;/xsl:template></pre>
+</td>
+</tr>
+</table>
+
+<p>The namespace prefixes used by xsl:element are controlled the same way
+as for xsl:attribute.
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>As shown
+earlier, there are multiple ways to add to the [attributes] property of
+the result element. The most obvious way is to use the xsl:attribute instruction.
+The less obvious way is to use attribute sets. Attribute sets are named
+collections of xsl:attribute instructions that appear as [children] of
+the xsl:stylesheet element. Attribute sets are named by a QName and referenced
+by the use-attribute-sets attribute of the xsl:element instruction or a
+literal result element.
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Take a look
+at the stylesheet shown in <a href="http://msdn.microsoft.com/msdnmag/issues/0800/XSLT/xsltfigs.asp#fig6" class="clsFigs" target="window">Figure
+6</a>.
+<p>----------------------------------------
+<br>Figure 6
+<br>Using Attribute Sets
+<br>&lt;xsl:stylesheet version='1.0'<br>
+&nbsp;&nbsp;&nbsp;&nbsp; xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
+><br>
+&nbsp; &lt;xsl:attribute-set name='myAttrs' ><br>
+&nbsp;&nbsp;&nbsp; &lt;xsl:attribute name='a'>a-val&lt;/xsl:attribute><br>
+&nbsp;&nbsp;&nbsp; &lt;xsl:attribute name='b'>b-val&lt;/xsl:attribute><br>
+&nbsp; &lt;/xsl:attribute-set><br>
+&nbsp; &lt;xsl:attribute-set name='yourAttrs' ><br>
+&nbsp;&nbsp;&nbsp; &lt;xsl:attribute name='c'>c-val&lt;/xsl:attribute><br>
+&nbsp; &lt;/xsl:attribute-set><br>
+&nbsp; &lt;xsl:template name='elems2' ><br>
+&nbsp;&nbsp;&nbsp; &lt;xsl:element name='bob'&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; use-attribute-sets='myAttrs
+yourAttrs' ><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;steve xsl:use-attribute-sets='yourAttrs'
+/><br>
+&nbsp;&nbsp;&nbsp; &lt;/xsl:element><br>
+&nbsp; &lt;/xsl:template><br>
+&lt;/xsl:stylesheet><br>
+----------------------------------------
+<p>Given this stylesheet, the elems2 template would produce the following
+result:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;bob a='a-val' b='b-val' c='c-val' >
+&lt;steve c='c-val'/>
+&lt;/bob></pre>
+</td>
+</tr>
+</table>
+
+<p>It is also legal for one attribute set to include other attribute sets
+using the use-attribute-sets attribute in its definition.
+<p><b><u>Multiple Stylesheets</u></b>
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>XSLT provides
+two mechanisms for breaking an xsl:stylesheet into multiple documents.
+The simplest mechanism is the xsl:include directive, which references an
+external xsl:stylesheet by its URI. When an xsl:include directive appears
+as a child of an xsl:stylesheet, the XSLT directives found in the referenced
+document will be inserted into the current document just as if they were
+defined inline. For example, consider the two XSLT stylesheets shown in
+<a href="http://msdn.microsoft.com/msdnmag/issues/0800/XSLT/xsltfigs.asp#fig7" class="clsFigs" target="window">Figure
+7</a>.
+<pre><b><u>Figure 7
+
+</u></b>Employing xsl:include</pre>
+&lt;?xml version='1.0' ?><br>
+&lt;!-- stylesheeta.xsl --><br>
+&lt;xsl:stylesheet version='1.0'&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlns:xsl='http://www.w3.org/1999/XSL/Transform'><br>
+&nbsp; &lt;xsl:template name='func-a' >&lt;a/>&lt;/xsl:template><br>
+&lt;/xsl:stylesheet><br>
+<br>
+&lt;?xml version='1.0' ?><br>
+&lt;!-- stylesheetb.xsl --><br>
+&lt;xsl:stylesheet version='1.0'&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlns:xsl='http://www.w3.org/1999/XSL/Transform'><br>
+&nbsp; &lt;xsl:include href='stylesheeta.xsl' /><br>
+&nbsp; &lt;xsl:template name='func-b' ><br>
+&nbsp;&nbsp;&nbsp; &lt;xsl:call-template name='func-a' /><br>
+&nbsp; &lt;/xsl:template><br>
+&lt;/xsl:stylesheet><br>
+<br>
+<BR>
+<br>The second stylesheet uses the <b><u>xsl:include</u></b> directive
+to include the directives from the first. The resulting stylesheet is equivalent
+to the following:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;!-- stylesheetb.xsl -->
+&lt;xsl:stylesheet version='1.0'&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlns:xsl='http://www.w3.org/1999/XSL/Transform'>
+&nbsp; &lt;xsl:template name='func-a' >&lt;a/>&lt;/xsl:template>
+&nbsp; &lt;xsl:template name='func-b' >
+&nbsp;&nbsp;&nbsp; &lt;xsl:call-template name='func-a' />
+&nbsp; &lt;/xsl:template>
+&lt;/xsl:stylesheet></pre>
+</td>
+</tr>
+</table>
+
+<p>Defining the same template name more than once produces an error, so
+it is dangerous to xsl:include a document multiple times.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>In addition
+to wholesale inclusion, XSLT supports a collision-aware import mechanism
+using its xsl:import directive. Like xsl:include, xsl:import causes the
+contents of an external stylesheet to be merged with the importing stylesheet.
+The distinction between xsl:import and xsl:include is only evident when
+there are name collisions. When using xsl:include, if the external stylesheet
+defines a named construct (such as a template rule) with an identical identifier
+as the including stylesheet, an error is generated. When using xsl:import,
+it is expected that the external stylesheet may define a named construct
+with an identical identifier as the including stylesheet. In the case of
+such a collision, the construct in the importing stylesheet takes precedence.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>In fact, there
+is a hierarchy for determining precedence for colliding definitions. If
+an xsl:import directive results in a collision with a construct defined
+in the importing stylesheet, the construct in the imported stylesheet is
+hidden by the construct in the importing stylesheet. If two xsl:import
+directives in the same stylesheet result in a collision, the construct
+in the first imported stylesheet is hidden by the construct in the second
+imported stylesheet.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>To maintain
+sanity, all xsl:import directives must appear as the initial [children]
+of an xsl:stylesheet element. It is illegal for an xsl:import element to
+appear after an xsl:include, xsl:template, or any other top-level stylesheet
+element.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10> <a href="http://msdn.microsoft.com/msdnmag/issues/0800/XSLT/xsltfigs.asp#fig8" class="clsFigs" target="window">Figure
+8</a> shows a collection of stylesheets that use xsl:import to form an
+aggregate stylesheet.
+<pre><b><u>Figure 8
+
+</u></b>xsl:import Stylesheets</pre>
+&lt;?xml version='1.0' ?><br>
+&lt;!-- root.xsl --><br>
+&lt;xsl:stylesheet version='1.0'&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlns:xsl='http://www.w3.org/1999/XSL/Transform'><br>
+&nbsp; &lt;xsl:import href='first.xsl' /><br>
+&nbsp; &lt;xsl:import href='second.xsl' /><br>
+&nbsp; &lt;xsl:template name='func-b' ><br>
+&nbsp;&nbsp;&nbsp; &lt;xsl:call-template name='func-a' /><br>
+&nbsp; &lt;/xsl:template><br>
+&lt;/xsl:stylesheet><br>
+<br>
+&lt;?xml version='1.0' ?><br>
+&lt;!-- first.xsl --><br>
+&lt;xsl:stylesheet version='1.0'&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlns:xsl='http://www.w3.org/1999/XSL/Transform'><br>
+&nbsp; &lt;xsl:template name='func-a' >&lt;first/>&lt;/xsl:template><br>
+&lt;/xsl:stylesheet><br>
+<br>
+&lt;?xml version='1.0' ?><br>
+&lt;!-- second.xsl --><br>
+&lt;xsl:stylesheet version='1.0'&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlns:xsl='http://www.w3.org/1999/XSL/Transform'><br>
+&nbsp; &lt;xsl:import href='third.xsl' /><br>
+&nbsp; &lt;xsl:template name='func-a' >&lt;second/>&lt;/xsl:template><br>
+&lt;/xsl:stylesheet><br>
+<br>
+&lt;?xml version='1.0' ?><br>
+&lt;!-- third.xsl --><br>
+&lt;xsl:stylesheet version='1.0'&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlns:xsl='http://www.w3.org/1999/XSL/Transform'><br>
+&nbsp; &lt;xsl:template name='func-a' >&lt;third/>&lt;/xsl:template><br>
+&lt;/xsl:stylesheet>
+<p>Assuming that the root.xsl stylesheet is the initial stylesheet, the
+result of calling the func-b template would be this:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;second/></pre>
+</td>
+</tr>
+</table>
+
+<p>The definition of func-a in first.xsl is hidden by the definition in
+second.xsl. Even though second.xsl imports third.xsl, because second.xsl
+is considered the importing stylesheet, its definition of func-a hides
+the definition in third.xsl.
+<p><b><u>Pattern-based Templates</u></b>
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The template
+rules shown so far in this article have been named and invoked based on
+a symbolic name. XSLT also supports invoking template rules based on pattern-matching.
+An XSLT pattern is a stylized XPath expression that identifies subsets
+of the source document. An XSLT pattern contains one or more location paths
+separated by a |. Location paths contained in XSLT patterns can only use
+the child and attribute axes. However, a location path in an XSLT pattern
+can use the // operator, but not the equivalent descendant-or-self axis.
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Patterns
+are associated with a template rule using the match attribute instead of
+the name attribute.
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:template match='author|illustrator' >
+&nbsp; &lt;contributor />
+&lt;/xsl:template></pre>
+</td>
+</tr>
+</table>
+
+<p>This template rule matches elements whose name is either author or illustrator.
+Template rules can also use predicates and multiple location steps.
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:template match='book//author[@name != "Don"]' >
+&nbsp; &lt;contributor />
+&lt;/xsl:template></pre>
+</td>
+</tr>
+</table>
+
+<p>This template rule matches author elements that have a book element
+as an ancestor, but do not have a name attribute whose [children] is the
+string "Don".
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>It is common
+for multiple template rules to match a given node. In those scenarios,
+the template rule that is actually used is determined by the following
+rules:
+<ol>
+<li>
+Only template rules whose match pattern matches the current node may be
+chosen.</li>
+
+<li>
+Of the matching template rules, template rules with higher import precedence
+are always chosen over template rules with lower import precedence.</li>
+
+<li>
+Of the matching template rules with the same import precedence, template
+rules with higher priority are always chosen over template rules with lower
+priority. The priority is calculated as follows:</li>
+
+<ol type=a>
+<li>
+If the xsl:template has a priority attribute, the decimal number that's
+found there is used independent of rules c through f.</li>
+
+<li>
+Templates whose patterns use | to separate multiple alternatives are treated
+as distinct template rules, one per alternative.</li>
+
+<li>
+Templates whose patterns are of the form child::QName, attribute::QName,
+or child::processing-instruction(literal) or their abbreviated equivalents
+are assigned a default priority of 0.</li>
+
+<li>
+Templates whose patterns are of the form child::NCName:* or attribute::
+NCName:* or their abbreviated equivalents are assigned a default priority
+of -0.25.</li>
+
+<li>
+Templates whose patterns are of the form child::&lt;node-test> or attribute::
+&lt;node-test> or their abbreviated equivalents are assigned a default
+priority of -0.5.</li>
+
+<li>
+Templates whose patterns are not of the forms described in rules c through
+e and that do not have an explicit priority attribute are assigned a default
+priority of 0.5.</li>
+</ol>
+
+<li>
+More than one matching template rule with the same priority and import
+precedence produces an error. In the case of such an error, an XSLT processor
+may signal the error or recover by breaking the tie by choosing the template
+rule that occurs last in the enclosing stylesheet.</li>
+</ol>
+<img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>These rules are
+explained in more detail in Section 5.5 of the XSLT specification (see
+<a href="http://www.w3.org/TR/xslt">http://www.w3.org/TR/xslt</a>).
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>In general,
+the pattern matching rules prefer the most specific match from the stylesheet
+whose import priority is highest. Consider the following stylesheet fragment:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:transform version='1.0' xmlns:a='http://awl.com'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlns:xsl='http://www.w3.org/1999/XSL/Transform'>
+&nbsp; &lt;xsl:template
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; match='/a:product/a:writer'>&lt;a/>&lt;/xsl:template>
+&nbsp; &lt;xsl:template match='a:writer'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; >&lt;b/>&lt;/xsl:template>
+&nbsp; &lt;xsl:template match='a:*'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; >&lt;c/>&lt;/xsl:template>
+&nbsp; &lt;xsl:template match='*'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; >&lt;d/>&lt;/xsl:template>
+&lt;/xsl:transform></pre>
+</td>
+</tr>
+</table>
+
+<p>Using the XML source document shown in <a href="http://msdn.microsoft.com/msdnmag/issues/0800/XSLT/xsltfigs.asp#fig1" class="clsFigs" target="window">Figure
+1</a>, an element node corresponding to an author element would match any
+of these template rules. Because there is more than one match, the priorities
+must be taken into account. According to the rules just described, the
+default priorities for these template rules are (in order) 0.5, 0, -0.25,
+and -0.5. Since there is a uniquely highest priority template rule (the
+first rule), that rule would be selected for execution. In contrast, the
+book element would only match the third and fourth template rules, and
+since the third rule has a higher priority, that rule would be selected.
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Note that
+these calculations assume that all template rules appear in the same stylesheet
+and that no importing stylesheet has matching template rules. (In the matching
+rules, import precedence is the most important factor in choosing a template
+rule.) Also note that explicit priority attributes would affect the prioritization
+considerably.
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Pattern-based
+template rules are not invoked using the xsl:call-template instruction.
+Rather, they are invoked using the xsl:apply-templates instruction.
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:apply-templates
+&nbsp; select=node-set-expresssion : node()
+&nbsp; mode=qname>
+&nbsp; &lt;!-- Content: (xsl:sort | xsl:with-param)* -->
+&lt;/xsl:apply-templates></pre>
+</td>
+</tr>
+</table>
+
+<p>The xsl:apply-templates instruction is remarkably similar to the xsl:for-each
+instruction. Both instructions take a node-set and iteratively apply a
+template to each node in some order. For an xsl:for-each, the template
+that is applied is simply the [children] of the xsl:for-each instruction.
+For an xsl:apply-templates instruction, the template is selected based
+on pattern matching against all known template rules. Also, like the xsl:for-each
+instruction, invoking a template rule via xsl:apply-templates alters the
+context of the template being evaluated based on the node-set returned
+by the select expression and the current node in the iteration sequence.
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Consider
+the following XSLT stylesheet that uses pattern matching and xsl:apply-templates
+to invoke template rules:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:stylesheet version='1.0'&nbsp;
+&nbsp;&nbsp;&nbsp; xmlns:xsl='http://www.w3.org/1999/XSL/Transform'>
+&nbsp; &lt;xsl:template match='author' >
+&nbsp;&nbsp;&nbsp; &lt;by>&lt;xsl:value-of select='@name' />&lt;/by>
+&nbsp; &lt;/xsl:template>
+&nbsp; &lt;xsl:template match='book' >
+&nbsp;&nbsp;&nbsp; &lt;doc>&lt;xsl:apply-templates />&lt;/doc>
+&nbsp; &lt;/xsl:template>
+&nbsp; &lt;xsl:template match='/' >
+&nbsp;&nbsp;&nbsp; &lt;xsl:apply-templates/>
+&nbsp; &lt;/xsl:template>
+&lt;/xsl:stylesheet></pre>
+</td>
+</tr>
+</table>
+
+<p>Assuming the same source document shown in <a href="http://msdn.microsoft.com/msdnmag/issues/0800/XSLT/xsltfigs.asp#fig1" class="clsFigs" target="window">Figure
+1</a>, this stylesheet produces the following result document:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;doc>&lt;by>Don&lt;/by>&lt;by>Aaron&lt;/by>&lt;by>John&lt;/by>&lt;/doc></pre>
+</td>
+</tr>
+</table>
+
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Let's walk
+through the processing of this stylesheet. XSLT processing always starts
+by executing the template rule that best matches the root node of the source
+document. This node is matched by the XSLT pattern /, which is always used
+to find the initial template rule. If no explicit template rule exists,
+there is a built-in template rule whose contents exactly match the third
+template rule in this stylesheet. (We'll have more to say on built-in template
+rules later in this section.) In the case of this stylesheet, the third
+template rule will be selected as the initial template rule. That template
+rule simply invokes the xsl:apply-templates instruction with no select
+attribute, which, via defaults, is equivalent to:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:apply-templates select='node()' /></pre>
+</td>
+</tr>
+</table>
+
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Using the
+same source document, this select expression will return a node-set containing
+one element node (book). Since there is only one template rule that matches
+the element node named book (the second rule), that rule is then invoked
+using the book element node as the current context node.
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Upon evaluating
+the second template rule, the literal result element doc will be emitted.
+Inside of that element, however, there is another xsl:apply-templates instruction.
+The implicit select expression for that instruction will return a node-set
+containing the three author element nodes. The xsl:apply-templates instruction
+will find only one matching template rule, the first rule. Upon evaluating
+the final template rule, the literal result element by is encountered with
+an xsl:value-of as its [children]. Because xsl:apply-templates alters the
+context upon invocation of a template rule, the relative XPath expression
+used in the xsl:value-of instruction will be evaluated relative to the
+current author node.
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>XSLT defines
+a set of seven built-in template rules (one per node type) that are implicitly
+considered during template rule matching. These built-in rules are given
+the lowest possible import precedence, which means they will only be selected
+when there is absolutely no viable template rule explicitly defined in
+any of the available stylesheets. The built-in rule for element and root
+nodes recursively applies the best-match template to all child nodes:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:template match='*|/' >
+&nbsp; &lt;xsl:apply-templates select='node()' />
+&lt;/xsl:template></pre>
+</td>
+</tr>
+</table>
+
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The built-in
+template rule for text and attribute nodes simply copies the text values
+through:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:template match='text()|@*' >
+&nbsp; &lt;xsl:value-of select='.' />
+&lt;/xsl:template></pre>
+</td>
+</tr>
+</table>
+
+<p>The built-in template rule for comments and processing instruction nodes
+discards the nodes from further processing:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:template match='processing-instruction()|comment()' /></pre>
+</td>
+</tr>
+</table>
+
+<p>The built-in template rule for namespace nodes also discards the nodes
+from further processing, but since XSLT patterns do not support matching
+namespace nodes, this built-in template rule cannot be overridden.
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>It is hard
+to discuss the built-in template rules and not discuss the xsl:copy instruction.
+Despite their similar names, the xsl:copy and xsl:copy-of instructions
+are quite different. The xsl:copy instruction emits a copy of the current
+context node independent of its type. If the node type is an element node,
+the associated namespace nodes are copied as well, but the [attributes]
+and [children] of the element are not copied. To copy these nodes as well,
+you must include an xsl:apply-templates instruction to recursively copy
+the subordinate nodes. The following is the stylesheet that performs the
+identity transformation:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:transform version='1.0'
+&nbsp;&nbsp;&nbsp; xmlns:xsl='http://www.w3.org/1999/XSL/Transform'>
+&nbsp; &lt;xsl:template match='@*|node()' >
+&nbsp;&nbsp;&nbsp; &lt;xsl:copy>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;xsl:apply-templates select='@*|node()'/>
+&nbsp;&nbsp;&nbsp; &lt;/xsl:copy>
+&nbsp; &lt;/xsl:template>
+&lt;/xsl:transform></pre>
+</td>
+</tr>
+</table>
+
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Note that
+this lone template rule matches all attribute nodes and all child nodes
+including comment, processing instruction, and text nodes. The template
+itself simply uses the xsl:copy instruction to pass the current node through.
+The subtemplate inside the xsl:copy instruction then recursively invokes
+the template rule against all of the child and attribute nodes.
+<p><b><u>Controlling Output</u></b>
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>By default,
+an XSLT stylesheet produces an XML document. This can be changed using
+the <b><u>xsl:output</u></b> directive. The <b><u>xsl:output</u></b> directive
+must appear as a child element of the <b><u>xsl:stylesheet</u></b> element
+and must adhere to the following syntax:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:output
+&nbsp; method = "xml" | "html" | "text" | qname-but-not-ncname&nbsp;
+&nbsp; version = nmtoken&nbsp;
+&nbsp; encoding = string&nbsp;
+&nbsp; omit-xml-declaration = "yes" | "no"
+&nbsp; standalone = "yes" | "no"
+&nbsp; doctype-public = string&nbsp;
+&nbsp; doctype-system = string&nbsp;
+&nbsp; cdata-section-elements = qnames&nbsp;
+&nbsp; indent = "yes" | "no"
+&nbsp; media-type = string&nbsp;&nbsp;
+/></pre>
+</td>
+</tr>
+</table>
+
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The most important
+of these attributes is the <b><u>method</u></b> attribute. The method attribute
+sets the output method of the XSLT stylesheet. If not provided, the default
+is typically XML. (In the absence of an <b><u>xsl:output</u></b> element,
+a set of heuristics is used to detect Web documents as result documents.
+Consult the XSLT specification for the details of these heuristics.)
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>XSLT provides
+two other output methods: text and HTML. The former assumes that the result
+document is simply a text file with no implicit structure. The latter assumes
+that the result document is a Web document whose version is controlled
+by the version attribute. Consider the following XSLT stylesheet:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:stylesheet version='1.0'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlns:xsl='http://www.w3.org/1999/XSL/Transform' >
+&nbsp; &lt;xsl:template match='/' >
+&nbsp;&nbsp;&nbsp; Hello, World
+&nbsp; &lt;/xsl:template>
+&lt;/xsl:stylesheet></pre>
+</td>
+</tr>
+</table>
+
+<p>As it stands, this XSLT stylesheet is illegal; the result document is
+not well-formed XML. To make this stylesheet legal, an <b><u>xsl:output</u></b>
+directive is needed:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:stylesheet version='1.0'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlns:xsl='http://www.w3.org/1999/XSL/Transform' >
+
+&nbsp; &lt;<b><u>xsl:output</u></b> method='text' />
+&nbsp; &lt;xsl:template match='/' >
+&nbsp;&nbsp;&nbsp; Hello, World
+&nbsp; &lt;/xsl:template>
+&lt;/xsl:stylesheet></pre>
+</td>
+</tr>
+</table>
+
+<p>Given this sample stylesheet, the following result document would be
+produced:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>Hello, World</pre>
+</td>
+</tr>
+</table>
+
+<p>Because this is not an XML document, there is no XML declaration nor
+is there any expectation of well-formedness.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The output
+method also controls the handling of the five built-in entities (lt, gt,
+amp, apos, and quot). In method='text' mode, all references to the five
+built-in entities are converted to their literal values prior to emission
+into the result document. In all other modes, the default behavior is to
+always emit entity references for these five characters. This behavior
+can be disabled using the disable-output-escaping attribute. This attribute
+appears on both the xsl:value-of and xsl:text instructions.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The xsl:text
+instruction is used to emit character data based on the character data
+[children] of the xsl:text instruction. Consider the following named template:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:template name='emitme' >
+&nbsp; Hel&amp;lt;lo, &lt;xsl:text>Wo&amp;gt;rld&lt;/xsl:text>
+&lt;/xsl:template></pre>
+</td>
+</tr>
+</table>
+
+<p>In method='text' mode, the result of this named template would look
+like this:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>Hel&lt;lo, wo>rld</pre>
+</td>
+</tr>
+</table>
+
+<p>In method='xml' mode, the result of this named template would look like
+this:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>Hel&amp;lt;lo, wo&amp;gt;rld</pre>
+</td>
+</tr>
+</table>
+
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>It is possible
+to suppress the appearance of the second entity reference using the disable-output-escaping
+attribute. Consider this slight variation on the previous named template:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:template name='emitme' >
+&nbsp; Hel&amp;lt;lo, &lt;xsl:text disable-output-escaping='yes'&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; >Wo&amp;gt;rld&lt;/xsl:text>
+&lt;/xsl:template></pre>
+</td>
+</tr>
+</table>
+
+<p>In method='xml' mode, the result of this named template would look like
+this:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>Hel&amp;lt;lo, wo>rld</pre>
+</td>
+</tr>
+</table>
+
+<p>Note that in element content, the > character is perfectly legal.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>It is also
+possible to force the use of a CDATA section in the result document. The
+xsl:output directive's cdata-section-elements attribute can contain a list
+of QName-based element names. When a text node is encountered, if its parent
+element's expanded name is in the list of cdata-section-elements, the text
+node will be emitted inside of a CDATA section.
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Take a look
+at this stylesheet:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:stylesheet version='1.0'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlns:xsl='http://www.w3.org/1999/XSL/Transform' >
+&nbsp; &lt;xsl:output method='xml' cdata-section-elements='bob'/>
+&nbsp; &lt;xsl:template match='/' >
+&nbsp;&nbsp;&nbsp; &lt;steve>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;bob>&amp;lt;Hello&amp;gt;&lt;/bob>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;george>&amp;lt;Hello&amp;gt;&lt;/george>
+&nbsp;&nbsp;&nbsp; &lt;/steve>
+&nbsp; &lt;/xsl:template>
+&lt;/xsl:stylesheet></pre>
+</td>
+</tr>
+</table>
+
+<p>This stylesheet produces the following result document:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;steve>
+&nbsp; &lt;bob>&lt;![CDATA[&lt;hello>]]>&lt;/bob>
+&nbsp; &lt;george>&amp;lt;Hello&amp;gt;&lt;/george>
+&lt;/steve></pre>
+</td>
+</tr>
+</table>
+
+<p>Note that when a CDATA section is emitted, all built-in entity references
+are expanded.
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>The discussion
+so far has managed to avoid the nasty issue of whitespace handling. XSLT
+provides a well-defined set of rules and mechanisms for controlling whitespace
+in result documents. In general, XSLT acknowledges the fact that mixed
+content is the exceptional case and strips all whitespace-only text nodes
+from the source document tree and from the stylesheet. This stripping can
+be suppressed by the presence of any xml:space='preserve' attributes that
+may be in effect. Additionally, the stylesheet can contain one or more
+xsl:strip-space or xsl:preserve-space directives that list the element
+names that require overriding behavior.
+<br><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Consider
+the following source document:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;root>
+&nbsp; &lt;a>
+&nbsp;&nbsp;&nbsp; &lt;e/>
+&nbsp; &lt;/a>
+
+&nbsp; &lt;b xml:space='preserve'>
+&nbsp;&nbsp;&nbsp; &lt;e/>
+&nbsp; &lt;/b>
+&nbsp; &lt;c xml:space='default'>
+&nbsp;&nbsp;&nbsp; &lt;e/>
+&nbsp; &lt;/c>
+&nbsp; &lt;d>
+&nbsp;&nbsp;&nbsp; &lt;e/>
+&nbsp; &lt;/d>
+&lt;/root></pre>
+</td>
+</tr>
+</table>
+
+<p>If no <b><u>xsl:strip-space</u></b> or xsl:preserve-space directives
+are in effect, this source document is exactly identical to the following
+stripped source document:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;root>&lt;a>&lt;e/>&lt;/a>&lt;b xml:space='preserve'>
+&nbsp;&nbsp;&nbsp; &lt;e/>
+&nbsp; &lt;/b>&lt;c xml:space='default'>&lt;e/>&lt;/c>&lt;d>&lt;e/>&lt;/d>&lt;/root></pre>
+</td>
+</tr>
+</table>
+
+<p>Note that only the b element's whitespace was preserved. Assuming that
+the following two directives were to appear within the stylesheet document
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;xsl:strip-space elements='b' />
+&lt;xsl:preserve-space elements='a root'/></pre>
+</td>
+</tr>
+</table>
+
+<p>the source document would be pre-stripped to be exactly identical to
+the following:
+<br>&nbsp;
+<table class="clsCode" >
+<tr>
+<td>
+<pre>&lt;?xml version='1.0' ?>
+&lt;root>
+&nbsp; &lt;a>
+&nbsp;&nbsp;&nbsp; &lt;e/>
+&nbsp; &lt;/a>
+&nbsp; &lt;b xml:space='preserve'>&lt;e/>&lt;/b>
+&nbsp; &lt;c xml:space='default'>&lt;e/>&lt;/c>
+&nbsp; &lt;d>&lt;e/>&lt;/d>
+&lt;/root></pre>
+</td>
+</tr>
+</table>
+
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10>Note that
+the <b><u>xsl:strip-space</u></b> directive can override the value of the
+<b><u>xml:space</u></b> attribute. The stripping behavior just described
+applies to stylesheets as well as source documents. The primary distinction
+is that the xsl:text element is automatically in the whitespace preserving
+list and does not need to be explicitly listed in the <b><u>xsl:preserve-space</u></b>
+directive.
+<p><b><u>Conclusion</u></b>
+<p><img SRC="xslt_files/indent.gif" ALT="" height=4 width=10><b><u>XSL
+Transformations</u></b> solve a major problem caused by the proliferation
+of multiple <b><u>XML Schemas</u></b> describing complementary data. With
+<b><u>XSLT</u></b>, you can use your favorite programming language to map
+<b><u>XML documents</u></b> to one another, creating output in an arbitrary
+text-based format (including XML). Of course, simply mapping documents
+doesn't ensure that they can interoperate properly—human interaction is
+still needed to interpret the data—but <b><u>XSL Transformations</u></b>
+provide a valuable first step that makes the task easier.
+<p><b>For related articles see:</b>
+<br><a href="http://www.w3.org/TR/xslt">http://www.w3.org/TR/xslt</a>
+<br><a href="http://msdn.microsoft.com/msdnmag/issues/0700/xml/xml0700.asp">http://msdn.microsoft.com/msdnmag/issues/0700/xml/xml0700.asp</a><b></b>
+<p><b>For background information see:</b>
+<br><a href="http://www.w3.org/TR/xml-infoset">http://www.w3.org/TR/xml-infoset</a>
+<br><a href="http://www.w3.org/TR/xpath">http://www.w3.org/TR/xpath</a>
+<p><b>Don Box</b> is a cofounder of DevelopMentor, a COM think tank that
+educates the software industry in COM, MTS, and ATL. Don Wrote <i>Essential
+COM</i>, and coauthored the follow-up <i>Effective COM</i> (Addison-Wesley,
+1998). Reach Don at <a href="http://www.develop.com/dbox/">http://www.develop.com/dbox/</a>.
+<b>Aaron
+Skonnard</b> is an instructor and researcher at DevelopMentor, where he
+co-manages the XML curriculum. Aaron wrote <i>Essential WinInet</i> (Addison-Wesley
+Longman, 1998) and coauthored <i>Essential XML</i> (Addison-Wesley Longman,
+2000). Get in touch with Aaron at <a href="http://www.skonnard.com/default.asp">http://www.skonnard.com/default.asp</a>.
+<b>John
+Lam</b> wrote and teaches the Essential Web Applications course for DevelopMentor.
+He can be reached at <a href="mailto:jlam@iunknown.com">jlam@iunknown.com</a>
+<p>From the <a href="http://msdn.microsoft.com/msdnmag/issues/0800/default.asp">August
+2000</a> issue of <a href="http://msdn.microsoft.com/msdnmag/default.asp" target="_top">MSDN
+Magazine</a>.
+<br>Get it at your local newsstand, or better yet, <i><a href="http://msdn.microsoft.com/msdnmag/subscribe.asp">subscribe</a></i>.
+<br>&nbsp;
+<br>&nbsp;
+</body>
+</html>

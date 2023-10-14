@@ -1,0 +1,108 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Stefano Mazzocchi">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (Win98; U) [Netscape]">
+   <title>Installation and Configuration</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<center>
+<h1>
+How to secure your servlet environment</h1></center>
+
+<h3>
+Introduction</h3>
+In this section, you will learn how to secure your servlet engine in a
+variety of different situations. This howto is an introduction to the security
+issues involved with Apache JServ.
+<h3>
+External security</h3>
+Apache JServ 1.0 has introduced important enhancements on the communication
+protocol to reduce the risks of untrusted servlet execution. Let's make
+an example so that you get the idea of the problem. Let us suppose you
+have a free-form SQL query servlets connected to your precious database.
+This servlet is for remote administration and database debugging purposes
+and it's secured by any means on the web server side.
+<p>If no security restrictions were available on the servlet engine side,
+a wise and knowledge attacker might request that servlet directly to the
+servlet engine, thus bypassing web server security. This is called an external
+attack.
+<p>To prevent external attacks Apache JServ 1.0 introduced new powerful
+security restrictions: an IP filter for incoming connections and an MD5-based
+connection authentication scheme.
+<h3>
+IP filtering</h3>
+The most simple and effective way of reducing the risk of external attacks
+is to filter incoming requests based on the IP address of the client. Note
+that this doesn't affect the wide audience of the web server because only
+web servers should be allow to connect to the servlet engine. For this
+reason, to enable connections from a particular IP address you must specify
+it in the allowed list in the main Apache JServ configuration file.
+<p>For example, if you have two web servers that make requests using 194.39.283.233
+and 194.39.283.234 and wish to restrict the servlet requests only from
+those addresses you add the following line to your <i>jserv.properties</i>
+file
+<blockquote>
+<pre>security.allowedAddresses=194.39.283.233,194.39.283.234</pre>
+</blockquote>
+With this filter enabled, any connection coming on the port Apache JServ
+is listening to from an IP address not contained in the list, is automatically
+ignored.
+<h3>
+Connection authentication</h3>
+In the rare cases where IP filtering is not enough, for example when untrusted
+users may generate requests from the allowed IP address, authentication
+connection can be used to reduce to a minimum the chance of external attack.
+To do this, both the web server and the servlet engine must have a binary
+copy of the same file, any file, that is called <i>secret key</i>.
+<p>This file may have any format and any length (could even be an image!),
+but we suggest you to create your own text file monkey-typing around a
+hundred bytes. After a few dozens of bytes, the security improvement is
+negligible while the time taken by the authentication procedure is linear
+with the secret key length. For this reason there is very little need for
+long secret keys.
+<p>Note: your security is strictly related to that secret key file. Anybody
+that can guess or recreate your secret key is a potential external attacker
+if his requests come from the correct IP addresses. It is not needed to
+suggest you to protect your secret key files and make them not readable
+or writable to untrusted users.
+<p>To enable the authentication on the servlet engine side you should add
+these two lines to your <i>jserv.properties</i> file
+<blockquote>
+<pre>security.authentication=false
+security.secretKey=/etc/jserv/jserv.secret.key</pre>
+</blockquote>
+Then you have to enable authentication on every web server that connects
+to that servlet engine adding this line to your <i>httpd.conf</i> files
+<blockquote>
+<pre>ApJServSecretKey /etc/jserv/jserv.secret.key</pre>
+</blockquote>
+Make sure the two secret key files are even the same or the exact binary
+copy, and both the web server and the servlet engine have permissions to
+read them.
+<h3>
+Internal security</h3>
+While external security is the matter of restricting untrusted servlet
+execution, internal security deals with securing systems from dangerous
+servlet behavior. If you build your own servlets or have full control over
+them (having the source code) you don't need any more internal security.
+Things get different if you use precompiled servlets you don't trust like
+in the case of ISP's providing servlet environments for third parties.
+<p>Like the ability of running CGI with different UID/GID, on possible
+solution for internal security is to have different instances of the servlet
+engine running with different UID/GID. This allows complete separation
+of the servlets served by the different servlet engine instances.
+<p>Another possibility, that will be implemented in the future, is the
+use of more complex Java security managers to protect system resources
+from unwanted servlet behavior. This will be implemented in future releases.
+<center>
+<p><font size=-1>Copyright (c) 1997-99 <a href="http://java.apache.org/" target="_top">The
+Java Apache Project</a>.</font>
+<br><font size=-1>$Id: howto.security.html,v 1.5 1999/06/09 05:21:27 jonbolt
+Exp $</font>
+<br><font size=-1>All rights reserved.</font></center>
+
+</body>
+</html>

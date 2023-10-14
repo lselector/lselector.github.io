@@ -1,0 +1,324 @@
+<HTML
+><HEAD
+><TITLE
+>[Chapter 4] 4.2 File and Directory Names</TITLE
+><META
+NAME="DC.title"
+CONTENT="Learning the Unix Operating System"><META
+NAME="DC.creator"
+CONTENT="Jerry Peek, Grace Todino &amp; John Strang"><META
+NAME="DC.publisher"
+CONTENT="O'Reilly &amp; Associates, Inc."><META
+NAME="DC.date"
+CONTENT="1998-08-03T20:51:18Z"><META
+NAME="DC.type"
+CONTENT="Text.Monograph"><META
+NAME="DC.format"
+CONTENT="text/html"
+SCHEME="MIME"><META
+NAME="DC.source"
+CONTENT="1-56592-390-1"
+SCHEME="ISBN"><META
+NAME="DC.language"
+CONTENT="en-US"><META
+NAME="generator"
+CONTENT="Jade 1.1/O'Reilly DocBook 3.0 to HTML 4.0"><LINK
+REV="made"
+HREF="mailto:online-books@oreilly.com"
+TITLE="Online Books Comments"><LINK
+REL="up"
+HREF="ch04_01.htm"
+TITLE="4. File Management "><LINK
+REL="prev"
+HREF="ch04_01.htm"
+TITLE="4.1 Methods of Creating Files"><LINK
+REL="next"
+HREF="ch04_03.htm"
+TITLE="4.3 File and Directory Wildcards"></HEAD
+><BODY
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+><DIV
+CLASS="htmlnav"
+><H1
+><IMG
+SRC="gifs/smbanner.gif"
+ALT="Learning the Unix Operating System"
+USEMAP="#srchmap"
+BORDER="0"></H1
+><MAP
+NAME="srchmap"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,466,69"
+HREF="index.htm"
+ALT="Learning the Unix Operating System"><AREA
+SHAPE="RECT"
+COORDS="467,0,514,18"
+HREF="jobjects/fsearch.htm"
+ALT="Search this book"></MAP
+><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch04_01.htm"
+TITLE="4.1 Methods of Creating Files"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 4.1 Methods of Creating Files"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><B
+><FONT
+FACE="ARIEL,HELVETICA,HELV,SANSERIF"
+SIZE="-1"
+>Chapter 4<BR>File Management </FONT
+></B
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch04_03.htm"
+TITLE="4.3 File and Directory Wildcards"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 4.3 File and Directory Wildcards"
+BORDER="0"></A
+></TD
+></TR
+></TABLE
+>&nbsp;<HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"></DIV
+><DIV
+CLASS="SECT1"
+><H2
+CLASS="sect1"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-2"
+>4.2 File and Directory Names</A
+></H2
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-2636"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-DIRECTORIES-NAMES"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2641"
+></A
+>As <A
+CLASS="xref"
+HREF="ch03_01.htm"
+TITLE="Your UNIX Account "
+>Chapter 3, Your UNIX Account </A
+>, explained,
+both files and directories are identified by their names.
+A directory is really just a special kind of file, so the rules for naming
+directories are the same as the rules for naming files.</P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-2645"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2648"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2651"
+></A
+>Filenames may contain any character except <CODE
+CLASS="literal"
+>/</CODE
+>, which is
+reserved as the separator between files and directories in a pathname.
+Filenames are usually made of upper- and lowercase letters, numbers,
+&quot;.&quot; (dot), and &quot;_&quot; (underscore).  Other characters (including spaces)
+are legal in a filename&nbsp;- but they can be hard to use because the shell
+gives them special meanings.  So we recommend using only letters,
+numbers, dot, and underscore characters.</P
+><P
+CLASS="para"
+>Unlike some operating systems, UNIX doesn't require a dot (<CODE
+CLASS="literal"
+>.</CODE
+>) in
+a filename; in fact, you can use as many as you want.
+For instance, the filenames <EM
+CLASS="emphasis"
+>pizza</EM
+> and <EM
+CLASS="emphasis"
+>this.is.a.mess</EM
+>
+are both legal.</P
+><P
+CLASS="para"
+>Some UNIX systems limit filenames to 14 characters.
+Most newer systems allow much longer filenames.</P
+><P
+CLASS="para"
+>A filename must be unique inside its directory, but other directories
+may have files with the same names.  For example, you may have the
+files called <EM
+CLASS="emphasis"
+>chap1</EM
+> and <EM
+CLASS="emphasis"
+>chap2</EM
+> in the directory
+<EM
+CLASS="emphasis"
+>/users/carol/work</EM
+> and also have files with the same names in
+<EM
+CLASS="emphasis"
+>/users/carol/play</EM
+>.</P
+></DIV
+><DIV
+CLASS="htmlnav"
+><P
+></P
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch04_01.htm"
+TITLE="4.1 Methods of Creating Files"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 4.1 Methods of Creating Files"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="book"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"
+><IMG
+SRC="../gifs/txthome.gif"
+ALT="Learning the Unix Operating System"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch04_03.htm"
+TITLE="4.3 File and Directory Wildcards"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 4.3 File and Directory Wildcards"
+BORDER="0"></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+>4.1 Methods of Creating Files</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="index"
+HREF="index/idx_0.htm"
+TITLE="Book Index"
+><IMG
+SRC="../gifs/index.gif"
+ALT="Book Index"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+>4.3 File and Directory Wildcards</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><IMG
+SRC="../gifs/smnavbar.gif"
+USEMAP="#map"
+BORDER="0"
+ALT="The UNIX CD Bookshelf Navigation"><MAP
+NAME="map"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,73,21"
+HREF="../index.htm"
+ALT="The UNIX CD Bookshelf"><AREA
+SHAPE="RECT"
+COORDS="74,0,163,21"
+HREF="../upt/index.htm"
+ALT="UNIX Power Tools"><AREA
+SHAPE="RECT"
+COORDS="164,0,257,21"
+HREF="../unixnut/index.htm"
+ALT="UNIX in a Nutshell"><AREA
+SHAPE="RECT"
+COORDS="258,0,321,21"
+HREF="../vi/index.htm"
+ALT="Learning the vi Editor"><AREA
+SHAPE="RECT"
+COORDS="322,0,378,21"
+HREF="../sedawk/index.htm"
+ALT="sed &amp; awk"><AREA
+SHAPE="RECT"
+COORDS="379,0,438,21"
+HREF="../ksh/index.htm"
+ALT="Learning the Korn Shell"><AREA
+SHAPE="RECT"
+COORDS="439,0,514,21"
+HREF="index.htm"
+ALT="Learning the UNIX Operating System"></MAP
+></DIV
+></BODY
+></HTML
+>

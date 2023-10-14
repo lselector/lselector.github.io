@@ -1,0 +1,782 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>sed_tutorial</title>
+<!--
+
+
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+
+
+
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Sed</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 >
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><b><font color="#CC0000">sed tutorial</font></b></td>
+
+<td ALIGN=LEFT VALIGN=TOP></td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">• </font><a href="#intro">sed
+introduction</a>
+<br><font color="#6699CC">• </font><a href="#sed_examples_1">sed examples
+#1</a></td>
+
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">• </font><a href="#sed_commands">sed
+commands</a>
+<br><font color="#6699CC">• </font><a href="#regular_expressions">regular
+expressions</a>
+<br><font color="#6699CC">• </font><a href="#sed_examples">more sed examples</a></td>
+</tr>
+</table>
+<a NAME="intro"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>intro</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">sed</font></b> - Stream EDitor - works as a
+filter processing input line by line.
+<br>Sed reads one line at a time, chops off the terminating newline, puts
+what is left into the pattern space (buffer) where the sed script can process
+it (often using regular expressions), then if there anything to print -
+sed appends a newline and prints out the result (usually to stdout).
+<br><font color="#6699CC">• </font><a href="http://www.engin.umich.edu/htbin/mangate?manpage=sed">www.engin.umich.edu/htbin/mangate?manpage=sed</a>
+- sed
+<p>There are many tutorials and FAQs - search <b>google</b> for <b><a href="http://www.google.com/search?q=sed+tutorial">sed
+tutorial</a></b> or <b><a href="http://www.google.com/search?hl=en&safe=off&q=sed+faq">sed
+faq</a></b>
+<p>- <a href="http://www.faqs.org/faqs/editor-faq/sed/">www.faqs.org/faqs/editor-faq/sed/</a>
+- <b><font color="#CC0000">FAQ</font></b> (also <a href="http://www.ptug.org/sed/sedfaq.html">www.ptug.org/sed/sedfaq.html</a>
+)
+<br>- <a href="http://www.dreamwvr.com/sed-info/sed-faq.html">www.dreamwvr.com/sed-info/sed-faq.html</a>
+- FAQ
+<br>- <a href="http://spacsun.rice.edu/FAQ/sed.html">http://spacsun.rice.edu/FAQ/sed.html</a>
+- short 1-page intro - examples of usage
+<br>- <a href="http://spazioweb.inwind.it/seders/tutorials/">http://spazioweb.inwind.it/seders/tutorials/</a>
+- list of links to sed tutorials
+<br>- <a href="http://spazioweb.inwind.it/seders/tutorials/sedtut_4.txt">http://spazioweb.inwind.it/seders/tutorials/sedtut_4.txt</a>
+-original manual (1978 by Lee E. McMahon with the classic "Kubla Khan"
+example)
+<br>- <a href="http://www.math.fu-berlin.de/~leitner/sed/tutorial.html">www.math.fu-berlin.de/~leitner/sed/tutorial.html</a>
+- <b><font color="#CC0000">tutorial</font></b> by Felix von Leitner
+<p><b><u>Print out and read the following:</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>- <a href="http://www.dbnet.ece.ntua.gr/~george/sed/sedtut_1.html">www.dbnet.ece.ntua.gr/~george/sed/sedtut_1.html</a>
+- good <b><font color="#CC0000">tutorial</font></b> by Carlos Duarte&nbsp;
+<br>- <a href="http://www.dbnet.ece.ntua.gr/~george/sed/1liners.html">www.dbnet.ece.ntua.gr/~george/sed/1liners.html</a>
+- <b><font color="#CC0000">one-liners</font></b> (compiled by Eric Pement)
+(see also <a href="http://www.cornerstonemag.com/sed/sed1line.txt">www.cornerstonemag.com/sed/sed1line.txt</a>
+)</td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><u>Books:</u></b>
+<br>Sed &amp; Awk, 2d edition, by Dale Dougherty &amp; Arnold Robbins (O'Reilly,
+1997)&nbsp;
+<br>Mastering Regular Expressions, by Jeffrey E. F. Friedl&nbsp; (O'Reilly,
+1997)&nbsp;</td>
+</tr>
+</table>
+
+<p>Several more sites: - <a href="http://www.rtfiber.com.tw/~changyj/sed/">Yao-Jen
+Chang</a> -&nbsp; <a href="http://www.math.fu-berlin.de/~guckes/sed/">Sven
+Guckes</a> - <a href="http://www.math.fu-berlin.de/~leitner/sed/">Felix
+von Leitner</a> - <a href="http://www.dbnet.ece.ntua.gr/~george/sed/">Yiorgos
+Adamopoulos</a> - <a href="http://www.cornerstonemag.com/sed/">Eric Pement</a>
+<br><a NAME="sed_examples_1"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>sed examples #1</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Simple commands = pattern + action. If no pattern is given, the action
+is applied to all lines, otherwise it is applied only to lines matching
+the pattern. Regular expressions are simimlar to those in Perl. Here is
+a typical example of usage:
+<br><b>Example:</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>>cat file
+<br>I have three dogs and two cats
+<br>>sed -e 's/dog/cat/g' -e 's/cat/elephant/g' file
+<br>I have three elephants and two elephants
+<br>></td>
+</tr>
+</table>
+
+<p>The way you usually use <i>sed</i> is as follows:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>>sed -e 'command1' -e 'command2' -e 'command3' file
+<br>>{shell command}|sed -e 'command1' -e 'command2'&nbsp;
+<br>>sed -f sedscript.sed file
+<br>>{shell command}|sed -f sedscript.sed</td>
+</tr>
+</table>
+
+<p>so <i>sed</i> can read from a file or STDIN, and the commands can be
+specified in a file or on the command line.
+<br>Note:&nbsp; <b><font color="#CC0000">trailing whitespaces</font></b>
+in the sed script file can cause scripts to fail. Use editor which can
+show the trailing spaces and allows to remove them (vim is a good choice).
+<p><b><u>Example:</u></b>
+<br>To delete the first 10 lines of stdin and echo the rest to stdout:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#3333FF">sed -e '1,10d'</font>
+<p>The -e tells sed to execute the next command line argument as sed program.
+<br>1,10 - pattern
+<br>d - action (delete - general syntax is <font color="#3333FF">[<i>address1</i>[
+, <i>address2</i> ] ]d</font> )
+<p>note, that since sed programs often contain regular expressions, they
+will often contain characters that your shell interprets, so you should
+get used to put all sed programs in single quotes so your shell won't interpret
+the sed program.
+<p><b><u>Example:</u></b> show only lines which match the pattern /mama/:
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sed -n -e '/line/p'
+test.txt</font>
+<p>The -n suppresses printing for all the lines
+<br>the p activates printing for matched lines
+<br>test.txt is an input file to which this sed command is applied
+<p><b><u>Example:</u></b>&nbsp; To print only the first ten lines, we would
+have deleted all the lines starting with 11:
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sed -e '11,$d'</font>
+<p>Note that $ is the last line. Because sed(1) processes the input line
+by line, it does not keep the whole input in memory. This makes sed(1)
+very useful for processing large files, but it has it's drawbacks, too.
+For example, we can't use sed -e '$-10,$d', since sed doesn't know $ before
+the end of file, so it doesn't know where $-10 is. This is a major problem,
+and it limits sed(1)'s usefulness, but sed(1) still has a large number
+of appliances.
+<p><b><u>Example:</u></b>&nbsp; Another way to get only the first 10 lines
+is to use the -n option:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#3333FF">sed -n -e '1,10p'</font>
+<br>If we want to delete only one line, the pattern can be '10,10' or simple
+'10'.
+<p><b><u>Example:</u></b>&nbsp; More Than One Command (separated by new
+lines):
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sed -e '1,4d</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6,9d'</font>
+<br>This would delete the lines 1 to 4 and 6 to 9.
+<p><b><u>Example:</u></b>&nbsp; use the -e option more than once:
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sed -e '1,4d'
+-e '6,9d'</font>
+<p>Note: you can omit -e option&nbsp; if you have only one command in your
+program. But you should get used to the -e option, so you won't have to
+add it if you want to extend your program later on.
+<br><a NAME="sed_commands"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>sed commands</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>General syntax for a command is:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [address1[,address2]] function [arguments]
+<p>if no address is given, a command is applied to all lines
+<br>if 1 address is given, then it is applied to all pattern spaces that
+match that address
+<br>if 2 addresses are given, then it is applied to all from addr1 to addr2
+(including addr1 and addr2 themselves).
+<p>Note: Addresses may be expressed in line numbers or in patterns.&nbsp;
+If in patterns, then the substitution is applied to groups of lines from
+<i>address1</i>
+to the first match of
+<i>address2.&nbsp; </i>If there are several groups
+like that in one file - they all will be affected.
+<p>Command example:
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1,2s/line/LINE/</font>
+<p><b><u>Tables of commands (number of arguments):</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td>(2)!cmd&nbsp;</td>
+
+<td>exclamation sign means "Don't apply to specified addresses"</td>
+</tr>
+
+<tr>
+<td>(0)#&nbsp;</td>
+
+<td>comment</td>
+</tr>
+
+<tr>
+<td>(0):label&nbsp;</td>
+
+<td>place a label</td>
+</tr>
+
+<tr>
+<td>(1)=&nbsp;</td>
+
+<td>display line number</td>
+</tr>
+
+<tr>
+<td>(2)D&nbsp;</td>
+
+<td>delete first part of the pattern space</td>
+</tr>
+
+<tr>
+<td>(2)G&nbsp;</td>
+
+<td>append contents of hold area</td>
+</tr>
+
+<tr>
+<td>(2)H&nbsp;</td>
+
+<td>append pattern space on buffer</td>
+</tr>
+
+<tr>
+<td>(2)N&nbsp;</td>
+
+<td>append next line</td>
+</tr>
+
+<tr>
+<td>(2)P&nbsp;</td>
+
+<td>print first part of the pattern space</td>
+</tr>
+
+<tr>
+<td>(1)a&nbsp;</td>
+
+<td>append text</td>
+</tr>
+
+<tr>
+<td>(2)blabel&nbsp;</td>
+
+<td>branch to label</td>
+</tr>
+
+<tr>
+<td>(2)c&nbsp;</td>
+
+<td>change lines</td>
+</tr>
+
+<tr>
+<td>(2)d&nbsp;</td>
+
+<td>delete lines</td>
+</tr>
+
+<tr>
+<td>(2)g&nbsp;</td>
+
+<td>get contents of hold area</td>
+</tr>
+
+<tr>
+<td>(2)h&nbsp;</td>
+
+<td>hold pattern space (in a hold buffer)</td>
+</tr>
+
+<tr>
+<td>(1)i&nbsp;</td>
+
+<td>insert lines</td>
+</tr>
+
+<tr>
+<td>(2)l&nbsp;</td>
+
+<td>list lines</td>
+</tr>
+
+<tr>
+<td>(2)n&nbsp;</td>
+
+<td>next line</td>
+</tr>
+
+<tr>
+<td>(2)p&nbsp;</td>
+
+<td>print</td>
+</tr>
+
+<tr>
+<td>(1)q&nbsp;</td>
+
+<td>quit</td>
+</tr>
+
+<tr>
+<td>(1)r file&nbsp;</td>
+
+<td>read the contents of file</td>
+</tr>
+
+<tr>
+<td>(2)tlabel&nbsp;</td>
+
+<td>test substitutions and branch on successful substitution</td>
+</tr>
+
+<tr>
+<td>(2)w file&nbsp;</td>
+
+<td>write to file</td>
+</tr>
+
+<tr>
+<td>(2)x&nbsp;</td>
+
+<td>exchange buffer space with pattern space</td>
+</tr>
+
+<tr>
+<td>(2){&nbsp;</td>
+
+<td>group commands</td>
+</tr>
+
+<tr>
+<td>(2)s/RE/replacement/[flags]&nbsp;</td>
+
+<td>substitute</td>
+</tr>
+
+<tr>
+<td>(2)y/list1/list2/&nbsp;</td>
+
+<td>translates list1 into list2</td>
+</tr>
+</table>
+<a NAME="regular_expressions"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>regular expressions</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>The sed regular expressions are essentially the same as the grep regular
+expressions. They are summarized below.
+<br>Note that you have to escape with backslashes the many characters:
+<br>&nbsp;&nbsp; curlies&nbsp; \{ \} , round brackets \( \), vertical bars
+\| ,&nbsp; star \*, plus \+,&nbsp; question mark \?
+<br>&nbsp;
+<table CELLSPACING=0 CELLPADDING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td>^</td>
+
+<td>matches the beginning of the line&nbsp;</td>
+</tr>
+
+<tr>
+<td>$</td>
+
+<td>matches the end of the line&nbsp;</td>
+</tr>
+
+<tr>
+<td>.</td>
+
+<td>dot matches any single character</td>
+</tr>
+
+<tr>
+<td>...&nbsp;&nbsp; \*</td>
+
+<td>match zero or more occurences of (char or something)</td>
+</tr>
+
+<tr>
+<td>...&nbsp;&nbsp; \+</td>
+
+<td>match one or more occurences of (char or something)</td>
+</tr>
+
+<tr>
+<td>...&nbsp;&nbsp; \?&nbsp;</td>
+
+<td>Match 0 or 1 instance of (character)</td>
+</tr>
+
+<tr>
+<td>[abcdef]</td>
+
+<td>Match any character enclosed in [] (in this instance, a b c d e or
+f) ranges of characters such as [a-z] are permitted. The behaviour of this
+deserves more description. See the page on <a href="grep.html">grep</a>
+for more details about the syntax of lists.&nbsp;
+<br>&nbsp;to include&nbsp; `]'&nbsp; in the list, make it the first char,&nbsp;
+to include `-' in the list, make it the first or last</td>
+</tr>
+
+<tr>
+<td>[^abcdef]</td>
+
+<td>Match any character <i>NOT</i> enclosed in [] (in this instance, any
+character other than a b c d e or f)</td>
+</tr>
+
+<tr>
+<td>(character)\{m,n\}</td>
+
+<td>Match m-n repetitions of (character)</td>
+</tr>
+
+<tr>
+<td>(character)\{m,\}</td>
+
+<td>Match m or more repetitions of (character)</td>
+</tr>
+
+<tr>
+<td>(character)\{,n\}</td>
+
+<td>Match n or less (possibly 0) repetitions of (character)</td>
+</tr>
+
+<tr>
+<td>(character)\{n\}</td>
+
+<td>Match exactly n repetitions of (character)</td>
+</tr>
+
+<tr>
+<td>\(expression\)</td>
+
+<td>Group operator. Also memorizes into numbered variables - use for backreference
+as \1 \2 .. \9</td>
+</tr>
+
+<tr>
+<td>\n</td>
+
+<td>Backreference - matches nth group</td>
+</tr>
+
+<tr>
+<td>expression1\|expression2</td>
+
+<td>Matches expression1 or expression 2. Works with GNU sed, but this feature
+might not work with other forms of sed.</td>
+</tr>
+
+<tr>
+<td>\1 \2 ...\9</td>
+
+<td>backreference, matches i-th memorized \(..\)&nbsp;</td>
+</tr>
+</table>
+<a NAME="sed_examples"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>sed examples</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Example:</u></b>&nbsp; delete all the lines that contain the word
+``debug'' from the log file:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#3333FF">sed -e '/debug/d'
+&lt; log</font>
+<br>This works just like grep -v debug.
+<p><b><u>Example:</u></b>&nbsp; delete lines with the word debug, but we
+only want lines that contain ``foo''. The traditional way to handle this
+would be:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#3333FF"> grep 'foo' &lt;
+log | grep -v debug</font>
+<br>Note that this spawns two grep processes. The sed equivalent would
+be:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#3333FF">sed -n -e '/debug/d'
+-e '/foo/p'</font>
+<br>Here -n option inhibits printing, first pattern deletes all the lines
+with /debug/, and the second command forces printing of some of the remaining
+lines (which match /foo/).
+<p><b><u>Example:</u></b>&nbsp; Calling sed program from a file:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#3333FF">sed -f program.sed</font>
+<br>to set a -n option from within your sed program - use ``#n'' as the
+first line in your program file.
+<p><b><u>Example:</u></b>&nbsp; Inserting Text with 'a' (append) or 'i'
+(insert) actions:
+<br>&nbsp; To insert a string just before line 10.
+<p><font color="#3333FF">&nbsp; 10i\</font>
+<br><font color="#3333FF">&nbsp; I am a string</font>
+<p>&nbsp; To append a string after the last line:
+<p><font color="#3333FF">&nbsp;&nbsp; $a\</font>
+<br><font color="#3333FF">&nbsp; I am a string</font>
+<p><b><u>Example:</u></b>&nbsp;&nbsp; Replacing the current line:
+<p><font color="#3333FF">&nbsp; 10c\</font>
+<br><font color="#3333FF">&nbsp; new contents for line 10</font>
+<p><b><u>Example:</u></b>&nbsp;&nbsp; option 'l' (as in 'life') causes
+sed to show visually all non-printable characters and wrap long lines using
+'\' at the end.&nbsp; Normal backslashes in the text are escaped, too,
+tabs are replaced with \t and nonprintable characters are printed as escaped
+three-digit octal numbers.
+<p><font color="#3333FF">sed -n -e 'l' &lt;test.txt</font>
+<br>a\tb\tc$
+<br>d\te\tf$
+<p><b><u>Example:</u></b> use 'q' action to end processing. So, yet another
+way of printing the first 10 lines would have been:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#3333FF">sed -e '10q'</font>
+<p><b><u>Example</u></b>:&nbsp; substitutions using regular expressions:&nbsp;
+'s/pattern/replacement/[flags]' - this is the most often used sed command.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#3333FF"> sed -e 's/foo/bar/'</font>
+<br>which would just change the string ``foo'' to ``bar''.
+<p>The format for the substitute command is as follows:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#3333FF"> [<i>address1</i>[
+,<i>address2</i>]]s<i>/pattern/replacement/[flags]</i></font>
+<br>The flags can be any of the following:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 BGCOLOR="#FFCC99" >
+<tr>
+<td><i>n</i></td>
+
+<td>replace nth instance of <i>pattern</i> with <i>replacement</i></td>
+</tr>
+
+<tr>
+<td>g</td>
+
+<td>replace all instances of <i>pattern</i> with <i>replacement</i></td>
+</tr>
+
+<tr>
+<td>p</td>
+
+<td>write pattern space to STDOUT if a succesful substitution takes place</td>
+</tr>
+
+<tr>
+<td>w <i>file</i></td>
+
+<td>Write the pattern space to <i>file</i> if a succesful substitution
+takes place</td>
+</tr>
+</table>
+
+<p>Note: Addresses may be expressed in line numbers or in patterns.&nbsp;
+If in patterns, then the substitution is applied to groups of lines from
+<i>address1</i>
+to the first match of
+<i>address2.&nbsp; </i>If there are several groups
+like that in one file - they all will be affected.
+<p>Note: we can use differen delimiters (for example one of those:&nbsp;
+@%,;:)&nbsp; instead of '/'.
+<p><b><u>Example:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>>cat file
+<br>the black cat was chased by the brown dog
+<br>>sed -e 's/black/white/g' file
+<br>the white cat was chased by the brown dog</td>
+</tr>
+</table>
+
+<p><b><u>Example:</u></b>&nbsp; do substitution only in lines which match
+some pattern.&nbsp; In this example, the substitution is only applied to
+lines matching the regular expression /often/.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>>cat file
+<br>the black cat was chased by the brown dog.
+<br>the black cat was often chased by the brown dog
+<br>>sed -e '/often/s/black/white/g' file
+<br>the black cat was chased by the brown dog.
+<br>the white cat was often chased by the brown dog.</td>
+</tr>
+</table>
+
+<p>Example:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>><font color="#3333FF">cat file</font>
+<br>line 1 (one)
+<br>line 2 (two)
+<br>line 3 (three)
+<br>><font color="#3333FF">sed -e '1,2s/line/LINE/' file</font>
+<br>LINE 1 (one)
+<br>LINE 2 (two)
+<br>line 3 (three)
+<br>><font color="#3333FF">sed -e '/^line.*one/s/line/LINE/' -e '/line/d'
+file</font>
+<br>LINE 1 (one).</td>
+</tr>
+</table>
+
+<p>Example: Find First Word From a List in a File
+<br>&nbsp; This example uses backreferences ( \1, etc.) and subroutines
+( grouping commands with curly braces ) .
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/bin/sh
+<br>X='word1\|word2\|word3|\word4|\word5'
+<br>sed -e "
+<br>/$X/!d
+<br>/$X/{
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; s/\($X\).*/\1/
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; s/.*\($X\)/\1/
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; q
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }" $1</td>
+</tr>
+</table>
+Double quotes used to expand the $X, and the $1 at the end is the argument
+given to the shell script (file name).
+<p>Note: the * operator is greedy.
+<p><b><u>Pattern matching across several lines</u></b> - use N command
+to append the next line to a pattern space (or better use Perl for this
+task).
+<p>Example:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>/Microsoft[ \t]*$/{&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+N&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}
+<br>/Microsoft[ \t\n]*Windows[ \t]*$/{&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+N&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}
+<br>s/Microsoft[ \t\n]*Windows[ \t\n]*95/Linux/g</td>
+</tr>
+</table>
+
+<p>Example: remove html tags (they may span several lines and they can
+be nested)
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>:top
+<br>/&lt;.*>/{
+<br>s/&lt;[^&lt;>]*>//g
+<br>t top
+<br>}
+<br>/&lt;/{
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; N
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b top
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</td>
+</tr>
+</table>
+
+<p>A fine point: why didn't we replace the third line of the script with
+<br>s/&lt;[^>]*>//g
+<br>and removing the t command that follows ? Well consider this sample
+file:
+<br>&lt;&lt;hello>
+<br>hello>
+<br>The desired output would be the empty set, since everything is enclosed
+in angled brackets. However, the output will look like this:
+<br>hello>
+<br>since the first line matches the expression &lt;[^>]*> So the point
+is that we have set up the script to recursively remove the contents of
+the innermost matching pair of delimiters.
+<br>----------------------------------------------
+<br>&nbsp;
+</body>
+</html>

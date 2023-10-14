@@ -1,0 +1,390 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>less_commands</title>
+<!--
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+-->
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> less</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">less</font></b>
+<br><a NAME="intro"></a>
+<br><tt>SUMMARY OF LESS COMMANDS</tt>
+<p><tt>Commands marked with * may be preceded by a number, N.</tt>
+<br><tt>Notes in parentheses indicate the behavior if N is given.</tt>
+<p><tt>&nbsp; h&nbsp; H&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Display this help.</tt>
+<br><tt>&nbsp; q&nbsp; :q&nbsp; Q&nbsp; :Q&nbsp; ZZ&nbsp;&nbsp;&nbsp;&nbsp;
+Exit.</tt>
+<br><tt>---------------------------------------------------------------------------</tt>
+<p><tt>MOVING</tt>
+<p><tt>&nbsp; e&nbsp; ^E&nbsp; j&nbsp; ^N&nbsp; CR&nbsp; *&nbsp; Forward&nbsp;
+one line&nbsp;&nbsp; (or N lines).</tt>
+<br><tt>&nbsp; y&nbsp; ^Y&nbsp; k&nbsp; ^K&nbsp; ^P&nbsp; *&nbsp; Backward
+one line&nbsp;&nbsp; (or N lines).</tt>
+<br><tt>&nbsp; f&nbsp; ^F&nbsp; ^V&nbsp; SPACE&nbsp; *&nbsp; Forward&nbsp;
+one window (or N lines).</tt>
+<br><tt>&nbsp; b&nbsp; ^B&nbsp; ESC-v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp;
+Backward one window (or N lines).</tt>
+<br><tt>&nbsp; z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*&nbsp; Forward&nbsp; one window (and set window to N).</tt>
+<br><tt>&nbsp; w&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*&nbsp; Backward one window (and set window to N).</tt>
+<br><tt>&nbsp; ESC-SPACE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*&nbsp; Forward&nbsp; one window, but don't stop at end-of-file.</tt>
+<br><tt>&nbsp; d&nbsp; ^D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*&nbsp; Forward&nbsp; one half-window (and set half-window to N).</tt>
+<br><tt>&nbsp; u&nbsp; ^U&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*&nbsp; Backward one half-window (and set half-window to N).</tt>
+<br><tt>&nbsp; ESC-(&nbsp; RightArrow *&nbsp; Left&nbsp; 8 character positions
+(or N positions).</tt>
+<br><tt>&nbsp; ESC-)&nbsp; LeftArrow&nbsp; *&nbsp; Right 8 character positions
+(or N positions).</tt>
+<br><tt>&nbsp; F&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Forward forever; like "tail -f".</tt>
+<br><tt>&nbsp; r&nbsp; ^R&nbsp; ^L&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Repaint screen.</tt>
+<br><tt>&nbsp; R&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Repaint screen, discarding buffered input.</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ---------------------------------------------------</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Default "window" is
+the screen height.</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Default "half-window"
+is half of the screen height.</tt>
+<br><tt>---------------------------------------------------------------------------</tt>
+<p><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+SEARCHING</tt>
+<p><tt>&nbsp; /pattern&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*&nbsp; Search forward for (N-th) matching line.</tt>
+<br><tt>&nbsp; ?pattern&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*&nbsp; Search backward for (N-th) matching line.</tt>
+<br><tt>&nbsp; n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*&nbsp; Repeat previous search (for N-th occurrence).</tt>
+<br><tt>&nbsp; N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*&nbsp; Repeat previous search in reverse direction.</tt>
+<br><tt>&nbsp; ESC-n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*&nbsp; Repeat previous search, spanning files.</tt>
+<br><tt>&nbsp; ESC-N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*&nbsp; Repeat previous search, reverse dir. &amp; spanning files.</tt>
+<br><tt>&nbsp; ESC-u&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Undo (toggle) search highlighting.</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ---------------------------------------------------</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Search patterns may
+be modified by one or more of:</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ^N or !&nbsp; Search
+for NON-matching lines.</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ^E or *&nbsp; Search
+multiple files (pass thru END OF FILE).</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ^F or @&nbsp; Start
+search at FIRST file (for /) or last file (for ?).</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ^K&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Highlight matches, but don't move (KEEP position).</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ^R&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Don't use REGULAR EXPRESSIONS.</tt>
+<br><tt>---------------------------------------------------------------------------</tt>
+<p><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+JUMPING</tt>
+<p><tt>&nbsp; g&nbsp; &lt;&nbsp; ESC-&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*&nbsp; Go to first line in file (or line N).</tt>
+<br><tt>&nbsp; G&nbsp; >&nbsp; ESC->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*&nbsp; Go to last line in file (or line N).</tt>
+<br><tt>&nbsp; p&nbsp; %&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*&nbsp; Go to beginning of file (or N percent into file).</tt>
+<br><tt>&nbsp; {&nbsp; (&nbsp; [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*&nbsp; Find close bracket } ) ].</tt>
+<br><tt>&nbsp; }&nbsp; )&nbsp; ]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*&nbsp; Find open bracket { ( [.</tt>
+<br><tt>&nbsp; ESC-^F &lt;c1> &lt;c2>&nbsp; *&nbsp; Find close bracket
+&lt;c2>.</tt>
+<br><tt>&nbsp; ESC-^B &lt;c1> &lt;c2>&nbsp; *&nbsp; Find open bracket &lt;c1></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ---------------------------------------------------</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Each "find close bracket"
+command goes forward to the close bracket</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; matching
+the (N-th) open bracket in the top line.</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Each "find open bracket"
+command goes backward to the open bracket</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; matching
+the (N-th) close bracket in the bottom line.</tt>
+<p><tt>&nbsp; m&lt;letter>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Mark the current position with &lt;letter>.</tt>
+<br><tt>&nbsp; '&lt;letter>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Go to a previously marked position.</tt>
+<br><tt>&nbsp; ''&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Go to the previous position.</tt>
+<br><tt>&nbsp; ^X^X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Same as '.</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ---------------------------------------------------</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A mark is any upper-case
+or lower-case letter.</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Certain marks are predefined:</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+^&nbsp; means&nbsp; beginning of the file</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$&nbsp; means&nbsp; end of the file</tt>
+<br><tt>---------------------------------------------------------------------------</tt>
+<p><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CHANGING FILES</tt>
+<p><tt>&nbsp; :e [file]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Examine a new file.</tt>
+<br><tt>&nbsp; ^X^V&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Same as :e.</tt>
+<br><tt>&nbsp; :n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*&nbsp; Examine the (N-th) next file from the command line.</tt>
+<br><tt>&nbsp; :p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*&nbsp; Examine the (N-th) previous file from the command line.</tt>
+<br><tt>&nbsp; :x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*&nbsp; Examine the first (or N-th) file from the command line.</tt>
+<br><tt>&nbsp; :d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Delete the current file from the command line list.</tt>
+<br><tt>&nbsp; =&nbsp; ^G&nbsp; :f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Print current file name.</tt>
+<br><tt>&nbsp;---------------------------------------------------------------------------</tt>
+<p><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MISCELLANEOUS COMMANDS</tt>
+<p><tt>&nbsp; -&lt;flag>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Toggle a command line option [see OPTIONS below].</tt>
+<br><tt>&nbsp; --&lt;name>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Toggle a command line option, by name.</tt>
+<br><tt>&nbsp; _&lt;flag>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Display the setting of a command line option.</tt>
+<br><tt>&nbsp; __&lt;name>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Display the setting of an option, by name.</tt>
+<br><tt>&nbsp; +cmd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Execute the less cmd each time a new file is examined.</tt>
+<br><tt>&nbsp; !command&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Execute the shell command with $SHELL.</tt>
+<br><tt>&nbsp; |Xcommand&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Pipe file between current pos &amp; mark X to shell command.</tt>
+<br><tt>&nbsp; v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Edit the current file with $VISUAL or $EDITOR.</tt>
+<br><tt>&nbsp; V&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Print version number of "less".</tt>
+<br><tt>---------------------------------------------------------------------------</tt>
+<p><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+OPTIONS</tt>
+<p><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Most options may be changed
+either on the command line,</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or from within less
+by using the - or -- command.</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Options may be given
+in one of two forms: either a single</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; character preceded by
+a -, or a name preceeded by --.</tt>
+<p><tt>&nbsp; -?&nbsp; ........&nbsp; --help</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Display help (from command line).</tt>
+<br><tt>&nbsp; -a&nbsp; ........&nbsp; --search-skip-screen</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Forward search skips current screen.</tt>
+<br><tt>&nbsp; -b [N]&nbsp; ....&nbsp; --buffers=[N]</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Number of buffers.</tt>
+<br><tt>&nbsp; -B&nbsp; ........&nbsp; --auto-buffers</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Don't automatically allocate buffers for pipes.</tt>
+<br><tt>&nbsp; -c&nbsp; -C&nbsp; ....&nbsp; --clear-screen&nbsp; --CLEAR-SCREEN</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Repaint by scrolling/clearing.</tt>
+<br><tt>&nbsp; -d&nbsp; ........&nbsp; --dumb</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Dumb terminal.</tt>
+<br><tt>&nbsp; -D [xn.n]&nbsp; .&nbsp; --color=xn.n</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Set screen colors. (MS-DOS only)</tt>
+<br><tt>&nbsp; -e&nbsp; -E&nbsp; ....&nbsp; --quit-at-eof&nbsp; --QUIT-AT-EOF</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Quit at end of file.</tt>
+<br><tt>&nbsp; -f&nbsp; ........&nbsp; --force</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Force open non-regular files.</tt>
+<br><tt>&nbsp; -g&nbsp; ........&nbsp; --hilite-search</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Highlight only last match for searches.</tt>
+<br><tt>&nbsp; -G&nbsp; ........&nbsp; --HILITE-SEARCH</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Don't highlight any matches for searches.</tt>
+<br><tt>&nbsp; -h [N]&nbsp; ....&nbsp; --max-back-scroll=[N]</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Backward scroll limit.</tt>
+<br><tt>&nbsp; -i&nbsp; ........&nbsp; --ignore-case</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Ignore case in searches.</tt>
+<br><tt>&nbsp; -I&nbsp; ........&nbsp; --IGNORE-CASE</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Ignore case in searches and in search patterns.</tt>
+<br><tt>&nbsp; -j [N]&nbsp; ....&nbsp; --jump-target=[N]</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Screen position of target lines.</tt>
+<br><tt>&nbsp; -k [file]&nbsp; .&nbsp; --lesskey-file=[file]</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Use a lesskey file.</tt>
+<br><tt>&nbsp; -m&nbsp; -M&nbsp; ....&nbsp; --long-prompt&nbsp; --LONG-PROMPT</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Set prompt style.</tt>
+<br><tt>&nbsp; -n&nbsp; -N&nbsp; ....&nbsp; --line-numbers&nbsp; --LINE-NUMBERS</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Use line numbers.</tt>
+<br><tt>&nbsp; -o [file]&nbsp; .&nbsp; --log-file=[file]</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Copy to log file (standard input only).</tt>
+<br><tt>&nbsp; -O [file]&nbsp; .&nbsp; --LOG-FILE=[file]</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Copy to log file (unconditionally overwrite).</tt>
+<br><tt>&nbsp; -p [pattern]&nbsp; --pattern=[pattern]</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Start at pattern (from command line).</tt>
+<br><tt>&nbsp; -P [prompt]&nbsp;&nbsp; --prompt=[prompt]</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Define new prompt.</tt>
+<br><tt>&nbsp; -q&nbsp; -Q&nbsp; ....&nbsp; --quiet&nbsp; --QUIET&nbsp;
+--silent --SILENT</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Quiet the terminal bell.</tt>
+<br><tt>&nbsp; -r&nbsp; ........&nbsp; --raw-control-chars</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Output "raw" control characters.</tt>
+<br><tt>&nbsp; -s&nbsp; ........&nbsp; --squeeze-blank-lines</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Squeeze multiple blank lines.</tt>
+<br><tt>&nbsp; -S&nbsp; ........&nbsp; --chop-long-lines</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Chop long lines.</tt>
+<br><tt>&nbsp; -t [tag]&nbsp; ..&nbsp; --tag=[tag]</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Find a tag.</tt>
+<br><tt>&nbsp; -T [tagsfile] --tag-file=[tagsfile]</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Use an alternate tags file.</tt>
+<br><tt>&nbsp; -u&nbsp; -U&nbsp; ....&nbsp; --underline-special&nbsp; --UNDERLINE-SPECIAL</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Change handling of backspaces.</tt>
+<br><tt>&nbsp; -V&nbsp; ........&nbsp; --version</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Display the version number of "less".</tt>
+<br><tt>&nbsp; -w&nbsp; ........&nbsp; --hilite-unread</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Highlight first new line after forward-screen.</tt>
+<br><tt>&nbsp; -W&nbsp; ........&nbsp; --HILITE-UNREAD</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Highlight first new line after any forward movement.</tt>
+<br><tt>&nbsp; -x [N]&nbsp; ....&nbsp; --tabs=[N]</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Set tab stops.</tt>
+<br><tt>&nbsp; -X&nbsp; ........&nbsp; --no-init</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Don't use termcap init/deinit strings.</tt>
+<br><tt>&nbsp; -y [N]&nbsp; ....&nbsp; --max-forw-scroll=[N]</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Forward scroll limit.</tt>
+<br><tt>&nbsp; -z [N]&nbsp; ....&nbsp; --window=[N]</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Set size of window.</tt>
+<br><tt>&nbsp; -" [c[c]]&nbsp; .&nbsp; --quotes=[c[c]]</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Set shell quote characters.</tt>
+<br><tt>&nbsp; -~&nbsp; ........&nbsp; --tilde</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Don't display tildes after end of file.</tt>
+<br><tt>---------------------------------------------------------------------------</tt>
+<p><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+LINE EDITING</tt>
+<p><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; These keys can be used
+to edit text being entered</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; on the "command line"
+at the bottom of the screen.</tt>
+<p><tt>&nbsp;RightArrow&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ESC-l&nbsp;&nbsp;&nbsp;&nbsp; Move cursor right one character.</tt>
+<br><tt>&nbsp;LeftArrow&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ESC-h&nbsp;&nbsp;&nbsp;&nbsp; Move cursor left one character.</tt>
+<br><tt>&nbsp;CNTL-RightArrow&nbsp; ESC-RightArrow&nbsp; ESC-w&nbsp;&nbsp;&nbsp;&nbsp;
+Move cursor right one word.</tt>
+<br><tt>&nbsp;CNTL-LeftArrow&nbsp;&nbsp; ESC-LeftArrow&nbsp;&nbsp; ESC-b&nbsp;&nbsp;&nbsp;&nbsp;
+Move cursor left one word.</tt>
+<br><tt>&nbsp;HOME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ESC-0&nbsp;&nbsp;&nbsp;&nbsp; Move cursor to start of line.</tt>
+<br><tt>&nbsp;END&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ESC-$&nbsp;&nbsp;&nbsp;&nbsp; Move cursor to end of line.</tt>
+<br><tt>&nbsp;BACKSPACE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Delete char to left of cursor.</tt>
+<br><tt>&nbsp;DELETE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ESC-x&nbsp;&nbsp;&nbsp;&nbsp; Delete char under cursor.</tt>
+<br><tt>&nbsp;CNTL-BACKSPACE&nbsp;&nbsp; ESC-BACKSPACE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Delete word to left of cursor.</tt>
+<br><tt>&nbsp;CNTL-DELETE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ESC-DELETE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ESC-X&nbsp;&nbsp;&nbsp;&nbsp; Delete word under cursor.</tt>
+<br><tt>&nbsp;CNTL-U&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ESC (MS-DOS only)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Delete
+entire line.</tt>
+<br><tt>&nbsp;UpArrow&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ESC-k&nbsp;&nbsp;&nbsp;&nbsp; Retrieve previous command line.</tt>
+<br><tt>&nbsp;DownArrow&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ESC-j&nbsp;&nbsp;&nbsp;&nbsp; Retrieve next command line.</tt>
+<br><tt>&nbsp;TAB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Complete filename &amp; cycle.</tt>
+<br><tt>&nbsp;SHIFT-TAB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ESC-TAB&nbsp;&nbsp; Complete filename &amp; reverse cycle.</tt>
+<br><tt>&nbsp;CNTL-L&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Complete filename, list all.</tt>
+<br>&nbsp;
+</body>
+</html>

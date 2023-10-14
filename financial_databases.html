@@ -1,0 +1,185 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Description" content="Financial Databases">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>Financial Databases</title>
+<!--
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL, Algorithmic trading, Financial Databases"
+
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+<style type="text/css">
+<!--
+.style1 {
+	color: #CC0000;
+	font-weight: bold;
+}
+.code {color: #0000FF}
+.comment {color: #669900}
+-->
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1>
+<b><a href="index.html">home</a>
+> Financial Databases</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Financial Databases</font></b>
+<table width="95%" border="0" cellpadding="3" cellspacing="0">
+  <tr>
+    <td><span class="style1">On This Page</span></td>
+    <td class="style1">Other Pages</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p>
+- <a href="#intro">intro</a><br>
+    - <a href="#security_master">Security Master</a><a href="#misc_resources"></a><br>
+    - <a href="#format_of_storing_prices_rates_amounts">Format of storing prices, rates, amounts</a><br>
+    - xxx<br>
+    - xxx<br>
+    </p>
+    </td>
+    <td valign="top">
+    <p>
+- <a href="#xx">xx</a><br>
+<br>
+    </p>    </td>
+  </tr>
+</table>
+  <p class="sectionheader"><a NAME="intro"></a>Intro ------------------------------</p>
+  <p>When going from company to company as a Wall Street consultant, I have noticed the same types of systems and databases used everywhere.</p>
+  <p>For example, databases:</p>
+  <ul>
+    <li>Reference database (Security  Master).</li>
+    <li>Pricing database - may contain &quot;End Of Day&quot; prices, or with more granularity</li>
+    <li>Transaction Database (or specialized system to store time series data).</li>
+    <li><a href="http://en.wikipedia.org/wiki/Customer_relationship_management">CRM</a> (Customer relationship Management) database (and may be Account Master database).</li>
+    <li>Accounting/reporting database</li>
+  </ul>
+  <p>The databases may be external (provided by some major vendors, like Bloomberg, Reuters, etc.), or internal. If internal, then to maintain it we need feeds of reference data and <a href="http://en.wikipedia.org/wiki/Market_data">market data</a>.</p>
+  <p>&nbsp;</p>
+  <p class="sectionheader"><a name="security_master"></a>Security Master</p>
+  <p>Security Master is a database containing reference information about different types of securities. There are millions of securities of different types. As the columns used to describe stocks or bonds or futures or options are different - there will be many tables, for example:</p>
+  <table border="0" cellpadding="10" cellspacing="0" bgcolor="#FFFFCC">
+    <tr>
+      <td>Equities<br>
+Equity Options<br>
+Depository Receipts<br>
+Indices<br>
+Index Options<br>
+Futures<br>
+Future Options<br>
+Corporate Bonds<br>
+Convertible Bonds<br>
+Corporate Actions<br>
+Cash Dividends<br>
+Splits</td>
+    </tr>
+  </table>
+  <p>Pricing is not a part of a security master - but often it is included in the same database (for example, End-Of-Day prices).</p>
+  <p>Example of a structure of the table for Bonds:</p>
+  <table border="0" cellpadding="10" cellspacing="0" bgcolor="#FFFFCC">
+    <tr>
+      <td>Primary Identifier (e.g. CUSIP) <br>
+Secondary Identifier <br>
+Name <br>
+Description <br>
+Asset Type <br>
+Asset Sub Type <br>
+Asset Category <br>
+Sector <br>
+Sub Sector <br>
+Issuer <br>
+Issue Date <br>
+PAR <br>
+Maturity Date <br>
+First Coupon Date <br>
+Coupon <br>
+Frequency <br>
+Accrual Type </td>
+    </tr>
+  </table>
+  <p>Note: In real life the table will contain much more fields. For example, it will containservice fields, like unique id, dt_created, dt_updated, source, feed, etc. Also,  often the same security may have more than one identifier, and one table may contain securities from different countries using different identifiers. So we end up having many different IDs, for example:</p>
+  <p><strong>CUSIP</strong> - Committee on Uniform Security Identification Procedures <A href="http://www.cusip.com">www.cusip.com</A> - 9-digit code, for US and Canada. <BR>
+    <strong>CINS</strong> - The CUSIP International Numbering System - <BR>
+    <strong>EPIC</strong> -   UK stock market <BR>
+    <strong>ISID</strong> - International Securities Identification   Directory - cross reference <BR>
+    <strong>ISIN</strong> - International Security   Identification Number - for example " IE0000197834 " - <A href="http://www.anna-nna.com/">www.anna-nna.com</A> <BR>
+    <strong>RIC</strong> - Reuters   Identification Code <BR>
+    <strong>SEDOL</strong> - Stock Exchange Daily Official List - for   example " 0-019-783 " - the only true unique international ID assigned to all   foreign stocks by the International Stock Exchange of London.&nbsp;&nbsp; The code is made   up of a 7 digit numeric code. This code is the basis of the ISIN code for UK   securities. </p>
+  <p class="sectionheader"><a name="format_of_storing_prices_rates_amounts"></a>Format of storing  prices, rates, and amounts</p>
+  <p>I've seen may ways of storing numeric financial info in databases.</p>
+  <p>For example, Bloomberg provides values as a combination of  2 numbers:</p>
+  <ul>
+    <li> an integer value (I12 or I20)</li>
+    <li> a fraction indicator (gives number of digits to the right of decimal point)</li>
+  </ul>
+  <p>Most databases I worked with used just one field/column.<br>
+  For example:</p>
+  <ul>
+    <li> decimal(15,8) - may cause rounding problems</li>
+    <li> decimal(25,8)</li>
+    <li>decimal(28,12) for everything</li>
+    <li>float for everything (may return 0.99999999 instead of 1.00, also may lack precision)</li>
+  </ul>
+  <p>If I were to design a new database today - I would go with decimal(28,12) for everything.</p>
+  <p>&nbsp;</p>
+</body>
+</html>

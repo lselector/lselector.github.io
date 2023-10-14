@@ -1,0 +1,2244 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="ProgId" content="Word.Document">
+<meta name="Generator" content="Microsoft Word 9">
+<meta name="Originator" content="Microsoft Word 9">
+<link rel="File-List" href="./07%20files/filelist.xml">
+<xml:namespace ns="urn:schemas-microsoft-com:vml" prefix="v"/>
+<xml:namespace ns="urn:schemas-microsoft-com:office/office" prefix="o"/>
+<xml:namespace ns="urn:schemas-microsoft-com:office/word" prefix="w"/>
+<!--#if VML#><!#if ! VMLRender#>
+
+<object id="VMLRender" classid="CLSID:10072CEC-8CC1-11D1-986E-00A0C955B42E"
+ width="0" height="0">
+</object>
+
+<style>
+v\:* { behavior: url(#VMLRender); }
+o\:* { behavior: url(#VMLRender); }
+w\:* { behavior: url(#VMLRender); }
+.shape { behavior: url(#VMLRender); }
+</style>
+<!#endif#><!#endif#-->
+<title>Глава 7 Классы</title>
+<!--#if gte mso 9#><xml>
+ <o:DocumentProperties>
+  <o:Author>Картузов Александр</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>Картузов Александр</o:LastAuthor>
+  <o:Revision>1</o:Revision>
+  <o:TotalTime>0</o:TotalTime>
+  <o:Created>19981007T11:48:00Z</o:Created>
+  <o:LastSaved>19981007T11:48:00Z</o:LastSaved>
+  <o:Pages>9</o:Pages>
+  <o:Words>2971</o:Words>
+  <o:Characters>16940</o:Characters>
+  <o:Company>ЧКИ МУПК</o:Company>
+  <o:Lines>141</o:Lines>
+  <o:Paragraphs>33</o:Paragraphs>
+  <o:CharactersWithSpaces>20803</o:CharactersWithSpaces>
+  <o:Version>9.1819</o:Version>
+ </o:DocumentProperties>
+</xml><!#endif#--><!--#if gte mso 9#><xml>
+ <w:WordDocument>
+  <w:View>Print</w:View>
+  <w:Compatibility>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+  </w:Compatibility>
+ </w:WordDocument>
+</xml><!#endif#-->
+<style>
+<!--
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal {
+	mso-style-parent: "";
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	font-size: 10.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+}
+h1 {
+	mso-style-next: Normal;
+	margin-top: 12.0pt;
+	margin-right: 0cm;
+	margin-bottom: 3.0pt;
+	margin-left: 0cm;
+	mso-pagination: widow-orphan;
+	page-break-after: avoid;
+	mso-outline-level: 1;
+	font-size: 14.0pt;
+	font-family: Arial;
+	mso-ascii-font-family: Arial;
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: Arial;
+	mso-bidi-font-family: "Times New Roman";
+	mso-font-kerning: 14.0pt;
+	mso-bidi-font-size: 10.0pt;
+	mso-bidi-font-weight: normal;
+}
+h2 {
+	mso-style-next: Normal;
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	text-align: center;
+	mso-pagination: widow-orphan;
+	page-break-after: avoid;
+	mso-outline-level: 2;
+	font-size: 14.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+	mso-bidi-font-size: 10.0pt;
+	mso-bidi-font-weight: normal;
+}
+h3 {
+	mso-style-next: Normal;
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	page-break-after: avoid;
+	mso-outline-level: 3;
+	font-size: 12.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+	mso-bidi-font-size: 10.0pt;
+	mso-bidi-font-weight: normal;
+}
+h4 {
+	mso-style-next: Normal;
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	page-break-after: avoid;
+	mso-outline-level: 4;
+	font-size: 10.0pt;
+	font-family: Arial;
+	mso-ascii-font-family: Arial;
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: Arial;
+	mso-bidi-font-family: "Times New Roman";
+	mso-bidi-font-size: 10.0pt;
+	mso-bidi-font-weight: normal;
+}
+h5 {
+	mso-style-next: Normal;
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	page-break-after: avoid;
+	mso-outline-level: 5;
+	font-size: 10.0pt;
+	font-family: "Courier New";
+	mso-ascii-font-family: "Courier New";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Courier New";
+	mso-bidi-font-family: "Times New Roman";
+	mso-bidi-font-style: italic;
+	font-style: italic;
+}
+p.MsoFooter, li.MsoFooter {
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	tab-stops: center 207.65pt right 415.3pt;
+	font-size: 10.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+}
+p.MsoBodyText, li.MsoBodyText {
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	mso-pagination: widow-orphan;
+	font-size: 10.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+}
+p.MsoBodyText2, li.MsoBodyText2 {
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	mso-pagination: widow-orphan;
+	font-size: 10.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+}
+a:link, span.MsoHyperlink {
+	color: blue;
+	text-decoration: underline;
+	text-underline: single;
+}
+a:visited, span.MsoHyperlinkFollowed {
+	color: purple;
+	text-decoration: underline;
+	text-underline: single;
+}
+strong { font-weight: bold; }
+p.MsoPlainText, li.MsoPlainText {
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	font-size: 10.0pt;
+	font-family: "Courier New";
+	mso-ascii-font-family: "Courier New";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Courier New";
+	mso-bidi-font-family: "Times New Roman";
+}
+p.FR1, li.FR1 {
+	mso-style-name: FR1;
+	mso-style-parent: "";
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 58.0pt;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	mso-pagination: widow-orphan;
+	font-size: 9.0pt;
+	font-family: Arial;
+	mso-ascii-font-family: Arial;
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: Arial;
+	mso-bidi-font-family: "Times New Roman";
+	mso-ansi-language: RU;
+	mso-fareast-language: RU;
+	layout-grid-mode: line;
+}
+p.FR2, li.FR2 {
+	mso-style-name: FR2;
+	mso-style-parent: "";
+	margin-top: 12.0pt;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 18.0pt;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	font-size: 11.0pt;
+	font-family: Arial;
+	mso-ascii-font-family: Arial;
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: Arial;
+	mso-bidi-font-family: "Times New Roman";
+	mso-ansi-language: RU;
+	mso-fareast-language: RU;
+	layout-grid-mode: line;
+	font-weight: bold;
+}
+@page Section1 {
+	size: 595.3pt 841.9pt;
+	margin: 72.0pt 90.0pt 72.0pt 90.0pt;
+	mso-header-margin: 36.0pt;
+	mso-footer-margin: 36.0pt;
+	mso-forms-protection: yes;
+	mso-paper-source: 0;
+}
+div.Section1 { page: Section1; }
+/* List Definitions */
+@list l0 {
+	mso-list-id: 109398536;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l0:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l1 {
+	mso-list-id: 112093460;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l1:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l2 {
+	mso-list-id: 380398631;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l2:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l3 {
+	mso-list-id: 508519629;
+	mso-list-template-id: -1300598436;
+	mso-list-type: simple;
+}
+@list l3:level1 {
+	mso-level-start-at: 0;
+	mso-level-number-format: bullet;
+	mso-level-text: \F0B7;
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+	mso-ascii-font-family: Symbol;
+	mso-hansi-font-family: Symbol;
+}
+@list l4 {
+	mso-list-id: 1101028986;
+	mso-list-template-id: -979304872;
+	mso-list-type: simple;
+}
+@list l4:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l5 {
+	mso-list-id: 1220900427;
+	mso-list-template-id: -979304872;
+	mso-list-type: simple;
+}
+@list l5:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l6 {
+	mso-list-id: 1259289235;
+	mso-list-template-id: 68747265;
+	mso-list-type: simple;
+}
+@list l6:level1 {
+	mso-level-number-format: bullet;
+	mso-level-text: \F0B7;
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+	mso-ascii-font-family: Symbol;
+	mso-hansi-font-family: Symbol;
+}
+@list l7 {
+	mso-list-id: 1434129171;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l7:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l8 {
+	mso-list-id: 1686974182;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l8:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l9 {
+	mso-list-id: 1871871804;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l9:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+ol { margin-bottom: 0cm; }
+ul { margin-bottom: 0cm; }
+-->
+</style>
+</head>
+
+<body link="blue" vlink="purple" style='tab-interval: 36.0pt'>
+
+<div class="Section1">
+
+<p class="MsoNormal"><b><span style='font-size: 20.0pt; font-family: Arial'>Глава
+7 Классы</span></b><b><span style='font-size: 20.0pt; font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>Базовым элементом
+объектно-ориентирован­ного программирования в языке Java являет­ся класс. В
+этой главе <span lang="RU" style='mso-ansi-language: RU'>В</span>ы научитесь
+создавать и расширять свои собственные классы, работать <span lang="RU"
+style='mso-ansi-language: RU'>с </span>экземплярами этих классов и начнете
+использовать мощь объектно-ориентированного подхода. Напомним, что классы в
+Java не обязательно должны содержать метод main. Единственное назначение этого
+метода — указать интерпретатору Java, откуда надо начинать выполнение
+программы. Для того, чтобы создать класс, достаточно иметь исходный файл, в
+котором будет присутствовать ключевое слово class, и вслед за ним — допустимый
+идентификатор и пара фигурных скобок для его тела. &#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class Point {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span lang="RU" style='font-family: Arial;
+mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+lang="RU" style='font-family: Arial; mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><span style='font-family: Arial'>ЗАМЕЧАНИЕ</span><span
+style='font-family: Arial'>&#13;</span></p>
+
+<p class="MsoBodyText"><span style='font-family: Arial'>Имя исходного файла
+Java должно соответствовать имени хранящегося в нем класса. Регистр букв важен
+и в имени класса, и в имени файла.</span><span style='font-family: Arial'>&#13;</span></p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal" style='text-align: justify'>Как вы помните из <a
+href="02.htm"><span style='color: blue'>главы 2</span></a>,
+<i>класс —</i> это шаблон для создания объекта. Класс определяет структуру
+объекта и его <i>методы,</i> образующие функциональный интерфейс. В процессе
+выполнения Java-программы система использует определения классов для создания
+представителей классов. Представители являются реальными <i>объектами.</i>
+Термины «представитель», «экземпляр» и «объект» взаимозаменяемы. Ниже приведена
+общая форма определения класса.&#13;</p>
+
+<p class="MsoNormal" style='text-align: justify'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class имя_класса
+extends имя_суперкласса { type переменная1_объекта:</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>type
+переменная2_объекта:</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>type
+переменнаяN_объекта:</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>type
+имяметода1(список_параметров) { тело метода;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>type
+имяметода2(список_параметров) { тело метода;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>type имя
+методаМ(список_параметров) { тело метода;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal" style='text-align: justify'>Ключевое слово extends
+указывает на то, что <i>«имя_класса» —</i> это подкласс класса <i>«имя_суперкласса».</i>
+Во главе классовой иерархии Java стоит единственный ее встроенный класс —
+Object. Если вы хотите создать подкласс непосредственно этого класса, ключевое
+слово extends и следующее за ним имя суперкласса можно опустить — транслятор
+включит их в ваше определение автома­тически. Примером может служить класс
+Point, приведенный ранее.&#13;</p>
+
+<p class="MsoNormal"><b><span style='font-size: 14.0pt; font-family: Arial'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span></b><b><span
+style='font-size: 14.0pt; font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 14.0pt; font-family: Arial'>Переменные
+представителей (instance variables)</span></b><b><span style='font-size: 14.0pt;
+font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoBodyText">Данные инкапсулируются в класс путем объявления
+переменных между открывающей и закрывающей фигурными скобками, выделяющи­ми в
+определении класса его тело. Эти переменные объявляются точно так же, как
+объявлялись локальные переменные в предыдущих примерах. Единст­венное отличие
+состоит в том, что их надо объявлять вне методов, в том числе вне метода main.
+Ниже приведен фрагмент кода, в котором объявлен класс Point с двумя переменными
+типа int.&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class Point { int х,
+у;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>В качестве типа для переменных
+объектов можно использовать как любой из простых типов, описанных в <a
+href="04.htm"><span style='color: blue'>главе 4</span></a>,
+так и классовые типы. Скоро мы добавим к приведенному выше классу метод main,
+чтобы его можно было запустить из командной строки и создать несколько объек­тов.&#13;</p>
+
+<p class="MsoNormal"><b><span style='font-size: 14.0pt; font-family: Arial'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span></b><b><span
+style='font-size: 14.0pt; font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 14.0pt; font-family: Arial'>Оператор
+new</span></b><b><span style='font-size: 14.0pt; font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoBodyText">Оператор new создает экземпляр указанного класса и
+возвращает ссылку на вновь созданный объект. Ниже приведен пример создания и
+присваивание переменной р экземпляра класса Point.&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point р = new Point();</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoBodyText">Вы можете создать несколько ссылок на один и тот же
+объект. Приведенная ниже программа создает два раз­личных объекта класса Point
+и в каждый из них заносит свои собст­венные значения. Оператор точка
+используется для доступа к переменным и методам объекта. &#13;</p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class TwoPoints {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) { </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point p1 = new
+Point();</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point p2 = new
+Point();</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>p1.x = 10;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>p1.y = 20;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>р2.х = 42;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>р2.у = 99;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;x
+= &quot; + p1.x + &quot; у = &quot; + p1.y);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;x
+=<span style='mso-tab-count: 1'>&nbsp; </span>&quot; + р2.х + &quot; у = &quot;
++ р2.у);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoBodyText">В этом примере снова использовался класс Point, было
+создано два объекта этого класса, и их переменным х и у присвоены различные зна­чения.
+Таким образом мы продемонстрировали, что переменные различ­ных объектов
+независимы на самом деле. Ниже приведен результат, полученный при выполнении
+этой программы.&#13;</p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'>С:\&gt; Java
+TwoPoints </span><span style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>х = 10 у = 20 </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>х = 42 у = 99</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span style='font-family: Arial; font-variant: small-caps'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: Arial; font-variant: small-caps'>&#13;</span></p>
+
+<p class="MsoNormal"><span style='font-family: Arial; font-variant: small-caps'>замечание</span><span
+style='font-family: Arial'>&#13;</span></p>
+
+<p class="MsoNormal"><span style='font-family: Arial'>Поскольку при запуске
+интерпретатора мы указали в командной строке не класс Point, а класс TwoPoints,
+метод main класса Point был полностью проигнорирован. Добавим в класс Point
+метод main и, тем самым, получим закончен­ную программу.</span><span
+style='font-family: Arial'>&#13;</span></p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class Point { int х,
+у;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point p = new Point();</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>р.х = 10;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>p.у = 20;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;x
+=<span style='mso-tab-count: 1'>&nbsp; </span>&quot; + р.х + &quot; у = &quot;
++ p.y);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><span style='font-size: 14.0pt; font-family: Arial'>Объявление
+методов</span></b><b><span style='font-size: 14.0pt; font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoBodyText">Методы - это подпрограммы, присоединенные к кон­кретным
+определениям классов. Они описываются внутри определения класса на том же
+уровне, что и переменные объектов. При объявлении метода задаются тип
+возвращаемого им результата и список параметров. Общая форма объявления метода
+такова:&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>тип имя_метода (список
+формальных параметров) { </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>тело метода:</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoBodyText">Тип результата, который должен возвращать метод может
+быть любым, в том числе и типом void - в тех случаях, когда возвращать
+результат не требуется. Список формальных параметров - это последова­тельность
+пар тип-идентификатор, разделенных запятыми. Если у метода параметры
+отсутствуют, то после имени метода должны стоять пустые круглые скобки.&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class Point { int х,
+у;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>void init(int a, int
+b) { </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>х = а;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>У = b;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 14.0pt; font-family: Arial'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span></b><b><span
+style='font-size: 14.0pt; font-family: Arial'>&#13;</span></b></p>
+
+<h1 style='margin-top: 0cm; margin-right: 0cm; margin-bottom: 0cm;
+margin-left: 0cm; margin-bottom: .0001pt'><span style='mso-font-kerning: 0pt'>Вызов
+метода&#13;</span></h1>
+
+<p class="MsoNormal" style='text-align: justify'>В Java отсутствует возможность
+передачи параметров <i>по ссылке</i> на<span style="mso-spacerun: yes">&nbsp;
+</span>примитивный тип. В Java все пара­метры примитивных типов передаются <i>по
+значению,</i> а это означает, что у метода нет доступа к исходной переменной,
+использованной в качестве параметра. <span lang="RU" style='mso-ansi-language:
+RU'>Заметим, что </span>все объекты передаются по ссылке, можно изменять
+содержимое того объекта, на который ссыла­ется данная переменная.<span lang="RU"
+style='mso-ansi-language: RU'> В <a href="12.htm"><span
+style='color: blue'>главе 12</span></a>
+Вы узнаете, как предать переменные примитивных типов по ссылке (через
+обрамляющие классы-оболочки).&#13;</span></p>
+
+<p class="MsoNormal"><b><span lang="RU" style='font-size: 14.0pt;
+font-family: Arial; mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span></b><b><span
+lang="RU" style='font-size: 14.0pt; font-family: Arial; mso-ansi-language: RU'>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt; font-family: Arial'>Скрытие
+переменных представителей</span></b><b><span style='font-size: 12.0pt;
+font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>В языке Java не допускается
+использование в одной или во вложен­ных областях видимости двух локальных
+переменных с одинаковыми именами. Интересно отметить, что при этом не
+запрещается объявлять формальные параметры методов, чьи имена совпадают с
+именами переменных представителей. Давайте рассмотрим в качестве примера иную
+версию метода init, в которой формальным пара­метрам даны имена х и у, а для
+доступа к одноименным переменным текущего объекта используется ссылка <b><span
+style='mso-bidi-font-weight: bold'>this</span></b>.&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class Point { int х,
+у;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>void init(int х, int
+у) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>this.x = х;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>this.у = у } } </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class TwoPointsInit {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point p1 = new
+Point();</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point p2 = new
+Point();</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>p1.init(10,20);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>p2.init(42,99);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;x
+= &quot; + p1.x + &quot; у = •• + p-l.y);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.printlnC'x
+= &quot; + p2.x + &quot; у = •• + p2.y);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><span style='font-size: 14.0pt; font-family: Arial'>Конструкторы</span></b><b><span
+style='font-size: 14.0pt; font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>Инициализировать все
+переменные класса всякий раз, когда создается его очередной представитель —
+довольно утомительное дело даже в том случае, когда в классе имеются функции,
+подобные методу init. Для этого в Java предусмотрены специальные методы, называемые
+конструкторами. Конструктор — это метод класса, который инициали­зирует новый
+объект после его создания. Имя конструктора всегда <i>со­впадает</i> с именем
+класса, в котором он расположен (<span lang="RU" style='mso-ansi-language: RU'>также,
+как и в </span>C++). <span lang="RU" style='mso-ansi-language: RU'>У к</span>онструктор<span
+lang="RU" style='mso-ansi-language: RU'>ов</span> нет типа возвращаемого
+результата <span lang="RU" style='mso-ansi-language: RU'>-</span> никакого,
+даже void. <span lang="RU" style='mso-ansi-language: RU'>З</span>аменим метод
+init из предыду­щего примера конструктором.&#13;</p>
+
+<p class="MsoNormal"><span lang="RU" style='font-family: "Courier New";
+mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class Point { int х,
+у;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point(int х, int у) { </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>this.x = х;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>this.у = у;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} } </span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class PointCreate {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) { </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point p = new
+Point(10,20);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;x
+= &quot; + p.x + &quot; у = &quot; + p.у);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal" style='text-align: justify'><span lang="RU"
+style='mso-ansi-language: RU'>Программисты на </span>Pascal (Delphi) <span
+lang="RU" style='mso-ansi-language: RU'>для обозначения к</span>онструктор<span
+lang="RU" style='mso-ansi-language: RU'>а используют ключевое слово </span><b><span
+style='mso-bidi-font-weight: bold'>constructor</span></b>.&#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><span style='font-size: 14.0pt; font-family: Arial'>Совмещение
+методов</span></b><b><span style='font-size: 14.0pt; font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>Язык Java позволяет создавать
+несколько методов с одинаковыми именами, но с разными списками параметров.
+Такая техника называется совмещением методов (<b><span style='mso-bidi-font-weight:
+bold'>method overloading</span></b>). В качестве примера при­ведена версия
+класса Point, в которой совмещение методов использовано для определения
+альтернативного конструктора, который инициализиру­ет координаты х и у
+значениями по умолчанию (-1). &#13;</p>
+
+<p class="MsoNormal" style='text-align: justify'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal" style='text-align: justify'><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>class Point { int х, у;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point(int х, int у) { </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>this.x = х;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>this.у = у;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point() { </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>х = -1;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>у = -1;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class PointCreateAlt {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) { </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point p = new Point();</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;x
+= &quot; + p.x + &quot; у = &quot; + p.y);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoBodyText">В этом примере объект класса Point создается не при
+вызове первого конструктора, как это было раньше, а с помощью второго
+конструктора без параметров. Вот результат работы этой программы:&#13;</p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'>С:\&gt; java
+PointCreateAlt</span><span style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>х = -1 у = -1</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span style='font-family: Arial'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: Arial'>&#13;</span></p>
+
+<p class="MsoNormal"><span style='font-family: Arial'>ЗАМЕЧАНИЕ</span><span
+style='font-family: Arial'>&#13;</span></p>
+
+<p class="MsoNormal" style='text-align: justify'><span style='font-family: Arial'>Решение
+о том, какой конструктор нужно вызвать в том или ином случае, принимается в
+соответствии с количеством и типом параметров, указанных в операторе new. </span><span
+lang="RU" style='font-family: Arial; mso-ansi-language: RU'>Н</span><span
+style='font-family: Arial'>едопустимо объявлять в классе методы с одинаковыми
+именами и сигнатурами</span><span lang="RU" style='font-family: Arial;
+mso-ansi-language: RU'>.</span><span style='font-family: Arial'> В сигнатуре
+метода не учитываются имена формальных параметров учитываются лишь их типы и
+количество.</span><span style='font-family: Arial'>&#13;</span></p>
+
+<p class="MsoNormal"><b><span lang="RU" style='font-size: 12.0pt;
+font-family: Arial; mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span></b><b><span
+lang="RU" style='font-size: 12.0pt; font-family: Arial; mso-ansi-language: RU'>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt; font-family: Arial'>this
+в конструкторах</span></b><b><span style='font-size: 12.0pt; font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoBodyText">Очередной вариант класса Point показывает, как,<span
+style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>используя
+this и со­вмещение методов, можно строить одни конструкторы на основе других.&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class Point { int х,
+у;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point(int х, int у) { </span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>this.x = х;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>this.у = у;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} </span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point() {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>this(-1, -1);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'> </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoBodyText">В этом примере второй конструктор для завершения
+инициализации объекта обращается к первому конструктору.&#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoBodyText">Методы, использующие совмещение имен, не обязательно должны
+быть конструкторами. В следующем примере в класс Point добавлены два метода
+distance. Функция distance возвращает расстояние между двумя точками. Одному из
+совмещенных методов в качестве параметров передаются координаты точки х и у,
+другому же эта информация пере­дается в виде параметра-объекта Point. &#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class Point { int х,
+у;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point(int х, int у) { </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>this.x = х;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>this. y = y;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>double distance(int х,
+int у) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int dx = this.x - х;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int dy = this.у - у;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>return Math.sqrt(dx*dx
++ dy*dy);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>double distance(Point
+p) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>return distance(p.x,
+p.y);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} } </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class PointDist {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) { </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point p1 = new
+Point(0, 0);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point p2 = new
+Point(30, 40);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;p1
+= &quot; + pi.x + &quot;, &quot; + p1.y);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;p2
+= &quot; + p2.x + &quot;, &quot; + p2.y);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;p1.distance(p2)
+= &quot; + p1.distance(p2));</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;p1.distance(60,
+80) = &quot; + p1.distance(60, 80));</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal" style='text-align: justify'>Обратите внимание на то как во
+второй фороме метода <b><span style='mso-bidi-font-weight: bold'>distance</span></b>
+для получения результата вызывается его первая форма. Ниже приведен результат
+работы этой программы:&#13;</p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'>С:\&gt; java
+PointDist </span><span style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>р1 = 0, 0 </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>р2 = 30, 40</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>р1.distance(p2) = 50.0</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>p1.distance(60, 80) =
+100.0</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span style='font-size: 11.0pt; font-family: Arial'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-size: 11.0pt; font-family: Arial'>&#13;</span></p>
+
+<p class="MsoNormal"><b><span style='font-size: 14.0pt; font-family: Arial'>Наследование</span></b><b><span
+style='font-size: 14.0pt; font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>Вторым фундаментальным
+свойством объектно-ориентированного под­хода является наследование<span
+lang="RU" style='mso-ansi-language: RU'> (первый – инкапсуляция)</span>.
+Классы-потомки имеют возможность не только создавать свои собственные
+переменные и<span style="mso-spacerun: yes">&nbsp; </span>методы, но и
+наследовать переменные и методы классов-предков. Классы-потомки принято
+называть подклассами. Непосредственного предка данного класса называют его
+суперклассом. В очередном примере показано, как расширить класс Point таким
+образом, чтобы включить в него третью координату z.&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class Point3D extends
+Point { int z;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point3D(int x, int y,
+int z) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>this.x = x;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>this.у = у;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>this.z = z; } </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point3D() {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>this(-1,-1,-1);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoBodyText">В этом примере ключевое слово extends используется для
+того, чтобы сообщить транслятору о намерении создать подкласс класса Point. Как
+видите, в этом классе не понадобилось объявлять переменные х и у, по­скольку
+Point3D унаследовал их от своего суперкласса Point. &#13;</p>
+
+<p class="MsoNormal"><span style='font-family: Arial'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: Arial'>&#13;</span></p>
+
+<p class="MsoNormal"><span style='font-family: Arial'>ВНИМАНИЕ</span><span
+style='font-family: Arial'>&#13;</span></p>
+
+<p class="MsoNormal" style='text-align: justify'><span style='font-family: Arial'>Вероятно,
+программисты, знакомые с C++, очевидно ожидают, что сей­час мы начнем обсуждать
+концепцию множественного наследования. Под множественным наследованием
+понимается создание класса, имеющего несколько суперклассов. Однако в языке
+Java ради обеспечения высокой производительности и большей ясности исходного
+кода множественное наследование реализовано не было. В большинстве случаев,
+когда требуется множественное наследование, проблему можно решить с помощью
+имеющегося в Java механизма интерфейсов, описанного в </span><span
+style='font-family: Arial'><a href="08.htm"><span style='mso-ascii-font-family:
+Arial; mso-hansi-font-family: Arial; color: blue'>следующей<span
+style="mso-spacerun: yes">&nbsp; </span>главе</span></a></span><span
+style='font-family: Arial'>.<span style="mso-spacerun: yes">&nbsp; </span></span><span
+style='font-family: Arial'>&#13;</span></p>
+
+<p class="MsoNormal"><b><span style='font-size: 14.0pt; font-family: Arial'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span></b><b><span
+style='font-size: 14.0pt; font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 14.0pt; font-family: Arial'>super</span></b><b><span
+style='font-size: 14.0pt; font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>В примере с классом Point3D
+частично повторялся код, уже имев­шийся в суперклассе. Вспомните, как во втором
+конструк­торе мы использовали <b><span style='mso-bidi-font-weight: bold'>this</span></b>
+для вызова первого конструктора того же класса. Аналогичным образом ключевое
+слово <b><span style='mso-bidi-font-weight: bold'>super</span></b> позволяет
+обратить­ся непосредственно к конструктору суперкласса (<span lang="RU"
+style='mso-ansi-language: RU'>в </span>Delphi / <span lang="RU"
+style='mso-ansi-language: RU'>С++ для этого используется ключевое слово </span><b><span
+style='mso-bidi-font-weight: bold'>inherited</span></b>). &#13;</p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class Point3D extends
+Point { int z;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point3D(int x, int у,
+int z) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>super(x, y);<span
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp; </span>// Здесь мы вызываем
+конструктор суперкласса this.z=z;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String<span style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>args[])
+{</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point3D p = new
+Point3D(10, 20, 30);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(
+&quot; x = &quot; +<span style='mso-tab-count: 1'>&nbsp; </span>p.x + &quot; y
+= &quot; + p.y + </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>&quot; z = &quot; + p.z);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal">Вот результат работы этой программы:&#13;</p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'>С:\&gt; java
+Point3D </span><span style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>x = 10 у = 20 z = 30</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><span style='font-size: 14.0pt; font-family: Arial'>Замещение
+методов</span></b><b><span style='font-size: 14.0pt; font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>Новый подкласс Point3D класса
+Point наследует реализацию метода distance своего суперкласса (<span lang="RU"
+style='mso-ansi-language: RU'>пример </span>PointDist.java). Проблема
+заключается в том, что в классе Point уже определена версия метода distance(mt
+х, int у), которая возвращает обычное расстояние между точ­ками на плоскости.
+Мы должны <i>заместить</i> (<b><span style='mso-bidi-font-weight: bold'>override</span></b>)
+это определение метода новым, пригодным для случая трехмерного пространства. В
+сле­дующем примере проиллюстрировано и <i>совмещение</i> (overloading), и <i>за­мещение</i>
+(overriding) метода distance.&#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class Point { int х,
+у;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point(int х, int у) {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>this.x = х;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>this.у = у;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>double distance(int х,
+int у) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int dx = this.x - х;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int dy = this.у - у:</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>return Math,sqrt(dx*dx
++ dy*dy);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>double distance(Point
+p) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>return distance(p.х,
+p.y);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class<span
+style='mso-tab-count: 1'>&nbsp; </span>Point3D extends Point { int z;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point3D(int х, int y,
+int z)<span style='mso-tab-count: 1'>&nbsp;&nbsp; </span>{</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>super(x, y);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>this.z = z;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>(</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>double distance(int х,
+int y,<span style='mso-tab-count: 1'>&nbsp; </span>int z) {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int dx = this.x - х;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int dy = this.y - y;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int dz = this.z -<span
+style='mso-tab-count: 1'>&nbsp; </span>z;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>return Math.sqrt(dx*dx
++ dy*dy + dz*dz);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>double
+distance(Point3D other) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>return
+distance(other.х, other.y, other.z);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>double distance(int х,
+int y)<span style='mso-tab-count: 1'>&nbsp; </span>{</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>double dx = (this.x /
+z) - х;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>double dy = (this.у /
+z) - y;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>return Math.sqrt(dx*dx
++ dy*dy);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class Point3DDist {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point3D p1 = new
+Point3D(30, 40, 10);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point3D p2 = new
+Point3D(0, 0, 0);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Point p = new Point(4,
+6);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;p1
+= &quot; + p1.x +<span style='mso-tab-count: 1'>&nbsp; </span>&quot;, &quot; +
+p1.y + &quot;, &quot; + p1.z);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;p2
+= &quot; + p2.x +<span style='mso-tab-count: 1'>&nbsp; </span>&quot;, &quot; +
+p2.y + &quot;, &quot; + p2.z);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;p
+= &quot; + p.x + &quot;, &quot; + p.y);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;p1.distance(p2)
+= &quot; + p1.distance(p2));</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;p1.distance(4,
+6) = &quot; + p1.distance(4, 6));</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;p1.distance(p)
+= &quot; + p1.distance(p));</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} } </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal">Ниже приводится результат работы этой программы:&#13;</p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'>С:\&gt; Java
+Point3DDist</span><span style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>p1 = 30, 40, 10</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>р2 = 0, 0, 0<span
+style="mso-spacerun: yes">&nbsp; </span></span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>р = 4, 6</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>p1.distance(p2) =
+50.9902 </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>p1.distance(4, 6) =
+2.23607 </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>p1.distance(p) =
+2.23607</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal" style='text-align: justify'>Обратите внимание — мы
+получили ожидаемое расстояние между трехмерными точками и между парой двумерных
+точек. <span lang="RU" style='mso-ansi-language: RU'>В примере используется</span>
+механизм<span lang="RU" style='mso-ansi-language: RU'>, который </span>называется
+<i>динамическим назначением методов</i> (<b><span style='mso-bidi-font-weight:
+bold'>dynamic method dispatch</span></b>).&#13;</p>
+
+<p class="MsoNormal"><b><span lang="RU" style='font-size: 14.0pt;
+font-family: Arial; mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span></b><b><span
+lang="RU" style='font-size: 14.0pt; font-family: Arial; mso-ansi-language: RU'>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 14.0pt; font-family: Arial'>Динамическое
+назначение методов</span></b><span style='font-size: 14.0pt; font-family: Arial'>&#13;</span></p>
+
+<p class="MsoNormal" style='text-align: justify'>Давайте в качестве примера
+рассмотрим два класса, у которых имеют простое родство подкласс<span lang="RU"
+style='mso-ansi-language: RU'> </span>/<span lang="RU" style='mso-ansi-language:
+RU'> </span>суперкласс, причем единственный метод суперкласса замещен в
+подклассе.<span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>&#13;</p>
+
+<p class="MsoNormal"><span lang="RU" style='font-family: "Courier New";
+mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class A { void
+callme() {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;Inside
+A's callrne method&quot;);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class В extends A {
+void callme() {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;Inside
+B's callme method&quot;); </span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'> </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class Dispatch {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) { </span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>A a = new B();</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>a.callme();</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'> </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><span lang="RU"
+style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoBodyText">Обратите внимание — внутри метода main мы объявили
+переменную а класса А, а проинициализировали ее ссылкой на объект класса В. В
+следующей строке мы вызвали метод callme. При этом транслятор про­верил наличие
+метода callme у класса А, а исполняющая система, уви­дев, что на самом деле в
+переменной хранится представитель класса В, вызвала не метод класса А, а callme
+класса В. Ниже приведен результат работы этой программы:&#13;</p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'>С:\&gt; Java
+Dispatch </span><span style='font-family: "Courier New"'>&#13;</span></p>
+
+<h5>Inside B's calime method&#13;</h5>
+
+<p class="MsoNormal"><span lang="RU" style='font-family: Arial;
+mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+lang="RU" style='font-family: Arial; mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><span style='font-family: Arial'>СОВЕТ</span><span
+style='font-family: Arial'>&#13;</span></p>
+
+<p class="MsoNormal" style='text-align: justify'><span style='font-family: Arial'>Программистам
+Delphi / C++ следует </span><span lang="RU" style='font-family: Arial;
+mso-ansi-language: RU'>отметить, что все </span><span style='font-family: Arial'>Java
+</span><span lang="RU" style='font-family: Arial; mso-ansi-language: RU'>по
+умолчанию являются</span><i><span style='font-family: Arial'> </span></i><span
+style='font-family: Arial'>виртуальны</span><span lang="RU"
+style='font-family: Arial; mso-ansi-language: RU'>ми</span><span
+style='font-family: Arial'> функци</span><span lang="RU"
+style='font-family: Arial; mso-ansi-language: RU'>ям</span><span
+style='font-family: Arial'>и (</span><span lang="RU" style='font-family: Arial;
+mso-ansi-language: RU'>ключевое слово </span><b><span style='font-family: Arial;
+mso-bidi-font-weight: bold'>virtual</span></b><span style='font-family: Arial'>).</span><span
+style='font-family: Arial'>&#13;</span></p>
+
+<p class="MsoBodyText"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoBodyText">Рассмотренная форма динамического полиморфизма времени
+выполнения представляет собой один из наиболее мощных механизмов
+объектно-ориентированного программирования, позволяющих писать надеж­ный,
+многократно используемый код. <span lang="RU" style='mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal"><b><span style='font-size: 14.0pt; font-family: Arial'>final</span></b><span
+style='font-size: 14.0pt; font-family: Arial'>&#13;</span></p>
+
+<p class="MsoNormal" style='text-align: justify'>Все методы и переменные
+объектов могут быть замещены по умолча­нию. Если же вы хотите объявить, что
+подклассы не имеют права за­мещать какие-либо переменные и методы вашего
+класса, вам нужно объ­явить их как final<span lang="RU"
+style='mso-ansi-language: RU'> (в </span>Delphi / C++ <span lang="RU"
+style='mso-ansi-language: RU'>не писать слово </span><b><span
+style='mso-bidi-font-weight: bold'>virtual</span></b>). <span lang="RU"
+style='mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>final int FILE_NEW =
+1;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>По общепринятому соглашению
+при выборе имен переменных типа final — используются только символы верхнего
+регистра<span lang="RU" style='mso-ansi-language: RU'> (т.е. используются как
+аналог препроцерных констант </span>C++<span lang="RU" style='mso-ansi-language:
+RU'>)</span>. Использование final-методов порой приводит к выигрышу в скорости
+выполнения кода — поскольку они не могут быть замещены, транслятору ничто не
+мешает заменять их вызовы <i>встроенным</i> (in-line) кодом (байт-код <span
+lang="RU" style='mso-ansi-language: RU'>копируется </span>непосредственно в код
+вызывающего метода<span lang="RU" style='mso-ansi-language: RU'>).&#13;</span></p>
+
+<p class="MsoNormal"><span lang="RU" style='font-family: Arial;
+mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+lang="RU" style='font-family: Arial; mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><b><span style='font-size: 14.0pt; font-family: Arial'>finalize</span></b><b><span
+style='font-size: 14.0pt; font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>В Java существует возможность
+объявлять методы с именем <b><span style='mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>finalize</span></b><i>. </i>Методы finalize
+аналогичны деструкторам в C++ (<span lang="RU" style='mso-ansi-language: RU'>ключевой
+знак </span><b><span style='mso-bidi-font-weight: bold'>~)<span lang="RU"
+style='mso-ansi-language: RU'> </span></span></b><span lang="RU"
+style='mso-ansi-language: RU'>и </span>Delphi (<span lang="RU"
+style='mso-ansi-language: RU'>ключевое слово </span><b><span
+style='mso-bidi-font-weight: bold'>destructor</span></b>).<span lang="RU"
+style='mso-ansi-language: RU'> И</span>сполняющая среда Java будет вызывать его
+каждый раз, когда сборщик мусора соберется уничтожить объект этого класса. <span
+lang="RU" style='mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal"><b><span style='font-size: 14.0pt; font-family: Arial'>static</span></b><b><span
+style='font-size: 14.0pt; font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>Иногда требуется создать
+метод, который можно было бы использо­вать вне контекста какого-либо объекта
+его класса. Так же, как в случае main, все, что требуется для создания такого
+метода — указать при его объ­явлении модификатор типа <b><span
+style='mso-bidi-font-weight: bold'>static</span></b>. Статические методы могут
+непосред­ственно обращаться только к другим статическим методам, в них ни в
+каком виде не допускается использование ссылок this и super. Перемен­ные также
+могут иметь тип static, они подобны глобальным перемен­ным, то есть доступны из
+любого места кода. Внутри статических методов недопустимы ссылки на переменные
+представителей. Ниже приведен пример класса, у которого есть статические
+переменные, статический метод и статический блок инициализации.&#13;</p>
+
+<p class="MsoNormal"><span lang="RU" style='font-family: "Courier New";
+mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class Static {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>static int a = 3;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>static int b;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>static void method(int
+x) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;x
+= &quot; + x);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;a
+= &quot; + a);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;b
+= &quot; + b);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} </span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>static {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;static
+block initialized&quot;);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>b = a * 4;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} </span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>method(42);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><span lang="RU"
+style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal">Ниже приведен результат запуска этой программы.&#13;</p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'>С:\&gt; java
+Static static block initialized</span><span style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Х = 42</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>А = 3</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>B = 12</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal" style='text-align: justify'>В <span lang="RU"
+style='mso-ansi-language: RU'>следующем</span> примере мы создали класс со
+статическим методом и несколькими статическими переменными. Второй класс может
+вызывать статический метод по имени и ссылаться на статические переменные
+непосредственно через имя класса.&#13;</p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><span lang="RU"
+style='font-family: "Courier New"; mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class StaticClass {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>static int a = 42;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>static int b = 99;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>static void callme() {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;a
+= &quot; + a);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} } </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class StaticByName {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) { </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>StaticClass.callme();</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;b
+= &quot; + StaticClass.b);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal">А вот и результат запуска этой программы:&#13;</p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'>С:\&gt; Java
+StaticByName </span><span style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>а = 42 b = 99</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><span lang="RU" style='font-size: 14.0pt;
+font-family: Arial; mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span></b><b><span
+lang="RU" style='font-size: 14.0pt; font-family: Arial; mso-ansi-language: RU'>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 14.0pt; font-family: Arial'>abstract</span></b><b><span
+style='font-size: 14.0pt; font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoBodyText">Бывают ситуации, когда нужно определить класс, в котором
+задана структура какой-либо абстракции, но полная реализация всех методов от­сутствует.
+В таких случаях вы можете с помощью модификатора типа ab­stract объявить, что
+некоторые из методов обязательно должны быть заме­щены в подклассах. Любой
+класс, содержащий методы abstract, также должен быть объявлен, как abstract.
+Поскольку у таких классов отсутствует полная реализация, их представи­телей
+нельзя создавать с помощью оператора new. Кроме того, нельзя объ­являть
+абстрактными конструкторы и статические методы. Любой под­класс абстрактного
+класса либо обязан предоставить реализацию всех абстрактных методов своего
+суперкласса, либо сам должен быть объявлен абстрактным. &#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>abstract class A {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>abstract void
+callme();</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>void metoo() {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;Inside
+A's metoo method&quot;);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class B extends A { </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>void callme() {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;Inside
+B's callme method&quot;);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} } </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class Abstract {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) { </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>A a = new B():</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>a.callme():</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>a.metoo():</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoBodyText">В нашем примере для вызова реализованного в под­классе
+класса А метода callme и реализованного в классе А метода metoo используется
+динамическое назначение методов, которое мы обсуждали раньше. &#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'>С:\&gt; Java
+Abstract</span><span style='font-family: "Courier New"'>&#13;</span></p>
+
+<h5>Inside B's callrne method Inside A's metoo method&#13;</h5>
+
+<p class="MsoNormal"><b><span style='font-size: 14.0pt; font-family: Arial'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span></b><b><span
+style='font-size: 14.0pt; font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 14.0pt; font-family: Arial'>Классическое
+заключение</span></b><b><span style='font-size: 14.0pt; font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>В этой главе вы<span
+style='font-variant: small-caps'> </span>научились создавать классы,
+конструкторы и методы. Вы осознали разницу между совмещением (overloading) и
+замещением (overriding) методов. Специальные переменные this и super помогут
+вам сослаться на текущий объект и на его суперкласс. В ходе эволюции языка Java
+стало ясно, что в язык нужно ввести еще несколько организационных механизмов -
+возможности более динамич­ного назначения методов и возможности более тонкого
+управления про­странством имен класса и уровнями доступа к переменным и методам
+объектов. Оба этих механизма - <i>интерфейсы</i> и <i>пакеты,</i> описаны в <a
+href="08.htm"><span style='color: blue'>сле­дующей гла<span lang="RU"
+style='mso-ansi-language: RU'>ве</span></span></a>.&#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+</div>
+
+</body>
+
+</html>

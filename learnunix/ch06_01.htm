@@ -1,0 +1,498 @@
+<HTML
+><HEAD
+><TITLE
+>[Chapter 6] Multitasking </TITLE
+><META
+NAME="DC.title"
+CONTENT="Learning the Unix Operating System"><META
+NAME="DC.creator"
+CONTENT="Jerry Peek, Grace Todino &amp; John Strang"><META
+NAME="DC.publisher"
+CONTENT="O'Reilly &amp; Associates, Inc."><META
+NAME="DC.date"
+CONTENT="1998-08-03T20:53:02Z"><META
+NAME="DC.type"
+CONTENT="Text.Monograph"><META
+NAME="DC.format"
+CONTENT="text/html"
+SCHEME="MIME"><META
+NAME="DC.source"
+CONTENT="1-56592-390-1"
+SCHEME="ISBN"><META
+NAME="DC.language"
+CONTENT="en-US"><META
+NAME="generator"
+CONTENT="Jade 1.1/O'Reilly DocBook 3.0 to HTML 4.0"><LINK
+REV="made"
+HREF="mailto:online-books@oreilly.com"
+TITLE="Online Books Comments"><LINK
+REL="up"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"><LINK
+REL="prev"
+HREF="ch05_02.htm"
+TITLE="5.2 Pipes and Filters"><LINK
+REL="next"
+HREF="ch06_02.htm"
+TITLE="6.2 Checking on a Process"></HEAD
+><BODY
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+><DIV
+CLASS="htmlnav"
+><H1
+><IMG
+SRC="gifs/smbanner.gif"
+ALT="Learning the Unix Operating System"
+USEMAP="#srchmap"
+BORDER="0"></H1
+><MAP
+NAME="srchmap"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,466,69"
+HREF="index.htm"
+ALT="Learning the Unix Operating System"><AREA
+SHAPE="RECT"
+COORDS="467,0,514,18"
+HREF="jobjects/fsearch.htm"
+ALT="Search this book"></MAP
+><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch05_02.htm"
+TITLE="5.2 Pipes and Filters"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 5.2 Pipes and Filters"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><B
+><FONT
+FACE="ARIEL,HELVETICA,HELV,SANSERIF"
+SIZE="-1"
+>Chapter 6</FONT
+></B
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch06_02.htm"
+TITLE="6.2 Checking on a Process"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 6.2 Checking on a Process"
+BORDER="0"></A
+></TD
+></TR
+></TABLE
+>&nbsp;<HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+CLASS="chapter"
+><A
+CLASS="title"
+NAME="LUX-CH-6"
+>6. Multitasking </A
+></H1
+><DIV
+CLASS="htmltoc"
+><P
+><B
+>Contents:</B
+><BR><A
+CLASS="sect1"
+HREF="#LUX-CH-6-SECT-1"
+TITLE="6.1 Running a Command in the Background"
+>Running a Command in the Background</A
+><BR><A
+CLASS="sect1"
+HREF="ch06_02.htm"
+TITLE="6.2 Checking on a Process"
+>Checking on a Process</A
+><BR><A
+CLASS="sect1"
+HREF="ch06_03.htm"
+TITLE="6.3 Cancelling a Process"
+>Cancelling a Process</A
+></P
+><P
+></P
+></DIV
+><P
+CLASS="para"
+>Suppose you are running a command that will take a long time to
+process.  On a single-task system like MS-DOS, you would enter the
+command and wait for the system prompt to return, telling you that you
+could enter a new command.  In UNIX, however, there is a way to enter
+new commands in the &quot;foreground&quot; while one or more commands are still
+running in the &quot;background.&quot;  This is called <EM
+CLASS="emphasis"
+>background
+processing</EM
+>.<A
+CLASS="indexterm"
+NAME="LUX-CH-6-IX-MULTITASKING"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-6-IX-BACKGROUND-PROCESSING"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-6-IX-PROCESSES-BKGR"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-6-IX-COMMANDS-RUNNING-BKGROUND"
+></A
+></P
+><P
+CLASS="para"
+>When you enter a command as a background process, the shell prompt
+reappears immediately so that you can enter a new command.  The
+original command will still be running in the background, but you can
+use the system to do other things during that time.  Depending on your
+system and your shell, you may even be able to log off and let the
+background process run to completion.</P
+><DIV
+CLASS="sect1"
+><H2
+CLASS="sect1"
+><A
+CLASS="title"
+NAME="LUX-CH-6-SECT-1"
+>6.1 Running a Command in the Background</A
+></H2
+><P
+CLASS="para"
+>Running a command as a background process is most often done to free
+a terminal when you know the command will take a long time to
+run.</P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-4164"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4166"
+></A
+>To run a command in the background, add the &quot;&amp;&quot; character at the end
+of the command line before you press the
+<KBD
+CLASS="keycap"
+>[RETURN]</KBD
+>
+key.  The shell will then assign and display a process ID number for
+the command:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>nroff -ms chap1 &gt; chap1.out &amp;</B
+></CODE
+>
+[1] 29890
+%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>(The <B
+CLASS="emphasis.bold"
+>nroff</B
+> program formats documents.
+It's a good example because text formatting usually takes a while,
+so users often do it in the background.
+See your UNIX documentation for details on <B
+CLASS="emphasis.bold"
+>nroff</B
+>.)</P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-4176"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4178"
+></A
+>The process ID (PID) for this command is 29890.  The PID is useful when
+you want to check the status of a background process or, if you need
+to, cancel it.  You don't need to remember the PID, because there are
+UNIX commands (explained in later sections of this chapter) to check
+on the processes you have running.  In some shells, a status line will
+be printed on your screen when the background process finishes.</P
+><P
+CLASS="para"
+>In the C shell, you can put an entire sequence of commands separated by
+semicolons into the background
+by putting an ampersand at the end of the entire command line.
+In other shells, enclose the command sequence in parentheses
+before adding the ampersand:</P
+><BLOCKQUOTE
+CLASS="blockquote"
+><P
+CLASS="para"
+>(<EM
+CLASS="emphasis"
+>command1; command2</EM
+>) &amp;</P
+></BLOCKQUOTE
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-4185"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4187"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4189"
+></A
+>On many systems, the shells have another feature called
+<EM
+CLASS="emphasis"
+>job control</EM
+>.
+You can use the <EM
+CLASS="emphasis"
+>suspend character</EM
+> (usually
+<KBD
+CLASS="keycap"
+>[CTRL-Z]</KBD
+>
+to suspend a program
+running in the foreground.
+The program will pause and you'll get a new shell prompt.
+You can then do anything else you like, including putting the suspended<A
+CLASS="indexterm"
+NAME="AUTOID-4195"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-4197"
+></A
+>
+program into the background using the <B
+CLASS="emphasis.bold"
+>bg</B
+> command.
+The <B
+CLASS="emphasis.bold"
+>fg</B
+> command will bring a background process to the foreground.</P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-4202"
+></A
+>For example, you might start <B
+CLASS="emphasis.bold"
+>sort</B
+> running on a big file, and,
+after a minute, want to send email.
+You stop <B
+CLASS="emphasis.bold"
+>sort</B
+>, then put it in the background.
+The shell prints a message, then another shell prompt.
+You send mail while <B
+CLASS="emphasis.bold"
+>sort</B
+> runs.</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>sort hugefile1 hugefile2 &gt; sorted</B
+></CODE
+>
+	<I
+CLASS="lineannotation"
+>...time goes by...</I
+>
+<KBD
+CLASS="keycap"
+>[CTRL-Z]</KBD
+> Stopped
+% <CODE
+CLASS="userinput"
+><B
+>bg</B
+></CODE
+>
+[1]    sort hugefile1 hugefile2 &gt; sorted &amp;
+% <CODE
+CLASS="userinput"
+><B
+>mail eduardo@nacional.cl</B
+></CODE
+>
+	<EM
+CLASS="emphasis"
+>...</EM
+></PRE
+></BLOCKQUOTE
+></P
+></DIV
+></DIV
+><DIV
+CLASS="htmlnav"
+><P
+></P
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch05_02.htm"
+TITLE="5.2 Pipes and Filters"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 5.2 Pipes and Filters"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="book"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"
+><IMG
+SRC="../gifs/txthome.gif"
+ALT="Learning the Unix Operating System"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch06_02.htm"
+TITLE="6.2 Checking on a Process"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 6.2 Checking on a Process"
+BORDER="0"></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+>5.2 Pipes and Filters</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="index"
+HREF="index/idx_0.htm"
+TITLE="Book Index"
+><IMG
+SRC="../gifs/index.gif"
+ALT="Book Index"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+>6.2 Checking on a Process</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><IMG
+SRC="../gifs/smnavbar.gif"
+USEMAP="#map"
+BORDER="0"
+ALT="The UNIX CD Bookshelf Navigation"><MAP
+NAME="map"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,73,21"
+HREF="../index.htm"
+ALT="The UNIX CD Bookshelf"><AREA
+SHAPE="RECT"
+COORDS="74,0,163,21"
+HREF="../upt/index.htm"
+ALT="UNIX Power Tools"><AREA
+SHAPE="RECT"
+COORDS="164,0,257,21"
+HREF="../unixnut/index.htm"
+ALT="UNIX in a Nutshell"><AREA
+SHAPE="RECT"
+COORDS="258,0,321,21"
+HREF="../vi/index.htm"
+ALT="Learning the vi Editor"><AREA
+SHAPE="RECT"
+COORDS="322,0,378,21"
+HREF="../sedawk/index.htm"
+ALT="sed &amp; awk"><AREA
+SHAPE="RECT"
+COORDS="379,0,438,21"
+HREF="../ksh/index.htm"
+ALT="Learning the Korn Shell"><AREA
+SHAPE="RECT"
+COORDS="439,0,514,21"
+HREF="index.htm"
+ALT="Learning the UNIX Operating System"></MAP
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,2049 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN"> 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<HTML>
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<HEAD>
+
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1"> 
+
+
+
+
+
+
+
+<META NAME="GENERATOR" CONTENT="Visual Page 2.0 for Windows"> 
+
+
+
+
+
+
+
+<TITLE>9.1) Java Lang Math Methods</TITLE>
+
+
+
+
+
+
+
+<STYLE TYPE="text/css">
+
+
+
+
+
+
+
+<!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+</STYLE>
+
+
+
+
+
+
+
+<link rel="stylesheet" href="tutor.css"></HEAD>
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<BODY BGCOLOR="#FFFFFF">
+
+
+
+
+
+
+
+<H2></H2>
+
+
+
+<H2></H2>
+
+
+
+<table width=95% border=0 cellpadding=2 cellspacing=0 style="page-break-before: always">
+
+  <col width=147*> <col width=109*> 
+
+  <tr> 
+
+    <td width=57% height=104> 
+
+      <p><a href= "introj2.htm" ><img src= "btnIndex.jpg"  name="Graphic1" alt="Return to Tutorial Index" align=BOTTOM width=55 height=39 border=0></a><a href= "introj2.htm" ><br>
+
+        <br>
+
+        </a><a href= "index.htm" ><img src= "btnHome.jpg"  name="Graphic2" alt="Back to the home page of this site" align=BOTTOM width=55 height=39 border=0></a> 
+
+      </p>
+
+    </td>
+
+    <td width=43%> 
+
+      <p align=RIGHT><img src= "hat.gif"  name="Graphic3" alt="morterboard" align=BOTTOM width=118 height=113 border=0></p>
+
+    </td>
+
+  </tr>
+
+  <tr> 
+
+    <td width=57% height=11> 
+
+      <h1 align=LEFT>Java2 Certification <br>
+
+        Tutorial </h1>
+
+    </td>
+
+    <td width=43% bgcolor="#ff9900"> 
+
+      <p>&nbsp;</p>
+
+    </td>
+
+  </tr>
+
+</table>
+
+<p> You can discuss this topic with others at <a href= "http://www.jchq.net/discus" >http://www.jchq.net/discus</a><br>
+
+  Read reviews and buy a Java Certification book at <a href= "http://www.jchq.net/bookreviews/jcertbooks.htm" >http://www.jchq.net/bookreviews/jcertbooks.htm</a> 
+
+  <br>
+
+</p>
+
+<hr size=5 noshade>
+
+<H2></H2>
+
+
+
+
+
+
+
+<H1>9) <B><FONT FACE="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">The java.lang
+
+
+
+
+
+
+
+package</FONT></B></H1>
+
+
+
+
+
+
+
+<H3>Objective 1)</H3>
+
+
+
+
+
+
+
+<P><FONT FACE="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">Write code using the
+
+
+
+
+
+
+
+following methods of the java.lang.Math class: abs ceil floor max min random
+
+
+
+
+
+
+
+round sin cos tan sqrt.</FONT></P>
+
+
+
+
+
+
+
+<H3>Note on this objective</H3>
+
+
+
+
+
+
+
+<P>The Math class is final and these methods are static. This means you cannot
+
+
+
+
+
+
+
+subclass Math and create modified versions of these methods. This is probably a
+
+
+
+
+
+
+
+good thing, as it reduces the possibility of ambiguity. You will almost
+
+
+
+
+
+
+
+certainly get questions on these methods and it would be a real pity to get any
+
+
+
+
+
+
+
+of them wrong just because you overlooked them.</P>
+
+
+
+
+
+
+
+<H3>abs</H3>
+
+
+
+
+
+
+
+<P>Due to my shaky Maths background I had no idea what <I>abs</I> might do
+
+
+
+
+
+
+
+until I studied for the Java Programmer Certification Exam. It strips off the
+
+
+
+
+
+
+
+sign of a number and returns it simply as a number. Thus the following will
+
+
+
+
+
+
+
+simply print out 99. If the number is not negative you just get back the same
+
+
+
+
+
+
+
+number.</P>
+
+
+
+
+
+
+
+<PRE>System.out.println(Math.abs(-99));</PRE>
+
+
+
+
+
+
+
+<H3>ceil</H3>
+
+
+
+
+
+
+
+<P>This method returns the next whole number up that is an integer. Thus if you
+
+
+
+
+
+
+
+pass</P>
+
+
+
+
+
+
+
+<PRE>ceil(1.1)</PRE>
+
+
+
+
+
+
+
+<P>it will return a value of 2.0</P>
+
+
+
+
+
+
+
+<P>If you change that to</P>
+
+
+
+
+
+
+
+<PRE>ceil(-1.1) </PRE>
+
+
+
+
+
+
+
+<P>the result will be -1;</P>
+
+
+
+
+
+
+
+<H3>floor</H3>
+
+
+
+
+
+
+
+<P>According to the JDK documentation this method returns</P>
+
+
+
+
+
+
+
+<P><I>the largest (closest to positive infinity) double value that is not
+
+
+
+
+
+
+
+greater than the argument and is equal to a mathematical integer.</I></P>
+
+
+
+
+
+
+
+<P>If that is not entirely clear, here is a short program and its output</P>
+
+
+
+
+
+
+
+<P> </P>
+
+
+
+
+
+
+
+<PRE>public class MyMat{
+public static void main(String[] argv){
+        System.out.println(Math.floor(-99.1));
+        System.out.println(Math.floor(-99));
+        System.out.println(Math.floor(99));
+        System.out.println(Math.floor(-.01));
+        System.out.println(Math.floor(0.1));
+        }
+}</PRE>
+
+
+
+
+
+
+
+<P>And the output is</P>
+
+
+
+
+
+
+
+<PRE>-100.0
+-99.0
+99.0
+-1.0
+0.0</PRE>
+
+
+
+
+
+
+
+<H3>max and min</H3>
+
+
+
+
+
+
+
+<P>Take note of the following two methods as they take two parameters. You may
+
+
+
+
+
+
+
+get questions with faulty examples that pass them only one parameter. As you
+
+
+
+
+
+
+
+might expect these methods are the equivalent of</P>
+
+
+
+
+
+
+
+<P><I>&quot;which is the largest THIS parameter or THIS parameter&quot;</I></P>
+
+
+
+
+
+
+
+<P>The following code illustrates how these methods work</P>
+
+
+
+
+
+
+
+<PRE>public class MaxMin{
+public static void main(String argv[]){
+        System.out.println(Math.max(-1,-10));
+        System.out.println(Math.max(1,2));
+        System.out.println(Math.min(1,1));
+        System.out.println(Math.min(-1,-10));
+        System.out.println(Math.min(1,2));
+        }
+}</PRE>
+
+
+
+
+
+
+
+<P>Here is the output</P>
+
+
+
+
+
+
+
+<PRE>-1
+2
+1
+-10
+1</PRE>
+
+
+
+
+
+
+
+<H3>random</H3>
+
+
+
+
+
+
+
+<P>Returns a random number between 0.0 and 1.0.</P>
+
+
+
+
+
+
+
+<P>Unlike some random number system Java does not appear to offer the ability
+
+
+
+
+
+
+
+to pass a seed number to increase the randomness. This method can be used to
+
+
+
+
+
+
+
+produce a random number between 0 and 100 as follows.</P>
+
+
+
+
+
+
+
+<P>For the purpose of the exam one of the important aspects of this method is
+
+
+
+
+
+
+
+that the value returned is between 0.0 and 1.0. Thus a typical sequence of
+
+
+
+
+
+
+
+output might be</P>
+
+
+
+
+
+
+
+<P><BR>
+
+
+
+
+
+
+
+0.9151633320773057<BR>
+
+
+
+
+
+
+
+0.25135231957619386<BR>
+
+
+
+
+
+
+
+0.10070205341831895</P>
+
+
+
+
+
+
+
+<P>Often a program will want to produce a random number between say 0 and 10 or
+
+
+
+
+
+
+
+0 and 100. The following code combines math code to produce a random number
+
+
+
+
+
+
+
+between 0 and 100.</P>
+
+
+
+
+
+
+
+<PRE>        System.out.println(Math.round(Math.random()*100));</PRE>
+
+
+
+
+
+
+
+<H3>round</H3>
+
+
+
+
+
+
+
+<P>Rounds to the nearest integer. So, if the value is more than half way towards 
+
+
+
+
+
+
+
+  the higher integer, the value is rounded up to the next ingeter. If the number 
+
+
+
+
+
+
+
+  is less than this the next lowest integer is returned. So for example if the 
+
+
+
+
+
+
+
+  input to round is x then :</P>
+
+
+
+
+
+
+
+<P><BR>
+
+
+
+
+
+
+
+2.0 &lt;=x &lt; 2.5. then Math.round(x)==2.0<BR>
+
+
+
+
+
+
+
+2.5 &lt;=x &lt; 3.0 the Math.round(x)==3.0</P>
+
+
+
+
+
+
+
+<P><BR>
+
+
+
+
+
+
+
+Here are some samples with output</P>
+
+
+
+
+
+
+
+<PRE>System.out.println(Math.round(1.01));
+System.out.println(Math.round(-2.1));
+System.out.println(Math.round(20));</PRE>
+
+
+
+
+
+
+
+<PRE>1
+-2
+20</PRE>
+
+
+
+
+
+
+
+<H3>sin cos tan</H3>
+
+
+
+
+
+
+
+<P>These trig methods take a parameter of type <I>double</I> and do just about
+
+
+
+
+
+
+
+what trig functions do in every other language you have used. In my case that
+
+
+
+
+
+
+
+is 12 years of programming and I have never used a trig function. So perhaps
+
+
+
+
+
+
+
+the thing to remember is that the parameter is a double.</P>
+
+
+
+
+
+
+
+<H3>sqrt</H3>
+
+
+
+
+
+
+
+<P>returns a <I>double</I> value that is the square root of the parameter.</P>
+
+
+
+
+
+
+
+<H3>Summary</H3>
+
+
+
+
+
+
+
+<UL>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+Max and Min take two parameters 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+random returns value between 0 and 1 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+abs chops of the sign component 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+round chops off the part after the point but leaves the sign 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+</UL>
+
+
+
+
+
+
+
+<HR ALIGN="CENTER">
+
+
+
+
+
+
+
+<TABLE BORDER="0" WIDTH="100%">
+
+
+
+
+
+
+
+<TR>
+
+
+
+
+
+
+
+<TD WIDTH="9%"> <P><IMG SRC= "Quiz.gif"  WIDTH="99" HEIGHT="101"
+
+
+
+
+
+
+
+ALIGN="BOTTOM" BORDER="0"> </P>
+
+
+
+
+
+
+
+</TD>
+
+
+
+
+
+
+
+<TD WIDTH="91%"> <P>&nbsp; </P>
+
+
+
+
+
+
+
+</TD>
+
+
+
+
+
+
+
+</TR>
+
+
+
+
+
+
+
+</TABLE>
+
+
+
+
+
+
+
+<H1>Questions</H1>
+
+
+
+
+
+
+
+<H4><B>Question 1)</B></H4>
+
+
+
+
+
+
+
+<P>Which of the following will compile correctly?</P>
+
+
+
+
+
+
+
+<P>1) System.out.println(Math.max(x));<BR>
+
+
+
+
+
+
+
+2) System.out.println(Math.random(10,3));<BR>
+
+
+
+
+
+
+
+3) System.out.println(Math.round(20));<BR>
+
+
+
+
+
+
+
+4) System.out.println(Math.sqrt(10));<BR>
+
+
+
+
+
+
+
+</P>
+
+
+
+
+
+
+
+<HR ALIGN="CENTER">
+
+
+
+
+
+
+
+<H4><B>Question 2)</B></H4>
+
+
+
+
+
+
+
+<P></P>
+
+
+
+
+
+
+
+<P>Which of the following will output a random with values only from 1 to 10? 
+
+
+
+
+
+
+
+</P>
+
+
+
+
+
+
+
+<P>1) System.out.println(Math.round(Math.random()* 10));<BR>
+
+
+
+
+
+
+
+2) System.out.println(Math.round(Math.random() % 10));<BR>
+
+
+
+
+
+
+
+3) System.out.println(Math.random() *10);<BR>
+
+
+
+
+
+
+
+4) None of the above</P>
+
+
+
+
+
+
+
+<P> </P>
+
+
+
+
+
+
+
+<HR ALIGN="CENTER">
+
+
+
+
+
+
+
+<H4><B>Question 3)</B></H4>
+
+
+
+
+
+
+
+<P></P>
+
+
+
+
+
+
+
+<P>What will be output by the following line?</P>
+
+
+
+
+
+
+
+<PRE>System.out.println(Math.floor(-2.1));</PRE>
+
+
+
+
+
+
+
+<P>1) -2<BR>
+
+
+
+
+
+
+
+2) 2.0<BR>
+
+
+
+
+
+
+
+3) -3<BR>
+
+
+
+
+
+
+
+4) -3.0</P>
+
+
+
+
+
+
+
+<P> </P>
+
+
+
+
+
+
+
+<HR ALIGN="CENTER">
+
+
+
+
+
+
+
+<H4><B>Question 4)</B></H4>
+
+
+
+
+
+
+
+<P></P>
+
+
+
+
+
+
+
+<P>What will be output by the following line?</P>
+
+
+
+
+
+
+
+<PRE>System.out.println(Math.abs(-2.1));</PRE>
+
+
+
+
+
+
+
+<P>1) -2.0<BR>
+
+
+
+
+
+
+
+2) -2.1<BR>
+
+
+
+
+
+
+
+3) 2.1<BR>
+
+
+
+
+
+
+
+4) 1.0</P>
+
+
+
+
+
+
+
+<P> </P>
+
+
+
+
+
+
+
+<HR ALIGN="CENTER">
+
+
+
+
+
+
+
+<H4><B>Question 5)</B></H4>
+
+
+
+
+
+
+
+<P></P>
+
+
+
+
+
+
+
+<P>What will be output by the following line?</P>
+
+
+
+
+
+
+
+<PRE>System.out.println(Math.ceil(-2.1));</PRE>
+
+
+
+
+
+
+
+<P>1) -2.0<BR>
+
+
+
+
+
+
+
+2) -2.1<BR>
+
+
+
+
+
+
+
+3) 2.1<BR>
+
+
+
+
+
+
+
+3) 1.0</P>
+
+
+
+
+
+
+
+<P> </P>
+
+
+
+
+
+
+
+<HR ALIGN="CENTER">
+
+
+
+
+
+
+
+<H4><B>Question 6)</B></H4>
+
+
+
+
+
+
+
+<P></P>
+
+
+
+
+
+
+
+<P>What will happen when you attempt to compile and run the following code?</P>
+
+
+
+
+
+
+
+<P> </P>
+
+
+
+
+
+
+
+<PRE>class MyCalc extends Math{
+public int random(){
+        double iTemp;
+        iTemp=super();
+        return super.round(iTemp);
+        }
+}
+
+public class MyRand{
+public static void main(String argv[]){
+        MyCalc m = new MyCals();
+        System.out.println(m.random());
+        }
+}        </PRE>
+
+
+
+
+
+
+
+<P>1) Compile time error<BR>
+
+
+
+
+
+
+
+2) Run time error<BR>
+
+
+
+
+
+
+
+3) Output of a random number between 0 and 1<BR>
+
+
+
+
+
+
+
+4) Output of a random number between 1 and 10</P>
+
+
+
+
+
+
+
+<P> </P>
+
+
+
+
+
+
+
+<H1>Answers</H1>
+
+
+
+
+
+
+
+<H4><B>Answer 1)</B></H4>
+
+
+
+
+
+
+
+<P><B> </B><BR>
+
+
+
+
+
+
+
+3) System.out.println(Math.round(20));<BR>
+
+
+
+
+
+
+
+4) System.out.println(Math.sqrt(10));<BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+  Option one is incorrect as max takes two parameters and option two is incorrect 
+
+
+
+  because random takes no parameters.</P>
+
+
+
+
+
+
+
+<H4> <BR>
+
+
+
+
+
+
+
+<B>Answer 2)</B></H4>
+
+
+
+
+
+
+
+<P><B> <BR>
+
+
+
+
+
+
+
+</B>4) None of the above<BR>
+
+
+
+
+
+
+
+The closest is option 1 but the detail to remember is that random will include
+
+
+
+
+
+
+
+the value zero and the question asks for values between 1 and 10. </P>
+
+
+
+
+
+
+
+<H4> <BR>
+
+
+
+
+
+
+
+<B>Answer 3)</B></H4>
+
+
+
+
+
+
+
+<P> <BR>
+
+
+
+
+
+
+
+4) -3.0 </P>
+
+
+
+
+
+
+
+<H4> <BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+<B>Answer 4)</B></H4>
+
+
+
+
+
+
+
+<p> 3) 2.1<BR>
+
+
+
+
+
+
+
+  <BR>
+
+
+
+
+
+
+
+  <B>Answer 5)</B></p>
+
+
+
+
+
+
+
+<P> <BR>
+
+
+
+
+
+
+
+1) -2.0 </P>
+
+
+
+
+
+
+
+<H4> <BR>
+
+
+
+
+
+
+
+<B>Answer 6)</B></H4>
+
+
+
+
+
+
+
+<P><B> <BR>
+
+
+
+
+
+
+
+</B>1) Compile time error<BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+The math class is final and thus cannot be subclassed (MyCalc is defined as
+
+
+
+
+
+
+
+extending Math)<BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+</P>
+
+
+
+
+
+
+
+<HR ALIGN="CENTER">
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+<TABLE BORDER="1" WIDTH="100%">
+
+
+
+
+
+
+
+<CAPTION> 
+
+
+
+
+
+
+
+<INS></caption><P><B>Other sources on this topic</B> </P>
+
+
+
+
+
+
+
+</INS> 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<TR>
+
+
+
+
+
+
+
+<TD WIDTH="100%"> <P><B>Jyothi Krishnan on this topic at <BR>
+
+
+
+
+
+
+
+</B><A
+
+
+
+
+
+
+
+HREF= "http://www.geocities.com/SiliconValley/Network/3693/obj_sec9.html#obj28" >http://www.geocities.com/SiliconValley/Network/3693/obj_sec9.html#obj28</A>
+
+
+
+
+
+
+
+</P>
+
+
+
+
+
+
+
+</TD>
+
+
+
+
+
+
+
+</TR>
+
+
+
+
+
+
+
+</TABLE>
+
+
+
+
+
+
+
+<P></P>
+
+
+
+
+
+
+
+<P>Last updated<BR>
+
+
+
+
+
+
+
+21 Jan 2000<BR>
+
+
+
+
+
+
+
+  copyright &copy; Marcus Green 1999 <br>
+
+
+
+
+
+
+
+  most recent version at www.software.u-net.com</P>
+
+
+
+
+
+
+
+</BODY>
+
+
+
+
+
+
+
+</HTML>
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+

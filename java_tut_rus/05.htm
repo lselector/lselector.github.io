@@ -1,0 +1,3139 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="ProgId" content="Word.Document">
+<meta name="Generator" content="Microsoft Word 9">
+<meta name="Originator" content="Microsoft Word 9">
+<link rel="File-List" href="./05%20files/filelist.xml">
+<xml:namespace ns="urn:schemas-microsoft-com:vml" prefix="v"/>
+<xml:namespace ns="urn:schemas-microsoft-com:office/office" prefix="o"/>
+<xml:namespace ns="urn:schemas-microsoft-com:office/word" prefix="w"/>
+<!--#if VML#><!#if ! VMLRender#>
+
+<object id="VMLRender" classid="CLSID:10072CEC-8CC1-11D1-986E-00A0C955B42E"
+ width="0" height="0">
+</object>
+
+<style>
+v\:* { behavior: url(#VMLRender); }
+o\:* { behavior: url(#VMLRender); }
+w\:* { behavior: url(#VMLRender); }
+.shape { behavior: url(#VMLRender); }
+</style>
+<!#endif#><!#endif#-->
+<title>Глава 5 Операторы</title>
+<!--#if gte mso 9#><xml>
+ <o:DocumentProperties>
+  <o:Author>Картузов Александр</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>Картузов Александр</o:LastAuthor>
+  <o:Revision>1</o:Revision>
+  <o:TotalTime>0</o:TotalTime>
+  <o:Created>19980930T15:04:00Z</o:Created>
+  <o:LastSaved>19980930T15:04:00Z</o:LastSaved>
+  <o:Pages>8</o:Pages>
+  <o:Words>2411</o:Words>
+  <o:Characters>13743</o:Characters>
+  <o:Company>ЧКИ МУПК</o:Company>
+  <o:Lines>114</o:Lines>
+  <o:Paragraphs>27</o:Paragraphs>
+  <o:CharactersWithSpaces>16877</o:CharactersWithSpaces>
+  <o:Version>9.1819</o:Version>
+ </o:DocumentProperties>
+</xml><!#endif#--><!--#if gte mso 9#><xml>
+ <w:WordDocument>
+  <w:View>Print</w:View>
+  <w:Compatibility>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+  </w:Compatibility>
+ </w:WordDocument>
+</xml><!#endif#-->
+<style>
+<!--
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal {
+	mso-style-parent: "";
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	font-size: 10.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+}
+h1 {
+	mso-style-next: Normal;
+	margin-top: 12.0pt;
+	margin-right: 0cm;
+	margin-bottom: 3.0pt;
+	margin-left: 0cm;
+	mso-pagination: widow-orphan;
+	page-break-after: avoid;
+	mso-outline-level: 1;
+	font-size: 14.0pt;
+	font-family: Arial;
+	mso-ascii-font-family: Arial;
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: Arial;
+	mso-bidi-font-family: "Times New Roman";
+	mso-font-kerning: 14.0pt;
+	mso-bidi-font-size: 10.0pt;
+	mso-bidi-font-weight: normal;
+}
+h2 {
+	mso-style-next: Normal;
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	text-align: center;
+	mso-pagination: widow-orphan;
+	page-break-after: avoid;
+	mso-outline-level: 2;
+	font-size: 14.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+	mso-bidi-font-size: 10.0pt;
+	mso-bidi-font-weight: normal;
+}
+h3 {
+	mso-style-next: Normal;
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	page-break-after: avoid;
+	mso-outline-level: 3;
+	font-size: 12.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+	mso-bidi-font-size: 10.0pt;
+	mso-bidi-font-weight: normal;
+}
+h4 {
+	mso-style-next: Normal;
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	page-break-after: avoid;
+	mso-outline-level: 4;
+	font-size: 10.0pt;
+	font-family: Arial;
+	mso-ascii-font-family: Arial;
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: Arial;
+	mso-bidi-font-family: "Times New Roman";
+	mso-bidi-font-size: 10.0pt;
+	mso-bidi-font-weight: normal;
+}
+p.MsoFooter, li.MsoFooter {
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	tab-stops: center 207.65pt right 415.3pt;
+	font-size: 10.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+}
+p.MsoBodyText, li.MsoBodyText {
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	mso-pagination: widow-orphan;
+	font-size: 10.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+}
+a:link, span.MsoHyperlink {
+	color: blue;
+	text-decoration: underline;
+	text-underline: single;
+}
+a:visited, span.MsoHyperlinkFollowed {
+	color: purple;
+	text-decoration: underline;
+	text-underline: single;
+}
+strong { font-weight: bold; }
+p.MsoPlainText, li.MsoPlainText {
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	font-size: 10.0pt;
+	font-family: "Courier New";
+	mso-ascii-font-family: "Courier New";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Courier New";
+	mso-bidi-font-family: "Times New Roman";
+}
+p.FR1, li.FR1 {
+	mso-style-name: FR1;
+	mso-style-parent: "";
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 58.0pt;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	mso-pagination: widow-orphan;
+	font-size: 9.0pt;
+	font-family: Arial;
+	mso-ascii-font-family: Arial;
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: Arial;
+	mso-bidi-font-family: "Times New Roman";
+	mso-ansi-language: RU;
+	mso-fareast-language: RU;
+	layout-grid-mode: line;
+}
+p.FR2, li.FR2 {
+	mso-style-name: FR2;
+	mso-style-parent: "";
+	margin-top: 12.0pt;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 18.0pt;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	font-size: 11.0pt;
+	font-family: Arial;
+	mso-ascii-font-family: Arial;
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: Arial;
+	mso-bidi-font-family: "Times New Roman";
+	mso-ansi-language: RU;
+	mso-fareast-language: RU;
+	layout-grid-mode: line;
+	font-weight: bold;
+}
+@page Section1 {
+	size: 595.3pt 841.9pt;
+	margin: 72.0pt 90.0pt 72.0pt 90.0pt;
+	mso-header-margin: 36.0pt;
+	mso-footer-margin: 36.0pt;
+	mso-forms-protection: yes;
+	mso-paper-source: 0;
+}
+div.Section1 { page: Section1; }
+/* List Definitions */
+@list l0 {
+	mso-list-id: 109398536;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l0:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l1 {
+	mso-list-id: 112093460;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l1:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l2 {
+	mso-list-id: 380398631;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l2:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l3 {
+	mso-list-id: 508519629;
+	mso-list-template-id: -1300598436;
+	mso-list-type: simple;
+}
+@list l3:level1 {
+	mso-level-start-at: 0;
+	mso-level-number-format: bullet;
+	mso-level-text: \F0B7;
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+	mso-ascii-font-family: Symbol;
+	mso-hansi-font-family: Symbol;
+}
+@list l4 {
+	mso-list-id: 1101028986;
+	mso-list-template-id: -979304872;
+	mso-list-type: simple;
+}
+@list l4:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l5 {
+	mso-list-id: 1220900427;
+	mso-list-template-id: -979304872;
+	mso-list-type: simple;
+}
+@list l5:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l6 {
+	mso-list-id: 1259289235;
+	mso-list-template-id: 68747265;
+	mso-list-type: simple;
+}
+@list l6:level1 {
+	mso-level-number-format: bullet;
+	mso-level-text: \F0B7;
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+	mso-ascii-font-family: Symbol;
+	mso-hansi-font-family: Symbol;
+}
+@list l7 {
+	mso-list-id: 1434129171;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l7:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l8 {
+	mso-list-id: 1686974182;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l8:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l9 {
+	mso-list-id: 1871871804;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l9:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+ol { margin-bottom: 0cm; }
+ul { margin-bottom: 0cm; }
+-->
+</style>
+</head>
+
+<body link="blue" vlink="purple" style='tab-interval: 36.0pt'>
+
+<div class="Section1">
+
+<p class="MsoNormal"><b><span style='font-size: 20.0pt; font-family: Arial'>Глава
+5 Операторы</span></b><b><span style='font-size: 20.0pt; font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>Операторы в языке Java — это
+специальные символы, которые сообщают транслятору о том, что вы хотите
+выполнить операцию с не­которыми операндами. Некоторые операторы требуют одного
+операн­да, их называют <i>унарными.</i> Одни операторы ставятся перед
+операндами и называются <i>пре­фиксными,</i> другие — после, их называют <i>постфиксными</i>
+операторами. Большинство же операторов ставят между двумя операндами, такие
+операторы называют­ся <i>инфиксными</i> бинарными операторами. Существует
+тернарный опе­ратор, работающий с тремя операндами. &#13;</p>
+
+<p class="MsoNormal" style='text-align: justify'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal" style='text-align: justify'>В Java имеется 44 встроенных
+оператора. Их можно разбить на 4 класса - <i>арифметические, битовые, операторы
+сравнения </i><span style="mso-spacerun: yes">&nbsp;</span>и <i>логические.&#13;</i></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt; font-family: Arial'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span></b><b><span
+style='font-size: 12.0pt; font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt; font-family: Arial'>Арифметические
+операторы</span></b><span style='font-size: 12.0pt'>&#13;</span></p>
+
+<p class="MsoNormal" style='text-align: justify'>Арифметические операторы используются
+для вычислений так же как в алгебре (см. таблицу со сводкой арифметических
+операторов ниже). Допустимые операнды должны иметь числовые типы. Например,
+исполь­зовать эти операторы для работы с логическими типами нельзя, а для
+работы с типом char можно, поскольку в Java тип char — это подмно­жество типа
+int.&#13;</p>
+
+<table border="1" cellspacing="0" cellpadding="0" style='margin-left: 2.0pt;
+ border-collapse: collapse; mso-table-layout-alt: fixed; border: none;
+ mso-border-alt: solid windowtext .5pt; mso-padding-alt: 0cm 2.0pt 0cm 2.0pt'>
+ <tr>
+  <td valign="top" style='width: 58.0pt; border: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">Оператор&#13;</p>
+  </td>
+  <td valign="top" style='width: 132.0pt; border: solid windowtext .5pt;
+  border-left: none; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">Результат&#13;</p>
+  </td>
+  <td valign="top" style='width: 60.0pt; border: solid windowtext .5pt;
+  border-left: none; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">Оператор&#13;</p>
+  </td>
+  <td valign="top" style='width: 120.0pt; border: solid windowtext .5pt;
+  border-left: none; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">Результат&#13;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top" style='width: 58.0pt; border: solid windowtext .5pt;
+  border-top: none; mso-border-top-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">+&#13;</p>
+  </td>
+  <td valign="top" style='width: 132.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">Сложение&#13;</p>
+  </td>
+  <td valign="top" style='width: 60.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">+ =&#13;</p>
+  </td>
+  <td valign="top" style='width: 120.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">сложение с присваиванием&#13;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top" style='width: 58.0pt; border: solid windowtext .5pt;
+  border-top: none; mso-border-top-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">-&#13;</p>
+  </td>
+  <td valign="top" style='width: 132.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">вычитание (также унарный минус)&#13;</p>
+  </td>
+  <td valign="top" style='width: 60.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">-=&#13;</p>
+  </td>
+  <td valign="top" style='width: 120.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">вычитание с присваиванием&#13;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top" style='width: 58.0pt; border: solid windowtext .5pt;
+  border-top: none; mso-border-top-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">*&#13;</p>
+  </td>
+  <td valign="top" style='width: 132.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">Умножение&#13;</p>
+  </td>
+  <td valign="top" style='width: 60.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">* =&#13;</p>
+  </td>
+  <td valign="top" style='width: 120.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">умножение с присваиванием&#13;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top" style='width: 58.0pt; border: solid windowtext .5pt;
+  border-top: none; mso-border-top-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">/&#13;</p>
+  </td>
+  <td valign="top" style='width: 132.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">Деление&#13;</p>
+  </td>
+  <td valign="top" style='width: 60.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">/=&#13;</p>
+  </td>
+  <td valign="top" style='width: 120.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">деление с присваиванием&#13;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top" style='width: 58.0pt; border: solid windowtext .5pt;
+  border-top: none; mso-border-top-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal"><sup>%</sup>&#13;</p>
+  </td>
+  <td valign="top" style='width: 132.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">деление по модулю&#13;</p>
+  </td>
+  <td valign="top" style='width: 60.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">%=&#13;</p>
+  </td>
+  <td valign="top" style='width: 120.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">деление по модулю с присваиванием&#13;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top" style='width: 58.0pt; border: solid windowtext .5pt;
+  border-top: none; mso-border-top-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">++&#13;</p>
+  </td>
+  <td valign="top" style='width: 132.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">Инкремент&#13;</p>
+  </td>
+  <td valign="top" style='width: 60.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">--&#13;</p>
+  </td>
+  <td valign="top" style='width: 120.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">декремент&#13;</p>
+  </td>
+ </tr>
+</table>
+
+<p class="MsoNormal"><b><span style='font-family: Arial'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span></b><b><span
+style='font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-family: Arial'>Четыре арифметических
+действия</span></b>&#13;</p>
+
+<p class="MsoBodyText">Ниже, в качестве примера, приведена простая программа,
+демонстрирующая использование операторов. Обратите внимание на то, что
+операторы работают как с целыми литерала­ми, так и с переменными.&#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class BasicMath<span
+style="mso-spacerun: yes">&nbsp; </span>{ public static void int a = 1 + 1;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int<span
+style="mso-spacerun: yes">&nbsp; </span>b = a *<span style="mso-spacerun:
+yes">&nbsp; </span>3;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>main(String args[]) {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int c = b / 4;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int d = b - а;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int e = -d;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;a
+=<span style='mso-tab-count: 1'>&nbsp; </span>&quot; +<span
+style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp; </span>а);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;b
+=<span style='mso-tab-count: 1'>&nbsp; </span>&quot; +<span
+style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp; </span>b);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;c
+=<span style='mso-tab-count: 1'>&nbsp; </span>&quot; +<span
+style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp; </span>c);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;d
+=<span style='mso-tab-count: 1'>&nbsp; </span>&quot; +<span
+style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp; </span>d);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;e
+=<span style='mso-tab-count: 1'>&nbsp; </span>&quot; +<span
+style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp; </span>e);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal">Исполнив эту программу, вы должны получить приведенный
+ниже ре­зультат:&#13;</p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'>C:</span><span
+style='font-family: "Courier New"'> </span><span style='font-family: "Courier New"'>\&gt;
+java BasicMath </span><span style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>a = 2</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>b = 6</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>c = 1</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>d = 4</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>e = -4</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><span style='font-family: Arial'>Оператор деления по
+модулю</span></b>&#13;</p>
+
+<p class="MsoBodyText">Оператор деления по модулю, или оператор mod,
+обозначается сим­волом %. Этот оператор возвращает остаток от деления первого
+операнда на второй. В отличие от C++, функция mod в Java работает не только с
+целыми, но и с вещественными типами. Приведенная ниже программа иллюстрирует
+работу этого оператора.&#13;</p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class Modulus {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'> </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>(String args</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'> </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>[]) {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int x = 42; </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>double у = 42.3;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;x
+mod 10 = &quot; + x % 10);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;y
+mod 10 = &quot; + у % 10);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal">Выполнив эту программу, вы получите следующий результат:&#13;</p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><span style='font-family: "Courier New"'>С:\&gt;
+Modulus </span><span style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>x mod 10 = 2 </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>y mod 10 = 2.3</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><span style='font-family: Arial'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span></b><b><span
+style='font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-family: Arial'>Арифметические
+операторы присваивания</span></b>&#13;</p>
+
+<p class="MsoBodyText">Для каждого из арифметических операторов есть форма, в
+которой одновременно с заданной операцией выполняется присваивание. Ниже
+приведен пример, который иллюстрирует использование подобной разновидности
+операторов.&#13;</p>
+
+<p class="MsoNormal" style='text-align: justify'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class OpEquals {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int a = 1;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int b = 2;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int с = 3;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>a += 5;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>b *= 4;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>c += a * b;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>с %= 6;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;a
+= &quot; + a);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;b
+= &quot; + b);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;c
+= &quot; + c);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal">А вот и результат, полученный при запуске этой программы:&#13;</p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><span style='font-family: "Courier New"'>С:&gt;
+Java OpEquals </span><span style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>а = 6 </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>b = 8 </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>с = 3</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><span style='font-family: Arial'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span></b><b><span
+style='font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-family: Arial'>Инкремент и декремент</span></b><span
+style='font-family: Arial'>&#13;</span></p>
+
+<p class="MsoBodyText">В С существует 2 оператора, называемых операторами
+инкремента и декремента (++ и --) и являющихся сокращенным вариантом записи для
+сложения или вычитания из операнда единицы. Эти операторы уникальны в том
+плане, что могут использоваться как в префиксной, так и в постфиксной форме.
+Следующий при­мер иллюстрирует использование операторов инкремента и декрем<span
+lang="RU" style='mso-ansi-language: RU'>е</span>нта.&#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class IncDec {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) { </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int a = 1;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int b = 2;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int c = ++b;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int d = a++;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>c++;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;a
+= &quot; + a);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;b
+= &quot; + b);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;c
+= &quot; + c);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;d
+= &quot; + d);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal">Результат выполнения данной программы будет таким:&#13;</p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'>C:\ java IncDec</span><span
+style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>a = 2</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>b = 3</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>c = 4</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>d = 1</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: "Courier New"'>&#13;</span></p>
+
+<h3><span style='font-family: Arial'>Целочисленные битовые операторы</span><span
+style='font-family: Arial'>&#13;</span></h3>
+
+<p class="MsoBodyText">Для целых числовых типов данных — long, int, short, char
+и byte, определен дополнительный набор операторов, с помощью которых можно
+проверять и модифицировать состояние отдельных битов соответствую­щих значений.
+В таблице приведена сводка таких операторов. Операторы битовой арифметики
+работают с каждым битом как с самостоятельной величиной.&#13;</p>
+
+<table border="1" cellspacing="0" cellpadding="0" style='margin-left: 2.0pt;
+ border-collapse: collapse; mso-table-layout-alt: fixed; border: none;
+ mso-border-alt: solid windowtext .5pt; mso-padding-alt: 0cm 2.0pt 0cm 2.0pt'>
+ <tr>
+  <td valign="top" style='width: 57.0pt; border: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">Оператор&#13;</p>
+  </td>
+  <td valign="top" style='width: 120.0pt; border: solid windowtext .5pt;
+  border-left: none; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">Результат&#13;</p>
+  </td>
+  <td valign="top" style='width: 63.0pt; border: solid windowtext .5pt;
+  border-left: none; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">Оператор&#13;</p>
+  </td>
+  <td valign="top" style='width: 123.0pt; border: solid windowtext .5pt;
+  border-left: none; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">Результат&#13;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top" style='width: 57.0pt; border: solid windowtext .5pt;
+  border-top: none; mso-border-top-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">~&#13;</p>
+  </td>
+  <td valign="top" style='width: 120.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">побитовое унарное отрицание (NOT)&#13;</p>
+  </td>
+  <td valign="top" style='width: 63.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+  <td valign="top" style='width: 123.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top" style='width: 57.0pt; border: solid windowtext .5pt;
+  border-top: none; mso-border-top-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">&amp;&#13;</p>
+  </td>
+  <td valign="top" style='width: 120.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">побитовое И (AND)&#13;</p>
+  </td>
+  <td valign="top" style='width: 63.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">&amp;=&#13;</p>
+  </td>
+  <td valign="top" style='width: 123.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">побитовое И (AND) с присваиванием&#13;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top" style='width: 57.0pt; border: solid windowtext .5pt;
+  border-top: none; mso-border-top-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">|&#13;</p>
+  </td>
+  <td valign="top" style='width: 120.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">побитовое ИЛИ (OR)&#13;</p>
+  </td>
+  <td valign="top" style='width: 63.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">|=&#13;</p>
+  </td>
+  <td valign="top" style='width: 123.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">побитовое ИЛИ (OR) с присваиванием&#13;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top" style='width: 57.0pt; border: solid windowtext .5pt;
+  border-top: none; mso-border-top-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">^&#13;</p>
+  </td>
+  <td valign="top" style='width: 120.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">побитовое исключающее ИЛИ (XOR)&#13;</p>
+  </td>
+  <td valign="top" style='width: 63.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">^=&#13;</p>
+  </td>
+  <td valign="top" style='width: 123.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">побитовое исключающее ИЛИ (XOR) с присваиванием&#13;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top" style='width: 57.0pt; border: solid windowtext .5pt;
+  border-top: none; mso-border-top-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">&gt;&gt;&#13;</p>
+  </td>
+  <td valign="top" style='width: 120.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">сдвиг вправо&#13;</p>
+  </td>
+  <td valign="top" style='width: 63.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">&gt;&gt; =&#13;</p>
+  </td>
+  <td valign="top" style='width: 123.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">сдвиг вправо с присваиванием&#13;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top" style='width: 57.0pt; border: solid windowtext .5pt;
+  border-top: none; mso-border-top-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">&gt;&gt;&gt;&#13;</p>
+  </td>
+  <td valign="top" style='width: 120.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">сдвиг вправо с заполнением нулями&#13;</p>
+  </td>
+  <td valign="top" style='width: 63.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">&gt;&gt;&gt;=&#13;</p>
+  </td>
+  <td valign="top" style='width: 123.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">сдвиг вправо с заполнением нулями с присваиванием&#13;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top" style='width: 57.0pt; border: solid windowtext .5pt;
+  border-top: none; mso-border-top-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">&lt;&lt;&#13;</p>
+  </td>
+  <td valign="top" style='width: 120.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">сдвиг влево&#13;</p>
+  </td>
+  <td valign="top" style='width: 63.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">&lt;&lt;=&#13;</p>
+  </td>
+  <td valign="top" style='width: 123.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">сдвиг влево с присваиванием&#13;</p>
+  </td>
+ </tr>
+</table>
+
+<p class="MsoNormal"><span style='font-family: Arial'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: Arial'>&#13;</span></p>
+
+<p class="MsoNormal"><b><span style='font-family: Arial'>Пример программы,
+манипулирующей с битами</span></b>&#13;</p>
+
+<p class="MsoBodyText">В таблице, приведенной ниже, показано, как каждый из
+операторов битовой арифметики воздействует на возможные комбинации битов своих
+операндов. Приведенный после таблицы пример иллюстрирует ис­пользование этих
+операторов в программе на языке Java.&#13;</p>
+
+<table border="0" cellspacing="0" cellpadding="0" style='margin-left: 2.0pt;
+ border-collapse: collapse; mso-table-layout-alt: fixed; mso-padding-alt: 0cm 2.0pt 0cm 2.0pt'>
+ <tr height="23" style='height: 17.0pt; mso-height-rule: exactly'>
+  <td valign="top" style='width: 63.0pt; border: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 17.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">А&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border: solid windowtext .75pt;
+  border-left: none; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 17.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">В&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border: solid windowtext .75pt;
+  border-left: none; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 17.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">OR&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border: solid windowtext .75pt;
+  border-left: none; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 17.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">AND&#13;</p>
+  </td>
+  <td valign="top" style='width: 60.0pt; border: solid windowtext .75pt;
+  border-left: none; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 17.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">XOR&#13;</p>
+  </td>
+  <td valign="top" style='width: 64.0pt; border: solid windowtext .75pt;
+  border-left: none; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 17.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">NOT A&#13;</p>
+  </td>
+ </tr>
+ <tr height="19" style='height: 14.0pt; mso-height-rule: exactly'>
+  <td valign="top" style='width: 63.0pt; border: solid windowtext .75pt;
+  border-top: none; mso-border-top-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 14.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">0&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 14.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">0&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 14.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">0&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 14.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">0&#13;</p>
+  </td>
+  <td valign="top" style='width: 60.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 14.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">0&#13;</p>
+  </td>
+  <td valign="top" style='width: 64.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 14.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">1&#13;</p>
+  </td>
+ </tr>
+ <tr height="19" style='height: 14.0pt; mso-height-rule: exactly'>
+  <td valign="top" style='width: 63.0pt; border: solid windowtext .75pt;
+  border-top: none; mso-border-top-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 14.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">1&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 14.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">0&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 14.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">1&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 14.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">0&#13;</p>
+  </td>
+  <td valign="top" style='width: 60.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 14.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">1&#13;</p>
+  </td>
+  <td valign="top" style='width: 64.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 14.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">0&#13;</p>
+  </td>
+ </tr>
+ <tr height="19" style='height: 14.0pt; mso-height-rule: exactly'>
+  <td valign="top" style='width: 63.0pt; border: solid windowtext .75pt;
+  border-top: none; mso-border-top-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 14.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">0&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 14.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">1&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 14.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">1&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 14.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">0&#13;</p>
+  </td>
+  <td valign="top" style='width: 60.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 14.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">1&#13;</p>
+  </td>
+  <td valign="top" style='width: 64.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 14.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">1&#13;</p>
+  </td>
+ </tr>
+ <tr height="21" style='height: 16.0pt; mso-height-rule: exactly'>
+  <td valign="top" style='width: 63.0pt; border: solid windowtext .75pt;
+  border-top: none; mso-border-top-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 16.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">1&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 16.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">1&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 16.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">1&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 16.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">1&#13;</p>
+  </td>
+  <td valign="top" style='width: 60.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 16.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">0&#13;</p>
+  </td>
+  <td valign="top" style='width: 64.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 16.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">0&#13;</p>
+  </td>
+ </tr>
+</table>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><span style='font-family: "Courier New"'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class Bitlogic {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args []) { </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>String binary[] = {
+&quot;OOOO&quot;, &quot;0001&quot;, &quot;0010&quot;, &quot;0011&quot;,
+&quot;0100&quot;, &quot;0101&quot;, &quot;0110&quot;, &quot;0111&quot;,
+&quot;1000&quot;, &quot;1001&quot;,<span style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&quot;1010&quot;,
+&quot;1011&quot;, &quot;1100&quot;, &quot;1101&quot;,</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&quot;1110&quot;,
+&quot;1111&quot; };</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int a = 3;<span
+style='mso-tab-count: 1'>&nbsp;&nbsp; </span>//<span style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp;&nbsp; </span>0+2+1<span
+style='mso-tab-count: 1'>&nbsp; </span>или двоичное 0011</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int b = 6;<span
+style='mso-tab-count: 1'>&nbsp;&nbsp; </span>//<span style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp;&nbsp; </span>4+2+0<span
+style='mso-tab-count: 1'>&nbsp; </span>или двоичное 0110</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int c = a | b;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int d = a &amp; b;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int e = a ^ b;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int f = (~a &amp; b) |
+(a &amp; ~b);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int g = ~a &amp; 0x0f;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;
+a = &quot; + binary[a]);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;
+b = &quot; + binary[b]);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;
+ab = &quot; + binary[c]);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;
+a&amp;b = &quot; + binary[d]);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;
+a^b = &quot; + binary[e]);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.рrintln(&quot;~a&amp;b|а^~Ь
+= &quot; + binary[f]);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;
+~a </span></i></b><b><i><sup><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>=</span></sup></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'> &quot; + binary[g]);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal">Ниже при­веден результат, полученный при выполнении этой
+программы:&#13;</p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'>С:</span><span
+style='font-family: "Courier New"'> </span><span style='font-family: "Courier New"'>\&gt;
+Java BitLogic </span><span style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>a = 0011 </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>b = 0110 </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>a | b = 0111 </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>a &amp; b = 0010 </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>a ^ b = 0101 </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>~a &amp; b | a &amp;
+~b = 0101 </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>~а = 1100</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: "Courier New"'>&#13;</span></p>
+
+<h4>Сдвиг<span lang="RU" style='mso-ansi-language: RU'>и</span> влево<span
+lang="RU" style='mso-ansi-language: RU'> и вправо&#13;</span></h4>
+
+<p class="MsoBodyText">Оператор &lt;&lt; выполняет сдвиг влево всех битов
+своего левого операнда на число позиций, заданное правым операндом. При этом
+часть битов в левых разрядах выходит за границы и теряется, а соответствующие
+правые позиции заполняются нулями. В предыдущей главе уже говорилось об
+автоматическом повышении типа всего выражения до int в том слу­чае если в выражении
+присутствуют операнды типа int или целых типов меньшего размера. Если же хотя
+бы один из операндов в выражении имеет тип long, то и тип всего выражения
+повышается до long. <span style='font-family: Arial'>&#13;</span></p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal" style='text-align: justify'>Оператор &gt;&gt; означает в
+языке Java сдвиг вправо. Он перемещает все биты своего левого операнда вправо
+на число позиций, заданное правым операндом.<span lang="RU"
+style='mso-ansi-language: RU'> </span>Когда биты левого операнда выдвигаются за
+самую правую позицию слова, они теряются. При сдвиге вправо освобождающиеся
+старшие (левые) разряды сдви­гаемого числа заполняются предыдущим содержимым
+знакового разряда. Такое поведение называют расширением знакового разряда. <span
+lang="RU" style='mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal" style='text-align: justify'><span lang="RU"
+style='mso-ansi-language: RU'>В</span> следующей программе байтовое значение
+преобразуется в строку, содержащую его шестнадцатиричное представление.
+Обратите внимание <span lang="RU" style='mso-ansi-language: RU'>-</span>
+сдвинутое значение приходится маскировать, то есть логически умножать на
+значение <span lang="RU" style='mso-ansi-language: RU'>0</span>х<span lang="RU"
+style='mso-ansi-language: RU'>0</span>f, для того, чтобы очистить заполняемые в
+результате расширения знака биты и по­низить значение до пределов, допустимых
+при индексировании массива шестнадцатиричных цифр.&#13;</p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class<span
+style='mso-tab-count: 1'>&nbsp; </span>HexByte {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>static public void
+main(String args[]) { </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>char hex[] = { '0',
+'1, '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f };</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>byte b = (byte) 0xf1;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(“b
+= 0x” + hex[(b &gt;&gt; 4) &amp; 0x0f] + <span style='mso-tab-count: 1'>&nbsp; </span>hex[b
+&amp; 0x0f]);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><span style='font-family: "Courier New"'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal">Ниже приведен результат работы этой программы:&#13;</p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'>С:\&gt; java
+HexByte </span><span style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>b = 0xf1</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><span style='font-family: Arial'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span></b><b><span
+style='font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-family: Arial'>Беззнаковый сдвиг
+вправо</span></b>&#13;</p>
+
+<p class="MsoBodyText">Часто требуется, чтобы при сдвиге вправо расширение
+знакового раз­ряда не происходило, а освобождающиеся левые разряды просто запол­нялись
+бы нулями. &#13;</p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class ByteUShift<span
+style='mso-tab-count: 1'>&nbsp;&nbsp; </span>{</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>static public void
+main(String args[]) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>char hex[] = { '0',
+'1’, '2', '3', '4',<span style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp; </span>'5',
+'6', '7', '8', '9', 'а', 'b', 'с', 'd',<span style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>'e',
+'f’ };</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>byte b = (byte) 0xf1;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>byte c = (byte) (b
+&gt;&gt; 4);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>byte d = (byte) (b
+&gt;&gt; 4);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>byte e = (byte) ((b
+&amp; 0xff) &gt;&gt; 4);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;
+b = 0x&quot; + hex(b &gt;&gt; 4) &amp; 0x0f] + hex[b &amp; 0x0f]);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(“ b
+&gt;&gt; 4 =<span style='mso-tab-count: 1'>&nbsp; </span>0x&quot; + hex[(c
+&gt;&gt; 4) &amp; 0x0f] + hex[c &amp; 0x0f]);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(“b
+&gt;&gt;&gt; 4 = 0x&quot; + hex[(d &gt;&gt; 4) &amp; 0x0f] + hex[d &amp;
+0x0f]);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(“(b
+&amp; 0xff) &gt;&gt; 4 = 0x&quot; + hex[(e &gt;&gt; 4) &amp; 0x0f] + hex[e
+&amp; 0x0f]);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoBodyText">Для этого примера переменную b можно было бы
+инициализировать произвольным отрицательным числом, мы использовали число с
+шест­надцатиричным представлением 0xf1. Переменной с присваивается ре­зультат
+знакового сдвига b вправо на 4 разряда. Как и ожидалось, рас­ширение знакового
+разряда приводит к тому, что 0xf1 превращается в 0xff. Затем в переменную d
+заносится результат беззнакового сдвига b вправо на 4 разряда. Можно было бы
+ожидать, что в результате d со­держит 0x0f, однако на деле мы снова получаем
+0xff. Это — результат расширения знакового разряда, выполненного при
+автоматическом по­вышении типа переменной b до int перед операцией сдвига
+вправо. На­конец, в выражении для переменной е нам удается добиться желаемого
+результата — значения 0x0f. Для этого нам пришлось перед сдвигом вправо
+логически умножить значение переменной b на маску 0xff, очис­тив таким образом
+старшие разряды, заполненные при автоматическом повышении типа. Обратите
+внимание, что при этом уже нет необходи­мости использовать беззнаковый сдвиг
+вправо, поскольку мы знаем со­стояние знакового бита после операции AND.&#13;</p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'>С:</span><span
+style='font-family: "Courier New"'> </span><span style='font-family: "Courier New"'>\&gt;
+java ByteUShift</span><span style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>b = 0xf1 </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>b &gt;&gt; 4 </span></i></b><b><i><span
+lang="DE" style='font-family: "Courier New"; mso-ansi-language: DE;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>=</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'> 0xff </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>b &gt;&gt;&gt; 4 =
+0xff </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>b &amp; 0xff) &gt;&gt;
+4 = 0x0f</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<h4>Битовые операторы присваивания&#13;</h4>
+
+<p class="MsoBodyText">Так же, как и в случае арифметических операторов, у всех
+бинарных битовых операторов есть родственная форма, позволяющая автоматичес­ки
+присваивать результат операции левому операнду. В следующем примере создаются
+несколько целых переменных, с ко­торыми с помощью операторов, указанных выше,
+выполняются различ­ные операции.&#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class OpBitEquals {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int a = 1;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int b = 2;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int с = 3;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>a |= 4;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>b &gt;&gt;= 1;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>с &lt;&lt;= 1;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>а ^= с;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;a
+= &quot; + a);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;b
+= &quot; + b);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;c
+= &quot; + c);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><span style='font-family: "Courier New"'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal">Результаты исполнения программы таковы:&#13;</p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><span style='font-family: "Courier New"'>С:\&gt;
+Java OpBitEquals </span><span style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>а = 3</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>b = 1</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>с = 6</span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span lang="RU" style='font-family: "Courier New";
+mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'>Операторы отношения&#13;</span></b></p>
+
+<p class="MsoBodyText">Для того, чтобы можно было сравнивать два значения, в
+Java имеется набор операторов, описывающих отношение и равенство. Список таких
+операторов приведен в таблице.&#13;</p>
+
+<div align="center">
+
+<table border="0" cellspacing="0" cellpadding="0" style='margin-left: 2.0pt;
+ border-collapse: collapse; mso-table-layout-alt: fixed; mso-padding-alt: 0cm 2.0pt 0cm 2.0pt'>
+ <tr>
+  <td style='width: 96.0pt; border: solid windowtext .75pt; padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">Оператор&#13;</p>
+  </td>
+  <td style='width: 102.45pt; border: solid windowtext .75pt; border-left: none;
+  mso-border-left-alt: solid windowtext .75pt; padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">Результат&#13;</p>
+  </td>
+ </tr>
+ <tr>
+  <td style='width: 96.0pt; border: solid windowtext .75pt; border-top: none;
+  mso-border-top-alt: solid windowtext .75pt; padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">==&#13;</p>
+  </td>
+  <td style='width: 102.45pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">равно&#13;</p>
+  </td>
+ </tr>
+ <tr>
+  <td style='width: 96.0pt; border: solid windowtext .75pt; border-top: none;
+  mso-border-top-alt: solid windowtext .75pt; padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">!=&#13;</p>
+  </td>
+  <td style='width: 102.45pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">не равно&#13;</p>
+  </td>
+ </tr>
+ <tr>
+  <td style='width: 96.0pt; border: solid windowtext .75pt; border-top: none;
+  mso-border-top-alt: solid windowtext .75pt; padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">&gt;&#13;</p>
+  </td>
+  <td style='width: 102.45pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">больше&#13;</p>
+  </td>
+ </tr>
+ <tr>
+  <td style='width: 96.0pt; border: solid windowtext .75pt; border-top: none;
+  mso-border-top-alt: solid windowtext .75pt; padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">&lt;&#13;</p>
+  </td>
+  <td style='width: 102.45pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">меньше&#13;</p>
+  </td>
+ </tr>
+ <tr>
+  <td style='width: 96.0pt; border: solid windowtext .75pt; border-top: none;
+  mso-border-top-alt: solid windowtext .75pt; padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">&gt;=&#13;</p>
+  </td>
+  <td style='width: 102.45pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">больше или равно&#13;</p>
+  </td>
+ </tr>
+ <tr>
+  <td style='width: 96.0pt; border: solid windowtext .75pt; border-top: none;
+  mso-border-top-alt: solid windowtext .75pt; padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">&lt;=&#13;</p>
+  </td>
+  <td style='width: 102.45pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">меньше или равно&#13;</p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class="MsoBodyText">Значения любых типов, включая целые и вещественные
+числа, сим­волы, логические значения и ссылки, можно сравнивать, используя опе­ратор
+проверки на равенство == и неравенство !=. Обратите внимание — в языке Java,
+так же, как в С и C++ проверка на равенство обознача­ется последовательностью
+(==). Один знак (=) — это оператор присваи­вания.&#13;</p>
+
+<p class="MsoNormal"><b><span lang="RU" style='font-size: 12.0pt;
+font-family: Arial; mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span></b><b><span
+lang="RU" style='font-size: 12.0pt; font-family: Arial; mso-ansi-language: RU'>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt; font-family: Arial'>Булевы
+логические операторы</span></b><b><span style='font-size: 12.0pt;
+font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoBodyText">Булевы логические операторы, сводка которых приведена в
+таблице ниже, оперируют только с операндами типа boolean. Все бинарные ло­гические
+операторы воспринимают в качестве операндов два значения типа boolean и
+возвращают результат того же типа.&#13;</p>
+
+<table border="1" cellspacing="0" cellpadding="0" style='margin-left: 2.0pt;
+ border-collapse: collapse; mso-table-layout-alt: fixed; border: none;
+ mso-border-alt: solid windowtext .5pt; mso-padding-alt: 0cm 2.0pt 0cm 2.0pt'>
+ <tr>
+  <td valign="top" style='width: 49.65pt; border: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">Оператор&#13;</p>
+  </td>
+  <td valign="top" style='width: 121.0pt; border: solid windowtext .5pt;
+  border-left: none; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">Результат&#13;</p>
+  </td>
+  <td valign="top" style='width: 63.25pt; border: solid windowtext .5pt;
+  border-left: none; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">Оператор&#13;</p>
+  </td>
+  <td valign="top" style='width: 134.65pt; border: solid windowtext .5pt;
+  border-left: none; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">Результат&#13;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top" style='width: 49.65pt; border: solid windowtext .5pt;
+  border-top: none; mso-border-top-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">&amp;&#13;</p>
+  </td>
+  <td valign="top" style='width: 121.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">логическое И (AND)&#13;</p>
+  </td>
+  <td valign="top" style='width: 63.25pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">&amp;=&#13;</p>
+  </td>
+  <td valign="top" style='width: 134.65pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">И (AND) с присваиванием&#13;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top" style='width: 49.65pt; border: solid windowtext .5pt;
+  border-top: none; mso-border-top-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">|&#13;</p>
+  </td>
+  <td valign="top" style='width: 121.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">логическое ИЛИ (OR)&#13;</p>
+  </td>
+  <td valign="top" style='width: 63.25pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">=&#13;</p>
+  </td>
+  <td valign="top" style='width: 134.65pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">ИЛИ (OR) с присваиванием&#13;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top" style='width: 49.65pt; border: solid windowtext .5pt;
+  border-top: none; mso-border-top-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">^&#13;</p>
+  </td>
+  <td valign="top" style='width: 121.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">логическое исключающее ИЛИ (XOR)&#13;</p>
+  </td>
+  <td valign="top" style='width: 63.25pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">^=&#13;</p>
+  </td>
+  <td valign="top" style='width: 134.65pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">исключающее ИЛИ (XOR) с присваиванием&#13;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top" style='width: 49.65pt; border: solid windowtext .5pt;
+  border-top: none; mso-border-top-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">||&#13;</p>
+  </td>
+  <td valign="top" style='width: 121.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">оператор OR быстрой оценки выражений (short circuit OR)&#13;</p>
+  </td>
+  <td valign="top" style='width: 63.25pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">==&#13;</p>
+  </td>
+  <td valign="top" style='width: 134.65pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">равно&#13;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top" style='width: 49.65pt; border: solid windowtext .5pt;
+  border-top: none; mso-border-top-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">&amp;&amp;&#13;</p>
+  </td>
+  <td valign="top" style='width: 121.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">оператор AND быстрой оценки выражений (short circuit
+  AND)&#13;</p>
+  </td>
+  <td valign="top" style='width: 63.25pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">!=&#13;</p>
+  </td>
+  <td valign="top" style='width: 134.65pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">не равно&#13;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top" style='width: 49.65pt; border: solid windowtext .5pt;
+  border-top: none; mso-border-top-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">!&#13;</p>
+  </td>
+  <td valign="top" style='width: 121.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">логическое унарное отрицание (NOT)&#13;</p>
+  </td>
+  <td valign="top" style='width: 63.25pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">?:&#13;</p>
+  </td>
+  <td valign="top" style='width: 134.65pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt'>
+  <p class="MsoNormal">тернарный оператор if-then-else&#13;</p>
+  </td>
+ </tr>
+</table>
+
+<p class="MsoBodyText">Результаты воздействия логических операторов на
+различные комби­нации значений операндов показаны в таблице.&#13;</p>
+
+<table border="1" cellspacing="0" cellpadding="0" style='margin-left: 2.0pt;
+ border-collapse: collapse; mso-table-layout-alt: fixed; border: none;
+ mso-border-alt: solid windowtext .5pt; mso-padding-alt: 0cm 2.0pt 0cm 2.0pt'>
+ <tr height="24" style='height: 18.0pt; mso-height-rule: exactly'>
+  <td valign="top" style='width: 63.0pt; border: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 18.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">А&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border: solid windowtext .5pt;
+  border-left: none; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 18.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">В&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border: solid windowtext .5pt;
+  border-left: none; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 18.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">OR&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border: solid windowtext .5pt;
+  border-left: none; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 18.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">AND&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border: solid windowtext .5pt;
+  border-left: none; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 18.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">XOR&#13;</p>
+  </td>
+  <td valign="top" style='width: 64.0pt; border: solid windowtext .5pt;
+  border-left: none; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 18.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">NOT A&#13;</p>
+  </td>
+ </tr>
+ <tr height="21" style='height: 16.0pt; mso-height-rule: exactly'>
+  <td valign="top" style='width: 63.0pt; border: solid windowtext .5pt;
+  border-top: none; mso-border-top-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 16.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">false&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 16.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">false&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 16.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">false&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 16.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">false&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 16.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">false&#13;</p>
+  </td>
+  <td valign="top" style='width: 64.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 16.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">true&#13;</p>
+  </td>
+ </tr>
+ <tr height="21" style='height: 16.0pt; mso-height-rule: exactly'>
+  <td valign="top" style='width: 63.0pt; border: solid windowtext .5pt;
+  border-top: none; mso-border-top-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 16.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">true&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 16.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">false&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 16.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">true&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 16.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">false&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 16.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">true&#13;</p>
+  </td>
+  <td valign="top" style='width: 64.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 16.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">false&#13;</p>
+  </td>
+ </tr>
+ <tr height="21" style='height: 16.0pt; mso-height-rule: exactly'>
+  <td valign="top" style='width: 63.0pt; border: solid windowtext .5pt;
+  border-top: none; mso-border-top-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 16.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">false&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 16.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">true&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 16.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">true&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 16.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">false&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 16.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">true&#13;</p>
+  </td>
+  <td valign="top" style='width: 64.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 16.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">true&#13;</p>
+  </td>
+ </tr>
+ <tr height="25" style='height: 19.0pt; mso-height-rule: exactly'>
+  <td valign="top" style='width: 63.0pt; border: solid windowtext .5pt;
+  border-top: none; mso-border-top-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 19.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">true&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 19.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">true&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 19.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">true&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 19.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">true&#13;</p>
+  </td>
+  <td valign="top" style='width: 61.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 19.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">false&#13;</p>
+  </td>
+  <td valign="top" style='width: 64.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 19.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">false&#13;</p>
+  </td>
+ </tr>
+</table>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal" style='text-align: justify'>Программа, приведенная ниже,
+практически полностью повторяет уже<span lang="RU" style='mso-ansi-language:
+RU'> </span>знакомый вам пример BitLogic. Только но на этот раз мы работаем с
+булевыми логическими значениями.&#13;</p>
+
+<p class="MsoNormal"><span lang="RU" style='font-family: "Courier New";
+mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class BoolLogic {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>boolean a = true;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>boolean b = false;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>boolean с = a | b;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>boolean d = a &amp; b;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>boolean e = a ^ b;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>boolean f = (!a &amp;
+b) | (a &amp; !b);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>boolean g = !a;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;
+a = &quot; + a);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;
+b = &quot; </span></i></b><b><i><sup><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>+</span></sup></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'> b);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;
+a|b = &quot; + c);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;
+a&amp;b = &quot; + d);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;
+a^b = &quot; + e);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;!a&amp;b|a&amp;!b
+= &quot; + f);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;
+!a = &quot; + g);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><span lang="RU"
+style='font-family: "Courier New"; mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'>С:</span><span
+style='font-family: "Courier New"'> </span><span style='font-family: "Courier New"'>\&gt;
+Java BoolLogic </span><span style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>а = true </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>b = false </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>a|b = true </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>a&amp;b = false </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>a^b = true </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>!a&amp;b|a&amp;!b =
+true </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>!a = false</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><span lang="RU" style='font-size: 12.0pt;
+font-family: Arial; mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span></b><b><span
+lang="RU" style='font-size: 12.0pt; font-family: Arial; mso-ansi-language: RU'>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt; font-family: Arial'>Операторы
+быстрой оценки логических выражений (short circuit logical operators)</span></b><span
+style='font-size: 12.0pt; font-family: Arial'>&#13;</span></p>
+
+<p class="MsoNormal" style='text-align: justify'>Существуют два интересных
+дополнения к набору логических опера­торов. Это — альтернативные версии
+операторов AND и OR, служащие для быстрой оценки логических выражений. Вы
+знаете, что если первый операнд оператора OR имеет значение true, то независимо
+от значения второго операнда результатом операции будет величина true.
+Аналогично в случае оператора AND, если первый операнд — false, то значение вто­рого
+операнда на результат не влияет — он всегда будет равен false. Если вы в
+используете операторы &amp;&amp; и || вместо обычных форм &amp; и |, то Java не
+производит оценку правого операнда логического выражения, если ответ ясен из
+значения левого операнда. <span style='font-family: Arial'><span
+style="mso-spacerun: yes">&nbsp;</span></span>Общепринятой практикой является
+использование операторов &amp;&amp; и || практически во всех случаях оценки
+булевых логических выражений. Версии этих операторов &amp; и | применяются
+только в битовой арифметике.<span lang="RU" style='mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><span lang="RU" style='font-family: Arial;
+mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+lang="RU" style='font-family: Arial; mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><b><span style='font-family: Arial'>Тернарный оператор
+if-then-else</span></b>&#13;</p>
+
+<p class="MsoBodyText">Общая форма оператора if-then-use такова:<span lang="RU"
+style='mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><b><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold'>выражение1? выражение2: выражениеЗ</span></b><b><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold'>&#13;</span></b></p>
+
+<p class="MsoNormal">В качестве первого операнда — «выражение1» — может быть
+исполь­зовано любое выражение, результатом которого является значение типа
+boolean. Если результат равен true, то выполняется оператор, заданный вторым
+операндом, то есть, «выражение2». Если же первый операнд paвен false, то
+выполняется третий операнд — «выражениеЗ». Второй и третий операнды, то есть
+«выражение2» и «выражениеЗ», должны воз­вращать значения одного типа и не
+должны иметь тип void.<span lang="RU" style='mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal">В приведенной ниже программе этот оператор используется
+для про­верки делителя перед выполнением операции деления. В случае нулевого
+делителя возвращается значение 0.&#13;</p>
+
+<p class="MsoNormal"><span lang="RU" style='font-family: "Courier New";
+mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class Ternary {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int a = 42;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int b = 2;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int c = 99;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int d = 0;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int e = (b == 0) ? 0 :
+(a / b);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int f = (d == 0) ? 0 :
+(c / d);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;a
+= &quot; + a);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;b
+= &quot; + b);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;c
+= &quot; + c);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;d
+= &quot; + d);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;a
+/ b = &quot; + e);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;c
+/ d = &quot; + f);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><span style='font-family: "Courier New"'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal">При выполнении этой программы исключительной ситуации
+деления на нуль не возникает и выводятся следующие результаты:&#13;</p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'>С:</span><span
+style='font-family: "Courier New"'> </span><span style='font-family: "Courier New"'>\&gt;java
+Ternary</span><span style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>а = 42</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>b = 2</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>с = 99</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>d = 0</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>a / b = 21</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>с / d<span
+style="mso-spacerun: yes">&nbsp; </span>= 0</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'>Приоритеты операторов&#13;</span></b></p>
+
+<p class="MsoBodyText">В Java действует определенный порядок, или приоритет,
+операций. В элементарной алгебре нас учили тому, что у умножения и деления
+более высокий приоритет, чем у сложения и вычитания. В программировании также
+приходится следить и за приоритетами операций. В таблице ука­заны в порядке
+убывания приоритеты всех операций языка Java.&#13;</p>
+
+<table border="1" cellspacing="0" cellpadding="0" style='margin-left: 2.0pt;
+ border-collapse: collapse; mso-table-layout-alt: fixed; border: none;
+ mso-border-alt: solid windowtext .5pt; mso-padding-alt: 0cm 2.0pt 0cm 2.0pt'>
+ <tr height="20" style='height: 15.0pt'>
+  <td colspan="4" style='width: 385.0pt; border: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt'>
+  <p class="MsoNormal">Высший&#13;</p>
+  </td>
+ </tr>
+ <tr height="20" style='height: 15.0pt; mso-height-rule: exactly'>
+  <td style='width: 97.0pt; border: solid windowtext .5pt; border-top: none;
+  mso-border-top-alt: solid windowtext .5pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">( )&#13;</p>
+  </td>
+  <td style='width: 91.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">[ ]&#13;</p>
+  </td>
+  <td style='width: 92.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">.&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+  <td style='width: 105.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+ </tr>
+ <tr height="20" style='height: 15.0pt; mso-height-rule: exactly'>
+  <td style='width: 97.0pt; border: solid windowtext .5pt; border-top: none;
+  mso-border-top-alt: solid windowtext .5pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">~&#13;</p>
+  </td>
+  <td style='width: 91.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">!&#13;</p>
+  </td>
+  <td style='width: 92.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+  <td style='width: 105.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+ </tr>
+ <tr height="20" style='height: 15.0pt; mso-height-rule: exactly'>
+  <td style='width: 97.0pt; border: solid windowtext .5pt; border-top: none;
+  mso-border-top-alt: solid windowtext .5pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">*&#13;</p>
+  </td>
+  <td style='width: 91.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">/&#13;</p>
+  </td>
+  <td style='width: 92.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">%&#13;</p>
+  </td>
+  <td style='width: 105.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+ </tr>
+ <tr height="20" style='height: 15.0pt; mso-height-rule: exactly'>
+  <td style='width: 97.0pt; border: solid windowtext .5pt; border-top: none;
+  mso-border-top-alt: solid windowtext .5pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">+&#13;</p>
+  </td>
+  <td style='width: 91.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">-&#13;</p>
+  </td>
+  <td style='width: 92.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+  <td style='width: 105.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+ </tr>
+ <tr height="20" style='height: 15.0pt; mso-height-rule: exactly'>
+  <td style='width: 97.0pt; border: solid windowtext .5pt; border-top: none;
+  mso-border-top-alt: solid windowtext .5pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">&gt;&gt;&#13;</p>
+  </td>
+  <td style='width: 91.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">&gt;&gt;&gt;&#13;</p>
+  </td>
+  <td style='width: 92.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">&lt;&lt;&#13;</p>
+  </td>
+  <td style='width: 105.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+ </tr>
+ <tr height="20" style='height: 15.0pt; mso-height-rule: exactly'>
+  <td style='width: 97.0pt; border: solid windowtext .5pt; border-top: none;
+  mso-border-top-alt: solid windowtext .5pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">&gt;&#13;</p>
+  </td>
+  <td style='width: 91.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">&gt;=&#13;</p>
+  </td>
+  <td style='width: 92.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">&lt;&#13;</p>
+  </td>
+  <td style='width: 105.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">&lt;= &#13;</p>
+  </td>
+ </tr>
+ <tr height="20" style='height: 15.0pt; mso-height-rule: exactly'>
+  <td style='width: 97.0pt; border: solid windowtext .5pt; border-top: none;
+  mso-border-top-alt: solid windowtext .5pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">==&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+  <td style='width: 91.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">!=&#13;</p>
+  </td>
+  <td style='width: 92.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+  <td style='width: 105.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+ </tr>
+ <tr height="20" style='height: 15.0pt; mso-height-rule: exactly'>
+  <td style='width: 97.0pt; border: solid windowtext .5pt; border-top: none;
+  mso-border-top-alt: solid windowtext .5pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">&amp;&#13;</p>
+  </td>
+  <td style='width: 91.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+  <td style='width: 92.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+  <td style='width: 105.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+ </tr>
+ <tr height="20" style='height: 15.0pt; mso-height-rule: exactly'>
+  <td style='width: 97.0pt; border: solid windowtext .5pt; border-top: none;
+  mso-border-top-alt: solid windowtext .5pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">^&#13;</p>
+  </td>
+  <td style='width: 91.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+  <td style='width: 92.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+  <td style='width: 105.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+ </tr>
+ <tr height="20" style='height: 15.0pt; mso-height-rule: exactly'>
+  <td style='width: 97.0pt; border: solid windowtext .5pt; border-top: none;
+  mso-border-top-alt: solid windowtext .5pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">|&#13;</p>
+  </td>
+  <td style='width: 91.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+  <td style='width: 92.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+  <td style='width: 105.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+ </tr>
+ <tr height="20" style='height: 15.0pt; mso-height-rule: exactly'>
+  <td style='width: 97.0pt; border: solid windowtext .5pt; border-top: none;
+  mso-border-top-alt: solid windowtext .5pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">&amp;&amp;&#13;</p>
+  </td>
+  <td style='width: 91.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+  <td style='width: 92.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+  <td style='width: 105.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+ </tr>
+ <tr height="20" style='height: 15.0pt; mso-height-rule: exactly'>
+  <td style='width: 97.0pt; border: solid windowtext .5pt; border-top: none;
+  mso-border-top-alt: solid windowtext .5pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">| |&#13;</p>
+  </td>
+  <td style='width: 91.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+  <td style='width: 92.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+  <td style='width: 105.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+ </tr>
+ <tr height="20" style='height: 15.0pt; mso-height-rule: exactly'>
+  <td style='width: 97.0pt; border: solid windowtext .5pt; border-top: none;
+  mso-border-top-alt: solid windowtext .5pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">?:&#13;</p>
+  </td>
+  <td style='width: 91.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+  <td style='width: 92.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+  <td style='width: 105.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+ </tr>
+ <tr height="20" style='height: 15.0pt; mso-height-rule: exactly'>
+  <td style='width: 97.0pt; border: solid windowtext .5pt; border-top: none;
+  mso-border-top-alt: solid windowtext .5pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">=&#13;</p>
+  </td>
+  <td style='width: 91.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">op=&#13;</p>
+  </td>
+  <td style='width: 92.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+  <td style='width: 105.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .5pt; border-right: solid windowtext .5pt;
+  mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+ </tr>
+ <tr height="20" style='height: 15.0pt; mso-height-rule: exactly'>
+  <td colspan="4" style='width: 385.0pt; border: solid windowtext .5pt;
+  border-top: none; mso-border-top-alt: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 15.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal">Низший&#13;</p>
+  </td>
+ </tr>
+</table>
+
+<p class="MsoNormal" style='text-align: justify'>В первой строке таблицы
+приведены три необычных оператора, о которых мы пока не говорили. Круглые
+скобки <span lang="DE" style='mso-ansi-language: DE'>()</span> используются для
+явной установки приоритета. Как вы узнали из предыдущей главы, квадратные
+скобки <span lang="DE" style='mso-ansi-language: DE'>[]</span> используются для
+индексирования переменной-массива. Оператор . (точка) использует­ся для
+выделения элементов из ссылки на объект — об этом мы поговорим в <a
+href="07.HTM"><span style='color: blue'>главе 7</span></a>.
+Все же остальные операторы уже обсуждались в этой главе.&#13;</p>
+
+<p class="MsoNormal"><b><span style='font-family: Arial'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span></b><b><span
+style='font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-family: Arial'>Явные приоритеты</span></b><span
+style='font-family: Arial'>&#13;</span></p>
+
+<p class="MsoNormal">Поскольку высший приоритет имеют круглые скобки, вы всегда
+мо­жете добавить в выражение несколько пар скобок, если у вас есть со­мнения по
+поводу порядка вычислений или вам просто хочется сделать свои код более
+читабельным. <span style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal"><span style='font-family: "Courier New"'>а &gt;&gt; b + 3</span><span
+style='font-family: "Courier New"'>&#13;</span></p>
+
+<p class="MsoNormal">Какому из двух выражений, <span style='font-family: "Courier New"'>а
+&gt;&gt; (b + 3) </span>или <span style='font-family: "Courier New"'>(а
+&gt;&gt; b) + 3, </span>соответствует первая строка? Поскольку у оператора
+сложения более высокий приоритет, чем у оператора сдвига, правильный ответ —
+а&gt;&gt; (b + <i>а).</i> Так что если вам требуется выполнить операцию
+(а&gt;&gt;b<i>)+ 3 </i>без скобок не обойтись.&#13;</p>
+
+<p class="MsoNormal"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>&#13;</p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt; font-family: Arial'>Что
+дальше?</span></b><span style='font-size: 12.0pt; font-family: Arial'>&#13;</span></p>
+
+<p class="MsoNormal">Итак, мы рассмотрели все виды операторов языка Java.
+Теперь вы можете сконструировать любое выражение <span lang="RU"
+style='mso-ansi-language: RU'>с различными типами данных</span>. В <a
+href="06.htm"><span style='color: blue'>следующей главе</span></a>
+познакомимся с конструкциями ветвления, организацией циклов и научимся
+управлять выполнением программы.&#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+</div>
+
+</body>
+
+</html>

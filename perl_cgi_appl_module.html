@@ -1,0 +1,388 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="KeyWords" content="Description">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (X11; U; Linux 2.4.18-4GB i686) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>perl CGI::Applcation module</title>
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Perl CGI::Application module</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Perl CGI::Application module</font></b>
+<br>- <a href="http://www.perldoc.com/cpan/CGI/Application.html">www.perldoc.com/cpan/CGI/Application.html</a>
+<br>- <a href="http://www.mail-archive.com/cgiapp@lists.vm.com/">http://www.mail-archive.com/cgiapp@lists.vm.com/</a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>intro</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>The idea is to build your site as a set of logical pieces called applications.
+<br>Each application has 5..20 different screens, called run-modes, and
+is represented by 2 files:
+<br>&nbsp;&nbsp; - a small cgi script which you call with a parameter rm
+(run-mode). Just few lines. It does new() and run().
+<br>&nbsp;&nbsp; - a module which inherits from CGI::Application and has
+the procedures implementing those run-modes.
+<p>Here is a sequence of main events for some generic CGI script call using
+CGI::Application:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#99FFCC" NOSAVE >
+<tr NOSAVE>
+<td NOSAVE>#-----------------------------------------
+<br>new()
+<br>&nbsp;&nbsp; create webappl object (CGI::Application)
+<br>&nbsp;&nbsp; create query object (CGI.pm)
+<br>&nbsp;&nbsp; run setup()
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; define runmodes
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; connect to database
+<br>#-----------------------------------------
+<br>run()
+<br>&nbsp;&nbsp; determine which runmode to run
+<br>&nbsp;&nbsp; $body = $self->some_run_mode_method( )
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; update_something_in_the_database( )
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; my $output = some_html( )&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#&nbsp; for example, call method $self->show_list( )
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#&nbsp; which may query database and return HTML for the list
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#&nbsp; (it may use HTML::Template for that)&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return $output
+<br>&nbsp;&nbsp; get $headers
+<br>&nbsp;&nbsp; my $output = $headers + $body
+<br>&nbsp;&nbsp; pring $output&nbsp;&nbsp; # here it is sent to the browser
+<br>&nbsp;&nbsp; teardown()
+<br>&nbsp;&nbsp;&nbsp;&nbsp; close database connection, etc.</td>
+</tr>
+</table>
+
+<p>There are also many other files (html templates, images, etc.)
+<br>Here is a directory structure:
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td>${project_root_dir}/
+<br>&nbsp;&nbsp; |--bin/
+<br>&nbsp;&nbsp; |--devdocs/
+<br>&nbsp;&nbsp; |--htdocs/
+<br>&nbsp;&nbsp; |--modules/
+<br>&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; |--MyNamespace/
+<br>&nbsp;&nbsp; |--templates/</td>
+</tr>
+</table>
+
+<p>Here's a description of the different directories:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td>&nbsp; * bin/&nbsp; -- In this directory you can store Perl scripts
+(or other executables) which need to be called via cron or by the sys-admin
+from the command-line.
+<br>&nbsp; * devdocs/&nbsp; -- Use this directory to store all the DOCUMENTATION
+you develop during the course of your project!
+<br>&nbsp; * htdocs/&nbsp; -- The web server's Document Root.&nbsp; All
+your HTML files, images and CGI instance scripts are stored here.
+<br>&nbsp; * modules/&nbsp; -- Required Perl modules are stored here.&nbsp;
+This path is set via the environment variable "PERL5LIB" and passed through
+the web server ("SetEnv" and "PerlSetEnv" in Apache).&nbsp; "MyNamespace/"
+is the directory where you will put your custom modules (mostly CGI::Application
+modules).
+<br>&nbsp; * templates/&nbsp; -- HTML::Template files are stored here.&nbsp;
+The environment variable "HTML_TEMPLATE_ROOT" is passed via the web server
+to tell HTML::Template where to find its files.</td>
+</tr>
+</table>
+
+<p>Sub-directories can be created in the "templates/" directory which match
+subdirectories and app modules under "modules/MyNamespace/".&nbsp; For
+instance, if you have an administrative CGI::Application called the "User
+Manager" you might create MyNamespace::Admin::UserManager:
+<p><font color="#3333FF">&nbsp; ${project_root_dir}/modules/MyNamespace/Admin/UserManager.pm</font>
+<p>This application might have three run-modes, "search_form", "results_list"
+and "edit_detail".&nbsp; Each mode has one template.&nbsp; These templates
+should be stored as follows:
+<p><font color="#3333FF">&nbsp; ${project_root_dir}/templates/Admin/UserManager/search_form.tmpl</font>
+<br><font color="#3333FF">&nbsp; ${project_root_dir}/templates/Admin/UserManager/results_list.tmpl</font>
+<br><font color="#3333FF">&nbsp; ${project_root_dir}/templates/Admin/UserManager/edit_detail.tmpl</font>
+<p>In "htdocs/", you would have your instance script:
+<p><font color="#3333FF">&nbsp; ${project_root_dir}/htdocs/admin/usermanager.pl</font>
+<br>&nbsp;
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>From docs</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>To write this application using CGI::Application you will create two
+files:
+<p>&nbsp;&nbsp; 1. <b><font color="#CC0000">WidgetView.pm</font></b> --
+Your "Application Module"
+<br>&nbsp;&nbsp; 2. <b><font color="#CC0000">widgetview.cgi</font></b>
+-- Your "Instance Script"
+<p>&nbsp; The Application Module contains all the code specific to your
+application functionality, and it exists outside of your web server's document
+root, somewhere in the Perl library search path.
+<br>&nbsp; The Instance Script is what is actually called by your web server.&nbsp;
+It is a very small, simple file which simply creates an instance of your
+application and calls an inherited method, run().
+<br>Following is the entirety of "<b><font color="#CC0000">widgetview.cgi</font></b>":
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#3333FF">#!/usr/bin/perl -w</font>
+<br><font color="#3333FF">use WidgetView;</font>
+<br><font color="#3333FF">my $webapp = WidgetView-><b>new</b>();</font>
+<br><font color="#3333FF">$webapp-><b>run</b>();</font></td>
+</tr>
+</table>
+
+<p>&nbsp; As you can see, widgetview.cgi simply "uses" your Application
+module (which implements a Perl package called "WidgetView").&nbsp; Your
+Application Module, "<b><font color="#CC0000">WidgetView.pm</font></b>",
+is somewhat more lengthy:
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#3333FF">&nbsp;&nbsp; package WidgetView;</font>
+<p><font color="#3333FF">&nbsp;&nbsp; use base 'CGI::Application';</font>
+<br><font color="#3333FF">&nbsp;&nbsp; use strict;</font>
+<br><font color="#3333FF">&nbsp;&nbsp; use DBI;&nbsp;&nbsp; # Needed for
+our database connection</font>
+<p><font color="#3333FF"># -----------------------------------------</font>
+<br><font color="#3333FF"># -----------------------------------------</font>
+<br><font color="#3333FF">&nbsp;&nbsp; sub setup {</font>
+<br><font color="#3333FF">&nbsp;my $self = shift;</font>
+<br><font color="#3333FF">&nbsp;$self->start_mode('mode1');</font>
+<br><font color="#3333FF">&nbsp;$self->run_modes(</font>
+<br><font color="#3333FF">&nbsp; 'mode1' => \&amp;showform,</font>
+<br><font color="#3333FF">&nbsp; 'mode2' => \&amp;showlist,</font>
+<br><font color="#3333FF">&nbsp; 'mode3' => \&amp;showdetail</font>
+<br><font color="#3333FF">&nbsp;);</font>
+<p><font color="#3333FF">&nbsp;</font><font color="#006600"># Connect to
+DBI database</font>
+<br><font color="#3333FF">&nbsp;$self->param('mydbh' => DBI->connect());</font>
+<br><font color="#3333FF">&nbsp;&nbsp; }</font>
+<p><font color="#006600"># -----------------------------------------</font>
+<br><font color="#006600"># -----------------------------------------</font>
+<br><font color="#3333FF">&nbsp;&nbsp; sub teardown {</font>
+<br><font color="#3333FF">&nbsp;my $self = shift;</font>
+<p><font color="#3333FF">&nbsp;</font><font color="#006600"># Disconnect
+when we're done</font>
+<br><font color="#3333FF">&nbsp;$self->param('mydbh')->disconnect();</font>
+<br><font color="#3333FF">&nbsp;&nbsp; }</font>
+<p><font color="#006600"># -----------------------------------------</font>
+<br><font color="#006600"># -----------------------------------------</font>
+<br><font color="#3333FF">sub showform {</font>
+<br><font color="#3333FF">&nbsp; my $self = shift;</font>
+<p><font color="#006600">&nbsp;# Get CGI query object</font>
+<br><font color="#3333FF">&nbsp;my $q = $self->query();</font>
+<p><font color="#3333FF">&nbsp;my $output = '';</font>
+<br><font color="#3333FF">&nbsp;$output .= $q->start_html(-title => 'Widget
+Search Form');</font>
+<br><font color="#3333FF">&nbsp;$output .= $q->start_form();</font>
+<br><font color="#3333FF">&nbsp;$output .= $q->textfield(-name => 'widgetcode');</font>
+<br><font color="#3333FF">&nbsp;$output .= $q->hidden(-name => 'rm', -value
+=> 'mode2', -override=>1);</font>
+<br><font color="#006600">&nbsp;&nbsp; # CGI.pm has a feature to pass values
+of hidden parameters</font>
+<br><font color="#006600">&nbsp;&nbsp; # use -override option to override
+this default behavior&nbsp;</font>
+<br><font color="#3333FF">&nbsp;$output .= $q->submit();</font>
+<br><font color="#3333FF">&nbsp;$output .= $q->end_form();</font>
+<br><font color="#3333FF">&nbsp;$output .= $q->end_html();</font>
+<p><font color="#3333FF">&nbsp;return $output;</font>
+<br><font color="#3333FF">&nbsp;&nbsp; }</font>
+<p><font color="#006600"># -----------------------------------------</font>
+<br><font color="#006600"># -----------------------------------------</font>
+<br><font color="#3333FF">&nbsp;sub showlist {</font>
+<br><font color="#3333FF">&nbsp;my $self = shift;</font>
+<p><font color="#006600">&nbsp;# Get our database connection</font>
+<br><font color="#3333FF">&nbsp;my $dbh = $self->param('mydbh');</font>
+<p><font color="#006600">&nbsp;# Get CGI query object</font>
+<br><font color="#3333FF">&nbsp;my $q = $self->query();</font>
+<br><font color="#3333FF">&nbsp;my $widgetcode = $q->param("widgetcode");</font>
+<p><font color="#3333FF">&nbsp;my $output = '';</font>
+<br><font color="#3333FF">&nbsp;$output .= $q->start_html(-title => 'List
+of Matching Widgets');</font>
+<p><font color="#006600">&nbsp;## Do a bunch of stuff to select "widgets"
+from a DBI-connected</font>
+<br><font color="#006600">&nbsp;## database which match the user-supplied
+value of "widgetcode"</font>
+<br><font color="#006600">&nbsp;## which has been supplied from the previous
+HTML form via a&nbsp;</font>
+<br><font color="#006600">&nbsp;## CGI.pm query object.</font>
+<br><font color="#006600">&nbsp;##</font>
+<br><font color="#006600">&nbsp;## Each row will contain a link to a "Widget
+Detail" which&nbsp;</font>
+<br><font color="#006600">&nbsp;## provides an anchor tag, as follows:</font>
+<br><font color="#006600">&nbsp;##</font>
+<br><font color="#006600">&nbsp;##&nbsp;&nbsp; "widgetview.cgi?rm=mode3&amp;widgetid=XXX"</font>
+<br><font color="#006600">&nbsp;##</font>
+<br><font color="#006600">&nbsp;##&nbsp; ...Where "XXX" is a unique value
+referencing the ID of</font>
+<br><font color="#006600">&nbsp;## the particular "widget" upon which the
+user has clicked.</font>
+<p><font color="#3333FF">&nbsp;$output .= $q->a(</font>{href=>'<font color="#006600">widgetview.cgi?rm=mode3&amp;widgetid=XXX</font>'},'XXX'<font color="#3333FF">);</font>
+<p><font color="#3333FF">&nbsp;$output .= $q->end_html();</font>
+<p><font color="#3333FF">&nbsp;return $output;</font>
+<br><font color="#3333FF">&nbsp;&nbsp; }</font>
+<p><font color="#006600"># -----------------------------------------</font>
+<br><font color="#006600"># -----------------------------------------</font>
+<br><font color="#3333FF">&nbsp;&nbsp; sub showdetail {</font>
+<br><font color="#3333FF">&nbsp;my $self = shift;</font>
+<p><font color="#006600">&nbsp;# Get our database connection</font>
+<br><font color="#3333FF">&nbsp;my $dbh = $self->param('mydbh');</font>
+<p><font color="#006600">&nbsp;# Get CGI query object</font>
+<br><font color="#3333FF">&nbsp;my $q = $self->query();</font>
+<br><font color="#3333FF">&nbsp;my $widgetid = $q->param("widgetid");</font>
+<p><font color="#3333FF">&nbsp;my $output = '';</font>
+<br><font color="#3333FF">&nbsp;$output .= $q->start_html(-title => 'Widget
+Detail');</font>
+<p><font color="#3333FF">&nbsp;</font><font color="#006600">## Do a bunch
+of things to select all the properties of&nbsp;</font>
+<br><font color="#006600">&nbsp;## the particular "widget" upon which the
+user has</font>
+<br><font color="#006600">&nbsp;## clicked.&nbsp; The key id value of this
+widget is provided&nbsp;</font>
+<br><font color="#006600">&nbsp;## via the "widgetid" property, accessed
+via the CGI.pm</font>
+<br><font color="#006600">&nbsp;## query object.</font>
+<p><font color="#3333FF">&nbsp;$output .= $q->end_html();</font>
+<p><font color="#3333FF">&nbsp;return $output;</font>
+<br><font color="#3333FF">&nbsp;&nbsp; }</font></td>
+</tr>
+</table>
+
+<p>&nbsp; CGI::Application takes care of implementing the new() and the
+run() methods.&nbsp; Notice that at no point do you call print() to send
+any output to STDOUT.&nbsp; Instead, all output is returned as a scalar.
+<br>&nbsp; CGI::Application's most significant contribution is in managing
+the application state.&nbsp; Notice that all which is needed to push the
+application forward is to set the value of a HTML form parameter 'rm' to
+the value of the "run mode" you wish to handle the form submission.&nbsp;
+This is the key to CGI::Application.
+<p><b><u>ABSTRACT</u></b>
+<br>&nbsp; The guiding philosophy behind CGI::Application is that a web-based
+application can be organized into a specific set of "Run-Modes." Each Run-Mode
+is roughly analogous to a single screen (a form, some output, etc.).&nbsp;
+All the Run-Modes are managed by a single "Application Module" which is
+a Perl module.&nbsp; In your web server's document space there is an "Instance
+Script" which is called by the web server as a CGI (or an Apache::Registry
+script if you're using Apache + mod_perl).
+<br>&nbsp; This methodology is an inversion of the "Embedded" philosophy
+(ASP, JSP, EmbPerl, Mason, etc.) in which there are "pages" for each state
+of the application, and the page drives functionality.&nbsp; In CGI::Application,
+form follows function -- the Application Module drives pages, and the code
+for a single application is in one place; not spread out over multiple
+"pages".&nbsp; If you feel that Embedded architectures are confusing, unorganized,
+difficult to design and difficult to manage, CGI::Application is the methodology
+for you!
+<br>&nbsp; Apache is NOT a requirement for CGI::Application.&nbsp; Web
+applications based on CGI::Application will run equally well on NT/IIS
+or any other CGI-compatible environment.&nbsp; CGI::Application-based applications
+are, however, ripe for use on Apache/mod_perl servers, as they naturally
+encourage Good Programming Practices.&nbsp; As always, use strict!
+<p>================================================
+<br>In Apache, you can put something like this in your server config, virtual
+host config, directory config, or .htaccess
+<br>file:
+<br>&nbsp;&nbsp; ErrorDocument 500 /internal_error.pl
+<br>&nbsp;...or....
+<br>&nbsp;&nbsp; ErrorDocument 500 /path/to/some/static/file.html
+<p>Pointing ErrorDocument to a CGI can automatically inform of an error,
+or make a note of failures.
+<br>&nbsp;
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Examples of usage</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>- <a href="http://summersault.com/software/cascade/">http://summersault.com/software/cascade/</a>
+-
+<br>- <a href="http://search.cpan.org/author/JERLBAUM/CGI-Application-2.5/Application/Mailform.pm">CGI::Application::Mailform</a>
+-
+<br>- <a href="http://search.cpan.org/author/SAMTREGAR/CGI-Application-MailPage-1.0/MailPage.pm">CGI::Application::MailPage</a>
+-
+<br>&nbsp;
+</body>
+</html>

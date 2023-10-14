@@ -1,0 +1,128 @@
+#!/usr/local/bin/perl
+# simple script to test hard drive performance by writing
+# into 2 or more files in parallel
+# ---------------------------------------------------------------
+use strict;
+my $unixflag = "1";  #  set for unix, empty for dos 
+my @drives   = qw( C: F: );
+if ($unixflag) { @drives = qw( /tmp ); }
+
+my $delete_flag = 0; 
+$delete_flag = 1 if @ARGV; # with arguments it just deletes the junk file
+
+my $Nfiles      = 3;
+my $count       = 10000; 
+my $str2write   = "0123456789ABCDEF" x 1024 . "\n"; 
+my $bytes_in_mb = 1024*1024;
+my $fsize_mb = sprintf "%.2f", $count*length($str2write)/$bytes_in_mb;
+
+
+print "Start\n";
+test_disks() if(!$delete_flag);
+delete_temp_files();
+exit();
+# ###############################################################
+# end of the main part 
+# ###############################################################
+
+# ---------------------------------------------------------------
+sub mysync_if_unix { 
+  system "sync" if $unixflag;
+}
+# ---------------------------------------------------------------
+sub fname { 
+  my $drive = shift; 
+  my $fn = shift; 
+  return "$drive/junk_mytest$fn.txt";
+}
+# ---------------------------------------------------------------
+sub delete_temp_files {
+  print"deleting temporary files\n";
+  for my $drive (@drives) {
+    for my $fn (1..$Nfiles) {
+      my $filename = fname($drive, $fn);
+      if (-e $filename) {
+        unlink $filename;
+        print "$filename deleted\n";
+      } else {
+        print "$filename not exists\n";
+      }
+    }
+  }
+  print"finished deleting temporary files\n";
+}
+# ---------------------------------------------------------------
+sub test_a_disk {
+  my $drive = shift;
+  my $action = shift;
+  my @fnames = ();
+  for my $fn (1..$Nfiles) {
+    $fnames[$fn] = fname($drive, $fn);
+  }
+  mysync_if_unix(); 
+  my $t_start = time(); 
+  my $ii=0; 
+  my @fhs = ();
+  if ($action eq 'write') { 
+    print "  write - ";
+    for my $fn (1..$Nfiles) {
+      my $fh;
+      open ($fh, ">", $fnames[$fn]) or die "can't open file $fnames[$fn] for writing: $!"; 
+      $fhs[$fn] = $fh;
+    }
+    for $ii (1..$count) { 
+      for my $fn (1..$Nfiles) {
+        my $fh = $fhs[$fn];
+        print {$fh} $str2write;
+      }
+    }
+    for my $fn (1..$Nfiles) {
+      my $fh = $fhs[$fn];
+      close($fh); 
+    }
+  } else {
+    print "  read  - ";
+    for my $fn (1..$Nfiles) {
+      my $fh;
+      open ($fh, "<", $fnames[$fn]) or die "can't open file $fnames[$fn] for reading: $!"; 
+      $fhs[$fn] = $fh;
+    }
+    my $yy=0; 
+    my $ss = "";
+    for $ii (1..$count) { 
+      for my $fn (1..$Nfiles) {
+        my $fh = $fhs[$fn];
+        if($ss = <$fh>) { $yy += $ss }
+      }
+    }
+    for my $fn (1..$Nfiles) {
+      my $fh = $fhs[$fn];
+      close($fh); 
+    }
+  } 
+  mysync_if_unix(); 
+  my $t_finish = time(); 
+  my $dt = $t_finish-$t_start;
+  my $speed = ( $dt >= 1 )? sprintf "%.2f", $fsize_mb*$Nfiles / $dt : "too fast"; 
+  print " dt=${dt}sec, $speed MB/sec\n"; 
+  return $dt; 
+}
+
+# ---------------------------------------------------------------
+# test_disks() 
+# ---------------------------------------------------------------
+sub test_disks {
+  print "Nfiles=$Nfiles, fsize=$fsize_mb MB\n";
+  for my $drive (@drives) { 
+    print "  $drive\n"; 
+    my $dt;
+    my $total_time = 0;
+    my @actions = qw/ write read write read /; 
+    my $Nactions = scalar(@actions);
+    for my $action (@actions) {
+        $total_time += test_a_disk($drive, $action);
+    } 
+    my $average = $total_time / ($Nfiles * $Nactions); 
+    printf "  Average per file %.2f sec, %.2f MB/sec\n", $average, $fsize_mb / $average; 
+  }
+}

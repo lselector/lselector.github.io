@@ -1,0 +1,159 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>sql_test0.html</title>
+<!--
+
+
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+
+
+
+-->
+<style>
+
+
+
+A:hover { COLOR: #FF0000; background: #FFA; TEXT-DECORATION: underline } 
+
+
+
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Verdana"><font color="#CC0000">LevSelector.com</font></font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font face="Arial,Helvetica"><font color="#CC0000"><font size=-1>New
+York</font></font></font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><font face="Arial,Helvetica"><font size=-1><a href="index.html">home</a>
+> SQL_test0</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font face="Arial,Helvetica"><font size=-1></font></font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b>SQL_test0.</b>
+<br>Below there are 6 problems for a simple 2-table database.
+<br>&nbsp;
+<table BORDER CELLSPACING=0 COLS=1 WIDTH="100%" BGCOLOR="#FFFFCC" >
+<tr>
+<td>Company Database:&nbsp;
+<br>Tables:&nbsp;
+<br>department (d_name,d_id) - 20 rows
+<br>employee (e_name, e_address, e_salary, e_d_id) - 500 rows</td>
+</tr>
+</table>
+<b>Q1.</b> There are 20 rows in department table and 500 rows in employee
+table. How many rows will be returned by this request:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; select * from
+department, employee
+<br><b>Q2.</b> Make a list of all the employees: name, address, department
+(if assigned) sorted by department and alphabetically inside departments.
+<br><b>Q3.</b> Make a list of departments and average salary for each department.
+<br><b>Q4.</b> For every department show the highest salary (except departments
+where average salary is more than $50,000/year).
+<br><b>Q5.</b> For every department show the highest paid employee (and
+his salary).
+<br><b>Q6.</b> Show the dept. name and average salary for the department
+which has the highest average salary.
+<br><b><u>Answers:</u></b>
+<br><b>A1.</b> There are 20 rows in department table and 500 rows in employee
+table. How many rows will be returned by this request:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; select * from
+department, employee
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 20*500=10000
+<p><b>A2.</b> Make a list of all the employees: name, address, department
+(if assigned) sorted by department and alphabetically inside departments.
+<p>select e_name, e_address, d_name
+<br>from department, employee
+<br>where e_d_id *= d_id
+<br>order by d_name, e_name
+<p><b>A3.</b> Make a list of departments and average salary for each department.
+<p>select d_name, avg(e_salary)
+<br>from department, employee
+<br>where e_d_id = d_id
+<br>group by d_name
+<p><b>A4.</b> For every department show the highest salary (except departments
+where average salary is more than $50,000/year).
+<p>select d_name, max(e_salary)
+<br>from department, employee
+<br>where e_d_id = d_id
+<br>group by d_name
+<br>having avg(e_salary) &lt;= $50000
+<p><b>A5.</b> For every department show the highest paid employee (and
+his salary).
+<p>select d_name, e_name, e_salary
+<br>from department, employee
+<br>where e_d_id = d_id
+<br>group by d_name
+<br>having e_salary = max(e_salary)
+<p>/* note: will not work on MS SQL server */
+<p>or
+<p>select d_name, e_name, e_salary
+<br>from department d, employee e
+<br>where e_d_id = d_id
+<br>&nbsp; and e_salary = ( select max(e_salary) from employee where e_d_id
+= d.d_id group by d.d_id)
+<br>&nbsp;
+<p><b>A6.</b> Show the dept. name and average salary for the department
+which has the highest average salary.
+<p>select d_name, avg(e_salary)
+<br>from department, employee
+<br>where e_d_id = d_id
+<br>group by d_name
+<br>having avg(e_salary) = max(avg(e_salary))
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+</body>
+</html>

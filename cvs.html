@@ -1,0 +1,584 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (X11; U; Linux 2.4.18-4GB i686) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>cvs</title>
+<!-- saved from url=(0022)http://internet.e-mail -->
+<link rel="STYLESHEET" href="oestyle.css" type="text/css">
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">GS,
+NY</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> CVS</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><a href="mailto:Lev.Selector@gmail.com">Email</a></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">CVS</font></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 >
+<tr>
+<td><b><font color="#CC0000">On this page:</font></b></td>
+
+<td><b><font color="#CC0000">Other pages:</font></b></td>
+</tr>
+
+<tr ALIGN=LEFT VALIGN=TOP>
+<td><font color="#6699CC">*
+</font><a href="#main_commands">main commands</a>
+<br><font color="#6699CC">*
+<a href="#examples">examples</a></font>
+<br><font color="#6699CC">*
+<a href="#working_with_branches">working with
+branches</a></font>
+<br><font color="#6699CC">*
+<a href="#our_branches">our branches</a></font></td>
+
+<td><font color="#6699CC">*
+<a href="http://www.cvshome.org/">www.cvshome.org</a></font>
+<br><font color="#6699CC">*
+<a href="http://www.cvshome.org/docs/manual/">cvs_manual</a></font>
+<br><font color="#6699CC">*
+</font><a href="http://www.cvshome.org/docs/manual/cvs_17.html#SEC153">cvs_quick_ref</a></td>
+</tr>
+</table>
+
+<p><a NAME="main_commands"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>cvs main commands</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - <a href="mailto:Lev.Selector@gmail.com">email</a></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b>Here are some useful cvs commands:</b>
+<p><b><font color="#3333FF">cvs -n update</font></b>
+<br><b><font color="#3333FF">cvs update -d -P</font></b>
+<br><b><font color="#3333FF">cvs diff -rHEAD somefile</font></b>
+<br>&nbsp;
+<p><b><u>getting help:</u></b>
+<br>man cvs
+<br>cvs help&nbsp; - shows main commands and their short description
+<br>cvs --help somecommand - to show help for a command, for example:
+<br>cvs --help update
+<br>cvs --help co
+<br>cvs --help-synonyms - shows lsit of shortcuts for commands
+<p><b><u>CVS commands are:</u></b>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; add&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Add a new file/directory to the repository
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; admin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Administration front end for rcs
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; annotate&nbsp;&nbsp;&nbsp;&nbsp;
+Show last revision where each line was modified
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; checkout&nbsp;&nbsp;&nbsp;&nbsp;
+Checkout sources for editing
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; commit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Check files into the repository
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; diff&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Show differences between revisions
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; edit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Get ready to edit a watched file
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; editors&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+See who is editing a watched file
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; export&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Export sources from CVS, similar to checkout
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; history&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Show repository access history
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; import&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Import sources into CVS, using vendor branches
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; init&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Create a CVS repository if it doesn't exist
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; log&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Print out history information for files
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Prompt for password for authenticating server.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; logout&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Removes entry in .cvspass for remote repository.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rdiff&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Create 'patch' format diffs between releases
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; release&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Indicate that a Module is no longer in use
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; remove&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Remove an entry from the repository
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rtag&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Add a symbolic tag to a module
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Display status information on checked out files
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tag&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Add a symbolic tag to checked out version of files
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unedit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Undo an edit command
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; update&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Bring work tree in sync with repository
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; watch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Set watches
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; watchers&nbsp;&nbsp;&nbsp;&nbsp;
+See who is watching a file
+<p><a NAME="examples"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Examples</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - <a href="mailto:Lev.Selector@gmail.com">email</a></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>get all the tree:</u></b>
+<br>CVSEDITOR=vi; export CVSEDITOR
+<br>CVSROOT=/home/slsdev/cvs_repository; export CVSROOT
+<br>cvs get Portfolio
+<p><b><u>update files in your directory&nbsp; ( -A - fresh update):</u></b>
+<br>cvs update -A
+<br><b><u>use -n cvs option to see what should happen without actually
+doing it:</u></b>
+<br>cvs -n update -A
+<p><b><u>add directories to cvs:</u></b>
+<br>cvs add maint
+<br>cvs add amsi
+<p><b><u>add files to cvs:</u></b>
+<br>cvs add *.txt
+<br>cvs add *.pl *.sh
+<p><b><u>changes >> to cvs:</u></b>
+<br>cvs commit -m "Updated root directory to /home/mydir"&nbsp;&nbsp; myfile
+<br><i>&nbsp;&nbsp; use wildcards (but not just '*'),</i>
+<br><i>&nbsp;&nbsp; use '-n' option to see what should happen without doing
+it</i>
+<br>cvs -n commit -m "Change logic for kerberos_id pattern test" UDB*.sp
+<p><b><u>misc:</u></b>
+<br>cvs diff -r1.7 somefile&nbsp;&nbsp;&nbsp; - shows the difference between
+what is in the directory and in v.1.7 in cvs
+<br>cvs diff somefile&nbsp;&nbsp;&nbsp; -&nbsp; shows the difference between
+what is in the directory and what was in the cvs when you got the file
+from cvs
+<br>cvs diff -rHEAD somefile&nbsp;&nbsp;&nbsp; - show difference between
+the top version and current directory
+<p><font color="#3333FF">Examples:</font>
+<br><font color="#3333FF">cvs diff populateUsers.pl</font>
+<br><font color="#3333FF">...</font>
+<br><font color="#3333FF">diff -r1.6 populateUsers.pl</font>
+<br><font color="#3333FF">2c2</font>
+<br><font color="#3333FF">&lt;</font>
+<br><font color="#3333FF">---</font>
+<br><font color="#3333FF">>&nbsp; # in directory</font>
+<p>cvs log | grep populateUsers.pl
+<p>vi .cvsignore
+<br>cvs add .cvsignore
+<p>--------------------------------------------------
+<br>When making update, you can use the following 2 options:
+<br>&nbsp;&nbsp;&nbsp; <b><font color="#3333FF">cvs update -d -P</font></b>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -P&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Prune empty directories.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Build directories, like checkout does - makes sure that your update will
+include new directories which somebody else added, but you don't have yet.
+<br>--------------------------------------------------
+<br>&nbsp;
+<p><a NAME="working_with_branches"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>working with branches</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - <a href="mailto:Lev.Selector@gmail.com">email</a></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Example:</u></b>
+<br>Let DBI be the main development trunk where-to all changes should merge.
+<br>We will be merging into the DBI trunk, thus incorporating changes from
+olddir into the DBI trunk.
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr BGCOLOR="#FFCC99">
+<td><b><font color="#CC0000">(jrandom,floss) - trunk&nbsp; (DBI)</font></b></td>
+
+<td><b><font color="#CC0000">(qsmith,paste) - brunch (olddir)</font></b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td><b><u>create a regular non-branch tag:</u></b>
+<br><font color="#3333FF">cvs tag Root-of-Somename</font></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td><font color="#3333FF">cvs update -r Somename-branch</font>
+<br>&nbsp; .. make some editing
+<br><font color="#3333FF">cvs commit -m "some comment"</font>
+<br>(new version 1.14.2.1)</td>
+</tr>
+
+<tr>
+<td>&nbsp; .. some editing
+<br><font color="#3333FF">cvs commit -m "some changes"</font>
+<br>(new version 1.15)</td>
+
+<td></td>
+</tr>
+
+<tr>
+<td><font color="#3333FF">cvs update -j Somename-branch</font>
+<br><font color="#3333FF">cvs update</font>
+<br>...
+<br>C somefile1.txt
+<br>...
+<p>C meant a conflict - need to resolve.
+<br><font color="#3333FF">emacs somefile1.txt</font>
+<br><font color="#3333FF">cvs commit -m "merged from Somename-branch (conflicts
+resolved)"</font>
+<br>Let's tag as successfully merged.
+<br><font color="#3333FF">cvs tag merged-Somename</font></td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>emacs ... (do some editing on different files)
+<br>cvs ci -m "some comment"</td>
+
+<td><font color="#3333FF">cvs tag Somename-1</font>
+<br>emacs ... (do some editing)
+<br><font color="#3333FF">cvs commit -m "some comment"</font>
+<br><font color="#3333FF">cvs tag Somename-2</font></td>
+</tr>
+
+<tr>
+<td><font color="#CC0000">cvs -q update -j Somename-branch&nbsp;&nbsp;
+</font>-&nbsp; this is wrong way to do this
+<br><font color="#3333FF">&nbsp;... confilcts, becase it tries again to
+get all from the root of the branch.</font>
+<br><font color="#3333FF">rm conflicting files</font>
+<br><font color="#3333FF">cvs -q update</font>
+<br><font color="#3333FF">cvs -q update -j Somename-branch-1 -j Somename-branch</font>
+<br><font color="#3333FF">cvs -q commit -m "merged again from Somename
+(1)"</font>
+<br><font color="#3333FF">cvs -q tag merged-Somename-branch-1</font></td>
+
+<td></td>
+</tr>
+</table>
+
+<p><b><u>Note, that each merge consists of 3 actions:</u></b>
+<br>&nbsp; - commit everything on the branch and make a tag on the branch
+side (olddir)
+<br>&nbsp; - go to trunk area (DBI) and do merge between last branch tag
+- and the last merged
+<br>&nbsp; - create a tag on the trunk (merged- ...)
+<p>Question - how to see the tags?
+<p><a NAME="our_branches"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>our branches</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - <a href="mailto:Lev.Selector@gmail.com">email</a></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Putting the file into the main trunk and into a branch:</u></b>
+<br>Let's say we have the same version of file (v.1.7) in the main trunk
+(Sybase) and in the DBI branch.
+<br>We edit the file in Sybase area and submit it (making version 1.8):
+<br><font color="#3333FF">cvs status -v myscript.cgi</font>
+<br><font color="#3333FF">cvs commit myscript.cgi</font>
+<p>Now we want to merge it into a DBI branch.
+<br>We go to the directory where we work with DBI branch and do the following:
+<br><font color="#3333FF">cvs status -v&nbsp;&nbsp; myscript.cgi</font>
+<br><font color="#3333FF">cvs update -j 1.7 -j 1.8&nbsp;&nbsp; myscript.cgi</font>
+<br><font color="#3333FF">cvs diff&nbsp;&nbsp; myscript.cgi</font>
+<br><font color="#3333FF">vi&nbsp;&nbsp; myscript.cgi</font>
+<br><font color="#3333FF">pwd</font>
+<br><font color="#3333FF">diff&nbsp;&nbsp; myscript.cgi&nbsp;&nbsp; ~olddir/myscript.cgi</font>
+<br><font color="#3333FF">cvs commit&nbsp;&nbsp; myscript.cgi</font>
+<br><font color="#3333FF">cvs log&nbsp;&nbsp; myscript.cgi</font>
+<br><font color="#3333FF">history</font>
+<p><a NAME="some_examples"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>some_examples</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - <a href="mailto:Lev.Selector@gmail.com">email</a></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>misc.commands:
+<p><b><font color="#3333FF">cvs -Q update</font></b>
+<br>&nbsp; -q&nbsp; - be somewhat quiet
+<br>&nbsp; -Q - be absolutely quiet (suppress all diagnostic output except
+for fatal error messages)
+<br>--------------------------------------------------
+<br>accessing cvs repository in a particular directory:
+<br><b><font color="#3333FF">cvs -d /usr/local/cvs&nbsp; command</font></b>
+<br>(to avoid indicating directory every time you can set a CVSROOT env.variable"
+<br>CVSROOT=/usr/local/cvs; export CVSROOT
+<br>--------------------------------------------------
+<br>pserver&nbsp; - password-authenticated access method
+<p><b><font color="#3333FF">cvs -d :pserver:mylogin@cvs.foobar.com:/usr/local/cvs
+login</font></b>
+<br>&nbsp; passwd:
+<p>stores passwd in ".cvspass"
+<p><b><font color="#3333FF">cvs -d :pserver:mylogin@cvs.foobar.com:/usr/local/cvs
+command</font></b>
+<p>To avoid printing all the time:
+<br><b><font color="#3333FF">CVSROOT=pserver:mylogin@cvs.foobar.com:/usr/local/cvs;
+export CVSROOT</font></b>
+<br>--------------------------------------------------
+<br>Other access methods:&nbsp; ext, kserver, gserver
+<br>----------------------------------------------------------
+<br>Putting a new project into CVS = import:
+<br><b><font color="#3333FF">cd myproj</font></b>
+<br><b><font color="#3333FF">cvs import -m "log msg" projname vendortag
+releastag</font></b>
+<br>for example:
+<br><b><font color="#3333FF">cvs import -m "initial import into cvs" myproj
+mylogin start</font></b>
+<p>checking out a working copy:
+<br><b><font color="#3333FF">cvs checkout myproj</font></b>
+<br>----------------------------------------------------------
+<br>each directory in the project has a CVS subdirectory
+<br><b><font color="#3333FF">cvs update</font></b>
+<br>M hello.c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - this means that hello.c was
+edited, but not committed yet
+<br><b><font color="#3333FF">cvs diff</font></b>
+<br>...
+<br>> some_added_line
+<br>...
+<br><b><font color="#3333FF">cvs -Q diff -c</font></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-c option shows fiew lines before and after the change
+<br>----------------------------------------------------------
+<br>&nbsp;if no file or directory is given to cvs, it will try to apply
+command to all files and directories (including going into subdirectories)
+<br>----------------------------------------------------------
+<br><b><font color="#3333FF">cvs commit -m "some log message" hello.c</font></b>
+<br><b><font color="#3333FF">cvs status hello.c</font></b>
+<br><b><font color="#3333FF">cvs log</font></b>
+<br>to see the difference between revisions:
+<br><b><font color="#3333FF">cvs diff -c -r 1.3 -r 1.4 hello.c</font></b>
+<br>----------------------------------------------------------
+<br>How to get back to previos version.
+<br>Current version is 1.4. I want to get version 1.3 and commit it as
+version1.5
+<br><b><font color="#3333FF">cvs -Q update -p -r 1.3 hello.c > hello.c</font></b>
+<br><b><font color="#3333FF">cvs commit -m "reverted to 1.3 code" hello.c</font></b>
+<p>Another method to do the same:
+<br><b><font color="#3333FF">cvs update -j 1.4 -j 1.3 hello.c</font></b>
+<br><b><font color="#3333FF">cvs update</font></b>
+<br><b><font color="#3333FF">cvs commit -m "reverted to 1.3 code" hello.c</font></b>
+<br>----------------------------------------------------------
+<br><b><u>adding files and directories:</u></b>
+<br><b><font color="#3333FF">cvs add newfile.c</font></b>
+<br><b><font color="#3333FF">cvs commit -m "added newfile.c" newfile.c</font></b>
+<p><b><font color="#3333FF">cvs add mydir</font></b>
+<br>----------------------------------------------------------
+<br><b><u>removing files and directories:</u></b>
+<br><b><font color="#3333FF">rm newfile.c</font></b>
+<br><b><font color="#3333FF">cvs remove newfile.c</font></b>
+<br><b><font color="#3333FF">cvs commit -m "removed newfile.c" newfile.c</font></b>
+<p><b><font color="#3333FF">cd mydir</font></b>
+<br><b><font color="#3333FF">rm file1 file2 file3</font></b>
+<br><b><font color="#3333FF">cvs remove file1 file2 file3</font></b>
+<br><b><font color="#3333FF">cvs commit -m "removed all files" file1 file2
+file3</font></b>
+<br><b><font color="#3333FF">cd ..</font></b>
+<br><b><font color="#3333FF">cvs update -P</font></b>
+<br>&nbsp; -P option means "Prune" any empty directories
+<br>----------------------------------------------------------
+<br><b><u>Working with Binary files:</u></b>
+<p>use -kb option to turn off both keyword expansion ($Revision$, etc.)
+and line-ending conversion.
+<p><b><font color="#3333FF">cvs add -kb myfile</font></b>
+<br><b><font color="#3333FF">cvs commit -m "added binary file" myfile</font></b>
+<p>in some cases you want to disable just the keyword expansion:
+<br><b><font color="#3333FF">cvs add -ko myfile</font></b>
+<br><b><font color="#3333FF">cvs commit -m "added binary file" myfile</font></b>
+<br>----------------------------------------------------------
+<br>Renaming files and directories:
+<br><b><u>files:</u></b>
+<br><b><font color="#3333FF">mv oldname newname</font></b>
+<br><b><font color="#3333FF">cvs remove oldname</font></b>
+<br><b><font color="#3333FF">cvs add newname</font></b>
+<br><b><font color="#3333FF">cvs commit -m "renamed oldname to newname"
+oldname newname</font></b>
+<p><b><u>directories:</u></b>
+<br><b><font color="#3333FF">mkdir newdir</font></b>
+<br><b><font color="#3333FF">cvs add newdir</font></b>
+<br><b><font color="#3333FF">mv olddir/* newdir</font></b>
+<br><b><font color="#3333FF">cd olddir</font></b>
+<br><b><font color="#3333FF">cvs rm foo.c bar.txt</font></b>
+<br><b><font color="#3333FF">cd ../newdir</font></b>
+<br><b><font color="#3333FF">cvs add foo.c bar.txt</font></b>
+<br><b><font color="#3333FF">cd ..</font></b>
+<br><b><font color="#3333FF">cvs commit -m "moved foo.c and bar.txt from
+olddir to newdir"</font></b>
+<br><b><font color="#3333FF">cvs update -P</font></b>
+<br>----------------------------------------------------------
+<br>&nbsp; .cvsrc file - contains your custom settings for cvs:
+<br>diff -c
+<br>update -P
+<br>cvs -q
+<br>----------------------------------------------------------
+<br><b><font color="#3333FF">cvs -q update -D "1999-04-19"</font></b> -
+means get the version which existed at the very beginning of this date.
+<br><b><font color="#3333FF">cvs -q update -D "1999-04-19 23:59:59"</font></b>
+- means get the version which was at the end of this date (by client time).
+<br><b><font color="#3333FF">cvs -q update -D "1999-04-19 23:59:59 GMT"</font></b>
+-&nbsp; ..... by Greenwich time.
+<br>The repository always stores dates in the universal (Greenwich) time.
+<p>-D flag sets "sticky date" - this means that updates don't change the
+working copy. It stays restricted permanently to that date or before (sticky
+date) unless told otherwise. While in this position - you can not commit
+new changes of this file.
+<p>To remove the sticky date (or any sticky property) run update with "-A"
+flag:
+<p><b><font color="#3333FF">cvs -q update -A</font></b>
+<br><b><font color="#3333FF">cvs -Q status hello.c</font></b>
+<br>----------------------------------------------------------
+<br><b><u>Setting a tag:</u></b>
+<br><b><font color="#3333FF">cvs -q tag SomeName</font></b>
+<p><b><u>retreive a snapshot by tag:</u></b>
+<br><b><font color="#3333FF">cvs checkout -r SomeName myproj</font></b>
+<p><b><u>revert to previous version:</u></b>
+<br><b><font color="#3333FF">cvs update -r SomeName hello.c</font></b>
+<br><b><font color="#3333FF">edit file</font></b>
+<br><b><font color="#3333FF">cvs -q update -A</font></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- without fresh update cvs will not allow to commit
+<br><b><font color="#3333FF">cvs commit -m "some comment" hello.c</font></b>
+<br>&nbsp;
+<br>&nbsp;
+<p>Short commands (synonyms):
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=3 >
+<tr BGCOLOR="#FFCC99">
+<td>command</td>
+
+<td>synonyms</td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>checkout</td>
+
+<td>co, get</td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>commit</td>
+
+<td>ci</td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>update</td>
+
+<td>up</td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>admin</td>
+
+<td>rcs</td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>rdiff</td>
+
+<td>patch</td>
+
+<td>'patch' format diffs between releases</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<br>&nbsp;
+</body>
+</html>

@@ -1,0 +1,7 @@
+1  <SCRIPT LANGUAGE="JavaScript">
+2  <!-- Begin HTML comment that hides the script.
+3          // JavaScript statements go here.
+4
+5
+6  // End HTML comment that hides the script. -->
+7  </SCRIPT>

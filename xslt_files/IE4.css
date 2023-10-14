@@ -1,0 +1,318 @@
+BODY {
+	COLOR: #000000; FONT: 68% verdana,arial,helvetica
+}
+TD {
+	FONT-SIZE: 68%
+}
+TH {
+	FONT-SIZE: 68%
+}
+A:link {
+	COLOR: #003399; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #6699cc; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #008080
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+A.clsBackTop {
+	COLOR: #003399; FONT-SIZE: 90%; MARGIN-BOTTOM: 0px; MARGIN-TOP: 10px; PADDING-BOTTOM: 0px
+}
+A.clsBackTop:visited {
+	COLOR: #003399; FONT-SIZE: 90%; MARGIN-BOTTOM: 0px; MARGIN-TOP: 10px; PADDING-BOTTOM: 0px
+}
+A.clsIncCpyRt {
+	COLOR: #ffffff; FONT-SIZE: 95%
+}
+A.Issue {
+	COLOR: red; CURSOR: hand; FONT-SIZE: 90%; FONT-STYLE: normal; FONT-VARIANT: normal; FONT-WEIGHT: bold; LINE-HEIGHT: 90%; MARGIN-TOP: 2px; TEXT-DECORATION: none
+}
+A.Issue:visited {
+	COLOR: red; CURSOR: hand; FONT-SIZE: 90%; FONT-STYLE: normal; FONT-VARIANT: normal; FONT-WEIGHT: bold; LINE-HEIGHT: 90%; MARGIN-TOP: 2px; TEXT-DECORATION: none
+}
+H1 {
+	FONT: bold 165% verdana,arial,helvetica; MARGIN: 0px 0px 5px
+}
+H2 {
+	FONT: bold 140% verdana,arial,helvetica
+}
+H2.clsOsigHead {
+	COLOR: #3366cc; FONT-FAMILY: arial, helvetica, sans-serif; FONT-SIZE: 125%; MARGIN-BOTTOM: 0em; MARGIN-TOP: 1em
+}
+H2.clsBlue {
+	COLOR: #336699
+}
+H3 {
+	FONT: bold 115% verdana,arial,helvetica; MARGIN-BOTTOM: 0.5em
+}
+H4 {
+	FONT: bold 100% verdana,arial,helvetica; MARGIN-BOTTOM: 0.5em
+}
+H5 {
+	FONT: bold 100% verdana,arial,helvetica; MARGIN-BOTTOM: 0.5em
+}
+H6 {
+	FONT: bold 100% verdana,arial,helvetica; MARGIN-BOTTOM: 0.5em
+}
+IMG.clsImgButton {
+	CURSOR: hand; MARGIN-TOP: 3px
+}
+.clsTocHead {
+	COLOR: #003399; CURSOR: hand; FONT-SIZE: 110%; FONT-STYLE: normal; FONT-VARIANT: normal; FONT-WEIGHT: bold; LINE-HEIGHT: 90%; MARGIN-TOP: 2px
+}
+.clsTocSmall {
+	COLOR: #ff0000; CURSOR: hand; FONT-SIZE: 90%; FONT-STYLE: normal; FONT-VARIANT: normal; FONT-WEIGHT: bold; LINE-HEIGHT: 90%; MARGIN-TOP: 2px
+}
+.clsHead {
+	COLOR: #003399; FONT-SIZE: 110%; FONT-STYLE: normal; FONT-VARIANT: normal; FONT-WEIGHT: bold; LINE-HEIGHT: 90%; MARGIN-TOP: 2px
+}
+.Issue {
+	COLOR: red; CURSOR: hand; FONT-SIZE: 80%; FONT-STYLE: normal; FONT-VARIANT: normal; FONT-WEIGHT: bold; LINE-HEIGHT: 90%; MARGIN-TOP: 2px
+}
+DIV.clsTocItem DIV {
+	COLOR: #000000; FONT-SIZE: 90%; FONT-STYLE: normal; FONT-VARIANT: normal; FONT-WEIGHT: normal; LINE-HEIGHT: 100%; PADDING-BOTTOM: 4px
+}
+DIV.clsTocItem1 {
+	MARGIN-TOP: 5px; PADDING-BOTTOM: 4px
+}
+TD.article {
+	PADDING-LEFT: 0px; VERTICAL-ALIGN: top
+}
+.articletext {
+	FONT-FAMILY: times new roman,times; FONT-SIZE: 80%
+}
+.articletextplain {
+	FONT-FAMILY: verdana,arial,helvetica
+}
+TD.clsLND {
+	COLOR: red; LINE-HEIGHT: 1
+}
+SPAN.dropcap {
+	COLOR: #cc3300; FONT-FAMILY: verdana,arial,helvetica; FONT-SIZE: 225%; FONT-VARIANT: normal; FONT-WEIGHT: bold; LINE-HEIGHT: 100%
+}
+SPAN.QAcap {
+	COLOR: #cc3300; FONT-FAMILY: verdana,arial,helvetica; FONT-SIZE: 140%; FONT-VARIANT: normal; FONT-WEIGHT: bold; LINE-HEIGHT: 100%
+}
+SPAN.st {
+	FONT-STYLE: normal; FONT-VARIANT: normal; FONT-WEIGHT: bold; LINE-HEIGHT: 100%
+}
+SPAN.category {
+	COLOR: #ffffff; FONT-STYLE: normal; FONT-VARIANT: normal; FONT-WEIGHT: bold; LINE-HEIGHT: normal; VERTICAL-ALIGN: top
+}
+SPAN.pd {
+	COLOR: #008080
+}
+.infobar {
+	BORDER-BOTTOM: #99ccff 1px outset; BORDER-LEFT: #99ccff 1px outset; BORDER-RIGHT: #99ccff 1px outset; BORDER-TOP: #99ccff 1px outset
+}
+.footer {
+	BORDER-TOP: #99ccff 2px groove
+}
+.search {
+	BORDER-RIGHT: #003366 1px solid; BORDER-TOP: #99ccff 1px solid
+}
+.functionbar {
+	BORDER-BOTTOM: #003366 1px solid; BORDER-TOP: #003366 1px solid; COLOR: #ffffff; MARGIN-TOP: 1px; PADDING-BOTTOM: 0px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; PADDING-TOP: 0px
+}
+SPAN.clsSum {
+	COLOR: #000080; FONT-WEIGHT: bold
+}
+SPAN.clsSumText {
+	COLOR: #000000; FONT: 100% verdana,arial,helvetica
+}
+SPAN.clsSubhead {
+	COLOR: #000080; FONT: bold 100% verdana,arial,helvetica
+}
+PRE {
+	COLOR: #000000; FONT-SIZE: 90%
+}
+PRE.clsCode {
+	COLOR: #000000; FONT-SIZE: 80%
+}
+SPAN.clsInfo {
+	FONT: 90% verdana,arial,helvetica
+}
+SPAN.clsBio {
+	COLOR: #000000; FONT-SIZE: 90%; FONT-STYLE: normal; FONT-VARIANT: normal; FONT-WEIGHT: normal; LINE-HEIGHT: normal
+}
+SPAN.clsFrom {
+	COLOR: #000000; FONT-SIZE: 100%; FONT-STYLE: normal; FONT-VARIANT: normal; FONT-WEIGHT: normal; LINE-HEIGHT: normal
+}
+SPAN.clsLevel {
+	COLOR: #ffffff; FONT-SIZE: 100%; FONT-STYLE: normal; FONT-VARIANT: normal; FONT-WEIGHT: bold; LINE-HEIGHT: normal
+}
+SPAN.functionbartext {
+	COLOR: #ffffff
+}
+SPAN.highlight {
+	COLOR: red; FONT-WEIGHT: bold
+}
+.cover {
+	BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid
+}
+#home {
+	COLOR: #003399; TEXT-DECORATION: none
+}
+.clsGloss {
+	COLOR: #000080; FONT: bold 85% verdana,arial,helvetica
+}
+.clsFigs {
+	FONT: bold 85% verdana,arial,helvetica
+}
+.clsField {
+	COLOR: #000000; FONT: bold 85% verdana,arial,helvetica
+}
+.clsTable {
+	COLOR: #000000; FONT: 80% verdana,arial,helvetica
+}
+.clsFigure {
+	FONT: bold 100% verdana,arial,helvetica
+}
+.clsCap {
+	COLOR: #000080; FONT: bold 85% verdana,arial,helvetica
+}
+.clsCaptxt {
+	COLOR: #000080; FONT: 85% verdana,arial,helvetica
+}
+#idSearch TD {
+	COLOR: #ffffff; FONT-FAMILY: verdana,arial,helvetica,sans-serif; FONT-SIZE: 70%
+}
+FORM {
+	FONT-SIZE: 80%; MARGIN-BOTTOM: 0px
+}
+SELECT {
+	FONT-SIZE: 100%
+}
+INPUT {
+	FONT-SIZE: 100%
+}
+INPUT.clsButton {
+	FONT-WEIGHT: bold
+}
+#lnkPrevText {
+	COLOR: black; FONT-FAMILY: verdana,arial,helvetica,sans-serif; FONT-SIZE: 7.5pt; FONT-WEIGHT: normal; TEXT-DECORATION: none
+}
+#lnkNextText {
+	COLOR: black; FONT-FAMILY: verdana,arial,helvetica,sans-serif; FONT-SIZE: 7.5pt; FONT-WEIGHT: normal; TEXT-DECORATION: none
+}
+#lnkUpText {
+	COLOR: black; FONT-FAMILY: verdana,arial,helvetica,sans-serif; FONT-SIZE: 7.5pt; FONT-WEIGHT: normal; TEXT-DECORATION: none
+}
+DIV.clsBucketBranch {
+	FONT-STYLE: italic; MARGIN: 10px
+}
+DIV.clsBucketBranch A {
+	COLOR: black; TEXT-DECORATION: none
+}
+DIV.clsBucketBranch A:link {
+	COLOR: black; TEXT-DECORATION: none
+}
+DIV.clsBucketBranch A:active {
+	COLOR: black; TEXT-DECORATION: none
+}
+DIV.clsBucketBranch A:visited {
+	COLOR: black; TEXT-DECORATION: none
+}
+DIV.clsBucketBranch A:hover {
+	COLOR: blue
+}
+TD.clsGrayTop {
+	BORDER-BOTTOM: 0px; BORDER-TOP: #cccccc 1px solid; COLOR: black; FONT-WEIGHT: normal; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 5px
+}
+TD.clsRaised {
+	BORDER-BOTTOM: #003366 1px solid; BORDER-TOP: #99ccff 1px solid; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 5px
+}
+TD.clsDarkRaised {
+	BORDER-BOTTOM: #000000 1px solid; BORDER-TOP: #6699cc 1px solid; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 5px
+}
+TD.clsSunken {
+	BORDER-BOTTOM: #99ccff 1px solid; BORDER-TOP: #003366 1px solid; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 5px
+}
+TD.clsBBarSunken {
+	BORDER-BOTTOM: #99ccff 1px solid; BORDER-TOP: #003366 1px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 0px
+}
+TD.clsBBarRaised {
+	BORDER-BOTTOM: #000033 1px solid; BORDER-TOP: #99ccff 1px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 0px
+}
+TD.clsBBarRaised {
+	BORDER-BOTTOM: #000033 1px solid; BORDER-TOP: #99ccff 1px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 0px
+}
+TD.clsLightGreen {
+	COLOR: #ccffcc; FONT-STYLE: italic; FONT-WEIGHT: normal
+}
+TD.clsBtnUp {
+	BORDER-BOTTOM: #99ccff 2px outset; BORDER-LEFT: #99ccff 2px outset; BORDER-RIGHT: #99ccff 2px outset; BORDER-TOP: #99ccff 2px outset; COLOR: #ffffff; CURSOR: hand; FONT-WEIGHT: bold; PADDING-BOTTOM: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; PADDING-TOP: 0px
+}
+TD.clsBtnDown {
+	BORDER-BOTTOM: #99ccff 2px inset; BORDER-LEFT: #99ccff 2px inset; BORDER-RIGHT: #99ccff 2px inset; BORDER-TOP: #99ccff 2px inset; COLOR: #ffffff; CURSOR: hand; FONT-WEIGHT: bold; PADDING-BOTTOM: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; PADDING-TOP: 0px
+}
+TD.clsBtnOn {
+	BACKGROUND-COLOR: #003366; BORDER-BOTTOM: #6699cc 2px inset; BORDER-LEFT: #6699cc 2px inset; BORDER-RIGHT: #6699cc 2px inset; BORDER-TOP: #6699cc 2px inset; COLOR: #ffffff; CURSOR: hand; FONT-WEIGHT: bold; PADDING-BOTTOM: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; PADDING-TOP: 0px
+}
+TD.clsBtnOff {
+	BORDER-BOTTOM: #6699cc 2px solid; BORDER-LEFT: #6699cc 2px solid; BORDER-RIGHT: #6699cc 2px solid; BORDER-TOP: #6699cc 2px solid; COLOR: #ffffff; FONT-WEIGHT: bold; PADDING-BOTTOM: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; PADDING-TOP: 0px; tab-index: 0
+}
+TABLE.clsRating TD {
+	BACKGROUND-COLOR: white; BORDER-BOTTOM: #cccccc 1px solid; BORDER-LEFT: #666666 1px solid; BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #666666 1px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#pBackTop {
+	DISPLAY: none
+}
+TABLE.clsNavLinks A:hover {
+	TEXT-DECORATION: none
+}
+TABLE.clsNavLinks {
+	CLEAR: both
+}
+#txtCharCount {
+	BACKGROUND-COLOR: white; BORDER-BOTTOM: #cccccc 2px ridge; BORDER-LEFT: #cccccc 2px ridge; BORDER-RIGHT: #cccccc 2px ridge; BORDER-TOP: #cccccc 2px ridge; COLOR: red; FONT-WEIGHT: bold; HEIGHT: 1.5em; OVERFLOW: hidden; TEXT-ALIGN: right; WIDTH: 3.7em
+}
+TABLE.clsCmtEntryTbl TD {
+	PADDING-BOTTOM: 3px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 3px
+}
+SPAN.clsLeftNavDot {
+	COLOR: red; FONT-SIZE: 115%; LINE-HEIGHT: 1
+}
+DIV.clsExpanded {
+	COLOR: black; DISPLAY: inline; WIDTH: 100%
+}
+A.clsExpanded {
+	COLOR: black; DISPLAY: inline; WIDTH: 100%
+}
+DIV.clsCollapsed {
+	DISPLAY: none
+}
+A.clsCollapsed {
+	DISPLAY: none
+}
+SPAN.clsPropattr {
+	FONT-WEIGHT: bold
+}
+#pStyles {
+	CURSOR: hand; DISPLAY: none; TEXT-DECORATION: underline
+}
+#pCode {
+	CURSOR: hand; DISPLAY: none; TEXT-DECORATION: underline
+}
+#pSyntax {
+	CURSOR: hand; DISPLAY: none; TEXT-DECORATION: underline
+}
+#pEvents {
+	CURSOR: hand; DISPLAY: none; TEXT-DECORATION: underline
+}
+#pStyles {
+	CURSOR: hand; DISPLAY: none; TEXT-DECORATION: underline
+}
+#idToolbar {
+	FONT-SIZE: 10pt
+}
+#idToolbar A:hover {
+	TEXT-DECORATION: none
+}
+#idToolbar {
+	BORDER-BOTTOM: #ffffff 1px solid
+}

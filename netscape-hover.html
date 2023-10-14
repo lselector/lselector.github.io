@@ -1,0 +1,200 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>netscape-hover</title>
+<!--
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+-->
+<LINK REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Verdana"><font color="#CC0000"><font size=-1>LevSelector.com</font></font></font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font face="Verdana"><font color="#CC0000"><font size=-1>New
+York</font></font></font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><font face="Verdana"><font size=-1><a href="index.html">home</a>
+> Netscape Hover</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font face="Verdana"><font size=-1></font></font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<b><font face="Verdana"><font color="#CC0000"><font size=-1>FNetscape Hover
+Effect</font></font></font></b>
+<br><font face="Verdana"><font size=-1>Look also at <b><a href="javascript.html">Javascript</a></b>
+and <b><a href="images.html">Graphics</a></b> pages.</font></font>
+<p>• <a href="http://www.teaink.com/netscapehover.htm">www.teaink.com/netscapehover.htm</a>
+- how to make HOVER links in Netscape (using Javascript)
+<p>Here are the details (as of December, 2000):
+<p>The script operates on the groups of links. To create a group add
+<p>&nbsp;&nbsp; <b><font color="#3333FF">onMouseOver="hoverStyle('internal
+style name')"</font></b>
+<p>to the links and create group style definition in the styleHr array.
+Array format:
+<p>&nbsp;&nbsp;&nbsp; <b><font color="#3333FF">['internal style name',
+'CSS class name', y-correction, true/false]</font></b>
+<p>First line must be kept intact.
+<br>Style of the "all unmarked" links must be defined on the second line.
+<br>New groups must be defined on the lines three and below.
+<br>To enable/disable hovering on the group of links set it's style true/false
+switch.
+<br>To upgrade the old naming scheme either replace the numbers with the
+strings or set the internal style names to the numbers in quotes.
+<p><b><font color="#CC0000">1) Paste this into the somename.js file</font></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>// Netscape Hover v1.3
+<br>// Copyright &copy; 2000 Dmitry Kirillov. All rights reserved
+<br>// http://www.teaink.com/netscapehover.htm
+<p>function HoverBoxObject() {
+<br>this.srcX=1;
+<br>this.srcY=1;
+<br>this.srcX2=0;
+<br>this.srcY2=0;
+<br>this.styleHr= [
+<br>[,,,],
+<br>['all', 'CSS class for all', 0, true],
+<br>['menu', 'CSS class for menus', 0, true]
+<br>];
+<br>}
+<p>var hrBox = new HoverBoxObject();
+<p>function overHover(e) {
+<br>var i, tx, ty, ttext, thref, linkHr, layerHr, tstyle, temp, tstrstyle;
+var styler=/hoverStyle[\x28]"*([\w]+)"*[\x29]/i;
+<br>if (e.target.href &amp;&amp; e.target.text!=null &amp;&amp; document.linkhover)
+{
+<br>tstyle=0; tstrstyle=''; if (hrBox.styleHr[1][0]=='all' &amp;&amp; hrBox.styleHr[1][3])
+tstyle=1;
+<br>if (e.target.onmouseover) {
+<br>temp=String(e.target.onmouseover); temp=temp.match(styler);&nbsp;
+<br>if (temp!=null) {
+<br>tstrstyle=temp[1];
+<br>for (i=1;i&lt;hrBox.styleHr.length;i+=1) {
+<br>if (hrBox.styleHr[i][0]==tstrstyle &amp;&amp; hrBox.styleHr[i][3])
+tstyle=i;
+<br>}
+<br>if (tstyle==1) tstyle=0;
+<br>}}
+<br>layerHr=document.linkhover;
+<br>if ((e.target.y!=0 || (e.target.y==0 &amp;&amp; layerHr.visibility=="hide"))
+&amp;&amp; tstyle) {
+<br>tx=e.target.x+(e.pageX-e.layerX); ty=e.target.y+(e.pageY-e.layerY)+hrBox.styleHr[tstyle][2];
+<br>ttext=e.target.text; ttext=ttext.replace(/\s/g, "&amp;nbsp;"); thref=e.target.href;
+<br>layerHr.left=tx; layerHr.top=ty;
+<br>layerHr.document.write('&lt;a href="'+thref+'" class="'+hrBox.styleHr[tstyle][1]+'">'+ttext+'&lt;/a>');
+<br>layerHr.document.close();&nbsp;
+<br>linkHr=layerHr.document.links[0];
+<br>if(e.target.target!=null) linkHr.target=e.target.target;
+<br>linkHr.onmouseout=e.target.onmouseout; linkHr.onmousedown=e.target.onmousedown;
+<br>linkHr.onmouseup=e.target.onmouseup; linkHr.onclick=e.target.onclick;
+<br>linkHr.ondblclick=e.target.ondblclick;
+<br>linkHr.lid='hover';
+<br>hrBox.srcX=tx; hrBox.srcY=ty;&nbsp;
+<br>hrBox.srcX2=tx+layerHr.clip.width-1; hrBox.srcY2=ty+layerHr.clip.height-1;
+<br>layerHr.visibility="show";
+<br>}}
+<br>routeEvent(e);
+<br>return;
+<br>}
+<p>function outHover(e) {
+<br>var tx, ty, layerHr;
+<br>if (e.target.href &amp;&amp; e.target.text!=null &amp;&amp; document.linkhover)
+{
+<br>layerHr=document.linkhover;
+<br>if (e.target.lid &amp;&amp; e.target.lid=='hover') {
+<br>layerHr.visibility="hide";
+<br>routeEvent(e);
+<br>}
+<br>else {
+<br>tx=e.pageX; ty=e.pageY;
+<br>if ((tx&lt;hrBox.srcX) || (ty&lt;hrBox.srcY) || (hrBox.srcX2&lt;tx)
+|| (hrBox.srcY2&lt;ty)) {
+<br>layerHr.visibility="hide";
+<br>routeEvent(e);
+<br>}}
+<br>}
+<br>else routeEvent(e);
+<br>return;
+<br>}
+<p>if (ns4) {
+<br>document.captureEvents(Event.MOUSEOVER | Event.MOUSEOUT);
+<br>document.onMouseOver=overHover;
+<br>document.onMouseOut=outHover;
+<br>}</td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">2) Paste the following just below the &lt;body>
+tag</font></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>&lt;!-- Hover Section start -->
+<br>&lt;layer id='linkhover' z-index=100 visibility='hide'>&lt;/layer>
+<br>&lt;SCRIPT LANGUAGE="JavaScript1.2" TYPE="text/javascript">
+<br>&lt;!--
+<br>// Netscape Hover v1.3
+<br>// http://www.teaink.com/netscapehover.htm
+<br>var ns4 = (document.layers) ? true : false;
+<br>function hoverStyle(prm) {
+<br>}
+<br>if (ns4) {
+<br>document.write('&lt;SCR'+'IPT LANGUAGE="JavaScript1.2" SRC="somename.js"
+TYPE="text/javascript">&lt;\/SCR'+'IPT>');
+<br>}
+<br>//-->
+<br>&lt;/SCRIPT>
+<br>&lt;!-- Hover Section end --></td>
+</tr>
+</table>
+
+</body>
+</html>

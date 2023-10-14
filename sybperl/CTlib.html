@@ -1,0 +1,1954 @@
+<HTML>
+<HEAD>
+<TITLE>sybperl - Sybase extensions to Perl</TITLE>
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<UL>
+
+		<LI><A HREF="#attributes">Attributes</A></LI>
+		<LI><A HREF="#datetime, money and numeric data behavior">DateTime, Money and Numeric data behavior</A></LI>
+		<LI><A HREF="#compatibility with sybase open client documentation.">Compatibility with Sybase Open Client documentation.</A></LI>
+	</UL>
+
+	<LI><A HREF="#sybase::dblib">Sybase::DBlib</A></LI>
+	<UL>
+
+		<LI><A HREF="#text/image routines">TEXT/IMAGE Routines</A></LI>
+		<LI><A HREF="#bcp routines">BCP Routines</A></LI>
+		<LI><A HREF="#dbmoney routines">DBMONEY Routines</A></LI>
+		<LI><A HREF="#rpc routines">RPC Routines</A></LI>
+		<LI><A HREF="#registered procedure execution">Registered procedure execution</A></LI>
+		<LI><A HREF="#two phase commit routines">Two Phase Commit Routines</A></LI>
+		<LI><A HREF="#exported routines">Exported Routines</A></LI>
+		<LI><A HREF="#high level wrapper functions (sql() and nsql())">High Level Wrapper Functions (sql() and <CODE>nsql())</CODE></A></LI>
+		<LI><A HREF="#constants">Constants</A></LI>
+		<LI><A HREF="#attributes">Attributes</A></LI>
+		<LI><A HREF="#status variables">Status Variables</A></LI>
+		<LI><A HREF="#examples">Examples</A></LI>
+	</UL>
+
+	<LI><A HREF="#sybase::sybperl">Sybase::Sybperl</A></LI>
+	<LI><A HREF="#sybase::ctlib">Sybase::CTlib</A></LI>
+	<UL>
+
+		<LI><A HREF="#description">DESCRIPTION</A></LI>
+		<LI><A HREF="#examples">EXAMPLES</A></LI>
+		<LI><A HREF="#attributes">ATTRIBUTES</A></LI>
+	</UL>
+
+	<LI><A HREF="#using ct_get_data() and ct_send_data() to do raw text processing">Using <CODE>ct_get_data()</CODE> and <CODE>ct_send_data()</CODE> to do raw TEXT processing</A></LI>
+	<UL>
+
+		<LI><A HREF="#retrieving text columns using ct_get_data()">Retrieving TEXT columns using <CODE>ct_get_data()</CODE></A></LI>
+		<LI><A HREF="#updating text columns using ct_send_data()">Updating TEXT columns using <CODE>ct_send_data()</CODE></A></LI>
+	</UL>
+
+	<LI><A HREF="#common sybase::dblib and sybase::ctlib routines">Common Sybase::DBlib and Sybase::CTlib routines</A></LI>
+	<LI><A HREF="#special handling of datetime, money & numeric/decimal values">Special handling of DATETIME, MONEY &amp; NUMERIC/DECIMAL values</A></LI>
+	<LI><A HREF="#bugs">BUGS</A></LI>
+	<LI><A HREF="#acknowledgements">ACKNOWLEDGEMENTS</A></LI>
+	<LI><A HREF="#authors">AUTHORS</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>sybperl - Sybase extensions to Perl</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<PRE>
+   use Sybase::DBlib;
+   use Sybase::CTlib;
+   use Sybase::Sybperl;</PRE>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>Sybperl implements three <EM>Sybase</EM> extension modules to <EM>perl</EM>
+(version 5.002 or higher). <EM>Sybase::DBlib</EM> adds a subset of the
+<EM>Sybase DB-Library</EM> API. <EM>Sybase::CTlib</EM> adds a subset of the
+<EM>Sybase CT-Library</EM> (aka the Client Library) API. <EM>Sybase::Sybperl</EM>
+is a backwards compatibility module (implemented on top of
+<EM>Sybase::DBlib</EM>) to enable scripts written for <EM>sybperl 1.0xx</EM> to
+run with <EM>Perl 5</EM>. 
+Using both the <EM>Sybase::Sybperl</EM> and <EM>Sybase::DBlib</EM> modules
+explicitly in a single script is not garanteed to work correctly.</P>
+<P>The general usage format for both <EM>Sybase::DBlib</EM> and
+<EM>Sybase::CTlib</EM> is this:</P>
+<PRE>
+    use Sybase::DBlib;</PRE>
+<PRE>
+    # Allocate a new connection, usually refered to as a database handle
+    $dbh = new Sybase::DBlib username, password;</PRE>
+<PRE>
+    # Set an attribute for this dbh:
+    $dbh-&gt;{UseDateTime} = TRUE;</PRE>
+<PRE>
+    # Call a method with this dbh:
+    $dbh-&gt;dbcmd(sql code);</PRE>
+<P>The <STRONG>DBPROCESS</STRONG> or <STRONG>CS_CONNECTION</STRONG> that is opened with the call to
+<CODE>new()</CODE> is automatically closed when the $dbh goes out of scope:</P>
+<PRE>
+    sub run_a_query {
+       my $dbh = new Sybase::CTlib $user, $passwd;
+       my @dat = $dbh-&gt;ct_sql(&quot;select * from sysusers&quot;);</PRE>
+<PRE>
+       return @dat;
+    }
+    # The $dbh is automatically closed when we exit the subroutine.</PRE>
+<P>It should be noted that an important difference between CTlib and DBlib is
+in how the SYBASE environment variable is handled.  DBlib only checks for
+the SYBASE variable when it requires access to the interfaces file.  This
+allows for definition of the SYBASE variable in your script.  CTlib requires
+that the SYBASE variable be defined BEFORE initialization.  If the variable
+is not defined then CTlib will not initialize properly and your script will
+not run.</P>
+<P>
+<H2><A NAME="attributes">Attributes</A></H2>
+<P>The <EM>Sybase::DBlib</EM> and <EM>Sybase::CTlib</EM> modules make a use of
+attributes that are either package global or associated with a
+specific $dbh. These attributes control certain behavior aspects, and
+are also used to store status information.</P>
+<P>Package global attributes can be set using the <STRONG>%Att</STRONG> hash table in
+either modules. The <STRONG>%Att</STRONG> variable is not exported, so it must be
+fully qualified:</P>
+<PRE>
+    $Sybase::DBlib::Att{UseDateTime} = TRUE;</PRE>
+<P><STRONG>NOTE:</STRONG> setting an attribute via the <STRONG>%Att</STRONG> variable
+does <STRONG>NOT</STRONG> change the status of currently allocated database handles.</P>
+<P>In this version, the available attributes for a $dbh are set when the
+$dbh is created. You can't add arbitrary attributes during the life of
+the $dbh. This has been done to implement a stricter behavior and to
+catch attribute errors.</P>
+<P>It <STRONG>is</STRONG> possible to add your own attributes to a $dbh at creation
+time. The <STRONG>Sybase::BCP</STRONG> module adds two attributes to the normal
+<EM>Sybase::DBlib</EM> attribute set by passing an additional attribute
+variable to the <EM>Sybase::DBlib</EM> <CODE>new()</CODE> call:</P>
+<PRE>
+    $d = new Sybase::DBlib $user,$passwd,
+                           $server,$appname, {Global =&gt; {}, Cols =&gt; {}};</PRE>
+<P>
+<H2><A NAME="datetime, money and numeric data behavior">DateTime, Money and Numeric data behavior</A></H2>
+<P>As of version 2.04, the Sybase <STRONG>DATETIME</STRONG> and <STRONG>MONEY</STRONG> datatypes
+can be kept in their native formats in both the <EM>Sybase::DBlib</EM>
+and <EM>Sybase::CTlib</EM> modules. In addition, <STRONG>NUMERIC</STRONG> or <STRONG>DECIMAL</STRONG>
+values can also be kept in their native formats when using the
+<EM>Sybase::CTlib</EM> module. This behavior is normally turned <STRONG>off</STRONG> by
+default, because there is a performance penalty associated with it. It
+is turned on by using package or database handle specific attributes.</P>
+<P>Please see the discussion on
+<STRONG>Special handling of DATETIME, MONEY &amp; NUMERIC/DECIMAL values</STRONG>
+below for details.</P>
+<P>
+<H2><A NAME="compatibility with sybase open client documentation.">Compatibility with Sybase Open Client documentation.</A></H2>
+<P>In general, I have tried to make the calls in this package behave the
+same way as their C language equivalents. In certain cases the
+parameters are different, and certain calls (dblogin() for example)
+don't do the same thing in C as in Perl. This has been done to make
+the life of the Perl programmer easier.</P>
+<P>You should if possible have the Sybase Open Client documentation
+available when writing Sybperl programs.</P>
+<P>
+<HR>
+<H1><A NAME="sybase::dblib">Sybase::DBlib</A></H1>
+<P>A generic <EM>perl</EM> script using <EM>Sybase::DBlib</EM> would look like this:</P>
+<PRE>
+    use Sybase::DBlib;</PRE>
+<PRE>
+    $dbh = new Sybase::DBlib 'sa', $pwd, $server, 'test_app';
+    $dbh-&gt;dbcmd(&quot;select * from sysprocesses\n&quot;);
+    $dbh-&gt;dbsqlexec;
+    $dbh-&gt;dbresults;
+    while(@data = $dbh-&gt;dbnextrow)
+    {
+    .... do something with @data ....
+    }</PRE>
+<P>The API calls that have been implemented use the same calling sequence
+as their C equivalents, with a couple of exceptions, detailed below.</P>
+<P>Please see also <STRONG>Common Sybase::DBlib and Sybase::CTlib routines</STRONG> below.</P>
+<P><STRONG>List of API calls</STRONG></P>
+<P><STRONG>Standard Routines:</STRONG></P>
+<DL>
+<DT><STRONG><A NAME="item_%24dbh_%3D_new_Sybase%3A%3ADBlib_%5B%24user_%5B%2C">$dbh = new Sybase::DBlib [$user [, $pwd [, $server [, $appname [, {additional attributes}]]]]]</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dblogin">$dbh = Sybase::DBlib-&gt;dblogin([$user [, $pwd [, $server [, $appname, [{additional attributes}] ]]]])</A></STRONG><BR>
+<DD>
+Initiates a connection to a Sybase dataserver, using the supplied
+user, password, server and application name information. Uses the
+default values (see DBSETLUSER(), DBSETLPWD(), etc. in the Sybase
+DB-library documentation) if the parameters are ommitted.
+<P>Both forms of the call are identical.</P>
+<P>This call can be used multiple times if connecting to multiple servers
+with different username/password combinations is required, for
+example.</P>
+<P>The <STRONG>additional attributes</STRONG> parameter allows you to define
+application specific attributes that you wish to associate with the $dbh.</P>
+<P></P>
+<DT><STRONG><A NAME="item_dbopen">$dbh = Sybase::DBlib-&gt;dbopen([$server [, $appname, [{attributes}] ]])</A></STRONG><BR>
+<DD>
+Open an additional connection, using the current LOGINREC information.
+<P></P>
+<DT><STRONG><A NAME="item_dbuse">$status = $dbh-&gt;<CODE>dbuse($database)</CODE></A></STRONG><BR>
+<DD>
+Executes ``use database $database'' for the connection $dbh.
+<P></P>
+<DT><STRONG><A NAME="item_dbcmd">$status = $dbh-&gt;<CODE>dbcmd($sql_cmd)</CODE></A></STRONG><BR>
+<DD>
+Appends the string $sql_cmd to the current command buffer of this connection.
+<P></P>
+<DT><STRONG><A NAME="item_dbsqlexec">$status = $dbh-&gt;dbsqlexec</A></STRONG><BR>
+<DD>
+Sends the content of the current command buffer to the dataserver for
+execution. See the DB-library documentation for a discussion of return
+values.
+<P></P>
+<DT><STRONG><A NAME="item_dbresults">$status = $dbh-&gt;dbresults</A></STRONG><BR>
+<DD>
+Retrieves result information from the dataserver after having executed
+dbsqlexec().
+<P></P>
+<DT><STRONG><A NAME="item_dbsqlsend">$status = $dbh-&gt;dbsqlsend</A></STRONG><BR>
+<DD>
+Send the command batch to the server, but do not wait for the server to return
+any results. Should be followed by calls to <A HREF="#item_dbpoll"><CODE>dbpoll()</CODE></A> and dbsqlok(). See the 
+Sybase docs for further details.
+<P></P>
+<DT><STRONG><A NAME="item_dbsqlok">$status = $dbh-&gt;dbsqlok</A></STRONG><BR>
+<DD>
+Wait for results from the server and verify the correctness of the 
+instructions the server is responding to. Mainly for use with <A HREF="#item_dbmoretext"><CODE>dbmoretext()</CODE></A> 
+in Sybase::DBlib. See also the Sybase documentation for details.
+<P></P>
+<DT><STRONG><A NAME="item_dbpoll">($dbproc, $reason) = Sybase::DBlib-&gt;<CODE>dbpoll($millisecs)</CODE></A></STRONG><BR>
+<DD>
+<DT><STRONG>($dbproc, $reason) = $dbh-&gt;<CODE>dbpoll($millisecs)</CODE></STRONG><BR>
+<DD>
+<STRONG>Note</STRONG>: The <A HREF="#item_dbpoll"><CODE>dbpoll()</CODE></A> syntax has been changed since sybperl 2.09_05.
+<P>Poll the server to see if any connection has results pending. Used in 
+conjunction with <A HREF="#item_dbsqlsend"><CODE>dbsqlsend()</CODE></A> and <A HREF="#item_dbsqlok"><CODE>dbsqlok()</CODE></A> to perform asynchronous queries.
+<A HREF="#item_dbpoll"><CODE>dbpoll()</CODE></A> will wait up to $millisecs milliseconds and poll any open DBPROCESS
+for results (if called as Sybase::DBlib-&gt;<A HREF="#item_dbpoll"><CODE>dbpoll())</CODE></A> or poll the specified 
+DBPROCESS (if called as $dbh-&gt;dbpoll()). If it finds a DBPROCESS that is
+ready it returns it, along with the reason why it's ready. If <A HREF="#item_dbpoll"><CODE>dbpoll()</CODE></A>
+times out, or if an interupt occurs $dbproc will be undefined, and $reason 
+will be either DBTIMEOUT or DBINTERUPT. If $millisecs is 0 then <A HREF="#item_dbpoll"><CODE>dbpoll()</CODE></A>
+returns immediately. If $millisecs is -1 then it will not return until
+either results are pending or a system interupt has occured. Please see
+the Sybase documentation for further details.</P>
+<P>Here is an example of using dbsqlsend(), <A HREF="#item_dbpoll"><CODE>dbpoll()</CODE></A> and dbsqlok():</P>
+<PRE>
+  $dbh-&gt;dbcmd(&quot;exec big_hairy_query_proc&quot;);
+  $dbh-&gt;dbsqlsend;
+  # here you can go do something else...
+  # now - find out if some results are waiting
+  ($dbh2, $reason) = $dbh-&gt;dbpoll(100);
+  if($dbh2 &amp;&amp; $reason == DBRESULT) {   # yes! - there's data on the pipe
+     $dbh2-&gt;dbsqlok;
+     while($dbh2-&gt;dbresults != NO_MORE_RESULTS) {
+        while(@dat = $dbh2-&gt;dbnextrow) {
+           ....
+        }
+     }
+  }</PRE>
+<P></P>
+<DT><STRONG><A NAME="item_dbcancel">$status = $dbh-&gt;dbcancel</A></STRONG><BR>
+<DD>
+Cancels the current command batch.
+<P></P>
+<DT><STRONG><A NAME="item_dbcanquery">$status = $dbh-&gt;dbcanquery</A></STRONG><BR>
+<DD>
+Cancels the current query within the currently executing command batch.
+<P></P>
+<DT><STRONG><A NAME="item_dbfreebuf">$dbh-&gt;dbfreebuf</A></STRONG><BR>
+<DD>
+Free the command buffer (required only in special cases - if you don't
+know what this is you probably don't need it :-)
+<P></P>
+<DT><STRONG><A NAME="item_dbclose">$dbh-&gt;dbclose</A></STRONG><BR>
+<DD>
+Force the closing of a connection. Note that connections are
+automatically closed when the $dbh goes out of scope.
+<P></P>
+<DT><STRONG><A NAME="item_DBDEAD">$dbh-&gt;DBDEAD</A></STRONG><BR>
+<DD>
+Returns TRUE if the <STRONG>DBPROCESS</STRONG> has been marked <EM>DEAD</EM> by <EM>DBlibrary</EM>.
+<P></P>
+<DT><STRONG><A NAME="item_DBCURCMD">$status = $dbh-&gt;DBCURCMD</A></STRONG><BR>
+<DD>
+Returns the number of the currently executing command in the command
+batch. The first command is number 1.
+<P></P>
+<DT><STRONG><A NAME="item_DBMORECMDS">$status = $dbh-&gt;DBMORECMDS</A></STRONG><BR>
+<DD>
+Returns TRUE if there are additional commands to be executed in the
+current command batch.
+<P></P>
+<DT><STRONG><A NAME="item_DBCMDROW">$status = $dbh-&gt;DBCMDROW</A></STRONG><BR>
+<DD>
+Returns SUCCEED if the current command can return rows.
+<P></P>
+<DT><STRONG><A NAME="item_DBROWS">$status = $dbh-&gt;DBROWS</A></STRONG><BR>
+<DD>
+Returns SUCCEED if the current command did return rows
+<P></P>
+<DT><STRONG><A NAME="item_DBCOUNT">$status = $dbh-&gt;DBCOUNT</A></STRONG><BR>
+<DD>
+Returns the number of rows that the current command affected.
+<P></P>
+<DT><STRONG><A NAME="item_DBCURROW">$row_num = $dbh-&gt;DBCURROW</A></STRONG><BR>
+<DD>
+Returns the number (counting from 1) of the currently retrieved row in
+the current result set.
+<P></P>
+<DT><STRONG><A NAME="item_dbspid">$spid = $dbh-&gt;dbspid</A></STRONG><BR>
+<DD>
+Returns the SPID (server process ID) of the current connection to the Sybase
+server.
+<P></P>
+<DT><STRONG><A NAME="item_dbhasretstat">$status = $dbh-&gt;dbhasretstat</A></STRONG><BR>
+<DD>
+Did the last executed stored procedure return a status value?
+dbhasretstats must only be called after dbresults returns
+NO_MORE_RESULTS, ie after all the selet, insert, update operations of
+he sored procedure have been processed.
+<P></P>
+<DT><STRONG><A NAME="item_dbretstatus">$status = $dbh-&gt;dbretstatus</A></STRONG><BR>
+<DD>
+Retrieve the return status of a stored procedure. As with
+dbhasretstat, call this function after all the result sets of the
+stored procedure have been processed.
+<P></P>
+<DT><STRONG><A NAME="item_dbnumcols">$status = $dbh-&gt;dbnumcols</A></STRONG><BR>
+<DD>
+How many columns are in the current result set.
+<P></P>
+<DT><STRONG><A NAME="item_dbcoltype">$status = $dbh-&gt;<CODE>dbcoltype($colid)</CODE></A></STRONG><BR>
+<DD>
+What is the column type of column $colid in the current result
+set.
+<P></P>
+<DT><STRONG><A NAME="item_dbprtype">$type = $dbh-&gt;<CODE>dbprtype($colid)</CODE></A></STRONG><BR>
+<DD>
+Returns the column type as a printable string.
+<P></P>
+<DT><STRONG><A NAME="item_dbcollen">$status = $dbh-&gt;<CODE>dbcollen($colid)</CODE></A></STRONG><BR>
+<DD>
+What is the length (in bytes) of column $colid in the current result set.
+<P></P>
+<DT><STRONG><A NAME="item_dbcolname">$string = $dbh-&gt;<CODE>dbcolname($colid)</CODE></A></STRONG><BR>
+<DD>
+What is the name of column $colid in the current result set.
+<P></P>
+<DT><STRONG><A NAME="item_dbnextrow">@dat = $dbh-&gt;dbnextrow([$doAssoc [, $wantRef]])</A></STRONG><BR>
+<DD>
+Retrieve one row. <A HREF="#item_dbnextrow"><CODE>dbnextrow()</CODE></A> returns an array of scalars, one for each
+column value. If $doAssoc is non-0, then <A HREF="#item_dbnextrow"><CODE>dbnextrow()</CODE></A> returns a hash (aka
+associative array) with column name/value pairs. This relieves the
+programmer from having to call <CODE>dbbind()</CODE> or dbdata().
+<P>If $wantRef is non-0, then <A HREF="#item_dbnextrow"><CODE>dbnextrow()</CODE></A> returns a <STRONG>reference</STRONG> to
+a hash or an array. This reference <EM>points</EM> to a static array (or hash)
+so if you wish to store the returned rows in an array, you must
+<STRONG>copy</STRONG> the array/hash:</P>
+<PRE>
+  while($d = $dbh-&gt;dbnextrow(0, 1)) {
+     push(@rows, [@$d]);
+  }</PRE>
+<P>The return value of the C version of <A HREF="#item_dbnextrow"><CODE>dbnextrow()</CODE></A> can be accessed via the 
+Perl DBPROCESS attribute field, as in:</P>
+<PRE>
+   @arr = $dbh-&gt;dbnextrow;              # read results
+   if($dbh-&gt;{DBstatus} != REG_ROW) {
+     take some appropriate action...
+   }</PRE>
+<P>When the results row is a COMPUTE row, the <STRONG>ComputeID</STRONG> field of the
+DBPROCESS is set:</P>
+<PRE>
+   @arr = $dbh-&gt;dbnextrow;              # read results
+   if($dbh-&gt;{ComputeID} != 0) { # it's a 'compute by' row
+     take some appropriate action...
+   }</PRE>
+<P><A HREF="#item_dbnextrow"><CODE>dbnextrow()</CODE></A> can also return a hash keyed on the column name:</P>
+<PRE>
+   $dbh-&gt;dbcmd(&quot;select Name=name, Id = id from test_table&quot;);
+   $dbh-&gt;dbsqlexec; $dbh-&gt;dbresults;</PRE>
+<PRE>
+   while(%arr = $dbh-&gt;dbnextrow(1)) {
+      print &quot;$arr{Name} : $arr{Id}\n&quot;;
+   }</PRE>
+<P></P>
+<DT><STRONG><A NAME="item_dbretdata">@dat = $dbh-&gt;dbretdata[$doAssoc])</A></STRONG><BR>
+<DD>
+Retrieve the value of the parameters marked as 'OUTPUT' in a stored
+procedure. If $doAssoc is non-0, then retrieve the data as an
+associative array with parameter name/value pairs.
+<P></P>
+<DT><STRONG><A NAME="item_dbbylist">$bylist = $dbh-&gt;<CODE>dbbylist($computeID)</CODE></A></STRONG><BR>
+<DD>
+Returns the <EM>by list</EM> for a <EM>compute by</EM> clause. $bylist is a reference 
+to an array of <EM>colids</EM>. You can use $dbh-&gt;<A HREF="#item_dbcolname"><CODE>dbcolname()</CODE></A> to get the column 
+names.
+<PRE>
+    $dbh-&gt;dbcmd(&quot;select * from sysusers order by uid compute count(uid) by uid&quot;);
+    $dbh-&gt;dbsqlexec;
+    $dbh-&gt;dbresults;
+    my @dat;
+    while(@dat = $dbh-&gt;dbnextrow) {
+        if($dbh-&gt;{ComputeID} != 0) {
+            my $bylist = $dbh-&gt;dbbylist($dbh-&gt;{ComputeID});
+            print &quot;bylist = @$bylist\n&quot;;
+        }
+        print &quot;@dat\n&quot;;
+    }</PRE>
+<P></P>
+<DT><STRONG><A NAME="item_dbcomputeinfo">%hash = $dbh-&gt;dbcomputeinfo($computeID, $column)</A></STRONG><BR>
+<DD>
+Returns a hash with the <STRONG>colid</STRONG>, <STRONG>op</STRONG>, <STRONG>len</STRONG>, <STRONG>type</STRONG> and <STRONG>utype</STRONG>
+of the <EM>compute by</EM> column. You can call this subroutine to get the 
+information returned by DBlibrary's <EM>dbalt*()</EM> calls. The $column is the 
+column number in the current <EM>compute by</EM> row (starting at 1) and
+the $computeID is best retrieved from <EM>$dbh-</EM>{ComputeID}&gt;. Please
+see the documentation of the <EM>dbalt*()</EM> calls in Sybase's DBlibrary
+manual.
+<P></P>
+<DT><STRONG><A NAME="item_dbstrcpy">$string = $dbh-&gt;dbstrcpy</A></STRONG><BR>
+<DD>
+Retrieve the contents of the command buffer.
+<P></P>
+<DT><STRONG><A NAME="item_dbsetopt">$ret = $dbh-&gt;dbsetopt($opt [, $c_val [, $i_val]])</A></STRONG><BR>
+<DD>
+Sets option $opt with optional character parameter $c_val and optional
+integer parameter $i_val. $opt is one of the option values defined in
+the Sybase DBlibrary manual (f.eg. DBSHOWPLAN, DBTEXTSIZE). For
+example, to set SHOWPLAN on, you would use
+<PRE>
+    $dbh-&gt;dbsetopt(DBSHOWPLAN);</PRE>
+<P>See also <A HREF="#item_dbclropt"><CODE>dbclropt()</CODE></A> and <A HREF="#item_dbisopt"><CODE>dbisopt()</CODE></A> below.</P>
+<P></P>
+<DT><STRONG><A NAME="item_dbclropt">$ret = $dbh-&gt;dbclropt($opt [, $c_val])</A></STRONG><BR>
+<DD>
+Clears the option $opt, previously set using dbsetopt().
+<P></P>
+<DT><STRONG><A NAME="item_dbisopt">$ret = $dbh-&gt;dbisopt($opt [, $c_val])</A></STRONG><BR>
+<DD>
+Returns TRUE if the option $opt is set.
+<P></P>
+<DT><STRONG><A NAME="item_dbsafestr">$string = $dbh-&gt;dbsafestr($string [,$quote_char])</A></STRONG><BR>
+<DD>
+Convert $string to a 'safer' version by inserting single or double
+quotes where appropriate, so that it can be passed to the dataserver
+without syntax errors.
+<P>The second argument to <A HREF="#item_dbsafestr"><CODE>dbsafestr()</CODE></A> (normally <STRONG>DBSINGLE</STRONG>, <STRONG>DBDOUBLE</STRONG> or
+<STRONG>DBBOTH</STRONG>) has been replaced with a literal ' or `` (meaning <STRONG>DBSINGLE</STRONG> or
+<STRONG>DBDOUBLE</STRONG>, respectively). Omitting this argument means <STRONG>DBBOTH</STRONG>.</P>
+<P></P>
+<DT><STRONG><A NAME="item_dbgetpacket">$packet_size = $dbh-&gt;dbgetpacket</A></STRONG><BR>
+<DD>
+Returns the TDS packet size currently in use for this $dbh.
+<P></P></DL>
+<P>
+<H2><A NAME="text/image routines">TEXT/IMAGE Routines</A></H2>
+<DL>
+<DT><STRONG><A NAME="item_dbwritetext">$status = $dbh-&gt;dbwritetext($colname, $dbh_2, $colnum, $text [, $log])</A></STRONG><BR>
+<DD>
+Insert or update data in a TEXT or IMAGE column. The usage is a bit
+different from that of the C version:
+<P>The calling sequence is a little different from the C version, and
+logging is <STRONG>off</STRONG> by default:</P>
+<P><STRONG>$dbh_2</STRONG> and <STRONG>$colnum</STRONG> are the <STRONG>DBPROCESS</STRONG> and column number of a
+currently active query. Example:</P>
+<PRE>
+   $dbh_2-&gt;dbcmd('select the_text, t_index from text_table where t_index = 5');
+   $dbh_2-&gt;dbsqlexec; $dbh_2-&gt;dbresults;
+   @data = $dbh_2-&gt;dbnextrow;</PRE>
+<PRE>
+   $d-&gt;dbwritetext (&quot;text_table.the_text&quot;, $dbh_2, 1,
+        &quot;This is text which was added with Sybperl&quot;, TRUE);</PRE>
+<P></P>
+<DT><STRONG><A NAME="item_dbpreptext">$status = $dbh-&gt;dbpreptext($colname, $dbh_2, $colnum, $size [, $log])</A></STRONG><BR>
+<DD>
+Prepare to insert or update text with dbmoretext().
+<P>The calling sequence is a little different from the C version, and
+logging is <STRONG>off</STRONG> by default:</P>
+<P><STRONG>$dbh_2</STRONG> and <STRONG>$colnum</STRONG> are the <STRONG>DBPROCESS</STRONG> and column number of a
+currently active query. Example:</P>
+<PRE>
+   $dbh_2-&gt;dbcmd('select the_text, t_index from text_table where t_index = 5');
+   $dbh_2-&gt;dbsqlexec; $dbh_2-&gt;dbresults;
+   @data = $dbh_2-&gt;dbnextrow;</PRE>
+<PRE>
+   $size = length($data1) + length($data2);
+   $d-&gt;dbpreptext (&quot;text_table.the_text&quot;, $dbh_2, 1, $size, TRUE);
+   $dbh-&gt;dbsqlok;
+   $dbh-&gt;dbresults;
+   $dbh-&gt;dbmoretext(length($data1), $data1);
+   $dbh-&gt;dbmoretext(length($data2), $data2);</PRE>
+<PRE>
+   $dbh-&gt;dbsqlok;
+   $dbh-&gt;dbresults;</PRE>
+<P></P>
+<DT><STRONG><A NAME="item_dbmoretext">$status = $dbh-&gt;dbmoretext($size, $data)</A></STRONG><BR>
+<DD>
+Sends a chunk of TEXT/IMAGE data to the server. See the example above.
+<P></P>
+<DT><STRONG><A NAME="item_dbreadtext">$status = $dbh-&gt;dbreadtext($buf, $size)</A></STRONG><BR>
+<DD>
+Read a TEXT/IMAGE data item in $size chunks.
+<P>Example:</P>
+<PRE>
+    $dbh-&gt;dbcmd(&quot;select data from text_test where id=1&quot;);
+    $dbh-&gt;dbsqlexec;
+    while($dbh-&gt;dbresults != NO_MORE_RESULTS) {
+        my $bytes;
+        my $buf = '';
+        while(($bytes = $dbh-&gt;dbreadtext($buf, 512)) != NO_MORE_ROWS) {
+            if($bytes == -1) {
+                die &quot;Error!&quot;;
+            } elsif ($bytes == 0) {
+                print &quot;End of row\n&quot;;
+            } else {
+                print &quot;$buf&quot;;
+            }
+        }
+    }</PRE>
+<P></P></DL>
+<P>
+<H2><A NAME="bcp routines">BCP Routines</A></H2>
+<P>See also the <STRONG>Sybase::BCP</STRONG> module.</P>
+<DL>
+<DT><STRONG><A NAME="item_BCP_SETL"><CODE>BCP_SETL($state)</CODE></A></STRONG><BR>
+<DD>
+This is an exported routine (ie it can be called without a $dbh
+handle) which sets the BCP IN flag to TRUE/FALSE.
+<P>It is necessary to call <A HREF="#item_BCP_SETL"><CODE>BCP_SETL(TRUE)</CODE></A> before opening the
+connection with which one wants to run a BCP IN operation.</P>
+<P></P>
+<DT><STRONG><A NAME="item_%24state_%3D_bcp_getl">$state = bcp_getl</A></STRONG><BR>
+<DD>
+Retrieve the current BCP flag status.
+<P></P>
+<DT><STRONG><A NAME="item_bcp_init">$status = $dbh-&gt;bcp_init($table, $hfile, $errfile, $direction)</A></STRONG><BR>
+<DD>
+Initialize BCP library. $direction can be <STRONG>DB_OUT</STRONG> or <STRONG>DB_IN</STRONG>
+<P></P>
+<DT><STRONG><A NAME="item_bcp_meminit">$status = $dbh-&gt;<CODE>bcp_meminit($numcols)</CODE></A></STRONG><BR>
+<DD>
+This is a utility function that does not exist in the normal BCP
+API. It's use is to initialize some internal variables before starting
+a BCP operation from program variables into a table. This call avoids
+setting up translation 
+information for each of the columns of the table being updated,
+obviating the use of the bcp_colfmt call.
+<P>See EXAMPLES, below.</P>
+<P></P>
+<DT><STRONG><A NAME="item_bcp_sendrow">$status = $dbh-&gt;<CODE>bcp_sendrow(LIST)</CODE></A></STRONG><BR>
+<DD>
+<DT><STRONG>$status = $dbh-&gt;<CODE>bcp_sendrow(ARRAY_REF)</CODE></STRONG><BR>
+<DD>
+Sends the data in LIST to the server. The LIST is assumed to contain
+one element for each column being updated. To send a NULL value set
+the appropriate element to the Perl <STRONG>undef</STRONG> value.
+<P>In the second form you pass an array reference instead of passing the
+LIST, which makes processing a little bit faster on wide tables.</P>
+<P></P>
+<DT><STRONG><A NAME="item_bcp_batch">$rows = $dbh-&gt;bcp_batch</A></STRONG><BR>
+<DD>
+Commit rows to the database. You usually use it like this:
+<PRE>
+       while(&lt;IN&gt;) {
+           chop;
+           @data = split(/\|/);
+           $d-&gt;bcp_sendrow(\@data);    # Pass the array reference</PRE>
+<PRE>
+           # Commit data every 100 rows.
+           if((++$count % 100) == 0) {
+                   $d-&gt;bcp_batch;
+           }
+        }</PRE>
+<P></P>
+<DT><STRONG><A NAME="item_bcp_done">$status = $dbh-&gt;bcp_done</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_bcp_control">$status = $dbh-&gt;bcp_control($field, $value)</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_bcp_columns">$status = $dbh-&gt;<CODE>bcp_columns($colcount)</CODE></A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_bcp_colfmt">$status = $dbh-&gt;bcp_colfmt($host_col, $host_type, $host_prefixlen, $host_collen, $host_term, $host_termlen, $table_col [, $precision, $scale])</A></STRONG><BR>
+<DD>
+If you have DBlibrary for System 10 or higher, then you can pass the
+additional $precision and $scale parameters, and have sybperl call
+<CODE>bcp_colfmt_ps()</CODE> instead of bcp_colfmt().
+<P></P>
+<DT><STRONG><A NAME="item_bcp_collen">$status = $dbh-&gt;bcp_collen($varlen, $table_column)</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_bcp_exec">$status = $dbh-&gt;bcp_exec</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_bcp_readfmt">$status = $dbh-&gt;<CODE>bcp_readfmt($filename)</CODE></A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_bcp_writefmt">$status = $dbh-&gt;<CODE>bcp_writefmt($filename)</CODE></A></STRONG><BR>
+<DD>
+Please see the DB-library documentation for these calls.
+<P></P></DL>
+<P>
+<H2><A NAME="dbmoney routines">DBMONEY Routines</A></H2>
+<P><STRONG>NOTE:</STRONG> In this version it is possible to avoid calling the routines
+below and still get <STRONG>DBMONEY</STRONG> calculations done with the correct
+precision. See the <STRONG>Sybase::DBlib::Money</STRONG> discussion below.</P>
+<DL>
+<DT><STRONG><A NAME="item_dbmny4add">($status, $sum) = $dbh-&gt;dbmny4add($m1, $m2)</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbmny4cmp">$status = $dbh-&gt;dbmny4cmp($m1, $m2)</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbmny4divide">($status, $quotient) = $dbh-&gt;dbmny4divide($m1, $m2)</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbmny4minus">($status, $dest) = $dbh-&gt;<CODE>dbmny4minus($source)</CODE></A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbmny4mul">($status, $product) = $dbh-&gt;dbmny4mul($m1, $m2)</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbmny4sub">($status, $difference) = $dbh-&gt;dbmny4sub($m1, $m2)</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbmny4zero">($status, $ret) = $dbh-&gt;dbmny4zero</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbmnyadd">($status, $sum) = $dbh-&gt;dbmnyadd($m1, $m2)</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbmnycmp">$status = $dbh-&gt;dbmnycmp($m1, $m2)</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbmnydec">($status, $ret) = $dbh-&gt;<CODE>dbmnydec($m1)</CODE></A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbmnydivide">($status, $quotient) = $dbh-&gt;dbmnydivide($m1, $m2)</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbmnydown">($status, $ret, $remainder) = $dbh-&gt;dbmnydown($m1, $divisor)</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbmnyinc">($status, $ret) = $dbh-&gt;<CODE>dbmnyinc($m1)</CODE></A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbmnyinit">($status, $ret, $remain) = $dbh-&gt;dbmnyinit($m1, $trim)</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbmnymaxneg">($status, $ret) = $dbh-&gt;dbmnymaxneg</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbmnymaxpos">($status, $ret) = $dbh-&gt;dbmnymaxpos</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbmnyminus">($status, $dest) = $dbh-&gt;<CODE>dbmnyminus($source)</CODE></A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbmnymul">($status, $product) = $dbh-&gt;dbmnymul($m1, $m2)</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbmnyndigit">($status, $m1, $digits, $remain) = $dbh-&gt;<CODE>dbmnyndigit($m1)</CODE></A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbmnyscale">($status, $ret) = $dbh-&gt;dbmnyscale($m1, $multiplier, $addend)</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbmnysub">($status, $difference) = $dbh-&gt;dbmnysub($m1, $m2)</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbmnyzero">($status, $ret) = $dbh-&gt;dbmnyzero</A></STRONG><BR>
+<DD>
+All of these routines correspond to their DB-library counterpart, with
+the following exception:
+<P>The routines which in the C version take pointers to arguments
+(in order to return values) return these values in an array instead:</P>
+<PRE>
+   status = dbmnyadd(dbproc, m1, m2, &amp;result) becomes
+   ($status, $result) = $dbproc-&gt;dbmnyadd($m1, $m2)</PRE>
+<P></P></DL>
+<P>
+<H2><A NAME="rpc routines">RPC Routines</A></H2>
+<P><STRONG>NOTE:</STRONG> Check out eg/rpc-example.pl for an example on how to use
+these calls.</P>
+<DL>
+<DT><STRONG><A NAME="item_dbrpcinit">$dbh-&gt;dbrpcinit($rpcname, $option)</A></STRONG><BR>
+<DD>
+Initialize an RPC call to the remote procedure $rpcname. See the
+DB-library manual for valid values for $option.
+<P></P>
+<DT><STRONG><A NAME="item_dbrpcparam">$dbh-&gt;dbrpcparam($parname, $status, $type, $maxlen, $datalen, $value)</A></STRONG><BR>
+<DD>
+Add a parameter to an RPC call initiated with dbrpcinit(). Please see
+the DB-library manual page for details &amp; values for the parameters.
+<P><STRONG>NOTE:</STRONG> All floating point types (MONEY, FLOAT, REAL, DECIMAL, etc.)
+are converted to FLOAT before being sent to the RPC.</P>
+<P></P>
+<DT><STRONG><A NAME="item_dbrpcsend">$dbh-&gt;<CODE>dbrpcsend([$no_ok])</CODE></A></STRONG><BR>
+<DD>
+Execute an RPC initiated with dbrpcinit().
+<P>By default this routine calls the C library <A HREF="#item_dbrpcsend"><CODE>dbrpcsend()</CODE></A> and dbsqlok(), so 
+that you can directly call $dbh-&gt;dbresults directly after a call to 
+$dbh-&gt;dbrpcsend. If you need more control you can pass a non-0 value for 
+the $no_ok parameter, and it will then be your responsibility to call
+$dbh-&gt;dbsqlok(). Please read the Sybase OpenClient DB-Library manual
+pages on <A HREF="#item_dbrpcsend"><CODE>dbrpcsend()</CODE></A> and <A HREF="#item_dbsqlok"><CODE>dbsqlok()</CODE></A> for further details.</P>
+<P></P>
+<DT><STRONG><A NAME="item_dbrpwset">dbrpwset($srvname, $pwd)</A></STRONG><BR>
+<DD>
+Set the password for connecting to a remote server.
+<P></P>
+<DT><STRONG><A NAME="item_dbrpwclr">dbrpwclr</A></STRONG><BR>
+<DD>
+Clear all remote server passwords.
+<P></P></DL>
+<P>
+<H2><A NAME="registered procedure execution">Registered procedure execution</A></H2>
+<DL>
+<DT><STRONG><A NAME="item_dbreginit">$status = $dbh-&gt;<CODE>dbreginit($proc_name)</CODE></A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbreglist">$status = $dbh-&gt;dbreglist</A></STRONG><BR>
+<DD>
+<DT><STRONG>$status = $dbh-&gt;dbreglist($parname, $type, $datalen, $value)</STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbregexec">$status = $dbh-&gt;<CODE>dbregexec($opt)</CODE></A></STRONG><BR>
+<DD>
+These routines are used to execute an OpenServer registered procedure.
+Please the Sybase DBlibrary manual for a description of what these
+routnines do, and how to call them.
+<P></P></DL>
+<P>
+<H2><A NAME="two phase commit routines">Two Phase Commit Routines</A></H2>
+<DL>
+<DT><STRONG><A NAME="item_open_commit">$dbh = Sybase::DBlib-&gt;open_commit($user, $pwd, $server, $appname)</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_start_xact">$id = $dbh-&gt;start_xact($app_name, $xact_name, $site_count)</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_stat_xact">$status = $dbh-&gt;<CODE>stat_xact($id)</CODE></A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_scan_xact">$status = $dbh-&gt;<CODE>scan_xact($id)</CODE></A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_commit_xact">$status = $dbh-&gt;<CODE>commit_xact($id)</CODE></A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_abort_xact">$status = $dbh-&gt;<CODE>abort_xact($id)</CODE></A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_close_commit">$dbh-&gt;close_commit</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_build_xact_string">$string = Sybase::DBlib::build_xact_string($xact_name, $service_name, $id)</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_remove_xact">$status = $dbh-&gt;remove_xact($id, $site_count)</A></STRONG><BR>
+<DD>
+Please see the Sybase documentation for this.
+<P><STRONG>NOTE:</STRONG> These routines have not been thouroughly tested!</P>
+<P></P></DL>
+<P>
+<H2><A NAME="exported routines">Exported Routines</A></H2>
+<DL>
+<DT><STRONG><A NAME="item_dberrhandle">$old_handler = <CODE>dberrhandle($err_handle)</CODE></A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbmsghandle">$old_handler = <CODE>dbmsghandle($msg_handle)</CODE></A></STRONG><BR>
+<DD>
+Register an error (or message) handler for DB-library to use. Handler
+examples can be found in <STRONG>sybutil.pl</STRONG> in the Sybperl
+distribution. Returns a reference to the previously defined handler
+(or undef if none were defined). Passing undef as the argument clears
+the handler.
+<P></P>
+<DT><STRONG><A NAME="item_dbsetifile"><CODE>dbsetifile($filename)</CODE></A></STRONG><BR>
+<DD>
+Set the name of the 'interfaces' file. This file is normally found by
+DB-library in the directory pointed to by the $SYBASE environment variable.
+<P></P>
+<DT><STRONG><A NAME="item_dbrecftos"><CODE>dbrecftos($filename)</CODE></A></STRONG><BR>
+<DD>
+Start recording all SQL sent to the server in file $filename.
+<P></P>
+<DT><STRONG><A NAME="item_dbversion">dbversion</A></STRONG><BR>
+<DD>
+Returns a string identifying the version of DBlibrary that this copy
+of Sybperl was built with.
+<P></P>
+<DT><STRONG><A NAME="item_DBSETLCHARSET"><CODE>DBSETLCHARSET($charset)</CODE></A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_DBSETLNATLANG"><CODE>DBSETLNATLANG($language)</CODE></A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_DBSETLPACKET"><CODE>DBSETLPACKET($packet_size)</CODE></A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_%24time_%3D_DBGETTIME">$time = DBGETTIME</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbsettime">$time = <CODE>dbsettime($seconds)</CODE></A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_dbsetlogintime">$time = <CODE>dbsetlogintime($seconds)</CODE></A></STRONG><BR>
+<DD>
+These utility routines are probably very seldom used. See the
+DB-library manual for an explanation of their use.
+<P></P>
+<DT><STRONG><A NAME="item_dbexit">dbexit</A></STRONG><BR>
+<DD>
+Tell DB-library that we're done. Once this call has been made, no
+further activity requiring DB-library can be performed in the current
+program.
+<P></P></DL>
+<P>
+<H2><A NAME="high level wrapper functions (sql() and nsql())">High Level Wrapper Functions (sql() and <A HREF="#item_nsql"><CODE>nsql())</CODE></A></A></H2>
+<P>These routines are not part of the DB-library API, but have been added
+because they can make our life as programers easier, and exploit
+certain strenghts of Perl.</P>
+<DL>
+<DT><STRONG><A NAME="item_sql">$ret|@ret = $dbh-&gt;sql($cmd [, \&amp;rowcallback [, $flag]])</A></STRONG><BR>
+<DD>
+Runs the sql command and returns the result as a reference to an array
+of the rows. In a LIST context, return the array itself (instead of a
+reference to the array).  Each row is a reference to an array of scalars.
+<P>If you provide a second parameter it is taken as a procedure to call
+for each row.  The callback is called with the values of the row as
+parameters.</P>
+<P>If you provide a third parameter, this is used in the call to
+<A HREF="#item_dbnextrow"><CODE>dbnextrow()</CODE></A> to retrieve associative arrays rather than 'normal' arrays
+for each row, and store them in the returned array. To pass the third
+parameter without passing the &amp;rowcallback value you should pass the
+special value <EM>undef</EM> as second parameter:</P>
+<PRE>
+        @rows = $dbh-&gt;sql(&quot;select * from sysusers&quot;, undef, TRUE);
+        foreach $row_ref (@rows) {
+            if($$row_ref{'uid'} == 10) {
+                ....
+            }
+        }</PRE>
+<P>See also eg/sql.pl for an example.</P>
+<P>Contributed by Gisle Aas.</P>
+<P><STRONG>NOTE:</STRONG> This routine loads all the data into memory. It should not be
+run with a query that returns a large number of rows. To avoid the
+risk of overflowing memory, you can limit the number of rows that the
+query returns by setting the 'MaxRows' field of the $dbh attribute
+field:</P>
+<PRE>
+        $dbh-&gt;{'MaxRows'} = 100;</PRE>
+<P>This value is <STRONG>not</STRONG> set by default.</P>
+<P></P>
+<DT><STRONG><A NAME="item_nsql">@ret = $dbh-&gt;nsql($sql [, ``ARRAY'' | ``HASH'' ] [, \&amp;subroutine ] );</A></STRONG><BR>
+<DD>
+An enhanced version of the <STRONG>sql</STRONG> routine, <STRONG>nsql</STRONG>, is also available.
+<A HREF="#item_nsql"><CODE>nsql()</CODE></A> provides better error checking (using its companion error and
+message handlers), optional deadlock retry logic, and several options
+for the format of the return values.  In addition, the data can either
+be returned to the caller in bulk, or processes line by line via a
+callback subroutine passed as an argument (this functionality is
+similar to the <CODE>r_sql()</CODE> method).
+<P>The arguments are an SQL command to be executed, the <STRONG>$type</STRONG> of the
+data to be returned, and the callback subroutine.</P>
+<P>if a callback subroutine is not given, then the data from the query is
+returned as an array.  The array returned by nsql is one of the
+following:</P>
+<PRE>
+    Array of Hash References (if type eq HASH)
+    Array of Array References (if type eq ARRAY)
+    Simple Array (if type eq ARRAY, and a single column is queried
+    Boolean True/False value (if type ne ARRAY or HASH)</PRE>
+<P>Optionally, instead of the words ``HASH'' or ``ARRAY'' a reference of the
+same type can be passed as well.  This is, both of the following are
+equivalent:</P>
+<PRE>
+    $dbh-&gt;nsql(&quot;select col1,col2 from table&quot;,&quot;HASH&quot;);
+    $dbh-&gt;nsql(&quot;select col1,col2 from table&quot;,{});</PRE>
+<P>For example, the following code will return an array of hash
+references:</P>
+<PRE>
+    @ret = $dbh-&gt;nsql(&quot;select col1,col2 from table&quot;,&quot;HASH&quot;);
+    foreach $ret ( @ret ) {
+      print &quot;col1 = &quot;, $ret-&gt;{'col1'}, &quot;, col2 = &quot;, $ret-&gt;{'col2'}, &quot;\n&quot;;
+    }</PRE>
+<P>The following code will return an array of array references:</P>
+<PRE>
+    @ret = $dbh-&gt;nsql(&quot;select col1,col2 from table&quot;,&quot;ARRAY&quot;);
+    foreach $ret ( @ret ) {
+      print &quot;col1 = &quot;, $ret-&gt;[0], &quot;, col2 = &quot;, $ret-&gt;[1], &quot;\n&quot;;
+    }</PRE>
+<P>The following code will return a simple array, since the select
+statement queries for only one column in the table:</P>
+<PRE>
+    @ret = $dbh-&gt;nsql(&quot;select col1 from table&quot;,&quot;ARRAY&quot;);
+    foreach $ret ( @ret ) {
+      print &quot;col1 = $ret\n&quot;;
+    }</PRE>
+<P>Success of failure of an <A HREF="#item_nsql"><CODE>nsql()</CODE></A> call cannot necessarily be judged
+based on the value of the return code, as an empty array may be a
+perfectly valid result for certain sql code.
+</P>
+<PRE>
+
+The nsql() routine will maintain the success or failure state in a
+variable $DB_ERROR, accessed by the method of the same name, and a
+pair of Sybase message/error handler routines are also provided which
+will use $DB_ERROR for the Sybase messages and errors as well.
+However, these must be installed by the client application:</PRE>
+<PRE>
+    dbmsghandle(&quot;Sybase::DBlib::nsql_message_handler&quot;);
+    dberrhandle(&quot;Sybase::DBlib::nsql_error_handler&quot;);</PRE>
+<P>Success of failure of an <A HREF="#item_nsql"><CODE>nsql()</CODE></A> call cannot necessarily be judged
+based on the value of the return code, as an emtpy array may be a
+perfectly valid result for certain sql code.</P>
+<P>The following code is the proper method for handling errors with use
+of nsql.</P>
+<PRE>
+    @ret = $dbh-&gt;nsql(&quot;select stuff from table where stuff = 'nothing'&quot;,&quot;ARRAY&quot;);
+    if ( $DB_ERROR ) {
+      # error handling code goes here, perhaps:
+      die &quot;Unable to get stuff from table: $DB_ERROR\n&quot;;
+    }
+</PRE>
+<PRE>
+
+The behavior of nsql() can be customized in several ways.  If the
+variable:</PRE>
+<PRE>
+    $Sybase::DBlib::nsql_strip_whitespace</PRE>
+<P>is true, then <A HREF="#item_nsql"><CODE>nsql()</CODE></A> will strip the trailing white spaces from all of
+the scalar values in the results.</P>
+<P>When using a callback subroutine, the subroutine is passed to <A HREF="#item_nsql"><CODE>nsql()</CODE></A>
+as a CODE reference.  For example:</P>
+<PRE>
+    sub parse_hash {
+      my %data = @_;
+      # Do something with %data 
+    }</PRE>
+<PRE>
+    $dbh-&gt;nsql(&quot;select * from really_huge_table&quot;,&quot;HASH&quot;,\&amp;parse_hash);
+    if ( $DB_ERROR ) {
+      # error handling code goes here, perhaps:
+      die &quot;Unable to get stuff from really_huge_table: $DB_ERROR\n&quot;;
+    }</PRE>
+<P>In this case, the data is passed to the callback (&amp;parse_hash) as a
+HASH, since that was the format specified as the second argument.  If
+the second argument specifies an ARRAY, then the data is passed as an
+array.  For example:</P>
+<PRE>
+    sub parse_array {
+      my @data = @_;
+      # Do something with @data 
+    }</PRE>
+<PRE>
+    $dbh-&gt;nsql(&quot;select * from really_huge_table&quot;,&quot;HASH&quot;,\&amp;parse_array);
+    if ( $DB_ERROR ) {
+      # error handling code goes here, perhaps:
+      die &quot;Unable to get stuff from really_huge_table: $DB_ERROR\n&quot;;
+    }</PRE>
+<P>The primary advantage of using the callback is that the rows are
+processed one at a time, rather than the data returned in a huge
+array.  For very large tables, this can result in very significant
+memory consumption, and on resource constrained machines, some large
+queries may simply fail.  Processing rows individually will be much
+more efficient with respect to memory consumption.</P>
+<P>IMPORTANT NOTE: The callback subroutine must return a true value if it
+has successfully handled the data.  If a false value is returned, then
+the query is canceled via dbcancel(), and <A HREF="#item_nsql"><CODE>nsql()</CODE></A> will abort further
+processing.</P>
+<P>WARNING: Using the following deadlock retry logic together with a
+callback routine is dangerous.  If a deadlock is encountered after
+some rows have already been processed by the callback, then the data
+will be processed a second time (or more, if the deadlock is retried
+multiple times).</P>
+<P>The <A HREF="#item_nsql"><CODE>nsql()</CODE></A> method also supports automated retries of deadlock errors
+(1205).  This is disabled by default, and enabled only if the
+variable:</P>
+<PRE>
+    $Sybase::DBlib::nsql_deadlock_retrycount</PRE>
+<P>is non-zero.  This variable is the number of times to resubmit a given
+SQL query, and the variable</P>
+<PRE>
+    $Sybase::DBlib::nsql_deadlock_retrysleep</PRE>
+<P>is the delay, in seconds, between retries (default is 60).  Normally,
+the retries happen silently, but if you want <A HREF="#item_nsql"><CODE>nsql()</CODE></A> to <CODE>carp()</CODE> about
+it, then set:</P>
+<PRE>
+    $Sybase::DBlib::nsql_deadlock_verbose</PRE>
+<P>to a true value, and <A HREF="#item_nsql"><CODE>nsql()</CODE></A> will whine about the failure.  If all of
+the retries fail, then <A HREF="#item_nsql"><CODE>nsql()</CODE></A> will return an error, like it normally
+does.  If you want the code to try forever, then set the retry count
+to -1.</P>
+<P></P></DL>
+<P>
+<H2><A NAME="constants">Constants</A></H2>
+<P>Most of the #defines from sybdb.h can be accessed as
+<STRONG>Sybase::DBlib::NAME</STRONG> (eg <STRONG>Sybase::DBlib::STDEXIT</STRONG>) Additional constants are:</P>
+<DL>
+<DT><STRONG><A NAME="item_%24Sybase%3A%3ADBlib%3A%3AVersion">$Sybase::DBlib::Version</A></STRONG><BR>
+<DD>
+The Sybperl version. Can be interpreted as a string or as a number.
+<P></P>
+<DT><STRONG><A NAME="item_DBLIBVS">DBLIBVS</A></STRONG><BR>
+<DD>
+The version of <EM>DBlibrary</EM> that sybperl was built against.
+<P></P></DL>
+<P>
+<H2><A NAME="attributes">Attributes</A></H2>
+<P>The behaviour of certain aspects of the Sybase::CTlib module can be
+controled via global or connection specific attributes. The global
+attributes are stored in the %Sybase::DBlib::Att variable, and the
+connection specific attributes are stored in the $dbh. To set a global
+attribute, you would code</P>
+<PRE>
+     $Sybase::CTlib::Att{'AttributeName'} = value;</PRE>
+<P>and to set a connection specific attribute you would code</P>
+<PRE>
+     $dbh-&gt;{&quot;AttributeName'} = value;</PRE>
+<P><STRONG>NOTE!!!</STRONG> Global attribute setting changes do not affect existing
+connections, and changing an attribute inside a <A HREF="#item_ct_fetch"><CODE>ct_fetch()</CODE></A> does <STRONG>not</STRONG>
+change the behaviour of the data retrieval during that <A HREF="#item_ct_fetch"><CODE>ct_fetch()</CODE></A>
+loop.</P>
+<P>The following attributes are currently defined:</P>
+<DL>
+<DT><STRONG><A NAME="item_dbNullIsUndef">dbNullIsUndef</A></STRONG><BR>
+<DD>
+If set, NULL results are returned as the Perl 'undef' value, otherwise
+as the string ``NULL''. <STRONG>Default:</STRONG> set.
+<P></P>
+<DT><STRONG><A NAME="item_dbKeepNumeric">dbKeepNumeric</A></STRONG><BR>
+<DD>
+If set, numeric results are not converted to strings before returning
+the data to Perl. <STRONG>Default:</STRONG> set.
+<P></P>
+<DT><STRONG><A NAME="item_dbBin0x">dbBin0x</A></STRONG><BR>
+<DD>
+If set, BINARY results are preceeded by '0x' in the result. <STRONG>Default:</STRONG> unset.
+<P></P>
+<DT><STRONG><A NAME="item_useDateTime">useDateTime</A></STRONG><BR>
+<DD>
+Turn the special handling of <STRONG>DATETIME</STRONG> values on. <STRONG>Default:</STRONG>
+unset. See the section on special datatype handling below.
+<P></P>
+<DT><STRONG><A NAME="item_useMoney">useMoney</A></STRONG><BR>
+<DD>
+Turn the special handling of <STRONG>MONEY</STRONG> values on. <STRONG>Default:</STRONG>
+unset. See the section on special datatype handling below.
+<P></P></DL>
+<P>
+<H2><A NAME="status variables">Status Variables</A></H2>
+<P>These status variables are set by <EM>Sybase::DBlib</EM> internal routines,
+and can be accessed using the $dbh-&gt;{'variable'} syntax.</P>
+<DL>
+<DT><STRONG><A NAME="item_DBstatus">DBstatus</A></STRONG><BR>
+<DD>
+The return status of the last call to <EM>dbnextrow</EM>.
+<P></P>
+<DT><STRONG><A NAME="item_ComputeID">ComputeID</A></STRONG><BR>
+<DD>
+The compute id of the current returned row. Is 0 if no <EM>compute by</EM>
+clause is currently being processed.
+<P></P></DL>
+<P>
+<H2><A NAME="examples">Examples</A></H2>
+<DL>
+<DT><STRONG><A NAME="item_BCP_from_program_variables">BCP from program variables</A></STRONG><BR>
+<DD>
+See also <STRONG>Sybase::BCP</STRONG> for a symplified bulk copy API.
+<PRE>
+   &amp;BCP_SETL(TRUE);
+   $dbh = new Sybase::DBlib $User, $Password;
+   $dbh-&gt;bcp_init(&quot;test.dbo.t2&quot;, '', '', DB_IN);
+   $dbh-&gt;bcp_meminit(3);   # we wish to copy three columns into
+                           # the 't2' table
+   while(&lt;&gt;)
+   {
+        chop;
+        @dat = split(' ', $_);
+        $dbh-&gt;bcp_sendrow(@dat);
+   }
+   $ret = $dbh-&gt;bcp_done;</PRE>
+<P></P>
+<DT><STRONG>Using the <CODE>sql()</CODE> routine</STRONG><BR>
+<DD>
+<PRE>
+   $dbh = new Sybase::DBlib;
+   $ret = $dbh-&gt;sql(&quot;select * from sysprocesses&quot;);
+   foreach (@$ret)   # Loop through each row
+   {
+       @row = @$_;
+       # do something with the data row...
+   }</PRE>
+<PRE>
+   $ret = $dbh-&gt;sql(&quot;select * from sysusers&quot;, sub { print &quot;@_&quot;; });
+   # This will select all the info from sysusers, and print it</PRE>
+<DT><STRONG><A NAME="item_Getting_SHOWPLAN_and_STATISTICS_information_within">Getting SHOWPLAN and STATISTICS information within a script</A></STRONG><BR>
+<DD>
+You can get <STRONG>SHOWPLAN</STRONG> and <STRONG>STATISTICS</STRONG> information when you run a
+<STRONG>sybperl</STRONG> script. To do so, you must first turn on the respective
+options, using dbsetopt(), and then you need a special message handler
+that will filter the <STRONG>SHOWPLAN</STRONG> and/or <STRONG>STATISTICS</STRONG> messages sent
+from the server.
+<P>The following message handler differentiates the <STRONG>SHOWPLAN</STRONG> or
+<STRONG>STATICSTICS</STRONG> messages from other messages:</P>
+<PRE>
+    # Message number 3612-3615 are statistics time / statistics io
+    # message. Showplan messages are numbered 6201-6225.
+    # (I hope I haven't forgotten any...)
+    @sh_msgs = (3612 .. 3615, 6201 .. 6225);
+    @showplan_msg{@sh_msgs} = (1) x scalar(@sh_msgs);</PRE>
+<PRE>
+    sub showplan_handler {
+        my ($db, $message, $state, $severity, $text,
+            $server, $procedure, $line) = @_;
+</PRE>
+<PRE>
+
+        # Don't display 'informational' messages:
+        if ($severity &gt; 10) {
+            print STDERR (&quot;Sybase message &quot;, $message, &quot;,
+               Severity &quot;, $severity, &quot;, state &quot;, $state);
+            print STDERR (&quot;\nServer `&quot;, $server, &quot;'&quot;) if defined ($server);
+            print STDERR (&quot;\nProcedure `&quot;, $procedure, &quot;'&quot;)
+                  if defined ($procedure);
+            print STDERR (&quot;\nLine &quot;, $line) if defined ($line);
+            print STDERR (&quot;\n    &quot;, $text, &quot;\n\n&quot;);
+        }
+        elsif($showplan_msg{$message}) {
+        # This is a HOWPLAN or STATISTICS message, so print it out:
+            print STDERR ($text, &quot;\n&quot;);
+        }
+        elsif ($message == 0) {
+            print STDERR ($text, &quot;\n&quot;);
+        }</PRE>
+<PRE>
+
+        0;
+    }</PRE>
+<P>This could then be used like this:</P>
+<PRE>
+    use Sybase::DBlib;
+    dbmsghandle(\&amp;showplan_handler);</PRE>
+<PRE>
+    $dbh = new Sybase::DBlib  'mpeppler', $password, 'TROLL';</PRE>
+<PRE>
+    $dbh-&gt;dbsetopt(DBSHOWPLAN);
+    $dbh-&gt;dbsetopt(DBSTAT, &quot;IO&quot;);
+    $dbh-&gt;dbsetopt(DBSTAT, &quot;TIME&quot;);</PRE>
+<PRE>
+    $dbh-&gt;dbcmd(&quot;select * from xrate where date = '951001'&quot;);
+    $dbh-&gt;dbsqlexec;
+    while($dbh-&gt;dbresults != NO_MORE_RESULTS) {
+        while(@dat = $dbh-&gt;dbnextrow) {
+            print &quot;@dat\n&quot;;
+        }
+    }</PRE>
+<P>Et voila!</P>
+<P></P></DL>
+<P>
+<HR>
+<H1><A NAME="sybase::sybperl">Sybase::Sybperl</A></H1>
+<P>The Sybase::Sybperl package is designed for backwards compatibility
+with sybperl 1.0xx (for Perl 4.x). It's main purpose is to allow
+sybperl 1.0xx scripts to work unchanged with Perl 5 &amp; sybperl 2. Using
+this API for new scripts is not recomended, unless portability with
+older versions of sybperl is essential.</P>
+<P>The sybperl 1.0xx man page is included in this package in pod/sybperl-1.0xx.man</P>
+<P>Sybase::Sybperl is layered on top of the Sybase::DBlib package, and could
+therefore suffer a small performance penalty.</P>
+<P>
+<HR>
+<H1><A NAME="sybase::ctlib">Sybase::CTlib</A></H1>
+<P>The CT-library module has been written in colaboration with Sybase.</P>
+<P>
+<H2><A NAME="description">DESCRIPTION</A></H2>
+<DL>
+<DT><STRONG><A NAME="item_%24dbh_%3D_new_Sybase%3A%3ACTlib_%24user_%5B%2C_%2">$dbh = new Sybase::CTlib $user [, $passwd [, $server [, $appname[, {attributes}]</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_ct_connect">$dbh = Sybase::CTlib-&gt;ct_connect($user [, $passwd [, $server [,$appname, [{attributes}]]]])</A></STRONG><BR>
+<DD>
+Establishes a connection to the database engine. Initializes and
+allocates resources for the connection, and registers the user name,
+password, target server and application name.
+<P>The <STRONG>attributes</STRONG> hash reference can be used to add private attributes
+to the connection handle that you can later use, and can also be used to 
+set certain connection properties.</P>
+<P>To set the connection properties you pass a special hash in the
+<STRONG>attributes</STRONG> parameter:</P>
+<PRE>
+        $dbh = new Sybase::CTlib 'user', 'pwd', 'SYBASE', undef, 
+                   { CON_PROPS =&gt; { CS_HOSTNAME =&gt; 'kiruna',
+                                    CS_PACKETSIZE =&gt; 1024,
+                                    CS_SEC_CHALLENGE =&gt; CS_TRUE }
+                   };</PRE>
+<P>The following connection properties are currently recognized:</P>
+<DL>
+<DT><STRONG><A NAME="item_CS_HOSTNAME">CS_HOSTNAME</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_CS_ANSI_BINDS">CS_ANSI_BINDS</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_CS_PACKETSIZE">CS_PACKETSIZE</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_CS_SEC_APPDEFINED">CS_SEC_APPDEFINED</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_CS_SEC_CHALLENGE">CS_SEC_CHALLENGE</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_CS_SEC_ENCRYPTION">CS_SEC_ENCRYPTION</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_CS_SEC_NEGOTIATE">CS_SEC_NEGOTIATE</A></STRONG><BR>
+<DD>
+</DL>
+<P>See the Sybase documentation on how and when to use these connection
+properties.</P>
+<P>In addition, you can set the <STRONG>CS_SYB_LANG</STRONG> and <STRONG>CS_SYB_CHARSET</STRONG> properties
+in the same manner. However - you should be aware that these settings affect
+all open connections, not just the one that you are openeing with this call
+to ct_connect(). This behaviour will likely change in the future.</P>
+<DT><STRONG><A NAME="item_ct_execute">$status = $dbh-&gt;<CODE>ct_execute($sql)</CODE></A></STRONG><BR>
+<DD>
+Send the SQL commands $sql to the server. Multiple commands are
+allowed. However, you must call <A HREF="#item_ct_results"><CODE>ct_results()</CODE></A> until it returns
+CS_END_RESULTS or CS_FAIL, or call <A HREF="#item_ct_cancel"><CODE>ct_cancel()</CODE></A> before submitting a new
+set of SQL commands to the server.
+<P>Return values: CS_SUCCEED, CS_FAIL or CS_CANCELED (the operation was
+canceled).</P>
+<P><STRONG>NOTE:</STRONG> <A HREF="#item_ct_execute"><CODE>ct_execute()</CODE></A> is equivalent to calling <A HREF="#item_ct_command"><CODE>ct_command()</CODE></A> followed by
+ct_send().</P>
+<P></P>
+<DT><STRONG><A NAME="item_ct_command">$status = $dbh-&gt;ct_command(type, buffer, len, option)</A></STRONG><BR>
+<DD>
+Append a command to the current SQL command buffer. Please check the
+OpenClient documentation for exact usage.
+<P><STRONG>NOTE:</STRONG> You should only need to call <A HREF="#item_ct_command"><CODE>ct_command()/ct_send()</CODE></A> directly
+if you want to do RPCs or cursor operations. For straight queries you
+should use <A HREF="#item_ct_execute"><CODE>ct_execute()</CODE></A> or <A HREF="#item_ct_sql"><CODE>ct_sql()</CODE></A> instead.</P>
+<P></P>
+<DT><STRONG><A NAME="item_ct_send">$status = $dbh-&gt;ct_send</A></STRONG><BR>
+<DD>
+Send the current command buffer to the server for execution.
+<P><STRONG>NOTE:</STRONG> You only need to call <A HREF="#item_ct_send"><CODE>ct_send()</CODE></A> directly if you've used
+<A HREF="#item_ct_command"><CODE>ct_command()</CODE></A> to set up your SQL query.</P>
+<P></P>
+<DT><STRONG><A NAME="item_ct_results">$status = $dbh-&gt;ct_results($res_type [, $textBind])</A></STRONG><BR>
+<DD>
+This routine returns a results type to indicate the status of returned
+data. ``Command Done:'' result type is returned if one result set has
+been processed. ``Row result'' token is returned if regular rows are
+returned. This output is stored in $res_type.
+<P>If the optional $textBind parameter is <STRONG>FALSE</STRONG> then <EM>TEXT</EM> or
+<EM>IMAGE</EM> columns are <STRONG>not</STRONG> bound, and will not be subsequewntly
+returned by ct_fetch(). Using this feature is a little tricky - please
+see the discussion on raw <STRONG>TEXT</STRONG> and <STRONG>IMAGE</STRONG> handling elsewhere in this
+document.</P>
+<P>The commonly used values for $res_type are CS_ROW_RESULT, CS_CMD_DONE,
+CS_CMD_SUCCEED, CS_COMPUTE_RESULT, CS_CMD_FAIL. The full list of
+values is on page 3-203 OpenClient reference manual.</P>
+<P>See also the description of <A HREF="#item_ct_fetchable"><CODE>ct_fetchable()</CODE></A> below.</P>
+<P>The $status value takes the following values: CS_SUCCEED,
+CS_END_RESULTS, CS_FAIL, CS_CANCELED.</P>
+<P></P>
+<DT><STRONG><A NAME="item_ct_col_names">@names = $dbh-&gt;ct_col_names</A></STRONG><BR>
+<DD>
+Retrieve the column names of the current query. If the current query
+is not a select statement, then an empty array is returned.
+<P></P>
+<DT><STRONG><A NAME="item_ct_col_types">@types = $dbh-&gt;<CODE>ct_col_types([$doAssoc])</CODE></A></STRONG><BR>
+<DD>
+Retrieve the column types of the currently executing query. If
+$doAssoc is non-0, then a hash (aka associative array) is returned
+with column names/column type pairs.
+<P></P>
+<DT><STRONG><A NAME="item_ct_describe">@data = $dbh-&gt;<CODE>ct_describe([$doAssoc])</CODE></A></STRONG><BR>
+<DD>
+Retrieves the description of each of the output columns of the current
+result set. Each element of the returned array is a reference to a
+hash that describes the column. The following fields are set: <STRONG>NAME</STRONG>,
+<STRONG>TYPE</STRONG>, <STRONG>SYBTYPE</STRONG>, <STRONG>MAXLENGTH</STRONG>, <STRONG>SCALE</STRONG>, <STRONG>PRECISION</STRONG>, <STRONG>STATUS</STRONG>.
+<P>You could use it like this:</P>
+<PRE>
+    $dbh-&gt;ct_execute(&quot;select name, uid from sysusers&quot;);
+    while(($rc = $dbh-&gt;ct_results($restype)) == CS_SUCCEED) {
+        next unless $dbh-&gt;ct_fetchable($restype);</PRE>
+<PRE>
+        @desc = $dbh-&gt;ct_describe;
+        print &quot;$desc[0]-&gt;{NAME}\n&quot;;         # prints 'name'
+        print &quot;$desc[0]-&gt;{MAXLENGTH}\n&quot;;    # prints 30</PRE>
+<PRE>
+        ....
+    }</PRE>
+<P>The <STRONG>STATUS</STRONG> field is a bitmask which can be tested for the following
+values: CS_CANBENULL, CS_HIDDEN, CS_IDENTITY, CS_KEY, CS_VERSION_KEY,
+CS_TIMESTAMP and CS_UPDATEABLE. See table 3-46 of the Open Client
+Client Library Reference Manual for a description of each of these values.</P>
+<P>The <STRONG>TYPE</STRONG> field is the data type that Sybase::CTlib converts the column 
+<EM>to</EM> when retrieving the data, so a DATETIME column will be returned as a 
+CS_CHAR_TYPE column, unless the <STRONG>UseDateTime</STRONG> attribute described elsewhere 
+in this document is turned on.</P>
+<P>The <STRONG>SYBTYPE</STRONG> field is the real Sybase data type for this column.</P>
+<P></P>
+<DT><STRONG><A NAME="item_ct_fetch">@data = $dbh-&gt;ct_fetch([$doAssoc [, $wantRef]])</A></STRONG><BR>
+<DD>
+Retrieve one row of data. If $doAssoc is non-0, a hash is returned
+with column name/value pairs.
+<P>If $wantRef is non-0, then a <STRONG>reference</STRONG> to an array (or hash)
+is returned. This reference <EM>points</EM> to a static array (or hash), so
+to store the returned rows in an array you must copy the array (or hash):</P>
+<PRE>
+   while($d = $dbh-&gt;ct_fetch(1, 1)) {
+      push(@rows, {%$d});
+   }</PRE>
+<P>An empty array is returned if there is no data to fetch.</P>
+<P></P>
+<DT><STRONG><A NAME="item_ct_cancel">$dbh-&gt;<CODE>ct_cancel($type)</CODE></A></STRONG><BR>
+<DD>
+Issue an attention signal to the server about the current
+transaction. If $type == CS_CANCEL_ALL, then cancels the current
+command immediately. If $type == CS_CANCEL_ATTN, then discard all
+results when next time the application reads from the server.
+<P></P>
+<DT><STRONG>$status = $dbh-&gt;DBDEAD</STRONG><BR>
+<DD>
+Calls <CODE>ct_con_props(CS_CON_STATUS)</CODE> on the connection and returns TRUE if 
+the connection status CS_CONSTAT_DEAD bit is set. If this call returns
+TRUE (ie non-0) the connection has been marked DEAD and you need to 
+reconnect to the server.
+<P></P>
+<DT><STRONG><A NAME="item_ct_callback">$old_cb = ct_callback($type, $cb_func)</A></STRONG><BR>
+<DD>
+Install a callback routine. Valid callback types are CS_CLIENTMSG_CB
+and CS_SERVERMSG_CB. Returns a reference to the previously installed
+callback of the specified type, or <EM>undef</EM> if no callback of that type
+exists. Passing undef as $cb_func unsets the callback for that type.
+<P></P>
+<DT><STRONG><A NAME="item_ct_res_info">$res_info = $dbh-&gt;<CODE>ct_res_info($info_type)</CODE></A></STRONG><BR>
+<DD>
+Retrieves information on the current result set. The type of
+information returned depends on $info_type. Currently supported values
+are: CS_NUM_COMPUTES, CS_NUMDATA, CS_NUMORDERCOLS, CS_ROW_COUNT.
+<P></P>
+<DT><STRONG><A NAME="item_ct_options">($status, $param) = $dbh-&gt;ct_options($action, $option, $param, $type)</A></STRONG><BR>
+<DD>
+This routine will set, retrieve or clear the values of server
+query-processing options.
+<P>Values for $action: CS_SET, CS_GET, CS_CLEAR</P>
+<P>Values for $option: see p.3-170 of the OpenClient reference manual</P>
+<P>Values for $param: When setting an option, $param can be a integer or
+a string. When retrieving an option, $param is set and returned. When
+clearing an option, $param is ignored.</P>
+<P>Value for $type: CS_INT_TYPE if $param is of integer type,
+CS_CHAR_TYPE if $param is a string</P>
+<P></P>
+<DT><STRONG><A NAME="item_ct_cursor">$ret = $dbh-&gt;ct_cursor($type, $name, $text, $option)</A></STRONG><BR>
+<DD>
+Initiate a cursor command. Usage is similar to the CTlibrary
+<A HREF="#item_ct_cursor"><CODE>ct_cursor()</CODE></A> call, except that when in C you would pass NULL as the
+value for $name or $text you pass the special Perl value <EM>undef</EM>
+instead.
+<P>See eg/ct_cursor.pl for an example.</P>
+<P></P>
+<DT><STRONG><A NAME="item_ct_param">$ret = $dbh-&gt;<CODE>ct_param(\%datafmt)</CODE></A></STRONG><BR>
+<DD>
+Define a command parameter. The %datafmt hash is used to pass the
+appropriate parameters to the call. The following fields are defined:
+name (parameter name), datatype, status, indicator and value). These
+fields correspond to the equivalent fields in the CS_DATAFMT structure
+which is used in the CTlibrary ct_param call, and includes the two
+additional parameters 'value' and 'indicator'.
+<P>The hash should be used like this:</P>
+<PRE>
+  %param = (name =&gt; '@acc', datatype =&gt; CS_CHAR_TYPE,
+            status =&gt; CS_INPUTVALUE, value =&gt; 'CIS 98941',
+            indicator =&gt; CS_UNUSED);</PRE>
+<PRE>
+  $dbh-&gt;ct_param(\%param);</PRE>
+<P>Note that <A HREF="#item_ct_param"><CODE>ct_param()</CODE></A> converts all parameter types to either
+CS_CHAR_TYPE, CS_FLOAT_TYPE, CS_DATETIME_TYPE, CS_MONEY_TYPE or
+CS_INT_TYPE.</P>
+<P>See eg/ct_param.pl for an example.</P>
+<P></P>
+<DT><STRONG><A NAME="item_ct_cmd_alloc">$dbh2 = $dbh-&gt;ct_cmd_alloc</A></STRONG><BR>
+<DD>
+Allocate a new <EM>CS_COMMAND</EM> structure. The new $dbh2 shares the
+<EM>CS_CONNECTION</EM> with the original $dbh, so this is really only
+usefull for interleaving cursor operations (see <A HREF="#item_ct_cursor"><CODE>ct_cursor()</CODE></A> above, and
+the section on cursors in Chapter 2 of the
+<EM>Open Client Client-Library/C Reference manual</EM>.
+<P>The two handles also share attributes, so setting $dbh-&gt;{UseDataTime}
+(for example) will also set $dbh2-&gt;{UseDateTime}.</P>
+<P></P>
+<DT><STRONG><A NAME="item_ct_cmd_realloc">$rc = $dbh-&gt;ct_cmd_realloc</A></STRONG><BR>
+<DD>
+Drops the current <EM>CS_COMMAND</EM> structure, and reallocs a new
+one. Returns CS_SUCCEED on successfull completion.
+<P></P>
+<DT><STRONG><A NAME="item_ct_config">$ret = ct_config($action, $property, $value, $type)</A></STRONG><BR>
+<DD>
+Calls <A HREF="#item_ct_config"><CODE>ct_config()</CODE></A> to change some basic parameter, like the
+<STRONG>interfaces</STRONG> file location.
+<P>$action can be <STRONG>CS_SET</STRONG> or <STRONG>CS_GET</STRONG>.</P>
+<P>$property is one of the properties that is settable via <A HREF="#item_ct_config"><CODE>ct_config()</CODE></A>
+(see your OpenClient man page on <A HREF="#item_ct_config"><CODE>ct_config()</CODE></A> for a complete list).</P>
+<P>$value is the input value if $action is <STRONG>CS_SET</STRONG>, and the output
+value if $action is <STRONG>CS_GET</STRONG>.</P>
+<P>$type is the data type of the property that is being set or
+retrieved. It defaults to <STRONG>CS_CHAR_TYPE</STRONG>, but should be set to
+<STRONG>CS_INT_TYPE</STRONG> if an integer value (such <STRONG>CS_NETIO</STRONG> is being set or
+retrieved).</P>
+<P>$ret is the return status of the <A HREF="#item_ct_config"><CODE>ct_config()</CODE></A> call.</P>
+<P>Example:</P>
+<PRE>
+        $ret = ct_config(CS_SET, CS_IFILE, &quot;/home/mpeppler/foo&quot;, CS_CHAR_TYPE);
+        print &quot;$ret\n&quot;;</PRE>
+<PRE>
+        $ret = ct_config(CS_GET, CS_IFILE, $out, CS_CHAR_TYPE);
+        print &quot;$ret - $out\n&quot;;  #prints 1 - /home/mpeppler/foo</PRE>
+<P></P>
+<DT><STRONG><A NAME="item_cs_dt_info">$ret = cs_dt_info($action, $type, $item, $buf)</A></STRONG><BR>
+<DD>
+<A HREF="#item_cs_dt_info"><CODE>cs_dt_info()</CODE></A> allows you to set the default conversion modes for
+<EM>DATETIME</EM> values, and lets you query the locale database for
+names for dateparts.
+<P>To set the default conversion you call <A HREF="#item_cs_dt_info"><CODE>cs_dt_info()</CODE></A> with
+a $type parameter of CS_DT_CONVFMT, and pass the conversion style
+you want as the last parameter:</P>
+<PRE>
+        cs_dt_info(CS_SET, CS_DT_CONVFMT, CS_UNUSED, CS_DATES_LONG);</PRE>
+<P>See Table 2-26 in the Open Client and Open Server Common Libraries 
+Reference Manual for details of other formats that are available.</P>
+<P>You can query a datepart name by doing something like:</P>
+<PRE>
+        cs_dt_info(CS_GET, CS_MONTH, 3, $buf);
+        print &quot;$buf\n&quot;;    # Prints 'April' in the default locale</PRE>
+<P>Again see the entry for <A HREF="#item_cs_dt_info"><CODE>cs_dt_info()</CODE></A> in Chapter 2 of the Open Client and
+Open Server Common Libraries Reference Manual for details.</P>
+<P></P>
+<DT><STRONG><A NAME="item_ct_get_data">($ret, $data) = $dbh-&gt;ct_get_data($colnum [, $maxsize])</A></STRONG><BR>
+<DD>
+Retrieve the raw TEXT or IMAGE data from column $colnum in the
+current result set. The optional $maxsize parameter can be used
+to limit the size of the retrieved buffer. If $maxsize is used then
+<A HREF="#item_ct_get_data"><CODE>ct_get_data()</CODE></A> should be called in a loop until $ret == CS_END_DATA
+(all the data for this column has been retrieved, and this is the
+last column in the row) or $ret == CS_END_ITEM (all the data for this
+column has been retrieved, but there are more columns to be processed).
+<P>The TEXT columns <STRONG>must</STRONG> appear <EM>after</EM> all the normal data columns
+in the select list for this to work, and <A HREF="#item_ct_results"><CODE>ct_results()</CODE></A> must be called 
+with $textBind set to 0.</P>
+<P>See the discussion on raw TEXT/IMAGE processing elsewhere in this 
+document.</P>
+<P></P>
+<DT><STRONG><A NAME="item_ct_send_data">$ret = $dbh-&gt;ct_send_data($data, $size)</A></STRONG><BR>
+<DD>
+Send $size bytes of data in $data to the server, based on information 
+previously determined via a call to ct_data_info().
+<P>If the data item is large it can be stored in chunks by calling
+<A HREF="#item_ct_send_data"><CODE>ct_send_data()</CODE></A> multiple times.</P>
+<P>Please see the discussion on raw TEXT/IMAGE handling elsewhere in this
+document for details.</P>
+<P></P>
+<DT><STRONG><A NAME="item_ct_data_info">$ret = $dbh-&gt;ct_data_info($action, $colnum [, \%attr [, $dbh_2]])</A></STRONG><BR>
+<DD>
+When $action is CS_GET <A HREF="#item_ct_data_info"><CODE>ct_data_info()</CODE></A> retrieves a CS_IODESC
+struct for column $colnum. The CS_IODESC struct is stored internally
+in the $dbh, and stores the text pointer, the total length and whether
+logging should be turned on for updates.
+<P>If $dbh_2 is passed and $action is CS_SET then the CS_IODESC struct
+from $dbh_2 is copied to $dbh. This is usefull if you need to update
+TEXT columns in multiple rows by selecting the rows in one
+connection and doing the update in a different connection.</P>
+<P>The CS_IODESC struct is referenced when calling <A HREF="#item_ct_send_data"><CODE>ct_send_data()</CODE></A> to
+tell OpenClient where to store the data that is being sent to the server,
+as well as what the total size of the column is supposed to be.</P>
+<P>The CS_IODESC is typically set during a select query to retrieve a valid
+text pointer to the column that you wish to update. Sybase::CTlib is
+limited to a single CS_IODESC struct per connection, so you can only
+update a single TEXT or IMAGE column at a time.</P>
+<P>For details on CS_IODESC please see the Sybase OpenClient 
+Client Library Reference Manual.</P>
+<P>For examples on the usage of <A HREF="#item_ct_data_info"><CODE>ct_data_info()</CODE></A> please see the discussion on 
+raw TEXT processing elsewhere in this document.</P>
+<P></P>
+<DT><STRONG><A NAME="item_ct_sql">$ret|@ret = $dbh-&gt;ct_sql($cmd [, \&amp;rowcallback [, $doAssoc]])</A></STRONG><BR>
+<DD>
+Runs the sql command and returns the result as a reference to an array
+of the rows.  Each row is a reference to an array of scalars. In a
+LIST context, ct_sql returns an array of references to each row.
+<P>If the $doAssoc parameter is <STRONG>CS_TRUE</STRONG>, then each row is a reference
+to an associative array (keyed on the column names) rather than a
+normal array (see ct_fetch(), above).</P>
+<P>If you provide a second parameter it is taken as a procedure to call
+for each row.  The callback is called with the values of the row as
+parameters.</P>
+<P>This routine is very usefull to send SQL commands to the server that
+do not return rows, such as:</P>
+<PRE>
+    $dbh-&gt;ct_sql(&quot;use BugTrack&quot;);</PRE>
+<P>Examples can be found in eg/ct_sql.pl.</P>
+<P><STRONG>NOTE:</STRONG> This routine loads all the data into memory. Memory
+consumption can therefore become quite important for a query that
+returns a large number of rows, unless the <STRONG>MaxRows</STRONG> attribute has
+been set.</P>
+<P>Two additional attributes are set after calling ct_sql(): <STRONG>ROW_COUNT</STRONG>
+holds the number of rows affected by the command, and <STRONG>RC</STRONG> holds the
+return code of the last call to ct_execute().</P>
+<P></P>
+<DT><STRONG><A NAME="item_ct_fetchable">$ret = $dbh-&gt;<CODE>ct_fetchable($restype)</CODE></A></STRONG><BR>
+<DD>
+Returns TRUE if the current result set has fetchable rows.
+Use like this:
+<PRE>
+    $dbh-&gt;ct_execute(&quot;select * from sysprocesses&quot;);
+    while($dbh-&gt;ct_results($restype) == CS_SUCCEED) {
+        next if(!$dbh-&gt;ct_fetchable($restype));</PRE>
+<PRE>
+        while(@dat = $dbh-&gt;ct_fetch) {
+            print &quot;@dat\n&quot;;
+        }
+    }</PRE>
+<P></P></DL>
+<P>
+<H2><A NAME="examples">EXAMPLES</A></H2>
+<PRE>
+    #!/usr/local/bin/perl</PRE>
+<PRE>
+    use Sybase::CTlib;</PRE>
+<PRE>
+    ct_callback(CS_CLIENTMSG_CB, \&amp;msg_cb);
+    ct_callback(CS_SERVERMSG_CB, &quot;srv_cb&quot;);
+    $uid = 'mpeppler'; $pwd = 'my-secret-password'; $srv = 'TROLL';</PRE>
+<PRE>
+    $X = Sybase::CTlib-&gt;ct_connect($uid, $pwd, $srv);</PRE>
+<PRE>
+    $X-&gt;ct_execute(&quot;select * from sysusers&quot;);</PRE>
+<PRE>
+    while(($rc = $X-&gt;ct_results($restype)) == CS_SUCCEED) {
+        next if($restype == CS_CMD_DONE || $restype == CS_CMD_FAIL ||
+                $restype == CS_CMD_SUCCEED);
+        if(@names = $X-&gt;ct_col_names()) {
+             print &quot;@names\n&quot;;
+        }
+        if(@types = $X-&gt;ct_col_types()) {
+             print &quot;@types\n&quot;;
+        }
+        while(@dat = $X-&gt;ct_fetch) {
+             print &quot;@dat\n&quot;;
+        }
+    }</PRE>
+<PRE>
+    print &quot;End of Results Sets\n&quot; if($rc == CS_END_RESULTS);
+    print &quot;Error!\n&quot; if($rc == CS_FAIL);</PRE>
+<PRE>
+    sub msg_cb {
+        my($layer, $origin, $severity, $number, $msg, $osmsg, $dbh) = @_;</PRE>
+<PRE>
+        printf STDERR &quot;\nOpen Client Message: (In msg_cb)\n&quot;;
+        printf STDERR &quot;Message number: LAYER = (%ld) ORIGIN = (%ld) &quot;,
+               $layer, $origin;
+        printf STDERR &quot;SEVERITY = (%ld) NUMBER = (%ld)\n&quot;,
+               $severity, $number;
+        printf STDERR &quot;Message String: %s\n&quot;, $msg;
+        if (defined($osmsg)) {
+            printf STDERR &quot;Operating System Error: %s\n&quot;, $osmsg;
+        }
+        CS_SUCCEED;
+    }</PRE>
+<PRE>
+    sub srv_cb {
+        my($dbh, $number, $severity, $state, $line, $server,
+           $proc, $msg) = @_;</PRE>
+<PRE>
+    # If $dbh is defined, then you can set or check attributes
+    # in the callback, which can be tested in the main body
+    # of the code.</PRE>
+<PRE>
+        printf STDERR &quot;\nServer message: (In srv_cb)\n&quot;;
+        printf STDERR &quot;Message number: %ld, Severity %ld, &quot;,
+               $number, $severity;
+        printf STDERR &quot;State %ld, Line %ld\n&quot;, $state, $line;</PRE>
+<PRE>
+        if (defined($server)) {
+            printf STDERR &quot;Server '%s'\n&quot;, $server;
+        }</PRE>
+<PRE>
+        if (defined($proc)) {
+            printf STDERR &quot; Procedure '%s'\n&quot;, $proc;
+        }</PRE>
+<PRE>
+        printf STDERR &quot;Message String: %s\n&quot;, $msg;  CS_SUCCEED;
+    }</PRE>
+<P>
+<H2><A NAME="attributes">ATTRIBUTES</A></H2>
+<P>The behaviour of certain aspects of the Sybase::CTlib module can be
+controled via global or connection specific attributes. The global
+attributes are stored in the %Sybase::CTlib::Att variable, and the
+connection specific attributes are stored in the $dbh. To set a global
+attribute, you would code</P>
+<PRE>
+     $Sybase::CTlib::Att{'AttributeName'} = value;</PRE>
+<P>and to set a connection specific attribute you would code</P>
+<PRE>
+     $dbh-&gt;{&quot;AttributeName'} = value;</PRE>
+<P><STRONG>NOTE!!!</STRONG> Global attribute setting changes do not affect existing
+connections, and changing an attribute inside a <A HREF="#item_ct_fetch"><CODE>ct_fetch()</CODE></A> does <STRONG>not</STRONG>
+change the behaviour of the data retrieval during that <A HREF="#item_ct_fetch"><CODE>ct_fetch()</CODE></A>
+loop.</P>
+<P>The following attributes are currently defined:</P>
+<DL>
+<DT><STRONG><A NAME="item_UseDateTime">UseDateTime</A></STRONG><BR>
+<DD>
+If TRUE, then keep <STRONG>DATETIME</STRONG> data retrieved via <A HREF="#item_ct_fetch"><CODE>ct_fetch()</CODE></A> in native
+format instead of converting the data to a character string. Default:
+FALSE.
+<P></P>
+<DT><STRONG><A NAME="item_UseMoney">UseMoney</A></STRONG><BR>
+<DD>
+If TRUE, keep <STRONG>MONEY</STRONG> data retrieved via <A HREF="#item_ct_fetch"><CODE>ct_fetch()</CODE></A> in native format
+instead of converting the data to double precision floating
+point. Default: FALSE.
+<P></P>
+<DT><STRONG><A NAME="item_UseNumeric">UseNumeric</A></STRONG><BR>
+<DD>
+If TRUE, keep <STRONG>NUMERIC</STRONG> or <STRONG>DECIMAL</STRONG> data retrieved via <A HREF="#item_ct_fetch"><CODE>ct_fetch()</CODE></A>
+in native format, instead of converting to double precision floating
+point. Default: FALSE.
+<P></P>
+<DT><STRONG><A NAME="item_UseChar">UseChar</A></STRONG><BR>
+<DD>
+If TRUE, convert <STRONG>NUMERIC</STRONG>, <STRONG>DECIMAL</STRONG> and <STRONG>MONEY</STRONG> data retrieved
+via <A HREF="#item_ct_fetch"><CODE>ct_fetch()</CODE></A> to character strings. This ensures that there is no 
+precision loss associated with converting fixed decimal values to 
+floating point representation, and is faster than using the <STRONG>UseNumeric</STRONG>
+and/or <STRONG>UseMoney</STRONG> attributes. <STRONG>UseChar</STRONG> <EM>overrides</EM> the setting for
+<STRONG>UseNumeric</STRONG> and/or <STRONG>UseMoney</STRONG>.
+<P></P>
+<DT><STRONG><A NAME="item_MaxRows">MaxRows</A></STRONG><BR>
+<DD>
+If non-0, limit the number of data rows that can be retrieve via
+ct_sql(). Default: 0.
+<P></P></DL>
+<P>
+<HR>
+<H1><A NAME="using ct_get_data() and ct_send_data() to do raw text processing">Using <A HREF="#item_ct_get_data"><CODE>ct_get_data()</CODE></A> and <A HREF="#item_ct_send_data"><CODE>ct_send_data()</CODE></A> to do raw TEXT processing</A></H1>
+<P>As of release 2.09_06 of <STRONG>sybperl</STRONG> Sybase::CTlib includes the ability
+to process <STRONG>TEXT</STRONG> and <STRONG>IMAGE</STRONG> datatypes using perl versions of 
+<A HREF="#item_ct_get_data"><CODE>ct_get_data()</CODE></A> and ct_send_data(). Using these functions is a little
+tricky, however.</P>
+<P><STRONG>NOTE:</STRONG> This discussion applies equally to <STRONG>TEXT</STRONG> and <STRONG>IMAGE</STRONG> datatypes,
+even if only one or the other is mentioned in the text.</P>
+<P>
+<H2><A NAME="retrieving text columns using ct_get_data()">Retrieving TEXT columns using <A HREF="#item_ct_get_data"><CODE>ct_get_data()</CODE></A></A></H2>
+<P>First lets see how <A HREF="#item_ct_get_data"><CODE>ct_get_data()</CODE></A> is implemented to retrieve <STRONG>TEXT</STRONG>
+or <STRONG>IMAGE</STRONG> data types in raw format, and (possibly) in retrieve large 
+data items in smaller, more manageable pieces.</P>
+<P>First, it is essential that the <STRONG>TEXT</STRONG> columns appear
+<EM>last</EM> in the select statement (there can be several TEXT columns
+in the statement, but they must appear <EM>after</EM> any regular columns.</P>
+<P>For example:</P>
+<PRE>
+        select userID, userName, msgText
+        from   messageTable</PRE>
+<P>(where <EM>msgText</EM> is a TEXT column) would work fine.</P>
+<P>You issue the query in the normal way:</P>
+<PRE>
+        $dbh-&gt;ct_execute(&quot;select userID, userName, msgText
+                        from messageTable where userID = 5&quot;);</PRE>
+<P>You call <A HREF="#item_ct_results"><CODE>ct_results()</CODE></A> in the normal way, with the exception that you
+pass the $textBind param as <STRONG>FALSE</STRONG> to prevent <A HREF="#item_ct_fetch"><CODE>ct_fetch()</CODE></A> from 
+returning the TEXT column.</P>
+<P>If there are fetchable results, you call <A HREF="#item_ct_fetch"><CODE>ct_fetch()</CODE></A> to retrieve the 
+normal data columns, and for each row you then call <A HREF="#item_ct_get_data"><CODE>ct_get_data()</CODE></A>
+to retrieve the TEXT column(s).</P>
+<P>For example:</P>
+<PRE>
+        $dbh-&gt;ct_execute(&quot;select userID, userName, msgText
+                        from messageTable where userID = 5&quot;);
+        while($dbh-&gt;ct_results($restype, 0) == CS_SUCCEED) {
+            next unless $dbh-&gt;ct_fetchable($restype);
+            while(@row = $dbh-&gt;ct_fetch) {
+                ($ret, $msg) = $dbh-&gt;ct_get_data(3);
+            }</PRE>
+<P>
+<H2><A NAME="updating text columns using ct_send_data()">Updating TEXT columns using <A HREF="#item_ct_send_data"><CODE>ct_send_data()</CODE></A></A></H2>
+<P>This operation is a little more complicated. Essentially, you must
+first select the column that you wish to update to obtain a valid 
+<EM>text pointer</EM> (via a call to ct_data_info(CS_GET), then you 
+initiate a CS_SEND_DATA_CMD command using ct_command(), you
+set the new total length of the column via ct_data_info(CS_SET), 
+send the data to the server via ct_send_data(), commit the operation
+with ct_send(), and then process the results in the normal way
+with <A HREF="#item_ct_results"><CODE>ct_results()</CODE></A> and ct_fetch().</P>
+<P>For example, assuming the following table:</P>
+<PRE>
+        create table blobtext(id numeric(5,0) identity,
+                              data image)</PRE>
+<P>We would update the <EM>data</EM> column of a particular row like this:</P>
+<PRE>
+        $dbh-&gt;ct_execute(&quot;select id, data from testdb..blobtest where id = 5&quot;);
+        my $restype;
+        while($dbh-&gt;ct_results($restype) == CS_SUCCEED) {
+            next unless($dbh-&gt;ct_fetchable($restype));
+            my @dat;
+            while(@dat = $dbh-&gt;ct_fetch) {
+                $dbh-&gt;ct_data_info(CS_GET, 2);
+            }
+        }</PRE>
+<PRE>
+        my $data = &quot;This is a the new content that we want to place in
+                    the 'data' column for the row&quot;;
+        my @dat;
+        $dbh-&gt;ct_command(CS_SEND_DATA_CMD, '', CS_UNUSED, CS_COLUMN_DATA);
+        $dbh-&gt;ct_data_info(CS_SET, 2, {total_txtlen =&gt; length($data)});
+        $dbh-&gt;ct_send_data($data, length($data));
+        $dbh-&gt;ct_send;
+        while($dbh-&gt;ct_results($restype) == CS_SUCCEED) {
+            next unless $dbh-&gt;ct_fetchable($restype);</PRE>
+<PRE>
+            while(@dat = $dbh-&gt;ct_fetch) {
+                print &quot;@dat\n&quot;;
+            }
+        }</PRE>
+<P>The last <A HREF="#item_ct_fetch"><CODE>ct_fetch()</CODE></A> will return one column - the new text pointer. At the
+moment there is no way to make use of this text pointer directly.</P>
+<P>You can also update TEXT fields on a set of rows by using a second
+connection and performing the <A HREF="#item_ct_send_data"><CODE>ct_send_data()</CODE></A> in a nested loop:</P>
+<PRE>
+        $dbh-&gt;ct_execute(&quot;select id, data from testdb..blobtest&quot;);
+        my $restype;
+        while($dbh-&gt;ct_results($restype) == CS_SUCCEED) {
+            next unless($dbh-&gt;ct_fetchable($restype));
+            my @dat;
+            while(@dat = $dbh-&gt;ct_fetch) {
+                $dbh-&gt;ct_data_info(CS_GET, 2);</PRE>
+<PRE>
+                # get the data to be updated, based on the 'id' column
+                # presumably the get_data() function knows what to do :-)
+                my $data = get_data($dat[0]);
+                $dbh2-&gt;ct_command(CS_SEND_DATA_CMD, '', CS_UNUSED, CS_COLUMN_DATA);
+                # copy the CS_IODESC struct from $dbh to $dbh2, and
+                # set 'total_txtlen' to the correct value.
+                $dbh2-&gt;ct_data_info(CS_SET, 2, {total_txtlen =&gt; length($data)}, $dbh);
+                $dbh2-&gt;ct_send_data($data, length($data));
+                $dbh2-&gt;ct_send;
+                while($dbh2-&gt;ct_results($restype) == CS_SUCCEED) {
+                    next unless $dbh2-&gt;ct_fetchable($restype);</PRE>
+<PRE>
+                    while(@dat = $dbh2-&gt;ct_fetch) {
+                        print &quot;@dat\n&quot;;
+                    }
+                }               
+            }
+        }</PRE>
+<P>
+<HR>
+<H1><A NAME="common sybase::dblib and sybase::ctlib routines">Common Sybase::DBlib and Sybase::CTlib routines</A></H1>
+<PRE>
+
+=item $module_name::debug($bitmask)</PRE>
+<P>Turns the debugging trace on or off. The $module_name should be one of
+<EM>Sybase::DBlib</EM> or <EM>Sybase::CTlib</EM>. The value of $bitmask determines
+which features are going to be traced. The following trace bits are
+currently recognized:</P>
+<UL>
+<LI><STRONG><A NAME="item_TRACE_CREATE">TRACE_CREATE</A></STRONG><BR>
+
+Trace all CTlib and/or DBlib object creations.
+<P></P>
+<LI><STRONG><A NAME="item_TRACE_DESTROY">TRACE_DESTROY</A></STRONG><BR>
+
+Trace all calls to DESTROY.
+<P></P>
+<LI><STRONG><A NAME="item_TRACE_SQL">TRACE_SQL</A></STRONG><BR>
+
+Traces all SQL language commands - (ie calls to dbcmd(), <A HREF="#item_ct_execute"><CODE>ct_execute()</CODE></A> or
+<A HREF="#item_ct_command"><CODE>ct_command().)</CODE></A>
+<P></P>
+<LI><STRONG><A NAME="item_TRACE_RESULTS">TRACE_RESULTS</A></STRONG><BR>
+
+Traces calls to dbresults()/ct_results().
+<P></P>
+<LI><STRONG><A NAME="item_TRACE_FETCH">TRACE_FETCH</A></STRONG><BR>
+
+Traces calls to dbnextrow()/ct_fetch(), and traces the values that are
+pushed on the stack.
+<P></P>
+<LI><STRONG><A NAME="item_TRACE_CUSROR">TRACE_CUSROR</A></STRONG><BR>
+
+Trace calls to <A HREF="#item_ct_cursor"><CODE>ct_cursor()</CODE></A> (not available in Sybase::DBlib).
+<P></P>
+<LI><STRONG><A NAME="item_TRACE_PARAMS">TRACE_PARAMS</A></STRONG><BR>
+
+Trace calls to <A HREF="#item_ct_param"><CODE>ct_param()</CODE></A> (not implemented in Sybase::DBlib).
+<P></P>
+<LI><STRONG><A NAME="item_TRACE_OVERLOAD">TRACE_OVERLOAD</A></STRONG><BR>
+
+Trace all overloaded operations involving DateTime, Money or Numeric
+datatypes.
+<P></P></UL>
+<P>Two special trace flags are <STRONG>TRACE_NONE</STRONG>, which turns off debug
+tracing, and <STRONG>TRACE_ALL</STRONG> which (you guessed it!) turns everything on.</P>
+<P>The traces are pretty obscure, but they can be useful when trying to
+find out what is <EM>really</EM> going on inside the program.</P>
+<P>For the <STRONG>TRACE_*</STRONG> flags to be available in your scripts, you must
+load the Sybase::??lib module with the following syntax:</P>
+<PRE>
+     use Sybase::CTlib qw(:DEFAULT /TRACE/);</PRE>
+<P>This tells the autoloading mechanism to import all the <EM>default</EM>
+symbols, plus all the <EM>trace</EM> symbols.</P>
+<P>
+<HR>
+<H1><A NAME="special handling of datetime, money & numeric/decimal values">Special handling of DATETIME, MONEY &amp; NUMERIC/DECIMAL values</A></H1>
+<P><STRONG>NOTE:</STRONG> This feature is turned off by default for performance
+reasons.  You can turn it on per datatype and <STRONG>dbh</STRONG>, or via the
+module attribute hash (%Sybase::DBlib::Att and %Sybase::CTlib::Att).</P>
+<P>The Sybase::CTlib and Sybase::DBlib modules include special features
+to handle <STRONG>DATETIME</STRONG>, <STRONG>MONEY</STRONG>, and <STRONG>NUMERIC/DECIMAL</STRONG> (<EM>CTlib</EM>
+only) values in their native formats correctly. What this means is
+that when you retrieve a date using <A HREF="#item_ct_fetch"><CODE>ct_fetch()</CODE></A> or <A HREF="#item_dbnextrow"><CODE>dbnextrow()</CODE></A> it is
+not converted to a string, but kept in the internal format used by the
+Sybase libraries. You can then manipulate this date as you see fit,
+and in particular 'crack' the date into it's components.</P>
+<P>The same is true for <STRONG>MONEY</STRONG> (and for <EM>CTlib</EM> <STRONG>NUMERIC</STRONG> values),
+which otherwise are converted to floating point values, and hence are 
+subject to loss of precision in certain situations. Here they are
+stored as <STRONG>MONEY</STRONG> values, and by using operator overloading we can
+give you intuitive access to the <CODE>cs_calc()/dbmnyxxx()</CODE> routines.</P>
+<P>This feature has been implemented by creating new classes in both
+Sybase::DBlib and Sybase::CTlib:
+<STRONG>Sybase::DBlib::DateTime</STRONG>, <STRONG>Sybase::DBlib::Money</STRONG>,
+<STRONG>Sybase::CTlib::DateTime</STRONG>, <STRONG>Sybase::CTlib::Money</STRONG> and
+<STRONG>Sybase::CTlib::Numeric</STRONG> (hereafter referred to as <STRONG>DateTime</STRONG>,
+<STRONG>Money</STRONG> and <STRONG>Numeric</STRONG>). All the examples below use the <EM>CTlib</EM>
+module. The syntax is identical for the <EM>DBlib</EM> module, except that
+the <STRONG>Numeric</STRONG> class does not exist.
+</P>
+<PRE>
+
+To create data items of these types you call:</PRE>
+<PRE>
+   $dbh = new Sybase::CTlib user, password;
+   ...  # code deleted
+   # Create a new DateTime object, and initialize to Jan 1, 1995:
+   $date = $dbh-&gt;newdate('Jan 1 1995');</PRE>
+<PRE>
+   # Create a new Money object
+   $mny = $dbh-&gt;newmoney;       # Default value is 0</PRE>
+<PRE>
+   # Create a new Numeric object
+   $num = $dbh-&gt;newnumeric(11.111);</PRE>
+<P>The <STRONG>DateTime</STRONG> class defines the following methods:</P>
+<DL>
+<DT><STRONG><A NAME="item_str">$date-&gt;str</A></STRONG><BR>
+<DD>
+Convert to string (calls cs_convert()/dbconvert()).
+<P></P>
+<DT><STRONG><A NAME="item_crack">@arr = $date-&gt;crack</A></STRONG><BR>
+<DD>
+'Crack' the date into its components.
+<P></P>
+<DT><STRONG><A NAME="item_cmp">$date-&gt;<CODE>cmp($date2)</CODE></A></STRONG><BR>
+<DD>
+Compare $date with $date2.
+<P></P>
+<DT><STRONG><A NAME="item_calc">$date2 = $date-&gt;calc($days, $msecs)</A></STRONG><BR>
+<DD>
+Add or substract $days and $msecs from $date, and returns the new
+date.
+<P></P>
+<DT><STRONG><A NAME="item_diff">($days, $msecs) = $date-&gt;<CODE>diff($date2)</CODE></A></STRONG><BR>
+<DD>
+Compute the difference, in $days and $msecs between $date and $date2.
+<P></P>
+<DT><STRONG><A NAME="item_info">$val = $date-&gt;<CODE>info($datepart)</CODE></A></STRONG><BR>
+<DD>
+Calls cs_dt_info to return the string representation for a
+datepart. Valid dateparts are CS_MONTH, CS_SHORTMONTH and CS_DAYNAME.
+<P><STRONG>NOTE:</STRONG> Not implemented in <EM>DBlib</EM>.</P>
+<P></P>
+<DT><STRONG><A NAME="item_mktime">$time = $date-&gt;mktime</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_timelocal">$time = $date-&gt;timelocal</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_timegm">$time = $date-&gt;timegm</A></STRONG><BR>
+<DD>
+Converts a Sybase <STRONG>DATETIME</STRONG> value to a Unix <STRONG>time_t</STRONG> value. The
+<STRONG>mktime</STRONG> and <STRONG>timelocal</STRONG> methods assumes the date is stored in local
+time, <STRONG>timegm</STRONG> assumes GMT. The <STRONG>mktime</STRONG> method uses the POSIX
+module (note that unavailability of the POSIX module is not a fatal error.)
+<P></P></DL>
+<PRE>
+
+Both the B&lt;str&gt; and the B&lt;cmp&gt; methods will be called transparently
+when they are needed, so that</PRE>
+<PRE>
+    print &quot;$date&quot;</PRE>
+<P>will print the date string correctly, and</P>
+<PRE>
+    $date1 cmp $date2</PRE>
+<P>will do a comparison of the two dates, not the two strings.</P>
+<P><STRONG>crack</STRONG> executes <CODE>cs_dt_crack()/dbdatecrack()</CODE> on the date value, and
+returns the following list:</P>
+<PRE>
+    ($year, $month, $month_day, $year_day, $week_day, $hour,
+        $minute, $second, $millisecond, $time_zone) = $date-&gt;crack;</PRE>
+<P>Compare this with the value returned by the standard Perl function
+localtime():</P>
+<PRE>
+    ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =
+                                                   localtime(time);</PRE>
+<P>In addition, the values returned for the week_day can change depending
+on the locale that has been set.</P>
+<P>Please see the discussion on <CODE>cs_dt_crack()</CODE> or <CODE>dbdatecrack()</CODE> in the
+<EM>Open Client / Open Server Common Libraries Reference Manual, chap. 2</EM>.</P>
+<P>The <STRONG>Money</STRONG> and <STRONG>Numeric</STRONG> classes define these methods</P>
+<DL>
+<DT><STRONG>$mny-&gt;str</STRONG><BR>
+<DD>
+Convert to string (calls cs_convert()/dbconvert()).
+<P></P>
+<DT><STRONG><A NAME="item_num">$mny-&gt;num</A></STRONG><BR>
+<DD>
+Convert to a floating point number (calls cs_convert()/dbconvert()).
+<P></P>
+<DT><STRONG>$mny-&gt;<CODE>cmp($mny2)</CODE></STRONG><BR>
+<DD>
+Compare two Money or Numeric values.
+<P></P>
+<DT><STRONG><A NAME="item_set">$mny-&gt;<CODE>set($number)</CODE></A></STRONG><BR>
+<DD>
+Set the value of $mny to $number.
+<P></P>
+<DT><STRONG>$mny-&gt;calc($mny2, $op)</STRONG><BR>
+<DD>
+Perform the calculation specified by $op on $mny and $mny2. $op is one
+of '+', '-', '*' or '/'.
+<P></P></DL>
+<P>As with the <STRONG>DateTime</STRONG> class, the <STRONG>str</STRONG> and <STRONG>cmp</STRONG> methods will be
+called automatically for you when required. In addition, you can
+perform normal arithmetic on <STRONG>Money</STRONG> or <STRONG>Numeric</STRONG> datatypes without
+calling the <STRONG>calc</STRONG> method explicitly.</P>
+<P><STRONG>CAVEAT!</STRONG> You must call the <STRONG>set</STRONG> method to assign a value to a
+<STRONG>Money/Numeric</STRONG> data item. If you use</P>
+<PRE>
+      $mny = 4.05</PRE>
+<P>then $mny will loose its special <STRONG>Money</STRONG> or <STRONG>Numeric</STRONG> behavior and
+become a normal Perl data item.</P>
+<P>When a new <STRONG>Numeric</STRONG> data item is created, the <EM>SCALE</EM> and
+<EM>PRECISION</EM> values are determined by the initialization. If the data
+item is created as part of a <EM>SELECT</EM> statement, then the <EM>SCALE</EM>
+and <EM>PRECISION</EM> values will be those of the retrieved item. If the
+item is created via the <STRONG>newnumeric</STRONG> method (either explicitly or
+implicitly) the <EM>SCALE</EM> and <EM>PRECISION</EM> are deduced from the
+initializing value. For example, $num = $dbh-&gt;<CODE>newnumeric(11.111)</CODE> will
+produce an item with a <EM>SCALE</EM> of 3 and a <EM>PRECISION</EM> of 5. This is
+totally transparent to the user.</P>
+<P>
+<HR>
+<H1><A NAME="bugs">BUGS</A></H1>
+<P>The Sybase::DBlib 2PC calls have not been well tested.</P>
+<P>There is a (approximately) 300 byte memory leak in the <CODE>newdbh()</CODE> function
+in Sybase/DBlib.xs and Sybase/CTlib.xs. This function is called when a 
+new connection is created, or, in the case of CTlib, when extended
+error information is processed in the server callback.
+I have not been able to locate the real cause of the leak so far. Patches
+that appear to solve the problem are welcome!</P>
+<P>I have a simple bug tracking system at <A HREF="http://gw.peppler.org/cgi-bin/bug.cgi.">http://gw.peppler.org/cgi-bin/bug.cgi.</A>
+It's on the end of a K56 line, so it may be slow (depending on what I happen
+to be doing!) You can use it to check for known bugs, or to submit
+new ones.</P>
+<P>
+<HR>
+<H1><A NAME="acknowledgements">ACKNOWLEDGEMENTS</A></H1>
+<P>Larry Wall - for Perl :-)</P>
+<P>Tim Bunce &amp; Andreas Koenig - for all the work on MakeMaker</P>
+<P>
+<HR>
+<H1><A NAME="authors">AUTHORS</A></H1>
+<P>Michael Peppler &lt;<EM><A HREF="mailto:mpeppler@peppler.org">mpeppler@peppler.org</A></EM>&gt;</P>
+<P>Dave Bowen &amp; Amy Lin for help with Sybase::CTlib.</P>
+<P>Jeffrey Wong for the Sybase::DBlib DBMONEY routines.</P>
+<P>W. Phillip Moore &lt;<EM><A HREF="mailto:wpm@ms.com">wpm@ms.com</A></EM>&gt; for the <A HREF="#item_nsql"><CODE>nsql()</CODE></A> method.</P>
+<P>Numerous folks have contributed ideas and bug fixes for which they
+have my undying thanks :-)</P>
+<P>The sybperl mailing list &lt;<EM><A HREF="mailto:sybperl-l@listproc.net">sybperl-l@listproc.net</A></EM>&gt; is the
+best place to ask questions.</P>
+
+</BODY>
+
+</HTML>

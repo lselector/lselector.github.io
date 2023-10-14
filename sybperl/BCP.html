@@ -1,0 +1,277 @@
+<HTML>
+<HEAD>
+<TITLE>Sybase::BCP - Simple front end to the Sybase BCP API</TITLE>
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<UL>
+
+		<LI><A HREF="#features">Features</A></LI>
+		<LI><A HREF="#the following methods are available:">The following methods are available:</A></LI>
+		<LI><A HREF="#configuration parameters">Configuration Parameters</A></LI>
+		<LI><A HREF="#paramaters for config()">Paramaters for <CODE>config()</CODE></A></LI>
+		<LI><A HREF="#parameters for describe()">Parameters for <CODE>describe()</CODE></A></LI>
+	</UL>
+
+	<LI><A HREF="#examples">EXAMPLES</A></LI>
+	<LI><A HREF="#bugs">BUGS</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>Sybase::BCP - Simple front end to the Sybase BCP API</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<PRE>
+    use Sybase::BCP;</PRE>
+<PRE>
+    $bcp = new Sybase::BCP ...;
+    $bcp-&gt;config(...);
+    $bcp-&gt;run;</PRE>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>The Sybase::BCP module serves as a simplified front end for Sybase's Bulk
+Copy library. It is sub-classed from the <A HREF="/Sybase/DBlib.html">the Sybase::DBlib manpage</A> module, so all the
+features of the Sybase::DBlib module are available in addition to the
+specific Sybase::BCP methods.</P>
+<P>So how does it work?</P>
+<P>Let's say we want to copy the contents of a file name 'foo.bcp' into the
+table 'mydb.dbo.bar'. The fields in the file are separated by a '|'.</P>
+<PRE>
+    #!/usr/local/bin/perl</PRE>
+<PRE>
+    use Sybase::BCP;</PRE>
+<PRE>
+    $bcp = new Sybase::BCP $user, $passwd;
+    $bcp-&gt;config(INPUT =&gt; 'foo.bcp',
+                 OUTPUT =&gt; 'mydb.dbo.bar',
+                 SEPARATOR =&gt; '|');
+    $bcp-&gt;run;</PRE>
+<P>That's it!</P>
+<P>Of course, there are several things you can do to cater for non-standard
+input files (see <STRONG>Configuration Parameters</STRONG>, below).</P>
+<P>
+<H2><A NAME="features">Features</A></H2>
+<UL>
+<LI><STRONG><A NAME="item_Automatic_conversions_from_non%2Dstandard_date_for">Automatic conversions from non-standard date formats.</A></STRONG><BR>
+
+<LI><STRONG><A NAME="item_Automatic_retries_of_failed_batches%2E">Automatic retries of failed batches.</A></STRONG><BR>
+
+If there are errors in the input file, or if there are duplicat rows that are
+rejected, the invalid rows are stored in an error log file, and the batch is
+retried, so that only the failed rows are not uploaded.
+<P></P>
+<LI><STRONG><A NAME="item_Handles_column_reordering_and%2For_skipping_of_unn">Handles column reordering and/or skipping of unneeded data.</A></STRONG><BR>
+
+<LI><STRONG><A NAME="item_Row_or_column_based_callbacks%2E">Row or column based callbacks.</A></STRONG><BR>
+
+Allows vetoing of rows, or arbitrary processing of data on input.
+<P></P></UL>
+<P>
+<H2><A NAME="the following methods are available:">The following methods are available:</A></H2>
+<DL>
+<DT><STRONG><A NAME="item_%24bcp_%3D_new_Sybase%3A%3ABCP_%5B%24user_%5B%2C_%">$bcp = new Sybase::BCP [$user [, $password [, $server [, $appname]]]]</A></STRONG><BR>
+<DD>
+Allocate a new <STRONG>BCP</STRONG> handle. Opens a new connection to Sybase via the
+<STRONG>Sybase::DBlib</STRONG> module, and enables BCP IN on this handle.
+<P></P>
+<DT><STRONG><A NAME="item_config">$bcp-&gt;<CODE>config([parameters])</CODE></A></STRONG><BR>
+<DD>
+Sets up the Bulk Copy operation. See <STRONG>Configuration Parameters</STRONG> below for
+details.
+<P></P>
+<DT><STRONG><A NAME="item_describe">$bcp-&gt;describe($colid, {parameters})</A></STRONG><BR>
+<DD>
+Adds a specific configuration element for column $colid. Columns are numbered
+starting at 1, as is standard in the Sybase APIs.
+<P></P>
+<DT><STRONG><A NAME="item_run">$bcp-&gt;run</A></STRONG><BR>
+<DD>
+Perform the <STRONG>BCP</STRONG> operation, returns the actual number of rows sent to the
+server.
+<P></P></DL>
+<P>
+<H2><A NAME="configuration parameters">Configuration Parameters</A></H2>
+<P>The general form for configuration is to pass (parameter =&gt; value) pairs
+via the <A HREF="#item_config"><CODE>config()</CODE></A> or <A HREF="#item_describe"><CODE>describe()</CODE></A> methods. Some parameters take slightly more
+complex arguments (see <STRONG>REORDER</STRONG>).</P>
+<P>
+<H2><A NAME="paramaters for config()">Paramaters for <A HREF="#item_config"><CODE>config()</CODE></A></A></H2>
+<DL>
+<DT><STRONG><A NAME="item_DIRECTION">DIRECTION</A></STRONG><BR>
+<DD>
+The direction in which the bulkcopy operation is done. Can be 'IN' or 'OUT'.
+Default: 'IN' (<EM>Note:</EM> 'OUT' is not implemented yet.)
+<P></P>
+<DT><STRONG><A NAME="item_INPUT">INPUT</A></STRONG><BR>
+<DD>
+Where <STRONG>BCP</STRONG> should take it's input from. It's a filename for <STRONG>bcp IN</STRONG>, it's
+a table name for <STRONG>bcp OUT</STRONG>.
+<P>For <STRONG>bcp IN</STRONG> <STRONG>INPUT</STRONG> can also be a reference to a perl subroutine that
+returns the array to be inserted via bcp_sendrow().</P>
+<P></P>
+<DT><STRONG><A NAME="item_OUTPUT">OUTPUT</A></STRONG><BR>
+<DD>
+Where <STRONG>BCP</STRONG> should place it's output. It's a table name for <STRONG>bcp IN</STRONG>, a
+filename for <STRONG>bcp OUT</STRONG>.
+<P></P>
+<DT><STRONG><A NAME="item_ERRORS">ERRORS</A></STRONG><BR>
+<DD>
+The file where invalid rows should be recorded. Default: bcp.err.
+<P></P>
+<DT><STRONG><A NAME="item_SEPARATOR">SEPARATOR</A></STRONG><BR>
+<DD>
+The pattern that separates fields in the input file, or that should be used
+to separate fields in the output file. Default: TAB.
+<P></P>
+<DT><STRONG><A NAME="item_RECORD_SEPARATOR">RECORD_SEPARATOR</A></STRONG><BR>
+<DD>
+The pattern that separates records (rows) in the input file. Sybase:BCP will
+set a local copy of $\ to this value before reading the file. Default: NEWLINE.
+<P></P>
+<DT><STRONG><A NAME="item_FIELDS">FIELDS</A></STRONG><BR>
+<DD>
+Number of fields in the input file for <STRONG>bcp IN</STRONG> operations. Default: Number
+of fields found in the first line. This parameter is ignored for <STRONG>bcp OUT</STRONG>.
+<P></P>
+<DT><STRONG><A NAME="item_BATCH_SIZE">BATCH_SIZE</A></STRONG><BR>
+<DD>
+Number of rows to be batched together before committing to the server for
+<STRONG>bcp IN</STRONG> operations. Defaults to 100. If there is a risk that retries could
+be requiered due to failed batches (e.g. duplicat rows/keys errors) then
+you should not use a large batch size: one failed row in a batch requires
+the entire batch to be resent.
+<P></P>
+<DT><STRONG><A NAME="item_NULL">NULL</A></STRONG><BR>
+<DD>
+A pattern to be used to detect NULL values in the input file. Defaults to
+a zero length string.
+<P></P>
+<DT><STRONG><A NAME="item_DATE">DATE</A></STRONG><BR>
+<DD>
+The default format for DATE fields in the input file. The parameter should
+be a symbolic value representing the format. Currently, the following values
+are recognized: CTIME (the Unix <CODE>ctime(3)</CODE> format), or the numbers 0-12,
+100-112, corresponding to the conversion formats defined in table 2-4 of
+the <EM>SQL Server Reference Manual</EM>.
+<P><STRONG>BCP</STRONG> detects <EM>datetime</EM> targets by looking up the target table
+structure in the Sybase system tables.</P>
+<P></P>
+<DT><STRONG><A NAME="item_REORDER">REORDER</A></STRONG><BR>
+<DD>
+The ordering of the fields in the input file does not correspond to the
+order of columns in the table, or there are columns that you wish to
+skip. The REORDER parameter takes a hash that describes the reordering
+operation:
+<PRE>
+    $bcp-&gt;config(...
+                 REORDER =&gt; { 1 =&gt; 2,
+                              3 =&gt; 1,
+                              2 =&gt; 'foobar',
+                              12 =&gt; 4},
+                 ...);</PRE>
+<P>In this example, field 1 of the input file goes in column 2 of the table,
+field 3 goes in column 1, field 2 goes in the column named <EM>foobar</EM>, and
+field 12 goes in column 4. Fields 4-11, and anything beyond 12 is skipped.
+As you can see you can use the column <EM>name</EM> instead of its position.
+The default is to not do any reordering.</P>
+<P></P>
+<DT><STRONG><A NAME="item_CALLBACK">CALLBACK</A></STRONG><BR>
+<DD>
+The callback subroutine is called for each row (after any reordering), and
+allows the user to do global processing on the row, or vetoing it's
+processing. Example:
+<PRE>
+    $bcp-&gt;config(...
+                 CALLBACK =&gt; \&amp;row_cb,
+                 ...);</PRE>
+<PRE>
+    sub row_cb {
+        my $row_ref = shift;</PRE>
+<PRE>
+        # Skip rows where the first field starts with FOO:
+        return undef if $$row_ref[0] =~ /^FOO/;</PRE>
+<PRE>
+        1;
+    }</PRE>
+<P></P>
+<DT><STRONG><A NAME="item_CONDITION">CONDITION</A></STRONG><BR>
+<DD>
+A <EM>where</EM> clause to be used in <STRONG>bcp OUT</STRONG> operations. Not implemented.
+<P></P></DL>
+<P>
+<H2><A NAME="parameters for describe()">Parameters for <A HREF="#item_describe"><CODE>describe()</CODE></A></A></H2>
+<DL>
+<DT><STRONG>CALLBACK</STRONG><BR>
+<DD>
+Specify a callback for this column. The field value is passed as the first
+parameter, and the callback should return the value that it wants <STRONG>BCP</STRONG>
+to use. Example:
+<PRE>
+    $dbh-&gt;describe(2, {CALLBACK, \&amp;col_cb});</PRE>
+<PRE>
+    sub col_cb {
+        my $data = shift;</PRE>
+<PRE>
+        # Convert to lower case...
+        $data =~ tr/A-Z/a-z/;
+    }</PRE>
+<P></P>
+<DT><STRONG><A NAME="item_SKIP">SKIP</A></STRONG><BR>
+<DD>
+If this is defined then this field is skipped. This is useful if only one or
+two fields need to be skipped and you don't want to define a big REORDER hash
+to handle the skipping.
+<P></P></DL>
+<P>
+<HR>
+<H1><A NAME="examples">EXAMPLES</A></H1>
+<PRE>
+    #!/usr/local/bin/perl
+</PRE>
+<PRE>
+
+    use Sybase::BCP;
+    require 'sybutil.pl';</PRE>
+<PRE>
+    $bcp = new Sybase::BCP sa, undef, TROLL;</PRE>
+<PRE>
+    $bcp-&gt;config(INPUT =&gt; '../../Sybperl/xab',
+                 OUTPUT =&gt; 'excalibur.dbo.t3',
+                 BATCH_SIZE =&gt; 200,
+                 FIELDS =&gt; 4,
+                 REORDER =&gt; {1 =&gt; 'account',
+                             3 =&gt; 'date',
+                             2 =&gt; 'seq_no',
+                             11 =&gt; 'broker'},
+                 SEPARATOR =&gt; '|');
+    $bcp-&gt;run;</PRE>
+<P>
+<HR>
+<H1><A NAME="bugs">BUGS</A></H1>
+<P>The current implementation seems to run about 2.5 to 3 times slower than
+plain bcp.</P>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Michael Peppler <EM>&lt;<A HREF="mailto:mpeppler@peppler.org">mpeppler@peppler.org</A>&gt;</EM>. Contact the sybperl mailing
+list <CODE>mailto:sybperl-l@listproc.net</CODE> if you have any questions.</P>
+
+</BODY>
+
+</HTML>

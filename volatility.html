@@ -1,0 +1,251 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Description" content="Algorithmic trading">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>Algorithmic Trading</title>
+<!--
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL, Algorithmic trading"
+
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+<style type="text/css">
+<!--
+.style1 {
+	color: #CC0000;
+	font-weight: bold;
+}
+.code {color: #0000FF}
+.comment {color: #669900}
+-->
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<b><font color="#CC0000">LevSelector.com</font></b>
+<spacer type=block width=1 height=1>
+<p class="sectionheader"><b><a href="index.html">home</a> > Volatility</b></p>
+<p><b><font color="#CC0000">Volatility</font></b>
+<table width="95%" border="0" cellpadding="3" cellspacing="0">
+  <tr>
+    <td class="style1">On This Page</td>
+    <td class="style1">Other Pages</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p>
+    - intro<br>
+    - Books, Links<br>
+    - xxx<br>
+- xxx<br>
+<br>
+    </p>    </td>
+    <td valign="top">
+    <p> - xxx
+<a href="#xx"></a><br>
+<br>
+    </p>    </td>
+  </tr>
+</table>
+  <p class="sectionheader"><a NAME="intro"></a>Intro ------------------------------</p>
+  <p><span class="style1"><b><font color="#CC0000">Volatility</font></b></span> ( &sigma; ) - <a href="http://en.wikipedia.org/wiki/Volatility_(finance)">http://en.wikipedia.org/wiki/Volatility_(finance)</a> -  stdev of returns over a period of time (for example,  annualized). Often expressed as a fraction of stock price (for example, 0.15).</p>
+  <p><span class="style1">Implied volatility</span> - value of volatility which makes the model price (often Black-Sholes model for option pricing) to fit the current market price. If we have  sets of current market option prices for different strikes and expirations - we can calculate implied volatility for each set - and plot it as a graph (<span class="style1">Volatility Surface</span>).</p>
+  <p><span class="style1">Local volatility </span> - analytical approximation of Implied volatility as a function of (stock) price and time (to expiration). value of volatility which makes the model price (often Black-Sholes model) to fit the current market price.</p>
+  <p><span class="style1">Historical volatility</span> -  real volatility calculated from historical data (looking back). Different from <span class="style1">Implied volatility</span>, which is a   hypothetical volatility to be used from current time until maturity of the option.<br>
+  </p>
+  <p class="sectionheader"><a name="books"></a>Books, Links, etc.</p>
+  <ul>
+    <li>The Volatility Surface - by Jim Gatheral</li>
+    <li>Volatility Trading - by Euan Sinclair</li>
+    <li><a href="http://math.nyu.edu/fellows_fin_math/gatheral/gatheral.htm">http://math.nyu.edu/fellows_fin_math/gatheral/gatheral.htm</a> - Jim Gatheral page at NYU with links to his many presentations</li>
+    <li><a href="http://www.sigma28.com/in-depth/demo-1/">http://www.sigma28.com/in-depth/demo-1/</a></li>
+  </ul>
+  <p>&nbsp;</p>
+<p class="sectionheader"><a name="volatility_measuring"></a>Volatility Measuring</p>
+  <p>Naive estimates:<br>
+Estimate volatility: &sigma;<sup>2</sup> = (1/N)(1/dt)<strong>&Sigma;</strong>R<sub>i</sub><sup>2</sup> , where R -return of i-th asset.<br>
+Problem with this - too much memory (picks look like plateaus).<br>
+Better - use exponentially-weighted moving average estimate with parameter &lambda;.</p>
+  <p></p>
+  <p>XXXXXXXXXXXXXXXx</p>
+  <p>short term - volatility dominates, long term - drift dominates</p>
+<p>- <a href="http://en.wikipedia.org/wiki/Volatility_smile">http://en.wikipedia.org/wiki/Volatility_smile</a> - the volatility smile is a long-observed pattern in which at-the-money options tend to have lower implied volatilities than in- or out-of-the-money options. The pattern displays different characteristics for different markets and results from the probability of extreme moves. Equity options traded in American markets did not show a volatility smile before the Crash of 1987 but began showing one afterwards.</p>
+  <p>Modelling the volatility smile is an active area of research in quantitative finance. Typically, a quantitative analyst will calculate the implied volatility from liquid vanilla options and use models of the smile to calculate the price of more exotic options.</p>
+  <p>A closely related concept is that of term structure of volatility, which refers to how implied volatility differs for related options with different maturities. An implied volatility surface is a 3-D plot that combines volatility smile and term structure of volatility into a consolidated view of all options for an underlier.</p>
+  <p>&nbsp;</p>
+  <p class="sectionheader">Implied Volatility, Volatility Smile, Volatility Surface</p>
+  <p><span class="style1">implied volatility</span> - the value of volatility which makes the model price to fit the current market price. i.e.  if you use it in a particular pricing model, the price of the option predicted by this model should be the same as the current market price.</p>
+  <table width="99%" border="1" cellspacing="0" cellpadding="1">
+    <tr>
+      <td width="20%" valign="top"><span class="style1">implied volatility</span></td>
+      <td width="80%" valign="top"><p>the value of volatility which makes the model price to fit the current market price. i.e.  if you use it in a particular pricing model, the price of the option predicted by this model should be the same as the current market price.<br>
+        If we imply a BS model where &sigma; = const, and have S, X, r, (T-t), and current V - then we can compute implied volatility using iterative procedure (we can't simply invert the formulas).<br>
+        In real life &sigma; for options is different for different expirations and different strike prices:<br>
+        &nbsp;&nbsp;      &sigma; = &sigma;(t,S).<br>
+        Thus surfaces are used.<br>
+        - <a href="http://en.wikipedia.org/wiki/Implied_volatility">http://en.wikipedia.org/wiki/Implied_volatility</a><br>
+        <span class="style1">Implied volatility</span> -  hypothetical volatility to be used from current time until maturity of the option.<br>
+        <span class="style1">Historical volatility</span> -  real volatility data  from the past.</p></td>
+    </tr>
+    <tr>
+      <td valign="top"><span class="style1">volatility smile</span></td>
+      <td valign="top"><p>graph of implied volatility of the option depending on the strike price tend to have a form of a smile, that is : At-the-money options tend to have lower implied volatilities than in- or out-of-the-money options.<br>
+        - <a href="http://en.wikipedia.org/wiki/Volatility_smile">http://en.wikipedia.org/wiki/Volatility_smile</a></p>
+          <p><img src="images/volatility_smile_svg.png" width="150" height="150"></p>
+        <p>Combining volatilty smiles for different maturities we get a volatility surface (see below)</p></td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">volatility skew</td>
+      <td valign="top">For some markets (such as equity options) the graph may be  a downward sloping (instead of a smile) - then the term  "<strong>volatility skew</strong>" is used.</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">volatility frown</td>
+      <td valign="top">inverted smile</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">Implied Volatility Surface</td>
+      <td valign="top"><p>We can calculate implied volatility for each strike price E and time to expiration T (using market prices for S,V and BS approximation). This will give us an implied volatlity surface - ploted as as a function of both E and T.<br>
+        <img src="images/implied_volatility_surface.gif" width="395" height="361"></p></td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1"> local volatility model<br></td>
+      <td valign="top"><p><img src="images/sde1.png" alt="" width="194" height="18"> </p>
+          <ul>
+            <li>in <span class="style1">local volatility model</span> the  volatility is considered as a function of (S,t): s<sub><i>t</i></sub> = s(<i>S</i><sub><i>t</i></sub>,<i>t</i>). This model is used to calculate values of exotic options which are consistent with observed prices of vanilla options. </li>
+            <li>in <span class="style1">stochastic volatility model</span> the volatility is considered as a random process with a randomness of its own (and doesn't depend on price and time to expiration). This helps to better model derivatives, although doesn explain smiel and skew (which indicate that implied volatility does tend to vary with respect to strike price and expiration).</li>
+          </ul>
+        <p>- <a href="http://en.wikipedia.org/wiki/Local_volatility">http://en.wikipedia.org/wiki/Local_volatility</a><br>
+          - <a href="http://en.wikipedia.org/wiki/Stochastic_volatility">http://en.wikipedia.org/wiki/Stochastic_volatility</a></p>
+        <p>Two ways to do estimates:</p>
+        <p>1. from actual historical volatility -&gt; to implied volatlity<br>
+          2. from implied volatility -&gt; to local volatility.</p>
+        <p>For second approach Paul Wilmott has derived a formula (assuming that there is continuous market data on V=V(S,T)). The resulting expression gives big errors for far in/out the money options (because both numerator and denominator become small). To reduce errors, he provides another formula deducing local volatility from implied volatility.</p>
+        <p>In practice we have a limited set of descretely-spaced call prices. Thus the surface for implied/local volatility is presented by a set of dots. We fit this set with a surface using some model (parametrization) and some fitting procedure. A simple model: </p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&sigma;<sub>imp</sub>(E,T) = a(T)(E-S<sup>*</sup>) + b(T)</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p></td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">ATM, OTM, ITM</td>
+      <td valign="top">At The Money, Out of The Money, In The Money</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">ATMF</td>
+      <td valign="top">ATM Forward. <span class="style1">Forward price</span> is a  price for delivery in future, whereas  a <span class="style1">spot price</span> is a price for immediate delivery. For instance, if the spot price for USD/JPY is 120, and the forward price one year hence is 110, then a call struck at 110 is ATMF but not ATM.</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">volatility convexity</td>
+      <td valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">volatility surface dynamics</td>
+      <td valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">first and higher order risk measures of derivatives positions</td>
+      <td valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">volatility trading strategies</td>
+      <td valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">parametric volatility fitting process</td>
+      <td valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">data scrubbing</td>
+      <td valign="top">error correction technique (remove spikes)</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">volatility approximation concepts for illiquid listed options</td>
+      <td valign="top">midpoint</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">treatment of deep OTM volatility</td>
+      <td valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">Use of analytic libraries for volatility fitting</td>
+      <td valign="top">implied_volaility</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">fast calculation of parametric implied volatility surfaces</td>
+      <td valign="top"><p>parametric statistics (normal, log-normal)?</p></td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">Volatility Surface parametrization</td>
+      <td valign="top"><p>Overfitting is bad - loses valuable info.</p></td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">Volatility Trading</td>
+      <td valign="top"><p><span class="style1">VIX Option</span> - 
+        A volatility option is a call or put option where the underlying asset is a <span class="style1">volatility index</span>;<br>
+                <span class="style1">Volatility Index</span> is a compilation of implied volatilities of a series of call and put options. Typically a volatility index will take the implied volatilities from a stock index, however, more sophisticated volatility indices will take the implied vols from the component stocks that make up the index.<br>
+                <span class="style1">VIX</span> - the most recognized volatility index - based on S&amp;P 500,  traded on CBOE (Chicago Board of Options Exchange). Another one - VXO - based on S&amp;P 100. <br>
+                <span class="style1">VRO</span> - the CBOE listed futures on the VIX, probably the  most   actively traded contract on the exchange.<br>
+                <span class="style1">VXN</span> - NASDAQ volatility index.<br>
+                <span class="style1">VXD</span> - Dow Jones volatility index.</p>
+          <p>Trading strategies <span class="style1">bullish on volatility</span> - <span class="style1">long straddle, long strangle, short condor and short butterfly</span> - neutral trading strategies that are bullish on volatility profit when the underlying stock price experiences big moves upwards or downwards.</p>
+        <p>Trading strategies <span class="style1">bearish on volatility</span> - <span class="style1">short straddle, short strangle, ratio spreads, long condor and long butterfly</span> - neutral trading strategies that are bearish on volatility profit when the underlying stock price experiences little or no movement.<br>
+              <br>
+              <span class="style1">Butterfly</span> -  buy ATM call, buy OTM call, sell 2 ITM calls.<br>
+              <span class="style1">Condor</span> - sell OTM  call,  buy call with higher strike price, sell OTM put,  buy put with lower strike price.<br>
+              <span class="style1">Straddle</span> - buy call and put with same strike and expiration.<br>
+              <span class="style1">Strangle</span> - buy OTM cal and OTM put with the same expirations. Similar to the straddle, but with different strike prices.<br>
+              <span class="style1">Ratio-spread</span> -  buy N1 options, sell N2  other options. Same underlying, same (usually)  expiration, but  different strike price.</p></td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">Historical volatility</td>
+      <td valign="top">Estimate volatility as standard deviation of ln(Si/Si-1) , that is - logarithm of relative price</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <p class="sectionheader">Stochastic Volatility</p>
+  <ul>
+    <li>Christian Kahl - Modelling and simulation of stochastic volatility in finance, 2007 (book based on his thesis).</li>
+    <li><a href="http://en.wikipedia.org/wiki/Ornstein%E2%80%93Uhlenbeck_process">Ornstein-Uhlenbeck model </a>- mean-reverting process<img src="images/mean_reverting_random_walk.jpg" width="217" height="25"></li>
+    <li>Affine diffusion stochastic volatility models  - characteristic function of underlying esset's marginal distribtion s known in clsed form. Example - <a href="http://en.wikipedia.org/wiki/Heston_model">Heston Model</a> :<img src="images/heston1.jpg" width="120" height="19">, where <img src="images/heston2.jpg" width="140" height="18"></li>
+    <li>Monte-Carlo</li>
+    <li>Path-construction methods - to generate sample paths using some kind of random walk.</li>
+    <li><a href="http://en.wikipedia.org/wiki/Fractional_Fourier_transform">Fractional Fourier transform</a> (FRFT) for spectral path construction (FRFT is a Fourier transform to the n-th power where n need not be an integer).</li>
+  </ul>
+  <p>&nbsp;</p>
+  <p><span class="style1">GARCH</span> = <a href="http://en.wikipedia.org/wiki/Autoregressive_conditional_heteroskedasticity">Generalized Auto-Regressive Conditional Heteroskedasticity</a> - modeling of tme series to explain clustering (current changes are function of changes in the previous term(s)).</p>
+  <p>XXXXXXXXXXXXXXXXXXXXXXXX</p>
+<p></p>
+  <p>'Advanced' Volatility Modeling in Complete Markets</p>
+  <p>Incomplete Markets: Jump Diffusion and Stochastic Volatility</p>
+  <p>Put-Call Parity: <a href="http://en.wikipedia.org/wiki/Put-call_parity">http://en.wikipedia.org/wiki/Put-call_parity</a> : relationship between call and put (to avoid arbitrage opportunities) : buying a call  and selling d shares of stock =  buying a put and buying 1 &minus; d shares of stock.<br>
+Also  implied volatility of calls and puts must be identical (if no dividends or other complications).</p>
+  <p><A title="Heston model" href="http://en.wikipedia.org/wiki/Heston_model">Heston model</A> - model with stochastic volatility</p>
+  <p>&nbsp;</p>
+<p>volatility spectrum</p>
+<p>1/f noise</p>
+<p class="sectionheader">Interest Rate Volatility</p>
+<p>xxxx</p>
+<p class="sectionheader">Interest Rate Volatility  and Stock Return and Volatility</p>
+<p>When interest rates go up - people tend to deposit their 
+savings in bank accounts rather than investing in stock market. Also the profitability of firms decreases (because they have to pay higher interests on their loans) - thus stock prices go down. </p>
+<p>&nbsp;</p>
+<p>market returns and variance parameters are very close to<br>
+  each other for both the models. Conditional market returns have a negatively significant relation with<br>
+  the interest rates as in USA and Korea. Thus we can easily predict the stock returns by analyzing<br>
+  interest rates. At the same time, conditional variance is also negatively related to interest rates however<br>
+  this relationship is insignificant. This implies that interest rates have a weak predictive power for<br>
+  volatility.<br>
+  It is generally accepted that with an increase in interest rates people tend to deposit their<br>
+  savings in bank accounts rather than investing in stock market. Also it reduces the profitability of firms<br>
+  and thus stock prices go down. As interest rate in economy is determined by monetary policy of that<br>
+  country, policy makers should concentrate on it for adjusting the volume of stock market and over all<br>
+investments in economy.</p>
+<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0058)http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html -->
+<HTML><HEAD><TITLE>About X: Frequently Asked Questions</TITLE>
+<META content="text/html; charset=windows-1251" http-equiv=Content-Type>
+<META content="MSHTML 5.00.2920.0" name=GENERATOR></HEAD>
+<BODY>
+<H1>About X: Frequently Asked Questions</H1>This file contains answers to 
+frequently asked questions about X. Here is a list of the questions that are 
+answered: 
+<OL>
+  <LI><A 
+  href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#1">What is 
+  the client-server model?</A> 
+  <LI><A 
+  href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#2">Explain 
+  the term "remote display"?</A> 
+  <LI><A href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#3">How 
+  do I run a program on one machine and display it on another?</A> 
+  <LI><A 
+  href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#4">Does the 
+  DISPLAY environment variable work for GL applications?</A> 
+  <LI><A href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#5">The 
+  DISPLAY variable doesn't seem to work. Why?</A> 
+  <LI><A 
+  href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#6">What are 
+  resources?</A> 
+  <LI><A href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#7">How 
+  do I set resources?</A> 
+  <LI><A href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#8">How 
+  do I know what resources I can set for an application?</A> 
+  <LI><A href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#9">How 
+  do I run the same program twice with different attributes?</A> 
+  <LI><A 
+  href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#10">Does the 
+  GL recognize resources now?</A> 
+  <LI><A 
+  href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#11">How do I 
+  find out what fonts are available?</A> 
+  <LI><A 
+  href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#12">Does 
+  Silicon Graphics provide any tools to help with the customization process?</A> 
+
+  <LI><A 
+  href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#13">What is a 
+  good approach to take in looking for resources?</A> 
+  <LI><A 
+  href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#14">What is 
+  the precedence for resource files?</A> 
+  <LI><A 
+  href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#15">What 
+  files affect the window manager and what is their relationship to each 
+  other?</A> 
+  <LI><A href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#16">Do 
+  I need my own .4Dwmrc file?</A> 
+  <LI><A 
+  href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#17">Can I run 
+  different window managers?</A> 
+  <LI><A 
+  href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#18">How do I 
+  choose a different window manager as the default?</A> 
+  <LI><A 
+  href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#19">Where can 
+  I learn more about the Window Manager behavior?</A> 
+  <LI><A 
+  href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#20">How do I 
+  recover from a failed customization attempt?</A> 
+  <LI><A 
+  href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#21">What is 
+  the difference between .xsession and .sgisession?</A> 
+  <LI><A 
+  href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#22">After 
+  copying /usr/lib/X11/xdm/Xsession to .xsession, I can't login.</A> 
+  <LI><A 
+  href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#23">What are 
+  the important login and resource files for IRIX 4D1-4.0?</A> 
+  <LI><A 
+  href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#24">What is 
+  the sequence of events that occur at login time?</A> 
+  <LI><A 
+  href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#25">What 
+  books about the X Window System and OSF/Motif do you recommend?</A> </LI></OL>
+<H2><A name=1>1) What is the client-server model?</A></H2>A client is an 
+application or program, such as a clock or a terminal emulator. A server acts as 
+an intermediary between the client (application) and the display. It takes 
+information from an input device, such as a mouse, and sends it to the client. 
+It also takes information from the client and sends it to the graphics hardware. 
+<PRE>
+           •••           •••        •••-
+          |X     |&lt;•••- |X     |••-&gt;|Screen | 
+          |client|•••-&gt; |server|      |Display|
+           •••  X        •••        •••-
+                   Protocol
+</PRE>
+<H2><A name=2>2) Explain the term "remote display"?</A></H2>Typically, a client 
+and server run on the same workstation. Clients, however, can be run from other 
+machines via a network (including machines with different operating systems and 
+architecture). This allows you to run a compute-intensive program on one machine 
+and render the results on your workstation screen. 
+<H2><A name=3>3) How do I run a program on one machine and display it on 
+another?</A></H2>The DISPLAY environment variable lets you specify the machine 
+on which you want the X client to be displayed. You can specify the local 
+machine in one of three ways : 
+<DL>
+  <DT>
+  <DD>a) setenv DISPLAY :0 
+  <DD>or 
+  <DD>b) setenv DISPLAY localhost:0 
+  <DD>or 
+  <DD>c) setenv DISPLAY <I>yourhost</I>:0 where <I>yourhost</I> is your machine 
+  name. </DD></DL>Similarly, you can specify a remote host: 
+<DL>
+  <DT>
+  <DD>setenv DISPLAY <I>remotehost</I>:0 </DD></DL>
+<H2><A name=4>4) Does the DISPLAY environment variable work for GL 
+applications?</A></H2>Yes. GL programs display on the machine specified by the 
+DISPLAY environment variable. This occurs because the GL now uses the 
+Distributed Graphics Library (DGL) capabilities by default. It is important to 
+remember that only Silicon Graphics' machines can displayGL. For networks 
+running NIS (formerly yellow pages), it is important to add the compiler flag 
+"-lsun". 
+<H2><A name=5>5) The DISPLAY variable doesn't seem to work. 
+Why?</A></H2>Sometimes, when trying to display to a remote server, you see these 
+messages: "permission denied" or "can't connect to server" message. To solve 
+permission problems, you need to disable access control on the remote server 
+using the xhost command. This is the default behavior on Silicon Graphics' 
+machines. If you have problems connecting to a server, check to make sure you 
+used the correct ethernet addresses and the server is up and running. Where NIS 
+is used, also make sure the client is linked with "-lsun". 
+<H2><A name=6>6) What are resources?</A></H2>Basically, resources are 
+"attributes" that control the look and feel of an application. Resources include 
+color, fonts, size, location, and more. Resources can have a complex format for 
+binding strengths. For a complete description of resources, including a 
+description of "loose" and "tight" bindings, consult a book listed in the 
+bibliography for <A 
+href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#25">question 
+#25</A>. 
+<H2><A name=7>7) How do I set resources?</A></H2>There are many ways to set 
+resources. Resources may be listed in files or contained in a data base. It is 
+recommended that you consult a Book on X as well as the man page for "xrdb" for 
+detailed descriptions. Generally speaking, if xrdb is not used, resource files 
+are specified through environment variables. <A 
+href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#14">Question 
+#14</A> addresses the precedence of these files and variables. 
+<P>For some examples, see the file /usr/tutor/Customize/example.Xdefaults. 
+<H2><A name=8>8) How do I know what resources I can set for an 
+application?</A></H2>The most common place to find resource variables for a 
+particular application is in the man page for that application. 
+<P>For example, take a look at the man page for `xwsh'. Look for the section 
+heading called `RESOURCES'. This section lists each resource for `xwsh', and in 
+some cases, the valid values for that resource. 
+<P>Also, many major applications are built on top of the Xt toolkit. There are 
+standard resources that these applications recognize. For a more complete 
+description, see one of the books on Xt listed in the bibliography. 
+<H2><A name=9>9) How do I run the same program twice with different 
+attributes?</A></H2>To accomplish this task, you need to take advantage of the 
+"instance vs class" concept. This concept is explained further in most books on 
+Xt. 
+<P>Many applications have a resource that lets you to give it a unique name. For 
+example, from the xwsh man page : 
+<DL>
+  <DT>-name instance-name 
+  <DD>Provide a unique name for an xwsh window. This name becomes the instance 
+  name of the specific xwsh, with the class name always being "XWsh". 
+</DD></DL>Using the -name option allows you to give "names" to different 
+instances of xwsh and assign different resources to each one. So if you want two 
+different xwsh's with different resource sets, give them two different names, 
+say howdymom and howdydoody, for example. Add the following to your ~/.Xdefaults 
+file (if you use .Xdefaults) : 
+<DL>
+  <DT>
+  <DD>howdymom*foreground: SeaGreen 
+  <DD>howdydoody*foreground: SGIBeet </DD></DL>
+<DL>
+  <DT>Now all you have to do is start them up : 
+  <DD>xwsh -name howdymom&amp; 
+  <DD>xwsh -name howdydoody&amp; </DD></DL>
+<H2><A name=10>10) Does the GL recognize resources now?</A></H2>Yes. For 
+complete information see the man page for GLRESOURCES. Here is the beginning of 
+the man page : 
+<P>GLRESOURCES(3G) Silicon Graphics GLRESOURCES(3G) 
+<P>
+<DL>
+  <DT>NAME 
+  <DD>GL Resources - X resources used by GL programs 
+  <P></P>
+  <DT>DESCRIPTION 
+  <DD>In IRIX 4.0 and later, the GL responds to several X resources, allowing 
+  run-time control over some aspects of GL programs. 
+  <P></P>
+  <DD>This man page assumes you are somewhat familiar with X resources, if you 
+  are not, you should read some X documentation such as Volume 3 of the <A 
+  href="http://www.chemie.fu-berlin.de/chemnet/general/oreilly.html">O'Reilly X 
+  books</A>. 
+  <P></P>
+  <DD>The GL uses resources names with the prefixes 
+  <DL>
+    <DT>
+    <DD>appname.gl. (instance prefix) 
+    <DD>Appname.GL. (class prefix) </DD></DL>
+  <DD>where appname and Appname are derived from the argument to the GL 
+  program's first call to winopen(3G) upper case. </DD></DL>
+<H2><A name=11>11) How do I find out what fonts are available?</A></H2>The 
+xfontsel and xlsfonts utilities help you find appropriate fonts. xlsfonts lists 
+the fonts; xfontsel provides an interface for selecting a desired font. To use 
+xfontsel, choose "Font Names" from the Customization rollover menu in the 
+Toolchest. Please see the man pages and the IRIS Utilities Guide for further 
+information. 
+<H2><A name=12>12) Does Silicon Graphics provide any tools to help with the 
+customization process?</A></H2>Yes. The Customization rollover menu in the 
+Toolchest contains three entries: Window Info, Color Names, and Font Names. 
+Please refer to the man pages on these commands for details: xfontsel, xlsfonts, 
+xwininfo, xdpyinfo, xprop, appres, listres, and xrdb. 
+<P>Also, see the "WorkSpace User's Guide" and the example files in 
+/usr/tutor/Customize. 
+<H2><A name=13>13) What is a good approach to take in looking for 
+resources?</A></H2>The following is a recommended list of steps to take when 
+searching for a resource, binding, behavior, etc. 
+<P>
+<OL>
+  <LI>Look in the 4.0 Transition Guide. 
+  <LI>Look in /usr/tutor/Customize. 
+  <LI>Look in /usr/demos. 
+  <LI>Look in ~4Dgifts. (Available with the development option.) 
+  <LI>If the client you are interested in is a GL client, see the man page for 
+  GLRESOURCES. 
+  <LI>Look in /usr/lib/X11/app-defaults/ClientName. 
+  <LI>Look in /usr/lib/X11/system.* . 
+  <LI>Look through the man page for the client you are interested in. 
+  <LI>Look in <A 
+  href="http://www.chemie.fu-berlin.de/chemnet/general/oreilly.html">O'Reilly 
+  &amp; Associates</A> Vol. III. It has many gems pertaining to standard X 
+  clients. 
+  <LI>Look in the documentation that came with your application. 
+  <LI>Look in the OSF Motif manuals. 
+  <LI>Post to comp.windows.x if you can not find an answer using steps 1 through 
+  11. </LI></OL>
+<H2><A name=14>14) What is the precedence for resource files?</A></H2>The 
+following list indicates the weight of set resources. Items at the top have the 
+greatest weight. 
+<P>
+<OL>
+  <LI>Hard coded values for resources. 
+  <LI>Command line arguments. 
+  <LI>Resources pointed to by $XENVIRONMENT. 
+  <LI>Resource values loaded into the Resource Data Base via xrdb. 
+  <LI>Resources pointed to by other environment variables : 
+  <P>
+  <DL>
+    <DT>IF $XUSERFILESEARCHPATH is set 
+    <DD>then it contains a list of directories to search. 
+    <P></P>
+    <DT>ELSE IF $XAPPLRESDIR is set 
+    <DD>it contains a single directory, and a short list of related directories 
+    (e.g. adjusted for language) is where resource files must be found. 
+    <P></P>
+    <DT>ELSE 
+    <DD>Look in a short list of places related to $HOME (e.g. language 
+    adjusted). This includes files in $HOME that have the name of the class of 
+    the application. </DD></DL>
+  <LI>Resource values set in $HOME/.Xdefaults, provided that the 
+  RESOURCE_MANAGER property hasn't been set via the xrdb command. (see the third 
+  paragraph in the xrdb man page) 
+  <LI>Values set in /usr/lib/X11/app-defaults/*. 
+  <LI>Values set through through the application's fall back mechanism. </LI></OL>
+<H2><A name=15>15) What files affect the window manager and what is their 
+relationship to each other?</A></H2>
+<OL>
+  <LI>~/.4Dwmrc, if you have one 
+  <LI>/usr/lib/X11/system.4Dwmrc 
+  <LI>/usr/bin/X11/4Dwm 
+  <LI>/usr/lib/X11/app-defaults/4Dwm 
+  <LI>~/.Xdefaults (or wherever you set resources) </LI></OL>
+<P>When 4Dwm is started, it looks for ~/.4Dwmrc. If it does not exist, it looks 
+at /usr/lib/X11/system.4Dwmrc. The definitions for button bindings, menus, etc 
+are contained in these files. For a better description of bindings, look in 
+/usr/tutor/Customize/example.4Dwmrc and /usr/people/4Dgifts/.4Dwmrc. Also see 
+the man pages for 4Dwm. 
+<P>The resource set for the bindings will actually "choose" which binding 
+definition is set. 
+<H2><A name=16>16) Do I need my own .4Dwmrc file?</A></H2>Not necessarily. As 
+mentioned in the previous question, actual bindings are determined by resource 
+names. If there is a binding definition in /usr/lib/X11/system.4Dwmrc that you 
+like, you may choose it by setting the appropriate resource. 
+<H2><A name=17>17) Can I run different window managers?</A></H2>In Irix 4D1-4.0, 
+you may choose 4Dwm, mwm, twm, or uwm. Note that GL programs are guaranteed to 
+work only under 4Dwm. 
+<H2><A name=18>18) How do I choose a different window manager as the 
+default?</A></H2>To use another window manager at login time, you must use a 
+.xsession file. Please see <A 
+href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html#21">question 
+#21.</A> 
+<H2><A name=19>19) Where can I learn more about the Window Manager 
+behavior?</A></H2>The man pages for 4Dwm and mwm contain a wealth of information 
+on the window manager. There are also online files. You may want to read 
+/usr/tutor/Customize/example.4Dwmrc as well as /usr/people/4Dgifts/.4Dwmrc (if 
+you have the IDO option). The OSF/Motif manuals listed in the bibliography are 
+also good places to find information. (4Dwm is based on mwm). 
+<H2><A name=20>20) How do I recover from a failed customization 
+attempt?</A></H2>If your attempt at customization leaves you in a state where 
+buttons and menus are no longer recognized, you can recover by pressing the 
+&lt;Alt&gt;&lt;CTRL&gt;&lt;Shift&gt;&lt;!&gt; keys simultaneously. A menu 
+appears that will let you choose Motif, Iris, or user defaults. Choose either 
+Motif or Iris defaults and then push OK. This restarts the window manager to a 
+usable state. 
+<H2><A name=21>21) What is the difference between .xsession and 
+.sgisession?</A></H2>From the login event sequence mentioned earlier, you will 
+note that /usr/lib/X11/xdm/Xsession tries to exec $HOME/.xsession if it exists. 
+This is how you would go about changing programs started by default. An example 
+is the start of the window manager. There is a discussion on xsession files in 
+volume 3 of the <A 
+href="http://www.chemie.fu-berlin.de/chemnet/general/oreilly.html">O'Reilly 
+series</A>. For examples of alternate xsession files look at 
+/usr/people/4Dgifts/.xsession or /usr/demos/.xsession. 
+<P>If you don't have a $HOME/.xsession file, /usr/lib/X11/xdm/Xsession starts 
+things for you and eventually looks for $HOME/.sgisession. This is a good way to 
+start additional programs without changing what is started by default. 
+<H2><A name=22>22) After copying /usr/lib/X11/xdm/Xsession to .xsession, I can't 
+login.</A></H2>After copying this file to your home directory, you need to 
+remove all references to "xsession". References to xsession cause the system to 
+try to execute $HOME/.xsession, which will create an infinite loop. 
+<H2><A name=23>23) What are the important login and resource files for IRIX 
+4D1-4.0?</A></H2>The following three file groupings indicate where files that 
+affect your login session reside. 
+<P>1) /usr/lib/X11/* - This is THE starting place. Here you find the system 
+default bindings for Motif, 4Dwm, and the Toolchest. The xdm directory lives 
+here as well as the app-defaults directory. xdm controls the session management. 
+Many application defaults are set in the app-defaults directory. 
+<P>2) $HOME/[.Xdefaults, .4Dwmrc, .chestrc, .xsession, .sgisession] - Here you 
+find the files that control your system set-up. You create these files; they 
+don't exist when you first log in. 
+<P>3) /usr/bin/X11 - This is where the binaries live. It makes life nice to 
+include this directory in your path. 
+<H2><A name=24>24) What is the sequence of events that occur at login 
+time?</A></H2>This is a bare bones synopsis of the events that occur when you 
+log in to the console via xdm (xdm is the default method of logging in). 
+<P>
+<OL>
+  <LI>Provide a "failsafe" (nographics) login if required/requested. 
+  <LI>Exec $HOME/.xsession if it exists. If it exists, the remaining steps 
+  should normally be included in the users .xsession file as well. 
+  <LI>Load $HOME/.Xresources if it exists. 
+  <LI>Set XUSERFILESEARCHPATH. 
+  <LI>Incorporate a "shell" environment into the "session". (man userenv) 
+  <LI>Set the root background and cursor. 
+  <LI>Start 4Dwm. 
+  <LI>Wait for 4Dwm to come up. 
+  <LI>Disable display access control (xhost +). (man xhost) 
+  <LI>Execute $HOME/.sgisession if it exists. 
+  <LI>Start WorkSpace if the user wants it. 
+  <LI>Put a Toolchest on each screen. 
+  <LI>Start the console. 
+  <LI>Exec the "reaper". (man reaper / endsession) </LI></OL>
+<H2><A name=25>25) What books about the X Window System and OSF/Motif do you 
+recommend?</A></H2>Introductory Texts on the X Window System 
+<DL>
+  <DT>- O'Reilly and Associates, Inc. "The Definitive Guides to the X Window 
+  System", by Adrian Nye. Vol. 1, "Xlib Programming Manual", Sebastopol, CA., 
+  1990. 
+  <P></P>
+  <DD>Contains the introductory elements for programming with the Xlib, the 
+  lowest level of the X window system. Discusses concepts such as X color 
+  capacities, windows, events, drawing primitives. 
+  <P></P>
+  <DT>O'Reilly and Associates Inc., "The Definitive Guides to the X Window 
+  System", by Valerie Quercia and Tim O'Reilly. Vol. 3, "X Window System User's 
+  Guide", Sebastopol, CA., 1988, 1989. 
+  <P></P>
+  <DD>Discusses being an end user of the X window system. Covers topics like 
+  window manages, font specifications, standard X clients and resources. 
+</DD></DL>Introductory Texts on the OSF/Motif Toolkit : 
+<DL>
+  <DT>- Young, Douglas A., "X Window Systems Programming and Applications with 
+  Xt" (OSF/Motif Edition). Prentice Hall. Englewood Cliffs, NJ. 1990. 
+  <P></P>
+  <DD>A thorough book starting with the basics of programming with a toolkit 
+  though advanced topics. Contains source code for several small complete 
+  applications. (Source code for this book is also available on line in the 
+  /usr/src directory of the Motif Development option.) 
+  <P></P>
+  <DT>- O'Reilly and Associates Inc., "The Definitive Guides to the X Window 
+  System", by Adrian Nye and Tim O'Reilly. Vol. 4, "X Toolkit Intrinsics 
+  Programming Manual", Sebastopol, CA., 1990. 
+  <P></P>
+  <DD>Another reference for programming with the OSF/Motif toolkit. Covers 
+  topics including basic programming, widgets, resources, and more advanced 
+  topics. </DD></DL>Reference Texts for the X Window System : 
+<DL>
+  <DT>- O'Reilly and Associates Inc., "The Definitive Guides to the X Window 
+  System", by Adrian Nye. Vol. 2, "Xlib Reference Manual", Sebastopol, CA., 
+  1988. 
+  <P></P>
+  <DD>Complete reference for Xlib library routines. 
+  <P></P>
+  <DT>- Scheifler, Robert and James Gettys, X Window System, Second Edition, 
+  Digital Press, 1990. ISBN 1-55558-050-5. 
+  <P></P>
+  <DD>Referred to as "the Bible" of Xlib and X Protocol reference. 
+</DD></DL>Reference Texts for the OSF/Motif Toolkit : 
+<DL>
+  <DT>- Open Software Foundation, "OSF/Motif Programmer's Guide". Release 1.1, 
+  Prentice Hall. Englewood Cliffs, NJ. 1990. 
+  <P></P>
+  <DD>Exhaustive reference of every widget in the OSF/Motif library. 
+  <P></P>
+  <DT>- Asente, Paul J. and Ralph R. Swick. "X Window System Toolkit". X Version 
+  11, Release 4. Digital Press. 1990. 
+  <P></P>
+  <DD>Very in-depth reference to the structure and operation of an X window 
+  system toolkit. </DD></DL>
+<HR>
+
+<ADDRESS>HTML-Formatierung: <A 
+href="http://userpage.chemie.fu-berlin.de/adressen/kirste.html">Burkhard 
+Kirste</A>, 1993/08/26 </ADDRESS></BODY></HTML>

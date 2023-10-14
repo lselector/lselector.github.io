@@ -1,0 +1,2347 @@
+<!DOCTYPE HTML PUBLIC "-//SoftQuad//DTD HoTMetaL PRO 5.0::19980907::extensions to HTML 4.0//EN" "hmpro5.dtd">
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<HTML>
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<HEAD>
+
+
+
+
+
+
+
+<TITLE>4.5) Range of primitives and declaring literals</TITLE>
+
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1"> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="tutor.css"></HEAD>
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<BODY BGCOLOR="#FFFFFF">
+
+<table width=95% border=0 cellpadding=2 cellspacing=0 style="page-break-before: always">
+
+  <col width=147*> <col width=109*> 
+
+  <tr> 
+
+    <td width=57% height=104> 
+
+      <p><a href= "introj2.htm" ><img src= "btnIndex.jpg"  name="Graphic1" alt="Return to Tutorial Index" align=BOTTOM width=55 height=39 border=0></a><a href= "introj2.htm" ><br>
+
+        <br>
+
+        </a><a href= "index.htm" ><img src= "btnHome.jpg"  name="Graphic2" alt="Back to the home page of this site" align=BOTTOM width=55 height=39 border=0></a> 
+
+      </p>
+
+    </td>
+
+    <td width=43%> 
+
+      <p align=RIGHT><img src= "hat.gif"  name="Graphic3" alt="morterboard" align=BOTTOM width=118 height=113 border=0></p>
+
+    </td>
+
+  </tr>
+
+  <tr> 
+
+    <td width=57% height=11> 
+
+      <h1 align=LEFT>Java2 Certification <br>
+
+        Tutorial </h1>
+
+    </td>
+
+    <td width=43% bgcolor="#ff9900"> 
+
+      <p>&nbsp;</p>
+
+    </td>
+
+  </tr>
+
+</table>
+
+<p> You can discuss this topic with others at <a href= "http://www.jchq.net/discus" >http://www.jchq.net/discus</a><br>
+
+  Read reviews and buy a Java Certification book at <a href= "http://www.jchq.net/bookreviews/jcertbooks.htm" >http://www.jchq.net/bookreviews/jcertbooks.htm</a> 
+
+  <br>
+
+</p>
+
+<hr size=5 noshade>
+
+<H1><FONT FACE="GENEVA, HELVETICA, ARIAL, LUCIDA SANS"><B>4) Language
+
+
+
+
+
+
+
+Fundamentals</B></FONT> </H1>
+
+
+
+
+
+
+
+<H2>Objective 5) </H2>
+
+
+
+
+
+
+
+<P><FONT FACE="Arial, Helvetica">State the range of all primitive data types
+
+
+
+
+
+
+
+and declare literal values for <I>String</I> and all primitive types using all
+
+
+
+
+
+
+
+permitted formats, bases and representations.</FONT></P>
+
+
+
+
+
+
+
+<H3><I>Note on this objective</I> </H3>
+
+
+
+
+
+
+
+<P><I>This is one of the slightly annoying but fairly easy to cover objectives.
+
+
+
+
+
+
+
+You can write a large amount of Java without knowing the range of primitive
+
+
+
+
+
+
+
+types but it should not take long to memorise these details. Beware of the
+
+
+
+
+
+
+
+requirement to be able to use all formats, don't overlook the octal form</I> 
+
+
+
+
+
+
+
+</P>
+
+
+
+
+
+
+
+<H3>The size of integral primitives </H3>
+
+
+
+
+
+
+
+<P>When this objective asks for the range of primitive data types I assume it
+
+
+
+
+
+
+
+is only required as representing the number 2 raised to the appropriate power
+
+
+
+
+
+
+
+rather than the actual number this represents. In my brain there are only three
+
+
+
+
+
+
+
+integral types to learn as the size of a byte is intuitively, in my PC based
+
+
+
+
+
+
+
+experience, 8 bits.</P>
+
+
+
+
+
+
+
+<P>&nbsp; </P>
+
+
+
+
+
+
+
+<CENTER>
+
+
+
+
+
+
+
+<P> </P>
+
+
+
+
+
+
+
+<TABLE BORDER="1" CELLPADDING="7" WIDTH="464" HEIGHT="222" BGCOLOR="#FFCCCC">
+
+
+
+
+
+
+
+<CAPTION><B>Range of Integral Primitives</B> 
+
+
+
+
+
+
+
+</CAPTION> <TR>
+
+
+
+
+
+
+
+<TD WIDTH="34%" VALIGN="TOP"><B>Name</B></TD>
+
+
+
+
+
+
+
+<TD WIDTH="34%" VALIGN="TOP"><B>Size</B></TD>
+
+
+
+
+
+
+
+<TD WIDTH="33%" VALIGN="TOP"><B>Range</B></TD>
+
+
+
+
+
+
+
+</TR>
+
+
+
+
+
+
+
+<TR>
+
+
+
+
+
+
+
+<TD WIDTH="34%" VALIGN="TOP">byte</TD>
+
+
+
+
+
+
+
+<TD WIDTH="34%" VALIGN="TOP">8 bit</TD>
+
+
+
+
+
+
+
+<TD WIDTH="33%" VALIGN="TOP">-2<SUP>7 </SUP>to 2 <SUP>7</SUP>-1</TD>
+
+
+
+
+
+
+
+</TR>
+
+
+
+
+
+
+
+<TR>
+
+
+
+
+
+
+
+<TD WIDTH="34%" VALIGN="TOP">short</TD>
+
+
+
+
+
+
+
+<TD WIDTH="34%" VALIGN="TOP">16 bit</TD>
+
+
+
+
+
+
+
+<TD WIDTH="33%" VALIGN="TOP">-2<SUP>15 </SUP>to 2<SUP>15</SUP>-1</TD>
+
+
+
+
+
+
+
+</TR>
+
+
+
+
+
+
+
+<TR>
+
+
+
+
+
+
+
+<TD WIDTH="34%" VALIGN="TOP">int</TD>
+
+
+
+
+
+
+
+<TD WIDTH="34%" VALIGN="TOP">32 bit</TD>
+
+
+
+
+
+
+
+<TD WIDTH="33%" VALIGN="TOP">-2<SUP>31 </SUP>to 2<SUP>31</SUP>-1</TD>
+
+
+
+
+
+
+
+</TR>
+
+
+
+
+
+
+
+<TR>
+
+
+
+
+
+
+
+      <TD WIDTH="34%" VALIGN="TOP" height="2">long</TD>
+
+
+
+
+
+
+
+      <TD WIDTH="34%" VALIGN="TOP" height="2">64 bit</TD>
+
+
+
+
+
+
+
+      <TD WIDTH="33%" VALIGN="TOP" height="2"><B>-</B>2 <SUP>63 </SUP>to 2<SUP> 
+        63</SUP>-1</TD>
+
+
+
+
+
+
+
+</TR>
+
+
+
+
+
+
+
+</TABLE>
+
+
+
+
+
+
+
+<H3 ALIGN="left">Declaring integral literals </H3>
+
+
+
+
+
+
+
+<P ALIGN="left">There are three ways to declare an integral literal. The
+
+
+
+
+
+
+
+default, as you might expect is decimal. Here are the options</P>
+
+
+
+
+
+
+
+<TABLE BORDER="1" WIDTH="38%" BGCOLOR="#FFCCCC">
+
+
+
+
+
+
+
+<CAPTION><B>Declaring 18 as an integral literal</B> 
+
+
+
+
+
+
+
+</CAPTION> <TR>
+
+
+
+
+
+
+
+<TD WIDTH="46%">Decimal</TD>
+
+
+
+
+
+
+
+<TD WIDTH="54%">18</TD>
+
+
+
+
+
+
+
+</TR>
+
+
+
+
+
+
+
+<TR>
+
+
+
+
+
+
+
+<TD WIDTH="46%">Octal</TD>
+
+
+
+
+
+
+
+<TD WIDTH="54%">022 (Zero not letter O)</TD>
+
+
+
+
+
+
+
+</TR>
+
+
+
+
+
+
+
+<TR>
+
+
+
+
+
+
+
+<TD WIDTH="46%">Hexidecimal</TD>
+
+
+
+
+
+
+
+<TD WIDTH="54%">0x12</TD>
+
+
+
+
+
+
+
+</TR>
+
+
+
+
+
+
+
+</TABLE>
+
+
+
+
+
+
+
+<P>&nbsp;</P>
+
+
+
+
+
+
+
+</CENTER>
+
+
+
+
+
+
+
+<P ALIGN="left">If you compile and run this little class you will get the value
+
+
+
+
+
+
+
+18 output each time.</P>
+
+
+
+
+
+
+
+<PRE>public class Lit{
+public static void main(String[] argv){
+        int i = 18;
+        int j = 022;//Octal version: Two eights plus two 
+        int k = 0x12;//Hex version: One sixteen plus two
+        System.out.println(i);
+        System.out.println(j);
+        System.out.println(k);
+        }
+}</PRE>
+
+
+
+
+
+
+
+<P>Roberts and Heller describe 6 ways of declaring integral literals, because
+
+
+
+
+
+
+
+unusually for Java letter X is not case sensitive, nor are the letters A
+
+
+
+
+
+
+
+through F for hexadecimal notation. I find it easier to remember the three ways
+
+
+
+
+
+
+
+and that it the letters are not case sensitive. </P>
+
+
+
+
+
+
+
+<H3 ALIGN="left">The size of floating point primitives </H3>
+
+
+
+
+
+
+
+<P>Floating point numbers are slightly strange beasts as calculations can have
+
+
+
+
+
+
+
+some unexpected results. Thus to quote Peter Van Der Linden &quot;The exact
+
+
+
+
+
+
+
+accuracy depends on the number being represented&quot;. As compensation for
+
+
+
+
+
+
+
+this variable accuracy, you do get to play with numbers large almost beyond
+
+
+
+
+
+
+
+imagination. Thus the largest double can store a number that corresponds to 17
+
+
+
+
+
+
+
+followed by 307 zeros. So you can even store the value of the financial paper
+
+
+
+
+
+
+
+worth of Bill Gates (until Linux reaches reaches total world domination, then
+
+
+
+
+
+
+
+an integer may do the job nicely).</P>
+
+
+
+
+
+
+
+<CENTER>
+
+
+
+
+
+
+
+<P> </P>
+
+
+
+
+
+
+
+<P> </P>
+
+
+
+
+
+
+
+<TABLE BORDER="1" WIDTH="29%" BGCOLOR="#FFCCCC">
+
+
+
+
+
+
+
+<CAPTION><B>Range of floating point types</B> 
+
+
+
+
+
+
+
+</CAPTION> <TR>
+
+
+
+
+
+
+
+<TD WIDTH="47%">float</TD>
+
+
+
+
+
+
+
+<TD WIDTH="53%">32 bit</TD>
+
+
+
+
+
+
+
+</TR>
+
+
+
+
+
+
+
+<TR>
+
+
+
+
+
+
+
+<TD WIDTH="47%">double</TD>
+
+
+
+
+
+
+
+<TD WIDTH="53%">64 bit</TD>
+
+
+
+
+
+
+
+</TR>
+
+
+
+
+
+
+
+</TABLE>
+
+
+
+
+
+
+
+<P></P>
+
+
+
+
+
+
+
+</CENTER>
+
+
+
+
+
+
+
+<P>Bear in mind that the default type for a literal with a decimal component is 
+
+
+
+  a <I>double</I> and not a <I>float</I>. This is slightly confusing as you might 
+
+
+
+  think that the default type for a &quot;floating point number&quot; would be 
+
+
+
+  a float. You may get questions in the exam in a similar form to the following. 
+
+
+
+</P>
+
+
+
+
+
+
+
+<P>Will the following compile?</P>
+
+
+
+
+
+
+
+<PRE>float i = 1.0;</PRE>
+
+
+
+
+
+
+
+<P>Intuition would tell you that this should compile cleanly. Unfortunately the
+
+
+
+
+
+
+
+exam is not designed to test your intuition. This will cause a compile time
+
+
+
+
+
+
+
+error because it attempts to assign a double to a float type. You can fix this
+
+
+
+
+
+
+
+code as follows</P>
+
+
+
+
+
+
+
+<P> </P>
+
+
+
+
+
+
+
+<PRE>float i = 1.0F;</PRE>
+
+
+
+
+
+
+
+<P>Or even</P>
+
+
+
+
+
+
+
+<PRE>float i = (float) 1.0;</PRE>
+
+
+
+
+
+
+
+<H3>Indicating data type with a trailing letter </H3>
+
+
+
+
+
+
+
+<P>As demonstrated in the previous section you can tell Java that a numeric literal 
+  is of a particular type by giving it a trailing letter. These following are 
+  available</P>
+
+
+
+
+
+
+
+<div align="center">
+
+
+
+
+
+
+
+  <TABLE BORDER="1" WIDTH="25%" HEIGHT="82" BGCOLOR="#FFCCCC">
+
+
+
+
+
+
+
+    <CAPTION><B>Suffix to indicate Data type</B> </CAPTION>
+
+
+
+
+
+
+
+    <TR> 
+
+
+
+
+
+
+
+      <TD WIDTH="52%">float</TD>
+
+
+
+
+
+
+
+      <TD WIDTH="48%">F</TD>
+
+
+
+
+
+
+
+    </TR>
+
+
+
+
+
+
+
+    <TR> 
+
+
+
+
+
+
+
+      <TD WIDTH="52%">long</TD>
+
+
+
+
+
+
+
+      <TD WIDTH="48%">L</TD>
+
+
+
+
+
+
+
+    </TR>
+
+
+
+
+
+
+
+    <TR> 
+
+
+
+
+
+
+
+      <TD WIDTH="52%">double</TD>
+
+
+
+
+
+
+
+      <TD WIDTH="48%">D</TD>
+
+
+
+
+
+
+
+    </TR>
+
+
+
+
+
+
+
+  </TABLE>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<H3><I>boolean</I> and <I>char</I> </H3>
+
+
+
+
+
+
+
+<P>The <I>boolean</I> and <I>char</I> primitives are a little odd. If you have
+
+
+
+
+
+
+
+a background in C/C++ pay attention particularly to the <I>boolean</I> and make
+
+
+
+
+
+
+
+sure you do not bring any &quot;false friends&quot; from these languages. A
+
+
+
+
+
+
+
+<I>boolean</I> can not be assigned any other value than true or false. The
+
+
+
+
+
+
+
+values true or false do not correspond to 0, -1 or any other number.</P>
+
+
+
+
+
+
+
+<TABLE WIDTH="100%" BORDER="0">
+
+
+
+
+
+
+
+<TR>
+
+
+
+
+
+
+
+<TD WIDTH="9%"><IMG SRC= "key2.gif"  WIDTH="106" HEIGHT="73"
+
+
+
+
+
+
+
+ALIGN="bottom" BORDER="0"></TD>
+
+
+
+
+
+
+
+<TD WIDTH="91%"> <H3><FONT COLOR="#FF0000">A boolean can only be true or false,
+
+
+
+
+
+
+
+it cannot be assigned a number such as -1 or 0</FONT> </H3>
+
+
+
+
+
+
+
+</TD>
+
+
+
+
+
+
+
+</TR>
+
+
+
+
+
+
+
+</TABLE>
+
+
+
+
+
+
+
+<P>The <I>char</I> primitive is the only unsigned primitive in Java, and is 16
+
+
+
+
+
+
+
+bits long. The <I>char</I> type can be used to denote a Unicode character.
+
+
+
+
+
+
+
+Unicode is an alternative to ASCII that stores characters in 2 bytes instead of
+
+
+
+
+
+
+
+the 1 byte of ASCII. This gives you 65K worth of characters, which although not
+
+
+
+
+
+
+
+enough to cover all world scripts, is an improvement of the 255 characters of
+
+
+
+
+
+
+
+ASCII. Internationalisation is a whole subject on its own, and just because you
+
+
+
+
+
+
+
+can represent characters from Chinese or Vietnamese, it does not mean that they
+
+
+
+
+
+
+
+will display correctly if you have a standard English style operating system. 
+
+
+
+
+
+
+
+</P>
+
+
+
+
+
+
+
+<P>A <I>char</I> literal can be created by enclosing the character in single
+
+
+
+
+
+
+
+quotes thus</P>
+
+
+
+
+
+
+
+<PRE>char a = 'z';</PRE>
+
+
+
+
+
+
+
+<P>Note that single quotes ' are used not double &quot;.</P>
+
+
+
+
+
+
+
+<P>This works fine in my English centered little world but as Java is a world
+
+
+
+
+
+
+
+system a <I>char</I> may contain any of the characters available in the Unicode
+
+
+
+
+
+
+
+system. This is done by using four hex digits preceded by \u, with the whole
+
+
+
+
+
+
+
+expression in single quotes.</P>
+
+
+
+
+
+
+
+<P>Thus the space character can be represented as follows</P>
+
+
+
+
+
+
+
+<PRE>char c = &#145;\u0020&#146;&nbsp;</PRE>
+
+
+
+
+
+
+
+<P>If you assign a plain number to a char it can be output as a alphabetic
+
+
+
+
+
+
+
+character. Thus the following will print out the letter A (ASCII value 65) and
+
+
+
+
+
+
+
+a space.</P>
+
+
+
+
+
+
+
+<PRE>public class MyChar{
+public static void main(String argv[]){
+        char i = 65;
+        char c = '\u0020';
+        System.out.println(i);
+	System.out.println(&quot;This&quot;+c+&quot;Is a space&quot;);
+        }
+}</PRE>
+
+
+
+
+
+
+
+<H3>Declaring string literals </H3>
+
+
+
+
+
+
+
+<P>The <I>String</I> type is not a primitive but it is so important that in
+
+
+
+
+
+
+
+certain areas Java treats it like one. One of these features is the ability to
+
+
+
+
+
+
+
+declare String literals instead of using <I>new</I> to instantiate a copy of
+
+
+
+
+
+
+
+the class. <BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+<I>String</I> literals are fairly straightforward. Make sure you remember that
+
+
+
+
+
+
+
+<I>String</I> literals are enclosed in double quotes whereas a char literal
+
+
+
+
+
+
+
+takes single quotes.<BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+Thus</P>
+
+
+
+
+
+
+
+<PRE>String name = &quot;James Bond&quot;&nbsp;</PRE>
+
+
+
+
+
+
+
+<P>See Objective 9.3 and 5.2 for more on the String class. </P>
+
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+
+
+<TABLE WIDTH="100%" BORDER="0">
+
+
+
+
+
+
+
+<TR>
+
+
+
+
+
+
+
+    <TD WIDTH="11%"><IMG SRC= "Quiz.gif"  WIDTH="99" HEIGHT="101"> </TD>
+
+
+
+
+
+
+
+<TD WIDTH="89%">&nbsp;</TD>
+
+
+
+
+
+
+
+</TR>
+
+
+
+
+
+
+
+</TABLE>
+
+
+
+
+
+
+
+<H3><B>Question 1)</B></H3>
+
+
+
+
+
+
+
+<P><B> <BR>
+
+
+
+
+
+
+
+</B>Which of the following will compile correctly?<BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+1) float f=10f;<BR>
+
+
+
+
+
+
+
+2) float f=10.1;<BR>
+
+
+
+
+
+
+
+3) float f=10.1f;<BR>
+
+
+
+
+
+
+
+4) byte b=10b;<BR>
+
+
+
+
+
+
+
+</P>
+
+
+
+
+
+
+
+<HR ALIGN="CENTER">
+
+
+
+
+
+
+
+<H3><BR>
+
+
+
+
+
+
+
+<B>Question 2)</B></H3>
+
+
+
+
+
+
+
+<P><B> </B>Which of the following will compile correctly?<BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+1) short myshort=99S;<BR>
+
+
+
+
+
+
+
+2) String name='Excellent tutorial Mr Green';<BR>
+
+
+
+
+
+
+
+3) char c=17c;<BR>
+
+
+
+
+
+
+
+4) int z=015;<BR>
+
+
+
+
+
+
+
+</P>
+
+
+
+
+
+
+
+<HR ALIGN="CENTER">
+
+
+
+
+
+
+
+<H3><B><BR>
+
+
+
+
+
+
+
+Question 3)</B></H3>
+
+
+
+
+
+
+
+<P><B> </B>Which of the following will compile correctly?<BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+1) boolean b=-1;<BR>
+
+
+
+
+
+
+
+2) boolean b2=false;<BR>
+
+
+
+
+
+
+
+3) int i=019;<BR>
+
+
+
+
+
+
+
+4) char c=99;</P>
+
+
+
+
+
+
+
+<H1>Answers </H1>
+
+
+
+
+
+
+
+<H3><B>Answer 1)</B></H3>
+
+
+
+
+
+
+
+<P><B> </B>1) float f=10f;<BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+3) float f=10.1f; <BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+There is no such thing as a byte literal and option 2 will cause an error
+
+
+
+
+
+
+
+because the default type for a number with a decimal component is a double.</P>
+
+
+
+
+
+
+
+<H3> <BR>
+
+
+
+
+
+
+
+<B>Answer 2)</B></H3>
+
+
+
+
+
+
+
+<P><B> </B>4)int z=015;<BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+The letters c and s do not exist as literal indicators and a <I>String</I> must
+
+
+
+
+
+
+
+be enclosed with double quotes, not single as in this example.</P>
+
+
+
+
+
+
+
+<H3> <BR>
+
+
+
+
+
+
+
+<B>Answer 3)</B></H3>
+
+
+
+
+
+
+
+<P>2) boolean b2=false;<BR>
+
+
+
+
+
+
+
+4) char c=99;<BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+Option 1 should be fairly obvious as wrong, as a <I>boolean</I> can only be
+
+
+
+
+
+
+
+assigned the values <I>true</I> of <I>false</I>. Option 3 is slightly more
+
+
+
+
+
+
+
+tricky as this is the correct way to declare an octal literal but you cannot
+
+
+
+
+
+
+
+use the numeric 9 if you are in base 8 where you have numbers 0 through 7. A
+
+
+
+
+
+
+
+little tricky one there perhaps.</P>
+
+
+
+
+
+
+
+<TABLE BORDER="1" WIDTH="100%">
+
+
+
+
+
+
+
+<CAPTION><B>Other sources on this topic</B>
+
+
+
+
+
+
+
+</CAPTION> <TR>
+
+
+
+
+
+
+
+<TD WIDTH="100%"><B>This topic is covered in the Sun Tutorial at <BR>
+
+
+
+
+
+
+
+</B><A
+
+
+
+
+
+
+
+HREF= "http://java.sun.com/docs/books/tutorial/java/nutsandbolts/vars.html" >http://java.sun.com/docs/books/tutorial/java/nutsandbolts/vars.html</A><BR>
+
+
+
+
+
+
+
+(Couldn't find any mention of literals)<BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+<B>Richard Baldwin Covers this topic at</B><BR>
+
+
+
+
+
+
+
+<A
+
+
+
+
+
+
+
+ HREF= "http://www.geocities.com/Athens/Acropolis/3797/Java020.htm#primitive types" >http://www.Geocities.com/Athens/Acropolis/3797/Java020.htm#primitive
+
+
+
+
+
+
+
+types<BR>
+
+
+
+
+
+
+
+</A>(again Couldn't find any mention of literals)<A
+
+
+
+
+
+
+
+HREF= "http://www.geocities.com/Athens/Acropolis/3797/Java040.htm" ><BR>
+
+
+
+
+
+
+
+<BR>
+      </A><B>Jyothi Krishnan on this topic at<br>
+      </B><A
+
+
+
+
+
+
+
+HREF= "http://www.geocities.com/SiliconValley/Network/3693/obj_sec4.html#obj13" >http://www.geocities.com/SiliconValley/Network/3693/obj_sec4.html#obj13<BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+</A><B>Bruce Eckel's Thinking in Java<BR>
+
+
+
+
+
+
+
+</B>Chapter 2 &quot;Special case: Primitive Types&quot;<BR>
+
+
+
+
+
+
+
+Chapter 3 &quot;Literals&quot;</TD>
+
+
+
+
+
+
+
+</TR>
+
+
+
+
+
+
+
+</TABLE>
+
+
+
+
+
+
+
+<p>Last updated<br>
+
+
+
+
+
+
+
+  10 Jan 2000<br>
+
+
+
+  copyright &copy; Marcus Green 2000</p>
+
+
+
+
+
+
+
+<P>&nbsp;</P>
+
+
+
+
+
+
+
+<P>&nbsp;</P>
+
+
+
+
+
+
+
+<P>&nbsp;</P>
+
+
+
+
+
+
+
+</BODY>
+
+
+
+
+
+
+
+</HTML>
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+

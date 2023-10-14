@@ -1,0 +1,229 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <title>Manpage make</title>
+</head>
+<body>
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> make</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">make</font></b>
+<p><font color="#000000">- <a href="http://www.google.com/search?q=manpage+make">manpage
+on google</a></font>
+<br><font color="#000000">- <a href="#intro">intro</a></font>
+<p><a NAME="intro"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>intro</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font size=+0><b><font color="#CC0000">make</font></b> command is used
+for organizing compilations of big projects consisting of many files. It
+may be used with many different compilers and and with different languages
+(C, C++, Java, Fortran, etc.).&nbsp; You put instructions on how to compile
+and link things together into one description file, usually called "<b>Makefile</b>".
+Then you run the <b><font color="#CC0000">make</font></b> (or <b><font color="#CC0000">gmake</font></b>
+- GNU make) command. It by default reads the Makefile in the current directory
+(or you can specify the description file explicitly in the command line
+after a "<b><font color="#CC0000">-f</font></b>" option) and executes compilation/linking
+as required.</font>
+<br><font size=+0>Here is an example of a simple make file:</font>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font size=+0># this is a comment line</font>
+<br><font size=+0>CC = gcc</font>
+<br><font size=+0>CCFLAGS = -g</font>
+<p><font size=+0>myprogram: mainprog.cc subfile1.o myclass.o</font>
+<br><font size=+0>&nbsp;&nbsp;&nbsp; ${CC} ${CCFLAGS} mainprog.cc subfile1.o
+myclass.o</font>
+<p><font size=+0>subfile1.o: subfile1.cc myclass.o</font>
+<br><font size=+0>&nbsp;&nbsp;&nbsp; ${CC} ${CCFLAGS} -c mainprog.cc subfile1.o
+myclass.o</font>
+<p><font size=+0>myclass.o: myclass.cc</font>
+<br><font size=+0>&nbsp;&nbsp;&nbsp; ${CC} ${CCFLAGS} -c myclass.cc</font>
+<p><font size=+0>clean:</font>
+<br><font size=+0>&nbsp;&nbsp;&nbsp; rm -rf *.o a.out</font></td>
+</tr>
+</table>
+
+<p><font size=+0>First 2 lines define macros CC and CCFLAGS and assign
+values to them.</font>
+<br><font size=+0>(Later they are expanded using syntax ${macroname})</font>
+<br><font size=+0>Next line defines entry target called <b>myprogram</b></font>
+<br><font size=+0>It shows that it depends on other things (<b>mainprog.cc
+subfile1.o myclass.o</b>).</font>
+<br><font size=+0>Next line shows what to do (after other dependencies
+are processed).</font>
+<br><font size=+0>Lower there are similar instructions for <b>subfile1.o</b>
+and <b>myclass.o</b></font>
+<p><font size=+0>Make will parse those dependencies, check which files
+were updated and need to be recompiled before linking, and will do all
+proper compiling/linking.</font>
+<p><font size=+0>If we type '<b><font color="#CC0000">make</font></b>'
+- it will find the first target called "<b>myprogram</b>" and start parcing
+dependencies from it.</font>
+<br><font size=+0>So it is equivalent to running '<b><font color="#CC0000">make
+myprogram</font></b>'.</font>
+<br><font size=+0>It will find that "<b>myprogram</b>" depends on several
+things (listed after ":") - so it will search further how they should be
+processed. The dependency subfile1.o is found, and then the myclass.o dependency
+is foudn within subfile1.o. So make will check the dates, and (if necessary)
+compile myclass.cc and then subfile1.o, and then we are finally back up
+to the myprogram dependency. Finally all three dependencies are compiled
+in to create <b>a.out</b>.</font><font size=+0></font>
+<p><u><font size=+0><b>Note (important)</b>:</font></u><font size=+0> the
+commands under the dependencies MUST have a
+<b><font color="#CC0000">tab</font></b>
+before them (not the spaces).</font>
+<br><font size=+0>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Long lines may be splitted by putting backslash "\" at the end of the line
+- and continue on the next. There should be no spaces after the "\".</font>
+<br><font size=+0>To check the tabs and spaces, issue the command:</font>
+<br><font size=+0>&nbsp; <b><font color="#CC0000">cat -v -t -e Makefile</font></b></font>
+<br><font size=+0>It will show all tabs as <b><font color="#CC0000">^I</font></b>
+and ends of the lines as <b><font color="#CC0000">$</font></b>.</font><font size=+0></font>
+<p><u><font size=+0><b>Note</b>:</font></u><font size=+0> if we type '<b><font color="#CC0000">make
+clean</font></b>' at the command line, - it will start from the "<b>clean</b>"
+entry point. It will find, that there is no further dependencies (nothing
+after the ":") - so it will simply run the command on the next line, that
+will remove all our <b>*.o</b> files and the executable file <b>a.out</b></font>
+<br><b><u>Note</u></b>: if we type '<b><font color="#CC0000">make <font size=+0>myclass.o</font></font></b><font size=+0>'
+- then only <b>myclass.o</b> target will be processed.</font>
+<br><font size=+0><b><u>Note</u></b>: we can specify several targets in
+te command line, for example: <b><font color="#CC0000">make tag1 tag2 tag3</font></b></font>
+<br><u><font size=+0><b>Note</b>:</font></u><font size=+0> A <b>Makefile</b>
+may have many entry points (usually called all, clean, realclean, install,
+test, etc.).</font>
+<br><u><font size=+0><b>Note</b>:</font></u><font size=+0> The <b><font color="#3333FF">${macro}</font></b>
+expressions are used to expand (substitue) the value of the macro/variable.</font>
+<br><font size=+0>You can define them right on the command line, for example:</font>
+<br><b><font color="#CC0000"><font size=+0>make CC=gcc myprogram</font></font></b>
+<br><font size=+0><b><u>Note</u></b>: make always recognizes ${CC} macro
+as a C compiler, and ${LD} as a linker</font>
+<br><font size=+0><b><u>Note</u></b>: make always recognizes shell variables
+(exported) as macros, for example:&nbsp; ${PATH}</font>
+<br><font size=+0><b><u>Note</u></b>:</font>
+<br><font size=+0>&nbsp;&nbsp; $@ - current target,</font>
+<br><font size=+0>&nbsp;&nbsp; $? - list of prerequisites (dependencies)
+which are newer than the current target,</font>
+<br><font size=+0><b><u>Note</u></b>: you can have more than one command
+line after a target.</font>
+<br><font size=+0><b><u>Note</u></b>: you can put more than one command
+on the same line - separate by the semicolon ";".</font>
+<br><font size=+0><b><u>Note</u></b>: you can put more than one command
+on the same line - separate by the semicolon ";".</font>
+<br><font size=+0><b><u>Note</u></b>: there are suffix rules:</font>
+<br><font size=+0>&nbsp;&nbsp; .c - C source</font>
+<br><font size=+0>&nbsp;&nbsp; .f - Fortran source</font>
+<br><font size=+0>&nbsp;&nbsp; .s - assembly language source</font>
+<br><font size=+0>&nbsp;&nbsp; .o - object module (for both C and Fortran)</font>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font size=+0>OBJS = main.o iodat.o dorun.o lo.o</font>
+<br><font size=+0>LIB = /usr/proj/lib/crtn.a</font><font size=+0></font>
+<p><font size=+0>program : ${OBJS} ${LIB}</font>
+<br><font size=+0>&nbsp; ${CC} -o $@ ${OBJS} ${LIB}</font></td>
+</tr>
+</table>
+
+<p><font size=+0>The example above will automatically compile necessary
+source files (*.c or *.f or *.s) if necessary. You don't have to explicitly
+write these dependencies.</font>
+<br><font size=+0>&nbsp;&nbsp; Note: <b><font color="#CC0000">$&lt;</font></b>
+- the name of the prerequisite that is being used to make the target -
+for example the *.c file in a .c.o rule</font>
+<br><font size=+0>&nbsp;&nbsp; Note: you can define new suffix rules</font>
+<br><font size=+0><b><u>Note</u></b>: you can include shell commands into
+the Makefile (each line is excuted separately - as if you logout - and
+login again).</font><font size=+0></font>
+<p><font size=+0><b><u>Note</u></b>: some useful command options:</font>
+<br><font size=+0>-f - specify the description file (makefile) explicitly</font>
+<br><font size=+0>-n - echo commands - but don't execute them</font>
+<br><font size=+0>-p - print out macro definitions. suffix rules, etc.</font>
+<br><font size=+0>-s - silent (do not echo commands)</font>
+<br><font size=+0></font>
+<p><strong>To show the targets:</strong>
+<TABLE cellSpacing="0" bgColor="#ccffff" border="0">
+  <TBODY>
+    <TR>
+      <TD><p>cat GNUmakefile | grep ":"</p></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<p>or</p>
+<TABLE cellSpacing="0" bgColor="#ccffff" border="0">
+  <TBODY>
+    <TR>
+      <TD><p>alias targets=" perl -ne '/^\S+:/ &amp;&amp; print;' "<BR>
+        targets   GNUmakefile</p></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<p>&nbsp;</p>
+</body>
+</html>

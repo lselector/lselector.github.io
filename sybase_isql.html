@@ -1,0 +1,817 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>sybase_isql</title>
+<!--
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Sybase ISQL</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Sybase isql utility</font></b>
+<br>&nbsp;
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Sybase isql utility</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<h2>
+&nbsp;Isql - Interactive SQL parser to Sybase SQL Server</h2>
+
+<h3>
+Synopsis</h3>
+
+<pre>&nbsp;<b>isql&nbsp;</b> <b>[-e] [-F] [-p] [-n] [-v] [-X] [-Y]
+</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>[-a</b> <i>display_charset&nbsp;</i> <b>]</b> <b>[-c</b>&nbsp;<i> cmdend&nbsp;</i> <b>]</b> <b>[-E</b>&nbsp;<i> editor&nbsp;</i> <b>]
+</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>[-h</b>&nbsp;<i> headers&nbsp;</i> <b>]</b> <b>[-H</b>&nbsp;<i> hostname&nbsp;</i> <b>]</b> <b>[-i</b>&nbsp;<i> inputfile</i> <b>]
+</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>[-I</b>&nbsp;<i> interfaces_file&nbsp;</i> <b>]</b> <b>[-J</b>&nbsp;<i> client_charset </i><b>]
+</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>[-l</b>&nbsp;<i> login_timeout&nbsp;</i> <b>]</b> <b>[-m</b>&nbsp;<i> errorlevel&nbsp;</i> <b>]</b> <b>[-o</b>&nbsp;<i> outputfile&nbsp;</i> <b>]
+</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>[-P</b>&nbsp;<i> password&nbsp;</i> <b>]</b> <b>[-s</b>&nbsp;<i> colseparator</i> <b>]</b> <b>[-S</b>&nbsp;<i> server&nbsp;</i> <b>]
+</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>[-t</b>&nbsp;<i> timeout&nbsp;</i> <b>]</b> <b>[-U</b> <i>username&nbsp;</i> <b>]</b> <b>[-w</b>&nbsp;<i> columnwidth&nbsp;</i> <b>]
+</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>[-y</b> <i>sybase_directory&nbsp;</i> <b>]</b> <b>[-z</b>&nbsp;<i> language&nbsp;</i> <b>]</b> <b>[-A</b>&nbsp;<i> size </i><b>]</b></pre>
+To terminate a command: <b>go</b>
+<br>To clear the query buffer: <b>reset</b>
+<br>To call the default editor: <b>vi</b>
+<br>To execute an operating system command: <b>!! command</b>
+<br>To exit from <b>isql </b>: <b>quit or exit</b>
+<h3>
+Most important Options</h3>
+<b>-o </b><i>outputfile </i>- specifies the name of an operating system
+file to store the output from <b>isql </b>. Specifying the parameter as
+follows: <tt>-o <i>outputfile </i></tt>is similar to: <tt>> <i>outputfile
+</i></tt>.
+<p><b>-P </b><i>password </i>-&nbsp; specifies your current SQL Server
+password. If you do not specify the <b>-P </b>flag, <b>isql </b>prompts
+for a password. If your password is NULL, use the
+<b>-P </b>flag at the
+end of the command line without any password.
+<p><b>-S </b><i>server </i>-&nbsp; specifies the name of the SQL Server
+to connect to. <b>isql </b>looks this name up in the interfaces file. If
+you specify <b>-S </b>with no argument, <b>isql
+</b>looks for a server
+named SYBASE. Without <b>-S </b>, <b>isql
+</b>looks for the server specified
+by your DSQUERY environment variable.
+<p><b>-U </b><i>username </i>-&nbsp; specifies a login name. Logins are
+case-sensitive.
+<p><b>-w </b><i>columnwidth </i>-&nbsp; sets the screen width for output.
+The default is 80 characters. When an output line reaches its maximum screen
+width, it breaks into multiple lines.
+<h3>
+Comments</h3>
+
+<ul>
+<li>
+To use <b>isql </b>interactively, give the command <b>isql </b>(and any
+of the optional flags) at your operating system prompt. The
+<b>isql </b>program
+accepts SQL commands and sends them to SQL Server. The results are formatted
+and printed on standard output. Exit
+<b>isql </b>with <b>quit </b>or <b>exit.</b></li>
+
+<li>
+Send a command to SQL Server by typing the command terminator ( <b>go </b>by
+default) at the beginning of a line. You may follow the command terminator
+with an integer to specify how many times to run the command. For example,
+to execute this command 100 times, type:</li>
+
+<pre>&nbsp;select x = 1&nbsp;
+&nbsp;go 100</pre>
+The results appear once at the end of execution.
+<li>
+If you enter an option more than once on the command line, <b>isql </b>uses
+the last value. For example, if you enter the following command:</li>
+
+<pre>&nbsp;isql -c"." -csend</pre>
+"send", the second value for
+<b>-c </b>, overrides ".", the first value.
+This enables you to override any aliases you set up.
+<li>
+To call an editor on the current query buffer, enter its name as the first
+word on a line. Define your preferred callable editor by specifying it
+with the EDITOR environment variable. If EDITOR is not defined, the default
+is <b>vi </b>. Execute operating system commands by starting a line with
+"!!" followed by the command. Call alternate editors this way, without
+defining EDITOR.</li>
+
+<li>
+To clear the existing query buffer, type <b>reset </b>on a line by itself.
+<b>isql
+</b>discards
+any pending input. You can also press Ctrl-c anywhere on a line; this cancels
+the current query and returns the user to the <b>isql
+</b>prompt.</li>
+
+<li>
+Read in an operating system file containing a query for execution by <b>isql
+</b>as
+follows:</li>
+
+<pre>&nbsp;isql -U alma -P******
+&lt;&nbsp;<i> input_file</i></pre>
+The file must include command terminator(s). The results appear on your
+terminal. Read in an operating system file containing a query and direct
+the results to another file as follows:
+<pre>&nbsp;isql -U alma -P****** &lt;&nbsp;
+<i>input_file&nbsp;</i> >&nbsp;<i> output_file</i></pre>
+
+<li>
+Case is significant for the <b>isql </b>flags.</li>
+
+<li>
+<b>isql </b>displays only six digits of float or real data after the decimal
+point, rounding off the remainder.</li>
+
+<li>
+When using <b>isql </b>interactively, read an operating system file into
+the command buffer with the command:</li>
+
+<pre>:r&nbsp;<i> filename</i></pre>
+Do not include a command terminator in the file; once you have finished
+editing, enter the terminator interactively on a line by itself.
+<li>
+You can include comments in a Transact-SQL statement submitted to SQL Server
+by <b>isql </b>. For more information, see "Comments" in the <i>SQL Server
+Reference Manual </i>.</li>
+</ul>
+
+<h3>
+Examples</h3>
+
+<ol>
+<li>
+isql -Ujoe -Pabracadabra</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<p>1> select *
+<br>2> from authors
+<br>3> where city = "Oakland"
+<br>4> vi
+<p>Puts you in a text file where you can edit the query. When you write
+and save the file, you are returned to <b>isql </b>. The query appears;
+type <b>go </b>on a line by itself to execute it.
+<li>
+isql -U alma</li>
+
+<br>Password:
+<p>1> select *
+<br>2> from authors
+<br>3> where city = "Oakland"
+<br>4> reset
+<br>1> quit
+<p><b>reset </b>clears the query buffer. <b>quit </b>returns you to the
+operating system.
+<li>
+isql -a mac -J roman8</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<p>Specifies that you are running <b>isql </b>from a Macintosh against
+a server that is using the roman8 character set.</ol>
+
+<p><br><!-- h2ps endsection -->
+<h3>
+Comprehensive list of Options</h3>
+<b>-e </b>- echoes input.
+<p><b>-F </b>- enables the FIPS flagger. With this option, the server flags
+any non-SQL standard commands sent.
+<p><b>-p </b>- prints out performance statistics.
+<p><b>-n </b>- removes numbering and the prompt symbol (>) from input lines.
+<p><b>-v </b>- prints the version and copyright of the <b>isql
+</b>software
+that you are using, and exits.
+<p><b>-X </b>- initiates the login connection to the server with client-side
+password encryption. <b>isql </b>(the client) specifies to the server that
+password encryption is desired. The server sends back an encryption key,
+which
+<b>isql </b>uses to encrypt your password, and the server uses the
+key to authenticate your password when it arrives.
+<p>If <b>isql </b>crashes, the system creates a core file which contains
+your password. If you did not use the encryption option, the password appears
+in plain text in the file. If you used the encryption option, your password
+is not readable.
+<p><b>-Y </b>- tells the SQL Server to use chained transactions.
+<p><b>-a </b><i>display_charset </i>- allows you to run <b>isql
+</b>from
+a terminal whose character set differs from that of the machine on which
+<b>isql
+</b>is
+running. <b>-a </b>in conjunction with <b>-J </b>specifies the character
+set translation file (.xlt file) required for the conversion. Use <b>-a
+</b>without
+<b>-J </b>only if the client character set is the same as the default character
+set.
+<p>In Japanese language environments, the <b>-q </b>flag is required to
+translate Hankaku Katakana (half-width characters) into Zenkaku Katakana
+(full-width characters). Use with the argument "zenkaku" and with the <b>-J
+</b>flag
+to indicate the client's Japanese character set ( <b>sjis </b>or
+<b>eucjis
+</b>).
+The zenkaku.xlt file was designed to translate <b>only
+</b>from terminal
+display to SQL Server, <b>not </b>from SQL Server to the terminal.
+<blockquote><b>Note: </b>The ascii_7 character set is compatible with all
+character sets. If either the SQL Server's or client's character set is
+set to ascii_7, any 7-bit ASCII character is allowed to pass between client
+and server unaltered. Other characters produce conversion errors. See "Converting
+Character Sets Between SQL Server and Clients" in the <i>System Administration
+Guide </i>for more information on character set conversion.</blockquote>
+<b>-c </b><i>cmdend </i>- changes the command terminator. By default, terminate
+commands and send them to SQL Server by typing "go" on a line by itself.
+When you change the command terminator, do not use SQL reserved words or
+control characters.
+<p><b>-E </b><i>editor </i>- specifies an editor other than the default
+editor <b>vi </b>.
+<p><b>-h </b><i>headers </i>- specifies how many rows to print between
+column headings. The default prints headings only once for each set of
+query results.
+<p><b>-H </b><i>hostname </i>- sets the client hostname.
+<p><b>-i </b><i>inputfile </i>- specifies the name of an operating system
+file to use for input to <b>isql </b>. The file must contain command terminators
+("go" by default).
+<p>Specifying the parameter as follows:
+<pre>&nbsp;-i&nbsp;<i> inputfile</i></pre>
+is equivalent to:
+<pre>&nbsp;&lt;&nbsp;<i> inputfile</i></pre>
+If you use <b>-i </b>and do not specify your password on the command line,
+<b>isql
+</b>prompts
+you for it.
+<p>If you use <b>&lt; </b><i>inputfile </i>and do not specify your password
+on the command line, you must specify your password as the first line of
+the input file.
+<p><b>-I </b><i>interfaces_file </i>- specifies the name and location of
+the interfaces file to search when connecting to SQL Server. Without <b>-I
+</b>,
+<b>isql
+</b>looks for a file named <i>interfaces </i>in the directory specified
+by your SYBASE environment variable.
+<p><b>-J </b><i>client_charset </i>- specifies the character set to use
+on the client.
+<br><b>-J&nbsp; </b><i>client_charset </i>requests that SQL Server convert
+to and from <i>client_charset </i>, the character set used on the client.
+A filter converts input between
+<i>client_charset </i>and the SQL Server
+character set.
+<p><b>-J </b>with no argument sets character set conversion to null. No
+conversion takes place. Use this if the client and server use the same
+character set.
+<p>Omitting <b>-J </b>sets the character set to a default for the platform.
+The default may not necessarily be the character set that the client is
+using. (See "Converting Character Sets Between SQL Server and Clients"
+in the <i>System Administration Guide </i>for more information about character
+sets and the associated flags.)
+<p><b>-l </b><i>login_timeout </i>- specifies the maximum timeout value
+allowed when connecting to SQL Server.
+<p><b>-m </b><i>errorlevel </i>- customizes the error message display.
+For errors of the severity level specified or higher only the message number,
+state, and error level display; no error text appears. For error levels
+lower than the specified level, nothing appears.
+<p><b>-o </b><i>outputfile </i>- specifies the name of an operating system
+file to store the output from <b>isql </b>. Specifying the parameter as
+follows:
+<pre>&nbsp;-o&nbsp;<i> outputfile</i></pre>
+is similar to:
+<pre>&nbsp;>&nbsp;<i> outputfile</i></pre>
+<b>-P </b><i>password </i>-&nbsp; specifies your current SQL Server password.
+If you do not specify the <b>-P </b>flag, <b>isql </b>prompts for a password.
+If your password is NULL, use the
+<b>-P </b>flag at the end of the command
+line without any password.
+<p><b>-s </b><i>colseparator </i>-&nbsp; resets the column separator character,
+which is blank by default. To use characters that have special meaning
+to the operating system (for example, "|", ";", "&amp;", "&lt;", ">"),
+enclose them in quotes or precede them with a backslash.
+<p><b>-S </b><i>server </i>-&nbsp; specifies the name of the SQL Server
+to connect to. <b>isql </b>looks this name up in the interfaces file. If
+you specify <b>-S </b>with no argument, <b>isql
+</b>looks for a server
+named SYBASE. Without <b>-S </b>, <b>isql
+</b>looks for the server specified
+by your DSQUERY environment variable.
+<p><b>-t </b><i>timeout </i>-&nbsp; specifies the number of seconds before
+a SQL command times out. If you do not specify a timeout, a command runs
+indefinitely. This affects commands issued from within
+<b>isql </b>, not
+the connection time. The default timeout for logging into <b>isql </b>is
+60 seconds.
+<p><b>-U </b><i>username </i>-&nbsp; specifies a login name. Logins are
+case-sensitive.
+<p><b>-w </b><i>columnwidth </i>-&nbsp; sets the screen width for output.
+The default is 80 characters. When an output line reaches its maximum screen
+width, it breaks into multiple lines.
+<p><b>-y </b><i>sybase_directory </i>- specifies a SYBASE directory other
+than the default <i>$SYBASE </i>directory.
+<p><b>-z </b><i>language </i>- is the official name of an alternate language
+to display <b>isql </b>prompts and messages. Without <b>-z </b>, <b>isql
+</b>uses
+the server's default language. You can add languages to a SQL Server at
+installation, or add them afterwards with the utility <b>langinstall
+</b>or
+the stored procedure <b>sp_addlanguage </b>.
+<p><b>-A </b><i>size </i>- specifies the network packet size to use for
+this <b>isql </b>session For example:
+<pre>&nbsp;isql -A 2048</pre>
+sets the packet size to 2,048 bytes for this <b>isql </b>session. <i>size
+</i>must
+be between the values of the <b>default network packet size </b>and
+<b>max
+network packet size </b>configuration parameters, one-third the size of
+the <b>additional network memory </b>configuration parameter, and it must
+be a multiple of 512.
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Using the isql utility</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<h2>
+Using the <i>isql </i>Utility</h2>
+This chapter introduces the interactive SQL utility <b>isql </b>and discusses
+some <b>isql </b>topics: changing the command terminator, the interaction
+of the performance option and command terminator values, setting the network
+packet size, and input and output files.
+<h3>
+How to Use Transact-SQL with the <i>isql </i>Utility</h3>
+You can use SQL directly from the operating system with the standalone
+utility program <b>isql </b>. You must have an account, or login, on SQL
+Server. To access the account, enter this command at your operating system
+prompt:
+<pre>&nbsp;isql</pre>
+The following prompt appears:
+<pre>&nbsp;Password:</pre>
+Type your password at the prompt and press the Return key. The password
+does not appear on the screen as you type. The <b>isql </b>prompt appears,
+as follows:
+<pre>&nbsp;1></pre>
+You can now start issuing Transact-SQL commands. The <b>isql </b>program
+sends the commands to SQL Server, formatting the results and printing them
+to standard output. There is no maximum size for an <b>isql </b>statement.
+<p>Terminate a command by typing the default command terminator <b>go
+</b>on
+a new line. For example:
+<pre>&nbsp;isql&nbsp;
+&nbsp;Password:&nbsp;
+&nbsp;
+
+1> select *&nbsp;
+&nbsp;2> from authors&nbsp;
+&nbsp;3> where city = "Oakland"&nbsp;
+
+4> go</pre>
+To exit <b>isql </b>, type "quit" or "exit" on a line by itself.
+<h4>
+Formatting <i>isql </i>Output</h4>
+Table 3-1 describes the command line options that change the format of
+<b>isql
+</b>output:
+<table BORDER=2 >
+<caption><b>Table 3-1: Format options for isql</b>
+<br><thead>
+<br></thead><tbody>
+<br></tbody></caption>
+
+<tr>
+<th>Option&nbsp;</th>
+
+<th>Default&nbsp;</th>
+
+<th>Meaning&nbsp;</th>
+</tr>
+
+<tr>
+<td><b>-h </b><i>headers&nbsp;</i></td>
+
+<td>1&nbsp;</td>
+
+<td>Number of rows to print between column headings&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>-s </b><i>colseparator</i></td>
+
+<td>Single space&nbsp;</td>
+
+<td>Changes the column separator character&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>-w </b><i>linewidth&nbsp;</i></td>
+
+<td>80 characters&nbsp;</td>
+
+<td>Changes the line width&nbsp;</td>
+</tr>
+</table>
+
+<p>To include each command issued to <b>isql </b>in the output, use the
+<b>-e
+</b>option;
+use the <b>-n </b>option to remove numbering and prompt symbols. For example:
+<pre>&nbsp;isql -e -n -o output&nbsp;
+&nbsp;Password:</pre>
+
+<pre>&nbsp;select *&nbsp;
+&nbsp;from authors&nbsp;
+&nbsp;where city = "Oakland"
+
+&nbsp;go&nbsp;
+&nbsp;quit</pre>
+
+<pre>&nbsp;cat output</pre>
+
+<pre>&nbsp;select *&nbsp;
+
+from authors&nbsp;
+&nbsp;where city = "Oakland"&nbsp;
+
+&nbsp;au_id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; au_lname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; au_fname&nbsp;
+
+&nbsp;phone&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;city&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; state&nbsp; country&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; postalcode&nbsp;&nbsp;
+
+&nbsp;----------- ------------------ --------------------------&nbsp;&nbsp;
+
+------------ ----------------------------------------&nbsp;&nbsp;
+
+-------------------- ----- ------------ ----------&nbsp;&nbsp;
+
+&nbsp;213-46-8915 Green&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Marjorie&nbsp;
+
+&nbsp;415 986-7020 309 63rd St. #411&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;Oakland&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CA&nbsp;&nbsp;&nbsp; USA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 94618&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;274-80-9391 Straight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dick&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;415 834-2919 5420 College Av.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;Oakland&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CA&nbsp;&nbsp;&nbsp; USA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 94609&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;724-08-9931 Stringer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dirk&nbsp;
+
+&nbsp;415 843-2991 5420 Telegraph Av.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;Oakland&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CA&nbsp;&nbsp;&nbsp; USA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 94609&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;724-80-9391 MacFeather&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stearns&nbsp;
+
+&nbsp;415 354-7128 44 Upland Hts.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;Oakland&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CA&nbsp;&nbsp;&nbsp; USA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 94612&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;756-30-7391 Karsen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Livia&nbsp;
+
+&nbsp;415 534-9219 5720 McAuley St.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;Oakland&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CA&nbsp;&nbsp;&nbsp; USA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 94609&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+(5 rows affected)</pre>
+Note that the output file does not include the command terminator.
+<h4>
+Correcting Input</h4>
+If you make an error when typing a Transact-SQL command, you can:
+<ul>
+<li>
+Press Ctrl-c or type the word "reset" on a line by itself. This clears
+the query buffer and returns the <b>isql </b>prompt.</li>
+
+<li>
+Type the name of your text editor on a line by itself. This puts you in
+a text file where you can edit the query. When you write and save the file,
+you are returned to <b>isql </b>. The query appears; type "go" to execute
+it.</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<br>&nbsp;
+<br>&nbsp;</ul>
+
+<h4>
+<i>set </i>Options That Affect Output</h4>
+Table 3-2 lists the <b>set </b>options that affect Transact-SQL output.
+For more information, refer to the <b>set </b>command in the
+<i>SQL Server
+Reference Manual </i>.
+<table BORDER=2 >
+<caption><b>Table 3-2: set options that affect Transact-SQL output</b>
+<br><thead>
+<br></thead><tbody>
+<br></tbody></caption>
+
+<tr>
+<th>set Option&nbsp;</th>
+
+<th>Default&nbsp;</th>
+
+<th>Meaning&nbsp;</th>
+</tr>
+
+<tr>
+<td><b>char_convert&nbsp;</b></td>
+
+<td>Off&nbsp;</td>
+
+<td>Turns character set conversion off and on between SQL Server and a
+client; it also starts a conversion between the server character set and
+a different client character set&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>fipsflagger</b></td>
+
+<td>Off&nbsp;</td>
+
+<td>Warns when any Transact-SQL extensions to entry level SQL92 are used&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>flushmessage&nbsp;</b></td>
+
+<td>Off&nbsp;</td>
+
+<td>Sends messages as they are generated&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>language&nbsp;</b></td>
+
+<td>us_english&nbsp;</td>
+
+<td>Sets the language for system messages&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>nocount&nbsp;</b></td>
+
+<td>Off&nbsp;</td>
+
+<td>Turns off report of number of rows affected&nbsp;</td>
+</tr>
+
+<tr>
+<td>noexec</td>
+
+<td>Off&nbsp;</td>
+
+<td>Compiles each query but does not execute it; often used with <b>showplan&nbsp;</b></td>
+</tr>
+
+<tr>
+<td>parseonly&nbsp;</td>
+
+<td>Off&nbsp;</td>
+
+<td>Checks the syntax of queries and returns error messages without compiling
+or executing the queries</td>
+</tr>
+
+<tr>
+<td>showplan&nbsp;</td>
+
+<td>Off&nbsp;</td>
+
+<td>Generates a description of the processing plan for a query; does not
+print results when used inside a stored procedure or trigger&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>statistics io&nbsp;</b>
+<br><b>statistics time&nbsp;</b></td>
+
+<td>Off</td>
+
+<td>Displays performance statistics after each execution&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>statistics subquerycache&nbsp;</b></td>
+
+<td>Off&nbsp;</td>
+
+<td>Displays the number of cache hits, misses, and rows in the subquery
+cache for each subquery&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>textsize&nbsp;</b></td>
+
+<td>32KB&nbsp;</td>
+
+<td>Controls the number of bytes of text or image data returned&nbsp;</td>
+</tr>
+</table>
+
+<h3>
+Changing the Command Terminator</h3>
+If you include the command terminator argument ( <b>-c </b>), you can choose
+your own terminator symbol; "go" is the default value for this option.
+You must always enter the command terminator without blanks or tabs in
+front of it.
+<p>For example, to use a period as the command terminator, invoke <b>isql
+</b>as
+follows:
+<pre>&nbsp;isql -c.</pre>
+A sample <b>isql </b>session with this command terminator looks like this:
+<pre>&nbsp;1> select name from sysusers&nbsp;
+&nbsp;2> .</pre>
+
+<pre>&nbsp;name
+<b>&nbsp;
+&nbsp;</b> -----------&nbsp;
+&nbsp;sandy&nbsp;
+&nbsp;kim&nbsp;
+&nbsp;leslie</pre>
+
+<pre>(3 rows affected)</pre>
+Using the <b>isql </b>command terminator option with scripts requires advance
+planning:
+<ul>
+<li>
+All SQL Server-supplied scripts, such as <b>installmaster </b>, use "go".
+Do not change the command terminator for any session that uses these scripts.</li>
+
+<li>
+Your own scripts may already have "go" in them. Remember to update any
+of your own scripts to include the terminator you plan to use.</li>
+
+<br>&nbsp;
+<p>&nbsp;
+<br>&nbsp;
+<br>&nbsp;</ul>
+
+<h3>
+Performance Statistics Interaction with Command Terminator Values</h3>
+<b>isql </b>provides a performance statistics option ( <b>-p </b>). For
+example:
+<pre>&nbsp;<b>&nbsp;</b> isql -p</pre>
+
+<pre>&nbsp;1> select * from
+sysobjects&nbsp;
+&nbsp;2> go</pre>
+returns the following statistics:
+<pre>&nbsp;1 xact:&nbsp;
+&nbsp;Clock Time (ms.):
+total = 2000 avg = 2000 (0.50 xacts per sec.)</pre>
+This means that a single transaction took 2,000 milliseconds, so the average
+is one transaction per 2,000 milliseconds. The clock time value reflects
+the entire transaction, which starts when Client-Library builds the query
+and ends when Client-Library returns the information from SQL Server.
+<p>You can gather performance statistics based on executing one or more
+transactions. To gather statistics on more than one transaction, specify
+a number after the command terminator ( <b>go </b>, by default). For example:
+<pre>&nbsp;isql -p</pre>
+
+<pre>&nbsp;1> select * from
+sysobjects&nbsp;
+&nbsp;2> go 3</pre>
+instructs SQL Server to execute three <b>select * </b>transactions and
+report the performance statistics. SQL Server returns:
+<pre>&nbsp;3
+xacts:&nbsp;
+&nbsp;Clock Time (ms.): total = 1000 avg = 333 (3.00 xacts per
+sec.)</pre>
+
+<h3>
+Setting the Network Packet Size</h3>
+The <b>-A </b><i>size </i>option specifies the network packet size to use
+for this <b>isql </b>session For example:
+<pre>&nbsp;isql -A 2048</pre>
+sets the packet size to 2,048 bytes for this <b>isql </b>session. To check,
+type:
+<pre>&nbsp;select * from sysprocesses</pre>
+The value appears under the <i>network_pktsz </i>heading.
+<p><i>size </i>must be between the values of the <b>default network packet
+size </b>and <b>max network packet size </b>configuration parameters, one-third
+the size of the <b>additional network memory
+</b>configuration parameter,
+and must be a multiple of 512. SQL Server uses the closest available packet
+size that is a multiple of 512 if there is not enough memory available.
+<p>Use packet sizes larger than the defaults to perform I/O-intensive operations,
+such as <b>readtext </b>or <b>writetext </b>operations.
+<p>Setting or changing SQL Server's packet size does not affect the remote
+procedure call's packet size.
+<h3>
+Input and Output Files</h3>
+You can specify input and output files on the command line with the
+<b>-i
+</b>and
+<b>-o </b>options.
+<p><b>isql </b>does not provide formatting options for the output. However,
+you can use the <b>-n </b>option to eliminate the
+<b>isql </b>prompts,
+and use other tools to reformat the output.
+<p>If you use the <b>-e </b>option, <b>isql </b>echoes the input to output.
+The resulting output file contains both the queries and their results.
+<h4>
+UNIX Command Line Redirection</h4>
+The UNIX redirection symbols, "&lt;" and ">", provide a similar mechanism
+to the <b>-i </b>and <b>-o </b>options, as follows:
+<pre>&nbsp;isql -Usa -P&nbsp;<i> password&nbsp;</i> &lt; input > output</pre>
+You can direct <b>isql </b>to take input from the terminal, as in the following
+example:
+<pre>&nbsp;isql -Usa -P&nbsp;<i> password&nbsp;</i> &lt;&lt;
+EOF > output</pre>
+
+<pre>&nbsp;select * from table</pre>
+
+<pre>&nbsp;go</pre>
+
+<pre>&nbsp;EOF</pre>
+"&lt;&lt;EOF" instructs <b>isql </b>to take input from the terminal until
+the string "EOF." You can replace "EOF" with any character string.
+<p>Similarly, the following example signals the end of input with Ctrl-d:
+<pre>&nbsp;isql -Usa -P&nbsp;<i> password&nbsp;</i> &lt;&lt; > output</pre>
+
+<pre><b>&nbsp;</b></pre>
+
+</body>
+</html>

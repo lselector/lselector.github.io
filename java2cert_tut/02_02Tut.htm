@@ -1,0 +1,2022 @@
+<html>
+
+
+
+
+
+
+
+<head>
+
+
+
+
+
+
+
+<title>2.2) Flow Control and Exception Handling</title>
+
+
+
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="tutor.css"></head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body bgcolor="#FFFFFF">
+
+<table width=95% border=0 cellpadding=2 cellspacing=0 style="page-break-before: always">
+
+  <col width=147*> <col width=109*> 
+
+  <tr> 
+
+    <td width=57% height=104> 
+
+      <p><a href= "introj2.htm" ><img src= "btnIndex.jpg"  name="Graphic1" alt="Return to Tutorial Index" align=BOTTOM width=55 height=39 border=0></a><a href= "introj2.htm" ><br>
+
+        <br>
+
+        </a><a href= "index.htm" ><img src= "btnHome.jpg"  name="Graphic2" alt="Back to the home page of this site" align=BOTTOM width=55 height=39 border=0></a> 
+
+      </p>
+
+    </td>
+
+    <td width=43%> 
+
+      <p align=RIGHT><img src= "hat.gif"  name="Graphic3" alt="morterboard" align=BOTTOM width=118 height=113 border=0></p>
+
+    </td>
+
+  </tr>
+
+  <tr> 
+
+    <td width=57% height=11> 
+
+      <h1 align=LEFT>Java2 Certification <br>
+
+        Tutorial </h1>
+
+    </td>
+
+    <td width=43% bgcolor="#ff9900"> 
+
+      <p>&nbsp;</p>
+
+    </td>
+
+  </tr>
+
+</table>
+
+<p> You can discuss this topic with others at <a href= "http://www.jchq.net/discus" >http://www.jchq.net/discus</a><br>
+
+  Read reviews and buy a Java Certification book at <a href= "http://www.jchq.net/bookreviews/jcertbooks.htm" >http://www.jchq.net/bookreviews/jcertbooks.htm</a> 
+
+  <br>
+
+</p>
+
+<hr size=5 noshade>
+
+<h1><font face="GENEVA, HELVETICA,
+
+
+
+
+
+
+
+                ARIAL, LUCIDA SANS"><b>2) Flow Control and Exception Handling</b></font></h1>
+
+
+
+<h3><font face="GENEVA, HELVETICA,
+
+
+
+
+
+
+
+                ARIAL, LUCIDA SANS"><b>Objective 2)</b></font></h3>
+
+
+
+
+
+
+
+<p><font face="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">Write code using all forms 
+
+
+
+
+
+
+
+  of loops including labeled and unlabeled use of break and continue and state 
+
+
+
+
+
+
+
+  the values taken by loop counter variables during and after loop execution.</font></p>
+
+
+
+
+
+
+
+<h3>The <i>for</i> statement</h3>
+
+
+
+
+
+
+
+<p>The most common method of looping is to use the <i>for</i> statement. Like 
+
+
+
+
+
+
+
+  C++ and unlike C, the variable that controls the looping can be created and 
+
+
+
+
+
+
+
+  initialised from within the <i>for</i> statement. Thus&nbsp;</p>
+
+
+
+
+
+
+
+<pre>public class MyLoop{
+      public static void main(String argv[]){
+      MyLoop ml = new MyLoop();
+      ml.amethod();
+      }
+       public void amethod(){
+                for(int K=0;K&lt;5l;K++){ 
+                     System.out.println("Outer "+K); 
+                     for(int L=0;L&lt;5;L++)
+                     {System.out.println("Inner "+L);}
+                   }
+          }
+}</pre>
+
+
+
+
+
+
+
+<p>This code will loop 5 times around the inner loop for every time around the 
+
+
+
+
+
+
+
+  outer loop. Thus the output will read</p>
+
+
+
+
+
+
+
+<pre>Outer 0; 
+Inner 0 
+Inner 1 
+Inner 2 
+Inner 3 
+inner 4 
+Outer 1; 
+Inner 0 
+Inner 2</pre>
+
+
+
+
+
+
+
+<p>etc etc&nbsp;</p>
+
+
+
+
+
+
+
+<p>The <i>for</i> statement is the equivalent of a <i>for/next</i> loop in Visual 
+
+
+
+
+
+
+
+  Basic. You may consider the syntax to be</p>
+
+
+
+
+
+
+
+<pre>for(initialization; conditional expression;increment)</pre>
+<p>The conditional expression must be a boolean test in a similar way to an <i>if</i> 
+  statement. In the code example above the for statement was followed by a code 
+  block marked by curly braces. In the same way that an <i>if </i>statement does 
+  not demand a block you can have a <i>for</i> statement that simply drives the 
+  following line thus </p>
+<pre>        for(int i=0;i&lt;5;i++)
+                System.out.println(i);</pre>
+
+
+
+
+
+
+
+<p>Note that in neither versions do you terminate the for line with a semi colon. 
+
+
+
+
+
+
+
+  If you do, the <i>for</i> loop will just spin around until the condition is 
+
+
+
+
+
+
+
+  met and then the program will continue in a "straight line". You do not have 
+
+
+
+
+
+
+
+  to create the initialisation variable (in this case) within the <i>for</i> loop, 
+
+
+
+
+
+
+
+  but if you do it means the variable will go out of scope as soon as you exit 
+
+
+
+
+
+
+
+  the loop. This can be considered an advantage in terms of keeping the scope 
+
+
+
+
+
+
+
+  of variables as small as possible.</p>
+
+
+
+
+
+
+
+<h3>The <i>while</i> loops and <i>do</i> loops, nothing unexpected</h3>
+
+
+
+
+
+
+
+<p>The <i>while</i> and <i>do</i> loops perform much as you would expect from 
+
+
+
+
+
+
+
+  the equivalent in other languages.</p>
+
+
+
+
+
+
+
+<p>Thus a <i>while </i>will perform zero or more times according to a test and 
+
+
+
+
+
+
+
+  the <i>do </i>will perform one or more times. For a <i>while</i> loop the syntax 
+
+
+
+
+
+
+
+  is</p>
+
+
+
+
+
+
+
+<pre>while(condition){
+        bodyOfLoop;
+}</pre>
+
+
+
+
+
+
+
+<p>The condition is a boolean test just like with an <i>if</i> statement. Again 
+
+
+
+
+
+
+
+  you cannot use the C/C++ convention of 0 for <i>true</i> or any other value 
+
+
+
+
+
+
+
+  for <i>false</i></p>
+
+
+
+
+
+
+
+<p>So you might create a <i>while</i> loop as follows</p>
+
+
+
+
+
+
+
+<pre>while(i&lt;4){
+        i++;
+        System.out.println("Loop value is :"i);</pre>
+
+
+
+
+
+
+
+<pre>}</pre>
+
+
+
+
+
+
+
+<p>Note that if the variable <i>i</i> was 4 or more when you reached the while 
+
+
+
+
+
+
+
+  statement would not result in any output. By contrast a do loop will always 
+
+
+
+
+
+
+
+  execute once.</p>
+
+
+
+
+
+
+
+<p>Thus with the following code you will always get at least one set of output 
+
+
+
+
+
+
+
+  whatever the value of the variable <i>i</i> on entering the loop.</p>
+
+
+
+
+
+
+
+<pre>do{
+        System.out.println("value of : "+i);
+        } while (i &lt;4);</pre>
+
+
+
+
+
+
+
+<p>Many programmers try to use the <i>for</i> loop instead of <i>do</i> <i>while</i> 
+
+
+
+
+
+
+
+  loop as it can concentrate the creation initialisation, test and incrementation 
+
+
+
+
+
+
+
+  of a counter all on one line.</p>
+
+
+
+
+
+
+
+<h3>The <i>goto</i> statement, science or religion? </h3>
+
+
+
+
+
+
+
+<p>The designers of Java decided that they agreed with programming guru Edsger 
+
+
+
+
+
+
+
+  Dijkstra who wrote a famous article titled "Goto considered harmful". Because 
+
+
+
+
+
+
+
+  indiscriminate use of <i>goto</i> statements can result in hard to maintain 
+
+
+
+
+
+
+
+  spaghetti code it has fallen out of use and considered bad programming style. 
+
+
+
+
+
+
+
+  There are situations when it would be useful and to help in those situations 
+
+
+
+
+
+
+
+  Java offers the labeled and unlabeled versions of the <i>break</i> and <i>continue</i> 
+
+
+
+
+
+
+
+  keywords.</p>
+
+
+
+
+
+
+
+<h3><i>Break</i> and <i>continue</i></h3>
+
+
+
+
+
+
+
+<p>These statements allow you to conditionally break out of loops. They do not 
+
+
+
+
+
+
+
+  however, allow you to simply jump to another part of the program. The exam is 
+
+
+
+
+
+
+
+  likely to include questions covering this subject in the form of a set of nested 
+
+
+
+
+
+
+
+  loops. You have to work out what numbers will be printed out before the loops 
+
+
+
+
+
+
+
+  finish due to the action of the <i>break</i> statement.</p>
+
+
+
+
+
+
+
+<p>Here is an example of the sort of irritating question you are likely to get 
+
+
+
+
+
+
+
+  in the exam</p>
+
+
+
+
+
+
+
+<pre>public class Br{
+public static void main(String argv[]){
+        Br b = new Br();
+        b.amethod();
+        }
+        public void amethod(){
+        for(int i=0;i &lt;3;i ++){
+        System.out.println("i"+i+"\n");
+        outer://&lt;==Point of this example
+                if(i>2){
+                break outer;//&lt;==Point of this example
+                }//End of if
+               for(int j=0; j &lt;4 &amp;&amp; i&lt;3; j++){
+                       System.out.println("j"+j);
+                       }//End of for
+         }//End of for
+     }//end of Br method                
+}</pre>
+
+
+
+
+
+
+
+<p>You then have to pick out which combination of letters are output by the code. 
+
+
+
+
+
+
+
+  By the way the code "\n" means to output a blank line.</p>
+
+
+
+
+
+
+
+<h3>Jump to a label </h3>
+
+
+
+
+
+
+
+<p>It is often desirable to jump from an inner loop to an outer loop according 
+
+
+
+
+
+
+
+  to some condition. You can do this with the use of the labeled <i>break</i> 
+
+
+
+
+
+
+
+  and <i>continue</i> statement.<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  A label is simply a non key word with a colon placed after it. By placing the 
+
+
+
+
+
+
+
+  name of the label after <i>break</i> or <i>continue</i> your code will jump 
+
+
+
+
+
+
+
+  to the label. This is handy for making part of a loop conditional. You could 
+
+
+
+
+
+
+
+  of course do this with an <i>if</i> statement but a <i>break</i> statement can 
+
+
+
+
+
+
+
+  be convenient. You cannot jump to another loop or method but exiting the current 
+
+
+
+
+
+
+
+  loop is often very useful.</p>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="9%"><img src= "key2.gif"  width="106" height="73"
+
+
+
+
+
+
+
+align="bottom" border="0"></td>
+
+
+
+
+
+
+
+    <td width="91%"> 
+
+
+
+
+
+
+
+      <h4><font color="red">The break statement abandons processing of the current 
+
+
+
+
+
+
+
+        loop entirely, the continue statement only abandons the currently processing 
+
+
+
+
+
+
+
+        time around the loop.</font></h4>
+
+
+
+
+
+
+
+    </td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<p>Take the following example</p>
+
+
+
+
+
+
+
+<pre>public class LabLoop{
+                public static void main(String argv[]){
+                LabLoop ml = new LabLoop();
+  ml.amethod();
+   }
+        public void amethod(){
+                outer:
+                for(int i=0;i<2;i++){ 
+                                for(int j=0;j<3;j++) {
+                                if(j>1)
+			                //Try this with break instead of continue
+		        	        continue outer;
+	                		System.out.println("i "+ i + " j "+j);
+				    }
+                        }//End of outer for
+                        System.out.println("Continuing");
+		 }
+}</pre>
+<p><br>
+  This version gives the following output</p>
+
+
+
+
+
+
+
+<pre>i 0 j 0
+i 0 j 1
+i 1 j 0
+i 1 j 1
+
+
+Continuing</pre>
+
+
+
+
+
+
+
+<p>If you were to substitute the <em>continue</em> command with <em>break</em>, 
+
+
+
+
+
+
+
+  the <i>i</i> counter would stop at zero as the processing of the outer loop 
+
+
+
+
+
+
+
+  would be abandoned instead of simply continuing to the next increment.</p>
+
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="11%"><img src= "Quiz.gif"  width="99" height="101"> </td>
+
+
+
+
+
+
+
+    <td width="89%">&nbsp;</td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+
+
+<h3><b></b></h3>
+
+
+
+
+
+
+
+<p><b>Question 1)</b></p>
+
+
+
+
+
+
+
+<p>What will happen when you attempt to compile and run the following code in 
+
+
+
+
+
+
+
+  a method?</p>
+
+
+
+
+
+
+
+<pre>        for(int i=0;i&lt;5;){
+                System.out.println(i);
+                i++;
+                continue;
+                }
+   </pre>
+
+
+
+
+
+
+
+<p>1) Compile time error, malformed for statement<br>
+
+
+
+
+
+
+
+  2) Compile time error continue within for loop<br>
+
+
+
+
+
+
+
+  3) runtime error continue statement not reached<br>
+
+
+
+
+
+
+
+  4) compile and run with output 0 to 4</p>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<hr align="center">
+
+
+
+
+
+
+
+<p><br>
+
+
+
+
+
+
+
+  <b>Question 2)</b></p>
+
+
+
+
+
+
+
+<p><b><br>
+
+
+
+
+
+
+
+  </b>What will happen when you attempt to compile and run the following code? 
+
+
+
+
+
+
+
+</p>
+
+
+
+
+
+
+
+<pre>public class LabLoop{
+                public static void main(String argv[]){
+                LabLoop ml = new LabLoop();
+  ml.amethod();
+                mainmethod:
+                System.out.println("Continuing");
+                }
+        public void amethod(){
+                outer:
+                for(int i=0;i&lt;2;i++){ 
+                       for(int j=0;j&lt;3;j++){
+                           if(j>1)
+                              break mainmethod;
+                              System.out.println("i "+ i + " j "+j);
+                    }
+        }//End of outer for
+  }
+}
+
+
+1)</pre>
+
+
+
+
+
+
+
+<pre>i 0 j 0
+i 0 j 1
+Continuing</pre>
+
+
+
+
+
+
+
+<p>2)</p>
+
+
+
+
+
+
+
+<pre>i 0 j 0
+i 0 j 1
+i 1 j 0
+i 1 j 1
+Continuing</pre>
+
+
+
+
+
+
+
+<pre>3) </pre>
+
+
+
+
+
+
+
+<p>Compile time error</p>
+
+
+
+
+
+
+
+<pre>4)</pre>
+
+
+
+
+
+
+
+<pre>i 0 j 0
+i 0 j 1
+i 1 j 0
+i 1 j 1
+i 2 j 1</pre>
+
+
+
+
+
+
+
+<pre>Continuing</pre>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<hr align="center">
+
+
+
+
+
+
+
+<h3><b>Question 3)</b> </h3>
+
+
+
+
+
+
+
+<p>What will happen when you attempt to compile and run the following code?</p>
+
+
+
+
+
+
+
+<pre>public void amethod(){
+                outer:
+                for(int i=0;i&lt;2;i++){
+                        for(int j=0;j&lt;2;j++){
+                             System.out.println("i="+i + " j= "+j);
+                                        if(i >0)
+                                             break outer;
+                                }
+
+             }
+              System.out.println("Continuing with i set to ="+i);
+       }</pre>
+
+
+
+
+
+
+
+<p>1) Compile time error</p>
+
+
+
+
+
+
+
+<p>2)</p>
+
+
+
+
+
+
+
+<pre>i=0 j= 0
+i=0 j= 1
+i=1 j= 0</pre>
+
+
+
+
+
+
+
+<pre>3)</pre>
+
+
+
+
+
+
+
+<pre>i=0 j= 0
+i=0 j= 1
+i=1 j= 0
+i=2 j= 0</pre>
+
+
+
+
+
+
+
+<pre>4)
+
+i=0 j= 0
+i=0 j= 1</pre>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<hr align="center">
+
+
+
+
+
+
+
+<p><b>Question 4)</b></p>
+
+
+
+
+
+
+
+<p>What will happen when you attempt to compile and run the following code?</p>
+
+
+
+
+
+
+
+<pre>        int i=0;
+        while(i>0){
+                System.out.println("Value of i: "+i);
+        }
+                do{
+                        System.out.println(i);
+                        } while (i &lt;2);
+                }</pre>
+
+
+
+
+
+
+
+<pre>1) </pre>
+
+
+
+
+
+
+
+<pre>Value of i: 0 </pre>
+
+
+
+
+
+
+
+<pre>followed by </pre>
+
+
+
+
+
+
+
+<pre>0
+1
+2</pre>
+
+
+
+
+
+
+
+<p>2)</p>
+
+
+
+
+
+
+
+<pre>0
+1
+2</pre>
+
+
+
+
+
+
+
+<p>3)</p>
+
+
+
+
+
+
+
+<pre>Value of i: 0 </pre>
+
+
+
+
+
+
+
+<pre>Followed by continuous output of 0</pre>
+
+
+
+
+
+
+
+<pre></pre>
+
+
+
+
+
+
+
+<p>4) Continuous output of 0</p>
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+<h1>Answers</h1>
+
+
+
+
+
+
+
+<h3><b>Answer 1)</b></h3>
+
+
+
+
+
+
+
+<p> <br>
+
+
+
+
+
+
+
+  4) compile and run with output 0 to 4<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  This is a strange but perfectly legal version of the for statement</p>
+
+
+
+
+
+
+
+<h3> <br>
+
+
+
+
+
+
+
+  <b>Answer 2)</b></h3>
+
+
+
+
+
+
+
+<p><b> <br>
+
+
+
+
+
+
+
+  </b>3) Compile time error<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  You cannot arbitrarily jump to another method, this would bring back all the 
+
+
+
+
+
+
+
+  evils manifest in the <i>goto</i> statement</p>
+
+
+
+
+
+
+
+<h3> <br>
+
+
+
+
+
+
+
+  <b>Answer 3)</b></h3>
+
+
+
+
+
+
+
+<p><b> </b>1) Compile time error<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  This is not really a question about <i>break</i> and <i>continue</i>. This code 
+
+
+
+
+
+
+
+  will not compile because the variable is no longer visible outside the <i>for</i> 
+
+
+
+
+
+
+
+  loop. Thus the final <i>System.out.println</i> statement will cause a compile 
+
+
+
+
+
+
+
+  time error.</p>
+
+
+
+
+
+
+
+<h3><br>
+
+
+
+
+
+
+
+  <b>Answer 4)</b></h3>
+
+
+
+
+
+
+
+<p><b> <br>
+
+
+
+
+
+
+
+  </b>4) Continuous output of 0<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  There is no increment of any value and a while loop will not execute at all 
+
+
+
+
+
+
+
+  if its test is not true the on the first time around</p>
+
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+
+
+<table border="1" width="100%">
+
+
+
+
+
+
+
+  <caption><b>Other sources on this subject</b></caption>
+
+
+
+
+
+
+
+  <tbody> 
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="100%"><b>The Sun Tutorial</b><br>
+
+
+
+
+
+
+
+      <br>
+
+
+
+
+
+
+
+      <a
+
+
+
+
+
+
+
+                href= "http://java.sun.com/docs/books/tutorial/java/nutsandbolts/while.html" >http://java.sun.com/docs/books/tutorial/java/nutsandbolts/while.html</a><br>
+
+
+
+
+
+
+
+      <br>
+
+
+
+
+
+
+
+      <b>Jyothi Krishnan<br>
+
+
+
+
+
+
+
+      </b><a
+
+
+
+
+
+
+
+                href= "http://www.geocities.com/SiliconValley/Network/3693/obj_sec2.html#obj6" >http://www.geocities.com/SiliconValley/Network/3693/obj_sec2.html#obj6</a><br>
+
+
+
+
+
+
+
+      <br>
+
+
+
+
+
+
+
+      <b>Richard Baldwin</b><br>
+
+
+
+
+
+
+
+      <a
+
+
+
+
+
+
+
+                href= "http://www.geocities.com/Athens/Acropolis/3797/Java026.htm#flow                of                control" >http://www.Geocities.com/Athens/Acropolis/3797/Java026.htm#flow 
+
+
+
+
+
+
+
+      of control</a><br>
+
+
+
+
+
+
+
+      <br>
+
+
+
+      <b>Bruce Eckel Thinking in Java<br>
+
+
+
+      </b><a href= "http://codeguru.earthweb.com/java/tij/tij0045.shtml#Heading131" >http://codeguru.earthweb.com/java/tij/tij0045.shtml#Heading131</a></td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+  </tbody> 
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<p>Last updated<br>
+
+
+
+
+
+
+
+  28 Dec 1999<br>
+
+
+
+
+
+
+
+  copyright &copy; Marcus Green 1999<br>
+
+
+
+  most recent version at www.jchq.net</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+      <p>&nbsp;</p>
+
+
+
+
+
+
+
+<h3>&nbsp;</h3>
+
+
+
+
+
+
+
+<h3>&nbsp;</h3>
+
+
+
+
+
+
+
+<h3>&nbsp;</h3>
+
+
+
+
+
+
+
+<h2>&nbsp;</h2>
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>
+
+
+
+
+
+
+

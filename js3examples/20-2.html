@@ -1,0 +1,25 @@
+<!-- This example is from JavaScript: The Definitive Guide, 3rd Edition.   -->
+<!-- That book and this example were Written by David Flanagan.            -->
+<!-- They are Copyright (c) 1996, 1997, 1998 O'Reilly & Associates.        -->
+<!-- This example is provided WITHOUT WARRANTY either expressed or implied.-->
+<!-- You may study, use, modify, and distribute it for any purpose,        -->
+<!-- as long as this notice is retained.                                   -->
+
+<!-- Here we embed some sounds in the browser, with attributes to -->
+<!-- specify that they won't be played when first loaded. In this -->
+<!-- example, we use sounds found locally on Windows 95 platforms. -->
+<EMBED SRC="file:///C|/windows/media/Tada.wav" HIDDEN=true AUTOSTART=false>
+<EMBED SRC="file:///C|/windows/media/Ding.wav" HIDDEN=true AUTOSTART=false>
+<EMBED SRC="file:///C|/windows/media/The Microsoft Sound.wav"
+       HIDDEN=true AUTOSTART=false>
+
+<!-- Here are some buttons that play those sounds. Note the use of the -->
+<!-- embeds[] array and the play() method invoked through LiveConnect. -->
+<FORM>
+<INPUT TYPE=button VALUE="Play Sound #1" onClick="document.embeds[0].play()">
+<INPUT TYPE=button VALUE="Play Sound #2" onClick="document.embeds[1].play()">
+<INPUT TYPE=button VALUE="Play Sound #3" onClick="document.embeds[2].play()">
+</FORM>
+
+<!-- Here's a hypertext link that plays a sound when the user passes over. -->
+<A HREF="" onMouseOver="document.embeds[0].play()">Click Me</A>

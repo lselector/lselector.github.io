@@ -1,0 +1,801 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="SQL Tutorial">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>SQL Tutorial</title>
+<style>
+A:hover { COLOR: #FF0000; background: #FFA; TEXT-DECORATION: underline } 
+<link href='style0.css' rel='stylesheet' type='text/css'>
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" style="font-family: verdana, arial, geneva, helvetica; FONT-SIZE: 10pt">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Verdana"><font color="#CC0000">LevSelector.com</font></font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font face="Arial,Helvetica"><font color="#CC0000"><font size=-1>New
+York</font></font></font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><font face="Arial,Helvetica"><font size=-1><a href="index.html">home</a>
+> SQL_tutorial</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font face="Arial,Helvetica"><font size=-1></font></font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<b><font color="#990000"><font size=+2>SQL (Structured Query Language)</font></font></b>
+is the ANSI-standard relational database language.
+
+<br><b><u>Basic SQL Statements:</u></b>
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font><a href="#select">SELECT</a></b> Retrieves columns
+and rows from a table or tables
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font><a href="#insert">INSERT</a></b> Adds rows to a
+table
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font><a href="#update">UPDATE</a></b> Updates columns
+in existing rows in a table
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font><a href="#delete">DELETE</a></b> Deletes rows from
+a table
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font><a href="#create_table">CREATE TABLE</a></b> Creates
+a new table based on the specified table schema
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font><a href="#select_into">SELECT INTO</a></b> Creates
+a new table based on rows and columns output by a SELECT statement
+
+
+<br><a NAME="select"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Arial,Helvetica"><font size=-1>SELECT</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Arial,Helvetica"><font size=-1><a href="index.html">home</a>
+- <a href="#top">top of the page</a> - </font></font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+The SELECT statement is used to retrieve rows of data from your database
+into a recordset object. The SELECT statement specifies the columns of
+data you want to retrieve, where the columns are stored, what criteria
+the returned data must meet, and the sort order of the data. A SELECT statement
+can further group rows of data together and assign retrieval criteria at
+the group level. The components of the SELECT statement are described in
+the table below:
+<br>-------------------------------------------
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>SELECT</b> - Specifies the columns of data to be
+retrieved
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>FROM</b> - Specifies the tables from which to retrieve
+rows
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>WHERE</b> - Specifies criteria that returned data
+must meet
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>GROUP BY</b> - For aggregate queries, specifies
+the returned columns by which the data is to be grouped
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>HAVING</b> - For aggregate queries, specifies criteria
+that the aggregate value returned must meet
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>ORDER BY</b> - Specifies the sort order of the returned
+rows
+<br>-------------------------------------------
+<p>So let us begin with a very simple SELECT statement. We will build on
+this statement as we move from one example to the next, adding complexity
+through the use of WHERE and ORDER BY clauses. A Simple SELECT Statement
+In the following example, you simply query several columns in the authors
+table:
+<p><font color="#3333FF">SELECT au_id, au_lname, au_fname, state, zip,
+contract</font>
+<br><font color="#3333FF">FROM authors</font>
+<p>The results of this simple query reveal that the data in the selected
+columns was returned for each row that exists in the authors table.
+<p>Adding the WHERE Clause Using the same basic SELECT statement, you can
+narrow down your results by adding a WHERE clause. Suppose that you only
+want to know the names of authors located in the state of California. In
+the following example, only those records whose state column has a value
+of `CA' will be returned.
+<p><font color="#3333FF">SELECT au_id, au_lname, au_fname, state, zip,
+contract</font>
+<br><font color="#3333FF">FROM authors</font>
+<br><font color="#3333FF">WHERE state = `CA'</font>
+<p>Your WHERE clause can use several columns as criteria for row retrieval.
+If you additionally wanted only those rows whose contract value was zero,
+you would use a logical AND, as in the following:
+<p><font color="#3333FF">SELECT au_id, au_lname, au_fname, state, zip,
+contract</font>
+<br><font color="#3333FF">FROM authors</font>
+<br><font color="#3333FF">WHERE state = `CA' AND contract = 0</font>
+<p>You can also have the query return rows for authors in any state except
+California. The way to indicate inequality in SQL is to combine a greater-than
+and a less-than sign (&lt;>).
+<p><font color="#3333FF">SELECT au_id, au_lname, au_fname, state, zip,
+contract</font>
+<br><font color="#3333FF">FROM authors</font>
+<br><font color="#3333FF">WHERE state &lt;> `CA'</font>
+<p>------------------------------------------
+<br><i>NOTE: If you have ever created a query in Access using the Query
+By Example (QBE) grid and then viewed the SQL that it generated, you have
+noticed that a semicolon appears at the end of the statement. This is Access's
+way of terminating the SQL statement, although it is not necessary in order
+for the SQL statement to be executed. SQL Server has no such terminator
+and will treat a semicolon attached to the end of the statement as a syntactical
+error.</i>
+<br>------------------------------------------
+<p>The WHERE clause can use a number of different comparison operators
+for checking field values:
+<br>-------------------------------------------
+<br><b><font color="#3333FF">=</font></b> Is equal to.
+<br><b><font color="#3333FF">></font></b> Is greater than.
+<br><b><font color="#3333FF">&lt;</font></b> Is less than.
+<br><b><font color="#3333FF">>=</font></b> Is greater than or equal to.
+<br><b><font color="#3333FF">&lt;=</font></b> Is less than or equal to.
+<br><b><font color="#3333FF">&lt; ></font></b> Is not equal to.
+<br><b><font color="#3333FF">IN</font></b> Is in a specified list of values
+or in the results of a specified subquery.
+<br><b><font color="#3333FF">BETWEEN..AND</font></b> Is between two values.
+<br><b><font color="#3333FF">LIKE</font></b> Contains the same pattern
+as a specified string. The pattern being compared is a string that contains
+one or more wildcard characters. You should refer to Access and SQL Server
+help for a list of these operators.
+<br>-------------------------------------------
+<p>In addition to a variety of comparison operators, the columns included
+in the WHERE clause can be checked using the AND and OR logical operators.
+If the AND operator is used, the conditions on both sides of the AND must
+be met for a row to be returned. The OR operator requires that at least
+one of the conditions must be met. Adding the ORDER BY Clause Now let's
+take your simple query one step further and sort the results by author
+last name (au_lname). To do this, you add an ORDER BY clause.
+<p><font color="#3333FF">SELECT au_id, au_lname, au_fname, state, zip,
+contract</font>
+<br><font color="#3333FF">FROM authors</font>
+<br><font color="#3333FF">WHERE state = `CA'</font>
+<br><font color="#3333FF">ORDER BY au_lname</font>
+<p>The resulting rows are returned in ascending alphabetical order by the
+author's last name.
+<p>You can also sort the records in a field in descending order using the
+keyword DESC. Suppose you want to first sort the records in descending
+order by contract and then sort in ascending order by author last name.
+An example is shown in the following SQL statement:
+<p><font color="#3333FF">SELECT au_id, au_lname, au_fname, state, zip,
+contract</font>
+<br><font color="#3333FF">FROM authors</font>
+<br><font color="#3333FF">WHERE state = `CA'</font>
+<br><font color="#3333FF">ORDER BY contract DESC, au_lname</font>
+<p>------------------------------------------
+<br>NOTE: Microsoft SQL Server offers several sort orders, with the default
+being dictionary order and case-insensitive. The sort order is defined
+during SQL Server installation and cannot be overridden, so you might want
+to consult your DBA to be sure how your results will be sorted. The default
+sort order for Access is ascending (A-Z, 0-9).
+<br>------------------------------------------
+<p>Using the WHERE Clause to Join Tables You have seen several ways to
+use SQL SELECT statements to look at the data in the authors table by specifying
+columns to return, assigning retrieval criteria, and sorting the results.
+But in the real world, will you want to look at data from only a single
+table at a time? The answer is most likely "No." The data in the authors
+table has relationships with data in other tables in the pubs database.
+For instance, what if you want to know what titles were written by these
+authors? The author table alone won't tell you this. You must search the
+cross-reference table titleauthor, which links author to title by the columns
+au_id and title_id. Unfortunately, this isn't enough. Most of us don't
+recognize authors or titles by IDs or codes. We know them by names. Because
+the names of the authors are located in the table author, the titles are
+located in the table title, and the relationships between the two are located
+in titleauthor, you need a way to tie these three tables together in a
+single SELECT statement. You can do this using the WHERE clause.
+<p><font color="#3333FF">SELECT authors.au_lname, authors.au_fname, titles.title</font>
+<br><font color="#3333FF">FROM authors, titleauthor, titles</font>
+<br><font color="#3333FF">WHERE</font>
+<br><font color="#3333FF">&nbsp; authors.au_id = titleauthor.au_id AND</font>
+<br><font color="#3333FF">&nbsp; titleauthor.title_id = titles.title_id</font>
+<br><font color="#3333FF">ORDER BY authors.au_lname, authors.au_fname,
+titles.title</font>
+<p>Note the way you referenced the column names in this statement. When
+retrieving data from multiple tables in a single SQL statement, you must
+preface the column names that appear in more than one of the tables in
+the FROM clause with their associated table names in order to avoid an
+ambiguity error. Using the JOIN Operator to Join Tables Another way to
+join tables is by using the JOIN operator. This is the ANSI standard method
+for joining tables and uses the following syntax:
+<p><font color="#3333FF">SELECT column1, column2, column3</font>
+<br><font color="#3333FF">FROM table1 JOIN table2</font>
+<br><font color="#3333FF">ON join criteria</font>
+<p>The JOIN operator indicates how rows should be returned from the joined
+tables. The ON clause acts like a WHERE clause, indicating which fields
+in the joined table should be compared for equality. Table below describes
+the different JOIN operators:
+<br>-------------------------------------------
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>CROSS JOIN</b> - Returns each row from the first
+table joined with each row from the second table, resulting in a returned
+number of rows equal to the product of the two tables' rowcounts.
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>INNER JOIN</b> - Returns all rows from each table
+that meet the WHERE clause search criteria and where there is a match on
+the joined fields in the ON clause.
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>LEFT [OUTER] JOIN</b> - Returns all rows from the
+table on the left side of the join that meet the WHERE clause search criteria
+and only those from the right side of the join where there is a match on
+the joined fields in the ON clause.
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>RIGHT [OUTER] JOIN</b> - Returns all rows from the
+table on the right side of the join that meet the WHERE clause search criteria
+and only those from the left side of the join where there is a match on
+the joined fields in the ON clause.
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>FULL [OUTER] JOIN</b> - Returns all rows from each
+table that meet the WHERE clause search criteria and where there is no
+match on the joined fields in the ON clause.
+<br>-------------------------------------------
+<p>Using the JOIN operator, the SQL statement in the previous example would
+be written as follows:
+<p><font color="#3333FF">SELECT authors.au_lname, authors.au_fname, titles.title</font>
+<br><font color="#3333FF">FROM (authors INNER JOIN titleauthor</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; ON authors.au_id = titleauthor.au_id)
+INNER JOIN titles</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; ON titleauthor.title_id
+= titles.title_id</font>
+<br><font color="#3333FF">ORDER BY authors.au_lname, authors.au_fname,
+titles.title</font>
+<p>Access supports the following JOIN operators: INNER JOIN, LEFT JOIN,
+and RIGHT JOIN. SQL Server 6.5 supports all of the listed joins. Note that
+versions of SQL Server earlier than 6.5 do not use this syntax for joining
+tables. Instead, in those versions, the fields from two tables must be
+joined in the WHERE clause as shown in the previous example. To indicate
+a LEFT or RIGHT outer join in the WHERE clause, you would use the *= and
+=* operators, respectively, in place of the = operator. The following two
+left outer JOIN statements produce the same result and illustrate the two
+methods for joining tables:
+<p><font color="#3333FF">SELECT column1, column2, column3</font>
+<br><font color="#3333FF">FROM table1 LEFT JOIN table2</font>
+<br><font color="#3333FF">ON table1.column1 = table2.column1</font>
+<p><font color="#3333FF">SELECT column1, column2, column3</font>
+<br><font color="#3333FF">FROM table1, table2</font>
+<br><font color="#3333FF">WHERE table1.column1 *= table2.column1</font>
+<p>One use for an outer join would be to list all authors and, if they
+wrote a book, list the title_id of that book (through an outer join with
+titleauthor). If the author did not write a book, you would still be able
+to see the author's name listed, but the title_id would be returned as
+NULL. Aggregate Functions in SQL Statements Aggregate functions return
+summary values for specified columns or expressions in the form of sum
+totals, number of records, averages, and so on. The aggregate function
+might return a single value for all rows represented by the query. If a
+GROUP BY clause has been added to the SQL statement, such summary values
+will be calculated at each level of grouping. Table below lists the aggregate
+functions you can use. Note that the StDev and Var functions are not available
+in SQL Server.
+<br>-------------------------------------------
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>Avg</b> - Returns the average of all values in the
+columns by taking their sum and dividing by the count.
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>Count</b> - Returns the number of non-null values
+in the specified column or expression. If the expression is an asterisk
+(such as count(*)), the result will be the number of rows in the query.
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>Max</b> - Returns the maximum value in the specified
+column or expression.
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>Min</b> - Returns the minimum value in the specified
+column or expression.
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>StDev, StDevP</b> - Return estimates of the standard
+deviation for a population or population sample (Access only).
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>Sum</b> - Returns the sum of values in the specified
+column or expression.
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>Var, VarP</b> - Return estimates of the variance
+for a population or a population sample (Access only).
+<br>-------------------------------------------
+<p>The following statement illustrates the use of the count function on
+the entire titles table with no grouping:
+<p><font color="#3333FF">SELECT count(title) `titles'</font>
+<br><font color="#3333FF">FROM titles</font>
+<p>The result is the total number of title records in the titles table.
+<br>------------------------------------------
+<br>NOTE: You can use an alias to return a different name for a column
+or assign a name to a column that returns an expression (and, therefore,
+has no name). There are three ways to assign an <b><font color="#3333FF">alias</font></b>
+to a column. (All three methods can be used in SQL Server. Only the first
+method can be used in Access.
+<br><font color="#3333FF">SELECT count(title) AS titles FROM titles</font>
+<br><font color="#3333FF">SELECT count(title) `titles' FROM titles</font>
+<br><font color="#3333FF">SELECT `titles' = count(title) FROM titles</font>
+<br>------------------------------------------
+<p>Use of the GROUP BY Clause The GROUP BY statement accepts a list of
+columns specifying how the results of a SELECT statement should be grouped.
+The SELECT statement returns one row for each set of distinct values in
+columns specified in the GROUP BY list. For example, consider a returned
+list of authors and the books that they wrote. Because some of the authors
+wrote more than one book, their names appear in more than one of the returned
+rows. By adding a GROUP BY clause we can group the returned rows by author
+last name and first name so that only one row will be returned for each
+distinct author name.
+<p>In the following example, we will apply the GROUP BY clause to the SELECT
+statement. Instead of returning the authors' titles, we will use the aggregate
+count function to determine the number of titles associated with each author.
+Because we have grouped the returned set of records by author last name
+and first name, each author will have its own title count, rather than
+the count being performed on an entire table, as in the previous example
+of the count function.
+<p><font color="#3333FF">SELECT authors.au_lname, authors.au_fname, count(titles.title)
+`titles'</font>
+<br><font color="#3333FF">FROM authors, titleauthor, titles</font>
+<br><font color="#3333FF">WHERE</font>
+<br><font color="#3333FF">&nbsp; authors.au_id = titleauthor.au_id AND</font>
+<br><font color="#3333FF">&nbsp; titleauthor.title_id = titles.title_id</font>
+<br><font color="#3333FF">GROUP BY authors.au_lname, authors.au_fname</font>
+<p>This way you can determine how many books were written by each author.
+<br>------------------------------------------
+<br>NOTE: At this point, you are familiar with the use of table names prefacing
+column names in order to avoid ambiguity in multitable queries. You also
+might have begun to notice that this can result in lengthy SQL statements.
+Using a table alias, you can shorten your SQL statement and make it easier
+to both read and type. Like the column alias shown earlier, the table alias
+is simply the use of a new name to represent the actual table name. They
+are often used to shorten the SQL statement and to enhance the readability
+of the WHERE clause, so the table names are usually replaced by an alias
+of a single character. Let's look at the preceding SQL example, replacing
+table names with aliases
+<p><font color="#3333FF">SELECT a.au_lname, a.au_fname, count(c.title)
+`titles'</font>
+<br><font color="#3333FF">FROM authors a, titleauthor b, titles c.</font>
+<br><font color="#3333FF">WHERE</font>
+<br><font color="#3333FF">&nbsp; a.au_id = b.au_id and</font>
+<br><font color="#3333FF">&nbsp; b.title_id = c.title_id</font>
+<br><font color="#3333FF">GROUP BY a.au_lname, a.au_fname</font>
+<p>------------------------------------------
+<p>The following SQL statements illustrate two ways to assign a table alias
+by assigning the simple alias a to the table author. Note that the syntax
+of the first example can be used in both Access and SQL Server, but only
+Access will support the second example.
+<p><font color="#3333FF">SELECT a.au_lname, a.au_fname FROM authors a</font>
+<br><font color="#3333FF">SELECT a.au_lname, a.au_fname FROM authors AS
+a</font>
+<p>Use of the HAVING Clause Like the WHERE clause, the HAVING clause is
+used for specifying criteria for data to be returned in a query. The difference
+lies in the level at which the criteria is checked. The WHERE clause uses
+criteria to restrict rows of data returned by a query. The GROUP BY clause
+then forms the returned rows into groups and calculates any aggregate values.
+The criteria in the HAVING clause is then used to restrict groups of rows
+according to the group level data.
+<p>The following example shows how the HAVING clause is used to return
+only the names of authors who have written more than one book:
+<p><font color="#3333FF">SELECT a.au_lname, a.au_fname, count(c.title)
+`titles'</font>
+<br><font color="#3333FF">FROM authors a, titleauthor b, titles c</font>
+<br><font color="#3333FF">WHERE</font>
+<br><font color="#3333FF">&nbsp; a.au_id = b.au_id and</font>
+<br><font color="#3333FF">&nbsp; b.title_id = c.title_id</font>
+<br><font color="#3333FF">GROUP BY a.au_lname, a.au_fname</font>
+<br><font color="#3333FF">HAVING count(c.title) > 1</font>
+<br><a NAME="insert"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Arial,Helvetica"><font size=-1>INSERT</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Arial,Helvetica"><font size=-1><a href="index.html">home</a>
+- <a href="#top">top of the page</a> - </font></font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+The INSERT statement is used to add rows of data to a table. The INSERT
+statement specifies the table to which rows are to be added, the columns
+in which the data is to be stored, the source of the data being added,
+and the data itself.
+<br>-------------------------------------------
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>INSERT INTO</b> - Specifies the table to which rows
+are to be added.
+<br>column list Specifies columns in which to add the data. It is necessary
+to provide a column list only when not all of the table's columns are to
+have data added. If left blank, the column list can be understood to be
+every column in the table, in the order in which they appear in the table
+structure.
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>VALUES</b> - (value list) Specifies the values to
+be filled in the respective columns in the column list. (For example, the
+first value in the value list will be assigned to the first column in the
+column list, and so on.)
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>SELECT</b> - The SELECT statement that will return
+rows to be added to the table.
+<br>-------------------------------------------
+<br>Note that either a value list or a SELECT statement (not both) is used
+to provide the data to be added. Use of the INSERT Statement with a Value
+List This example shows the use of the value list to add a row to the title
+table, providing values for each column in the table. Note that with a
+value list, you can insert only a single row into the table.
+<p><font color="#3333FF">INSERT INTO titles</font>
+<br><font color="#3333FF">VALUES</font>
+<br><font color="#3333FF">&nbsp; ( `SM1234', `The Small Business Tax Guide',
+`business', `1389', 15.99, 3000,</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; 10, 0, `Tax guide for owners
+of small businesses', `1/1/1997')</font>
+<p>You can also specify which columns to fill in the insert clause:
+<p><font color="#3333FF">INSERT INTO titles (title_id, title)</font>
+<br><font color="#3333FF">VALUES (`SM5678', `The Small Business Marketing
+Guide')</font>
+<p>A reason for not specifying all values would be that you do not know
+those values and want any possible default values to be added. Note, however,
+that if there are no default values for the omitted columns and the structure
+of the table to which you are adding the row requires that an omitted column
+be filled, you will receive an error.
+<p>In the first example shown, you might have noticed that the list of
+columns in the insert clause was omitted. This is the equivalent of listing
+all columns in the table in the order in which they appear in the table
+structure. This saves you some typing time. However, it is usually better
+to include the column list so that, if fields are reordered or added to
+the table at a later date, the SQL statement does not need to be altered
+to reflect the structure change. Use of the INSERT Statement with a SELECT
+Statement This example shows the use of the SELECT statement to add one
+or more rows of data to the title table. Let's assume that the newtitles
+table is a temporary working table that holds new title information. From
+this table, you want to add all titles whose processing date is NULL.
+<p><font color="#3333FF">INSERT INTO titles</font>
+<br><font color="#3333FF">( title_id, title, type, pub_id, price, advance,
+royalty, ytd_sales, notes, pubdate )</font>
+<br><font color="#3333FF">SELECT</font>
+<br><font color="#3333FF">&nbsp; title_id, title, type, pub_id, price,
+advance, royalty, ytd_sales, notes, pubdate</font>
+<br><font color="#3333FF">FROM newtitles</font>
+<br><font color="#3333FF">WHERE procdate is NULL</font>
+<p>------------------------------------------
+<br>NOTE: The INSERT INTO..SELECT statement can be interpreted as a two-part
+query. That is, the SELECT portion of the statement actually is performed
+by itself as "step one" of the statement. The resulting set of rows is
+then given to the INSERT INTO portion of the statement, which is "step
+two" of the statement. For this reason, there is no ambiguity between the
+identical column lists in these two distinct portions of the SQL statement.
+Therefore, it is not necessary to preface the column names with the table
+names in order to distinguish those in the destination table from those
+in the source table.
+<br>------------------------------------------
+<br><a NAME="update"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Arial,Helvetica"><font size=-1>UPDATE</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Arial,Helvetica"><font size=-1><a href="index.html">home</a>
+- <a href="#top">top of the page</a> - </font></font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+The UPDATE statement is used to update column values in existing rows in
+a table. The UPDATE statement specifies the table to be updated, the columns
+to update, the new values to assign those columns, and criteria for the
+rows to be updated.
+<br>-------------------------------------------
+<br><font color="#000000"><b>UPDATE</b> - Specifies the table to be updated</font>
+<br><font color="#000000"><b>SET</b> - Specifies columns to update and
+the new values to assign to those columns</font>
+<br><font color="#000000"><b>FROM</b> - Specifies the tables to include
+in the UDPATE statement</font>
+<br><font color="#000000"><b>WHERE</b> - Specifies the criteria that determine
+which rows' columns are to be updated</font>
+<br>-------------------------------------------
+<br>Setting Columns to a Fixed Value with the UPDATE Statement In some
+cases, you want to update columns in a table with a fixed value for every
+row in the table. For instance, assume that you want to update the processing
+date to January 1, 1997 for each row in the newtitles table (used in the
+revious example) that currently has a processing date of NULL:
+<p><font color="#3333FF">UPDATE newtitles</font>
+<br><font color="#3333FF">SET procdate = `1/1/1997'</font>
+<br><font color="#3333FF">WHERE procdate = NULL</font>
+<p>Setting a Column Value Based on Existing Column Values Suppose you want
+to increase the price of each book in the title table by 10 percent of
+the current price. It would be difficult to update the table with fixed
+values (as in the previous example), because all books need to be updated
+to different prices. That could take all day. A better way to perform this
+update is to use the existing price as a base for the updated price. Just
+as you can assign a fixed value to a column, you can also assign the results
+of an expression as shown in the following statement:
+<p><font color="#3333FF">UPDATE titles</font>
+<br><font color="#3333FF">SET price = price * 1.10</font>
+<p>Without knowing the value of any of the prices in the title table, you
+can successfully increase their values by 10 percent in one easy UPDATE
+statement. Setting a Column Based on Values in a Joined Table Now let's
+imagine that you want to update the publisher associated with all titles
+written by a specific author. The author information is nowhere to be found
+in the titles table. You can get that information only by joining the titles
+table with the titleauthor table. To do this, you add a FROM clause to
+the UPDATE statement. This FROM clause works the same way as the FROM clause
+in a SELECT statement. While the UPDATE clause indicates the table to be
+updated, the FROM clause indicates the source of the data with which to
+update that table. The following example updates the pub_id column to `1389'
+for all titles associated with au_id `998-72-3567':
+<p><font color="#3333FF">UPDATE titles</font>
+<br><font color="#3333FF">SET pub_id = `1389'</font>
+<br><font color="#3333FF">FROM titles a, titleauthor b</font>
+<br><font color="#3333FF">WHERE</font>
+<br><font color="#3333FF">&nbsp; a.title_id = b.title_id AND</font>
+<br><font color="#3333FF">&nbsp; b.au_id = `998-72-3567'</font>
+<br><a NAME="delete"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Arial,Helvetica"><font size=-1>DELETE</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Arial,Helvetica"><font size=-1><a href="index.html">home</a>
+- <a href="#top">top of the page</a> - </font></font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+The DELETE statement allows you to remove rows from tables. This statement
+specifies the table from which rows are to be deleted and criteria for
+the rows to be deleted.
+<br>------------------------------------------
+<br><b>DELETE FROM</b> - Specifies the table from which to delete rows
+<br><b>WHERE</b> - Specifies the criteria that determine which rows are
+to be deleted
+<br>------------------------------------------
+<p><b><u>Using DELETE to Delete All Rows From a Table:</u></b>
+<br>To delete all rows from a table, you need only specify the name of
+the table from which to delete those rows. The following example shows
+how to delete all rows from the title table:
+<p><font color="#3333FF">DELETE FROM titles</font>
+<p>------------------------------------------
+<br>NOTE: SQL Server offers another method, called the <font color="#3333FF">TRUNCATE
+TABLE</font> statement, for removing all rows from a table. It acts like
+a <font color="#3333FF">DELETE</font> statement that has no WHERE clause,
+with a couple of important exceptions that should be noted. The DELETE
+statement deletes rows from a table one row at a time, logging each deletion
+as a transaction, and it can therefore be rolled back. The TRUNCATE TABLE
+statement, on the other hand, removes entries from a table pages at a time,
+and does not log individual row deletions. Rows removed from a table with
+a TRUNCATE TABLE statement cannot be recovered. The other important note
+is that delete triggers associated with a table will not be fired when
+that table is truncated. <u>So why use a TRUNCATE TABLE statement? Speed.</u>
+The TRUNCATE TABLE statement performs the task of removing all rows from
+a table much faster than a DELETE statement does. Just keep in mind that
+TRUNCATE TABLE always removes all the rows from a table and these rows
+are not recoverable.
+<br>------------------------------------------
+<p>But sometimes you don't want to wipe out all the rows in a table. Instead,
+assume that you want to delete only a specific title from the titles table.
+Using DELETE to Delete Specific Rows from a Table To delete specific rows
+from a table, you simply add the familiar WHERE clause. As you might expect,
+only the rows that meet the criteria of the WHERE clause will be deleted.
+Suppose you want to remove only the title `Silicon Valley Gastronomic Treats',
+whose title_id is `MC2222'. Here is how to do it:
+<p><font color="#3333FF">DELETE FROM titles</font>
+<br><font color="#3333FF">WHERE title_id = `MC2222'</font>
+<p>This is a little bit more complex than the previous example, but it's
+still quite easy. Let's try one more. Using DELETE to Delete Rows Based
+on a Joined Table Imagine that the criteria for the delete are based on
+a value in another table. For example, what if you want to delete all titles
+written by the author whose au_id is `123-45-6789'? You must use the joined
+titleauthor table to determine which titles were written by each author.
+This is where Access and SQL Server handle the DELETE statement quite differently.
+<p><b><u>Access</u></b> uses the following syntax to delete rows from one
+table based on data stored in one or more other tables:
+<p><font color="#3333FF">DELETE titles.*</font>
+<br><font color="#3333FF">FROM titles, titleauthor</font>
+<br><font color="#3333FF">WHERE titles.title_id = titleauthor.title_id
+and titleauthor.au_id = `123-45-6789'</font>
+<p>In <b><u>SQL Server</u></b>, you would perform the same function using
+the following syntax:
+<p><font color="#3333FF">DELETE FROM titles</font>
+<br><font color="#3333FF">WHERE title_id IN</font>
+<br><font color="#3333FF">( SELECT title_id from titleauthor</font>
+<br><font color="#3333FF">&nbsp; WHERE au_id = `123-45-6789' )</font>
+<br><a NAME="create_table"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Arial,Helvetica"><font size=-1>CREATE TABLE</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Arial,Helvetica"><font size=-1><a href="index.html">home</a>
+- <a href="#top">top of the page</a> - </font></font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+The CREATE TABLE statement allows you to create a new table in the database.
+But the database should already be established by the DBA, you say, so
+why should you have to create a new table from Visual Basic? Sometimes
+you need to access the data in such a way that a SELECT statement would
+not effectively produce the desired results. For example, you might find
+that the set of data you need must be accessed and processed one row at
+a time through a cursor. Another example is a result set that would require
+table joins so complex that the query takes a very long time to run. In
+these cases, it is useful to have an empty table structured as you want
+the result set structured, so that you can fill in phases through either
+the use of a cursor or a combination of INSERT and UPDATE statements.
+<p>Using CREATE TABLE to Create the authors Table To create a new table
+using the CREATE TABLE statement, you simply specify the table to create
+and the columns that will configure the table. The following statement
+creates the authors table as it is currently structured in the pubs database
+on SQL Server:
+<p><font color="#3333FF">CREATE TABLE authors</font>
+<br><font color="#3333FF">( au_id id NOT NULL ,</font>
+<br><font color="#3333FF">&nbsp; au_lname varchar (40) NOT NULL ,</font>
+<br><font color="#3333FF">&nbsp; au_fname varchar (20) NOT NULL ,</font>
+<br><font color="#3333FF">&nbsp; phone char (12) NOT NULL ,</font>
+<br><font color="#3333FF">&nbsp; address varchar (40) NULL ,</font>
+<br><font color="#3333FF">&nbsp; city varchar (20) NULL ,</font>
+<br><font color="#3333FF">&nbsp; state char (2) NULL ,</font>
+<br><font color="#3333FF">&nbsp; zip char (5) NULL ,</font>
+<br><font color="#3333FF">&nbsp; contract bit NOT NULL )</font>
+<p>As you might have guessed, although the statement structure is the same,
+the syntax used to create a table in an Access database is markedly different
+from that shown for SQL Server due to different data types and keywords
+in the two environments:
+<p><u>SQL Server:</u>
+<br>binary, varbinary, char, varchar, datetime, smalldatetime, decimal,
+numeric, float, real, int, smallint, tinyint, money, smallmoney, bit, timestamp,
+text, image
+<p><u>Access:</u>
+<br>binary, bit, byte, counter, datetime, single, double, short, long,
+longtext, longbinary, text
+<br><a NAME="select_into"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Arial,Helvetica"><font size=-1>SELECT ..
+INTO</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Arial,Helvetica"><font size=-1><a href="index.html">home</a>
+- <a href="#top">top of the page</a> - </font></font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+The SELECT..INTO statement is another way you can create a new table. This
+method differs from the CREATE TABLE method in that the structure of the
+table to create is not explicitly stated; rather, it is determined by the
+results of a SELECT statement.
+<br>-------------------------------------------
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>SELECT</b> column list Specifies the selected columns
+with which to build the new table
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>INTO</b> Specifies the name of the new table being
+created
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>FROM</b> Specifies the table or tables from which
+the column is being selected
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>WHERE</b> Specifies criteria that returned data
+must meet
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>GROUP BY</b> For aggregate queries, specifies the
+returned columns by which the data is to be grouped
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>HAVING</b> For aggregate queries, specifies criteria
+that the aggregate value returned must meet
+<br><b><font face="Arial,Helvetica"><font color="#000099"><font size=-1>&nbsp;&nbsp;&nbsp;
+-
+</font></font></font>ORDER BY</b> Specifies the sort order of the returned
+rows
+<br>-------------------------------------------
+<p>Using SELECT..INTO to Create a New authortitles Table
+<br>Suppose that you want to store the results of a SELECT statement in
+a table for use later in your application or in a report. The SELECT..INTO
+statement allows you to do just that. You simply need to add the INTO clause
+to a standard SELECT statement. In this example, you use the SELECT statement
+from an earlier example, which displayed author names and the titles of
+books that the authors wrote, to create a new table called authortitles:
+<p><font color="#3333FF">SELECT a.au_lname, a.au_fname, c.title</font>
+<br><font color="#3333FF">INTO authortitles</font>
+<br><font color="#3333FF">FROM authors a, titleauthor b, titles c</font>
+<br><font color="#3333FF">WHERE</font>
+<br><font color="#3333FF">&nbsp; a.au_id = b.au_id and</font>
+<br><font color="#3333FF">&nbsp; b.title_id = c.title_id</font>
+<br><font color="#3333FF">ORDER BY a.au_lname, a.au_fname, c.title</font>
+<p>Now, if you select all rows from the authortitles table, you get the
+same results that you got in the SELECT statement.
+<br>-------------------------------------------
+<br>Summary
+<br>You've learned the most common SQL commands. You have learned how to
+retrieve rows in many different formats using the SELECT statement, as
+well as how to add, update, and delete rows in tables using the INSERT,
+UPDATE, and DELETE statements, respectively. You also learned how to create
+a new table using the CREATE TABLE or SELECT..INTO statements.
+<br>-------------------------------------------
+<br>&nbsp;
+</body>
+</html>

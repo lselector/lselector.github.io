@@ -1,0 +1,72 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Stefano Mazzocchi">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (Win98; U) [Netscape]">
+   <title>Apache JServ Status</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<center>
+<h1>
+Apache JServ Status</h1></center>
+
+<h3>
+Introduction</h3>
+One interesting feature of Apache JServ is that its main class, JServ.java,
+is a servlet! Yes, it may seem strange, but Apache JServ is able to execute
+itself as a servlet to output runtime information such as configurations
+and, in the future, enable remote administration and runtime data such
+as load or number of servlets in use.
+<p>The Apache JServ Status is a collection of dynamically generated web
+pages that allow the administrator to have a direct idea of the status
+of the system, on both the mod_jserv module and on each connected servlet
+engine.
+<h3>
+Accessing the Apache JServ Status pages</h3>
+The Apache JServ Status front page is enabled by default in the example
+configurations shipped in the distribution and it's mapped to the URI named
+<b>/jserv/</b> (note the trailing slash!) in your main web server space
+(for most systems try <a href="http://127.0.0.1/jserv/">http://127.0.0.1:80/jserv/</a>
+but the address and the port are highly dependent on your web server configurations).
+<p>These pages give you the ability to check existing configurations remotely
+and control the correct servlet engine behavior from a centralized information
+system.
+<p><b><i>Warning</i>:</b> even if the status pages are enabled in the sample
+configuration files shipped with the distribution, you are strongly encouraged
+to deny the access to this location on a production environment since this
+may give untrusted users the ability to gather important system security
+information.
+<h3>
+Customizing the access to the Apache JServ Status pages</h3>
+Here it's shown a general list of web server directives that can be used
+to map the Apache JServ status pages to a particular location. These are
+the directives used by the Apache Web Server and may be placed in any of
+the three configuration files.
+<blockquote>
+<pre>&lt;Location /status/jserv/>
+&nbsp; SetHandler jserv-status
+&nbsp; order deny,allow
+&nbsp; deny from all
+&nbsp; allow from dummy.org
+&lt;/Location></pre>
+</blockquote>
+The above directives map the Apache JServ status pages (SetHandler jserv-status)
+to the URI /status/jserv/ (&lt;location /status/jserv/>) allowing the access
+only from requests coming from the "dummy.org" domain.
+<p>For more complex examples and documentation on how to restrict access
+to a particular URI see the web server documents.
+<h3>
+Removing the Apache JServ Status pages</h3>
+Removing these page is just a matter of removing the above directives from
+the web server configuration files.
+<center>
+<p><font size=-1>Copyright (c) 1997-99 <a href="http://java.apache.org/" target="_top">The
+Java Apache Project</a>.</font>
+<br><font size=-1>$Id: howto.status.html,v 1.5 1999/06/09 05:21:28 jonbolt
+Exp $</font>
+<br><font size=-1>All rights reserved.</font></center>
+
+</body>
+</html>

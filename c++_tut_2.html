@@ -1,0 +1,2536 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>C++_tut_2.html</title>
+<!--
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> C++</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=6 >
+<tr>
+<td><b><font color="#CC0000">C++ Tutorial #2</font></b></td>
+
+<td></td>
+
+<td><b><font color="#CC0000">Other pages</font></b></td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><p>- <a href="#intro">intro - preparing for the interview</a><br>
+  <font color="#000000">- <a href="#first_programs">first
+    C++ programs</a></font>
+        <br>
+        <font color="#000000">- </font><a href="#data_types">data types</a>
+        <br>
+        <font color="#000000">- <a href="#pointers_references">pointers &amp;
+        references</a></font>
+        <br>
+        <font color="#000000">- <a href="#struct_array">structures and arrays</a></font>
+        <br>
+        <font color="#000000">- <a href="#logic_flow">logic, if-else, for,
+        while, switch</a></font>
+        <br>
+        <font color="#000000">- <a href="#functions">functions</a></font>
+        <br>
+        <font color="#000000">- <a href="#text_file_io">strings</a></font>
+        <br>
+        <font color="#000000">- <a href="#text_file_io">text files</a></font>
+        <br>
+        <font color="#000000">- <a href="#binary_files">binary files , random
+        access files</a></font>
+        <br>
+        <font color="#000000">- <a href="#command_line_args">command line arguments</a></font>
+        <br>
+        <font color="#000000">- <a href="#linked_lists_example">Linked List
+        example</a></font>
+        <br>
+        <font color="#000000">- <a href="#recursion">Recursion example</a></font>
+        <br>
+        <font color="#000000">- <a href="#function_var_numb_args">functions
+        with variable number of arguments</a></font>
+        <br>
+        <font color="#000000">- <a href="#splitting_into_many_files">splitting
+        program into many files</a></font>
+        <br>
+        <font color="#000000">- <a href="#misc">misc</a></font></p>
+  </td>
+
+<td ALIGN=LEFT VALIGN=TOP><font color="#000000">- <a href="#OOP_classes_constructors_destructor">OOP,
+classes, constructors, destructor</a></font>
+<br><font color="#000000">- <a href="#exceptions">exceptions</a></font>
+<br><font color="#000000">- <a href="#friend_nested_static_namespace">friend,
+nested, static, namespace</a></font>
+<br><font color="#000000">- <a href="#operator_overloading">operator overloading</a></font>
+<br><font color="#000000">- </font><a href="#abstract_class_parent_child_hierarchy">abstract
+class, parent-child hierarchy</a>
+<br><font color="#000000">- <a href="#private_protected_public_encapsulation">private,
+protected, public (inheritance &amp; encapsulation)</a></font>
+<br><font color="#000000">- <a href="#virtual_functions">virtual functions</a></font>
+<br><font color="#000000">- <a href="#templates">templates</a></font>
+<br><font color="#000000">- <a href="#STL">Programming with STL</a></font>
+<br><font color="#000000">- - -&nbsp;</font></td>
+
+<td ALIGN=LEFT VALIGN=TOP><p><font color="#6699CC">-  <b><a href="c.html">C</a></b></font>
+      <br>
+  <font color="#6699CC">-  <b><a href="c++.html">C++</a></b></font>
+      <br>
+  <font color="#6699CC">-  <a href="c++_tut_1.html">C++ tutorial #1</a></font><br>
+- <a href="threads_and_multi_processing.html">threads and multi-processing</a></p>
+  </td>
+</tr>
+</table>
+
+<p><a name="intro"></a>
+<p class="sectionheader">intro - preparing for the interview
+<p>If you want to pick up C++ fast, here is a possible plan:
+<ul>
+  <li>read this page, install C++, play with examples, use google, wikipedia.com, and <a href="http://www.cplusplus.com/">cplusplus.com</a> as  reference </li>
+  <li>read &quot;C++ for Dummies&quot; - surprisingly good beginner's book</li>
+  <li>sign with BrainBench.com - and do practice tests there. Read the answers.</li>
+  <li>search google for 
+    <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+    c++ interview questions and answers <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STL  interview questions and answers<br>
+    You will find many links, for example:<br>
+    <a href="http://www.shettysoft.com/interview/C_C++_interview_questions_answers.htm" target="_blank">http://www.shettysoft.com/interview/C_C++_interview_questions_answers.htm</a> <br>
+    <a href="http://www.decompile.com/interview/C%2B%2B_Interview_Questions.htm" target="_blank">http://www.decompile.com/interview/C%2B%2B_Interview_Questions.htm</a>  <br>
+    <a href="http://www.experts-exchange.com/Programming/Languages/CPP/A_1415-C-Q-A-Interview-Practice-Questions.html" target="_blank">http://www.experts-exchange.com/Programming/Languages/CPP/A_1415-C-Q-A-Interview-Practice-Questions.html</a> <br>
+    <a href="http://oneparticularharbor.net/sam/interview.html" target="_blank">http://oneparticularharbor.net/sam/interview.html</a><br>
+    <a href="http://www.techinterviews.com/advanced-c-and-stl-interview-questions" target="_blank">http://www.techinterviews.com/advanced-c-and-stl-interview-questions</a><br>
+  <A href="http://www.parashift.com/c++-faq-lite/" target="_blank">http://www.parashift.com/c++-faq-lite/</A><br>
+  <a href="http://stackoverflow.com/questions/50447/favorite-c-interview-question">http://stackoverflow.com/questions/50447/favorite-c-interview-question</a><br>
+  etc.</li>
+  <li>read &quot;Effective C++&quot; by Scott Meyers - many interview questions come right out of this book</li>
+  <li>read  &quot;C++ Gotchas&quot; by Stephen C. Dewhurst - very good book</li>
+  <li>do some real projects - nothing substitutes for real experience</li>
+</ul>
+<p><a NAME="first_programs"></a>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>first C++ programs&nbsp;</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Some of the examples in this tutorial are original, others are inspired
+or derived from <a href="http://www.cprogramming.com/tutorial.html">www.cprogramming.com/tutorial.html</a>
+,&nbsp; from "<b><font color="#CC0000">The Beginner's Guide to C++</font></b>"
+by <b><font color="#CC0000">Oleg Yaroshenko</font></b>, (BTW, this is a
+very VERY good book for a beginner), and other sources.
+<br>Also good place is the C/C++ reference: <a href="http://www.cppreference.com/index.html">cppreference.com</a>.
+<p><b><u>1st program</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>// file hello.cpp
+<br>
+#include &lt;iostream>
+<br>
+<br>
+main() {
+<br>
+&nbsp;&nbsp; std::cout&lt;&lt;"Hello" &lt;&lt; std::endl; <br>
+}</td>
+</tr>
+</table>
+
+<p>or to avoid typing &quot;std::&quot; every time:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+  <tr>
+    <td>// file hello.cpp <br>
+      #include &lt;iostream> <br>
+      using namespace std;<br>
+      <br>
+      main() { <br>
+&nbsp;&nbsp; cout&lt;&lt;"Hello" &lt;&lt; endl; <br>
+      }</td>
+  </tr>
+</table>
+<br>
+<b><u>2nd program</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>// file hello2.cpp
+<br>
+#include &lt;iostream>
+<br>
+using namespace std;<br><p>&nbsp;const int ii = 5; // const will not allow to change it
+<p>&nbsp;int main() {
+<br>&nbsp;&nbsp; int n;
+<br>&nbsp;&nbsp; cout&lt;&lt;"Hello" &lt;&lt; ii &lt;&lt; "Dear"&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"Friend" &lt;&lt; endl;
+<br>&nbsp;&nbsp; cout&lt;&lt;"Please\nPlease enter a number: ";
+<br>&nbsp;&nbsp; cin>> n;
+<br>&nbsp;&nbsp; cout&lt;&lt;"You entered: "&lt;&lt; n &lt;&lt;endl;
+<br>&nbsp;&nbsp; cout&lt;&lt;"Squared:&nbsp;&nbsp; "&lt;&lt; n*n &lt;&lt;endl;
+<br>&nbsp;&nbsp; return 0;
+<br>&nbsp;}</td>
+</tr>
+</table>
+<p>To compile and run on Linux:</p>
+<p><b><font color="#3333FF">c++&nbsp;&nbsp; -o&nbsp;&nbsp; a&nbsp; hello.cpp</font></b>
+  <br>
+  <b><font color="#3333FF">a</font></b>
+  <br>
+  <b><font color="#3333FF">hello</font></b></p>
+<p> On linux there is a main compiler/linker called &quot;gcc&quot; and 2 scripts (today they are executables) called c++ and g++ (they are usually the same). The c++ inside calls gcc with default options and libraries ( -l stdc++ ). So you can cmpile your test as following:
+<p><b><font color="#3333FF">gcc -l stdc++  -o&nbsp;&nbsp; a&nbsp; hello.cpp</font></b> 
+<p>On other unixes (Solaris, for example) one can run gcc, or use other compilers (Sun has its own compiler).
+<p>On Windows people ususally use Microsoft Visual Studio - just google it and download 3-month free installation. You can also install cygwin - and run unix-like gcc. Or there are some other options:
+<p><a href="http://www.mingw.org/">http://www.mingw.org/</a> -&gt; gcc for windows<br>
+  <a href="http://www.bloodshed.net/devcpp.html">http://www.bloodshed.net/devcpp.html</a> - Bloodshed Dev-C++ is a full-featured IDE for the C/C++ -  uses Mingw port of GCC.<br>
+  <a href="http://www.eclipse.org/downloads/">http://www.eclipse.org/downloads/</a> -&gt; eclipse IDE does c++<br>
+  <a href="http://netbeans.org/features/cpp/index.html">http://netbeans.org/features/cpp/index.html</a> -&gt; netbeans IDE does c++ <br>
+  <a href="http://www.embarcadero.com/products/cbuilder">http://www.embarcadero.com/products/cbuilder</a> - CodeGear - Borland C++ builder aquired in 2008 by Embarcadero<br>
+
+<p>Yet another option -  download free compiler from <a href="http://www.borland .com">http://www.borland .com</a>. For version 5.5 
+  it installs into C:\Borland\Bcc55. <br>
+  Add to path:&nbsp; C:\Borland\Bcc55;C:\Borland\Bcc55\bin <br>
+  Create 2 cfg files in C:\Borland\Bcc55\bin as advised in the readme file. <br>
+  now you can compile from command prompt: 
+<p><b><font color="#3333FF">bcc32.exe hello.cpp</font></b> <br>
+  <font color="#3333FF">Borland C++ 5.5.1 for Win32 Copyright (c) 1993, 2000 Borland</font> 
+  <br>
+  <font color="#3333FF">hello.cpp:</font> <br>
+  <font color="#3333FF">Turbo Incremental Link 5.00 Copyright (c) 1997, 2000 Borland</font> 
+<p><b><font color="#3333FF">hello.exe</font></b> <br>
+  <font color="#3333FF">Hello</font> 
+<p><b><u>#define</u></b>
+
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#include &lt;iostream.h>
+<br>#define MAMA "mama" &lt;&lt;endl;&nbsp;
+<p>main() {
+<br>&nbsp; cout&lt;&lt;MAMA&nbsp;
+<br>}</td>
+</tr>
+</table>
+
+<p>C++ inherits all standard operators from C, for example:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td><font color="#3333FF">++a;&nbsp;&nbsp;&nbsp; </font><font color="#000000">and&nbsp;&nbsp;</font><font color="#3333FF">
+a++;</font>
+<br><font color="#3333FF">a + = 2;</font>
+<br><font color="#3333FF">a - = 2;</font>
+<br><font color="#3333FF">a* = 4;</font>
+<br><font color="#3333FF">a* = 5;</font></td>
+</tr>
+</table>
+
+<p><a NAME="data_types"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>data types</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>data types:</u></b> <br>
+  <font color="#3333FF">int, char, long int, float, double, long double,</font> 
+  <br>
+  <font color="#3333FF">bool - boolean (2 values: true and false - same as 1 and 
+  0)</font> <br>
+  <font color="#3333FF">cout &lt;&lt; sizeof (char);</font> // to show the size 
+  in memory <br>
+  <font color="#3333FF">unsigned</font><font color="#000000"> modifier</font> 
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+  <tr> 
+    <td> #include &lt;iostream.h&gt; <br>
+      main() { <br>
+      cout &lt;&lt; &quot;sizeof(int) : &quot; &lt;&lt; sizeof(int) &lt;&lt; endl;<br>
+      cout &lt;&lt; &quot;sizeof(char) : &quot; &lt;&lt; sizeof(char) &lt;&lt; 
+      endl;<br>
+      cout &lt;&lt; &quot;sizeof(long) : &quot; &lt;&lt; sizeof(long) &lt;&lt; 
+      endl;<br>
+      cout &lt;&lt; &quot;sizeof(float) : &quot; &lt;&lt; sizeof(float) &lt;&lt; 
+      endl;<br>
+      cout &lt;&lt; &quot;sizeof(double) : &quot; &lt;&lt; sizeof(double) &lt;&lt; 
+      endl;<br>
+      cout &lt;&lt; &quot;sizeof(long double) : &quot; &lt;&lt; sizeof(long double) 
+      &lt;&lt; endl;<br>
+      }</td>
+  </tr>
+</table>
+<p>auto var1 = 1; // int<br>
+auto var2 = 1.0; // double</p>
+<p>int var1;<br>
+decltype(var1) var2; // declare var2 to be of the same type as var1</p>
+<p><b><u>Enumerated types:</u></b>&nbsp; 
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>enum weekDay {Sunday=1, Monday, Tuesday, Wednesday, Thursday, Friday,
+Saturday};
+<br>&nbsp; // Monday will be 2, Tuesday - 3, etc.
+<p>weekDay myDay = Monday;
+<br>// ...
+<br>if (myDay != Sunday &amp;&amp; myDay != Saturday)
+<br>&nbsp;&nbsp; myDay = Saturday;</td>
+</tr>
+</table>
+
+<p><b><u>Define your own types using the "typedef" statement:</u></b>&nbsp; 
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>typedef&nbsp; int&nbsp; weekDays[7];
+<br>main() {
+<br>&nbsp; weekDays theDays; // array of 7 elements
+<br>&nbsp; // ...
+<br>}</td>
+</tr>
+</table>
+
+<p><b><u>Type casting:</u></b>&nbsp; 
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td><font color="#3333FF">#include &lt;iostream.h>&nbsp;</font>
+<br><font color="#3333FF">int main() {</font>
+<br><font color="#3333FF">&nbsp; cout&lt;&lt;(char)65;&nbsp;</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp; // The (char) is a typecast,
+telling the computer to interpret the 65 as a</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp; // character, not as
+a number.&nbsp; It is going to give the ASCII output of&nbsp;</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp; // the equivalent of
+the number 65(It should be the letter A).</font>
+<br><font color="#3333FF">&nbsp; return 0;</font>
+<br>
+      <font color="#3333FF">}</font> <p>#include &lt;iostream.h&gt; <br>
+        int main() { <br>
+        &nbsp;&nbsp;for(int x=0; x&lt;256; x++) { <font color="#FF0000">//The 
+        ASCII character set is from 0 to 255</font> <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;x&lt;&lt;&quot;. &quot;&lt;&lt;(char)x&lt;&lt;&quot; 
+        &quot;;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;if(x%12 == 11) cout &lt;&lt; &quot;\n&quot;;<br>
+        &nbsp;&nbsp;} <br>
+        &nbsp;&nbsp;return 0; <br>
+        } 
+      <p><font color="#3333FF">//-- 2 forms of typecasting:</font> <br>
+        char cc='A'; <br>
+        int i1 = (int) cc; <br>
+        int i2 = int(cc);</td>
+</tr>
+</table>
+
+<p><a NAME="pointers_references"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>pointers and references</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>pointers</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#include &lt;iostream.h>
+<br>int main() {&nbsp;
+<br>&nbsp;int x;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//A normal integer&nbsp;
+<br>&nbsp;int *pointer;&nbsp;&nbsp;&nbsp; //A pointer to an integer&nbsp;
+<br>&nbsp;pointer=&amp;x;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Read it, "pointer
+equals the address of x"
+<br>&nbsp;cin>>x;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//Reads in x&nbsp;
+<br>&nbsp;cout&lt;&lt;*pointer; //Note the use of the * to output the actual
+number stored in x
+<br>&nbsp;return 0;
+<br>}&nbsp;</td>
+</tr>
+</table>
+
+<p><b><u>Three ways:</u></b>
+<br><b><font color="#3333FF">int*&nbsp;&nbsp; a;</font></b>
+<br><b><font color="#3333FF">int&nbsp;&nbsp; *a;</font></b>
+<br><b><font color="#3333FF">int&nbsp; *&nbsp; a;</font></b>
+<p><b><u>Reference = alias (shortcut)</u></b>&nbsp; 
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#3333FF">int A = 0;</font>
+<br><font color="#3333FF">int &amp; rA = A;</font><font color="#009900">&nbsp;&nbsp;&nbsp;
+// rA is reference - and we initialized it to be an alias for A</font>
+<p><font color="#3333FF">rA = 1;</font><font color="#009900">&nbsp;&nbsp;&nbsp;
+// now rA == 1, which means that A == 1 too.</font>
+<br><font color="#3333FF">A=2;&nbsp;&nbsp;&nbsp; </font><font color="#009900">//
+now rA == 2 too</font>
+<p><font color="#3333FF">int * prA = &amp;rA;&nbsp;</font><font color="#009900">&nbsp;&nbsp;
+// &amp;rA is same as &amp;A</font>
+<br><font color="#3333FF">(*prA)++;&nbsp;</font><font color="#009900">&nbsp;&nbsp;
+// same as A++ or rA++, now they are == 3</font>
+<p><font color="#3333FF">int &amp; rrA = rA;</font><font color="#009900">&nbsp;&nbsp;&nbsp;
+// one more alias for A</font>
+<br><font color="#3333FF">rrA++;&nbsp;</font><font color="#009900">&nbsp;&nbsp;
+// now they all == 4</font>
+<p><font color="#3333FF">const int &amp; crA = A;</font><font color="#009900">&nbsp;&nbsp;&nbsp;
+// one more alias</font>
+<br><font color="#3333FF">A++;</font><font color="#009900">&nbsp;&nbsp;&nbsp;
+// now they all == 5 (even crA !!&nbsp;&nbsp; But you can't do crA++;)</font></td>
+</tr>
+</table>
+
+<p><b><u>Pointers to functions:</u></b>
+<br><font color="#3333FF">void ff(int a, char b); // function itself</font>
+<br><font color="#3333FF">void (*ptf)(int a, char b); // pointer to a function</font>
+<br><font color="#3333FF">void (*afp[10])(int a, char b); // array of function
+pointers</font>
+<p><font color="#3333FF">// initializing the pointer and&nbsp; invoking
+the function</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; ptf = ff;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; (*ptf)(5,'A');</font>
+<p><font color="#3333FF">// same for the array of pointers to functions:</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; afp[3] = ff;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; (*atf)(5,'A');</font>
+<p><b><u>Far pointers:</u></b>
+<br>int* _far pnum1 = %num1;&nbsp; // windows
+<p><b><u>Pointers to objects:</u></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>class myClass {
+<br>&nbsp; // some definitions here
+<br>}
+<p>myClass obj1; // object of the type of this class
+<br>myClass pobj1 = &amp;obj1; // pointer to this object
+<br>pobj1->myfunc(1,2); // calling a method&nbsp;</td>
+</tr>
+</table>
+
+<p>Pointers to pointers:
+<br><b><font color="#3333FF">int** pp;</font></b>
+<br>&nbsp;
+<br>&nbsp;
+<p><a NAME="struct_array"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>structures and arrays</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>structures</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#include &lt;iostream.h>
+<p><font color="#3333FF">// define structure type</font>
+<br>struct xampl {
+<br>&nbsp; char Name[21];
+<br>&nbsp; int&nbsp; Height;
+<br>};
+<p>int main() {&nbsp;
+<br>&nbsp; xampl structure = {12,"Kolya"};&nbsp;<font color="#3333FF">
+// initialize the structure of type "xampl"</font>
+<br>&nbsp; xampl *ptr;
+<p>&nbsp; structure.Height=12;&nbsp;&nbsp;&nbsp; <font color="#3333FF">//
+another way to initialize</font>
+<br>&nbsp; structure.Name="Kolya";&nbsp;&nbsp;&nbsp; <font color="#3333FF">//
+another way to initialize</font>
+<p>&nbsp; ptr=&amp;structure;&nbsp;<font color="#3333FF"> // pointer to
+the structure</font>
+<br>&nbsp; cout&lt;&lt;ptr->Name &lt;&lt; " - " &lt;&lt; ptr->Height; <font color="#3333FF">//
+note the&nbsp; ->&nbsp; notation</font>
+<br>&nbsp; return 0;
+<br>}</td>
+</tr>
+</table>
+
+<p>In C++ you can copy structured variables by assigning them (or passing/returning 
+  them into/from a function). <br>
+  if A,B - structures, and you do one of those:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; A = B <br>
+  &nbsp;&nbsp;&nbsp;&nbsp; *pA = *pB <br>
+  Then actual shallow copying of a structure members will happen (shallow means 
+  that targets of pointer members will not be followed and copied). <br>
+  Same shallow copying will happen if we pass the structure to a function. All 
+  this is demonstrated in the text below (it is written in C-style and works in 
+  both C and C++) : <br>
+  &nbsp; 
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#CCFFFF" >
+<tr>
+<td>#include &lt;stdio.h>
+<p>struct TT { int a; int b; };&nbsp;
+<br>struct TT A,B, *pA, *pB;
+<p>void showA(void) { printf("&nbsp; A.a=%d A.b=%d\n",A.a,A.b); }&nbsp;
+<br>void showB(void) { printf("&nbsp; B.a=%d B.b=%d\n",B.a,B.b); }&nbsp;
+<p>void val(struct TT s) {&nbsp;
+<br>&nbsp; s.a=5; s.b=6;
+<br>&nbsp; printf("inside function\n&nbsp; s.a=%d s.b=%d\n",s.a,s.b);
+<br>}&nbsp;
+<br>void pt(struct TT *s) {&nbsp;
+<br>&nbsp; (*s).a=5; (*s).b=6;
+<br>&nbsp; printf("inside function\n&nbsp; (*s).a=%d (*s).b=%d\n",(*s).a,(*s).b);
+<br>}&nbsp;
+<p>main () {
+<br>&nbsp; A.a=1, A.b=2; B.a=0, B.b=0; pA = &amp;A, pB = &amp;B;
+<br>&nbsp; printf("\n");
+<br>&nbsp; printf("initially:\n"); showA(); showB();
+<p>&nbsp; printf("B=A:\n"); B = A; showB();&nbsp;
+<br>&nbsp; printf("reset B:\n"); B.a = 0; B.b = 0; showA(); showB();&nbsp;
+<p>&nbsp; printf("*pB=*pA:\n"); *pB = *pA; showB();
+<br>&nbsp; printf("reset B:\n"); B.a = 0; B.b = 0; showA(); showB();&nbsp;
+<p>&nbsp; printf("\npassing struct into a function makes a shallow copy\n");
+<br>&nbsp; printf("&nbsp; val(B)\n"); val(B); printf("outside function\n");
+showB();&nbsp;
+<br>&nbsp; printf("\npassing struct into a function by pointer\n");
+<br>&nbsp; printf("&nbsp; pt(&amp;B)\n"); pt(&amp;B); printf("outside function\n");
+showB();&nbsp;
+<br>&nbsp; printf("\n");
+<br>}
+<p><b><u><font color="#CC0000">Output:</font></u></b>
+<p><font color="#CC0000">initially:</font>
+<br><font color="#CC0000">&nbsp; A.a=1 A.b=2</font>
+<br><font color="#CC0000">&nbsp; B.a=0 B.b=0</font>
+<br><font color="#CC0000">B=A:</font>
+<br><font color="#CC0000">&nbsp; B.a=1 B.b=2</font>
+<br><font color="#CC0000">reset B:</font>
+<br><font color="#CC0000">&nbsp; A.a=1 A.b=2</font>
+<br><font color="#CC0000">&nbsp; B.a=0 B.b=0</font>
+<br><font color="#CC0000">*pB=*pA:</font>
+<br><font color="#CC0000">&nbsp; B.a=1 B.b=2</font>
+<br><font color="#CC0000">reset B:</font>
+<br><font color="#CC0000">&nbsp; A.a=1 A.b=2</font>
+<br><font color="#CC0000">&nbsp; B.a=0 B.b=0</font>
+<p><font color="#CC0000">passing struct into a function makes a shallow
+copy</font>
+<br><font color="#CC0000">&nbsp; val(B)</font>
+<br><font color="#CC0000">inside function</font>
+<br><font color="#CC0000">&nbsp; s.a=5 s.b=6</font>
+<br><font color="#CC0000">outside function</font>
+<br><font color="#CC0000">&nbsp; B.a=0 B.b=0</font>
+<p><font color="#CC0000">passing struct into a function by pointer</font>
+<br><font color="#CC0000">&nbsp; pt(&amp;B)</font>
+<br><font color="#CC0000">inside function</font>
+<br><font color="#CC0000">&nbsp; (*s).a=5 (*s).b=6</font>
+<br><font color="#CC0000">outside function</font>
+<br><font color="#CC0000">&nbsp; B.a=5 B.b=6</font></td>
+</tr>
+</table>
+
+<p><b><u>arrays</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#include &lt;iostream.h>
+<p>int main() {
+<br>&nbsp; int ia[3] = { 3,4,5 };&nbsp; // initialize array&nbsp;
+<br>&nbsp; cout &lt;&lt; sizeof ia &lt;&lt; "/" &lt;&lt; sizeof ia[0] &lt;&lt;
+"="
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;&lt; sizeof ia
+/ sizeof ia[0]&nbsp; &lt;&lt; endl;
+<p>int grid[3][3] = { { 1,2,3 }, { 1,2,3 }, { 1,2,3 } }; // initialize
+2-dim array
+<p>&nbsp; int x, y, anarray[8][8];//declares an array like a chessboard
+<br>&nbsp; for(x=0; x&lt;8; x++) {
+<br>&nbsp;&nbsp;&nbsp; for(y=0; y&lt;8; y++) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; anarray[x][y]=0;
+<br>&nbsp;&nbsp;&nbsp; }
+<br>&nbsp; }
+<p>&nbsp; for(x=0; x&lt;8;x++) {
+<br>&nbsp;&nbsp;&nbsp; for(y=0; y&lt;8; y++) {
+<br>cout&lt;&lt;"anarray["&lt;&lt;x&lt;&lt;"]["&lt;&lt;y&lt;&lt;"]="&lt;&lt;anarray[x][y]&lt;&lt;"
+";//you'll see
+<br>&nbsp;&nbsp;&nbsp; }&nbsp;
+<br>&nbsp; }
+<p>&nbsp;return 0;
+<br>}</td>
+</tr>
+</table>
+
+<p><font color="#3333FF">*a + 1;&nbsp;</font><font color="#009900"> //
+take value at addr. pointed by a - and increase the value by 1</font>
+<br><font color="#3333FF">*(a+1);</font><font color="#009900">&nbsp; //
+shift the address by the size of one data element (2 bytes for int) - and
+take the value there.</font>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;#include &lt;iostream.h>
+<br>&nbsp;int arr[4] = {1,2,3,4};
+<br>&nbsp;int *pp;
+<br>&nbsp;main () {
+<br>&nbsp;&nbsp; pp = arr;
+<br>&nbsp;&nbsp; cout &lt;&lt; "Hello" &lt;&lt; endl;
+<br>&nbsp;&nbsp; cout &lt;&lt; "arr[2] = " &lt;&lt; arr[2] &lt;&lt; " =
+" &lt;&lt; *(pp+2)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;&lt; " = " &lt;&lt; *(arr+2) &lt;&lt; endl;
+<br>&nbsp;&nbsp; cout &lt;&lt;&nbsp; sizeof(arr)/sizeof(arr[0]);
+<br>&nbsp;&nbsp; cout &lt;&lt; endl;
+<br>&nbsp;}</td>
+</tr>
+</table>
+
+<p>One thing that arrays don't require that other variables do, is a reference 
+  operator.<br>
+  Example: <b><font color="#CC0000">a pointer to the string</font></b> : 
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td><font color="#3333FF">char *ptr;</font>
+<br><font color="#3333FF">char str[40];</font>
+<br><font color="#3333FF">ptr=str; //gives the memory address without a
+reference operator(&amp;)</font>
+<p>//As opposed to
+<p><font color="#3333FF">int *ptr;</font>
+<br><font color="#3333FF">int num;</font>
+<br><font color="#3333FF">ptr=&amp;num;//Requires &amp; to give the memory
+address to the ptr</font></td>
+</tr>
+</table>
+
+<p><b><u>Dynamic arrays:</u></b>
+<br>&nbsp; create and destroy using <b>new</b> and <b>delete []</b> operators:
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td><font color="#3333FF">#include &lt;iostream.h></font>
+<br><font color="#3333FF">#include &lt;stdio.h>&nbsp;&nbsp; // to use printf(
+)</font>
+<p><font color="#3333FF">void main(void) {</font>
+<br><font color="#3333FF">&nbsp; int *parr = <b>new</b> int[10];</font>
+<br><font color="#3333FF">&nbsp; for (int ii=0;ii&lt;10;ii++) parr[ii]=ii*ii;</font>
+<br><font color="#3333FF">&nbsp; for (int ii=0;ii&lt;10;ii++) printf("%d
+- %d\n",ii,parr[ii]);</font>
+<br><font color="#3333FF">&nbsp; <b>delete []</b> parr;</font>
+<br><font color="#3333FF">}</font></td>
+</tr>
+</table>
+
+<p><a NAME="logic_flow"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>logic, if-else, for, while, switch</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>logic</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;#include &lt;iostream.h>
+<br>main () {
+<br>&nbsp; cout &lt;&lt; ( 0 &lt; 2 );&nbsp;&nbsp; // 1
+<br>&nbsp; cout &lt;&lt; (2 != 2 );&nbsp;&nbsp; // 0
+<br>&nbsp; cout &lt;&lt;&nbsp; !(1 || 0);&nbsp;&nbsp; //&nbsp; 0&nbsp;
+<br>&nbsp; cout &lt;&lt;&nbsp; !(1 || 1 &amp;&amp; 0);&nbsp;&nbsp; // 0
+(AND is evaluated before OR)
+<br>&nbsp; cout &lt;&lt;&nbsp; !((1 || 0) &amp;&amp; 0);&nbsp; // 1 (Parenthesis
+are useful)
+<br>&nbsp; cout &lt;&lt;&nbsp; ( 1 == 1 || 1 != 2);&nbsp; // 1 (Parenthesis
+are useful)
+<p>&nbsp; cout &lt;&lt; endl;
+<br>}</td>
+</tr>
+</table>
+
+<p><b><u>if .. else ..</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#include &lt;iostream.h>&nbsp;
+<br>int main() {
+<br>&nbsp; int age;&nbsp;
+<br>&nbsp; cout&lt;&lt;"Please input your age: "; //Asks for age
+<br>&nbsp; cin>>age;&nbsp;&nbsp;&nbsp; //The input is put in age
+<br>&nbsp; if(age&lt;100)&nbsp; {
+<br>&nbsp;&nbsp;&nbsp;&nbsp; cout&lt;&lt;"You are pretty young!";&nbsp;
+<br>&nbsp; } else if(age==100)&nbsp; {
+<br>&nbsp;&nbsp;&nbsp;&nbsp; cout&lt;&lt;"You are old";&nbsp;
+<br>&nbsp; } else if(age>100) {
+<br>&nbsp;&nbsp;&nbsp; cout&lt;&lt;"You are really old";&nbsp;
+<br>&nbsp; }
+<br>&nbsp; return 0;
+<br>}</td>
+</tr>
+</table>
+
+<p><b><u>There exists a <font color="#CC0000">goto</font> syntax:</u></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td><b><font color="#3333FF">goto part1;</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; ...</font></b>
+<br><b><font color="#3333FF">part1:</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp; ....</font></b></td>
+</tr>
+</table>
+
+<p><b><u>for( ; ; )</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#include &lt;iostream.h>&nbsp;
+<br>void main()&nbsp; {&nbsp;
+<br>&nbsp; for(int x=0;x&lt;100;x++)&nbsp; {&nbsp; cout&lt;&lt;x&lt;&lt;endl;
+}&nbsp;
+<br>&nbsp; return 0;&nbsp;
+<br>}</td>
+</tr>
+</table>
+
+<p><b><u>while</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#include &lt;iostream.h>
+<br>main()&nbsp; {&nbsp;
+<br>&nbsp;int x=0;&nbsp;
+<br>&nbsp;while(x&lt;100)&nbsp; {
+<br>&nbsp;&nbsp;&nbsp; cout&lt;&lt;x&lt;&lt;endl;&nbsp;
+<br>&nbsp;&nbsp;&nbsp; x++;&nbsp;
+<br>&nbsp; }&nbsp;
+<br>}</td>
+</tr>
+</table>
+
+<p><b><u>do..while</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#include &lt;iostream.h>
+<br>int main() {
+<br>&nbsp; int x;
+<br>&nbsp; x=0;
+<br>&nbsp; do&nbsp; {
+<br>&nbsp;&nbsp;&nbsp; cout&lt;&lt;"Hello world!";
+<br>&nbsp; }while(x!=0);&nbsp;
+<br>&nbsp; return 0;
+<br>}</td>
+</tr>
+</table>
+
+<p><b><font color="#3333FF">break</font></b> &amp; <b><font color="#3333FF">continue</font></b>
+<br>&nbsp;&nbsp; - used to jump from loops (and nested loops);commands
+<p><b><u>switch</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#include &lt;iostream.h>&nbsp;
+<br>#include &lt;conio.h>&nbsp;
+<br>int main() {&nbsp;
+<br>&nbsp; int input;&nbsp;
+<br>&nbsp; cout&lt;&lt;"1. Play game";&nbsp;
+<br>&nbsp; cout&lt;&lt;"2. Load game";&nbsp;
+<br>&nbsp; cout&lt;&lt;"3. Play multiplayer";&nbsp;
+<br>&nbsp; cout&lt;&lt;"4. Exit";&nbsp;
+<br>&nbsp; cin>>input;&nbsp;
+<br>&nbsp; switch (input) {&nbsp;
+<br>&nbsp;&nbsp; case 1: playgame();&nbsp; break;&nbsp;
+<br>&nbsp;&nbsp; case 2: loadgame();&nbsp; break;&nbsp;
+<br>&nbsp;&nbsp; case 3: playmultiplayer(); break;
+<br>&nbsp;&nbsp; case 4:&nbsp; return 0;&nbsp;
+<br>&nbsp; default:&nbsp; cout&lt;&lt;"Error, bad input, quitting";&nbsp;
+<br>&nbsp; }
+<br>&nbsp; return 0;
+<br>}</td>
+</tr>
+</table>
+
+<p><a NAME="functions"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>functions&nbsp;</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>function</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#include &lt;iostream.h>
+<p>int mult(int x, int y);&nbsp;&nbsp;&nbsp; // prototype
+<p>int main() {
+<br>&nbsp; int x, y;
+<br>&nbsp; cout&lt;&lt;"Please input two numbers to be multiplied: ";
+<br>&nbsp; cin>>x>>y;
+<br>&nbsp; cout&lt;&lt;"The product of your two numbers is "&lt;&lt;mult(x,
+y);
+<br>&nbsp; return 0;
+<br>}
+<p>int mult(int x, int y) {
+<br>&nbsp; return x*y;
+<br>}</td>
+</tr>
+</table>
+
+<p>Simple parameters are passed by value (as in C).
+<br>Arrays are passed by pointer (as in C).
+<br>For example, these 2 functions are identical:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#include &lt;stdio.h>
+<p>void f1(int *ar)&nbsp;&nbsp; {ar[0]=5; ar[1]=6;&nbsp; printf("inside
+function\n&nbsp; %d %d\n",ar[0],ar[1]);}
+<br>void f2(int ar[2]) {ar[0]=5; ar[1]=6;&nbsp; printf("inside function\n&nbsp;
+%d %d\n",ar[0],ar[1]);}</td>
+</tr>
+</table>
+Strings are just char arrays - passed by pointer.
+<br>Structures - copied by value (shallow copy - both C and C++). So it
+works differently for structures than for arrays.
+<br>To avoid copying you can, of course, pass pointers to structures.
+<p>New in C++ - passing by reference (alias) using "&amp;" notation in
+the declaration (as opposed to "*" for pointer). See the table below:
+<p><b><u>Three types of passing parameters into functions:</u></b>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr BGCOLOR="#FFCC99">
+<td></td>
+
+<td><b>passing Object</b>
+<br><b>(make shallow copy)</b></td>
+
+<td><b>Passing Pointer</b>
+<br><b>(explicitly)</b></td>
+
+<td><b>Passing Reference</b>
+<br><b>(aliasing)</b></td>
+</tr>
+
+<tr>
+<td>Call</td>
+
+<td>f(X)</td>
+
+<td>f(&amp;X)</td>
+
+<td>f(X)</td>
+</tr>
+
+<tr>
+<td>argument</td>
+
+<td>f(person x)</td>
+
+<td>f(person * x)</td>
+
+<td>f(person &amp; x)</td>
+</tr>
+
+<tr>
+<td>passing</td>
+
+<td>Object</td>
+
+<td>Pointer</td>
+
+<td>Pointer</td>
+</tr>
+
+<tr>
+<td>Axess to X
+<br>from f( ) body</td>
+
+<td>none</td>
+
+<td>*x</td>
+
+<td>x</td>
+</tr>
+</table>
+
+<p><b><u>Example: passing a reference:</u></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#include &lt;iostream.h>
+<br>void f (int &amp; x) { x = 2; }
+<br>void main() {
+<br>&nbsp; int a=1;&nbsp;&nbsp; cout &lt;&lt; a &lt;&lt; endl;
+<br>&nbsp; f(a);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; a &lt;&lt;
+endl;
+<br>}</td>
+</tr>
+</table>
+
+<p>Use the word "<b><font color="#3333FF">const</font></b>" when passing
+an argument to tell the function that it can NOT change it.
+<p><b><u>You can pass pointers to functions as parameters:</u></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>// prototype two functions
+<br><b><font color="#000099">void sort1(int* pArr, int n);</font></b>
+<br><b><font color="#000099">void sort2(int* pArr, int n);</font></b>
+<p>// prototype the function to which we will pass&nbsp;
+<br>// a pointer to one of the first two functions
+<br><b><font color="#000099">void myfunc(int ii, char cc, void (*pSort)(int*,
+int));</font></b>
+<p>// declare a pointer
+<br><b><font color="#000099">void (*mysort)(int*,int);</font></b>
+<p><font color="#000099">int arr[100] = { ... }; // initialize the array</font>
+<br><font color="#000099">int nc=6;</font>
+<p>// now we can work:
+<br><b><font color="#000099">mysort = sort1;&nbsp;&nbsp;&nbsp; myfunc(5,'A',(*mysort)(arr,nc));</font></b>
+<br><b><font color="#000099">mysort = sort2;&nbsp;&nbsp;&nbsp; myfunc(5,'A',(*mysort)(arr,nc));</font></b></td>
+</tr>
+</table>
+
+<p><b><u>Example: passing an array of strings:</u></b>
+<p><b><font color="#000099">void showStrings(char* parr[], int Nelements);</font></b>
+<br>&nbsp;&nbsp;&nbsp; // here each element of array contains a pointer
+to a string (to a char array).
+<br>
+<p>Note: passing array as a parameter does NOT copy the whole array, <br>
+  but  passes the address. Example:<br>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+    <tr>
+      <td><p>        #include &lt;iostream&gt;<br>
+        using namespace std;</p>
+        <p>void myprint (int arr[], int len) {<br>
+          &nbsp;&nbsp;for (int ii=0; ii&lt;len; ii++)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; arr[ii] &lt;&lt; &quot; &quot;;<br>
+          &nbsp;&nbsp;cout &lt;&lt; &quot;\n&quot;;<br>
+          }</p>
+        <p>int main () 
+          {<br>
+          &nbsp;int myarr[] = {1,2,3,4,5};<br>
+          &nbsp;myprint(myarr,5);<br>
+          &nbsp;&nbsp;return 0;<br>
+          }</p>
+        </td>
+    </tr>
+  </table>
+  <br>
+<p><b><u>Function prototype</u></b> - shows return type, mame, and types of parameters. 
+  No function body. Just to inform the compiler - so that it can process calls 
+  to this function. The actual definition of the function can be placed somewhere 
+  futher down the file. <br>
+  Example:
+<br>&nbsp;<font color="#000099">&nbsp; <b>double cube(double x);</b></font>
+<p><b><u>Inline function:</u></b> - if function is defined with inline keyword 
+  - the compiler may choose to replace the function calls with the actual code 
+  from the function. This makes the code run faster - but also increases the size 
+  of the code, so be careful. Synax is straightforward:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#include &lt;iostream.h>
+<br>inline void hello(void) {
+<br>&nbsp; cout&lt;&lt;"hello";
+<br>}
+<br>int main() {
+<br>&nbsp; hello();
+<br>&nbsp; return 0;
+<br>}</td>
+</tr>
+</table>
+
+<p><b><u>Default Arguments:</u></b>
+<br>You can define default values for function parameters, for example:
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>void say(int N1=1, int N2=2);
+<p>void say(int N1, int N2) {
+<br>&nbsp; cout &lt;&lt; N1 &lt;&lt; N2 &lt;&lt; endl;
+<br>}</td>
+</tr>
+</table>
+
+<p><b><u>Function overloading</u></b> - you may have several functions
+with the same name, but with different parameter lists.
+<p><b><u>Template function</u></b> - generic function that can be used
+with different data-types. Big libraries of templates exist (example: STL
+- Standard Template Library).
+<br>&nbsp;
+<p><a NAME="strings"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>working with strings&nbsp;</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td><font color="#3333FF">"This is a static string"</font>
+<br><font color="#3333FF">char string[50];&nbsp; </font><font color="#009900">//
+make last element a '/0' character</font>
+<br><font color="#3333FF">char ss[] = "ABC";&nbsp;&nbsp;&nbsp; </font><font color="#009900">//
+will have 4 elements - last will be '\0'</font>
+<br><font color="#3333FF">cout &lt;&lt; sizeof ss;&nbsp;&nbsp;&nbsp; </font><font color="#009900">//
+4</font>
+<br><font color="#3333FF">char ss[] = {'A','B','C','\0'};&nbsp;&nbsp; </font><font color="#009900">//
+same</font>
+<br>
+      <font color="#3333FF">char ss[] = "";&nbsp;&nbsp;&nbsp; </font><font color="#009900">// 
+      contains single char '\0'</font> <br>
+      <font color="#3333FF">cout &lt;&lt; "A\0BC" &lt;&lt; 'D';&nbsp;</font> <font color="#009900">// 
+      AD , because \0 signifies the end of the string</font> 
+      <p><font color="#3333FF">//-------------------</font>
+<br><font color="#3333FF">char hello[] = "Hello, ";</font>
+<br><font color="#3333FF">char name[256] = '';</font>
+<br><font color="#3333FF">cout &lt;&lt; "Enter your name: ";</font>
+<br><font color="#3333FF">cin >> name;</font>
+<br><font color="#3333FF">cout &lt;&lt; hello &lt;&lt; name &lt;&lt; endl;</font>
+<br><font color="#3333FF">//-------------------</font>
+<br><font color="#3333FF">i=0; do&nbsp; to[i] = from[i]; while (from[i++]);</font><font color="#009900">&nbsp;
+// copying strings</font>
+<br><font color="#3333FF">or</font>
+<br><font color="#3333FF">while (*to++ = *from++);</font><font color="#009900">
+// copying strings</font>
+<br><font color="#3333FF">//-------------------</font>
+<br><font color="#3333FF">// array of strings = 2-dim array:</font>
+<br>
+        <font color="#3333FF">char names[5][20] = { "name1&quot;,"name2","name3","name4","name5"};</font> 
+        <br>
+        <font color="#3333FF">//-------------------</font>
+<br><font color="#3333FF">//-------------------</font>
+<br><font color="#3333FF">char *arry;</font>
+<br><font color="#3333FF">arry = new char[256];</font>
+<br><font color="#3333FF">delete [] arry;&nbsp;</font><font color="#009900">
+// to use delete you must put [] between delete and arry to tell it to
+free all 256 bytes of memory allocated.</font></td>
+</tr>
+</table>
+
+<p>Using <b><font color="#CC0000">cin>></font></b> to input a string works,
+but it will terminate the string after it reads the first space.
+<br>The best way to handle this situation is to use the function <b><font color="#CC0000">cin.getline</font></b>.
+Technically cin is a class, and you are calling one of its member functions.
+The prototype for that function is:
+<br><font color="#3333FF">cin.getline(char *buffer, int length, char terminal_char);</font>
+<p>The <b><font color="#CC0000">char *buffer</font></b> is a pointer to
+the first element of the character array, so that it can actually be used
+to access the array. The int length is simply how long the string to be
+input can be at its maximum (how big the array is). The char terminal_char
+means that the string will terminate if the user inputs whatever that character
+is. Keep in mind that it will discard whatever the terminal character is.
+<p>It is possible to make a function call of <b><font color="#3333FF">cin.getline(arry,
+'\n');</font></b> without the length, or vice versa, <b><font color="#3333FF">cin.getline(arry,
+50);</font></b> without the terminal character. Note that \n is the way
+of actually telling the compiler you mean a new line, i.e. someone hitting
+the enter key.
+<p><b><u>For a example:</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#include &lt;iostream.h>
+<br>int main() {
+<br>&nbsp; char string[256];&nbsp;&nbsp; //A nice long string
+<br>&nbsp; cout&lt;&lt;"Please enter a long string: ";
+<br>&nbsp; cin.getline(string, 256, '\n'); //The user input goes into string
+<br>&nbsp; cout&lt;&lt;"Your long string was:"&lt;&lt;endl&lt;&lt;string;
+<br>&nbsp; return 0;
+<br>}</td>
+</tr>
+</table>
+Note:&nbsp; you are actually passing the address of the array when you
+pass string because arrays do not require a reference operator (&amp;)
+to be used to pass their address. Other than that, you could make \n any
+character you want (make sure to enclose it with single quotes to inform
+the compiler of its character status) to have the getline terminate on
+that character.
+<p><b><font color="#CC0000">String.h</font></b> is a header file that contains
+many functions for manipulating strings. One of these is the string comparison
+function.
+<p><b><font color="#3333FF">int strcmp(const char *s1, const char *s2);</font></b>&nbsp;
+// compares 2 strings, returns negative, zero or positive result
+<br><font color="#3333FF"><b>int strcmpi(const char *s1, const char *s2);</b>&nbsp;</font>
+// not case sensitive
+<br><b><font color="#3333FF">char *strcat(char *desc, char *src);&nbsp;&nbsp;</font></b>&nbsp;
+// string concatenate
+<br><b><font color="#3333FF">char *strupr(char *s);&nbsp;</font></b>&nbsp;
+// converts to uppercase
+<br><b><font color="#3333FF">char *strlwr(char *s);&nbsp;</font></b>&nbsp;
+// converts to lowercase
+<br>
+  <b><font color="#3333FF">size_t strlen(const char *s);</font></b>&nbsp; // the 
+  length of a string, minus the termating character(\0). 
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+    <td>#include &lt;iostream.h>&nbsp;&nbsp; // For cout <br>
+      #include &lt;string.h>&nbsp;&nbsp;&nbsp;&nbsp; // For many of the string 
+      functions <br>
+      int main()&nbsp; {
+<br>&nbsp; char name[50];
+<br>&nbsp; char lastname[50];
+<br>&nbsp; cout&lt;&lt;"Please enter your name: ";
+<br>&nbsp; cin.getline(name, 50, '\n');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//Use gets to input strings with spaces or&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//just to get strings after the user presses enter
+<br>&nbsp; if(!strcmpi("Alexander", name))&nbsp;&nbsp; // strcmpi returns
+0 for equal strings
+<br>&nbsp;&nbsp;&nbsp; cout&lt;&lt;"That's my name too."&lt;&lt;endl;&nbsp;
+<br>&nbsp; } else {&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp; cout&lt;&lt;"That's not my name.";&nbsp;
+<br>&nbsp; }&nbsp;
+<p>&nbsp;&nbsp; cout&lt;&lt;"What is your name in uppercase..."&lt;&lt;endl;&nbsp;
+<br>&nbsp; strupr(name);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//strupr converts the string to uppercase
+<br>&nbsp; cout&lt;&lt;name&lt;&lt;endl;&nbsp;
+<p>&nbsp; cout&lt;&lt;"And, your name in lowercase..."&lt;&lt;endl;
+<br>&nbsp; strlwr(name);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//strlwr converts the string to lowercase
+<br>&nbsp; cout&lt;&lt;name&lt;&lt;endl;
+<p>&nbsp; cout&lt;&lt;"Your name is "&lt;&lt;strlen(name)&lt;&lt;" letters
+long"&lt;&lt;endl;&nbsp; //strlen returns the length of the string
+<p>&nbsp; cout&lt;&lt;"Enter your last name:";
+<br>&nbsp; cin.getline(lastname, 50, '\n');
+<br>&nbsp; strcat(name, " ");&nbsp;&nbsp; // add space to the end
+<br>&nbsp; strcat(name, lastname);&nbsp;&nbsp;&nbsp; // add last name
+<br>&nbsp; cout&lt;&lt;"Your full name is "&lt;&lt;name;
+<br>&nbsp; return 0;
+<br>}</td>
+</tr>
+</table>
+
+<p><a NAME="text_file_io"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>text files read/write&nbsp;</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Reading/writing text files
+<p>C++ has two basic classes to handle files, <b><font color="#CC0000">ifstream</font></b>
+(input) and <b><font color="#CC0000">ofstream</font></b> (output). To use
+them, include the header file <b><font color="#3333FF">fstream.h</font></b>.
+<p>Declaration:
+<br><font color="#3333FF">ifstream a_file;</font>
+<br><font color="#3333FF">a_file.open()</font>
+<br><font color="#3333FF">a_file.close()</font>
+<br><font color="#3333FF">ifstream a_file("filename");&nbsp;</font>&nbsp;
+// declare and open the file for input in one command
+<p>Because C++ supports overloading operators, it is possible to use &lt;&lt;
+and >> in front of the instance of the class as if it were cout or cin.
+<br>For example:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#include &lt;fstream.h>
+<br>#include &lt;iostream.h>
+<p>int main() {
+<br>&nbsp; char str[10];
+<p>&nbsp; // writing to a file
+<br>&nbsp; ofstream a_file("example.txt");
+<br>&nbsp; a_file&lt;&lt;"This text will now be inside of example.txt";&nbsp;
+<br>&nbsp; a_file.close();&nbsp;
+<p>&nbsp; // reading from a file
+<br>&nbsp;&nbsp; ifstream b_file("example.txt");&nbsp;
+<br>&nbsp; b_file>>str;&nbsp;
+<br>&nbsp; cout&lt;&lt;str;&nbsp;
+<br>&nbsp; b_file.close();&nbsp;
+<br>}</td>
+</tr>
+</table>
+The default mode for opening a file with ofstream's constructor is to create
+it if it does not exist, or delete everything in it if something does exist
+in it. If necessary, you can give a second argument that specifies how
+the file should be handled.
+<br>For example:
+<br><b><font color="#3333FF">&nbsp; ofstream a_file("test.txt", ios::app);&nbsp;</font></b>&nbsp;
+// open for appending
+<p>Possible values:
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; ios::app -- Opens the file,
+and allows additions at the end</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; ios::ate -- Opens the file,
+but allows additions anywhere</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; ios::trunc -- Deletes everything
+in the file</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; ios::nocreate -- Does not
+open if the file must be created</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; ios::noreplace -- Does not
+open if the file already exists</font>
+<p><b><u>Example: reading text file</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#include &lt;stdlib.h>&nbsp; // header needed for exit()
+<br>#include &lt;fstream.h>
+<p>int main() {
+<br>&nbsp; const int MAX = 80;
+<br>&nbsp; char buf [MAX];
+<p>&nbsp; ifstrearm input ("somefile.txt");
+<br>&nbsp; if (! input) { cout &lt;&lt; "Error opening file\n"; exit(-1);
+}
+<br>&nbsp; while (input) {&nbsp;
+<br>&nbsp;&nbsp;&nbsp; input.getline(buf, MAX);
+<br>&nbsp;&nbsp;&nbsp; cout &lt;&lt; buf &lt;&lt; endl;
+<br>&nbsp; }
+<br>}</td>
+</tr>
+</table>
+
+<p><a NAME="binary_files"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>binary file read/write&nbsp;</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Example: writing/reading a binary file</u></b>
+<table BORDER CELLSPACING=0 CELLPADDING=5 BGCOLOR="#99FF99" >
+<tr>
+<td><b><u><font color="#CC0000">writing binary</font></u></b></td>
+
+<td><b><u><font color="#CC0000">reading binary</font></u></b></td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP>#include &lt;stdlib.h>&nbsp; // header needed
+for exit()
+<br>#include &lt;fstream.h>
+<p>int main() {
+<br>&nbsp; ofstrearm output ("somefile", ios::binary);
+<br>&nbsp; if (! output) { cout &lt;&lt; "Error opening file\n"; exit(-1);
+}
+<p>&nbsp; char text1[80] = "\n\tSome text\n";
+<br>&nbsp; char text2[80] = "\tSome other text";
+<br>&nbsp; char text3[80] = "\n\n\tAnd more\n";
+<p>&nbsp; output.write((char *) &amp;text1, sizeof(text1));
+<br>&nbsp; output.write((char *) &amp;text2, sizeof(text2));
+<p>&nbsp; for (int i=0;i&lt;sizeof(text3);i++) output.put(text3[i]);
+<br>&nbsp; for ( i=32;i&lt;256;i++) output.put((char) i);
+<br>&nbsp; output.close();
+<br>}</td>
+
+<td ALIGN=LEFT VALIGN=TOP>#include &lt;stdlib.h>&nbsp; // header needed
+for exit()
+<br>#include &lt;fstream.h>
+<p>int main() {
+<br>&nbsp; ifstrearm input ("somefile", ios::binary);
+<br>&nbsp; if (! input) { cout &lt;&lt; "Error opening file\n"; exit(-1);
+}
+<p>&nbsp; char text1[80], text2[80], text3[80];
+<p>&nbsp; input.read((char *) &amp;text1, sizeof(text1));
+<br>&nbsp; input.read((char *) &amp;text1, sizeof(text1));
+<p>&nbsp; for (int i=0;i&lt;sizeof(text3);i++) input.get(text3[i]);
+<br>&nbsp; char ch;
+<br>&nbsp; for ( i=32;i&lt;256;i++) {
+<br>&nbsp;&nbsp;&nbsp; if (i % 40 == 0) cout &lt;&lt; endl;
+<br>&nbsp;&nbsp;&nbsp; input.get(ch); cout &lt;&lt; ch;
+<br>&nbsp; }
+<br>&nbsp; output.close();
+<br>}</td>
+</tr>
+</table>
+
+<p><b><u>File pointer:</u></b>
+<br><b><font color="#3333FF">#include &lt;iomanip.h></font></b>
+<br><b><font color="#3333FF">long FP = input.tellg(); </font></b>// get
+file pointer
+<br><b><font color="#3333FF">input.seekg(0,ios::beg); </font></b>// set
+file pointer
+<br><b><font color="#3333FF">input.seekg(-,ios::end); </font></b>// set
+file pointer
+<p><b><font color="#3333FF">seekg(), tellg()</font></b> - set and get the
+value of a <b>get</b> pointer
+<br><b><font color="#3333FF">seekp(), tellp()</font></b> - set and get
+the value of a <b>put</b> pointer
+<p><b><u>Random Access to a File:</u></b>
+<br><b><font color="#3333FF">fstream myfile;</font></b>
+<br><b><font color="#3333FF">myfile.open("file_name", ios::app | ios::in
+| ios::out | ios::binary);</font></b>
+<p><a NAME="command_line_args"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>command line arguments&nbsp;</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Accepting command line arguments</u></b>
+<br><b><font color="#3333FF">int main(int argc, char* argv[])</font></b>
+- // argc - int number of arg values +1 , because argv[0] is full path
+name of the program itself
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#include &lt;fstream.h> //Needed to manipulate files
+<br>#include &lt;iostream.h>
+<br>#include &lt;io.h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Used to check file
+existence
+<br>int main(int argc, char * argv[])
+<br>{
+<br>&nbsp; if(argc!=2)
+<br>&nbsp; {
+<br>&nbsp;&nbsp;&nbsp; cout&lt;&lt;"Correct input is: filename";&nbsp;
+<br>&nbsp;&nbsp;&nbsp; return 0;&nbsp;
+<br>&nbsp; }&nbsp;
+<br>&nbsp; if(access(argv[1], 00)) //access returns 0 if the file can be
+accessed&nbsp;
+<br>&nbsp; {&nbsp;&nbsp;&nbsp;&nbsp; //under the specified method (00)
+<br>&nbsp;&nbsp;&nbsp; cout&lt;&lt;"File does not exist";&nbsp; //because
+it checks file existence
+<br>&nbsp;&nbsp;&nbsp; return 0;
+<br>&nbsp; }
+<br>&nbsp; ifstream the_file;&nbsp; //ifstream is used for file input
+<br>&nbsp; the_file.open(argv[1]); //argv[1] is the second argument passed
+in&nbsp;
+<br>&nbsp;&nbsp;&nbsp; //presumably the file name&nbsp;
+<br>&nbsp; char x;
+<br>&nbsp; the_file.get(x);&nbsp;
+<br>&nbsp; while(x!=EOF)&nbsp; //EOF is defined as the end of the file
+<br>&nbsp; {
+<br>&nbsp;&nbsp;&nbsp; cout&lt;&lt;x;
+<br>&nbsp;&nbsp;&nbsp; the_file.get(x);//Notice we always let the loop
+check x for the end of&nbsp;
+<br>&nbsp; }&nbsp; //file to avoid bad output when it is reached
+<br>&nbsp; the_file.close();&nbsp; //Always clean up
+<br>&nbsp; return 0;
+<br>}&nbsp;</td>
+</tr>
+</table>
+This program first checks to ensure the user added the second argument
+(a file name). It checks this, using the <b><font color="#CC0000">access</font></b>
+function, which accepts a file name and an access type, with 00 being a
+check for existence. This is not a standard C++ function (it may not work
+on all compilers). Then it creates an instance of the file input class,
+and it opens the second argument passed into main. <b><font color="#CC0000">get</font></b>
+is a standard function used in input and output that is used to input a
+single character into the character passed to it, or by returning the character.
+<b><font color="#CC0000">EOF</font></b>
+is simply the end of file marker, and x is checked to make sure that the
+next output is not bad.
+<p><a NAME="linked_lists_example"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Example - linked lists&nbsp;</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Linked lists</u></b>
+<br>consists of structures (nodes) pointing to the next node.
+<br>In memory it is often described as looking like this:
+<br>----------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ----------
+<br>- Data&nbsp;&nbsp; -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; >- Data&nbsp;&nbsp;
+-
+<br>----------&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp; ----------
+<br>- Pointer- - -&nbsp;&nbsp;&nbsp; - Pointer-
+<br>----------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ----------
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>struct node {
+<br>&nbsp; int x;
+<br>&nbsp; node *next;
+<br>};
+<p>int main() {
+<br>&nbsp; node *root;
+<br>&nbsp; root=new node;&nbsp;
+<br>&nbsp; root->next=NULL;&nbsp;
+<br>&nbsp; root->x=5;&nbsp;
+<br>&nbsp; return 0;&nbsp;
+<br>}&nbsp;</td>
+</tr>
+</table>
+
+<p>Here's what that looks like:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>struct node {
+<br>&nbsp; int x;
+<br>&nbsp; node *next;
+<br>};
+<p>int main() {
+<br>&nbsp; node *root;
+<br>&nbsp; node *conductor;&nbsp;
+<br>&nbsp; root=new node;
+<br>&nbsp; root->next=NULL;&nbsp;
+<br>&nbsp; root->x=12;
+<br>&nbsp; conductor=root;
+<br>&nbsp; if(conductor!=NULL) {
+<br>&nbsp;&nbsp;&nbsp; while(conductor->next!=NULL) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; conductor=conductor->next;&nbsp;
+<br>&nbsp;&nbsp;&nbsp; }
+<br>&nbsp; }
+<br>&nbsp; conductor->next=new node; //Creates a node at the end of the
+list
+<br>&nbsp; conductor=conductor->next; //Points to that node
+<br>&nbsp; conductor->next=NULL; //Prevents it from going any further
+<br>&nbsp; conductor->x=42;
+<br>}</td>
+</tr>
+</table>
+That is the basic code for traversing a list.
+<br>Example: ouputing the linked list:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>conductor=root;
+<br>if(conductor!=NULL) {
+<br>&nbsp; while(conductor->next!=NULL) {
+<br>&nbsp;&nbsp;&nbsp; cout&lt;&lt;conductor->x;
+<br>&nbsp;&nbsp;&nbsp; conductor=conductor->next;
+<br>&nbsp; }
+<br>&nbsp; cout&lt;&lt;conductor->x;
+<br>}</td>
+</tr>
+</table>
+The final output is necessary because the while loop will not run once
+it reaches the last node, but it will still be necessary to output the
+contents of the next node. Consequently, the last output deals with this
+<p><a NAME="recursion"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>recursion&nbsp;</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Recursion</u></b>
+<br>Recursion is defined as a function calling itself. Be careful. The
+computer keeps function calls on a stack and once too many are called without
+ending, the program will terminate. Try this:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#include &lt;iostream.h>
+<br>void recurse(int count) {
+<br>&nbsp; cout&lt;&lt;count;&nbsp;
+<br>&nbsp; recurse(count+1);&nbsp;
+<br>}&nbsp;
+<p>int main() {
+<br>&nbsp; recurse(1);&nbsp;&nbsp; //First function call, so it starts
+at one
+<br>&nbsp; return 0;&nbsp;
+<br>}</td>
+</tr>
+</table>
+
+<p><a NAME="function_var_numb_args"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>functions with variable nubmer of arguments&nbsp;</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Functions with variable-length argument lists</u></b>
+<br>Some library functions can accept a variable list of arguments (such
+as the venerable printf). You can write your own (for example to calculate
+average of a variable number of numbers). You would use the <b><font color="#CC0000">stdarg.h</font></b>
+header file. Place an ellipsis (which looks like '...') in place of the
+last argument. This will tell the compiler that the function should accept
+variable number of paramenters.
+<br>There are four parts needed:
+<br>&nbsp;- <b><font color="#CC0000">va_list</font></b> - datatype stores
+the list of arguments.
+<br>&nbsp;- <b><font color="#CC0000">va_start</font></b> - macro to initialize
+the list, accepts 2 arguments: a va_list and the name of the variable that
+directly precedes the ellipsis (...).
+<br>&nbsp;- <b><font color="#CC0000">va_arg</font></b> - returns the next
+argument in the list, accepts 2 args (a va_list and a variable type), and
+returns the next argument in the list in the form of whatever variable
+type it is told.
+<br>&nbsp;- <b><font color="#CC0000">va_end</font></b> - cleans up the
+variable argument list.
+<p><b><u>Example:</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#include &lt;stdarg.h>
+<br>#include &lt;iostream.h>
+<br>double average(int num, ...) {
+<br>&nbsp; va_list arguments;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// A place to store the list of arguments
+<br>&nbsp; va_start(arguments, num); // Initializing arguments to store
+all values
+<br>&nbsp; int sum=0;
+<br>&nbsp; for(int x=0; x&lt;num; x++)&nbsp; sum+=va_arg(arguments, double);
+<br>&nbsp; va_end(arguments);&nbsp;&nbsp;&nbsp;&nbsp; //Cleans up the list
+<br>&nbsp; return sum/(double)num;&nbsp; //Returns some number (typecast
+prevents trunctation)
+<br>}
+<p>int main() {
+<br>&nbsp; cout&lt;&lt;average(3, 12.2, 22.3, 4.5)&lt;&lt;endl;
+<br>&nbsp; cout&lt;&lt;average(5, 3.3, 2.2, 1.1, 5.5, 3.3)&lt;&lt;endl;
+<br>&nbsp; return 0;
+<br>}</td>
+</tr>
+</table>
+
+<p><a NAME="splitting_into_many_files"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>splitting program into separate files&nbsp;</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Splitting program into separate files:</u></b> - put functions
+declarations in a header file - and include it where necessary.
+<br>Then you can compile them together:
+<br><b><font color="#3333FF">c++&nbsp;&nbsp; f1.cpp&nbsp;&nbsp; f2.cpp&nbsp;&nbsp;
+f3.cpp</font></b>
+<p><b><u>myheader.h:</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#include &lt;iostream.h>
+<p>void f1();
+<br>void f2();
+<br>void f3();</td>
+</tr>
+</table>
+
+<p><b><u>f1.cpp:</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#include &lt;myheader.h>
+<p>void main() { cout &lt;&lt; 1; f2(); }
+<br>void f1() { f3(); }</td>
+</tr>
+</table>
+
+<p><b><u>f2.cpp:</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#include &lt;myheader.h>
+<br>void f2() { f1(); }</td>
+</tr>
+</table>
+
+<p><b><u>f3.cpp:</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#include &lt;myheader.h>
+<br>void f3() { cout &lt;&lt; 3; }</td>
+</tr>
+</table>
+
+<p><font color="#3333FF"><b>static</b> int f();</font>&nbsp; // static
+means visible only in the current file.
+<br><b><font color="#3333FF">extern void f();</font></b> // extern just
+says that the function is described elsewhere. It is not really needed.
+<br>&nbsp;
+<p><b><u>input / output:</u></b>
+<br><b><font color="#3333FF">cin, cout, cerr</font></b>
+<br><b><font color="#3333FF">cin.unsetf(ios::skipws);</font></b>&nbsp;
+// not to skip whitespace
+<br><b><font color="#3333FF">cin.eof()</font></b> - special function to
+detect end of file
+<br><b><u>cin.bad()</u></b> - checks success
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>char c = ' ';
+<br>while(1) {
+<br>&nbsp; cin >> c;
+<br>&nbsp; if (cin.eof()) break;
+<br>&nbsp; if (cin.bad()) { cerr &lt;&lt; "Input Error\n"; break; }
+<br>&nbsp; cout &lt;&lt; c;
+<br>&nbsp; if (cout.bad()) { cerr &lt;&lt; "Output Error\n"; break; }
+<br>}</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<p><a NAME="misc"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>misc&nbsp;</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>// --------------------------
+<br>(*p).Height = 55;
+<br>strcpy(p->Name,"somename");
+<br>// --------------------------
+<br>setw(20) - sets width of the next output
+<br><font color="#3333FF">#include &lt;iostream.h></font>
+<br><font color="#3333FF">#include &lt;iomanip.h></font>
+<br><font color="#3333FF">cout &lt;&lt; setw(20) &lt;&lt; "something" &lt;&lt;
+setw(12) &lt;&lt; "something else"</font>
+<br>// --------------------------
+<br><font color="#3333FF">&amp;a[i]&nbsp;&nbsp;&nbsp; </font><font color="#000000">same
+as</font><font color="#3333FF">&nbsp;&nbsp;&nbsp; &amp;(a[i])</font>
+<br><font color="#3333FF">x[y]&nbsp;&nbsp;&nbsp; </font><font color="#000000">same
+as</font><font color="#3333FF">&nbsp;&nbsp; *(x+y)</font>
+<br><font color="#3333FF">x[4]&nbsp;&nbsp; </font><font color="#000000">same
+as</font><font color="#3333FF">&nbsp;&nbsp; 4[x]</font>
+<br>// --------------------------
+<br><font color="#3333FF">Person *p = A+2;&nbsp; // pointer initializing</font>
+<br><font color="#3333FF">(p-2) -> Name</font>
+<br><font color="#3333FF">&amp;p[-2]->Name</font>
+<br><font color="#3333FF">p[-2].Name</font>
+<br><font color="#3333FF">(++p)->Name</font>
+<br>// --------------------------
+<br><font color="#3333FF">union {</font>
+<br><font color="#3333FF">&nbsp; Person P[500];</font>
+<br><font color="#3333FF">&nbsp; Mountain M[1000];</font>
+<br><font color="#3333FF">} U1;</font>
+<br>// --------------------------
+<p><a NAME="OOP_classes_constructors_destructor"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>OOP - classes, constructors, destructor.&nbsp;</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>OOP = Object Oriented Programming.&nbsp; Main idea - to make code modular
+and reusable. You keep methods close to the data they working on. You use
+inheritance to simplify development.&nbsp; While inheriting, you can override
+methods (polymorphism).
+<p>C++&nbsp; =&nbsp;&nbsp; C&nbsp;&nbsp;&nbsp; <b><font color="#CC0000">+</font></b>&nbsp;&nbsp;&nbsp;
+one big addition (objects)&nbsp;&nbsp;&nbsp; <b><font color="#CC0000">+</font></b>&nbsp;&nbsp;&nbsp;
+bunch of small additions.
+<br><b><u>Classes</u></b> = definitions (templates) of objects.
+<br>Class lists data structures (<b><u>members</u></b>) and functions (called
+<b><u>methods</u></b>).
+<br>Objects are instances of classes.
+<br>Varialbes in classes can be public, protected or private.
+<br>Classes should always contain two functions: a constructor (named as
+class) and a destructor (named&nbsp;&nbsp; ~class_name).
+<br>NEITHER constructors NOR destructors RETURN AN ARGUMENT!
+<br>Example of a class definition:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#include &lt;iostream.h>
+<p>class Computer {
+<br>&nbsp; public:&nbsp;&nbsp; //This restriction acts on all definitions
+under this, until a new type of restriction is placed
+<br>&nbsp;&nbsp;&nbsp; Computer();&nbsp;&nbsp; //Constructor
+<br>&nbsp;&nbsp;&nbsp; ~Computer();&nbsp; //Destructor
+<br>&nbsp;&nbsp;&nbsp; void setspeed(int p);&nbsp; // member function -
+will be defined outside
+<br>&nbsp;&nbsp;&nbsp; int readspeed();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// member function - will be defined outside
+<p>&nbsp; protected:
+<br>&nbsp;&nbsp;&nbsp; int processorspeed;
+<br>};&nbsp;&nbsp; // end of class definition - note a semicolon !!
+<p>Computer::Computer() { //Constructors can accept arguments, but this
+one does not
+<br>&nbsp; processorspeed = 0;
+<br>}
+<p>Computer::~Computer() {&nbsp; //Destructors do not accept arguments
+<br>}&nbsp;
+<p>void Computer::setspeed(int p) {&nbsp;
+<br>&nbsp;&nbsp; processorspeed = p;
+<br>}
+<p>int Computer::readspeed()&nbsp; {&nbsp;
+<br>&nbsp; return processorspeed;
+<br>}
+<p>int main() {
+<br>&nbsp; Computer compute;&nbsp; // create an instance of a class (an
+object)
+<br>&nbsp; compute.setspeed(100);&nbsp;
+<br>&nbsp; cout&lt;&lt;compute.readspeed();
+<br>&nbsp; return 0;
+<br>}</td>
+</tr>
+</table>
+
+<p><b><u>Notes about constructors:</u></b>
+<br>&nbsp;&nbsp;&nbsp; A class may have multiple constructors.
+<br>&nbsp;&nbsp;&nbsp; When you create an instance - the arguments of that
+instance determine selection of the appropriate constructor (if there are
+more than one constructor).
+<br>&nbsp;&nbsp;&nbsp; Default constructor - a constructor with no parameters
+when all parameters have default values.
+<br>&nbsp;&nbsp;&nbsp; If the class doesn't have a constructor, C++ creates
+a default one.
+<br>&nbsp;&nbsp;&nbsp; Copy constructor - one of parameters has the type
+of the class
+<br>&nbsp;&nbsp;&nbsp; Array of instances - requires the use of the default
+constructor
+<p><b><u>Destructor:</u></b>
+<br>&nbsp;&nbsp;&nbsp; A class may have only one destructor - the name
+is&nbsp; ~className
+<br>&nbsp;&nbsp;&nbsp; If you don't provide a destructor - C++ will create
+a default one for you
+<br>&nbsp;&nbsp;&nbsp; Use destructor to free memory, close opened files,
+and do other cleaning tasks
+<p><b><u>Note:</u></b>
+<br>&nbsp; Same way you define class - you can also define a structure.
+There are two differences:
+<br>&nbsp;&nbsp;&nbsp; = use the word "struct" instead of "class"
+<br>&nbsp;&nbsp;&nbsp; = by default:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <u>the members of a structure
+are public</u>,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <u>the members of a class
+are private</u>.
+<p><b><u>Note:</u></b>
+<br>The keyword "<b><font color="#3333FF">this</font></b>" may be used
+in member functions. It is the pointer to an object which member function
+is called.
+<p>Note: if you have constructor(s) with just one argument - you can initialize
+the class like this:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>class mountain {
+<br>&nbsp;&nbsp; public:
+<br>&nbsp;&nbsp; mountain(char *);
+<br>&nbsp;&nbsp; //...
+<br>};
+<p><b><font color="#3333FF">mountain E = "Everest";</font></b>&nbsp; //
+this will use the constructor with one parameter
+<br>&nbsp;</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<p><a NAME="friend_nested_static_namespace"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>friend, nested, static, namespace</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u><font color="#000099">friend </font><font color="#000000">function</font></u></b>
+- a regular function, having an instance of a class as one of its parameters.
+<br>friend function has access to all members of the class (even the private
+ones).
+<br>A function can be a friend of more than one class
+<br>A member functioin of one class can be a friend for another class
+<br>If you want to make all functions of one class to be friends of another
+class - just make the whole class a friend:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>class mountain {
+<br>&nbsp;&nbsp; friend class continent;&nbsp; // continent is a friend
+of mountain
+<br>&nbsp;&nbsp; // ...
+<br>};
+<p>class continent { .. };
+<br>&nbsp;</td>
+</tr>
+</table>
+
+<p><b><u>Note</u></b>:
+<br>&nbsp; If class A is a friend of class B, this doesn't mean that class
+B is necessarily a friend of class A. But it can be.
+<p><b><u>Note</u></b>:
+<br>&nbsp; there may be a member function and external friend function
+with the same name. There is no confusion, because their fully qualified
+names (with namespace prepended) are different.
+<br>&nbsp;
+<p><b><u>Nested Data Types:</u></b>
+<br>&nbsp; C++ allows to declare enumerated types, structures, and classes
+inside other classes. Their fully qualified name starts with the name of
+the external (host) class, for example:&nbsp; <b><font color="#3333FF">Window::Rectangle</font></b>.
+<p><b><u>static members (data and functions):</u></b>
+<br>static - belongs to a class - not to an instance.
+<br>&nbsp;&nbsp; <b><font color="#CC0000">static data</font></b> - there
+is only one copy of this data, regardless of how many objects of this class
+are created. It may be used for counting class instances, shared information,
+iterators, shared error status, instance communication, etc.
+<br><b><u>Note</u></b>: (important): The declaration of the static member
+in a class does NOT define it. You have to define/initialize a static member
+outside the class. For example:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 BGCOLOR="#CCFFFF" >
+<tr>
+<td>class Account {
+<br>&nbsp; public:
+<br>&nbsp;&nbsp;&nbsp; // ...
+<br>&nbsp; private:
+<br>&nbsp;&nbsp;&nbsp; static int deposits;
+<br>};
+<br>&nbsp;
+<p><font color="#CC0000">// defining and initializing of the static variable.&nbsp;</font>
+<br><font color="#CC0000">// Note, that this works even though deposits
+is a private variable</font>
+<br>int Account::deposits = 0;&nbsp;
+<br>&nbsp;</td>
+</tr>
+</table>
+
+<p>&nbsp; <b><font color="#CC0000">static member functions</font></b>:
+- is used to access nonpublic static data members (which are usually made
+protected) and other static functions. It can not use the pointer "this",
+because it doesn't depend on a specific object.
+<p><b><u>namespace feature</u></b>
+<br>You can define names for classes, variables, types in different namespaces.
+<br>If <b><font color="#000099">NN</font></b> is the name of a namepsace,
+and <b><font color="#000099">cc</font></b> - name of the variable defined
+in this namespace, then
+<br>&nbsp; <b><font color="#000099">NN::cc</font></b>
+<br>is a fully qualified name for this variable.
+<br>The default global namespace is an empty string, so you can write:
+<br>&nbsp;&nbsp;&nbsp; <b><font color="#000099">::cc</font></b>&nbsp;&nbsp;
+or&nbsp; simply&nbsp; <b><font color="#000099">cc</font></b>
+<br>The standard library is defined in the namespace <b><font color="#000099">std</font></b>
+<p><a NAME="operator_overloading"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Operator overloading&nbsp;</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Operators:</u></b>
+<br>&nbsp; You can declare operators in a class - essentially member functions
+that have special declaration and usage syntax.
+<br>&nbsp; For example:
+<br>&nbsp;&nbsp;&nbsp;&nbsp; operator+ ( )
+<br>&nbsp;&nbsp;&nbsp;&nbsp; operator- ( )
+<br>&nbsp;&nbsp;&nbsp;&nbsp; etc.
+<p>&nbsp; Here is an example of declaration:
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>#include &lt;iostream.h>
+<p>class number {
+<br>&nbsp; public:
+<br>&nbsp; int n;
+<br>&nbsp; number( ) {n=1;}
+<br>};
+<p>number&nbsp; operator+&nbsp; (number N1, number N2) {
+<br>&nbsp; number T;
+<br>&nbsp; cout&lt;&lt;"\nAdding two numbers ";
+<br>&nbsp; T.n = N1.n + N2.n;
+<br>&nbsp; return T;
+<br>}
+<p>number&nbsp; operator+&nbsp; (int N1, number N2) {
+<br>&nbsp; number T;
+<br>&nbsp; cout&lt;&lt;"\nAdding integer to number ";
+<br>&nbsp; T.n = N1 + N2.n;
+<br>&nbsp; return T;
+<br>}
+<p>void main( ) {
+<br>&nbsp; number X,Y,Z;
+<p>&nbsp; Z = operator+(X,Y);&nbsp; // explicit call to operator+( ) function
+<br>&nbsp;&nbsp;&nbsp; cout&lt;&lt;Z.n;
+<br>&nbsp; Z = X + Y;&nbsp; // implicit call
+<br>&nbsp;&nbsp;&nbsp; cout&lt;&lt;Z.n;
+<p>&nbsp; Z = operator+(1,Y);&nbsp; // explicit call to operator+( ) function
+<br>&nbsp;&nbsp;&nbsp; cout&lt;&lt;Z.n;
+<br>&nbsp; Z = 1 + Y;&nbsp; // implicit call
+<br>&nbsp;&nbsp;&nbsp; cout&lt;&lt;Z.n
+<br>;
+<br>&nbsp; cout&lt;&lt;endl;
+<br>}
+<p><b><u>Output:</u></b>
+<br>Adding two numbers 2
+<br>Adding two numbers 2
+<br>Adding integer to number 2
+<br>Adding integer to number 2
+<br>&nbsp;</td>
+</tr>
+</table>
+
+<p>Using <b><u>friend operator function (to access private nenbers):</u></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td><font color="#000099">#include &lt;iostream.h></font>
+<p><font color="#000099">class number {</font>
+<br><font color="#000099">&nbsp; int n; //private</font>
+<br><font color="#000099">&nbsp; public:</font>
+<br><font color="#000099">&nbsp; number( ) { n=1;}</font>
+<br><font color="#000099">&nbsp; friend number&amp;&nbsp; operator+&nbsp;
+(number&amp; , number&amp;);</font>
+<br><font color="#000099">&nbsp; friend ostream&amp;&nbsp; operator&lt;&lt;&nbsp;
+(ostream&amp; , number&amp;);</font>
+<br><font color="#000099">};</font>
+<p><font color="#000099">number T; // temporary global object</font>
+<p><font color="#000099">number&amp;&nbsp; operator+&nbsp; (number&amp;&nbsp;
+N1, number&amp;&nbsp; N2) {</font>
+<br><font color="#000099">&nbsp; T.n = N1.n + N2.n;</font>
+<br><font color="#000099">&nbsp; return T;</font>
+<br><font color="#000099">}</font>
+<p><font color="#000099">ostream&amp;&nbsp; operator&lt;&lt;&nbsp; (ostream&amp;&nbsp;
+Cout, number&amp;&nbsp; N) {</font>
+<br><font color="#000099">&nbsp; Cout &lt;&lt; ' ' &lt;&lt; N.n &lt;&lt;
+' ';</font>
+<br><font color="#000099">&nbsp; return Cout;</font>
+<br><font color="#000099">}</font>
+<p><font color="#000099">void main ( ) {</font>
+<br><font color="#000099">&nbsp; number&nbsp; X, Y, Z = X + Y;</font>
+<br><font color="#000099">&nbsp; cout &lt;&lt; X &lt;&lt; '+' &lt;&lt;
+Y &lt;&lt; '=' &lt;&lt; Z;&nbsp; // 1 + 1 = 2</font>
+<br><font color="#000099">}</font></td>
+</tr>
+</table>
+
+<p><a NAME="abstract_class_parent_child_hierarchy"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>abstract class, parent-child hierarchy</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>abstract classes</u></b>
+<br>class is abstract if it has at least one pure virtual function
+<br>(function is made "pure" by using initializer "=0"), for example:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td><font color="#000099">class Shape {</font>
+<br><font color="#000099">&nbsp;&nbsp; public:</font>
+<br><font color="#000099">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; virtual
+void draw( ) = 0;</font>&nbsp; <font color="#990000">// pure virtual function</font>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#990000">// more definitions</font>
+<br><font color="#000099">}</font></td>
+</tr>
+</table>
+An abstract class can be used only as a base for other classes - or as
+an interface (without exposing any implementation details).
+<p><b><u>class hierarchy (inheritance)</u></b>
+<br>Here is how to declare a descendant class ( <b>MyChildClass</b> ) from
+a parent class ( <b>MyParentClass</b> ):
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>class MyChildClass : public MyParentClass {
+<br>&nbsp;&nbsp;&nbsp; public:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // constructors, destructor,
+members, member functions
+<br>&nbsp;&nbsp;&nbsp; protected:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // constructors, destructor,
+members, member functions
+<br>&nbsp;&nbsp;&nbsp; private:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // constructors, destructor,
+members, member functions
+<br>}</td>
+</tr>
+</table>
+
+<p>children inherit data and function members from parent(s)
+<br>&nbsp;
+<p><b><u>multiple inheritance</u></b>
+<br>it is possible to have several parents, for example:
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>class MyChildClass : MyParentClass1, MyParentClass2 {
+<br>&nbsp; // ...&nbsp;
+<br>}</td>
+</tr>
+</table>
+
+<p>The parents in the list may have prefixes like "virtual" or/and "public",
+for example:
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>Class MyObject {..}
+<br>class Salary : virtual public MyObject { ... }
+<br>class Person : virtual public MyObject { ... }
+<br>class Employee : virtual public Person, virtual public Salary { ....}</td>
+</tr>
+</table>
+
+<p><u>Note:</u>
+<br>&nbsp; "virtual" tells the compiler that parents share common ancestors
+<br>
+&nbsp; "public" tells the compiler that class instances can access
+the public members (of the parent). Without this word, the inheritance will be by default private, so only the member
+functions of children can access the public members of the parent class.
+<p><a NAME="private_protected_public_encapsulation"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>private,protected, public (inheritance and encapsulation)</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>access modifiers: public, protected, private
+<br>&nbsp; - private is a default for members of a class
+<br>&nbsp; - public is a default for members of a struct
+<br>&nbsp; - the access level does not apply when defining the member outside
+of its class (this is used when defining the static members)
+<p><b><u>members</u></b>:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 BGCOLOR="#CCFFFF" >
+<tr>
+<td><b><u>public member</u></b>:
+<br>&nbsp;&nbsp;&nbsp;&nbsp; can be accessed from anywhere, including from
+outside the class
+<p><b><u>protected member</u></b>:
+<br>&nbsp; can be accessed within the class and within the derived classes
+<br>
+ (compare with Java where protected means accessible from derived classes and to others in this package).
+<p><b><u>private member</u></b>:
+  <br>
+  &nbsp; can be accessed only within the class <br>&nbsp;
+</td>
+</tr>
+</table>
+
+<p><b><u>classes</u></b>:
+<p>class MyAccount: <b>public</b> Account;
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 BGCOLOR="#CCFFFF" >
+<tr>
+<td><b><u>public inheritance</u></b>:
+<br>&nbsp;&nbsp; This is an "is a" relationship between derived classes
+and the base class
+<br>&nbsp;&nbsp; - <b>public</b> members in the base class remain <b>public</b>
+in the derived classes.
+<br>&nbsp;&nbsp; - <b>protected</b> members in the base class remain <b>protected</b>
+in the derived classes
+<p><b><u>protected inheritance</u></b>:
+<br>&nbsp;&nbsp; This is an "implemented in terms of"&nbsp; relationship
+between derived classes and the base class
+<br>&nbsp;&nbsp; - <b>public</b> members in the base class become <b>protected</b>
+in the derived classes.
+<br>&nbsp;&nbsp; - <b>protected</b> members in the base class remain <b>protected</b>
+in the derived classes
+<p><b><u>private inheritance</u></b>:
+<br>
+        &nbsp;&nbsp; This is a stricter "implemented in terms of"&nbsp; relationship 
+        between derived classes and the base class <br>
+        &nbsp;&nbsp; - <b>public</b> members in the base class become <b>private</b>
+in the derived classes.
+<br>&nbsp;&nbsp; - <b>protected</b> members in the base class become <b>private</b>
+in the derived classes</td>
+</tr>
+</table>
+
+<p><a NAME="virtual_functions"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>virtual functions</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Imagine that we create a generic class (Parent) with functions which will be 
+  overriden in children. Imagine that we have an array of pointers of the Parent 
+  type, and we point these pointers to objects of different derived classes. Imagine 
+  that we want to call certain method on all these objects. And instead of simply 
+  calling the same generic method from the Parent, - we want the compiler to do 
+  some extra work and trace to call different overriding methods from child classes. 
+  So that the method should correspond to the object. To achieve that we should 
+  add the word "<b><font color="#3333FF">virtual</font></b>" in front of the function 
+  declaration. 
+<p>So the word "virtual function" means that the function declaration serves
+like an interface. It can be overriden (re-defined) in the derived classes.
+If the function is virtual, than the compiler and loader will call the
+correct function for an object.
+<p>- virtual function can override a virtual or nonvirtual member function
+that is inherited from a parent class
+<br>- "once virtual - always virtual" - a virtual parent in parent can
+not be overriden in children by a nonvirtual function.
+<br>- you may overload a virtual function with a nonvirtual function. However
+the children can inherit only the virtual function.
+<p>Here is an example showing the difference in virtual / non-virtual&nbsp;
+behaviors:
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 BGCOLOR="#CCFFFF" >
+<tr>
+<td>#include &lt;iostream.h>
+<p>class P {&nbsp; // Parent
+<br>&nbsp; public:
+<br>&nbsp; void fun() { cout&lt;&lt;"p_fun"&lt;&lt;endl; }
+<br>&nbsp; void <b><font color="#3333FF">virtual</font></b> vfun() { cout&lt;&lt;"p_vfun"&lt;&lt;endl;
+}
+<br>};
+<p>class C : public P {&nbsp;&nbsp; // Child class derived from Parent
+<br>&nbsp; public:
+<br>&nbsp; void fun() { cout&lt;&lt;"c_fun"&lt;&lt;endl; }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009900">&nbsp;&nbsp;
+// override in child</font>
+<br>&nbsp; void <b><font color="#3333FF">virtual</font></b> vfun() { cout&lt;&lt;"c_vfun"&lt;&lt;endl;
+}<font color="#009900">&nbsp;&nbsp; // override in child</font>
+<br>};
+<p>main() {
+<br>&nbsp; P *pp; // pointer of parent type
+<br>&nbsp; C c, *pc;
+<br>&nbsp; pc = &amp;c;&nbsp;
+<br>&nbsp; pp = &amp;c;&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp; // pointer pp is of type "parent" - but points
+to a child class object
+<br>&nbsp;&nbsp;&nbsp;&nbsp; // question - will it call the function of
+a child or of a parent?
+<br>&nbsp;&nbsp;&nbsp;&nbsp; // see below - the answer is different for
+non-virtual or virtual functions
+<p>&nbsp; //&nbsp; non-virtual
+<br>&nbsp; cout&lt;&lt;"fun():"&lt;&lt;endl;
+<br>&nbsp; cout&lt;&lt;"child&nbsp;&nbsp; : ";&nbsp;&nbsp;&nbsp;&nbsp;
+c.fun();
+<br>&nbsp; cout&lt;&lt;"child&nbsp; p: "; pc->fun();&nbsp;&nbsp; <font color="#009900">//
+(*pc).fun();</font>
+<br>&nbsp; cout&lt;&lt;"parent p: "; pp->fun();&nbsp;&nbsp; <font color="#009900">//
+(*pp).fun();</font>
+<p>&nbsp; //&nbsp; virtual
+<br>&nbsp; cout&lt;&lt;"virtual vfun():"&lt;&lt;endl;
+<br>&nbsp; cout&lt;&lt;"child&nbsp;&nbsp; : ";&nbsp;&nbsp;&nbsp;&nbsp;
+c.vfun();
+<br>&nbsp; cout&lt;&lt;"child&nbsp; p: "; pc->vfun();&nbsp; <font color="#009900">//
+(*pc).vfun();</font>
+<br>&nbsp; cout&lt;&lt;"parent p: "; pp->vfun();&nbsp; <font color="#009900">//
+(*pp).vfun();</font>
+<br>&nbsp; cout&lt;&lt;endl;
+<br>}
+<p><font color="#CC0000"><b><u>output</u></b>:</font>
+<br><font color="#CC0000">fun():</font>
+<br><font color="#CC0000">child&nbsp;&nbsp; : c_fun</font>
+<br><font color="#CC0000">child&nbsp; p: c_fun</font>
+<br><font color="#CC0000">parent p: p_fun&nbsp;&nbsp; </font><font color="#009900">//
+note here it calls the function of the parent</font>
+<br><font color="#CC0000">virtual vfun():</font>
+<br><font color="#CC0000">child&nbsp;&nbsp; : c_vfun</font>
+<br><font color="#CC0000">child&nbsp; p: c_vfun</font>
+<br><font color="#CC0000">parent p: c_vfun&nbsp;&nbsp; </font><font color="#009900">//
+and here it calls the function of the child, because the function is virtual</font></td>
+</tr>
+</table>
+
+<p>Virtual function allow for <b><u>polymorphism</u></b>, one of the great buzz 
+  words in Object Oriented programming. What this means is that objects of different 
+  derived classes can respond to the exact same message in different ways. In 
+  the example above, a child class "C" is derived from a parent class "P". A pointer 
+  "pp" of the parent type is pointed to an object "c" of the child type. Now if 
+  this pointer is used to call a function which is defined in the parent and overriden 
+  in the child, then the question is: which function will be used: <br>
+  &nbsp;&nbsp; - the one defined in parent (as the pointer is of the
+parent type)
+<br>&nbsp;&nbsp; - or the one defined in the child (because the object
+is of the child type).
+<br>Please note the diffference when this pointer is used to call a virtual
+or non-virtual functions. Note that for virtual function the <u>method
+of the child</u> is called. Which is probably what you want. Thus with
+a virtual function, the class of <u>the object pointed to</u> determines
+the function definition to be used.
+<p><a NAME="exceptions"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Exceptions</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Exception classes:
+<br>&nbsp;&nbsp; Skeleton classes - no members
+<br>&nbsp;&nbsp; Classes with data members
+<p>Standard Exceptions:
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=0 BGCOLOR="#FFFFCC" >
+<tr BGCOLOR="#FFCC99">
+<td><b>Exception Class</b></td>
+
+<td><b>Parent Class</b></td>
+
+<td><b>Purpose</b></td>
+</tr>
+
+<tr>
+<td>exception</td>
+
+<td>None</td>
+
+<td>The base class for all of the exceptions thrown by the C++ standard
+library</td>
+</tr>
+
+<tr>
+<td>logic_error</td>
+
+<td>Exception</td>
+
+<td>Reports logical program errors that can detected before the program
+proceeds to execute subsequent statements</td>
+</tr>
+
+<tr>
+<td>runtime_error</td>
+
+<td>Exception</td>
+
+<td>Reports runtime errors that are detected when the program executes
+certain statements</td>
+</tr>
+
+<tr>
+<td>ios::failure</td>
+
+<td>Exception</td>
+
+<td>Reports stream I/O errors</td>
+</tr>
+
+<tr>
+<td>domain_error</td>
+
+<td>logic_error</td>
+
+<td>Reports infraction of a condition</td>
+</tr>
+
+<tr>
+<td>invalid_argument</td>
+
+<td>logic_error</td>
+
+<td>Signals that the argument of a function is not valid</td>
+</tr>
+
+<tr>
+<td>length_error</td>
+
+<td>logic error</td>
+
+<td>Signals that an operation attempts to create an object with a length
+that exceeds or is equal to NPOS (the largest value of the type size size_t)</td>
+</tr>
+
+<tr>
+<td>out_of_range</td>
+
+<td>logic_error</td>
+
+<td>Signals that an argument is out of range</td>
+</tr>
+
+<tr>
+<td>bad_cast</td>
+
+<td>logic_error</td>
+
+<td>Report an invalid dynamic cast expression during runtime identification</td>
+</tr>
+
+<tr>
+<td>bad_typeid</td>
+
+<td>logic_error</td>
+
+<td>Reports a null pointer in a type identifying expression</td>
+</tr>
+
+<tr>
+<td>range_error</td>
+
+<td>runtime_error</td>
+
+<td>Signals invalid postcondition</td>
+</tr>
+
+<tr>
+<td>overflow_error</td>
+
+<td>runtime_error</td>
+
+<td>Signals arithmetic overflow</td>
+</tr>
+
+<tr>
+<td>bad_alloc</td>
+
+<td>runtime_error</td>
+
+<td>Signals the failure of dynamic allocation</td>
+</tr>
+</table>
+
+<p><b><u>Throwing an exception:</u></b>
+<br><b><font color="#000099">throw exceptionObject;</font></b>
+<p><b><font color="#000099">try {</font></b>
+<br><b><font color="#000099">&nbsp; // throw myError</font></b>
+<br><b><font color="#000099">}</font></b>
+<br><b><font color="#000099">catch(int myError) {</font></b>
+<br><b><font color="#000099">&nbsp; // process error here</font></b>
+<br><b><font color="#000099">}</font></b>
+<p><a NAME="templates"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>templates&nbsp;</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Often you need to have a class to do the same operation - but with different 
+  data types.&nbsp; Then you can define a template one time - and then use it 
+  in the code with different types: 
+<p>Example: let's create a template to hold 3 objects - and calculate their
+sum( ).
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 BGCOLOR="#CCFFFF" >
+<tr>
+<td>template &lt;typename T>
+<br>class&nbsp; coolHolder {&nbsp;
+<br>&nbsp; public:&nbsp;
+<br>&nbsp; T&nbsp; i,j,k;
+<br>&nbsp; T sum( ) { return i + j + k; }
+<br>};</td>
+</tr>
+</table>
+
+<p>Now here is how we can use this template with different types (int ,
+float):
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 BGCOLOR="#CCFFFF" >
+<tr>
+<td>void main( ) {
+<p>&nbsp; coolHolder&lt;int> IntHolder;
+<br>&nbsp; IntHolder.i=1; IntHolder.j=2; IntHolder.k=3;
+<br>&nbsp; cout&lt;&lt;IntHolder.i&lt;&lt; endl;
+<p>&nbsp; coolHolder&lt;int> AnotherIntHolder;
+<br>&nbsp; AnotherIntHolder.i=4; AnotherIntHolder.j=5; AnotherIntHolder.k=6;
+<br>&nbsp; cout&lt;&lt;IntHolder.i&lt;&lt; endl;
+<p>&nbsp; coolHolder&lt;float> FloatHolder;
+<br>&nbsp; FloatHolder.i=3.14; FloatHolder.j=4.14; FloatHolder.k=5.14;
+<br>&nbsp; cout&lt;&lt;IntHolder.i&lt;&lt; endl;
+<p>}</td>
+</tr>
+</table>
+
+<p>The code of functions in template can be declared inside the template
+class declaration, but detailed later outside the class declaration, for
+example:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 BGCOLOR="#CCFFFF" >
+<tr>
+<td>template &lt;typename T>
+<br>class&nbsp; myclass {&nbsp;
+<br>&nbsp; protected: T x;
+<br>&nbsp; public:&nbsp;
+<br>&nbsp;&nbsp;&nbsp; T&amp; getx( );&nbsp; <font color="#CC0000">// function
+returns a reference. This allows to avoid unnecessary copying.</font>
+<br>&nbsp;&nbsp;&nbsp; void setx(T);
+<br>};
+<p>template &lt;typename T>
+<br>T&nbsp; &amp;myclass&lt;T>::getx( ) {&nbsp; <font color="#CC0000">//
+this is a template for getx( )</font>
+<br>&nbsp; return x;
+<br>}
+<p>template &lt;typename T>
+<br>void&nbsp; &amp;myclass&lt;T>::setx(T newx) {&nbsp; <font color="#CC0000">//
+this is a template for setx( )</font>
+<br>&nbsp; x= newx;
+<br>}
+<br>&nbsp;
+<p>void main( )
+<br>&nbsp; myclass&lt;int>&nbsp; ss;
+<br>&nbsp; ss.setx(10);
+<br>&nbsp; cout&nbsp; &lt;&lt;&nbsp; ss.getx( ) &lt;&lt; endl;
+<br>}</td>
+</tr>
+</table>
+
+<p>Note: If you include a static member in a template - then each class
+that you create using this template will get its own static member. As
+usually with static data members, you have to define the storage (initialize
+the variable) outside of the class declaration. Example:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 BGCOLOR="#CCFFFF" >
+<tr>
+<td>#include &lt;iostream.h>
+<br>#include &lt;stdlib.h>
+<p>// first, class declaration template
+<br>template &lt;typename T>
+<br>class&nbsp; myClass {&nbsp;
+<br>&nbsp; public:&nbsp;
+<br>&nbsp; static T mystatvar;
+<br>};
+<p>// second, static variable definition template
+<br>template &lt;typename T>
+<br>T myClass&lt;T>::mystatvar;
+<p>// now we can define and use it
+<br>void main( ) {
+<br>&nbsp; myClass&lt;int>::mystatvar=10;
+<br>&nbsp; myClass&lt;float>::mystatvar=3.14;
+<br>&nbsp; myClass&lt;int>&nbsp; myInstance;
+<br>&nbsp; myInstance.mystatvar=20;
+<p>&nbsp; cout&lt;&lt; myClass&lt;int>::mystatvar &lt;&lt;endl;
+<br>&nbsp; cout&lt;&lt; myClass&lt;float>::mystatvar &lt;&lt;endl;
+<br>&nbsp; cout&lt;&lt; myInstance.mystatvar &lt;&lt;endl;
+<br>}
+<p><b><u>output</u></b>:
+<br>20
+<br>3.14
+<br>20&nbsp;</td>
+</tr>
+</table>
+
+<p>p.487:&nbsp; parameterizing a template
+<p>...
+<p><a NAME="STL"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>programming with STL&nbsp;</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>p.508
+<br>&nbsp;
+</body>
+</html>

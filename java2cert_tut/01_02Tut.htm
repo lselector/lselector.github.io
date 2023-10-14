@@ -1,0 +1,1627 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+ 
+
+<HTML>
+
+ 
+
+<HEAD>
+
+<TITLE>1.2) Declarations and access control</TITLE>
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META name="GENERATOR" content="IBM WebSphere Homepage Builder V4.0.0 for Linux">
+<link rel="stylesheet" href="tutor.css">
+<STYLE><!--
+.Class{margin-left : 16%;position : normal;list-style-type : disc;list-style-position : outside;}
+--></STYLE>
+</HEAD>
+
+ 
+
+<BODY BGCOLOR="#FFFFFF">
+<table width=95% border=0 cellpadding=2 cellspacing=0 style="page-break-before: always">
+  <col width=147*> <col width=109*> 
+  <tr> 
+    <td width=57% height=104> 
+      <p><a href= "introj2.htm" ><img src= "btnIndex.jpg"  name="Graphic1" alt="Return to Tutorial Index" align=BOTTOM width=55 height=39 border=0></a><a href= "introj2.htm" ><br>
+        <br>
+        </a><a href= "index.htm" ><img src= "btnHome.jpg"  name="Graphic2" alt="Back to the home page of this site" align=BOTTOM width=55 height=39 border=0></a> 
+      </p>
+    </td>
+    <td width=43%> 
+      <p align=RIGHT><img src= "hat.gif"  name="Graphic3" alt="morterboard" align=BOTTOM width=118 height=113 border=0></p>
+    </td>
+  </tr>
+  <tr> 
+    <td width=57% height=11> 
+      <h1 align=LEFT>Java2 Certification <br>
+        Tutorial </h1>
+    </td>
+    <td width=43% bgcolor="#ff9900"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p> You can discuss this topic with others at <a href= "http://www.jchq.net/discus" >http://www.jchq.net/discus</a><br>
+  Read reviews and buy a Java Certification book at <a href= "http://www.jchq.net/bookreviews/jcertbooks.htm" >http://www.jchq.net/bookreviews/jcertbooks.htm</a> 
+  <br>
+</p>
+<hr size=5 noshade>
+<H1><B>1) Declarations and Access Control</B> </H1>
+<H2>Objective 2</H2>
+
+<P><FONT FACE="Arial, Helvetica">Declare classes, inner classes, methods,
+
+instance variables static, variables and automatic (method local) variables,
+
+making appropriate use of all permitted modifiers (such as public final static
+
+abstract and so forth). State the significance of each of these modifiers both
+
+singly and in combination and state the effect of package relationships on
+
+declared items qualified by these modifiers.</FONT></P>
+
+<H3><I>Comment on the objective</I></H3>
+
+<P>I find it a little disturbing that the objective uses the words <I>&quot;and
+
+so forth&quot;.</I><BR>
+
+I suspect this means you should also be aware of</P>
+
+<UL>
+
+<LI class="Class"> <DIV align="left" class="Class">
+
+native 
+
+</DIV>
+
+</LI>
+
+<LI class = "Class">  <DIV align="left" class="Class">
+
+transient 
+
+</DIV>
+  </LI>
+
+<LI class="Class">
+  <DIV align="left" class="Class">
+
+synchronized 
+
+</DIV>
+  </LI>
+  <LI class="Class">
+  <DIV align="left" class="Class">
+
+volatile 
+
+</DIV>
+  </LI>
+</UL>
+
+<H3>Comparing C++/VB classes with Java </H3>
+
+<P>Because Java was designed to be easy for C++ programmers to learn there are 
+  many similarities between the way the two languages deal with classes. Both 
+  C++ and Java have inheritance, polymorphism, and data hiding using visibility 
+  modifiers. Some of the ways in which they differ are to do with making Java 
+  an easier language to learn and use.<BR>
+
+<BR>
+  The C++ language implements multiple inheritance and thus a class can have more 
+  than one parent (or base) class. Java allows only single inheritance and thus 
+  can only ever have a single parent. To overcome this limitation Java has a feature 
+  called interfaces. The language designers decided that interfaces would give 
+  some of the benefits of multiple inheritance without the drawbacks. All Java 
+  classes are descendants of the great ancestor class called <I>Object</I>.<BR>
+
+<BR>
+  Objects in Visual Basic are somewhat of a bolt on afterthought to the language. 
+  Visual Basic is sometimes called an Object Based language rather than Object 
+  Oriented. It is almost as if the language designers decided that classes are 
+  cool and with VB version 4 decided that they would create a new type of module, 
+  call it a class and use the dot notation to make it more like C++. The crucial 
+  element missing from the VB concept of class is that of inheritance. With VB5 
+  Microsoft delivered the concept of interfaces which acts similarly to the Java 
+  concept of an interface. Some of the main similarities between VB classes and 
+  Java classes is the use of references and the keyword <I>new</I> word.</P>
+
+<H3>The role of classes in Java</H3>
+
+<P>Classes are the heart of Java, all Java code occurs within a class. There is
+
+no concept of free standing code and even the most simple HelloWorld
+
+application involves the creation of a class. To indicate that a class is a
+
+descendent of another class the <I>extends</I> keyword is used. If the
+
+<I>extends</I> keyword is not used the class will be a descended of the base
+
+class Object, which gives it some basic functionality including the ability to
+
+print out its name and some of the capability required in threads.</P>
+
+<H3>The simplest of class</H3>
+
+<P>The minimum requirements to define a class are the keyword <I>class</I>, the
+
+class name and the opening and closing braces. Thus</P>
+
+<PRE>class classname {}</PRE>
+
+<P>is a syntactically correct, if not particularly useful class (surprisingly I
+
+have found myself defining classes like this, when creating examples to
+
+illustrate inheritance).</P>
+
+<P>Normally a class will also include an access specifier before the keyword
+
+class and of course, a body between the braces. Thus this is a more sensible
+
+template for a class.</P>
+
+<PRE>public class classname{</PRE>
+
+<PRE>//Class body goes here</PRE>
+
+<PRE>}</PRE>
+
+<H3>Creating a simple <I>HelloWorld</I> class </H3>
+
+<P>Here is a simple HelloWorld program that will output the string &quot;hello
+
+world&quot; to the console.</P>
+
+<PRE>public class HelloWorld{
+public static void main(String argv[]){
+        System.out.println(&quot;Hello world&quot;);
+        }
+
+}//End class definition</PRE>
+
+<P>The keyword <I>public</I> is a visibility modifier that indicates this class 
+  should be visible to any other class. Only one outer class per file can be declared 
+  public. Inner classes will be covered elsewhere. If you declare more than one 
+  class in a file to be public, a compile time error will occur. Note that Java 
+  is case sensitive in every respect. The file that contains this class must be 
+  called HelloWorld.Java. Of course this is somewhat of an anomaly on Microsoft 
+  platforms that preserve, yet ignore the case of letters in a file name.</P>
+
+<P>The keyword <I>class</I> indicates that a class is about to be defined and
+
+<I>HelloWorld</I> is the name of that class. The curly braces indicate the
+
+start of the class. Note that the closing brace that ends the class definition
+
+does not involve any closing semi colon. The comment</P>
+
+<PRE>//End class definition </PRE>
+
+<P>uses the style of single line comments that is available in C/C++. Java also
+
+understands the multi-line /* */ form of comments.</P>
+
+<H3>The magic of the <I>main</I> name </H3>
+
+<P>Giving a method the following signature has a certain significance (or
+
+magic) as it indicates to Java that this is where the program should begin its
+
+run, (similar to <I>main</I> in the C language).</P>
+
+<PRE>public static void main(String argv[]){</PRE>
+
+<P>This line indicates that a method called <I>main</I> is being defined that
+
+takes arguments (or parameters) of an array of Strings. This method is public,
+
+i.e. visible from anywhere that can see this class. The <I>static </I>keyword
+
+indicates that this method can be run without creating an instance of the
+
+class. If that means nothing to you, don't worry about it for the moment as
+
+<I>static</I> methods will be covered at length elsewhere. The keyword
+
+<I>void</I> indicates the data type returned from this method when it is
+
+called. The use of <I>void</I> indicates that no value will be returned.<BR>
+
+<BR>
+
+The parameters of the <I>main</I> method</P>
+
+<PRE>String argv[] </PRE>
+
+<P>Indicate that the method takes an array of type <I>String</I>. The square
+
+brackets indicate an array. Note that the data type <I>String</I> starts with
+
+an upper case S. This is important as Java is thoroughly case sensitive.
+
+Without this exact signature the Java Virtual Machine will not recognise the
+
+method as the place to start execution of the program.</P>
+
+<H3>Creating an instance of a class </H3>
+
+<P>The <I>HelloWorld</I> application as described above is handy to illustrate 
+  the most basic of applications that you can create, but it misses out on one 
+  of the most crucial elements of using classes, the use of the key word</P>
+<P><BR>
+  <I>new</I></P>
+
+<P>Which indicates the creation of a new instance of a class. In the
+
+<I>HelloWorld</I> application this was not necessary as the only method that
+
+was called was <I>System.out.println</I>, which is a static method and does not
+
+require the creation of a class using the new keyword. Static methods can only
+
+access static variables, of which only one instance can exist per class. The
+
+<I>HelloWorld</I> application can be slightly modified to illustrate the
+
+creation of a new instance of a class.</P>
+
+
+
+<PRE>public class HelloWorld2{
+        public static void main(String argv[]){        
+                HelloWorld2 hw = new HelloWorld2();
+                hw.amethod();
+        }
+       
+        public void amethod(){        
+                System.out.println(&quot;Hello world&quot;);
+        }
+
+}</PRE>
+
+<P>This code creates a new instance of itself with the line</P>
+
+<PRE>                HelloWorld2 hw = new HelloWorld2();</PRE>
+
+<P>This syntax of creating a new instance of a class is basic to the use of
+
+classes. Note how the name of the class appears twice. The first time indicates
+
+the data type of the reference to the class. This need not be the same as the
+
+actual type of the class as indicated after the use of the <I>new</I> keyword.
+
+The name of this instance of the class is <I>hw</I>. This is simply a name
+
+chosen for a variable. There is a naming convention that an instance of a class
+
+starts with a lower case letter, whereas the definition of a class starts with
+
+an upper case letter.</P>
+
+<P>The empty parenthesis for the name of the class <I>HelloWorld()</I> indicate
+
+that the class is being created without any parameters to its constructor. If
+
+you were creating an instance of a class that was initialized with a value or a
+
+string such as the label of a button the parenthesis would contain one or more
+
+initializing values.</P>
+
+<H3>Creating Methods </H3>
+
+<P>As illustrated in the last example <I>HelloWorld2</I>, a method in Java is
+
+similar to a function in C/C++ and a function or sub in Visual Basic. The
+
+method called <I>amethod</I> in that example is the method called
+
+<I>amethod</I> in this example is declared as</P>
+
+<P><I>public</I></P>
+
+<P>To indicate it can be accessed from anywhere. It has a return type of</P>
+
+<P><BR>
+
+<I>void</I></P>
+
+<P>indicating no value will be returned. And it has empty parenthesis,
+
+indicating that it takes no parameters.</P>
+
+<P><BR>
+
+The same method might have been defined in these alternative ways</P>
+
+<PRE>private void amethod(String s)
+
+private void amethod(int i, String s)
+
+protected void amethod(int i)</PRE>
+
+<P>These examples are to illustrate some other typical signatures of methods.
+
+The use of the keywords <I>private</I> and <I>protected</I> will be covered
+
+elsewhere.</P>
+
+<P>The difference between Java methods and methods in a non OO language such as
+
+C is that the methods belong to a class. This means they are called using the
+
+dot notation indicating the instance of the class that the code belongs to.
+
+(Static methods are an exception to this but don't worry about that at the
+
+moment).</P>
+
+<P>Thus in HelloWorld2 amethod was called thus</P>
+
+<PRE>                HelloWorld hw = new HelloWorld()
+                hw.amethod();</PRE>
+
+<P>If other instances of the <I>HelloWorld</I> class had been created the
+
+method could have been called from each instance of the class. Each instance of
+
+the class would have access to its own variables. Thus the following would
+
+involve calling the amethod code from different instances of the class.</P>
+
+<PRE>HelloWorld hw = new HelloWorld();
+HelloWorld hw2 = new HelloWorld();</PRE>
+
+<PRE>hw.amethod();
+hw2.amethod();</PRE>
+
+<P>The two instances of the class <I>hw</I> and <I>hw2</I> might have access to
+
+different variables.</P>
+
+<H3>Automatic variables </H3>
+
+<P>Automatic variables are method variables. They come into scope when the
+
+method code starts to execute and cease to exist once the method goes out of
+
+scope. As they are only visible within the method they are typically useful for
+
+temporary manipulation of data. If you want a value to persist between calls to
+
+a method then a variable needs to be created at class level.</P>
+
+<P>An automatic variable will &quot;shadow&quot; a class level variable.</P>
+
+<P><BR>
+
+Thus the following code will print out 99 and not 10.</P>
+
+<PRE>public class Shad{
+public int iShad=10;
+public static void main(String argv[]){
+                Shad s = new Shad();
+                s.amethod();
+        }//End of main
+        public void amethod(){
+                int iShad=99;
+                System.out.println(iShad);
+        }//End of amethod
+}</PRE>
+
+<H3>Modifiers and encapsulation </H3>
+
+<TABLE WIDTH="100%" BORDER="0">
+
+<TR>
+
+    <TD WIDTH="17%"><IMG SRC= "key2.gif"  WIDTH="106" HEIGHT="73"
+
+ALIGN="bottom" BORDER="0"></TD>
+
+    <TD WIDTH="83%"> 
+
+      <h4><FONT COLOR="red">The visibility modifiers are part of the encapsulation 
+
+        mechanism for Java. Encapsulation allows separation of the interface from 
+
+        the implementation of methods.</FONT></h4>
+
+</TD>
+
+</TR>
+
+</TABLE>
+
+<P>The visibility modifiers are a key part of the encapsulation mechanism for 
+  java. Encapsulation allows separation of the interface from the implementation 
+  of methods. The benefit of this is that the details of the code inside a class 
+  can be changed without it affecting other objects that use it. This is a key 
+  concept of the Object Oriented paradaigm (had to use that word somewhere eventually).</P>
+<P>Encapsulation generally takes form of methods to retrieve and update the values 
+  of <i> private</i> class variables. These methods are known as a <i>accessor</i> 
+  and <i>mutator</i> methods. The accessor (or get) method retrieves the value 
+  and the mutator changes (or sets) the value. The naming convention for these 
+  methods are <i>setFoo</i> to change a variable and <i>getFoo</i> to obtain the 
+  contents of a variable. An aside note: the use of <i>get</i> and <i>set</i> 
+  in the naming of these methods is more significant than just programmer convenience 
+  and is an important part of the Javabeans system. Javabeans are not covered 
+  in the programmer exam however.</P>
+<P>Take the example where you had a variable used to store the age of a student.</P>
+<P>You might store it simply with a public integer variable </P>
+<P><i>int iAge;</i></P>
+<P>later when your application is delivered you find that some of your students 
+  have a recorded age of more than 200 years and some have an age of less than 
+  zero. You are asked to put in code to check for these error conditions. So wherever 
+  your programs change the age value, you write if statements that check for the 
+  range. </P>
+<pre>if(iAge > 70){
+	//do something
+	}
+if (iAge <3){
+	//do something
+}</pre>
+<P>In the process of doing this you miss some code that used the iAge variable 
+  and you get called back because you have a 19 year old student who is on your 
+  records has being 190 years old.</P>
+<P>The Object Oriented approach to this problem using encapsulation, is to create 
+  methods that access a private field containing the age value, with names like 
+  setAge and getAge. The setAge method might take an integer paramete and update 
+  the private value for Age and the getAge method would take no parameter but 
+  return the value from the private age field.</P>
+<pre>public void setAge(int iStudentAge){
+	iAge = iStudentAge;
+}
+
+public int getAge(){
+	return iAge;
+}
+</pre>
+<p>At first this seems a little pointless as the code seems to be a long way around 
+  something that could be done with simple variable manipulation. However when 
+  they come back to you with the requirement to do more and more validation on 
+  the iAge field you can do it all in these methods without affecting existing 
+  code that uses this information. </p>
+<p> By this approach the implementation of code, (the actual lines of program 
+  code), can be changed whilst the way it looks to the outside world (the interface) 
+  remains the same.</p>
+<P>&nbsp; </P>
+<H3>Private</H3>
+
+<P>Private variables are only visible from within the same class as they are created.in. 
+  This means they are NOT visible within sub classes. This allows a variable to 
+  be insulated from being modified by any methods except those in the current 
+  class. As described in modifiers and encapsulation, this is useful in separating 
+  the interface from the implementation.</P>
+
+<PRE>class Base{
+private int iEnc=10;
+public void setEnc(int iEncVal){
+     if(iEncVal &lt; 1000){
+         iEnc=iEncVal;
+          }else
+          System.out.println(&quot;Enc value must be less than 1000&quot;);
+         //Or Perhaps thow an exception
+        }//End if
+}
+
+public class Enc{
+public static void main(String argv[]){
+                Base b = new Base();
+                b.setEnc(1001);
+        }//End of main
+}</PRE>
+
+<H3>Public </H3>
+
+<P>The <I>public</I> modifier can be applied to a variable (field) or a class.
+
+It is the first modifier you are likely to come across in learning Java. If you
+
+recall the code for the <I>HelloWorld</I>.Java program the class was declared
+
+as</P>
+
+<PRE>public class HelloWorld</PRE>
+
+<P>This is because the Java Virtual Machine only looks in a class declared as 
+  public for the magic<i> main</i> startup method</P>
+
+<PRE>public static void main(String argv[])</PRE>
+
+<P>A public class has global scope, and an instance can be created from anywhere 
+  within or outside of a program. Only one non inner class in any file can be 
+  defined with the <I>public</I> keyword. If you define more than one non inner 
+  class in a file with the keyword public the compiler will generate an error.</P>
+
+<P>Using the public modifier with a variable makes it available from anywhere.
+
+It is used as follows,</P>
+
+<PRE>public int myint =10;</PRE>
+
+<P>If you want to create a variable that can be modified from anywhere you can 
+  declare it as public. You can then access it using the dot notation similar 
+  to that used when calling a method.</P>
+
+<PRE>class Base {
+        public int iNoEnc=77;
+}</PRE>
+
+<PRE>public class NoEnc{
+public static void main(String argv[]){
+                Base b = new Base();
+                b.iNoEnc=2;
+                System.out.println(b.iNoEnc);
+        }//End of main
+}</PRE>
+
+<P>Note that this is not the generally suggested way as it allows no separation
+
+between the interface and implementation of code. If you decided to change the
+
+data type of <I>iNoEnc,</I> you would have to change the implementation of
+
+every part of the external code that modifies it.</P>
+
+<H3>Protected </H3>
+
+<P>The <I>protected</I> modifier is a slight oddity. A <I>protected</I>
+
+variable is visible within a class, and in sub classes, the same package but
+
+not elsewhere. The qualification that it is visible from the same package can
+
+give more visibility than you might suspect. Any class in the same directory is
+
+considered to be in the default package, and thus protected classes will be
+
+visible. This means that a protected variable is more visible than a variable
+
+defined with no access modifier. <BR>
+
+<BR>
+
+A variable defined with no access modifier is said to have default visibility.
+
+Default visibility means a variable can be seen within the class, and from
+
+elsewhere within the same package, but not from sub-classes that are not in the
+
+same package.</P>
+
+<H3>Static</H3>
+
+<P><I>Static</I> is not directly a visibility modifier, although in practice it 
+  does have this effect. The modifier <I>static</I> can be applied to an inner 
+  class, a method and a variable. Marking a variable as <I>static</I> indicates 
+  that only one copy will exist per class. This is in contrast with normal items 
+  where for instance with an integer variable a copy belongs to each instance 
+  of a class. Thus in the following example of a non <I>static</I> <I>integer</I> 
+  three instances of the <I>integer</I> iMyVal will exist and each instance can 
+  contain a different value.</P>
+
+<PRE>class MyClass{
+        public int iMyVal=0;
+}
+public class NonStat{
+public static void main(String argv[]){
+        MyClass m1 = new MyClass();
+        m1.iMyVal=1;
+        MyClass m2 = new MyClass();
+        m2.iMyVal=2;
+        MyClass m3 = new MyClass();
+        m3.iMyVal=99;
+        //This will output 1 as each instance of the class
+        //has its own copy of the value iMyVal
+        System.out.println(m1.iMyVal);
+        }//End of main
+
+}</PRE>
+
+<P><BR>
+
+The following example shows what happens when you have multiple instances of a
+
+class containing a static integer.</P>
+
+<PRE>class MyClass{
+        public static  int iMyVal=0;
+
+}//End of MyClass
+public class Stat{
+public static void main(String argv[]){
+           MyClass m1 = new MyClass();
+           m1.iMyVal=0;
+           MyClass m2 = new MyClass();
+           m2.iMyVal=1;
+           MyClass m3 = new MyClass();
+           m2.iMyVal=99;
+           //Because iMyVal is static, there is only one 
+           //copy of it no matter how many instances 
+           //of the class are created /This code  will 
+           //output a value of 99
+           System.out.println(m1.iMyVal);
+        }//End of main
+
+}</PRE>
+
+<P>Bear in mind that you cannot access non static variables from within a
+
+static method. Thus the following will cause a compile time error</P>
+
+<PRE>public class St{
+int i;
+public static void main(String argv[]){
+        i = i + 2;//Will cause compile time error
+        }
+}</PRE>
+
+<TABLE WIDTH="100%" BORDER="0">
+
+<TR>
+
+    <TD WIDTH="16%"><IMG SRC= "key2.gif"  WIDTH="106" HEIGHT="73"
+
+ALIGN="bottom" ALT="Key Concept" BORDER="0"></TD>
+
+    <TD WIDTH="84%"> 
+
+      <h4><FONT COLOR="red">A static method cannot be overriden to be non static 
+
+        in a child class</FONT></h4>
+
+</TD>
+
+</TR>
+
+</TABLE>
+
+<P>A static method cannot be overriden to be non static in a child class. There
+
+is no similar rule with reference to overloading. The following code will cause
+
+an error as it attempts to override the class amethod to be non-static.</P>
+
+<PRE>class Base{
+        public static void amethod(){
+        }
+}
+
+public class Grimley extends Base{
+        public void amethod(){}//Causes a compile time error
+}</PRE>
+
+<P>The IBM Jikes compiler produces the following error</P>
+
+
+
+<PRE>Found 1 semantic error compiling &quot;Grimley.java&quot;:
+
+     6.         public void amethod(){}
+
+                            &lt;-------&gt;
+
+*** Error: The instance method &quot;void amethod();&quot; 
+
+cannot override the static method &quot;void amethod();&quot; 
+
+declared in type &quot;Base&quot;</PRE>
+
+<H3>Native</H3>
+
+<P>The native modifier is used only for methods and indicates that the body of
+
+the code is written in a language other than Java such as C and C++. Native
+
+methods are often written for platform specific purposes such as accessing some
+
+item of hardware that the Java Virtual Machine is not aware of. Another reason
+
+is where greater performance is required.<BR>
+
+<BR>
+
+A native method ends with a semicolon rather than a code block. Thus the
+
+following would call an external routine, written perhaps in C++</P>
+
+<PRE>public native fastcalc();</PRE>
+
+<H3>Abstract </H3>
+
+<P>It is easy to overlook the <I>abstract</I> modifier and miss out on some of
+
+its implications. It is the sort of modifier that the examiners like to ask
+
+tricky questions about.<BR>
+
+<BR>
+  The <I>abstract</I> modifier can be applied to classes and methods. When applied 
+  to a method it indicates that it will have no body (ie no curly brace part) 
+  and the code can only be run when implemented in a child class. However there 
+  are some restrictions on when and where you can have <I>abstract</I> methods 
+  and rules on classes that contain them. A class must be declared as abstract 
+  if it has one or more abstract methods or if it inherits abstract methods for 
+  which it does not provide an implementation. The other circumstance when a class 
+  must be declared abstract is if it implements an interface but does not provide 
+  implementations for every method of the interface. This is a fairly unusual 
+  circumstance however.</P>
+
+<TABLE WIDTH="100%" BORDER="0">
+
+<TR>
+
+    <TD WIDTH="17%"><IMG SRC= "becareful.gif"  WIDTH="76" HEIGHT="88"
+
+ALIGN="bottom" BORDER="0"></TD>
+
+    <TD WIDTH="83%"> 
+
+      <h4><FONT COLOR="red">If a class has any abstract methods it must be declared 
+
+        abstract itself.</FONT></h4>
+
+</TD>
+
+</TR>
+
+</TABLE>
+
+<P>Do not be distracted into thinking that an <I>abstract</I> class cannot have 
+  non <I>abstract</I> methods. Any class that descends from an <I>abstract</I> 
+  class must implement the <I>abstract</I> methods of the base class or declare 
+  them as <I>abstract</I> itself. These rules tend to beg the question why would 
+  you want to create <I>abstract</I> methods?<BR>
+  <BR>
+  Abstract methods are mainly of benefit to class designers. They offer a class 
+  designer a way to create a prototype for methods that ought to be implemented, 
+  but the actual implementation is left to people who use the classes later on. 
+  Here is an example of an <I>abstract</I> a class with an abstract method. Again 
+  note that the class itself is declared <I>abstract</I>, otherwise a compile 
+  time error would have occurred.</P>
+<P>The following class is abstract and will compile correctly and print out the 
+  string</P>
+<pre>public abstract class abstr{
+public static void main(String argv[]){
+	System.out.println("hello in the abstract");
+	}
+	public abstract int amethod();
+}
+
+ </pre>
+<H3>Final</H3>
+<P>The final modifier can be applied to classes, methods and variables. It has 
+  similar meanings related to inheritance that make it fairly easy to remember. 
+  A final class may never be subclassed. Another way to think of this is that 
+  a <i>final</i> class cannot be a parent class. Any methods in a <i>final</i> 
+  class are automatically <i>final</i>. This can be useful if you do not want 
+  other programmers to &quot;mess with your code&quot;. Another benefit is that 
+  of efficiency as the compiler has less work to do with a final method. This 
+  is covered well in Volume 1 of Core Java.</P>
+<P>The <I>final</I> modifier indicates that a method cannot be overriden. Thus 
+  if you create a method in a sub class with exactly the same signature you will 
+  get a compile time error.</P>
+<P>The following code illustrates the use of the <I>final</I> modifier with a 
+  class. This code will print out the string &quot;amethod&quot;</P>
+<PRE>final class Base{
+
+public void amethod(){
+        System.out.println(&quot;amethod&quot;);
+        }
+}
+
+public class Fin{
+public static void main(String argv[]){
+        Base b = new Base();
+        b.amethod();
+        }
+}
+</PRE>
+
+<p>A final variable cannot have it's value changed and must be set at creation 
+  time. This is similar to the idea of a constant in other languages.</p>
+<H3>Synchronized </H3>
+
+<P>The <I>synchronized</I> keyword is used to prevent more than one thread from
+
+accessing a block of code at a time. See section 7 on threads to understand
+
+more on how this works.</P>
+
+<H3>Transient</H3>
+
+<P>The <I>transient</I> keyword is one of the less frequently used modifiers.
+
+It indicates that a variable should not be written out when a class is
+
+serialized.</P>
+
+<H3>Volatile</H3>
+
+<P>You probably will not get a question on the <I>volatile</I> keyword. The
+
+worst you will get it is recognising that it actually is a Java keyword.
+
+According to Barry Boone <BR>
+
+<BR>
+
+<I>&quot;it tells the compiler a variable may change asynchronously due to
+
+threads&quot;</I><BR>
+
+<BR>
+
+Accept that it is part of the language and then get on worrying about something
+
+else</P>
+
+<H3>Using modifiers in combination</H3>
+
+<P>The visibility modifiers cannot be used in combination, thus a variable
+
+cannot be both <I>private</I> and <I>public</I>, <I>public</I> and
+
+<I>protected</I> or <I>protected</I> and <I>private</I>. You can of course have
+
+combinations of the visibility modifiers and the modifiers mentioned in my
+
+<I>so forth</I> list</P>
+
+<UL>
+
+<LI> <DIV ALIGN="left">
+
+native 
+
+</DIV>
+
+</LI>
+
+<LI> <DIV ALIGN="left">
+
+transient 
+
+</DIV>
+
+</LI>
+
+<LI> <DIV ALIGN="left">
+
+synchronized 
+
+</DIV>
+
+</LI>
+
+<LI> <DIV ALIGN="left">
+
+volatile 
+
+</DIV>
+
+</LI>
+
+</UL>
+
+<P>Thus you can have a public static native method.</P>
+
+<TABLE BORDER="1" WIDTH="48%" HEIGHT="108" BGCOLOR="#FFCCCC" ALIGN="center">
+
+<CAPTION><B>Where modifiers can be used</B> 
+
+</CAPTION> <TBODY>
+
+<TR>
+
+<TD WIDTH="18%"><B>Modifier</B></TD>
+
+<TD WIDTH="8%"><B>Method</B></TD>
+
+<TD WIDTH="9%"><B>Variable</B></TD>
+
+<TD WIDTH="65%"><B>class</B></TD>
+
+</TR>
+
+<TR>
+
+<TD WIDTH="18%">public</TD>
+
+<TD WIDTH="8%">yes</TD>
+
+<TD WIDTH="9%">yes</TD>
+
+<TD WIDTH="65%">yes</TD>
+
+</TR>
+
+<TR>
+
+<TD WIDTH="18%">private</TD>
+
+<TD WIDTH="8%">yes</TD>
+
+<TD WIDTH="9%">yes</TD>
+
+<TD WIDTH="65%">yes (nested)</TD>
+
+</TR>
+
+<TR>
+
+<TD WIDTH="18%">protected</TD>
+
+<TD WIDTH="8%">yes</TD>
+
+<TD WIDTH="9%">yes</TD>
+
+<TD WIDTH="65%">yes(nested)</TD>
+
+</TR>
+
+<TR>
+
+<TD WIDTH="18%">abstract</TD>
+
+<TD WIDTH="8%">yes</TD>
+
+<TD WIDTH="9%">no</TD>
+
+<TD WIDTH="65%">yes</TD>
+
+</TR>
+
+<TR>
+
+<TD WIDTH="18%">final</TD>
+
+<TD WIDTH="8%">yes</TD>
+
+<TD WIDTH="9%">yes</TD>
+
+<TD WIDTH="65%">yes</TD>
+
+</TR>
+
+<TR>
+
+<TD WIDTH="18%">transient</TD>
+
+<TD WIDTH="8%">no</TD>
+
+<TD WIDTH="9%">yes</TD>
+
+<TD WIDTH="65%">no</TD>
+
+</TR>
+
+<TR>
+
+<TD WIDTH="18%">native</TD>
+
+<TD WIDTH="8%">yes</TD>
+
+<TD WIDTH="9%">no</TD>
+
+<TD WIDTH="65%">no</TD>
+
+</TR>
+
+<TR>
+
+<TD WIDTH="18%">volatile</TD>
+
+<TD WIDTH="8%">no</TD>
+
+<TD WIDTH="9%">yes</TD>
+
+<TD WIDTH="65%">no</TD>
+
+</TR>
+
+</TBODY>
+
+</TABLE>
+
+<HR>
+
+<H3>Exercise 1)</H3>
+
+<P>Create a file called Whitley.java. In this file define a class called Base
+
+with an abstract method called lamprey with an int return type. In this file
+
+create a class called Whitley that extends the base class. Give the Whitley
+
+class a method called lamprey and code that prints out the string
+
+&quot;lamprey&quot;.. </P>
+
+<P>Create a native method for the class called mynative. Now compile and run
+
+the code.</P>
+
+<H3> Exercise 2) </H3>
+
+<P>Create a public class called Malvern. Create a private inner class called
+
+Great that has a public void method called show. Make this method print out the
+
+string &quot;Show&quot;. Give the class Malvern a public method called g that
+
+creates an instance of Great and calls its show method.. In the main method of
+
+Malvern create an instance of itself. Make the instance of itself call its go
+
+method. Compile and run the code.</P>
+
+<HR>
+
+<H3>Suggested solution to Exercise 1) </H3>
+
+<PRE>abstract class Base{
+abstract int lamprey();
+}
+
+public class Whitley extends Base{
+public static void main(String argv[]){
+        
+        }
+
+public int lamprey(){
+        System.out.println(&quot;lamprey&quot;);
+        return 99;
+        }
+native public void mynative();
+}
+</PRE>
+
+<H3>Suggested solution to Exercise 2)</H3>
+
+<PRE>public class Malvern{
+public static void main(String argv[]){
+        Malvern m = new Malvern();
+        m.go();
+        }
+        public void go(){
+        Great g = new Great();
+        g.show();
+        }
+
+        private class Great{
+                public void show(){
+                        System.out.println(&quot;Show&quot;);     
+                }
+        }
+}
+</PRE>
+
+<hr>
+
+<TABLE WIDTH="100%" BORDER="0">
+
+<TR>
+
+<TD WIDTH="11%"><IMG SRC= "Quiz.gif"  WIDTH="99" HEIGHT="101"> 
+
+</TD>
+
+<TD WIDTH="89%">&nbsp;</TD>
+
+</TR>
+
+</TABLE>
+
+<HR>
+
+<h1>Questions</h1>
+
+<h4><B>Question 1)</B></h4>
+
+<p>What will happen when you attempt to compile and run this code?</p>
+
+<PRE>abstract class Base{
+        abstract public void myfunc();
+        public void another(){
+        System.out.println(&quot;Another method&quot;);
+        }
+}
+
+public class Abs extends Base{
+        public static void main(String argv[]){
+        Abs a = new Abs();
+        a.amethod();
+        }
+        public void myfunc(){
+                System.out.println(&quot;My func&quot;);
+                } 
+
+        public void amethod(){
+        myfunc();
+         }
+}</PRE>
+
+<P>1) The code will compile and run, printing out the words &quot;My
+
+Func&quot;<BR>
+
+2) The compiler will complain that the Base class has non abstract methods<BR>
+
+3) The code will compile but complain at run time that the Base class has non
+
+abstract methods<BR>
+
+4) The compiler will complain that the method myfunc in the base class has no
+
+body, nobody at all to looove it</P>
+
+<P><BR>
+
+</P>
+
+<HR ALIGN="center">
+
+
+
+<h4>Question 2)</h4>
+
+<P>What will happen when you attempt to compile and run this code?</P>
+
+<PRE>public class MyMain{
+public static void main(String argv){
+        System.out.println(&quot;Hello cruel world&quot;);
+        }
+}</PRE>
+
+<P>1) The compiler will complain that main is a reserved word and cannot be
+
+used for a class<BR>
+
+2) The code will compile and when run will print out &quot;Hello cruel
+
+world&quot;<BR>
+
+3) The code will compile but will complain at run time that no constructor is
+
+defined<BR>
+
+4) The code will compile but will complain at run time that main is not
+
+correctly defined</P>
+
+<P><BR>
+
+</P>
+
+<HR ALIGN="center">
+
+<h4><B>Question 3)</B></h4>
+
+<P>Which of the following are Java modifiers?<BR>
+
+<BR>
+
+1) public<BR>
+
+2) private<BR>
+
+3) friendly<BR>
+
+4) transient<BR>
+
+<BR>
+
+</P>
+
+<HR ALIGN="center">
+
+
+
+<h4>Question 4)</h4>
+
+<P>What will happen when you attempt to compile and run this code?</P>
+
+<PRE>class Base{
+        abstract public void myfunc();
+        public void another(){
+        System.out.println(&quot;Another method&quot;);
+        }
+}
+
+public class Abs extends Base{
+        public static void main(String argv[]){
+        Abs a = new Abs();
+        a.amethod();
+        }
+        public void myfunc(){
+                System.out.println(&quot;My func&quot;);
+                } 
+        public void amethod(){
+        myfunc();
+        }
+
+}</PRE>
+
+<P>1) The code will compile and run, printing out the words &quot;My
+
+Func&quot;<BR>
+
+2) The compiler will complain that the Base class is not declared as
+
+abstract.<BR>
+
+3) The code will compile but complain at run time that the Base class has non
+
+abstract methods<BR>
+
+4) The compiler will complain that the method myfunc in the base class has no
+
+body, nobody at all to looove it</P>
+
+
+
+<HR ALIGN="center">
+
+
+
+<h4>Question 5)</h4>
+
+<P>Why might you define a method as native?</P>
+
+<P>1) To get to access hardware that Java does not know about<BR>
+
+2) To define a new data type such as an unsigned integer<BR>
+
+3) To write optimised code for performance in a language such as C/C++<BR>
+
+4) To overcome the limitation of the private scope of a method</P>
+
+<P><BR>
+
+</P>
+
+<HR ALIGN="center">
+
+
+
+<h4>Question 6)</h4>
+
+<P>What will happen when you attempt to compile and run this code?</P>
+
+
+
+<PRE>class Base{
+public final void amethod(){
+        System.out.println(&quot;amethod&quot;);
+        }
+}
+
+public class Fin extends Base{
+public static void main(String argv[]){
+        Base b = new Base();
+        b.amethod();
+        }
+}</PRE>
+
+<P>1) Compile time errror indicating that a class with any final methods must
+
+be declared final itself<BR>
+
+2) Compile time error indicating that you cannot inherit from a class with
+
+final methods<BR>
+
+3) Run time error indicating that Base is not defined as final<BR>
+
+4) Success in compilation and output of &quot;amethod&quot; at run time.</P>
+
+<P><BR>
+
+</P>
+
+<HR ALIGN="center">
+
+
+
+<h4>Question 7)</h4>
+
+<P>What will happen when you attempt to compile and run this code?</P>
+
+
+
+<PRE>public class Mod{
+public static void main(String argv[]){
+}
+        public static native void amethod();
+}</PRE>
+
+<P>1) Error at compilation: native method cannot be static<BR>
+
+2) Error at compilation native method must return value<BR>
+
+3) Compilation but error at run time unless you have made code containing
+
+native amethod available<BR>
+
+4) Compilation and execution without error</P>
+
+<P><BR>
+
+</P>
+
+<HR ALIGN="center">
+
+<h4><BR>
+
+  <B>Question 8)</B></h4>
+
+<P>What will happen when you attempt to compile and run this code?</P>
+
+<PRE>private class Base{}</PRE>
+
+<PRE>public class Vis{
+transient int  iVal;
+public static void main(String elephant[]){
+        }
+}</PRE>
+
+<P>1) Compile time error: Base cannot be private<BR>
+
+  2) Compile time error indicating that an integer cannot be transient<BR>
+
+  3) Compile time error transient not a data type<BR>
+
+  4) Compile time error malformed main method</P>
+
+<P><BR>
+
+</P>
+
+<HR ALIGN="center">
+
+<h4><B>Question 9)</B></h4>
+
+<P>What happens when you attempt to compile and run these two files in the same
+
+directory?</P>
+
+<PRE>//File P1.java</PRE>
+
+<PRE>package MyPackage;
+class P1{
+void afancymethod(){
+        System.out.println(&quot;What a fancy method&quot;);
+        }
+}</PRE>
+
+
+
+<PRE>//File P2.java</PRE>
+
+<PRE>public class P2 extends P1{
+afancymethod();
+}</PRE>
+
+<P>1) Both compile and P2 outputs &quot;What a fancy method&quot; when run<BR>
+
+2) Neither will compile<BR>
+
+3) Both compile but P2 has an error at run time<BR>
+
+4) P1 compiles cleanly but P2 has an error at compile time</P>
+
+<h4><BR>
+
+  <B>Question 10)</B></h4>
+
+<P>Which of the following are legal declarations?</P>
+
+<P>1) public protected amethod(int i)<BR>
+
+2) public void amethod(int i)<BR>
+
+3) public void amethod(void)<BR>
+
+4) void public amethod(int i)</P>
+
+<HR>
+
+<H2>Answers</H2>
+
+<h4><B>Answer 1)</B></h4>
+
+<P>1) The code will compile and run, printing out the words &quot;My Func&quot;<BR>
+
+  <BR>
+
+  An abstract class can have non abstract methods, but any class that extends 
+
+  it must implement all of the abstract methods.</P>
+
+<h4> <B>Answer 2)</B></h4>
+
+<P> 4) The code will compile but will complain at run time that main is not correctly 
+
+  defined<BR>
+
+  <BR>
+
+  The signature of main has a parameter of String rather than string array</P>
+
+<h4> <BR>
+
+  <B>Answer 3)</B></h4>
+
+<P> 1) public<BR>
+
+  2) private<BR>
+
+  4) transient<BR>
+
+  <BR>
+
+  Although some texts use the word friendly when referring to visibility it is 
+
+  not a Java reserved word. Note that the exam will almost certainly contain questions 
+
+  that ask you to identify Java keywords from a list</P>
+
+<h4> <B>Answer 4)</B></h4>
+
+<P> 2) The compiler will complain that the Base class is not declared as abstract.<BR>
+
+  <BR>
+
+  The actual error message using my JDK 1.1 compiler was </P>
+
+<PRE>Abs.java:1: class Base must be declared abstract. 
+
+It does not define void myfunc
+
+() from class Base.
+
+class Base{
+
+^
+
+1 error</PRE>
+
+<h4><B>Answer 5)</B></h4>
+
+<P> 1) To get to access hardware that Java does not know about<BR>
+
+  3) To write optimised code for performance in a language such as C/C++<BR>
+
+  <BR>
+
+  Although the creation of &quot;Pure Java&quot; code is highly desirable, particularly 
+
+  to allow for platform independence, it should not be a religion, and there are 
+
+  times when native code is required.</P>
+
+<h4> <B>Answer 6)</B></h4>
+
+<P> 4) Success in compilation and output of &quot;amethod&quot; at run time.<BR>
+
+  <BR>
+
+  This code calls the version of amethod in the Base class. If you were to attempt 
+
+  to implement an overriden version of amethod in Fin you would get a compile 
+
+  time error.</P>
+
+<h4> <B>Answer 7)</B></h4>
+
+<P> 4) Compilation and execution without error<BR>
+
+  <BR>
+
+  There is no call to the native method and so no error occurs at run time</P>
+
+<h4> <B>Answer 8)</B> </h4>
+
+<P>1) Compile time error: Base cannot be private</P>
+
+<P>A top level class such as base cannot be declared to be private.</P>
+
+<h4> <B>Answer 9)</B></h4>
+
+<P> 4) P1 compiles cleanly but P2 has an error at compile time<BR>
+
+  <BR>
+
+  Even though P2 is in the same directory as P1, because P1 was declared with 
+
+  the package statement it is not visible from P2</P>
+
+<h4><BR>
+
+  <B>Answer 10)</B></h4>
+
+<P>2) public void amethod(int i)</P>
+
+<P>If you thought that option 3 was legal with a parameter argument of <I>void</I> 
+  you may have to empty some of the C/C++ out of your head.<BR>
+  Option 4) is not legal because method return type must come immediatly before 
+  the method name.<br>
+</P>
+<HR>
+<TABLE WIDTH="100%" BORDER="1">
+
+<CAPTION><B>Other sources on this topic</B> 
+
+</CAPTION> <TR>
+
+    <TD> 
+      <P><B>This topic is covered in the Sun Tutorial at</B><BR>
+        <B>Class modifiers</B><BR>
+        <A
+
+ HREF= "http://java.sun.com/docs/books/tutorial/reflect/class/getModifiers.html" >http://java.sun.com/docs/books/tutorial/reflect/class/getModifiers.html</A><BR>
+        <B>Controlling access to members of a class</B><BR>
+        <A
+
+ HREF= "http://java.sun.com/docs/books/tutorial/java/javaOO/accesscontrol.html" >http://java.sun.com/docs/books/tutorial/java/javaOO/accesscontrol.html<BR>
+        <BR>
+        </A><B>Richard Baldwin Covers this topic at</B><BR>
+        <A
+
+ HREF= "http://www.geocities.com/Athens/Acropolis/3797/Java040.htm" >http://www.Geocities.com/Athens/Acropolis/3797/Java040.htm<BR>
+        <BR>
+        </A><B>Jyothi Krishnan on this topic at <BR>
+        </B><A
+
+HREF= "http://www.geocities.com/SiliconValley/Network/3693/obj_sec1.html#obj2" >http://www.geocities.com/SiliconValley/Network/3693/obj_sec1.html#obj2<BR>
+        <BR>
+        </A><B>Bruce Eckel Thinking in Java<BR>
+        </B><a href= "http://codeguru.earthweb.com/java/tij/tij0056.shtml" >http://codeguru.earthweb.com/java/tij/tij0056.shtml</a></P>
+
+</TD>
+
+</TR>
+
+</TABLE>
+
+Last updated<BR>
+10 July 2000<BR>
+copyright &copy; Marcus Green 2000<BR>
+most recent copy at http://www.jchq.net 
+<H3>&nbsp;</H3>
+
+<H3>&nbsp;</H3>
+
+<H3>&nbsp;</H3>
+
+<H3>&nbsp;</H3>
+
+<H3>&nbsp;</H3>
+
+<H4>&nbsp;</H4>
+
+<H3> </H3>
+
+<H3>&nbsp;</H3>
+
+<H3>&nbsp;</H3>
+
+<H3>&nbsp;</H3>
+
+</BODY>
+
+</HTML>
+
+ 
+

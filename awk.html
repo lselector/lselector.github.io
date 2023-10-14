@@ -1,0 +1,1871 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>awk.html</title>
+<!--
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Awk</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Awk tutorial</font></b>
+<br><a NAME="intro"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>intro</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b>awk</b> - text-processing programming language very common on Unix.
+It is named after its three original authors: (Alfred V. Aho, Brian W.
+Kernighan, Peter J. Weinberger).
+<p>There are many <b><font color="#CC0000">tutorials</font></b> and <b><font color="#CC0000">FAQs</font></b>
+- search <b>google</b> for <b><a href="http://www.google.com/search?q=awk+tutorial">awk
+tutorial</a></b> or <b><a href="http://www.google.com/search?q=awk+faq">awk
+faq</a></b>.
+<p><font color="#6699CC">• </font><a href="http://www.engin.umich.edu/htbin/mangate?manpage=awk">www.engin.umich.edu/htbin/mangate?manpage=awk</a>
+- awk manpage
+<p><b><u><font color="#009900">Learn awk in just 1 hour</font></u></b>
+- using this tutorial (adapted from adaptation from ... from original author
+: Brian Brown, CIT, 1994).
+<br>Here is a typical example of usage - and comparison with perl one-liners.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#99FF99" >
+<tr>
+<td>1. ps -ef | awk '/-tcsh/ {print $0}'
+<br>&nbsp;&nbsp;&nbsp; ps -ef | perl -ne 'print if /\-tcsh/;'
+<p>2. ps -ef | awk '/vi/ {print $(NF-1) " " $NF}'
+<br>&nbsp;&nbsp;&nbsp; ps -ef | perl -ne 'print "$1\n" if /(vi.*)/':</td>
+</tr>
+</table>
+
+<p>Usually an awk program processes input lines by applying pattern and
+doing some action. Thus the program consists of a number of patterns and
+associated actions. Actions are enclosed using curly braces, and separated
+using semi-colons.
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pattern&nbsp;
+{ action }</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pattern&nbsp;
+{ action }</font>
+<br>awk uses special characters $0, $1, $2, etc.:
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $0
+- entire input line</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1
+- first field (word)</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2
+- second field</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; etc.</font>
+<br>Fields are separated by a space or tab character. For example the line
+"I like money." will be presented as follows:
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $0
+- I like money.</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1
+- I</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2
+- like</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2
+- money.</font>
+<p><b><font size=+0>Your first awk program</font></b>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+print $0 }</font>
+<br>There is no pattern to match, only an action - which will work for
+every input line and will simply print it out.
+<br>We can put this simple 1-line program in a file "<font color="#3333FF">myawk1</font>"
+and then type the following on the prompt:
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; awk&nbsp;&nbsp;
+-f myawk1&nbsp; /etc/group</font>
+<br>awk will apply commands in file "<font color="#3333FF">myawk1</font>"
+to each line of input file&nbsp; <i>/etc/group</i>. The effect is to print
+out each input line read from the file, in effect, displaying the file
+on the screen (same as the Unix command <i>cat</i>).
+<p>Now let's apply simple pattern, for example, only print lines with the
+word "brian" in them:
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /brian/&nbsp;&nbsp;
+{ print&nbsp; $0 }</font>
+<br>Now let's output only 2 first words:
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /brian/&nbsp;&nbsp;
+{ print $1, $2 }</font>
+<br>Using awk with pipe:
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; who&nbsp;
+|&nbsp; awk -f myawk1</font>
+<p>awk is good to extract info from "form" files (means - when information
+is presented in columns separated by some white space). For example, if
+file <i>awktext </i>contains the following:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b>Type&nbsp;&nbsp;&nbsp; Memory (Kb)&nbsp;&nbsp;&nbsp;&nbsp; Location&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Serial #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HD Size (Mb)</b>
+<br>XT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 640&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D402&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MG0010&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0
+<br>386&nbsp;&nbsp;&nbsp;&nbsp; 2048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D403&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MG0011&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 100
+<br>486&nbsp;&nbsp;&nbsp;&nbsp; 4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D404&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MG0012&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 270
+<br>386&nbsp;&nbsp;&nbsp;&nbsp; 8192&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A423&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0177&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 400
+<br>486&nbsp;&nbsp;&nbsp;&nbsp; 8192&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A424&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0182&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 670
+<br>286&nbsp;&nbsp;&nbsp;&nbsp; 4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A423&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0183&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 100
+<br>286&nbsp;&nbsp;&nbsp;&nbsp; 4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A425&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0184&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 80
+<br>Mac&nbsp;&nbsp;&nbsp;&nbsp; 4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B407&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1027&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 80
+<br>Apple&nbsp;&nbsp; 4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B406&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1028&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 40
+<br>68020&nbsp;&nbsp; 2048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B406&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1029&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 80
+<br>68030&nbsp;&nbsp; 2048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B410&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1030&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 100
+<br>$unix&nbsp;&nbsp; 16636&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A405&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0185&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 660
+<br>trs80" 64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Z101&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EL0020&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0</td>
+</tr>
+</table>
+
+<p>Then let's print out only lines with Type == "386":
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1
+== "386"&nbsp; { print $0 }</font>
+<br>Note: The <b>==</b> symbol represents an equality test (not matching
+a part).
+<br>Puting this one-line program in a file myawk2 and running it like this:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 BGCOLOR="#99FF99" >
+<tr>
+<td><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $
+awk&nbsp; -f&nbsp; myawk2&nbsp;&nbsp; awktext</font>
+<p>Output:
+<br>386&nbsp;&nbsp;&nbsp;&nbsp; 2048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D403&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MG0011&nbsp;&nbsp;&nbsp; 100
+<br>386&nbsp;&nbsp;&nbsp;&nbsp; 8192&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A423&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0177&nbsp;&nbsp;&nbsp; 400</td>
+</tr>
+</table>
+
+<p>Comments:&nbsp; comments begin with the hash (#) symbol and continue
+till the end of the line.
+<br>Example:
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1
+== "386"&nbsp; { print $0 }&nbsp;</font><font color="#009900">&nbsp; #
+print all records where the computer is a 386</font>
+<br>Remember that the comment ends at the end of the line. The following
+program is thus wrong, as the closing brace of the action is treated as
+part of the comment.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1 == "386&nbsp; { print
+$0&nbsp;&nbsp;&nbsp; #print out all records&nbsp; }
+<p>Relational operators which can be used in comparing expressions.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 BGCOLOR="#99FF99" >
+<tr>
+<td>&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; less than
+<br>&lt; =&nbsp;&nbsp;&nbsp;&nbsp; less than or equal to
+<br>==&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; equal to
+<br>!=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; not equal
+<br>> =&nbsp;&nbsp;&nbsp;&nbsp; greater than or equal to
+<br>>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; greater than
+<br>~&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; matches
+<br>!~&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; does not match</td>
+</tr>
+</table>
+
+<p>Example:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#99FF99" >
+<tr>
+<td><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #
+myawk4, an awk program to display all input lines for computers&nbsp;</font>
+<br><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #
+with less than 1024 Kb of memory&nbsp;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2
+&lt;&nbsp; 1024&nbsp; { print $0 }</font>
+<br>Output:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; XT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+640&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D402&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MG0010&nbsp; 0
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "trs80" 64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Z101&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EL0020&nbsp; 0</td>
+</tr>
+</table>
+
+<p>Example:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#99FF99" >
+<tr>
+<td><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #
+myawk5</font>
+<br><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #
+an awk program to print the location/serial number of 486 computers</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1
+== "486"&nbsp; { print $3, $4 }</font>
+<br>Output:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D404&nbsp; MG0012
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A424&nbsp; CC0182</td>
+</tr>
+</table>
+
+<p>Example:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#99FF99" >
+<tr>
+<td><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #
+myawk6&nbsp;</font>
+<br><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #
+an awk program to print out all computers belonging to management.</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /MG/&nbsp;
+{ print $0 }</font>
+<br>Output:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; XT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+640&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D402&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MG0010&nbsp; 0
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 386&nbsp;&nbsp;&nbsp;&nbsp;
+2048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D403&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MG0011&nbsp; 100
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 486&nbsp;&nbsp;&nbsp;&nbsp;
+4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D404&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MG0012&nbsp; 270</td>
+</tr>
+</table>
+
+<p>Improved - check for MG only in the 4th column:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#99FF99" >
+<tr>
+<td><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $4
+~ /MG/&nbsp; { print $0 }</font></td>
+</tr>
+</table>
+
+<p>Examples:
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2
+!= "4096"&nbsp; { print $0 }</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $5
+>&nbsp; 100&nbsp;&nbsp;&nbsp; { print $4 }</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $4
+!~ /CC/&nbsp;&nbsp;&nbsp; { print $0 }</font>
+<p>Example of more detailed output:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#99FF99" >
+<tr>
+<td><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #
+myawk7</font>
+<br><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #
+list computers located in D block, type and location</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $3
+~ /D/&nbsp; { print "Location = ", $3, "&nbsp; type = ", $1 }</font>
+<br>Output:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Location =&nbsp;&nbsp; D402&nbsp;
+type =&nbsp;&nbsp; XT
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Location =&nbsp;&nbsp; D403&nbsp;
+type =&nbsp;&nbsp; 386
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Location =&nbsp;&nbsp; D404&nbsp;
+type =&nbsp;&nbsp; 486</td>
+</tr>
+</table>
+
+<p>Formatting output using printf (like in C, terminate with a semi-colon.
+Brackets are used to enclose the argument, and the text is enclosed using
+double quotes:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk8
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1
+== "286" {&nbsp; printf( "Location : ");&nbsp;&nbsp; print $3 }</font>
+<br>Output:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Location : A423
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Location : A425</td>
+</tr>
+</table>
+
+<p>Example of a string format:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk9</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1
+== "286"&nbsp; {&nbsp; printf( "Location is %s\n", $3 );&nbsp; }</font>
+<br>Output:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Location is A423
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Location is A425</td>
+</tr>
+</table>
+
+<p>Example - %s format:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk10</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1=="286"
+{ printf( "Location = %s, serial # = %s\n", $3, $4 ); }</font>
+<br>Output:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Location = A423, serial
+# = CC0183
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Location = A425, serial
+# = CC0184</td>
+</tr>
+</table>
+
+<p>Example - %d format:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk11</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1=="486"
+{ printf("Location = %s, disk = %dKb\n", $3, $5 );&nbsp; }</font>
+<br>Output:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Location = D404, disk =
+270Kb
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Location = A424, disk =
+670Kb</td>
+</tr>
+</table>
+
+<p>Example - %s format with specified width:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk12</font>
+<br><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #
+formatting the output using a field width</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1=="286"
+{printf("Location = %10s, disk = %5dKb\n",$3,$5);}</font>
+<p>Output:
+<br>Location =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A423, disk =&nbsp;&nbsp;
+100Kb
+<br>Location =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A425, disk =&nbsp;&nbsp;&nbsp;&nbsp;
+80Kb</td>
+</tr>
+</table>
+
+<p><b><font size=+0>Summary of printf so far</font></b>
+<br><font color="#3333FF">&nbsp;&nbsp; %[n]s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+print a text string</font>
+<br><font color="#3333FF">&nbsp;&nbsp; %[n]d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+print a numeric value</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+print a new-line</font>
+<br>&nbsp;
+<p>The keywords BEGIN and END are used to perform specific actions before
+and after reading the input lines. The <b>BEGIN</b> keyword is normally
+associated with printing titles and setting default values, whilst the
+<b>END</b>
+keyword is normally associated with printing totals.
+<p>Example:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk13</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BEGIN&nbsp;&nbsp;
+{ print "Location of 286 Computers" }</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1
+== "286"&nbsp; { print $3 }</font>
+<p>Output:
+<br>Location of 286 Computers
+<br>&nbsp;A423
+<br>&nbsp;A425</td>
+</tr>
+</table>
+
+<p>Pre-defined variables, for example:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><font color="#CC0000">NR</font></b>
+-&nbsp; the current input line number
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><font color="#CC0000">NF</font></b>
+-&nbsp; number of fields in the input line
+<br>Example:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk14
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # print the number of computers
+<br>&nbsp;&nbsp;<font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; END&nbsp;&nbsp;&nbsp;&nbsp;
+{ print "There are ", NR, "computers" }</font>
+<p>Output:
+<br>&nbsp;There are&nbsp; 13 computers</td>
+</tr>
+</table>
+
+<p>User-defined variables:
+<br>Default value - always zero.
+<br>&nbsp;The following awk program counts the number of 486 computers,
+and uses the <b>END</b> keyword to print out the total after all input
+lines have been processed. When each input line is read, field one is checked
+to see if it matches <i>486</i>. If it does, the awk variable <i>computers</i>
+is incremented (the symbol ++ means increment by one).
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk15
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1
+== "486"&nbsp; { computers++ }</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; END&nbsp;&nbsp;&nbsp;&nbsp;
+{&nbsp; printf("The number of 486 computers is %d\n", computers);&nbsp;
+}</font>
+<p>Output:
+<br>The number of 486 computers is 2</td>
+</tr>
+</table>
+<a NAME="intro"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Part 2 or 3</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font size=+0>Regular Expressions</font></b> - pattern searching
+similar to grep and other unix utilities:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /386/
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1&nbsp; ~&nbsp; /386/
+<br>In regular expressions, the following symbols are metacharacters with
+special meanings.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 BGCOLOR="#FFFFCC" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \&nbsp; ^&nbsp; $&nbsp;
+.&nbsp; [&nbsp; ]&nbsp; *&nbsp; +&nbsp; ?&nbsp; (&nbsp; )&nbsp; |
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ^&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+matches the first character of a string
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+matches the last character of a string
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+matches a single character of a string
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ ]&nbsp;&nbsp;&nbsp;&nbsp;
+defines a set of characters
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( )&nbsp;&nbsp;&nbsp;&nbsp;
+used for grouping
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+specifies alternatives</td>
+</tr>
+</table>
+
+<p>A group of characters enclosed in brackets matches to any one of the
+enclosed characters. In the example below (myawk16), field one is matched
+against either "8" or "6".
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk16, display all x8x
+computer types
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1
+~ /[86]/&nbsp; { print $0 }</font>
+<p>Output:
+<br>386&nbsp;&nbsp;&nbsp;&nbsp; 2048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D403&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MG0011&nbsp; 100
+<br>486&nbsp;&nbsp;&nbsp;&nbsp; 4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D404&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MG0012&nbsp; 270
+<br>386&nbsp;&nbsp;&nbsp;&nbsp; 8192&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A423&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0177&nbsp; 400
+<br>486&nbsp;&nbsp;&nbsp;&nbsp; 8192&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A424&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0182&nbsp; 670
+<br>286&nbsp;&nbsp;&nbsp;&nbsp; 4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A423&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0183&nbsp; 100
+<br>286&nbsp;&nbsp;&nbsp;&nbsp; 4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A425&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0184&nbsp; 80
+<br>68020&nbsp;&nbsp; 2048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B406&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1029&nbsp; 80
+<br>68030&nbsp;&nbsp; 2048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B410&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1030&nbsp; 100
+<br>"trs80" 64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Z101&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EL0020&nbsp; 0</td>
+</tr>
+</table>
+
+<p>Note: In this example, field one is searched for the character '8' and
+'6', in any order of occurrence and position.
+<p>&nbsp;If the first character after the opening bracket ([) is a caret
+(^) symbol, this complements the set so that it matches any character NOT
+IN the set. The following example (myawk17) shows this, matching field
+one with any character except "2" "3" "4" "8" or "6".
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk17
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # display all which do not
+contain 2, 3, 4, 6 or 8 in first field
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1&nbsp;
+~&nbsp; /[^23468]/&nbsp; { print $0 }</font>
+<p>Output:
+<br>XT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 640&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D402&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MG0010&nbsp; 0
+<br>Mac&nbsp;&nbsp;&nbsp;&nbsp; 4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B407&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1027&nbsp; 80
+<br>Apple&nbsp;&nbsp; 4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B406&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1028&nbsp; 40
+<br>68020&nbsp;&nbsp; 2048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B406&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1029&nbsp; 80
+<br>68030&nbsp;&nbsp; 2048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B410&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1030&nbsp; 100
+<br>$unix&nbsp;&nbsp; 16636&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A405&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0185&nbsp; 660
+<br>"trs80" 64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Z101&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EL0020&nbsp; 0</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;#myawk18
+<br># display all lines where field one contains A-Z, a-z&nbsp;
+<br><font color="#3333FF">$1 ~ /[a-zA-Z]/ { print $0 }</font>
+<p>Output:
+<br>XT 640 D402 MG0010 0&nbsp;
+<br>Mac 4096 B407 EE1027 80&nbsp;
+<br>Apple 4096 B406 EE1028 40&nbsp;
+<br>$unix 16636 A405 CC0185 660&nbsp;
+<br>"trs80" 64 Z101 EL0020 0&nbsp;</td>
+</tr>
+</table>
+
+<p>Parentheses are used to group options together, and the vertical bar
+is used for alternatives. In the following example (myawk19), it searches
+all input lines for the string "Apple", "Mac", "68020" or "68030".
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk19
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # illustrate multiple searching
+using alternatives
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /(Apple|Mac|68020|68030)/&nbsp;&nbsp;
+{ print $0 }</font>
+<p>Output:
+<br>Mac&nbsp;&nbsp;&nbsp;&nbsp; 4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B407&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1027&nbsp; 80
+<br>Apple&nbsp;&nbsp; 4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B406&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1028&nbsp; 40
+<br>68020&nbsp;&nbsp; 2048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B406&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1029&nbsp; 80
+<br>68030&nbsp;&nbsp; 2048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B410&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1030&nbsp; 100</td>
+</tr>
+</table>
+
+<p>To use metacharacters as part of a search string, their special meaning
+must be disabled. This is done by preceding them with the backslash (\)
+symbol. The following example prints all input lines which contain the
+string "b$".
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /b\$/&nbsp;&nbsp;
+{ print $0 }</font>
+<p><b><font size=+0>Special symbols recognised by awk</font></b>
+<br>In addition to metacharacters, awk recognises the following C programming
+language escape sequences within regular expressions and strings.
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+backspace</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+formfeed</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \r&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+carriage return</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+tab</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+double quote</font>
+<p>The following example prints all input lines which contain a tab character
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /\t/&nbsp;
+{ print $0 }</font>
+<p>Consider also the use of string concatenation in pattern matching. The
+plus (+) symbol concatenates one or more strings in pattern matching. The
+following awk program (myawk16a) searches for computer types which begin
+with a dollar ($) symbol and are followed by an alphabetic character (a-z,
+A-Z), and the last character in the string is the symbol x.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk16a
+<br>&nbsp;<font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1&nbsp;
+~&nbsp; /^\$+[a-zA-Z]+x$/&nbsp; { print $0 }</font>
+<p>Output:
+<br>$unix&nbsp;&nbsp; 16636&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A405&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0185&nbsp; 660</td>
+</tr>
+</table>
+
+<p>awk interprets any string or variable on the right side of a ~ or !~
+as a regular expression. This means the regular expression can be assigned
+to a variable, and the variable used later in pattern matching. An earlier
+awk program (myawk17) searched for input lines where field one did not
+contain the digits 2, 3, 4, 6 or 8.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk17
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # display all which do not
+contain 2, 3, 4, 6 or 8 in first field
+<br>&nbsp;&nbsp;&nbsp;<font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; $1&nbsp;
+~&nbsp; /[^23468]/&nbsp; { print $0 }</font></td>
+</tr>
+</table>
+
+<p>The awk program below shows how to rewrite this (myawk17) using a variable
+which is assigned the regular expression.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk20
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BEGIN&nbsp;
+{ matchstr = "[^23468]" }</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1&nbsp;
+~&nbsp; matchstr&nbsp; { print $0 }</font>
+<p>Output:
+<br>XT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 640&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D402&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MG0010&nbsp; 0
+<br>Mac&nbsp;&nbsp;&nbsp;&nbsp; 4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B407&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1027&nbsp; 80
+<br>Apple&nbsp;&nbsp; 4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B406&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1028&nbsp; 40
+<br>68020&nbsp;&nbsp; 2048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B406&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1029&nbsp; 80
+<br>68030&nbsp;&nbsp; 2048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B410&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1030&nbsp; 100
+<br>$unix&nbsp;&nbsp; 16636&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A405&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0185&nbsp; 660
+<br>"trs80" 64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Z101&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EL0020&nbsp; 0</td>
+</tr>
+</table>
+
+<p>Consider the following example, which searches for all lines which contain
+the double quote character (").
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk21
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BEGIN&nbsp;
+{&nbsp; matchstr = "\"" }</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1
+~ matchstr&nbsp; {&nbsp; print&nbsp; $0&nbsp; }</font>
+<p>Output:
+<br>"trs80" 64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Z101&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EL0020&nbsp; 0</td>
+</tr>
+</table>
+
+<p><b><font size=+0>Combining Patterns</font></b>
+<br>Patterns can be combined to provide more powerful and complex matching.
+The following symbols are used to combine patterns.
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ||&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+logical or, either pattern can match</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &amp;&amp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+logical and, both patterns must match</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; !&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+logical not, patterns not matching</font>
+<p>Lets suppose we want a list of all "486" computers which have more than
+250Mb of hard disk space. The following awk pattern uses the logical and
+to construct the necessary pattern string.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk22
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1
+== "486"&nbsp; &amp;&amp;&nbsp;&nbsp; $5 >&nbsp; 250&nbsp; { print&nbsp;
+$0 }</font>
+<p>Output:
+<br>486&nbsp;&nbsp;&nbsp;&nbsp; 4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D404&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MG0012&nbsp; 270
+<br>486&nbsp;&nbsp;&nbsp;&nbsp; 8192&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A424&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0182&nbsp; 670</td>
+</tr>
+</table>
+
+<p><b><font size=+0>awk Pattern Ranges</font></b>
+<br>A pattern range is two patterns separated by a comma. The action is
+performed for each input line between the occurrence of the first and second
+pattern.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk23
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # demonstrate the use of
+pattern ranges
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /XT/,
+/Mac/&nbsp;&nbsp; { print $0 }</font>
+<p>Output:
+<br>XT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 640&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D402&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MG0010&nbsp; 0
+<br>386&nbsp;&nbsp;&nbsp;&nbsp; 2048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D403&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MG0011&nbsp; 100
+<br>486&nbsp;&nbsp;&nbsp;&nbsp; 4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D404&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MG0012&nbsp; 270
+<br>386&nbsp;&nbsp;&nbsp;&nbsp; 8192&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A423&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0177&nbsp; 400
+<br>486&nbsp;&nbsp;&nbsp;&nbsp; 8192&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A424&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0182&nbsp; 670
+<br>286&nbsp;&nbsp;&nbsp;&nbsp; 4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A423&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0183&nbsp; 100
+<br>286&nbsp;&nbsp;&nbsp;&nbsp; 4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A425&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0184&nbsp; 80
+<br>Mac&nbsp;&nbsp;&nbsp;&nbsp; 4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B407&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1027&nbsp; 80</td>
+</tr>
+</table>
+
+<p>The awk program <i>myawk23 </i>prints out all input lines between the
+first occurrence of "XT" and the next occurrence of "Mac".
+<br>&nbsp;
+<p><b><font size=+0>awks Built In Variables</font></b>
+<br>awk provides a number of internal variables which it uses to process
+files. These variables are accessible by the programmer. The following
+is a summary of awk's built-in variables.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 BGCOLOR="#FFFFCC" >
+<tr>
+<td>ARGC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+number of command-line arguments
+<br>ARGV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+array of command-line arguments
+<br>FILENAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name of current
+input file
+<br>FNR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+record number in current file
+<br>FS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+input field separator (default= space and tab characters)
+<br>NF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+number of fields in input line
+<br>NR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+number of input lines read so far
+<br>OFMT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+output format for numbers (default=%.6)
+<br>OFS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+output field separator (default=space)
+<br>ORS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+output line separator (default=newline)
+<br>RS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+input line separator (default=newline)
+<br>RSTART&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; index
+of first character matched by <b>match()</b>
+<br>RLENGTH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; length of string
+matched by <b>match()</b>
+<br>SUBSEP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; subscript
+separator (default="\034")</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk24
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # print the first five input
+lines of a file, bit like <i>head</i>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FNR
+== 1, FNR == 5&nbsp; {&nbsp; print $0 }</font>
+<p>Output:
+<br>XT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 640&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D402&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MG0010&nbsp; 0
+<br>386&nbsp;&nbsp;&nbsp;&nbsp; 2048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D403&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MG0011&nbsp; 100
+<br>486&nbsp;&nbsp;&nbsp;&nbsp; 4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D404&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MG0012&nbsp; 270
+<br>386&nbsp;&nbsp;&nbsp;&nbsp; 8192&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A423&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0177&nbsp; 400
+<br>&nbsp;486&nbsp;&nbsp;&nbsp;&nbsp; 8192&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A424&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0182&nbsp; 670</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk25
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # print each input line
+preceded with a line number
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # print the heading which
+includes the name of the file
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BEGIN&nbsp;
+{&nbsp; print "File:", FILENAME }</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+print NR, ":\t", $0 }</font>
+<p>Output:
+<br>&nbsp;&nbsp; File:&nbsp; awktext
+<br>&nbsp;&nbsp; 1 :&nbsp;&nbsp;&nbsp;&nbsp; XT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+640&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D402&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MG0010&nbsp; 0
+<br>&nbsp;&nbsp; 2 :&nbsp;&nbsp;&nbsp;&nbsp; 386&nbsp;&nbsp;&nbsp;&nbsp;
+2048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D403&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MG0011&nbsp; 100
+<br>&nbsp;&nbsp; 3 :&nbsp;&nbsp;&nbsp;&nbsp; 486&nbsp;&nbsp;&nbsp;&nbsp;
+4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D404&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MG0012&nbsp; 270
+<br>&nbsp;&nbsp; 4 :&nbsp;&nbsp;&nbsp;&nbsp; 386&nbsp;&nbsp;&nbsp;&nbsp;
+8192&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A423&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0177&nbsp; 400
+<br>&nbsp;&nbsp; 5 :&nbsp;&nbsp;&nbsp;&nbsp; 486&nbsp;&nbsp;&nbsp;&nbsp;
+8192&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A424&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0182&nbsp; 670
+<br>&nbsp;&nbsp; 6 :&nbsp;&nbsp;&nbsp;&nbsp; 286&nbsp;&nbsp;&nbsp;&nbsp;
+4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A423&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0183&nbsp; 100
+<br>&nbsp;&nbsp; 7 :&nbsp;&nbsp;&nbsp;&nbsp; 286&nbsp;&nbsp;&nbsp;&nbsp;
+4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A425&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0184&nbsp; 80
+<br>&nbsp;&nbsp; 8 :&nbsp;&nbsp;&nbsp;&nbsp; Mac&nbsp;&nbsp;&nbsp;&nbsp;
+4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B407&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EE1027&nbsp;
+80
+<br>&nbsp;&nbsp; 9 :&nbsp;&nbsp;&nbsp;&nbsp; Apple&nbsp;&nbsp; 4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B406&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1028&nbsp; 40
+<br>&nbsp; 10 :&nbsp;&nbsp;&nbsp; 68020&nbsp;&nbsp; 2048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B406&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1029&nbsp; 80
+<br>&nbsp; 11 :&nbsp;&nbsp;&nbsp; 68030&nbsp;&nbsp; 2048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B410&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1030&nbsp; 100
+<br>&nbsp; 12 :&nbsp;&nbsp;&nbsp; $unix&nbsp;&nbsp; 16636&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A405&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0185&nbsp; 660
+<br>&nbsp; 13 :&nbsp;&nbsp;&nbsp; "trs80" 64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Z101&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EL0020&nbsp; 0</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk26
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # demonstrate use of argc
+and argv parameters
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BEGIN&nbsp;
+{&nbsp; print "There are ",ARGC, "parameters on the command line";</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+print "The first argument is ", ARGV[0];</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+print "The second argument is ", ARGV[1]</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</font>
+<p>Output:
+<br>(invoked using&nbsp; <i>awk -fmyawk26 awktext</i>)
+<br>There are&nbsp; 2 parameters on the command line
+<br>The first argument is&nbsp; awk
+<br>The second argument is&nbsp; awktext</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk27
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # print out the number of
+fields in each input line
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;
+print "Input line", NR, "has", NF, "fields" }</font>
+<p>Output:
+<br>Input line 1 has 5 fields
+<br>Input line 2 has 5 fields
+<br>Input line 3 has 5 fields
+<br>Input line 4 has 5 fields
+<br>Input line 5 has 5 fields
+<br>Input line 6 has 5 fields
+<br>Input line 7 has 5 fields
+<br>Input line 8 has 5 fields
+<br>Input line 9 has 5 fields
+<br>Input line 10 has 5 fields
+<br>Input line 11 has 5 fields
+<br>Input line 12 has 5 fields
+<br>Input line 13 has 5 fields</td>
+</tr>
+</table>
+
+<p>Using the <b>BEGIN</b> statement, it is often desirable to change both
+<b>FS</b>
+(the symbol used to separate fields) and <b>RS</b> (the symbol used to
+separate input lines). The following text file (<i>awktext2</i>) is used
+for the program <i>myawk28</i>. The test file separates each field using
+a dollar symbol ($), and each input line by a carat symbol (^). The program
+reads the file and prints out the username and password for each users
+record. A heading is shown only for clarity.
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; awktext2 data format</b>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (username$address$password$privledge$downloadlimit$protocol^)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Joe Bloggs$767 Main Rd Tawa$smidgy$clerk$500$zmodem^Sam
+Blue$1023
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kent Drive Porirua$yougessedit$normal$100$xmodem^Bobby
+Williams$96
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Banana Grove$mymum$sysop$3000$zmodem^
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk28
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # a program which shows
+use of FS and RS, scans awktext2
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BEGIN&nbsp;
+{ FS = "\$"; RS = "\^" }</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+print "User = ", $1, " Password:", $3 }</font>
+<p>Output:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; User =&nbsp; Joe Bloggs&nbsp;
+Password: smidgy
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; User =&nbsp; Sam Blue&nbsp;
+Password: yougessedit
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; User =&nbsp; Bobby Williams&nbsp;
+Password: mymum
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; User =&nbsp;&nbsp;&nbsp;
+Password:&nbsp;</td>
+</tr>
+</table>
+
+<p><b><font size=+0>awks Assignment Operators</font></b>
+<br>The following is a summary of awk's assignment operators.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 BGCOLOR="#FFFFCC" >
+<tr>
+<td>+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+add
+<br>&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+subtract
+<br>&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+multiply
+<br>&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+divide
+<br>&nbsp;++&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+increment
+<br>&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+decrement
+<br>&nbsp;%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+modulus
+<br>&nbsp;^&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+exponential
+<br>&nbsp;+=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+plus equals
+<br>&nbsp;-=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+minus equals
+<br>&nbsp;*=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+multiply equals
+<br>&nbsp;/=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+divide equals
+<br>&nbsp;%=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+modulus equals
+<br>&nbsp;^=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+exponential equals</td>
+</tr>
+</table>
+
+<p>Now some examples,
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sum
+= sum + 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #
+same as sum += 3</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sum
+= x / y</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; n++&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+# same as n = n + 1</font>
+<p>The following awk program displays the average installed memory capacity
+for an IBM type computer (XT - 486). Note the use of <b>%f</b> within the
+<i>printf
+</i>statement
+to print out the result in floating point format. The use of <b>.2</b>
+between the % and f symbols specify two decimal places.
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk29
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /(XT|286|386|486)/&nbsp;&nbsp;
+{ computers++,&nbsp; ram += $2 }</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; END&nbsp;
+{ avgmem = ram / computers;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+printf(" The average memory per PC = %.2f", avgmem )</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</font>
+<br>Output:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The average memory per PC
+= 4480.00</td>
+</tr>
+</table>
+
+<p><b><font size=+0>awks Built In Arithmetic Operators and Functions</font></b>
+<br>The following is a summary of awk's built-in arithmetic operators and
+functions. All operations are done in floating point format.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 BGCOLOR="#FFFFCC" >
+<tr>
+<td>atan2(y,x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; arctangent of y/x in radians
+<br>cos(x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cosine
+of x, with x in radians
+<br>exp(x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exponential
+function of x
+<br>int(x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; integer
+part of x truncated towards 0
+<br>log(x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; natural
+logarithm of x
+<br>rand()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; random
+number between 0 and 1
+<br>sin(x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sine of
+x, with x in radians
+<br>sqrt(x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; square root
+of x
+<br>srand(x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x is new seed for
+rand()</td>
+</tr>
+</table>
+
+<p>Consider the following awk program (myawk30) which prints the square
+root of an inputted value. This program also shows interactive use, by
+entering the file that awk processes directly from the keyboard. If no
+data file is specified (as in the example below, awk reads from the keyboard).
+<br>&nbsp;
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk30, to print the square
+root of a number
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp; print&nbsp; sqrt(
+$1 ) }
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Running myawk30</b>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; awk&nbsp; -fmyawk30
+<p><b>Output:</b>
+<br><b>&nbsp;&nbsp; 2</b>
+<br>&nbsp;&nbsp; 1.41421
+<br><b>&nbsp;&nbsp; 3</b>
+<br>&nbsp;&nbsp; 1.73205
+<br><b>&nbsp;&nbsp; 4</b>
+<br>&nbsp;&nbsp; 2</td>
+</tr>
+</table>
+Note: The user pressed CTRL-D (F6 for MSDOS) to signify the end of data
+input.
+<p><b><font size=+0>awks Built In String Functions</font></b>
+<br>The following is a summary of awk's built-in string functions. An awk
+string is created by enclosing characters within quotes ("). A string can
+contain C language escape sequences. The following awk string contains
+the escape sequence for a new-line character.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 BGCOLOR="#FFFFCC" >
+<tr>
+<td>"hello\n"
+<p>gsub(r,s)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; substitutes s for r globally
+in current input line, returns the&nbsp; number of substitutions
+<br>gsub(r,s,t)&nbsp;&nbsp;&nbsp;&nbsp; substitutes s for r in t globally,
+returns number of substitutions
+<br>index(s,t)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; returns position of string
+t in s, 0 if not present
+<br>length(s)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; returns length of s
+<br>match(s,r)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; returns position in s where
+r occurs, 0 if not present
+<br>split(s,a)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; splits s into array a on FS,
+returns number of fields
+<br>split(s,a,r)&nbsp;&nbsp;&nbsp; splits s into array a on r, returns
+number of fields
+<br>sprintf(fmt, expr-list) returns expr-list formatted according to format
+string&nbsp; specified by fmt
+<br>sub(r,s)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; substitutes s for
+first r in current input line, returns number of substitutions
+<br>sub(r,s,t)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; substitutes s for first r
+in t, returns number of substitutions
+<br>substr(s,p)&nbsp;&nbsp;&nbsp;&nbsp; returns suffix s starting at position
+p
+<br>substr(s,p,n)&nbsp;&nbsp; returns substring of s length n starting
+at position p&nbsp;</td>
+</tr>
+</table>
+
+<p>The following awk program (myawk31) uses the string function <b>gsub</b>
+to replace each occurrence of <i>286</i> with the string <i>AT</i>.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk31
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+gsub( /286/, "AT" ); print $0 }</font>
+<p>Output:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; XT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+640&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D402&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MG0010&nbsp; 0
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 386&nbsp;&nbsp;&nbsp;&nbsp;
+2048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D403&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MG0011&nbsp; 100
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 486&nbsp;&nbsp;&nbsp;&nbsp;
+4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+D404&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MG0012&nbsp; 270
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 386&nbsp;&nbsp;&nbsp;&nbsp;
+8192&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A423&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0177&nbsp; 400
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 486&nbsp;&nbsp;&nbsp;&nbsp;
+8192&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A424&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0182&nbsp; 670
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A423&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0183&nbsp; 100
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A425&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0184&nbsp; 80
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mac&nbsp;&nbsp;&nbsp;&nbsp;
+4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B407&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1027&nbsp; 80
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Apple&nbsp;&nbsp; 4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B406&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1028&nbsp; 40
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 68020&nbsp;&nbsp; 2048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B406&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1029&nbsp; 80
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 68030&nbsp;&nbsp; 2048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+B410&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EE1030&nbsp; 100
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $unix&nbsp;&nbsp; 16636&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A405&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0185&nbsp; 660
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "trs80" 64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Z101&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EL0020&nbsp; 0</td>
+</tr>
+</table>
+<a NAME="intro"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Part 3 or 3&nbsp; Introduction to awk</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font size=+0>awk Control Flow Statements</font></b>
+<br>awk provides a number of constructs to implement selection and iteration.
+These are similar to C language constructs.
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (&nbsp;<i> expression</i>
+)&nbsp;<i> statement1</i> else&nbsp;<i> statement2</i></b>
+<p>The <i>expression</i> can include the relational operators, the regular
+expression matching operators, the logical operators and parentheses for
+grouping.
+<br><i>expression</i> is evaluated first, and if NON-ZERO then <i>statement1</i>
+is executed, otherwise <i>statement2</i> is executed.
+<p>In the following awk program (myawk32), each input line is scanned and
+field $5 is compared against the value of the awk user defined variable
+<i>disksize</i>
+(awk initialises it to 0). When field $5 is greater, it is assigned to
+<i>disksize</i>,
+and the input line is saved in the other user defined variable <i>computer</i>.
+Note the use of the braces { } to group the program statements as belonging
+to the <b>if</b> statement (same syntax as in the C language).
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk32
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #demonstrate use of if statement,
+find biggest disk
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;&nbsp;&nbsp;
+if( disksize &lt;&nbsp; $5 )</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+disksize = $5</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+computer = $0</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; END&nbsp;
+{ print computer }</font>
+<p>Output:
+<br>&nbsp;&nbsp; 486&nbsp;&nbsp;&nbsp;&nbsp; 8192&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A424&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0182&nbsp; 670</td>
+</tr>
+</table>
+
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while (&nbsp;<i> expression</i>
+)&nbsp;&nbsp;<i> statement</i></b>
+<p><i>expression</i> is evaluated, and if NON-ZERO then <i>statement</i>
+is executed, then <i>expression</i> is re-evaluated. This continues until
+<i>expression</i>
+evaluates as ZERO, at which time the <b>while</b> statement terminates.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk33
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # a while statement to print
+out each second field only for "286" computers
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BEGIN&nbsp;
+{ printf("Type\tLoc\tDisk\n")&nbsp; }</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /286/&nbsp;
+{&nbsp; field = 1</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+while(&nbsp; field &lt; = NF )</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+printf("%s\t", $field )</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+field += 2</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+print ""</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</font>
+<p>Output:
+<br>&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp; Loc&nbsp;&nbsp;&nbsp;&nbsp; Disk
+<br>&nbsp;&nbsp;&nbsp; 286&nbsp;&nbsp;&nbsp;&nbsp; A423&nbsp;&nbsp;&nbsp;
+100
+<br>&nbsp;&nbsp;&nbsp; 286&nbsp;&nbsp;&nbsp;&nbsp; A425&nbsp;&nbsp;&nbsp;
+80</td>
+</tr>
+</table>
+
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (&nbsp;<i> expression</i>1;&nbsp;<i>
+expression</i>;&nbsp;<i> expression</i>2 )&nbsp;<i> statement</i></b>
+<p>The for statement provides repetition of a statement. <i>expression1</i>
+is executed first, and is normally used to initialise variables used within
+the for loop. <i>expression</i> is a re-evaluation which determines whether
+the loop should continue. <i>expression2</i> is performed at the end of
+each iteration of the loop, before the re-evaluation test is performed.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. <i>expression1</i>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. <i>expression</i> is
+evaluated. If non-zero got step 3 else exit
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. <i>statement</i> is executed
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4. <i>expression2</i> is
+executed
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5. goto step 2
+<p>Consider the following awk program (<i>myawk34</i>) which is the same
+as <i>myawk33</i> shown earlier.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk34
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # a for statement to print
+out each second field only for "286" computers
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BEGIN&nbsp;
+{ printf("Type\tLoc\tDisk\n")&nbsp; }</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /286/&nbsp;
+{&nbsp; for( field = 1; field &lt; = NF; field += 2)&nbsp; printf("%s\t",
+$field )</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+print ""</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</font>
+<p>Output:
+<br>&nbsp; Type&nbsp;&nbsp;&nbsp; Loc&nbsp;&nbsp;&nbsp;&nbsp; Disk
+<br>&nbsp;&nbsp; 286&nbsp;&nbsp;&nbsp;&nbsp; A423&nbsp;&nbsp;&nbsp; 100
+<br>&nbsp;&nbsp; 286&nbsp;&nbsp;&nbsp;&nbsp; A425&nbsp;&nbsp;&nbsp; 80&nbsp;</td>
+</tr>
+</table>
+
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; do&nbsp;<i> statement</i>
+while(&nbsp;<i> expression</i> )</b>
+<p>The <i>statement</i> is executed repeatedly until the value of expression
+is ZERO. <i>statement</i> is executed at least once.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk35
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # print out every second
+field for "286" computers
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BEGIN
+{ field = 1 }</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1
+== "286" { do {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+printf("%s\t", $field)</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+field += 2</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}&nbsp; while( field &lt; = NF )</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</font>
+<p>Output:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 286&nbsp;&nbsp;&nbsp;&nbsp;
+A423&nbsp;&nbsp;&nbsp; 100&nbsp;</td>
+</tr>
+</table>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>break, continue, next,
+exit</b>
+<p>The <b>break</b> statement causes an immediate exit from within a <b>while</b>
+or <b>for</b> loop.
+<br>&nbsp;The <b>continue</b> statement causes the next iteration of a
+loop.
+<br>&nbsp;The <b>next</b> statement skips to the next input line then re-starts
+from the first pattern-action statement.
+<br>&nbsp;The <b>exit</b> statement causes the program to branch to the
+END statement (if one exists), else it exits the program.
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk36
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #print out computer types&nbsp;
+"286" using a next statement
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{ while( $1 != "286" ) next;&nbsp; print $0 }</font>
+<p>Output:
+<br>&nbsp;&nbsp;&nbsp; 286&nbsp;&nbsp;&nbsp;&nbsp; 4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A423&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0183&nbsp; 100
+<br>&nbsp;&nbsp;&nbsp; 286&nbsp;&nbsp;&nbsp;&nbsp; 4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A425&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CC0184&nbsp; 80</td>
+</tr>
+</table>
+
+<p><b><font size=+0>Arrays in awk programs</font></b>
+<br>awk provides single dimensioned arrays. Arrays need not be declared,
+they are created in the same manner as awk user defined variables.
+<p>&nbsp;Elements can be specified as numeric or string values. Consider
+the following awk program (<i>myawk37</i>) which uses arrays to hold the
+number of "486" computers and the disk space totals for all computers.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp; #myawk37
+<br>&nbsp;&nbsp;&nbsp;&nbsp; # diskspace[] holds sum of disk space for
+all computers
+<br>&nbsp;&nbsp;&nbsp;&nbsp; # computers[] holds number of computers of
+specified type
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1 == "486"&nbsp;
+{ computers["486"]++ }</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $5 >&nbsp; 0&nbsp;
+{ diskspace[0] += $5 }</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; END&nbsp; { print
+"Number of 486 computers =", computers[486];</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+print "Total disk space = ",diskspace[0]</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</font>
+<p>Output:
+<br>&nbsp;&nbsp; Number of 486 computers = 2
+<br>&nbsp;&nbsp; Total disk space =&nbsp; 2580</td>
+</tr>
+</table>
+
+<p><b>Note</b> that the previous program (<i>myawk37</i>) uses TWO pattern
+action statements for each input line. The first pattern action statement
+handles the number of "486" type computers, whilst the second handles the
+total disk space for all computer types.
+<p>Consider the following awk program (<i>myawk38</i>) which uses the
+<b>in</b>
+statement associated with processing areas. The program .....
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk38
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+computers[$1]++ }</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; END&nbsp;
+{&nbsp; for ( name in computers )</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+print&nbsp; "The number of ",name,"computers is",computers[name]</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</font>
+<p>Output:
+<br>&nbsp;&nbsp; The number of&nbsp; "trs80" computers is 1
+<br>&nbsp;&nbsp; The number of&nbsp; $unix computers is 1
+<br>&nbsp;&nbsp; The number of&nbsp; 286 computers is 2
+<br>&nbsp;&nbsp; The number of&nbsp; 386 computers is 2
+<br>&nbsp;&nbsp; The number of&nbsp; 486 computers is 2
+<br>&nbsp;&nbsp; The number of&nbsp; 68020 computers is 1
+<br>&nbsp;&nbsp; The number of&nbsp; 68030 computers is 1
+<br>&nbsp;&nbsp; The number of&nbsp; Apple computers is 1
+<br>&nbsp;&nbsp; The number of&nbsp; Mac computers is 1
+<br>&nbsp;&nbsp; The number of&nbsp; XT computers is 1</td>
+</tr>
+</table>
+
+<p><b><font size=+0>awk User Defined Functions</font></b>
+<br>awk supports user defined functions. The syntax is
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function</b>&nbsp;&nbsp;<i>
+name</i>(<i> argument-list</i> )&nbsp; {
+<br><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+statements</i>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+<p>The definition of a function can occur anywhere a pattern-action statement
+can. <i>argument-list</i> is a list of variable names separated by commas.
+There must be NO space between the function name and the left bracket of
+the argument-list.
+<br>&nbsp;The <b>return</b> statement is used to return a value by the
+function.
+<br>&nbsp;Consider the following awk program (<i>myawk39</i>) which calculates
+the factorial of an inputted number.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk39
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function
+factorial( n ) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if( n &lt; = 1 )&nbsp; return 1</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+else&nbsp; return&nbsp; n *&nbsp; factorial( n - 1)</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;
+print "the factorial of ", $1, "is ", factorial($1) }</font>
+<p>Output:
+<br><b>&nbsp;&nbsp; 10</b>
+<br>&nbsp;&nbsp; the factorial of&nbsp; 10 is&nbsp; 3628800
+<br><b>&nbsp;&nbsp; 3</b>
+<br>&nbsp;&nbsp; the factorial of&nbsp; 3 is&nbsp; 6
+<br><b>&nbsp;&nbsp; 1</b>
+<br>&nbsp;&nbsp; the factorial of&nbsp; 1 is&nbsp; 1
+<br><b>&nbsp;&nbsp; 4</b>
+<br>&nbsp;&nbsp; the factorial of&nbsp; 4 is&nbsp; 24&nbsp;</td>
+</tr>
+</table>
+
+<p><b><font size=+0>awk Output</font></b>
+<br>The statements <b>print</b> and <b>printf</b> are used in awk programs
+to generate output. awk uses two variables, <b>OFS</b> (output field separator)
+and <b>ORS</b> (output record separator) to delineate fields and output
+lines. These can be changed at any time.
+<p>&nbsp;The special characters used in printf, which follow the % symbol,
+are,
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 BGCOLOR="#FFFFCC" >
+<tr>
+<td>c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; single character
+<br>d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; decimal integer
+<br>e&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double number, scientific notation
+<br>f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating point number
+<br>g&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; use e or f, whichever is shortest
+<br>o&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; octal
+<br>s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string
+<br>x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hexadecimal
+<br>%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the % symbol</td>
+</tr>
+</table>
+
+<p>The default output format is <b>%.6g</b> and is changed by assigning
+a new value to <b>OFMT</b>.
+<p><b><font size=+0>awk Output To Files</font></b>
+<br>awks output generated by <b>print</b> and <b>printf</b> can be redirected
+to a file by using the redirection symbols <b>> </b>(create/write) and
+<b>>
+> </b>(append). The names of files MUST be in quotes.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #myawk40
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # demonstrates sending output
+to a file
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1
+== "486"&nbsp; { print "Type=",$1, "Location=",$3 >&nbsp; "comp486.dat"</font>
+<p>Output:
+<br>&nbsp; Type= 486 Location= D404
+<br>&nbsp; Type= 486 Location= A424</td>
+</tr>
+</table>
+
+<p><b><font size=+0>awk Output To Pipes</font></b>
+<br>The output of awk programs can be piped into a UNIX command. The statement
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print
+"&nbsp;&nbsp;&nbsp; ",$1&nbsp; |&nbsp; "sort"</font>
+<br>causes the output of the <b>print</b> command to be piped to the UNIX
+<b>sort</b>
+command.
+<p><b><font size=+0>awk Input</font></b>
+<br><b><font size=+0>Data Files</font></b>
+<br>We have seen TWO methods to give file input to an awk program. The
+first specified the filename on the command line, the other left it blank,
+and awk read from the keyboard (examples were <i>myawk30</i> and <i>myawk39</i>).
+<br><b><font size=+0>Program Files</font></b>
+<br>We have used the <b>-f</b> parameter to specify the file containing
+the awk program. awk programs can also be specified on the command-line
+enclosed in single quotes, as the following example shows.
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; awk&nbsp;
+'/286/&nbsp; {print $0 }'&nbsp; awktext</font>
+<p>Note: For MSDOS systems, a double quote must be used to enclose the
+awk program when specified on the command line.
+<br>&nbsp;
+<p><b><font size=+0>The getline function</font></b>
+<br>awk provides the function <b>getline</b> to read input from the current
+input file or from a file or pipe.
+<p><b>getline</b> reads the next input line, splitting it into fields according
+to the settings of NF, NR and FNR. It returns 1 for success, 0 for end-of-file,
+and -1 on error.
+<p>&nbsp;The statement
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; getline data</b>
+<br>reads the next input line into the user defined variable <i>data</i>.
+No splitting of fields is done and NF is not set.
+<p>&nbsp;The statement
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; getline &lt; "temp.dat"</b>
+<br>reads the next input line from the file "temp.dat", field splitting
+is performed, and NF is set.
+<p>&nbsp;The statement
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; getline data &lt; "temp.dat"</b>
+<br>reads the next input line from the file "temp.dat" into the user defined
+variable <i>data</i>, no field splitting is done, and NF, NR and FNR are
+not altered.
+<p>&nbsp;Consider the following example, which pipes the output of the
+UNIX command <i>who</i> into <i>getline</i>. Each time through the <i>while</i>
+loop, another line is read from <i>who</i>, and the user defined variable
+<i>users</i>
+is incremented. The program counts the number of users on the host system.
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while ( "who" | getline )
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+users++
+<br><a NAME="intro"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>awk summary</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font size=+0>awk Summary</font></b>
+<br>The following is a summary of the most common awk statements and features.
+<p><b>Command Line</b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; awk</b><i>&nbsp; program&nbsp;
+filenames</i>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; awk&nbsp; -f</b><i>&nbsp;
+program-file&nbsp; filenames</i>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; awk -F</b><i>s</i>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (sets field separator to
+string <i>s</i>, <b>-Ft</b> sets separator to tab)
+<p><b>Patterns</b>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BEGIN
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; END
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /<i>regular expression</i>/
+<br><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; relational expression</i>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pattern <b>&amp; &amp;&nbsp;</b><i>
+pattern</i>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pattern <b>||</b><i> pattern</i>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (<i>pattern</i>)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; !<i>pattern</i>
+<br><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pattern</i>, <i>pattern</i>
+<p><b>Control Flow Statements</b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if</b> (<i> expr)&nbsp;
+statement
+</i>[<b> else</b><i> statement</i>]
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if</b> (<i> subscript&nbsp;
+in</i>&nbsp;<i> array</i>)&nbsp;<i> statement</i> [<b> else</b>&nbsp;<i>
+statement</i>]
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while</b> (<i> expr</i>)&nbsp;<i>
+statement</i>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for</b> (<i> expr</i><b>;</b>&nbsp;<i>
+expr</i> <b>;</b>&nbsp;<i> expr</i> )&nbsp;<i> statement</i>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for</b> (&nbsp;<i> var</i>&nbsp;<b>
+in</b>&nbsp;<i> array</i> )&nbsp;<i> statement</i>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; do</b><i> statement&nbsp;
+while</i> (<i> expr</i>)
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break</b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; continue</b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; next</b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit</b> [<i> expr</i>]
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return</b> [<i> expr</i>]
+<p><b>Input Output</b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; close</b>(&nbsp;<i> filename</i>
+)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+close file
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; getline</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+set $0 form next input line, set NF, NR, FNR
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; getline</b> &lt;&nbsp;<i>
+file</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+set $0 from next input line of file, set NF
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; getline</b><i> var</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+set var from next input line, net NR, FNR
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; getline</b><i> var</i>
+&lt;&nbsp;<i> file</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+set var from next input line of file
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+print current input line
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print</b><i> expr-list</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+print expressions
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print</b><i> expr-list</i>
+>&nbsp;<i> file</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print
+expressions to file
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf</b><i> fmt, expr-list</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+format and print
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf</b><i> fmt, expr-list&nbsp;</i>
+>&nbsp;<i> file</i>&nbsp; format and print to file
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; system</b>(<i> cmd-line</i>
+)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+execute command cmd-line, return status
+<p>In <b>print</b> and <b>printf</b> above, > >&nbsp; appends to a <i>file</i>,
+and the | <i>command</i> writes to a pipe. Similarly, <i>command</i> |
+<b>getline</b>
+pipes into <b>getline</b>. The function <b>getline</b> returns 0 on the
+end of a file, -1 on an error.
+<p><b>Functions</b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; func</b>&nbsp;<i> name</i>(&nbsp;<i>
+parameter list</i> ) {&nbsp;<i> statement</i> }
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function</b>&nbsp;<i>
+name</i> (&nbsp;<i> parameter list</i> ) {&nbsp;<i> statement</i> }
+<br><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function-name</i> ( <i>expr</i>,
+<i>expr</i>,
+... )
+<p><b>String Functions</b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; gsub</b>(<i>r,s,t</i>)&nbsp;&nbsp;&nbsp;&nbsp;
+substitutes <i>s</i> for <i>r</i> in <i>t</i> globally, returns number
+of&nbsp; substitutions
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; index</b>(<i>s,t</i>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+returns position of string <i>t</i> in <i>s</i>, 0 if not present
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; length</b>(<i>s</i>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+returns length of <i>s</i>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; match</b>(<i>s,r</i>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+returns position in <i>s</i> where <i>r</i> occurs, 0 if not present
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; split</b>(<i>s,a,r</i>)&nbsp;&nbsp;&nbsp;
+splits <i>s</i> into array <i>a</i> on <i>r</i>, returns number of fields
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sprintf</b>(<i>fmt, expr-list</i>)
+returns <i>expr-list</i> formatted according to format string specified
+by <i>fmt</i>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sub</b>(<i>r,s,t</i>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+substitutes <i>s</i> for first <i>r</i> in <i>t</i>, returns number of
+substitutions
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; substr</b>(<i>s,p,n</i>)&nbsp;&nbsp;
+returns substring of <i>s</i> length <i>n</i> starting at position <i>p</i>
+<p><b>Arithmetic Functions</b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; atan2</b>(<i>y,x</i>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+arctangent of <i>y/x</i> in radians
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cos</b>(<i>x</i>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+cosine of <i>x</i>, with <i>x</i> in radians
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exp</b>(<i>x</i>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+exponential function of <i>x</i>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int</b>(<i>x</i>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+integer part of <i>x</i> truncated towards 0
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; log</b>(<i>x</i>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+natural logarithm of <i>x</i>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rand</b>()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+random number between 0 and 1
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sin</b>(<i>x</i>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+sine of <i>x</i>, with <i>x</i> in radians
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sqrt</b>(<i>x</i>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+square root of <i>x</i>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; srand</b>(<i>x</i>)&nbsp;&nbsp;&nbsp;
+<i>x</i> is new seed for <b>rand()</b>
+<p><b>Operators (increasing precedence)</b>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp;&nbsp; +=&nbsp;&nbsp;
+-=&nbsp;&nbsp; *=&nbsp;&nbsp; /=&nbsp;&nbsp; %=&nbsp;&nbsp; ^=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+assignment
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ?:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+conditional expression
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ||&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+logical or
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &amp; &amp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+logical and
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ~&nbsp;&nbsp; !~&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+regular expression match, negated match
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;&nbsp;&nbsp;&nbsp; &lt;
+=&nbsp;&nbsp; >&nbsp;&nbsp;&nbsp; > =&nbsp;&nbsp; !=&nbsp;&nbsp; ==&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+relationals
+<br><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; blank</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+string concatenation
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +&nbsp;&nbsp; -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+add, subtract
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp;&nbsp; /&nbsp;&nbsp;
+%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+multiply, divide, modulus
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +&nbsp;&nbsp; -&nbsp;&nbsp;
+!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+unary plus, unary minus, logical negation
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ^&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+exponentional
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ++&nbsp;&nbsp; --&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+increment, decrement
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+field
+<p><b>Regular Expressions (increasing precedence):</b>
+<br><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+matches no-metacharacter <i>c</i>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \<i>c</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+matches literal character <i>c</i>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+matches any character except newline
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ^&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+matches beginning of line or string
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+matches end of line or string
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [<i>abc...</i>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+character class matches any of <i>abc...</i>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [^<i>abc...</i>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+negated class matches any but <i>abc...</i> and newline
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; r1 | r2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+matches either r1 or r2
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; r1r2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+concatenation: matches r1, then r2
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; r+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+matches one or more r's
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; r*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+matches zero or more r's
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; r?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+matches zeor or more r's
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (r)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+grouping: matches r
+<p><b>Built-In Variables</b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ARGC</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+number of command-line arguments
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ARGV</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+array of command-line arguments (0..ARGC-1fR)
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FILENAME</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+name of current input file
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FNR</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+input line number number in current file
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FS</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+input field separator (default blank)
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NF</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+number of fields in input line
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NR</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+number of input lines read so far
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OFMT</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+output format for numbers (default=%.6g)
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OFS</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+output field separator (default=space)
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ORS</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+output line separator (default=newline)
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RS</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+input line separator (default=newline)
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RSTART</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+index of first character matched by <b>match()</b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RLENGTH</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+length of string matched by <b>match()</b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SUBSEP</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+subscript separator (default=\034")
+<p><b>Limits</b>
+<br>Each implementation of awk imposes some limits. Below are typical limits
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 100 fields
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2500 characters per input
+line
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2500 characters per output
+line
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1024 characters per individual
+field
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1024 characters per printf
+string
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 400 characters maximum quoted
+string
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 400 characters in character
+class
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 15 open files
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 pipe
+<p><b><font size=+0>Converting files between MSDOS and UNIX format</font></b>
+<br>MSDOS uses a CR and LF to separate each line of a file. The carriage
+return character appears as a ^M symbol in the editor <i>vi</i>. In addition,
+some MSDOS editors mark the end of a file using the CTRL-Z character.
+<br>&nbsp;UNIX uses a LF to separate each line of a file. There is no end
+of file character.
+<br>&nbsp;SCO UNIX provides a mechanism for converting between MSDOS and
+UNIX file formats.
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dtox</b>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; converts a MSDOS file to
+UNIX format (does not strip the end-of-file character).
+<br><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+dtox&nbsp; awktext&nbsp; >&nbsp;&nbsp; awktext.unx</i>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; It may also be necessary
+to load the file into an editor and remove the end-of-file character.
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xtod</b>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; converts a UNIX file to
+MSDOS format.
+<br><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+xtod&nbsp; awktext.unx >&nbsp; awktext</i>
+<br>&nbsp;
+</body>
+</html>
