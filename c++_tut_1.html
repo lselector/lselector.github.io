@@ -1,0 +1,1637 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>C++_tutorial.html</title>
+<!--
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> C++</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<b><font color="#CC0000">C++ short tutorial</font></b>
+<br>(adapted and improved from/over&nbsp; <a href="http://homepages.paradise.net.nz/milhous/">http://homepages.paradise.net.nz/milhous/</a>
+)
+<br>To download a free C++ compiler - try <a href="http://www.zdnet.com/downloads/">www.zdnet.com/downloads/</a>
+<br>(<font color="#000000">Dev-C++ from Bloodshed may be good).</font>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=6 >
+<tr>
+<td><b><font color="#CC0000">C++ Tutorial #1</font></b></td>
+
+<td></td>
+
+<td></td>
+
+<td><b><font color="#CC0000">Other pages</font></b></td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">01 • </font><a href="#c++_tutorial_introduction">Introduction</a>
+<br><font color="#6699CC">02 • </font><a href="#c++_data_types">Data Types</a>
+<br><font color="#6699CC">03 • </font><a href="#c++_enumerations">Enumerations</a>
+<br><font color="#6699CC">04 • </font><a href="#c++_type_conversions">Type
+Conversions</a>
+<br><font color="#6699CC">05 • </font><a href="#c++_structures">Structures</a>
+<br><font color="#6699CC">06 • </font><a href="#c++_operators">Operators</a>
+<br><font color="#6699CC">07 • </font><a href="#c++_control_structures">Control
+Structures</a>
+<br><font color="#6699CC">08 • </font><a href="#c++_class_declarations">Class
+Declarations</a>
+<br><font color="#6699CC">09 • </font><a href="#c++_function_declarations">Function
+Declarations</a>
+<br><font color="#6699CC">10 • </font><a href="#c++_class_constructors">Class
+Constructors</a></td>
+
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">11 • </font><a href="#c++_function_overloading">Function
+Overloading</a>
+<br><font color="#6699CC">12 • </font><a href="#c++_default_arguments">Default
+Arguments</a>
+<br><font color="#6699CC">13 • </font><a href="#c++_inline_functions">Inline
+Functions</a>
+<br><font color="#6699CC">14 • </font><a href="#c++_friend_functions">Friend
+Functions</a>
+<br><font color="#6699CC">15 • </font><a href="#c++_arrays">Arrays</a>
+<br><font color="#6699CC">16 • </font><a href="#c++_pointers">Pointers</a>
+<br><font color="#6699CC">17 • </font><a href="#c++_strings">Strings</a>
+<br><font color="#6699CC">18 • </font><a href="#c++_reference_types">Reference
+Types</a>
+<br><font color="#6699CC">19 • </font><a href="#c++_memory_management">Memory
+Management</a>
+<br><font color="#6699CC">20 • </font><a href="#c++_operator_overloading">Operator
+Overloading</a></td>
+
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">21 • </font><a href="#c++_inheritance">Inheritance</a>
+<br><font color="#6699CC">22 • </font><a href="#c++_multiple_inheritance">Multiple
+Inheritance</a>
+<br><font color="#6699CC">23 • </font><a href="#c++_virtual_base_classes">Virtual
+Base Classes</a>
+<br><font color="#6699CC">24 • </font><a href="#c++_virtual_functions">Virtual
+Functions</a>
+<br><font color="#6699CC">25 • </font><a href="#c++_constants">Constants</a>
+<br><font color="#6699CC">26 • </font><a href="#c++_static_keyword">Static
+Keyword</a>
+<br><font color="#6699CC">27 • </font><a href="#c++_input_output">Input/Output</a>
+<br><font color="#6699CC">28 • </font><a href="#c++_built_in_functions">Built
+in Functions</a></td>
+
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">• <b><a href="c.html">C</a></b></font>
+<br><font color="#6699CC">• <b><a href="c++.html">C++</a></b></font>
+<br><font color="#6699CC">• <a href="c++_tut_2.html">C++ tutorial #2</a></font></td>
+</tr>
+</table>
+<font color="#000000"></font>
+<p><a NAME="c++_tutorial_introduction"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>01.Introduction</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>C++ is probably the most widely used language of them all, and still
+probably offers more job opportunities than any other language. All sorts
+of things are programmed in C++ because it is highly adaptable, allowing
+the programmer greater low level access to the computer. It is also Object
+Orientated which makes it good for writing large scale, dependable programs.
+Visual Basic is probably the biggest contender to C++, although some people
+are predicting Java will become the most dominant Object Orientated language.
+Even if that happened though, there would still be thousands of C++ programs
+out there that need maintaining.
+<p>Anyone who can program in C will have no trouble learning C++. In fact
+most C++ compilers will compile C code. Even if you come from something
+like Pascal you won't have too much trouble. C++ has the same basic structures
+and concepts. If you come from VB you will probably become annoyed with
+C++ fairly quickly. C++ allows the programmer far greater low level access
+to the computer than VB, but this causes as many problems as it solves.
+<br><a NAME="c++_data_types"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>02.Data types</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>char :<b> char c ='A';</b> (some implementations allow this to be unsigned)
+<br>short:<b> [unsigned] short s = 100;</b> (seldom used - often the same
+as Integer)
+<br>integer: <b>[unsigned] int i = 100; </b>or <b>i = 100U</b> to signify
+unsigned (roughly -32000 >> 32000)
+<br>long:<b> [unsigned] long l = 2000L </b>or<b> l = 2000UL </b>to signify
+unsigned long
+<p>There are three floating point types - these are all unsigned:
+<p>float: <b>float f = 3.168F </b>(avoid using float unless memory conservation
+is necessary)
+<br>double : <b>double d = 5.7423</b> (use this floating type in most instances)
+<br>long double: <b>long double ld = 2.6534L</b> (use this when extremely
+high accuracy is needed)
+<p>All these types can also be made <a href="#Constants">constants.</a>
+<br>You can declare variables anywhere in a program, not just at the start
+of a block like in C.
+<br>All these types can also be made <a href="#Static">static</a> so they
+have a lifetime as long as the program runs. If they are not static they
+evaporate when their block goes out of scope.
+<br>You can also make your own data types with <b>typedef</b>:
+<br>&nbsp;&nbsp;&nbsp; <b>typedef char * string;</b>
+<br>&nbsp;&nbsp;&nbsp; <b>string s = "Dane";</b>
+<br><a NAME="c++_enumerations"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>03.Enumerations</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Enumerations are also possible whereby integer values can be exchanges
+for more meaningful values:
+<br>&nbsp;&nbsp;&nbsp; <b>enum colour {orange, gray, red};</b>
+<br>in this example orange would take the value 0, gray 1 etc. It is also
+possible to assign these integer values:
+<br>&nbsp;&nbsp;&nbsp; <b>enum colour {orange = 5, gray = 2, red = 9};</b>
+<br>These can then be used as follows:
+<br>&nbsp;&nbsp;&nbsp; <b>colour c = red;</b>
+<br><a NAME="c++_type_conversions"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>04.Type Conversions</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#000000">There are two types of conversion - the type you
+program, and the type the computer does automatically.</font>
+<br>Computers doing things automatically is good, but it is useful to know
+what these conversions are:
+<br>When a value of type <b>char</b> or <b>short</b> appears in an expression
+such as addition they are converted to type <b>int</b>.
+<p>The other main time the computer converts values is when you use expressions
+of two or more different types, such as adding an <b>int</b> to a <b>long</b>.
+Basically, if a smaller type arrears in an expression with a bigger type,
+the smaller type is converted to the bigger type. So, an <b>int</b> would
+be converted to a <b>long</b>.
+<p>Some conversions need to be done explicitly. This is quite easy, for
+example:
+<br>&nbsp;&nbsp;&nbsp; <b>(long) i&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp; 
+</b>given
+an<b> int i</b>, we change it to a <b>long</b>
+<p>Be careful though, the compiler will let you cast a number into a value
+it is too big for (which will corrupt the value):
+<br>&nbsp;&nbsp;&nbsp; <b>(int) 80994388;</b>
+<br><a NAME="c++_structures"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>05.Structures</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Structures are used to group together several variables which can be
+of different datatypes, here is an example:
+<p><font color="#3333FF">struct date {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; int day;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; int month;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; int year;</font>
+<br><font color="#3333FF">};</font>&nbsp; // remember the brackets and
+final semicolon.
+<p>To use this structure you declare variables of <b>date</b>:
+<br>&nbsp;&nbsp;&nbsp; <b>date today, yesterday;</b>
+<br>And then use it like this:
+<br>&nbsp;&nbsp;&nbsp; <b>today.day = 22;</b>
+<br>I have always preferred to use <a href="#Pointers">pointers</a> with
+structures:
+<br>&nbsp;&nbsp;&nbsp; <b>date *d = new date;</b>
+<br>&nbsp;&nbsp;&nbsp; <b>date->day = 22;</b>
+<br>There is also a <b>Union</b> type in C++, but you shouldn't use it
+because it does bad things, and only super geeks care about saving a few
+bytes.
+<br><a NAME="c++_operators"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>06.Operators</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>The following is a list of some of the most common operators in C++:
+<p><b>!=&nbsp;&nbsp; == &lt;&nbsp; >&nbsp; >=&nbsp; &lt;=&nbsp; </b>: not
+equal to&nbsp; equal to&nbsp; lesser than etc.
+<p><b>+&nbsp; -&nbsp;&nbsp; /&nbsp; %&nbsp; * </b>:addition&nbsp; subtraction&nbsp;
+division&nbsp; remainder (for integer division)&nbsp; multiplication
+<p><b>&amp;&amp;&nbsp; !&nbsp; ||&nbsp; </b>: and&nbsp; not&nbsp; or
+<p>make a special point not to confuse = and ==. The later is a relational
+operator, as in something is equal to something else.
+<br><a NAME="c++_control_structures"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>07.Control Structures</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>The following are the main control structures in C++:
+<p><font color="#3333FF"><b>while(</b>condition<b>){</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; statements;</font>
+<br><b><font color="#3333FF">}</font></b>
+<p><b><font color="#3333FF">do{</font></b>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; statements;</font>
+<br><font color="#3333FF"><b>} while (</b>condition<b>)</b></font>
+<p>Unlike the while statement, this <b>do..while</b> loop will always execute
+at least once. It is seldom used in programming.
+<p><b><font color="#3333FF">for(int i = 0; i &lt; 10; i++) {</font></b>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; statements;</font>
+<br><b><font color="#3333FF">}</font></b>
+<p>The<b> i = 0</b> represents the starting value of i, the <b>i &lt; 10</b>
+is the ending value of i, and the <b>i++</b> is the amount i is incremented
+with each run through the loop. Remember not to change the value of i in
+the statements section.
+<p>You can use the <b>break</b> keyword to get out of any of these loops
+prematurely.
+<p><font color="#3333FF"><b>if (</b>expression<b>) { </b>statements<b>;
+}</b></font>
+<p><font color="#3333FF"><b>if (</b>condition<b>) { </b>statements<b>;
+} else { </b>statements<b>; }</b></font>
+<p><font color="#3333FF"><b>if </b>(expression1)</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; statement1;</font>
+<br><font color="#3333FF"><b>else if</b> (expression2)</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; statement2;</font>
+<br><b><font color="#3333FF">else</font></b>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; statement3;</font>
+<p><b><font color="#3333FF">switch(input) {</font></b>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; <b>case</b> value1: statements;
+<b>break</b>;</font>
+<br><font color="#3333FF"><b>&nbsp;&nbsp;&nbsp; case</b> value2: statements;
+<b>break</b>;</font>
+<br><font color="#3333FF"><b>&nbsp;&nbsp;&nbsp; default: </b>statements;<b>
+break;</b></font>
+<br><b><font color="#3333FF">}</font></b>
+<p>Remember to include the <b>break</b> after each section or you are screwed.
+<br><a NAME="c++_class_declarations"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>08.Class Declarations</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Classes can either be declared with <b>class</b> or <b>struct</b>, but
+there is no real point of not using the <b>class</b> structure. The first
+line of a class structure for the hypothetical class person is as follows:
+<p><font color="#3333FF">&nbsp;&nbsp;&nbsp; class person {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+char&nbsp; * name;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+int age;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public:</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+char*&nbsp; getname();</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+void setage(int num);</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; };</font>
+<br>&nbsp;
+<p>Note: instance variables are declared - they are <b>private</b> by default,
+although they can be declared by <b>public</b> (though any non-lazy programmer
+will advise against this). Next comes the function declarations. More is
+said on these <a href="#Function">here</a>, but it is important to note
+that they are proceeded by the keyword <b>public:</b>, by default they
+would be <b>private</b>. This allows them to be accessed from outside the
+class.
+<p>The member functions can then be constructed along the following lines:
+<br>&nbsp;&nbsp;&nbsp; <b>void person : : setage(int num) { age = num;
+}</b>
+<br>More is said on declaring and using <a href="#Function">functions</a>
+in later sections.
+<br>Remember to use this class from another class you will need to include
+"person.h" at the top of that other class.
+<br>We declare instances of this class as follows:
+<br>&nbsp;&nbsp;&nbsp; <b>person p1;</b>
+<br>and then use call its functions as follows:
+<br>&nbsp;&nbsp;&nbsp; <b>p1.setage(18);</b>
+<br><a NAME="c++_function_declarations"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>09.Functions Declarations</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>In C++ functions can either be member functions of a class, or, as in
+C, on there own. I will first explain functions on their own, though most
+of the same rules apply when it comes to using functions declared in a
+class.
+<p>The following is a basic function that accepts an integer (num), squares
+it, and returns the result as an integer:
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; integer square(int num) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; num
+= num * num;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return
+num;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; }</font>
+<p>On the first line, the first <b>int</b> signals the return type. If
+there is no return value use the <b>void
+</b>type.
+<p>The word <b>square</b> is the function name. The brackets indicate the
+argument list, in this case there is one argument, <b>num</b>, which is
+an <b>int</b>. All arguments (except <a href="#Arrays">arrays</a>) are
+passed by value, so the arguments passed are changed in the called function,
+but retain their original values in the calling function. To find out how
+to pass variables by reference (so the original variable is changed by
+the called function) see the <a href="#Pointers">pointers</a> section.
+<p>The keyword <b>return</b> is used to to return the value.
+<p>Calling this function is easy. Presuming we have the integer variable
+'answer' that we want to store the result in, and the integer 'x' that
+you want to square, we call it as follows:
+<br>&nbsp;&nbsp;&nbsp; <b>answer = square(x);</b>
+<br>if the function didn't return a value we would call it like this:
+<br>&nbsp;&nbsp;&nbsp; <b>square(x);</b>
+<p>Declaring classes in functions is just as easy. Remember that first
+you must declare them in the header section of the class definition. See
+<a href="#Class">here</a>
+to learn how to do that.&nbsp; Given a class called <b>person</b> with
+the following <b>public</b> function declarations in the header:
+<br>&nbsp;&nbsp;&nbsp; <b>char* getname();</b>
+<br>&nbsp;&nbsp;&nbsp; <b>void setage(int num);</b>
+<br>we can write the functions as follows:
+<p><b>&nbsp;&nbsp;&nbsp; char* person : : getname() { return name; }</b>
+<br>where <b>name</b> is a <b>private</b> instance variable.
+<p><b>&nbsp;&nbsp;&nbsp; void person : : setage(int num) { age = age +
+num };</b>
+<br>once again, <b>age</b> is a <b>private</b> variable, so we access it
+through this <b>public</b> function.
+<p>Given an instance or <b>person</b> called <b>p1</b>, we access these
+functions as follows:
+<br>&nbsp;&nbsp;&nbsp; <b>p1.setage(18);</b>
+<br>&nbsp;&nbsp;&nbsp; <b>char* s = p1.getname;</b>
+<br>There isn't much to using basic functions like these. Many of the next
+few chapters also deal with member functions, and are useful for demonstrating
+what functions can do.
+<br><a NAME="c++_class_constructors"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>10.Class Constructors</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>One of the most important types of <a href="#Function">function</a>
+a
+<a href="#Class">class</a> will have is a <b>constructor</b>. These are
+used primarily to initialize the instance variables of a class, but they
+can basically do anything you want them to do. They are called once, whenever
+a new instance of a class is created.
+<p>The name of the function constructor is always the same as the name
+of the class. Like regular member <a href="#Function">functions</a> they
+must be included in the header section. Given the person class used above,
+we could declare the constructor as follows:
+<br>&nbsp;&nbsp;&nbsp; <b>person(int a, char * s);</b>
+<p>The argument list contain the variables we will use to initialize the
+class instance variables.
+<br>We then make the function as follows:
+<br>&nbsp;&nbsp;&nbsp; <b>person : : person(int a, char*&nbsp; s) { age
+= a; name = s: }</b>
+<br>A function can have several <b>constructors</b>, this is called<a href="#Overloading">
+function overloading</a>. It can also have <a href="#Default">default functions</a>,
+this is also covered in its own section.
+<p>Just as <b>constructors</b> are called when an instance of a class is
+created, a <b>destructor</b> is called just before it is destroyed (either
+by going out of scope, or with the <a href="#Memory">delete</a> keyword).
+<p>A <b>destructor</b> for <b>person</b> would be declared as follows:
+<br>&nbsp;&nbsp;&nbsp; <b>~person();</b>
+<br>it is then created as follows:
+<br>&nbsp;&nbsp;&nbsp; <b>person : : ~person() { </b>statements; <b>}</b>
+<br>Destructors are primarily used to destroy variables created with the
+<b><a href="#Memory">new</a></b>
+keyword.
+<br><a NAME="c++_function_overloading"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>11.Function Overloading</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Function overloading is the situation whereby the same function name
+has several definitions. Any function can be overloaded except destructors
+which don't accept arguments, but I will demonstrate on the person constructor
+defined <a href="#Constructors">above</a>. It is currently defined as this:
+<br>&nbsp;&nbsp;&nbsp; <b>person(int a, char * s);</b>
+<br>so when we create an instance we pass two values:
+<br>&nbsp;&nbsp;&nbsp; <b>person p1(18, "Dane");</b>
+<br>But we may not know both the values when we create the class, we may
+just know the age value. We can therefore declare another constructor like
+this:
+<br>&nbsp;&nbsp;&nbsp; <b>person(int a);</b>
+<br>and define it like this:
+<br>&nbsp;&nbsp;&nbsp; <b>person : : person(int a) { age = a; }</b>
+<br>We now have two constructors for person. The program decides which
+one to call by looking at what arguments we pass, for instance if we declared
+an instance of the object with:
+<br>&nbsp;&nbsp;&nbsp; <b>person p2(20);</b>
+<br>the second constructor would be called, because it matches the argument
+list of the second constructor.
+<br>We can overload the function as much as we want, we might declare another
+constructor that accepts no arguments:
+<br>&nbsp;&nbsp;&nbsp; <b>person();</b>
+<br>and define it:
+<br>&nbsp;&nbsp;&nbsp; <b>person : : person() { }</b>
+<br>It is important to remember that return values play no role here, only
+<i><u>the
+argument list</u></i> does. Two functions with the same name cannot differ
+only in their return value, because if they did, the program wouldn't not
+know which function to call.
+<p>Many of the benefits of function overloading can be obtained with <a href="#Default">default
+arguments</a>.
+<br><a href="#Operator O">Operators</a> can also be overloaded in C++.
+<br><a NAME="c++_default_arguments"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>12.Default Arguments</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Default arguments are good because they save time. They give the benefits
+of overloading without the trouble of creating separate functions for each
+possible argument list.&nbsp; For instance, for the person class, we could
+<b>declare</b>
+the constructor like this:
+<br>&nbsp;&nbsp;&nbsp; <b>person(int num = 20, char * s = "Dane");</b>
+<br>We can then <b>define</b> this function as below (notice the default
+arguments aren't included in the definition):
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; person : : person(int num,
+char * s) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; age
+= num;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name
+= s;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; }</font>
+<p>The defaults are used when no corresponding parameters are passed. If
+a new class was created like:
+<br>&nbsp;&nbsp;&nbsp; <b>person p1(25);</b>
+<br><b>age</b> would take the value 25, but <b>name</b> would get the default
+value.
+<br>Default values do not have to be supplied for all the arguments:
+<br>&nbsp;&nbsp;&nbsp; <b>person(int num, char * s = "Dane");</b>
+<br>It is important to remember though, that you can't omit an argument
+in the argument list without also omitting all those to the right of it,
+otherwise the meaning would become ambiguous. This argument list is invalid:
+<br>&nbsp;&nbsp;&nbsp; <b>void triple(int a = 4, int b, int c = 9);</b>
+<br><a NAME="c++_inline_functions"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>13.Inline Functions</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Inline Functions are used for simple<a href="#Function"> functions</a>
+to increase the speed programs run at. There is a very good explanation
+of why inline functions increase execution speed, but it is boring, and
+you don't care anyway.
+<p>There is two ways to 'request' that a function be made <b>inline</b>
+(there is no guarantee the compiler will grant the request).
+<p>One way is to precede the function definition (not declaration) with
+the word <b>inline</b>.
+<br>&nbsp;&nbsp;&nbsp; <b>inline void person : : setage(int num) {age +=
+num; }</b>
+<p>The other way involves not giving the class a separate definition, but
+rather including that in the declaration:
+<br>&nbsp;&nbsp;&nbsp; <b>void setage(int num) {age += num;};</b>
+<p>This makes things much easier, the <b>setage</b> function is declared
+and defined in one go.
+<br><a NAME="c++_friend_functions"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>14.Friend Functions</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>A function can be declared a friend of several classes. This allows
+us to use the same single function to access and modify the private variables
+of several classes. A function cannot be a <b>member</b> of more than one
+class, but it can be friends.
+<br><a NAME="c++_arrays"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>15.Arrays</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Arrays are easy to declare and use in C++. This declares an array of
+5 integers called arr:
+<br>&nbsp;&nbsp;&nbsp; <b>int arr[5];</b>
+<br>Remember that arrays start at 0, so to give the first element the value
+10 we write:
+<br>&nbsp;&nbsp;&nbsp; <b>arr[0] = 10;</b>
+<br>You can also give an array values when you declare it:
+<br>&nbsp;&nbsp;&nbsp; <b>int arr[5] = {10, 20, 30, 40, 50};</b>
+<br>You don't even need to supply all the values:
+<br>&nbsp;&nbsp;&nbsp; <b>int arr[5] = {10, 20};</b>
+<br><a href="#Static">static</a> arrays are initialized to 0, but arrays
+like those above contain garbage until initialized.
+<p>In C++ the assignment of a whole array to another is illegal, ie. given
+two arrays with 10 integers each, we can't use:
+<br>&nbsp;&nbsp;&nbsp; <b>arr1 = arr2;</b>
+<br>Instead you have to copy from arr1 to arr2 one element at a time:
+<br>&nbsp;&nbsp;&nbsp; <b>for(int i = 0, i &lt; 10, i++) { arr1[i] = arr2[i];
+}</b>
+<br>We can have an array of class instances:
+<br>&nbsp;&nbsp;&nbsp; <b>person parray[3] = {person(10, "Jerry"), person(30,
+"George"), person(24, "Elaine") };</b>
+<br>If you have multiple constructors, naturally each element can call
+a different constructor.
+<p>Remember, when you pass an array to a function it is passed by reference
+- that is, a copy is not passed, a pointer to the first element in the
+array is passed.
+<p>Arrays are closely connected to <a href="#Pointers">pointers</a>. Anytime
+you need to use the name of an array to do something, you could usually
+also use the name of a pointer. When you declare an array like:
+<br>&nbsp;&nbsp;&nbsp; <b>int a [100];</b>
+<br><b>a</b> is really a pointer to the first element in the array <b>a[0]</b>,
+that is,<b> a = &amp;a[0]</b>
+<p>If we have another declaration like:
+<br>&nbsp;&nbsp;&nbsp; <b>int * p;</b>
+<br>we can declare:
+<br>&nbsp;&nbsp;&nbsp; <b>p = a;</b>
+<br>This allows for pointer arithmetic. If <b>*p</b> points to <b>a[0]</b>
+then<b> *(p + 2)</b> makes p point to<b> a[2]</b>. You can also use subtraction
+to move in the other direction, providing you are subtracting to a position
+that actually exists. With pointer arithmetic C++ takes into account the
+size of the data type.
+<p>You can also use the <b>++</b> and <b>--</b> operators:
+<br>&nbsp;&nbsp;&nbsp; <b>*p++</b>
+<br>moves forward one element in the array.
+<br>If p and q are both pointed to the first element in their respective
+arrays, and both contain 10 elements, this will copy the elements of p
+to q:
+<br>&nbsp;&nbsp;&nbsp; <b>for(int i = 0; i &lt; 10, i++)&nbsp; *q++ = *p++;</b>
+<br><a NAME="c++_pointers"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>16.Pointers</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Pointers are one of the most useful features of the C++ language. For
+more information on them look in <a href="#Arrays">arrays</a>,
+<a href="#Memory">memory
+management</a>,<a href="#Reference"> reference types</a>, <a href="#constants">constants</a>,
+<a href="#Structures">structures</a>,
+<a href="#Virtual">virtual
+functions</a> and <a href="#Strings">strings</a> in particular. This list
+alone tells what an important part pointers play in the language.
+<p>We declare a pointer like this:
+<br>&nbsp;&nbsp;&nbsp; <b>int * p;</b>
+<br><b>P</b> can then hold an address of an area in memory:
+<br>&nbsp;&nbsp;&nbsp; <b>int i = 10;</b>
+<br>&nbsp;&nbsp;&nbsp; <b>p = &amp;i;&nbsp;&nbsp;&nbsp;&nbsp; // </b>p
+equals the address of i.
+<br>We can then printout the value like this:
+<br>&nbsp;&nbsp;&nbsp; <b>cout &lt;&lt; *p;</b>
+<br>Or change the value of the integer p points to (ie. <b>int i</b>):
+<br>&nbsp;&nbsp;&nbsp; <b>*p = 30;</b>&nbsp; : the thing p points to equals
+30.
+<br>Of course, you can create an area of memory for the value you want
+p to point to:
+<br>&nbsp;&nbsp;&nbsp; <b>p = new int;</b>
+<br>&nbsp;&nbsp;&nbsp; <b>*p = 100;</b>
+<br>One of the most common things pointers are used for is sending arguments
+to <a href="#Function">functions</a> by reference rather than value. Except
+for
+<a href="#Arrays">arrays</a>, when we pass a variable to a function
+we pass a copy of the variable, not the actual variable itself. This means
+that the variable outside the function isn't effected by any new values
+given to the variable inside the function. This is what we want a lot of
+the time, but sometimes we want a variable to be actually changed by a
+function.
+<p>Pointers allow us to do this because instead of sending a copy of the
+variable, we can instead send the memory address of the variable. The function
+then uses this memory address, and can alter the value stored there. This
+is how it can be implemented:
+<p>Suppose we have a function called <b>change</b>, this function accepts
+two integers and adds a number to them. Not only are the numbers changed
+inside the function, they are changed outside it as well. This is the function:
+<br>&nbsp;&nbsp;&nbsp; <b>void change( int * num1, int * num2) {</b>
+<br>&nbsp;&nbsp;&nbsp; <b>*num1 += 10;</b>
+<br>&nbsp;&nbsp;&nbsp; <b>*num2 += 10; };</b>
+<br>And this is how we call it:
+<br>&nbsp;&nbsp;&nbsp; <b>int a = 20;</b>
+<br>&nbsp;&nbsp;&nbsp; <b>int b = 20;</b>
+<br>&nbsp;&nbsp;&nbsp; <b>change(&amp;a, &amp;b);</b>
+<br>Note that when we call the function we send over two memory addresses
+(symbolized by <b>&amp;</b>). In the function these then become pointers
+to the area in memory. Not only are num1 and num2 changed to 30, a and
+b are also changed to 30.
+<br><a NAME="c++_strings"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>17.Strings</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>I have always found working with strings to be frustrating in C and
+C++. Of course there is no string data type, strings are just <a href="#Arrays">arrays</a>
+of characters. They often seem to leave hard to find bugs in your programs.
+<br>A string is declared and initialized like this:
+<br>&nbsp;&nbsp;&nbsp; <b>char s[5] = "Dane";</b>
+<br>Remember, this is a five character string, because<b> s[4] </b>contains
+the <b>'\0'</b> character which signified the end of a string. <b>Don't
+forget this or you are in big trouble C++ will willingly let you forget
+the '\0' character and make you pay for it at a later date.</b>
+<p>You can just leave it to the computer to work out how long the array
+is:
+<br>&nbsp;&nbsp;&nbsp; <b>char s[] = Dane";</b>
+<br>This can then be printed out like this:
+<br><b>&nbsp;&nbsp;&nbsp; cout &lt;&lt; s;</b>
+<br>or we could have just used:
+<br>&nbsp;&nbsp;&nbsp; <b>cout &lt;&lt; "Dane";</b>
+<br>We could also use pointers:
+<br>&nbsp;&nbsp;&nbsp; <b>char * s = "Dane";</b>
+<br>&nbsp;&nbsp;&nbsp; <b>cout &lt;&lt; s;</b>
+<p>A string is always a <a href="#Pointers">pointer</a> anyway.
+<br>It is an
+<a href="#Arrays">array</a>, so its name is a pointer to the
+first element in the array.
+<p>There are quite a few functions that are used on strings. Most are in
+<b>string.h</b>,
+so remember to declare this at the top of classes that use these functions.
+<br>&nbsp;&nbsp;&nbsp; <b>strcpy</b> is used to copy one string into another:
+<br>&nbsp;&nbsp;&nbsp; <b>char * s[5];</b>
+<br>&nbsp;&nbsp;&nbsp; <b>strcpy(s, "Dane");</b>
+<br>You find the length of a string with<b> strlen</b>:
+<br>&nbsp;&nbsp;&nbsp; <b>int l = strlen(s);</b>
+<br>You compare two strings with<b> strcmp:</b>
+<br>&nbsp;&nbsp;&nbsp; <b>int cmp = strcmp(str1, str2);</b>
+<br>It returns 0 if they are equal, a positive number if the first string
+is before the second in the alphabet, or a negative number if the second
+is first.
+<br>&nbsp;&nbsp;&nbsp; <b>strcat</b> joins two strings together and returns
+a string:
+<br>&nbsp;&nbsp;&nbsp; <b>char * ret = strcat(str1, str2);</b>
+<br><a NAME="c++_reference_types"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>18.Reference Types</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Reference types - work like aliases (shortcuts in Windows terminology).
+They aren't really a necessary part of the language, they are used to make
+it easier to send elements to a function by reference rather than value.
+This is how they work.
+<br>Suppose we have an integer variable:
+<br>&nbsp;&nbsp;&nbsp; <b>int k = 20;</b>
+<br>we can declare a reference type that references it:
+<br>&nbsp;&nbsp;&nbsp; <b>int&amp; r = k;</b>
+<br>r is now an alias for k. If we change the value of the one, we change
+the value of the other because they both reference the same area of memory.
+<p>We can also make a reference type that doesn't refer to another variable:
+<br>&nbsp;&nbsp; <b>int&amp;w = 20;</b>
+<br>This creates an integer object and gives it the value of 20.
+<br>References are then usually used to pass arguments by reference. If
+there is a function that takes two references:
+<br>&nbsp;&nbsp;&nbsp; <b>void two(int&amp; a, int&amp;b);</b>
+<br>we can call it with:
+<br>&nbsp;&nbsp;&nbsp; <b>two(w, r);</b>
+<br>because <b>w</b> and<b> r</b> are reference types. This just makes
+things a bit simpler when sending values by
+<a href="#Pointers">reference</a>.
+<br><a NAME="c++_memory_management"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>19.Memory Management</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Memory management is very easy is C++, the only keywords you need to
+remember are <b><font color="#CC0000">new</font></b> and <b><font color="#CC0000">delete</font></b>.
+<br>The <b>new</b> operator is used to create objects of any data type.
+These objects then stay in existence until they are explicitly destroyed
+with the <b>delete</b> operator.
+<br>Suppose we had declared a <a href="#Pointers">pointer</a> to an integer:
+<br><b>&nbsp;&nbsp;&nbsp; int * i;</b>
+<br>This can either point to an existing integer, or we can create an area
+of memory for it to store its own integer:
+<br>&nbsp;&nbsp;&nbsp; <b>i = new int;</b>
+<br>We can then give this area a value:
+<br>&nbsp;&nbsp;&nbsp; <b>*i = 200;</b>
+<br>We can also create instances of <a href="#Class">classes</a> like this:
+<br><b>&nbsp;&nbsp;&nbsp; person * p1;</b>
+<br>&nbsp;&nbsp;&nbsp; <b>p1 = new person(20, "Michael");</b>
+<br>We can then use the <b>-></b> operator to use this object:
+<br>&nbsp;&nbsp;&nbsp; <b>p1->setage(33);</b>
+<br>We can also create an <a href="#Arrays">array</a> this way:
+<br>&nbsp;&nbsp;&nbsp; <b>int * a = new int[100];</b>
+<br>this creates an array of 150 integers with<b> a</b> pointing to the
+first element, and <b>a[2]</b> pointing to the third element.
+<br>When you don't need the data object anymore it is easy to destroy by
+using the <b>delete</b> operator.
+<br>&nbsp;&nbsp;&nbsp; <b>delete i;</b>
+<br>if we are destroying a class object:
+<br>&nbsp;&nbsp;&nbsp; <b>delete p1;</b>
+<br>the <b>destructor</b> is called before it is destroyed.
+<br>The one main complication arises when a memory area to be destroyed
+contains an array of classes which have destructors. Other arrays can be
+deleted simply with:
+<br><b>&nbsp;&nbsp;&nbsp; delete a;</b>
+<br>but if it is an array of objects with constructors the delete operator
+needs to know how many destructors need to be called. There are a couple
+of main ways of doing this, and some compilers will not support the second
+method below. Supposing ao points to an array of 100 objects, the first
+method is:
+<br>&nbsp;&nbsp;&nbsp; <b>delete [100] ao;</b>
+<br>On most modern compilers you do not need to specify the number of elements
+the array holds:
+<br><b>&nbsp;&nbsp;&nbsp; delete [] ao;</b>
+<br>but the empty brackets are still needed.
+<br><a NAME="c++_operator_overloading"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>20.Operator Overloading</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#3333FF">int a,b,c;</font>
+<br><font color="#3333FF">Mytype&nbsp;&nbsp; A,B,C;</font>
+<br><font color="#3333FF">....</font>
+<br><font color="#3333FF">c = a+b;&nbsp; c = 1+a;&nbsp; cout &lt;&lt; a;&nbsp;</font><font color="#009900">
+// valid statements</font>
+<br><font color="#3333FF">C = A + B;&nbsp; C = 1 + A;&nbsp; cout &lt;&lt;
+A; </font><font color="#009900">// compiler will complain.</font>
+<p>As we see, those operations (<font color="#CC0000">addition</font> and
+<font color="#CC0000">ostream</font>)&nbsp;
+are not defined for those objects.
+<br>So we can define them.
+<br>We can do this by defining so called "<b><u>operator functions</u></b>"
+( in this case call it <b><font color="#CC0000">operator+()</font></b>&nbsp;
+and <b><font color="#CC0000">operator&lt;&lt;()</font></b> ) which will
+tell the compiler what to do (how to add objects or nubmer and an objects).
+For example:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#3333FF">Mytype operator+ (Mytype N1, Mytype N2) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mytype T;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; T.n = N1.n + N2.n;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return T;</font>
+<br><font color="#3333FF">}</font></td>
+</tr>
+</table>
+
+<p>This is called <b><u>operator overloading</u></b>.
+<p>Similarly we can define operator functions to overload most of other
+operations ( <b><font color="#CC0000">operator/&nbsp;&nbsp;&nbsp; opeartor%&nbsp;&nbsp;&nbsp;
+operator*&nbsp;&nbsp;&nbsp; operator- S</font></b>, even<b><font color="#CC0000">&nbsp;&nbsp;
+operator= </font></b>).
+<br>Here is an example for the case of the above 2 operators:&nbsp; operator+&nbsp;&nbsp;&nbsp;
+and&nbsp;&nbsp; operator&lt;&lt; .
+<br>Note that we define operator function here with '&amp;' - so that they
+return a reference to an object.&nbsp; even
+<br>Also note, that we make them friends so that they have access to private
+numbers.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#3333FF">#include &lt;iostream.h></font>
+<p><font color="#3333FF">class number {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int n;&nbsp;</font><font color="#009900">&nbsp;&nbsp;
+// private number;</font>
+<br><font color="#3333FF">&nbsp;&nbsp; public:</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; number { n=1;}</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; friend number&amp;
+operator+ (number&amp;, number&amp;);</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; friend ostream&amp;
+operator&lt;&lt; (ostream&amp;, number&amp;);</font>
+<br><font color="#3333FF">};</font>
+<p><font color="#3333FF">number T;&nbsp;&nbsp;&nbsp; // Temporary object
+(global)</font>
+<p><font color="#3333FF">number&amp; operator+ (number&amp;&nbsp; N1, number&amp;
+N2) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; T.n = N1.n + N2.n;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return T;</font>
+<br><font color="#3333FF">}</font>
+<p><font color="#3333FF">ostream&amp;&nbsp; operator&lt;&lt;&nbsp; (ostream&amp;
+Cout, number&amp; N) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Cout &lt;&lt;
+' ' &lt;&lt; N.n &lt;&lt; ' ';</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return Cout;</font>
+<br><font color="#3333FF">}</font>
+<p><font color="#3333FF">void main() {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; number X, Y, Z
+= X+Y;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt;
+X &lt;&lt; '+' &lt;&lt; Y &lt;&lt; '='&nbsp; &lt;&lt; Z;&nbsp;</font><font color="#009900">&nbsp;
+// 1 + 1 = 2;</font>
+<br><font color="#3333FF">}</font></td>
+</tr>
+</table>
+<a NAME="c++_inheritance"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>21.Inheritance</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Inheritance allows a new class to be created by extending a class you
+have already created. This can save a lot of time and effort. Any class
+you derive from a base class can itself then become a base class from which
+you can derive more classes.
+<p>This section deals with single inheritance (each derived class inherits
+the properties of <b>one </b>base class). Multiple inheritance is dealt
+with in the next section.
+<br>Suppose we had created a class to hold the details of a bank account.
+This account is called <b>account </b>and defined as follows :
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#3333FF">class account {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; double balance; //the balance
+of the account</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; double rate; //the interest
+rate</font>
+<br><font color="#3333FF">public:</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; account(double b, double r);</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; void deposit(double amt);</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; double withdraw(double amt);</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; double getbalance();</font>
+<br><font color="#3333FF">};</font></td>
+</tr>
+</table>
+
+<p>It is fairly obvious how these would be implemented :
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#3333FF">account::account(double b, rouble r)&nbsp; {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; balance = b;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; rate = r;</font>
+<br><font color="#3333FF">}</font>
+<p><font color="#3333FF">double account::getbalance()&nbsp; {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; return balance;</font>
+<br><font color="#3333FF">}</font>
+<p><font color="#3333FF">etc. etc.</font></td>
+</tr>
+</table>
+
+<p>If we were writing a program dealing with bank accounts we might decide
+no one just has an account. They have a savings account or a check account
+or a time deposit account. All these accounts will have things in common
+with each other, but they will also have things which are different from
+each other.
+<p>To deal with this we could make one generic class called <b>account
+</b>that
+implemented the things all the classes have in common. Then we could extend
+this implementation for each type of account by creating a new class that
+<b>inherited
+</b>all
+these features, but also added some features unique to it.
+<p>In the case of accounts we might decide that the things all accounts
+have in common is that they have a balance, that you can deposit money,
+and that you can check your balance : we can define and implement it like
+this:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#3333FF">class account {</font>
+<br><font color="#3333FF">&nbsp;&nbsp; protected:</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double balance;
+//the balance of the account</font>
+<br><font color="#3333FF">&nbsp;&nbsp; public:</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; account(double
+b) {balance = b;}</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void deposit(double
+amt) {balance += amt;}</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double getbalance()
+{return balance;}</font>
+<br><font color="#3333FF">};</font></td>
+</tr>
+</table>
+
+<p>The important thing to notice is that the instance variable <b>balance
+</b>is
+<b>protected</b>.
+In previous examples the instance&nbsp; variables were defined as <b>private</b>.
+The reason we need to make it <b>protected
+</b>is so that the functions
+in classes that inherit <b>account </b>can access it. In all other respects
+it is still private.
+<p>Of course you may not want the functions in a derived class to have
+access to the instance variables of their base class, in which case you
+can still declare them as <b>private</b>.
+<p>Now we can create a class called <b>savings_account </b>that inherits
+all the instance variables and functions of <b>account</b>, but adds some
+of its own.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#3333FF">class savings_account : public account {</font>
+<br><font color="#3333FF">&nbsp;&nbsp; protected:</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double rate; //the
+rate of interest in the savings account</font>
+<br><font color="#3333FF">&nbsp;&nbsp; public:</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; savings_account(double
+b, double r);</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double compound();
+//computes the rate of interest</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double withdraw(double
+amt);</font>
+<br><font color="#3333FF">};</font></td>
+</tr>
+</table>
+
+<p>We have made <b>rate </b>a
+<b>protected </b>variable in case we derive
+classes from <b>savings_account</b>.
+<p>Also note that <b>account</b> has been inherited as <b>public account</b>.
+Use <b>public </b>to ensure that member functions of the base class are
+available to users of the derived class. The alternative is <b>private
+</b>but
+you will seldom want to do this, so don't worry too much about it.
+<p>You may have noticed that <b>savings_account
+</b>will now have two instance
+variables - <b>balance </b>which is inherited from <b>account</b>, and
+<b>rate
+</b>which
+is declared in <b>savings_account</b>. Because of this we will want to
+call the constructors of both classes to initialize these two variables.
+This can easily be done like this :
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#3333FF">savings_account::savings_account(double b, double
+r) : account(b)&nbsp; {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; rate = r;</font>
+<br><font color="#3333FF">}</font></td>
+</tr>
+</table>
+
+<p>The constructor of <b>savings_account
+</b>accepts both the variables
+needed to initialize an instance of the class, but it sends <b>b </b>on
+to the <b>account </b>constructor, and only deals directly with the <b>r
+</b>variable.
+This is signaled by the <b>:account(b) </b>on the first line. You can send
+away multiple arguments, just as long as the constructor in the base class
+will know what to do with them. If the <b>account </b>constructor took
+no arguments there would be no need to call it directly, although the program
+will still call it with no arguments. The constructor for the base class
+is actually called before the constructor of the derived class.
+<p>The other functions of <b>savings_account
+</b>have straightforward implementations.
+<p>Now if we create an instance of <b>savings_account </b>it can call not
+only the member functions of <b>savings_account
+</b>but also all those
+in <b>account</b>.
+<p>It is also possible to redefine functions in a derived class. Lets presume
+that the bank decides to charge people a fee for depositing money into
+their savings account (my bank is about at this stage now). The implementation
+of <b>deposit </b>in <b>account </b>is not sufficient because it only deposits
+the amount the user requests.
+<p>We could redefine the function in <b>savings_account </b>like this:
+<p><font color="#3333FF">&nbsp;void deposit(double amt);</font>
+<p>and then implement it like this:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#3333FF">void deposit(double amt) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; balance += amt;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; balance -= 1.00;</font>
+<br><font color="#3333FF">}</font></td>
+</tr>
+</table>
+
+<p>Now when an instance of <b>savings_account
+</b>calls <b>deposit</b>,
+it calls the function as defined in <b>savings_account
+</b>rather than
+the one defined in <b>account</b>.
+<p>We can also derive new classes from <b>savings_account</b>. Suppose
+we decide that a time deposit account has all the features that a savings
+account has, but also a few more. We might define it like this :
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#3333FF">class time_account : public savings_account {</font>
+<br><font color="#3333FF">&nbsp;&nbsp; protected:</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double funds_avaliable;</font>
+<br><font color="#3333FF">&nbsp;&nbsp; public:</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; time_account(double
+b, double r, double f);</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double compound();</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double get_avaliable_funds()
+{return avaliable_funds;}</font>
+<br><font color="#3333FF">};</font></td>
+</tr>
+</table>
+
+<p>This new class has its own constructor, a function to show the available
+funds, and also a function that redefines the <b>compound </b>function
+defined in <b>savings_account</b>.
+<p>The most interesting thing to consider is the constructor. It might
+be declared like this:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#3333FF">time_account::time_account(double b, double r,
+double f) : savings_account(b, r)&nbsp;</font>
+<br><font color="#3333FF">{</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; funds_avaliable = f;</font>
+<br><font color="#3333FF">}</font></td>
+</tr>
+</table>
+
+<p>The constructor uses one of the variables sent to it, but the other
+two are sent away to <b>savings_account
+</b>to initialize that class. Of
+course we also know that one of those will in turn be sent to <b>account
+</b>but
+we don't need to know this here - just as long as <b>savings_account
+</b>knows
+it.
+<p>Other issues relating to inheritance are dealt with in other sections,
+but this introduction covers 90% of the things you will need to know for
+most situations.
+<br><a NAME="c++_multiple_inheritance"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>22.Multiple Inheritance</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Multiple inheritance may not be such a good idea. If you can avoid it
+you probably should, but it is good to know how to do it.
+<br>Example: a class clock_calendar&nbsp; derived from 2 classes: clock
+&amp; calendar:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#3333FF">class clock {</font>
+<br><font color="#3333FF">&nbsp;&nbsp; protected:</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int hr;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int min;</font>
+<br><font color="#3333FF">&nbsp;&nbsp; public:</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; clock(int h, int
+m);</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void advance();</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void set_clock(int
+h, int m);</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void read_clock(int&amp;
+h, int&amp;m);&nbsp;</font>
+<br><font color="#3333FF">};</font>
+<p><font color="#3333FF">class calendar {</font>
+<br><font color="#3333FF">&nbsp;&nbsp; protected:</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int mt;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int day;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int yr</font>
+<br><font color="#3333FF">&nbsp;&nbsp; public:</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; calendar(int mt,
+int day, int yr);</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void advance();</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void set_calendar(int
+mt, int day, int yr);</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void read_calendar(int&amp;
+mt, int&amp;day, int&amp; yr);&nbsp;</font>
+<br><font color="#3333FF">};</font>
+<p><font color="#3333FF">/</font><font color="#009900">/ We can then create
+the clock_calendar class:</font>
+<p><font color="#3333FF">class clock_calendar : public clock, public calendar
+{</font>
+<br><font color="#3333FF">&nbsp;&nbsp; public:</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; clock_calendar(int
+mt, int day, int yr, int h, int m);</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void advance();</font>
+<br><font color="#3333FF">};</font></td>
+</tr>
+</table>
+
+<p>The constructor will then look like this - note that it calls the two
+existing constructors:
+<p><font color="#3333FF">clock_calendar : : clock_calendar</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; ( int mt, int day, int yr,
+int h, int m)</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; : calendar(mt, day, yr), clock(h,
+m) { }</font>
+<p>All the member functions except <b>advance</b> are inherited, and all
+work exactly the same, although any could be overwritten if clock_calendar
+chose to define them. <b>Advance</b> must be overwritten, because if it
+was called from class_calendar C++ wouldn't know whether to call it from
+clock or calendar.
+<p>There would be a way around it if you insisted on not redefining it:
+<br><font color="#3333FF">&nbsp;&nbsp; clock_calendar cc;</font>
+<br><font color="#3333FF">&nbsp;&nbsp; cc.clock : : advance();</font>
+<br><font color="#3333FF">&nbsp;&nbsp; cc.calendar : : advance();</font>
+<br>Both would work. Unfortunately if you try to program in this way you
+will forget the full phrase from time to time, it's inevitable.
+<br><a NAME="c++_virtual_base_classes"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>23.Virtual Base Classes</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>You may never need to use Virtual Base Classes - but there is no harm
+in knowing what they are for, just in case the need ever arises.
+<br>Consider the following scenario:
+<br>The base class for a program is <b>Grandparent</b>. This has two Classes
+derived from it:
+<br><font color="#3333FF">&nbsp;&nbsp; class Parent_husband : public Grandparent</font>
+<br><font color="#3333FF">&nbsp;&nbsp; class Parent_wife : public Grandparent</font>
+<br>We then have another class, <b>Child</b> which has multiple inheritance
+from both <b>Parent_husband</b> and <b>Parent_wife</b>:
+<br><font color="#3333FF">&nbsp;&nbsp; class Child : public Parent_husband,
+public Parent_wife</font>
+<br>A problem arises here. Child not only inherits the characteristics
+of the two Parent classes, but also, from these, the characteristic of
+Grandparent. The problem is, it is<u> inheriting Grandparent twice</u>,
+once from Parent_husband, and once from Parent_wife.
+<p>To avoid this problem the intermediate base classes (the two parent
+classes) must specify Grandparent to be <b><i><u>a virtual base class</u></i></b>.
+Only one set of members will be inherited from a virtual base class, no
+matter how many times it occurs in the inheritance chain. This is very
+easy to do, simply change the declaration to this:
+<br><font color="#3333FF">&nbsp;&nbsp; class Parent_husband : virtual public
+Grandparent</font>
+<br><font color="#3333FF">&nbsp;&nbsp; class Parent_wife : virtual public
+Grandparent</font>
+<br>Seeing the problem is the difficult part, solving it is very easy.
+<br><a NAME="c++_virtual_functions"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>24.Virtual Functions</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Virtual function allow for
+<b><u>polymorphism</u></b>, one of the great
+buzz words in Object Orientated programming. What this means is that objects
+in different classes can respond to the exact same message in different
+ways. Suppose a class <b>child</b> is derived from a class <b>parent</b>
+.
+<br>A pointer to a parent class:
+<br>&nbsp;&nbsp; <b><font color="#3333FF">parent * p;</font></b>
+<br>can be also used to point to an instance of <b>child</b>:
+<br>&nbsp;&nbsp; <b><font color="#3333FF">p = &amp;c1;</font></b>
+<br>presuming <b><font color="#3333FF">c1</font></b> was an instance of
+the child class.
+<p>Lets suppose that class <b>parent</b> had two functions, one <b>virtual</b>,
+the other not:
+<br>&nbsp;&nbsp; <font color="#3333FF">virtual void vf() {cout &lt;&lt;
+"This is a virtual function";}</font>
+<br><font color="#3333FF">&nbsp;&nbsp; void nvf() {cout &lt;&lt; "This
+is not a virtual function";}</font>
+<p>Class <b>child</b> redefines these two functions - but note the <b>virtual</b>
+keyword is NOT used:
+<p><font color="#3333FF">class child : public parent {</font>
+<br><font color="#3333FF">&nbsp;&nbsp; ...</font>
+<br><font color="#3333FF">&nbsp; public:</font>
+<br><font color="#3333FF">&nbsp;&nbsp; void vf() {cout &lt;&lt; "This is
+a virtual function of child";}</font>
+<br><font color="#3333FF">&nbsp;&nbsp; void nvf() {cout &lt;&lt; "This
+is not a virtual function of child";}</font>
+<br><font color="#3333FF">};</font>
+<p>When p is pointing to an instance of <b>parent</b>, then
+<br><font color="#3333FF">&nbsp; p->vf();</font>
+<br><font color="#3333FF">&nbsp; p->nvf();</font>
+<br>are calls to parent's functions (as you would expect).
+<p>But if we point this (parent type) pointer it to a child:
+<br><font color="#3333FF">&nbsp;&nbsp; p = &amp;c1;</font>
+<br>Now
+<br><font color="#3333FF">&nbsp;&nbsp; p->vf();</font><font color="#009900">&nbsp;
+// will point to a function in a child, because it is a virtual function</font>
+<br><font color="#3333FF">&nbsp;&nbsp; p->nvf();</font><font color="#009900">
+// still points to the function in a parent.</font>
+<p>With a virtual function, the class of the object pointed to determined
+the function definition used. If p points to an instance of parent the
+parent functions are used, but if p is changed to point to an instance
+of child, the child functions are used.
+<br><a NAME="c++_constants"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>25.Constants</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Constants can also be declared in C++. The basic form is this:
+<br>&nbsp; <font color="#3333FF">const int year = 2000;</font>
+<p>If no type is included int is presumed, so we could actually declare
+this:
+<br><font color="#3333FF">&nbsp; const year = 2000;</font>
+<p>Objects and functions can also be constants. An object is declared constant
+like this:
+<br><font color="#3333FF">&nbsp; const person p1(22, "Dane");</font>
+<p>On the whole this means nothing about p1 can be changed, so statements
+like:
+<br><font color="#3333FF">&nbsp; p1.setage(20);</font>
+<p>would be illegal, and rightly so. But statements like:
+<br><font color="#3333FF">&nbsp; cout &lt;&lt; p1.getage();</font>
+<p>is also illegal, which is stupid, because it isn't changing p1 in any
+way.
+<br>The way around this is to declare <b>getage</b> as a const in both
+its declaration and definition:
+<br>&nbsp; <font color="#3333FF">int getage() const;</font>
+<br><font color="#3333FF">&nbsp; int person : : getage() const { return
+age; }</font>
+<p>If <b>getage</b> was an <a href="#Inline">inline function</a> it would
+be changed like this:
+<br><font color="#3333FF">&nbsp; int getage() const {return age;}</font>
+<p>Pointers can also be made constants. This can mean two different things,
+the first is this:
+<br><font color="#3333FF">&nbsp; int k = 25;</font>
+<br><font color="#3333FF">&nbsp; int * const p = &amp;k;</font><font color="#009900">&nbsp;
+// const pointer</font>
+<p>This means p must always point to k, but the value of k can be changed:
+<br><font color="#3333FF">&nbsp; *p = 40;</font>
+<p>The other way is this:
+<br><font color="#3333FF">&nbsp; int k = 25;</font>
+<br><font color="#3333FF">&nbsp; const int * p = &amp;k;&nbsp;</font><font color="#009900">
+// const int value</font>
+<br>This means that p can point to a different location, but we can change
+the value of k.
+<br>So we cannot use expressions like
+<br><font color="#3333FF">&nbsp; *p = 40;</font>
+<br>but we can change what p points to:
+<br><font color="#3333FF">&nbsp; p = &amp;newint;</font>
+<br>In effect this is a read only pointer. It can be set to point to any
+area of memory, but it can't change the value stored there.
+<br><a NAME="c++_static_keyword"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>26.Static Keyword</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>The <b><font color="#CC0000">static</font></b> keyword is used in many
+different situations, but it always is used to affect scope.
+<br>A <b><font color="#CC0000">static</font></b> data object stays in existence
+until the end of the program. This is opposed to normal <b>automatic</b>
+objects are destroyed when they go out of scope. They are declared like
+this:
+<p><font color="#3333FF">static int i = 100;</font>
+<p>Note: if a static variable isn't initialized, <u>the compiler initializes
+it to 0</u>.
+<br>Note: if you declare it inside a block it can still only be referred
+to inside that block, although it isn't destroyed when the block goes out
+of scope.
+<p>A <a href="#Class">class</a> can also create class variables with the
+<b>static</b>
+keyword. These data objects are associated with the class itself rather
+than any instance of the class. No matter how many instances of the class
+are created, there is only one of these data objects. Every instance of
+the class accesses the same variable. They can be declared like this:
+<p><font color="#3333FF">class example {</font>
+<br><font color="#3333FF">&nbsp; int k;</font>
+<br><font color="#3333FF">&nbsp; static int m;</font>
+<br><font color="#3333FF">&nbsp; static int n;</font>
+<br><font color="#3333FF">public:</font>
+<br><font color="#3333FF">&nbsp; int getk() {return k;}</font>
+<br><font color="#3333FF">&nbsp; static void setm(int num) {m = num;}</font>
+<br><font color="#3333FF">};</font>
+<p>Both <b>m</b> and<b> n</b> are static variables, only one set of them
+can ever exist in the program. They have not been created yet though. They
+both must be defined in the source file like this:
+<p><font color="#3333FF">int example : : m;</font>
+<br><font color="#3333FF">int example : : n = 10;</font>
+<p>Any function can manipulate <b>m</b> and <b>n</b>, but you can make
+special<b> <font color="#CC0000">static functions</font></b> that can only
+access static members:<b> setm </b>is an example. The great thing about
+these functions is that <u>they can be called even when no instance of
+the class exists</u>. We call them like this:
+<p><font color="#3333FF">example.setm(20);</font>
+<br><a NAME="c++_input_output"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>27.Input/Output</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>User input/output:
+<br>cin>> n;
+<br>cout &lt;&lt; somthing &lt;&lt; somthing &lt;&lt;endl;
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>// file p2.cpp
+<br>&nbsp;#include &lt;iostream.h>
+<p>&nbsp;const int ii = 5; // const will not allow to change it
+<p>&nbsp;int main() {
+<br>&nbsp;&nbsp; int n;
+<br>&nbsp;&nbsp; cout&lt;&lt;"Hello" &lt;&lt; ii &lt;&lt; "Dear"&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"Friend" &lt;&lt; endl;
+<br>&nbsp;&nbsp; cout&lt;&lt;"Please\nPlease enter a number: ";
+<br>&nbsp;&nbsp; cin>> n;
+<br>&nbsp;&nbsp; cout&lt;&lt;"You entered: "&lt;&lt; n &lt;&lt;endl;
+<br>&nbsp;&nbsp; cout&lt;&lt;"Squared:&nbsp;&nbsp; "&lt;&lt; n*n &lt;&lt;endl;
+<p>&nbsp; char string[256];&nbsp;&nbsp; //A nice long string
+<br>&nbsp; cout&lt;&lt;"Please enter a long string: ";
+<br>&nbsp; cin.getline(string, 256, '\n'); //The user input goes into string
+<br>&nbsp; cout&lt;&lt;"Your long string was:"&lt;&lt;endl&lt;&lt;string;
+<p>&nbsp;&nbsp; return 0;
+<br>&nbsp;}</td>
+</tr>
+</table>
+
+<p>File read/write:
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; ifstream a_file("test.txt");&nbsp;</font></b>&nbsp;
+// read
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; ofstream a_file("test.txt");&nbsp;</font></b>&nbsp;
+// write
+<p><font color="#000000">Those functions can accept optional 2nd argument,
+for example:</font>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; ifstream a_file("test.txt",
+ios::app);&nbsp;</font></b>&nbsp; // open for appending
+<p>Possible values:
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; ios::app -- Opens the file,
+and allows additions at the end</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; ios::ate -- Opens the file,
+but allows additions anywhere</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; ios::trunc -- Deletes everything
+in the file</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; ios::nocreate -- Does not
+open if the file must be created</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; ios::noreplace -- Does not
+open if the file already exists</font>
+<p>Example: read text file and output it on the screen:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td>ifstream my_in("example.txt");&nbsp;
+<br>my_in >> str;&nbsp;
+<br>cout&lt;&lt;str;&nbsp;
+<br>my_in.close();&nbsp;</td>
+</tr>
+</table>
+<a NAME="c++_built_in_functions"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#000000">28.Built in Functions</font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>For the string functions, go to the <a href="#Strings">strings</a> section.
+<br>A lot of the other most useful built in functions are in the <b>math.h</b>
+class:
+<br><b>float f = sqrt(9);</b>
+<br><b>float f = sin(90)</b>&nbsp; // same applied for<b> tan()</b> and<b>
+cos()</b>.
+<br><b>pow(x, z)</b>&nbsp; // returns x to the power of y.
+<br><b>log(x)</b> and<b> log10(x)</b>
+<br><b>abs(x)&nbsp; //</b>: returns absolute of x
+<br>&nbsp;
+<br>&nbsp;
+</body>
+</html>

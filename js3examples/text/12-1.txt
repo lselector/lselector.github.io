@@ -1,0 +1,21 @@
+<HTML>
+<HEAD>
+<TITLE>Today's Date</TITLE>
+    <SCRIPT LANGUAGE="JavaScript">
+    // Define a function for use later on.
+    function print_todays_date()
+    {
+        var d = new Date();  // Today's date and time
+        document.write(d.toLocaleString());
+    }
+    </SCRIPT>
+</HEAD>
+<BODY>
+<HR>The date and time are:<BR><B>
+    <SCRIPT LANGUAGE="JavaScript">
+    // Now call the function we defined above.
+    print_todays_date();
+    </SCRIPT>
+</B><HR>
+</BODY>
+</HTML>

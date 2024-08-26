@@ -1,0 +1,142 @@
+<SCRIPT LANGUAGE="JavaScript1.1">
+// This is the constructor function for our new ToggleButton class.
+// Calling it creates a ToggleButton object and outputs the required
+// <A> and <IMG> tags into the specified document at the current location. 
+// Therefore, don't call it for the current document from an event handler.
+// Arguments:
+//    document: The Document object the buttons will be created in.
+//    checked:  A boolean that says whether the button is initially checked.
+//    label:    An optional string that specifies text to appear after the button.
+//    onclick:  An optional function to be called when the toggle button is
+//              clicked. It will be passed a boolean indicating the new
+//              state of the button. You can also pass a string, which will
+//              be converted to a function which is passed a boolean argument
+//              named "state".
+function ToggleButton(document, checked, label, onclick)
+{
+    // First time called, document will be false. Ignore this call.
+    if (document == null) return;
+
+    // The first time we are called (and only the first time) we have
+    // to do some special stuff. First, now that the prototype object
+    // is created, we can set up our methods. 
+    // Second, we've got to load the images that we'll be using.
+    // Doing this will get the images in the cache for when we need them.
+    if (!ToggleButton.prototype.over) {
+        // Initialize the prototype object to create our methods.
+        ToggleButton.prototype.over = _ToggleButton_over;
+        ToggleButton.prototype.out = _ToggleButton_out;
+        ToggleButton.prototype.click = _ToggleButton_click;
+
+        // Now create an array of image objects, and assign URLs to them.
+        // The URLs of the images are configurable, and are stored in an
+        // array property of the constructor function itself. They will be
+        // initialized below. Because of a bug in Navigator, we've got
+        // to maintain references to these images, so we store the array
+        // in a property of the constructor rather than using a local variable.
+        ToggleButton.images = new Array(4);
+        for(var i = 0; i < 4; i++) {
+            ToggleButton.images[i] = new Image(ToggleButton.width,
+                                               ToggleButton.height);
+            ToggleButton.images[i].src = ToggleButton.imagenames[i];
+        }
+    }
+    
+    // Save some of the arguments we were passed.
+    this.document = document;
+    this.checked = checked;
+
+    // Remember that the mouse is not currently on top of us.
+    this.highlighted = false;
+
+    // Save the onclick argument to be called when the button is clicked.
+    // If it is not already a function, attempt to convert it
+    // to a function that is passed a single argument, named state.
+    this.onclick = onclick;
+    if (typeof this.onclick == "string")
+        this.onclick = new Function("state", this.onclick);
+
+    // Figure out what entry in the document.images[] array the images
+    // for this checkbox will be stored at.
+    var index = document.images.length;
+
+    // Now output the HTML code for this checkbox. Use <A> and <IMG> tags.
+    // The event handlers we output here are confusing, but crucial to the
+    // operation of this class. The "_tb" property is defined below, as
+    // are the over(), out(), and click() methods.
+    document.write('&nbsp;<A HREF ="" ' +
+      'onMouseOver="document.images[' + index + ']._tb.over();return true;" '+
+      'onMouseOut="document.images[' + index + ']._tb.out()" '+
+      'onClick="document.images[' + index + ']._tb.click(); return false;">');
+    document.write('<IMG SRC="' + ToggleButton.imagenames[this.checked+0] +'"'+
+                   ' WIDTH=' + ToggleButton.width +
+                   ' HEIGHT=' + ToggleButton.height +
+                   ' BORDER=0 HSPACE=0 VSPACE=0 ALIGN="absmiddle">');
+    if (label) document.write(label);
+    document.write('</A>');
+
+    // Now that we've output the <IMG> tag, save a reference to the
+    // Image object that it created in the ToggleButton object.
+    this.image = document.images[index];
+
+    // And also make a link in the other direction: from the Image object
+    // to this ToggleButton object. Do this by defining a "_tb" property
+    // in the Image object.
+    this.image._tb = this;
+}
+
+// This becomes the over() method.
+function _ToggleButton_over()
+{
+    // Change the image, and remember that we're highlighted.
+    this.image.src = ToggleButton.imagenames[this.checked + 2];
+    this.highlighted = true;
+}
+
+// This becomes the out() method.
+function _ToggleButton_out()
+{
+    // Change the image, and remember that we're not highlighted.
+    this.image.src = ToggleButton.imagenames[this.checked + 0];
+    this.highlighted = false;
+}
+
+// This becomes the click() method.
+function _ToggleButton_click()
+{
+    // Toggle the state of the button, change the image, and call the
+    // onclick method, if it was specified for this ToggleButton.
+    this.checked = !this.checked;
+    this.image.src = ToggleButton.imagenames[this.checked+this.highlighted*2];
+    if (this.onclick) this.onclick(this.checked);
+}
+
+// Initialize static class properties that describe the checkbox images. These
+// are just defaults. Programs can override them by assigning new values.
+// But they should only be overridden *before* any ToggleButtons are created.
+ToggleButton.imagenames = new Array(4);            // Create an array.
+ToggleButton.imagenames[0] = "togglebutton0.gif";  // The unchecked box
+ToggleButton.imagenames[1] = "togglebutton1.gif";  // The box with a check mark
+ToggleButton.imagenames[2] = "togglebutton2.gif";  // Unchecked but highlighted
+ToggleButton.imagenames[3] = "togglebutton3.gif";  // Checked and highlighted
+ToggleButton.width = ToggleButton.height = 25;     // Size of all images
+</SCRIPT>
+
+<!-- Here's how we might use the ToggleButton class. -->
+Optional extras:<BR>
+<SCRIPT LANGUAGE="JavaScript1.1">
+// Create the buttons.
+var tb1 = new ToggleButton(document, true, "28.8K Modem<BR>");
+var tb2 = new ToggleButton(document, false, "Laser Printer<BR>");
+var tb3 = new ToggleButton(document, false, "Tape Backup Unit<BR>");
+</SCRIPT>
+
+<!-- Here's how we can use the ToggleButton objects from event handlers. -->
+<FORM>
+<INPUT TYPE="button" VALUE="Report Button States"
+       onClick="alert(tb1.checked + '\n' + tb2.checked + '\n' + tb3.checked)">
+<INPUT TYPE="button" VALUE="Reset Buttons"
+       onClick="if (tb1.checked) tb1.click();
+                if (tb2.checked) tb2.click();
+                if (tb3.checked) tb3.click();">
+</FORM>

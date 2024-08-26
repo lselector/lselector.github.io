@@ -1,0 +1,629 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Description" content="Hadoop noSQL">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>Hadoop noSQL</title>
+<!--
+
+"Description" content="Resume, Hadoop, Hive, HBase, Cassandra, Cloudera, Scala, Spark, SparkSQL, Python, Perl, Actionscript, JavaScript, Sybase, Oracle, Java, Servlet, JSP, XML, XSL, Wireless, Palm, Online Trading, Financial Applications, C/C++, Unix, Solaris, Linux, Sybase, Oracle, DB2, MySQL, CGI, Apache, mod_perl, HTML, DHTML, CSS, SSL, WebLogic, Apache, Dreamweaver, Adobe Photoshop, Algorithmic trading, Financial Databases"
+
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+<style type="text/css">
+<!--
+.style1 {
+	color: #CC0000;
+	font-weight: bold;
+}
+.code {color: #0000FF}
+.comment {color: #669900}
+-->
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1>
+<b><a href="index.html">home</a>
+> Hadoop, etc</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Hadoop and other noSQL technologies</font></b>
+<table width="95%" border="0" cellpadding="3" cellspacing="0">
+  <tr>
+    <td class="style1">On This Page</td>
+    <td class="style1">More</td>
+    <td class="style1">Other Pages</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p>
+- <a href="#intro">intro</a> - <br>
+    - <a href="#list_of_technologies">list_of_technologies</a> - <br>
+    - <a href="#good_websites">good_websites</a> - <br>
+    - <a href="#microsoft">Microsoft and BigData</a> - <br>
+- <a href="#cloud">cloud</a> - <br>
+- <a href="#misc">misc</a> - <br>
+- <a href="#seminal_articles">seminal_articles</a> - <br>
+- <a href="#video_tutorials">video_tutorials</a> - <br>
+    - x - <br>
+    - x -</p></td>
+    <td valign="top">-<br></td>
+    <td valign="top">
+    <p>
+-<br>
+<br>
+    </p>    </td>
+  </tr>
+</table>
+<p class="sectionheader"><a NAME="intro"></a>Intro ------------------------------</p>
+<p>In 15 years since 1998 the number of servers in Google grew  to approx 3 million servers in 2013. <br>
+Microsoft, Amazon, and others are not far behind. How do you manage millions of servers? <br>
+How do you distribute data between them? <br>
+How you query this data? <br>
+How Google returns results from millions of servers in less than a second? <br>
+What technologies power those huge distributed databases?</p>
+Google - how it works</p>
+<table border="0" cellspacing="0" cellpadding="5">
+      <tr>
+        <td bgcolor="#FFFFCC"><ul>
+          <li><a href="http://en.wikipedia.org/wiki/Google">http://en.wikipedia.org/wiki/Google</a> - </li>
+          <li><a href="http://en.wikipedia.org/wiki/PageRank">http://en.wikipedia.org/wiki/PageRank</a> - </li>
+          <li><a href="http://infolab.stanford.edu/~backrub/google.html">http://infolab.stanford.edu/~backrub/google.html</a> - original paper (1998)</li>
+          <li><a href="http://infolab.stanford.edu/pub/papers/google.pdf">http://infolab.stanford.edu/pub/papers/google.pdf</a> - original paper as pdf (1998)</li>
+          <li><a href="http://research.google.com/archive/mapreduce.html">http://research.google.com/archive/mapreduce.html</a> - (2004) - intro to map-reduce</li>
+          <li><a href="http://en.wikipedia.org/wiki/BigTable">http://en.wikipedia.org/wiki/BigTable</a> - BigTable</li>
+          <li><a href="http://static.googleusercontent.com/media/research.google.com/en/us/archive/bigtable-osdi06.pdf">BigTable - 2006 paper</a> - pdf</li>
+        </ul>        </td>
+      </tr>
+    </table>
+    <p>--</p>
+    <p class="sectionheader"><a NAME="list_of_technologies" id="list_of_technologies"></a>List of some well known BigData technologies (as of Summer 2014):</p>
+    <p>List below contains both open source and commercial solutions. <br>
+    Which ones to choose?</p>
+    <p class="code"><strong><em>&quot;Open source or open wallet. <br>
+    Vibrant innovative engineering community or marketing. <br>
+    It's not about a great product. <br>
+    It is about unbridled thinking and freedom from single company control. <br>
+    The choice is easy.&quot;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -- David Garrison, Hortonworks</em></strong>  </p>
+  <table border="1" cellspacing="0" cellpadding="5">
+    <tr>
+      <td width="172" valign="top"><a href="http://en.wikipedia.org/wiki/Apache_Hadoop">Hadoop</a></td>
+      <td width="1052" valign="top"><p>Open Source system to store data distributed over multiple (thousands) servers. Created in 2005 by Doug Cutting and Mike Cafarella for &quot;Nutch&quot; search engine project. Name &quot;Hadoop&quot; comes from the name of Cutting's little son's toy elephant. Cutting was working at Yahoo! at the time. Hadoop is written in Java.</p></td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://wiki.apache.org/hadoop/Distributions%20and%20Commercial%20Support">Hadoop distributions</a></td>
+      <td valign="top"><p>Main distributions (package, develop, support): 
+          <br>
+        - <a href="http://en.wikipedia.org/wiki/Cloudera">Claudera</a> -Palo Alto, CA<br>
+        - <a href="http://en.wikipedia.org/wiki/MapR">MapR</a> - San Hose, CA<br>
+      - <a href="http://en.wikipedia.org/wiki/Hortonworks">Hortonworks</a> -  Palo Alto, CA, funded by Yahoo, Teradata, etc.</p></td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Apache_Hadoop#Hadoop_distributed_file_system">HDFS</a></td>
+      <td valign="top">Hadoop Distributed File System</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html">YARN</a></td>
+      <td valign="top">Yet Another Resource Negotiator - for better resource management and map reduce in Hadoop 2.x</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Storm_(event_processor)">Storm</a></td>
+      <td valign="top">Distributed processing and streaming of data. Open source. Written in <a href="http://en.wikipedia.org/wiki/Clojure" target="_blank">Clojure</a>. Uses &quot;spouts&quot; and &quot;bolts&quot; to define topologies of moving data.  Integrates well with many common messaging systems (RabbitMQ, Kestrel, Kafka, etc).</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://samza.incubator.apache.org">Samza</a></td>
+      <td valign="top">Open Source distributed stream processing framework. Uses Apache Kafka for messaging. Written in Java and Scala.</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Apache_Hive">Hive</a></td>
+      <td valign="top">SQL-like language called HiveQL to query Hadoop HDFS data. DataWarehouse infrastructure. Can run on top of Spark for faster performance.</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Hbase">HBase</a></td>
+      <td valign="top"><p>Open Source distributed database on top of HDFS (Hadoop Distributed File System). Non-relational. Modeled after Google's BigTable - storing large quantities of sparse data. Written in Java. Good for analyzing huge 2-dim data (billions of rows, millions of columns - searches, log processing, etc.). HTTP or Thrift interface.</p></td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Apache_Cassandra">Cassandra</a></td>
+      <td valign="top"><p>Open source distributed high-performance database to store and query huge amounts of data. Originally from Facebook. Has its own data model (not Hadoop). Many users load data from Hadoop into Cassandra to do analytics. Uses SQL-like query language (CQL3). Written in Java. Great for web analytics, transaction logs, etc.</p></td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Apache_Spark">Spark</a></td>
+      <td valign="top">Open source, written in Scala, runs MapReduce up to 100x faster than Hadoop on top of Hadoop Distributed File System (HDFS).  Originally developed in the AMPLab at UC Berkeley. Company - <a href="http://databricks.com">Databricks</a>. </td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="https://spark.apache.org/sql/">SparkSQL</a></td>
+      <td valign="top">Open source, allows to use SQL (or HiveQL or Scala) over Spark. It is recommended to move from Hive to SparkSQL.</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://www.cs.berkeley.edu/~pwendell/strataconf/api/core/spark/RDD.html">Spark RDD</a></td>
+      <td valign="top">Resilient Distributed Dataset (RDD), the basic abstraction in Spark. Represents an immutable, partitioned collection of elements that can be operated on in parallel.</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://tachyon-project.org">Tachyon</a></td>
+      <td valign="top"><p>Open source  memory-caching for distributed file systems (HDFS, S3, GlusterFS, etc.). Hadoop compatible. Existing Spark and MapReduce programs can run on top of it without any code change. Used in  Berkeley Data Analytics Stack (BDAS).</p></td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://datapad.io">DataPad</a></td>
+      <td valign="top">Data Analysis tools (Wes McKinney et al)<br>
+        - <a href="https://www.youtube.com/watch?v=wPEmoT018s8">PyData, June 2014, 40min</a><br>
+      - <a href="https://www.youtube.com/watch?v=dmats9YjRGo">GraphLab Conf, July 2014, 22min</a></td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Pig_(programming_tool)">Pig</a></td>
+      <td valign="top">provides language (Pig Latin) for MapReduce over HDFS. Originally from Yahoo, 2006.</td>
+    </tr>
+    <tr>
+      <td valign="top" bgcolor="#FFCC00">-</td>
+      <td valign="top" bgcolor="#FFCC00">-</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Apache_Mahout">Mahout</a></td>
+      <td valign="top">machine learning algorythm on the Hadoop platform. Also provides math and statistics.</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Oozie">Oozie</a></td>
+      <td valign="top">A workflow scheduler system to manage Hadoop jobs (web app, Java servlets)</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://flume.apache.org/">Flume</a></td>
+      <td valign="top"><p>distributed service for collecting, aggregating, and moving large amounts of log data, good for analytic applications</p></td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://sqoop.apache.org">Sqoop</a></td>
+      <td valign="top">tool  for moving  bulk data between Apache  Hadoop and other storages (for example, relational databases)</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Hue_(Hadoop)">Claudera Hue</a></td>
+      <td valign="top">Cloudera web interface for using Hadoop and analyzing data.</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://www.cloudera.com/content/cloudera/en/products-and-services/cdh.html">Claudera CDH</a></td>
+      <td valign="top">Cloudera Hadoop Distribution (free download)</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://www.cloudera.com/content/cloudera/en/products-and-services/cloudera-express.html">Cloudera Express</a></td>
+      <td valign="top">CDH + Cloudera Manager (free download) - best way to start with Hadoop</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Cloudera_Impala">Cloudera Impala</a></td>
+      <td valign="top">fast SQL queying of HDFS data (massive parrallel processing) - good for analytics, eliminates the need of moving data into some other datastore for analytics. Impala = medium-sized African antelope known for fast running and jumping.</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/MongoDB">MongoDB</a></td>
+      <td valign="top"><p>Open Source NoSQL database for JSON-like documents. Horizontally scalable. Written in C++. Queries (dynamic) in Javascript. You can define indexes. Fairly good performance. (name &quot;mongo&quot; comes from &quot;humongous&quot;, not from &quot;Blazing Saddles&quot; Mongo).</p></td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Couchdb">CouchDB</a></td>
+      <td valign="top"> Open source NoSQL database, uses JSON to store data, JavaScript as query language, HTTP for an API.  Good for mobile devices.</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Redis">Redis</a></td>
+      <td valign="top"><p>Open source, VERY FAST (written in C) in-memory (disk-backed) key-value database. REDIS = REmote DIctionary Server. DB should fit in RAM (or span RAMs of several computers using clustering). Supports bits, sets, lists, hashes. Support transactions. Great for real time stock prices, analytics, etc.</p></td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://fallabs.com/kyototycoon/spex.html">Kyoto Tycoon</a> - <a href="http://en.wikipedia.org/wiki/Kyoto_Cabinet">Kyoto Cabinet</a></td>
+      <td valign="top"><p>Open Source fast and lightweight network DBM over HTTP, can do more than 1 million insert/select per second. Multiple storage options (hash, tree, dir, etc.). Lua on server side. Can be used with C, Java, Python, Ruby, Perl, Lua, etc. Great for real-time data (cache).</p></td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Riak">Riak</a></td>
+      <td valign="top"><p>Open source distributed NoSQL key-value data store. Main benefit - high availability &amp; fault tolerance. Simple to operate and to scale by adding more servers. Written in Erlang, C, and some Javascript. HTTP or custom binary interface. Map/reduce in JavaScript or Erlang.</p></td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Couchbase">Couchbase<br>
+      (Membase)</a></td>
+      <td valign="top"><p>Open Source distributed NoSQL document-oriented database to serve many concurrent users. Easy-to-scale key-value or document access with low latency and high sustained throughput. Designed to be clustered to very large scale deployments.</p></td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Neo4j">Neo4j</a></td>
+      <td valign="top"><p>Open source graph database for connected data (nodes and relationships). Transactional. Advanced path finding. Good for road maps, topologies, etc. (graphs). Written in Java.</p></td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Hypertable">Hypertable</a></td>
+      <td valign="top"><p>Open source database - basically a faster smaller HBase implemented in C++, uses ideas from Google's BigTable. Runs on HDFS (or ClusterFS or KFS (Kosmos File System). Uses its own, &quot;SQL-like&quot; language, HQL.</p></td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/ElasticSearch">ElasticSearch</a></td>
+      <td valign="top"><p>Open source distributed full-text search engine with HTTP interface and JSON documents (parent/children docs). Based on Java <a href="http://en.wikipedia.org/wiki/Lucene">Lucene</a> library. Great when you need advanced flexible fuzzy search.</p></td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Apache_Solr">Solr</a></td>
+      <td valign="top">Open source popular blazing fast search platform. Based on Java <a href="http://en.wikipedia.org/wiki/Lucene">Lucene</a> library. Used by SalesForce.com over pure-java <a href="http://en.wikipedia.org/wiki/Jetty_(web_server)">Jetty</a> web server/servlet container.</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Apache_Accumulo">Accumulo</a></td>
+      <td valign="top"><p>Open source - similar to HBase, but provides cell-level security (access labels). Sorted, distributed key/value storage. Built on top of Hadoop, ZooKeeper, and Thrift. Written in Java and C++.</p></td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/VoltDB">VoltDB</a></td>
+      <td valign="top">The world&rsquo;s fastest in-memory relational  database. Fast ingestion and export, massive scalability, real-time analytics.  SQL access from within pre-compiled Java stored procedures. Open Source and commercial versions.</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Memcached">Memcached</a></td>
+      <td valign="top"><p>Open source distributed memory caching system. Can be used to cache results of DB queries.</p></td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="https://code.google.com/p/scalaris/">Scalaris</a></td>
+      <td valign="top"><p>Open source  scalable, distributed, transactional key-value store. Written in Erlang, accessible from  Python, Ruby, Java, etc.</p></td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/BigTable">BigTable</a></td>
+      <td valign="top">Google proprietary data storage system. Compressed, high performance. Uses  Google File System, Chubby Lock Service, SSTable (log-structured storage like LevelDB).</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/LevelDB">LevelDB</a></td>
+      <td valign="top">open source on-disk key-value store (by Google). </td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Google_File_System">GoogleFS</a></td>
+      <td valign="top">Google File System - proprietary</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Quantcast_File_System">QFS</a></td>
+      <td valign="top">Quantcast File System (QFS) is an open-source distributed file system software package for large-scale MapReduce or other batch-processing workloads. It was designed as an alternative to Apache Hadoop&rsquo;s HDFS, intended to deliver better performance and cost-efficiency for large-scale processing clusters.</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://www.oracle.com/us/products/database/nosql/overview/index.html">Oracle noSQL database</a></td>
+      <td valign="top">Oracle NoSQL Database (ONDB) provides network-accessible multi-terabyte distributed key/value pair storage with predictable latency.</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://www.oracle.com/us/products/database/big-data-sql/overview/index.html">Oracle BigData SQL</a></td>
+      <td valign="top">Oracle Big Data SQL extends Oracle SQL to Hadoop and NoSQL</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://www.oracle.com/technetwork/middleware/data-integrator/overview/index.html">Oracle Data Integrator</a></td>
+      <td valign="top">Oracle Data Intergator (ODI) is an ETL (Extract-Transform-Load) platform for  high volume/high performance batch loads, event-driven, trickle-feed integration,  SOA-enabled data service, etc. BigData support, parallelism. Monitoring.</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Talend">Talend</a></td>
+      <td valign="top">Open source ETL / integration tools, supports BigData. Look at Talend Jumpstart Sandbox.</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Ab_Initio_Software">Ab Initio</a></td>
+      <td valign="top">Applications and custom soultions for very high-volume data processing and data integration. Record-breaking.</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://www.kiji.org">kiji</a></td>
+      <td valign="top">Open Source framework for collecting, analyzing, and serving entity data in real time.</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://hpccsystems.com">HPCC</a></td>
+      <td valign="top">HPCC (High Performance Computing Cluster) - open source platform for  massive parallel-processing to solve  Big Data problems</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://www.pivotal.io/big-data">Pivotal</a></td>
+      <td valign="top"> Big Data solutions, Hadoop distribution</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://www-03.ibm.com/software/products/en/category/bigdata">IBM Big Data Platform</a></td>
+      <td valign="top">IBM's enterprise class big data and analytics platform &ndash; Watson Foundations.</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://www8.hp.com/us/en/software-solutions/big-data-platform-haven/">HP Haven</a></td>
+      <td valign="top">HP HAVEn Big Data platform =  (Hadoop, Autonomy Corporation, Vertica, HP Enterprise Security Products).</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://blogs.aws.amazon.com/bigdata/">Amazon</a></td>
+      <td valign="top">Cloud Platform. Amazon Elastic Cloud Compute (Amazon EC2), Amazon Simple Storage Service (Amazon S3), Amazon Web Services (AWS), <a href="http://aws.amazon.com/redshift/">Amazon Redshift</a> (Datawarehousing solutions), <a href="http://en.wikipedia.org/wiki/Amazon_Elastic_MapReduce#Amazon_Elastic_MapReduce">Amazon Elastic MapReduce</a>.</td>
+    </tr>
+    <tr>
+      <td valign="top">Intel</td>
+      <td valign="top">Partners with Claudera to provide server platforms for Big Data.</td>
+    </tr>
+    <tr>
+      <td valign="top">Signiant</td>
+      <td valign="top">System to move large data sets into and out of the cloud (accross datacenters, parallel, encrypted). Signiant Media Shuttle, Signiant Media Exchange and Signiant Manager+Agents, Signiant SkyDrop.</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://www.bityota.com/about/">BitYota</a></td>
+      <td valign="top">Datawarehouse as a service</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/DataStax">DataStax</a></td>
+      <td valign="top">Delivers certified version of Apache Cassandra that is ready for heavy-duty production environments</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Greenplum">Greenplum</a></td>
+      <td valign="top">Bigdata analytics, in 2012 became a part of Pivotal.</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Teradata">Teradata</a></td>
+      <td valign="top">Expandable relational datawarehouse system (since 1979), &quot;shared nothing&quot; architecture.</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Splunk">Splunk</a></td>
+      <td valign="top">Captures, indexes and correlates real-time data in a searchable repository from which it can generate graphs, reports, alerts, dashboards and visualizations</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://en.wikipedia.org/wiki/Sumo_Logic">Sumo Logic</a></td>
+      <td valign="top">Cloud-based log management and analytics service. Uses advanced machine learning algorithms to whittle down mountains of log file data into common groupings.</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="http://www.qubole.com">qubole</a></td>
+      <td valign="top">Creators of Facebook&rsquo;s Big Data infrastructure and  Apache Hive have leveraged their experience to deliver Qubole Data Service (QDS) &ndash; a cloud Big Data service offering the same advanced capabilities used by Big Data savvy organizations.</td>
+    </tr>
+    <tr>
+      <td valign="top"><a href="https://www.altiscale.com">altiscale</a></td>
+      <td valign="top">Altiscale Data Cloud is the first cloud service purpose-built to run Hadoop. We offer an on-demand, elastic solution on a pay-as-you-go basis</td>
+    </tr>
+</table>
+<p>--</p>
+<p class="sectionheader"><a NAME="good_websites" id="microsoft3"></a>Good WebSites</p>
+<p>&nbsp;</p>
+<table border="0" cellspacing="0" cellpadding="5">
+  <tr>
+    <td bgcolor="#FFFFCC"><ul>
+      <li>- <a href="http://www.kdnuggets.com">http://www.kdnuggets.com</a> - Data Mining Community. Analytics, Data Mining, and Data Science Software, etc.</li>
+      <li>- <a href="http://www.cyc.com/platform/opencyc">http://www.cyc.com/platform/opencyc</a> ( also <a href="http://en.wikipedia.org/wiki/Cyc">http://en.wikipedia.org/wiki/Cyc</a> ) - codify human common sense</li>
+      <li>- <a href="http://www.datasciencecentral.com">http://www.datasciencecentral.com</a> - great site</li>
+    </ul></td>
+  </tr>
+</table>
+<p>--</p>
+    <p class="sectionheader"><a NAME="microsoft" id="microsoft"></a>Microsoft and Big Data ------------------------------</p>
+    <p>Hadoop and HDInsight: Big Data in Windows Azure:<br>
+&nbsp; - <a href="http://msdn.microsoft.com/en-us/magazine/dn385705.aspx">http://msdn.microsoft.com/en-us/magazine/dn385705.aspx</a></p>
+    <p>HDInsight is an Apache Hadoop implementation that runs in globally distributed Microsoft datacenters. <br>
+    It&rsquo;s a service that allows you to easily build a Hadoop cluster in minutes when you need it.</p>
+    <p>Windows Azure Storage - can include NoSQL stores, SQL database, blobs, etc.  REST-ful API http). Support virtual machines to run Hadoop on Linux.</p>
+    <p>--</p>
+    <p class="sectionheader"><a NAME="cloud" id="microsoft2"></a> Cloud ------------------------------</p>
+  <p>Cloud Services:</p>
+  <p><a href="http://talkincloud.com/talkin-cloud-top-100-cloud-services-providers-0">http://talkincloud.com/talkin-cloud-top-100-cloud-services-providers-0</a> - top 100 Cloud service providers</p>
+  <p>Here are the top 10 (number = Rank, 1 - top rank)</p>
+<p>1. Salesforce.com, San Francisco, CA<br>
+  2. Amazon, Seattle, WA<br>
+  3. Microsoft, Redmond, WA<br>
+  4. Oracle, Redwood City, CA<br>
+5. Google, Mountain View, CA<br>
+6. SAP, Walldorf, Germany<br>
+7. SoftLayer (IBM), Dallas, TX<br>
+8. Terremark (a Verizon Company), Miami, FL<br>
+9. Rackspace, San Antonio, TX<br>
+10. NetSuite, San Mateo, CA</p>
+<p>--</p>
+<p class="sectionheader"><a NAME="misc" id="misc"></a>Misc ------------------------------</p>
+<p><br> 
+  Some technologes to consider:
+</p>
+<ul>
+  <li><a href="http://nginx.org">http://nginx.org</a> - very fast web server / proxy for serving static contents</li>
+  <li><a href="http://www.getchef.com/chef/">http://www.getchef.com/chef/</a> - automate how you build, deploy, and manage your infrastructure</li>
+  <li><a href="http://www.vagrantup.com">http://www.vagrantup.com</a> - Create and configure lightweight, reproducible, and portable development environments</li>
+  <li><a href="http://berkshelf.com/">http://berkshelf.com/</a> - Manage a Cookbook or an Application's Cookbook dependencies</li>
+  <li><a href="https://qpid.apache.org">https://qpid.apache.org</a> - Messaging built on AMQP</li>
+</ul>
+    <p>--</p>
+    <p class="sectionheader"><a NAME="seminal_articles" id="misc2"></a>38 Seminal Articles Every Data Scientist Should Read (from datasciencecentral.com, August 2014)</p>
+<p><strong>External Papers</strong></p>
+<ol>
+<li><a href="http://research.google.com/archive/bigtable.html">Bigtable: A Distributed Storage System for Structured Data</a></li>
+<li><a href="http://homes.cs.washington.edu/~pedrod/papers/cacm12.pdf">A Few Useful Things to Know about Machine Learning</a></li>
+<li><a href="http://oz.berkeley.edu/~breiman/randomforest2001.pdf">Random Forests</a></li>
+<li><a href="http://www.seas.upenn.edu/~zives/03f/cis550/codd.pdf">A Relational Model of Data for Large Shared Data Banks</a></li>
+<li><a href="http://machinelearning.wustl.edu/mlpapers/paper_files/NIPS2006_725.pdf">Map-Reduce for Machine Learning on Multicore</a></li>
+<li><a href="http://link.springer.com/article/10.1023%2FA%3A1007563306331" target="_self">Pasting Small Votes for Classification in Large Databases and On-Line</a></li>
+<li><a href="http://www.win.tue.nl/~laroyo/2L340/resources/Amazon-Recommendations.pdf">Recommendations Item-to-Item Collaborative Filtering</a></li>
+<li><a href="http://nlp.stanford.edu/~socherr/EMNLP2013_RNTN.pdf">Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank</a></li>
+<li><a href="http://research.google.com/archive/spanner.html">Spanner: Google's Globally-Distributed Database</a></li>
+<li><a href="http://research.google.com/pubs/pub36971.html">Megastore: Providing Scalable, Highly Available Storage for Interactive Services</a></li>
+<li><a href="http://research.google.com/pubs/pub41344.html">F1: A Distributed SQL Database That Scales</a></li>
+<li><a href="http://online.liebertpub.com/doi/pdfplus/10.1089/big.2013.0011">APACHE DRILL: Interactive Ad-Hoc Analysis at Scale</a></li>
+<li><a href="https://www.cs.unc.edu/~welch/kalman/media/pdf/Kalman1960.pdf" target="_self">A New Approach to Linear Filtering and Prediction Problems</a></li>
+<li><a href="http://www.cs.umd.edu/~samir/498/10Algorithms-08.pdf">Top 10 algorithms on Data mining</a></li>
+<li><a href="http://ilpubs.stanford.edu:8090/422/">The PageRank Citation Ranking: Bringing Order to the Web</a></li>
+<li><a href="http://research.google.com/archive/mapreduce.html">MapReduce: Simplified Data Processing on Large Clusters</a></li>
+<li><a href="http://research.google.com/archive/gfs.html">The Google File System</a></li>
+<li><a href="http://www.allthingsdistributed.com/2007/10/amazons_dynamo.html">Amazon's Dynamo</a></li>
+</ol>
+<p><strong>DSC Internal Papers</strong></p>
+<ol>
+<li><span><a href="http://www.datasciencecentral.com/profiles/blogs/tutorial-how-to-detect-spurious-correlations-and-how-to-find-the-" target="_blank">How to detect spurious correlations, and how to find the ...</a></span></li>
+<li><span><a href="http://www.datasciencecentral.com/profiles/blogs/black-box-confidence-intervals-excel-and-perl-implementations-det" target="_blank">Automated Data Science: Confidence Intervals</a></span></li>
+<li><span><a href="http://www.datasciencecentral.com/profiles/blogs/17-analytic-disciplines-compared" target="_blank">16 analytic disciplines compared to data science</a></span></li>
+<li><span><a href="http://www.datasciencecentral.com/profiles/blogs/sample-data-science-project-optimizing-all-business-levers-simult" target="_blank">From the trenches: 360-degree data science</a></span></li>
+<li><span><a href="http://www.datasciencecentral.com/profiles/blogs/10-types-of-regressions-which-one-to-use" target="_blank">10 types of regressions. Which one to use?</a></span></li>
+<li><span><a href="http://www.datasciencecentral.com/profiles/blogs/practical-illustration-of-map-reduce-hadoop-style-on-real-data?xg_source=activity" target="_blank">Practical illustration of Map-Reduce (Hadoop-style), on real data</a></span></li>
+<li><span><a href="http://www.datasciencecentral.com/profiles/blogs/jackknife-logistic-and-linear-regression" target="_blank">Jackknife logistic and linear regression for clustering and predict...</a></span></li>
+<li><span><a href="http://www.hadoop360.com/blog/a-synthetic-variance-designed-for-hadoop-and-big-data" target="_blank">A synthetic variance designed for Hadoop and big data</a></span></li>
+<li><span><a href="http://www.datasciencecentral.com/profiles/blogs/feature-selection-based-on-predictive-power" target="_blank">Fast Combinatorial Feature Selection with New Definition of Predict...</a></span></li>
+<li><span><a href="http://www.datasciencecentral.com/profiles/blogs/a-little-known-component-that-should-be-part-of-most-data-science" target="_blank">Internet topology mapping</a></span></li>
+<li><span><a href="http://www.datasciencecentral.com/profiles/blogs/11-features-any-database-sql-or-nosql-should-have" target="_blank">11 Features any database, SQL or NoSQL, should have</a></span></li>
+<li><span><a href="http://www.datasciencecentral.com/profiles/blogs/10-features-all-dashboards-should-have" target="_blank">10 Features all Dashboards Should Have</a></span></li>
+<li><span><a href="http://www.analyticbridge.com/forum/topics/clustering-idea-for-very-large-datasets" target="_blank">Clustering idea for very large datasets</a></span></li>
+<li><span><a href="http://www.datasciencecentral.com/profiles/blogs/hidden-decision-trees-revisited" target="_blank">Hidden decision trees revisited</a></span></li>
+<li><span><a href="http://www.analyticbridge.com/profiles/blogs/correlation-and-r-squared-for-big-data" target="_blank">Correlation and R-Squared for Big Data</a></span></li>
+<li><span><a href="http://www.analyticbridge.com/profiles/blogs/what-mapreduce-can-t-do" target="_blank">What Map Reduce can't do</a></span></li>
+<li><span><a href="http://www.datasciencecentral.com/profiles/blogs/new-fast-excel-to-process-billions-of-rows-via-the-cloud" target="_blank">Excel for Big Data</a></span></li>
+<li><span><a href="http://www.bigdatanews.com/profiles/blogs/fast-clustering-algorithms-for-massive-datasets" target="_blank">Fast clustering algorithms for massive datasets</a></span></li>
+<li><span><a href="http://www.analyticbridge.com/profiles/blogs/the-curse-of-big-data">The curse of big data</a></span></li>
+<li><span><a href="http://www.datasciencecentral.com/profiles/blogs/interesting-data-science-application-steganography" target="_blank">Interesting Data Science Application: Steganography</a></span></li>
+</ol>
+
+    <p>---</p>
+    <p class="sectionheader"><a NAME="video_tutorials" id="misc3"></a>Video Tutorials</p>
+    <p>&nbsp;</p>
+    <p>Cloudera Training</p>
+    <table border="0" cellspacing="0" cellpadding="5">
+      <tr>
+        <td bgcolor="#FFFFCC"><ul>
+          <li>- <a href="http://www.cloudera.com/content/support/en/downloads.html">Claudera Live</a> - </li>
+          <li>- <a href="http://vimeo.com/3584536">MapReduce and HDFS</a> -</li>
+          <li>- <a href="http://vimeo.com/93079588">Introduction to Hadoop Administration</a> - </li>
+          <li>- <a href="https://www.youtube.com/watch?v=CobVqNMiqww">Install Hadoop <span __postbox-detected-content="__postbox-detected-date">(CDH4) on 5</span> nodes with VMWare, CDH4, Cloudera Manager 4</a> -</li>
+          <li>- <a href="https://www.youtube.com/watch?v=nLzOtJWWrrw">Hadoop Tutorial: Intro To Hadoop Developer Training</a> - </li>
+          <li>- <a href="https://www.youtube.com/watch?v=beJ9MLXHpc4">Big Data HADOOP Training : Cloudera VM</a> -</li>
+          <li>- <a href="https://www.youtube.com/watch?v=WRfMrwyniqQ">Hadoop Distribution Comparison and Overview</a>: Cloudera, <span __postbox-detected-content="__postbox-detected-date">MapR,</span> and Hortonworks -</li>
+          <li>- <a href="https://www.youtube.com/watch?v=mpA5HKvxhuU">Technical Overview of Cloudera Impala</a> -</li>
+        </ul></td>
+      </tr>
+    </table>
+    <p>Big Data</p>
+    <table border="0" cellspacing="0" cellpadding="5">
+      <tr>
+        <td bgcolor="#FFFFCC"><ul>
+          <li>Introducing Apache Hadoop: The Modern Data Operating System - <a href="https://www.youtube.com/watch?v=d2xeNpfzsYI">https://www.youtube.com/watch?v=d2xeNpfzsYI</a></li>
+          <li>What is Big Data? - <a href="https://www.youtube.com/watch?v=PlaJsseTgk4">https://www.youtube.com/watch?v=PlaJsseTgk4</a></li>
+          <li>Big Data - General Introduction - <a href="https://www.youtube.com/watch?v=3twBv2v4Ip0">https://www.youtube.com/watch?v=3twBv2v4Ip0</a></li>
+          <li>Big Data Architecture Patterns - <a href="https://www.youtube.com/watch?v=-N9i-YXoQBE">https://www.youtube.com/watch?v=-N9i-YXoQBE</a></li>
+        </ul></td>
+      </tr>
+    </table>
+    <p>Hadoop - 15 video tutorials</p>
+    <table border="0" cellspacing="0" cellpadding="5">
+      <tr>
+        <td bgcolor="#FFFFCC"><ul>
+          <li>Hadoop - Just the Basics for Big Data Rookies - <a href="https://www.youtube.com/watch?v=xYnS9PQRXTg">https://www.youtube.com/watch?v=xYnS9PQRXTg</a></li>
+          <li>Hadoop Tutorial 1 - What is Hadoop? - <a href="https://www.youtube.com/watch?v=xWgdny19yQ4">https://www.youtube.com/watch?v=xWgdny19yQ4</a></li>
+          <li>Hadoop Tutorial 2 - Challenges Created by Big Data - <a href="https://www.youtube.com/watch?v=cA2btTHKPMY">https://www.youtube.com/watch?v=cA2btTHKPMY</a></li>
+          <li>Hadoop Tutorial 3 - History Behind Creation of Hadoop (Google, Yahoo, and Apache) - <a href="https://www.youtube.com/watch?v=jA7kYyHKeX8">https://www.youtube.com/watch?v=jA7kYyHKeX8</a></li>
+          <li>Hadoop Tutorial 4 - Overview of Hadoop Projects - <a href="https://www.youtube.com/watch?v=5cle0xSdrtU">https://www.youtube.com/watch?v=5cle0xSdrtU</a></li>
+          <li>Hadoop Tutorial 5 - Steps to Install Hadoop on a Personal Computer (Windows/OS X) - <a href="https://www.youtube.com/watch?v=rO-V1mxhzcM">https://www.youtube.com/watch?v=rO-V1mxhzcM</a></li>
+          <li>Hadoop Tutorial 6 - Downloading and Installing Oracle VirtualBox - <a href="https://www.youtube.com/watch?v=K70NyXNj9qc">https://www.youtube.com/watch?v=K70NyXNj9qc</a></li>
+          <li>Hadoop Tutorial 8 - Importing Hadoop Appliance into Oracle VirtualBox - <a href="https://www.youtube.com/watch?v=FZ8u73pHLu4">https://www.youtube.com/watch?v=FZ8u73pHLu4</a></li>
+          <li>Hadoop Tutorial 9 - Configuring Hadoop Virtual Machine - <a href="https://www.youtube.com/watch?v=Nc7HngjMD58">https://www.youtube.com/watch?v=Nc7HngjMD58</a></li>
+          <li>Hadoop Tutorial 10 - Starting Hadoop Instance and Testing the Connection - <a href="https://www.youtube.com/watch?v=KHPFGRv7ZCM">https://www.youtube.com/watch?v=KHPFGRv7ZCM</a></li>
+          <li>Hadoop Tutorial 11 - Limitations of Network File System - <a href="https://www.youtube.com/watch?v=Fs5-lu3CRKM">https://www.youtube.com/watch?v=Fs5-lu3CRKM</a></li>
+          <li>Hadoop Tutorial 12 - Adressing Limitations of Distributed File System - <a href="https://www.youtube.com/watch?v=f35RwfhH024">https://www.youtube.com/watch?v=f35RwfhH024</a></li>
+          <li>Hadoop Tutorial 13 - Limitations of Hadoop File System - <a href="https://www.youtube.com/watch?v=w4fed_Vgo80">https://www.youtube.com/watch?v=w4fed_Vgo80</a></li>
+          <li>Hadoop Tutorial 14 - Block Structured File System -<a href="https://www.youtube.com/watch?v=uzGljM77elM">https://www.youtube.com/watch?v=uzGljM77elM</a></li>
+          <li>Hadoop Tutorial 15 - Replication in Hadoop File System - <a href="https://www.youtube.com/watch?v=CwoYV9EdCi0">https://www.youtube.com/watch?v=CwoYV9EdCi0</a></li>
+        </ul></td>
+      </tr>
+    </table>
+    <p>NoSQL</p>
+    <table border="0" cellspacing="0" cellpadding="5">
+      <tr>
+        <td bgcolor="#FFFFCC"><ul>
+          <li>What is NoSQL Database? - <a href="https://www.youtube.com/watch?v=pHAItWE7QMU">https://www.youtube.com/watch?v=pHAItWE7QMU</a></li>
+          <li>NoSQL or SQL: What Is Best For My Application (56:32) - <a href="https://www.youtube.com/watch?v=sDtnlPdqwWI">https://www.youtube.com/watch?v=sDtnlPdqwWI</a></li>
+          <li>Introduction to NoSQL by Martin Fowler&nbsp; (54:51) - <a href="https://www.youtube.com/watch?v=qI_g07C_Q5I">https://www.youtube.com/watch?v=qI_g07C_Q5I</a></li>
+          <li>NoSQL Distilled to an hour by Martin Fowler (1:03:19) - <a href="https://www.youtube.com/watch?v=ASiU89Gl0F0">https://www.youtube.com/watch?v=ASiU89Gl0F0</a></li>
+        </ul></td>
+      </tr>
+    </table>
+    <p>MongoDB</p>
+    <table border="0" cellspacing="0" cellpadding="5">
+      <tr>
+        <td bgcolor="#FFFFCC"><p>- <a href="https://www.youtube.com/watch?v=UA8q6kS8uaE&list=PLw2e3dFxewkIS1YjkLcdCUI5BPBg_YMwD&index=8">nosql mongo db tutorial (multiple videos)</a></p></td>
+      </tr>
+    </table>
+    <p>Hadoop MapReduce - 5 videos</p>
+    <table border="0" cellspacing="0" cellpadding="5">
+      <tr>
+        <td bgcolor="#FFFFCC"><ul>
+          <li>Hadoop MapReduce Fundamentals 1 of 5 - <a href="https://www.youtube.com/watch?v=7FcMhTTG1Cs">https://www.youtube.com/watch?v=7FcMhTTG1Cs</a></li>
+          <li>Hadoop MapReduce Fundamentals 2 of 5 - <a href="https://www.youtube.com/watch?v=pDGLe4CsrhY">https://www.youtube.com/watch?v=pDGLe4CsrhY</a></li>
+          <li>Hadoop MapReduce Fundamentals 3 of 5 - <a href="https://www.youtube.com/watch?v=9h_WLsmRfFM">https://www.youtube.com/watch?v=9h_WLsmRfFM</a></li>
+          <li>Hadoop MapReduce Fundamentals 4 of 5 - <a href="https://www.youtube.com/watch?v=iiIDZTpdcuU">https://www.youtube.com/watch?v=iiIDZTpdcuU</a></li>
+          <li>Hadoop MapReduce Fundamentals 5 of 5 - <a href="https://www.youtube.com/watch?v=1aen3JsxkuM">https://www.youtube.com/watch?v=1aen3JsxkuM</a></li>
+        </ul></td>
+      </tr>
+    </table>
+    <p> --</p>
+    <table border="0" cellspacing="0" cellpadding="5">
+      <tr>
+        <td bgcolor="#FFFFCC"><ul>
+          <li>HDFS Architecture (1:06:32) - <a href="https://www.youtube.com/watch?v=DLutRT6K2rM">https://www.youtube.com/watch?v=DLutRT6K2rM</a></li>
+          <li>MapReduce Flow Chart (55:23) - <a href="https://www.youtube.com/watch?v=6OemZEJdMp8">https://www.youtube.com/watch?v=6OemZEJdMp8</a></li>
+          <li>Top Interview questions in Hadoop (30:09) - <a href="https://www.youtube.com/watch?v=sQCNZoWLIVo">https://www.youtube.com/watch?v=sQCNZoWLIVo</a></li>
+          <li>BigData-Apache-Hadoop free training video lesson 18-Cloudera CDH </li>
+        </ul></td>
+      </tr>
+    </table>
+    <p>Cassandra</p>
+    <table border="0" cellspacing="0" cellpadding="5">
+      <tr>
+        <td bgcolor="#FFFFCC"><ul>
+          <li>Introduction To Apache Cassandra (1:15:05) - <a href="https://www.youtube.com/watch?v=B_HTdrTgGNs">https://www.youtube.com/watch?v=B_HTdrTgGNs</a></li>
+          <li>Cassandra 1 | Cassandra Tutorial 1 | Cassandra Tutorial for Beginners <span __postbox-detected-content="__postbox-detected-date">-1</span> (2:46:16) - <a href="https://www.youtube.com/watch?v=N9QllqXI1sE">https://www.youtube.com/watch?v=N9QllqXI1sE</a></li>
+          <li>DataStax Cassandra Tutorials - Apache Cassandra (8 videos) - <a href="https://www.youtube.com/watch?v=5qEoEAfAer8&index=7&list=PLkm0HTZslJY2SD8PbxEgke9weNINb4a_q">https://www.youtube.com/watch?v=5qEoEAfAer8&amp;index=7&amp;list=PLkm0HTZslJY2SD8PbxEgke9weNINb4a_q</a></li>
+          <li>Cassandra Training | Cassandra Online Training | Cassandra Tutorial | Youtub (2:01:23) - <a href="https://www.youtube.com/watch?v=qISzEVuSfQ4">https://www.youtube.com/watch?v=qISzEVuSfQ4</a></li>
+          <li>Tech Talk: Cassandra Data Modeling (42:40) - <a href="https://www.youtube.com/watch?v=tg6eIht-00M">https://www.youtube.com/watch?v=tg6eIht-00M</a></li>
+          <li>cassandra data modeling - Practical considerations @ netflix (1:35:56) - <a href="https://www.youtube.com/watch?v=-zyZ35YyT_8">https://www.youtube.com/watch?v=-zyZ35YyT_8</a></li>
+        </ul></td>
+      </tr>
+    </table>
+    <p>Cloudera Video Tutorials</p>
+    <table border="0" cellspacing="0" cellpadding="5">
+      <tr>
+        <td bgcolor="#FFFFCC"><ul>
+          <li>1. <a href="https://www.youtube.com/watch?v=nLzOtJWWrrw&index=1&list=PLe-h9HrA9qfDva0DpD5SX8pGb89ZnG6mz">Hadoop Tutorial: Intro To Hadoop Developer Training</a> | Cloudera (1:00:32) </li>
+          <li>2. <a href="https://www.youtube.com/watch?v=KC3dbj1oYZ4&index=2&list=PLe-h9HrA9qfDva0DpD5SX8pGb89ZnG6mz">Hadoop Tutorial: Introduction To Data Analyst Training</a> | Cloudera (57:02)</li>
+          <li>3. <a href="https://www.youtube.com/watch?v=wd6vaZ0Wfyw&list=PLe-h9HrA9qfDva0DpD5SX8pGb89ZnG6mz&index=3">Hadoop Tutorial: Intro To Hadoop Administrator Training</a> | Cloudera (50:53) </li>
+          <li>4. <a href="https://www.youtube.com/watch?v=x2wnE8ZTgyI&list=PLe-h9HrA9qfDva0DpD5SX8pGb89ZnG6mz&index=4">Cloudera: Training A New Generation Of Data Scientists</a> (33:03) </li>
+          <li>5. <a href="https://www.youtube.com/watch?v=YW7xYrvQijk&list=PLe-h9HrA9qfDva0DpD5SX8pGb89ZnG6mz&index=5">Teaching Hadoop To The Next Generation Of Data Professionals</a> | Cloudera Academic Partnership (37:29)</li>
+        </ul></td>
+      </tr>
+    </table>
+    <p>Real-Time Analytics - videos</p>
+    <table border="0" cellspacing="0" cellpadding="5">
+      <tr>
+        <td bgcolor="#FFFFCC"><ul>
+          <li><a href="https://www.youtube.com/watch?v=PjZp7K5z7ew">Real-time Analytics using Cassandra, Spark and Shark</a> at Ooyala by Evan Chan (31:26)</li>
+          <li><a href="https://www.youtube.com/watch?v=kJMYVpnW_AQ">Real Time Analytics with Open Source Technologies</a> (33:35)</li>
+          <li><a href="https://www.youtube.com/watch?v=R6fmtrGfyJI">Beyond Hadoop MapReduce: Interactive Analytic Insights Using Spark</a> (38:27)</li>
+        </ul></td>
+      </tr>
+    </table>
+    <p>---
+    <p></p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+
+
+</body>
+</html>

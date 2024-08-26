@@ -1,0 +1,839 @@
+<HTML
+><HEAD
+><TITLE
+>[Chapter 3] 3.2 Looking Inside Files</TITLE
+><META
+NAME="DC.title"
+CONTENT="Learning the Unix Operating System"><META
+NAME="DC.creator"
+CONTENT="Jerry Peek, Grace Todino &amp; John Strang"><META
+NAME="DC.publisher"
+CONTENT="O'Reilly &amp; Associates, Inc."><META
+NAME="DC.date"
+CONTENT="1998-08-03T20:49:50Z"><META
+NAME="DC.type"
+CONTENT="Text.Monograph"><META
+NAME="DC.format"
+CONTENT="text/html"
+SCHEME="MIME"><META
+NAME="DC.source"
+CONTENT="1-56592-390-1"
+SCHEME="ISBN"><META
+NAME="DC.language"
+CONTENT="en-US"><META
+NAME="generator"
+CONTENT="Jade 1.1/O'Reilly DocBook 3.0 to HTML 4.0"><LINK
+REV="made"
+HREF="mailto:online-books@oreilly.com"
+TITLE="Online Books Comments"><LINK
+REL="up"
+HREF="ch03_01.htm"
+TITLE="3. Your UNIX Account "><LINK
+REL="prev"
+HREF="ch03_01.htm"
+TITLE="3.1 The UNIX Filesystem"><LINK
+REL="next"
+HREF="ch03_03.htm"
+TITLE="3.3 Protecting and Sharing Files"></HEAD
+><BODY
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+><DIV
+CLASS="htmlnav"
+><H1
+><IMG
+SRC="gifs/smbanner.gif"
+ALT="Learning the Unix Operating System"
+USEMAP="#srchmap"
+BORDER="0"></H1
+><MAP
+NAME="srchmap"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,466,69"
+HREF="index.htm"
+ALT="Learning the Unix Operating System"><AREA
+SHAPE="RECT"
+COORDS="467,0,514,18"
+HREF="jobjects/fsearch.htm"
+ALT="Search this book"></MAP
+><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch03_01.htm"
+TITLE="3.1 The UNIX Filesystem"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 3.1 The UNIX Filesystem"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><B
+><FONT
+FACE="ARIEL,HELVETICA,HELV,SANSERIF"
+SIZE="-1"
+>Chapter 3<BR>Your UNIX Account </FONT
+></B
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch03_03.htm"
+TITLE="3.3 Protecting and Sharing Files"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 3.3 Protecting and Sharing Files"
+BORDER="0"></A
+></TD
+></TR
+></TABLE
+>&nbsp;<HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"></DIV
+><DIV
+CLASS="SECT1"
+><H2
+CLASS="sect1"
+><A
+CLASS="title"
+NAME="LUX-CH-3-SECT-2"
+>3.2 Looking Inside Files</A
+></H2
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-3-IX-FILES-READING"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-3-IX-READING-FILES"
+></A
+>By now, you're probably tired of looking at files from the outside.
+It's kind of like going to a bookstore and looking at the covers, but never
+getting to read a word.
+Let's look at three programs for reading files: <B
+CLASS="emphasis.bold"
+>cat</B
+>, <B
+CLASS="emphasis.bold"
+>more</B
+>,
+and <B
+CLASS="emphasis.bold"
+>pg</B
+>.</P
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-3-SECT-2.0.1"
+>3.2.1 cat</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-2010"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2013"
+></A
+>Most first-time users of UNIX think that <B
+CLASS="emphasis.bold"
+>cat</B
+>
+is a strange name for a program.
+As we'll see later, <B
+CLASS="emphasis.bold"
+>cat</B
+>, which is short for &quot;concatenate,&quot;
+puts files together (concatenates them) to make a bigger file.
+It can also display files on your screen.</P
+><P
+CLASS="para"
+>To display files on the standard output (your screen; see <A
+CLASS="xref"
+HREF="ch05_01.htm"
+TITLE="Redirecting I/O "
+>Chapter 5, Redirecting I/O </A
+>),
+use:</P
+><BLOCKQUOTE
+CLASS="blockquote"
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>cat</B
+> <EM
+CLASS="emphasis"
+>file(s)</EM
+></P
+></BLOCKQUOTE
+><P
+CLASS="para"
+>For example, let's display the contents of the file <EM
+CLASS="emphasis"
+>/etc/passwd</EM
+>.
+This system file describes users' accounts.
+(Your system may have a more complete list somewhere else.)</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>cat /etc/passwd</B
+></CODE
+>
+root:x&amp;k8KP30f;(:0:0:Root:/:
+daemon:*:1:1:Admin:/:
+	.
+	.
+	.
+%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>cat</B
+> works best for short files containing one screenful or less.
+If you <B
+CLASS="emphasis.bold"
+>cat</B
+> a file that is too long, it may roll up the screen faster
+than you can read it.
+You cannot go back to view the previous screens when you use <B
+CLASS="emphasis.bold"
+>cat</B
+>
+(unless you're using an <B
+CLASS="emphasis.bold"
+>xterm</B
+> window with a scrollbar, that is).</P
+><P
+CLASS="para"
+>If you enter <B
+CLASS="emphasis.bold"
+>cat</B
+> without a filename, get out by pressing
+<KBD
+CLASS="keycap"
+>[RETURN]</KBD
+>
+followed by a single
+<KBD
+CLASS="keycap"
+>[CTRL-D]</KBD
+>.</P
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-3-SECT-2.0.2"
+>3.2.2 more</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-3-IX-SCRPR-FTOM-COMMAND"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-3-IX-MORE-COMMAND"
+></A
+>If you want to &quot;read&quot; a long file on the screen, your system may have
+the <B
+CLASS="emphasis.bold"
+>more</B
+>
+command to display one screen or &quot;page&quot; of text at a time.
+A standard terminal screen can usually display 24 lines of text; a window
+can display almost any number of lines.
+The syntax is:</P
+><BLOCKQUOTE
+CLASS="blockquote"
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>more</B
+> <EM
+CLASS="emphasis"
+>file(s)</EM
+></P
+></BLOCKQUOTE
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>more</B
+> lets you move forward in the files by any number of
+pages or lines.
+Most versions let you move backward, too.
+You can also move back and forth between two or more files specified on the
+command line.
+When you invoke <B
+CLASS="emphasis.bold"
+>more</B
+>, the first &quot;page&quot; of the file appears on the screen.
+A prompt appears at the bottom of the screen, as in the following example:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>more ch03</B
+></CODE
+>
+A file is the unit of storage in UNIX as in many other systems.
+A file can be anything: a program,
+	.
+	.
+	.
+--More--(47%)</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>The prompt says that you are 47% of your way through the file.
+The cursor sits to the right of this prompt as
+a signal for you to enter a <B
+CLASS="emphasis.bold"
+>more</B
+> command to tell <B
+CLASS="emphasis.bold"
+>more</B
+> what to do.</P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-2060"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2063"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2066"
+></A
+>You can press &quot;h&quot; (for &quot;help&quot;) at the <B
+CLASS="emphasis.bold"
+>more</B
+> prompt to display the
+<B
+CLASS="emphasis.bold"
+>more</B
+> commands available on your system.
+<A
+CLASS="xref"
+HREF="ch03_02.htm#LUX-CH-3-TAB-0"
+TITLE="Useful more Commands"
+>Table 3.1</A
+>
+lists some of the simpler (but quite useful) ones.</P
+><TABLE
+CLASS="table"
+><CAPTION
+CLASS="table"
+><A
+CLASS="title"
+NAME="LUX-CH-3-TAB-0"
+>Table 3.1: Useful more Commands</A
+></CAPTION
+><THEAD
+CLASS="thead"
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TH
+CLASS="entry"
+ALIGN="LEFT"
+ROWSPAN="1"
+COLSPAN="1"
+>Command</TH
+><TH
+CLASS="entry"
+ALIGN="LEFT"
+ROWSPAN="1"
+COLSPAN="1"
+>Description</TH
+></TR
+></THEAD
+><TBODY
+CLASS="tbody"
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><KBD
+CLASS="keycap"
+>[SPACE]</KBD
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Display next page.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><KBD
+CLASS="keycap"
+>[RETURN]</KBD
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Display next line.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><EM
+CLASS="emphasis"
+>n</EM
+>f</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Move forward <EM
+CLASS="emphasis"
+>n</EM
+> pages.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>b</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Move backward one page.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><EM
+CLASS="emphasis"
+>n</EM
+>b</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Move backward <EM
+CLASS="emphasis"
+>n</EM
+> pages.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>/<EM
+CLASS="emphasis"
+>word</EM
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Search forward for <EM
+CLASS="emphasis"
+>word</EM
+>.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>?<EM
+CLASS="emphasis"
+>word</EM
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Search backward for <EM
+CLASS="emphasis"
+>word</EM
+>.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>v</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Start the <B
+CLASS="emphasis.bold"
+>vi</B
+> editor at this point.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><KBD
+CLASS="keycap"
+>[CTRL-L]</KBD
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Redisplay current page.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>h</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Help.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>:n</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Go to next file on command line.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>:p</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Go back to previous file on command line.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>q</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Quit <B
+CLASS="emphasis.bold"
+>more</B
+> 
+(before end of file).</TD
+></TR
+></TBODY
+></TABLE
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-2133"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2134"
+></A
+></P
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-3-SECT-2.0.3"
+>3.2.3 pg</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-2138"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2140"
+></A
+>The <B
+CLASS="emphasis.bold"
+>more</B
+> command isn't available on some UNIX systems.
+Most of those systems have the <B
+CLASS="emphasis.bold"
+>pg</B
+> command instead.
+It works like <B
+CLASS="emphasis.bold"
+>more</B
+> but has different features.
+For example, <B
+CLASS="emphasis.bold"
+>pg</B
+> lets you move to specific lines.</P
+><P
+CLASS="para"
+>The syntax is:</P
+><BLOCKQUOTE
+CLASS="blockquote"
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>pg</B
+> <EM
+CLASS="emphasis"
+>filename(s)</EM
+></P
+></BLOCKQUOTE
+><P
+CLASS="para"
+>If your system has <B
+CLASS="emphasis.bold"
+>pg</B
+>, try it on a file that has
+more lines than your screen.
+Your screen displays the first page of the file.
+The last line is a colon (<CODE
+CLASS="literal"
+>:</CODE
+>) prompt.
+Press
+<KBD
+CLASS="keycap"
+>[RETURN]</KBD
+>
+to view the next page or enter &quot;q&quot; to quit.
+Enter &quot;h&quot; for a list of <B
+CLASS="emphasis.bold"
+>pg</B
+> commands.<A
+CLASS="indexterm"
+NAME="AUTOID-2157"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2158"
+></A
+></P
+></DIV
+></DIV
+><DIV
+CLASS="htmlnav"
+><P
+></P
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch03_01.htm"
+TITLE="3.1 The UNIX Filesystem"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 3.1 The UNIX Filesystem"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="book"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"
+><IMG
+SRC="../gifs/txthome.gif"
+ALT="Learning the Unix Operating System"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch03_03.htm"
+TITLE="3.3 Protecting and Sharing Files"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 3.3 Protecting and Sharing Files"
+BORDER="0"></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+>3.1 The UNIX Filesystem</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="index"
+HREF="index/idx_0.htm"
+TITLE="Book Index"
+><IMG
+SRC="../gifs/index.gif"
+ALT="Book Index"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+>3.3 Protecting and Sharing Files</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><IMG
+SRC="../gifs/smnavbar.gif"
+USEMAP="#map"
+BORDER="0"
+ALT="The UNIX CD Bookshelf Navigation"><MAP
+NAME="map"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,73,21"
+HREF="../index.htm"
+ALT="The UNIX CD Bookshelf"><AREA
+SHAPE="RECT"
+COORDS="74,0,163,21"
+HREF="../upt/index.htm"
+ALT="UNIX Power Tools"><AREA
+SHAPE="RECT"
+COORDS="164,0,257,21"
+HREF="../unixnut/index.htm"
+ALT="UNIX in a Nutshell"><AREA
+SHAPE="RECT"
+COORDS="258,0,321,21"
+HREF="../vi/index.htm"
+ALT="Learning the vi Editor"><AREA
+SHAPE="RECT"
+COORDS="322,0,378,21"
+HREF="../sedawk/index.htm"
+ALT="sed &amp; awk"><AREA
+SHAPE="RECT"
+COORDS="379,0,438,21"
+HREF="../ksh/index.htm"
+ALT="Learning the Korn Shell"><AREA
+SHAPE="RECT"
+COORDS="439,0,514,21"
+HREF="index.htm"
+ALT="Learning the UNIX Operating System"></MAP
+></DIV
+></BODY
+></HTML
+>

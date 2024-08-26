@@ -1,0 +1,285 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Глава 13 Ввод/Вывод</TITLE>
+</HEAD>
+<BODY>
+
+<B><FONT FACE="Times New Roman" SIZE=4><P>Глава 13 Ввод/Вывод</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Обобщенное понятие источника ввода относится к различным способам получения информации: к чтению дискового файла, символов с клавиатуры, либо получению данных из сети. Аналогично, под обобщенным понятием вывода также могут пониматься дисковые файлы, сетевое</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>соединение и т.п. Эти абстракции дают удобную возможность для работы с вводом-выводом (I/O), не требуя при этом, чтобы каждая часть вашего кода понимала разницу между, скажем, клавиатурой и сетью. В Java эта абстракция называется потоком (stream) и реализована в нескольких классах пакета java.io. Ввод инкапсулирован в классе InputStream, вывод — в OutputStream. В Java есть несколько специализаций этих абстрактных классов, учитывающих различия при работе с дисковыми файлами, сетевыми соединениями и даже с буферами в памяти.</P>
+</FONT><B><FONT FACE="Arial">
+<P>File</P>
+</FONT><FONT SIZE=2><P ALIGN="JUSTIFY">File</B></FONT><FONT FACE="Times New Roman" SIZE=2> — единственный объект в </FONT><B><FONT SIZE=2>java.io</B></FONT><FONT FACE="Times New Roman" SIZE=2>, который работает непосредственно с дисковыми файлами. Хотя на использование файлов в апплетах наложены жесткие ограничения, файлы по прежнему остаются основными ресурсами для постоянного хранения и совместного использования информации. Каталог в Java трактуется как обычный файл, но с дополнительным свойством — списком имен файлов, который можно просмотреть с помощью метода list.</P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>ЗАМЕЧАНИЕ</P>
+<P ALIGN="JUSTIFY">Java правильно обрабатывает разделители имен каталогов в пути, используемые в UNIX и DOS. Если вы используете стиль UNIX — символы '/', то при работе в Windows Java автоматически преобразует их в '\'. Не забудьте, если вы привыкли к разделителям, принятым в DOS, то есть, к '\', то для того, чтобы включить их в строку пути, необходимо их удвоить, аналогично тому, как это сделано в строке “\\java\\COPYRIGHT”.</P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Для определения стандартных свойств объекта в классе File есть много разных методов. Однако, класс File несимметричен. Есть много методов, позволяющих узнать свойства объекта, но соответствующие функции для изменения этих свойств отсутствуют. В очередном примере используются различные методы, позволяющие получить характеристики файла:</P>
+</FONT><FONT SIZE=2>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>import java.io.File;</P>
+<P>class FileTest {</P>
+<P>static void p(String s) { </P>
+<P>System.out.println(s);</P>
+<P>}</P>
+<P>public static void main(String args[]) { </P>
+<P>File f1 = new File("/java/COPYRIGHT");</P>
+<P>p("File Name:" + f1 .getName());</P>
+<P>p("Path:" + f1.getPath());</P>
+<P>p("Abs Path:" + f1.getAbsolutePath());</P>
+<P>p("Parent:" + f1.getParent());</P>
+<P>p(f1.exists() ? "exists" : "does not exist");</P>
+<P>p(f1.canWrite() ? "is writeable" : "is not writeable");</P>
+<P>p(f1.canRead() ? "is readable" : "is not readable");</P>
+<P>p("is " + (f1.isDirectory() ? " " : "not") + " a directory");</P>
+<P>p(f1.isFile() ? "is normal file" : "might be a named pipe");</P>
+<P>p(f1.isAbsolute() ? "is absolute" : "is not absolute");</P>
+<P>p("File last modified:" + f1. lastModified());</P>
+<P>p("File size:" + f1.length() + " Bytes");</P>
+<P>} }</P>
+</B></I></FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>При запуске этой программы вы получите что-то наподобие вроде:</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>File Name:COPYRIGHT      (имя файла)</P>
+<P>Path:/java/COPYRIGHT     (путь</FONT><FONT FACE="Courier New" SIZE=2>)</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>Abs Path:/Java/COPYRIGHT (путь от корневого каталога)</P>
+<P>Parent:/java             (родительский каталог)</P>
+<P>exists                   (файл существует)</P>
+<P>is writeable             (разрешена запись)</P>
+<P>is readable              (разрешено чтение)</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>is not a directory   </FONT><FONT FACE="Courier New" SIZE=2>    (не каталог)</P>
+<P>is normal file           (обычный файл)</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>is absolute</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>File last modified:812465204000 (последняя модификация файла)</P>
+<P>File size:695 Bytes              (размер файла)</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Существует также несколько сервисных методов, использование которых ограничено обычными файлами (их нельзя применять к каталогам). Метод renameTo(File dest) переименовывает файл (нельзя переместить файл в другой каталог</FONT><FONT SIZE=2>). </FONT><FONT FACE="Times New Roman" SIZE=2>Метод delete уничтожает дисковый файл. Этот метод может удалять только обычные файлы, каталог, даже пустой, с его помощью удалить не удастся.</P>
+</FONT><B><FONT FACE="Arial" SIZE=2>
+</FONT><FONT FACE="Arial" SIZE=2><P>Каталоги</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P>Каталоги — это объекты класса File, в которых содержится список других файлов и каталогов. Если File ссылается на каталог, его метод isDirectory возвращает значение true. В этом случае вы можете вызвать метод list и извлечь содержащиеся в объекте имена файлов и каталогов. В очередном примере показано, как с помощью метода list можно просмотреть содержимое каталога. </P>
+</FONT><FONT SIZE=2>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>import java.io.File;</P>
+<P>class DirList {</P>
+<P>public static void main(String args[]) {</P>
+<P>String dirname = "/jav</FONT><FONT FACE="Courier New" SIZE=2>a";   // имя каталога </P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>File f1 = new File(dirname);</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>if (f1.isDirectory()) {   // является ли f1 каталогом </P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>System.out.println("Directory of ' + dirname);</P>
+<P>String s[] = f1.list();</P>
+<P>for ( int i=0; i &lt; s.length; i++) {</P>
+<P>File f = new File(dirname + "/" + s[i]);</P>
+<P>i</FONT><FONT FACE="Courier New" SIZE=2>f (f.isDirectory()) {   // является ли f каталогом System.out.println(s[i] + " is a directory"):</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>} else {</P>
+<P>System.out.println(s[i] + " is a file");</P>
+<P>} } } else {</P>
+<P>System.out.println(dirname + " is not a directory");</P>
+<P>} }</P>
+<P>}</P>
+</B></I></FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">В процессе работы эта программа вывела содержимое каталога /java моего персонального компьютера в следующем виде:</P>
+<P>С:\&gt; java DirList</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>Directory of /java</P>
+<P>bin is a directory</P>
+<P>COPYRIGHT is a file</P>
+<P>README is a file</P>
+</I></FONT><FONT FACE="Arial" SIZE=2>
+<P>FilenameFilter</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Зачастую у вас будет возникать потребность ограничить количество имен файлов, возвращаемых методом list, чтобы получить от него только имена, соответствующие определенному шаблону. Для этого в пакет java.io включен интерфейс FilenameFilter. Объекту, чтобы реализовать этот интерфейс, требуется определить только один метод —</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>accept(), который будет вызываться один раз с каждым новым именем файла. Метод accept должен возвращать true для тех имен, которые надо включать в список, и false для имен, которые следует исключить. </P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">У класса File есть еще два сервисных метода, ориентированных на работу с каталогами. Метод mkdir создает подкаталог</FONT><FONT SIZE=2>. </FONT><FONT FACE="Times New Roman" SIZE=2>Для создания каталога, путь к которому еще не создан, надо использовать метод mkdirs — он создаст не только указанный каталог, но и все отсутствующие родительские каталоги.</P>
+</FONT><B>
+<P>InputStream</P>
+</B><FONT SIZE=2><P ALIGN="JUSTIFY">Inpu</FONT><FONT FACE="Times New Roman" SIZE=2>tStream — абстрактный класс, задающий используемую в Java модель входных потоков. Все методы этого класса при возникновении ошибки возбуждают исключение IOException. Ниже приведен краткий обзор методов класса InputStream.</P>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>read() возвращает представление очередного доступного символа во входном потоке в виде целого.</LI></P>
+<P ALIGN="JUSTIFY"><LI>read(byte b[]) пытается прочесть максимум b.length байтов из входного потока в массив b. Возвращает количество байтов, в действительности прочитанных из потока.</LI></P>
+</FONT><FONT SIZE=2><P ALIGN="JUSTIFY"><LI>read(byte b[], int off, int len)</FONT><FONT FACE="Times New Roman" SIZE=2> пытается прочесть максимум len байтов, расположив их в массиве b, начиная с элемента off. Возвращает количество реально прочитанных байтов.</LI></P>
+<P ALIGN="JUSTIFY"><LI>skip(long n) пытается пропустить во входном потоке n байтов. Возвращает количество пропущенных байтов.</LI></P>
+</FONT><FONT SIZE=2><P ALIGN="JUSTIFY"><LI>available</FONT><FONT FACE="Times New Roman" SIZE=2>() возвращает количество байтов, доступных для чтения в настоящий момент.</LI></P>
+<P ALIGN="JUSTIFY"><LI>close() закрывает источник ввода. Последующие попытки чтения из этого потока приводят к возбуждению IOException.</LI></P>
+<P ALIGN="JUSTIFY"><LI>mark(int readlimit) ставит метку в текущей позиции входного потока, которую можно будет использовать до тех пор, пока из потока не будет прочитано readlimit байтов.</LI></P>
+<P ALIGN="JUSTIFY"><LI>reset() возвращает указатель потока на установленную ранее метку.</LI></P>
+<P ALIGN="JUSTIFY"><LI>markSupported() возвращает true, если данный поток поддерживает операции mark/reset.</LI></P></UL>
+
+</FONT>
+<B><P>OutputStream</P>
+</B><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Как и InputStream, OutputStream — абстрактный класс. Он задает модель выходных потоков Java. Все методы этого класса имеют тип void и возбуждают исключение IOException в случае ошибки. Ниже приведен список методов этого класса:</P>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>write(int b) записывает один байт в выходной поток. Обратите внимание — аргумент этого метода имеет тип int, что позволяет вызывать write, передавая ему выражение, при этом не нужно выполнять приведение его типа к byte.</LI></P>
+<P ALIGN="JUSTIFY"><LI>write(byte b[]) записывает в выходной поток весь указанный массив байтов.</LI></P>
+<P ALIGN="JUSTIFY"><LI>write(byte b[], int off, int len) записывает в поток часть массива — len байтов, начиная с элемента b[off].</LI></P>
+<P ALIGN="JUSTIFY"><LI>flush() очищает любые выходные буферы, завершая операцию вывода.</LI></P>
+<P ALIGN="JUSTIFY"><LI>close() закрывает выходной поток. Последующие попытки записи в этот поток будут возбуждать IOException.</LI></P></UL>
+
+</FONT><B>
+<FONT FACE="Times New Roman"><P>Файловые потоки</P>
+</FONT><FONT SIZE=2><P>FilelnputStream</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Класс FileInputStream используется для ввода данных из файлов. В приведенном ниже примере создается два объекта этого класса, использующие один и тот же дисковый файл. </P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>InputStream f0 = new FileInputStream("/autoexec.bat");</P>
+<P>File f = new File("/autoexec.bat"):</P>
+<P>InputStream f1 = new FileInputStream(f);</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Когда создается объект класса FileInputStream, он одновременно с этим открывается для чтения. FileInputStream замещает шесть методов абстрактного класса InputStream. Попытки применить к объекту этого класса методы mark и reset приводят к возбуждению исключения IOException. В приведенном ниже примере показано, как можно читать одиночные байты, массив байтов и поддиапазон массива байтов. В этом примере также показано, как методом available можно узнать, сколько еще осталось непрочитанных байтов, и как с помощью метода skip можно пропустить те байты, которые вы не хотите читать.</P>
+</FONT><FONT SIZE=2>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>import java.io.*;</P>
+<P>import java.util.*;</P>
+<P>class FileInputStreamS {</P>
+<P>public static void main(String args[]) throws&#9;Exception {</P>
+<P>int size;</P>
+<P>InputStream f1  = new FileInputStream("/wwwroot/default.htm");</P>
+<P>size = f1.available();</P>
+<P>System.out.println("Total Available Bytes:  " + size);</P>
+<P>System.out.println("First  1/4 of the file:  read()");</P>
+<P>for (int i=0;  i &lt; size/4;  i++)  {</P>
+<P>System.out.print((char) f1.read());</P>
+<P>}</P>
+<P>System.out.println("Total Still Available:  " + f1.available());</P>
+<P>System.out.println("Reading the next  1/8:  read(b[])");</P>
+<P>byte b[]  = new byte[size/8];</P>
+<P>if  (f1.read(b)  != b.length)  {</P>
+<P>System.err.println("Something bad happened");</P>
+<P>}</P>
+<P>String tmpstr = new String(b,  0,  0,  b.length);</P>
+<P>System.out.println(tmpstr);</P>
+<P>System.out.println("Still Available:  " + f1.available());</P>
+<P>System.out.println("Skipping another 1/4:  skip()");</P>
+<P>f1.skip(size/4);</P>
+<P>System.out.println( "Still Available:  " + f1.available());</P>
+<P>System.out.println("Reading 1/16 into the end of array");</P>
+<P>if  (f1.read(b,  b.length-size/16, size/16) != size/16)  { </P>
+<P>System.err.println("Something bad happened");</P>
+<P>}</P>
+<P>System.out.println("Still Available:  " + f1.available());</P>
+<P>f1.close();</P>
+<P>}</P>
+<P>}</P>
+</B></I></FONT><FONT SIZE=2>
+<B><P>FileOutputStream</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">У класса FileOutputStream — два таких же конструктора, что и у FileInputStream. Однако, создавать объекты этого класса можно независимо от того, существует файл или нет. При создании нового объекта класс FileOutputStream перед тем, как открыть файл для вывода, сначала создает его. </P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">В очередном нашем примере символы, введенные с клавиатуры, считываются из потока System.in -  по одному символу за вызов, до тех пор, пока не заполнится 12-байтовый буфер. После этого создаются три файла. В первый из них, file1.txt, записываются символы из буфера, но не все, а через один — нулевой, второй и так далее. Во второй, file2.txt, записывается весь ввод, попавший в буфер. И наконец в третий файл записывается половина буфера, расположенная в середине, а первая и последняя четверти буфера не выводятся. </P>
+</FONT><FONT FACE="Arial Narrow" SIZE=1>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>import java.io.*;</P>
+<P>class FileOutputStreamS {</P>
+<P>public static byte getlnput()[] throws Exception { </P>
+<P>byte buffer[] = new byte[12];</P>
+<P>for (int i=0; i&lt;12; i++) {</P>
+<P>buffer[i] = (byte) System.in.read();</P>
+<P>}</P>
+<P>return buffer;</P>
+<P>}     </P>
+<P>public static void main(String args[]) throws Exception { </P>
+<P>byte buf[] = getlnput();</P>
+<P>OutputStream f0 = new FileOutputStream("file1.txt");</P>
+<P>OutputStream f1 = new FileOutputStream("file2.txt");</P>
+<P>OutputStream f2 = new FileOutputStream("file3.txt");</P>
+<P>for (int i=0; i &lt; 12; i += 2) { </P>
+<P>f0.write(buf[i]);</P>
+<P>} </P>
+<P>f0.close();</P>
+<P>f1.write(buf);</P>
+<P>f1.close();</P>
+<P>f2.write(buf, 12/4, 12/2);</P>
+<P>f2.close();</P>
+<P>} }</P>
+</B></I></FONT><FONT FACE="Arial Narrow" SIZE=1>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>ВНИМАНИЕ</P>
+<P ALIGN="JUSTIFY">В настоящее время не существует способа открыть FileOutputStream для дозаписи в конец файла. Если вы открываете файл с помощью конструктора FileOutputStream, прежнее содержимое этого файла теряется. Это - явный недостаток реализации Java.</P>
+</FONT><B><FONT SIZE=2>
+<P>ByteArraylnputStream</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">ByteArrayInputStream - это реализация входного потока, в котором в качестве источника используется массив типа byte. У этого класса два конструктора, каждый из которых в качестве первого параметра требует байтовый массив. В приведенном ниже примере создаются два объекта этого типа. Эти объекты инициализируются символами латинского алфавита.</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>String tmp = "abcdefghijklmnopqrstuvwxyz";</P>
+<P>byte b[] = new byte [tmp.length()];</P>
+<P>tmp. getBytes(0, tmp.length(), b, 0);</P>
+<P>ByteArrayInputStream input1 = new ByteArrayInputStream(b);</P>
+<P>ByteArrayInputStream input2 = new ByteArreyInputStream(b,0,3);</P>
+</I></FONT><FONT SIZE=2>
+<P>ByteArrayOutputStream</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">У класса ByteArrayOutputStream — два конструктора. Первая форма конструктора создает буфер размером 32 байта. При использовании второй формы создается буфер с размером, заданным параметром конструктора (в приведенном ниже примере — 1024 байта):</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>OutputStream out0 = new ByteArrayOutputStream();</P>
+<P>OutputStream out1 = new ByteArrayOutputStream(1024);</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">В очередном примере объект ByteArrayOutputStream заполняется символами, введенными с клавиатуры, после чего с ним выполняются различные манипуляции.</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>import java.io.*;</P>
+<P>import java.util.*;</P>
+<P>class ByteArrayOutputStreamS {</P>
+<P>public static void main(String args[]) throws Exception {</P>
+<P>int i;</P>
+<P>ByteArrayOutputStream f0 = new ByteArrayOutputStream(12);</P>
+<P>System.out.println("Enter 10 characters and a return");</P>
+<P>while (f0.size() != 10) { </P>
+<P>f0.write( System.in.read());</P>
+<P>}</P>
+<P>System.out.println("Buffer as a string");</P>
+<P>System.out.println(f0.toString());</P>
+<P>System.out.println ("Into array");</P>
+<P>byte b[] = f0.toByteArray();</P>
+<P>for (i=0; i &lt; b.length; i++) {</P>
+<P>System.out.print((char) b[i]);</P>
+<P>}</P>
+<P>System.out.println();</P>
+<P>System.out. println("To an OutputStream()");</P>
+<P>OutputStream f2 = new File0utput8tream("test.txt");</P>
+<P>f0.writeTo(f2);</P>
+<P>System.out.println("Doing a reset");</P>
+<P>f0. reset();</P>
+<P>System.out.println("Enter 10 characters and a return");</P>
+<P>while (f0.size() != 10) { </P>
+<P>f0.write (System.in.read());</P>
+<P>} </P>
+<P>System.out.println("Done.");</P>
+<P>} }</P>
+</B></I></FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Заглянув в созданный в этом примере файл test.txt, мы увидим там именно то, что ожидали:</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>С:\&gt; type test.txt</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>0123456789</P>
+</I></FONT>
+<P>StringBufferlnputStream</P>
+</B><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">StringBufferInputStream идентичен классу ByteArrayInputStream с тем исключением, что внутренним буфером объекта этого класса является экземпляр String, а не байтовый массив. Кроме того, в Java нет соответствующего ему класса StringBufferedOutputStream. У этого класса есть единственный конструктор:</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>StringBufferInputStream( String s)</P>
+</I></FONT>
+<FONT FACE="Times New Roman"><P>Фильтруемые потоки</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">При работе системы вывода в среде с параллельными процессами при отсутствии синхронизации могут возникать неожиданные результаты. Причиной этого являются попытки различных подпроцессов одновременно обратиться к одному и тому же потоку. Все конструкторы и методы, имеющиеся в этом классе, идентичны тем, которые есть в классах InputStream и OutputSt</FONT><FONT SIZE=2>r</FONT><FONT FACE="Times New Roman" SIZE=2>eam, единственное отличие классов фильтруемых потоков в том, что их методы синхронизованы.</P>
+</FONT><B><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Буферизованные потоки</P>
+</B><P ALIGN="JUSTIFY">Буферизованные потоки являются расширением классов фильтруемых потоков, в них к потокам ввода-вывода присоединяется буфер в памяти. Этот буфер выполняет две основные функции:</P>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>Он дает возможность исполняющей среде java проделывать за один раз операции ввода-вывода с более чем одним байтом, тем самым повышая производительность среды.</LI></P>
+<P ALIGN="JUSTIFY"><LI>Поскольку у потока есть буфер, становятся возможными такие операции, как пропуск данных в потоке, установка меток и очистка буфера.</LI></P></UL>
+
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY"></P>
+<P>BufferedInputStream</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Буферизация ввода-вывода — общепринятый способ оптимизации таких операций. Класс BufferedlnputStream в Java дает возможность “окружить” любой объект InputStream буферизованным потоком, и, тем самым, получить выигрыш в производительности. У этого класса  два конструктора. Первый из них</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>BufferedInputStream(InputStream in)</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P>создает буферизованный поток, используя для него буфер длиной 32 байта. Во втором</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>BufferedInputStream(InputStream in, int size)</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">размер буфера для создаваемого потока задается вторым параметром конструктора. В общем случае оптимальный размер буфера зависит от операционной системы, количества доступной оперативной памяти и конфигурации компьютера. </P>
+</FONT><FONT SIZE=2>
+<B><P>BufferedOutputStream</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Вывод в объект BufferedOutputStream идентичен выводу в любой OutputStream с той разницей, что новый подкласс содержит дополнительный метод flush, применяемый для принудительной очистки буфера и физического вывода на внешнее устройство хранящейся в нем информации. Первая форма конструктора этого класса:</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>BufferedOutputStream(OutputStream out)</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P>создает поток с буфером размером 32 байта. Вторая форма:</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>BufferedOutputStream(OutputStream out, int size)</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P>позволяет задавать требуемый размер буфера.</P>
+</FONT><B><FONT SIZE=2>
+<P>PushbacklnputStream</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Одно из необычных применений буферизации — реализация операции pushback (вернуть назад). Pushback применяется к InputStream для того, чтобы после прочтения символа вернуть его обратно во входной поток. Однако возможности класса PushbacklnputStream весьма ограничены </FONT><FONT SIZE=2>-</FONT><FONT FACE="Times New Roman" SIZE=2> любая попытка вернуть в поток более одного символа приведет к немедленному возбуждению исключения IOException.</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>У этого класса — единственный конструктор</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>PushbackInputStream(InputStream in)</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Помимо уже хорошо нам знакомых методов класса InputStream, PushbacklnputStream содержит метод unread(int ch), который возвращает заданный аргументом символ ch во входной поток.</P>
+</FONT><B>
+<P>SequencelnputStream</P>
+</B><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Класс SequencelnputStream поддерживает новую возможность слияния нескольких входных потоков в один. В конструкторе класса SequenceInputStream в качестве параметра используется либо два объекта InputStream, либо перечисление, содержащее коллекцию объектов InputStream:</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>SequenceInputStream(Enumeration e) SequenceInputStream(InputStream s0, InputStream s1)</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">В процессе работы класс выполняет поступающие запросы, считывая информацию из первого входного потока до тех пор, пока он не закончится, после чего переходит ко второму и т.д.</P>
+</FONT><FONT SIZE=2>
+<B><P>PrintStream</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Класс PrintStream предоставляет все те утилиты форматирования, которые мы использовали в примерах для вывода через файловые дескрипторы пакета System с самого начала книги. Вы уже привыкли писать “System.out.println”, не сильно задумываясь при этом о тех классах, которые занимаются форматированием выводимой информации. У класса PrintStream два конструктора: </FONT><B><FONT SIZE=2>PrintStream(OutputStream out)</B></FONT><FONT FACE="Times New Roman" SIZE=2> и </FONT><B><FONT SIZE=2>PrintStream(OutputStream out, boolean autoflush)</B></FONT><FONT FACE="Times New Roman" SIZE=2>. Параметр autoflush второго из них указывает, должна ли исполняющая среда Java автоматически выполнять операцию очистки буфера над выходным потоком.</P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">В Java-объектах PrintStream есть методы print и println, “умеющие” работать с любыми типами данных, включая Object. Если в качестве аргумента этих методов используется не один из примитивных типов, то они вызывают метод toString класса Object, после чего выводят полученный результат.</P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>ВНИМАНИЕ</P>
+<P ALIGN="JUSTIFY">В настоящее время в Java отсутствуют средства для форматирования выводимых данных простых типов, например, типов int и float. В C++ предусмотрены функции для форматирования чисел с плавающей точкой, позволяющие, например, задать вид вывода, при котором в напечатанном числе будет четыре цифры до десятичной точки и три </FONT><FONT SIZE=2>-</FONT><FONT FACE="Times New Roman" SIZE=2> после.</P>
+</FONT><B>
+<FONT FACE="Times New Roman"><P>По течению грести легче</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Потоки в Java предоставляют программисту   ясную абстракцию для выполнения сложных и зачастую громоздких операций ввода-вывода данных. Java-программы, опирающиеся на абстракции высокого уровня - классы InputStream и OutputStream, будут и в будущем функционировать правильно - даже тогда, когда будут изобретены новые улучшенные реализации классов ввода-вывода. Как вы увидите в следующей главе, такая модель прекрасно работает и при переходе от набора потоков, ориентированных на файловую систему, к работе с сетевыми потоками и сокетами.  </P>
+</FONT><FONT SIZE=2></FONT></BODY>
+</HTML>

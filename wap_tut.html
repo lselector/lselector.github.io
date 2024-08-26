@@ -1,0 +1,308 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content=" ">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en]C-CCK-MCD   (WinNT; U) [Netscape]">
+   <title>wap_tut</title>
+</head>
+<body>
+A WAP Tutorial. Make Your Web Pages Available To Mobile Phones!
+<br>By Sean B. Palmer, chief wml site architect for http://www.wapdesign.org.uk/.
+<p>Introduction
+<br>As mobile phones become increasingly popular, you can be sure that
+one of the greatest innovations in the upcoming decade will be the introduction
+of WAP - Wireless Application Protocol. This allows you to write pages
+that will be visible by mobile phones and other small devices such as PDAs.
+In fact, there are already WAP enabled mobile phones out there, for example
+the Nokia 7110 and the Ericsson R380.
+<p>To write a WAP enabled page, you need to be able to write a wml document,
+and have a wml enabled server (such as http://redrival.com). You may wish
+to read our tutorial on serving WAP documents at http://www.wapdesign.org.uk/server.html.
+The tutorial you are reading now will tell you how to write your basic
+WAP pages.
+<p>Basics
+<br>A wml page is basically to a mobile phone what an HTML page is to an
+internet browser - it contains the code that lets the browser know what
+you want displayed on the screen
+<p>If you are already proficient, or even know just a little about HTML,
+then you will find making WAP pages a piece of cake! All you need to know
+is that wml pages are quite a bit stricter than HTML pages - they have
+to have perfect coding to enable them to work.
+<p>Getting Started
+<br>First, open up your favorite text editor (preferably one that you would
+usually write HTML pages in), for example, I use Notepad or Wordpad.
+<p>Secondly, you need to type in this bit of code as standard:
+<p>&lt;?xml version="1.0"?>
+<br>&nbsp;&nbsp;&nbsp;&nbsp; &lt;!DOCTYPE wml PUBLIC "-//WAPFORUM//DTD
+WML 1.1//EN"
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "http://www.wapforum.org/DTD/wml_1.1.xml">
+<br>&lt;wml>
+<br>&nbsp; Write your code here!!!
+<br>&lt;/wml>
+<p>This just tells the browser that it is a wml document that it is receiving.
+Where I have written " Write your code here!!!", is where the code for
+the document will go.
+<p>Decks &amp; Cards
+<br>Because mobile phones are not as powerful as computers, and certainly
+do not have as large screens, the code has to take on a special reduced
+form - a 'deck'. A deck is comprised of a series of 'cards'. Because mobile
+phones have very little memory, you have to display all of your information
+as little chunks. These are cards. A group of these chunks (cards) is called
+a deck. A WAP enabled browser will deduce that the wml document is a deck,
+so all you have to do is tell it where the cards start and finish. Usually
+you would have between one and three cards.
+<p>To implement a card, you need to use the card tag:
+<p>&lt;?xml version="1.0"?>
+<br>&nbsp;&nbsp;&nbsp;&nbsp; &lt;!DOCTYPE wml PUBLIC "-//WAPFORUM//DTD
+WML 1.1//EN"
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "http://www.wapforum.org/DTD/wml_1.1.xml">
+<br>&lt;wml>
+<p>&nbsp;&nbsp; &lt;card id="card1" title="My Wap Page">
+<br>&nbsp;&nbsp;&nbsp;&nbsp; &lt;p>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hello world - welcome to my WAP page!
+<br>&nbsp;&nbsp;&nbsp;&nbsp; &lt;/p>
+<br>&nbsp;&nbsp; &lt;/card>
+<p>&lt;/wml>
+<p>The id attribute gives the card a name, in this case "card1". This is
+so you can provide a link to other cards in your deck - much like the &lt;a
+name="name1"> attribute in HTML. As the mobile phone browsers are only
+able to read one card at a time, you will have to provide links to enable
+your reader to find the other cards!
+<p>The title attribute just gives a title that is usually displayed in
+the top of the browser.
+<br>VERY IMPORTANT:-
+<br>N.B. Each card must have at least one p element in it (&lt;p>, the
+paragraph element specifies a new paragraph.) All elements and attributes
+must be in lower case. All tags must have a closing tag or be self closed.
+<p>Here is an example of a multi-carded deck, and how you can link between
+the two:
+<p>&lt;?xml version="1.0"?>
+<br>&nbsp;&nbsp;&nbsp;&nbsp; &lt;!DOCTYPE wml PUBLIC "-//WAPFORUM//DTD
+WML 1.1//EN"
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "http://www.wapforum.org/DTD/wml_1.1.xml">
+<br>&lt;wml>
+<p>&nbsp;&nbsp;&nbsp; &lt;card id="card1" title="My Wap Page">
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;p>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hello world - welcome to my first
+wap card!
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/p>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;p>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;a href="#card2">Go to the
+second card&lt;/a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/p>
+<br>&nbsp;&nbsp;&nbsp; &lt;/card>
+<p>&nbsp;&nbsp;&nbsp; &lt;card id="card2" title="Second Card">
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;p>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome to my second wap card!
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/p>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;p>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;a href="#card1">Go back to
+the first card&lt;/a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/p>
+<br>&nbsp;&nbsp;&nbsp; &lt;/card>
+<p>&lt;/wml>
+<p>The 'a' element is just the same as in HTML - a link to another document
+or card. e.g.
+<p>&lt;a href="index.wml">Index&lt;/a>
+<p>All paths must be relative.
+<p>A small feature that is usually put on EVERY wml page is a back button.
+Most mobile phones don't have one for some odd reason, and so it is quite
+useful:
+<p>&lt;?xml version="1.0"?>
+<br>&nbsp;&nbsp;&nbsp;&nbsp; &lt;!DOCTYPE wml PUBLIC "-//WAPFORUM//DTD
+WML 1.1//EN"
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "http://www.wapforum.org/DTD/wml_1.1.xml">
+<br>&lt;wml>
+<br>&nbsp;&nbsp;&nbsp; &lt;template>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;do type="accept" label="Back">
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;prev/>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/do>
+<br>&nbsp;&nbsp;&nbsp; &lt;/template>
+<br>&nbsp;&nbsp;&nbsp; &lt;card id="card1" title="My Wap Page">
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;p>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hello world - welcome to my first
+wap card!
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/p>
+<br>&nbsp;&nbsp;&nbsp; &lt;/card>
+<br>&lt;/wml>
+<p>Putting the section in blue at the top of your wml document (only once)
+will put a back button at the of all of your cards! Putting it at the top
+of the card will place it in that card only.
+<p>Along with the &lt;b> (bold) element and &lt;!• --> (comment) element,
+this is all you really need to create a simple WAP site. One last thing
+for novices, don't forget to save your pages as *.wml !!!
+<p>Other Features
+<br>So, the impatient of you will be wanting to know ALL the features of
+wml - 'we want the good stuff'. The only problem is the small compatibility
+problems with using anything too advanced. You must remember that WAP technology
+is very new, and most browsers have yet to settle before an acceptable
+default becomes available. However, if you really are impatient, or just
+want to experiment (as I do), you'll be wanting to try some of these features:
+<p>Timers
+<br>&lt;card id="card1" ontimer="#card2" title="My Wap Page">
+<br>&nbsp;&lt;timer value="150"/>
+<br>&nbsp; &lt;p>
+<br>&nbsp;&nbsp; Hello world - welcome to my first wap card!
+<br>&nbsp; &lt;/p>
+<br>&lt;/card>
+<p>Adding the sections in green to a card will cause the card to redirect
+to a different URI in a given time. In this case, after 1.5 (or 15) seconds,
+depending on the browser, it will direct to 'card2'.
+<p>Note that the timer attribute is self closed.
+<p>Images
+<br>Yes - you can add images to wap pages, but they are 1 bit (black and
+white) only, and can only be seen by some browsers. They also have to be
+of the type *.wbmp - you will need to convert existing images or create
+new ones.
+<p>Here are some links to help you do this:
+<p>http://www.gingco.de/wap/content/download.html The The pic2wbmp converter.
+Converts images into WBMP files.
+<br>http://www.teraflops.com/wbmp Teraflops Converts picture files to WBMP
+files online!
+<br>http://www.phnet.fi/public/jiikoo/ WBMP Draw A brilliant WBMP drawing
+program! Recommended.
+<br>http://www.creationflux.com/laurent/wbmp.html#2 Plugin A plugin for
+creating WBMP files with adobe photoshop.
+<p>When you have made a *.wbmp file, this is the code that you will need
+to put it on your wml page:
+<br>&nbsp;
+<p>&lt;img src="myimage.wbmp" width="30" height="20" alt="Welcome To My
+Page"/>
+<p>The alt attribute is very important as a lot of browsers will display
+this instead of your image.
+<p>Forms
+<br>Forms are quite complicated things (compared to the rest of the code)
+in HTML, and i'm afraid the same is true of wml pages.
+<br>It is basically a do/go function, and is so contained in a go tag:
+<br>&nbsp;
+<p>&lt;do type="accept" label="Next">
+<br>&nbsp;&nbsp; &lt;go method="post" href="http://mydomain.com/mycgiscript.cgi">
+<br>&nbsp;&nbsp;&nbsp; &lt;postfield name="searchvalue" value="$(search)"/>
+<br>&nbsp;&nbsp;&nbsp; &lt;postfield name="type" value="general"/>
+<br>&nbsp;&nbsp; &lt;/go>
+<br>&lt;/do>
+<br>&nbsp;&lt;p>
+<br>&nbsp; Search for:
+<br>&nbsp; &lt;input type="text" name="search"/>
+<br>&nbsp;&lt;/p>
+<p>The dollar sign $ means a variable. In this case it returns the variable
+'search' which is returned by the the input field below it.
+<p>Select Boxes
+<br>Much like the drop down boxes of HTML, these allow the user to select
+an operation (usually a link) from a drop down box:
+<br>&nbsp;
+<p>&lt;select ivalue="0">
+<br>&nbsp; &lt;option onpick="http://www.wapdesign.org.uk/">WapDesign UK&lt;/option>
+<br>&nbsp; &lt;option onpick="http://www.wapholesun.com/">WapHoleSun&lt;/option>
+<br>&nbsp; &lt;option onpick="http://www.wapforum.org/">WAPForum&lt;/option>
+<br>&lt;/select>
+<p>ivalue means initial value. If you do not want anything to be initially
+selected (as in this case) set it to 0. If you want, say the second link
+selected, set it to 2.
+<p>More 'Advanced' Features
+<br>It's all very well writing a simple WAP page, but say you wanted to
+run WAP applications, or even have a simple e-mail form - what would you
+do then?
+<p>The main helpful feature in 'advanced' wml design is the variable.
+<p>Variables
+<br>A variable is a 'thing' that can have a string (alphanumeric) stored
+within it. It is called a variable because you can store anything in it,
+going as far as storing many different strings all in the space of one
+program.
+<br>A variable in wml takes on the form of $variable - where variable is
+the name of the variable. However, it is standard practise to put the variable
+name in brackets to avoid confusion when the browser reads it.
+<br>These are valid variables:
+<p>$(variable)
+<br>$(a)
+<br>$(averylongvariable)
+<br>$(ggeagibberishhe)
+<br>$(firstname)
+<br>&nbsp;
+<p>Please note, variables can only be stored for use in one whole deck.
+The varialbes are lost when you move on to another deck (unless it is as
+part of a form function).
+<p>Use Of Variables
+<br>Of course the major use of variables is for forms. For example, from
+our previous page:
+<p>&lt;do type="accept" label="Next">
+<br>&nbsp;&nbsp; &lt;go method="post" href="http://mydomain.com/mycgiscript.cgi">
+<br>&nbsp;&nbsp;&nbsp; &lt;postfield name="searchvalue" value="$(search)"/>
+<br>&nbsp;&nbsp;&nbsp; &lt;postfield name="type" value="general"/>
+<br>&nbsp;&nbsp; &lt;/go>
+<br>&lt;/do>
+<br>&nbsp;&lt;p>
+<br>&nbsp; Search for:
+<br>&nbsp; &lt;input type="text" name="search"/>
+<br>&nbsp;&lt;/p>
+<br>&nbsp;
+<p>But there are other ways of using variables.....
+<p>Imagine you wanted to have a long list of URI's to one of your subdirectories
+on a page. The first thing that you should be thinking is that this requires
+a selection box. Of course, this would still mean writing out a very long
+list of URI's - especially if your subdirectory is very long (/firstdirectory/second/a/page1.wml).
+Well, if the only part of this URI that is going to vary (vary - variable,
+got it?) is going to be the 'page1' bit, then why not store this in a variable?
+<p>For example, look at the following:
+<br>&nbsp;
+<p>&lt;select name="page">
+<br>&nbsp;&nbsp; &lt;option value="index">Index&lt;/option>
+<br>&nbsp;&nbsp; &lt;option value="main">Our Main Page&lt;/option>
+<br>&nbsp;&nbsp; &lt;option value="home">Homepage&lt;/option>
+<br>&lt;/select>
+<br>&lt;do type="accept" label="Go to page..">
+<br>&nbsp;&lt;go href="/firstdirectory/second/a/$(page).wml"/>
+<br>&lt;/do>
+<p>This works because the value="" attribute simply stores the selected
+value into name="", which in this case is the variable $(page).
+<p>Now, what happens if for some reason you wish to set a variable? Well,
+lucky for you there is an element which lets you do that; the setvar element:
+<p>&lt;setvar name="mystring" value="$(variable)"/>
+<p>In this case the string 'mystring' will be stored in variable '$(variable)'.
+<p>Useful Things To Know...
+<br>The following are the ONLY non numeric entities supported by wml:
+<p>&amp;quot; (&amp;#34;) quotation mark: "
+<br>&amp;amp; (&amp;#38;) ampersand: &amp;
+<br>&amp;apos; (&amp;#39;) apostrophe: '
+<br>&amp;lt; (&amp;#60;) less than: &lt;
+<br>&amp;gt; (&amp;#62;) greater than: >
+<br>&amp;nbsp; (&amp;#160;) non-breaking space: [ ]
+<br>&amp;shy; (&amp;#173;) soft hyphen: &shy;
+<p>CGI / PL Generated wml Pages
+<br>Yes, you can generate wml pages with CGI. The main thing you have to
+remember is to change the header of the document to text/vnd.wap.wml as
+long as you do that, the browser will recognise the fact that it is a wml
+file. Then you are free to print the contents of the wml page that you
+want. Here are a couple of ways you can do this:
+<p>First way:
+<p>#!/usr/bin/perl
+<p>&nbsp;print "Content-Type: text/vnd.wap.wml\n";
+<br>&nbsp;print "\n";
+<p>&nbsp;print "&lt;?xml version=\"1.0\"?>\n"
+<br>&nbsp;print "&lt;!DOCTYPE wml PUBLIC \"-//WAPFORUM//DTD WML 1.1//EN\"
+\n"
+<br>&nbsp;print "\"http://www.wapforum.org/DTD/wml_1.1.xml\">\n"
+<br>&nbsp;print "&lt;wml>\n&lt;card id=\"index\" title=\"index\">\n"
+<br>&nbsp;print "&lt;p>Hello everyone&lt;/p>\n"
+<br>&nbsp;print "&lt;/card>\n&lt;/wml>"
+<p>Second way:
+<p>#!/usr/bin/perl
+<p>&nbsp;print "Content-Type: text/vnd.wap.wml\n";
+<br>&nbsp;print "\n";
+<p>qq{&lt;?xml version="1.0"?>
+<br>&lt;!DOCTYPE wml PUBLIC "-//WAPFORUM//DTD WML 1.1//EN"
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"http://www.wapforum.org/DTD/wml1_1.1.xml">
+<br>&lt;wml>
+<br>&lt;card id="index" title="index">
+<br>&lt;p>Hello everyone&lt;/p>
+<br>&lt;/card>
+<br>&lt;/wml>
+<br>};
+<p>Personally I prefer the second way, it's a bit quicker if you are writing
+long pages.
+<br>&nbsp;
+<br>&nbsp;
+</body>
+</html>

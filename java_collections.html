@@ -1,0 +1,506 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>java_collections.html</title>
+<!--
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Java Collections</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Java Collections&nbsp; ( import java.util.*)</font></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=4 >
+<tr BGCOLOR="#FFCC99">
+<td ALIGN=LEFT VALIGN=TOP><b>Interfaces:</b></td>
+
+<td></td>
+
+<td ALIGN=LEFT VALIGN=TOP>&nbsp;</td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP>&nbsp; Collection
+<br>&nbsp;&nbsp; /&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \
+<br>List&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Set
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+\
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+SortedSet</td>
+
+<td></td>
+
+<td ALIGN=LEFT VALIGN=TOP>Map
+<br>&nbsp; |
+<br>SortedMap</td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=4 >
+<tr BGCOLOR="#FFCC99">
+<td><b>Interface</b></td>
+
+<td></td>
+
+<td><b>Implemented By</b></td>
+</tr>
+
+<tr>
+<td>Set</td>
+
+<td></td>
+
+<td>HashSet, TreeSet</td>
+</tr>
+
+<tr>
+<td>List</td>
+
+<td></td>
+
+<td><b>Vector</b>, Stack, <b>ArrayList</b>, LinkedList</td>
+</tr>
+
+<tr>
+<td>Map</td>
+
+<td></td>
+
+<td><b>HashTable</b>, TreeMap, <b>HashMap</b>, WeakHashMap</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 COLS=1 WIDTH="100%" >
+<tr BGCOLOR="#FFCC99">
+<td>Basic work with Vector/ HashMap&nbsp;</td>
+</tr>
+
+<tr>
+<td BGCOLOR="#FFFFCC">Vector v = new Vector();
+<br>v.addElement("Hello");&nbsp;&nbsp;&nbsp;&nbsp;
+<br>v.addElement(new Integer(99));
+<br>v.addElement(99);&nbsp;<font color="#CC0000"> // Error, Vector can
+not store primitives</font>
+<br>for (int i=0;i&lt;v.size();i++) System.out.println(v.elementAt(i));&nbsp;&nbsp;
+// or v.get(i)
+<br>SomeType a = (SomeType) v.remove(4);
+<br>&nbsp;
+<p>Iterator ii = v.iterator( );
+<br>while (ii.hasNext( )) System.out.println((String) theData.next( ));
+<p>HashMap myMap = new HashMap( );
+<br>if (myMap.put(myKey, theObject) != null) System.out.println("something
+wrong");
+<br>theObject = (Integer)myMap.remove(theKey);
+<p>Iterator kk = myMap.keySet( ).iterator( );
+<br>while(kk.hasNext( )) System.out.println((SomeKeyType) kk.next( ));</td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Let's compare how collections are presented
+in Perl and in Java.</font></b>
+<p><a NAME="anim_gifs"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Collections in Perl:</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Perl:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>&nbsp;Let's say you are comming to Java from Perl.&nbsp; In perl there
+are only 2 types of collections: <b><font color="#CC0000">array &amp; hash</font></b>.
+You can easily add and remove elements, sort, remove duplicates, join,
+redimension them, make complicated structures with them, and do whatever
+else you want - and you can learn it all in 10 minutes, for example:
+<br><font color="#3333FF"><b>@a</b> = (1,2,"mam",$some_reference);&nbsp;&nbsp;&nbsp;
+# define array and put some elements</font>
+<br><font color="#3333FF">$len = @a;&nbsp; # length of the array, you can
+also use $#a - the last index of the array</font>
+<br><font color="#3333FF">$a[4] =&nbsp; 44;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+# add element</font>
+<br><font color="#3333FF"><b>push</b> @a, 55;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+# add element to the end of the array (use <b>pop</b> to remove it)</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+# also use <b>shift</b>,
+<b>unshift</b>. ro remove/add elements at the
+beginning of the array</font>
+<br><font color="#3333FF">@sorted = <b>sort</b> @a;&nbsp;&nbsp;&nbsp; #
+sort array</font>
+<br><font color="#3333FF">@reversed = <b>reverse</b> @a; # reverse the
+array</font>
+<br><font color="#3333FF"><b>foreach</b> $e (@a) { print "$e\n";&nbsp;
+}&nbsp; # go through elements of the array</font>
+<br><font color="#3333FF">@joined = (@a1, @a2);&nbsp;&nbsp; # join 2 arrays</font>
+<p><font color="#3333FF">@removed = <b>splice</b> (@a, $ofset, $length,
+@list);&nbsp; #&nbsp; splice() removes the specified elements from the
+specified array, replacing them with the elements in @list if needed. If
+no length is specified all the items from offset to the end of the array
+are removed.&nbsp;</font>
+<p><font color="#3333FF"><b>%hh</b> = ( kk1 => 'vv1', kk2=>'vv2');&nbsp;&nbsp;&nbsp;
+# define hash and add some elements</font>
+<br><font color="#3333FF">$hh{kk3} = 'vv3';&nbsp;&nbsp;&nbsp; # add element</font>
+<br><font color="#3333FF">if ( <b>exists</b> $hh{kk4} ) {}&nbsp;&nbsp;&nbsp;&nbsp;
+# check if an element exists</font>
+<br><font color="#3333FF">@ak = <b>keys</b> @a;&nbsp;&nbsp;&nbsp;&nbsp;
+# get array of keys</font>
+<br><font color="#3333FF">@av = <b>values</b> @a;&nbsp;&nbsp;&nbsp;&nbsp;
+# get array of values</font>
+<br><font color="#3333FF">for $kk (@ak) { do_something_with $hh{$kk}&nbsp;
+}&nbsp;&nbsp;&nbsp;&nbsp; # go through elements of the hash</font>
+<br><font color="#3333FF">while ( ($kk,$vv) = <b>each</b>(%hh) ) {&nbsp;
+do_something with $kk and $vv }&nbsp;&nbsp; # go through elements of the
+hash</font>
+<br><font color="#3333FF">%joined = (%h1, %h2);&nbsp;&nbsp;&nbsp;&nbsp;
+# join 2 hashes</font>
+<p><font color="#3333FF">delete $hh{kk1};&nbsp; # delete the element from
+a hash, return it or the undefined value if nothing was deleted.</font>
+<p><font color="#000000">you may create anonymous array or hash using&nbsp;
+[ .. ]&nbsp; or&nbsp; { .. } notation - they return the reference, for
+example:</font>
+<p><font color="#3333FF">$ref_to_array = [ 1,2,3 ];</font>
+<p><font color="#000000">Because you can store references as values in
+arrays or hashes - you can easily make multidimensional structures - arrays
+of arrays or hashes and vice versa. You can do them any depth, flexibly
+growing your "tree-like" structure, changing the sizes, adding or removing
+elements or whole sub-trees.</font>
+<p><font color="#3333FF">%tree = (</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; br1 => [ some_array&nbsp;
+]</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; br2 => { some_hash}</font>
+<br><font color="#3333FF">);</font></td>
+</tr>
+</table>
+
+<p>That's all about perl.&nbsp; Honestly, this covers <b><u>IN DETAIL</u></b>
+and covers <b><u>ALL</u></b> you have to know for 99.99% of your needs
+working with collections.
+<br><a NAME="anim_gifs"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Java Collections - closer look:</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Now let's see what we have in <b>Java</b>.
+<br>Java has ~ 10 different interfaces and numerous classes which I will
+not even try to list below. Those classes have many methods which, of couse,
+will not fit here either. So all I will do is provide you with a high-level
+overview:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>First, we have a simple <b><font color="#CC0000">array</font></b>:
+<p>Then we have a class <b><font color="#CC0000">Arrays</font></b> (with
+capital "A") - which have some useful methods (for example, sorting or
+converting to other collection types).
+<br>(to sort array of objects you may need them to implement a <font color="#CC0000">Comparator</font>
+interface, which gives you mthod <font color="#CC0000">compare()</font>).
+<p><font color="#3333FF">&nbsp;&nbsp; import java.util.Arrays;</font>
+<br><font color="#3333FF">&nbsp;&nbsp; int [] nn = {21,15,3,24};&nbsp;&nbsp;
+// array of integers</font>
+<br><font color="#3333FF">&nbsp;&nbsp; Arrays.sort(nn);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// sort in place</font>
+<p>Array in Java can store numbers, strings, references to any objects.
+Arrays can be multi-dimensional.
+<br>Negative - all elements of the array should be of the same type.
+<br>Another negative - array can't grow.
+<p><b><u>Original Collections (Java 1.0):</u></b>
+<br>Collections give you capability to store objects of different types
+- but return them as references of generic "Object" type - you have to
+explicitly cast the values when you take them out.&nbsp; Collections allow
+you to change number of elements. Collections don't allow you to store
+primitive types (numbers or boolean).&nbsp;
+<br>&nbsp;&nbsp; <b><font color="#CC0000">Vector</font></b> class - holds
+array of Object references.&nbsp;
+<br>&nbsp;&nbsp; <b><font color="#CC0000">Hashtable</font></b> class -
+holds "value" objects indexed by unique "key" objects (dictionary).
+<br>&nbsp;&nbsp; <b><font color="#CC0000">Stack</font></b> class (Vector
+with&nbsp; push &amp; pop methods)
+<br>&nbsp;&nbsp; <font color="#CC0000">Enumeration</font> interface - to
+go through the elements of a collection (vector, hashtable or stack).
+<p><b><u>Here are some examples of usage of a Vector:</u></b>
+<br><font color="#3333FF">import java.util.*;</font>
+<br><font color="#3333FF">Vector v = new Vector();</font>
+<br><font color="#3333FF">v.addElement("Hello");</font>
+<br><font color="#3333FF">v.addElement(new Integer(99));</font>
+<br><font color="#3333FF">v.addElement(99);&nbsp; // - error, Vector can
+NOT store primitives</font>
+<br><font color="#3333FF">v.addElement(new Double(123.456));</font>
+<br><font color="#3333FF">v.remove(2); // remove the 3rd element</font>
+<br><font color="#3333FF">for (int i=0;i&lt;v.size();i++) System.out.println(v.elementAt(i));</font>
+<br><font color="#3333FF">for (Enumeration e = v.elements(); e.hasMoreElements();
+) { System.out.println( e.nextElement() ) }</font>
+<p>Collections have many-many methods.&nbsp; For example, vector has close
+to 20 different methods.
+<br>With <b><u>hashtable</u></b> there are similar methods, most frequent
+are put(), get(),
+<p><font color="#3333FF">import java.util.*;</font>
+<br><font color="#3333FF">Hashtable hh = new Hashtable();</font>
+<br><font color="#3333FF">String page = "vv1";</font>
+<br><font color="#3333FF">String key = "kk1";</font>
+<br><font color="#3333FF">hh.put(key,page);</font>
+<br><font color="#3333FF">String val = (String) hh.get("kk1");</font>
+<p><b><u>The New Collections (JDK 1.2):</u></b>
+<p><b><font color="#CC0000">Collection</font></b> Interface (java.util.Collection)
+- the root of all the collections API
+<br>Here are related items we will be going through:&nbsp;
+<br>&nbsp;&nbsp; <u>Six main interfaces:</u> Set (SortedSet), List, Map
+(SortedMap), Iterator
+<br>&nbsp;&nbsp; <u>Classes:</u> Collections, AbstractCollection, etc.
+<br>&nbsp;&nbsp; <u>Concrete classes to use:</u> ArrayList, HashMap, LinkedList,
+TreeMap, HashSet, TreeSet, ...
+<p>&nbsp; <b><u>main interfaces:</u></b>
+<br>&nbsp;&nbsp;&nbsp; <b><font color="#CC0000">Set</font></b> (<b><font color="#CC0000">SortedSet</font></b>)
+interfaces - no duplicates set of Object references with fixed order
+<br>&nbsp;&nbsp;&nbsp; <b><font color="#CC0000">List</font></b> interface
+- ordered collection of objects (Vector implements List)
+<br>&nbsp;&nbsp;&nbsp; <b><font color="#CC0000">Map</font></b> (<b><font color="#CC0000">SortedMap</font></b>)
+interfaces - associate "key" ovjects to "value" objects (Hashtable implements
+Map)
+<br>&nbsp;&nbsp;&nbsp; <b><font color="#CC0000">Iterator</font></b> interface
+- replaces Enumeration.&nbsp; All classes imlementing Collection must have
+an <b><font color="#CC0000">iterator</font></b> method that returns <b><font color="#CC0000">Iterator</font></b>
+object.
+<table BORDER CELLSPACING=0 >
+<tr BGCOLOR="#FFCC99">
+<td><b>Iterator methods</b></td>
+
+<td><b>Enumeration methods</b></td>
+</tr>
+
+<tr>
+<td>hasNext()</td>
+
+<td>hasMoreElements()</td>
+</tr>
+
+<tr>
+<td>next()</td>
+
+<td>nextElement()</td>
+</tr>
+
+<tr>
+<td>remove()</td>
+
+<td>----&nbsp;</td>
+</tr>
+</table>
+
+<p><b><u>Abstract Classes:</u></b>
+<br>AbstractCollection - implements all methods of Collection exept <u>iterator</u>
+and <u>size</u>.&nbsp; Extended by AbstractList and AbstractSet
+<br>&nbsp;&nbsp;&nbsp;&nbsp; AbstractList - implements List interface
+<br>&nbsp;&nbsp;&nbsp;&nbsp; AbstractSet - implements Set interface
+<br>AbstractMap - implements Map interface
+<br>AbstractSequentialList - extends AbstractList class and provides the
+basis for LinkedList class.
+<p><b><u>Some Concrete Classes (there are so many - look in the documentaion):</u></b>
+<br>&nbsp; <b><font color="#CC0000">ArrayList</font></b> - extends AbstractList,
+roughly equivalent to the Vector, but doesn't use synchronized methods
+- so it is faster.
+<br>&nbsp; <b><font color="#CC0000">HashMap</font></b> - extends AbstractMap
+- similar to Hashtable
+<br>&nbsp; <b><font color="#CC0000">LinkedList</font></b> - implementation
+of classic linked list data structure
+<br>&nbsp; <b><font color="#CC0000">TreeMap</font></b> - extends AbstractMap,
+implements SortedMap
+<p><b><u>Collections class:</u></b>
+<br><b><font color="#CC0000">java.util.Collections</font></b> class - not
+to be confused with <b><font color="#CC0000">java.util.Collection</font></b>
+interface.
+<br>Collections class has some useful methods to be applied to misc. collections,
+for example methods for sorting or searching. Also methods to produce code
+that inforces synchronized access to the data:
+<br>&nbsp;&nbsp; Map safeMap = Collections.synchronizedMap(myMap);
+<p>In this short overview I was not shoing in detail how to work with different
+classes, because each class has so many fields and methods - it will just
+take too much space.&nbsp; Let's consider for example class <b><u><font color="#CC0000">ArrayList:</font></u></b>
+<table BORDER CELLSPACING=0 BGCOLOR="#E1E1E1" >
+<tr>
+<td>Fields inherited from class java.util.AbstractList&nbsp;
+<br>modCount&nbsp;
+<br>&nbsp; Constructor Summary&nbsp;
+<br>ArrayList()&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Constructs an
+empty list.&nbsp;
+<br>ArrayList(Collection c)&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Constructs a
+list containing the elements of the specified collection, in the order
+they are returned by the collection's iterator.&nbsp;
+<br>ArrayList(int initialCapacity)&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Constructs an
+empty list with the specified initial capacity.&nbsp;
+<br>&nbsp; Method Summary&nbsp;
+<br>&nbsp;void add(int index, Object element)&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Inserts the
+specified element at the specified position in this list.&nbsp;
+<br>&nbsp;boolean add(Object o)&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Appends the
+specified element to the end of this list.&nbsp;
+<br>&nbsp;boolean addAll(Collection c)&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Appends all
+of the elements in the specified Collection to the end of this list, in
+the order that they are returned by the specified Collection's Iterator.&nbsp;
+<br>&nbsp;boolean addAll(int index, Collection c)&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Inserts all
+of the elements in the specified Collection into this list, starting at
+the specified position.&nbsp;
+<br>&nbsp;void clear()&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Removes all
+of the elements from this list.&nbsp;
+<br>&nbsp;Object clone()&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Returns a shallow
+copy of this ArrayList instance.&nbsp;
+<br>&nbsp;boolean contains(Object elem)&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Returns true
+if this list contains the specified element.&nbsp;
+<br>&nbsp;void ensureCapacity(int minCapacity)&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Increases the
+capacity of this ArrayList instance, if necessary, to ensure that it can
+hold at least the number of elements specified by the minimum capacity
+argument.&nbsp;
+<br>&nbsp;Object get(int index)&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Returns the
+element at the specified position in this list.&nbsp;
+<br>&nbsp;int indexOf(Object elem)&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Searches for
+the first occurence of the given argument, testing for equality using the
+equals method.&nbsp;
+<br>&nbsp;boolean isEmpty()&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tests if this
+list has no elements.&nbsp;
+<br>&nbsp;int lastIndexOf(Object elem)&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Returns the
+index of the last occurrence of the specified object in this list.&nbsp;
+<br>&nbsp;Object remove(int index)&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Removes the
+element at the specified position in this list.&nbsp;
+<br>protected&nbsp; void removeRange(int fromIndex, int toIndex)&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Removes from
+this List all of the elements whose index is between fromIndex, inclusive
+and toIndex, exclusive.&nbsp;
+<br>&nbsp;Object set(int index, Object element)&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Replaces the
+element at the specified position in this list with the specified element.&nbsp;
+<br>&nbsp;int size()&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Returns the
+number of elements in this list.&nbsp;
+<br>&nbsp;Object[] toArray()&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Returns an array
+containing all of the elements in this list in the correct order.&nbsp;
+<br>&nbsp;Object[] toArray(Object[] a)&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Returns an array
+containing all of the elements in this list in the correct order.&nbsp;
+<br>&nbsp;void trimToSize()&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Trims the capacity
+of this ArrayList instance to be the list's current size.&nbsp;
+<br>&nbsp; Methods inherited from class java.util.AbstractList&nbsp;
+<br>equals, hashCode, iterator, listIterator, listIterator, subList&nbsp;
+<br>&nbsp; Methods inherited from class java.util.AbstractCollection&nbsp;
+<br>containsAll, remove, removeAll, retainAll, toString&nbsp;
+<br>&nbsp; Methods inherited from class java.lang.Object&nbsp;
+<br>finalize, getClass, notify, notifyAll, wait, wait, wait&nbsp;
+<br>&nbsp; Methods inherited from interface java.util.List&nbsp;
+<br>containsAll, equals, hashCode, iterator, listIterator, listIterator,
+remove, removeAll, retainAll, subList&nbsp;</td>
+</tr>
+</table>
+
+<p>Now imagine that all other collection classes have similar long lists
+of available methods.</td>
+</tr>
+</table>
+
+<p>OK, this was not a detailed coverage for Java collections, because there
+are too many of them.
+<p><b><u>Let's summarize:</u></b>
+<p>Perl has 2 types of collections (array &amp; hash)
+<br>Java has >10 types, plus many interfaces and abstract classes.
+<p>Perl collections - much easier to learn and use.
+<p>Java collections creates lots of confusion.&nbsp; Some of Java collections
+don't allow you to change number of elements. Others don't allow you to
+store ellements of different types. They have different methods to do the
+same thing. I made a test asking java professionals questions about collections
+in java.&nbsp; My conclusion - they usually have very limited knowledge
+of collection classes and methods. They routinely use only couple of them
+and they are totally confused about others.
+<p>-----------------------------------
+<br>&nbsp;
+</body>
+</html>

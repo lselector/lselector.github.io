@@ -1,0 +1,16 @@
+<!-- Check whether JavaScript 1.2 is supported. -->
+<SCRIPT LANGUAGE="JavaScript1.2">var _js12_ = 1.2</SCRIPT>
+
+<!-- Now avoid the problems with JavaScript 1.2 on Navigator by running -->
+<!-- the following code on any browser that supports JavaScript 1.1. If -->
+<!-- the browser does not support JavaScript 1.2, however, we'll display -->
+<!-- an error message and suppress any syntax errors that occur. -->
+<SCRIPT LANGUAGE="JavaScript1.1">
+// If JavaScript 1.2 is not supported, fail gracefully.
+if (!_js12_) {
+    alert("This program requires a browser with JavaScript 1.2 support");
+    window.onerror = new Function("return true;");
+}
+
+// Now proceed with the JavaScript 1.2 code. 
+</SCRIPT>

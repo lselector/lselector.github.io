@@ -1,0 +1,1012 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>sh</title>
+<!--
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> sh&nbsp;</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">sh (Bourne Shell)</font></b>
+<br><font color="#6699CC">• <a href="#intro">intro</a></font>
+<br><font color="#6699CC">• </font><a href="#sh_tut_1">simple sh tutorial
+- part 1</a>
+<br><font color="#6699CC">• </font><a href="#sh_tut_2">simple sh tutorial
+- part 2</a>
+<br><font color="#6699CC">• </font><a href="#sh_tut_3">simple sh tutorial
+- part 3</a>
+<br><font color="#6699CC">• </font><a href="#sh_tut_4">simple sh tutorial
+- part 4</a>
+<br><font color="#6699CC">• </font><a href="#sh_tut_5">simple sh tutorial
+- part 5</a>
+<br><font color="#6699CC">• </font><a href="#examples1">examples 1</a>
+<br><a NAME="intro"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>intro</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">sh</font></b> - Bourne Shell
+<p><font color="#6699CC">• </font><a href="http://www.columbia.edu/acis/tutor/Unixhelp/scrpt_.html">www.columbia.edu/acis/tutor/Unixhelp/scrpt_.html</a>
+- simple shell tutorial
+<br><font color="#6699CC">• </font><a href="http://theory.uwinnipeg.ca/UNIXhelp/scrpt/">theory.uwinnipeg.ca/UNIXhelp/scrpt/</a>
+- simple shell tutorial
+<br><font color="#6699CC">• </font><a href="http://steve-parker.org/sh/sh.shtml">steve-parker.org/sh/sh.shtml</a>
+- tutorial
+<br><font color="#6699CC">• </font><a href="http://www.ooblick.com/text/sh/">www.ooblick.com/text/sh/</a>
+- tutorial (by Andrew Arensburger)
+<br><font color="#6699CC">• </font><a href="http://www.geocities.com/~gregl/htm/bourne_shell_tutorial.htm">www.geocities.com/~gregl/htm/bourne_shell_tutorial.htm</a>
+- shell programming tutorial
+<br><font color="#6699CC">• </font><a href="http://www.ling.helsinki.fi/users/reriksso/unix/shell.html">www.ling.helsinki.fi/users/reriksso/unix/shell.html</a>
+- An Introduction to the Unix Shell - by S. R. Bourne
+<br><font color="#6699CC">• </font><a href="http://nim.cit.cornell.edu/usr/share/man/info/en_US/a_doc_lib/aixuser/usrosdev/bourne_shell.htm">nim.cit.cornell.edu/usr/share/man/info/en_US/a_doc_lib/aixuser/usrosdev/bourne_shell.htm</a>
+- yet another one
+<br><font color="#6699CC">• </font><a href="http://www.torget.se/users/d/Devlin/shell/">www.torget.se/users/d/Devlin/shell/</a>
+- UNIX Bourne Shell Programming
+<br><font color="#6699CC">• </font><a href="http://www.i-cram.com/cgi-bin/page.cgi?g=Unix%2FShell%2FScripting%2Findex.html">www.i-cram.com/cgi-bin/page.cgi?g=Unix%2FShell%2FScripting%2Findex.html</a>
+- many tutorials
+<p><b><u>Books:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFFFCC" >
+<tr>
+<td>"Portable Shell Scripting"&nbsp; by Bruce Blinn</td>
+</tr>
+</table>
+<a NAME="sh_tut_1"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>simple sh tutorial - part 1</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b>How to write a shell script</b>
+<br>Introduction
+<p>A shell is a command line interpretor. It takes commands and executes
+them. You can put those commands in a file - thus you get a program (shell
+script) written in shell as a programming language.
+<p>Creating a Script
+<br>Suppose you often type the command
+<br>&nbsp;&nbsp;&nbsp; <b>find . -name file -print</b>
+<br>and you'd rather type a simple command, say
+<br>&nbsp;&nbsp;&nbsp; <b>sfind file</b>
+<br>Let's create a shell script file "<b><font color="#CC0000">sfind</font></b>'
+in your ~/bin directory (make sure that it is in your path), put there
+2 lines:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">#!/bin/sh</font></b>
+<p><b><font color="#009900"># this is a comment</font></b>
+<p><b><font color="#3333FF">find . -name $1 -print&nbsp;&nbsp;&nbsp; </font><font color="#009900">#
+this is a comment</font></b>
+<p><b><font color="#009900"># this is a comment</font></b></td>
+</tr>
+</table>
+
+<p>Save this file and make it executable:
+<br><b><font color="#3333FF">chmod a+x&nbsp; sfind</font></b>
+<br><b><font color="#3333FF">rehash</font></b>
+<p>That's it.
+<p><b><u>Path Specification</u></b>
+<br>All shell scripts should include a search path specification:
+<br>&nbsp;&nbsp;&nbsp; <b><font color="#3333FF">PATH=/usr/ucb:/usr/bin:/bin;
+export PATH</font></b>
+<br>A PATH specification is recommended -- often times a script will fail
+for some people because they have a different or incomplete search path.
+Note the export PATH command - the Bourne Shell does not export environment
+variables to children unless explicitly instructed to do so by using the
+export command.
+<p><b><u>Argument Checking</u></b>
+<br>A good shell script should verify that the arguments supplied (if any)
+are correct.
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">#!/bin/sh</font></b>
+<p><b><font color="#3333FF">if [ $# -ne 3 ]; then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+echo 1>&amp;2 Usage: $0 19 Oct 91</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+exit 127</font></b>
+<br><b><font color="#3333FF">fi</font></b></td>
+</tr>
+</table>
+
+<p>This script requires three arguments and gripes accordingly.
+<p><b><u>Exit status</u></b>
+<br>All Unix utilities should return an exit status.
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">#!/bin/sh</font></b>
+<p><b><font color="#009900"># is the year out of range for me?</font></b>
+<p><b><font color="#3333FF">if [ $year -lt 1901&nbsp; -o&nbsp; $year -gt
+2099 ]; then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; echo 1>&amp;2 Year \"$year\"
+out of range</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; exit 127</font></b>
+<br><b><font color="#3333FF">fi</font></b>
+<p><b><font color="#009900">#&nbsp; etc.</font></b>
+<p><b><font color="#3333FF">exit 0</font></b></td>
+</tr>
+</table>
+
+<p>A non-zero exit status indicates an error condition of some sort while
+a zero exit status indicates things worked as expected.
+<br>On BSD systems there's been an attempt to categorize some of the more
+common exit status codes. See /usr/include/sysexits.h.
+<br>Using exit status
+<br>Exit codes are important for those who use your code. Many constructs
+test on the exit status of a command.
+<p><b><u>The conditional construct is:</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">#!/bin/sh</font></b>
+<p><b><font color="#3333FF">if command; then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; command</font></b>
+<br><b><font color="#3333FF">fi</font></b>
+<p><b><font color="#009900"># For example:</font></b>
+<p><b><font color="#3333FF">if tty -s; then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; echo Enter text end
+with \^D</font></b>
+<br><b><font color="#3333FF">fi</font></b></td>
+</tr>
+</table>
+
+<p><b><u>Stdin, Stdout, Stderr</u></b>
+<br>Standard input, output, and error are file descriptors 0, 1, and 2.
+Each has a particular role and should be used accordingly:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">#!/bin/sh</font></b>
+<p><b><font color="#009900"># is the year out of range for me?</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; if [ $year -lt 1901&nbsp;
+-o&nbsp; $year -gt 2099 ]; then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+echo 1>&amp;2 Year \"$year\" out of my range</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+exit 127</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; fi</font></b>
+<p><b><font color="#009900"># etc...</font></b>
+<br><b><font color="#009900"># ok, you have the number of days since Jan
+1, ...</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; case `expr $days % 7` in</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; 0)</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+echo Mon;;</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; 1)</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+echo Tue;;</font></b>
+<p><b><font color="#009900">#&nbsp; etc...</font></b>
+<br><b><font color="#009900">#&nbsp; Error messages should appear on stderr
+not on stdout!&nbsp;</font></b>
+<br><b><font color="#009900">#&nbsp; Output should appear on stdout.&nbsp;</font></b>
+<br><b><font color="#009900">#&nbsp; As for input/output dialogue:</font></b>
+<br><b><font color="#009900">#&nbsp;&nbsp;&nbsp;&nbsp; give the fellow
+a chance to quit</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; if tty -s ; then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+echo This will remove all files in $* since ...</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+echo $n Ok to procede? $c;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; read ans</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+case "$ans" in</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+n*|N*)</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; echo File purge abandoned;</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; exit 0&nbsp;&nbsp; ;;</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+esac</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+RM="rm -rfi"</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; else</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+RM="rm -rf"</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; fi</font></b>
+<br><b><font color="#009900"># Note: this code behaves differently if there's
+a user to communicate with</font></b>
+<br><b><font color="#009900"># (ie. if the standard input is a tty rather
+than a pipe,&nbsp;</font></b>
+<br><b><font color="#009900"># or file, or etc. See tty(1)).</font></b></td>
+</tr>
+</table>
+<a NAME="sh_tut_2"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>simple sh tutorial - part 2</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>For loop iteration:</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">#!/bin/sh</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; for variable in word ...</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; do</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+command</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; done</font></b>
+<p><b><font color="#009900"># For example:</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; for i in `cat $LOGS`</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; do</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+mv $i $i.$TODAY</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+cp /dev/null $i</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+chmod 664 $i</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; done</font></b>
+<p><b><font color="#009900"># Alternatively you may see:</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; for variable in word ...;
+do command; done</font></b>
+<br>&nbsp;</td>
+</tr>
+</table>
+
+<p><b><u>Case:</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">#!/bin/sh</font></b>
+<p><b><font color="#009900"># Switch to statements depending on pattern
+match</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; case word in</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; [ pattern [ | pattern ...
+] )</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+command ;; ] ...</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; esac</font></b>
+<p><b><font color="#009900"># For example:</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; case "$year" in</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; [0-9][0-9])</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+year=19${year}</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+years=`expr $year - 1901`</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+;;</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; [0-9][0-9][0-9][0-9])</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+years=`expr $year - 1901`</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+;;</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; *)</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+echo 1>&amp;2 Year \"$year\" out of range ...</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+exit 127</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+;;</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; esac</font></b></td>
+</tr>
+</table>
+
+<p><b><u>Conditional Execution:</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">#!/bin/sh</font></b>
+<p><b><font color="#009900"># Test exit status of command and branch</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; if command</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+command</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; [ else</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+command ]</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; fi</font></b>
+<p><b><font color="#009900"># For example:</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; if [ $# -ne 3 ]; then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+echo 1>&amp;2 Usage: $0 19 Oct 91</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+exit 127</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; fi</font></b>
+<p><b><font color="#009900"># Alternatively you may see:</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; if command; then command;
+[ else command; ] fi</font></b></td>
+</tr>
+</table>
+
+<p><b>While/Until Iteration:</b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">#!/bin/sh</font></b>
+<p><b><font color="#009900"># Repeat task while command returns good exit
+status.</font></b>
+<br><b><font color="#009900">#&nbsp;&nbsp;&nbsp; {while | until} command</font></b>
+<br><b><font color="#009900">#&nbsp;&nbsp;&nbsp; do</font></b>
+<br><b><font color="#009900">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+command</font></b>
+<br><b><font color="#009900">#&nbsp;&nbsp;&nbsp; done</font></b>
+<p><b><font color="#009900"># For example:</font></b>
+<br><b><font color="#009900"># for each argument mentioned, purge that
+directory</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; while [ $# -ge 1 ]; do</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+_purge $1</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+shift</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; done</font></b>
+<p><b><font color="#009900"># Alternatively you may see:</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; while command; do command;
+done</font></b></td>
+</tr>
+</table>
+
+<p><a NAME="sh_tut_3"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>simple sh tutorial - part 3</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Variables:</u></b>
+<br>Variables are sequences of letters, digits, or underscores beginning
+with a letter or underscore. To get the contents of a variable you must
+prepend the name with a <b>$</b>.&nbsp; Numeric variables (eg. like $1,
+etc.) are positional vari- ables for argument communication.
+<p><b><u>Variable Assignment:</u></b>
+<br>&nbsp;Assign a value to a variable by <b><font color="#3333FF">variable=value</font></b>.
+For example:
+<br>&nbsp;&nbsp;&nbsp; <b><font color="#3333FF">PATH=/usr/ucb:/usr/bin:/bin;
+export PATH</font></b>
+<br>or
+<br>&nbsp;&nbsp;&nbsp; <b><font color="#3333FF">TODAY=`(set \`date\`; echo
+$1)`</font></b>
+<p><b><u>Exporting Variables:</u></b>
+<br>&nbsp;Variables are not exported to children unless explicitly marked.
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">#!/bin/sh</font></b>
+<p><b><font color="#009900"># We MUST have a DISPLAY environment variable</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; if [ "$DISPLAY" = "" ];
+then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if tty -s ; then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; echo "DISPLAY (`hostname`:0.0)?
+\c";</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; read DISPLAY</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+fi</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if [ "$DISPLAY" = "" ]; then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; DISPLAY=`hostname`:0.0</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+fi</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+export DISPLAY</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; fi</font></b>
+<p><b><font color="#009900"># Likewise, for variables like the PRINTER
+which you want honored by lpr(1).&nbsp;</font></b>
+<br><b><font color="#009900"># From a user's .profile:</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; PRINTER=PostScript; export
+PRINTER</font></b>
+<p><b><font color="#009900"># Note: that the Cshell exports all environment
+variables.</font></b></td>
+</tr>
+</table>
+
+<p><b><u>Referencing Variables:</u></b>
+<br>Use <b><font color="#3333FF">$variable</font></b> (or, if necessary,
+<b><font color="#3333FF">${variable}</font></b>)
+to reference the value.
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">#!/bin/sh</font></b>
+<p><b><font color="#009900"># Most user's have a /bin of their own</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; if [ "$USER" != "root" ];
+then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+PATH=$HOME/bin:$PATH</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; else</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+PATH=/etc:/usr/etc:$PATH</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; fi</font></b>
+<p><b><font color="#009900"># The braces are required for concatenation
+constructs.</font></b>
+<p><b><font color="#3333FF">$p_01&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+# returns the value of the variable called "p_01".</font></b>
+<br><b><font color="#3333FF">${p}_01&nbsp;&nbsp;&nbsp;&nbsp; # returns
+the value of the variable "p" concatenated with "_01"</font></b></td>
+</tr>
+</table>
+
+<p><b><u>Conditional Reference:</u></b>
+<p><font color="#CC0000"><b>${variable-word}</b> </font>- If the variable
+has been set, use it's value, else use word.
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; POSTSCRIPT=${POSTSCRIPT-PostScript};</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; export POSTSCRIPT</font></b>
+<p><b><font color="#CC0000">${variable:-word}</font></b> - If the variable
+has been set and is not null, use it's value, else use word.
+<p>These are useful constructions for honoring the user environment. Ie.
+the user of the script can override variable assignments. Cf. programs
+like lpr(1) honor the PRINTER environment variable, you can do the same
+trick with your shell scripts.
+<p><b><font color="#CC0000">${variable:?word}</font></b> - If variable
+is set use it's value, else print out word and exit. Useful for bailing
+out.
+<br>&nbsp;
+<p><b><u>Arguments:</u></b>
+<br>Command line arguments to shell scripts are positional variables:
+<br><b><font color="#3333FF">$0, $1, ...</font></b>
+<p>Where $0 is the command, and the rest the arguments.
+<p>$# - The number of arguments.
+<p>$*, $@ - All the arguments as a blank separated string. Watch out for
+"$*" vs. "$@".
+<p><b><u>And, some commands:</u></b>
+<br><b><font color="#3333FF">shift</font></b> - Shift the postional variables
+down one and decrement number of arguments.
+<br><b><font color="#3333FF">set arg arg ...</font></b>&nbsp; - Set the
+positional variables to the argument list.
+<p><b><u>Command line parsing uses shift:</u></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">#!/bin/sh</font></b>
+<p><b><font color="#009900"># parse argument list</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; while [ $# -ge 1 ]; do</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+case $1 in</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+process arguments...</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+esac</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+shift</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; done</font></b>
+<p><b><font color="#009900"># A use of the set command:</font></b>
+<br><b><font color="#009900"># figure out what day it is</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; TODAY=`(set \`date\`; echo
+$1)`</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; cd $SPOOL</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; for i in `cat $LOGS`</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; do</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+mv $i $i.$TODAY</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+cp /dev/null $i</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+chmod 664 $i</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; done</font></b></td>
+</tr>
+</table>
+
+<p><b><u>Special Variables:</u></b>
+<p><b><font color="#3333FF">$$</font></b><font color="#000000"> - Current
+process id. This is very useful for constructing temporary files.</font>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+tmp=/tmp/cal0$$</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+trap "rm -f $tmp /tmp/cal1$$ /tmp/cal2$$"</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+trap exit 1 2 13 15</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/usr/lib/calprog >$tmp</font></b>
+<p><b><font color="#3333FF">$?</font></b><font color="#000000"> - The exit
+status of the last command.</font>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $command</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Run target
+file if no errors and ...</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if [ $? -eq 0 ]</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+then</font></b>
+<br><b><font color="#3333FF">&nbsp; etc...</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+fi</font></b>
+<br><a NAME="sh_tut_4"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>simple sh tutorial - part 4</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Quotes/Special Characters:</u></b> - Special characters to terminate
+words:
+<br><b><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; &amp; ( )
+| ^ &lt; > new-line space tab</font></b>
+<br>These are for command sequences, background jobs, etc. To quote any
+of these use a backslash (<b><font color="#CC0000">\</font></b>) or bracket
+with quote marks (<b><font color="#CC0000">""</font></b> or <b><font color="#CC0000">''</font></b>).
+<p><b><i><u>Single Quotes:</u></i></b> - Within single quotes all characters
+are quoted -- including the backslash. The result is one word.
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+grep :${gid}: /etc/group | awk -F: '{print $1}'</font></b>
+<p><b><i><u>Double Quotes:</u></i></b> - Within double quotes you have
+variable subsitution (ie. the dollar sign is interpreted) but no file name
+generation (ie. * and ? are quoted). The result is one word.
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if [ ! "${parent}" ]; then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+parent=${people}/${group}/${user}</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+fi</font></b>
+<p><b><i><u>Back Quotes:</u></i></b> - Back quotes mean run the command
+and substitute the output.
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if [ "`echo -n`" = "-n" ]; then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+n=""</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+c="\c"</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+else</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+n="-n"</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+c=""</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+fi</font></b>
+<br>and
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+TODAY=`(set \`date\`; echo $1)`</font></b>
+<br>&nbsp;
+<p><b><u>Functions:</u></b>
+<br>&nbsp;Functions are a powerful feature that aren't used often enough.
+Syntax is
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; name ()</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; {</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+commands</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; }</font></b>
+<p><u>For example:</u>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">#!/bin/sh</font></b>
+<p><b><font color="#009900"># Purge a directory</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; _purge()</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; {</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+# there had better be a directory</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if [ ! -d $1 ]; then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; echo $1: No such
+directory 1>&amp;2</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; return</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+fi</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+etc...</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; }</font></b></td>
+</tr>
+</table>
+
+<p>Within a function the positional parmeters $0, $1, etc. are the arguments
+to the function (not the arguments to the script).
+<p>Within a function use return instead of exit.
+<p>Functions are good for encapsulations. You can pipe, redirect input,
+etc. to functions.
+<p><u>For example:</u>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#009900"># deal with a file, add people one at a time</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; do_file()</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; {</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+while parse_one</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+etc...</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; }</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; etc...</font></b>
+<p><b><font color="#009900"># take standard input (or a specified file)
+and do it.</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; if [ "$1" != "" ]; then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+cat $1 | do_file</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; else</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+do_file</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; fi</font></b>
+<br>&nbsp;</td>
+</tr>
+</table>
+
+<p><b><u>Sourcing commands:</u></b>
+<br>&nbsp;You can execute shell scripts from within shell scripts. A couple
+of choices:
+<p><b><u><font color="#000000">sh<i> command</i></font></u></b> - This
+runs the shell script as a separate shell. For example, on Sun machines
+in /etc/rc:
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+sh /etc/rc.local</font></b>
+<p><b><u>. <i>command</i></u></b> - This runs the shell script from within
+the current shell script. For example:
+<br><b><font color="#009900">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+# Read in configuration information</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.&nbsp; /etc/hostconfig</font></b>
+<br>What are the virtues of each? What's the difference? The second form
+is useful for configuration files where environment variable are set for
+the script. For example:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">#!/bin/sh</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; for HOST in $HOSTS; do</font></b>
+<p><b><font color="#009900">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # is there a
+config file for this host?</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if [ -r ${BACKUPHOME}/${HOST}
+]; then</font></b>
+<br><b><font color="#3333FF">.&nbsp; ${BACKUPHOME}/${HOST}</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fi</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; etc...</font></b></td>
+</tr>
+</table>
+
+<p>Using configuration files in this manner makes it possible to write
+scripts that are automatically tailored for different situations.
+<p><b><u>Some Tricks</u></b>
+<p><b><u>Test:</u></b>
+<br>&nbsp;The most powerful command is test(1).
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; if test expression; then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+etc...</font></b>
+<br>and (note the matching bracket argument)
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; if [ expression ]; then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+etc...</font></b>
+<p>On System V machines this is a builtin (check out the command /bin/test).
+<br>On BSD systems (like the Suns) compare the command /usr/bin/test with
+/usr/bin/[.
+<p><u>Useful expressions are:</u>
+<br><b><font color="#3333FF">test { -w, -r, -x, -s, ... } filename</font></b>
+- is file writeable, readable, executeable, empty, etc?
+<br><b><font color="#3333FF">test n1 { -eq, -ne, -gt, ... } n2</font></b>
+- are numbers equal, not equal, greater than, etc.?
+<br><b><font color="#3333FF">test s1 { =, != } s2</font></b><font color="#000000">
+- Are strings the same or different?</font>
+<br><b><font color="#3333FF">test cond1 { -o, -a } cond2</font></b> - Binary
+or; binary and; use ! for unary negation.
+<p><u>For example:</u>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; if [ $year -lt 1901&nbsp;
+-o&nbsp; $year -gt 2099 ]; then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+echo 1>&amp;2 Year \"$year\" out of range</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+exit 127</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; fi</font></b></td>
+</tr>
+</table>
+
+<p>Learn this command inside out! It does a lot for you.
+<p><b><u>String matching:</u></b>
+<br>&nbsp;The test command provides limited string matching tests. A more
+powerful trick is to match strings with the case switch.
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#009900">&nbsp;&nbsp;&nbsp; # parse argument list</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; while [ $# -ge 1 ]; do</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+case $1 in</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-c*)&nbsp;&nbsp;&nbsp; rate=`echo $1 | cut -c3-`;;</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-c)&nbsp;&nbsp;&nbsp;&nbsp; shift;&nbsp; rate=$1 ;;</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-p*)&nbsp;&nbsp;&nbsp; prefix=`echo $1 | cut -c3-`;;</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-p)&nbsp;&nbsp;&nbsp;&nbsp; shift;&nbsp; prefix=$1 ;;</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-*)&nbsp;&nbsp;&nbsp;&nbsp; echo $Usage; exit 1 ;;</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; disks=$*;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+break&nbsp;&nbsp; ;;</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+esac</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+shift</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; done</font></b></td>
+</tr>
+</table>
+
+<p>Of course getopt would work much better.
+<br><a NAME="sh_tut_5"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>simple sh tutorial - part 5</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>SysV vs BSD echo:</u></b>
+<br>On BSD systems to get a prompt you'd say:
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; echo -n Ok to procede?;&nbsp;
+read ans</font></b>
+<br>On SysV systems you'd say:
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; echo Ok to procede? \c;
+read ans</font></b>
+<p><b><u>In an effort to produce portable code we've been using:</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">#!/bin/sh</font></b>
+<p><b><font color="#009900"># figure out what kind of echo to use</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; if [ "`echo -n`" = "-n"
+]; then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+n="";&nbsp; c="\c"</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; else</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+n="-n";&nbsp;&nbsp;&nbsp;&nbsp; c=""</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; fi</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; etc...</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; echo $n Ok to procede? $c;
+read ans</font></b></td>
+</tr>
+</table>
+
+<p><b><u>Is there a person?</u></b>
+<br>The Unix tradition is that programs should execute as quietly as possible.
+Especially for pipelines, cron jobs, etc. User prompts aren't required
+if there's no user.
+<p><b><font color="#009900">&nbsp;&nbsp;&nbsp; # If there's a person out
+there, prod him a bit.</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; if tty -s; then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+echo Enter text end with \^D</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; fi</font></b>
+<p>The tradition also extends to output.
+<p><b><font color="#009900">&nbsp;&nbsp;&nbsp; # If the output is to a
+terminal, be verbose</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; if tty -s &lt;&amp;1; then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+verbose=true</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; else</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+verbose=false</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; fi</font></b>
+<p>Beware: just because stdin is a tty that doesn't mean that stdout is
+too. User prompts should be directed to the user terminal.
+<p><b><font color="#009900">&nbsp;&nbsp;&nbsp; # If there's a person out
+there, prod him a bit.</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; if tty -s; then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+echo Enter text end with \^D >&amp;0</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; fi</font></b>
+<p>Have you ever had a program stop waiting for keyboard input when the
+output is directed elsewhere?
+<p><b><u>Creating Input:</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">#!/bin/sh</font></b>
+<p><b><font color="#009900"># Exampel of redirecting input: take standard
+input (or a specified file) and do it.</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; if [ "$1" != "" ]; then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+cat $1 | do_file</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; else</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+do_file</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; fi</font></b>
+<p><b><font color="#009900"># alternatively, redirection from a file -
+take standard input (or a specified file) and do it.</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; if [ "$1" != "" ]; then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+do_file &lt; $1</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; else</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+do_file</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; fi</font></b>
+<p><b><font color="#009900"># You can also construct files on the fly.</font></b>
+<p><b><font color="#3333FF">rmail bsmtp &lt;&lt;EOF</font></b>
+<br><b><font color="#3333FF">helo news</font></b>
+<br><b><font color="#3333FF">mail from:&lt;$1@newshost.uwo.ca></font></b>
+<br><b><font color="#3333FF">rcpt to:&lt;listserv@$3></font></b>
+<br><b><font color="#3333FF">data</font></b>
+<br><b><font color="#3333FF">from: &lt;$1@newshost.uwo.ca></font></b>
+<br><b><font color="#3333FF">to: &lt;listserv@$3></font></b>
+<br><b><font color="#3333FF">Subject: Signon $2</font></b>
+<p><b><font color="#3333FF">subscribe $2 Usenet Feeder at UWO</font></b>
+<br><b><font color="#3333FF">.</font></b>
+<br><b><font color="#3333FF">quit</font></b>
+<br><b><font color="#3333FF">EOF</font></b>
+<p><b><font color="#009900"># Note: that variables are expanded in the
+input.</font></b></td>
+</tr>
+</table>
+
+<p><b><u>String Manipulations:</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">#!/bin/sh</font></b>
+<p><b><font color="#009900"># Some tricks parsing strings</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; TIME=`date | cut -c12-19`</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; TIME=`date | sed 's/.*
+.* .* \(.*\) .* .*/\1/'`</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; TIME=`date | awk '{print
+$4}'`</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; TIME=`set \`date\`; echo
+$4`</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; TIME=`date | (read u v
+w x y z; echo $x)`</font></b></td>
+</tr>
+</table>
+
+<p><font color="#000000">With some care, redefining the input field separators
+can help:</font>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">#!/bin/sh</font></b>
+<p><b><font color="#009900"># convert IP number to in-addr.arpa name</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; name()</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; {&nbsp;&nbsp;&nbsp; set
+`IFS=".";echo $1`</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+echo $4.$3.$2.$1.in-addr.arpa</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; }</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; if [ $# -ne 1 ]; then</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+echo 1>&amp;2 Usage: bynum IP-address</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+exit 127</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; fi</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; add=`name $1`</font></b>
+<p><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; nslookup &lt; &lt; EOF |
+grep "$add" | sed 's/.*= //'</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; set type=any</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; $add</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp; EOF</font></b></td>
+</tr>
+</table>
+
+<p><b><u>Debugging:</u></b>
+<br>The shell has a number of flags that make debugging easier:
+<br><b><font color="#3333FF">&nbsp; sh -n<i> command</i></font></b>
+<p>Read the shell script but don't execute the commands. IE. check syntax.
+<br><b><font color="#3333FF">&nbsp; sh -x<i> command</i></font></b>
+<p>Display commands and arguments as they're executed. In a lot of my shell
+scripts you'll see
+<br><b><font color="#009900">&nbsp;&nbsp;&nbsp; # Uncomment the next line
+for testing</font></b>
+<br><b><font color="#009900">&nbsp;&nbsp;&nbsp; # set -x</font></b>
+<p>----------------------------------------------------
+<br>This tutorial is based on <i>An Introduction to Shell Programing</i>
+by Reg Quinton
+<br><a NAME="examples1"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>examples 1</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>You can use here-doc constructs:</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">#!/bin/sh</font></b>
+<p><b><font color="#3333FF">sort &lt;&lt;EOF</font></b>
+<br><b><font color="#3333FF">line</font></b>
+<br><b><font color="#3333FF">abc</font></b>
+<br><b><font color="#3333FF">ABC</font></b>
+<br><b><font color="#3333FF">line2</font></b>
+<br><b><font color="#3333FF">EOF</font></b></td>
+</tr>
+</table>
+
+<p><b><u>You can use here-doc constructs:</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">#!/bin/sh</font></b>
+<p><b><font color="#3333FF">while [ 1 ]; do</font></b>
+<br><b><font color="#3333FF">&nbsp; echo "enter : \c";</font></b>
+<br><b><font color="#3333FF">&nbsp; read aword</font></b>
+<br><b><font color="#3333FF">&nbsp; echo "Entered -> $aword"</font></b>
+<br><b><font color="#3333FF">done</font></b></td>
+</tr>
+</table>
+
+<br>&nbsp;
+</body>
+</html>

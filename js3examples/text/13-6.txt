@@ -1,0 +1,54 @@
+<!--  This file implements a navigation bar, designed to go in a frame at
+      the bottom of a window. Include it in a frameset like the following:
+
+        <frameset rows="*,75">
+        <frame src="about:blank">
+        <frame src="navigation.html">
+        </frameset>
+-->
+
+<SCRIPT>
+// The function is invoked by the Back button in our navigation bar.
+function go_back() 
+{
+    // First, clear the URL entry field in our form.
+    document.navbar.url.value = "";
+
+    // Then use the History object of the main frame to go back.
+    parent.frames[0].history.back();
+
+    // Wait a second, and then update the URL entry field in the form
+    // from the location.href property of the main frame. The wait seems
+    // to be necessary to allow the location.href property to get in sync.
+    setTimeout("document.navbar.url.value = parent.frames[0].location.href;",
+               1000);
+}
+
+// This function is invoked by the Forward button in the navigation bar.
+// It works just like the one above.
+function go_forward()
+{
+    document.navbar.url.value = "";
+    parent.frames[0].history.forward();
+    setTimeout("document.navbar.url.value = parent.frames[0].location.href;",
+               1000);
+}
+
+// This function is invoked by the Go button in the navigation bar, and also
+// when the form is submitted (when the user hits the Return key).
+function go_to()
+{
+    // Just set the location property of the main frame to the URL
+    // that the user typed in.
+    parent.frames[0].location = document.navbar.url.value;
+}
+</SCRIPT>
+
+<!-- Here's the form, with event handlers that invoke the functions above. -->
+<FORM NAME="navbar" onSubmit="go_to(); return false">
+<INPUT TYPE="button" VALUE="Back"  onClick="go_back();">
+<INPUT TYPE="button" VALUE="Forward"  onClick="go_forward()">
+URL:
+<INPUT TYPE="text" NAME="url" SIZE=50">
+<INPUT TYPE="button" VALUE="Go" onClick="go_to()">
+</FORM>

@@ -1,0 +1,1169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+
+
+
+
+
+
+<head>
+
+
+
+
+
+
+
+<title>7.2) Thread blocking</title>
+
+
+
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META name="GENERATOR" content="IBM WebSphere Homepage Builder V4.0.0 for Linux">
+<STYLE TYPE="text/css">
+
+
+
+
+
+
+
+<!--
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+</STYLE>
+
+
+
+
+
+
+
+<link rel="stylesheet" href="tutor.css"></head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body bgcolor="#FFFFFF">
+
+<table width=95% border=0 cellpadding=2 cellspacing=0 style="page-break-before: always">
+
+  <col width=147*> <col width=109*> 
+
+  <tr> 
+
+    <td width=57% height=104> 
+
+      <p><a href= "introj2.htm" ><img src= "btnIndex.jpg"  name="Graphic1" alt="Return to Tutorial Index" align=BOTTOM width=55 height=39 border=0></a><a href= "introj2.htm" ><br>
+
+        <br>
+
+        </a><a href= "index.htm" ><img src= "btnHome.jpg"  name="Graphic2" alt="Back to the home page of this site" align=BOTTOM width=55 height=39 border=0></a> 
+
+      </p>
+
+    </td>
+
+    <td width=43%> 
+
+      <p align=RIGHT><img src= "hat.gif"  name="Graphic3" alt="morterboard" align=BOTTOM width=118 height=113 border=0></p>
+
+    </td>
+
+  </tr>
+
+  <tr> 
+
+    <td width=57% height=11> 
+
+      <h1 align=LEFT>Java2 Certification <br>
+
+        Tutorial </h1>
+
+    </td>
+
+    <td width=43% bgcolor="#ff9900"> 
+
+      <p>&nbsp;</p>
+
+    </td>
+
+  </tr>
+
+</table>
+
+<p> You can discuss this topic with others at <a href= "http://www.jchq.net/discus" >http://www.jchq.net/discus</a><br>
+
+  Read reviews and buy a Java Certification book at <a href= "http://www.jchq.net/bookreviews/jcertbooks.htm" >http://www.jchq.net/bookreviews/jcertbooks.htm</a> 
+
+  <br>
+
+</p>
+
+<hr size=5 noshade>
+
+<h1>7)Threads </h1>
+
+
+
+
+
+
+
+<h1>Objective 2<font face="Arial, Helvetica">)</font> </h1>
+
+
+
+
+
+
+
+<p><font face="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">Recognize conditions that 
+
+
+
+
+
+
+
+  might prevent a thread from executing.</font></p>
+
+
+
+
+
+
+
+<h3><i>Comment on the objective </i></h3>
+
+
+
+
+
+
+
+<p>The expression &quot;prevent a thread from executing&quot; is slightly ambiguous, 
+
+
+
+
+
+
+
+  does it mean a thread that has been deliberately paused, or does it also include 
+
+
+
+
+
+
+
+  threads that have died?. A thread that is prevented from executing is said to 
+
+
+
+
+
+
+
+  be blocked.</p>
+
+
+
+
+
+
+
+<h3>Reasons a thread may be blocked </h3>
+
+
+
+
+
+
+
+<p>A thread may be blocked because</p>
+
+
+
+
+
+
+
+<ul>
+
+
+
+
+
+
+
+  <li>
+
+
+
+
+
+
+
+    <div align="left">1) It has been put to sleep for a set amount of time </div>
+
+
+
+
+
+
+
+  <li>
+
+
+
+
+
+
+
+    <div align="left">2) It is suspended with a call to suspend() and will be 
+
+
+
+
+
+
+
+      blocked until a resume() message </div>
+
+
+
+
+
+
+
+  <li>
+
+
+
+
+
+
+
+    <div align="left">3) The thread is suspended by call to wait(), and will become 
+
+
+
+
+
+
+
+      runnable on a <i>notify</i> or <i>notifyAll</i> message. </div>
+
+
+
+
+
+
+
+</ul>
+
+
+
+
+
+
+
+<p><br>
+
+
+
+
+
+
+
+  For the purposes of the exam <i>sleep</i>(), and <i>wait/notify</i> are probably 
+
+
+
+
+
+
+
+  the most important of the situations where a thread can be blocked.&nbsp;</p>
+
+
+
+
+
+
+
+<p>The <i>sleep</i> method is static and pauses execution for a set number of 
+
+
+
+
+
+
+
+  milliseconds. There is a version that is supposed to pause for a set number 
+
+
+
+
+
+
+
+  of nanoseconds, though I find it hard to believe many people will work on a 
+
+
+
+
+
+
+
+  machine or Java implementation that will work to that level of accuracy. Here 
+
+
+
+
+
+
+
+  is an example of putting a Thread to sleep, note how the sleep method throws 
+
+
+
+
+
+
+
+  InterruptedException. The thread</p>
+
+
+
+
+
+
+
+<pre>public class TSleep extends Thread{
+public static void main(String argv[]){
+       TSleep t = new TSleep();
+       t.start();
+       }
+      public void run(){
+          try{
+             while(true){
+                  this.sleep(1000);
+                  System.out.println(&quot;looping while&quot;);
+                 }
+            }catch(InterruptedException ie){}
+       }
+}
+</pre>
+<P>With the release of the Java2 platform the
+Thread methods <I>stop</I>, <I>suspend </I>and<I> resume </I>have been deprecated (no longer recommended
+for use, and will produce a warning at compile
+time). The JDK notes have the contain the
+following notice</P>
+<p>//Quote</p>
+
+
+
+
+
+
+
+<p><i>Deprecated. This method has been deprecated, as it is inherently deadlock-prone. 
+
+
+
+
+
+
+
+  If the target thread holds a lock on the monitor protecting a critical system 
+
+
+
+
+
+
+
+  resource when it is suspended, no thread can access this resource until the 
+
+
+
+
+
+
+
+  target thread is resumed. If the thread that would resume the target thread 
+
+
+
+
+
+
+
+  attempts to lock this monitor prior to calling resume, deadlock results. Such 
+
+
+
+
+
+
+
+  deadlocks typically manifest themselves as &quot;frozen&quot; processes. For 
+
+
+
+
+
+
+
+  more information see Why are Thread.stop, Thread.suspend and Thread.resume Deprecated?.</i></p>
+
+
+
+
+
+
+
+<p>//End Quote</p>
+
+
+
+
+
+
+
+<p>A generally reliable source (Kathy Kozel) has indicated that you may need to 
+
+
+
+
+
+
+
+  be aware of this for the purpose of the exam. I will assume that you do not 
+
+
+
+
+
+
+
+  need to know how to actually use them.</p>
+
+
+
+
+
+
+
+<p>Thread blocking via the <i>wait/notify</i> protocol is covered in the next 
+
+
+
+
+
+
+
+  topic 7.3. 
+
+
+
+
+
+
+
+<hr align="CENTER" size="4" noshade>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="11%"><img src= "Quiz.gif"  width="99" height="101"></td>
+
+
+
+
+
+
+
+    <td width="89%">&nbsp;</td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<h1>Questions</h1>
+
+
+
+
+
+
+
+<h4><b>Question 1)</b></h4>
+
+
+
+
+
+
+
+<p>What will happen when you attempt to compile and run this code?</p>
+
+
+
+
+
+
+
+<pre>public class TGo implements Runnable{
+public static void main(String argv[]){
+        TGo tg = new TGo();
+        Thread t = new Thread(tg);
+        t.start();
+        }
+        public void run(){
+                while(true){
+                        Thread.currentThread().sleep(1000);
+                        System.out.println(&quot;looping while&quot;);
+                       }
+       }
+}</pre>
+
+
+
+
+
+
+
+<p>1) Compilation and no output<br>
+
+
+
+
+
+
+
+  2) Compilation and repeated output of &quot;looping while&quot;<br>
+
+
+
+
+
+
+
+  3) Compilation and single output of &quot;looping while&quot;<br>
+
+
+
+
+
+
+
+  4) Compile time error</p>
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 2)</b> </h4>
+
+
+
+
+
+
+
+<p>Which of the following are recommended ways a Thread may be blocked?</p>
+
+
+
+
+
+
+
+<p>1) sleep()<br>
+
+
+
+
+
+
+
+  2) wait/notify<br>
+
+
+
+
+
+
+
+  3) suspend<br>
+
+
+
+
+
+
+
+  4) pause</p>
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 3)</b> </h4>
+
+
+
+
+
+
+
+<p>Which of the following statements are true?</p>
+
+
+
+
+
+
+
+<p>1) The sleep method takes parameters of the Thread and the number of seconds 
+
+
+
+
+
+
+
+  it should sleep<br>
+
+
+
+
+
+
+
+  2) The sleep method takes a single parameter that indicates the number of seconds 
+
+
+
+
+
+
+
+  it should sleep<br>
+
+
+
+
+
+
+
+  3) The sleep method takes a single parameter that indicates the number of milliseconds 
+
+
+
+
+
+
+
+  it should sleep<br>
+
+
+
+
+
+
+
+  4) The sleep method is a static member of the Thread class 
+
+
+
+
+
+
+
+<h1>Answers</h1>
+
+
+
+
+
+
+
+<h4><b>Answer 1)</b></h4>
+
+
+
+
+
+
+
+<p>4) Compile time error<br>
+
+
+
+
+
+
+
+  The <i>sleep</i> method throws InterruptedException and thus this code will 
+
+
+
+
+
+
+
+  not compile until the while loop is surrounded by a <i>try/catch</i> block</p>
+
+
+
+
+
+
+
+<h4> <br>
+
+
+
+
+
+
+
+  <b>Answer 2)</b></h4>
+
+
+
+
+
+
+
+<p><b> <br>
+
+
+
+
+
+
+
+  </b>1) sleep()<br>
+
+
+
+
+
+
+
+  2) wait/notify<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  For the Java2 platform the <i>suspend</i> method has been deprecated and thus 
+
+
+
+
+
+
+
+  is valid but not recommended</p>
+
+
+
+
+
+
+
+<h4> <br>
+
+
+
+
+
+
+
+  <b>Answer 3)</b></h4>
+
+
+
+
+
+
+
+<p><b> <br>
+
+
+
+
+
+
+
+  </b>3) The <i>sleep</i> method takes a single parameter that indicates the number 
+
+
+
+
+
+
+
+  of milliseconds it should sleep<br>
+
+
+
+
+
+
+
+  4) <i>sleep</i> is a static method of the Thread class<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+</p>
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<table border="1" width="100%">
+
+
+
+
+
+
+
+  <caption><b>Other sources on this topic</b></caption>
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="100%"><b>This topic is covered in the Sun Tutorial at<br>
+
+
+
+
+
+
+
+      </b><a href= "http://java.sun.com/docs/books/tutorial/essential/threads/waitAndNotify.html" >http://java.sun.com/docs/books/tutorial/essential/threads/waitAndNotify.html</a><b> 
+
+
+
+
+
+
+
+      </b><br>
+
+
+
+
+
+
+
+      <br>
+
+
+
+
+
+
+
+      Commentry on deprecated Thread methods at<br>
+
+
+
+
+
+
+
+      <a href= "http://java.sun.com/docs/books/tutorial/post1.0/preview/threads.html" >http://java.sun.com/docs/books/tutorial/post1.0/preview/threads.html</a><br>
+
+
+
+
+
+
+
+      <br>
+
+
+
+
+
+
+
+      <b>Richard Baldwin Covers this topic at<br>
+
+
+
+
+
+
+
+      </b><a href= "http://www.geocities.com/Athens/Acropolis/3797/Java058.htm#the notify() and wait() methods" >http://www.geocities.com/Athens/Acropolis/3797/Java058.htm#the 
+
+
+
+
+
+
+
+      notify() and wait() methods</a><b><br>
+
+
+
+
+
+
+
+      <br>
+
+
+
+
+
+
+
+      Jyothi Krishnan on this topic at <br>
+
+
+
+
+
+
+
+      </b><a href= "http://www.geocities.com/SiliconValley/Network/3693/obj_sec7.html#obj23" >http://www.geocities.com/SiliconValley/Network/3693/obj_sec7.html#obj23</a></td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<p>Last updated<br>
+
+
+
+
+
+
+
+  19 Jan 2000<br>
+
+
+
+  copyright &copy; Marcus Green 1999</p>
+
+
+
+
+
+
+
+<h3>&nbsp;</h3>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>
+
+
+
+
+
+
+

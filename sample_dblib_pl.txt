@@ -1,0 +1,206 @@
+#!/usr/local/bin/perl5
+#
+# sample simple script using Sybase::DBlib;
+#
+# ------------------------------------------------------------------
+
+use Sybase::DBlib;
+  # Sybase::DBlib::SUCCEED = 1
+  # Sybase::DBlib::NO_MORE_RESULTS = 2
+use strict;
+print "Sample script\n";
+my $script_name = (split(/\//,$0))[-1];
+print "script = $script_name\n";
+
+my $debug_flag = 1;
+my %syb_oldoe = (S=>'MYSERVER',U=>'myuser',P=>'mypassword',D=>'mydb');
+my $syb_oldoe_dbh = get_dblib_handle(%syb_oldoe, T=>'MY DB');
+my ($sql,$result,$row);
+
+do_some_tests();
+
+
+myexit();
+
+####################################################################
+#######                                                      #######
+#######              end of the main part                    #######
+#######                                                      #######
+####################################################################
+
+
+# ------------------------------------------------------------------
+# myexit()
+# ------------------------------------------------------------------
+sub myexit {
+  my $message = shift || "";
+  $syb_oldoe_dbh->dbclose if defined($syb_oldoe_dbh);
+  print "\n$message\n";
+  exit(0);
+}
+
+# ------------------------------------------------------------------
+# debug()
+# ------------------------------------------------------------------
+sub debug {
+  my $message=shift;
+  my $color = shift || "";
+  print "\n$message\n" if $debug_flag;
+}
+
+
+# ------------------------------------------------------------------
+# get_dblib_handle()
+# ------------------------------------------------------------------
+sub get_dblib_handle {
+   my %args = ( @_ );    # argument pair list goes here
+   my $server = $args{S};
+   my $user   = $args{U};
+   my $pass   = $args{P};
+   my $database = $args{D};
+   my $text   = $args{T};
+   my $dbh = Sybase::DBlib->dblogin($user, $pass, $server);
+   myexit("Unable to connect to the $text database.") if not defined($dbh);
+   $dbh->dbuse($database) == Sybase::DBlib::SUCCEED  # 1- success, 0 -
+failure
+    or myexit("failed to change the database to $database");
+   return $dbh;
+}
+
+
+# ------------------------------------------------------------------
+# do_sql($dbh,$sql)
+# ------------------------------------------------------------------
+sub do_sql {
+  my ($dbh, $sql) = @_;
+  return 0 if not $sql;
+  # ------------------------------------
+  # ---- running SQL
+  # ------------------------------------
+  $dbh->dbcmd($sql); # append statement to the buffer
+  my $status = $dbh->dbsqlexec;
+  if(not $status) {
+    myexit("Unable to execute '$sql'.\nSYBASE error:
+$DBlib::SYBASE_ERROR\n")
+  }
+  my $rows = $dbh->DBCOUNT || 0;
+
+  # ------------------------------------
+  # ---- clean out other results if any
+  # ------------------------------------
+  while ($dbh->dbresults != Sybase::DBlib::NO_MORE_RESULTS) {
+    my @arr; while( @arr=$dbh->dbnextrow() ) { }
+  }
+  return $rows;
+}
+
+# ------------------------------------------------------------------
+# do_query($dbh,$sql)
+# ------------------------------------------------------------------
+sub do_query {
+  my ($dbh, $sql) = @_;
+  return 0 if not $sql;
+  $dbh->dbcmd ($sql);
+  my $status = $dbh->dbsqlexec;
+  if(not $status) {
+    myexit("Unable to execute '$sql'.\nSYBASE error:
+$DBlib::SYBASE_ERROR\n")
+  }
+  # ------------------------------------
+  # ---- get results
+  # ------------------------------------
+  my $result_ref = [];
+  if ($dbh->dbresults != Sybase::DBlib::NO_MORE_RESULTS) {
+    my %hh;
+    while( %hh=$dbh->dbnextrow(1) ) { push @$result_ref, {%hh} }
+  }
+  # ------------------------------------
+  # ---- clean out other results if any
+  # ------------------------------------
+  while ($dbh->dbresults != Sybase::DBlib::NO_MORE_RESULTS) {
+    my @arr; while( @arr=$dbh->dbnextrow() ) { }
+  }
+  return $result_ref;
+}
+
+
+# ------------------------------------------------------------------
+# do_some_tests()
+# ------------------------------------------------------------------
+sub do_some_tests {
+
+  # ----------------------------
+  debug "----- test select which returns empty";
+  # ----------------------------
+  $sql = qq{select * from OE where 1=2};
+  $result = do_query($syb_oldoe_dbh,$sql);
+  if (not @$result) {debug "SUCCESS - no results returned"}
+
+  # ----------------------------
+  debug "----- test selecting simple 1-column 1-row data several times",
+"red";
+  # ----------------------------
+  for (qw(A B X Y)) {
+    $sql = qq{select count(*) mycount from OE where oe_name like '$_%'};
+    $result = do_query($syb_oldoe_dbh,$sql);
+    for $row (@$result){
+      my $number = $row->{mycount} || 0;
+      debug "$_ => $number";
+    }
+  }
+
+  # ----------------------------
+  debug "----- test creating temp table #test";
+  # ----------------------------
+  $sql = qq{create table #test (oe_id int null, oe_name varchar(120) null)
+};
+  do_sql($syb_oldoe_dbh,$sql);
+
+  # ----------------------------
+  debug "----- test inserting data into temp table #test
+         and returning the number of rows affected";
+  # ----------------------------
+  $sql = qq{insert #test select oe_id, oe_name from oe..OE where oe_name
+like 'X%'};
+  my $n_rows = do_sql($syb_oldoe_dbh,$sql);
+  debug "n_rows = $n_rows";
+
+  # ----------------------------
+  debug "----- test selecting multiple columns/rows";
+  # ----------------------------
+  $sql = qq{select oe_id, oe_name from #test};
+  $result = do_query($syb_oldoe_dbh,$sql);
+  my $counter=0;
+  for $row (@$result){
+    $counter++;
+    my $oe_id = $row->{oe_id};
+    my $oe_name = $row->{oe_name};
+    debug "$counter -- <$oe_id> $oe_name";
+  }
+}
+
+__END__
+
+# ---------------------------------------------
+# Example how to make many inserts 50 at a time:
+# ---------------------------------------------
+  my $counter = 0;
+  my @sql_arr = ();
+  while(<DATA>) {
+    chomp;
+    s/01$//;
+    next if not /\d+/;
+    $counter++;
+    push @sql_arr, 
+      qq{insert oe..test1 (counter, account_id) values ($counter,$_)};
+  }
+
+  # ----------------------------
+  debug "----- inserting";
+  # ----------------------------
+  print "Total inserts to do - $counter\n";
+  {
+    my @pp; my @tmp = @sql_arr;
+    while (@pp = splice(@tmp,0,50)) {do_sql($syb_oldoe_dbh, join "\n",@pp)}
+  }
+

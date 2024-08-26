@@ -1,0 +1,1691 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0039)http://www.jchq.net/mockexams/exam2.htm -->
+<HTML><HEAD><TITLE>Java Programmer Certification Mock Exam No. 2</TITLE>
+<META content="text/html; charset=iso-8859-1" http-equiv=Content-Type>
+<META content="MSHTML 5.00.2920.0" name=GENERATOR><LINK 
+href="java_exam2_files/exam.css" rel=stylesheet></HEAD>
+<BODY bgColor=#ffcccc>
+<H1><B>Java Programmer Certification Mock Exam No 2</B></H1>
+<H3><B>Last Updated 15 May 2000</B></H3>
+<H3><B>60 Questions</B></H3>
+<P><BR>This is my mock Exam No 2 based on the Objectives for the Sun Java 
+Programmers Exam. It was created by Marcus Green (<A 
+href="mailto:mail@marcusgreen.co.uk">mail@marcusgreen.co.uk</A>) and may be 
+freely distributed so long as it is unmodified. Please email me if you have any 
+corrections or comments, but please read this document first <BR><A 
+href="http://www.jchq.net/homepage/getanswers.htm">http://www.jchq.net/homepage/getanswers.htm</A>. 
+, If you obtained this exam from some other source please email me to let me 
+know and check out the latest version at <A 
+href="http://www.jchq.net/">http://www.jchq.net/</A>.</P>
+<H3>Want to ask a question about this exam?</H3>
+<P>You can post a message on the discussion forum at <A 
+href="http://www.jchq.net/discus">http://www.jchq.net/discus</A> (scroll down 
+the messages to find the create new conversation button). You could also send me 
+your question but I get heaps of email and my answer is likely to be slow and 
+terse.</P>
+<H3>It really does come with answers </H3>
+<P>Yes, this is a long document (around 35 pages), if you cannot see the answers 
+then you have not got the entire document, try reloading it untill you can see 
+the answer to Question 60 and the words "End of document". If you cannot load it 
+just keep trying.The answers contain references to approximately which objective 
+the question relates to. If you have a query about any of these questions, 
+please, please include the full answer with the question.</P>
+<H3>How does this compare with the real thing?</H3>
+<P>The questions are of a similar format to the real questions, though you get a 
+few "fill in the text box" questions on the real thing. You should assume that 
+the real thing will be harder though many people have told me that they get 
+similar marks in the real thing to my exams.</P>
+<H3>Where can you find other Mock Exams?</H3>
+<P>Check out my FAQ at <A 
+href="http://www.jchq.net/faq/jcertfaq.htm">http://www.jchq.net/faq/jcertfaq.htm</A> 
+for links to other mock exams You can check out my first mock exam that contains 
+60 question at <A 
+href="http://www.jchq.net/mockexams/exam1.htm">http://www.jchq.net/mockexams/exam1.htm</A></P>
+<P>&nbsp;</P>
+<H1>Questions</H1>
+<P>
+<HR align=center noShade SIZE=5>
+
+<H3><A name="Question 1)"></A>Question 1)</H3>
+<P></P>
+<P>What will happen when you attempt to compile and run this code?</P><PRE>abstract class Base{
+        abstract public void myfunc();
+        public void another(){
+        System.out.println("Another method");
+        }
+}
+public class Abs extends Base{
+        public static void main(String argv[]){
+        Abs a = new Abs();
+        a.amethod();
+        }
+        public void myfunc(){
+                System.out.println("My func");
+                } 
+        public void amethod(){
+        myfunc();
+        
+        }
+}
+</PRE>
+<P>1) The code will compile and run, printing out the words "My Func"<BR>2) The 
+compiler will complain that the Base class has non abstract methods<BR>3) The 
+code will compile but complain at run time that the Base class has non abstract 
+methods<BR>4) The compiler will complain that the method myfunc in the base 
+class has no body, nobody at all to looove it</P>
+<P><A href="#Answer 1)">Answer to 
+Question 1</A></P>
+<P>
+<HR align=center>
+
+<H3><A name="Question 2) "></A>Question 2) </H3>
+<P><BR>What will happen when you attempt to compile and run this code? </P>
+<P></P><PRE>public class MyMain{
+public static void main(String argv){
+        System.out.println("Hello cruel world");
+        }
+}
+</PRE>
+<P>1) The compiler will complain that main is a reserved word and cannot be used 
+for a class<BR>2) The code will compile and when run will print out "Hello cruel 
+world"<BR>3) The code will compile but will complain at run time that no 
+constructor is defined<BR>4) The code will compile but will complain at run time 
+that main is not correctly defined</P>
+<P><A href="#Answer 2)">Answer to 
+Question 2</A></P>
+<P>
+<HR align=center>
+
+<H3><A name="Question 3) "></A>Question 3)</H3>
+<P></P>
+<P>Which of the following are Java modifiers?<BR><BR>1) public<BR>2) 
+private<BR>3) friendly<BR>4) transient<BR>5) vagrant</P>
+<P><A href="#Answer 3)">Answer to 
+Question 3</A><BR>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 4) "></A>Question 4)</H3>
+<P>What will happen when you attempt to compile and run this code?</P><PRE>class Base{
+        abstract public void myfunc();
+        public void another(){
+        System.out.println("Another method");
+        }
+}
+public class Abs extends Base{
+        public static void main(String argv[]){
+        Abs a = new Abs();
+        a.amethod();
+        }
+        public void myfunc(){
+                System.out.println("My func");
+                } 
+        public void amethod(){
+        myfunc();
+        
+        }
+}</PRE>
+<P>1) The code will compile and run, printing out the words "My Func"<BR>2) The 
+compiler will complain that the Base class is not declared as abstract.<BR>3) 
+The code will compile but complain at run time that the Base class has non 
+abstract methods<BR>4) The compiler will complain that the method myfunc in the 
+base class has no body, nobody at all to looove it</P>
+<P><A href="#Answer 4)">Answer to 
+Question 4</A></P>
+<P><BR>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 5) "></A>Question 5)</H3>
+<P>Why might you define a method as native?</P>
+<P>1) To get to access hardware that Java does not know about<BR>2) To define a 
+new data type such as an unsigned integer<BR>3) To write optimised code for 
+performance in a language such as C/C++<BR>4) To overcome the limitation of the 
+private scope of a method</P>
+<P><A href="#Answer 5)">Answer to 
+Question 5</A></P>
+<P><BR>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 6) "></A>Question 6)</H3>
+<P>What will happen when you attempt to compile and run this code?</P>
+<P><PRE>class Base{
+public final void amethod(){
+        System.out.println("amethod");
+        }
+}
+public class Fin extends Base{
+public static void main(String argv[]){
+        Base b = new Base();
+        b.amethod();
+        }
+}
+</PRE>
+<P>1) Compile time error indicating that a class with any final methods must be 
+declared final itself<BR>2) Compile time error indicating that you cannot 
+inherit from a class with final methods<BR>3) Run time error indicating that 
+Base is not defined as final<BR>4) Success in compilation and output of 
+"amethod" at run time.</P>
+<P><A href="#Answer 6)">Answer to 
+Question 6</A><BR>
+<HR align=center>
+
+<H3>Question 7)</H3>
+<P></P>
+<P>What will happen when you attempt to compile and run this code?</P><PRE>public class Mod{
+public static void main(String argv[]){
+    }
+        public static native void amethod();
+}
+</PRE>
+<P>1) Error at compilation: native method cannot be static<BR>2) Error at 
+compilation native method must return value<BR>3) Compilation but error at run 
+time unless you have made code containing native amethod available<BR>4) 
+Compilation and execution without error</P>
+<P><A href="#Answer 7)">Answer to 
+Question 7</A></P>
+<P><BR>
+<HR align=center>
+
+<H3>Question 8)</H3>
+<P></P>
+<P>What will happen when you attempt to compile and run this code?</P><PRE>private class Base{}
+public class Vis{
+	transient int  iVal;
+	public static void main(String elephant[]){
+        }
+}
+</PRE>
+<P>1)Compile time error: Base cannot be private<BR>2)Compile time error 
+indicating that an integer cannot be transient<BR>3)Compile time error transient 
+not a data type<BR>4)Compile time error malformed main method</P>
+<P><A href="#Answer 8)">Answer to 
+Question 8</A></P>
+<P><BR>
+<HR align=center>
+
+<H3>Question 9)</H3>
+<P>What happens when you attempt to compile and run these two files in the same 
+directory?</P>
+<P></P><PRE>//File P1.java</PRE><PRE>package MyPackage;
+class P1{
+void afancymethod(){
+        System.out.println("What a fancy method");
+        }
+}</PRE>
+<P><PRE>//File P2.java</PRE><PRE>public class P2 extends P1{
+afancymethod();
+}
+</PRE>
+<P>1) Both compile and P2 outputs "What a fancy method" when run<BR>2) Neither 
+will compile<BR>3) Both compile but P2 has an error at run time<BR>4) P1 
+compiles cleanly but P2 has an error at compile time</P>
+<P><A href="#Answer 9)">Answer to 
+Question 9</A><BR>
+<HR align=center>
+
+<H3>Question 10)</H3>
+<P>You want to find out the value of the last element of an array. You write the 
+following code. What will happen when you compile and run it.?</P><PRE>public class MyAr{
+public static void main(String argv[]){
+        int[] i = new int[5];
+        System.out.println(i[5]);
+        }
+}</PRE>
+<P>1) An error at compile time<BR>2) An error at run time<BR>3) The value 0 will 
+be output<BR>4) The string "null" will be output</P>
+<P><A href="#Answer 10)">Answer to 
+Question 10</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3>Question 11) </H3>
+<P>You want to loop through an array and stop when you come to the last element. 
+Being a good java programmer and forgetting everything you ever knew about C/C++ 
+you know that arrays contain information about their size. Which of the 
+following can you 
+use?<BR><BR>1)myarray.length();<BR>2)myarray.length;<BR>3)myarray.size<BR>4)myarray.size();</P>
+<P><A href="#Answer 11)">Answer to 
+Question 11</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 12)"></A>Question 12)</H3>
+<P>What best describes the appearance of an application with the following 
+code?</P><PRE>import java.awt.*;
+
+public class FlowAp extends Frame{
+
+public static void main(String argv[]){
+    FlowAp fa=new FlowAp();
+    fa.setSize(400,300);
+    fa.setVisible(true);
+}
+FlowAp(){
+        add(new Button("One"));
+        add(new Button("Two"));
+        add(new Button("Three"));
+        add(new Button("Four"));
+    }//End of constructor
+
+}//End of Application</PRE>
+<P>1) A Frame with buttons marked One to Four placed on each edge.<BR>2) A Frame 
+with buutons marked One to four running from the top to bottom<BR>3) A Frame 
+with one large button marked Four in the Centre<BR>4) An Error at run time 
+indicating you have not set a LayoutManager</P>
+<P><A href="#Answer 12)">Answer to 
+Question 12</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 13)"></A>Question 13)</H3>
+<P>How do you indicate where a component will be positioned using 
+Flowlayout?</P>
+<P>1) North, South,East,West<BR>2) Assign a row/column grid reference<BR>3) Pass 
+a X/Y percentage parameter to the add method<BR>4) Do nothing, the FlowLayout 
+will position the component</P>
+<P><A href="#Answer 13)">Answer to 
+Question 13)</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3><BR><A name="Question 14)"></A>Question 14)</H3>
+<P>How do you change the current layout manager for a container</P>
+<P>1) Use the setLayout method<BR>2) Once created you cannot change the current 
+layout manager of a component<BR>3) Use the setLayoutManager method<BR>4) Use 
+the updateLayout method</P>
+<P><A href="#Answer 14)">Answer to 
+Question 14)</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 15)"></A>Question 15)</H3>
+<P>Which of the following are fields of the GridBagConstraints class?</P>
+<P>1) ipadx<BR>2) fill<BR>3) insets<BR>4) width</P>
+<P><A href="#Answer 15)">Answer to 
+Question 15)</A></P>
+<P>
+<HR align=center>
+
+<H3><A name="Question 16)"></A>Question 16)</H3>
+<P></P>
+<P>What most closely matches the appearance when this code runs?</P><PRE>import java.awt.*;
+
+public class CompLay extends Frame{
+public static void main(String argv[]){
+    CompLay cl = new CompLay();
+    }
+
+CompLay(){
+    Panel p = new Panel();
+    p.setBackground(Color.pink);
+    p.add(new Button("One"));
+    p.add(new Button("Two"));
+    p.add(new Button("Three"));
+    add("South",p);
+    setLayout(new FlowLayout());
+    setSize(300,300);
+    setVisible(true);
+    }
+}
+</PRE>
+<P>1) The buttons will run from left to right along the bottom of the 
+Frame<BR>2) The buttons will run from left to right along the top of the 
+frame<BR>3) The buttons will not be displayed<BR>4) Only button three will show 
+occupying all of the frame</P>
+<P><A href="#Answer 16)">Answer to 
+Question 16)</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 17)"></A>Question 17)</H3>
+<P>Which statements are correct about the <I>anchor</I> field?</P>
+<P>1) It is a field of the GridBagLayout manager for controlling component 
+placement<BR>2) It is a field of the GridBagConstraints class for controlling 
+component placement<BR>3) A valid setting for the anchor field is 
+GridBagConstraints.NORTH<BR>4) The anchor field controls the height of 
+components added to a container</P>
+<P><A href="#Answer 17)">Answer to 
+Question 17)</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 18)"></A>Question 18)</H3>
+<P>What will happen when you attempt to compile and run the following code?</P><PRE>public class Bground extends Thread{
+
+public static void main(String argv[]){
+	        Bground b = new Bground();
+        	b.run();
+        }
+        public void start(){
+        	for (int i = 0; i &lt;10; i++){
+                	System.out.println("Value of i = " + i);
+                }
+        }
+
+}
+</PRE>
+<P>1) A compile time error indicating that no run method is defined for the 
+Thread class<BR>2) A run time error indicating that no run method is defined for 
+the Thread class<BR>3) Clean compile and at run time the values 0 to 9 are 
+printed out<BR>4) Clean compile but no output at runtime</P>
+<P><A href="#Answer 18)">Answer to 
+Question 18)</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 19)"></A>Question 19)</H3>
+<P>10)When using the GridBagLayout manager, each new component requires a new 
+instance of the GridBagConstraints class. Is this statement</P>
+<P>1) true<BR>2) false</P>
+<P><A href="#Answer 19)">Answer to 
+Question 19)</A></P>
+<P>
+<HR align=center>
+
+<H3><A name="Question 20)"></A>Question 20)</H3>
+<P></P>
+<P>Which most closely matches a description of a Java Map?</P>
+<P>1) A vector of arrays for a 2D geographic representation<BR>2) A class for 
+containing unique array elements<BR>3) A class for containing unique vector 
+elements<BR>4) An interface that ensures that implementing classes cannot 
+contain duplicate keys </P>
+<P><A href="#Answer 20)">Answer to 
+Question 20)</A></P>
+<P>
+<HR align=center>
+
+<H3></H3>
+<H3><A name="Question 21)"></A>Question 21)</H3>
+<P>How does the set collection deal with duplicate elements?</P>
+<P>1) An exception is thrown if you attempt to add an element with a duplicate 
+value<BR>2) The <I>add</I> method returns false if you attempt to add an element 
+with a duplicate value<BR>3) A set may contain elements that return duplicate 
+values from a call to the equals method<BR>4) Duplicate values will cause an 
+error at compile time</P>
+<P><A href="#Answer 21)">Answer to 
+Question 21)</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 22)"></A>Question 22)</H3>
+<P>What can cause a thread to stop executing?</P>
+<P>1) The program exits via a call to System.exit(0);<BR>2) Another thread is 
+given a higher priority<BR>3) A call to the thread's stop method.<BR>4) A call 
+to the halt method of the Thread class</P>
+<P><BR><A href="#Answer 22)">Answer to 
+Question 22)</A><BR>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 23)"></A>Question 23)</H3>
+<P>For a class defined inside a method, what rule governs access to the 
+variables of the enclosing method?</P>
+<P>1) The class can access any variable<BR>2) The class can only access static 
+variables<BR>3) The class can only access transient variables<BR>4) The class 
+can only access final variables</P>
+<P><A href="#Answer 23)">Answer to 
+Question 23)</A><BR>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 24)"></A>Question 24)</H3>
+<P><BR>Under what circumstances might you use the yield method of the Thread 
+class</P>
+<P>1) To call from the currently running thread to allow another thread of the 
+same or higher priority to run<BR>2) To call on a waiting thread to allow it to 
+run<BR>3) To allow a thread of higher priority to run<BR>4) To call from the 
+currently running thread with a parameter designating which thread should be 
+allowed to run</P>
+<P><A href="#Answer 24)">Answer to 
+Question 24)</A><BR>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 25)"></A>Question 25)</H3>
+<P>What will happen when you attempt to compile and run the following code</P><PRE>public class Hope{
+public static void main(String argv[]){
+ Hope h = new Hope();
+ }
+protected Hope(){
+ for(int i =0; i &lt;10; i ++){
+  System.out.println(i);
+  }
+ }
+}
+</PRE>
+<P>1) Compilation error: Constructors cannot be declared protected<BR>2) Run 
+time error: Constructors cannot be declared protected<BR>3) Compilation and 
+running with output 0 to 10<BR>4) Compilation and running with output 0 to 9</P>
+<P><A href="#Answer 25)">Answer to 
+Question 25)</A><BR>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 26)"></A>Question 26)</H3>
+<P>What will happen when you attempt to compile and run the following code</P><PRE>public class MySwitch{
+
+public static void main(String argv[]){
+    MySwitch ms= new MySwitch();
+    ms.amethod();
+    }
+
+public void amethod(){
+
+    int k=10; 
+        switch(k){ 
+        default: //Put the default at the bottom, not here
+            System.out.println("This is the default output"); 
+            break; 
+         case 10: 
+            System.out.println("ten");
+         case 20: 
+            System.out.println("twenty"); 
+        break; 
+       }
+    }
+}</PRE>
+<P>1) None of these options<BR>2) Compile time error target of switch must be an 
+integral type<BR>3) Compile and run with output "This is the default 
+output"<BR>4) Compile and run with output of the single line "ten"</P>
+<P><A href="#Answer 26)">Answer to 
+Question 26)</A></P>
+<P>
+<HR align=center>
+
+<H3><A name="Question 27)"></A>Question 27)</H3>
+<P></P>
+<P>Which of the following is the correct syntax for suggesting that the JVM 
+performs garbage collection</P>
+<P>1) System.free();<BR>2) System.setGarbageCollection();<BR>3) 
+System.out.gc();<BR>4) System.gc();</P>
+<P><A href="#Answer 27)">Answer to 
+Question 27)</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 28)"></A>Question 28)</H3>
+<P><BR>What will happen when you attempt to compile and run the following 
+code</P><PRE>public class As{
+int i = 10;
+int j;
+char z= 1;
+boolean b;
+public static void main(String argv[]){
+                As a = new As();
+                a.amethod();
+        }
+        public void amethod(){
+        System.out.println(j);
+        System.out.println(b);                
+        }
+}
+</PRE>
+<P>1) Compilation succeeds and at run time an output of 0 and false<BR>2) 
+Compilation succeeds and at run time an output of 0 and true<BR>3) Compile time 
+error b is not initialised<BR>4) Compile time error z must be assigned a char 
+value</P>
+<P><A href="#Answer 28)">Answer to 
+Question 28)</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 29)"></A>Question 29)</H3>
+<P><BR>What will happen when you attempt to compile and run the following code 
+with the command line "hello there"</P><PRE>public class Arg{
+String[] MyArg;
+        public static void main(String argv[]){
+        MyArg=argv;
+        }
+        public void amethod(){
+                System.out.println(argv[1]);
+        }
+}
+</PRE>
+<P>1) Compile time error<BR>2) Compilation and output of "hello"<BR>3) 
+Compilation and output of "there"<BR>4) None of the above</P>
+<P><A href="#Answer 29)">Answer to 
+Question 29)</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 30)"></A>Question 30)</H3>
+<P>What will happen when you attempt to compile and run the following code</P>
+<P><PRE>public class StrEq{
+
+public static void main(String argv[]){
+        StrEq s = new StrEq();
+        }
+        private StrEq(){
+                String s = "Marcus";
+                String s2 = new String("Marcus");
+                if(s == s2){
+                        System.out.println("we have a match");
+                        }else{
+                        System.out.println("Not equal");
+                }
+       }
+}</PRE>
+<P>1) Compile time error caused by private constructor<BR>2) Output of "we have 
+a match"<BR>3) Output of "Not equal"<BR>4) Compile time error by attempting to 
+compare strings using ==</P>
+<P><A href="#Answer 30)">Answer to 
+Question 30)</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 31)"></A>Question 31)</H3>
+<P>1) What will happen when you attempt to compile and run the following 
+code</P><PRE>import java.io.*;
+
+class Base{
+public static void amethod()throws FileNotFoundException{}
+}
+
+public class ExcepDemo extends Base{
+public static void main(String argv[]){
+       ExcepDemo e = new ExcepDemo();
+}
+public static void amethod(){}
+
+protected ExcepDemo(){
+ try{
+  DataInputStream din = new DataInputStream(System.in);
+  System.out.println("Pausing");
+  din.readChar();
+  System.out.println("Continuing");
+  this.amethod();
+  }catch(IOException ioe) {}
+}
+
+}
+</PRE>
+<P>1)Compile time error caused by protected constructor<BR>2) Compile time error 
+caused by <I>amethod</I> not declaring Exception<BR>3) Runtime error caused by 
+amethod not declaring Exception<BR>4) Compile and run with output of "Pausing" 
+and "Continuing" after a key is hit<BR><BR><A 
+href="#Answer 31)">Answer to Question 
+31)</A></P>
+<P>
+<HR align=center>
+
+<H3><A name="Question 32)"></A>Question 32)</H3>
+<P></P>
+<P><BR>What will happen when you attempt to compile and run this program</P><PRE>public class Outer{
+public String name = "Outer";
+public static void main(String argv[]){
+        Inner i = new Inner();
+        i.showName();
+    }//End of main
+
+        private class Inner{
+        String name =new String("Inner");
+                void showName(){
+                        System.out.println(name);
+                }
+        }//End of Inner class
+
+}
+</PRE>
+<P>1) Compile and run with output of "Outer"<BR>2) Compile and run with output 
+of "Inner"<BR>3) Compile time error because Inner is declared as private<BR>4) 
+Compile time error because of the line creating the instance of Inner</P>
+<P><A href="#Answer 32)">Answer to 
+Question to 32</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 33)"></A>Question 33)</H3>
+<P>What will happen when you attempt to compile and run this code</P><PRE>//Demonstration of event handling
+import java.awt.event.*;
+import java.awt.*;
+
+public class MyWc extends Frame implements WindowListener{
+public static void main(String argv[]){
+        MyWc mwc = new MyWc();
+        }
+        public void windowClosing(WindowEvent we){
+                System.exit(0);
+                }//End of windowClosing
+
+      public void  MyWc(){
+        setSize(300,300);
+        setVisible(true);
+        }
+}//End of class
+</PRE>
+<P>1) Error at compile time<BR>2) Visible Frame created that that can be 
+closed<BR>3) Compilation but no output at run time<BR>4) Error at compile time 
+because of comment before <I>import</I> statements</P>
+<P><A href="#Answer 33)">Answer to 
+Question 33)</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 34)"></A>Question 34)</H3>
+<P>Which option most fully describes will happen when you attempt to compile and 
+run the following code</P><PRE>public class MyAr{
+public static void main(String argv[]) {
+        MyAr m = new MyAr();
+        m.amethod();
+        }
+        public void amethod(){
+        static int i;
+        System.out.println(i);
+        }
+}</PRE>
+<P>1) Compilation and output of the value 0<BR>2) Compile time error because i 
+has not been initialized<BR>3) Compilation and output of null<BR>4) Compile time 
+error</P>
+<P><A href="#Answer 34)">Answer to 
+Question 34)</A><BR>
+<HR align=center>
+
+<H3><A name="Question 35)"></A>Question 35)</H3>
+<P></P>
+<P>Which of the following will compile correctly</P>
+<P>1) short myshort = 99S;<BR>2) String name = 'Excellent tutorial Mr 
+Green';<BR>3) char c = 17c;<BR>4)int z = 015;</P>
+<P><A name="Answer to Question 35)"></A><A 
+href="#Answer 35)">Answer to Question 
+35)</A></P>
+<P>
+<HR align=center>
+
+<H3><A name="Question 36)"></A>Question 36)</H3>
+<P></P>
+<P>Which of the following are Java key 
+words<BR>1)double<BR>2)Switch<BR>3)then<BR>4)instanceof</P>
+<P><A href="#Answer 36)">Answer to 
+Question 36)</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 37"></A>Question 37)</H3>
+<P><A href="#Answer 36)"><BR></A>What 
+will be output by the following line?</P><PRE>System.out.println(Math.floor(-2.1));</PRE>
+<P>1) -2<BR>2) 2.0<BR>3) -3<BR>4) -3.0</P>
+<P><A href="#Answer 37)">Answer to 
+Question 37)</A></P>
+<P>
+<HR align=center>
+
+<H3><A name="Question 38)"></A>Question 38)</H3>
+<P></P>
+<P>Given the following main method in a class called Cycle and a command line 
+of</P><PRE>java Cycle one two</PRE>
+<P>what will be output?</P><PRE>public static void main(String bicycle[]){
+	System.out.println(bicycle[0]);
+}</PRE>
+<P>1) None of these options<BR>2) cycle<BR>3) one<BR>4) two</P>
+<P><A href="#Answer 38)">Answer to 
+Question 38)</A></P>
+<P>
+<HR align=center>
+
+<H3><A name="Question 39)"></A>Question 39)</H3>
+<P></P>
+<P>Which of the following statements are true?</P>
+<P>1) At the root of the collection hierarchy is a class called Collection<BR>2) 
+The collection interface contains a method called enumerator<BR>3) The interator 
+method returns an instance of the Vector class<BR>4) The set interface is 
+designed for unique elements</P>
+<P><A href="#Answer 39)">Answer to 
+Question 39)</A></P>
+<P>
+<HR align=center>
+
+<H3>Question 40)</H3>
+<P></P>
+<P>Which of the following statements are correct?</P>
+<P>1) If multiple listeners are added to a component only events for the last 
+listener added will be processed<BR>2) If multiple listeners are added to a 
+component the events will be processed for all but with no guarantee in the 
+order<BR>3) Adding multiple listeners to a comnponent will cause a compile time 
+error<BR>4) You may remove as well add listeners to a component.</P>
+<P><A href="#Answer 40)">Answer to 
+Question 40)</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 41)"></A>Question 41)</H3>
+<P>Given the following code</P><PRE>class Base{}
+
+public class MyCast extends Base{
+static boolean b1=false;
+static int i = -1;
+static double d = 10.1;
+
+public static void main(String argv[]){
+        MyCast m = new MyCast();
+        Base b = new Base();
+	//Here
+        }
+}
+</PRE>
+<P>Which of the following, if inserted at the comment //Here will allow the code 
+to compile and run without error<BR><BR>1) b=m;<BR>2) m=b;<BR>3) d =i;<BR>4) b1 
+=i;</P>
+<P><A href="#Answer 41)">Answer to 
+Question 41)</A></P>
+<P>
+<HR align=center>
+
+<H3><A name="Question 42)"></A>Question 42)</H3>
+<P></P>
+<P>Which of the following statements about threading are true</P>
+<P>1) You can only obtain a mutually exclusive lock on methods in a class that 
+extends Thread or implements runnable<BR>2) You can obtain a mutually exclusive 
+lock on any object<BR>3) A thread can obtain a mutually exclusive lock on a 
+method declared with the keyword synchronized<BR>4) Thread scheduling algorithms 
+are platform dependent</P>
+<P><A href="#Answer 42)">Answer to 
+Question 42)</A></P>
+<P>
+<HR align=center>
+
+<H3><A name="Question 43)"></A>Question 43)</H3>
+<P></P>
+<P>Your chief Software designer has shown you a sketch of the new Computer parts 
+system she is about to create. At the top of the hierarchy is a Class called 
+Computer and under this are two child classes. One is called LinuxPC and one is 
+called WindowsPC.</P>
+<P>The main difference between the two is that one runs the Linux operating 
+System and the other runs the Windows System (of course another difference is 
+that one needs constant re-booting and the other runs reliably). Under the 
+WindowsPC are two Sub classes one called Server and one Called Workstation. How 
+might you appraise your designers work?</P>
+<P><BR>1) Give the goahead for further design using the current scheme<BR>2) Ask 
+for a re-design of the hierarchy with changing the Operating System to a field 
+rather than Class type<BR>3) Ask for the option of WindowsPC to be removed as it 
+will soon be obsolete<BR>4) Change the hierarchy to remove the need for the 
+superfluous Computer Class.</P>
+<P><BR><A href="#Answer 43)">Answer to 
+Question 43)</A></P>
+<P>
+<HR align=center>
+
+<H3><A name="Question 44)"></A>Question 44)</H3>
+<P></P>
+<P>Which of the following statements are true</P>
+<P>1) An inner class may be defined as static<BR>2) There are NO circumstances 
+where an inner class may be defined as private<BR>3) An anonymous class may have 
+only one constructor<BR>4) An inner class may extend another class</P>
+<P><A href="#Answer 44)">Answer to 
+Question 44)</A></P>
+<P>
+<HR align=center>
+
+<H3><A name="Question 45)"></A>Question 45)</H3>
+<P></P>
+<P>What will happen when you attempt to compile and run the following code</P><PRE>int Output=10;
+boolean b1 = false;
+if((b1==true) &amp;&amp; ((Output+=10)==20)){
+    System.out.println("We are equal "+Output);
+    }else
+    {
+    System.out.println("Not equal! "+Output);
+}</PRE><PRE></PRE>
+<P>1) Compile error, attempting to peform binary comparison on logical data 
+type<BR>2) Compilation and output of "We are equal 10"<BR>3) Compilation and 
+output of "Not equal! 20"<BR>4) Compilation and output of "Not equal! 10"</P>
+<P><A href="#Answer 46)">Answer to 
+Question 45)</A></P>
+<P>
+<HR align=center>
+
+<H3><A name="Question 46)"></A>Question 46)</H3>
+<P></P>
+<P>Given the following variables which of the following lines will compile 
+without error?</P><PRE>String s = "Hello";
+long l = 99;
+double d = 1.11;
+int i = 1;
+int j = 0;</PRE><PRE>1) j= i &lt;&lt;s;
+2) j= i&lt;&lt;j;
+3) j=i&lt;&lt;d;
+4)j=i&lt;&lt;l;</PRE>
+<P><A name="Answer to Question 46)"></A><A 
+href="#Answer 46)">Answer to Question 
+46)</A></P>
+<P>
+<HR align=center>
+
+<H3><A name="Question 47)"></A>Question 47)</H3>
+<P></P>
+<P>What will be output by the following line of code?</P>
+<P>System.out.println(010|4);</P>
+<P>1) 14<BR>2) 0<BR>3) 6<BR>4) 12</P>
+<P><A name="Answer to Question 47)"></A><A 
+href="#Answer 47)">Answer to Question 
+47)</A></P>
+<P>
+<HR align=center>
+
+<H3><A name="Question 48)"></A>Question 48)</H3>
+<P></P>
+<P>Given the following variables</P><PRE>char c = 'c';
+int i = 10;
+double d = 10;
+long l = 1;
+String s = "Hello";</PRE>
+<P>Which of the following will compile without error?</P>
+<P>1)c=c+i; <BR>2)s+=i; <BR>3)i+=s; <BR>4)c+=s;</P>
+<P><A name="Answer to Question 48)"></A><A 
+href="#Answer 48)">Answer to Question 
+48)</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 49)"></A>Question 49)</H3>
+<P>Which of the following will compile without error?</P>
+<P>1) File f = new File("/","autoexec.bat");<BR>2) DataInputStream d = new 
+DataInputStream(System.in);<BR>3) OutputStreamWriter o = new 
+OutputStreamWriter(System.out);<BR>4) RandomAccessFile r = new 
+RandomAccessFile("OutFile");</P>
+<P><A href="#Answer 49)">Answer to 
+Question 49)</A></P>
+<P>
+<HR align=center>
+
+<H3><A name="Question 50)"></A>Question 50)</H3>
+<P></P>
+<P>Given the folowing classes which of the following will compile without 
+error?</P><PRE>interface IFace{}
+class CFace implements IFace{}
+class Base{}
+
+public class ObRef extends Base{
+public static void main(String argv[]){
+        ObRef ob = new ObRef();
+        Base b = new Base();
+        Object o1 = new Object();
+        IFace o2 = new CFace();
+        }
+}
+</PRE><PRE>1)o1=o2;
+2)b=ob;
+3)ob=b;
+4)o1=b;</PRE>
+<P><A href="#Answer 50)">Answer to 
+Question 50)</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 51)"></A>Question 51)</H3>
+<P>Given the following code what will be the output?</P><PRE>class ValHold{
+        public int i = 10;
+}
+public class ObParm{
+public static void main(String argv[]){
+        ObParm o = new ObParm();
+        o.amethod();
+        }
+        public void amethod(){
+                int i = 99;
+                ValHold v = new ValHold();
+                v.i=30;
+                another(v,i);
+                System.out.println(v.i);
+
+        }//End of amethod
+
+        public void another(ValHold v, int i){
+                i=0;
+                v.i = 20;
+                ValHold vh = new ValHold();
+                v =  vh;
+                System.out.println(v.i+ " "+i);
+        }//End of another
+}</PRE>
+<P>1) 10,0, 30<BR>2) 20,0,30<BR>3) 20,99,30<BR>4) 10,0,20</P><PRE></PRE>
+<P><A href="#Answer 51)">Answer to 
+Question 51)</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 52)"></A>Question 52)</H3>
+<P>Given the following class definition, which of the following methods could be 
+legally placed after the comment</P><PRE>//Here </PRE><PRE>public class Rid{
+        public void amethod(int i, String s){}
+	//Here
+}</PRE><PRE></PRE>
+<P>1)public void amethod(String s, int i){}<BR>2)public int amethod(int i, 
+String s){} <BR>3)public void amethod(int i, String mystring){} <BR>4) public 
+void Amethod(int i, String s) {}</P>
+<P><A href="#Answer 52)">Answer to 
+Question 52)</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 53)"></A>Question 53)</H3>
+<P>Given the following class definition which of the following can be legally 
+placed after the comment line<BR>//Here ?</P><PRE>class Base{
+public Base(int i){}
+}
+
+public class MyOver extends Base{
+public static void main(String arg[]){
+                MyOver m = new MyOver(10);
+                }
+        MyOver(int i){
+                super(i);
+        }
+        MyOver(String s, int i){
+                this(i);
+				 //Here
+               
+        }
+}</PRE>
+<P>1)MyOver m = new MyOver();<BR>2)super(); <BR>3)this("Hello",10);<BR>4)Base b 
+= new Base(10);</P>
+<P><A href="#Answer 53)">Answer to 
+Question 53)</A></P>
+<P>
+<HR align=center>
+
+<H3>Question 54)</H3>
+<P></P>
+<P>Given the following class definition, which of the following statements would 
+be legal after the comment //Here</P><PRE>class InOut{
+String s= new String("Between");
+
+
+        public void amethod(final int iArgs){
+        int iam;
+               class Bicycle{
+                        public void sayHello(){
+						//Here
+                        }//End of bicycle class
+                }
+        }//End of amethod
+       public void another(){
+       int iOther;
+       }
+}</PRE>
+<P>1)System.out.println(s); <BR>2) System.out.println(iOther);<BR>3) 
+System.out.println(iam);<BR>4) System.out.println(iArgs);</P>
+<P><BR><A href="#Answer 54)">Answer to 
+Question 54)</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 55)"></A>Question 55)</H3>
+<P>Which of the following are methods of the Thread class?</P>
+<P>1) yield()<BR>2) sleep(long msec)<BR>3) go()<BR>4) stop()</P>
+<P><A href="#Answer 55)">Answer to 
+Question 55)</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 56)"></A>Question 56)</H3>
+<P>Which of the following methods are members of the Vector class and allow you 
+to input a new element</P>
+<P>1) addElement<BR>2) insert<BR>3) append<BR>4) addItem</P>
+<P><A href="#Answer 56)">Answer to 
+Question 56)</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3>Question 57)</H3>
+<P>Which of the following statements are true?</P>
+<P>1) Adding more classes via import statements will cause a performance 
+overhead, only import classes you actually use.<BR>2) Under no circumstances can 
+a class be defined with the <I>private</I> modifier<BR>3) A inner class may 
+under some circumstances be defined with the <I>protected</I> modifier<BR>4) An 
+interface cannot be instantiated</P>
+<P><A href="#Answer 57)">Answer 
+57)</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3>Question 58)</H3>
+<P>Which of the following are correct event handling methods</P>
+<P><BR>1) mousePressed(MouseEvent e){}<BR>2) MousePressed(MouseClick e){}<BR>3) 
+functionKey(KeyPress k){}<BR>4) componentAdded(ContainerEvent e){}</P>
+<P><A href="#Answer 58)">Answer 
+58)</A></P>
+<P>
+<HR align=center>
+
+<H3><BR>Question 59)</H3>
+<P></P>
+<P>Which of the following are methods of the Collection interface?<BR>1) 
+iterator<BR>2) isEmpty<BR>3) toArray<BR>4) setText</P>
+<P><A href="#Answer 59)">Answer 
+59)</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H3><A name="Question 60)"></A>Question 60)</H3>
+<P>Which of the following best describes the use of the synhronized keyword?</P>
+<P>1) Allows two process to run in paralell but to communicate with each 
+other<BR>2) Ensures only one thread at a time may access a method or 
+object<BR>3) Ensures that two or more processes will start and end at the same 
+time<BR>4) Ensures that two or more Threads will start and end at the same 
+time</P>
+<P><A href="#Answer 60)">Answer 
+60)</A></P>
+<P>
+<HR align=center>
+
+<P></P>
+<H1>Answers</H1>
+<P>
+<HR align=center noShade SIZE=5>
+
+<P></P>
+<P><A name="Answer 1)"></A>Answer 1)</P>
+<P>Objective 1.2)</P>
+<P>1) The code will compile and run, printing out the words "My Func"</P>
+<P>A class that contains an abstract method must be declared abstract itself, 
+but may contain non abstract methods.</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 2)"></A>Answer 2)</P>
+<P>Objective 4.1)</P>
+<P>4) The code will compile but will complain at run time that main is not 
+correctly defined</P>
+<P>In this example the parameter is a string not a string array as needed for 
+the correct main method</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 3)"></A>Answer 3)</P>
+<P>Objective 4.3)</P>
+<P>1) public<BR>2) private<BR>4) transient</P>
+<P>The keyword transient is easy to forget as is not frequently used. Although a 
+method may be considered to be friendly like in C++ it is not a Java 
+keyword.</P>
+<P>
+<HR align=center>
+
+<P><A name="Answer 4)"></A>Answer 4)</P>
+<P></P>
+<P>Objective 1.2)</P>
+<P>2) The compiler will complain that the Base class is not declared as 
+abstract.</P>
+<P>If a class contains abstract methods it must itself be declared as 
+abstract</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 5)"></A>Answer 5)</P>
+<P>Objective 1.2)</P>
+<P>1) To get to access hardware that Java does not know about<BR>3) To write 
+optimised code for performance in a language such as C/C++</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 6)"></A>Answer 6)</P>
+<P>Objective 1.2)</P>
+<P>4) Success in compilation and output of "amethod" at run time.</P>
+<P>A final method cannot be ovverriden in a sub class, but apart from that it 
+does not cause any other restrictions.</P>
+<P>
+<HR align=center>
+
+<P><A name="Answer 7)"></A>Answer 7)</P>
+<P></P>
+<P>Objective 1.2)</P>
+<P>4) Compilation and execution without error</P>
+<P>It would cause a run time error if you had a call to amethod though.</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 8)"></A>Answer 8)</P>
+<P>Objective 1.2)</P>
+<P>1)Compile time error: Base cannot be private</P>
+<P>A top leve (non nested) class cannot be private.</P>
+<P>
+<HR align=center>
+
+<P><A name="Answer 9)"></A>Answer 9)</P>
+<P></P>
+<P>Objective 1.2)</P>
+<P>4) P1 compiles cleanly but P2 has an error at compile time</P>
+<P>The package statement in P1.java is the equivalent of placing the file in a 
+different directory to the file P2.java and thus when the compiler tries to 
+compile P2 an error occurs indicating that superclass P1 cannot be found.</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 10)"></A>Answer 10)</P>
+<P>Objective 1.1)</P>
+<P>2) An error at run time</P>
+<P>This code will compile, but at run-time you will get an ArrayIndexOutOfBounds 
+exception. This becuase counting in Java starts from 0 and so the 5th element of 
+this array would be i[4].</P>
+<P>Remember that arrays will always be initialized to default values wherever 
+they are created.</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 11)"></A>Answer 11)</P>
+<P>Objective 1.1)</P>
+<P>2)myarray.length;</P>
+<P>The String class has a length() method to return the number of characters. I 
+have sometimes become confused between the two.</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 12)"></A>Answer 12)</P>
+<P>Objective 8.2)</P>
+<P>3) A Frame with one large button marked Four in the Centre</P>
+<P>The default layout manager for a Frame is the BorderLayout manager. This 
+Layout manager defaults to placing components in the centre if no constraint is 
+passed with the call to the add method.</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 13)"></A>Answer 13)</P>
+<P>Objective 8.2)</P>
+<P>4) Do nothing, the FlowLayout will position the component</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 14)"></A>Answer 14)</P>
+<P>Objective 8.2)</P>
+<P>1) Use the setLayout method</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 15)"></A>Answer 15)</P>
+<P>Objective 8.2)</P>
+<P>1) ipadx<BR>2) fill<BR>3) insets</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 16)"></A>Answer 16)</P>
+<P>Objective 8.2)</P>
+<P>2) The buttons will run from left to right along the top of the 
+frame<BR><BR>The call to the setLayout(new FlowLayout()) resets the Layout 
+manager for the entire frame and so the buttons end up at the top rather than 
+the bottom.</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 17)"></A>Answer 17)</P>
+<P>Objective 8.2)</P>
+<P>2) It is a field of the GridBagConstraints class for controlling component 
+placement<BR>3) A valid settting for the anchor field is 
+GridBagconstraints.NORTH</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 18)"></A>Answer 18)</P>
+<P>Objective 7.1)</P>
+<P>4) Clean compile but no output at runtime</P>
+<P><BR>This is a bit of a sneaky one as I have swapped around the names of the 
+methods you need to define and call when running a thread. If the for loop were 
+defined in a method called</P><PRE>public void run() </PRE><PRE>and the call in the main method had been to b.start()</PRE>
+<P>The list of values from 0 to 9 would have been output. <BR>
+<HR align=center>
+
+<P><A name="Answer 19)"></A>Answer 19) </P>
+<P></P>
+<P>Objective 8.2)</P>
+<P>2) false<BR><BR>You can re-use the same instance of the GridBagConstraints 
+when added successive components.</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 20)"></A>Answer 20)</P>
+<P>Objective 10.1)</P>
+<P>4) An interface that ensures that implementing classes cannot contain 
+duplicates</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 21)"></A>Answer 21)</P>
+<P>Objective 10.1)</P>
+<P>2) The <I>add</I> method returns false if you attempt to add an element with 
+a duplicate value</P>
+<P>I find it a surprise that you do not get an exception.<BR>
+<HR align=center>
+
+<P><A name="Answer 22)"></A>Answer 22) </P>
+<P></P>
+<P>Objective 7.1)</P>
+<P>1) The program exits via a call to exit(0);<BR>2) The priority of another 
+thread is increased<BR>3) A call to the stop method of the Thread class</P>
+<P><BR>Java threads are somewhat platform dependent and you should be carefull 
+when making assumptions about Thread priorities. On some platforms you may find 
+that a Thread with higher priorities gets to "hog" the processor. You can read 
+up on this in more detail at <A 
+href="http://java.sun.com/docs/books/tutorial/essential/threads/priority.html">http://java.sun.com/docs/books/tutorial/essential/threads/priority.html</A></P>
+<P>
+<HR align=center>
+
+<P><A name="Answer 23)"></A>Answer 23)</P>
+<P></P>
+<P>Objective 4.1)</P>
+<P>4) The class can only access final variables <BR>
+<HR align=center>
+
+<P><A name="Answer 24)"></A>Answer 24)</P>
+<P></P>
+<P>Objective 7.1)</P>
+<P><BR>1) To call from the currently running thread to allow another thread of 
+the same or higher priority to run 
+<P>Option 3 looks plausible but there is no guarantee that the thread that grabs 
+the cpu time will be of a higher priority. It will depend on the threading 
+algorithm of the Java Virtual Machine and the underlying operating system 
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 25)"></A>Answer 25)</P>
+<P>Objective 6.2)</P>
+<P><BR>4) Compilation and running with output 0 to 9</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 26)"></A>Answer 26)</P>
+<P>Objective 2.1)</P>
+<P>1) None of these options<BR><BR>Because of the lack of a break statement 
+after the break 10; statement the actual output will be <BR><BR>"ten" followed 
+by "twenty"<BR>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 27)"></A>Answer 27)</P>
+<P>Objective 3.1)</P>
+<P>4) System.gc();</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 28)"></A>Answer 28)</P>
+<P>Objective 4.4)</P>
+<P>1) Compilation succeeds and at run time an output of 0 and false<BR>The 
+default value for a boolean declared at class level is false, and integer is 
+0;</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 29)"></A>Answer 29)</P>
+<P>Objective 1.2)</P>
+<P>1) Compile time error</P>
+<P>You will get an error saying something like "Cant make a static reference to 
+a non static variable". Note that the main method is static.</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 30)"></A>Answer 30)</P>
+<P>Objective 5.2)</P>
+<P>3) Output of "Not equal"</P>
+<P>Despite the actual character strings matching, using the == operator will 
+simply compare memory location. Because the one string was created with the new 
+operator it will be in a different location in memory to the other string.</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 31)"></A>Answer 31)</P>
+<P>Objective 2.3)</P>
+<P>4) Compile and run with output of "Pausing" and "Continuing" after a key is 
+hit</P>
+<P>An overriden method in a sub class must not throw Exceptions not thrown in 
+the base class. In the case of the method amethod it throws no exceptions and 
+will thus compile without complain. There is no reason that a constructor cannot 
+be protected.</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 32)"></A>Answer 32)</P>
+<P>Objective 6.3)</P>
+<P>4) Compile time error because of the line creating the instance of Inner</P>
+<P><BR>This looks like a question about inner classes but it is also a reference 
+to the fact that the main method is static and thus you cannot directly access a 
+non static method. The line causing the error could be fixed by changing it to 
+say</P><PRE>        Inner i = new Outer().new Inner();</PRE>
+<P>Then the code would compile and run producing the output "Inner"</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 33)"></A>Answer 33)</P>
+<P>Objective 4.6)</P>
+<P>1) Error at compile time</P>
+<P>If you implement an interface you must create bodies for all methods in that 
+interface. This code will produce an error saying that MyWc must be declared 
+abstract because it does not define all of the methods in WindowListener. Option 
+4 is nonsense as comments can appear anywhere. Option 3 suggesting that it might 
+compile but not produce output is ment to mislead on the basis that what looks 
+like a constructor is actually an ordinary method as it has a return type.</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 34)"></A>Answer 34)</P>
+<P>Objective 1.2)</P>
+<P>4) Compile time error</P>
+<P>An error will be caused by attempting to define an integer as static within a 
+method. The lifetime of a field within a method is the duration of the running 
+of the method. A static field exists once only for the class. An approach like 
+this does work with Visual Basic.</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 35)"></A>Answer 35)</P>
+<P>Objective 9.5)</P>
+<P>4)int z = 015;</P>
+<P>The letters c and s do not exist as literal indicators and a String must be 
+enclosed with double quotes, not single as in this case.</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 36)"></A>Answer 36)</P>
+<P>Objective 4.3)</P>
+<P>1)double<BR>4)instanceof<BR><BR>Note the upper case S on switch means it is 
+not a keyword and the word then is part of Visual Basic but not Java. Also, 
+<I>instanceof</I> looks like a method but is actually a keyword,</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 37)"></A>Answer 37)</P>
+<P>Objective 9.2)</P>
+<P>4) -3.0<BR>
+<HR align=center>
+
+<P><A name="Answer 38)"></A>Answer 38)</P>
+<P></P>
+<P>Objective 4.2)</P>
+<P>3) one</P>
+<P>Command line parameters start from 0 and fromt he first parameter after the 
+name of the compile (normally Java)</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 39)"></A>Answer 39)</P>
+<P>Objective 10.1)</P>
+<P>4) The set is designed for unique elements.</P>
+<P>Collection is an interface, not a class. The Collection interface includes a 
+method called iterator. This returns an instance of the Iterator class which has 
+some similarities with Enumerators.<BR>The name set should give away the purpose 
+of the Set interface as it is analogous to the Set concept in relational 
+databases which implies uniquness.</P>
+<P>
+<HR align=center>
+
+<P><A name="Answer 40)"></A>Answer 40)</P>
+<P></P>
+<P>Objective 8.1)</P>
+<P>2) If multiple listeners are added to a component the events will be 
+processed for all but with no guarantee in the order<BR>4) You may remove as 
+well add listeners to a component.</P>
+<P>It ought to be fairly intuitive that a component ought to be able to have 
+multiple listeners. A<FONT size=2>fter all, a text field might want to respond 
+to both the mouse and keyboard<BR></FONT>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 41)"></A>Answer 41)</P>
+<P>Objective 5.1)</P>
+<P>1) b=m;<BR>3) d =i;</P>
+<P>You can assign up the inheritance tree from a child to a parent but not the 
+other way without an explicit casting. A boolean can only ever be assigned a 
+boolean value.</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 42)"></A>Answer 42)</P>
+<P>Objective 7.3)</P>
+<P>2) You can obtain a mutually exclusive lock on any object<BR>3) A thread can 
+obtain a mutually exclusive lock on a method declared with the keyword 
+synchronized<BR>4) Thread scheduling algorithms are platform dependent</P>
+<P>Yes that says dependent and not independent.</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 43)"></A>Answer 43)</P>
+<P>Objective 6.1)</P>
+<P>2) Ask for a re-design of the hierarchy with changing the Operating System to 
+a field rather than Class type</P>
+<P>This question is about the requirement to understand the difference between 
+the "is-a" and the "has-a" relationship. Where a class is inherited you have to 
+ask if it represents the "is-a" relationship. As the difference between the root 
+and the two children are the operating system you need to ask are Linux and 
+Windows types of computers.The answer is no, they are both types of Operating 
+Systems. So option two represents the best of the options. You might consider 
+having operating system as an interface instead but that is another story.</P>
+<P>Of course there are as many ways to design an object hierarchy as ways to 
+pronounce Bjarne Strousjoup, but this is the sort of answer that Sun will 
+proabably be looking for in the exam. Questions have been asked in discussion 
+forums if this type of question really comes up in the exam. I think this is 
+because some other mock exams do not contain any questions like this. I assure 
+you that this type of question can come up in the exam. These types of question 
+are testing your understanding of the difference between the is-a and has-a 
+relationship in class design.</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 44)"></A>Answer 44)</P>
+<P>Objective 4.1)</P>
+<P>1) An inner class may be defined as static<BR>4) An inner class may extend 
+another class</P>
+<P>A static inner class is also sometimes known as a top level nested class. 
+There is some debate if such a class should be called an inner class. I tend to 
+think it should be on the basis that it is created inside the opening braces of 
+another class. How could an anonymous class have a constructor?. Remember a 
+constructor is a method with no return type and the same name as the class. 
+Inner classes may be defined as private</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 45)"></A>Answer 45)</P>
+<P>Objective 5.3)</P>
+<P>4) Compilation and output of "Not equal! 10"</P>
+<P>The output will be "Not equal 10".&nbsp; This illustrates that the Output 
++=10 calculation was never performed because processing stopped after the first 
+operand was evaluated to be false. If you change the value of b1 to true 
+processing occurs as you would expect and the output is "We are equal 20";.</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 46)"></A>Answer 46)</P>
+<P>Objective 5.1)</P><PRE>2)j= i&lt;&lt;j;<B>
+</B>4)j=i&lt;&lt;l;</PRE>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 47)"></A>Answer 47)</P>
+<P>Objective 5.3)</P>
+<P>4) 12</P>
+<P>As well as the binary OR objective this questions requires you to understand 
+the octal notaction which means that the leading letter zero (not the letter O)) 
+means that the first 1 indicates the number contains one eight and nothing else. 
+Thus this calculation in decimal mean</P><PRE>8|4</PRE>
+<P>To convert this to binary means</P><PRE>1000
+0100
+••
+1100
+••</PRE>
+<P>Which is 12 in decimal</P>
+<P>The | bitwise operator means that for each position where there is a 1, 
+results in a 1 in the same position in the answer.</P>
+<P>
+<HR align=center>
+
+<P></P><PRE></PRE>
+<P><A name="Answer 48)"></A>Answer 48)</P>
+<P>Objective 5.1)</P>
+<P>2)s+=i;</P>
+<P>Only a String acts as if the + operator were overloaded</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 49)"></A>Answer 49)</P>
+<P>Objective 10.1)</P>
+<P>Although the objectives do not specifically mention the need to understand 
+the I/O Classes, feedback from people who have taken the exam indicate that you 
+will get questions on this topic. As you will probably need to know this in the 
+real world of Java programming, get familiar with the basics. I have assigned 
+these questions to Objective 10.1 as that is a fairly vague objective.</P>
+<P>1) File f = new File("/","autoexec.bat");<BR>2) DataInputStream d = new 
+DataInputStream(System.in);<BR>3) OutputStreamWriter o = new 
+OutputStreamWriter(System.out);</P>
+<P>Option 4, with the RandomAccess file will not compile because the constructor 
+must also be passed a mode parameter which must be either "r" or "rw"</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 50)"></A>Answer 50)</P>
+<P>Objective 5.1)</P><PRE>1)o1=o2;
+2)b=ob;
+4)o1=b; </PRE>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 51)"></A>Answer 51)</P>
+<P>Objective 5.4)</P>
+<P>4) 10,0,20</P>
+<P>In the call</P>
+<P>another(v,i);</P>
+<P>A reference to v is passed and thus any changes will be intact after this 
+call.</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 52)"></A>Answer 52)</P>
+<P>Objective 6.2)</P>
+<P>1) public void amethod(String s, int i){}<B><BR></B>4) public void 
+Amethod(int i, String s) {}</P>
+<P>Overloaded methods are differentiated only on the number, type and order of 
+parameters, not on the return type of the method or the names of the 
+parameters.</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 53)"></A>Answer 53)</P>
+<P>Objective 6.2)</P>
+<P><BR>4)Base b = new Base(10);</P>
+<P>Any call to this or super must be the first line in a constructor. As the 
+method already has a call to this, no more can be inserted.</P>
+<P><BR>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 54)"></A>Answer 54)</P>
+<P>Objective 4.1)</P>
+<P>1)System.out.println(s); <BR>4) System.out.println(iArgs);</P>
+<P>A class within a method can only see final variables of the enclosing method. 
+However it the normal visibility rules apply for variables outside the enclosing 
+method.</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 55)"></A>Answer 55)</P>
+<P>Objective 7.2)</P>
+<P>1) yield()<BR>2) sleep<BR>4) stop()</P>
+<P>Note, the methods stop and suspend have been deprecated with the Java2 
+release, and you may get questions on the exam that expect you to know this. 
+Check out the Java2 Docs for an explanation<BR>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 56)"></A>Answer 56)</P>
+<P>Objective 10.1)</P>
+<P>1) addElement</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 57)"></A>Answer 57)</P>
+<P>Objective 4.1)</P>
+<P>The import statement allows you to use a class directly instead of fully 
+qualifying it with the full package name, adding more classess with the import 
+statement does not cause a runtime performance overhad. I assure you this is 
+true. An inner class can be defined with the private modifier.</P>
+<P>3) An inner class can be defined with the protected modifier<BR>4) An 
+interface cannot be instantiated</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 58)"></A>Answer 58)</P>
+<P>Objective 4.6)</P>
+<P>1) mousePressed(MouseEvent e){}<BR>4) componentAdded(ContainerEvent e){}</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 59)"></A>Answer 59)</P>
+<P>Objective 10.1)</P>
+<P>1) iterator<BR>2) isEmpty<BR>3) toArray</P>
+<P>
+<HR align=center>
+
+<P></P>
+<P><A name="Answer 60)"></A>Answer 60)</P>
+<P>Objective 7.3)</P>
+<P>2) 2) Ensures only one thread at a time may access a method or object</P>
+<P>
+<HR align=center>
+
+<P>&nbsp;</P>
+<P>End of document<BR>Marcus Green copyright 2000</P></BODY></HTML>

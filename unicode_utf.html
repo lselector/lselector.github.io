@@ -1,0 +1,527 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>uicode_utf</title>
+<!--
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+
+-->
+<LINK REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Unicode, UTF</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Unicode</font></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 >
+<tr>
+<td ALIGN=LEFT VALIGN=TOP ROWSPAN="2"><img SRC="images/unicode_logo.gif" height=72 width=72></td>
+
+<td><b><font color="#CC0000">On this page:</font></b></td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP NOWRAP><font color="#6699CC">•
+</font><b><font color="#000099"><a href="#unicode">Unicode</a></font></b>
+<br><font color="#6699CC">• <b><a href="#utf">UTF-8, UTF-16</a></b></font>
+<br><font color="#6699CC">• <b><a href="#editing">Editing Unicode Files</a></b></font>
+<br><font color="#6699CC">• <b><a href="#perl_unicode_support">Perl Unicode
+Support</a></b></font></td>
+</tr>
+</table>
+<a NAME="unicode"></a>
+<br>
+&nbsp; 
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Unicode</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>The <b><u>Unicode</u></b> is a 16-bit character encoding standard (~65,000
+characters). It also has an extension mechanism called <b><u>UTF-16</u></b>
+that allows for encoding additional ~1,000,000 characters. Currently there
+are only ~8,000 unused code points for future expansion in the basic 16-bit
+encoding (plus ~900,000 extra in UTF-16). Also there are ~6,400 code points
+reserved for private use (and ~130,000 extra through UTF-16).
+<p>The Unicode Standard defines codes for characters used in <b><u>all
+major languages</u></b> (including the European alphabetic scripts, Middle
+Eastern right-to-left scripts, and scripts of Asia).
+<p>Unicode support is built into major operating systems (Windows 2000,
+Sun Solaris 7, Linux), programming languages (Java, Perl), data and presentation
+formats (HTML-4, XML), servers (web servers, databases, application servers,
+etc.).
+<p><font color="#6699CC">• </font><a href="http://www.unicode.org/">www.unicode.org/</a>
+- main site
+<br><font color="#6699CC">• </font><a href="http://www.unicode.org/Public/UNIDATA/NamesList.txt">www.unicode.org/Public/UNIDATA/NamesList.txt</a>
+- a 490 KB text file with all the 16-bit unicode code points
+<br><font color="#6699CC">• </font><a href="http://www.unicode.org/charts/">www.unicode.org/charts/</a>
+- Code Charts
+<p><font color="#6699CC">•</font><font color="#000000"><a href="http://www.hclrss.demon.co.uk/unicode/">www.hclrss.demon.co.uk/unicode</a>
+- Alan Wood's Unicode Resources (HTML, Fonts, Browsers, MS Office, etc.)</font>
+<br><font color="#6699CC">• </font><a href="http://www.cl.cam.ac.uk/~mgk25/unicode.html">www.cl.cam.ac.uk/~mgk25/unicode.html</a>
+- UTF-8 and Unicode FAQ for Unix/Linux by Markus Kuhn
+<p><font color="#6699CC">• <a href="http://www.w3.org/TR/unicode-xml/">www.w3.org/TR/unicode-xml</a></font>
+- Unicode in XML and other Markup Languages (W3C Draft)
+<br><font color="#6699CC">• <a href="http://www.sun.com/software/white-papers/wp-unicode/">www.sun.com/software/white-papers/wp-unicode</a></font>
+- Unicode Support in the Solaris(tm) 7 OS
+<br><font color="#6699CC">• <a href="http://www.microsoft.com/globaldev/articles/unicode.asp">www.microsoft.com/globaldev/articles/unicode.asp</a></font>
+- Microsoft about Unicode
+<br><a NAME="utf"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>UTF-8, UTF-16</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u><font color="#000000">Coded Representations of Unicode:</font></u></b>
+<br><font color="#000000"><b><u>UCS</u></b> (Universal Multiple-Octet Coded
+Character Set) format - multibyte format.</font>
+<p><font color="#000000"><b><u>UCS-2</u></b> (also known as Basic Multilingual
+Plane (BMP)) - characters encoded in
+<b><u>two bytes</u></b>.</font>
+<br><font color="#000000"><b><u>UCS-4</u></b> - Characters encoded in <b><u>four
+bytes</u></b>.</font>
+<br><font color="#000000"><b><u>UTF-16</u></b> - UCS Transformation Format
+16-bit form (extended variant of UCS-2 with characters encoded in 2-4 bytes).</font>
+<br><font color="#000000"><b><u>UTF-8</u></b> - UCS Transformation Format
+8-bit form - A transformation format using characters encoded in <b><u>1-6
+bytes</u></b>. Preserves ASC compatibility (for asc codes 0..127).</font>
+<p><font color="#6699CC">• </font><b><a href="http://www.cl.cam.ac.uk/~mgk25/unicode.html">www.cl.cam.ac.uk/~mgk25/unicode.html</a></b>
+- a very good UTF-8 and Unicode <b><u>FAQ</u></b> for Unix/Linux by Markus
+Kuhn
+<br><font color="#6699CC">• </font><a href="http://czyborra.com/utf/">czyborra.com/utf/</a>
+- Unicode Transformation Formats: UTF-8 &amp; Co.
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 WIDTH="100%" BGCOLOR="#CCFFFF" >
+<tr>
+<td><b><u><font color="#CC0000">UTF-8:</font></u></b>
+<br><font color="#6699CC">• </font>UCS characters U+0000 to U+007F (ASCII)
+are encoded simply as bytes 0x00 to 0x7F (<b><u>ASCII compatibility</u></b>).
+This means that files and strings which contain only 7-bit ASCII characters
+have the same encoding under both ASCII and UTF-8.
+<br><font color="#6699CC">• </font>All UCS characters >U+007F are encoded
+as a sequence of several bytes, each of which has the most significant
+bit set. Therefore, no ASCII byte (0x00-0x7F) can appear as part of any
+other character.&nbsp;
+<br><font color="#6699CC">• </font>The first byte of a multibyte sequence
+that represents a non-ASCII character is always in the range 0xC0 to 0xFD
+and it indicates how many bytes follow for this character. All further
+bytes in a multibyte sequence are in the range 0x80 to 0xBF. This allows
+easy resynchronization and makes the encoding stateless and robust against
+missing bytes.&nbsp;
+<br><font color="#6699CC">• </font>All possible 231 UCS codes can be encoded.&nbsp;
+<br><font color="#6699CC">• </font>UTF-8 encoded characters may theoretically
+be <b><u>up to six bytes long</u></b>, however 16-bit BMP characters are
+only <b><u>up to three bytes long</u></b>.&nbsp;
+<br><font color="#6699CC">• </font>The sorting order of Bigendian UCS-4
+byte strings is preserved.&nbsp;
+<br><font color="#6699CC">• </font>The bytes 0xFE and 0xFF are never used
+in the UTF-8 encoding.&nbsp;
+<p>The following byte sequences are used to represent a character. The
+sequence to be used depends on the Unicode number of the character:&nbsp;
+<p>U-00000000 - U-0000007F:&nbsp; 0xxxxxxx&nbsp;
+<br>U-00000080 - U-000007FF:&nbsp; 110xxxxx 10xxxxxx&nbsp;
+<br>U-00000800 - U-0000FFFF:&nbsp; 1110xxxx 10xxxxxx 10xxxxxx&nbsp;
+<br>U-00010000 - U-001FFFFF:&nbsp; 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx&nbsp;
+<br>U-00200000 - U-03FFFFFF:&nbsp; 111110xx 10xxxxxx 10xxxxxx 10xxxxxx
+10xxxxxx&nbsp;
+<br>U-04000000 - U-7FFFFFFF:&nbsp; 1111110x
+10xxxxxx 10xxxxxx 10xxxxxx
+10xxxxxx 10xxxxxx&nbsp;
+<p>The xxx bit positions are filled with the bits of the character code
+number in binary representation. The rightmost x bit is the least-significant
+bit. Only the shortest possible multibyte sequence which can represent
+the code number of the character can be used. Note that in multibyte sequences,
+the number of leading 1 bits in the first byte is identical to the number
+of bytes in the entire sequence.&nbsp;</td>
+</tr>
+</table>
+<a NAME="editing"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Editing Coded Documents</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u><font color="#CC0000">Unicode text files on Windows:</font></u></b>
+<br>&nbsp; First couple bytes tell editor that this is a unicode file -
+and it is the same for Sun (Java) and Microsoft.
+<br>&nbsp; For example, you can save text from Java using unicode stream
+- and then view/edit this file by MS Word, Notpad, or MS Internet Explorer.
+<br>&nbsp; If you editing a file in MS Word - you can save it as unicode
+(select File - Save As - uncoded text - unicode).
+<p><b><u><font color="#CC0000">Edit UTF-8 HTML on Windows:</font></u></b>
+<br><font color="#6699CC">• </font>Microsoft's FrontPage 2000
+<br><font color="#6699CC">• <a href="http://www.namo.com/products/index.html">www.namo.com/products</a></font>
+- Namo WebEditor 4
+<br><font color="#6699CC">• </font>Word 2000 - can save in HTML format,
+but you need HTML Filter 2.0 from the Office Update Web site to remove
+the Office-specific markup tags.
+<p>Microsoft's Internet Explorer 5 can convert HTML documents into UTF-8
+character encoding. Simply display the file, make sure that the encoding
+and the display are correct, and then you can copy text into MS Word (or
+Save As from File menu).
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 COLS=1 WIDTH="100%" BGCOLOR="#CCFFFF" >
+<tr>
+<td><b><u><font color="#CC0000">The character encoding of an HTML document:</font></u></b>
+<br>&lt;meta http-equiv="content-type" content="text-html; charset=<b>utf-8</b>">
+- allows "document character set for HTM"
+<br>&nbsp;&nbsp; (set for HMLL-4 is equivalent to unicode set)
+<br>&lt;meta http-equiv="content-type" content="text/html; charset=<b>iso-8859-1</b>">
+- Western European (Windows)
+<br>&lt;meta http-equiv="content-type" content="text/html; charset=<b>windows-1251</b>">
+- Cyrillic (Windows)</td>
+</tr>
+</table>
+
+<p><font color="#6699CC">• <a href="http://www.hclrss.demon.co.uk/unicode/htmlunicode.html#encodings">www.hclrss.demon.co.uk/unicode/htmlunicode.html#encodings</a></font>
+- Read more about encodings
+<p>Example: how to write unicode into a text file in Java:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 COLS=1 WIDTH="100%" BGCOLOR="#CCFFFF" >
+<tr>
+<td>/**
+<br>&nbsp;* string_out.java - example how to output a string into a unicode
+text file
+<br>&nbsp;*
+<br>&nbsp;*/
+<p>import java.io.*;&nbsp;
+<p>public class string_out {&nbsp;
+<p>&nbsp; public static void main(String [] args) {&nbsp;
+<br>&nbsp;&nbsp;&nbsp; try {&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String str = "\u0438text";&nbsp; //
+first character is Russian letter 'i'
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// low bytes go first, in txt file it will be 3804
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OutputStreamWriter out = new OutputStreamWriter(new
+FileOutputStream("test.txt"),"Unicode");&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; out.write(str);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; out.close();&nbsp;
+<br>&nbsp;&nbsp;&nbsp; }
+<br>&nbsp;&nbsp;&nbsp; catch (IOException e) {System.err.println("Error:
+" + e);}&nbsp;
+<p>&nbsp; }
+<p>}</td>
+</tr>
+</table>
+<a NAME="perl_unicode_support"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Perl unicode support</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u><font color="#CC0000">Perl unicode support (Perl 5.6.0)</font></u></b>
+<p><font color="#6699CC">• </font><a href="http://rf.net/~james/perli18n.html">http://rf.net/~james/perli18n.html</a>
+- James Briggs' Perl, Unicode and i18N FAQ
+<br><font color="#6699CC">• </font><a href="http://www.cl.cam.ac.uk/~mgk25/unicode.html">www.cl.cam.ac.uk/~mgk25/unicode.html</a>
+- UTF-8 and Unicode FAQ for Unix/Linux by Markus Kuhn
+<br><font color="#6699CC">• </font><a href="http://theoryx5.uwinnipeg.ca/CPAN/perl/bytes.html">/CPAN/perl/bytes.html</a>
+- bytes - Perl pragma to force byte semantics rather than character semantics.&nbsp;
+Perl normally assumes character semantics in the presence of character
+data (i.e. data that has come from a source that has been marked as being
+of a particular character encoding).
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>use bytes;
+<br>no bytes;</td>
+</tr>
+</table>
+
+<p><font color="#6699CC">• <a href="http://theoryx5.uwinnipeg.ca/CPAN/perl/unicode.html">/</a></font><a href="http://theoryx5.uwinnipeg.ca/CPAN/perl/unicode.html">CPAN/perl/pod/perlunicode.html</a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>The following areas need further work.&nbsp;
+<br><b><i><u><font color="#3333FF">Input and Output Disciplines</font></u></i></b>
+<br><i><font color="#3333FF">There is currently no easy way to mark data
+read from a file or other external source as being utf8. This will be one
+of the major areas of focus in the near future.&nbsp;</font></i>
+<p><b><i><u><font color="#3333FF">Regular Expressions</font></u></i></b>
+<br><i><font color="#3333FF">The existing regular expression compiler does
+not produce polymorphic opcodes. This means that the determination on whether
+to match Unicode characters is made when the pattern is compiled, based
+on whether the pattern contains Unicode characters, and not when the matching
+happens at run time. This needs to be changed to adaptively match Unicode
+if the string to be matched is Unicode.&nbsp;</font></i>
+<p><b><i><u><font color="#3333FF">use utf8 still needed to enable a few
+features</font></u></i></b>
+<br><i><font color="#3333FF">The utf8 pragma implements the tables used
+for Unicode support. These tables are automatically loaded on demand, so
+the utf8 pragma need not normally be used.&nbsp;</font></i>
+<br><i><font color="#3333FF">However, as a compatibility measure, this
+pragma must be explicitly used to enable recognition of UTF-8 encoded literals
+and identifiers in the source text.&nbsp;</font></i>
+<p><b><u>Byte and Character semantics</u></b>
+<br>Beginning with version 5.6, Perl uses <b><u>logically wide characters</u></b>
+to represent strings internally.
+<b><u>This internal representation of
+strings uses the UTF-8 encoding.</u></b>
+<p>In future, Perl-level operations can be expected to work with characters
+rather than bytes, in general.&nbsp;
+<p>However, as strictly an interim compatibility measure, Perl v5.6 aims
+to provide a safe migration path from byte semantics to character semantics
+for programs. <u>For operations where Perl can unambiguously decide that
+the input data is characters, Perl now switches to character semantics.</u>
+For operations where this determination cannot be made without additional
+information from the user, Perl decides in favor of compatibility, and
+<u>chooses to use byte semantics</u>.&nbsp;
+<p>This behavior preserves compatibility with earlier versions of Perl,
+which allowed byte semantics in Perl operations, but only as long as none
+of the program's inputs are marked <u>as being as source of Unicode character
+data</u>. Such data may come <u>from filehandles</u>, from calls to external
+programs, from information provided by the system (such as %ENV), or from
+literals and constants in the source text.&nbsp;
+<p>If <b><u>the -C command line switch</u></b> is used, (or the ${^WIDE_SYSTEM_CALLS}
+global flag is set to 1), all system calls will use the corresponding wide
+character APIs. This is currently only implemented on Windows.&nbsp;
+<p>Regardless of the above, the <b><u>bytes pragma</u></b> can always be
+used to force byte semantics in a particular lexical scope. See bytes.&nbsp;
+<p>The <b><u>utf8 pragma</u></b> is primarily a compatibility device that
+enables recognition of UTF-8 in literals encountered by the parser. It
+may also be used for enabling some of the more experimental Unicode support
+features. Note that this pragma is only required until a future version
+of Perl in which character semantics will become the default. This pragma
+may then become a no-op. See utf8.&nbsp;
+<p>Unless mentioned otherwise, Perl operators will use character semantics
+when they are dealing with Unicode data, and byte semantics otherwise.
+Thus, character semantics for these operations apply transparently; if
+the input data came from a Unicode source (for example, by adding a character
+encoding discipline to the filehandle whence it came, or a literal UTF-8
+string constant in the program), character semantics apply; otherwise,
+byte semantics are in effect. To force byte semantics on Unicode data,
+the bytes pragma should be used.&nbsp;
+<p>Under character semantics, many operations that formerly operated on
+bytes change to operating on characters. For ASCII data this makes no difference,
+because UTF-8 stores ASCII in single bytes, but for any character greater
+than chr(127), the character may be stored in a sequence of two or more
+bytes, all of which have the high bit set. But by and large, the user need
+not worry about this, because Perl hides it from the user. <b><u>A character
+in Perl is logically just a number ranging from 0 to 2**32 or so.</u></b>
+Larger characters encode to longer sequences of bytes internally, but again,
+this is just an internal detail which is hidden at the Perl level.&nbsp;
+<p><b><u>Effects of character semantics</u></b>
+<br>Character semantics have the following effects:&nbsp;
+<p>Strings and patterns may contain characters that have an ordinal value
+larger than 255.&nbsp;
+<p>Presuming you use a Unicode editor to edit your program, such characters
+will typically occur directly within the literal strings as UTF-8 characters,
+but you can also specify a particular character with an extension of the<b><u>
+\x notation</u></b>. UTF-8 characters are specified by putting the hexadecimal
+code within curlies after the \x. For instance, a Unicode smiley face is
+<b><u>\x{263A}</u></b>. A character in the Latin-1 range (128..255) should
+be written \x{ab} rather than \xab, since the former will turn into a two-byte
+UTF-8 code, while the latter will continue to be interpreted as generating
+a 8-bit byte rather than a character. In fact, if the use warnings pragma
+of the -w switch is turned on, it will produce a warning that you might
+be generating invalid UTF-8.&nbsp;
+<p><b><u>Identifiers within the Perl script may contain Unicode alphanumeric
+characters</u></b>, including <b><u>ideographs</u></b>. (You are currently
+on your own when it comes to using the canonical forms of characters--Perl
+doesn't (yet) attempt to canonicalize variable names for you.)&nbsp;
+<p><b><u>Regular expressions match characters instead of bytes</u></b>.
+For instance, "." matches a character instead of a byte. (However, the
+\C pattern is provided to force a match a single byte ("char" in C, hence
+\C).)&nbsp;
+<p>Character classes in regular expressions match characters instead of
+bytes, and match against the character properties specified in the Unicode
+properties database. So \w can be used to match an ideograph, for instance.&nbsp;
+<p>Named Unicode properties and block ranges make be used as character
+classes via the new <b><u>\p{}</u></b> (matches property) and <b><u>\P{}</u></b>
+(doesn't match property) constructs. For instance, <b><u>\p{Lu}</u></b>
+matches any character with the Unicode uppercase property, while \p{M}
+matches any mark character. Single letter properties may omit the brackets,
+so that can be written \pM also. Many predefined character classes are
+available, such as \p{IsMirrored} and \p{InTibetan}.
+<p>The special pattern <b><u>\X</u></b> match matches any extended Unicode
+sequence (a "combining character sequence" in Standardese), where the first
+character is a base character and subsequent characters are mark characters
+that apply to the base character. It is equivalent to (?:\PM\pM*).&nbsp;
+<p>The <b><u>tr///</u></b> operator translates characters instead of bytes.
+It can also be forced to translate between 8-bit codes and UTF-8. For instance,
+if you know your input in Latin-1, you can say:&nbsp;
+<p>&nbsp;&nbsp;&nbsp; while (&lt;>) {
+<br>&nbsp;tr/\0-\xff//CU;&nbsp; # latin1 char to utf8
+<br>&nbsp;...
+<br>&nbsp;&nbsp;&nbsp; }
+<p>Similarly you could translate your output with&nbsp;
+<p>&nbsp;&nbsp;&nbsp; tr/\0-\x{ff}//UC;&nbsp; # utf8 to latin1 char
+<p><u>No, s/// doesn't take /U or /C (yet?).&nbsp;</u>
+<p>Case translation operators use the Unicode case translation tables when
+provided character input. Note that uc() translates to uppercase, while
+ucfirst translates to titlecase (for languages that make the distinction).
+Naturally the corresponding backslash sequences have the same semantics.&nbsp;
+<p>Most operators that deal with positions or lengths in the string will
+automatically switch to <b>using character positions</b>, including <b><u>chop(),
+substr(), pos(), index(), rindex(), sprintf(), write(), and length()</u></b>.
+Operators that specifically <b>don't switch</b> include <b><u>vec(), pack(),
+and unpack()</u></b>. Operators that really don't care include chomp(),
+as well as any other operator that treats a string as a bucket of bits,
+such as sort(), and the operators dealing with filenames.&nbsp;
+<p>The pack()/unpack() letters "c" and "C" do not change, since they're
+often used for byte-oriented formats. (Again, think "char" in the C language.)
+However, there is a new "U" specifier that will convert between UTF-8 characters
+and integers. (It works outside of the utf8 pragma too.)&nbsp;
+<p><b><u>The chr() and ord() functions work on characters</u></b>. This
+is like pack("U") and unpack("U"), not like pack("C") and unpack("C").
+In fact, the latter are how you now emulate byte-oriented chr() and ord()
+under utf8.&nbsp;
+<p>And finally, scalar <b><u>reverse() reverses by character</u></b> rather
+than by byte.&nbsp;
+<p><b><u>Character encodings for input and output&nbsp;</u></b>
+<br><b><u>[XXX: This feature is not yet implemented.]</u></b>
+<br>--------------------------------------------------------------------------------
+<br><b><u>CAVEATS</u></b>
+<br>As of yet, there is no method for automatically coercing input and
+output to some encoding other than UTF-8. This is planned in the near future,
+however.&nbsp;
+<p>Whether an arbitrary piece of data will be treated as "characters" or
+"bytes" by internal operations cannot be divined at the current time.&nbsp;
+<p>Use of locales with utf8 may lead to odd results. Currently there is
+some attempt to apply 8-bit locale info to characters in the range 0..255,
+but this is demonstrably incorrect for locales that use characters above
+that range (when mapped into Unicode). It will also tend to run slower.
+Avoidance of locales is strongly encouraged.&nbsp;
+<br>--------------------------------------------------------------------------------
+<br>SEE ALSO&nbsp;
+<br>bytes, utf8, perlvar/"${^WIDE_SYSTEM_CALLS}"&nbsp;
+<br>--------------------------------------------------------------------------------
+<br>Last updated: Wed Nov 8 15:39:16 2000</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<p><font color="#6699CC">• </font><a href="http://theoryx5.uwinnipeg.ca/CPAN/perl/utf8.html">/CPAN/perl/utf8.html</a>
+- utf8 - Perl pragma to enable/disable UTF-8 in source code
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>Contained in perl-5.6.0&nbsp;
+<br>utf8 - Perl pragma to enable/disable UTF-8 in source code&nbsp;
+<br>SYNOPSIS&nbsp;
+<br>&nbsp;&nbsp;&nbsp; use utf8;
+<br>&nbsp;&nbsp;&nbsp; no utf8;
+<br>DESCRIPTION&nbsp;
+<br>WARNING: The implementation of Unicode support in Perl is incomplete.
+See perlunicode for the exact details.&nbsp;
+<p>The use utf8 pragma tells the Perl parser to allow UTF-8 in the program
+text in the current lexical scope. The no utf8 pragma tells Perl to switch
+back to treating the source text as literal bytes in the current lexical
+scope.&nbsp;
+<p>This pragma is primarily a compatibility device. Perl versions earlier
+than 5.6 allowed arbitrary bytes in source code, whereas in future we would
+like to standardize on the UTF-8 encoding for source text. Until UTF-8
+becomes the default format for source text, this pragma should be used
+to recognize UTF-8 in the source. When UTF-8 becomes the standard source
+format, this pragma will effectively become a no-op.&nbsp;
+<p>Enabling the utf8 pragma has the following effects:&nbsp;
+<p>Bytes in the source text that have their high-bit set will be treated
+as being part of a literal UTF-8 character. This includes most literals
+such as identifiers, string constants, constant regular expression patterns
+and package names.&nbsp;
+<p>In the absence of inputs marked as UTF-8, regular expressions within
+the scope of this pragma will default to using character semantics instead
+of byte semantics.&nbsp;
+<p>&nbsp;&nbsp;&nbsp; @bytes_or_chars = split //, $data; # may split to
+bytes if data
+<br>&nbsp;&nbsp;&nbsp;&nbsp; # $data isn't UTF-8
+<br>&nbsp;&nbsp;&nbsp; {
+<br>&nbsp;use utf8;&nbsp;&nbsp; # force char semantics
+<br>&nbsp;@chars = split //, $data; # splits characters
+<br>&nbsp;&nbsp;&nbsp; }
+<br>--------------------------------------------------------------------------------
+<br>SEE ALSO&nbsp;
+<br>perlunicode, bytes&nbsp;</td>
+</tr>
+</table>
+
+</body>
+</html>

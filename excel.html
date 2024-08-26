@@ -1,0 +1,843 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="KeyWords" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>vim</title>
+<!-- "Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL" -->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body>
+<p><a NAME="top"></a> </p>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+  <tr>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+    <td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b>
+        <spacer type=block width=1 height=1></td>
+    <td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1>
+        <b><font color="#CC0000">New
+          York</font></b></td>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+  <tr>
+    <td><spacer type=block width=1 height=1></td>
+  </tr>
+  <tr>
+    <td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+  </tr>
+  <tr>
+    <td><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+  <tr>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+    <td ALIGN=LEFT><spacer type=block width=1 height=1>
+        <b><a href="index.html">home</a> > Excel, Excel VBA (Visual Basic For Applications)</b></td>
+    <td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1>
+        <b></b></td>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+  <tr>
+    <td><spacer type=block width=1 height=1></td>
+  </tr>
+  <tr>
+    <td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+  </tr>
+  <tr>
+    <td><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+<p><b><font color="#CC0000">Excel, Excel VBA (Visual Basic for Applications)</font></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=6 >
+  <tr>
+    <td><b><u><font color="#CC0000">On this page:</font></u></b></td>
+  </tr>
+  <tr>
+    <td ALIGN=LEFT VALIGN=TOP><p>      - <a href="#resources">resources</a><br>
+      - <a href="#excel_shortcuts_and_tips">Excel Tips and Shortcuts</a><br>
+      - <a href="#visual_basic_for_applications">VBA (Visual Basic For Applications)</a><br>
+    - more tips<br>
+        - <br>
+    </p>    </td>
+  </tr>
+</table>
+<p class="sectionheader"><a name="resources"></a>Resources:</p>
+<p> Books:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 BGCOLOR="#FFFF99" >
+  <tr>
+    <td width="743"><p>- Microsoft Excel 2000 Power Programming with VBA - John Walkenbach <br>
+      - Excel Essentials: Using Microsoft Excel for Data Analysis and Decision
+      Making (Video Tutorials) <br>
+      by A. J. Hamish Taylor <br>
+      - Excel 2000 for Windows Visual Quickstart Guide by Maria Langer <br>
+      - Microsoft Excel 2002 Formulas (With CD-ROM) by John Walkenbach (Author) <br>
+      - Special Edition Using Microsoft Excel 2000 by Patrick Blattner (Editor),
+      Laurie Ulrich, Ken Cook, Timothy Dyck <br>
+      - Troubleshooting Microsoft Excel 2002 by Laurie Ann Ulrich<br>
+    - Excel Haks - by David &amp; Raina Hawley<br>
+    - Advanced modeling in finance using Excel and VBA<br>
+    - Writing Excel Macros with VBA - 2nd ed., 2002 - by Steven Roman</p>
+    </td>
+  </tr>
+</table>
+<p> Links:
+<ul>
+  <li><a href="http://www.personal-computer-tutor.com/excelshortcuts.htm">http://www.personal-computer-tutor.com/excelshortcuts.htm</a> - Excel shortcuts </li>
+  <li><a href="http://www.chem.tamu.edu/class/majors/commonfiles/exceltutor.htm">http://www.chem.tamu.edu/class/majors/commonfiles/exceltutor.htm</a> - short and nice one-page Excel Tutorial</li>
+  <li><a href="http://www.exceluser.com/explore/questions/vba_textcols.htm">http://www.exceluser.com/explore/questions/vba_textcols.htm</a> - example</li>
+</ul>
+<p>
+<p class="sectionheader"><a name="excel_shortcuts_and_tips"></a>Excel Tips</p>
+<p>Useful tips</p>
+<table width="99%" border="1" cellpadding="1" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td>Pressing &lt;End> before pressing &lt;Up> or &lt;Down> arrow forces
+  it to jump all the way up or down. <br>
+Example: to select all the cells in a column down to the first blank
+  cell - select the top cell and presss &lt;Shift>&lt;End>&lt;Arrow down></td>
+  </tr>
+  <tr>
+    <td>Autofill handle - the blacksquare in the lower-right corner of the selection.
+  Double-clicking - will autofill down. Try also dragging in different directions
+  to autofill - or empty. Shift-dragging can be used to insert empty cells. </td>
+  </tr>
+  <tr>
+    <td><p>A1 - relative notation <br>
+      $A$1 - absolute notation <br>
+      ' C:\mydir\[somefile.xls]Sheet1'!A1 <br>
+      Insert -> Name -> Define (or ctrl-F3) - to create names for cells or
+      ranges <br>
+  &nbsp;(or create a named constant, if you clear the "refers to" in
+      the definition) <br>
+  &nbsp;(or create a named formulas if you enter the formula in the "refers
+      to" in the definition) </p>
+      <p>        Connecting names via space - automatically finds intersection. Example:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      = Qtr2 South</p>
+      <p>        Array formula:&nbsp; =A1:A5*B1:B5 <br>
+        =LEN(A1:A10)<br>
+    press <span class="style1">Ctrl-Shift-Enter</span> </p></td>
+  </tr>
+  <tr>
+    <td>some useful functions: sum, count, counta, countblank, countif, sumif,
+  isnumber, isblank, if( smth , then , else ) <br>
+=countif(data,"&lt;0") <br>
+=countif(data,"yes") <br>
+=countif(data,"*")&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; count cells
+  containing any text <br>
+=countif(data,"*s*")&nbsp;&nbsp; count cells that contain letter s
+  or S <br>
+=countif(data,"???")&nbsp;&nbsp; 3-letter words <br>
+=sum(if(frequency(data,data)>0,1,0)) - count number of unique numeric
+  values </td>
+  </tr>
+  <tr>
+    <td>B1 =trim(A1) - remove excess spaces <br>
+C1 =find(" ",B1,1) - locates the first space <br>
+D1 =find(" ",B1,C1+1) - locates the second space <br>
+E1 =if(iserror(D1),C1,D1) - uses the first spaces if no second space
+  exists <br>
+F1 =left(B1,C1) - extracts the first name <br>
+G1 =reght(B1,len(B1)-E1) - extracts the last name <br>
+H1 =F1&amp;G1 - concatenates the two names </td>
+  </tr>
+  <tr>
+    <td>One formula can not be longer than 1024 characters </td>
+  </tr>
+  <tr>
+    <td>Paste Special - Values <br>
+&lt;ctrl>&lt; ` > (single left quote) - flip between displaying cell
+  values and displaying cell formulas <br>
+&lt;F9> - Calculate all sheets in all open workbooks <br>
+&lt;shift>&lt;F9> - Calculate the active worksheet <br>
+ctrl-C, ctrl-V - Copy/paste <br>
+ctrl-A - select All <br>
+ctrl-Z - undo <br>
+ctrl-O, ctrl-S, ctrl-P - open / save / print </td>
+  </tr>
+  <tr>
+    <td>&lt;F11> or &lt;alt>&lt;F1> - Create a chart that uses the current range <br>
+&lt;ctrl>&lt;1> - Display the Format Cells dialog box <br>
+&lt;F5> - Display the Go To dialog box <br>
+&lt;ctrl>&lt;enter> - Fill the selected cell range with the current
+  entry <br>
+&lt;ctrl>&lt; : >&nbsp;&nbsp; - Insert the current time <br>
+&lt;ctrl>&lt; ; >&nbsp;&nbsp; - Insert today's date </td>
+  </tr>
+  <tr>
+    <td><p>ctrl-HOME - Move to the beginning of the worksheet <br>
+      ctrl-END - Move to the last cell of the last row
+      <p>shift-SPACE - select the current row <br>
+        ctrl-SPACE - select the current column
+    <p>shift-F3 - paste a function into a formula    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="visual_basic_for_applications" id="macro_subroutine_function"></a>VBA</p>
+<p>Open Excel, hit Alt-F11 - and another window will open where you can write code. Macros, Subroutines, Functions. You can manipulate data in your spreadsheet, add buttons and forms, import/export data from/to databases and files, do complex processing, show data in excel sheets (tables, graphs). You can even make a stand-alone scripts - although I wouldn't recommend this in production environment - better use C# or Perl.</p>
+<p>Nowadays VBA is used less because C# is getting more popular - using &quot;Microsoft Visual Studio Tools for Office&quot; or other tools like ExcelDna,  &quot;<a href="http://www.add-in-express.com/">Add-in-Express</a>&quot;, etc. Still VBA is a powerful and useful tool.</p>
+<p>Links:</p>
+<ul>
+  <li><a href="http://www.add-in-express.com/">http://www.add-in-express.com/</a> - <span class="style1">Add-In-Express</span> - very good, not free (but affordable)</li>
+  <li><a href="http://msdn.microsoft.com/en-us/vsto/default.aspx"><strong>VSTO</strong> = Microsoft Visual Studio Tools for Office</a> ( also <a href="http://msdn.microsoft.com/en-us/library/23cw517s.aspx">Getting Started article</a>)- has shortcomings </li>
+  <li><a href="http://exceldna.codeplex.com/">http://exceldna.codeplex.com/</a>, <a href="http://exceldna.typepad.com/">http://exceldna.typepad.com/</a> - <span class="style1">ExcelDna</span> is an open-source project to integrate .Net into Excel. (DNA = Dot Net for Applications). By Govert van Drimmelen.</li>
+  <li><a href="http://www.managedxll.com/">http://www.managedxll.com/</a> - application development kit for creating high performance Excel add-ins</li>
+  <li><a href="http://www.microsoft.com/downloads/en/confirmation.aspx?familyId=5272e1d1-93ab-4bd4-af18-cb6bb487e1c4&displayLang=en">Microsoft Excel XLL SDK</a> - old stuff, avoid it</li>
+  <li><a href="http://xlw.sourceforge.net/index.shtml">http://xlw.sourceforge.net/index.shtml</a> - <span class="style1">XLW</span> - Excel Wrapper for Excel C API</li>
+  <li><a href="http://www.planatechsolutions.com/xllplus6-online/toolkit_overview.htm">http://www.planatechsolutions.com/xllplus6-online/toolkit_overview.htm</a> - <span class="style1">XLL+</span> - toolkit for writing Excel add-ins in C++.</li>
+  <li><a href="http://msdn.microsoft.com/en-us/library/aa168292(office.11).aspx">http://msdn.microsoft.com/en-us/library/aa168292(office.11).aspx</a> - Excel object model (Office 2003, VS.NET 2003 - depricated managed code paradigm which was used before 2005)</li>
+  <li><a href="http://www.tangiblesoftwaresolutions.com/">http://www.tangiblesoftwaresolutions.com/</a> - Source Code Converters </li>
+  <li><a href="http://www.suitellc.com/alib.htm">http://www.suitellc.com/alib.htm</a> - Analytics Library (<span class="style1">ALib&trade;</span>) - expensive, but reliable library to be used from Excel, C/C++, C#, etc.</li>
+  <li>Bloomberg provides add-in which adds additional buttons and functions allowing you to pull data from Bloomberg directly into your spreadsheet.</li>
+</ul>
+<p>Note: <br>
+  Starting with 2005 Microsoft has introduced <span class="style1">C++/CLI</span> (Common Language Infrastructure) to enable working  with .NET from C++. (The first depricated version of this was called MC++ (Managed C++)).</p>
+<table border="1" cellpadding="1" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p><span class="style1">XLA, XLL</span> - library files. You can create XLA using VBA, or XLL using  C++, C#, or VB.NET</p>
+        <ul>
+          <li><span class="style1">XLA:</span> Open new excel file, go to VBA editor, enter one ore more functions or macros, save the file as Microsoft Excel Add-In (*.xla). It will usually go in a default directory like:&nbsp;C:\Documents and Settings\UserName\Application Data\Microsoft\AddIns . 
+            To use your add-in in some project, go to menu Tools &gt; Add-Ins - and select the add-in in the list. Once it is installed - it will show in VBA project explorer - so you will be able to edit it as needed. You can  password-protect it (in VBA editor right-click on it in Project Explorer - go to properties, and select Protection tab). After enering the password don't forget to save from VBA window.</li>
+          <li><span class="style1">XLL:</span> It is a special  type of DLL which have certain functions to work with Excel. You can create DLLs / XLLs using <span class="style1">Visual Studio</span> and <span class="style1">VSTO</span> (Visual Studio Tools for Office - C++, C#, or VB.NET).  
+            But much better to use <span class="style1">ADD-IN-EXPRESS</span>. Fastest performance (by far) is achieved when using C#. When creating XLLs you have to take care of many problems, for example converting variable types between C++ and Excel, or to think about threading (Latest versions of Excel are multithreaded, whereas the default for XLL is singlethreaded).</li>
+    </ul></td>
+  </tr>
+</table>
+<p>Running VBA from command prompt:</p>
+<table border="1" cellpadding="1" cellspacing="0" bgcolor="#CCFFFF">
+  <tr>
+    <td><p>It is possible to invoke excel macro from cmd line. You have to create a macro Workbook_Open() in your xls file. Then when you invoke the excel file - exel starts - and executes this macro.</p>
+      <p>Option Explicit</p>
+<p>Private Sub Workbook_Open()<br>
+          &nbsp;&nbsp;&nbsp;' do something here<br>
+          &nbsp;&nbsp;&nbsp;Application.Quit<br>
+          End Sub</p>
+      <p>Then save it as myfile.xls - and then run it from cmd line:</p>
+      <p class="style1">start myfile.xls</p>
+      <p><span class="style1">Note:</span> if you start like this: <span class="code">start  excel myfile.xls</span><br>
+      then make sure to provide explicit path to your xls file, because otherwise excel will first search for it under &quot;My Documents&quot;.</p>
+      <p><span class="style1">Note:</span> You can use  cmd options, for example:<br>
+        <br>
+      /e - start without displaying the startup screen and creating a new workbook.<br>
+/embedded - not displayed on the screen, starts in the background.<br>
+/m -  create a new workbook that contains a single macro sheet.<br>
+/o -  re-register excel (in Windows Registry).<br>
+/p &lt;folder&gt; - Forces Excel to use the path you specify as the active path instead of the default path. <br>
+/r &lt;filename&gt; - Forces Excel to open the specified file in read-only mode.<br>
+/s - Starts Excel in Safe mode.<br>
+etc.</p>    </td>
+  </tr>
+</table>
+<p>Some examples:</p>
+<table width="99%" border="1" cellpadding="1" cellspacing="0" bgcolor="#CCFFFF">
+  <tr>
+    <td><p>---</p>
+        </td>
+  </tr>
+</table>
+<p>Misc. Links</p>
+<ul>
+  <li><a href="http://www.exceluser.com/explore/questions/vba_textcols.htm">http://www.exceluser.com/explore/questions/vba_textcols.htm</a> - example - reading text file, parsing strings, writing to excel</li>
+  <li><a href="http://www.tek-tips.com/faq.cfm?pid=707">http://www.tek-tips.com/faq.cfm?pid=707</a> - FAQ, many examples</li>
+</ul>
+<p>&nbsp;</p>
+<p class="sectionheader">More Excel Tips and Shortcuts</p>
+<p>
+<table width="99%" border="1" cellpadding="1" cellspacing="0" bgcolor="#FFFFCC">
+  <tr bgcolor="#FFCC99">
+    <td width="50%">Question</td>
+    <td width="50%">Answer</td>
+  </tr>
+  <tr>
+    <td>How to print part of a worksheet? </td>
+    <td>Select the part that you want to print and then go to File, Print
+  Area and Set Print Area. </td>
+  </tr>
+  <tr>
+    <td>How to enter months from January to December? </td>
+    <td>Type in January, position your cursor over the right hand bottom
+  corner of the active cell, your cursor should change into a cross. Dragging
+  the cross down will automatically enter the rest of the months in the cells
+  below. </td>
+  </tr>
+  <tr>
+    <td>How to automatically insert a series of numbers? </td>
+    <td>Type in the first number and fill down to where the last number
+  will go. Then click Edit, Select fill and choose the Series option. This
+  allows you to choose from a number of of options. </td>
+  </tr>
+  <tr>
+    <td>How to copy a formula down a column quickly?</td>
+    <td>Type the formula into the first cell of the column. Then place your
+  cursor at the bottom right of the cell. When it turns into a black cross, <b><u>double click</u></b> (left mouse button). The formula will be copied
+  down the column. This works only for columns. </td>
+  </tr>
+  <tr>
+    <td>How to remove formatting? </td>
+    <td>Edit->Clear - and choose the Formats option. </td>
+  </tr>
+  <tr>
+    <td>How to move or copy a Worksheet into another book? </td>
+    <td>Click Edit and then choose the 'Move or Copy' option. </td>
+  </tr>
+  <tr>
+    <td>How to insert another worksheet?</td>
+    <td>Insert -> Worksheet. </td>
+  </tr>
+  <tr>
+    <td> How to highlight cells from the current cell to another cell? </td>
+    <td>Press F5, then type in the second cell 'coodinates' (eg C12) and
+  then hit Shift and Enter. </td>
+  </tr>
+  <tr>
+    <td>How to insert a chart? </td>
+    <td> Select the cells that you need to draw the graph and then click
+  on the Chart icon at the top of your screen. Or go to Insert and select
+  Chart. Follow the prompts to produce your chart. In the final step, tell
+  Excel to place the chart as a new sheet instead of as an object in the
+  Worksheet. </td>
+  </tr>
+  <tr>
+    <td>How to find the average or standard deviation of a set of numbers? </td>
+    <td>Click on Insert and Function and then select the function that you
+  want. </td>
+  </tr>
+  <tr>
+    <td>How to calculate a sum of a column of numbers automatically? </td>
+    <td>Place your cursor in a blank cell under the numbers that you want
+  to add and click the Autosum icon twice (the Sigma symbol). </td>
+  </tr>
+  <tr>
+    <td>How to make text wrap in a cell? </td>
+    <td>Select the cell(s) - and select Format -> Cells ->Align -> Wrap
+  Text.</td>
+  </tr>
+  <tr>
+    <td>How to format numbers so that they show to two decimal places?</td>
+    <td>Select the cells concerned and use the Increase Decimal icon in
+  the formatting toolbar. Also Click Format -> Cells ... </td>
+  </tr>
+  <tr>
+    <td>How to change the format depending on the value? </td>
+    <td>Format -> Conditional Format </td>
+  </tr>
+  <tr>
+    <td>How to auto-adjust the width of the column? </td>
+    <td>Double click with your mouse on the right edge of the top of the
+  column (where the cursor changes into a two headed arrow). </td>
+  </tr>
+  <tr>
+    <td>How to sort? </td>
+    <td>Click on any cell that contains data and click 'Data' and then 'Sort'.
+  You can make sort case sensitive or not - click on 'Options' ... </td>
+  </tr>
+  <tr>
+    <td>How to freeze the column so that it wouldn't scroll left? </td>
+    <td>Highlight the column, select Window -> Freeze Pains </td>
+  </tr>
+</table>
+<p>
+<p><span class="sectionheader">Keys for moving and scrolling in a worksheet or workbook</span><br>
+&nbsp; 
+<p>Keys for moving and scrolling in a worksheet or workbook <br>
+Note&nbsp;&nbsp; To enlarge the Help window to fill the screen, press
+      ALT+SPACEBAR and then press X. To restore the window to its previous size
+      and location, press ALT+SPACEBAR and then press R. To print this topic,
+      press ALT+O and then press P.
+<p>This topic lists:
+<p>Keys for moving and scrolling in a worksheet or workbook
+<p>Keys for moving in a worksheet with End mode on
+<p>Keys for moving in a worksheet with SCROLL LOCK on
+<p>Keys for moving and scrolling in a worksheet or workbook <br>
+  &nbsp;
+<p>Arrow keys Move one cell up, down, left, or right <br>
+        CTRL+arrow key Move to the edge of the current data region <br>
+        HOME Move to the beginning of the row <br>
+        CTRL+HOME Move to the beginning of the worksheet <br>
+        CTRL+END Move to the last cell on the worksheet, which is the cell
+        at the intersection of the rightmost used column and the bottom-most used
+        row (in the lower-right corner), or the cell opposite the home cell, which
+        is typically A1 <br>
+        PAGE DOWN Move down one screen <br>
+        PAGE UP Move up one screen <br>
+        ALT+PAGE DOWN Move one screen to the right <br>
+        ALT+PAGE UP Move one screen to the left <br>
+        CTRL+PAGE DOWN Move to the next sheet in the workbook <br>
+        CTRL+PAGE UP Move to the previous sheet in the workbook <br>
+        CTRL+F6 or CTRL+TAB Move to the next workbook or window <br>
+        CTRL+SHIFT+F6 or CTRL+SHIFT+TAB Move to the previous workbook or window <br>
+        F6 Move to the next pane in a workbook that has been split <br>
+        SHIFT+F6 Move to the previous pane in a workbook that has been split <br>
+        CTRL+BACKSPACE Scroll to display the active cell <br>
+        F5 Display the Go To dialog box <br>
+        SHIFT+F5 Display the Find dialog box <br>
+        SHIFT+F4 Repeat the last Find action (same as Find Next) <br>
+        TAB Move between unlocked cells on a protected worksheet <br>
+  &nbsp;
+<p>Return to top
+<p>Keys for moving in a worksheet with End mode on <br>
+        Press To <br>
+        END Turn End mode on or off <br>
+        END, arrow key Move by one block of data within a row or column <br>
+        END, HOME Move to the last cell on the worksheet, which is the cell
+        at the intersection of the rightmost used column and the bottom-most used
+        row (in the lower-right corner), or the cell opposite the home cell, which
+        is typically A1 <br>
+        END, ENTER Move to the last cell to the right in the current row that
+        is not blank; unavailable if you have selected the Transition navigation
+        keys check box on the Transition tab (Tools menu, Options command) <br>
+  &nbsp;
+<p>Return to top
+<p>Keys for moving in a worksheet with SCROLL LOCK on <br>
+        Press To <br>
+        SCROLL LOCK Turn SCROLL LOCK on or off <br>
+        HOME Move to the cell in the upper-left corner of the window <br>
+        END Move to the cell in the lower-right corner of the window <br>
+        UP ARROW or DOWN ARROW Scroll one row up or down <br>
+        LEFT ARROW or RIGHT ARROW Scroll one column left or right <br>
+  &nbsp;
+<p>Return to top
+<p>Tip&nbsp;&nbsp; When you use scrolling keys (such as PAGE UP and PAGE
+        DOWN) with SCROLL LOCK turned off, your selection moves the distance you
+        scroll. If you want to preserve your selection while you scroll through
+        the worksheet, turn on SCROLL LOCK first. 
+<p class="sectionheader">Keys for previewing and printing a document</p>
+
+<p>  Note&nbsp;&nbsp; To enlarge the Help window to fill the screen, press
+  ALT+SPACEBAR and then press X. To restore the window to its previous size
+  and location, press ALT+SPACEBAR and then press R. To print this topic,
+  press ALT+O and then press P.
+<p>Press To <br>
+  CTRL+P or CTRL+SHIFT+F12 Display the Print dialog box <br>
+  &nbsp;
+<p>Work in print preview <br>
+  Press To <br>
+  Arrow keys Move around the page when zoomed in <br>
+  PAGE UP or PAGE DOWN Move by one page when zoomed out <br>
+  CTRL+UP ARROW or CTRL+LEFT ARROW Move to the first page when zoomed
+  out <br>
+  CTRL+DOWN ARROW or CTRL+RIGHT ARROW <br>
+Move to the last page when zoomed out 
+<p class="sectionheader">Keys for working with worksheets, charts, and macros
+<p>Keys for working with worksheets, charts, and macros <br>
+  Note&nbsp;&nbsp; To enlarge the Help window to fill the screen, press
+  ALT+SPACEBAR and then press X. To restore the window to its previous size
+  and location, press ALT+SPACEBAR and then press R. To print this topic,
+  press ALT+O and then press P.
+<p>Press To <br>
+  SHIFT+F11 or ALT+SHIFT+F1 Insert a new worksheet <br>
+  F11 or ALT+F1 Create a chart that uses the current range <br>
+  ALT+F8 Display the Macro dialog box <br>
+  ALT+F11 Display the Visual Basic Editor <br>
+  CTRL+F11 Insert a Microsoft Excel 4.0 macro sheet <br>
+  CTRL+PAGE DOWN Move to the next sheet in the workbook <br>
+  CTRL+PAGE UP Move to the previous sheet in the workbook <br>
+  SHIFT+CTRL+PAGE DOWN Select the current and next sheet in the workbook <br>
+SHIFT+CTRL+PAGE UP Select the current and previous sheet in the workbook
+<p class="sectionheader">Keys for entering data
+<p>Note&nbsp;&nbsp; To enlarge the Help window to fill the screen, press
+  ALT+SPACEBAR and then press X. To restore the window to its previous size
+  and location, press ALT+SPACEBAR and then press R. To print this topic,
+  press ALT+O and then press P.
+<p>This topic lists:
+<p>Keys for entering data on a worksheet
+<p>Keys for working in cells or the formula bar
+<p>Keys for entering data on a worksheet <br>
+  Press To <br>
+  ENTER Complete a cell entry and move down in the selection <br>
+  ALT+ENTER Start a new line in the same cell <br>
+  CTRL+ENTER Fill the selected cell range with the current entry <br>
+  SHIFT+ENTER Complete a cell entry and move up in the selection <br>
+  TAB Complete a cell entry and move to the right in the selection <br>
+  SHIFT+TAB Complete a cell entry and move to the left in the selection <br>
+  ESC Cancel a cell entry <br>
+  BACKSPACE Delete the character to the left of the insertion point,
+  or delete the selection <br>
+  DELETE Delete the character to the right of the insertion point, or
+  delete the selection <br>
+  CTRL+DELETE Delete text to the end of the line <br>
+  Arrow keys Move one character up, down, left, or right <br>
+  HOME Move to the beginning of the line <br>
+  F4 or CTRL+Y Repeat the last action <br>
+  SHIFT+F2 Edit a cell comment <br>
+  CTRL+SHIFT+F3 Create names from row and column labels <br>
+  CTRL+D Fill down <br>
+  CTRL+R Fill to the right <br>
+  CTRL+F3 Define a name <br>
+  &nbsp;
+<p>Return to top
+<p>Keys for working in cells or the formula bar <br>
+  Press To <br>
+  BACKSPACE Edit the active cell and then clear it, or delete the preceding
+  character in the active cell as you edit cell contents <br>
+  ENTER Complete a cell entry <br>
+  CTRL+SHIFT+ENTER Enter a formula as an array formula <br>
+  ESC Cancel an entry in the cell or formula bar <br>
+  CTRL+A Display the Formula Palette after you type a function name in
+  a formula <br>
+  CTRL+SHIFT+A Insert the argument names and parentheses for a function
+  after you type a function name in a formula <br>
+  CTRL+K Insert a hyperlink <br>
+  ENTER (in a cell with a hyperlink) Activate a hyperlink <br>
+  F2 Edit the active cell and position the insertion point at the end
+  of the line <br>
+  F3 Paste a defined name into a formula <br>
+  SHIFT+F3 Paste a function into a formula <br>
+  F9 Calculate all sheets in all open workbooks <br>
+  CTRL+ALT+F9 Calculate all sheets in the active workbook <br>
+  SHIFT+F9 Calculate the active worksheet <br>
+  = (equal sign) Start a formula <br>
+  ALT+= (equal sign) Insert the AutoSum formula <br>
+  CTRL+; (semicolon) Enter the date <br>
+  CTRL+SHIFT+: (colon) Enter the time <br>
+  CTRL+SHIFT+" (quotation mark) Copy the value from the cell above the
+  active cell into the cell or the formula bar <br>
+  CTRL+` (single left quotation mark) Alternate between displaying cell
+  values and displaying cell formulas <br>
+  CTRL+' (apostrophe) Copy a formula from the cell above the active cell
+  into the cell or the formula bar <br>
+ALT+DOWN ARROW Display the AutoComplete list
+<p class="sectionheader">Keys for formatting data
+<p>Note&nbsp;&nbsp; To enlarge the Help window to fill the screen, press
+  ALT+SPACEBAR and then press X. To restore the window to its previous size
+  and location, press ALT+SPACEBAR and then press R. To print this topic,
+  press ALT+O and then press P.
+<p>Press To <br>
+  ALT+' (apostrophe) Display the Style dialog box <br>
+  CTRL+1 Display the Format Cells dialog box <br>
+  CTRL+SHIFT+~ Apply the General number format <br>
+  CTRL+SHIFT+$ Apply the Currency format with two decimal places (negative
+  numbers appear in parentheses) <br>
+  CTRL+SHIFT+% Apply the Percentage format with no decimal places <br>
+  CTRL+SHIFT+^ Apply the Exponential number format with two decimal places <br>
+  CTRL+SHIFT+# Apply the Date format with the day, month, and year <br>
+  CTRL+SHIFT+@ Apply the Time format with the hour and minute, and indicate
+  A.M. or P.M. <br>
+  CTRL+SHIFT+! Apply the Number format with two decimal places, thousands
+  separator, and minus sign (&ndash;) for negative values <br>
+  CTRL+SHIFT+&amp; Apply the outline border <br>
+  CTRL+SHIFT+_ Remove outline borders <br>
+  CTRL+B Apply or remove bold formatting <br>
+  CTRL+I Apply or remove italic formatting <br>
+  CTRL+U Apply or remove an underline <br>
+  CTRL+5 Apply or remove strikethrough formatting <br>
+  CTRL+9 Hide rows <br>
+  CTRL+SHIFT+( (opening parenthesis) <br>
+  Unhide rows <br>
+  CTRL+0 (zero) Hide columns <br>
+  CTRL+SHIFT+) (closing parenthesis) <br>
+Unhide columns
+<p class="sectionheader">Keys for editing data
+<p>Note&nbsp;&nbsp; To enlarge the Help window to fill the screen, press
+  ALT+SPACEBAR and then press X. To restore the window to its previous size
+  and location, press ALT+SPACEBAR and then press R. To print this topic,
+  press ALT+O and then press P.
+<p>This topic lists:
+<p>Keys for editing data
+<p>Keys for inserting, deleting, and copying a selection
+<p>Keys for moving within a selection
+<p>Keys for editing data <br>
+  Press To <br>
+  F2 Edit the active cell and put the insertion point at the end of the
+  line <br>
+  ESC Cancel an entry in the cell or formula bar <br>
+  BACKSPACE Edit the active cell and then clear it, or delete the preceding
+  character in the active cell as you edit the cell contents <br>
+  F3 Paste a defined name into a formula <br>
+  ENTER Complete a cell entry <br>
+  CTRL+SHIFT+ENTER Enter a formula as an array formula <br>
+  CTRL+A Display the Formula Palette after you type a function name in
+  a formula <br>
+  CTRL+SHIFT+A Insert the argument names and parentheses for a function,
+  after you type a function name in a formula <br>
+  F7 Display the Spelling dialog box <br>
+  &nbsp;
+<p>Return to top
+<p>Keys for inserting, deleting, and copying a selection <br>
+  Press To <br>
+  CTRL+C Copy the selection <br>
+  CTRL+X Cut the selection <br>
+  CTRL+V Paste the selection <br>
+  DELETE Clear the contents of the selection <br>
+  CTRL+HYPHEN Delete the selection <br>
+  CTRL+Z Undo the last action <br>
+  CTRL+SHIFT+PLUS SIGN Insert blank cells <br>
+  &nbsp;
+<p>Return to top
+<p>Keys for moving within a selection <br>
+  Press To <br>
+  ENTER Move from top to bottom within the selection (down), or move
+  in the direction that is selected on the Edit tab (Tools menu, Options
+  command) <br>
+  SHIFT+ENTER&nbsp; Move from bottom to top within the selection (up),
+  or move opposite to the direction that is selected on the Edit tab (Tools
+  menu, Options command) <br>
+  TAB Move from left to right within the selection, or move down one
+  cell if only one column is selected <br>
+  SHIFT+TAB Move from right to left within the selection, or move up
+  one cell if only one column is selected <br>
+  CTRL+PERIOD Move clockwise to the next corner of the selection <br>
+  CTRL+ALT+RIGHT ARROW Move to the right between nonadjacent selections <br>
+CTRL+ALT+LEFT ARROW Move to the left between nonadjacent selections
+<p>
+<p class="sectionheader">Keys for selecting data and cells
+<p>  Note&nbsp;&nbsp; To enlarge the Help window to fill the screen, press
+  ALT+SPACEBAR and then press X. To restore the window to its previous size
+  and location, press ALT+SPACEBAR and then press R. To print this topic,
+  press ALT+O and then press P.
+<p>This topic lists:
+<p>Keys for selecting cells, columns, or rows
+<p>Keys for extending the selection with End mode on
+<p>Keys for selecting cells that have special characteristics
+<p>Keys for selecting cells, columns, or rows <br>
+  Press To <br>
+  CTRL+SHIFT+* (asterisk) Select the current region around the active
+  cell (the current region is a data area enclosed by blank rows and blank
+  columns) <br>
+  SHIFT+arrow key Extend the selection by one cell <br>
+  CTRL+SHIFT+arrow key Extend the selection to the last nonblank cell
+  in the same column or row as the active cell <br>
+  SHIFT+HOME Extend the selection to the beginning of the row <br>
+  CTRL+SHIFT+HOME Extend the selection to the beginning of the worksheet <br>
+  CTRL+SHIFT+END Extend the selection to the last used cell on the worksheet
+  (lower-right corner) <br>
+  CTRL+SPACEBAR Select the entire column <br>
+  SHIFT+SPACEBAR Select the entire row <br>
+  CTRL+A Select the entire worksheet <br>
+  SHIFT+BACKSPACE Select only the active cell when multiple cells are
+  selected <br>
+  SHIFT+PAGE DOWN Extend the selection down one screen <br>
+  SHIFT+PAGE UP Extend the selection up one screen <br>
+  CTRL+SHIFT+SPACEBAR With an object selected, select all objects on
+  a sheet <br>
+  CTRL+6 Alternate between hiding objects, displaying objects, and displaying
+  placeholders for objects <br>
+  CTRL+7 Show or hide the Standard toolbar <br>
+  F8 Turn on extending a selection by using the arrow keys <br>
+  SHIFT+F8 Add another range of cells to the selection; or use the arrow
+  keys to move to the start of the range you want to add, and then press
+  F8 and the arrow keys to select the next range <br>
+  SCROLL LOCK, SHIFT+HOME Extend the selection to the cell in the upper-left
+  corner of the window <br>
+  SCROLL LOCK, SHIFT+END Extend the selection to the cell in the lower-right
+  corner of the window <br>
+  &nbsp;
+<p>Return to top
+<p>Tip&nbsp;&nbsp; When you use the scrolling keys (such as PAGE UP and
+  PAGE DOWN) with SCROLL LOCK turned off, your selection moves the distance
+  you scroll. If you want to keep the same selection as you scroll, turn
+  on SCROLL LOCK first.
+<p>Keys for extending the selection with End mode on <br>
+  Press To <br>
+  END Turn End mode on or off <br>
+  END, SHIFT+arrow key Extend the selection to the last nonblank cell
+  in the same column or row as the active cell <br>
+  END, SHIFT+HOME Extend the selection to the last cell used on the worksheet
+  (lower-right corner) <br>
+  END, SHIFT+ENTER Extend the selection to the last cell in the current
+  row. This keystroke is unavailable if you selected the Transition navigation
+  keys check box on the Transition tab (Tools menu, Options command). <br>
+  &nbsp;
+<p>Return to top
+<p>Keys for selecting cells that have special characteristics <br>
+  Press To <br>
+  CTRL+SHIFT+* (asterisk) Select the current region around the active
+  cell (the current region is a data area enclosed by blank rows and blank
+  columns) <br>
+  CTRL+/ Select the current array, which is the array that the active
+  cell belongs to <br>
+  CTRL+SHIFT+O (the letter O) Select all cells with comments <br>
+  CTRL+\ Select cells in a row that don't match the value in the active
+  cell in that row. You must select the row starting with the active cell. <br>
+  CTRL+SHIFT+| Select cells in a column that don't match the value in
+  the active cell in that column. You must select the column starting with
+  the active cell. <br>
+  CTRL+[ (opening bracket) Select only cells that are directly referred
+  to by formulas in the selection <br>
+  CTRL+SHIFT+{ (opening brace) Select all cells that are directly or
+  indirectly referred to by formulas in the selection <br>
+  CTRL+] (closing bracket) Select only cells with formulas that refer
+  directly to the active cell <br>
+  CTRL+SHIFT+} (closing brace) Select all cells with formulas that refer
+  directly or indirectly to the active cell <br>
+ALT+; (semicolon) Select only visible cells in the current selection
+<p class="sectionheader">Keys for selecting charts and chart items
+<p>  Keys for selecting a chart sheet <br>
+  Press To <br>
+  CTRL+PAGE DOWN Select the next sheet in the workbook, until the chart
+  sheet you want is selected <br>
+  CTRL+PAGE UP Select the previous sheet in the workbook, until the chart
+  sheet you want is selected <br>
+  &nbsp;
+<p>Keys for selecting an embedded chart <br>
+  Note&nbsp;&nbsp; The Drawing toolbar must already be displayed.
+<p>Press F10 to make the menu bar active. <br>
+  &nbsp;
+<p>Press CTRL+TAB or CTRL+SHIFT+TAB to select the Drawing toolbar. <br>
+  &nbsp;
+<p>Press the RIGHT ARROW key to select the Select Objects&nbsp; button
+  on the Drawing toolbar. <br>
+  &nbsp;
+<p>Press CTRL+ENTER to select the first object. <br>
+  &nbsp;
+<p>Press the TAB key to cycle forward (or SHIFT+TAB to cycle backward)
+  through the objects until sizing handles appear on the embedded chart you
+  want to select. <br>
+  &nbsp;
+<p>Press CTRL+ENTER to make the chart active. <br>
+  Keys for selecting chart items <br>
+  Press To <br>
+  DOWN ARROW Select the previous group of items <br>
+  UP ARROW Select the next group of items <br>
+  RIGHT ARROW Select the next item within the group <br>
+  LEFT ARROW Select the previous item within the group <br>
+  &nbsp;
+<p class="sectionheader">There are also keys to use with PivotChart reports.
+<p>Keys to use with databases and lists <br>
+  Note&nbsp;&nbsp; To enlarge the Help window to fill the screen, press
+  ALT+SPACEBAR and then press X. To restore the window to its previous size
+  and location, press ALT+SPACEBAR and then press R. To print this topic,
+  press ALT+O and then press P.
+<p>This topic lists:
+<p>Keys for working with a data form
+<p>Keys for using AutoFilter
+<p>Keys for working with a data form <br>
+  Press To <br>
+  ALT+key, where key is the underlined letter in the field or command
+  name <br>
+  Select a field or a command button <br>
+  DOWN ARROW Move to the same field in the next record <br>
+  UP ARROW Move to the same field in the previous record <br>
+  TAB Move to the next field you can edit in the record <br>
+  SHIFT+TAB Move to the previous field you can edit in the record <br>
+  ENTER Move to the first field in the next record <br>
+  SHIFT+ENTER Move to the first field in the previous record <br>
+  PAGE DOWN Move to the same field 10 records forward <br>
+  CTRL+PAGE DOWN Move to a new record <br>
+  PAGE UP Move to the same field 10 records back <br>
+  CTRL+PAGE UP Move to the first record <br>
+  HOME or END Move to the beginning or end of a field <br>
+  SHIFT+END Extend a selection to the end of a field <br>
+  SHIFT+HOME Extend a selection to the beginning of a field <br>
+  LEFT ARROW or RIGHT ARROW Move one character left or right within a
+  field <br>
+  SHIFT+LEFT ARROW Select the character to the left <br>
+  SHIFT+RIGHT ARROW Select the character to the right <br>
+  &nbsp;
+<p>Return to top
+<p>Keys for using AutoFilter <br>
+  Press To <br>
+  Arrow keys to select the cell that contains the column label, and then
+  press ALT+DOWN ARROW
+<p>Display the AutoFilter list for the current column <br>
+  DOWN ARROW Select the next item in the AutoFilter list <br>
+  UP ARROW Select the previous item in the AutoFilter list <br>
+  ALT+UP ARROW Close the AutoFilter list for the current column <br>
+  HOME Select the first item (All) in the AutoFilter list <br>
+  END Select the last item in the AutoFilter list <br>
+  ENTER Filter the list by using the selected item in the AutoFilter
+list
+<p class="sectionheader">Keys for outlining data
+<p>  Note&nbsp;&nbsp; To enlarge the Help window to fill the screen, press
+  ALT+SPACEBAR and then press X. To restore the window to its previous size
+  and location, press ALT+SPACEBAR and then press R. To print this topic,
+  press ALT+O and then press P.
+<p>Press To <br>
+  ALT+SHIFT+RIGHT ARROW Group rows or columns <br>
+  ALT+SHIFT+LEFT ARROW Ungroup rows or columns <br>
+  CTRL+8 Display or hide outline symbols <br>
+  CTRL+9 Hide selected rows <br>
+  CTRL+SHIFT+( (opening parenthesis) Unhide selected rows <br>
+  CTRL+0 (zero) Hide selected columns <br>
+CTRL+SHIFT+) (closing parenthesis) Unhide selected columns
+<p class="sectionheader">Keys to use with PivotTable and PivotChart reports
+<p>  Note&nbsp;&nbsp; To enlarge the Help window to fill the screen, press
+  ALT+SPACEBAR and then press X. To restore the window to its previous size
+  and location, press ALT+SPACEBAR and then press R. To print this topic,
+  press ALT+O and then press P.
+<p>This topic lists:
+<p>Keys for the PivotTable and PivotChart Wizard
+<p>Keys for page fields in a PivotTable or PivotChart report
+<p>Keys for laying out a PivotTable or PivotChart report
+<p>Keys for grouping and ungrouping PivotTable items
+<p>Keys for the PivotTable and PivotChart Wizard <br>
+  Press To <br>
+  UP ARROW or DOWN ARROW Select the previous or next field button in
+  the list <br>
+  LEFT ARROW or RIGHT ARROW Select the field button to the left or right
+  in a multicolumn field button list <br>
+  ALT+C Move the selected field into the Column area <br>
+  ALT+D Move the selected field into the Data area <br>
+  ALT+L Display the PivotTable Field dialog box <br>
+  ALT+P Move the selected field into the Page area <br>
+  ALT+R Move the selected field into the Row area <br>
+  &nbsp;
+<p>Return to top
+<p>Keys for page fields in a PivotTable or PivotChart report <br>
+  Press To <br>
+  CTRL+SHIFT+* (asterisk) Select the entire PivotTable report <br>
+  Arrow keys to select the cell that contains the field, and then ALT+DOWN
+  ARROW
+<p>Display the list for the current field in a PivotTable report <br>
+  Arrow keys to select the page field in a PivotChart report, and then
+  ALT+DOWN ARROW <br>
+  Display the list for the current page field in a PivotChart report <br>
+  UP ARROW Select the previous item in the list <br>
+  DOWN ARROW Select the next item in the list <br>
+  HOME Select the first visible item in the list <br>
+  END Select the last visible item in the list <br>
+  ENTER Display the selected item <br>
+  SPACEBAR Select or clear a check box in the list <br>
+  &nbsp;
+<p>Return to top
+<p>Keys for laying out a PivotTable or PivotChart report <br>
+  Press F10 to make the menu bar active. <br>
+  &nbsp;
+<p>Press CTRL+TAB or CTRL+SHIFT+TAB to select the PivotTable toolbar. <br>
+  &nbsp;
+<p>Press the LEFT ARROW or RIGHT ARROW key to select the menu to the left
+  or right or, when a submenu is visible, to switch between the main menu
+  and submenu. <br>
+  &nbsp;
+<p>Press ENTER (on a field button) and the DOWN ARROW and UP ARROW keys
+  to select the area you want to move the selected field to. <br>
+  Note&nbsp;&nbsp; To scroll to the top or bottom of the field list,
+  press ENTER on the More Fields&nbsp; or&nbsp; button.
+<p>Return to top
+<p>Keys for grouping and ungrouping PivotTable items <br>
+  Press To <br>
+  ALT+SHIFT+RIGHT ARROW Group selected PivotTable items <br>
+ALT+SHIFT+LEFT ARROW Ungroup selected PivotTable items
+<p class="sectionheader">Keys to use with the OLAP Cube Wizard
+<p>
+  Use these keys to complete Step 2 in the OLAP Cube Wizard.
+<p>To move a field from the Source fields list to the Dimensions box <br>
+  Press the TAB key to select the Source fields list. <br>
+  &nbsp;
+<p>Press the UP ARROW or DOWN ARROW key to select the field you want to
+  move. <br>
+  Because you cannot change the order of a field after you move it, select
+  first the field you want to appear at the top of the Dimensions box.
+<p>Press the TAB key to select the > button, and then press ENTER. <br>
+  &nbsp;
+<p>To move other fields, repeat steps 1 through 3. <br>
+  To move a field to a lower or higher level in the Dimensions box <br>
+  Press the TAB key to select the Dimensions box. <br>
+  &nbsp;
+<p>Press the UP ARROW or DOWN ARROW key to select the field you want to
+  move. <br>
+Press CTRL+X. <br>
+Press the UP ARROW or DOWN ARROW key to select where you want to move
+  the field. <br>
+Press CTRL+V. <br>
+<p>=====
+<p>
+</body>
+</html>

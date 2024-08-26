@@ -1,0 +1,325 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<head>
+
+<title>The Java.io package</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META name="GENERATOR" content="IBM WebSphere Homepage Builder V4.0.0 for Linux">
+<STYLE TYPE="text/css">
+
+<!--
+
+
+
+-->
+
+</STYLE>
+
+<link rel="stylesheet" href="tutor.css"></head>
+
+
+
+<body bgcolor="#FFFFFF">
+<table width=95% border=0 cellpadding=2 cellspacing=0 style="page-break-before: always">
+  <col width=147*> <col width=109*> 
+  <tr> 
+    <td width=57% height=104> 
+      <p><a href= "introj2.htm" ><img src= "btnIndex.jpg"  name="Graphic1" alt="Return to Tutorial Index" align=BOTTOM width=55 height=39 border=0></a><a href= "introj2.htm" ><br>
+        <br>
+        </a><a href= "index.htm" ><img src= "btnHome.jpg"  name="Graphic2" alt="Back to the home page of this site" align=BOTTOM width=55 height=39 border=0></a> 
+      </p>
+    </td>
+    <td width=43%> 
+      <p align=RIGHT><img src= "hat.gif"  name="Graphic3" alt="morterboard" align=BOTTOM width=118 height=113 border=0></p>
+    </td>
+  </tr>
+  <tr> 
+    <td width=57% height=11> 
+      <h1 align=LEFT>Java2 Certification <br>
+        Tutorial </h1>
+    </td>
+    <td width=43% bgcolor="#ff9900"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p> You can discuss this topic with others at <a href= "http://www.jchq.net/discus" >http://www.jchq.net/discus</a><br>
+  Read reviews and buy a Java Certification book at <a href= "http://www.jchq.net/bookreviews/jcertbooks.htm" >http://www.jchq.net/bookreviews/jcertbooks.htm</a> 
+  <br>
+</p>
+<hr size=5 noshade>
+<h2>11) The java.io package </h2>
+
+<h2>Objective 5)</h2>
+
+<p><font face="Arial, Helvetica, sans-serif">Write appropriate code to read, write 
+  and update files using FileInputStream, FileOutputStream, and RandomAccessFile 
+  objects. </font></p>
+
+<h3>FileInputStream and FileOutputStream</h3>
+<p>The following example creates a text file called Out.txt and writes the text 
+  Hello into it. If you type out the resulting file you will see that file comes 
+  out as H e l l o (with a gap between each letter) . I suspect this is because 
+  a character is 16 bits and because ASCII is 8 bit, the upper 8 bits result in 
+  a blank character.</p>
+
+<p><br>
+
+  This also illustrates the previous objective in that it uses the FilterOutputStream 
+
+  descendent DataOutputStream. This allows human readable chars to be written. 
+
+  If this example only used FileOutputStream methods you would be limited to writing 
+
+  bytes or ints. If you do this and then type the results to the console, it just 
+
+  shows up as junk characters.</p>
+
+<pre></pre>
+
+<pre>import java.io.*;
+
+public class Fos{
+                    String s = new String(&quot;Hello&quot;);
+                    public static void main(String argv[]){
+                    Fos f = new Fos();
+                    f.amethod();
+                   }
+
+
+
+            public void amethod(){
+                try{
+                FileOutputStream fos = new FileOutputStream(&quot;Out.txt&quot;);
+		//DataOutputStream allows you to write chars
+                DataOutputStream dos = new DataOutputStream(fos);
+                dos.writeChars(s);
+                }catch(IOException ioe) {}
+              }
+}</pre>
+
+<p>The following example will read the text file produced by the last example 
+
+  and output the text to the console. Note that because the previous program will 
+
+  have written Out.txt as unicode, if you create a text file with an editor containing 
+
+  a a string such as &quot;Hello&quot; , the following code will probably print 
+
+  out junk such as question marks.</p>
+
+<pre>import java.io.*;
+
+public class Fis{
+                 public static void main(String argv[]){
+                 Fis f = new Fis();
+                 f.amethod();
+                }
+
+
+      public void amethod(){
+		try{
+	        FileInputStream fis = new FileInputStream(&quot;Out.txt&quot;);
+                DataInputStream dis = new DataInputStream(fis);
+                while(true){
+                    char c =dis.readChar();
+                    System.out.println(c);
+                    }
+                }catch(IOException ioe) {}              
+          }
+}
+</pre>
+<h3><br>
+  RandomAccessFile</h3>
+
+<p>The RandomAccessFile class is way out on it's own and doesn't fit neatly with 
+  the Stream I/O classes. If you get answer possibilities that mix instances of 
+  RandomAccessFile with other streams, then they are almost certainly the wrong 
+  answers. RandomAccessFile is more like the File class than the Stream classes. 
+  It is useful if you want to move backwards and forwards with in a file without 
+  re-opening it.</p>
+<p> For its constructor RandomAccessFile takes either an instance of a File class 
+  or a string and a read/write mode argument. The mode argument can be either 
+  &quot;r&quot; for read only or &quot;rw&quot; can be read and written to. Memorise 
+  those two options, don't get caught out in the exam by a bogus mode such as 
+  &quot;w&quot;, &quot;ro&quot; or &quot;r+w&quot;;</p>
+
+<p>Unlike the File class, if you attempt pass the name of a file as a constructor, 
+  RandomAccessFile will attempt to open that file. If the file does not exist 
+  an exception will be thrown.</p>
+<TABLE width="100%" border="0">
+  <TBODY>
+    <TR>
+      <TD width="9%"><IMG src= "key2.gif"  width="106" height="73" border="0"></TD>
+      <TD width="91%">
+      <H4><FONT color="#FF0000">The Random Access does not take a stream
+      as a constructor parameter.</FONT></H4>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<p><br>
+
+  This example will read the Out.txt file created by the Fos.java example shown 
+
+  earlier.</p>
+
+<p>Because of the blank high byte (not bit), the results show a question mark 
+
+  with each letter.</p>
+
+<pre>import java.io.*;
+
+public class Raf{
+               public static void main(String argv[]){
+                 Raf r = new Raf();
+                 r.amethod();
+                 }
+
+
+            public void amethod(){
+		 try{
+                RandomAccessFile raf = new RandomAccessFile(&quot;Out.txt&quot;,&quot;rw&quot;);
+                for(int i=0; i&lt;10;i++){
+                                raf.seek(i);
+                                char myc = raf.readChar();
+                                //?Show for high bytes
+                		System.out.println(myc);
+				}
+	                } catch(IOException ioe) {}         
+              }
+}</pre>
+<h3>&nbsp;</h3>
+<table width="100%" border="0">
+  <tr> 
+    <td width="11%"><img src= "Quiz.gif"  width="99" height="101"> </td>
+    <td width="89%">&nbsp;</td>
+  </tr>
+</table>
+<hr>
+<h1>Questions</h1>
+<h4>Question 1)</h4>
+<p>Assuming any exception handling has been set up, which of the following will 
+  create an instance of the RandomAccessFile class? 
+<p>1) RandomAccessFile raf = new RandomAccessFile(&quot;myfile.txt&quot;,&quot;rw&quot;);<br>
+  2) RandomAccessFile raf = new RandomAccessFile( new DataInputStream());<br>
+  3) RandomAccessFile raf = new RandomAccessFile(&quot;myfile.txt&quot;);<br>
+  4) RandomAccessFile raf = new RandomAccessFile( new File(&quot;myfile.txt&quot;)); 
+<h4>Question 2)</h4>
+<p>Which of the following statements are true?</p>
+<p>1) The RandomAccessFile class allows you to move forwards and backwards without 
+  re-opening the file<br>
+  2) An instance of RandomAccessFile may be used as a constructor for FileInputStream<br>
+  3) The methods of RandomAccessFile do not throw exceptions<br>
+  4) Creating a RandomAccessFile instance with a constructor willl throw an exception 
+  if the file does not exist.</p>
+<h4>Question 3)</h4>
+<p> Which of the following statements are true?</p>
+<p>1) The FileInputStream can take either the name of a file or a an instance 
+  of the File class as a constructor<br>
+  2) FileInputStream will throw an exception if the file name passed as a constructor 
+  does not exist<br>
+  3) The methods of the FileInputStream are especially appropriate for manipulating 
+  text files<br>
+  4) The delete method of the FileOutputStream class will remove a file from the 
+  operating system</p>
+<h4>Question 4)</h4>
+<p>Question 4)</p>
+<p>What will happen when you attempt to compile and run the following code</p>
+<pre>import java.io.*;
+public class Fos{
+                    String s = new String("Hello");
+                    public static void main(String argv[]){
+                    Fos f = new Fos();
+                    f.amethod();
+                   }
+
+           	 public void amethod(){
+                	FileOutputStream fos = new FileOutputStream("Out.txt");
+	                fos.write(10);
+              }
+}
+</pre>
+<p><br>
+  1) Compile time error <br>
+  2) Runtime error <br>
+  3) Creation of a file called Out.txt containing the text &quot;10&quot; <br>
+  4) Creation of a file called Out.txt</p>
+<h3>Question 5)</h3>
+<p>Which of the following statements are true?</p>
+<p>1) The seek method of FileInputStream will set the position of the file pointer<br>
+  2) The read method of FileInputStream will read bytes from a FileInputStream<br>
+  3) The get method of FileInputStream will read bytes from a FileInputStream<br>
+  4) A FileOutputStream can be closed using the close method</p>
+<h1>Answers</h1>
+<h4>Answer to Question 1)</h4>
+<p>1) RandomAccessFile raf = new RandomAccessFile(&quot;myfile.txt&quot;,&quot;rw&quot;);</p>
+<p>The RandomAccessFile is an anomoly in the Java I/O architecture. It descends 
+  directly from Object and is not part of the Streams architecture.</p>
+<h4>Answer to Question 2</h4>
+<p>1) The RandomAccessFile class allows you to move forwards and backwards without 
+  re-opening the file<br>
+  4) Creating a RandomAccessFile instance with a constructor willl throw an exception 
+  if the file does not exist</p>
+<h3>Answer to Question 3)</h3>
+<p>&nbsp;</p>
+<p>1) The FileInputStream can take either the name of a file or a an instance 
+  of the File class as a constructor<br>
+  2) FileInputStream will throw an exception if the file name passed as a constructor 
+  does not exist<br>
+  Option 3 is a reasonable description of the Reader and Writer classes, the FileInput 
+  and Output clases are designed to read and write bytes rather than text. </p>
+<h4>Answer to Question 4)</h4>
+<p> 1) Compile time error </p>
+<p>This code will throw an error something like</p>
+<p>Fos.java:10: Exception java.io.IOException must be caught, or it must be declare 
+  in the throws clause of this method. FileOutputStream fos = new FileOutputStream("Out.txt"); 
+</p>
+<h4>Answer to Question 5)</h4>
+<p> 2) The read method of FileInputStream can be used to read bytes from a FileInputStream<br>
+  4) A FileOutputStream can be closed using the close method</p>
+<p>Option one referring to a seek method is fairly implausible as the concept 
+  of file pointer is appropriate to the RandomAccessFile rather than the stream 
+  classes. The get method of option three is implausible as the prefix get is 
+  almost always follwed by what you are getting.</p>
+<h3>&nbsp;</h3>
+<p>&nbsp;</p>
+<hr>
+<h4><b>Other sources on this topic</b></h4>
+<p>This topic is covered in the Sun Tutorial at <br>
+  <a href= "http://java.sun.com/docs/books/tutorial/essential/io/" >http://java.sun.com/docs/books/tutorial/essential/io/</a></p>
+<p>The JLS on Java IO a bit academic and bare <br>
+  <a href= "http://www.infospheres.caltech.edu/resources/langspec-1.0/javaio.doc.html" >http://www.infospheres.caltech.edu/resources/langspec-1.0/javaio.doc.html</a></p>
+<p>Richard Baldwin on I/O<br>
+  <a href= "http://home.att.net/%7Ebaldwin.rg/Intermediate/Java060.htm" >http://home.att.net/~baldwin.rg/Intermediate/Java060.htm</a></p>
+<p>Oreilly have published a book specifically about Java I/O It probably goes 
+  into more detail than is necesary for the Certificaiton exam but browsing the 
+  online samples might give you some insights. The book gets generally good reviews 
+  at www.amazon.com <br>
+  <a href= "http://www.oreilly.com/catalog/javaio/" >http://www.oreilly.com/catalog/javaio/</a> 
+</p>
+<p>Joyothi has some handy tables for the I/O classes at <br>
+  <a href= "http://www.geocities.com/SiliconValley/Network/3693/io.html" >http://www.geocities.com/SiliconValley/Network/3693/io.html</a></p>
+<p>Last updated<br>
+  24 Sep 2000<br>
+  copyright &copy; Marcus Green 2000<br>
+  most recent version at www.jchq.net</p>
+
+      <p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;
+
+<h3>&nbsp;</h3>
+
+<h3>&nbsp; </h3>
+
+</body>
+
+</html>
+

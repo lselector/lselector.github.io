@@ -1,0 +1,224 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <title>xslt_instructions</title>
+</head>
+<body>
+<font face="Arial,Helvetica"><font size=-1>Figure 5&nbsp;
+XSLT Instructions</font></font>
+<table BORDER CELLSPACING=0 WIDTH="100%" BGCOLOR="#336699" >
+<tr>
+<td VALIGN=TOP BGCOLOR="#99CCFF"><font face="Arial,Helvetica"><font size=-1>Instruction</font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#99CCFF"><font face="Arial,Helvetica"><font size=-1>Syntax</font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#99CCFF"><font face="Arial,Helvetica"><font size=-1>Description</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>xsl:copy-of</font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>&lt;xsl:copy-of&nbsp;
+select = expression /></font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>Emits
+the node-set corresponding to the select expression.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>xsl:value-of</font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>&lt;xsl:value-of&nbsp;
+select = string-expression&nbsp; disable-output-escaping = "yes"&nbsp;
+| "no" /></font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>Emits
+the string corresponding to the select expression.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>xsl:if</font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>&lt;xsl:if&nbsp;
+test = boolean-expression>&nbsp; &lt;!- - Content: template - -> &lt;/xsl:if></font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>Evaluates
+the template if and only if the test expression evaluates to true.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>xsl:choose</font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>&lt;xsl:choose>&nbsp;
+&lt;!- - Content: (xsl:when+, xsl:otherwise?) - -> &lt;/xsl:choose></font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>Evaluates
+the template from the first xsl:when clause whose test expression evaluates
+to true. If none of the test expressions evaluate to true, then the template
+contained in the xsl:otherwise clause is evaluated.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>xsl:for-each</font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>&lt;xsl:for-each&nbsp;
+select = node-set-expression>&nbsp; &lt;!- - Content: (xsl:sort*, template)
+- -> &lt;/xsl:for-each></font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>Evaluates
+the template against each node in node-set returned by the select expression.
+The order of evaluation can be influenced using one or more xsl:sorts.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>xsl:call-template</font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>&lt;xsl:call-template&nbsp;
+name = qname>&nbsp; &lt;!- - Content: xsl:with-param* - -> &lt;/xsl:call-template></font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>Invokes
+the template rule named by name.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>xsl:variable</font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>&lt;xsl:variable&nbsp;
+name = qname&nbsp;&nbsp; select = expression>&nbsp; &lt;!- - Content: template
+- -> &lt;/xsl:variable></font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>Declares
+a variable named name and initializes it using the select expression or
+template.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>xsl:text</font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>&lt;xsl:text&nbsp;
+disable-output-escaping = "yes" | "no">&nbsp; &lt;!- - Content: #PCDATA
+- -> &lt;/xsl:text></font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>Emits
+the text found in #PCDATA. Escaping of the five built-in entities is controlled
+using disable-output-escaping.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>xsl:number</font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>&lt;xsl:number&nbsp;
+level = "single" | "multiple" | "any"&nbsp; count = pattern&nbsp;&nbsp;
+from = pattern&nbsp;&nbsp; value = number-expression&nbsp;&nbsp; format
+= { string }&nbsp; lang = { nmtoken }&nbsp; letter-value = { "alphabetic"
+| "traditional" }&nbsp; grouping-separator = { char }&nbsp; grouping-size
+= { number } /></font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>Emits
+a number based on the XPath number expression found in value.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>xsl:copy</font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>&lt;xsl:copy&nbsp;
+use-attribute-sets = qnames>&nbsp; &lt;!- - Content: template - -> &lt;/xsl:copy></font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>Copies
+the current context node (and associated namespace nodes) to the result
+tree fragment.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>xsl:apply-templates</font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>&lt;xsl:apply-templates&nbsp;
+select = node-set-expression&nbsp;&nbsp; mode = qname>&nbsp; &lt;!- - Content:
+(xsl:sort | xsl:with-param)* - -> &lt;/xsl:apply-templates></font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>Invokes
+the best-match template rules against the node-set returned by the select
+expression.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>xsl:apply-imports</font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>&lt;xsl:apply-imports
+/></font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>Promotes
+the current stylesheet in import precedence.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>xsl:message</font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>&lt;xsl:message&nbsp;
+terminate = "yes" | "no">&nbsp; &lt;!- - Content: template - -> &lt;/xsl:message></font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>Emits
+a message in a processor-dependent manner.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>xsl:fallback</font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>&lt;xsl:fallback>&nbsp;
+&lt;!- - Content: template - -> &lt;/xsl:fallback></font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>Evaluates
+the template when the parent instruction/directive is not supported by
+the current processor.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>xsl:comment</font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>&lt;xsl:comment>&nbsp;
+&lt;!- - Content: template - -> &lt;/xsl:comment></font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>Emits
+an XML comment containing the template as its character data.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>xsl:processing-instruction</font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>&lt;xsl:processing-instruction&nbsp;
+name = { ncname }>&nbsp; &lt;!- - Content: template - -> &lt;/xsl:processing-instruction></font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>Emits
+an XML processing instruction whose [target] is name and whose [children]
+are based on template.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>xsl:element</font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>&lt;xsl:element&nbsp;
+name = { qname }&nbsp; namespace = { uri-reference }&nbsp; use-attribute-sets
+= qnames>&nbsp; &lt;!- - Content: template - -> &lt;/xsl:element></font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>Emits
+an XML element whose [local name] is name, whose [namespace URI] is namespace,
+and whose [children] are based on template.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>xsl:attribute</font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>&lt;xsl:attribute&nbsp;
+name = { qname }&nbsp; namespace = { uri-reference }>&nbsp; &lt;!- - Content:
+template - -> &lt;/xsl:attribute></font></font></td>
+
+<td VALIGN=TOP BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-1>Emits
+an XML attribute whose [local name] is name, whose [namespace URI] is namespace,
+and whose [children] are based on template.</font></font></td>
+</tr>
+</table>
+<font face="Arial,Helvetica"><font size=-1></font></font>
+</body>
+</html>

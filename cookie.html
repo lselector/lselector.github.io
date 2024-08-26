@@ -1,0 +1,294 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>cookie</title>
+</head>
+<body>
+How Are Cookies Created and Read?
+<p>Cookies are set using a Set-cookie: HTTP header with five possible fields
+separated with a semicolon and a space.
+<br>These fields are:
+<table BORDER CELLSPACING=0 CELLPADDING=2 WIDTH="100%" >
+<tr>
+<td>cookie-name=cookie-value;</td>
+
+<td>-name of the cookie and its value (combined &lt;4KB).</td>
+</tr>
+
+<tr>
+<td>expiration=expiration-date;</td>
+
+<td>-the date the cookie will be deleted from the cookie file. You can
+delete a previously set cookie ahead of schedule by creating a second cookie
+with the same name, path, and domain, but with an expiration date in the
+past.</td>
+</tr>
+
+<tr>
+<td>path=cookie-path;</td>
+
+<td>-combines with the domain name to determine when a browser should show
+a cookie to the server.</td>
+</tr>
+
+<tr>
+<td>domain=server-domain;</td>
+
+<td>-used to determine when a browser should show a cookie to the server.
+Usually, cookies are created with the Web server's name without the www.
+For example, .foo.net instead of www.foo.net. Notice that the leading period
+is retained.</td>
+</tr>
+
+<tr>
+<td>secure</td>
+
+<td>-ensures that the cookie will be sent back only to the server when
+a secure HTTP connection has been established.</td>
+</tr>
+</table>
+
+<p>When all of these elements are put together, they look like this:
+<p>&nbsp;&nbsp;&nbsp;&nbsp; Set-Cookie: user_addr=ppp1.dialin.iupui.edu;
+<br>&nbsp;&nbsp;&nbsp;&nbsp; expires=Wednesday, 09-Nov-99 00:00:00 GMT;
+path=/cgi-bin/;
+<br>&nbsp;&nbsp;&nbsp;&nbsp; domain=.engr.iupui.edu; secure
+<br>==============================================================
+<br><font color="#CC0000">Below is a perl script that both sets and read
+cookies. First, it will create four cookies and then it will read those
+cookies from the HTTP_COOKIE environment variable. Inside the HTTP_COOKIE
+environment variable, the cookies are delimited by a semicolon and a space.
+The cookie fields are separated by commas, and the name-value pairs are
+separated by equal signs. In order to use cookies, you need to parse the
+HTTP_COOKIE variable at three different levels.</font>
+<p><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp; #!/usr/local/bin/perl
+-w</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp; use strict;</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp; my($expDate)&nbsp;&nbsp;
+= "Wednesday, 09-Nov-99 00:00:00 GMT";</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp; my($theDomain) = ".engr.iupui.edu";</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp; my($path)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+= "/cgi-bin/";</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp; setCookie("user", "dbewley",
+$expDate, $path, $theDomain);</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp; setCookie("user_addr",
+$ENV{'REMOTE_HOST'}, $expDate, $path, $theDomain)</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if defined($ENV{'REMOTE_HOST'});</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp; setCookie("flag", "black",
+$expDate, $path, ".iupui.edu");</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp; setCookie("car", "honda:accord:88:LXI:green",
+$expDate, $path, $theDomain);</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp; my(%cookies) = getCookies();</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp; print("Content-type:
+text/html\n\n");</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp; print("&lt;html>&lt;head>&lt;title>cookies&lt;/title>&lt;/head>&lt;bosy>&lt;h1>Cookies&lt;/h1>");</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp; print("&lt;table>");</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp; foreach (sort(keys(%cookies)))
+{</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+print("&lt;tr>&lt;td>$_&lt;/td>&lt;td>$cookies{$_}&lt;/td>&lt;/tr>");</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp; }</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp; print("&lt;/table>&lt;/body>&lt;/html>");</font>
+<p><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp; sub setCookie {</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+my($name, $val, $exp, $path, $dom, $secure) = @_;</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+print("Set-Cookie: ");</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+print("$name=$val, expires=$exp, path=$path, domain=$dom");</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+print(", $secure") if defined($secure);</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+print("\n");</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp; }</font>
+<p><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp; sub getCookies {</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+my(%cookies);</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+foreach (split (/; /,$ENV{'HTTP_COOKIE'})){</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+my($key) = split(/=/, $_);</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$cookies{$key} = substr($_, index($_, "=")+1);</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+return(%cookies);</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp;&nbsp; }</font>
+<p><font color="#CC0000">This program shows that the Web server stores
+a copy of any cookies that you set into the HTTP_COOKIE environment variable.
+It only performs one level of parsing. In order to create a really useful
+getCookies() fuNCtion, you need to split the cookie on the comma character
+and then again on the equals character.</font>
+<br>=========================================================
+<br>How to find out if a visitor's Web browser supports cookies? The CGI
+program below will set a cookie and then redirect the visitor's Web browser
+back to itself with some additional path information. When the script (during
+its second invocation) sees the extra path information, it checks for the
+previously created cookie. If it exists, the visitor's browser has passed
+the test. Otherwise, the visitor's browser does not support cookies.
+<p>&nbsp;&nbsp;&nbsp;&nbsp; #!/usr/bin/perl -w
+<br>&nbsp;&nbsp;&nbsp;&nbsp; use strict;
+<br>&nbsp;&nbsp;&nbsp;&nbsp; if ($ENV{'QUERY_STRING'} ne 'TESTING') {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print "HTTP/1.0 302
+Moved Temporarily\n";
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print "Set-Cookie:
+Cookie=Test\n";
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print "Location: $ENV{'SCRIPT_NAME'}?TESTING\n\n";
+<br>&nbsp;&nbsp;&nbsp;&nbsp; }
+<br>&nbsp;&nbsp;&nbsp;&nbsp; else {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; my $supports = "doesn't
+support";
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if ($ENV{'HTTP_COOKIE'}
+=~ /Cookie=Test/) { $supports = "supports";}
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print("Content-type:
+text/html\n\n");
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print("&lt;html>&lt;body>Your
+browser, $ENV{'HTTP_USER_AGENT'}, $supports cookies&lt;/body>&lt;/html>");
+<br>&nbsp;&nbsp;&nbsp;&nbsp; }
+<p><b><u>Here is how to read/store cookies using CGI.pm:&nbsp; cookie method:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td><b><u>To retrieve cookie - use cookie method without value parameter</u></b>
+<br><font color="#3333FF">&nbsp;use CGI;</font>
+<br><font color="#3333FF">&nbsp;$query = new CGI;</font>
+<br><font color="#3333FF">&nbsp;%answers = $query->cookie(-name=>'answers');</font>
+<br><font color="#3333FF">&nbsp;# $query->cookie('answers') will work too!</font><b><u></u></b>
+<p><b><u>To set cookie:</u></b>
+<br><font color="#3333FF">$cookie = $q->cookie(-name=>'sessionID',</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -value=>'xyzzy',</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -expires=>'+1h',</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -path=>'/cgi-bin/database',</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -domain=>'.capricorn.org',</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -secure=>1);</font>
+<br><font color="#3333FF">print $q->header(-cookie=>$cookie);</font>
+<p><b><u>Store many values (hash) into a cookie:</u></b>
+<br><font color="#3333FF">$cookie=$q->cookie(-name=>'family information',</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-value=>\%childrens_ages);</font>
+<p><b><u>Store 2 or more cookies:&nbsp;</u></b>
+<br><font color="#3333FF">$cookie1 = $query->cookie(-name=>'riddle_name',</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -value=>"The Sphynx's
+Question");</font>
+<br><font color="#3333FF">&nbsp;$cookie2 = $query->cookie(-name=>'answers',</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -value=>\%answers);</font>
+<br><font color="#3333FF">&nbsp;print $query->header(-cookie=>[$cookie1,$cookie2]);</font>
+<br>&nbsp;</td>
+</tr>
+</table>
+<font color="#000099"></font>
+<p><b><u><font color="#000099">Here is an example on how to deal with cookies
+from </font><font color="#CC0000">Javascript</font><font color="#000099">:</font></u></b>
+<p><font color="#000099">&lt;html>&lt;head></font>
+<br><font color="#000099">&lt;script Language="JavaScript"></font>
+<p><font color="#000099">function getCookieVal (offset) {</font>
+<br><font color="#000099">&nbsp; var endstr = document.cookie.indexOf (";",
+offset);</font>
+<br><font color="#000099">&nbsp; if (endstr == -1) endstr = document.cookie.length;</font>
+<br><font color="#000099">&nbsp; return unescape(document.cookie.substring(offset,
+endstr));</font>
+<br><font color="#000099">}</font>
+<p><font color="#000099">function GetCookie (name) {</font>
+<br><font color="#000099">&nbsp;var arg = name + "=";</font>
+<br><font color="#000099">&nbsp;var alen = arg.length;</font>
+<br><font color="#000099">&nbsp;var clen = document.cookie.length;</font>
+<br><font color="#000099">&nbsp;var i = 0;</font>
+<br><font color="#000099">&nbsp;while (i &lt; clen) {</font>
+<br><font color="#000099">&nbsp;&nbsp; var j = i + alen;</font>
+<br><font color="#000099">&nbsp;&nbsp; if (document.cookie.substring(i,
+j) == arg) return getCookieVal (j);</font>
+<br><font color="#000099">&nbsp;&nbsp; i = document.cookie.indexOf(" ",
+i) + 1;</font>
+<br><font color="#000099">&nbsp;&nbsp; if (i == 0) break;</font>
+<br><font color="#000099">&nbsp;}</font>
+<br><font color="#000099">&nbsp;return null;</font>
+<br><font color="#000099">}</font>
+<p><font color="#000099">function SetCookie (name, value) {</font>
+<br><font color="#000099">&nbsp;var argv = SetCookie.arguments;</font>
+<br><font color="#000099">&nbsp;var argc = SetCookie.arguments.length;</font>
+<br><font color="#000099">&nbsp;var expires = (2 &lt; argc) ? argv[2] :
+null;</font>
+<br><font color="#000099">&nbsp;var path = (3 &lt; argc) ? argv[3] : null;</font>
+<br><font color="#000099">&nbsp;var domain = (4 &lt; argc) ? argv[4] :
+null;</font>
+<br><font color="#000099">&nbsp;var secure = (5 &lt; argc) ? argv[5] :
+false;</font>
+<br><font color="#000099">&nbsp;document.cookie = name + "=" + escape (value)
++</font>
+<br><font color="#000099">&nbsp;((expires == null) ? "" : ("; expires="
++ expires.toGMTString())) +</font>
+<br><font color="#000099">&nbsp;((path == null) ? "" : ("; path=" + path))
++</font>
+<br><font color="#000099">&nbsp;((domain == null) ? "" : ("; domain=" +
+domain)) +</font>
+<br><font color="#000099">&nbsp;((secure == true) ? "; secure" : "");</font>
+<br><font color="#000099">}</font>
+<p><font color="#000099">function display_count() {</font>
+<br><font color="#000099">&nbsp; var expdate = new Date();</font>
+<br><font color="#000099">&nbsp; var visit;</font>
+<br><font color="#000099">&nbsp; // Set expiration date to a year from
+now.</font>
+<br><font color="#000099">&nbsp; expdate.setTime(expdate.getTime() +&nbsp;
+(24 * 60 * 60 * 1000 * 365));</font>
+<br><font color="#000099">&nbsp; if(!(visit = GetCookie("visit"))) visit
+= 0;</font>
+<br><font color="#000099">&nbsp; visit++;</font>
+<br><font color="#000099">&nbsp; SetCookie("visit", visit, expdate, "/",
+null, false);</font>
+<br><font color="#000099">&nbsp; alert("You have visited this page "+ visit
++ " times." )</font>
+<br><font color="#000099">}</font>
+<br><font color="#000099">&lt;/script></font>
+<br><font color="#000099">&lt;/head></font>
+<br><font color="#000099">&lt;body onLoad="display_count()"></font>
+<br><font color="#000099">...</font>
+<br><font color="#000099">&lt;/body></font>
+<br><font color="#000099">&lt;/html></font>
+<br>======================================================
+<br><font color="#CC0000">Using Cookies from <b>Java</b> Servlets:</font>
+<p><font color="#CC0000">A Cookie is created by calling the Cookie constructor
+(below),</font>
+<br><font color="#CC0000">which takes two strings: the cookie name and
+the cookie value.</font>
+<br><font color="#CC0000">Neither the name nor the value should contain
+whitespace or any of:</font>
+<br><font color="#CC0000">&nbsp; [ ] ( ) = , " / ? @ : ;</font>
+<p><font color="#CC0000">import java.io.*;</font>
+<br><font color="#CC0000">import javax.servlet.*;</font>
+<br><font color="#CC0000">import javax.servlet.http.*;</font>
+<br><font color="#CC0000">import java.net.*;</font>
+<p><font color="#CC0000">// set cookie example</font>
+<p><font color="#CC0000">&nbsp; Cookie userCookie = new Cookie("user",
+"uid1234");</font>
+<br><font color="#CC0000">&nbsp; response.addCookie(userCookie);</font>
+<p><font color="#CC0000">// read cookies example</font>
+<p><font color="#CC0000">&nbsp; out.println("Cookies:");</font>
+<br><font color="#CC0000">&nbsp; Cookie[] cookies = request.getCookies();</font>
+<br><font color="#CC0000">&nbsp; for (int i = 0; i &lt; cookies.length;
+i++) {</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp; String name = cookies[i].getName();</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp; String value = cookies[i].getValue();</font>
+<br><font color="#CC0000">&nbsp;&nbsp;&nbsp; out.println("&nbsp; " + name
++ " : " + value);</font>
+<br>======================================================
+<br>You can find more information about cookies at these Web sites:
+<br>&nbsp;- do search for cookielib on search engines -
+<br>&nbsp;- <a href="http://www.zdnet.com/devhead/resources/scriptlibrary/javascript/cookies.html">http://www.zdnet.com/devhead/resources/scriptlibrary/javascript/cookies.html</a>
+-
+<br>&nbsp;- <a href="http://www.hidaho.com/cookies/cookie.txt">http://www.hidaho.com/cookies/cookie.txt</a>
+-
+<br>&nbsp;- <a href="http://www.cookiecentral.com/">http://www.cookiecentral.com/</a>
+-
+<br>&nbsp;- <a href="http://www.worldwidemart.com/scripts/cookielib.shtml">http://www.worldwidemart.com/scripts/cookielib.shtml</a>
+-
+<br>&nbsp;- <a href="http://home.netscape.com/newsref/std/cookie_spec.html">http://home.netscape.com/newsref/std/cookie_spec.html</a>
+-
+<br>&nbsp;- <a href="http://www.netscapeworld.com/netscapeworld/nw-07-1996/nw-07-cookies.html">http://www.netscapeworld.com/netscapeworld/nw-07-1996/nw-07-cookies.html</a>
+-
+<br>&nbsp;
+<br>&nbsp;
+</body>
+</html>

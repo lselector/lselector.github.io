@@ -1,0 +1,428 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>java_strings</title>
+<!--
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Java Strings</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Java Strings</font></b><b><font color="#CC0000"></font></b>
+<p><b><font color="#CC0000">On this page:</font></b>
+<br><font color="#6699CC">• </font><b><a href="#intro">intro</a></b>
+<br><font color="#6699CC">• </font><b><a href="#String">String</a></b>
+<br><font color="#6699CC">• </font><b><a href="#find_word">find a word
+in a file</a></b>
+<br><font color="#6699CC">• </font><b><a href="#StringTokenizer">StringTokenizer</a></b>
+<br><a NAME="intro"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Intro</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>String</u></b> objects can not be changed. But you can create
+a new object and point the same reference to this new object. There are
+MANY methods in the String class which can return a changed string, for
+example:
+<br>&nbsp; String s1 = "mama went home";
+<br>&nbsp; s1 = s1.replace('m', 'p');
+<br>&nbsp; s1=s1.toUpperCase( );
+<p>If you have to make many changes in the string and you don't want to
+create a new immutable string object every time - use <b><u>StringBuffer</u></b>.
+<p>There are several methods allowing to search for characters or substring
+in a string, for example:
+<br>&nbsp; int ii = s1.indexOf("WENT");
+<br><a NAME="String"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>String</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>public final class java.lang.<b>String</b> extends Object implements
+Comparable, Serializable
+<p>&nbsp;&nbsp;&nbsp;&nbsp; String str = "abc";
+<br>&nbsp;&nbsp;&nbsp;&nbsp; char data[] = {'a', 'b', 'c'};
+<br>&nbsp;&nbsp;&nbsp;&nbsp; String str = new String(data);
+<br>&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("abc");
+<br>&nbsp;&nbsp;&nbsp;&nbsp; String cde = "cde";
+<br>&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("abc" + cde);
+<br>&nbsp;&nbsp;&nbsp;&nbsp; String c = "abc".substring(2,3);
+<br>&nbsp;&nbsp;&nbsp;&nbsp; String d = cde.substring(1, 2);
+<p><b><u>String class defines only one Field:</u></b>
+<br>static Comparator CASE_INSENSITIVE_ORDER
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Returns a Comparator
+that orders String objects as by compareToIgnoreCase.
+<p><b><u>Constructors:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 BGCOLOR="#CCFFFF" >
+<tr>
+<td><b>String</b>() - Initializes a newly created String object so that
+it represents an empty character sequence.
+<br><b>String</b>(byte[] bytes) - Construct a new String by converting
+the specified array of bytes using the platform's default character encoding.
+<br><b>String</b>(byte[] ascii, int hibyte) - Deprecated. This method does
+not properly convert bytes into characters. As of JDK 1.1, the preferred
+way to do this is via the <b>String</b> constructors that take a character-encoding
+name or that use the platform's default encoding.
+<br><b>String</b>(byte[] bytes, int offset, int length) - Construct a new
+String by converting the specified subarray of bytes using the platform's
+default character encoding.
+<br><b>String</b>(byte[] ascii, int hibyte, int offset, int count) - Deprecated.
+This method does not properly convert bytes into characters. As of JDK
+1.1, the preferred way to do this is via the String constructors that take
+a character-encoding name or that use the platform's default encoding.
+<br><b>String</b>(byte[] bytes, int offset, int length, String enc) - Construct
+a new String by converting the specified subarray of bytes using the specified
+character encoding.
+<br><b>String</b>(byte[] bytes, String enc) - Construct a new String by
+converting the specified array of bytes using the specified character encoding.
+<p><b>String</b>(char[] value) - Allocates a new String so that it represents
+the sequence of characters currently contained in the character array argument.
+<br><b>String</b>(char[] value, int offset, int count) - Allocates a new
+String that contains characters from a subarray of the character array
+argument.
+<p><b>String</b>(String value) - Initializes a newly created String object
+so that it represents the same sequence of characters as the argument;
+in other words, the newly created string is a copy of the argument string.
+<p><b>String</b>(StringBuffer buffer) - Allocates a new string that contains
+the sequence of characters currently contained in the string buffer argument.</td>
+</tr>
+</table>
+
+<p><b><u>Methods (close to 50 of them):</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 BGCOLOR="#CCFFFF" >
+<tr>
+<td>char <b>charAt</b>(int index) - Returns the character at the specified
+index.
+<p>&nbsp;int <b>compareTo</b>(Object o) - Compares this String to another
+Object.
+<br>&nbsp;int <b>compareTo</b>(String anotherString) - Compares two strings
+lexicographically.
+<br>&nbsp;int <b>compareToIgnoreCase</b>(String str) - Compares two strings
+lexicographically, ignoring case considerations.
+<p>&nbsp;String <b>concat</b>(String str) - Concatenates the specified
+string to the end of this string.
+<p>static String <b>copyValueOf</b>(char[] data) - Returns a String that
+is equivalent to the specified character array.
+<br>static String <b>copyValueOf</b>(char[] data, int offset, int count)
+- Returns a String that is equivalent to the specified character array.
+<p>&nbsp;boolean <b>endsWith</b>(String suffix) - Tests if this string
+ends with the specified suffix.
+<p>&nbsp;boolean <b>equals</b>(Object anObject) - Compares this string
+to the specified object.
+<br>&nbsp;boolean <b>equalsIgnoreCase</b>(String anotherString) - Compares
+this String to another String, ignoring case considerations.
+<p>&nbsp;byte[] <b>getBytes</b>() - Convert this String into bytes according
+to the platform's default character encoding, storing the result into a
+new
+byte array.
+<br>&nbsp;void <b>getBytes</b>(int srcBegin, int srcEnd, byte[] dst, int
+dstBegin) - Deprecated. This method does not properly convert characters
+into bytes. As of JDK 1.1, the preferred way to do this is via the getBytes(String
+enc) method, which takes a character-encoding name, or the getBytes() method,
+which uses the platform's default encoding.
+<br>&nbsp;byte[] <b>getBytes</b>(String enc) - Convert this String into
+bytes according to the specified character encoding, storing the result
+into a new byte array.
+<p>&nbsp;void <b>getChars</b>(int srcBegin, int srcEnd, char[] dst, int
+dstBegin) - Copies characters from this string into the destination character
+array.
+<p>&nbsp;int <b>hashCode</b>() - Returns a hashcode for this string.
+<p>&nbsp;int <b>indexOf</b>(int ch) - Returns the index within this string
+of the first occurrence of the specified character.
+<br>&nbsp;int <b>indexOf</b>(int ch, int fromIndex) - Returns the index
+within this string of the first occurrence of the specified character,
+starting the search at the specified index.
+<br>&nbsp;int <b>indexOf</b>(String str) - Returns the index within this
+string of the first occurrence of the specified substring.
+<br>&nbsp;int <b>indexOf</b>(String str, int fromIndex) - Returns the index
+within this string of the first occurrence of the specified substring,
+starting at the specified index.
+<p>&nbsp;String <b>intern</b>() - Returns a canonical representation for
+the string object.
+<p>&nbsp;int <b>lastIndexOf</b>(int ch) - Returns the index within this
+string of the last occurrence of the specified character.
+<br>&nbsp;int <b>lastIndexOf</b>(int ch, int fromIndex) - Returns the index
+within this string of the last occurrence of the specified character, searching
+backward starting at the specified index.
+<br>&nbsp;int <b>lastIndexOf</b>(String str) - Returns the index within
+this string of the rightmost occurrence of the specified substring.
+<br>&nbsp;int <b>lastIndexOf</b>(String str, int fromIndex) - Returns the
+index within this string of the last occurrence of the specified substring.
+<br>&nbsp;int <b>length</b>() - Returns the length of this string.
+<p>&nbsp;boolean <b>regionMatches</b>(boolean ignoreCase, int toffset,
+String other, int ooffset, int len) - Tests if two string regions are equal.
+<br>&nbsp;boolean <b>regionMatches</b>(int toffset, String other, int ooffset,
+int len) - Tests if two string regions are equal.
+<p>&nbsp;String <b>replace</b>(char oldChar, char newChar) - Returns a
+new string resulting from replacing all occurrences of oldChar in this
+string with newChar.
+<p>&nbsp;boolean <b>startsWith</b>(String prefix) - Tests if this string
+starts with the specified prefix.
+<br>&nbsp;boolean <b>startsWith</b>(String prefix, int toffset) - Tests
+if this string starts with the specified prefix beginning a specified index.
+<p>&nbsp;String <b>substring</b>(int beginIndex) - Returns a new string
+that is a substring of this string.
+<br>&nbsp;String <b>substring</b>(int beginIndex, int endIndex) - Returns
+a new string that is a substring of this string.
+<br>&nbsp;char[] <b>toCharArray</b>() - Converts this string to a new character
+array.
+<p>&nbsp;String <b>toLowerCase</b>() - Converts all of the characters in
+this String to lower case using the rules of the default locale, which
+is returned by Locale.getDefault.
+<br>&nbsp;String <b>toLowerCase</b>(Locale locale) - Converts all of the
+characters in this String to lower case using the rules of the given Locale.
+<p>&nbsp;String <b>toString</b>() - This object (which is already a string!)
+is itself returned.
+<p>&nbsp;String <b>toUpperCase</b>() - Converts all of the characters in
+this String to upper case using the rules of the default locale, which
+is returned by Locale.getDefault.
+<br>&nbsp;String <b>toUpperCase</b>(Locale locale) - Converts all of the
+characters in this String to upper case using the rules of the given locale.
+<p>&nbsp;String <b>trim</b>() - Removes white space from both ends of this
+string.
+<p>static String <b>valueOf</b>(boolean b) - Returns the string representation
+of the boolean argument.
+<br>static String <b>valueOf</b>(char c) - Returns the string representation
+of the char argument.
+<br>static String <b>valueOf</b>(char[] data) - Returns the string representation
+of the char array argument.
+<br>static String <b>valueOf</b>(char[] data, int offset, int count) -
+Returns the string representation of a specific subarray of the char array
+argument.
+<br>static String <b>valueOf</b>(double d) - Returns the string representation
+of the double argument.
+<br>static String <b>valueOf</b>(float f) - Returns the string representation
+of the float argument.
+<br>static String <b>valueOf</b>(int i) - Returns the string representation
+of the int argument.
+<br>static String <b>valueOf</b>(long l) - Returns the string representation
+of the long argument.
+<br>static String <b>valueOf</b>(Object obj) - Returns the string representation
+of the Object argument.</td>
+</tr>
+</table>
+
+<p><b><u>Methods inherited from class java.lang.Object:</u></b>
+<br>clone, finalize, getClass, notify, notifyAll, wait, wait, wait
+<br><a NAME="find_word"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Find a word in a file</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Here is a utility finding a word in a text file (case-insensitive) -
+and printing the line numbers and the lines with this word
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 BGCOLOR="#CCFFFF" >
+<tr>
+<td>/**&nbsp;
+<br>&nbsp; find a word in a text file
+<br>*/&nbsp;
+<p>import java.io.*;&nbsp;
+<p>public class Grep {&nbsp;
+<br>&nbsp; static int line_num = 1;
+<br>&nbsp; static String word;
+<br>&nbsp; static String upper_word;
+<br>&nbsp; static String line;
+<p>&nbsp; public static void main(String [] args) {&nbsp;
+<p>&nbsp;&nbsp;&nbsp; if (args.length != 2) {&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("usage java Grep
+&lt;word> &lt;file>");&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("Exiting.");&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.exit(0);&nbsp;
+<br>&nbsp;&nbsp;&nbsp; }&nbsp;
+<p>&nbsp;&nbsp;&nbsp; word = args[0];
+<br>&nbsp;&nbsp;&nbsp; upper_word = word.toUpperCase();
+<p>&nbsp;&nbsp;&nbsp; try {&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BufferedReader in = new BufferedReader(new
+FileReader(args[1]));&nbsp;
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while ((line = in.readLine()) != null)
+{&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; process_line(line);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; line_num++;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in.close();&nbsp;
+<br>&nbsp;&nbsp;&nbsp; }&nbsp;
+<br>&nbsp;&nbsp;&nbsp; catch (IOException e) {System.err.println("Error:
+" + e);}&nbsp;
+<p>&nbsp; } // end main&nbsp;
+<p>&nbsp; static void process_line(String line){
+<br>&nbsp;&nbsp;&nbsp;&nbsp; if ( (line.toUpperCase()).indexOf(upper_word)>=0)
+{
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(line_num +
+": " + line);&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp; }
+<br>&nbsp; }
+<p>}&nbsp;</td>
+</tr>
+</table>
+<a NAME="StringTokenizer"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>StringTokenizer</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b>public class StringTokenizer</b>
+<br><b>extends Object</b>
+<br><b>implements Enumeration</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 BGCOLOR="#CCFFFF" >
+<tr>
+<td>This code:&nbsp;
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; StringTokenizer st
+= new StringTokenizer("this is a test");
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while (st.hasMoreTokens())
+{
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+println(st.nextToken());
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+<p>prints the following output:&nbsp;
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; is
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; test</td>
+</tr>
+</table>
+<b></b>
+<p>StringTokenizer allows to break a string into tokens (see also more
+complex StreamTokenizer class).
+<br>The StringTokenizer methods do not distinguish among identifiers, numbers,
+and quoted strings, nor do they recognize and skip comments.
+<br>The set of delimiters (the characters that separate tokens) may be
+specified either at creation time or on a per-token basis.
+<p>If the <b>returnDelims</b> flag is <b>false</b>, delimiter characters
+serve to separate tokens.
+<br>If the <b>returnDelims</b> flag is <b>true</b>, delimiter characters
+are themselves considered to be tokens too.&nbsp; A token is thus either
+one delimiter character, or a maximal sequence of consecutive characters
+that are not delimiters.
+<p>A StringTokenizer object internally maintains a current position within
+the string to be tokenized. Some operations advance this current position
+past the characters processed.
+<p><b><u>Constructors:</u></b>
+<br>&nbsp;<b>StringTokenizer</b>(String str) - Constructs a string tokenizer
+for the specified string.
+<br>&nbsp;<b>StringTokenizer</b>(String str, String delim) - Constructs
+a string tokenizer for the specified string.
+<br>&nbsp;<b>StringTokenizer</b>(String str, String delim, boolean returnDelims)
+- Constructs a string tokenizer for the specified string.
+<p><b><u>Methods:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 BGCOLOR="#CCFFFF" >
+<tr>
+<td>int <b>countTokens</b>() - Calculates the number of times that this
+tokenizer's nextToken method can be called before it generates an exception.
+<br>boolean <b>hasMoreElements</b>() - Returns the same value as the hasMoreTokens
+method.
+<br>boolean <b>hasMoreTokens</b>() - Tests if there are more tokens available
+from this tokenizer's string.
+<br>Object <b>nextElement</b>() - Returns the same value as the nextToken
+method, except that its declared return value is Object rather than String.
+<br>String <b>nextToken</b>() - Returns the next token from this string
+tokenizer.
+<br>String <b>nextToken</b>(String delim) - Returns the next token in this
+string tokenizer's string.</td>
+</tr>
+</table>
+&nbsp;
+<br><b><u>Methods inherited from class java.lang.Object:</u></b>
+<br>&nbsp;clone, equals, finalize, getClass, hashCode, notify, notifyAll,
+toString, wait, wait, wait
+<p>&nbsp;
+<br>-----------------------------------
+</body>
+</html>

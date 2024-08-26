@@ -1,0 +1,211 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>ms_sql_server</title>
+<!--
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+<style type="text/css">
+<!--
+.style1 {color: #CC0000}
+-->
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Microsoft SQL Server</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Microsoft SQL Server</font></b></p>
+<table width="98%">
+  <tr><td width="50%" valign="top">
+    <p>- <a href="#intro">intro</a><br>
+      - <a href="#books">books</a><br>
+      - <a href="#sybase_mssql">sybase vs MS SQL Server</a><br>
+      - <a href="#unix_mssql">accessing MS SQL Server from Unix</a><br>
+      - <a href="#mssql_sybase">mssql_sybase from perl</a><br>
+    - <a href="#perl_programming">perl_programming</a></p>
+    </td><td width="50%" valign="top">
+- xxx<br>
+- xxx<br>
+- xxx<br>
+</td></tr></table>
+<p class="sectionheader"><a NAME="intro">Intro</p>
+<p>MS SQL server is very similar to Sybase. It also uses Transact SQL.
+<p><font color="#6699CC">-  </font><a href="http://www.microsoft.com/sql/">http://www.microsoft.com/sql/</a>
+- MS SQL Server (search also for Exchange and Access).<br>
+- <a href="http://directory.google.com/Top/Computers/Software/Databases/Microsoft_SQL_Server/">http://directory.google.com/Top/Computers/Software/Databases/Microsoft_SQL_Server/</a> - MS SQL Server<br>
+- <a href="http://www.sqlmag.com/">http://www.sqlmag.com/</a> - SQL Server Magazine<br>
+- <a href="http://www.sql-server-performance.com/sg_from_sybase_to_sql_server.asp">http://www.sql-server-performance.com/sg_from_sybase_to_sql_server.asp</a> - Making the Move from Sybase to SQL Server - by Sayed Geneidy <br>
+<br>
+  <p class="sectionheader"><a NAME="books"></a>books</p>
+<p><b><u><font color="#CC0000">MS SQL Server:</font></u></b></p>
+  <ul>
+    <li><font color="#CC0000"> The Guru's Guide to Transact-SQL (2000) by
+    Kenneth W. Henderson, Ken Henderson</font></li>
+    <li><font color="#CC0000"> Professional SQL Server 2000 Programming - by Robert Vieira(2003)</font></li>
+    <li><span class="style1"><a href="http://www.sqlmag.com/">http://www.sqlmag.com/</a> - SQL Server Magazine</span>            </li>
+  </ul>
+<p>---------------------------------
+<p class="sectionheader"><a name="sybase_mssql"></a>Sybase vs MS SQL
+<p>Today there are many differences between MS SQL Server  and Sybase.
+<p>For example, difference in triggers:
+<table width="70%" border="1" cellpadding="3" cellspacing="0">
+  <tr bgcolor="#FF9966">
+    <td>Sybase</td>
+    <td>MS SQL Server</td>
+  </tr>
+  <tr>
+    <td>you can not create temporary tables inside a trigger</td>
+    <td>you can create temp table inside a trigger</td>
+  </tr>
+  <tr>
+    <td>Only 3 triggers (insert, update, delete) for a table</td>
+    <td><p>multiple triggers for each action (starting ver.7.0)</p>
+    <p>In SQL Server 2000 you can specify the order of firing using <span class="code">sp_settriggerorder</span></p></td>
+  </tr>
+  <tr>
+    <td>Triggers fire after the data modification (post triggers only)</td>
+    <td>Pre- and post- triggers (starting with MS SQL Server 2000)</td>
+  </tr>
+</table>
+<p>For more info,  search for 
+INSTEAD OF triggers, 
+'inserted table', 'deleted table' and COLUMNS_UPDATED()
+<p class="sectionheader"><a name="unix_mssql">unix =&gt; MS SQL Server</p>
+<p>How application running on unix can connect to Microsoft SQL Server? Unfortunately Microsoft doesn't provide commercial unix libraries for this. They (Microsoft) recommend using third party free or commercial solutions:</p>
+<ul>
+  <li><a href="http://technet.microsoft.com/en-us/library/bb496496.aspx">http://technet.microsoft.com/en-us/library/bb496496.aspx</a> - Sybase/UNIX to SQL Server&nbsp;2000: Database Engine Migration and Application   Interoperation</li>
+  <li><a href="http://www.datadirect.com/products/odbc/unix-linux/index.ssp">http://www.datadirect.com/products/odbc/unix-linux/index.ssp</a> - commercial solution, has license from Microsoft for ODBC Driver Manager, supports  new features for MS SQL Server 2008</li>
+  <li><a href="http://www.unixodbc.org">unixODBC.org</a> (= <a href="http://www.easysoft.com" eudora="autourl">easysoft.com</a>) - ODBC, free / commercial, via TDS (also ODBC-ODBC bridge). Written by  Nick Gorham, paid and supported by Easy Soft. Project started in ~1999. </li>
+  <li> <a href="http://www.iodbc.org/">iodbc.org</a> (= <a href="http://www.openlinksw.com/">openlinksw.com</a>) - ODBC, free / commercial. Good. Read this <a href="http://www.iodbc.org/index.php?page=docs/odbcstory"> ODBC story</a>.</li>
+  <li><a href="http://www.freetds.org">freeTDS</a> - Open source implementation of Tabular Data Stream protocol which is used by clients for Sybase and Microsoft SQL Server (<a href="http://msdn.microsoft.com/en-us/library/cc448435.aspx">TDS specs</a>).</li>
+</ul>
+<p>More:</p>
+<ul>
+  <li><a href="http://www.interopsystems.com/tools/warehouse.htm">http://www.interopsystems.com/tools/warehouse.htm</a> - software for unix on windows (<a href="http://www.softpanorama.org/Unixification/SFU/">SFU</a>, not <a href="http://www.cygwin.com/">cygwin</a>).</li>
+  <li><A href="http://www.atinet.com">Automation Technology</A> -  OpenRDA   ODBC Driver (driver talks to their   server on the Windows side, which in its turn accesses the real ODBC driver).</li>
+  <li><a href="http://odbtp.sourceforge.net/">ODBTP</a> (Open Database Transport Protocol) - talks from unix to ODBC on Windows side. Open-source. </li>
+</ul>
+<p>Note: Originally Sybase and Microsoft SQL Server were the same (SQL Server 4.2 was developed as a joint effort by both companies in late 1980s). So it is natural to think that you may use Sybase client to connect to MS SQL Server. And it does work - but will not support all features and will have problems, because over the years Microsoft has changed the connectin protocol several times.</p>
+<p>Some relevant links:</p>
+<ul>
+  <li><a href="http://www.sqlsummit.com/ODBCVend.HTM">http://www.sqlsummit.com/ODBCVend.HTM</a> - many ODBC drivers and servers</li>
+  <li><a href="http://www.sommarskog.se/mssqlperl/unix.html" eudora="autourl">http://www.sommarskog.se/mssqlperl/unix.html</a></li>
+  <li><a href="http://www.easysoft.com/developer/languages/perl/sql_server_unix_tutorial.html" eudora="autourl">http://www.easysoft.com/developer/languages/perl/sql_server_unix_tutorial.html</a></li>
+  <li><a href="http://www.easysoft.com/developer/languages/perl/index.html">http://www.easysoft.com/developer/languages/perl/index.html</a> - Use Easysoft ODBC drivers with the Perl DBI and DBD::ODBC modules </li>
+  <li><a href="http://www.peppler.org/" eudora="autourl">http://www.peppler.org/</a></li>
+  <li><a href="http://search.cpan.org/~mewp/sybperl-2.18/DBlib/DBlib.pm" eudora="autourl">http://search.cpan.org/~mewp/sybperl-2.18/DBlib/DBlib.pm</a></li>
+  <li><a href="http://search.cpan.org/~mewp/DBD-Sybase-1.09/Sybase.pm" eudora="autourl">http://search.cpan.org/~mewp/DBD-Sybase-1.09/Sybase.pm</a></li>
+</ul>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="mssql_sybase"></a>Access MS SQL and Sybase from one perl script
+<p>In perl we use DBI and separate drivers for different databases. Unfortunately there is no DBD::MSSQL - it doesn't exist. So we can use DBD::ODBC, DBD::Sybase, 
+DBD::FreeTDS, 
+DBD::Proxy, etc.
+The 3 most frequently used solutions are:
+<ul>
+  <li>DBD::ODBC with <a href="http://www.datadirect.com/developer/common_use_cases/linux-odbc-developer-resources/index.ssp">datadirect.com</a>, <a href="http://www.unixodbc.org">unixODBC.org</a> ,  <a href="http://www.iodbc.org/">iodbc.org</a> , or <a href="http://www.freetds.org">freeTDS</a></li>
+  <li><a href="http://www.freetds.org">freeTDS</a> with other options.  freeTDS web site recommends <a href="http://www.freetds.org/faq.html#Which.Perl.library.should.I.use" target="_blank">4 options</a> for using freeTDS and Perl to connect to a Sybase or MSSQL   database:
+    <ul>
+      <li> DBD::Sybase - 
+        is the recommended option. It works  with MSSQL (with some limitations). You   will need to install the perl DBI module and the FreeTDS package, particularly   the CTLib portion. Set your SYBASE environment variable to /usr/local/freetds   and install DBD::Sybase. <A href="http://lists.ibiblio.org/pipermail/freetds/">mailing list archives</A> - you can ask for help.</li>
+      <li> DBD::ODBC - less robust than DBD::Sybase</li>
+      <li> DBD::FreeTDS - minimally functional, alpha-level, not actively developed/supported</li>
+      <li> Sybperl - thin wrapper around the Sybase C APIs developed and supported by Michael Peppler. </li>
+    </ul>
+  </li>
+</ul>
+<p>Note: there are known problems with freeTDS (<a href="http://www.freetds.org/faq.html" target="_blank">http://www.freetds.org/faq.html</a>):</p>
+<ul>
+  <LI>BCP of text and image types is broken for Microsoft servers.   
+  <LI>BCP does not support TDS 4.2. You must use a more modern protocol version.   
+  <LI>Server-side cursors work only in ct-lib.   
+  <LI>ODBC lacks a client-side cursor implementation.   
+  <LI>DBD::Sybase dynamic SQL placeholders don't work, pending a client-side SQL   parser. (The ODBC ones do.)   
+  <LI>There are no plans to implement db-lib's browse mode. </LI>
+</ul>
+<p>For commercial use you can consider one of 3 solutions with commercial support:</p>
+<ul>
+  <li><a href="http://www.datadirect.com/developer/common_use_cases/linux-odbc-developer-resources/index.ssp">datadirect.com</a></li>
+  <li><a href="http://www.unixodbc.org">unixODBC.org</a> (= <a href="http://www.easysoft.com" eudora="autourl">easysoft.com</a>) </li>
+  <li> <a href="http://www.iodbc.org/">iodbc.org</a> (= <a href="http://www.openlinksw.com/">openlinksw.com</a>)</li>
+</ul>
+<p>Note: There are no native <span class="style1">bcp</span> or <span class="style1">isql</span> utilities for MS SQL Server on Unix.</p>
+<p class="sectionheader"><a name="perl_programming"></a>perl programming</p>
+<p>We should have 2 low-level procedures for commonly used functions.</p>
+<ul>
+  <li>$self-&gt;connect_sybase() - returns $dbh </li>
+  <li>$self-&gt;connect_mssql() - returns $dbh </li>
+  <li>$self-&gt;sql_do($dbh,$sql), 
+    $self-&gt;sql_query($dbh,$sql), etc.
+    <ul>
+      <li>first, check the driver $dbh-&gt;{Driver}-&gt;{Name} - gives you &quot;Sybase&quot; or &quot;ODBC&quot; ??        </li>
+      <li>second, call corresponding sub, for example: do_sql_sybase(), or do_sql_odb</li>
+    </ul>
+  </li>
+</ul>
+<p>==============<br>
+============== <br>
+Yet another unixodbc: <a href="http://www.cpan.org/authors/id/R/RK/RKIES/"> http://www.cpan.org/authors/id/R/RK/RKIES/</a> -  UnixODBC-0.34.tar.gz                         (21-Jan-2008 04:25) </p>
+<p>&nbsp;</p>
+</body>
+</html>

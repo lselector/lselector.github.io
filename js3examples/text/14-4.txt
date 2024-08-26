@@ -1,0 +1,38 @@
+<!-- The image that will be animated. Give it a name for convenience. -->
+<IMG SRC="images/0.gif" NAME=animation>
+
+<SCRIPT>
+// Count how many images have been loaded. When we reach 10, start animating.
+function count_images() {  if (++num_loaded_images == 10) animate(); }
+var num_loaded_images = 0;
+
+// Create the off-screen images and assign the image URLs.
+// Also assign an event handler so we can count how many images have been
+// loaded. Note that we assign the handler before the URL, because otherwise
+// the image might finish loading (e.g., if it is already cached) before
+// we assign the handler, and then we'll lose count of how many have loaded!
+var images = new Array(10);
+for(var i = 0; i < 10; i++) {
+    images[i] = new Image();                 // Create an Image object.
+    images[i].onload = count_images;         // Assign the event handler.
+    images[i].src = "images/" + i + ".gif";  // Tell it what URL to load.
+}
+
+function animate()  // The function that does the animation.
+{
+    document.animation.src = images[frame].src;
+    frame = (frame + 1)%10;
+    timeout_id = setTimeout("animate()", 250);  // Display next frame later.
+}
+var frame = 0;         // Keep track of what frame of the animation we're on.
+var timeout_id = null; // This allows us to stop the animation.
+</SCRIPT>
+
+<!-- Buttons to control the animation. Note that we don't let the user
+  -- start the animation before all the images are loaded. -->
+<FORM>                   
+  <INPUT TYPE=button VALUE="Start" 
+	 onClick="if (timeout_id==null && num_loaded_images==10) animate()">
+  <INPUT TYPE=button VALUE="Stop" 
+	 onClick="if (timeout_id) clearTimeout(timeout_id); timeout_id=null;">
+</FORM>

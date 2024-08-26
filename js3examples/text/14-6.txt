@@ -1,0 +1,15 @@
+/*
+ * FILE: listlinks.js
+ * List all links in the specified document in a new window.
+ */
+function listlinks(d) {
+    var newwin = window.open("", "linklist", 
+                    "menubar,scrollbars,resizable,width=600,height=300");
+
+    for (var i = 0; i < d.links.length; i++) {
+        newwin.document.write('<A HREF="' + d.links[i].href + '">')
+	newwin.document.write(d.links[i].href);
+	newwin.document.writeln("</A><BR>");
+    }
+    newwin.document.close();
+}

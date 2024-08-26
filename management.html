@@ -1,0 +1,1387 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (X11; U; Linux 2.4.18-4GB i686) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>management</title>
+<!--
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Project Management &amp; Version Control</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#990000">Management</font></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 WIDTH="100%" >
+<tr>
+<td><img SRC="images/hamm_anm.gif" BORDER=0 height=100 width=108></td>
+
+<td ALIGN=LEFT VALIGN=TOP><font color="#000000">* <a href="#The_Mythical_Man-Month">The
+Mythical Man-Month (The Brooks's Law)</a></font>
+<br><font color="#000000">* <a href="#managing_open_software_projects">Open
+Software Projects</a></font>
+<br><font color="#000000">* <a href="#Steve_McConnell">Steve McConnell
+(Rapid Development)</a></font>
+<br><font color="#000000">* <a href="#Peopleware">Peopleware</a></font>
+<br><font color="#000000">* <a href="#Extreme_Programming">Extreme Programming</a></font>
+<br><font color="#000000">* <a href="#Adaptive_Software_Development">Adaptive
+Software Development</a></font>
+<br><font color="#000000">* <a href="#One_Minute_Manager">One Minute Manager</a></font>
+<br><font color="#000000">* <a href="#Parkinson_Law">Parkinson's Law</a></font></td>
+
+<td ALIGN=LEFT VALIGN=TOP><p><font color="#000000">* <a href="#shuttle_geeks_more">Space
+  shuttle, geeks, and more</a></font>
+      <br>
+  <font color="#000000">*
+    <a href="#pse_peopleware">Practical Software
+      Engineering</a></font>
+      <br>
+  <font color="#000000">*
+    <a href="#Jesse_Erlbaum">Jesse Erlbaum</a></font>
+      <br>
+  * <a href="#itil">ITIL</a> * <a href="#rational_unified_process">RUP</a> * <a href="#agile_software_development">Agile</a><br>
+      <font color="#000000">*
+        <a href="#version_control">version control</a></font>
+    - <a href="cvs.html">cvs</a> -&nbsp;<a href="svn.html">svn</a>
+    - <a href="#efs">efs</a><br>
+    <font color="#000000">*
+      <a href="#configuration_management">configuration
+        management</a></font>
+    <br>
+    <font color="#000000">*
+      <a href="#literate_programming">literate programming</a></font>
+    <br>
+    <font color="#000000">*
+    <a href="#some_fun">some fun</a></font></p>
+  </td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFFFCC" >
+<tr>
+<td>It has been said that democracy is the worst form of government&nbsp;
+<br>except all the others that have been tried. - <i>Winston Churchill
+(1874-1965)</i></td>
+</tr>
+</table>
+<a NAME="The_Mythical_Man-Month"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#000000">The Mythical Man-Month</font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><img SRC="images/fred_brooks.jpg" height=108 width=82>
+<br><b>Frederick</b>
+<br><b>Brooks</b></td>
+
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">*
+</font><b><font color="#CC0000">The
+Mythical Man-Month</font></b>&nbsp; (by <b>Frederick Brooks</b>)
+<br><font color="#3333FF">Classics - based on experience from 1960s at
+IBM + 4 new chapters. A required reading in most SE (Software Engineering)
+and CS (Computer Science) courses. this book has become a bible for software
+developers. Brooks received the Turing Prize in 2000 ( often called "the
+Nobel Prize of Computing") from the Association for Computing Machinery.</font>
+<br><font color="#CC0000">One of the main ideas (also called "The Brooks's
+Law"): 'Adding manpower to a late software project makes it later.' Artists
+cannot be rushed, and too many cooks will surely spoil the broth.</font></td>
+</tr>
+</table>
+<a NAME="managing_open_software_projects"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#000000">Managing Open Software projects</font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Does the Brooks Law apply to open software projects ?</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#CC0000"><b><u>R. Stallman:</u></b> "If you don't have
+a deadline, you won't be likely to try to put more people on the job in
+that way. You will make use of more helpers only when they can actually
+help. Thus, I think that Brooks' Law does apply to [free software], but
+we have no inclination to try to violate it."</font>
+<br><font color="#CC0000"><b><u>Jamie Zawinski:</u></b> Apache project,
+Linux Kernel, and other large software projects, the bulk of the work is
+done by a few dedicated members or a core team -- what Brooks calls a "surgical
+team."&nbsp; "In most open source projects," says Zawinski, "there is a
+small group who do the majority of the work, and the other contributors
+are definitely at a secondary level, meaning that they don't behave as
+bottlenecks."&nbsp; ... "Most of the larger open source projects are also
+fairly <b><u>modular</u></b>, meaning that they are really <u>dozens of
+different, smaller projects</u>. So when you claim that there are ten zillion
+people working on the Gnome project, you're lumping together a lot of people
+who never need to talk to each other, and thus, aren't getting in each
+others' way."&nbsp;</font>
+<br><b><u><font color="#CC0000">Brian Behlendorf (Apache &amp; Collab.net):</font></u></b><font color="#CC0000">
+"We don't consciously think about it, but I think that the philosophy of
+keeping things simple and pushing out almost anything extraneous or nonessential
+to external modules has been followed fairly carefully in Apache. We've
+also been fairly successful (I think) in '<b><u>federalizing</u></b>' the
+Apache process to sister projects."&nbsp;</font>
+<br><font color="#CC0000"><b><u>Larry Wall (Perl 6):</u></b> " ... We have
+a working group model ...&nbsp; Some of these were working groups set up
+to discuss one little issue. ... the core is going to be lean and mean,
+that implies that a lot of stuff are going to move out of the core."</font></td>
+</tr>
+</table>
+
+<p><a NAME="Steve_McConnell"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Steve_McConnell</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><a href="http://www.construx.com/stevemcc/"><img SRC="images/steve_mcconnell.gif" height=120 width=90></a>
+<br><b><a href="http://www.construx.com/stevemcc/">Steve</a></b>
+<br><b><a href="http://www.construx.com/stevemcc/">McConnell</a></b></td>
+
+<td ALIGN=LEFT VALIGN=TOP><b>&nbsp;Steve McConnell</b> ( <a href="http://www.construx.com/stevemcc/">www.construx.com/stevemcc</a>
+- also&nbsp; <a href="http://www.construx.com/">www.construx.com</a> )
+<br>Steve is Chief Software Engineer at Construx Software where he divides
+his time between leading custom software projects, consulting to companies
+in the shrink-wrap industry, and writing books and articles.
+<br><font color="#6699CC">&nbsp; *
+</font><b><font color="#CC0000">Rapid
+Development</font></b> : Taming Wild Software Schedules.&nbsp; <font color="#3333FF">Classics
+- Best Practices, classic mistakes, statistics, will make you laugh. Book
+covers rapid development strategy, core issues in rapid development, classic
+mistakes, risk management, estimation, scheduling, motivation, teamwork,
+customer-oriented development, productivity tools, and project recovery.
+The book's explanations are enhanced by the inclusion of 27 case studies,
+life-like descriptions of how the theory and practice of rapid development
+play out in real world projects</font>
+<p><font color="#6699CC">&nbsp; *
+</font><b><font color="#CC0000">Software
+Project Survival Guide</font></b> - <font color="#3333FF">Classics - provides
+<b><u>a
+blueprint for a successfully managed project</u></b>&nbsp; - 3..25 team
+members, 3..18 months. Advice on structuring, as well as on dealing with
+politics, people issues, and other project and career killers. Enjoyable
+reading.</font>
+<br>- "With poorly planned processes, developers spend a lot of their time
+correcting mistakes."
+<br>- "Success in software development depends on making a carefully planned
+series of small mistakes in order to avoid making unplanned large mistakes."
+<br>- "The effective software project manager acts as an orchestra conductor,
+as the person who coordinates the work of the team."
+<br>- "Requirements gathering and specification is an open-ended activity."
+<br>- "The only way to break the testing addiction cycle is to bite the
+bullet and allocate the upstream resources needed for quality assurance
+on a project."
+<br>- "The architecture should contain a high-level discussion of the major
+design alternatives that were considered, the reasons that the selected
+approaches were chosen, and the reasons other alternatives were not selected."
+<br>- "Once you realize that the goal of architecture is to reduce complexity,
+it becomes clear that the architect must focus as much on what to leave
+out of the software as on what to put in."
+<br>- "If you're going to get bad news on a software project, it's best
+to get it early because of the upstream/downstream effect on project costs."
+<br>- Follow the advice given to the team that designed the Algol programming
+language: "The best" is the enemy of "the good."&nbsp;&nbsp;
+<div ALIGN=right><table BORDER=0 CELLSPACING=0 WIDTH="95%" >
+<tr>
+<td BGCOLOR="#FFFFCC">- The architecture team creates and updates a Software
+Architecture document.&nbsp;
+<br>- The architecture emphasizes simplicity over cleverness.&nbsp;
+<br>- The architecture supports the Staged Delivery Plan.&nbsp;
+<br>- The architecture addresses all the project's requirements, and requirements
+coverage is documented with a completed requirements traceability matrix.</td>
+</tr>
+</table></div>
+- "It is important to drive the software to a releasable quality level
+often, in order to prevent the project from accumulating a host of loose
+ends that can't be tied up when you actually do want to release the software."&nbsp;
+... "Shaky estimates are facts of life in software projects, and staged
+deliveries help to minimize the damage shaky estimates can cause."
+<p><font color="#6699CC">&nbsp; *
+</font><b><font color="#CC0000">After
+The Gold Rush</font></b> -&nbsp; <font color="#3333FF">author argues that
+the methodical abuse of programmers causes bad code, unhappy people, and
+reduced profitability in the long run. In place of the existing system
+of crazy deadlines, clueless marketing, and scattershot programming strategies,
+McConnell proposes making software engineering into a "true profession"
+- like more mature professions, especially the engineering profession.&nbsp;</font></td>
+</tr>
+</table>
+<a NAME="Peopleware"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#000000">Peopleware</font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#6699CC">*
+</font><b><font color="#CC0000">Peopleware :
+Productive Projects and Teams</font></b>, 2nd Ed. - by Tom Demarco, Timothy
+Lister
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#3333FF">Classics - major issues of software development
+are human, not technical. Joyful reading.</font>
+<br><font color="#3333FF">Main ideas: give smart people physical space,
+intellectual responsibility and strategic direction. DeMarco and Lister
+advocate private offices and windows.&nbsp; They advocate creating teams
+with aligned goals and limited non-team work. They advocate managers finding
+good staff and putting their fate in the hands of those staff. The manager's
+function, they write, is <b><u>not to make people work but to make it possible
+for people to work</u></b>.</font>
+<br><font color="#3333FF">- "Ever wonder why everybody at Microsoft gets
+their own office, with walls and a door that shuts? It's in there [ in
+the book]. Why do managers give so much leeway to their teams to get things
+done? That's in there too. Why are there so many ... teams at Microsoft
+that are remarkably productive? Mainly because Bill Gates has built a company
+full of managers who read Peopleware."</font>
+<br><font color="#3333FF">- Peopleware's persuasiveness comes from its
+numbers - from its simple, cold, numerical demonstration that improving
+programmers' environments will make them more productive. The numbers in
+Peopleware come from DeMarco and Lister's Coding War Games, a series of
+competitions to complete given coding and testing tasks in minimal time
+and with minimal defects. The Games have consistently confirmed various
+known facts of the software game. For instance, the best coders outperform
+the ten-to-one, but their pay seems only weakly linked to their performance.
+But DeMarco and Lister also found that the best-performing coders had larger,
+quieter, more private workspaces. It is for this one empirical finding
+that Peopleware is best known.</font>
+<br><font color="#3333FF">- authors offer a theory: that managers should
+help programmers, designers, writers and other brainworkers to reach a
+state that psychologists call "<b><u>flow</u></b>" - an almost meditative
+condition where people can achieve important leaps towards solving complex
+problems. It's the state where you start work, look up, and notice that
+three hours have passed. But it takes time - perhaps fifteen minutes on
+average - to get into this state. And DeMarco and Lister that today's typical
+noisy, cubicled, Dilbertesque office rarely allows people 15 minutes of
+uninterrupted work. In other words, the world is full of places where a
+highly-paid and dedicated programmer or creative artist can spend a full
+day without ever getting any hard-core work. Put another way, the world
+is full of cheap opportunities for people to make their co-workers more
+productive, just by building their offices a bit smarter. (from review
+by David Walker).</font></td>
+</tr>
+</table>
+<a NAME="Extreme_Programming"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#000000">Extreme Programming</font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#6699CC">*
+</font><b><font color="#CC0000">Extreme Programming
+Explained</font></b>: Embrace Change by Kent Beck ( <a href="http://news.cnet.com/news/0-1006-200-5424853.html?tag=st.ne.1006.saslnk.sase">cnet_article</a>
+)
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 COLS=1 WIDTH="100%" BGCOLOR="#CCFFFF" >
+<tr>
+<td><b><u><font color="#3333FF">XP (eXtreme Programming):</font></u></b>
+<br><font color="#3333FF">* Distinguishing between the decisions to be
+made by business interests and those to be made by project stake holders.</font>
+<br><font color="#3333FF">* Writing unit tests before programming and keeping
+all of the tests running at all times.&nbsp;</font>
+<br><font color="#3333FF">* Integrating and testing the whole system -
+several times a day.&nbsp;</font>
+<br><font color="#3333FF">* Producing all software in pairs, two programmers
+at one screen.&nbsp;</font>
+<br><font color="#3333FF">* Starting projects with a simple design that
+constantly evolves to add needed flexibility and remove unneeded complexity.&nbsp;</font>
+<br><font color="#3333FF">* Putting a minimal system into production quickly
+and growing it in whatever directions prove most valuable.</font>
+<br><b><u><font color="#3333FF">Why is XP so controversial? Some sacred
+cows don't make the cut in XP:</font></u></b>
+<br><font color="#3333FF">* Don't force team members to specialize and
+become analysts, architects, programmers, testers, and integrators - every
+XP programmer participates in all of these critical activities every day.&nbsp;</font>
+<br><font color="#3333FF">* Don't conduct complete up-front analysis and
+design - an XP project starts with a quick analysis of the entire system,
+and XP programmers continue to make analysis and design decisions throughout
+development.&nbsp;</font>
+<br><font color="#3333FF">* Develop infrastructure and frameworks as you
+develop your application, not up-front - delivering business value is the
+heartbeat that drives XP projects.&nbsp;</font>
+<br><font color="#3333FF">* Don't write and maintain implementation documentation
+- communication in XP projects occurs face-to-face, or through efficient
+tests and carefully written code.</font>
+<br><font color="#3333FF">You may love XP, or you may hate it, but Extreme
+Programming Explained will force you to take a fresh look at how you develop
+software</font></td>
+</tr>
+</table>
+<a NAME="Adaptive_Software_Development"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#000000">Adaptive Software Development</font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#6699CC">*
+</font><b><font color="#CC0000">Adaptive Software
+Development</font></b>: A Collaborative Approach to Managing Complex Systems
+- by James A. Highsmith III, James A. Highsmith
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#3333FF">uses mountain climbing to illustrate his points
+about teamwork, planning and adaptation to rapidly changing conditions.
+Concepts like "adaptive" and "emergent". ... must be a process of aggressive,
+rapid adaptation to changing conditions.&nbsp; "Rules can be barriers to
+hide behind or guidelines for the wise to consider and break when the circumstances
+justify it."&nbsp;</font></td>
+</tr>
+</table>
+<a NAME="One_Minute_Manager"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#000000">One Minute Manager</font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#6699CC">*
+</font><b><font color="#CC0000">The One Minute
+Manager</font></b> - Spencer Johnson &amp; Kenneth H. Blanchard
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#3333FF">Classical bestseller ( > 7 mln copies sold).&nbsp;
+goal setting, motivating, training, praising and even reprimanding employees.&nbsp;</font></td>
+</tr>
+</table>
+
+<p><font color="#6699CC">*
+</font><b><font color="#CC0000">The One Minute
+Manager Meets the Monkey</font></b> - William, Jr. Oncken, et al
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#3333FF">who owns the monkey? monkey = next move. ...
+put all monkeys on the backs of your subordinates.&nbsp;</font></td>
+</tr>
+</table>
+<a NAME="Parkinson_Law"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#000000">Parkinson's Law</font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#6699CC">*
+</font><b><font color="#CC0000">Parkinson's
+Law</font></b> by C. Northcote Parkinson
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#3333FF">Classic - witty, brilliant.</font></td>
+</tr>
+</table>
+
+<p>Professor Northcote Parkinson (1909-1993) - British historian, author,
+and formulator of "Parkinson's Law," the satiric dictum that "Work expands
+to fill the time available for its completion."
+<p>"Administrators make work for each other, he said, so that they can
+multiply the number of their subordinates and enhance their prestige."
+<p>His second law was intended as a jibe at government functionaries, who
+he thought were inclined to expand their own ranks indefinitely, so long
+as taxes could be raised.
+<p>Written in a deadpan but mercilessly funny style, Parkinson's Economist
+essays were issued in book form in Parkinson's Law, or The Pursuit of Progress
+(1958). Apart from the books that made him famous, Parkinson wrote numerous
+historical works, including the critically acclaimed The Evolution of Political
+Thought (1958).
+<p><b><u>Here is the essense of some of Parkinson's main laws:</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#CCFFFF" >
+<tr>
+<td>
+<ul>
+<li>
+<font color="#CC0000">Work expands so as to fill the time available for
+its completion.</font><font color="#000000"> This law has many consequences.
+For example, it shows why the British Colonial Office has grown in number
+of employees as the actual number of colonies declined - so that it employed
+more people when the number of colonies had been reduced to zero than when
+they were at their highest number.</font></li>
+
+<li>
+<font color="#CC0000">Expenditure rises to meet income.</font><font color="#000000">
+( </font>Unit costs of public services tend to increase to consume the
+available funding. <font color="#000000">Data expands to fill the space
+available for storage. Network traffic expands to fill the available bandwidth,
+etc. Unfortunately this law is not applicable to our wallet nor to its
+contents. Pity.)</font></li>
+
+<li>
+<font color="#000000">Expansion means complexity, and complexity - decay.</font></li>
+
+<li>
+<font color="#000000">Policies designed to increase production increase
+employment; policies designed to increase employment do everything but.</font></li>
+
+<li>
+<font color="#000000">Democracy equals inflation (people vote for higher
+pay rather than for increased production)</font></li>
+
+<li>
+<font color="#000000">Delay is the deadliest form of denial.</font></li>
+
+<li>
+<font color="#000000">The matters most debated tend to be the minor ones
+where everybody understands the issues.</font></li>
+
+<li>
+<font color="#000000">Comities become less effective after they grow larger
+than 8 members.</font></li>
+</ul>
+</td>
+</tr>
+</table>
+<a NAME="shuttle_geeks_more"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#000000">shuttle, geeks, and more</font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#6699CC">*
+</font><a href="http://www.fastcompany.com/online/06/writestuff.html">www.fastcompany.com/online/06/writestuff.html</a>
+- how the software for Space Shuttles is made reliable
+<br><font color="#6699CC">*
+</font><a href="http://www.fastcompany.com/online/25/geeks.html">www.fastcompany.com/online/25/geeks.html</a>&nbsp;
+- how to manage geeks
+<br>See also some ideas on "<a href="simple_is_good.html">more on simplicity</a>"
+page.
+<br><a NAME="pse_peopleware"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Practical Software Engineering - Peopleware</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Summary by David Maulsby.
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>Human, not technical problems seem to be at the root of software projects
+failure.
+<br>Parkinson?s law: ?Work expands to fill the time allocated for it.?
+<br>Management response: set impossibly optimistic delivery dates.
+<br>Estimates actually seem counter-productive (people do more without
+estimates).
+<br><b><u>The Solutions:</u></b>
+<br>- <b>Build a close-knit team, with shared responsibility</b>
+<br>&nbsp;&nbsp;&nbsp; - Programmers do the estimating
+<br>&nbsp;&nbsp;&nbsp; - Make a cult of quality
+<br>&nbsp;&nbsp;&nbsp; - Provide lots of satisfying closure
+<br>&nbsp;&nbsp;&nbsp; - Build a sense of eliteness
+<br>&nbsp;&nbsp;&nbsp; - Allow and encourage individuality
+<br>&nbsp;&nbsp;&nbsp; - Provide strategic but not tactical direction
+<br>- <b>Preserve and protect successful teams</b></td>
+</tr>
+</table>
+
+<p><b>How do we accomplish these objectives?</b>
+<p><b><u>Only the best people contribute significantly</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>A good programmer is 10 times more productive than an average one (Brooks
+1995).
+<br>Average programmers will consume nearly their entire work day just
+reading and understanding new code generated by good programmers.
+<br><b><u>Therefore, the successful software engineering manager...</u></b>
+<br>&nbsp; - Creates a work environment where good programmers will be
+satisfied enough to stay.
+<br>&nbsp; - Creates a system in which average programmers become good.</td>
+</tr>
+</table>
+
+<p><b><u>Consensus is essential yet nearly impossible:</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>Software people at all levels perceive themselves to be equally intelligent,
+hence require consensus.
+<br>A leaf-node worker is more expert than any manager, making it difficult
+to engage in a technical argument.
+<br>People with bad ideas and low productivity often think of themselves
+as supremely capable.
+<br>As for programmers who are supremely capable, there is no reason to
+expect consensus from them.
+<br><b><u>Therefore, the successful software engineering manager...</u></b>
+<br>Achieves credibility with staff by participating in the work - whether
+by coding, designing data models, writing system design documents, journal
+articles.
+<br>Delegates decisions to small groups that include someone trusted and
+competent.
+<br>Involves key project stakeholders (customer reps) in decisions, so
+that developers perceive their accountability.
+<br>Makes the tough call when democracy cannot.</td>
+</tr>
+</table>
+
+<p><b><u>Measurement of software productivity is notoriously difficult:</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#CCFFFF" >
+<tr>
+<td>The world is full of products that failed due to overly complex and
+tasteless designs.
+<br>Systems that experts evaluated and found wanting, such Unix (1970),
+eventually proved to have great utility.
+<br>Quality and productivity have no obvious correlation (sometimes you
+have to break everything in order to make it work better).
+<br><b><u>Therefore, the successful software engineering manager...</u></b>
+<br>Measures productivity in terms of tests passed, bugs fixed, knowledge
+acquired and communicated to the team.
+<br>Considers peers' assessments of one another.
+<br>Provides feedback to programmers daily, and in private.</td>
+</tr>
+</table>
+
+<p><b><u>Parkinson's Law: work expands to fill the time provided.</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>A deadline just gives someone an excuse to procrastinate and do nothing
+until the very end.
+<br>Software is an experimental science; you can always do more experiments.
+<br>Software is infinitely perfectible.
+<br><b><u>Therefore ...</u></b>
+<br>Instead of setting deadlines, set the pace. Daily builds and demos
+for the team.</td>
+</tr>
+</table>
+
+<p><b><u>People do what you reward them to do, not what you hope they will
+do.</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>In Bringing out the Best in People, Aubrey Daniels notes "If we always
+did what we were told, we would eat only nutritious foods, never drink
+too much alcohol, and exercise regularly."
+<br>An annual review and bonus is not classically considered a very good
+way to motivate people. It is too far removed from their daily decisions.
+<br><b><u>Therefore ..</u></b>.
+<br>Provide small, frequent rewards for achievement.</td>
+</tr>
+</table>
+
+<p><b><u>Underperformers get most of the attention; this encourages underperforming.</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>It's all too easy to neglect your best staff because they don't need
+direction.
+<br>Underperformers may view attention as a reward for their unproductive
+behavior.
+<br><b><u>Therefore ...</u></b>
+<br>Give all staff - especially the best ones - positive reinforcement
+every day.</td>
+</tr>
+</table>
+
+<p><b><u>Ownership engenders productivity.</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>Non-ownership systems demand very accurate setting of standards.
+<br>Ownership-oriented systems include contingent rewards with an almost
+unlimited upside, and are thus effective at getting as much discretionary
+effort out of workers as possible.
+<br><b><u>Therefore ...</u></b>
+<br>Put programmers in contact with customers, so they understand accountability.
+<br>Spread ownership of code throughout the team.
+<br>Base compensation on success of the project.</td>
+</tr>
+</table>
+
+<p><b>Building and Keeping a Good Software Team</b>
+<p><b><u>What is the best way to attract some good software engineers to
+your organization?</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td>Hire a few to begin with.
+<br>What attracts good programmers?
+<br>Traditionally the best programmers seek the most challenging problems.
+<br>Spread trivial problems around and make sure they are scheduled for
+trivial amounts of time - do the hard stuff first!
+<p>The prime source of ego-gratification for programmers is to have other
+programmers admire their work.
+<br>Open-source software projects thus have a big recruiting advantage.
+<br>Make sure team members get to work with one another's code. Rather
+than silo the project by assigning one module to each programmer, have
+them work in small groups and share code across groups.</td>
+</tr>
+</table>
+
+<p><b><u>What kind of working environment is necessary for programmer satisfaction?</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td>Good programmers want to achieve; therefore, removing barriers to achievement
+is the most important step.
+<br>Programmers dread elaborate process, endless meetings, and layers of
+marketing approval before a product can be shipped.
+<br>Adopt a lightweight process and flatten the project management structure.
+<p>A good physical working environment is essential.
+<br>Your business success will depend on the extent to which programmers
+<u>essentially
+live at your office</u>.
+<br>For this to be a common choice, your office had <u>better be nicer
+than the average programmer's home</u>.
+<br>Great programmers get a lot of positive reinforcement from their work
+itself.
+<br>They write some code and immediately can see it in action. That keeps
+them at work for hours.
+<br><u>Encourage frequent builds</u>, <u>keep the system integrated</u>,
+and <u>require that all code be tested as soon as it is writte</u>n.
+<br>Do these things and programmers will usually see their code working
+as it should. Neglect these things and they will have to spend hours figuring
+out why it doesn't work.</td>
+</tr>
+</table>
+
+<p><b><u>Turning Average Programmers into Good Programmers Desirable profile
+for new hires</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td>Strong computer science education
+<br>High IQ
+<br>Good communicator both in speech and writing
+<br>Motivated - programs for fun in leisure time, wants to learn more
+<br>But most important of all... relevant experience
+<p><b><u>Principles for building programming skill</u></b>
+<br>Proficiency improves with repetition.
+<br>To retain proficiency, you must learn to perform the task rapidly.
+<br>Training research shows that if you get speed now you can get quality
+later.
+<br>Technology shifts force a programmer to go through bursts of learning
+every year or two.
+<br><b><u>Therefore ...</u></b>
+<br>Whatever the training task, the pace must be ruthlessly brisk.
+<br>The learner should be expected to build at the same pace as an experienced
+developer.
+<br>The difference between the learner and the wizard is that you expect
+the learner to make a lot of mistakes.</td>
+</tr>
+</table>
+
+<p><b><u>When assessing productivity, bear in mind what a good programmer
+has to do every day...</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td>surf USENET, Slashdot etc.
+<br>contribute to news groups
+<br>read docs
+<br>question colleagues
+<br>write specs and designs
+<br>write docs
+<br>write code
+<br>test
+<br>fix bugs
+<br>file bug reports on others' code
+<br>attend meetings
+<br>help sales and marketing staff
+<br>play with toys to keep the brain in shape</td>
+</tr>
+</table>
+
+<p><b><u>Turning Good Programmers into Good Managers</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td>Software engineers respond best to management by a fellow programmer
+- one they respect.
+<br>But software teams can ill afford to sacrifice good programmers to
+management roles.
+<br><b><u>Therefore ...</u></b>
+<br>Minimize the number of managers by adopting small teams, lightweight
+process and self-management.
+<br>Make management a part-time role - manage one project, code on the
+next, or manage and code if possible.
+<br>Biggest risk of having a manager work as a programmer is that s/he
+will neglect to review the other programmers' work.&nbsp;
+<br><b><u>Solution</u></b> - decouple responsibility for review from responsibility
+for scheduling review: have administrative assistants do the scheduling.</td>
+</tr>
+</table>
+
+<p>Building and managing a peak-performing software engineering organization
+is challenging but extremely profitable. The core Ariba product was written
+by two programmers, yielding a market capitalization of $30 billion.
+<br><a NAME="Jesse_Erlbaum"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Jesse Erlbaum</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Here are some ideas summarized from listening to Jesse Erlbaum.&nbsp;
+Jesse Erlbaum is the Chief Technology Officer for the Vanguard Media Corporation
+(<a href="http://www.vm.com">www.vm.com</a>), located in New York City,
+where he has worked since 1994. Vanguard Media develops custom software
+for a variety of clients, from the WPP Group to Time, Inc.
+<p>Most of our work is not rocket science. We are using operating systems,
+programming languages, databases, which were invented ~ 25 years ago. Most
+of our applications are pretty standard and simple:&nbsp; Some back-end
+SQL database, some browser front-end, and some code in the middle.
+<p>Major clients in NY City - Finance, Publishing, Advertising
+<p>Difference in dev.time/quality of the result between languages (religious
+arguments Perl vs Java, etc.) ~ 10-15%
+<br>Difference between programmers and processes ~ 1000%
+<p>"Don't build it - you will not need it."
+<p><b><u>Talking to client - agree on 2 phase approach:</u></b>
+<br>0 - pre-sign - agree on 2-phase approach
+<br>1st phase - preparing specifications and estimate
+<br>2nd phase - actually implementing
+<p><b><u>Specifications:</u></b>
+<br>&nbsp; - are prepared <b><u>involving end-users</u></b> (and developers)
+<br>&nbsp; - constitute ~25 ..50% of total development costs
+<br>&nbsp; - allows to give a time/money estimate (don't overpromise and
+don't take unnecessary responsibilities)
+<p><b><u>For a typical web-based application:</u></b>
+<br>&nbsp; 1. UI Screens (just buttons, form fields and links - may be
+HTML-templates)
+<br>&nbsp; 2. Data model
+<br>&nbsp; 3. State Transition Diagrams (1 state per screen - just drawing,
+or using simple software like <a href="http://www.objectdomain.com/ - Object Domain">www.objectdomain.com</a>)
+<br>&nbsp; 4. Textual description
+<br>&nbsp; 5. Revised Estimate and schedule
+<p><b><u>Implementing:</u></b>
+<br>1. Each developer has his/her own environment absolutely equivalent
+to production.
+<br>&nbsp;&nbsp;&nbsp; No need to make any changes to the code during production
+release.
+<br>&nbsp;&nbsp;&nbsp; Apache server config file is generated automatically
+for each user (using HTML::Template, by the way).
+<br>2. Use CVS for code, modules, documentation, etc.
+<br>&nbsp;&nbsp;&nbsp; CVS can not guarantee anything - it just helps people
+to communicate.
+<br>3. Put main reusable modules in public domain (CPAN) to avoid legal
+explanations.
+<br>4. Use Unix to build reliable applications => low maintenance.
+<br>5. Use Apache &amp; MySQL.
+<br>6. Use HTML::Template to separate the work of Programmers and Designers.
+<br>7. Use CGI::Application to properly structure pieces of the application.
+<br>8. Prepare documentation (so that your mother can understand) and keep
+it in devdocs directory
+<br>9. keep DBLOG - textual description of all changes in the database,
+<br>&nbsp;&nbsp;&nbsp; in which environment they were implemented, and
+cut/paste code to implement those changes
+<br>10. keep working versions of public modules in CVS too.
+<p><a NAME="itil" id="itil"></a> <br>
+&nbsp;
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+  <tr>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+    <td ALIGN=LEFT><b>ITIL - IT Infrastructure Library</b></td>
+    <td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+      of the page</a> - </b></td>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+<p><font color="#6699CC"></font>
+ITIL - the IT Infrastructure Library. It is a set of best practices on organizing IT process. Originally created in 1980 at the Office of Government Commerce in UK. You can get certified in it. Current ITIL is a set of 5 main books which you can buy for ~600, or as a PDF for ~$430. They are:
+
+<ul>
+  <li>ITIL Service Strategy</li>
+  <li> ITIL Service Design</li>
+  <li> ITIL Service Transition</li>
+  <li> ITIL Service Operation</li>
+  <li> ITIL Continual Service Improvement<br>
+  </li>
+</ul>
+<p>You can learn more here:</p>
+<ul>
+  <li><a href="http://www.itil.org.uk">http://www.itil.org.uk</a> </li>
+  <li><a href="http://en.wikipedia.org/wiki/ITIL"></a> <a href="http://www.itil-itsm-world.com/">http://www.itil-itsm-world.com/</a> - here you can buy the books, downloads, kits, etc.</li>
+  <li><a href="http://www.itlibrary.org/">http://www.itlibrary.org/</a> - read here about cerifications, ISO 20000, etc.</li>
+  <li><a href="http://en.wikipedia.org/wiki/ITIL">http://en.wikipedia.org/wiki/ITIL</a> - good overview</li>
+  <li><a href="http://www.itilcommunity.com/">http://www.itilcommunity.com/</a> - excellent free information source</li>
+</ul>
+<p>You can also buy the ITIL books (and 3rd party books) on amazon - just search for ITIL.
+<p>For a good introduction into main concepts you can read this book: <span class="style1">&quot;IT Service Management: An Introduction&quot;</span> (ISBN 9080671347)
+
+<p>The good thing about ITIL is that it covers a lot of ground, so it is valuable introduction for a new manager. There is also such thing as ITIL certification.
+
+<p>  On the negative side,  ITIL was criticized, because its   approach 
+  is too centered on the IT itself, and less focused on what IT   does 
+for a customer or for a business.
+<p>There are many vendors providing software (free or commercial) to implement different parts of ITIL recommendations. See for example here:<BR>
+<p><a href="http://www.wareprise.com/2007/04/14/open-source-itil-software/">http://www.wareprise.com/2007/04/14/open-source-itil-software/</a><br>
+<p><a name="rational_unified_process"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+  <tr>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+    <td ALIGN=LEFT><b>RUP = IBM Rational Unified Process</b></td>
+    <td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+      of the page</a> - </b></td>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+<p><span class="style1">RUP (Rational Unified Process)</span> - an electronic knowledge base of best practices for software development -  originally developed by Rational Software, and now available from IBM as part of their product called &quot;IBM Rational Method Composer&quot;.
+<ul>
+  <li><a href="http://en.wikipedia.org/wiki/IBM_Rational_Unified_Process">http://en.wikipedia.org/wiki/IBM_Rational_Unified_Process</a> </li>
+  <li> <a href="http://en.wikipedia.org/wiki/IBM_Rational_Method_Composer">http://en.wikipedia.org/wiki/IBM_Rational_Method_Composer</a> </li>
+</ul>
+<p>The people behind RUP - Ivar Jacobson, Grady Booch, James Rumbaug, et al - creators of UML (Unified Modeling Language). In RUP they applied the same object-oriented modeling to software development process. This is a big improvement in comparison to monolitic &quot;waterfall&quot; style methods, which are prone to failure.</p>
+<p>Here are some concepts of RUP:</p>
+<ul>
+  <li>The main building blocks: Roles (who), Work Products (what), Tasks (how).</li>
+  <li> Within each iteration, the tasks are categorized into  9 disciplines: 
+    <ul>
+      <li> 6  &quot;engineering disciplines&quot; (Business Modeling, Requirements, Analysis and Design, Implementation, Test, Deployment)</li>
+      <li> 3 supporting disciplines (Configuration and Change Management, Project Management, Environment)</li>
+    </ul>
+  </li>
+  <li>Four project lifecycle phases (Inception, Elaboration, Construction, Transition (prod.release))</li>
+</ul>
+<ul>
+  <li>Note: The Project Management discipline contains a number of other Plans and Artifacts:
+    <ul>
+      <li> The Phase Plan (The Software Development Plan) - where each phase includes plans for  measurement,   risk management,  problem resolution, and  product acceptance.</li>
+      <li> The Iteration Plan - time-sequenced assignment of tasks and resources,  dependencies. Tracking of progress, lists of scenarios or use cases, list of risks, list of changes, etc.</li>
+    </ul>
+  </li>
+</ul>
+<p NAME="version_control"><a NAME="agile_software_development" id="agile_software_development"></a> <br>
+&nbsp;</p>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+  <tr>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+    <td ALIGN=LEFT><b>Agile Software Development</b></td>
+    <td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+      of the page</a> - </b></td>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+<p>Agile Software Development -  a set of methodologies for software development where, instead of long-term structured planning, the work is done  in small increments (1..4 weeks) followed by a review and re-planning as needed  to better align with customer needs. The approach is based on self-organizing teamwork, frequent testing, small-team accountability.
+<p>The principles of agile development were proposed in 2001 and posted here:
+<a href="http://agilemanifesto.org/principles.html">http://agilemanifesto.org/principles.html</a> . Here is a local copy for convenience:
+<table width="97%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><ol>
+      <li>Our highest priority is to satisfy the customer through early and continuous delivery of valuable software.</li>
+      <li>Welcome changing requirements, even late in 
+        development. Agile processes harness change for 
+        the customer's competitive advantage.</li>
+      <li>Deliver working software frequently, from a 
+        couple of weeks to a couple of months, with a 
+        preference to the shorter timescale.</li>
+      <li>Business people and developers must work 
+        together daily throughout the project.</li>
+      <li>Build projects around motivated individuals. 
+        Give them the environment and support they need, 
+        and trust them to get the job done.</li>
+      <li>The most efficient and effective method of 
+        conveying information to and within a development 
+        team is face-to-face conversation.</li>
+      <li>Working software is the primary measure of progress.</li>
+      <li>Agile processes promote sustainable development. 
+        The sponsors, developers, and users should be able 
+        to maintain a constant pace indefinitely.</li>
+      <li>Continuous attention to technical excellence 
+        and good design enhances agility.</li>
+      <li>Simplicity--the art of maximizing the amount 
+        of work not done--is essential.</li>
+      <li>The best architectures, requirements, and designs 
+        emerge from self-organizing teams.</li>
+      <li>At regular intervals, the team reflects on how 
+        to become more effective, then tunes and adjusts 
+        its behavior accordingly.</li>
+    </ol></td>
+  </tr>
+</table>
+<p>Here is a good description: <a href="http://en.wikipedia.org/wiki/Agile_Software_Development">http://en.wikipedia.org/wiki/Agile_Software_Development
+</a>
+<p NAME="version_control"><a NAME="version_control"></a>
+  <br>
+&nbsp;</p>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Version Control</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>My favorite version control system is subversin (svn):
+<ul>
+  <li><a href="http://subversion.tigris.org">http://subversion.tigris.org</a>
+  </li>
+  <li><a href="http://tortoisesvn.tigris.org/">http://tortoisesvn.tigris.org/</a> -  TortoiseSVN client for Windows - Excellent ! Puts svn commands on mouse right-click.
+    
+  </li>
+</ul>
+<p>Subversion was developed as improvement of CVS:
+<ul>
+  <li><a href="cvs.html">cvs.html</a> - my page devoted to CVS</li>
+  <li><a href="http://www.arsdigita.com/asj/cvs">arsdigita.com/asj/cvs</a> - Using CVS for Web Development</li>
+  <li><a href="http://www.arsdigita.com/asj/version-control/">arsdigita.com/asj/version-control/</a> - Version Control for Web Development using CVS </li>
+</ul>
+<p>Another good version control is Git - <a href="http://git-scm.com/">http://git-scm.com/</a> -  distributed (!) and fast version control. </p>
+<p>Here is a comparison between SVN and Git: <a href="http://git.wiki.kernel.org/index.php/GitSvnComparison">http://git.wiki.kernel.org/index.php/GitSvnComparison</a></p>
+<p>&nbsp;</p>
+<p><a href="http://directory.google.com/Top/Computers/Software/Configuration_Management/Tools/Revision_Control_System/">google/../Revision_Control_System/</a> - version control on Google</p>
+<p><b><u>Here are some of Version Control Systems:</u></b>
+<p><font color="#6699CC">*
+</font><b><font color="#CC0000">RCS (Revision
+Control System)</font></b> is a version control system. It offers a basic
+level of functionality.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 COLS=1 WIDTH="100%" BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#6699CC">*
+</font><a href="http://www.tru64unix.compaq.com/faqs/publications/base_doc/DOCUMENTATION/V40D_HTML/APS32DTE/SCCSXXXX.HTM">www.tru64unix.compaq.com/faqs/...</a>
+- RCS and SCCS commands
+<br><font color="#6699CC">*
+</font><a href="http://www.xs4all.nl/~erikgrnh/acorn/rcsinfo/commands.html">www.xs4all.nl/~erikgrnh/acorn/rcsinfo/commands.html</a>
+- RCS commands
+<br><font color="#6699CC">* </font><a href="http://www-rnks.informatik.tu-cottbus.de/~mm/books/docs/rcs/rcs_3.html">www-rnks.informatik.tu-cottbus.de/~mm/books/docs/rcs/rcs_3.html</a>
+- basic RCS commands
+<br><font color="#6699CC">* </font><a href="http://www-rnks.informatik.tu-cottbus.de/~mm/books/docs/rcs/rcs_4.html">www-rnks.informatik.tu-cottbus.de/~mm/books/docs/rcs/rcs_4.html</a>
+- more RCS commands
+<br><font color="#6699CC">* </font><a href="http://www.nmt.edu/tcc/help/tool/rcs/rcs.html">www.nmt.edu/tcc/help/tool/rcs/rcs.html</a>
+- commands
+<br><font color="#6699CC">*
+</font><a href="http://www.ComponentSoftware.com/csrcs/">www.ComponentSoftware.com/csrcs/</a>CS-RCS
+- Inexpensive graphical RCS for Windows 95/NT, free for individuals, includes
+free standalone CSDiff. (ComponentSoftware)
+<br><font color="#6699CC">*
+</font><a href="http://www.gnu.org/software/rcs/rcs.html">www.gnu.org/software/rcs/rcs.html</a>
+- GNU RCS - The GNU Revision Control System, a popular free SCM tool on
+the UNIX platforms. (Free Software Foundation)
+<br><font color="#6699CC">*
+</font><a href="http://www.csc.calpoly.edu/~dbutler/tutorials/winter96/rcs/">www.csc.calpoly.edu/~dbutler/tutorials/winter96/rcs/</a>
+- RCS Tutorial - the Revision Control System - Frames-based short HTML
+online tutorial, by David L. Spencer.
+<br><font color="#6699CC">*
+</font><a href="http://wwwipd.ira.uka.de/~tichy/">wwwipd.ira.uka.de/~tichy/</a>
+- Walter F. Tichy's Home Page - Professor of Computer Science at the University
+Karlsruhe, Germany, creator of RCS. Some pages in English, some in German,
+including two talks on software configuration management.
+<br><font color="#6699CC">*
+</font><a href="http://wwwipd.ira.uka.de/~RCE/">wwwipd.ira.uka.de/~RCE/</a>
+- RCE: the Revision Control Engine - Designated successor to RCS. Offers
+VRCE, Java based graphic user interface, and Byte Differencing Engine,
+efficient delta revision storage that supports all data types. API enables
+integration into any electronic data management system.&nbsp;
+<br><font color="#6699CC">*
+</font><a href="http://heavenly.nj.nec.com/tichy91rc.html">heavenly.nj.nec.com/tichy91rc.html</a>
+- RCS - A System for Version Control - Paper describing and introducing
+RCS, Walter Tichy, Software-Practice &amp; Experience, 15(7):637-654, July
+1985. Online in PS and PDF format, with links to many citations. Provided
+by ResearchIndex.&nbsp;
+<br><font color="#6699CC">*
+</font><a href="http://www.trumphurst.com/dosrcs.phtml">www.trumphurst.com/dosrcs.phtml</a>
+- DOSRCS - DOS port of GNU Revision Control System. Zip files, executables,
+documentation, and Microsoft C source. By Trumphurst.&nbsp;</td>
+</tr>
+</table>
+
+<p><font color="#6699CC">*
+</font><b><font color="#CC0000">SCCS (Source
+Code Control System)</font></b> is similar to RCS.
+<br>&nbsp; <font color="#6699CC">*
+</font><a href="http://www.tru64unix.compaq.com/faqs/publications/base_doc/DOCUMENTATION/V40D_HTML/APS32DTE/SCCSXXXX.HTM">www.tru64unix.compaq.com/faqs/...</a>
+- commands (look for delget command)
+<br>&nbsp; <font color="#6699CC">*
+</font><a href="http://www.oreilly.com/catalog/rcs/chapter/ch04.html">www.oreilly.com/catalog/rcs/chapter/ch04.html</a>
+- O'Reilly book
+<br>&nbsp; <font color="#6699CC">*
+</font><a href="http://webdocs.sequent.com/docs/dptgab01/ch_11.htm">webdocs.sequent.com/docs/dptgab01/ch_11.htm</a>
+- commands
+<br>&nbsp; <font color="#6699CC">*
+</font><a href="http://www.rzg.mpg.de/rzg/batch/NEC/sx4a_doc/g1ab01e/chap8.html">www.rzg.mpg.de/rzg/batch/NEC/sx4a_doc/g1ab01e/chap8.html</a>
+- tutorial
+<p><font color="#6699CC">* </font><b><font color="#CC0000">CVS</font></b>
+<br>&nbsp; <font color="#6699CC">*
+</font><a href="http://www.cvshome.org/">www.cvshome.org/</a>
+- CVS (good, used by many open source projects)
+<p><font color="#6699CC">* </font><b><font color="#CC0000">Perforce</font></b>
+<br>&nbsp; <font color="#6699CC">*
+</font><a href="http://www.perforce.com/">www.perforce.com/</a>
+- Perforce (this is the one used by Perl community)
+<p><font color="#6699CC">*
+</font><b><font color="#CC0000">PVCS</font></b>
+-
+<br>&nbsp; <font color="#6699CC">*
+</font><a href="http://www.merant.com/products/pvcs/">www.merant.com/products/pvcs/</a>
+-
+<p><font color="#6699CC">*
+</font><b><font color="#CC0000">Microsoft Visual
+SourceSafe</font></b> - part of Visual Studio
+<p>==========================================================
+<p><b><u>There are many free Version Control Packages:</u></b>
+<br>(Aegis, CERN - CMZ, CVS, DVS, Inversion, jCVS, Keep-It, ODE, PRCS,
+RCS, SCCS (free implementations), TCCS, tkCVS )
+<br><b><u>and many commercial packages:</u></b>
+<br>(+1 Software Engineering - +1CM, AccuRev.com - AccuRev/CM, Sequel UK
+- Alchemist, BitMover, Inc - BitKeeper, Aldon - Aldon/CMS, Industrial Strength
+Software - ChangeMaster, Reliable Software - Code Co-op, Crystaliz, Inc.
+- Concorde, Agile Software Corp, NCI - Control, ComponentSoftware - CS-RCS,
+Configuration Data Services - ECMS, Lockheed Martin - EagleSpeed, Quality
+Software Components, Ltd. - GP-Version, JavaSoft - JavaSafe, Tesseract
+- Lifecycle Manager, British Aerospace - LifeSpan, Realcase - Multi-Platform
+Code Management, Perforce Software - Perforce Fast SCM System, Data Design
+Systems - PrimeCode, Merant - PVCS, Synergex - PVCS, Qumasoft - QVCS, Inroads
+Technology - Rapid Implementation Technology, Ultracomp - Red Box, DuraSoft
+- Revision Control Engine, Software Ever After - R-Sea-Yes, Lucent Technologies
+- Sablime, MKS - SDM-Implementer, UniPress - Source Code Manager, MKS -
+Source Integrity, SourceGear - SourceOffSite, SiberLogic - SourceTrack,
+Giant Technologies - Visual SourceMail, Microsoft - Visual SourceSafe for
+Windows, Mainsoft Corporation - Visual SourceSafe for Unix, Starbase Corporation
+- StarTeam, Interwoven - TeamSite, SoftLanding Systems - TurnOver, Burton
+Systems - TLIB, George James Software - VC/m, UNI Software Plus - VOODOO,
+Sun - WorkShop TeamWare )
+<p class="sectionheader"><a name="efs"></a>Distributed Deployment
+<p><a href="http://openefs.org/">http://openefs.org/</a> - Enterpise File System - allows to deploy / roll back software arond the world with a simple command. <br>
+  Unix-based. Open source. Based on software originally developed by Phil Moore at Morgan Stanley, and then at Merrill Lynch.
+<p><a NAME="configuration_management"></a>
+  <br>
+  &nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Configuration management</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Configuration Management Web Site - good list of links:</u></b>
+<br><font color="#6699CC">*
+</font><a href="http://www.cmtoday.com/yp/configuration_management.html">www.cmtoday.com/yp/configuration_management.html</a>
+- lists of links
+<br><font color="#6699CC">*</font><a href="http://www.cmtoday.com/yp/free.html">www.cmtoday.com/yp/free.html</a>
+- free
+<br><font color="#6699CC">*
+</font><a href="http://www.cmtoday.com/yp/commercial.html">www.cmtoday.com/yp/commercial.html</a>
+- commercial
+<br><font color="#6699CC">*
+</font><a href="http://www.cmtoday.com/yp/tracking.html">www.cmtoday.com/yp/tracking.html</a>
+- problem tracking
+<br>&nbsp;
+<p><b><u>Practical solution which I've seen working pretty well:</u></b>
+<br>1. Use CVS for version control to move files between development, QA,
+Pre-production and production stages.
+<br>2. Use Autosys-scheduled shell and Perl scripts
+<br>3. Use rsync (which is better than rdist) instead of ftp to distribute
+files
+<br>&nbsp; - <a href="http://www.linux.gr/cgi-bin/man2html/usr/share/man/man1/rsync.1.gz">www.linux.gr/cgi-bin/man2html/usr/share/man/man1/rsync.1.gz</a>
+<br>&nbsp; - <a href="http://www.uni-duesseldorf.de/cgi-bin/man2html/software/sw/man/man1/rdist.1">www.uni-duesseldorf.de/cgi-bin/man2html/software/sw/man/man1/rdist.1</a>
+<br>4. Use rsh to run scripts on other servers
+<br>&nbsp; - <a href="http://theoryx5.uwinnipeg.ca/gnu/inetutils/rsh.1.html">http://theoryx5.uwinnipeg.ca/gnu/inetutils/rsh.1.html</a>
+<br>5. Use Microsoft SMS Installer - a tool to create software installation
+packages for distribution to clients.
+<br>6. Parse cvs logs to make mailing lists of developers contributed chagnes
+- and automatically notify them (especially in case of problems).
+<br>7. Have scripts to deploy the whole system (including shared libraries,
+core applications, misc. other applications) - or only a small part of
+the system.
+<br><a NAME="documentation"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Documentation</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>There are many way to document your project.
+<br>I like to make a local web site where I document everything manually.
+<br>User manuals usually are prepared as MS Word documents or PDF files
+for Adobe Acrobat.
+<p>One good way to make documentaion is by using DocBook XML Publishing:
+<br><font color="#6699CC">*
+</font><a href="http://www.docbook.org/">www.docbook.org/</a>
+- home page for the book "<b><font color="#CC0000">DocBook: The Definitive
+Guide (O'Reilly XML)</font></b>" by Norman Walsh and Leonard Muellner.
+This is the official documentation for DocBook.
+<br><font color="#6699CC">*
+</font><a href="http://www.docbook.org/tdg/html/docbook.html">www.docbook.org/tdg/html/docbook.html</a>
+- read book online
+<br>Another book - "<b><font color="#CC0000">DocBook XML Publishing (With
+CD-ROM)</font></b>" by Joe Brockmeier
+<br><a NAME="literate_programming"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Literate Programming</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Literate programming is a methodology that combines a programming language
+with a documentation language, thereby making programs more robust, more
+portable, more easily maintained, and arguably more fun to write than programs
+that are written only in a high-level language. The main idea is to treat
+a program as a piece of literature, addressed to human beings rather than
+to a computer. The program is also viewed as a hypertext document, rather
+like the World Wide Web.
+<p>Literate programming was introduced by Donald E. Knuth (), Professor
+Emeritus of The Art of Computer Programming at Stanford University. D.Knuth
+is mostly known as an author of famous 3-volume set "The Art of Computer
+Programming".
+<p><font color="#6699CC">*
+</font><a href="http://www-cs-faculty.stanford.edu/~knuth/index.html">http://www-cs-faculty.stanford.edu/~knuth/index.html</a>
+- D.Knuth home page
+<br><font color="#6699CC">*
+</font><a href="http://www-cs-faculty.stanford.edu/~knuth/books.html">http://www-cs-faculty.stanford.edu/~knuth/books.html</a>
+- D.Knuth's books
+<p>Books:
+<br><font color="#6699CC">*
+</font><a href="http://www-cs-faculty.stanford.edu/~knuth/lp.html">www-cs-faculty.stanford.edu/~knuth/lp.html</a>
+- Literate Programming - A Book by Donald Knuth, who started the ideas
+about Literate Programming with WEB. (1992, 368pp, ISBN 0-937073-80-6)
+<p><b><u>Links:</u></b>
+<p><font color="#6699CC">*
+</font><a href="http://www.literateprogramming.com/">www.literateprogramming.com</a>
+- Literate Programming, Resources for Literate Programming. Consulting
+services. Download freeware for Windows 95, 98, and NT. Learn about the
+CWEB programming language.
+<br><font color="#6699CC">*
+</font><a href="http://directory.google.com/Top/Computers/Programming/Literate_Programming/">http://directory.google.com/Top/Computers/Programming/Literate_Programming/</a>
+- literate programming on Google search engine
+<p><b><u>LEO:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 COLS=1 WIDTH="100%" BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#6699CC">*
+</font><a href="http://www.jserv.com/jk_orr/xml/leo.htm">www.jserv.com/jk_orr/xml/leo.htm</a>
+- LEO Resource Page by Joe Orr.&nbsp; Information about LEO, an editor
+that facilitates Literate Programming. Includes XSLT stylesheets for importing
+to and exporting from LEO.
+<br>&nbsp;&nbsp;&nbsp; <font color="#6699CC">*
+</font><a href="http://personalpages.tds.net/~edream/front.html">http://personalpages.tds.net/~edream/front.html</a>
+- LEO's home page (Edward K. Ream)
+<br>&nbsp;&nbsp;&nbsp; <font color="#6699CC">*
+</font><a href="https://sourceforge.net/projects/leo/">https://sourceforge.net/projects/leo/</a>
+- LEO on SourceForge site</td>
+</tr>
+</table>
+
+<p><font color="#6699CC">*
+</font><a href="http://www.eecs.harvard.edu/~nr/noweb/">www.eecs.harvard.edu/~nr/noweb</a>
+- Noweb, A Simple, extensible tool for Literate Programming.
+<br><font color="#6699CC">*
+</font><a href="http://www.cs.cmu.edu/~vaschelp/Programming/Literate/literate.html">www.cs.cmu.edu/~vaschelp/Programming/Literate/literate.html</a>
+- Literate Programming -- Propaganda and Tools - An overview of the concepts
+and some ideas for applying Literate Programming.
+<br><font color="#6699CC">*
+</font><a href="http://www-cs-faculty.stanford.edu/~knuth/cweb.html">www-cs-faculty.stanford.edu/~knuth/cweb.html</a>
+- The CWEB System of Structured Documentation - By Donald Knuth and Levy,
+describing a prominent system of Literate Programming.
+<br><font color="#6699CC">*
+</font><a href="http://shelob.ce.ttu.edu/daves/lpfaq/faq.html">shelob.ce.ttu.edu/daves/lpfaq/faq.html</a>
+- The Literate Programming FAQ - a good place to start looking for information
+<br><font color="#6699CC">*
+</font><a href="http://www.desy.de/user/projects/LitProg.html">www.desy.de/user/projects/LitProg.html</a>
+- Literate Programming Library - a large collection of links to related
+resources.
+<br><font color="#6699CC">*
+</font><a href="http://www.oasis-open.org/cover/xmlLitProg.html">www.oasis-open.org/cover/xmlLitProg.html</a>
+- SGML/XML and Literate Programming - information on applying SGML and
+XML to Literate Programming.
+<br><font color="#6699CC">*
+</font><a href="http://liinwww.ira.uka.de/bibliography/SE/litprog.html">liinwww.ira.uka.de/bibliography/SE/litprog.html</a>
+- Bibliography on Literate Programming - a part of the Computer Science
+Bibliography Collection.
+<br><font color="#6699CC">*
+</font><a href="http://www.ems.uq.edu.au/Seminars/XML_LitProg/">www.ems.uq.edu.au/Seminars/XML_LitProg</a>
+- XML and Literate Programming - a seminar by Anthony B. Coates on combining
+XML and LP.
+<br><font color="#6699CC">*
+</font><a href="http://dec.bournemouth.ac.uk/staff/pknaggs/papers/literate.html">dec.bournemouth.ac.uk/staff/pknaggs/papers/literate.html</a>
+- Literate Programming in Forth, - an article by Peter J.Knaggs, originally
+presented at euroFORTH'95.
+<br><font color="#6699CC">*
+</font><a href="http://www.c2.com/cgi/wiki?LiterateProgramming">www.c2.com/cgi/wiki?LiterateProgramming</a>
+- Literate Programming - The WikiWiki entry point for related information
+and discussions.
+<br><a NAME="some_fun"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Some fun</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Some relief from www.dack.com:</u></b>
+<br><font color="#6699CC">*</font> <a href="http://mindprod.com/unmain.html">http://mindprod.com/unmain.html</a>
+-&nbsp; Howto write an unmantainable code
+<br><font color="#6699CC">*
+</font><a href="http://www.dack.com/web/bullshit.html">The
+Web
+Economy Bullshit Generator</a> - This is fun for the whole family.
+<br><font color="#6699CC">*
+</font><a href="http://www.dack.com/web/cost_analyzer.html">The
+Excellent Intranet Cost Analyzer</a>&nbsp; - Quickly calculate the annual
+cost of a company's poorly designed intranet.
+<br>&nbsp;
+</body>
+</html>

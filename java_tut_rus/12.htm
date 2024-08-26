@@ -1,0 +1,551 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Глава 12 Утилиты</TITLE>
+</HEAD>
+<BODY>
+
+<B><FONT FACE="Times New Roman" SIZE=4><P>Глава 12 Утилиты</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Библиотека классов языка включает в себя набор вспомогательных классов, широко используемых в других встроенных пакетах Java. Эти классы расположены в пакетах java.lang и java.util. Они используются для работы с наборов объектов, взаимодействия с системными функциями низкого уровня, для работы с математическими функциями, генерации случайных чисел и манипуляций с датами и временем. </P>
+</FONT><B>
+<FONT FACE="Times New Roman"><P>Простые оболочки для типов</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Как вы уже знаете, Java использует встроенные примитивные типы данных, например, int и char ради обеспечения высокой производительности. Эти типы данных не принадлежат к классовой иерархии Java. Они передаются методам по значению, передать их по ссылке невозможно. По этой причине для каждого примитивного типа в Java реализован специальный класс.</P>
+</FONT><B><FONT SIZE=2>
+<P>Number</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P>Абстрактный класс Number представляет собой интерфейс для работы со всеми стандартными скалярными типами: — long, int, float и double.</P>
+<P ALIGN="JUSTIFY">У этого класса есть методы доступа к содержимому объекта, которые возвращают (возможно округленное) значение объекта в виде значения каждого из примитивных типов:</P>
+<P>• doubleValue() возвращает содержимое объекта в виде значения типа double.</P>
+<P>• floatValue() возвращает значение типа float.</P>
+<P>• intValue() возвращает значение типа int.</P>
+<P>• longValue() возвращает значение типа long.</P>
+</FONT><U><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Double и Float</P>
+</U><P ALIGN="JUSTIFY">Double и Float — подклассы класса Number. В дополнение к четырем методам доступа, объявленным в суперклассе, эти классы содержат несколько сервисных функций, которые облегчают работу со значениями double и float. У каждого из классов есть конструкторы, позволяющие инициализировать объекты значениями типов double и float, кроме того, для удобства пользователя, эти объекты можно инициализировать и объектом String, содержащим текстовое представление вещественного числа. Приведенный ниже пример иллюстрирует создание представителей класса Double с помощью обоих конструкторов.</P>
+</FONT><FONT SIZE=2>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>class DoubleDemo {</P>
+<P>public static void main(String args[]) {</P>
+<P>Double d1 = new Double(3.14159);</P>
+<P>Double d2 = new Double("314159E-5");</P>
+<P>System.out.println(d1 + " = " + d2 + " -&gt; " + d1.equals(d2));</P>
+<P>} }</P>
+</B></I></FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Как вы можете видеть из результата работы этой программы, метод equals возвращает значение true, а это означает, что оба использованных в примере конструктора создают идентичные объекты класса Double.</P>
+</FONT><FONT SIZE=2>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>С:\&gt; java DoubleDemo</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>3.14159 = 3.14159 -&gt; true</P>
+</B></I></FONT><U><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Бесконечность и NaN</P>
+</U><P ALIGN="JUSTIFY">В спецификации IEEE для чисел с вещественной точкой есть два значения типа double, которые трактуются специальным образом: бесконечность и NaN (Not a Number — неопределенность). В классе Double есть тесты для проверки обоих этих условий, причем в двух формах — в виде методов (статических), которым значение double передается в качестве параметра, и в виде методов, проверяющих число, хранящееся в объекте класса Double.</P>
+<P>• islnfinite(d) возвращает true, если абсолютное значение указанного числа типа double бесконечно велико.</P>
+<P>• islnfinite() возвращает true, если абсолютное значение числа, хранящегося в данном объекте Double, бесконечно велико.</P>
+<P>• isNaN(d) возвращает true, если значение указанного числа типа double неопределено.</P>
+<P>• isNaN() возвращает true, если значение числа, хранящегося в данном объекте Double, неопределено.</P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Очередной наш пример создает два объекта Double, один с бесконечным, другой с неопределенным значением.</P>
+</FONT><FONT SIZE=2>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>class InfNaN {</P>
+<P>public static void main(String args[]) { </P>
+<P>Double d1 = new Double(1/0.);</P>
+<P>Double d2 = new Double(0/0.);</P>
+<P>System.out.println(d1 + ": " + d1.isInfinite() + ", " + d1.isNaN());</P>
+<P>System.out.println(d2 + ": " + d2.isInfinite() + ", " + d2.isNaN());</P>
+<P>} }</P>
+</B></I></FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Ниже приведен результат работы этой&#9;программы:</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>С:\&gt; java InfNaN</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>Infinity: true, false</P>
+<P>NaN: false, true</P>
+</B></I></FONT><U><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Integer и Long</P>
+</U><P ALIGN="JUSTIFY">Класс Integer — класс-оболочка для чисел типов int, short и byte, a класс Long — соответственно для типа long. Помимо наследуемых методов своего суперкласса Number, классы Integer и Long содержат методы для разбора текстового представления чисел, и наоборот, для представления чисел в виде текстовых строк. Различные варианты этих методов позволяют указывать основание (систему счисления), используемую при преобразовании. Обычно используются двоичная, восьмеричная, десятичная и шестнадцатиричная системы счисления.</P>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>parseInt(String) преобразует текстовое представление целого числа, содержащееся в переменной String, в значение типа int. Если строка не содержит представления целого числа, записанного в допустимом формате, вы получите исключение NumberFormatException.</LI></P>
+<P ALIGN="JUSTIFY"><LI>parseInt(String, radix) выполняет ту же работу, что и предыдущий метод, но в отличие от него с помощью второго параметра вы можете указывать основание, отличное от 10.</LI></P>
+<P ALIGN="JUSTIFY"><LI>toString(int) преобразует переданное в качестве параметра целое число в текстовое представление в десятичной системе.</LI></P>
+<P ALIGN="JUSTIFY"><LI>toString(int, radix) преобразует переданное в качестве первого параметра целое число в текстовое представление в задаваемой вторым параметром системе счисления.</LI></P></UL>
+
+</FONT><B><FONT SIZE=2>
+<P>Character</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Character — простой класс-оболочка типа char. У него есть несколько полезных статических методов, с помощью которых можно выполнять над символом различные проверки и преобразования.</P>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>isLowerCase(char ch) возвращает true, если символ-параметр принадлежит нижнему регистру (имеется в виду не просто диапазон a-z, но и символы нижнего регистра в кодировках, отличных от </FONT><FONT SIZE=2>ISO-Latin-1).</LI></P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY"><LI>isUpperCase(char ch) делает то же самое в случае символов верхнего регистра.</LI></P>
+<P ALIGN="JUSTIFY"><LI>isDigit(char ch) и isSpace(char ch) возвращают true для цифр и пробелов, соответственно.</LI></P>
+<P ALIGN="JUSTIFY"><LI>toLowerCase(char ch) и toupperCase(char ch) выполняют преобразования символов из верхнего в нижний регистр и обратно.</LI></P></UL>
+
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY"></P>
+<P>Boolean</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Класс Boolean — это очень тонкая оболочка вокруг логических значений, она бывает полезна лишь в тех случаях, когда тип boolean требуется передавать по ссылке, а не по значению.</P>
+</FONT><B>
+<FONT FACE="Times New Roman"><P>Перечисления</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">В Java для хранения групп однородных данных имеются массивы. Они очень полезны при использовании простых моделей доступа к данным. Перечисления же предлагают более совершенный объектно-ориентированный путь для хранения наборов данных сходных типов. Перечисления используют свой собственный механизм резервирования памяти, и их размер может увеличиваться динамически. У них есть интерфейсные методы для выполнения итераций и для просмотра. Их можно индексировать чем-нибудь более полезным, нежели простыми целыми значениями.</P>
+</FONT><B><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Интерфейс Enumeration</P>
+</B><P ALIGN="JUSTIFY">Enumeration — простой интерфейс, позволяющий вам обрабатывать элементы любой коллекции объектов. В нем задается два метода. Первый из них — метод hasMoreElements, возвращающий значение типа boolean. Он возвращает значение true, если в перечислении еще остались элементы, и false, если у данного элемента нет следующего. Второй метод — nextElement — возвращает обобщенную ссылку на объект класса Object, которую, прежде чем использовать, нужно преобразовать к реальному типу содержащихся в коллекции объектов.</P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Ниже приведен пример, в котором используется класс Enum, реализующий перечисление объектов класса Integer, и класс EnumerateDemo, создающий объект типа Enum, выводящий все значения перечисления. Обратите внимание на то, что в объекте Enum не содержится реальных данных, он просто возвращает последовательность создаваемых им объектов Integer.</P>
+</FONT><FONT SIZE=2><P ALIGN="JUSTIFY"></P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>import java.util.Enumeration;</P>
+<P>class Enum implements Enumeration {</P>
+<P>private int count = 0;</P>
+<P>private boolean more = true;</P>
+<P>public boolean hasMoreElements() {</P>
+<P>return more;</P>
+<P>}</P>
+<P>public Object nextElement() {</P>
+<P>count++;</P>
+<P>if (count &gt; 4) more = false;</P>
+<P>return new Integer(count);</P>
+<P>} }</P>
+<P>class EnumerateDemo {</P>
+<P>public static void main(String args[]) { </P>
+<P>Enumeration enum = new Enum();</P>
+<P>while (enum.hasMoreElements()) {</P>
+<P>System.out.println(enum.nextElement());</P>
+<P>}</P>
+<P>} }</P>
+</B></I></FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Вот результат работы этой программы:</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>С:\&gt; java EnumerateDemo</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>1</P>
+<P>2</P>
+<P>3</P>
+<P>4</P>
+<P>5</P>
+</I></FONT><FONT SIZE=2>
+<P>Vector</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Vector — это способный увеличивать число своих элементов массив ссылок на объекты. Внутри себя Vector реализует стратегию динамического расширения, позволяющую минимизировать неиспользуемую память и количество операций по выделению памяти. Объекты можно либо записывать в конец объекта Vector с помощью метода addElement, либо вставлять в указанную индексом позицию методом insertElementAt. Вы можете также записать в Vector массив объектов, для этого нужно воспользоваться методом copyInto. После того, как в Vector записана коллекция объектов, можно найти в ней индивидуальные элементы с помощью методов Contains, indexOf и lastIndexOf. Кроме того методы еlеmentAt, firstElement и lastElement позволяют извлекать объекты из нужного положения в объекте Vector.</P>
+</FONT><U><FONT SIZE=2>
+<P>Stack</P>
+</U></FONT><FONT FACE="Times New Roman" SIZE=2><P>Stack — подкласс класса Vector, который реализует простой механизм типа “первым вошел — первым вышел" (FIFO). В дополнение к стандартным методам своего родительского класса, Stack предлагает метод push для помещения элемента в вершину стека и pop для извлечения из него верхнего элемента. С помощью метода peek вы можете получить верхний элемент, не удаляя его из стека. Метод empty служит для проверки стека на наличие элементов — он возвращает true, если стек пуст. Метод search ищет заданный элемент в стеке, возвращая количество операция pop, которые требуются для того чтобы перевести искомый элемент в вершину стека. Если заданный элемент в стеке отсутствует, этот метод возвращает -1.</P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Ниже приведен пример программы, которая создает стек, заносит в него несколько объектов типа Integer, а затем извлекает их.</P>
+</FONT><FONT SIZE=2>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>import java.util.Stack;</P>
+<P>import java.util.EmptyStackException;                        </P>
+<P>class StackDemo {</P>
+<P>static void showpush(Stack st, int a) { </P>
+<P>st.push(new Integer(a));</P>
+<P>System.out.println("push(" + a + ")");</P>
+<P>System.out.println("stack: " + st);</P>
+<P>}</P>
+<P>static void showpop(Stack st) { </P>
+<P>System.out.print("pop -&gt; ");</P>
+<P>Integer a = (Integer) st.pop();</P>
+<P>System.out.println(a);</P>
+<P>System.out.println("stack: " + st);</P>
+<P>}</P>
+<P>public static void main(String args[]) { </P>
+<P>Stack st = new Stack();</P>
+<P>System.out.println("stack: " + st);</P>
+<P>showpush(st, 42);</P>
+<P>showpush(st, 66);</P>
+<P>showpush(st, 99);</P>
+<P>showpop(st);</P>
+<P>showpop(st);</P>
+<P>showpop(st);</P>
+<P>try {</P>
+<P>showpop(st);</P>
+<P>} </P>
+<P>catch (EmptyStackException e) { </P>
+<P>System.out.println("empty stack");</P>
+<P>} }</P>
+<P>}</P>
+</B></I></FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Ниже приведен результат, полученный при запуске этой программы. Обратите внимание на то, что обработчик исключений реагирует на попытку извлечь данные из пустого стека. Благодаря этому мы можем аккуратно обрабатывать ошибки такого рода.</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>C:\&gt; java StackDemo</P>
+<P>stack: []</P>
+<P>push(42)</P>
+<P>stack: [42]</P>
+<P>push(66)</P>
+<P>stack: [42, 66]</P>
+<P>push(99)</P>
+<P>stack: [42, 66,&#9;99]</P>
+<P>pop -&gt; 99</P>
+<P>stack: [42, 66]</P>
+<P>pop -&gt; 66</P>
+<P>stack: [42]</P>
+<P>pop -&gt; 42</P>
+<P>stack: []</P>
+<P>pop -&gt; empty stack</P>
+</I></FONT><FONT SIZE=2>
+<P>Dictionary</P>
+</B><P ALIGN="JUSTIFY">Diction</FONT><FONT FACE="Times New Roman" SIZE=2>ary (словарь) — абстрактный класс, представляющий собой хранилище информации типа “ключ-значение”. Ключ — это имя, по которому осуществляется доступ к значению. Имея ключ и значение, вы можете записать их в словарь методом put(key, value). Для получения значения по заданному ключу служит метод get(key). И ключи, и значения можно получить в форме перечисления (объект Enumeration) методами keys и elements. Метод size возвращает количество пар “ключ-значение”, записанных в словаре, метод isEmpty возвращает</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>true, если словарь пуст. Для удаления ключа и связанного с ним значения предусмотрен метод remove(key).</P>
+</FONT><U><FONT SIZE=2>
+<P>HashTable</P>
+</U></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">HashTable — это подкласс Dictionary, являющийся конкретной реализацией словаря. Представителя класса HashTable можно использовать для хранения произвольных объектов, причем для индексации в этой коллекции также годятся любые объекты. Наиболее часто HashTable используется для хранения значений объектов, ключами которых служат строки (то есть объекты типа String). В очередном нашем примере в </FONT><FONT SIZE=2>H</FONT><FONT FACE="Times New Roman" SIZE=2>ashTable хранится информация об этой книге.</P>
+</FONT><B><FONT FACE="Arial" SIZE=2>
+</FONT><I><FONT FACE="Courier New" SIZE=2><P>import java.util.Dictionary;</P>
+<P>import java.util.Hashtable;</P>
+<P>class HTDemo {</P>
+<P>public static void main(String args[]) { </P>
+<P>Hashtable ht = new Hashtable();</P>
+<P>ht.put("title", "The Java Handbook");</P>
+<P>ht.put("author", "Patrick Naugnton");</P>
+<P>ht.put("email", "naughton@starwave.com");</P>
+<P>ht.put(“age", new Integer(30));</P>
+<P>show(ht);</P>
+<P>}</P>
+<P>static void show(Dictionary d) {</P>
+<P>System.out.println("Title: " +&#9;d.get("title"));</P>
+<P>System.out.println("Author: " + d.get("author"));</P>
+<P>System.out.println("Email: " + d.get("email"));</P>
+<P>System.out.println("Age: " + d.get("age"));</P>
+<P>} }</P>
+</B></I></FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Результат работы этого примера иллюстрирует тот факт, что метод show, параметром которого является абстрактный тип Dictionary, может извлечь все значения, которые мы занесли в ht внутри метода main.</P>
+<P>С:\&gt; java HTDemo </P>
+</FONT><FONT SIZE=2><P>Title: The Java Handbook</P>
+<P>Author: Patrick Naughton</P>
+<P>Email: </FONT><A HREF="mailto:naughton@starwave.com"><U><FONT SIZE=2 COLOR="#0000ff">naughton@starwave.com</U></FONT></A></P>
+<FONT SIZE=2><P>Age: 30</P>
+<U>
+<P>Properties</P>
+</U></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Properties — подкласс HashTable, в который для удобства использования добавлено несколько методов, позволяющих получать значения, которые, возможно, не определены в таблице. В методе getProperty вместе с именем можно указывать значение по умолчанию:</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>getРгореrtу("имя","значение_по_умолчанию");</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">При этом, если в таблице свойство “имя” отсутствует, метод вернет “значение_по_умолчанию”. Кроме того, при создании нового объекта этого класса конструктору в качестве параметра можно передать другой объект Properties, при этом его содержимое будет использоваться в качестве значений по умолчанию для свойств нового объекта. Объект Properties в любой момент можно записать либо считать из потока — объекта Stream (потоки будут обсуждаться в </FONT><A HREF="13.htm"><U><FONT FACE="Times New Roman" SIZE=2 COLOR="#0000ff">главе 13</U></FONT></A><FONT FACE="Times New Roman" SIZE=2>). Ниже приведен пример, в котором создаются и впоследствии считываются некоторые свойства:</P>
+</FONT><FONT SIZE=2>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>import java.util.Properties;</P>
+<P>class PropDemo {</P>
+<P>static Properties prop = new Properties();</P>
+<P>public static void main(String args[]) {</P>
+<P>prop.put("Title", "put title here");</P>
+<P>prop.put("Author", "put name here");</P>
+<P>prop.put("isbn", "isbn not set");</P>
+<P>Properties book = new Properties(prop);</P>
+<P>book.put("Title", "The Java Handbook");</P>
+<P>book.put("Author", "Patrick Naughton");</P>
+<P>System.out.println("Title: " +</P>
+<P>book.getProperty("Title"));</P>
+<P>System.out.println("Author: " +</P>
+<P>book.getProperty("Author"));</P>
+<P>System.out.println("isbn: " +</P>
+<P>book.getProperty("isbn"));</P>
+<P>System.out.println("ean: " +</P>
+<P>book.getProperty("ean", "???"));</P>
+<P>} }</P>
+</B></I></FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Здесь мы создали объект prop класса Properties, содержащий три значения по умолчанию для полей Title, Author и isbn. После этого мы создали еще один объект Properties с именем book, в который мы поместили реальные значения для полей Title и Author. В следующих трех строках примера мы вывели результат, возвращенный методом getProperty для всех трех имеющихся ключей. В четвертом вызове getProperty стоял несуществующий ключ “еаn”. Поскольку этот ключ отсутствовал в объекте</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>book и в объекте по умолчанию prop, метод getProperty выдал нам указанное в его вызове значение по умолчанию, то есть “???”:</P>
+</FONT><FONT SIZE=2>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>С:\&gt; java PropDemo</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>Title: The Java Handbook</P>
+<P>Author: Patrick Naughton</P>
+<P>isbn: isbn not set</P>
+<P>ean: ???</P>
+</I></FONT><FONT SIZE=2>
+<P>StrinsTokenizer</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Обработка текста часто подразумевает разбиение текста на последовательность лексем  - слов (tokens). Класс StringTokenizer предназначен для такого разбиения, часто называемого лексическим анализом или сканированием. Для работы StringTokenizer требует входную строку и строку символов-разделителей. По умолчанию в качестве набора разделителей используются обычные символы-разделители: пробел, табуляция, перевод строки и возврат каретки.</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>После того, как объект StringTokenizer создан, для последовательного извлечения лексем из входной строки используется его метод nextToken. Другой метод — hasMoreTokens — возвращает true в том случае, если в строке еще остались неизвлеченные лексемы. StringTokenizer также реализует интерфейс Enumeration, а это значит, что вместо методов has</FONT><FONT SIZE=2>M</FONT><FONT FACE="Times New Roman" SIZE=2>oreTokens и nextToken вы можете использовать методы hasMoreElements и nextElement, соответственно.</P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Ниже приведен пример, в котором для разбора строки вида “ключ=значение” создается и используется объект StringTokenizer. Пары “ключ=значение” разделяются во входной строке двоеточиями.</P>
+</FONT><FONT SIZE=2>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>import java.util.StringTokenizer;</P>
+<P>class STDemo {</P>
+<P>static String in = "title=The Java Handbook:" + "author=Patrick Naughton:" + "isbn=0-07-882199-1:" + "ean=9 780078 821998:" + "email=naughton@starwave. corn";</P>
+<P>public static void main(String args[]) {</P>
+<P>StringTokenizer st = new StringTokenizer(in, "=:");</P>
+<P>while (st.hasMoreTokens()) { </P>
+<P>String key = st.nextToken();</P>
+<P>String val = st.nextToken();</P>
+<P>System.out.println(key + "\t" + val);</P>
+<P>}</P>
+<P>} }</P>
+</B></I></FONT><FONT SIZE=2>
+</FONT><B><P>Runtime</P>
+</B><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Класс Runtime инкапсулирует интерпретатор Java. Вы не можете создать нового представителя этого класса, но можете, вызвав его статический метод, получить ссылку на работающий в данный момент объект Runtime. Обычно апплеты и другие непривелигированные программы не могут вызвать ни один из методов этого класса, не возбудив при этом исключения SecurityException. Одна из простых вещей, которую вы можете проделать с объектом Runtime — его останов, для этого достаточно вызвать метод exit(int code).</P>
+</FONT><B><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Управление памятью</P>
+</B><P ALIGN="JUSTIFY">Хотя Java и представляет собой систему с автоматической сборкой мусора, вы для проверки эффективности своего кода можете захотеть узнать, каков размер “кучи” и как много в ней осталось свободной памяти. Для получения этой информации нужно воспользоваться методами totalMemory и freeMe</FONT><FONT SIZE=2>mory.</P>
+</FONT><FONT FACE="Arial Narrow" SIZE=2><P>ВНИМАНИЕ!</P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">При необходимости вы можете “вручную” запустить сборщик мусора, вызвав метод gc. Если вы хотите оценить, сколько памяти требуется для работы вашему коду, лучше всего сначала вызвать gc, затем free-Memory, получив тем самым оценку свободной памяти, доступной в системе. Запустив после этого свою программу и вызвав freeMemory внутри нее, вы увидите, сколько памяти использует ваша программа.</P>
+</FONT><B><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Выполнение других программ</P>
+</B><P ALIGN="JUSTIFY">В безопасных средах вы можете использовать Java для выполнения других полновесных процессов в своей многозадачной операционной системе. Несколько форм метода ехес позволяют задавать имя программы и ее параметры. </P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">В очередном примере используется специфичный для Windows вызов ехес, запускающий процесс notepad — простой текстовый редактор. В качестве параметра редактору передается имя одного из исходных файлов Java. Обратите внимание — ехес автоматически преобразует в строке-пути символы "/" в разделители пути в Windows — "\".</P>
+</FONT><FONT FACE="Arial Narrow" SIZE=2>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>class ExecDemo {</P>
+<P>public static void main(String args[]) {</P>
+<P>Runtime r = Runtime. getRuntime();</P>
+<P>Process p = null;</P>
+<P>String cmd[] = { "notepad", "/java/src/java/lang/Runtime.java" };</P>
+<P>try {</P>
+<P>p = r.exec(cmd);</P>
+<P>} catch (Exception e) {</P>
+<P>System.out.println("error executing " + cmd[0]);</P>
+<P>}</P>
+<P>} }</P>
+</B></I></FONT><FONT SIZE=2>
+</FONT><B><P>System</P>
+</B><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Класс System содержит любопытную коллекцию глобальных функций и переменных. В большинстве примеров этой книге для операций вывода мы использовали метод System.out.println(). В </FONT><A HREF="13.htm"><U><FONT FACE="Times New Roman" SIZE=2 COLOR="#0000ff">следующей главе</U></FONT></A><FONT FACE="Times New Roman" SIZE=2> будут детально рассмотрены потоки InputStream и OutputStream.</P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Метод </FONT><B><FONT SIZE=2>currentTimeMillis</B></FONT><FONT FACE="Times New Roman" SIZE=2> возвращает текущее системное время в виде миллисекунд, прошедших с 1 января 1970 года. </P>
+<P ALIGN="JUSTIFY">Метод </FONT><B><FONT SIZE=2>arraycopy</B></FONT><FONT FACE="Times New Roman" SIZE=2> можно использовать для быстрого копирования массива любого типа из одного места в памяти в другое. Ниже приведен пример копирования двух массивов с помощью этого метода. </P>
+</FONT><FONT SIZE=2>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>class ACDemo {</P>
+<P>static byte a[] = { 65, 66, 67, 68, 69, 70, 71, 72, 73, 74 };</P>
+<P>static byte b[] = { 77, 77, 77, 77, 77, 77, 77, 77, 77, 77 };</P>
+<P>public static void main(</P>
+<P>String args[]) {</P>
+<P>System.out.println("a = " + new String(a, 0));</P>
+<P>System.out.println("b = " + new String(b, 0));</P>
+<P>System.arraycopy(a, 0, b, 0, a.length);</P>
+<P>System.out.println("a = " + new String(a, 0));</P>
+<P>System.out.println("b = " + new String(b, 0));</P>
+<P>System.arraycopy(a, 0, a, 1, a.length - 1);</P>
+<P>System.arraycopy(b, 1, b, 0, b.length - 1);</P>
+<P>System.out.println("a = " + new String(a, 0));</P>
+<P>System.out.println("b = " + new String(b, 0));</P>
+<P>} }</P>
+</B></I></FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Как вы можете заключить из результата работы этой программы, копирование можно выполнять в любом направлении, используя в качестве источника и приемника один и тот же объект.</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>С:\&gt; java ACDemo</P>
+<P>а = ABCDEFGHIJ</P>
+<P>b = ММММММММММ</P>
+<P>а = ABCDEFGHIJ</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>b = ABCDEFGHIJ</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>а =</FONT><FONT FACE="Courier New" SIZE=2> AABCDEFGHI</P>
+<P>b = BCDEFGHIJJ</P>
+</B></I></FONT><FONT SIZE=2>
+</FONT><B><FONT FACE="Times New Roman" SIZE=2><P>Свойства окружения</P>
+</B><P ALIGN="JUSTIFY">Исполняющая среда Java предоставляет доступ к переменным окружения через представителя класса Properties (описанного ранее в этой главе), с которым можно работать с помощью метода System.getProperty. Для получения полного списка свойств можно вызвать метод </FONT><FONT SIZE=2>System.getProperties() </FONT><FONT FACE="Times New Roman" SIZE=2>или  см. таблицу 4.</P>
+</FONT><FONT SIZE=2><P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="RIGHT">Таблица 4</P>
+</FONT><B><FONT FACE="Times New Roman"><P ALIGN="CENTER">Стандартные системные свойства</P></B></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=7 WIDTH=574>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<B><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">Имя</B></FONT></TD>
+<TD WIDTH="66%" VALIGN="TOP">
+<B><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">Значение</B></FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<B><FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">Доступ для апплета</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P>java.version</FONT></TD>
+<TD WIDTH="66%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Версия интерпретатора </FONT><FONT SIZE=2>Java</FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">да</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P>java.vendor</FONT></TD>
+<TD WIDTH="66%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Строка идентификатора, заданная разработчиком</FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">да</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P>java.vendor.url</FONT></TD>
+<TD WIDTH="66%" VALIGN="TOP">
+<FONT SIZE=2><P>URL </FONT><FONT FACE="Times New Roman" SIZE=2>разработчика</FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">да</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P>java.class.version</FONT></TD>
+<TD WIDTH="66%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Версия </FONT><FONT SIZE=2>Java API </FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">да</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P>java.class.path</FONT></TD>
+<TD WIDTH="66%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Значение переменной </FONT><FONT SIZE=2>CLASSPATH</FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">нет</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P>java.home</FONT></TD>
+<TD WIDTH="66%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Каталог, в котором инсталлирована среда </FONT><FONT SIZE=2>Java</FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">нет</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P>java.compiler</FONT></TD>
+<TD WIDTH="66%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Компилятор </FONT><FONT SIZE=2>JIT</FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">нет</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P>os.name</FONT></TD>
+<TD WIDTH="66%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Название операционной системы</FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">да</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P>os.arch</FONT></TD>
+<TD WIDTH="66%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Архитектура компьютера, на котором выполняется программа</FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">да</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P>os.version</FONT></TD>
+<TD WIDTH="66%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Версия операционной системы </FONT><FONT SIZE=2>Web-</FONT><FONT FACE="Times New Roman" SIZE=2>узла</FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">да</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P>file.separator</FONT></TD>
+<TD WIDTH="66%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Зависящие от платформы разделители файлов (</FONT><FONT SIZE=2>/ </FONT><FONT FACE="Times New Roman" SIZE=2>или \)</FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">да</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P>path.separator</FONT></TD>
+<TD WIDTH="66%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Зависящие от платформы разделители пути (</FONT><FONT SIZE=2>: </FONT><FONT FACE="Times New Roman" SIZE=2>или </FONT><FONT SIZE=2>;)</FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">да</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P>line.separator</FONT></TD>
+<TD WIDTH="66%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Зависящие от платформы разделители строк (</FONT><FONT SIZE=2>\n </FONT><FONT FACE="Times New Roman" SIZE=2>или \</FONT><FONT SIZE=2>r\n)</FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">да</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P>user.name</FONT></TD>
+<TD WIDTH="66%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Имя текущего пользователя</FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">нет</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P>user.home</FONT></TD>
+<TD WIDTH="66%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Домашний каталог пользователя</FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">нет</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P>user.dir</FONT></TD>
+<TD WIDTH="66%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Текущий рабочий каталог</FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">нет</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P>user.language</FONT></TD>
+<TD WIDTH="66%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>2-символьный код языка для местности по умолчанию</FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">нет</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P>user.region</FONT></TD>
+<TD WIDTH="66%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>2-символьный код страны для местности по умолчанию</FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">нет</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P>user.timezone</FONT></TD>
+<TD WIDTH="66%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Временной пояс по умолчанию</FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">нет</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P>user.encoding</FONT></TD>
+<TD WIDTH="66%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Кодировка сиволов для местности по умолчанию</FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">нет</FONT></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<FONT SIZE=2><P>user.encoding.pkg</FONT></TD>
+<TD WIDTH="66%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Пакет, содержащий конверторы для преобразования символов из местной кодировки в </FONT><FONT SIZE=2>Unicode</FONT></TD>
+<TD WIDTH="13%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P ALIGN="CENTER">нет</FONT></TD>
+</TR>
+</TABLE>
+
+<B>
+<P>Date</P>
+</B><FONT FACE="Times New Roman" SIZE=2><P>Класс Date используется для операций с датой и временем. Через него вы можете получить доступ к дате, месяцу, году, дню недели, часам, минутам, секундам. У объектов этого класса — несколько конструкторов. Самый простой — Date() — инициализирует объект текущими датой и временем. Три остальных конструктора предлагают дополнительные возможности задавать начальные значения для нового объекта.</P>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>Date(year, month, date) — устанавливает указанную дату, при этом время устанавливается в 00:00:00 (полночь).</LI></P>
+<P ALIGN="JUSTIFY"><LI>Date(year, month, date, hours, minutes) — устанавливает указанные дату и время, секунды устанавливаются в 0.</LI></P>
+<P ALIGN="JUSTIFY"><LI>Date(year, month, date, hours, minutes, seconds) — наиболее полное задание времени, в объекте устанавливаются указанные дата и время, в том числе и секунды.</LI></P></UL>
+
+</FONT><FONT SIZE=2>
+</FONT><B><FONT FACE="Times New Roman" SIZE=2><P>get и set</P>
+</B><P ALIGN="JUSTIFY">Класс Date включает в себя набор методов для получения и установки отдельных атрибутов, хранящихся в объекте. Каждая из функций семейства get — getYear, getMonth, getDate, getDay, getHours, getMi-nutes и getSeconds — возвращает целое значение. Каждой из функций семейства set — setYear, setMonth, setDate, setHours, setMinutes и setSeconds — в качестве параметра передается целое значение.</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>Вы также можете получить представление объекта Date в виде значения типа long с помощью метода getTime. Возвращаемое этим методом значение представляет собой число миллисекунд, прошедших после 1 января 1970 года. </P>
+</FONT><FONT SIZE=2>
+</FONT><B><FONT FACE="Times New Roman" SIZE=2><P>Сравнение</P>
+</B><P ALIGN="JUSTIFY">Если у вас есть два объекта типа Date, и вы хотите их сравнить, то можете преобразовать хранящиеся в них даты в значения типа long, и сравнить полученные даты, выраженные в миллисекундах. Класс Date включает в себя три метода, которые можно использовать для прямого сравнения дат: — before, after и equals. Например, вызов</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>new Date(96, 2, 18).before(new Date(96, 2, 12)</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P>возвращает значение true, поскольку 12-й день месяца предшествует 18-му. </P>
+</FONT><FONT SIZE=2>
+</FONT><B><FONT FACE="Times New Roman" SIZE=2><P>Строки и часовые пояса</P>
+</B><P ALIGN="JUSTIFY">Объекты Date можно конвертировать в текстовые строки различных форматов. Прежде всего, обычный метод toString преобразует объект Date в строку, которая выглядит, как “Thu Feb 15 22:42:04 1996”. Метод toLocaleString преобразует дату в более короткую строку, выглядящую примерно так: “02/15/96 22:42:04”. И, наконец, метод toGMTString возвращает дату в формате среднего времени по Гринвичу:</FONT><FONT SIZE=2> “16 Feb 1996 06:42:04 GMT”. </P>
+
+</FONT><B><P>Math</P>
+</B><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Класс Math содержит функции с плавающей точкой, которые используются в геометрии и тригонометрии. Кроме того, в нем есть две константы, используемые в такого рода вычислениях: — Е (приблизительно 2.72) и PI (приблизительно 3.14</FONT><FONT SIZE=2>159).</P>
+<B>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Тригонометрические функции</P>
+</B><P ALIGN="JUSTIFY">Приведенные ниже три функции имеют один параметр типа double, представляющий собой угол в радианах, и возвращают значение соответствующей тригонометрической функции.</P>
+
+<UL>
+</FONT><FONT SIZE=2><LI>sin(double </FONT><FONT FACE="Times New Roman" SIZE=2>а) возвращает синус угла а, заданного в радианах.</LI>
+<LI>cos(double а) возвращает косинус угла а, заданного в радианах.</LI>
+<LI>tan(double а) возвращает тангенс угла а, заданного в радианах.</LI></UL>
+
+<P ALIGN="JUSTIFY">Следующие четыре функции возвращают угол в радианах, соответствующий значению, переданному им в качестве параметра.</P>
+
+<UL>
+<LI>asin(double r) возвращает угол, синус которого равен г.</LI>
+<LI>acos(double r) возвращает угол, косинус которого равен г.</LI>
+<LI>atan(double r) возвращает угол, тангенс которого равен г.</LI>
+<LI>atan2(double a, double b) возвращает угол, тангенс которого равен отношению а/b.</LI></UL>
+
+</FONT><B><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Степенные, показательные и логарифмические функции</P>
+
+<UL>
+</B><LI>pow(double у, double x) возвращает у, возведенное в степень х. Так, например, pow(2.0, 3.0) равно 8.0.</LI>
+<LI>exp(double х) возвращает е в степени х.</LI>
+<LI>log(double х) возвращает натуральный логарифм х.</LI>
+<LI>sqrt(double х) возвращает квадратный корень х.</LI></UL>
+
+</FONT><B><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Округление</P>
+
+<UL>
+</B><LI>ceil(double а) возвращает наименьшее целое число, значение которого больше или равно а.</LI>
+<LI>floor(double а) возвращает наибольшее целое число, значение которого меньше или равно а.</LI>
+<LI>rint(double а) возвращает в типе double значение а с отброшенной дробной частью.</LI>
+<LI>round(float а) возвращает округленное до ближайшего целого значение а.</LI>
+<LI>round(double а) возвращает округленное до ближайшего длинного целого значение а.</LI></UL>
+
+<P ALIGN="JUSTIFY">Кроме того, в классе Math имеются полиморфные версии методов для получения модуля, нахождения минимального и максимального значений, работающие с числами типов int, long, float и double:</P>
+
+<UL>
+<LI>abs(a) возвращает модуль (абсолютное значение) а.</LI>
+<LI>max(a, b) возвращает наибольший из своих аргументов.</LI>
+<LI>min(a, b) возвращает наименьший из своих аргументов.</LI></UL>
+
+</FONT><B>
+<P>Random</P>
+</B><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Класс Random — это генератор псевдослучайных чисел. Используемый в нем алгоритм был взят из раздела 3.2.1 “Искусства программирования” Дональда Кнута. Обычно в качестве начального значения используется текущее время, что снижает вероятность получения повторяющихся последовательностей случайных чисел. </P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Из объекта класса Random можно извлекать 5 типов случайных чисел. Метод nextInt возвращает целое число, равномерно распределенное по всему диапазону этого типа. Аналогично, метод nextLong возвращает случайное число типа long. Методы nextFloat и nextDouble возвращают случайные числа соответственно типов float и double, равномерно распределенные на интервале 0.0..1.0. И, наконец,</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>метод nextGaussian возвращает нормально распределенное случайное число со средним значением 0.0 и дисперсией 1.0.</P>
+</FONT><B>
+<FONT FACE="Times New Roman"><P>Счет за услуги</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">В пакете java.</FONT><FONT SIZE=2>util </FONT><FONT FACE="Times New Roman" SIZE=2>есть еще несколько классов по работе с битами, различными форматами дат и архивами (подкаталог zip). Структуры данных и системные интерфейсы, которые вы изучили в этой главе, окажут вам неоценимую помощь, когда вы начнете писать на Java более сложные программы. В следующих двух главах мы будем знакомиться с </FONT><A HREF="13.htm"><U><FONT FACE="Times New Roman" SIZE=2 COLOR="#0000ff">потоками ввода-вывода</U></FONT></A><FONT FACE="Times New Roman" SIZE=2> и </FONT><A HREF="14.htm"><U><FONT FACE="Times New Roman" SIZE=2 COLOR="#0000ff">сетевыми средствами</U></FONT></A><FONT SIZE=2>.</P>
+</FONT></BODY>
+</HTML>

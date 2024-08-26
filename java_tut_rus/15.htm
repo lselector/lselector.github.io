@@ -1,0 +1,855 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<title>Глава 15 Апплеты</title>
+<meta NAME="Template" CONTENT="C:\PROGRAM FILES\MICROSOFT OFFICE\OFFICE\html.dot">
+</head>
+
+<body>
+<font FACE="Times New Roman" SIZE="4"><b>
+
+<p>Глава 15 Апплеты</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Апплеты — это маленькие приложения,
+которые размещаются на серверах Internet,
+транспортируются клиенту по сети, автоматически
+устанавливаются и запускаются на месте, как
+часть документа HTML. Когда апплет прибывает к
+клиенту, его доступ к ресурсам ограничен.</p>
+
+<p>Ниже приведен исходный код канонической
+программы HelloWorld, оформленной в виде апплета:</p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>import java.awt.*;<br>
+import java.applet.*;<br>
+public class HelloWorldApplet extends Applet { <br>
+public void paint(Graphics g) {<br>
+g.drawString(&quot;Hello World!&quot;, 20, 20);<br>
+} }</p>
+</b></i></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Этот апплет начинается двумя строками,
+которые импортируют все пакеты иерархий java.applet и
+java.awt. Дальше в нашем примере присутствует метод
+paint, замещающий одноименный метод класса Applet. При
+вызове этого метода ему передается аргумент,
+содержащий ссылку на объект класса Graphics.
+Последний используется для прорисовки нашего
+апплета. С помощью метода drawString, вызываемого с</font><font
+SIZE="2"> </font><font FACE="Times New Roman" SIZE="2">этим объектом типа
+Graphics, в позиции экрана (20,20) выводится строка “Hello
+World”.</p>
+
+<p ALIGN="JUSTIFY">Для того, чтобы с помощью браузера
+запустить этот апплет, нам придется написать
+несколько строк html-текста. </p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>&lt;applet code=&quot;HelloWorldApplet&quot; width=200 height=40&gt;<br>
+&lt;/applet&gt;</p>
+</b></i></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Вы можете поместить эти строки в
+отдельный html-файл (<a HREF="examples/15/HelloWorldApplet.html"><font
+SIZE="2" COLOR="#0000ff"><u>HelloWorldApplet.html</u></font></a><font SIZE="2">)</font>,
+либо вставить их в текст этой программы в виде
+комментария и запустить программу appletviewer с его
+исходным текстом в качестве аргумента. </p>
+</font><font FACE="Times New Roman"><b>
+
+<p>Тег HTML &lt;Applet&gt;</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Тег &lt;applet&gt; используется для запуска
+апплета как из HTML-документа, так и из программы
+appletviewer. Программа appletviewer выполняет каждый
+найденный ей тег &lt;applet&gt; в отдельном окне, в то
+время как браузеры позволяют разместить на одной
+странице несколько апплетов. Синтаксис тэга &lt;APPL</font><font
+SIZE="2">E</font><font FACE="Times New Roman" SIZE="2">T&gt; в настоящее
+время таков :</p>
+</font><b><font FACE="Courier New" SIZE="2"><i>
+
+<p>&lt;APPLET</p>
+
+<p>CODE = appletFile<br>
+OBJECT = appletSerialFile<br>
+WIDTH = pixels<br>
+HEIGHT = pixels<br>
+[ARCHIVE = jarFiles]<br>
+[CODEBASE = codebaseURL]<br>
+[ALT = alternateText]<br>
+[NAME = appletInstanceName]<br>
+[ALIGN = alignment]<br>
+[VSPACE = pixels]<br>
+[HSPACE = pixels]<br>
+&gt;<br>
+[&lt; PARAM NAME = AttributeNamel VALUE = AttributeValuel &gt;]<br>
+[&lt; PARAM NAME = AttributeName2 VALUE = AttributeValue2 &gt;]<br>
+[HTML-текст, отображаемый при отсутствии поддержки
+Java]<br>
+&lt;/APPLET&gt;</p>
+</i></font><font FACE="Arial" SIZE="2">
+
+<p>CODE = appletClassFile</p>
+</font></b><font SIZE="2">
+
+<p ALIGN="JUSTIFY">CODE — </font><font FACE="Times New Roman" SIZE="2"><i>обязательный</i>
+атрибут, задающий имя файла, в котором содержится
+оттранслированный код апплета. Имя файла
+задается относительно codebase, то есть либо от
+текущего каталога, либо от каталога, указанного в
+атрибуте CODEBASE. В Java 1.1 вместо этого атрибута может
+использоваться атрибут OBJE</font><font SIZE="2">CT.</p>
+</font><font FACE="Arial" SIZE="2"><b>
+
+<p>OBJECT = appletClassSerialFile</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Указывает имя файла, содержащего
+сериализованный апплет, из которого последний
+будет восстановлен. При запуске определяемого
+таким образом апплета должен вызываться не метод
+init(), а метод start(). Для апплета необходимо задать
+либо атрибут CODE, либо атрибут OBJECT, но задавать эти
+атрибуты одновременно нельзя.</p>
+</font><font FACE="Arial" SIZE="2"><b>
+
+<p>WIDTH = pixels</p>
+
+<p>HEIGHT = pixels</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">WIDTH и HEIGHT — <i>обязательные</i> атрибуты,
+задающие начальный размер видимой области
+апплета.</p>
+</font><font FACE="Arial" SIZE="2"><b>
+
+<p>ARCHIVE = jarFiles</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Задает список jar-файлов (разделяется
+запятыми), которые предварительно загружаются в
+Web-броузер. В этих архивных файлах могут
+содержаться файлы классов, изображения, звуки и
+любые другие ресурсы, необходимые апплету. Для
+создания архивов используется утилита JAR,
+синтаксис вызова которой напоминает вызов
+команды TAR Unix (подробное описание утилит смотрите
+в </font><a HREF="pril_1.htm"><font FACE="Times New Roman" SIZE="2" COLOR="#0000ff"><u>Приложении
+1</u></font></a><font SIZE="2">) :</p>
+
+<p ALIGN="JUSTIFY">c:\&gt; jar cf soundmap.jar *.class image.gif sound.wav</p>
+</font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Очевидно, что передача сжатых jar-файлов
+повышает эффективность работы. Поэтому многие
+средства разработки (Lotus JavaBeans, Borland JBuilder) уже
+имеют средства для публикации апплетов в виде
+jar-файлов.</p>
+</font><font FACE="Arial" SIZE="2"><b>
+
+<p>CODEBASE = codebaseURL</p>
+</b></font><font SIZE="2">
+
+<p ALIGN="JUSTIFY">CODEBASE — </font><font FACE="Times New Roman" SIZE="2"><i>необязательный</i>
+атрибут, задающий базовый URL кода апплета,
+являющийся каталогом, в котором будет
+выполняться поиск исполняемого файла апплета
+(задаваемого в признаке CODE). Если этот атрибут не
+задан, по умолчанию используется каталог данного
+HTML-документа. CODEBASE не обязательно должен
+указывать на тот же узел, с которого был загружен </font><font
+SIZE="2">H</font><font FACE="Times New Roman" SIZE="2">TML-документ.</p>
+</font><font SIZE="2"><b>
+
+<p>ALT = alternateAppletText</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Признак ALT — <i>необязательный</i>
+атрибут, задающий короткое текстовое сообщение,
+которое должно быть выведено в том случае, если
+используемый браузер распознает синтаксис тега
+&lt;applet&gt;, но выполнять апплеты не умеет. Это не то
+же самое, что HTML-текст, который можно вставлять
+между &lt;applet&gt; и &lt;/applet&gt; для браузеров, вообще не
+поддерживающих апплетов.</p>
+</font><font FACE="Arial" SIZE="2"><b>
+
+<p>NAME = appletInstanceName</p>
+</b></font><font SIZE="2">
+
+<p ALIGN="JUSTIFY">NAME — </font><font FACE="Times New Roman" SIZE="2"><i>необязательный</i>
+атрибут, используемый для задания имени для
+данного экземпляра апплета. Присвоение апплетам
+имен необходимо для того, чтобы другие апплеты на
+этой же странице могли находить их и общаться с
+ними. Для того, чтобы получить доступ к подклассу
+MyApplet класса Applet с именем “Duke”, нужно написать:</p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>MyApplet a = getAppletContext().getApplet(&quot;Duke&quot;);</p>
+</b></i></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">После того, как вы получили таким
+образом дескриптор именованного экземпляра
+апплета, вы можете вызывать его методы точно так
+же, как это делается с любым другим объектом.</p>
+</font><font FACE="Arial" SIZE="2"><b>
+
+<p>ALIGN = alignment</p>
+</b></font><font SIZE="2">
+
+<p ALIGN="JUSTIFY">ALIGN — </font><font FACE="Times New Roman" SIZE="2"><i>необязательный</i>
+атрибут, задающий стиль выравнивания апплета.
+Этот атрибут трактуется так же, как в теге IMG,
+возможные его значения — LEFT, RIGHT, TOP, TEXTTOP, MIDDLE,
+ABSMIDDLE, BASELINE, BOTTOM, ABSBOTTOM.</p>
+</font><font FACE="Arial" SIZE="2"><b>
+
+<p>VSPACE = pixels </p>
+
+<p>HSPACE = PIXELS</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Эти <i>необязательные</i> атрибуты
+задают ширину свободного пространства в
+пикселях сверху и снизу апплета (VSPACE), и слева и
+справа от него (HSPACE). Они трактуются точно так же,
+как одноименные атрибуты тега IMG.</p>
+</font><font FACE="Arial" SIZE="2"><b>
+
+<p>PARAM NAME = appletAttribute1 VALUE = value1</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Этот тег дает возможность передавать
+из HTML-страницы апплету необходимые ему
+аргументы. Апплеты получают эти атрибуты,
+вызывая метод getParameter(), описываемый ниже.</p>
+</font><b><font FACE="Times New Roman">
+
+<p>Передача параметров</p>
+</font><font FACE="Arial" SIZE="2">
+
+<p>getParameter(String)</p>
+</font></b><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Метод getParameter возвращает значение типа
+String, соответствующее указанному имени параметра.
+Если вам в качестве параметра требуется значение
+какого-либо другого типа, вы должны
+преобразовать строку-параметр самостоятельно.
+Вы сейчас увидите некоторые примеры
+использования метода getParameter для извлечения
+параметров из приведенного ниже примера:</p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>&lt;applet code=Testing width=40 height=40&gt;<br>
+&lt;param name=fontName value=Univers&gt;<br>
+&lt;param name=fontSize value=14&gt;<br>
+&lt;param name=leading value=2&gt;<br>
+&lt;param name=accountEnabled value=true&gt;</p>
+</b></i></font><font FACE="Times New Roman" SIZE="2">
+
+<p>Ниже показано, как извлекается каждый из этих
+параметров:</p>
+</font><b><font FACE="Courier New" SIZE="2"><i>
+
+<p>String FontName = getParameter(&quot;fontName&quot;);<br>
+String FontSize = Integer.parseInt(getParameter(&quot;fontSize&quot;));<br>
+String Leading = Float.valueOf(getParameter(&quot;leading&quot;));<br>
+String PaidUp = Boolean.valueOf(getParameter(&quot;accountEnabled&quot;));</p>
+</i></font><font FACE="Times New Roman">
+
+<p>Контекст апплета</p>
+</font><font SIZE="2">
+
+<p>getDocument</font><font FACE="Times New Roman" SIZE="2">Base и getCodeBase</p>
+</b>
+
+<p ALIGN="JUSTIFY">Возможно, Вы будете писать апплеты,
+которым понадобится явно загружать данные и
+текст. Java позволяет апплету загружать данные из
+каталога, в котором располагается HTML-документ,
+запустивший апплет (база документа - getDocumentBase), и
+из каталога, из которого был загружен class-файл с
+кодом апплета (база кода - getCodeBase).</p>
+<b>
+
+<p>AppletContext и showDocument</p>
+</b>
+
+<p ALIGN="JUSTIFY">AppletContext представляет собой средства,
+позволяющие получать информацию об окружении
+работающего апплета. Метод showDocument приводит к
+тому, что заданный его параметром документ
+отображается в главном окне браузера или фрейме.</p>
+</font><font FACE="Times New Roman"><b>
+
+<p>Отладочная печать</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Отладочную печать можно выводить в два
+места: на консоль и в статусную строку программы
+просмотра апплетов. Для того, чтобы вывести
+сообщение на консоль, надо написать:</p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>System.out.println(“Hello there, welcome to Java”);</p>
+</b></i></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Сообщения на консоли очень удобны,
+поскольку консоль обычно не видна пользователям
+апплета, и в ней достаточно места для нескольких
+сообщений. В браузере Netscape консоль Java доступна из
+меню Options, пункт “Show Java Console”.</p>
+
+<p ALIGN="JUSTIFY">Метод showStatus выводит текст в статусной
+области программы арpletviewer или браузера с
+поддержкой Java. В статусной области можно вывести
+только одну строку сообщения.</p>
+</font><font FACE="Times New Roman"><b>
+
+<p>Порядок инициализации апплета</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Ниже приведен порядок, в котором
+вызываются методы класса Applet, с пояснениями,
+нужно или нет переопределять данный метод.</p>
+</font><b>
+
+<p>init</p>
+</b><font FACE="Times New Roman" SIZE="2">
+
+<p>Метод init вызывается первым. В нем вы должны
+инициализировать свои переменные.</p>
+</font><b>
+
+<p>start</p>
+</b><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Метод start вызывается сразу же после
+метода init. Он также используется в качестве
+стартовой точки для возобновления работы после
+того, как апплет был остановлен. В то время, как
+метод init вызывается только однажды — при
+загрузке апплета, start вызывается каждый раз при
+выводе HTML-документа, содержащего апплет, на
+экран. Так, например, если пользователь перейдет
+к новой WWW-странице, а затем вернется назад к
+странице с апплетом, апплет продолжит работу с
+метода start.</p>
+</font><b>
+
+<p>paint</p>
+</b><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Метод paint вызывается каждый раз при
+повреждении апплета. AWT следит за состоянием окон
+в системе и замечает такие случаи, как, например,
+перекрытие окна апплета другим окном. В таких
+случаях, после того, как апплет снова оказывается
+видимым, для восстановления его изображения
+вызывается метод paint.</p>
+</font><font SIZE="2"><b>
+
+<p>update</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Используемый по умолчанию метод update
+класса Applet сначала закрашивает апплет цветом
+фона по умолчанию, после чего вызывает метод paint.
+Если вы в методе paint заполняете фон другим цветом,
+пользователь будет видеть вспышку цвета по
+умолчанию при каждом вызове метода update </font><font
+SIZE="2">—</font><font FACE="Times New Roman" SIZE="2"> то есть, всякий
+раз, когда вы перерисовываете апплет. Чтобы
+избежать этого, нужно заместить метод update. В
+общем случае нужно выполнять операции рисования
+в методе update, а в методе paint, к которому будет
+обращаться AWT, просто вызвать update.</p>
+</font><b>
+
+<p>stop</p>
+</b><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Метод stop вызывается в тот момент, когда
+браузер покидает HTML-документ, содержащий апплет.
+При вызове метода stop апплет еще работает. Вы
+должны использовать этот метод для приостановки
+тех подпроцессов, работа которых необязательна
+при невидимом апплете. После того, как
+пользователь снова обратится к этой странице, вы
+должны будете возобновить их работу в методе start.</p>
+</font><font SIZE="2"><b>
+
+<p>destroy</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Метод destroy вызывается тогда, когда
+среда (например, браузер Netscape) решает, что апплет
+нужно полностью удалить из памяти. В этом методе
+нужно освободить все ресурсы, которые
+использовал апплет.</p>
+</font><font FACE="Times New Roman"><b>
+
+<p>Перерисовка</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Возвратимся к апплету HelloWorldApplet. В нем
+мы заместили метод paint, что позволило апплету
+выполнить отрисовку. В классе Applet предусмотрены
+дополнительные методы рисования, позволяющие
+эффективно закрашивать части экрана. При
+разработке первых апплетов порой непросто
+понять, почему метод update никогда не вызывается.
+Для инициации update предусмотрены три варианта
+метода repaint.</p>
+</font><font SIZE="2"><b>
+
+<p>repaint</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Метод repaint используется для
+принудительного перерисовывания апплета. Этот
+метод, в свою очередь, вызывает метод update. Однако,
+если ваша система медленная или сильно
+загружена, метод update может и не вызваться.
+Близкие по времени запросы на перерисовку могут
+объединяться AWT, так что метод update может
+вызываться спорадически. Если вы хотите добиться
+ритмичной смены кадров изображения,
+воспользуйтесь методом repaint(time) — это позволит
+уменьшить количество кадров, нарисованных не
+вовремя.</p>
+</font><font SIZE="2"><b>
+
+<p>repaint(time)</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Вы можете вызывать метод repaint,
+устанавливая крайний срок для перерисовки (этот
+период задается в миллисекундах относительно
+времени вызова repaint). </p>
+</font><font SIZE="2"><b>
+
+<p>repaint(x, y, w, h)</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Эта версия ограничивает обновление
+экрана заданным прямоугольником, изменены будут
+только те части экрана, которые в нем находятся. </p>
+<b>
+
+<p>repaint(time, x, у, w, h)</p>
+</b>
+
+<p>Этот метод — комбинация двух предыдущих.</p>
+</font><font FACE="Times New Roman"><b>
+
+<p>Задание размеров графических изображений.</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Графические изображения
+вычерчиваются в стандартной для компьютерной
+графики системе координат, в которой координаты
+могут принимать только целые значения, а оси
+направлены слева направо и сверху вниз. У
+апплетов и изображений есть метод size, который
+возвращает объект Dimension. Получив объект Dimension, вы
+можете получить и значения его переменных width и
+height:</p>
+</font><b><font FACE="Courier New" SIZE="2"><i>
+
+<p>Dimension d = size();<br>
+System.out.println(d. width + &quot;,&quot; + d.height);</p>
+</i></font><font FACE="Times New Roman" SIZE="2">
+
+<p>Простые методы класса Graphics</p>
+</b>
+
+<p ALIGN="JUSTIFY">У объектов класса Graphics есть несколько
+простых функций рисования. Каждую из фигур можно
+нарисовать заполненной, либо прорисовать только
+ее границы. Каждый из методов drawRect, drawOval, fillRect и
+fillOval вызывается с четырьмя параметрами: int x, int y,
+int width и int height. Координаты х и у задают положение
+верхнего левого угла фигуры, параметры width и height
+определяют ее границы. </p>
+</font><b><font SIZE="2">
+
+<p>drawLine</p>
+</font><font FACE="Courier New" SIZE="2"><i>
+
+<p>drawline(int x1, int у1, int х2, int у2) </p>
+</i></font></b><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Этот метод вычерчивает отрезок прямой
+между точками с координатами (х1,у1) и (х2,у2). Эти
+линии представляют собой простые прямые
+толщиной в 1 пиксель. Поддержка разных перьев и
+разных толщин линий не предусмотрена.</p>
+<b>
+
+<p>drawArc и fillArc</p>
+</b>
+
+<p>Форма методов drawArc и fillArc следующая:</p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>drawArc(int x, int у, int width, int height, int startAngle, int sweepAngle)</p>
+</b></i></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Эти методы вычерчивают (fillArc заполняет)
+дугу, ограниченную прямоугольником (x,y,width, height),
+начинающуюся с угла startAngle и имеющую угловой
+размер sweepAngle. Ноль градусов соответствует
+положению часовой стрелки на 3 часа, угол
+отсчитывается против часовой стрелки (например,
+90 градусов соответствуют 12 часам, 180 — 9 часам, и
+так далее).</p>
+<b>
+
+<p>drawPolyson и fillPolyson</p>
+</b>
+
+<p>Прототипы для этих методов:</p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>drawPolygon(int[], int[], int)</p>
+
+<p>fillPolygon(int[], int[], int)</p>
+</b></i></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Метод drawPolygon рисует контур
+многоугольника (ломаную линию), задаваемого
+двумя массивами, содержащими х и у координаты
+вершин, третий параметр метода — число пар
+координат. Метод drawPolygon не замыкает
+автоматически вычерчиваемый контур. Для того,
+чтобы прямоугольник получился замкнутым,
+координаты первой и последней точек должны
+совпадать.</p>
+</font><font FACE="Times New Roman"><b>
+
+<p>Цвет</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Цветовая система AWT разрабатывалась
+так, чтобы была возможность работы со всеми
+цветами. После того, как цвет задан, Java отыскивает
+в диапазоне цветов дисплея тот, который ему
+больше всего соответствует. Вы можете
+запрашивать цвета в той семантике, к которой
+привыкли — как смесь красного, зеленого и
+голубого, либо как комбинацию оттенка,
+насыщенности и яркости. Вы можете использовать
+статические переменные класса Color.black для задания
+какого-либо из общеупотребительных цветов - black,
+white, red, green, blue, cyan, yellow, magenta, orange, pink, gray, darkGray и lightGray.</p>
+
+<p>Для создания нового цвета используется один из
+трех описанных ниже конструкторов.</p>
+</font><font SIZE="2"><b>
+
+<p>Color(int, int, int)</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Параметрами для этого конструктора
+являются три целых числа в диапазоне от 0 до 255 для
+красного, зеленого и голубого компонентов цвета.</p>
+</font><font SIZE="2"><b>
+
+<p>Color(int)</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">У этого конструктора — один
+целочисленный аргумент, в котором в упакованном
+виде заданы красный, зеленый и голубой
+компоненты цвета. Красный занимает биты 16-23,
+зеленый — 8-15, голубой — 0-7.</p>
+</font><font SIZE="2"><b>
+
+<p>Color(float, float, float)</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p>Последний из конструкторов цвета, Color(float, float,
+float), принимает в качестве параметров три
+значения типа float (в диапазоне от 0.0 до 1.0) для
+красного, зеленого и голубого базовых цветов. </p>
+</font><b><font FACE="Times New Roman">
+
+<p>Методы класса Color</p>
+</font><font SIZE="2">
+
+<p>HSBtoRGB(float, float, float)<br>
+RGBtoHSB(int, int, int, float[1)</p>
+</font></b><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">HSBtoRGB преобразует цвет, заданный
+оттенком, насыщенностью и яркостью (HSB), в целое
+число в формате RGB, готовое для использования в
+качестве параметра конструктора Color(int). RGBtoHSB
+преобразует цвет, заданный тремя базовыми
+компонентами, в массив типа float со значениями HSB,
+соответствующими данному цвету.</p>
+
+<p ALIGN="JUSTIFY">Цветовая модель HSB (Hue-Saturation-Brightness,
+оттенок-насыщенность-яркость) является
+альтернативой модели Red-Green-Blue для задания цветов.
+В этой модели оттенки можно представить как круг
+с различными цветами (оттенок может принимать
+значения от 0.0 до 1.0, цвета на этом круге идут в том
+же порядке, что и в радуге — красный, оранжевый,
+желтый, зеленый, голубой, синий, фиолетовый).
+Насыщенность (значение в диапазоне от 0.0 до 1.0) -
+это шкала глубины цвета, от легкой пастели до
+сочных цветов. Яркость - это также число в
+диапазоне от 0.0 до 1.0, причем меньшие значения
+соответствуют более темным цветам, а большие -
+более ярким.</p>
+</font><font SIZE="2"><b>
+
+<p>getRedQ, getGreenO, setBlue()</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Каждый из этих методов возвращает в
+младших восьми битах результата значение
+соответствующего базового компонента цвета.</p>
+</font><font SIZE="2"><b>
+
+<p>getRGB()</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Этот метод возвращает целое число, в
+котором упакованы значения базовых компонентов
+цвета, причем</p>
+</font><b><font FACE="Courier New" SIZE="2"><i>
+
+<p>red = Oxff &amp; (getRGB() &gt;&gt; 16);<br>
+green = Oxff &amp; (getRGB() &gt;&gt; 8);<br>
+blue = Oxff &amp; getRGB();</p>
+</i></font><font FACE="Times New Roman" SIZE="2">
+
+<p>setPaintMode() и set</font><font SIZE="2">XORMode(Color)</p>
+</font></b><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Режим отрисовки paint — используемый по
+умолчанию метод заполнения графических
+изображений, при котором цвет пикселей
+изменяется на заданный. XOR устанавливает режим
+рисования, когда результирующий цвет получается
+выполнением операции XOR (исключающее или) для
+текущего и указанного цветов (особенно полезно
+для анимации).</p>
+</font><font FACE="Times New Roman"><b>
+
+<p>Шрифты</p>
+</b></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Библиотека AWT обеспечивает большую
+гибкость при работе со шрифтами благодаря
+предоставлению соответствующих абстракций и
+возможности динамического выбора шрифтов. Вот
+очень короткая программа, которая печатает на
+консоли Java имена всех имеющихся в системе
+шрифтов.</p>
+</font><b><font FACE="Courier New" SIZE="2"><i>
+
+<p>/*<br>
+* &lt;applet code=&quot;WhatFontsAreHere&quot; width=100 height=40&gt;<br>
+* &lt;/applet&gt;<br>
+*<br>
+*/<br>
+import java.applet.*;<br>
+import java.awt.*;<br>
+public class WhatFontsAreHere extends Applet { <br>
+public void init() { <br>
+String FontList[];<br>
+FontList = getToolkit().getFontList();<br>
+for (int i=0; i &lt; FontList.length; i++) {<br>
+System.out.println(i + &quot;: &quot; + FontList[i]);<br>
+}<br>
+} }</p>
+</i></font><font SIZE="2">
+
+<p>drawString</p>
+</font></b><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">В предыдущих примерах использовался
+метод drawString(String, x, у). Этот метод выводит строку с
+использованием текущих шрифта и цвета. Точка с
+координатами (х,у) соответствует левой границе
+базовой линии символов, а не левому верхнему
+углу, как это принято в других методах рисования.
+Для того, чтобы понять, как при этом
+располагается описывающий строку прямоугольник,
+прочтите раздел о метрике шрифта в конце этой
+главы.</p>
+<b>
+
+<p>Использование шрифтов</p>
+</b>
+
+<p>Конструктор класса Font создает новый шрифт с
+указанным именем, стилем и размером в пунктах:</p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>Font StrongFont = new Font(&quot;Helvetica&quot;, Font.BOLD|Font.ITALIC, 24);</p>
+</b></i></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">В настоящее время доступны следующие
+имена шрифтов: Dialog, Helvetica, TimesRoman, Courier и Symbol. Для
+указания стиля шрифта внутри данного семейства
+предусмотрены три статические переменные. —
+Font.PLAIN, Font.BOLD и Font.ITALIC, что соответствует обычному
+стилю, курсиву и полужирному. </p>
+
+<p ALIGN="JUSTIFY">Теперь давайте посмотрим на несколько
+дополнительных методов.</p>
+<u>
+
+<p ALIGN="JUSTIFY">getFamily и getName</p>
+</u>
+
+<p ALIGN="JUSTIFY">Метод getFamily возвращает строку с именем
+семейства шрифтов. С помощью метода getName можно
+получить логическое имя шрифта.</p>
+</font><font SIZE="2"><u>
+
+<p ALIGN="JUSTIFY">getSize</p>
+</u></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Этот метод возвращает целое число,
+представляющее собой размер шрифта в пунктах.</p>
+</font><font SIZE="2"><u>
+
+<p ALIGN="JUSTIFY">getStyle</p>
+</u></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Этот метод возвращает целое число,
+соответствующее стилю шрифта. Полученный
+результат можно побитово сравнить со
+статическими переменными класса Font: — PLAIN, BOLD и
+ITALIC.</p>
+</font><font SIZE="2"><u>
+
+<p ALIGN="JUSTIFY">isBold, isItalic, isPlain</p>
+</u></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Эти методы возвращают true в том случае,
+если стиль шрифта — полужирный (bold), курсив (italic)
+или обычный (plain), соответственно.</p>
+<b>
+
+<p>Позиционирование и шрифты</font><font SIZE="2">: FontMetrics</p>
+</font></b><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">В Java используются различные шрифты, а
+класс FontMetrics позволяет программисту точно
+задавать положение выводимого в апплете текста.
+Прежде всего нам нужно понять кое-что из обычной
+терминологии, употребляемой при работе со
+шрифтами:</p>
+
+<ul>
+  <i>
+  <li>Высота</i> (height) — размер от верхней до нижней
+    точки самого высокого символа в шрифте. </li>
+  <i>
+  <li>Базовая линия</i> (baseline) — линия, по которой
+    выравниваются нижние границы символов (не считая
+    снижения (descent)). </li>
+  <i>
+  <li>Подъем</i> (ascent) — расстояние от базовой линии до
+    верхней точки символа. </li>
+  <i>
+  <li>Снижение</i> (descent) — расстояние от базовой линии
+    до нижней точки символа.</li>
+</ul>
+<b>
+
+<p>Использование FontMetrics</p>
+</b>
+
+<p>Ниже приведены некоторые методы класса FontMetrics:</p>
+</font><font SIZE="2"><u>
+
+<p>stringWidth</p>
+</u></font><font FACE="Times New Roman" SIZE="2">
+
+<p>Этот метод возвращает длину заданной строки
+для данного шрифта.</p>
+</font><font SIZE="2"><u>
+
+<p>bytesWidth, charsWidth</p>
+</u></font><font FACE="Times New Roman" SIZE="2">
+
+<p>Эти методы возвращают ширину указанного
+массива байтов для текущего шрифта.</p>
+</font><font SIZE="2"><u>
+
+<p>getAscent, getDescent, getHeight</p>
+</u></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Эти методы возвращают подъем, снижение
+и ширину шрифта. Сумма подъема и снижения дают
+полную высоту шрифта. Высота шрифта — это не
+просто расстояние от самой нижней точки букв g и у
+до самой верхней точки заглавной буквы Т и
+символов вроде скобок. Высота включает
+подчеркивания и т.п. </p>
+<u>
+
+<p>getMaxAscent и getMaxDescent</p>
+</u>
+
+<p>Эти методы служат для получения максимальных
+подъема и снижения всех символов в шрифте. </p>
+<b>
+
+<p>Центрирование текста</p>
+</b>
+
+<p ALIGN="JUSTIFY">Давайте теперь воспользуемся методами
+объекта FontMetrics для получения подъема, снижения и
+длины строки, которую требуется нарисовать, и с
+помощью полученных значений отцентрируем ее в
+нашем апплете.</p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>/*<br>
+* &lt;applet code=&quot;HelloWorld&quot; width=200 height=100&gt;<br>
+* &lt;/applet&gt;<br>
+*<br>
+*/<br>
+import java.applet.*;<br>
+import java.awt.*;<br>
+public class HelloWorld extends Applet {<br>
+final Font f = new Font(&quot;Helvetica&quot;, Font.BOLD, 18);<br>
+public void paint(Graphics g) { <br>
+Dimension d = this.size();<br>
+g.setColor(Color.white);<br>
+g.fillRect(0,0,d.width,d.height);<br>
+g.setColor(Color.black);<br>
+g.setFont(f);<br>
+drawCenteredString(&quot;Hello World!&quot;, d.width, d.height, g);<br>
+g.drawRect(0,0,d.width-1,d.height-1);<br>
+}<br>
+public void drawCenteredString(String s, int w, int h, Graphics g) { <br>
+FontMetrics fm = g.getFontMetrics();<br>
+int x = (w - fm.stringWidth(s)) / 2;<br>
+int y = (fm.getAscent() + (h - (fm.getAscent() + fm.getDescent()))/2);<br>
+g.drawString(s, x, y);<br>
+} }</p>
+</b></i></font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Вот как выглядит апплет в действии –</font><font
+SIZE="2"> </font><a HREF="examples/15/HelloWorld.html"><font SIZE="2" COLOR="#0000ff"><u>HelloWorld.html</u></font></a><font
+SIZE="2">.</font></p>
+</body>
+</html>

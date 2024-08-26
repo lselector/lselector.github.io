@@ -1,0 +1,1414 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>http_cgi_cookies</title>
+<!--
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> http, cgi, cookies</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">HTTP, CGI and Cookies</font></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 COLS=3 WIDTH="80%" >
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><b><font color="#CC0000">On this page:</font></b></td>
+
+<td></td>
+
+<td ALIGN=LEFT VALIGN=TOP><b><font color="#CC0000">Other pages:</font></b></td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">*
+</font><a href="#http">http
+protocol</a>
+<br><font color="#6699CC">*
+</font><a href="#books">books</a>
+<br><font color="#6699CC">*
+</font><a href="#cgi_examples">simple cgi_examples</a>
+<br><font color="#6699CC">*
+</font><a href="#security_tainting">security
+- tainting</a>
+<br><font color="#6699CC">*
+</font><a href="#debugging_cgi_scripts">debugging
+CGI scripts</a>
+<br><font color="#6699CC">*
+</font><a href="#cgi_pm">CGI.pm</a>
+<br><font color="#6699CC">*
+</font><a href="#CGI.pm_all_elements_script">CGI.pm
+freq.used elements</a>
+<br><font color="#6699CC">*
+</font><a href="#cgi.pm_propagates_values">CGI.pm
+propagates values</a>
+<br><font color="#6699CC">*
+</font><a href="#cgi_carp">CGI::Carp</a></td>
+
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">*
+</font><a href="#cgi_libs">libs
+of cgi scripts</a>
+<br><font color="#6699CC">*
+</font><a href="#cookies">cookies</a>
+<br><font color="#6699CC">*
+</font><a href="#cgi_in_c">cgi in C</a>
+<br><font color="#6699CC">*
+</font><a href="http_cgi_cookies.html#cgi_in_shell">cgi
+in shell</a></td>
+
+<td ALIGN=LEFT VALIGN=TOP><p><font color="#6699CC">*
+  </font><a href="perl_cgi_appl_module.html">CGI::Application
+    module</a>
+  <br>
+  <font color="#6699CC">*  </font><a href="perl_cgi_html_template_module.html">HTML::Template
+    module</a>
+  <br>
+  <font color="#6699CC">*  </font><a href="redirect.html">Redirect</a>
+  <br>
+  <font color="#6699CC">* </font><a href="cookie.html">Cookie</a> </p>
+  <p></p>
+  <p>&nbsp;</td>
+</tr>
+</table>
+<a NAME="http"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>HTTP</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>HTTP protocol (mostly ver. 1.0,&nbsp; or 1.1) is the protocol carring
+most of web messages.
+<br>It is the protocol used when you enter http address in your browser.
+<br>It is a simple protocol.
+<p>Every time browser wants something from a web server - it sends a request.
+<br>Request consists of a header,
+<br>&nbsp;&nbsp; followed by an empty line
+<br>&nbsp;&nbsp;&nbsp;&nbsp; followed by an optional body.
+<p>Header starts with a command.
+<br>&nbsp; Most common commands - GET or POST (others are HEAD, PUT, DELETE,
+etc.).
+<p>Here is an example of a successful GET request to retrieve a file.
+<p>The client (browser) sends:
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 COLS=1 WIDTH="100%" BGCOLOR="#CCFFFF" >
+<tr>
+<td>GET /index.html HTTP/1.0
+<br>Connection: Keep-Alive
+<br>User-Agent: Mozilla/3.0Gold (WinNT; I)
+<br>Host: www.vedanco.com
+<br>Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, */*</td>
+</tr>
+</table>
+
+<p>The server responds with:
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 COLS=1 WIDTH="100%" BGCOLOR="#CCFFFF" >
+<tr>
+<td>HTTP/1.1 200 OK
+<br>Date: Fri, 13 Oct 2000 00:29:37 GMT
+<br>Server: Apache/1.3.9 (Unix)&nbsp; (Red Hat/Linux)
+<br>Last-Modified: Sun, 17 Sep 2000 17:47:28 GMT
+<br>Content-Length: 7871
+<br>Content-Type: text/html
+<p>&lt;html>
+<br>&lt;head>
+<br>&nbsp; ...
+<br>(rest of the HTML document here)</td>
+</tr>
+</table>
+
+<p>As you see, web server responds sending header followed by HTML page
+or an image - they will be in the body of the message.&nbsp; The Content-type
+of this data (for example "text/html") and the length of the data will
+be indicated in the header of the server response.
+<p>When the browser receives the HTML page - it may find that this page
+needs some images. Then it may send more requests to the server, like this
+one:
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 COLS=1 WIDTH="100%" BGCOLOR="#CCFFFF" >
+<tr>
+<td>GET /images/logo.gif HTTP/1.0
+<br>Connection: Keep-Alive
+<br>User-Agent: Mozilla/3.0Gold (WinNT; I)
+<br>Host: www.vedanco.com
+<br>Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, */*</td>
+</tr>
+</table>
+
+<p>Server will send responses like this one:
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 COLS=1 WIDTH="100%" BGCOLOR="#CCFFFF" >
+<tr>
+<td>HTTP/1.1 200 OK
+<br>Date: Fri, 13 Oct 2000 00:29:37 GMT
+<br>Server: Apache/1.3.9 (Unix)&nbsp; (Red Hat/Linux)
+<br>Content-Type: image/gif
+<br>Content-Length: 10381
+<br>Last-Modified: Sun, 17 Sep 2000 17:47:28 GMT
+<p>(data of GIF file here)</td>
+</tr>
+</table>
+
+<p><b>To pretend that you are a browser, try to send this one line header
+followed by an empty line from a unix prompt:</b>
+<p><font color="#000099">telnet&nbsp;&nbsp; www.somesite.com&nbsp;&nbsp;
+80 &lt;ENTER></font>
+<br><font color="#000099">GET&nbsp;&nbsp; /&nbsp;&nbsp; HTTP/1.0&lt;ENTER></font>
+<br><font color="#000099">&lt;ENTER></font>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 COLS=1 WIDTH="100%" BGCOLOR="#CCFFFF" >
+<tr>
+<td>To send data from the form in the browser, you usually use either GET
+or POST.
+<br>When using GET, the data is passed in one long QUERY STRING appended
+via question mark, for example:
+<p>GET /work.cgi?first=John&amp;last=Smith HTTP/1.0
+<p>When you use POST - the same data is passed in the body of the HTTP
+request</td>
+</tr>
+</table>
+<a NAME="books"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>BOOKS</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 COLS=1 WIDTH="100%" BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#6699CC">*
+</font><b>CGI Programming 101 by Jacqueline
+D. Hamilton</b> - This is probably the best book about Perl/CGI for a beginner.&nbsp;
+All examples for this book are here: <font color="#6699CC">*</font><a href="http://www.cgi101.com/class/">www.cgi101.com/class/</a>
+,&nbsp; <a href="http://www.cgi101.com/class/indices.html">www.cgi101.com/class/indices.html</a>
+-
+<br><font color="#6699CC">*
+</font><b>CGI Programming with Perl (O'Reilly,
+2nd Edition)</b> by Scott Guelich, Linda Mui, Gunther Birznieks, Shishir
+Gundavaram
+<br><font color="#6699CC">*
+</font><b>Web Client Programming With Perl</b>
+by Clinton Wong - excellent intro into HTTP protocol. Learn how to write
+your own web spiders. it is out of print, but is available for free online:
+<a href="http://www.oreilly.com/openbook/webclient/index.html">www.oreilly.com/openbook/webclient/index.html</a>
+<br><font color="#6699CC">*
+</font><b>Perl Debugged</b> (2001) by Peter
+J. Scott, Ed Wright - excellent chapter #13 "Debugging CGI Programs"
+<p><font color="#6699CC">*
+</font><font color="#000000"><b>How to Set Up
+and Maintain a Web Site</b> - Lincoln D. Stein</font>
+<br><font color="#6699CC">*
+</font><font color="#000000"><b>Network Programming
+with Perl</b> - Lincoln D. Stein</font>
+<br><font color="#6699CC">*
+</font><b>Official Guide to Programming With
+Cgi.Pm</b> by Lincoln Stein (1998)
+<br><font color="#6699CC">*
+</font><b>Professional Perl Development</b>
+(2001, Wrox Press)
+<br><font color="#6699CC">*
+</font><b>Perl and Cgi for the World Wide Web
+: Visual Quickstart Guide</b> (Visual Quickstart Guide Series)&nbsp;
+<br><font color="#6699CC">*
+</font><b>Writing CGI Applications with Perl</b>
+(2001) - by Kevin Meltzer, Brent Michalski&nbsp;</td>
+</tr>
+</table>
+<a NAME="cgi_examples"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>simple CGI examples</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>The logic of the typical script is:
+<br>&nbsp; - get request (parameters)
+<br>&nbsp; - do something
+<br>&nbsp; - print http header and html page back to the browser
+<p><u>Here is a very simple Perl/CGI script:</u>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#3333FF">#!/usr/local/bin/perl -wT</font>
+<br><font color="#3333FF">$|++;</font><font color="#006600"> # unbuffer
+STDOUT (because with default buffer ~8kb the output may be delayed)&nbsp;</font>
+<br><font color="#3333FF">print "Content-type: text/html\n\n";</font>&nbsp;<font color="#006600">
+# print http header and an empty line separator</font>
+<br>&nbsp;&nbsp;&nbsp;<font color="#006600"> # do something interesting
+here</font>
+<br><font color="#3333FF">print "&lt;html>test&lt;/html>\n"; </font><font color="#006600">#
+print output</font></td>
+</tr>
+</table>
+
+<p><u>Here is a CGI script showing ENV variables:</u>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#3333FF">#!/usr/local/bin/perl -wT</font>
+<br><font color="#3333FF">$|++;</font>
+<br><font color="#3333FF">print "Content-type: text/html\n\n";</font>
+<br><font color="#3333FF">print "&lt;html>&lt;head>&lt;title>ENV&lt;/title>&lt;/head>&lt;body>\n";</font>
+<br><font color="#3333FF">print "&lt;h3>Table on ENV variables and their
+values&lt;/h3>\n&lt;table>\n";</font>
+<br><font color="#3333FF">for my $key (keys %ENV) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; print "&lt;tr>&lt;td>$key&lt;/td>&lt;td>$ENV{$key}&lt;/td>&lt;/tr>\n";</font>
+<br><font color="#3333FF">}</font>
+<br><font color="#3333FF">print "&lt;/table>&lt;/body>&lt;/html>\n";</font></td>
+</tr>
+</table>
+
+<p>Here is a simple function <b>parse_request</b>
+<br>to get access to form parameters:&nbsp; $in{$name} = $value;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td>#*******************************-
+<br># die_www()
+<br>#*******************************-
+<br>sub die_www {
+<br>&nbsp;my $message = shift;
+<br>&nbsp;print "Content-Type: text/html\n\n";
+<br>&nbsp;print "&lt;html>&lt;head>&lt;title>die-message&lt;/title>&lt;/head>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;body>&lt;br>&lt;br>$message&lt;br>&lt;br>&lt;/body>&lt;/html>\n";
+<br>&nbsp; exit(0);
+<br>}
+<p>#*******************************-
+<br># mydecode()
+<br>#*******************************-
+<br>sub mydecode {
+<br>&nbsp; $sss = shift;
+<br>&nbsp; $sss =~ tr/+/ /;
+<br>&nbsp; $sss =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C", hex($1))/eg;
+<br>&nbsp; return $sss;
+<br>}
+<p>#*******************************-
+<br># myclean()
+<br>#*******************************-
+<br>sub myclean {
+<br>&nbsp;my $sss = shift;&nbsp; $sss =~ s/^\s*//;&nbsp; $sss =~ s/\s*$//;&nbsp;
+return $sss;
+<br>}
+<p>#*******************************-
+<br># parse_request( \%in)
+<br>#&nbsp;&nbsp; - get name/value pairs HTTP header (GET &amp; POST)
+<br>#&nbsp;&nbsp; - save them into hash:&nbsp;&nbsp;&nbsp; $in{$name} =
+$value;
+<br>#&nbsp;&nbsp; Note: doesn't work with &lt;select> with "multiple" option
+<br>#*******************************-
+<br>sub parse_request {
+<br>&nbsp;my $rgg = shift;
+<br>&nbsp;my @pairs = ();
+<br>&nbsp;my $buffer = '';
+<br>&nbsp;if ($ENV{'REQUEST_METHOD'} eq 'GET') {
+<br>&nbsp; @pairs = split(/[&amp;;]/, $ENV{'QUERY_STRING'});
+<br>&nbsp;}&nbsp;
+<br>elsif ($ENV{'REQUEST_METHOD'} eq 'POST') {
+<br>&nbsp; read(STDIN, $buffer, $ENV{'CONTENT_LENGTH'});
+<br>&nbsp; @pairs = split(/[&amp;;]/, $buffer);
+<br>&nbsp;}&nbsp;
+<br>else {
+<br>&nbsp; &amp;die2www("Error, no data, press BACK button and try again");
+<br>&nbsp;}
+<p>&nbsp;foreach my $pair (@pairs) {
+<br>&nbsp;&nbsp; my ($name, $value) = split(/=/, $pair);
+<br>&nbsp; $name = mydecode($name);
+<br>&nbsp; $value = mydecode($value);
+<br>&nbsp; $value =~ s/&lt;!*(.|\n)*-->//g;
+<br>&nbsp; $rgg->{in}->{$name} = &amp;myclean($value);
+<br>&nbsp;}
+<br>}</td>
+</tr>
+</table>
+<a NAME="security_tainting"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Security - tainting</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Classical example of a security problem:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFCC99" >
+<tr>
+<td>Let's say you have a form which asks to enter email address.&nbsp;
+<br>One day a bad-bad user enters a command ' ; rm * ' in this field.&nbsp;
+<br>Your script saves this into a variable <b><font color="#3333FF">$email</font></b>
+and tries to send an email:
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; open MAIL,"|$SENDMAIL
+$email"</font>
+<br>the 'rm *' command may be triggered at this point - and delete all
+files in the directory (on your server !!).</td>
+</tr>
+</table>
+
+<p>The solution - use -T option (taint mode):
+<br><b><font color="#3333FF">#!/usr/bin/perl -T</font></b>
+<br>In taint mode any external data ($email in this case) is tainted by
+a special flag. Any attempt to to use tainted data for some outside action
+results in an error. The only way to remove taint from data is to use regular
+expression to select something from this data into $1,$2, etc. - and use
+them instead.
+<br><a NAME="debugging_cgi_scripts"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Debugging CGI scripts</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>check that the script
+<br>&nbsp; - has proper extension (usually "cgi")
+<br>&nbsp; - is in proper directory (usually "cgi-bin")
+<br>&nbsp; - made executable (chmod 755 test.cgi) - and subdirectory also
+executable
+<br>&nbsp; - has no syntax errors or warnings
+<br>&nbsp; - can be run from prompt, shebang line is correct (points on
+the right version of perl)
+<p>Look in the access and error log of the web server on the unix prompt.
+<br>Or you can use separate cgi script for that:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#99FF99" >
+<tr>
+<td>#!/usr/local/bin/perl
+<br># err.cgi
+<br>use strict;
+<br>$|++;
+<br>print"Content-type:text/plain\n\n";
+<br>print"access_log:\n";
+<br>my @tail = qx(tail -10 /etc/httpd/logs/access_log);
+<br>print " @tail\n";
+<br>print"error_log:\n";
+<br>&nbsp;&nbsp; @tail = qx(tail -10 /etc/httpd/logs/error_log);
+<br>print " @tail\n";&nbsp;</td>
+</tr>
+</table>
+
+<p>You can show errors on the browser, for example using this:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#99FF99" >
+<tr>
+<td>use CGI qw(:standard);
+<br>use CGI::Carp qw(fatalsToBrowser);&nbsp;</td>
+</tr>
+</table>
+
+<p><b>Another good module - <a href="http://search.cpan.org/search?dist=CGI-Debug">CGI::Debug</a></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#99FF99" >
+<tr>
+<td>Only report <b>errors</b>:
+<br>&nbsp;&nbsp;&nbsp; use CGI::Debug( report => 'errors' );
+<p>Do not bother about warnings:
+<br>&nbsp;&nbsp;&nbsp; use CGI::Debug( on => '<b>fatals</b>' );
+<p>Allways show <b>complete</b> debugging info:
+<br>&nbsp;&nbsp;&nbsp; use CGI::Debug( report => 'everything', on => 'anything'
+);
+<p>Send debug data as <b>mail</b> to file owner:
+<br>&nbsp;&nbsp;&nbsp; use CGI::Debug( to => 'mail' );</td>
+</tr>
+</table>
+
+<p>Here is how to email info about errors (without using CGI::Debug):
+<br><font color="#3333FF">&nbsp; use lib "/home/merlyn/lib";</font>
+<br><font color="#3333FF">&nbsp; use FatalsToEmail qw(Address merlyn@stonehenge.comm);</font>
+<br><font color="#3333FF"># Randal Schwartz - </font><a href="http://www.stonehenge.com/merlyn/LinuxMag/col14.html">www.stonehenge.com/merlyn/LinuxMag/col14.html</a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#99FF99" >
+<tr>
+<td NOWRAP>package FatalsToEmail;
+<br>use strict;
+<p>my %config = (
+<br>&nbsp; Address => "webmaster",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # email
+address
+<br>&nbsp; Mailhost => "localhost",&nbsp;&nbsp;&nbsp;&nbsp; # mail server
+<br>&nbsp; Cache => undef,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+# undef means don't use
+<br>&nbsp; Seconds => 60,
+<br>);
+<p># ------------------------------------------------
+<br># import()
+<br># ------------------------------------------------
+<br>sub import {
+<br>&nbsp; my $package = shift;
+<br>&nbsp; while (@_) {
+<br>&nbsp;&nbsp;&nbsp; my $key = ucfirst lc shift;
+<br>&nbsp;&nbsp;&nbsp; die "missing argument to $key"&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unless @_;
+<br>&nbsp;&nbsp;&nbsp; die "unknown argument $key"&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unless exists $config{$key};
+<br>&nbsp;&nbsp;&nbsp; $config{$key} = shift;
+<br>&nbsp; }
+<br>}
+<p>$SIG{__DIE__} = \&amp;trapper;
+<p># ------------------------------------------------
+<br># trapper()
+<br># ------------------------------------------------
+<br>sub trapper {
+<br>&nbsp; my $message = shift;
+<br>&nbsp; my $time = localtime;
+<br>&nbsp; my ($pack, $file, $line) = caller;
+<p>&nbsp; my $prefix = localtime;
+<br>&nbsp; $prefix .= ":$$:$file:$line: ";
+<br>&nbsp; $message =~ s/^/$prefix/mig;
+<p>&nbsp; print STDOUT &lt;&lt;END;
+<br>Content-Type: text/html
+<br>&lt;h1>Sorry!&lt;/h1>
+<br>&lt;p>An error has occurred; details have been logged.
+<br>Please try your request again later.
+<br>END
+<p>&nbsp; send_mail($message);
+<br>&nbsp; die "${prefix}died - email sent to $config{Address} via $config{Mailhost}\n";
+<br>}
+<p># ------------------------------------------------
+<br># send_mail()
+<br># ------------------------------------------------
+<br>sub send_mail {
+<br>&nbsp; my $message = shift;
+<br>&nbsp; eval {
+<br>&nbsp;&nbsp;&nbsp; ## ----- do I need to cache this?
+<br>&nbsp;&nbsp;&nbsp; if (defined (my $cache = $config{Cache})) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (open CACHE, "+&lt;$cache") {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; flock CACHE, 2;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ## ----- it's mine, see
+if it's old enough
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (time - (stat(CACHE))[9]
+> $config{Seconds}) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ## ----- yes,
+suck any content, and zero the file
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; my $buf;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $buf .= "\n...[truncated]...\n"&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if read(CACHE, $buf, 8192) >= 8192;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $message = $buf
+. $message;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; seek CACHE,
+0, 0;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; truncate CACHE,
+0;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; close CACHE;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ## ----- no,
+so just drop the stuff at the end
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; seek CACHE,
+0, 2;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print CACHE
+$message;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; close CACHE;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ## ----- it doesn't exist,
+so create an empty file for stamping, and email
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; open CACHE, ">>$cache"&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or die "Cannot
+create $cache: $!";
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; close CACHE;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+<br>&nbsp;&nbsp;&nbsp; }
+<p>&nbsp;&nbsp;&nbsp; eval { require Net::SMTP; 1 } or die "no Net::SMTP";
+<br>&nbsp;&nbsp;&nbsp; my $mail = Net::SMTP->new($config{Mailhost})
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or die "Net::SMTP->new returned $@";
+<br>&nbsp;&nbsp;&nbsp; $mail->mail($config{Address}) or die "from: $@";
+<br>&nbsp;&nbsp;&nbsp; $mail->to($config{Address}) or die "to: $@";
+<br>&nbsp;&nbsp;&nbsp; $mail->data("Subject: CGI FATAL ERROR in $0\n\n",
+$message)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or die "data: $@";
+<br>&nbsp;&nbsp;&nbsp; $mail->quit or die "quit: $@";
+<br>&nbsp; };
+<br>&nbsp; if ($@) {
+<br>&nbsp;&nbsp;&nbsp; die "$message(send_mail saw $@)\n";
+<br>&nbsp; }
+<br>}
+<br>1;</td>
+</tr>
+</table>
+<a NAME="cgi_pm"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>CGI.pm module</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>CGI.pm module:</u></b>
+<br>CGI.pm module (written by Lincoln D. Stein) comes standard with Perl.
+<br>I recommend to always use it.
+<br>- <a href="http://stein.cshl.org/WWW/CGI/examples/">http://stein.cshl.org/WWW/CGI/examples/</a>
+- examles by Lincoln D. Stein himself
+<br>This module is a base of many other good packages, for example ( <a href="perl_cgi_appl_module.html">CGI::Application
+module</a> ).
+<br>Below is a summary from the book <b><font color="#CC0000">"CGI programming
+with Perl" 2nd ed. by O'Reilly</font></b> - I will refer to it as "<b><font color="#CC0000">CGI
+programming book</font></b>".
+<br>Here is a simple example using CGI.pm:
+<p><b><u>Object-oriented style:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#3333FF">#!/usr/local/bin/perl -wT</font>
+<br><font color="#3333FF">use strict;</font>
+<br><font color="#3333FF">use CGI;</font>
+<br><font color="#3333FF">my $q = new CGI;</font>
+<br><font color="#3333FF">my $name = $q->param("name");</font>
+<p><font color="#3333FF">print $q->header("text/html"),</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $q->start_html("Welcome"),</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $q->p("Hi,
+$name!"),</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $q->end_html;</font></td>
+</tr>
+</table>
+
+<p><b><u>Standard syntax:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#3333FF">#!/usr/local/bin/perl -wT</font>
+<br><font color="#3333FF">use strict;</font>
+<br><font color="#3333FF">use CGI qw(:standard);</font>
+<br><font color="#3333FF">my $name = param("name");</font>
+<p><font color="#3333FF">print header("text/html"),</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start_html("Welcome"),</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p("Hi,
+$name!"),</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end_html;</font></td>
+</tr>
+</table>
+
+<p>You have access to environment information via %ENV hash, for example:
+<br><font color="#3333FF">&nbsp; my $qstr = $ENV{QUERY_STRING};</font>
+<br>CGI.pm also gives you <b><u>more than 30 method calls</u></b> with
+names similar to keys of the hash.
+<p><b><u>Some methods:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td><b>query_string method:</b>
+<br><font color="#3333FF">&nbsp; my $qstr = $q->qwery_string;</font>
+<p><b>Accept method:</b>
+<br><font color="#3333FF">&nbsp; my @accept = $q->Accept;</font>
+<br><font color="#3333FF">&nbsp; if (grep $_ eq "image/png", @accept) {
+... }</font>
+<br><b>http method:</b>
+<br>&nbsp; - without parameters returns an array of the names of env.variables
+<br>&nbsp; - with the name of a particular env.variable - returns its&nbsp;
+value.
+<br><font color="#3333FF">&nbsp;&nbsp; print $q->header("text/plain");</font>
+<br><font color="#3333FF">&nbsp;&nbsp; for ($q->http) { print "$_:\n&nbsp;
+", $q->http($_), "\n"; }</font>
+<br><b>Some other methods:</b>
+<br><b>&nbsp;&nbsp; https</b> - similarly returns HTTPS_&nbsp; env.variables
+<br><b>&nbsp;&nbsp; url</b> - returns url of current script without parameters
+<br><b>&nbsp;&nbsp; self_url</b> - returns url of current script with parameters
+included
+<br><b>&nbsp;&nbsp; virtual_host</b> - returns the value of the HTTP_HOST
+env.variable if set,&nbsp; SERVER_NAME otherwise.</td>
+</tr>
+</table>
+
+<p><b><u>Accessing parameters:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#3333FF">#!/usr/local/bin/perl -wT</font>
+<br><font color="#3333FF">use strict;</font>
+<br><font color="#3333FF">use CGI;</font>
+<br><font color="#3333FF">my $q = new CGI;</font>
+<br><font color="#3333FF">print $q->header("text/plain");</font>
+<br><font color="#3333FF">my ($name, $value);</font>
+<br><font color="#3333FF">for $name ($q->param) {</font>
+<br><font color="#3333FF">&nbsp; print "$name:\n";</font>
+<br><font color="#3333FF">&nbsp; for $value ($q->param($name) ) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; print "$value:\n";</font>
+<br><font color="#3333FF">&nbsp; }</font>
+<br><font color="#3333FF">}</font></td>
+</tr>
+</table>
+
+<p>You can access parameters from both POST (STDIN) and GET (QUERY_STRING)
+- you will need to uncomment a line of code in CGI.pm (page 95 in the CGI
+programming book).
+<p><b><u>There are 4 ways to use param() function:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#99FF99" >
+<tr>
+<td NOWRAP>$scalar&nbsp;&nbsp; =&nbsp;&nbsp; $q->param('name');&nbsp; #
+returns the value
+<br>@array&nbsp;&nbsp; =&nbsp;&nbsp; $q->param('name');&nbsp; # returns
+array of values for this name
+<br>$scalar&nbsp;&nbsp; =&nbsp;&nbsp; $q->param( );&nbsp; # returns the
+number of all named form elements
+<br>@array&nbsp;&nbsp; =&nbsp;&nbsp; $q->param( );&nbsp; # returns an array
+of <b>names</b> of all form elements</td>
+</tr>
+</table>
+
+<p><b><u>Changing / deleting parameters:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#3333FF">$q->param(title => "Some Title");</font>
+<br><font color="#3333FF">$q->param(account => "Acc1", "Acc2");</font>
+<br><font color="#3333FF">$q->param(account => "Acc1", "Acc2");</font>
+<br><font color="#3333FF">$q->delete("age");</font>
+<br><font color="#3333FF">$q->delete_all;</font></td>
+</tr>
+</table>
+
+<p><b><u>To include parameters into strings, you can:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td>&nbsp;-- create intermediate variables:
+<br><font color="#3333FF">&nbsp;my $user = q->param('user');&nbsp; print
+"Hi, $user!";</font>
+<br>&nbsp;-- use @{[...]} syntax:
+<br><font color="#3333FF">&nbsp; print "Hi, @{[q->param('user')]}!";</font>
+<br>&nbsp;-- import names of parameters into a separate namepace:
+<br><font color="#3333FF">&nbsp; $q->import_names( "Q");&nbsp; print "Hi,
+$Q::user!";</font></td>
+</tr>
+</table>
+
+<p><b><u>File uploads:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td><b><u>HTML:</u></b>
+<br>&lt;form action="/cgi/upload.cgi" method="POST" enctype="multipart/form-data">
+<br>&lt;p>Please choose a file to upload:
+<br>&lt;input type="FILE" name="file">
+<br>&lt;input type="SUBMIT">&lt;/form>
+<br><b><u>CGI:</u></b>
+<br>my $fname = $q->param("file"); # this can cause problems on some problems
+- read workarounds - pp.97,98 in the CGI programming book).
+<br>my $fh = $q->upload("$fname");&nbsp; # this is file handler to get
+the file contents - see full example pp.99-101.</td>
+</tr>
+</table>
+
+<p><b><u>Generating output:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#3333FF">#!/usr/local/bin/perl -wT</font>
+<br><font color="#3333FF">use strict;</font>
+<br><font color="#3333FF">use CGI;</font>
+<br><font color="#3333FF">my $q = new CGI;</font>
+<br><font color="#3333FF">my $time1 = localtime;</font>
+<br><font color="#3333FF">print $q->header("text/plain"),</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $q->start_html
+( -title => "The Time", -bgcolor => "#ffffff" ),</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $q->h2(
+"Current Time" ),</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $q->hr,</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $q->p(
+"The current time is:", $q->b( $time1 ) ),</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $q->end_html;</font></td>
+</tr>
+</table>
+
+<p>Output - Excel file:</p>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+  <tr>
+    <td><p><font color="#3333FF">#!/usr/local/bin/perl -wT</font> <br>
+      <font color="#3333FF"># to avoid cahcing, we use 2 tricks. <br>
+      # 
+      First, we return Excel file from a cgi script, not from static link. <br>
+      #
+      Second, on the link we add a timestamp parameter. Thus URL changes - thus we go around caching.<br>
+      <br>
+      use strict;</font> <br>
+        <font color="#3333FF">use CGI;</font> <br>
+        <font color="#3333FF">my $q = new CGI;</font> <br>
+        <span class="code"><br>
+        sub return_excel_file {<br>
+        &nbsp;&nbsp;my $file = &quot;$mydir/myfile.xls&quot;;<br>
+        &nbsp;&nbsp;print $q-&gt;header( <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&quot;-Content-type&quot;        =&gt; &quot;application/excel&quot;, <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&quot;-Content-Disposition&quot; =&gt; &quot;attachment;filename= myfile.xls&quot;,<br>
+    &nbsp;&nbsp;);<br>  
+    <br>
+    &nbsp;&nbsp;binmode STDOUT;<br>
+    &nbsp;&nbsp;open(EXCELFILE, $file) or die &quot;Cannot open file $file: $!&quot;;<br>
+    &nbsp;&nbsp;my $buffer;<br>
+    &nbsp;&nbsp;while ( read( EXCELFILE, $buffer, 1024 ) ) {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;print $buffer;<br>
+    &nbsp;&nbsp;}<br>
+    &nbsp;&nbsp;close(EXCELFILE);<br>
+    }</span></p>
+      </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p><b><u>Some other elements:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td>print $q->start_html(
+<br>&nbsp; -title=>'SomeTitle',
+<br>&nbsp; -xbase e=>$SomeBaseURL,
+<br>&nbsp; -script=>$SomeJavaScript,
+<br># or&nbsp;
+<br>&nbsp; -script=>{&nbsp; -language => 'JavaScript',&nbsp; -src=>'/javascript/somefile.js'},
+<br># or
+<br>&nbsp; -script=>{ -language => 'JavaScript',&nbsp;&nbsp; -code=>$SomeJavaScript},
+<p>&nbsp; -style=>{ -code => $someStyleCode, -src=>$src_file },
+<br>);
+<p>print $q->p( $paragraph_text );
+<br>print $q->a( { -href => "http://www.yahoo.com",&nbsp; "link_text" }
+);
+<p>&nbsp;</td>
+</tr>
+</table>
+
+<p><b><u>Note confilcts:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td>The &lt;tr> tag conflicts with the perl translate function tr///. Use
+TR() or Tr() instead.&nbsp;
+<br>The &lt;param> tag (applets) conflicts with CGI's own param() method.
+Use PARAM() instead.&nbsp;
+<br>The &lt;select> tag in select-lists conflicts with perl's select()
+function. Use Select() instead.</td>
+</tr>
+</table>
+
+<p><b><u>Table:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td>print $q->table(
+<br>&nbsp; { -border => 1,&nbsp; -width => "100%" },
+<br>&nbsp; $q->Tr( [
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $q->th( { -bgcolor => "#cccccc"
+}, ["Name", "Age" ] ),
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $q->td(["Mary", 29]),&nbsp;&nbsp;
+# row
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $q->td(["Bill", 27]),&nbsp;
+# row
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $q->td(["Sue", 26]),&nbsp;
+# row
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+] )&nbsp; # end of rows&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; );&nbsp;&nbsp;&nbsp;
+# end of table</td>
+</tr>
+</table>
+
+<p><b><u>Form:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td>#!/usr/local/bin/perl
+<br>use CGI qw(:standard);
+<br>print header;
+<br>print start_html('A Simple Example'),
+<br>&nbsp;&nbsp;&nbsp; h1('A Simple Example'),
+<br>&nbsp;&nbsp;&nbsp; start_form,
+<br>&nbsp;&nbsp;&nbsp; "What's your name? ",textfield('name'),
+<br>&nbsp;&nbsp;&nbsp; p,
+<br>&nbsp;&nbsp;&nbsp; "What's the combination?",
+<br>&nbsp;&nbsp;&nbsp; p,
+<br>&nbsp;&nbsp;&nbsp; checkbox_group(-name=>'words',
+<br>&nbsp;&nbsp;&nbsp;&nbsp; -values=>['eenie','meenie','minie','moe'],
+<br>&nbsp;&nbsp;&nbsp;&nbsp; -defaults=>['eenie','minie']),
+<br>&nbsp;&nbsp;&nbsp; p,
+<br>&nbsp;&nbsp;&nbsp; "What's your favorite color? ",
+<br>&nbsp;&nbsp;&nbsp; popup_menu(-name=>'color',&nbsp; -values=>['red','green','blue','chartreuse']),&nbsp;&nbsp;&nbsp;
+# this is equivalent of &lt;select> list
+<br>&nbsp;&nbsp;&nbsp; p,
+<br>&nbsp;&nbsp;&nbsp; submit,
+<br>&nbsp;&nbsp;&nbsp; end_form,
+<br>&nbsp;&nbsp;&nbsp; hr;
+<p>if (param()) {
+<br>&nbsp;&nbsp;&nbsp; print "Your name is",em(param('name')),
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p, "The keywords are: ",em(join(",
+",param('words'))),
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p, "Your favorite color is ",em(param('color')),
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hr;
+<br>}
+<br>print a({href=>'../cgi_docs.html'},'Go to the documentation');</td>
+</tr>
+</table>
+
+<p><b><u>All form elements:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td>start_form, end_form,&nbsp;
+<br>textfield, password_field, filefield,&nbsp;
+<br>button, submit, reset,&nbsp;
+<br>checkbox, checkbox_group, radio_group,&nbsp;
+<br>popup_menu,&nbsp;&nbsp;&nbsp;&nbsp; # &lt;select size="1">
+<br>scrolling_list,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # &lt;select size="n">&nbsp;&nbsp;
+where n>1&nbsp;
+<br>textarea, hidden
+<p><u>Examples:</u>
+<br>&nbsp;&nbsp; print $q->textfield(-name=>'username',&nbsp; -default=>'Anonymous',&nbsp;
+-size=>50,&nbsp; -maxlength=>80);
+<br>&nbsp;&nbsp; print $q->password_field(-name=>'secret',&nbsp; -value=>'starting
+value',&nbsp; -size=>50,&nbsp; -maxlength=>80);
+<br>&nbsp;&nbsp; print $q=>radio_group( -name=>"curtain", -values=>["A","B","C"],
+-default=>"B",&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -labels=>{
+A => "Curtain A", B => "Curtain B", C => "Curtain C", } );</td>
+</tr>
+</table>
+
+<p><b><u>cookie method:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td><b><u>To retrieve cookie - use cookie method without value parameter</u></b>
+<br><font color="#3333FF">&nbsp;use CGI;</font>
+<br><font color="#3333FF">&nbsp;$query = new CGI;</font>
+<br><font color="#3333FF">&nbsp;%answers = $query->cookie(-name=>'answers');</font>
+<br><font color="#3333FF">&nbsp;# $query->cookie('answers') will work too!</font>
+<p><b><u>To set cookie:</u></b>
+<br><font color="#3333FF">$cookie = $q->cookie(-name=>'sessionID',</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -value=>'xyzzy',</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -expires=>'+1h',</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -path=>'/cgi-bin/database',</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -domain=>'.capricorn.org',</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -secure=>1);</font>
+<br><font color="#3333FF">print $q->header(-cookie=>$cookie);</font>
+<p><b><u>Store many values (hash) into a cookie:</u></b>
+<br><font color="#3333FF">$cookie=$q->cookie(-name=>'family information',</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-value=>\%childrens_ages);</font>
+<p><b><u>Store 2 or more cookies:&nbsp;</u></b>
+<br><font color="#3333FF">$cookie1 = $query->cookie(-name=>'riddle_name',</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -value=>"The Sphynx's
+Question");</font>
+<br><font color="#3333FF">&nbsp;$cookie2 = $query->cookie(-name=>'answers',</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -value=>\%answers);</font>
+<br><font color="#3333FF">&nbsp;print $query->header(-cookie=>[$cookie1,$cookie2]);</font>
+<br>&nbsp;</td>
+</tr>
+</table>
+<a NAME="CGI.pm_all_elements_script"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>CGI.pm script with most freq.used elements</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Real working script with most frequently used elements:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#99FF99" >
+<tr>
+<td NOWRAP>#!/usr/local/bin/perl&nbsp;
+<p># file cgi_all.cgi
+<p>use strict;&nbsp;
+<br>use CGI;&nbsp;
+<br>my $q = new CGI;&nbsp;
+<br>my $time1 = localtime;
+<br>sub nn { "\n" };&nbsp;
+<p>print $q->header("text/html"),&nbsp;
+<br>&nbsp; $q->start_html (&nbsp;
+<br>&nbsp;&nbsp;&nbsp; -title => "The Time",
+<br>&nbsp;&nbsp;&nbsp; -script=>qq(
+<p>function a(mes){
+<br>&nbsp; alert(mes);
+<br>}
+<p>&nbsp;&nbsp;&nbsp; ),&nbsp; # end of javascript definition&nbsp;
+<p>&nbsp;&nbsp;&nbsp; -style=>{ -src=>'style0.css' },
+<br>&nbsp;&nbsp;&nbsp; -bgcolor => "#ffffff",
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+),nn;
+<p>print $q->h4( "Current Time" ),nn,&nbsp;
+<br>&nbsp; "aaa&lt;br>aaa",nn,
+<br>&nbsp; $q->br("bb"),nn,
+<br>&nbsp; $q->br("bb"),nn,
+<br>&nbsp; $q->p( "The current time is:", $q->b( $time1 ) ),nn;
+<br>&nbsp; $q->a( { href => 'http://www.google.com', target => '_new' },
+'google' ),nn;
+<br>&nbsp; $q->img( {src=>'fred.gif',align=>'LEFT'} );
+<br>&nbsp; $q->comment('here is my comment');
+<p>print $q->table(&nbsp;
+<br>&nbsp; {-border=>0,-cellspacing=>0,-cellpadding=>3,-bgcolor=>"yellow"},&nbsp;
+<br>&nbsp; $q->Tr( [ $q->th( { -bgcolor => "#cccccc" }, ["Name", "Age"
+] ),&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $q->td(["Mary", 29]), #
+row&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $q->td(["Bill", 27]), #
+row&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ] )&nbsp; # end of rows&nbsp;
+<br>);&nbsp; # end of table
+<p># --------------------------------------
+<br># show the form
+<br># --------------------------------------
+<p>print $q->start_form(-name=>'form1', -method=>'POST', -action=>'cgi_all.cgi'),
+<br>&nbsp; "Name:",$q->textfield(-name=>'username',-default=>'Anonymous',-size=>50,-maxlength=>80),nn,
+<br>&nbsp; $q->br,nn,
+<br>&nbsp; $q->password_field(-name=>'secret',-value=>'starting value',-size=>50,-maxlength=>80),nn,
+<br>&nbsp; $q->br,nn,
+<br>&nbsp; "What's your name? ",$q->textfield('name'),nn,
+<br>&nbsp; $q->hidden(-name=>'hid_name', -value=>'hid_value'),nn,
+<br>&nbsp; $q->br,"What's the combination?",nn,
+<br>&nbsp; $q->checkbox(-name=>'words',-value=>'cbvalue'),nn,
+<br>&nbsp; $q->checkbox_group(-name=>'words',
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -values=>['eenie','meenie','minie','moe'],
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -defaults=>['eenie','minie'] ),
+nn,
+<br>&nbsp; $q->br,nn,
+<br>&nbsp; "Select Curtain ",
+<br>&nbsp; $q->radio_group( -name=>"curtain", -values=>["A","B","C"], -default=>"B",
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -labels=>{
+A => "Curtain A", B => "Curtain B", C => "Curtain C", } ),nn,
+<br>&nbsp; $q->br,nn,
+<br>&nbsp; "What's your favorite color? ",
+<br>&nbsp; $q->popup_menu(-name=>'color',
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -values=>['red','green','blue','chartreuse']
+# this is &lt;select> list
+<br>&nbsp; ), nn,
+<br>&nbsp; $q->scrolling_list(-name=>'scr_list', -size=>'3',
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -values=>['red','green','blue','chartreuse'],
+# this is multiple &lt;select> list
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -multiple=>1
+<br>&nbsp; ), nn,
+<p>&nbsp; $q->textarea(-name=>"Comments", -rows=>'3', -columns=>'60',
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -default=>"line
+1\nline 2\nline 3\nline 4\nline 5\nline 6\nline 7\n"),nn,
+<p># filefield
+<p>&nbsp; $q->br,nn,
+<br>&nbsp; $q->submit,nn,
+<br>&nbsp; $q->reset,nn,
+<br>&nbsp; $q->button(-name=>'button1',-value=>'mybutton',
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-onclick=>"javascript:a('ku-ku')"),nn,
+<br>&nbsp; $q->end_form,
+<br>&nbsp; $q->hr;
+<p># --------------------------------------
+<br># show received parameters
+<br># --------------------------------------
+<br>my @kk = $q->param(); # array of names of parameters
+<br>for my $p (@kk) {
+<br>&nbsp; my $ss = join(", ", $q->param($p));
+<br>&nbsp; print "$p => $ss&lt;br>\n";
+<br>}
+<p>print $q->end_html;
+<br>exit();</td>
+</tr>
+</table>
+
+<p>Note that some functions in Perl capitalized to avoid conflicts with
+html-tag names:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>Select
+<br>Tr
+<br>Link
+<br>Delete
+<br>Accept
+<br>Sub</td>
+</tr>
+</table>
+
+<p><a NAME="cgi.pm_propagates_values"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>CGI.pm propagates values</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>CGI.pm, by default, propagates existing values of form fields.&nbsp;
+This is normally A Good Thing, as it allows you to easily have data move
+from screen to screen.&nbsp; This mechanism allows you to set a value (which
+acts like a default), which is overridden by an existing value stored in
+the CGI query object.&nbsp; When a user submits "name=Terry" on a form,
+the next screen will automagically have "name=Terry" without necessitating
+that the programmer explicitally copy it from the query to the new screen.
+<p>E.g.:
+<br>&nbsp;&nbsp; $output .= $q->hidden(-name=>'name');&nbsp; # Nice and
+simple
+<br>Instead of:
+<br>&nbsp;&nbsp; $output .= $q->hidden(-name=>'name', -value=>$q->param('name'));&nbsp;
+# Ugh!
+<p>However, there are some cases where you do not want the value of a particular
+form variable to persist.&nbsp; Case in point:&nbsp; Your run-mode form
+parameter.&nbsp; In this case, you always want your new value to override
+any pre-existing form value.&nbsp; CGI.pm provides an "override" attribute
+which provides this function:
+<p>&nbsp;&nbsp;&nbsp; my $q = $self->query();
+<br>&nbsp;&nbsp;&nbsp; $output .= $q->hidden(-name=>'rm', -value=>$which_one,
+-override=>1);
+<p>This will cause the form parameter "rm" to always be set to $which_one
+regardless of any pre-existing value submitted for "rm".
+<p><a NAME="cgi_carp"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>CGI::Carp module</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>CGI::Carp is also written by Lincoln Stein, distributed with CGI.pm
+<br>&nbsp;&nbsp; - writes to error log
+<br>&nbsp;&nbsp; - creates an error (html) page
+<p><b><u>Example: creating your own Error.pm module:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#3333FF">#!/usr/local/bin/perl -wT</font>
+<p><font color="#3333FF">package CGIBook::Error;</font>
+<p><font color="#3333FF">use Exporter;</font>
+<br><font color="#3333FF">@ISA="Exporter";</font>
+<br><font color="#3333FF">@EXPORT=qw(error);</font>
+<br><font color="#3333FF">$VERSION = "0.01";</font>
+<p><font color="#3333FF">use strict;</font>
+<br><font color="#3333FF">use CGI</font>
+<br><font color="#3333FF">use CGI::Carp qw(fatalsToBrowser);</font>
+<p><font color="#3333FF">BEGIN {</font>
+<br><font color="#3333FF">&nbsp; sub carp_error {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; my $error_message = shift;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; my $q = new CGI;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $discard_this
+= q->header("text/html");</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; error ($q, $error_message);</font>
+<br><font color="#3333FF">&nbsp; }&nbsp; # end of sub</font>
+<br><font color="#3333FF">&nbsp; CGI::Carp::set_message( \&amp;carp_error
+);</font>
+<br><font color="#3333FF">}</font>
+<p><font color="#3333FF">sub error {</font>
+<br><font color="#3333FF">&nbsp; my($q, $error_message) = @_;</font>
+<br><font color="#3333FF">&nbsp; print $q->header("text/html"),</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $q->start_html("Error"),</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $q->h1("Error"),</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $q->p( "Sorry,
+the following error has occurred:"),</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $q->p($q->i($error_message)),</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $q->end_html;</font>
+<br><font color="#3333FF">&nbsp; exit;</font>
+<br><font color="#3333FF">}</font>
+<p><font color="#3333FF">1;</font></td>
+</tr>
+</table>
+
+<p><b><u>Example using this module in your cgi script:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#3333FF">#!/usr/local/bin/perl -wT</font>
+<p><font color="#3333FF">use strict;</font>
+<br><font color="#3333FF">use CGI</font>
+<br><font color="#3333FF">use CGIBook::Error;</font>
+<br><font color="#3333FF">my $q = new CGI;</font>
+<p><font color="#3333FF">do_something</font>
+<br><font color="#3333FF">&nbsp; or error ($q, "Something bad happenned");</font></td>
+</tr>
+</table>
+<a NAME="cgi_libs"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>CGI libs</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Many-many CGI scripts:</u></b>
+<br><font color="#6699CC">*
+</font><a href="http://www.worldwidemart.com/scripts/">www.worldwidemart.com/scripts/</a>
+- Matt's Script Archives
+<br><font color="#6699CC">*
+</font><a href="http://www.cgi-resources.com/">www.cgi-resources.com/</a>
+-
+<br><font color="#6699CC">*
+</font><font color="#000000"><a href="http://www.scriptsearch.com/pages/l4.shtml">www.scriptsearch.com/pages/l4.shtml</a>
+- Script Search - The world's largest CGI library</font>
+<p><font color="#6699CC">*
+</font><a href="perl_cgi_appl_module.html">CGI::Application
+module</a> -
+<br><a NAME="cookies"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Cookies</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>A cookie is information that a Web site puts on your hard disk so that
+it can remember something about you at a later time.
+<br>
+<font color="#6699CC">*</font><a href="cookie.html">www.LevSelector.com/cookie.html</a>
+- short Perl/Javascript/Java examples
+<br>
+<font color="#6699CC">*
+</font>do search for <b><u>cookielib</u></b>
+on search engines ( <a href="http://www.google.com/search?q=cookielib">http://www.google.com/search?q=cookielib</a>
+) - Matt's Script Archive: HTTP Cookie Library.
+<br><font color="#6699CC">*
+</font><a href="http://www.zdnet.com/devhead/resources/scriptlibrary/javascript/cookies.html">www.zdnet.com/devhead/resources/scriptlibrary/javascript/cookies.html</a>
+-
+<br><font color="#6699CC">*
+</font><a href="http://www.hidaho.com/cookies/cookie.txt">www.hidaho.com/cookies/cookie.txt</a>
+-
+<br><font color="#6699CC">*
+</font><a href="http://www.cookiecentral.com/">www.cookiecentral.com/</a>-
+<br><font color="#6699CC">*
+</font><a href="http://www.worldwidemart.com/scripts/cookielib.shtml">www.worldwidemart.com/scripts/cookielib.shtml</a>
+-
+<br><font color="#6699CC">*
+</font><a href="http://home.netscape.com/newsref/std/cookie_spec.html">home.netscape.com/newsref/std/cookie_spec.html</a>
+-
+<br><font color="#6699CC">*
+</font><a href="http://www.netscapeworld.com/netscapeworld/nw-07-1996/nw-07-cookies.html">www.netscapeworld.com/netscapeworld/nw-07-1996/nw-07-cookies.html</a>
+-
+<br><a NAME="cgi_in_c"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>CGI in C</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><a href="c-cgi.txt">Click here</a></b> to see an example of a C program
+processing a CGI input.
+<br>In this example some other process took the QUERY string for GET or
+STDIN for POST and passed it to this CGI program via STDIN
+<br>(length is in CONTENT_LENGTH variable). Note how long is the code in
+comparison to Perl version.
+<br><a NAME="cgi_in_shell"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>CGI in a unix shell (ksh)</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Form processing example.
+<hr WIDTH="100%">
+<br>&lt;html>
+<br>&lt;head>
+<br>&lt;title> Forms &lt;/title>
+<br>&lt;/head>
+<br>&lt;body>
+<br>&lt;FORM METHOD="POST" action="http://www.name.com/cgi-bin/forms1.ksh">
+<br>Choose your option
+<br>&lt;SELECT NAME="Selection list" SIZE=1>
+<br>&lt;OPTION>First
+<br>&lt;OPTION SELECTED> Default
+<br>&lt;OPTION>Third
+<br>&lt;/SELECT> &lt;br>
+<br>&lt;INPUT TYPE="HIDDEN" NAME="NotSeen" SIZE=10>
+<br>Enter Text Here &lt;INPUT TYPE="TEXT" NAME="Text Input" SIZE=20 MAXLENGTH=25>
+<br>&nbsp;&nbsp; Enter Your Password here
+<br>&lt;INPUT TYPE="PASSWORD" NAME="Pswd" SIZE=6 MAXLENGTH=12> &lt;br>
+<br>Pick one of the following &lt;br>
+<br>&lt;INPUT TYPE="RADIO" NAME="Radio" VALUE="First"> First &lt;BR>
+<br>&lt;INPUT TYPE="RADIO" NAME="Radio" VALUE="Second" CHECKED> Second
+&lt;br>
+<br>Pick from of the following &lt;br>
+<br>&lt;INPUT TYPE="CHECKBOX" NAME="check" VALUE="First"> First
+<br>&lt;INPUT TYPE="CHECKBOX" NAME="check" VALUE="Second" CHECKED> Second
+<br>&lt;INPUT TYPE="CHECKBOX" NAME="check" VALUE="third" CHECKED> Third
+&lt;br>
+<br>Enter your comments &lt;TEXTAREA NAME="Comments" ROWS=2 COLUMNS=60>
+&lt;/textarea>
+<br>&lt;p>When done, press the button below &lt;br>
+<br>&lt;INPUT TYPE="Submit" NAME="Submit This Form">
+<br>&lt;INPUT TYPE="Reset" NAME="Clear">
+<br>&lt;/FORM>
+<br>&lt;/body>
+<br>&lt;/html>
+<br>
+<hr WIDTH="100%">
+<br>#!/bin/ksh
+<br>#
+<br># forms1.ksh
+<br>#
+<br>echo "Content-type: text/html"
+<br>echo ""
+<br>echo "&lt;html>"
+<br>echo "&lt;head>"
+<br>#
+<br>#&nbsp; Handle error conditions or send success message to user
+<br>#
+<br>if [[ $CONTENT_LENGTH = 0 ]]; then
+<br>&nbsp;&nbsp; echo "&lt;title>Error Occured&lt;/title>"
+<br>&nbsp;&nbsp; echo "&lt;/head> &lt;body>"
+<br>&nbsp;&nbsp; echo "&lt;p>The form is empty, please enter some data!"
+<br>&nbsp;&nbsp; echo "&lt;br>"
+<br>&nbsp;&nbsp; echo "Press the BACK key to return to the form."
+<br>&nbsp;&nbsp; echo "&lt;/p> &lt;/body> &lt;/html>"
+<br>&nbsp;&nbsp; exit 0
+<br>elif [[ $CONTENT_TYPE != "application/x-www-form-urlencoded" ]]; then
+<br>&nbsp;&nbsp; echo "&lt;title>Content Error Occurred&lt;/title>"
+<br>&nbsp;&nbsp; echo "&lt;/head> &lt;body>"
+<br>&nbsp;&nbsp; echo "&lt;p>Internal error - invalid content type.&nbsp;
+Please report"
+<br>&nbsp;&nbsp; echo "&lt;br>"
+<br>&nbsp;&nbsp; echo "Press the BACK key to return to the form."
+<br>&nbsp;&nbsp; echo "&lt;/p> &lt;/body> &lt;/html>"
+<br>&nbsp;&nbsp; exit 0
+<br>fi
+<br>echo "&lt;title>Form Submitted&lt;/title>"
+<br>echo "&lt;/head> &lt;body>"
+<br>echo "&lt;h1>Your Form Has Been Submitted&lt;/h1>"
+<br>echo "&lt;p> Thank you very much for your input, it has been "
+<br>echo "submitted to our people to deal with... "
+<br>echo "&lt;br>"
+<br>echo "Press the BACK key to return to the form."
+<br>#
+<br>#&nbsp;&nbsp; Create empty temporary file.&nbsp; Use process-id to
+make unique
+<br>#
+<br>FNAME=temp_$$
+<br>>| $FNAME
+<br>#
+<br>#&nbsp;&nbsp; Read STDIN and write to the temporary file (translate
+&amp; and +).
+<br>#&nbsp;&nbsp; NOTE: this is dangerous and sloppy - you should translate
+the
+<br>#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; encode characters
+and ensure there is not any bad information
+<br>#
+<br>read input_line
+<br>echo 'date' >> $FNAME
+<br>echo $input_line | tr "&amp;+" "\n " >> $FNAME
+<br>#
+<br>#&nbsp; Send the form data via mail, clean up the temporary file
+<br>#
+<br>mail -s "Form data" someuser@somecompany.com &lt; $FNAME
+<br>rm $FNAME
+<br>echo "&lt;/p> &lt;/body> &lt;/html>"
+<br>exit 0
+<br>
+<hr WIDTH="100%">
+<br>&nbsp;
+</body>
+</html>

@@ -1,0 +1,932 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>unix_os</title>
+<!--
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Unix</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Unix</font></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=6 >
+<tr>
+<td><b><font color="#CC0000">On this page:</font></b></td>
+
+<td></td>
+
+<td><b><font color="#CC0000">Other pages:</font></b></td>
+
+<td></td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">• <a href="#intro">intro,
+manpages, tutorials</a></font>
+<br><font color="#6699CC">• <a href="#unix_books">books</a></font>
+<br><font color="#6699CC">• <a href="#prompt">prompt &amp; terminal</a></font>
+<br><font color="#6699CC">• <a href="#unix_editors">unix editos</a></font>
+<br><font color="#6699CC">• <a href="#more">more</a></font>
+<br><font color="#6699CC">• <a href="#unix_flavors">unix flavors</a></font>
+<br><font color="#6699CC"><a href="#Linux">Linux</a>, <a href="#Sun_Solaris">Solaris</a>,
+<a href="#BSD">BSD</a>,&nbsp;</font>
+<br><font color="#6699CC"><a href="#SCO">SCO</a>, <a href="#AIX">AIX</a>,
+<a href="#HP-UX">HP</a>,</font>
+<br><font color="#6699CC"><a href="#DIGITAL">Digital</a>, <a href="#IRIX">IRIX</a></font>
+<br><font color="#6699CC">• </font><a href="#unix_commands">commands examples</a></td>
+
+<td ALIGN=LEFT VALIGN=TOP></td>
+
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">• <a href="unix_shells.html">shell
+scripting</a></font>
+<br><font color="#6699CC">• <a href="unix_tcsh.html">tcsh</a></font>
+<br><font color="#6699CC">• <a href="unix_sh.html">Bourne sh_short</a></font>
+<br><font color="#6699CC">• <a href="unix_sh_tut.html">Bourne sh_tutorial</a></font>
+<br><font color="#6699CC">• </font><a href="command_line_editing_vi.html">vi_mode_commands.html</a>
+<br><font color="#6699CC">• </font><a href="command_line_editing_emacs.html">emacs_mode_commands</a>
+<br><font color="#6699CC">• </font><a href="command_line_editing.html">command_line_editing_tips</a>
+<br><font color="#6699CC">• </font><font color="#000000"><b><a href="vi.html">vi-ref</a></b>
+- <a href="vi-ref.pdf">vi-ref.pdf</a></font></td>
+
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">• </font><a href="less_commands.html">less</a><font color="#6699CC">
+•</font>
+<br><font color="#6699CC">• </font><a href="awk.html">awk</a><font color="#6699CC">
+• </font><a href="sed_tutorial.html">sed</a><font color="#6699CC"> • </font><a href="grep_tutorial.html">grep</a><font color="#6699CC">
+• </font><a href="tcl_tk_tut.html">Tcl/Tk</a>
+<br><font color="#6699CC">• </font><a href="learnunix/index.htm">Learning
+the UNIX Operating System</a>
+<br><font color="#6699CC">• </font><a href="unix_hints_and_hacks.html">unix
+hints and hacks</a>
+<br><font color="#6699CC">• </font><a href="linux.html">my page for linux</a>
+<br><font color="#6699CC">• </font><a href="unix_commands_random.html">more
+commands (random flow)</a>
+<br><font color="#6699CC">• </font><a href="http://www.ssc.com/mirrors/LDP/LDP/nag/node1.html">network_admin</a><font color="#6699CC">•
+</font><a href="less_commands.html">less</a><font color="#6699CC"> •</font>
+<br>
+<font color="#6699CC">• <a href="unix_make.html">make</a> •</font>
+<a href="unix_build.html">building</a><br>
+<a href="http://www.ssc.com/mirrors/LDP/LDP/nag/node1.html"></a>&nbsp;</td>
+</tr>
+</table>
+<a NAME="intro"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>intro, tutorials</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>&nbsp;<b><u>Unix</u></b> - runs behind ~70% of the Internet, very stable,
+originally written in C.&nbsp; It is (was) simple, small and open.&nbsp;
+This allowed it to mutated like a virus and to spread onto various platforms.&nbsp;
+Why Unix is better or how to hate Unix - read more on <a href="op_systems.html">Operating
+Systems page</a>.
+<p><b><u><font color="#000000">Some links:</font></u></b>
+<br><font color="#000000">- <a href="http://www.iki.fi/era/unix/">www.iki.fi/era/unix/</a>
+- History, Useless Use Of ... Awards, etc</font>
+<br><font color="#000000">- <a href="http://www.iki.fi/era/unix/shell.html">www.iki.fi/era/unix/shell.html</a>
+- Steve Bourne's original tutorial.</font>
+<br><font color="#000000">- <a href="http://www.ocean.odu/edu/ug/shell_help.html">www.ocean.odu/edu/ug/shell_help.html</a>
+- quickly written by the looks of it, but seems to have the important stuff.</font>
+<br><font color="#000000">- </font><a href="http://www.mpi-sb.mpg.de/~uwe/lehre/unixffb/quoting-guide.html">www.mpi-sb.mpg.de/~uwe/lehre/unixffb/quoting-guide.html</a>&nbsp;<font color="#000000">
+- a pretty definitive document on quoting and escape characters.</font>
+<p><b><u>Examples of tutorials:</u></b>
+<br><font color="#6699CC">• </font><a href="http://www.google.com/search?q=unix+tutor+commands">www.google.com/search?q=unix+tutor+commands</a>
+<br><font color="#6699CC">• </font><a href="http://www.emba.uvm.edu/CF/basic.html">www.emba.uvm.edu/CF/basic.html</a>
+- - basic unix commands with short descriptions
+<p><b><u>man pages:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td>The easiest way to find many man pages for a command is by searching
+google for:&nbsp;&nbsp;&nbsp; <b><font color="#CC0000">manpage command</font></b>
+<br><font color="#6699CC">• </font><a href="http://www.engin.umich.edu/htbin/mangate?manpage=perl">www.engin.umich.edu/htbin/mangate?manpage=perl</a>
+- perl
+<br><font color="#6699CC">• </font><a href="http://www.engin.umich.edu/htbin/mangate?manpage=ls">www.engin.umich.edu/htbin/mangate?manpage=ls</a>
+- ls
+<p><font color="#6699CC">• </font><a href="http://www.engin.umich.edu/htbin/mangate?manpage=troff">www.engin.umich.edu/htbin/mangate?manpage=troff</a>
+- troff
+<br><font color="#6699CC">• </font><a href="http://www.engin.umich.edu/htbin/mangate?manpage=groff">www.engin.umich.edu/htbin/mangate?manpage=groff</a>
+- groff
+<br><font color="#6699CC">• </font><a href="http://www.engin.umich.edu/htbin/mangate?manpage=sed">www.engin.umich.edu/htbin/mangate?manpage=sed</a>
+- sed
+<br><font color="#6699CC">• </font><a href="http://www.engin.umich.edu/htbin/mangate?manpage=awk">www.engin.umich.edu/htbin/mangate?manpage=awk</a>
+- awk
+<br>&nbsp; etc.
+<p><b><u>from the prompt:</u></b>
+<br>&nbsp; man time
+<br>&nbsp; man 3 ctime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- ctime(3)
+<br>&nbsp; man -s 3 ctime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- ctime(3)
+<p><b><u>Reformatting documentaion on unix prompt</u></b>
+<br>- convert manpages to plain text files:&nbsp;
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; man command</font></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; man command
+| col -b > out.txt</font></b>
+<br>- convert Perl pod documentation:
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pod2man name.pm
+| nroff -man | less</font></b></td>
+</tr>
+</table>
+
+<p><b><u>Good starting tutorials:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#6699CC">• </font><a href="http://www.ora.de/catalog/unixcd/chapter/index.html">www.ora.de/catalog/unixcd/chapter</a>
+- Unix Commands (from O'Reilly "Unix in a Nutshell, Chapter 2)
+<br><font color="#6699CC">• </font><a href="http://www.webreference.com/programming/unix/">www.webreference.com/programming/unix/</a>
+- tutorials
+<br><font color="#6699CC">• </font><a href="http://www.infojack.com/">www.infojack.com/</a>
+- tutorials, books and tests
+<br><font color="#6699CC">• </font><a href="http://www.itspace.com/ITspaceAlpha/features/Community/Developerspace/RelatedLinks/unix.asp">www.itspace.com/</a>
+- unix resources
+<br><font color="#6699CC">• </font><a href="http://www.oase-shareware.org/shell/">www.oase-shareware.org/shell/</a>
+- all about Unix shells
+<br><font color="#6699CC">• </font><a href="http://kulichki.rambler.ru/moshkow/">kulichki.rambler.ru/moshkow/</a>
+- many books in Russian</td>
+</tr>
+</table>
+<a NAME="unix_books"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>unix books</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#6699CC">• </font>Unix : Visual Quickstart Guide (Visual
+Quickstart Guide Series) by Deborah S. Ray, Eric J. Ray
+<br><font color="#6699CC">• </font>UNIX For Dummies - by John R. Levine,
+Margaret Levine Young
+<br><font color="#6699CC">• </font><a href="learnunix/index.htm">Learning
+the UNIX Operating System</a> - (Nutshell Handbook, O'Reilly) - short
+<br><font color="#6699CC">• </font>Programming With Gnu Software (Nutshell
+Handbook)&nbsp;
+<br><font color="#6699CC">• </font>Unix in a Nutshell: A Desktop Quick
+Reference for SVR4 and Solaris 7 (3rd Edition) - by Arnold Robbins, Daniel
+Gilly
+<br><font color="#6699CC">• </font>UNIX Power Tools&nbsp; Programming With
+Gnu Software (Nutshell Handbook)&nbsp;
+<br><font color="#6699CC">•</font><font color="#000000"> UNIX System Administration
+Handbook - by Evi Nemeth, et al (Paperback - August 2000)&nbsp;</font>
+<br><font color="#6699CC">• </font>Essential System Administration : Help
+for Unix System Administrators (Nutshell Handbook)&nbsp;
+<br><font color="#6699CC">• </font>The UNIX Programming Environment - by
+Brian W. Kernighan, Rob Pike (Contributor), Robert Pike
+<p><font color="#6699CC">• </font>Advanced Programming in the Unix Environment
+(Addison-Wesley Professional Computing Series)&nbsp; W. Richard Stevens&nbsp;
+<br><font color="#6699CC">• </font>Unix Network Programming : Networking
+Apis: Sockets and Xti (Volume 1) by W. Richard Stevens&nbsp;
+<br><font color="#6699CC">• </font>Unix Network Programming : Interprocess
+Communications (Volume 2) - by W. Richard Stevens
+<br><font color="#6699CC">• </font>Design of the Unix Operating System
+- by M. Bach
+<br><font color="#6699CC">• </font>The Magic Garden Explained : The Internals
+of Unix System V Release 4 : An Open Systems Design - by Berny Goodheart,
+James Cox&nbsp;
+<br><font color="#6699CC">• </font>The Unix Philosophy - by Mike Gancarz&nbsp;
+<p><font color="#6699CC">• </font>Interprocess Communications in Unix :
+The Nooks and Crannies - by John Shapley Gray&nbsp;
+<br><font color="#6699CC">• </font>Porting Unix Software : From Download
+to Debug (Nutshell Handbook)&nbsp;
+<br><font color="#6699CC">• </font>Practical Unix and Internet Security&nbsp;
+<br><font color="#6699CC">• </font>Unix Backup and Recovery&nbsp;
+<br><font color="#6699CC">• </font>Unix Internals: The New Frontiers -
+by Uresh Vahalia
+<br><font color="#6699CC">• </font>Unix Shells by Example&nbsp;
+<br><font color="#6699CC">• </font>Linux Network Toolkit&nbsp;
+<br><font color="#6699CC">• </font>Linux System Administration Black Book&nbsp;
+<br><font color="#6699CC">• </font>Unix-haters handbook - by Simson Garfinkel
+et al, ISBN 1-56884-203-1, IDG Books, $16.59, out of print.&nbsp; This
+book is real fun to read, but difficult to find.&nbsp; Here are some related
+links: - <a href="http://catalog.com/hopkins/unix-haters/handbook.html">http://catalog.com/hopkins/unix-haters/handbook.html</a>
+- <a href="http://ecco.bsee.swin.edu.au/unix/uh/">more</a> - <a href="http://www.molgen.mpg.de/~wwwutz/Unix_Haters/unix-haters.html">more</a>
+- <a href="http://ecco.bsee.swin.edu.au/unix/uh/uh/index.html">Table of
+Contents</a> - <a href="http://art.net/Studios/Hackers/Hopkins/Don/unix-haters/login.html">unixux
+prompt</a> - <a href="http://ok.msk.ru/gagin//unix-haters.russian-samples.html">rus</a>
+- Russian translation of parts of it, <a href="http://www.grad.math.uwaterloo.ca/~ewcenek/humour/xwindows.txt">chapter7</a>,
+<a href="unix_haters.doc">ms_doc.file</a>.&nbsp;</td>
+</tr>
+</table>
+
+<p>See more books listed on pages devoted to shells, misc. tools, sys.
+administration, network, email, and Linux.
+<br><a NAME="prompt"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>editing on the prompt</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>When you start working on the prompt - you want to select the shell
+to use (usually <b><i>ksh</i></b> or <b><i>bash</i></b>) and editing mode
+(<b><i>vi</i></b> or <b><i>emacs</i></b>).
+<br>
+Ask your sysadmin to set it up for you (edit <b><i>/etc/passwd</i></b>
+file and <b><i>.profile</i></b> , 
+<b><i>.bash_profile</i></b> , <strong>.bashrc</strong> in your
+home directory).
+<p>If your terminal is in some strange state - try doing &quot;<strong>stty sane</strong>&quot;.&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 COLS=1 WIDTH="100%" BGCOLOR="#CCFFFF" >
+<tr>
+<td><b><u>Here are some commands in .profile file for Korn shell:</u></b>
+<br>EDITOR=vi
+<br>VISUAL=vi&nbsp;&nbsp; # this overrides EDITOR
+<br>set -o vi&nbsp;&nbsp; # this is the same again
+<br>PS1='$LOGNAME'@`uname -n`:'$PWD $ '
+<p>Command line editing is usually done in one of 2 modes: vi or emacs.
+<br>Here are commands and tips:
+<br><font color="#6699CC">• </font><a href="command_line_editing_vi.html">vi_mode_commands.html</a>
+<br><font color="#6699CC">• </font><a href="command_line_editing_emacs.html">emacs_mode_commands</a>
+<br><font color="#6699CC">• </font><a href="command_line_editing.html">command_line_editing_tips</a>
+      <p><b><i>vi</i></b>-mode is not intuitive for many people. Arrows don't work as 
+        you would expect them to work. You have to constantly switch between command 
+        and insert modes. Here are some sites to help you love vi: <br>
+        <font color="#6699CC">• </font><font color="#000000"><a href="http://www.thomer.com/thomer/vi/vi.html">vi-lovers</a></font> 
+        <br>
+        <font color="#6699CC">• </font><font color="#000000"><a href="http://www.vim.org">vim.org</a></font> 
+        <br>
+        <font color="#6699CC">• </font><font color="#000000"><a href="vi.html">vi-ref</a> 
+        - <a href="vi-ref.pdf">vi-ref.pdf</a></font> <br>
+        <font color="#6699CC">• </font><a href="http://www.ungerhu.com/jxh/vi.html">www.ungerhu.com/jxh/vi.html</a> 
+        - very good one-page reference 
+      <p>If you are not a <b><i>vi</i></b> lover - then you probably will be
+much happier with <b><i>emacs</i></b> mode:
+<br>&nbsp;&nbsp; set -o emacs
+<br>It allows you to navigate horizontally on the line and vertically (history
+list) using arrows.
+<p>For modern linux-es default is <b><i>bash</i></b> in <b><i>emacs</i></b>
+mode.
+<br><font color="#6699CC">• </font><font color="#000000"><a href="http://www.emacs.org/">www.emacs.org/</a>
+,</font>
+<br><font color="#6699CC">• </font><font color="#000000"><a href="http://www.gnu.org/software/emacs/windows/ntemacs.html">www.gnu.org/software/emacs/windows/ntemacs.html</a></font></td>
+</tr>
+</table>
+
+<p><b><u><font color="#000000">Using xterm - examples:</font></u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#000000">dtterm -d 10.3.3.101:0.0 -fg black -bg white
+&amp;&nbsp;</font>
+<br><font color="#000000">xterm -d daddypc:0.0 -fg green -bg black &amp;&nbsp;</font>
+<br><font color="#000000">xemacs -d daddypc:0.0 &amp;&nbsp;</font>
+<br><font color="#000000">alias term='xterm -d daddypc:0.0 -fn -*-Fixed-Medium-R-*-*-*-120-75-75-*-*-ISO8859-1
+-bg DarkCyan -fg White -geom 90x30 -cr red &amp;'&nbsp;</font>
+<br><font color="#000000">alias term0='xterm -d daddypc:0.0 -fg black -bg
+white &amp;'&nbsp;</font>
+<br><font color="#000000">alias term1='xterm -d daddypc:0.0 -fn -*-Fixed-Medium-R-*-*-*-120-75-75-*-*-ISO8859-1
+-bg black -fg LemonChiffon -geom 90x30 -cr red'&nbsp;</font>
+<br><font color="#000000">alias term2='xterm -d daddypc:0.0 -fn -*-Fixed-Medium-R-*-*-*-140-75-75-*-*-ISO8859-1
+-bg black -fg LemonChiffon -geom 100x40 -cr red'&nbsp;</font></td>
+</tr>
+</table>
+
+<p>You can get syntax color coding in vim via CRT-telnet (<a href="http://www.vandyke.com">www.vandyke.com</a>):
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>&nbsp; - set CRT-telnet session to ansi emulation (you can change ANSI
+colors in Global settings).
+<br>&nbsp; - set $TERM to ansi on unix
+<br>&nbsp; - in vim settings file&nbsp; .vimrc&nbsp; add command&nbsp;&nbsp;&nbsp;
+:syntax on</td>
+</tr>
+</table>
+
+<p><font color="#6699CC">• </font><a href="http://www.cs.utk.edu/~shuford/terminal/unix_terminal_news.txt">www.cs.utk.edu/~shuford/terminal/unix_terminal_news.txt</a>
+- discussion about using terminals
+<br><font color="#6699CC">• </font><a href="http://www.unm.edu/cirt/introductions/unix/unix10.html">www.unm.edu/cirt/introductions/unix/unix10.html</a>
+- using X-windows
+<br><font color="#6699CC">• </font><a href="http://www.chemie.fu-berlin.de/chemnet/general/aboutx.html">www.chemie.fu-berlin.de/chemnet/general/aboutx.html</a>
+- FAQ about X-windows
+<br><font color="#6699CC">• </font><a href="http://www2.ncsu.edu/cc/pub/tutorials/unity_intro/31_colors.html">www2.ncsu.edu/cc/pub/tutorials/unity_intro/31_colors.html</a>
+- setting colors in X-windows
+<p class="sectionheader"><a name="unix_editors"></a>Unix Editors
+<p><a href="vi.html" target="_blank" class="style1">vi</a> - exists on all unix boxes. So knowing it is a must for any unix programmer. vi chokes on log files with very long lines - so you better use vim.
+<p><a href="vi.html" target="_blank" class="style1">vim</a> (vi improved) - <a href="http://www.vim.org">http://www.vim.org</a> - great editor. Can read very long files with very long lines without problems (standard vi is known for choking on long lines). Vim exists on many platforms, including unix and windows. It has support for ctags (wa to jump to function definition and back). On linux when you type &quot;vi&quot; - you are actually getting vim.
+<p><a href="emacs.html" target="_blank" class="style1">emacs</a> - another great highly-customizable editor. Editor of choice of many C++ old-timers.
+<p><a href="http://en.wikipedia.org/wiki/Pico_(text_editor)" class="style1">pico</a> - simple text editor (was part of Pine email client).
+<p><span class="style1">nano</span> - improved version of pico - <a href="http://www.nano-editor.org">http://www.nano-editor.org</a>
+<p>joe - <a href="http://joe-editor.sourceforge.net/">http://joe-editor.sourceforge.net/</a> - great editor (this page also lists many other editors).
+
+<p>
+
+<p class="sectionheader"><a NAME="more"></a>
+more on unix
+
+<p><b><u>POSIX</u></b> - (Portable Operating System Interface) is a set
+of standard operating system interfaces.&nbsp; It was based on the UNIX
+operating system partly because it was "manufacturer-neutral." Read on
+<a href="http://www.whatis.com/">www.whatis.com</a>
+<p><b><u>More on Unix:</u></b>
+<br><font color="#6699CC">• </font><a href="http://www.cis.ohio-state.edu/hypertext/faq/usenet/unix-faq/faq/top.html">USENET
+FAQs</a>
+<br><font color="#6699CC">• </font><a href="http://www.cis.ohio-state.edu/hypertext/faq/usenet/unix-faq/programmer/faq/faq.html">Unix
+Programming FAQ</a>
+<br><font color="#6699CC">• </font><a href="http://www.cs.buffalo.edu/~milun/unix.programming.html">Unix
+Links</a>
+<br><font color="#6699CC">• </font><a href="http://sun.icsnet.com/">The
+Unofficial Guide to Solaris</a>
+<br><font color="#6699CC">• </font><a href="http://www.cl.cam.ac.uk/PTF/Unix_4.2_doc/0087.0.html">OO
+Network Prgming with Unix</a>
+<br><font color="#6699CC">• </font><a href="http://www-users.cs.umn.edu/~bentlema/unix/">Unix
+systems programming</a>
+<br><font color="#6699CC">• </font><a href="http://www.geckil.com/~harvest/sockets/">sockets</a>
+<br><font color="#6699CC">• </font><a href="http://ie.www.ecn.purdue.edu/~kompella/html/vi_faq2.html">Vi
+FAQ</a>
+<br><font color="#6699CC">• </font><a href="http://www-users.cs.umn.edu/~bentlema/unix/advipc/ipc.html">Advanced
+Unix IPC</a>
+<br><font color="#6699CC">• </font><a href="http://www.softlab.ece.ntua.gr/facilities/documentation/unix/unix-socket-faq/unix-socket-faq.html">unix
+sockets programming in c</a>
+<p>See also:
+<br><font color="#6699CC">• </font><a href="http://www.gnu.org/">www.gnu.org</a>
+- GNU software and compiler
+<br><font color="#6699CC">• </font><a href="http://www.cerfnet.com/~mpcline/c++-faq-lite/">www.cerfnet.com/~mpcline/c++-faq-lite/</a>
+- C++ FAQ
+<br><font color="#6699CC">• </font><a href="http://www.eskimo.com/~scs/C-faq/top.html">www.eskimo.com/~scs/C-faq/top.html</a>
+- C FAQ
+<p class="sectionheader"><a NAME="unix_flavors"></a> Unix Flavors
+<p><a name="Linux"></a>
+<p>&nbsp;<b><u><font color="#993366">Linux</font></u></b>
+  <br>
+  <font color="#6699CC">• </font>see
+  <a href="linux.html">my page for
+linux</a>
+  <br>
+  <font color="#6699CC">• </font><a href="http://www.linux.org/">www.linux.org</a>&nbsp;
+  - <b>Linux</b>
+  <br>
+  <font color="#6699CC">• </font><a href="http://www.linux.org/dist/english.html">www.linux.org/dist/english.html</a>
+- misc distributions (Red Hat, Caldedra, Debian GNU/Linux, Slackware, S.u.S.E.
+and many-many others).
+<br>
+<font color="#6699CC">• </font><a href="http://www.linux.org/vendors/retailers.html">www.linux.org/vendors/retailers.html</a>
+- retailers in different countires (long list)
+<br>
+<font color="#6699CC">• </font><a href="http://www.redhat.com/">www.redhat.com</a>
+- Linux
+<br>
+<font color="#6699CC">• </font><a href="http://www.suse.com/">www.suse.com</a>
+- Linux
+<br>
+<a NAME="Sun_Solaris"></a>
+<p>&nbsp; <b><u><font color="#993366">Sun Solaris</font></u></b>
+<br><font color="#6699CC">• </font><a href="http://www.sun.com/">www.sun.com</a>
+- Solaris operating system (available for Intel-PC for $15).
+<br>&nbsp;&nbsp;&nbsp;&nbsp; ( also
+<a href="http://www.sunfreeware.com">www.sunfreeware.com</a>
+- everything you need for operating system )
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <font color="#6699CC">•
+</font><a href="http://info.rutgers.edu/Techdir/solarisbody.html">info.rutgers.edu/Techdir/solarisbody.html</a>
+- Solaris system configuration
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <font color="#6699CC">•
+</font><a href="http://www.fwi.uva.nl/pub/solaris/solaris2.html">www.fwi.uva.nl/pub/solaris/solaris2.html</a>&nbsp;
+- Solaris FAQ
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <font color="#6699CC">•
+</font><a href="http://docsun.cso.uiuc.edu/cgi-bin/nph-dweb/ab2">http://docsun.cso.uiuc.edu/cgi-bin/nph-dweb/ab2</a>
+- Solaris Online Documentation Library - excellent resource
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <font color="#6699CC">•
+</font><a href="http://soldc.sun.com/">http://soldc.sun.com/</a>
+- Solaris Developer's Connection
+<br><a NAME="BSD"></a>
+<p>&nbsp; <b><u><font color="#993366">BSD (Berkeley Systems Distribution)</font></u></b>
+<br><font color="#6699CC">• </font><a href="http://www.bsd.org">www.bsd.org</a>
+- lists several different BSDs (<a href="http://www.freebsd.org/">FreeBSD</a>,
+<a href="http://www.netbsd.org/">NetBSD</a>,
+<a href="http://www.openbsd.org/">OpenBSD</a>,
+<a href="http://www.bsdi.com">BSDI
+Internet Server (BSD/OS)</a> )
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for example, <a href="http://www.freebsd.org/">FreeBSD</a>
+is used by famous sites like Yahoo and HotMail ( <a href="http://freebsd.peon.net/">http://freebsd.peon.net/</a>
+- tutorials )
+<br><font color="#6699CC">• </font><a href="http://www.bsdi.com">www.bsdi.com</a>
+- commercial expensive BSD
+<br><a NAME="SCO"></a>
+<p>&nbsp; <b><u><font color="#993366">SCO (The Santa Cruz Operation, Inc.)</font></u></b>
+<br><font color="#6699CC">• </font><a href="http://www.sco.com">www.sco.com</a>
+- good stable unix on Intel platform:
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <font color="#6699CC">•
+</font><a href="http://www.sco.com/unix/market.html">www.sco.com/unix/market.html</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1987:&nbsp; AT&amp;T + Sun
+= System V, revision 4 (SVR4)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1993: AT&amp;T sells its
+unix to Novell
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1995: sold to SCO.
+<br><a NAME="AIX"></a>
+<p>&nbsp; <b><u><font color="#993366">AIX (An IBM unix)</font></u></b>
+<br><font color="#6699CC">• </font><a href="http://www.ibm.com/servers/aix/">www.ibm.com/servers/aix/</a>
+- unix from IBM
+<br><a NAME="HP-UX"></a>
+<p>&nbsp; <b><u><font color="#993366">HP-UX (Hewlett Packard unix)</font></u></b>
+<br><font color="#6699CC">• </font><a href="http://www.hp.com">www.hp.com</a>
+- unix from Hewlett Packard - good choice (amazon.com uses HP servers)
+<br><a NAME="DIGITAL"></a>
+<p>&nbsp; <b><u><font color="#993366">DIGITAL UNIX</font></u></b>
+<br><font color="#6699CC">• </font><a href="http://www.compaq.com/enterprise/">www.compaq.com/enterprise/</a>&nbsp;
+( read also <font color="#6699CC">• </font><a href="http://www.operatingsystems.net/oses/decunix.htm">www.operatingsystems.net/oses/decunix.htm</a>
+)
+<br>&nbsp;&nbsp; ( <b><u><font color="#990000">ULTRIX</font></u></b> -
+a BSD based + some features from System V and DEC.&nbsp; It was made by
+DEC, then replaced by Digital Unix ).
+<br><a NAME="IRIX"></a>
+<p>&nbsp; <b><u><font color="#993366">IRIX</font></u></b>
+<br><font color="#6699CC">• </font><a href="http://www.sgi.com/">www.sgi.com/</a>
+- Silicon Graphics, Inc.
+<p><font color="#6699CC">• </font><a href="http://www.microware.com/Products/Software/OS9.html">www.microware.com/Products/Software/OS9.html</a>
+- <b><u><font color="#990000">OS-9</font></u></b> - small, but very nice
+and robast UNIX-like RTOS
+<p>and many-many more types of Unix
+<br><a NAME="unix_commands"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>commands examples</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>You can combine several commands on one line using pipes and redirecting
+input/output. Here are some examples:
+<br><font color="#3333FF">sort &lt; data > junk</font>
+<br><font color="#3333FF">tr a-z A-Z &lt; in > out</font>
+<br><font color="#3333FF">ls -s | tail +2 | sort -rn | head -5</font>
+<br><font color="#3333FF">ps -ef | grep http</font>
+<br><font color="#3333FF">tar cvf - . | gzip -9 > mmm.tar.gz</font>
+<br><font color="#3333FF">gunzip &lt; mmm.tar.gz | tar -xvf -</font>
+<br><font color="#3333FF">ps -ef | grep daemon | cut -c10-14</font>
+<br><font color="#3333FF">ls -l | grep "^d" | cut -c55-80</font>
+<br><font color="#3333FF">cat tt | sort | uniq -d</font>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=3 WIDTH="100%" >
+  <tr> 
+    <td ALIGN=LEFT VALIGN=TOP BGCOLOR="#FFFFCC"><font color="#000000">ps -ef | 
+      grep appl</font> <br>
+      <font color="#000000">/usr/ucb/ps aux | head</font> <br>
+      <font color="#000000">find . -type f -print | xargs fgrep -l 'pattern goes 
+      here' /dev/null/</font> <br>
+      <font color="#000000">find . -mtime -1 -print</font> <br>
+      <font color="#000000">find . -name&nbsp; '*.pl'&nbsp; -exec perl -wc {} 
+      \;</font> <p><font color="#000000">uname -a</font> <br>
+        <font color="#000000">du, du -ks</font> <br>
+        <font color="#000000">df, df -k</font> <br>
+        <font color="#000000">dmesg | grep mem</font> <br>
+        <font color="#000000">cat /var/db/dmesg.boot | more&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        (on Solaris 7:&nbsp;&nbsp; cat /var/adm/messages.1 )</font> <br>
+        <font color="#000000">vmstat -w 3 (or simply vmstat 3)&nbsp;</font> <br>
+        <font color="#000000">ps -auxrh (BSD) ps -ef&nbsp; (Solaris)</font> <br>
+        <font color="#000000">top 200 | grep 'stronghold' | wc -l</font> <br>
+        <font color="#000000">ps -U username | grep 'stronghold' | wc -l</font> 
+      <p><font color="#000000">tail -f somelog&nbsp; - to see the tail of the 
+        log as it changes</font> <br>
+        <font color="#000000">grep -i&nbsp; something&nbsp;&nbsp;&nbsp;&nbsp; 
+        - ignore case grep</font> <br>
+        <font color="#000000">grep -i -l something - ignore case, print only the 
+        names of the files</font></td>
+  </tr>
+  <tr> 
+    <td BGCOLOR="#CCFFFF"><font color="#000000">nslookup `hostname`</font> <br>
+      <font color="#000000">netstat</font> <br>
+      <font color="#000000">ifconfig</font> <br>
+      <font color="#000000">/etc/hosts</font> <br>
+      <font color="#000000">/etc/resolv.conf</font> <br>
+      <font color="#000000">/var/spool/cron/crontabs/ ...</font></td>
+  </tr>
+  <tr> 
+    <td BGCOLOR="#99FF99"><p><b><u><font color="#000000">tar everything in current 
+      directory:</font></u></b> <br>
+      <font color="#000000">&nbsp;&nbsp; tar&nbsp;&nbsp; cvf&nbsp;&nbsp;&nbsp; 
+        mmm.tar&nbsp; .</font> <br>
+      <font color="#000000">&nbsp;&nbsp; gzip -9 mmm.tar</font> <br>
+      <b><u><font color="#000000">or in 1 line:</font></u></b> <br>
+      <font color="#000000">&nbsp;&nbsp; tar cvf - . | gzip -9 > mmm.tar.gz</font> 
+      <br>
+      <b><u><font color="#000000">now in oposite direction:</font></u></b> <br>
+      <font color="#000000">gunzip mmm.tar.gz</font> <br>
+      <font color="#000000">tar xvf mmm.tar</font> <br>
+      <b><u><font color="#000000">or in 1 line:</font></u></b> <br>
+      <font color="#000000">gunzip &lt; mmm.tar.gz | tar -xvf -</font> <br>
+      <font color="#000000">gzip&nbsp; -dc&nbsp; mmm.tar.gz | tar -xvf -</font> 
+      <br>
+      <b><u><font color="#000000">or to just look what's inside:</font></u></b> 
+      <br>
+      <font color="#000000">gzip&nbsp; -dc&nbsp; mmm.tar.gz | tar -tvf -</font> 
+      <br>
+      <font color="#000000">------------------------</font> <br>
+      <font color="#000000">gunzip -c mmm.tar.gz | tar xvf - file1 file2 file3</font> 
+      <br>
+      <font color="#000000">gzip -dc mmm.tar.gz | tar tvf -</font> <br>
+      <font color="#000000">gzip -dc mmm.tar.gz | tar -xof -&nbsp;</font> <br>
+      <font color="#000000">zcat &lt; mmm.tar.gz | tar -tf -</font> </p></td>
+  </tr>
+  <tr bgcolor="#CCFFFF"> 
+    <td> 
+    <p>to uncompress .bz2 files use:<br>
+        bzip2, bunzip2 - a block-sorting file compressor, v1.0.2<br>
+        bzcat - decompresses files to stdout<br>
+      bzip2recover - recovers data from damaged bzip2 files</p>
+      <p>bunzip2 somefile.bz2</p></td>
+  </tr>
+  <tr bgcolor="#CCFFFF"> 
+    <td bgcolor="#FFFFCC"> 
+      <p><b><u><font color="#000000">Recursive 
+        operations - use -r ( or -R) option:</font></u></b> <br>
+        <font color="#000000">cp -r from to</font> <br>
+        <font color="#000000">\rm -rf dirname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (backslash 
+        is used to un-alias the command - usually it is aliased to ask confirmations 
+        for every file)</font> <br>
+        <u><font color="#000000">Do recursive copy preserving all permissions 
+        - use tar:</font></u> <br>
+        <font color="#000000">cd fromdir; tar cf - .| (cd todir; tar xfBp -)</font></p>    </td>
+  </tr>
+  <tr> 
+    <td BGCOLOR="#FFCCCC"><font color="#000000">one-liners for Unix:&nbsp;</font> 
+      <br>
+      <font color="#000000">&nbsp; rename many files simultaneously (here it renames 
+      *.tar into *.tar7):&nbsp;</font> <br>
+      <font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ls -1 *.tar | perl 
+      -nle '$old=$_;s/(\.+)tar/$1tar7/;rename($old, $_);' -&nbsp;</font> <br>
+      <font color="#000000">&nbsp; print help for all commands of perforce (p4) 
+      source control system:&nbsp;</font> <br>
+      <font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p4 help commands | 
+      perl -nle 'm/^\s+(\w+)\s/; print "$1\n";' - | xargs p4 help&nbsp;</font></td>
+  </tr>
+  <tr> 
+    <td>if you received an&nbsp; tar.gz file uuencoded in the body of the message 
+      between the begin..end lines (begin line contains real file name, for example 
+      <b><a href="SelfGOL.tar.gz">SelfGOL.tar.gz</a></b>): <br>
+      &nbsp; save it as text file&nbsp; "file.txt" <br>
+      &nbsp; uudecode -p &lt; file.txt&nbsp; | gunzip | tar -xzvf - 
+      <p>or (step-by-step): <br>
+        &nbsp;&nbsp;&nbsp; uudecode file.txt <br>
+        &nbsp;&nbsp;&nbsp; ls -goct | sed 2q <br>
+        &nbsp;&nbsp;&nbsp; gunzip SelfGOL.tar.gz <br>
+        &nbsp;&nbsp;&nbsp; tar xvf SelfGOL.tar</td>
+  </tr>
+  <tr> 
+    <td BGCOLOR="#FFFFCC">Get gcc (GNU C-compiler) binary - version 2.8.0 or better.&nbsp; 
+      <br>
+      &nbsp;&nbsp;&nbsp; /appl/archives/gcc.tar.Z&nbsp; <br>
+      &nbsp;&nbsp;&nbsp; copy it into /appl/Archives directory, uncompress it 
+      and untar it (tar xvf ...)&nbsp; <br>
+      &nbsp;&nbsp;&nbsp; This will put all necessary binary files in their places.&nbsp; 
+      <p>&nbsp;Test that the compiler is alive:&nbsp; 
+      <p>&nbsp;&nbsp;&nbsp; gcc -v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - should show 
+        the version&nbsp; 
+      <p>&nbsp;When installing the software we will be running scripts which will 
+        be looking for a C-compiler.&nbsp; Some scripts want to see <br>
+        &nbsp;C-compiler as /usr/local/bin/cc (or as CC).&nbsp; To help them, 
+        you may execute something like this:&nbsp; 
+      <p>&nbsp;&nbsp;&nbsp;&nbsp; ln -s 'whence gcc' /usr/local/bin/cc&nbsp; 
+      <p>&nbsp;This may be OK if there are no other C-compilers used on this machine.&nbsp; 
+        <br>
+        &nbsp;Otherwise you may need to indicate the compiler explicitly in the 
+        command line, for example:&nbsp; 
+      <p>&nbsp;&nbsp;&nbsp;&nbsp; make CC=gcc&nbsp; <br>
+        &nbsp;&nbsp;&nbsp;&nbsp; make CC=gcc install&nbsp; 
+      <p>&nbsp;Or you can define environment variables before running make or 
+        configure script:&nbsp; 
+      <p>&nbsp;&nbsp;&nbsp;&nbsp; CC=gcc;export CC (sh)&nbsp; <br>
+        &nbsp;&nbsp;&nbsp;&nbsp; CC=gcc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        (ksh)&nbsp; <br>
+        &nbsp;&nbsp;&nbsp;&nbsp; setenv CC gcc&nbsp;&nbsp;&nbsp; (csh &amp; tcsh)&nbsp; 
+      <p>&nbsp;Now you can test:&nbsp; 
+      <p>&nbsp;&nbsp;&nbsp;&nbsp; env&nbsp; <br>
+        &nbsp;&nbsp;&nbsp;&nbsp; echo $CC&nbsp; 
+      <p>&nbsp;For some scripts it works better if you&nbsp; <br>
+        &nbsp;define variables in one line with the script command:&nbsp; 
+      <p>&nbsp;&nbsp;&nbsp;&nbsp; CC=gcc; export CC; ../dist/configure&nbsp;&nbsp; 
+        (sh) <br>
+        &nbsp;&nbsp;&nbsp;&nbsp; setenv CC gcc; ../dist/configure&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        (csh &amp; tcsh)&nbsp; <br>
+        &nbsp;&nbsp;&nbsp;&nbsp; CC=gcc ../dist/configure&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        (ksh)</td>
+  </tr>
+  <tr> 
+    <td BGCOLOR="#FFFFCC"><p>To sync directory from old computer to a new computer:</p>
+      <ul>
+        <li> log into your new machine and cd to the directory you want for files</li>
+        <li> rsync -avP oldusername@your.old.machine:/your/old/dir .</li>
+        <li>(you may have to set '-e ssh' if they don't have an rsync server running).</li>
+      </ul></td>
+  </tr>
+</table>
+
+<p>sudo - utility to  run a command with privileges of another user (typically as root).<br>
+  ( example:&nbsp; sudo hdparm
+-t /dev/hdb5&nbsp; - to show disk speed ).<br>
+The permissions are stored in the &quot;sudoers&quot; file (on Linux in /etc/sudoers).<br>
+&nbsp;&nbsp;&nbsp;
+<a href="http://www.sudo.ws/sudo/man/sudoers.html" eudora="autourl">http://www.sudo.ws/sudo/man/sudoers.html</a><br>
+<p>Some convenient commands for Linux
+<table width="99%" border="0" cellpadding="5" cellspacing="0" bgcolor="#CCFFFF">
+  <tr>
+    <td><p>I have created a file <strong>/etc/profile.d/aliases.sh</strong><br>
+      and put the following into it:<br>
+      <strong>alias l='/bin/ls -alF'<br>
+      PS1='[\u@\h \W]\$ ' </strong>
+      <p>This file is sourced by <strong>/etc/profile</strong> - look inside for this code:<br>
+        <span class="code">for i in /etc/profile.d/*.sh ; do<br>
+  if [ -r &quot;$i&quot; ]; then<br>
+        . $i<br>
+        fi<br>
+    done</span></p>    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFCC"><p>chkconfig - command to configure things to start on reboot.</p>
+      <p>        <span class="code">chkconfig sendmail on</span><br>
+        or you can explicitly specify the run-levels:<br>
+        <span class="code">chkconfig --levels 2345 sendmail on</span></p>
+      <p>        to look at the status:<br>
+        <span class="code">chkconfig --list</span><br>
+        or<br>
+        <span class="code">chkconfig --list sendmail</span></p>
+      <p>the output of the last command:<br>
+        <span class="code">sendmail        0:off   1:off   2:on    3:on    4:on    5:on    6:off</span></p>    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#99FFFF"><p>      Crontab - a command to schedule jobs. Each user has a separate crontab. A crontab file contains instructions to the cron daemon. Commands in any given crontab are executed as the user who owns it and using environment of /bin/sh. <br>
+      - http://www.cs.princeton.edu/cgi-bin/man2html?crontab:1 - manpage <br>
+      /etc/cron.d/ - cron directory <br>
+      /etc/default/cron - contains cron default settings <br>
+      /etc/cron.d/cron.deny - list of denied users <br>
+      /var/cron/log - accounting information <br>
+      /var/spool/cron/crontabs - spool area for crontab </p>
+      <p>        export EDITOR=vi <br>
+        crontab -e  (Edits the current crontab or creates a new one) <br>
+        crontab -l  (Lists the contents of the crontab file) </p>
+      <p>The cron file may contain comments (start with #) or active lines with 6 space-separated fields - minute hour day month weekday command. <br>
+        Note: format is very rigid - use just one space as a separator. <br>
+        Format: <br>
+        Minute - Minutes after the hour (0-59). <br>
+        Hour - 24-hour format (0-23). <br>
+        Day - Day of the month (1-31). <br>
+        Month - Month of the year (1-12). <br>
+        Weekday - Day of the week. (0-6; the 0 refers to Sunday). </p>
+      <p>Asterisks (*) specify when commands are to be run in every instance of the value of the field. For instance, an asterisk in the Month field would mean that the command should be run every month. In addition, multiple events can be scheduled within a field by separating all instances with commas - with no space between. </p>
+      <p>Here are some examples of scheduling: </p>
+      <p>0 0 * * *       -- midnight every day <br>
+        0 0 * * 1-5   -- midnight every weekday <br>
+        0 0 1,15 * *  -- midnight on 1st and 15th of month <br>
+        0 0 1 * 5       -- midnight on 1st of month and every Friday </p>
+      <p>Example of the whole file:</p>
+      <p># #################################################<br>
+        # Crontab Scheduling Explained:<br>
+        #   Minute - Minutes after the hour (0-59).<br>
+        #   Hour - 24-hour format (0-23).<br>
+        #   Day - Day of the month (1-31).<br>
+        #   Month - Month of the year (1-12).<br>
+        #   Weekday - Day of the week. (0-6; the 0 refers to Sunday).<br>
+        #   Examples:<br>
+        #     0 0 * * *   - midnight every day<br>
+        #     0 13 * * 1-5  - 1 pm every working day<br>
+        #     0 3 1,15 * *  - run at 3 am on 1st and 15th of every month<br>
+        #<br>
+      # #################################################<br>
+        1 * * * * /usr/sbin/ntpdate -s time.apple.com<br>
+        # #################################################<br>
+# uncomment next line to get the default environment into a file<br>
+# * * * * * env &gt; /tmp/env_sh_root.txt<br>
+        # #################################################<br>
+# ---------------------------<br>
+        # remove old backups and logs<br>
+        # ---------------------------<br>
+        5 3 * * * ls /backup/mysql/* | perl -nle 'unlink if (-M) &gt; 30;'<br>
+        6 3 * * * ls /backup/cr/*    | perl -nle 'unlink if (-M) &gt; 30;'<br>
+        #####<br>
+        # find /somepath -name 'bak*' -type d -print | perl -nle 'system(&quot;rm -rf $_&quot;) if ((-d) &amp;&amp; (-M $_ &gt; 30));'<br>
+        #####<br>
+        # ---------------------------<br>
+        # backup mysql databases and some blog files<br>
+        # ---------------------------<br>
+        10 3 * * * /bin/bash -c 'mydate=`date -I`;tar zcvf /backup/mysql/mysql${mydate}.tar.gz /var/lib/mysql  &gt; /backup/mysql/log${mydate}.log 2&gt;&amp;1'<br>
+        15 3 * * * /bin/bash -c 'mydate=`date -I`;tar zcvf /backup/cr/cr${mydate}.tar.gz /home/selector/web/cr &gt; /backup/cr/cr${mydate}.log 2&gt;&amp;1'<br>
+        # ---------------------------<br>
+      </p>
+      <p>More examples <br>
+        # -------------------------------- <br>
+        # Mon-Fri at 3 AM - run the script <br>
+        # -------------------------------- <br>
+        00 03 * * 1-5 /bin/bash -c 'cd /app/data1/home/stockln/gsl/invmgmt/scripts; /home/someuser/somepath/runLoader.sh somescript &gt; /somepath/runLoader.log  2&gt;&amp;1' </p>
+      <p>Crontab starts with &quot;sh&quot; shell. So usually it is a good idea to invoke bash,<br>
+        and may be also to source an environent file. Here is an example:</p>
+      <p>/usr/bin/bash -c ' source envfile;  $PERL  $WRAPPER   some_executable    some_options  --dt=$JDSCRONDT &gt;&gt; $logdir/logname_${JDSCRONDATE}.txt 2&gt;&amp;1' </p>
+      <p>two methods to remove old files:<br>
+        5 3 * * * ls /somepath/* | perl -nle 'unlink if (-M) &gt; 30;'<br>
+      6 3 * * * find /somepath -name 'bak*' -type d -print | perl -nle 'system(&quot;rm -rf $_&quot;) if ((-d) &amp;&amp; (-M $_ &gt; 30));'</p>    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCFF99"><p>To have the date on your server synced automatically, ask admins to set up <strong>ntpd / ntpdate</strong>      so that the time is automatically maintained. To do this just set up a cron job as root like this:</p>
+      <p>1 * * * * /usr/sbin/ntpdate -s time.apple.com</p>
+      <p>This will sync time with the apple timeserver every hour. <br>
+        Note - when we use the command as above, it will ignore 
+      the ntp config file /etc/ntp.conf</p>
+      <p>If you don't have auto-sync set up as described above and just need to set the date manually, simply do the <strong>date</strong> command without option, 
+        take the output, change it to your liking - and then feed 
+      it to a date command with &quot;-s&quot; option, for example:</p>
+      <p><strong>date -s &quot;Mon Nov 29 09:31:00 EST 2004&quot;</strong></p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFCC"><p>DNS related commands: nslookup, dig, host</p>
+      <p>        nslookup www.LevSelector.com ns18.zoneedit.com<br>
+        nslookup -type=NS LevSelector.com</p>
+      <p>Example: looking for MX or SOA record:<br>
+        nslookup -type=MX yourdomainname.com <br>
+        nslookup -type=SOA yourdomainname.com <br>
+      </p>
+      <p>host iguanahelp.com<br>
+    dig iguanahelp.com</p>    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#99FFFF"><p>vsftp:</p>
+      <p>ps auxw | grep ftp<br>
+        it will show this:<br>
+        /usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf</p>
+      <p>Edit the config file:<br>
+        vi /etc/vsftpd/vsftpd.conf<br>
+        I added this line to the config file:<br>
+        use_localtime=YES<br>
+        and restarted the vsftpd server:<br>
+        ===========================<br>
+        cd /etc/rc.d/init.d<br>
+        ./vsftpd restart<br>
+        ===========================</p>
+      <p>The standard log is here:<br>
+        /var/log/vsftpd.log</p>
+      <p>Documentation is here<br>
+        http://vsftpd.beasts.org/vsftpd_conf.html</p>
+      <p>How to set up a directory for only ftp access:<br>
+        Attempt was unsuccessfull.<br>
+        Here are some commands used by an admin<br>
+        locate sftp_server<br>
+        updatedb&amp;<br>
+        locate sftp_server<br>
+        service vsftpd restart<br>
+    touch /etc/vsftpd.chroot_list</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#99FF66"><p>to add a new user:<br>
+      useradd myuser<br>
+passwd mypasswd</p>
+      <p>Note: Never make password the same as login - there are common attacks 
+        which exploit this security hole.<br>
+      Next step - add the user to different groups (if necessary) by editing 
+      file  /etc/group<br>
+      Next - create subdirectory &quot;web&quot; : /home/bogdanov/web/ and set proper 
+      permissions for home directory and subdirectory.</p>
+      <p>to remove a user:<br>
+        userdel myuser<br>
+        cd /home<br>
+      rm -rf myuser</p>
+      <p>To create a new group:<br>
+        groupadd mynewgroup<br>
+        or manually add to /etc/group</p>
+      <p>groupmod - modify (rename, etc.) the group<br>
+        groupdel - delete the group</p>
+      <p>chmod user:group filename <br>
+        chgrp gr_id filename - to change the group of the file</p>
+      <p>Commands to see user and groups:<br>
+      id<br>
+      groups myuser<br>
+      finger myuser</p>    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFCC"><p>Here is how to see the info about your unix box:</p>
+      <p>uname -a<br>
+        cat /proc/cpuinfo<br>
+        cat /proc/meminfo<br>
+        cat /proc/version<br>
+        cat /etc/redhat-release<br>
+        cat /etc/issue</p>
+      <p>cd /etc/httpd/conf - here are web configs<br>
+      # to see cron files of all users:<br>
+    cd /var/spool/cron</p>
+      <p>To see what's going on:<br>
+        top<br>
+        vmstat<br>
+        iostat<br>
+        netstat<br>
+      dmesg</p>    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#99FFFF"><p>      To reboot the computer remotely, become root and issue the command &quot;reboot&quot;.<br>
+      See also:<br>
+        man reboot<br>
+        man halt<br>
+        man poweroff<br>
+    man init<br>
+    man shutdown</p>    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#99FFFF"><p>Common security threats exploiting commands wget and curl. You can greatly reduce the risk by removing run privileges from users others than root, for example:</p>
+      <p>chmod 750 /usr/bin/wget<br>
+    chmod 750 /usr/bin/curl</p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#99FF99"><p>How to start IPs: <br>
+      go into this directory:<br>
+      /etc/sysconfig/network-scripts<br>
+    and edit the files:<br>
+    ifcfg-eth0:1<br>
+        ifcfg-eth0:2<br>
+        etc.</p>
+      <p> then do:<br>
+      ./ifup  ifcfg-eth0:1<br>
+        ./ifup  ifcfg-eth0:2<br>
+    etc.</p>    </td>
+  </tr>
+</table>
+<p>-- -- <a href="unix_commands_random.html">more commands (random flow)</a>
+  -- --
+<p><br>
+  &nbsp;
+<br>&nbsp;
+</body>
+</html>

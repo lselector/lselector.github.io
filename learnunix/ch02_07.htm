@@ -1,0 +1,390 @@
+<HTML
+><HEAD
+><TITLE
+>[Chapter 2] 2.7 Quitting</TITLE
+><META
+NAME="DC.title"
+CONTENT="Learning the Unix Operating System"><META
+NAME="DC.creator"
+CONTENT="Jerry Peek, Grace Todino &amp; John Strang"><META
+NAME="DC.publisher"
+CONTENT="O'Reilly &amp; Associates, Inc."><META
+NAME="DC.date"
+CONTENT="1998-08-03T20:49:26Z"><META
+NAME="DC.type"
+CONTENT="Text.Monograph"><META
+NAME="DC.format"
+CONTENT="text/html"
+SCHEME="MIME"><META
+NAME="DC.source"
+CONTENT="1-56592-390-1"
+SCHEME="ISBN"><META
+NAME="DC.language"
+CONTENT="en-US"><META
+NAME="generator"
+CONTENT="Jade 1.1/O'Reilly DocBook 3.0 to HTML 4.0"><LINK
+REV="made"
+HREF="mailto:online-books@oreilly.com"
+TITLE="Online Books Comments"><LINK
+REL="up"
+HREF="ch02_01.htm"
+TITLE="2. Using Window Systems "><LINK
+REL="prev"
+HREF="ch02_06.htm"
+TITLE="2.6 Other X Clients"><LINK
+REL="next"
+HREF="ch03_01.htm"
+TITLE="3. Your UNIX Account "></HEAD
+><BODY
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+><DIV
+CLASS="htmlnav"
+><H1
+><IMG
+SRC="gifs/smbanner.gif"
+ALT="Learning the Unix Operating System"
+USEMAP="#srchmap"
+BORDER="0"></H1
+><MAP
+NAME="srchmap"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,466,69"
+HREF="index.htm"
+ALT="Learning the Unix Operating System"><AREA
+SHAPE="RECT"
+COORDS="467,0,514,18"
+HREF="jobjects/fsearch.htm"
+ALT="Search this book"></MAP
+><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch02_06.htm"
+TITLE="2.6 Other X Clients"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 2.6 Other X Clients"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><B
+><FONT
+FACE="ARIEL,HELVETICA,HELV,SANSERIF"
+SIZE="-1"
+>Chapter 2<BR>Using Window Systems </FONT
+></B
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="CHAPTER"
+HREF="ch03_01.htm"
+TITLE="3. Your UNIX Account "
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 3. Your UNIX Account "
+BORDER="0"></A
+></TD
+></TR
+></TABLE
+>&nbsp;<HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"></DIV
+><DIV
+CLASS="SECT1"
+><H2
+CLASS="sect1"
+><A
+CLASS="title"
+NAME="LUX-CH-2-SECT-7"
+>2.7 Quitting</A
+></H2
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-XWINSYSTEM-QUITTING"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-QUITTING-XWINSYSTEM"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-EXITING-XWINSYSTEM"
+></A
+>Like almost everything in X, the way to quit X is configurable.  The
+key to shutting down X is to know which of your programs (your windows
+or window manager) is the <EM
+CLASS="emphasis"
+>controlling program</EM
+>.  When the
+controlling program quits, any leftover X programs are killed
+immediately.  The controlling program is usually either the window
+manager or the single <B
+CLASS="emphasis.bold"
+>xterm</B
+> window that started your X session.</P
+><P
+CLASS="para"
+>Find the controlling program for your X session and write it down:</P
+><BLOCKQUOTE
+CLASS="blockquote"
+><P
+CLASS="para"
+>_____________________________   Program to quit last</P
+></BLOCKQUOTE
+><P
+CLASS="para"
+>If your controlling program is an <B
+CLASS="emphasis.bold"
+>xterm</B
+> window, we suggest
+leaving that window iconified from just after you've logged in until
+you've shut down all the other X clients.  That way, you won't end
+your X session accidentally by closing that <B
+CLASS="emphasis.bold"
+>xterm</B
+> window too
+soon.</P
+><P
+CLASS="para"
+>To quit the window manager, select the <B
+CLASS="emphasis.bold"
+>Exit</B
+> or <B
+CLASS="emphasis.bold"
+>Quit</B
+> command on
+the root menu.</P
+><P
+CLASS="para"
+>Here are the steps to shut down X:</P
+><OL
+CLASS="orderedlist"
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+>Quit all noncontrolling programs (all programs <EM
+CLASS="emphasis"
+>other</EM
+> than the
+controlling program).
+If any windows are running programs that have their own &quot;quit&quot; commands,
+it's a good idea to use those special commands to quit.
+For example, if you're running a text editor in an <B
+CLASS="emphasis.bold"
+>xterm</B
+> window,
+use the editor's &quot;quit&quot; command, then finish the <B
+CLASS="emphasis.bold"
+>xterm</B
+> window by
+entering <B
+CLASS="emphasis.bold"
+>exit</B
+> at the shell prompt.</P
+><P
+CLASS="para"
+>Using the program's own &quot;quit&quot; command gives the program time to clean up
+and shut down gracefully.
+On the other hand, the <B
+CLASS="emphasis.bold"
+>Close</B
+> item on the <B
+CLASS="emphasis.bold"
+>mwm</B
+> window menu
+can interrupt and kill a program before it's ready.
+If, however, a program doesn't have its own &quot;quit&quot; command, use <B
+CLASS="emphasis.bold"
+>Close</B
+>
+on the window menu.</P
+><P
+CLASS="para"
+>If any icons are running programs that have their own &quot;quit&quot; command,
+open the icons into windows and use the &quot;quit&quot; commands.</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+>Quit the controlling program.</P
+><P
+CLASS="para"
+>After X shuts down, you may get a UNIX shell prompt.
+If you do, you can log out by entering <B
+CLASS="emphasis.bold"
+>exit</B
+>.
+If you simply get another login box from <B
+CLASS="emphasis.bold"
+>xdm</B
+>
+(as in <A
+CLASS="xref"
+HREF="ch02_02.htm#LUX-CH-2-FIG-1"
+TITLE="Some possibilities"
+>Figure 2.2</A
+>), you're done.</P
+></LI
+></OL
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-1423"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1424"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1425"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-1426"
+></A
+></P
+></DIV
+><DIV
+CLASS="htmlnav"
+><P
+></P
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch02_06.htm"
+TITLE="2.6 Other X Clients"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 2.6 Other X Clients"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="book"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"
+><IMG
+SRC="../gifs/txthome.gif"
+ALT="Learning the Unix Operating System"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="CHAPTER"
+HREF="ch03_01.htm"
+TITLE="3. Your UNIX Account "
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 3. Your UNIX Account "
+BORDER="0"></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+>2.6 Other X Clients</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="index"
+HREF="index/idx_0.htm"
+TITLE="Book Index"
+><IMG
+SRC="../gifs/index.gif"
+ALT="Book Index"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+>3. Your UNIX Account </TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><IMG
+SRC="../gifs/smnavbar.gif"
+USEMAP="#map"
+BORDER="0"
+ALT="The UNIX CD Bookshelf Navigation"><MAP
+NAME="map"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,73,21"
+HREF="../index.htm"
+ALT="The UNIX CD Bookshelf"><AREA
+SHAPE="RECT"
+COORDS="74,0,163,21"
+HREF="../upt/index.htm"
+ALT="UNIX Power Tools"><AREA
+SHAPE="RECT"
+COORDS="164,0,257,21"
+HREF="../unixnut/index.htm"
+ALT="UNIX in a Nutshell"><AREA
+SHAPE="RECT"
+COORDS="258,0,321,21"
+HREF="../vi/index.htm"
+ALT="Learning the vi Editor"><AREA
+SHAPE="RECT"
+COORDS="322,0,378,21"
+HREF="../sedawk/index.htm"
+ALT="sed &amp; awk"><AREA
+SHAPE="RECT"
+COORDS="379,0,438,21"
+HREF="../ksh/index.htm"
+ALT="Learning the Korn Shell"><AREA
+SHAPE="RECT"
+COORDS="439,0,514,21"
+HREF="index.htm"
+ALT="Learning the UNIX Operating System"></MAP
+></DIV
+></BODY
+></HTML
+>

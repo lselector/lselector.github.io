@@ -1,0 +1,938 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<title>Глава 4 Типы</title>
+</head>
+
+<body LINK="#0000ff">
+<font FACE="Arial" SIZE="6"><b>
+
+<p>Глава 4 Типы</b></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">В этой главе вы познакомитесь со всеми
+основными типами языка</font><font SIZE="2"> Java </font><font
+FACE="Times New Roman" SIZE="2">и увидите, как надо объявлять
+переменные, присваивать им значения и
+использовать выражения со смешанными типами.</font><font
+SIZE="2"> </font><font FACE="Times New Roman" SIZE="2">В данной главе мы и
+обсудим простые типы языка </font><font SIZE="2">Java,</font><font
+FACE="Times New Roman" SIZE="2"> оставив сложные типы до <a
+HREF="07.htm">главы 7</a></font><font SIZE="2">.</p>
+</font><font FACE="Arial" SIZE="4"><b>
+
+<p>Простые типы</b></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">Простые типы в </font><font SIZE="2">Java</font><font
+FACE="Times New Roman" SIZE="2"> не являются
+объектно-ориентированными, они аналогичны
+простым типам большинства традиционных языков
+программирования. В</font><font SIZE="2"> Java</font><font
+FACE="Times New Roman" SIZE="2"> имеется восемь простых типов:
+—</font><font SIZE="2"> byte, short, int, long, char, float, double</font><font
+FACE="Times New Roman" SIZE="2"> и</font><font SIZE="2"> boolean.</font><font
+FACE="Times New Roman" SIZE="2"> Их можно разделить на четыре
+группы:</p>
+
+<ol>
+  <li>Целые. К ним относятся типы</font><font SIZE="2"> byte, short, int</font><font
+    FACE="Times New Roman" SIZE="2"> и</font><font SIZE="2"> long.</font><font
+    FACE="Times New Roman" SIZE="2"> Эти типы предназначены для
+    целых чисел</font><font SIZE="2"> </font><font FACE="Times New Roman" SIZE="2">со
+    знаком.</li>
+  <li>Типы с плавающей точкой —</font><font SIZE="2"> float</font><font
+    FACE="Times New Roman" SIZE="2"> и</font><font SIZE="2"> double.</font><font
+    FACE="Times New Roman" SIZE="2"> Они служат для представления
+    чисел, имеющих дробную часть.</li>
+  <li>Символьный тип</font><font SIZE="2"> char.</font><font
+    FACE="Times New Roman" SIZE="2"> Этот тип предназначен для
+    представления элементов из таблицы символов,
+    например, букв или цифр.</li>
+  <li>Логический тип</font><font SIZE="2"> boolean.</font><font
+    FACE="Times New Roman" SIZE="2"> Это специальный тип,
+    используемый для представления логических
+    величин.</li>
+</ol>
+
+<p ALIGN="JUSTIFY">В</font><font SIZE="2"> Java,</font><font FACE="Times New Roman"
+SIZE="2"> в отличие от некоторых других языков,
+отсутствует автоматическое приведение типов.
+Несовпадение типов приводит не к предупреждению
+при трансляции, а к сообщению об ошибке. Для
+каждого типа строго определены наборы
+допустимых значений и разрешенных операций. </font><font
+FACE="Arial"><b></p>
+
+<p>Целые числа</b></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">В языке</font><font SIZE="2"> Java</font><font
+FACE="Times New Roman" SIZE="2"> понятие беззнаковых чисел
+отсутствует. Все числовые типы этого языка —
+знаковые. Например, если значение переменной
+типа</font><font SIZE="2"> byte</font><font FACE="Times New Roman" SIZE="2">
+равно в шестнадцатиричном виде 0х80, то это —
+число -1.</font><font FACE="Arial" SIZE="2"></p>
+
+<p>ЗАМЕЧАНИЕ</p>
+
+<p ALIGN="JUSTIFY">Единственная реальная причина
+использования беззнаковых чисел — это
+использование иных, по сравнению со знаковыми
+числами, правил манипуляций с битами при
+выполнении операций сдвига. Пусть, например,
+требуется сдвинуть вправо битовый массив mask,
+хранящийся в целой переменной и избежать при
+этом расширения знакового разряда, заполняющего
+старшие биты единицами. Стандартный способ
+выполнения этой задачи в С — ((unsigned) mask) &gt;&gt; 2. В Java
+для этой цели введен новый оператор беззнакового
+сдвига вправо. Приведенная выше операция
+записывается с его помощью в виде mask&gt;&gt;&gt;2.
+Детально мы обсудим все операторы в следующей
+главе.</font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">Отсутствие в</font><font SIZE="2"> Java</font><font
+FACE="Times New Roman" SIZE="2"> беззнаковых чисел вдвое
+сокращает количество целых типов. В языке
+имеется 4 целых типа, занимающих 1, 2, 4 и 8 байтов в
+памяти. Для каждого типа —</font><font SIZE="2"> byte, short, int</font><font
+FACE="Times New Roman" SIZE="2"> и</font><font SIZE="2"> long,</font><font
+FACE="Times New Roman" SIZE="2"> есть свои естественные области
+применения.</font><font FACE="Arial" SIZE="2"><b></p>
+
+<p>byte</b></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">Тип</font><font SIZE="2"> byte</font><font FACE="Times New Roman"
+SIZE="2"> — это знаковый 8-битовый тип. Его диапазон —
+от -128 до 127. Он лучше всего подходит для хранения
+произвольного потока байтов, загружаемого из
+сети или из файла.</font><font FACE="Courier New" SIZE="2"> </p>
+<i><b>
+
+<p ALIGN="JUSTIFY">byte b;</p>
+
+<p>byte с = 0х55;</b></i></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">Если речь не идет о манипуляциях с
+битами, использования типа</font><font SIZE="2"> byte, </font><font
+FACE="Times New Roman" SIZE="2">как правило, следует избегать.
+Для нормальных целых чисел, используемых в
+качестве счетчиков и в арифметических
+выражениях, гораздо лучше подходит тип</font><font
+SIZE="2"> int.</font><font FACE="Arial" SIZE="2"><b></p>
+
+<p>short</b></font><font SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">short</font><font FACE="Times New Roman" SIZE="2"> — это
+знаковый 16-битовый тип. Его диапазон — от -32768 до
+32767. Это, вероятно, наиболее редко используемый в</font><font
+SIZE="2"> Java</font><font FACE="Times New Roman" SIZE="2"> тип, поскольку
+он определен, как тип, в котором старший байт
+стоит первым. </font><font FACE="Courier New" SIZE="2"><i><b></p>
+
+<p>short s;</p>
+
+<p>short t = Ox55aa;</b></i></font><font FACE="Arial" SIZE="2"></p>
+
+<p>ЗАМЕЧАНИЕ</font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">Случилось так, что на ЭВМ различных
+архитектур порядок байтов в слове различается,
+например, старший байт в двухбайтовом целом </font><font
+SIZE="2">short</font><font FACE="Times New Roman" SIZE="2"> может храниться
+первым, а может и последним. Первый случай имеет
+место в архитектурах</font><font SIZE="2"> SPARC</font><font
+FACE="Times New Roman" SIZE="2"> и</font><font SIZE="2"> Power PC,</font><font
+FACE="Times New Roman" SIZE="2"> второй — для микропроцессоров</font><font
+SIZE="2"> Intel x86.</font><font FACE="Times New Roman" SIZE="2">
+Переносимость программ</font><font SIZE="2"> Java</font><font
+FACE="Times New Roman" SIZE="2"> требует, чтобы целые значения
+одинаково были представлены на ЭВМ разных
+архитектур.</font><font FACE="Arial" SIZE="2"><b></p>
+
+<p>int</b></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p>Тип</font><font SIZE="2"> int</font><font FACE="Times New Roman" SIZE="2">
+служит для представления 32-битных целых чисел со
+знаком. Диапазон допустимых для этого типа
+значений — от -2147483648 до 2147483647. Чаще всего этот тип
+данных используется для хранения обычных целых
+чисел со значениями, достигающими двух
+миллиардов. Этот тип прекрасно подходит для
+использования при обработке массивов и для
+счетчиков. В ближайшие годы этот тип будет
+прекрасно соответствовать машинным словам не
+только 32-битовых процессоров, но и 64-битовых с
+поддержкой быстрой конвейеризации для
+выполнения 32-битного кода в режиме
+совместимости. Всякий раз, когда в одном
+выражении фигурируют переменные типов</font><font
+SIZE="2"> byte, short, int</font><font FACE="Times New Roman" SIZE="2"> и целые
+литералы, тип всего выражения перед завершением
+вычислений приводится к</font><font SIZE="2"> int.</font><b><font
+FACE="Courier New" SIZE="2"><i></p>
+
+<p>int i;</p>
+
+<p>int j = 0x55aa0000;</i></font><font FACE="Arial" SIZE="2"></p>
+
+<p>long</font></b><font FACE="Times New Roman" SIZE="2"></p>
+
+<p>Тип</font><font SIZE="2"> long</font><font FACE="Times New Roman" SIZE="2">
+предназначен для представления 64-битовых чисел
+со знаком. Его диапазон допустимых значений
+достаточно велик даже для таких задач, как
+подсчет числа атомов во вселенной. </font><font
+FACE="Courier New" SIZE="2"><i><b></p>
+
+<p>long m;</p>
+
+<p>long n = Ох55аа000055аа0000;</b></i></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">Не надо отождествлять <i>разрядность</i>
+целочисленного типа с занимаемым им количеством
+памяти. Исполняющий код</font><font SIZE="2"> Java</font><font
+FACE="Times New Roman" SIZE="2"> может использовать для ваших
+переменных то количество памяти, которое сочтет
+нужным, лишь бы только их поведение
+соответствовало <i>поведению</i> типов, заданных
+вами. Фактически, нынешняя реализация</font><font SIZE="2">
+Java</font><font FACE="Times New Roman" SIZE="2"> из соображений
+эффективности хранит переменные типа</font><font SIZE="2">
+byte</font><font FACE="Times New Roman" SIZE="2"> и</font><font SIZE="2"> short</font><font
+FACE="Times New Roman" SIZE="2"> в виде 32-битовых значений,
+поскольку этот размер соответствует машинному
+слову большинства современных компьютеров</font><font
+SIZE="2"> (</font><font FACE="Times New Roman" SIZE="2">СМ – 8 бит, 8086 – 16
+бит, 80386</font><font SIZE="2">/486 – 32 </font><font FACE="Times New Roman"
+SIZE="2">бит, </font><font SIZE="2">Pentium – 64 </font><font FACE="Times New Roman"
+SIZE="2">бит</font><font SIZE="2">). </p>
+</font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Ниже приведена таблица разрядностей и
+допустимых диапазонов для различных типов целых
+чисел. </font></p>
+
+<table BORDER="1" CELLSPACING="1" CELLPADDING="2" WIDTH="510">
+  <tr>
+    <td WIDTH="11%" VALIGN="MIDDLE"><font FACE="Times New Roman" SIZE="2">Имя </font></td>
+    <td WIDTH="17%" VALIGN="MIDDLE"><font FACE="Times New Roman" SIZE="2">Разрядность</font></td>
+    <td WIDTH="72%" VALIGN="MIDDLE"><font FACE="Times New Roman" SIZE="2">Диапазон</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="11%" VALIGN="MIDDLE"><font SIZE="2">long </font></td>
+    <td WIDTH="17%" VALIGN="MIDDLE"><font SIZE="2">64</font></td>
+    <td WIDTH="72%" VALIGN="MIDDLE"><font SIZE="2">-9, 223, 372, 036, 854, 775, 808.. 9, 223,
+    372, 036, 854, 775, 807</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="11%" VALIGN="MIDDLE"><font SIZE="2">Int</font></td>
+    <td WIDTH="17%" VALIGN="MIDDLE"><font SIZE="2">32</font></td>
+    <td WIDTH="72%" VALIGN="MIDDLE"><font SIZE="2">-2, 147, 483, 648.. 2, 147, 483, 647</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="11%" VALIGN="MIDDLE"><font SIZE="2">Short </font></td>
+    <td WIDTH="17%" VALIGN="MIDDLE"><font SIZE="2">16</font></td>
+    <td WIDTH="72%" VALIGN="MIDDLE"><font SIZE="2">-32, 768.. 32, 767</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="11%" VALIGN="MIDDLE"><font SIZE="2">byte </font></td>
+    <td WIDTH="17%" VALIGN="MIDDLE"><font SIZE="2">8</font></td>
+    <td WIDTH="72%" VALIGN="MIDDLE"><font SIZE="2">-128.. 127</font></td>
+  </tr>
+</table>
+<font FACE="Arial"><b>
+
+<p>Числа с плавающей точкой</b></font><font FACE="Times New Roman"
+SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">Числа с плавающей точкой, часто
+называемые в других языках вещественными
+числами, используются при вычислениях, в которых
+требуется использование дробной части. В</font><font
+SIZE="2"> Java</font><font FACE="Times New Roman" SIZE="2"> реализован
+стандартный</font><font SIZE="2"> (IEEE-754)</font><font FACE="Times New Roman"
+SIZE="2"> набор типов для чисел с плавающей точкой —</font><font
+SIZE="2"> float</font><font FACE="Times New Roman" SIZE="2"> и</font><font SIZE="2">
+double</font><font FACE="Times New Roman" SIZE="2"> и операторов для
+работы с ними. Характеристики этих типов
+приведены в таблице.</font></p>
+
+<table BORDER="1" CELLSPACING="1" CELLPADDING="2" WIDTH="498">
+  <tr>
+    <td WIDTH="30%" VALIGN="TOP" HEIGHT="24"><font FACE="Times New Roman" SIZE="2">Имя</font></td>
+    <td WIDTH="30%" VALIGN="TOP" HEIGHT="24"><font FACE="Times New Roman" SIZE="2">Разрядность</font></td>
+    <td WIDTH="39%" VALIGN="TOP" HEIGHT="24"><font FACE="Times New Roman" SIZE="2">Диапазон</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="30%" VALIGN="TOP" HEIGHT="28"><font SIZE="2">double</font></td>
+    <td WIDTH="30%" VALIGN="TOP" HEIGHT="28"><font SIZE="2">64 </font></td>
+    <td WIDTH="39%" VALIGN="TOP" HEIGHT="28"><font FACE="Times New Roman" SIZE="2">1.
+    7е-308.. 1. 7е+ 308 </font></td>
+  </tr>
+  <tr>
+    <td WIDTH="30%" VALIGN="TOP" HEIGHT="26"><font SIZE="2">float</font></td>
+    <td WIDTH="30%" VALIGN="TOP" HEIGHT="26"><font SIZE="2">32</font></td>
+    <td WIDTH="39%" VALIGN="TOP" HEIGHT="26"><font FACE="Times New Roman" SIZE="2">3.
+    4е-038.. 3. 4е+ 038</font></td>
+  </tr>
+</table>
+<font FACE="Arial" SIZE="2"><b>
+
+<p>float</b></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">В переменных с обычной, или <i>одинарной
+точностью,</i> объявляемых с помощью ключевого
+слова</font><font SIZE="2"> float,</font><font FACE="Times New Roman" SIZE="2">
+для хранения вещественного значения
+используется 32 бита. </font><b><font FACE="Courier New" SIZE="2"><i></p>
+
+<p>float f;</p>
+
+<p>float f2 = 3. 14F; // обратите внимание на F, т.к. по
+умолчанию все литералы double</p>
+</i></font><font FACE="Arial" SIZE="2">
+
+<p>double</font></b><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">В случае <i>двойной точности,</i>
+задаваемой с помощью ключевого слова double, дл<i>я</i>
+хранения значений используется 64 бита. Все <i>трансцендентные</i>
+математические функции, такие, как</font><font SIZE="2"> sin,
+cos, sqrt, </font><font FACE="Times New Roman" SIZE="2">возвращают
+результат типа</font><font SIZE="2"> double. </font><b><i><font
+FACE="Courier New" SIZE="2"></p>
+
+<p>double d;</font><font FACE="Courier New" SIZE="1"></p>
+
+<p>double pi = 3. 14159265358979323846;</font></i><font FACE="Arial"></p>
+
+<p>Приведение типа</font></b><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">Приведение типов</font><font SIZE="2"> (type casting)
+—</font><font FACE="Times New Roman" SIZE="2"> одно из неприятных
+свойств C++, тем не менее приведение типов
+сохранено и в языке</font><font SIZE="2"> Java.</font><font
+FACE="Times New Roman" SIZE="2"> Иногда возникают ситуации,
+когда у вас есть величина какого-то
+определенного типа, а вам нужно ее присвоить
+переменной другого типа. Для некоторых типов это
+можно проделать и без приведения типа, в таких
+случаях говорят об автоматическом
+преобразовании типов. В</font><font SIZE="2"> Java</font><font
+FACE="Times New Roman" SIZE="2"> автоматическое преобразование
+возможно только в том случае, когда точности
+представления чисел переменной-приемника
+достаточно для хранения исходного значения.
+Такое преобразование происходит, например, при
+занесении литеральной константы или значения
+переменной типа</font><font SIZE="2"> byte</font><font
+FACE="Times New Roman" SIZE="2"> или</font><font SIZE="2"> short</font><font
+FACE="Times New Roman" SIZE="2"> в переменную типа</font><font SIZE="2">
+int.</font><font FACE="Times New Roman" SIZE="2"> Это называется <i>расширением</font><font
+SIZE="2"> (widening)</font></i><font FACE="Times New Roman" SIZE="2"> или <i>повышением</font><font
+SIZE="2"> (promotion),</font></i><font FACE="Times New Roman" SIZE="2"> поскольку
+тип меньшей разрядности расширяется (повышается)
+до большего совместимого типа. Размера типа</font><font
+SIZE="2"> int</font><font FACE="Times New Roman" SIZE="2"> всегда
+достаточно для хранения чисел из диапазона,
+допустимого для типа </font><font SIZE="2">byte,</font><font
+FACE="Times New Roman" SIZE="2"> поэтому в подобных ситуациях
+оператора явного приведения типа не требуется.
+Обратное в большинстве случаев неверно, поэтому
+для занесения значения типа int в переменную типа</font><font
+SIZE="2"> byte</font><font FACE="Times New Roman" SIZE="2"> необходимо
+использовать оператор приведения типа. Эту
+процедуру иногда называют <i>сужением</font><font SIZE="2">
+(narrowing),</font></i><font FACE="Times New Roman" SIZE="2"> поскольку вы
+явно сообщаете транслятору, что величину
+необходимо преобразовать, чтобы она уместилась в
+переменную нужного вам типа. Для приведения
+величины к определенному типу перед ней нужно
+указать этот тип, заключенный в круглые скобки. В
+приведенном ниже фрагменте кода демонстрируется
+приведение типа источника (переменной типа int) к
+типу приемника (переменной типа </font><font SIZE="2">byte).</font><font
+FACE="Times New Roman" SIZE="2"> Если бы при такой операции
+целое значение выходило за границы допустимого
+для типа</font><font SIZE="2"> byte</font><font FACE="Times New Roman" SIZE="2">
+диапазона, оно было бы уменьшено путем деления по
+модулю на допустимый для</font><font SIZE="2"> byte</font><font
+FACE="Times New Roman" SIZE="2"> диапазон (результат деления по
+модулю на число — это остаток от деления на это
+число).</font><b><font FACE="Courier New" SIZE="2"><i></p>
+
+<p>int a = 100;</p>
+
+<p>byte b = (byte) a;</i></font><font FACE="Arial" SIZE="2"></p>
+
+<p>Автоматическое преобразование типов в
+выражениях</font></b><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">Когда вы вычисляете значение
+выражения, точность, требуемая для хранения
+промежуточных результатов, зачастую должна быть
+выше, чем требуется для представления
+окончательного результата. </font><font FACE="Courier New"
+SIZE="2"><i><b></p>
+
+<p>byte a = 40;</p>
+
+<p>byte b = 50;</p>
+
+<p>byte с = 100;</p>
+
+<p>int d = a* b / с;</b></i></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">Результат промежуточного выражения (а*
+b) вполне может выйти за диапазон допустимых для
+типа</font><font SIZE="2"> byte</font><font FACE="Times New Roman" SIZE="2">
+значений. Именно поэтому</font><font SIZE="2"> Java </font><font
+FACE="Times New Roman" SIZE="2">автоматически повышает тип
+каждой части выражения до типа int, так что для
+промежуточного результата (а* b) хватает места. </font><font
+SIZE="2"></p>
+</font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Автоматическое преобразование типа
+иногда может оказаться причиной неожиданных
+сообщений транслятора об ошибках. Например,
+показанный ниже код, хотя и выглядит вполне
+корректным, приводит к сообщению об ошибке на
+фазе трансляции. В нем мы пытаемся записать
+значение 50* 2, которое должно прекрасно
+уместиться в тип</font><font SIZE="2"> byte,</font><font
+FACE="Times New Roman" SIZE="2"> в байтовую переменную. Но из-за
+автоматического преобразования типа результата
+в int мы получаем сообщение об ошибке от
+транслятора — ведь при занесении int в</font><font SIZE="2">
+byte</font><font FACE="Times New Roman" SIZE="2"> может произойти
+потеря точности. </font><font FACE="Courier New" SIZE="2"><i><b></p>
+
+<p>byte b = 50;</p>
+
+<p>b = b* 2;</b></i></p>
+
+<p>^ Incompatible type for =. Explicit cast needed to convert int to byte.</p>
+
+<p>(Несовместимый тип для =. Необходимо явное
+преобразование int в byte)</p>
+
+<p>Исправленный текст :</p>
+
+<p><i><b>&nbsp;</p>
+
+<p>byte b = 50;</p>
+
+<p>b = (byte) (b* 2);</b></i></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p>что приводит к занесению в b правильного
+значения 100.</p>
+
+<p ALIGN="JUSTIFY">Если в выражении используются
+переменные типов</font><font SIZE="2"> byte, short</font><font
+FACE="Times New Roman" SIZE="2"> и int, то во избежание
+переполнения тип всего выражения автоматически
+повышается до</font><font SIZE="2"> int.</font><font FACE="Times New Roman"
+SIZE="2"> Если же в выражении тип хотя бы одной
+переменной —</font><font SIZE="2"> long,</font><font FACE="Times New Roman"
+SIZE="2"> то и тип всего выражения тоже повышается до</font><font
+SIZE="2"> long. He </font><font FACE="Times New Roman" SIZE="2">забывайте, что
+все целые литералы, в конце которых не стоит
+символ </font><font SIZE="2">L</font><font FACE="Times New Roman" SIZE="2"> (или
+1), имеют тип</font><font SIZE="2"> int.</p>
+</font><font FACE="Times New Roman" SIZE="2">
+
+<p ALIGN="JUSTIFY">Если выражение содержит операнды типа</font><font
+SIZE="2"> float,</font><font FACE="Times New Roman" SIZE="2"> то и тип всего
+выражения автоматически повышается до</font><font
+SIZE="2"> float.</font><font FACE="Times New Roman" SIZE="2"> Если же хотя бы
+один из операндов имеет тип</font><font SIZE="2"> double,</font><font
+FACE="Times New Roman" SIZE="2"> то тип всего выражения
+повышается до</font><font SIZE="2"> double.</font><font FACE="Times New Roman"
+SIZE="2"> По умолчанию</font><font SIZE="2"> Java</font><font
+FACE="Times New Roman" SIZE="2"> рассматривает все литералы с
+плавающей точкой, как имеющие тип</font><font SIZE="2">
+double.</font><font FACE="Times New Roman" SIZE="2"> Приведенная ниже
+программа показывает, как повышается тип каждой
+величины в выражении для достижения
+соответствия со вторым операндом каждого
+бинарного оператора.</font><font SIZE="2"></p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>class Promote {</p>
+
+<p>public static void main (String args []) { byte b = 42;</p>
+
+<p>char с = 'a';</p>
+
+<p>short s = 1024;</p>
+
+<p>int i = 50000;</p>
+
+<p>float f = 5.67f;</p>
+
+<p>double d =.1234;</p>
+
+<p>double result = (f* b) + (i/ c) - (d* s);</p>
+
+<p>System. out. println ((f* b)+ &quot;+ &quot;+ (i / с)+ &quot; - &quot; + (d* s));</p>
+
+<p>System. out. println (&quot;result = &quot;+ result);</p>
+
+<p>}</p>
+
+<p>} </b></i></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">Подвыражение</font><font SIZE="2"> f* b —</font><font
+FACE="Times New Roman" SIZE="2"> это число типа</font><font SIZE="2"> float,</font><font
+FACE="Times New Roman" SIZE="2"> умноженное на число типа</font><font
+SIZE="2"> byte.</font><font FACE="Times New Roman" SIZE="2"> Поэтому его тип
+автоматически повышается до</font><font SIZE="2"> float.</font><font
+FACE="Times New Roman" SIZE="2"> Тип следующего подвыражения</font><font
+SIZE="2"> i /</font><font FACE="Times New Roman" SIZE="2"> с ( int, деленный на</font><font
+SIZE="2"> char)</font><font FACE="Times New Roman" SIZE="2"> повышается до </font><font
+SIZE="2">int.</font><font FACE="Times New Roman" SIZE="2"> Аналогично этому
+тип подвыражения</font><font SIZE="2"> d* s (double,</font><font
+FACE="Times New Roman" SIZE="2"> умноженный на </font><font SIZE="2">short)</font><font
+FACE="Times New Roman" SIZE="2"> повышается до</font><font SIZE="2"> double.</font><font
+FACE="Times New Roman" SIZE="2"> На следующем шаге вычислений
+мы имеем дело с тремя промежуточными
+результатами типов</font><font SIZE="2"> float, int</font><font
+FACE="Times New Roman" SIZE="2"> и</font><font SIZE="2"> double. </font><font
+FACE="Times New Roman" SIZE="2">Сначала при сложении первых
+двух тип int повышается до</font><font SIZE="2"> float</font><font
+FACE="Times New Roman" SIZE="2"> и получается результат типа</font><font
+SIZE="2"> float.</font><font FACE="Times New Roman" SIZE="2"> При вычитании
+из него значения типа </font><font SIZE="2">double</font><font
+FACE="Times New Roman" SIZE="2"> тип результата повышается до</font><font
+SIZE="2"> double.</font><font FACE="Times New Roman" SIZE="2"> Окончательный
+результат всего выражения — значение типа</font><font
+SIZE="2"> double.</p>
+</font><font FACE="Times New Roman"><b>
+
+<p>Символы</b></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">Поскольку в</font><font SIZE="2"> Java </font><font
+FACE="Times New Roman" SIZE="2">для представления символов в
+строках используется кодировка</font><font SIZE="2"> Unicode, </font><font
+FACE="Times New Roman" SIZE="2">разрядность типа</font><font SIZE="2"> char</font><font
+FACE="Times New Roman" SIZE="2"> в этом языке — 16 бит. В нем
+можно хранить десятки тысяч символов
+интернационального набора символов</font><font SIZE="2">
+Unicode. </font><font FACE="Times New Roman" SIZE="2">Диапазон типа</font><font
+SIZE="2"> char — 0..65536. Unicode —</font><font FACE="Times New Roman" SIZE="2">
+это объединение десятков кодировок символов, он
+включает в себя латинский, греческий, арабский
+алфавиты, кириллицу и многие другие наборы
+символов.</font><font FACE="Courier New" SIZE="2"><i><b></p>
+
+<p>char c;</p>
+
+<p>char c2 = Oxf132;</p>
+
+<p>char c3 = ' a';</p>
+
+<p>char c4 = '\n';</b></i></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">Хотя величины типа</font><font SIZE="2"> char</font><font
+FACE="Times New Roman" SIZE="2"> и не используются, как целые
+числа, вы можете оперировать с ними так, как если
+бы они были целыми. Это дает вам возможность
+сложить два символа вместе, или инкрементировать
+значение символьной переменной. В приведенном
+ниже фрагменте кода мы, располагая базовым
+символом, прибавляем к нему целое число, чтобы
+получить символьное представление нужной нам
+цифры.</font><font FACE="Courier New" SIZE="2"><i><b></p>
+
+<p>int three = 3;</p>
+
+<p>char one = '1';</p>
+
+<p>char four = (char) (three+ one);</b></i></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">В результате выполнения этого кода в
+переменную</font><font SIZE="2"> four</font><font FACE="Times New Roman"
+SIZE="2"> заносится символьное представление нужной
+нам цифры — '4'. Обратите внимание — тип
+переменной</font><font SIZE="2"> one</font><font FACE="Times New Roman" SIZE="2">
+в приведенном выше выражении повышается до типа
+int, так что перед занесением результата в
+переменную</font><font SIZE="2"> four</font><font FACE="Times New Roman"
+SIZE="2"> приходится использовать оператор явного
+приведения типа.</font><font FACE="Arial"><b></p>
+
+<p>Тип boolean</b></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">В языке</font><font SIZE="2"> Java</font><font
+FACE="Times New Roman" SIZE="2"> имеется простой тип</font><font SIZE="2">
+boolean,</font><font FACE="Times New Roman" SIZE="2"> используемый для
+хранения логических значений. Переменные этого
+типа могут принимать всего два значения —</font><font
+SIZE="2"> true</font><font FACE="Times New Roman" SIZE="2"> (истина) и</font><font
+SIZE="2"> false</font><font FACE="Times New Roman" SIZE="2"> (ложь).</font><font
+SIZE="2"> </font><font FACE="Times New Roman" SIZE="2">Значения типа</font><font
+SIZE="2"> boolean</font><font FACE="Times New Roman" SIZE="2"> возвращаются в
+качестве результата всеми операторами
+сравнения, например (а &lt;</font><font SIZE="2"> b) —</font><font
+FACE="Times New Roman" SIZE="2"> об этом разговор пойдет в
+следующей главе. Кроме того, в <a HREF="06.htm">главе 6</a>
+вы узнаете, что</font><font SIZE="2"> boolean —</font><font
+FACE="Times New Roman" SIZE="2"> это тип, <i>требуемый</i> всеми
+условными операторами управления — такими, как</font><font
+SIZE="2"> if, while, do.</font><b><font FACE="Courier New" SIZE="2"><i></p>
+
+<p>boolean done = false;</i></font><font FACE="Arial"></p>
+
+<p>Завершая разговор о простых типах...</font></b><font
+FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">Теперь, когда мы познакомились со
+всеми простыми типами, включая целые и
+вещественные числа, символы и логические
+переменные, давайте попробуем собрать всю
+информацию вместе. В приведенном ниже примере
+создаются переменные каждого из простых типов и
+выводятся значения этих переменных.</font><font SIZE="2"></p>
+</font><font FACE="Courier New" SIZE="2"><i><b>
+
+<p>class SimpleTypes {</p>
+
+<p>public static void main(String args []) {</p>
+
+<p>byte b = 0х55;</p>
+
+<p>short s = 0x55ff;</p>
+
+<p>int i = 1000000;</p>
+
+<p>long l = 0xffffffffL;</p>
+
+<p>char с = ' a' ;</p>
+
+<p>float f = .25f;</p>
+
+<p>double d = .00001234;</p>
+
+<p>boolean bool = true;</p>
+
+<p>System.out.println(&quot;byte b = &quot; + b);</p>
+
+<p>System.out.println(&quot;short s = &quot; +s);</p>
+
+<p>System.out.println(&quot;int i = &quot; + i);</p>
+
+<p>System.out.println(&quot;long l = &quot; + l);</p>
+
+<p>System.out.println(&quot;char с = &quot; + с);</p>
+
+<p>System.out.println(&quot;float f = &quot; + f);</p>
+
+<p>System.out.println(&quot;double d = &quot; + d);</p>
+
+<p>System.out.println(&quot;boolean bool = &quot; + bool);</p>
+
+<p>} }</b></i></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p>Запустив эту программу, вы должны получить
+результат, показанный ниже:</font><font FACE="Courier New" SIZE="2"><i><b></p>
+
+<p>С: \&gt; java SimpleTypes </b></i></p>
+
+<p>byte b = 85 </p>
+
+<p>short s = 22015 </p>
+
+<p>int i = 1000000 </p>
+
+<p>long l = 4294967295 </p>
+
+<p>char с = а </p>
+
+<p>float f = 0.25 </p>
+
+<p>double d = 1.234e-005 </p>
+
+<p>boolean bool = true</font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">Обратите внимание на то, что целые
+числа печатаются в десятичном представлении,
+хотя мы задавали значения некоторых из них в
+шестнадцатиричном формате. В <a HREF="12.htm">главе 12</a>
+вы узнаете, как можно форматировать выводимые
+числовые значения.</font><font FACE="Arial" SIZE="4"><b></p>
+
+<p>Массивы</b></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">Для объявления типа массива
+используются квадратные скобки. В приведенной
+ниже строке объявляется переменная</font><font SIZE="2">
+month_days,</font><font FACE="Times New Roman" SIZE="2"> тип которой —
+“массив целых чисел типа int”.</font><font FACE="Courier New"
+SIZE="2"><i><b></p>
+
+<p>int month_days [];</b></i></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">Для того, чтобы зарезервировать память
+под массив, используется специальный оператор</font><font
+SIZE="2"> new.</font><font FACE="Times New Roman" SIZE="2"> В приведенной
+ниже строке кода с помощью оператора</font><font SIZE="2">
+new</font><font FACE="Times New Roman" SIZE="2"> массиву</font><font SIZE="2">
+month_days</font><font FACE="Times New Roman" SIZE="2"> выделяется память
+для хранения двенадцати целых чисел.</font><font
+FACE="Courier New" SIZE="2"><i><b></p>
+
+<p>month_days = new int [12];</b></i></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">Итак, теперь</font><font SIZE="2"> month_days —</font><font
+FACE="Times New Roman" SIZE="2"> это ссылка на двенадцать целых
+чисел. Ниже приведен пример, в котором создается
+массив, элементы которого содержат число дней в
+месяцах года (невисокосного).</font><font FACE="Courier New"
+SIZE="2"><i><b></p>
+
+<p>class Array {</p>
+
+<p>public static void main (String args []) {</p>
+
+<p>int month_days[];</p>
+
+<p>month_days = new int[12];</p>
+
+<p>month_days[0] = 31; </p>
+
+<p>month_days[1] = 28;</p>
+
+<p>month_days[2] = 31; </p>
+
+<p>month_days[3] = 30; </p>
+
+<p>month_days[4] = 31; </p>
+
+<p>month_days[5] = 30; </p>
+
+<p>month_days[6] = 31; </p>
+
+<p>month_days[7] = 31; </p>
+
+<p>month_days[8] = 30; </p>
+
+<p>month_days[9] = 31; </p>
+
+<p>month_days[10] = 30;</p>
+
+<p>month_days[11] = 31;</p>
+
+<p>System.out.println(&quot;April has &quot; + month_days[3] + &quot; days.&quot;);</p>
+
+<p>} }</b></i></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">При запуске эта программа печатает
+количество дней в апреле, как это показано ниже.
+Нумерация элементов массива в</font><font SIZE="2"> Java</font><font
+FACE="Times New Roman" SIZE="2"> начинается с нуля, так что
+число дней в апреле — это</font><font SIZE="2"> month_days [3].</font><font
+FACE="Courier New" SIZE="2"><i><b></p>
+
+<p>С: \&gt; java Array </p>
+
+<p>April has 30 days.</b></i></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">Имеется возможность автоматически
+инициализировать массивы способом, во многом
+напоминающим инициализацию переменных простых
+типов.</font><font SIZE="2"> </font><font FACE="Times New Roman" SIZE="2">Инициализатор
+массива представляет собой список разделенных
+запятыми выражений, заключенный в фигурные
+скобки. Запятые отделяют друг от друга значения
+элементов массива. При таком способе создания
+массив будет содержать ровно столько элементов,
+сколько требуется для хранения значений,
+указанных в списке инициализации.</font><font
+FACE="Courier New" SIZE="2"><i><b></p>
+
+<p>class AutoArray {</p>
+
+<p>public static void main(String args[]) {</p>
+
+<p>int month_days[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };</p>
+
+<p>System.out.println(&quot;April has &quot; + month_days[3] + &quot; days.&quot;);</p>
+
+<p>} }</b></i></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">В результате работы этой программы, вы
+получите точно такой же результат, как и от ее
+более длинной предшественницы.</font><font SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">Java</font><font FACE="Times New Roman" SIZE="2"> строго
+следит за тем, чтобы вы случайно не записали или
+не попытались получить значения, выйдя за
+границы массива. Если же вы попытаетесь
+использовать в качестве индексов значения,
+выходящие за границы массива — отрицательные
+числа либо числа, которые больше или равны
+количеству</font><font SIZE="2"> </font><font FACE="Times New Roman" SIZE="2">элементов
+в массиве, то получите сообщение об ошибке
+времени выполнения. В <a HREF="10.htm">главе 10</a> мы
+подробно расскажем о том, что делать при
+возникновении подобных ошибок.</font><font FACE="Arial"><b></p>
+
+<p>Многомерные массивы</b></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">На самом деле, настоящих многомерных
+массивов в</font><font SIZE="2"> Java</font><font FACE="Times New Roman" SIZE="2">
+не существует. Зато имеются массивы массивов,
+которые ведут себя подобно многомерным массивам,
+за исключением нескольких незначительных
+отличий. Приведенный ниже код создает
+традиционную матрицу из шестнадцати элементов
+типа</font><font SIZE="2"> double,</font><font FACE="Times New Roman" SIZE="2">
+каждый из которых инициализируется нулем.
+Внутренняя реализация этой матрицы — массив
+массивов</font><font SIZE="2"> double.</font><font FACE="Courier New" SIZE="2"><i><b></p>
+
+<p>double matrix [][] = new double [4][4];</b></i></font><font FACE="Times New Roman"
+SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">Следующий фрагмент кода
+инициализирует такое же количество памяти, но
+память под вторую размерность отводится вручную.
+Это сделано для того, чтобы наглядно показать,
+что матрица на самом деле представляет собой
+вложенные массивы.</font><font FACE="Courier New" SIZE="2"><i><b></p>
+
+<p>double matrix [][] = new double [4][];</p>
+
+<p>matrix [0] = new double[4];</p>
+
+<p>matrix[1] = new double[4];</p>
+
+<p>matrix[2] = new double[4], matrix[3] = { 0, 1, 2, 3 };</b></i></font><font
+FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">В следующем примере создается матрица
+размером</font><font SIZE="2"> 4</font><font FACE="Times New Roman" SIZE="2"> на</font><font
+SIZE="2"> 4</font><font FACE="Times New Roman" SIZE="2"> с элементами типа</font><font
+SIZE="2"> double,</font><font FACE="Times New Roman" SIZE="2"> причем ее
+диагональные элементы (те, для которых х==у)
+заполняются единицами, а все остальные</font><font
+SIZE="2"> </font><font FACE="Times New Roman" SIZE="2">элементы остаются
+равными нулю.</font><font FACE="Courier New" SIZE="2"><i><b></p>
+
+<p>class Matrix {</p>
+
+<p>public static void main(String args[]) { double m[][];</p>
+
+<p>m = new double[4][4];</p>
+
+<p>m[0][0] = 1;</p>
+
+<p>m[1][1] = 1;</p>
+
+<p>m[2][2] = 1;</p>
+
+<p>m[3][3] = 1;</p>
+
+<p>System.out.println(m[0][0] +&quot; &quot;+ m[0][1] +&quot; &quot;+ m[0][2] +&quot;
+&quot;+ m[0][3]);</p>
+
+<p>System.out.println(m[1][0] +&quot; &quot;+ m[1][1] +&quot; &quot;+ m[1][2] +&quot;
+&quot;+ m[1][3]);</p>
+
+<p>System.out.println(m[2][0] +&quot; &quot;+ m[2][1] +&quot; &quot;+ m[2][2] +&quot;
+&quot;+ m[2][3]);</p>
+
+<p>System.out.println(m[3][0] +&quot; &quot;+ m[3][1] +&quot; &quot;+ m[3][2] +&quot;
+&quot;+ m[3][3]);</p>
+
+<p>}</p>
+
+<p>} </b></i></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p>Запустив эту программу, вы получите следующий
+результат:</font><font FACE="Courier New" SIZE="2"><i><b></p>
+
+<p>C : \&gt; Java Matrix </p>
+
+<p>1 0 0 0 </p>
+
+<p>0 1 0 0 </p>
+
+<p>0 0 1 0 </p>
+
+<p>0 0 0 1</b></i></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">Обратите внимание — если вы хотите,
+чтобы значение элемента было нулевым, вам не
+нужно его инициализировать, это делается
+автоматически. </p>
+
+<p ALIGN="JUSTIFY">Для задания начальных значений
+массивов существует специальная форма
+инициализатора, пригодная и в многомерном
+случае. В программе, приведенной ниже, создается
+матрица, каждый элемент которой содержит
+произведение номера строки на номер столбца.
+Обратите внимание на тот факт, что внутри
+инициализатора массива можно использовать не
+только литералы, но и выражения.</font><font FACE="Courier New"
+SIZE="2"><i><b></p>
+
+<p>class AutoMatrix {</p>
+
+<p>public static void main(String args[]) { double m[][] = {</p>
+
+<p>{ 0*0, 1*0, 2*0, 3*0 }, { 0*1, 1*1, 2*1, 3*1 }, { 0*2. 1*2, 2*2, 3*2 },</p>
+
+<p>{ 0*3, 1*3. 2*3, 3*3 } }:</p>
+
+<p>System.out.println(m[0][0] +&quot; &quot;+ m[0][1] +&quot; &quot;+ m[0][2] +&quot;
+&quot;+ m[0][3]);</p>
+
+<p>System.out.println(m[1][0] +&quot; &quot;+m[1][1] +&quot; &quot;+ m[1][2] +&quot;
+&quot;+ m[1][3]);</p>
+
+<p>System.out.println(m[2][0] +&quot; &quot;+m[2][1] +&quot; &quot;+ m[2][2] +&quot;
+&quot;+ m[2][3]);</p>
+
+<p>System.out.println(m[3][0] +&quot; &quot;+m[3][1] +&quot; &quot;+ m[3][2] +&quot;
+&quot;+ m[3][3]);</p>
+
+<p>} }</b></i></font><font FACE="Times New Roman" SIZE="2"></p>
+
+<p>Запустив эту программу, вы получите следующий
+результат:</font><b><font FACE="Courier New" SIZE="2"><i></p>
+
+<p>С: \&gt; Java AutoMatrix</p>
+
+<p>0 0 0 0 </p>
+
+<p>0 1 2 3 </p>
+
+<p>0 2 4 6 </p>
+
+<p>0 3 6 9</i></font><font FACE="Arial" SIZE="4"></p>
+
+<p>Знай свои типы</font></b><font FACE="Times New Roman" SIZE="2"></p>
+
+<p ALIGN="JUSTIFY">Теперь вы знаете, как работать с
+восьмью простыми типами языка </font><font SIZE="2">Java.</font><font
+FACE="Times New Roman" SIZE="2"> Вы видели, как нужно создавать
+объекты этих типов и знаете разрядности каждого
+из них. Вы знаете, как эти типы взаимодействуют и
+какие из них подходят для арифметических
+вычислений. Вы познакомились с типом</font><font SIZE="2">
+boolean</font><font FACE="Times New Roman" SIZE="2"> и почувствовали, что
+от символов мало пользы пока нет возможности
+группировать их вместе, образуя слова — к этому
+вопросу мы вернемся в <a HREF="09.htm">главе 9</a>, где
+познакомимся со строками. Мы не обошли своим
+вниманием массивы и видели, как можно создавать
+массивы из массивов. В <a HREF="05.htm">следующей главе</a>
+мы научимся выполнять над всеми этими типами
+различные операции.</font></p>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Description" content="Hadoop noSQL">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>Hadoop noSQL</title>
+<!--
+
+"Description" content="Resume, Hadoop, Hive, HBase, Cassandra, Cloudera, Scala, Spark, SparkSQL, Python, Perl, Actionscript, JavaScript, Sybase, Oracle, Java, Servlet, JSP, XML, XSL, Wireless, Palm, Online Trading, Financial Applications, C/C++, Unix, Solaris, Linux, Sybase, Oracle, DB2, MySQL, CGI, Apache, mod_perl, HTML, DHTML, CSS, SSL, WebLogic, Apache, Dreamweaver, Adobe Photoshop, Algorithmic trading, Financial Databases"
+
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+<style type="text/css">
+<!--
+.style1 {
+	color: #CC0000;
+	font-weight: bold;
+}
+.code {color: #0000FF}
+.comment {color: #669900}
+-->
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<p>
+<p class="sectionheader"><a NAME="intro"></a>Intro ------------------------------</p>
+  <table border="1" cellspacing="0" cellpadding="5">
+    <tr>
+      <td width="49" valign="top">Hadoop</td>
+      <td width="698" valign="top"><p>Open Source system to store data distributed over multiple (thousands) servers. Created in 2005 by Doug Cutting and Mike Cafarella for &quot;Nutch&quot; search engine project. Name &quot;Hadoop&quot; comes from the name of Cutting's little son's toy elephant. Cutting was working at Yahoo! at the time. Hadoop is written in Java.</p></td>
+    </tr>
+    <tr>
+      <td valign="top">HDFS</td>
+      <td valign="top">Hadoop Distributed File System</td>
+    </tr>
+    <tr>
+      <td valign="top">YARN</td>
+      <td valign="top">Yet Another Resource Negotiator - for better resource management and map reduce in Hadoop 2.x</td>
+    </tr>
+    <tr>
+      <td valign="top">Storm</td>
+      <td valign="top">Distributed processing and streaming of data. Open source. Written in <a href="http://en.wikipedia.org/wiki/Clojure" target="_blank">Clojure</a>. Uses &quot;spouts&quot; and &quot;bolts&quot; to define topologies of moving data.  Integrates well with many common messaging systems (RabbitMQ, Kestrel, Kafka, etc).</td>
+    </tr>
+    <tr>
+      <td valign="top">Samza</td>
+      <td valign="top">Open Source distributed stream processing framework. Uses Apache Kafka for messaging. Written in Java and Scala.</td>
+    </tr>
+    <tr>
+      <td valign="top">Cloudera</td>
+      <td valign="top">packages Hadoop with other software, provides utilites for installtion, configuration, etc. Provides training and support for business clients.</td>
+    </tr>
+    <tr>
+      <td valign="top">MapR</td>
+      <td valign="top">develops and packages Hadoop software (Open source and commercial)</td>
+    </tr>
+    <tr>
+      <td valign="top">Hortonworks</td>
+      <td valign="top">packages Hadoop software (funded by Yahoo, Teradata, etc.)</td>
+    </tr>
+    <tr>
+      <td valign="top">Hive</td>
+      <td valign="top">SQL-like language called HiveQL to query Hadoop HDFS data. DataWarehouse infrastructure. Can run on top of Spark for faster performance.</td>
+    </tr>
+    <tr>
+      <td valign="top">HBase</td>
+      <td valign="top"><p>Open Source distributed database on top of HDFS (Hadoop Distributed File System). Non-relational. Modeled after Google's BigTable - storing large quantities of sparse data. Written in Java. Good for analyzing huge 2-dim data (billions of rows, millions of columns - searches, log processing, etc.). HTTP or Thrift interface.</p></td>
+    </tr>
+    <tr>
+      <td valign="top">Cassandra</td>
+      <td valign="top"><p>Open source distributed high-performance database to store and query huge amounts of data. Originally from Facebook. Has its own data model (not Hadoop). Many users load data from Hadoop into Cassandra to do analytics. Uses SQL-like query language (CQL3). Written in Java. Great for web analytics, transaction logs, etc.</p></td>
+    </tr>
+    <tr>
+      <td valign="top">Spark</td>
+      <td valign="top">Open source, written in Scala, runs MapReduce up to 100x faster than Hadoop on top of Hadoop Distributed File System (HDFS).  Originally developed in the AMPLab at UC Berkeley.</td>
+    </tr>
+    <tr>
+      <td valign="top">SparkSQL</td>
+      <td valign="top">Open source, allows to use SQL (or HiveQL or Scala) over Spark. It is recommended to move from Hive to SparkSQL.</td>
+    </tr>
+    <tr>
+      <td valign="top">Pig</td>
+      <td valign="top">provides language (Pig Latin) for MapReduce over HDFS. Originally from Yahoo, 2006.</td>
+    </tr>
+    <tr>
+      <td valign="top" bgcolor="#FFCC00">-</td>
+      <td valign="top" bgcolor="#FFCC00">-</td>
+    </tr>
+    <tr>
+      <td valign="top">Mahout</td>
+      <td valign="top">machine learning algorythm on the Hadoop platform. Also provides math and statistics.</td>
+    </tr>
+    <tr>
+      <td valign="top">Oozie</td>
+      <td valign="top">A workflow scheduler system to manage Hadoop jobs (web app, Java servlets)</td>
+    </tr>
+    <tr>
+      <td valign="top">Flume</td>
+      <td valign="top"><p>distributed service for collecting, aggregating, and moving large amounts of log data, good for analytic applications</p></td>
+    </tr>
+    <tr>
+      <td valign="top">Sqoop</td>
+      <td valign="top">tool  for moving  bulk data between Apache  Hadoop and other storages (for example, relational databases)</td>
+    </tr>
+    <tr>
+      <td valign="top">Hue</td>
+      <td valign="top">Cloudera web interface for using Hadoop and analyzing data.</td>
+    </tr>
+    <tr>
+      <td valign="top">CDH</td>
+      <td valign="top">Cloudera Hadoop Distribution (free download)</td>
+    </tr>
+    <tr>
+      <td valign="top">Cloudera Express</td>
+      <td valign="top">CDH + Cloudera Manager (free download) - best way to start with Hadoop</td>
+    </tr>
+    <tr>
+      <td valign="top">Cloudera Impala</td>
+      <td valign="top">fast SQL queying of HDFS data (massive parrallel processing) - good for analytics, eliminates the need of moving data into some other datastore for analytics. Impala = medium-sized African antelope known for fast running and jumping.</td>
+    </tr>
+    <tr>
+      <td valign="top">MongoDB</td>
+      <td valign="top"><p>Open Source NoSQL database for JSON-like documents. Horizontally scalable. Written in C++. Queries (dynamic) in Javascript. You can define indexes. Fairly good performance. (name &quot;mongo&quot; comes from &quot;humongous&quot;, not from &quot;Blazing Saddles&quot; Mongo).</p></td>
+    </tr>
+    <tr>
+      <td valign="top">CouchDB</td>
+      <td valign="top"> Open source NoSQL database, uses JSON to store data, JavaScript as query language, HTTP for an API.  Good for mobile devices.</td>
+    </tr>
+    <tr>
+      <td valign="top">Redis</td>
+      <td valign="top"><p>Open source, VERY FAST (written in C) in-memory (disk-backed) key-value database. REDIS = REmote DIctionary Server. DB should fit in RAM (or span RAMs of several computers using clustering). Supports bits, sets, lists, hashes. Support transactions. Great for real time stock prices, analytics, etc.</p></td>
+    </tr>
+    <tr>
+      <td valign="top">Kyoto Tycoon</td>
+      <td valign="top"><p>Open Source fast and lightweight network DBM over HTTP, can do more than 1 million insert/select per second. Multiple storage options (hash, tree, dir, etc.). Lua on server side. Can be used with C, Java, Python, Ruby, Perl, Lua, etc. Great for real-time data (cache).</p></td>
+    </tr>
+    <tr>
+      <td valign="top">Riak</td>
+      <td valign="top"><p>Open source distributed NoSQL key-value data store. Main benefit - high availability &amp; fault tolerance. Simple to operate and to scale by adding more servers. Written in Erlang, C, and some Javascript. HTTP or custom binary interface. Map/reduce in JavaScript or Erlang.</p></td>
+    </tr>
+    <tr>
+      <td valign="top">Couchbase<br>
+      (Membase)</td>
+      <td valign="top"><p>Open Source distributed NoSQL document-oriented database to serve many concurrent users. Easy-to-scale key-value or document access with low latency and high sustained throughput. Designed to be clustered to very large scale deployments.</p></td>
+    </tr>
+    <tr>
+      <td valign="top">Neo4j</td>
+      <td valign="top"><p>Open source graph database for connected data (nodes and relationships). Transactional. Advanced path finding. Good for road maps, topologies, etc. (graphs). Written in Java.</p></td>
+    </tr>
+    <tr>
+      <td valign="top">Hypertable</td>
+      <td valign="top"><p>Open source database - basically a faster smaller HBase implemented in C++, uses ideas from Google's BigTable. Runs on HDFS (or ClusterFS or KFS (Kosmos File System). Uses its own, &quot;SQL-like&quot; language, HQL.</p></td>
+    </tr>
+    <tr>
+      <td valign="top">ElasticSearch</td>
+      <td valign="top"><p>Open source distributed full-text search engine with HTTP interface and JSON documents (parent/children docs). Based on Java <a href="http://en.wikipedia.org/wiki/Lucene">Lucene</a> library. Great when you need advanced flexible fuzzy search.</p></td>
+    </tr>
+    <tr>
+      <td valign="top">Accumulo</td>
+      <td valign="top"><p>Open source - similar to HBase, but provides cell-level security (access labels). Sorted, distributed key/value storage. Built on top of Hadoop, ZooKeeper, and Thrift. Written in Java and C++.</p></td>
+    </tr>
+    <tr>
+      <td valign="top">VoltDB</td>
+      <td valign="top">The world&rsquo;s fastest in-memory relational  database. Fast ingestion and export, massive scalability, real-time analytics.  SQL access from within pre-compiled Java stored procedures. Open Source and commercial versions.</td>
+    </tr>
+    <tr>
+      <td valign="top">Scalaris</td>
+      <td valign="top"><p>Open source  scalable, distributed, transactional key-value store. Written in Erlang, accessible from  Python, Ruby, Java, etc.</p></td>
+    </tr>
+    <tr>
+      <td valign="top">BigTable</td>
+      <td valign="top">Google proprietary data storage system. Compressed, high performance. Uses  Google File System, Chubby Lock Service, SSTable (log-structured storage like LevelDB).</td>
+    </tr>
+    <tr>
+      <td valign="top">LevelDB</td>
+      <td valign="top">open source on-disk key-value store (by Google). </td>
+    </tr>
+    <tr>
+      <td valign="top">GoogleFS</td>
+      <td valign="top">Google File System - proprietary</td>
+    </tr>
+  </table>
+<p>&nbsp;</p>
+<p class="sectionheader"><a NAME="misc"></a>Misc ------------------------------</p>
+<p>http://nginx.org - very fast web server / proxy for serving static contents</p>
+    <p>http://www.getchef.com/chef/ - automate how you build, deploy, and manage your infrastructure</p>
+<p>http://www.vagrantup.com - Create and configure lightweight, reproducible, and portable development environments</p>
+    <p>http://berkshelf.com/ - Manage a Cookbook or an Application's Cookbook dependencies</p>
+
+
+</body>
+</html>

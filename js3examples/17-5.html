@@ -1,0 +1,93 @@
+<!-- This example is from JavaScript: The Definitive Guide, 3rd Edition.   -->
+<!-- That book and this example were Written by David Flanagan.            -->
+<!-- They are Copyright (c) 1996, 1997, 1998 O'Reilly & Associates.        -->
+<!-- This example is provided WITHOUT WARRANTY either expressed or implied.-->
+<!-- You may study, use, modify, and distribute it for any purpose,        -->
+<!-- as long as this notice is retained.                                   -->
+
+<HEAD>
+<SCRIPT>
+// DynEl.js requires a Version 4 browser, and will cause errors if
+// loaded by a Version 3 browser. If the browser version isn't high
+// enough, the following code issues a warning, and suppresses any errors
+// that occur when DynEl.js is loaded.
+function suppressErrors() { return true; }
+if (parseInt(navigator.appVersion) < 4) {
+    alert("This program requires a version 4 browser!");
+    onerror = suppressErrors;
+}
+</SCRIPT>
+<SCRIPT SRC="DynEl.js"></SCRIPT>
+
+<SCRIPT>
+// Here are a couple of messages we're going to animate.
+var msg1 = '<H1 STYLE="font-size:48pt">Nervous?</H1>'
+var msg2 = '<H1 STYLE="color:red;font-size:48pt">Drink More Coffee!</H1>'
+
+// Create the two DynEl objects that we'll use in the program.
+// These must be created in the <HEAD> of the document, because
+// the DynEl() constructor outputs a style sheet.
+var dynel1 = new DynEl(window, "d1", msg1, 100, 200);
+var dynel2 = new DynEl(window, "d2", "Catch Me<BR>If You Can", 0,0,120);
+</SCRIPT>
+</HEAD>
+
+<BODY>
+<SCRIPT>
+// Now in the <BODY> of the document, we've got to call the output() method
+// of each DynEl object. This method outputs the HTML body of the dynamic 
+// element and links it to the appropriate style sheet defined in the
+// <HEAD>. You must call output() *before* any other DynEl methods!
+dynel1.output();
+dynel2.output();
+
+// This is the function that is going to animate the first DynEl
+// It uses moveTo() to jiggle the dynamic element around.
+// Also, it occasionally changes the message that the element displays.
+// And it occasionally hides, then shows, the dynamic element.
+function randomwalk() {
+    var dx = (Math.random()-.5)*10;            // Pick random numbers.
+    var dy = (Math.random()-.5)*10;
+    dynel1.moveTo(100+dx, 200+dy);             // Move the element.
+
+    var x = Math.random();                     // Pick another number.
+    if (x < .1) dynel1.setBody(msg1);          // Change the element body.
+    else if (dx < .2) dynel1.setBody(msg2);    // Change the element body.
+    else if (dx < .3) {
+        dynel1.hide();                         // Hide the element and...
+        setTimeout("dynel1.show()", 1000);     // ...show it again in 1 sec.
+    }
+}
+
+// Now call the animation function 10 times a second.
+setInterval("randomwalk()", 100);
+
+// We register some event handlers on the second DynEl object.
+// If you click the mouse over the top of the dynamic element, this first
+// event handler will change it to tell you that you won the game.  
+// Note, however, that the next event handler makes it very difficult
+// to move the mouse over the top of the dynamic element.
+dynel2.addEventHandler("onmousedown", function(d) {d.setBody("You Win!");});
+
+// Whenever the mouse moves over the DynEl, this handler moves it to some
+// other random place, and gives it a random background color. This makes
+// it hard to click on. If you hold down the shift key when you move the
+// mouse, however, this handler will not move the element, and you can
+// move over it and click on it. Note, though, that this does not work
+// in Navigator 4, because that browser does not include modifier key
+// information in its mouseover events. Note that event handlers 
+// registered on DynEl objects are passed nine arguments.
+dynel2.addEventHandler("onmouseover", 
+       function(d,type,x,y,button,key,shift,ctrl,alt) { 
+           // If shift key is down, do nothing.  Only works in IE.
+           if (shift) return; 
+           // Move the element to a random position.
+           d.moveTo(Math.random()*400, Math.random()*400);
+           // And give it a random background color.
+           var r = (Math.floor(Math.random()*240+16)).toString(16);
+           var g = (Math.floor(Math.random()*240+16)).toString(16);
+           var b = (Math.floor(Math.random()*240+16)).toString(16);
+           d.setBgColor("#"+r+g+b); 
+       });
+</SCRIPT>
+</BODY>

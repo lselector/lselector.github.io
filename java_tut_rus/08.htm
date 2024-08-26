@@ -1,0 +1,1587 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="ProgId" content="Word.Document">
+<meta name="Generator" content="Microsoft Word 9">
+<meta name="Originator" content="Microsoft Word 9">
+<link rel="File-List" href="./08%20files/filelist.xml">
+<xml:namespace ns="urn:schemas-microsoft-com:vml" prefix="v"/>
+<xml:namespace ns="urn:schemas-microsoft-com:office/office" prefix="o"/>
+<xml:namespace ns="urn:schemas-microsoft-com:office/word" prefix="w"/>
+<!--#if VML#><!#if ! VMLRender#>
+
+<object id="VMLRender" classid="CLSID:10072CEC-8CC1-11D1-986E-00A0C955B42E"
+ width="0" height="0">
+</object>
+
+<style>
+v\:* { behavior: url(#VMLRender); }
+o\:* { behavior: url(#VMLRender); }
+w\:* { behavior: url(#VMLRender); }
+.shape { behavior: url(#VMLRender); }
+</style>
+<!#endif#><!#endif#-->
+<title>Глава 8 Пакеты и интерфейсы</title>
+<!--#if gte mso 9#><xml>
+ <o:DocumentProperties>
+  <o:Author>Картузов Александр</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>Картузов Александр</o:LastAuthor>
+  <o:Revision>1</o:Revision>
+  <o:TotalTime>1</o:TotalTime>
+  <o:Created>19981008T11:19:00Z</o:Created>
+  <o:LastSaved>19981008T11:20:00Z</o:LastSaved>
+  <o:Pages>6</o:Pages>
+  <o:Words>2165</o:Words>
+  <o:Characters>12341</o:Characters>
+  <o:Company>ЧКИ МУПК</o:Company>
+  <o:Lines>102</o:Lines>
+  <o:Paragraphs>24</o:Paragraphs>
+  <o:CharactersWithSpaces>15155</o:CharactersWithSpaces>
+  <o:Version>9.1819</o:Version>
+ </o:DocumentProperties>
+</xml><!#endif#--><!--#if gte mso 9#><xml>
+ <w:WordDocument>
+  <w:View>Print</w:View>
+  <w:Compatibility>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+  </w:Compatibility>
+ </w:WordDocument>
+</xml><!#endif#-->
+<style>
+<!--
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal {
+	mso-style-parent: "";
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	font-size: 10.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+}
+h1 {
+	mso-style-next: Normal;
+	margin-top: 12.0pt;
+	margin-right: 0cm;
+	margin-bottom: 3.0pt;
+	margin-left: 0cm;
+	mso-pagination: widow-orphan;
+	page-break-after: avoid;
+	mso-outline-level: 1;
+	font-size: 14.0pt;
+	font-family: Arial;
+	mso-ascii-font-family: Arial;
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: Arial;
+	mso-bidi-font-family: "Times New Roman";
+	mso-font-kerning: 14.0pt;
+	mso-bidi-font-size: 10.0pt;
+	mso-bidi-font-weight: normal;
+}
+h2 {
+	mso-style-next: Normal;
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	text-align: center;
+	mso-pagination: widow-orphan;
+	page-break-after: avoid;
+	mso-outline-level: 2;
+	font-size: 14.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+	mso-bidi-font-size: 10.0pt;
+	mso-bidi-font-weight: normal;
+}
+h3 {
+	mso-style-next: Normal;
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	page-break-after: avoid;
+	mso-outline-level: 3;
+	font-size: 12.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+	mso-bidi-font-size: 10.0pt;
+	mso-bidi-font-weight: normal;
+}
+h4 {
+	mso-style-next: Normal;
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	page-break-after: avoid;
+	mso-outline-level: 4;
+	font-size: 10.0pt;
+	font-family: Arial;
+	mso-ascii-font-family: Arial;
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: Arial;
+	mso-bidi-font-family: "Times New Roman";
+	mso-bidi-font-size: 10.0pt;
+	mso-bidi-font-weight: normal;
+}
+h5 {
+	mso-style-next: Normal;
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	page-break-after: avoid;
+	mso-outline-level: 5;
+	font-size: 10.0pt;
+	font-family: "Courier New";
+	mso-ascii-font-family: "Courier New";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Courier New";
+	mso-bidi-font-family: "Times New Roman";
+	mso-bidi-font-style: italic;
+	font-style: italic;
+}
+p.MsoFooter, li.MsoFooter {
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	tab-stops: center 207.65pt right 415.3pt;
+	font-size: 10.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+}
+p.MsoBodyText, li.MsoBodyText {
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	mso-pagination: widow-orphan;
+	font-size: 10.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+}
+p.MsoBodyText2, li.MsoBodyText2 {
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	mso-pagination: widow-orphan;
+	font-size: 10.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+}
+a:link, span.MsoHyperlink {
+	color: blue;
+	text-decoration: underline;
+	text-underline: single;
+}
+a:visited, span.MsoHyperlinkFollowed {
+	color: purple;
+	text-decoration: underline;
+	text-underline: single;
+}
+strong { font-weight: bold; }
+p.MsoPlainText, li.MsoPlainText {
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	font-size: 10.0pt;
+	font-family: "Courier New";
+	mso-ascii-font-family: "Courier New";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Courier New";
+	mso-bidi-font-family: "Times New Roman";
+}
+p.FR1, li.FR1 {
+	mso-style-name: FR1;
+	mso-style-parent: "";
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 58.0pt;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	mso-pagination: widow-orphan;
+	font-size: 9.0pt;
+	font-family: Arial;
+	mso-ascii-font-family: Arial;
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: Arial;
+	mso-bidi-font-family: "Times New Roman";
+	mso-ansi-language: RU;
+	mso-fareast-language: RU;
+	layout-grid-mode: line;
+}
+p.FR2, li.FR2 {
+	mso-style-name: FR2;
+	mso-style-parent: "";
+	margin-top: 12.0pt;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 18.0pt;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	font-size: 11.0pt;
+	font-family: Arial;
+	mso-ascii-font-family: Arial;
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: Arial;
+	mso-bidi-font-family: "Times New Roman";
+	mso-ansi-language: RU;
+	mso-fareast-language: RU;
+	layout-grid-mode: line;
+	font-weight: bold;
+}
+@page Section1 {
+	size: 595.3pt 841.9pt;
+	margin: 72.0pt 90.0pt 72.0pt 90.0pt;
+	mso-header-margin: 36.0pt;
+	mso-footer-margin: 36.0pt;
+	mso-forms-protection: yes;
+	mso-paper-source: 0;
+}
+div.Section1 { page: Section1; }
+/* List Definitions */
+@list l0 {
+	mso-list-id: 109398536;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l0:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l1 {
+	mso-list-id: 112093460;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l1:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l2 {
+	mso-list-id: 380398631;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l2:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l3 {
+	mso-list-id: 508519629;
+	mso-list-template-id: -1300598436;
+	mso-list-type: simple;
+}
+@list l3:level1 {
+	mso-level-start-at: 0;
+	mso-level-number-format: bullet;
+	mso-level-text: \F0B7;
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+	mso-ascii-font-family: Symbol;
+	mso-hansi-font-family: Symbol;
+}
+@list l4 {
+	mso-list-id: 1101028986;
+	mso-list-template-id: -979304872;
+	mso-list-type: simple;
+}
+@list l4:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l5 {
+	mso-list-id: 1220900427;
+	mso-list-template-id: -979304872;
+	mso-list-type: simple;
+}
+@list l5:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l6 {
+	mso-list-id: 1259289235;
+	mso-list-template-id: 68747265;
+	mso-list-type: simple;
+}
+@list l6:level1 {
+	mso-level-number-format: bullet;
+	mso-level-text: \F0B7;
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+	mso-ascii-font-family: Symbol;
+	mso-hansi-font-family: Symbol;
+}
+@list l7 {
+	mso-list-id: 1434129171;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l7:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l8 {
+	mso-list-id: 1686974182;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l8:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l9 {
+	mso-list-id: 1871871804;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l9:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+ol { margin-bottom: 0cm; }
+ul { margin-bottom: 0cm; }
+-->
+</style>
+</head>
+
+<body link="blue" vlink="purple" style='tab-interval: 36.0pt'>
+
+<div class="Section1">
+
+<p class="MsoNormal"><b><span style='font-size: 20.0pt; font-family: Arial'>Глава
+8 Пакеты и интерфейсы</span></b><b><span style='font-size: 20.0pt;
+font-family: Arial'>&#13;</span></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>Пакет (<b><span
+style='mso-bidi-font-weight: bold'>package</span></b>) — это некий контейнер,
+ко­торый используется для того, чтобы изолиро­вать имена классов. Например, вы
+можете со­здать класс List, заключить его в пакет и не думать после этого о
+возможных конфликтах, которые могли бы возникнуть если бы кто-ни­будь еще
+создал класс с именем List.&#13;</p>
+
+<p class="MsoNormal"><i><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</i></p>
+
+<p class="MsoNormal" style='text-align: justify'><b><span
+style='mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Интерфейс</span></b><i>
+—</i> это явно указанная спецификация набора методов, ко­торые должны быть
+представлены в классе, который реализует эту спе­цификацию. Реализация же этих
+методов в интерфейсе отсутствует. По­добно абстрактным классам интерфейсы
+обладают замечательным дополнительным свойством — их можно многократно
+наследовать. Кон­кретный класс может быть наследником лишь одного суперкласса,
+но зато в нем может быть реализовано неограниченное число интерфейсов.&#13;</p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'>Пакеты</span></b><span
+style='font-size: 12.0pt'>&#13;</span></p>
+
+<p class="MsoNormal" style='text-align: justify'>Все идентификаторы, которые мы
+до сих пор использовали в наших примерах, располагались в одном и том же
+пространстве имен (name space). Это означает, что нам во избежание конфликтных
+ситуаций при­ходилось заботиться о том, чтобы у каждого класса было свое
+уникаль­ное имя. <span lang="RU" style='mso-ansi-language: RU'>П</span>акеты —
+это механизм, который служит как для работы с пространством имен, так и для
+ограничения видимости. У каждого файла .java есть 4 одинаковых внутренних
+части, из которых мы до сих пор в наших примерах ис­пользовали только одну.
+Ниже приведена общая форма исходного файла Java.&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>одиночный оператор package (необязателен)<span
+lang="RU" style='mso-ansi-language: RU'>&#13;</span></span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>любое количество операторов import (необязательны)<span
+lang="RU" style='mso-ansi-language: RU'>&#13;</span></span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>одиночное объявление открытого (public) класса<span
+lang="RU" style='mso-ansi-language: RU'>&#13;</span></span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>любое количество закрытых (private) классов пакета
+(необязательны)&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></b></p>
+
+<p class="MsoNormal"><b>Оператор package</b>&#13;</p>
+
+<p class="MsoBodyText">Первое, что может появиться в исходном файле Java — это
+оператор package, который сообщает транслятору, в каком пакете должны опре­деляться
+содержащиеся в данном файле классы. Пакеты задают набор раздельных пространств
+имен, в которых хранятся имена классов. Если оператор package не указан, классы
+попадают в безымянное пространст­во имен, используемое по умолчанию. Если вы
+объявляете класс, как принадлежащий определенному пакету, например, <span
+lang="RU" style='mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>package java.awt.image;&#13;</span></i></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>то и исходный код этого класса
+должен храниться в каталоге<span lang="RU" style='mso-ansi-language: RU'> </span>java/awt/image<span
+lang="RU" style='mso-ansi-language: RU'>.&#13;</span></p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal">ЗАМЕЧАНИЕ&#13;</p>
+
+<p class="MsoNormal" style='text-align: justify'>Каталог, который транслятор
+Java будет рассматривать, как корневой для иерархии пакетов, можно задавать с
+помощью переменной окру­жения СLASSPATH. С помощью этой переменной можно задать
+не­сколько корневых каталогов для иерархии пакетов<span lang="RU"
+style='mso-ansi-language: RU'> (через </span>; <span lang="RU"
+style='mso-ansi-language: RU'>как в обычном </span>PATH). &#13;</p>
+
+<p class="MsoNormal"><b><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</b></p>
+
+<p class="MsoNormal"><b>Трансляция классов в пакетах</b>&#13;</p>
+
+<p class="MsoBodyText">При попытке поместить класс в пакет, вы сразу
+натолкнетесь на жесткое требование точ­ного совпадения иерархии каталогов с
+иерархией пакетов. Вы не можете переименовать пакет, не переименовав каталог, в
+котором хранятся его классы. Эта трудность видна сразу, но есть и менее
+очевидная проблема.&#13;</p>
+
+<p class="MsoNormal" style='text-align: justify'>Представьте себе, что вы
+написали класс с именем PackTest в пакете test. Вы создаете каталог test,
+помещаете в этот каталог файл PackTest.Java и транслируете. Пока — все в
+порядке. Однако при попытке запустить его вы получаете от интерпретатора
+сообщение «can't find class PackTest» («He могу найти класс PackTest»). Ваш
+новый класс теперь хранится в пакете с именем test, так что <span lang="RU"
+style='mso-ansi-language: RU'>т</span>еперь надо указывать всю иерархию
+пакетов, разделяя их имена точками<span lang="RU" style='mso-ansi-language:
+RU'> - </span>test.PackTest. <span lang="RU" style='mso-ansi-language: RU'>Кроме
+того </span>В<span lang="RU" style='mso-ansi-language: RU'>ам</span> <span
+lang="RU" style='mso-ansi-language: RU'>надо</span> либо под­няться на уровень
+выше в иерархии каталогов и снова набрать «java test.PackTest», либо внести в
+переменную CLASSPATH каталог, который является вершиной иерархии
+разрабатываемых вами классов. <span lang="RU" style='mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal"><b>Оператор import&#13;</b></p>
+
+<p class="MsoNormal" style='text-align: justify'>После оператора package, но до
+любого определения классов в исход­ном Java-файле, может присутствовать список
+операторов import. Паке­ты являются хорошим механизмом для отделения классов
+друг от друга, поэтому все встроенные в Java классы хранятся в пакетах. Общая
+форма оператора <b><span style='mso-bidi-font-weight: bold'>import</span></b>
+такова:&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>import пакет1 [.пакет2].(имякласса|*);&#13;</span></i></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>Здесь <i>пакет1 —</i> имя
+пакета верхнего уровня, <i>пакет2 —</i> это необя­зательное имя пакета, вложенного
+в первый пакет и отделенное точкой. И, на­конец, после указания пути в иерархии
+пакетов, указывается либо имя класса, либо метасимвол звездочка. Звездочка
+означает, что, если Java-транслятору потребуется какой-либо класс, для которого
+пакет не указан явно, он должен просмотреть все содержимое пакета со звездочкой
+вмес­то имени класса. В приведенном ниже фрагменте кода показаны обе формы
+использования оператора import<span lang="RU" style='mso-ansi-language: RU'> </span>:&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>import java.util.Date<span lang="RU"
+style='mso-ansi-language: RU'>&#13;</span></span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>import java.io.*;&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal">ЗАМЕЧАНИЕ&#13;</p>
+
+<p class="MsoNormal" style='text-align: justify'><span lang="RU"
+style='mso-ansi-language: RU'>Но использовать без нужды ф</span>орм<span
+lang="RU" style='mso-ansi-language: RU'>у</span> записи оператора import с
+использованием звездочки <span lang="RU" style='mso-ansi-language: RU'>не
+рекомендуется, т.к. это </span>может значительно увеличить время трансляции
+кода<span lang="RU" style='mso-ansi-language: RU'> (на </span>скорость работы и
+размер программы <span lang="RU" style='mso-ansi-language: RU'>это не влияет).&#13;</span></p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal" style='text-align: justify'>Все встроенные в Java классы,
+которые входят в комплект поставки, хранятся в пакете с именем java. Базовые
+функции языка хранятся во вложенном пакете java.lang. <span lang="RU"
+style='mso-ansi-language: RU'>В</span>есь этот пакет<span lang="RU"
+style='mso-ansi-language: RU'> </span>автоматически импортируется транслятором
+во все программы. Это эквивалентно размещению в начале каждой программы
+оператора&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>import java.lang.*;&#13;</span></i></b></p>
+
+<p class="MsoNormal">Если в двух пакетах, подключаемых с помощью формы
+оператора im­port со звездочкой, есть классы с одинаковыми именами, однако вы
+их не используете, транслятор не отреагирует. А вот при попытке исполь­зовать
+такой класс, вы сразу получите сообщение об ошибке, и вам при­дется переписать
+операторы import, чтобы явно указать, класс какого пакета вы имеете ввиду. &#13;</p>
+
+<p class="MsoNormal"><b><i><span style='mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>class MyDate extends Java.util.Date { }&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></b></p>
+
+<p class="MsoNormal"><b>Ограничение доступа&#13;</b></p>
+
+<p class="MsoNormal" style='text-align: justify'>Java предоставляет несколько
+уровней защиты, обеспечивающих воз­можность тонкой настройки области видимости
+данных и методов. Из-за наличия пакетов Java должна уметь работать еще с
+четырьмя категориями видимости между элементами классов<span lang="RU"
+style='mso-ansi-language: RU'> </span>:&#13;</p>
+
+<p class="MsoNormal">• Подклассы в том же пакете.&#13;</p>
+
+<p class="MsoNormal">• Не подклассы в том же пакете.&#13;</p>
+
+<p class="MsoNormal">• Подклассы в различных пакетах.&#13;</p>
+
+<p class="MsoNormal">• Классы, которые не являются подклассами и не входят в
+тот же пакет.&#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal">В языке Java имеется три уровня доступа, определяемых
+ключевыми словами: private (закрытый), public (открытый) и protected (защищен­ный),
+которые употребляются в различных комбинациях. Содержимое ячеек таблицы
+определяет доступность переменной с данной комбинацией модификаторов (столбец)
+из указанного места (строка). &#13;</p>
+
+<table border="0" cellspacing="0" cellpadding="0" style='margin-left: 2.0pt;
+ border-collapse: collapse; mso-table-layout-alt: fixed; mso-padding-alt: 0cm 2.0pt 0cm 2.0pt'>
+ <tr height="33" style='height: 25.0pt; mso-height-rule: exactly'>
+  <td valign="top" style='width: 94.0pt; border: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+  <p class="MsoNormal" style='text-align: justify'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+  </td>
+  <td valign="top" style='width: 45.0pt; border: solid windowtext .75pt;
+  border-left: none; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>private&#13;</p>
+  </td>
+  <td valign="top" style='width: 77.0pt; border: solid windowtext .75pt;
+  border-left: none; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>модификатор отсутствует&#13;</p>
+  </td>
+  <td valign="top" style='width: 60.0pt; border: solid windowtext .75pt;
+  border-left: none; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>private protected&#13;</p>
+  </td>
+  <td valign="top" style='width: 54.0pt; border: solid windowtext .75pt;
+  border-left: none; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>protected&#13;</p>
+  </td>
+  <td valign="top" style='width: 39.0pt; border: solid windowtext .75pt;
+  border-left: none; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>public&#13;</p>
+  </td>
+ </tr>
+ <tr height="33" style='height: 25.0pt; mso-height-rule: exactly'>
+  <td valign="top" style='width: 94.0pt; border: solid windowtext .75pt;
+  border-top: none; mso-border-top-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>тот же класс&#13;</p>
+  </td>
+  <td valign="top" style='width: 45.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>да&#13;</p>
+  </td>
+  <td valign="top" style='width: 77.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>да&#13;</p>
+  </td>
+  <td valign="top" style='width: 60.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>Да&#13;</p>
+  </td>
+  <td valign="top" style='width: 54.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>да&#13;</p>
+  </td>
+  <td valign="top" style='width: 39.0pt; border-top: none; border-left: none;
+  border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>да&#13;</p>
+  </td>
+ </tr>
+ <tr height="33" style='height: 25.0pt; mso-height-rule: exactly'>
+  <td valign="top" style='width: 94.0pt; border-top: none; border-left: solid windowtext .75pt;
+  border-bottom: none; border-right: solid windowtext .75pt; mso-border-top-alt:
+  solid windowtext .75pt; padding: 0cm 2.0pt 0cm 2.0pt; height: 25.0pt;
+  mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>подкласс в том же пакете&#13;</p>
+  </td>
+  <td valign="top" style='width: 45.0pt; border: none; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>нет&#13;</p>
+  </td>
+  <td valign="top" style='width: 77.0pt; border: none; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>да&#13;</p>
+  </td>
+  <td valign="top" style='width: 60.0pt; border: none; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>Да&#13;</p>
+  </td>
+  <td valign="top" style='width: 54.0pt; border: none; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>да&#13;</p>
+  </td>
+  <td valign="top" style='width: 39.0pt; border: none; border-right: solid windowtext .75pt;
+  mso-border-top-alt: solid windowtext .75pt; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>да&#13;</p>
+  </td>
+ </tr>
+ <tr height="33" style='height: 25.0pt; mso-height-rule: exactly'>
+  <td valign="top" style='width: 94.0pt; border: solid windowtext .75pt;
+  border-bottom: none; padding: 0cm 2.0pt 0cm 2.0pt; height: 25.0pt;
+  mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>независимый класс в том же
+  пакете&#13;</p>
+  </td>
+  <td valign="top" style='width: 45.0pt; border-top: solid windowtext .75pt;
+  border-left: none; border-bottom: none; border-right: solid windowtext .75pt;
+  mso-border-left-alt: solid windowtext .75pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>нет&#13;</p>
+  </td>
+  <td valign="top" style='width: 77.0pt; border-top: solid windowtext .75pt;
+  border-left: none; border-bottom: none; border-right: solid windowtext .75pt;
+  mso-border-left-alt: solid windowtext .75pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>да&#13;</p>
+  </td>
+  <td valign="top" style='width: 60.0pt; border-top: solid windowtext .75pt;
+  border-left: none; border-bottom: none; border-right: solid windowtext .75pt;
+  mso-border-left-alt: solid windowtext .75pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>Нет&#13;</p>
+  </td>
+  <td valign="top" style='width: 54.0pt; border-top: solid windowtext .75pt;
+  border-left: none; border-bottom: none; border-right: solid windowtext .75pt;
+  mso-border-left-alt: solid windowtext .75pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>да&#13;</p>
+  </td>
+  <td valign="top" style='width: 39.0pt; border-top: solid windowtext .75pt;
+  border-left: none; border-bottom: none; border-right: solid windowtext .75pt;
+  mso-border-left-alt: solid windowtext .75pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>да&#13;</p>
+  </td>
+ </tr>
+ <tr height="33" style='height: 25.0pt; mso-height-rule: exactly'>
+  <td valign="top" style='width: 94.0pt; border: solid windowtext .75pt;
+  border-bottom: none; padding: 0cm 2.0pt 0cm 2.0pt; height: 25.0pt;
+  mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>подкласс в дру­гом пакете&#13;</p>
+  </td>
+  <td valign="top" style='width: 45.0pt; border-top: solid windowtext .75pt;
+  border-left: none; border-bottom: none; border-right: solid windowtext .75pt;
+  mso-border-left-alt: solid windowtext .75pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>нет&#13;</p>
+  </td>
+  <td valign="top" style='width: 77.0pt; border-top: solid windowtext .75pt;
+  border-left: none; border-bottom: none; border-right: solid windowtext .75pt;
+  mso-border-left-alt: solid windowtext .75pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>нет&#13;</p>
+  </td>
+  <td valign="top" style='width: 60.0pt; border-top: solid windowtext .75pt;
+  border-left: none; border-bottom: none; border-right: solid windowtext .75pt;
+  mso-border-left-alt: solid windowtext .75pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>Да&#13;</p>
+  </td>
+  <td valign="top" style='width: 54.0pt; border-top: solid windowtext .75pt;
+  border-left: none; border-bottom: none; border-right: solid windowtext .75pt;
+  mso-border-left-alt: solid windowtext .75pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>да&#13;</p>
+  </td>
+  <td valign="top" style='width: 39.0pt; border-top: solid windowtext .75pt;
+  border-left: none; border-bottom: none; border-right: solid windowtext .75pt;
+  mso-border-left-alt: solid windowtext .75pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>да&#13;</p>
+  </td>
+ </tr>
+ <tr height="33" style='height: 25.0pt; mso-height-rule: exactly'>
+  <td valign="top" style='width: 94.0pt; border: solid windowtext .5pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>независимый класс в другом
+  пакете&#13;</p>
+  </td>
+  <td valign="top" style='width: 45.0pt; border-top: solid windowtext .5pt;
+  border-left: none; border-bottom: solid windowtext .5pt; border-right: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>нет&#13;</p>
+  </td>
+  <td valign="top" style='width: 77.0pt; border-top: solid windowtext .5pt;
+  border-left: none; border-bottom: solid windowtext .5pt; border-right: solid windowtext .75pt;
+  mso-border-left-alt: solid windowtext .75pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>нет&#13;</p>
+  </td>
+  <td valign="top" style='width: 60.0pt; border-top: solid windowtext .5pt;
+  border-left: none; border-bottom: solid windowtext .5pt; border-right: solid windowtext .75pt;
+  mso-border-left-alt: solid windowtext .75pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>Нет&#13;</p>
+  </td>
+  <td valign="top" style='width: 54.0pt; border-top: solid windowtext .5pt;
+  border-left: none; border-bottom: solid windowtext .5pt; border-right: solid windowtext .75pt;
+  mso-border-left-alt: solid windowtext .75pt; padding: 0cm 2.0pt 0cm 2.0pt;
+  height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>нет&#13;</p>
+  </td>
+  <td valign="top" style='width: 39.0pt; border: solid windowtext .5pt;
+  border-left: none; mso-border-left-alt: solid windowtext .75pt;
+  padding: 0cm 2.0pt 0cm 2.0pt; height: 25.0pt; mso-height-rule: exactly'>
+  <p class="MsoNormal" style='text-align: justify'>да&#13;</p>
+  </td>
+ </tr>
+</table>
+
+<p class="MsoNormal" style='text-align: justify'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoBodyText">На первый взгляд все это может показаться чрезмерно
+сложным, но есть несколько правил, которые помогут вам разобраться. Элемент,
+объ­явленный public, доступен из любого места. Все, что объявлено private,
+доступно только внутри класса, и нигде больше. Если у элемента вообще не указан
+модификатор уровня доступа, то такой элемент будет виден из подклассов и
+классов того же пакета. Именно такой уровень доступа используется в языке Java
+по умолчанию. Если же вы хотите, чтобы элемент был доступен извне пакета, но
+только подклассам того класса, которому он принадлежит, вам нужно объявить
+такой элемент protected. И наконец, если вы хотите, чтобы элемент был доступен
+только под­классам, причем независимо от того, находятся ли они в данном пакете
+или нет — используйте комбинацию private protected.&#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoBodyText">Ниже приведен довольно длинный пример, в котором
+представлены все допустимые комбинации модификаторов уровня доступа. В исходном
+коде первого пакета определяется три класса: Protection, Derived и SamePackage.
+В первом из этих классов определено пять целых переменных — по одной на каждую
+из возможных комбинаций уровня доступа. Переменной n приписан уровень доступа
+по умолчанию, n_pri — уровень private, n_pro — protected, n_pripro — private
+protected и n_pub — public. Во всех остальных классах мы пытаемся использовать
+переменные первого класса. Те строки кода, которые из-за ограничения доступа
+при­вели бы к ошибкам при трансляции, закомментированы с помощью однострочных
+комментариев (//) — перед каждой указано, откуда доступ при такой комбинации
+модификаторов был бы возможен. Второй класс — Derived — является подклассом
+класса Protection и расположен в том же пакете р1. Поэтому ему доступны все
+перечислен­ные переменные за исключением n_pri. Третий класс, SamePackage,
+расположен в том же пакете, но при этом не является подклассом Protection. По
+этой причине для него недоступна не только переменная n_pri, но и n_pripro,
+уровень доступа которой — private protected.&#13;</p>
+
+<p class="MsoBodyText"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>package р1;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public class
+Protection { </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int n = 1;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>private int n_pri = 2;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>protected int n_pro =
+3;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>private protected int
+n_pripro = 4;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public int n_pub = 5;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public Protection() {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;base
+constructor&quot;);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;n
+= &quot; + n);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;n_pri
+= &quot; + n_pri);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;n_pro
+= &quot;<span style='mso-tab-count: 1'>&nbsp; </span></span></i></b><b><i><sup><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>+ </span></sup></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>n_pro);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;n_pripro
+= &quot; + n_pripro);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;n_pub
+= &quot; </span></i></b><b><i><sup><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>+ </span></sup></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>n_pub);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class Derived extends
+Protection { </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Derived() {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>System.out.println(&quot;derived constructor&quot;);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>System.out.println(&quot;n = &quot; + n);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>// только в
+классе</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>//
+System.out.println(&quot;n_pri = &quot; + n_pri);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>System.out.println(&quot;n_pro = &quot;<span style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp; </span>+
+n_pro);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>System.out.println(&quot;n_pripro = &quot; + n_pripro);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>System.out.println(&quot;n_pub = &quot;<span style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp; </span>+
+n_pub);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class<span
+style='mso-tab-count: 1'>&nbsp; </span>SamePackage { </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>SamePackage() {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Protection p = new Protection();</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>System.out.println(&quot;same package constructor&quot;);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>System.out.println(&quot;n = &quot; + p.n);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>// только в классе</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>// System.out.println(&quot;n_pri = &quot; + p.n_pri);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>System.out.println(&quot;n_pro = &quot; + p.n_pro);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>// только в классе и подклассе</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>// System.out.println(&quot;n_pripro = &quot; + p.n_pripro):</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>System.out.println(&quot;n_pub = &quot; </span></i></b><b><i><sup><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>+ </span></sup></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>p.n_pub):</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'>Интерфейсы&#13;</span></b></p>
+
+<p class="MsoBodyText">Интерфейсы Java созданы для поддержки динамического
+выбора (resolution) методов во время выполнения программы. Интерфейсы похожи на
+классы, но в отличие от последних у интер­фейсов нет переменных представителей,
+а в объявлениях методов отсут­ствует реализация. Класс может иметь любое
+количество интерфейсов. Все, что нужно сделать — это реализовать в классе
+полный набор методов всех интерфейсов. Сигнатуры таких методов класса должны
+точно совпадать с сигнатурами методов реализуемого в этом классе интерфейса.
+Интер­фейсы обладают своей собственной иерархией, не пересекающейся с классовой
+иерархией наследования. Это дает возможность реализовать один и тот же
+интерфейс в различных классах, никак не связанных по линии иерархии классового
+наследования. Именно в этом и проявляется главная сила интерфейсов. <span
+lang="RU" style='mso-ansi-language: RU'>Интерфейсы являются аналогом механизма
+множественного наследования в </span>C++<span lang="RU"
+style='mso-ansi-language: RU'>, но использовать их намного легче.&#13;</span></p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b>Оператор interface</b>&#13;</p>
+
+<p class="MsoNormal" style='text-align: justify'>Определение интерфейса сходно
+с определением класса,<span lang="RU" style='mso-ansi-language: RU'> </span>отличие
+со­стоит в том, что в интерфейсе отсутствуют объявления данных и кон­структоров.
+Общая форма интерфейса приведена ниже:&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-style: italic'>interface имя {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-style: italic'>тип_результата имя_метода1(список параметров);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-style: italic'>тип имя_final1-переменной = значение;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>Обратите внимание — у
+объявляемых в интерфейсе ме­тодов отсутствуют операторы тела. Объявление
+методов завершается сим­волом ; (точка с запятой). В интерфейсе можно объявлять
+и переменные, при этом они не­явно объявляются final<span lang="RU"
+style='mso-ansi-language: RU'> - </span>переменными. Это означает, что класс
+реализа­ции не может изменять их значения. Кроме того, при объявлении
+переменных в интерфейсе их обязательно нужно инициализировать кон­стантными
+значениями. Ниже приведен пример определения интерфейса, содержащего
+единственный метод с именем callback и одним параметром типа int.&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-style: italic'>interface Callback {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-style: italic'>void callback(int param);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></b></p>
+
+<p class="MsoNormal"><b>Оператор implements</b>&#13;</p>
+
+<p class="MsoBodyText">Оператор implements — это дополнение к определению
+класса, реали­зующего некоторый интерфейс(ы).<span lang="RU"
+style='mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class имя_класса
+[extends суперкласс]</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>[implements интерфейс0
+[, интерфейс1...]] { тело класса }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoBodyText">Если в классе реализуется несколько интерфейсов, то их
+имена раз­деляются запятыми. Ниже приведен пример класса, в котором реализуется
+определенный нами интерфейс:&#13;</p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class Client
+implements Callback { </span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>void callback(int p) {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;callback
+called with &quot; + p);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><span lang="RU"
+style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal" style='text-align: justify'>В очередном примере метод
+callback интерфейса, определенного ранее, вызывается через переменную <span
+lang="RU" style='mso-ansi-language: RU'>-</span> ссылку на интерфейс:&#13;</p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class TestIface {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) { Callback с = new client();</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>c.callback(42);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'> </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><span lang="RU"
+style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal">Ниже приведен результат работы программы:&#13;</p>
+
+<p class="MsoNormal">С:\&gt; Java TestIface<span lang="RU"
+style='mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>callback called with
+42</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal"><b>Переменные в интерфейсах&#13;</b></p>
+
+<p class="MsoNormal" style='text-align: justify'>Интерфейсы можно использовать
+для импорта в различные классы со­вместно используемых констант. В том случае,
+когда вы реализуете в классе какой-либо интерфейс, все имена переменных этого
+интерфейса будут видимы в классе как константы. Это аналогично использованию
+файлов-заголовков для задания в С и C++ констант с помощью директив #define или
+ключевого слова const<span lang="RU" style='mso-ansi-language: RU'> в </span>Pascal
+/ Delphi.&#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoBodyText">Если интерфейс не включает в себя методы, то любой
+класс, объяв­ляемый реализацией этого интерфейса, может вообще ничего не реали­зовывать.
+Для импорта констант в пространство имен класса предпочти­тельнее использовать
+переменные с модификатором final. В приведенном ниже примере проиллюстрировано
+использование интерфейса для со­вместно используемых констант.&#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>import
+java.util.Random;</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>interface
+SharedConstants { int NO = 0;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int YES = 1;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int MAYBE = 2;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int LATER = 3;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int SOON = 4;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int NEVER = 5; }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class Question
+implements SharedConstants { </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Random rand = new
+Random();</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int ask() {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int prob = (int) (100
+* rand.nextDouble());</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>if (prob &lt; 30)</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>return NO; // 30% else
+if (prob &lt; 60)</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>return YES; // 30%
+else if (prob &lt; 75)</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>return LATER; // 15%
+else if (prob &lt; 98)</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>return SOON; // 13%
+else</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>return NEVER; // 2% }
+}</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class AskMe implements
+SharedConstants { </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>static void answer(int
+result) { </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>switch(result) { </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>case NO:</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal" style='text-indent: 36.0pt'><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>System.out.println(&quot;No&quot;);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal" style='text-indent: 36.0pt'><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>break;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>case YES:</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>System.out.println(&quot;Yes&quot;);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>break;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>case MAYBE:</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>System.out.println(&quot;Maybe&quot;);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>break;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>case LATER:</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>System.out.println(&quot;Later&quot;);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>break;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>case SOON:</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>System.out.priniln(&quot;Soon&quot;);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>break;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>case NEVER:</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>System.out.println(&quot;Never&quot;);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>break;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) {<span style='mso-tab-count: 1'>&nbsp;&nbsp; </span></span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Question q = new
+Question();</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>answer(q.ask());</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>answer(q.ask());</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>answer(q.askO);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>answer(q.ask());</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b>&#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal">Обратите внимание на то, что результаты при разных
+запусках програм­мы отличаются, поскольку в ней используется класс генерации
+случай­ных чисел Random пакета java.util. Описание этого пакета приведено в <a
+href="12.htm"><span style='color: blue'>главе 12</span></a>.&#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal">С:\&gt; Java AskMe&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Later</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Scon</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>No</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Yes</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'>Использование пакетов&#13;</span></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>Теперь вы обладаете полной
+информацией для создания собственных пакетов классов. Легко понимае­мые
+интерфейсы позволят другим программистам использовать ваш код для самых
+различных целей. Инструменты, которые вы приобрели, изу­чив эту и предыдущую
+главы, должны вам помочь при разработке любых объектно-ориентированных
+приложений. В дальнейшем вы позна­комитесь с некоторыми важными специфическими
+свойствами Java, ко­торые представлены в виде классов в пакете java.lang. В
+трех последу­ющих главах вы освоите работу с <a href="09.htm"><span
+style='color: blue'>текстовыми строками</span></a>,
+<a href="10.htm"><span style='color: blue'>параллельное программирование</span></a>
+и <a href="11.htm"><span style='color: blue'>обработку исключительных ситуаций</span></a>.&#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+</div>
+
+</body>
+
+</html>

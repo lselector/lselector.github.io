@@ -1,0 +1,1624 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (X11; U; Linux 2.4.18-4GB i686) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>email</title>
+<!--
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Email</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Email</font></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 >
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">* </font><a href="#intro">intro</a><font color="#6699CC">
+* </font><a href="#smtp_commands">SMTP</a><font color="#6699CC"> * </font><a href="#poop3_commands">POP3</a>
+<br><font color="#6699CC">* </font><a href="#main_mta-s">main MTA-s</a>
+<br><font color="#6699CC">* </font><a href="#mail_ua-s">mail_User Agents</a>
+<br><font color="#6699CC">* </font><a href="#misc_email_programs">misc.
+email programs</a>
+<br><font color="#6699CC">* </font><a href="#mailing_lists_managers">mailing
+list managers</a></td>
+
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">* </font><a href="#misc_2">more
+email programs</a>
+<br><font color="#6699CC">* </font><a href="#email_related_books">email-related
+Books</a>
+<br><font color="#6699CC">* </font><a href="#email_related_perl_modules">email-related
+Perl modules</a>
+<br><font color="#6699CC">* </font><a href="#java">Java email API</a>
+<br><font color="#6699CC">* </font><a href="#spam">avoiding spam</a></td>
+
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">* </font><a href="qmail.html">my
+qmail page</a></td>
+</tr>
+</table>
+<a NAME="intro"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Intro</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 >
+<tr>
+<td><b><font color="#CC0000">UA</font></b></td>
+
+<td></td>
+
+<td>-><b><font color="#CC0000">MTA</font></b>
+<br>&lt;-<b><font color="#CC0000">LDA</font></b></td>
+
+<td>&nbsp;&lt;-->&nbsp;</td>
+
+<td><b><font color="#CC0000">MTA</font></b>&lt;-
+<br><b><font color="#CC0000">LDA</font></b>-></td>
+
+<td></td>
+
+<td><b><font color="#CC0000">UA</font></b></td>
+</tr>
+</table>
+
+<p>When you send an email - you use a program called "user agent" (<b><font color="#CC0000">UA</font></b>
+, - also called MUA - Mail UA, or email client) - which helps you to send
+and receive emails, as well as sort things around in folders.
+<p>UA sends your email to a "Mail Transport Agent" (<b><font color="#CC0000">MTA</font></b>)
+- usually an SMTP server listening on port 25.
+<br>(Try this from the prompt:&nbsp;<b><font color="#3333FF"> telnet&nbsp;&nbsp;
+SomeDomain&nbsp; 25</font></b>). You may send email directly to a destination
+MTA - or to an MTA on your provider - which will then pass your email to
+the destination MTA. Also note, that email may be passed not only using
+TCP/IP, but also via UUCP, etc.
+<p>UA receives email from Local delivery Agent (LDA) which may be implemented
+quite differently. For example, email can be delivered to user mailbox
+in his directory, or it can be available from a POP3 server (it listens
+on port 110) or from IMAP4 server (listens on port 143), or some other
+way.
+<p><font color="#6699CC">*</font> <a href="http://www.faqs.org/faqs/mail/setup/unix/part1/">http://www.faqs.org/faqs/mail/setup/unix/part1/</a>
+- FAQ
+<p><b><u>Main abbreviations:</u></b>
+<br><b><font color="#3333FF">MTA</font></b> - Mail Transport Agent (Routing,
+LDA and RDA)
+<br><b><font color="#3333FF">LDA</font></b> - Local delivery agent
+<br><b><font color="#3333FF">RDA</font></b> - Remote delivery agent
+<br><b><font color="#3333FF">UA</font></b> - User Agent
+<p><b><font color="#3333FF">SMTP</font></b> - Simple Mail Transfer Protocol
+(<b><font color="#3333FF">ESMTP</font></b> - extended SMTP) - main protocols
+for sending email
+<p><b><font color="#3333FF">POP3</font></b> - Post Office Protocol ver.3
+- a client-server protocol to retrieve email from a remote server. POP3
+server listens on TCP port 110.
+<br><b><font color="#3333FF">IMAP4</font></b> - Internet Message Access
+Protocol - alternative to POP3, listens on port 143. Messages are stored
+on the mail-drop server. Allows user to manage email on the server (which
+is good).
+<p><b><font color="#3333FF">MIME</font></b> - Multipurpose Internet Mail
+Extensions - a way to send binary info (encoded text, spread sheet, image,
+etc.). Message can be a multipart message, containing several "inner" messages
+of different Content-Type.
+<br><b><font color="#3333FF">APOP</font></b> - Authenticated Post Office
+Protocol
+<br>Ph - Directory Access protocol
+<br>LDAP - Lightweight Directory Access Protocol
+<br><b><font color="#3333FF">S/MIME</font></b>, <b><font color="#3333FF">SSL</font></b>,
+or <b><font color="#3333FF">RSA</font></b> support for message encryption.
+<br><a NAME="smtp_commands"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>SMTP commands</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>SMTP commands:</u></b>
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; telnet mail.somedomain.com
+25</font></b>
+<br><u>Try those 14 commands from prompt (RFC 821).</u>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr BGCOLOR="#FFCC99">
+<th ALIGN=LEFT VALIGN=BOTTOM><u>SMTP Command</u></th>
+
+<td>&nbsp;-&nbsp;</td>
+
+<th ALIGN=LEFT VALIGN=BOTTOM><u>What It Does</u></th>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><font color="#CC0000"><b>HELO</b>&nbsp; somedomain</font></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td ALIGN=LEFT VALIGN=TOP>Hello, identify the SMTP sender to the SMTP receiver.</td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><font color="#CC0000"><b>MAIL</b>&nbsp; FROM:
+reverse-path</font></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td ALIGN=LEFT VALIGN=TOP>Mail - start an e-mail transaction to deliver
+the e-mail to one or more recipients.</td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><font color="#CC0000"><b>RCPT</b>&nbsp; TO: forward-path</font></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td ALIGN=LEFT VALIGN=TOP>Recipient - identify an individual recipient
+of e-mail.</td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><b><font color="#CC0000">DATA</font></b></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td ALIGN=LEFT VALIGN=TOP>Data - consider the lines following the command
+to be e-mail from the sender.</td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><font color="#CC0000"><b>SEND</b>&nbsp; FROM:
+reverse-path</font></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td ALIGN=LEFT VALIGN=TOP>Send - deliver e-mail to one or more work stations.</td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><font color="#CC0000"><b>SOML</b>&nbsp; FROM:
+reverse-path</font></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td ALIGN=LEFT VALIGN=TOP>Send or mail - deliver e-mail to one or more
+work stations or recipients if the user is not active.</td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><font color="#CC0000"><b>SAML</b>&nbsp; FROM:
+reverse-path</font></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td ALIGN=LEFT VALIGN=TOP>Send and mail - deliver e-mail to one or more
+work stations and recipients if the user is not active.</td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><b><font color="#CC0000">RSET</font></b></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td ALIGN=LEFT VALIGN=TOP>Reset - end the current e-mail transaction.</td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><font color="#CC0000"><b>VRFY</b>&nbsp; string</font></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td ALIGN=LEFT VALIGN=TOP>Verify - ask the receiver to confirm that a user
+has been identified.</td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><b><font color="#CC0000">EXPN</font></b> <font color="#CC0000">string</font></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td ALIGN=LEFT VALIGN=TOP>Expand - ask the receiver to confirm that a mailing
+list has been identified.</td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><font color="#CC0000"><b>HELP</b>&nbsp; string</font></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td ALIGN=LEFT VALIGN=TOP>Help - ask the receiver to send helpful information
+to the sender.</td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><b><font color="#CC0000">NOOP</font></b></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td ALIGN=LEFT VALIGN=TOP>Noop - ask the receiver to send a valid reply
+(but specify no other action).</td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><b><font color="#CC0000">QUIT</font></b></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td ALIGN=LEFT VALIGN=TOP>Quit - ask the receiver to send a valid reply,
+and then close the transmission channel.</td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><b><font color="#CC0000">TURN</font></b></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td ALIGN=LEFT VALIGN=TOP>Turn - ask the receiver to send a valid reply
+and then become the SMTP sender, or else ask the receiver to send a refusal
+reply and remain the SMTP receiver.</td>
+</tr>
+</table>
+
+<p><b><u>Note:</u></b> each command should be finished with &lt;CRLF>.
+<br><b><u>Note:</u></b> A dot by itself in a line marks the end of your
+multi-line message (end of "DATA" command).
+<br><b><u>Note:</u></b> The reverse-path consists of an <b><u>optional
+list of hosts</u></b> and the <b><u>sender mailbox</u></b>. When the list
+of hosts is present, it is a "reverse" source route and indicates that
+the mail was relayed through each host on the list (the first host in the
+list was the most recent relay). This list is used as a source route to
+return non-delivery notices to the sender. As each relay host adds itself
+to the beginning of the list, it must use its name as known in the IPCE
+to which it is relaying the mail rather than the IPCE from which the mail
+came (if they are different). In some types of error reporting messages
+(for example, undeliverable mail notifications) the reverse-path may be
+null.
+<br><b><u>Note:</u></b> The <b><u>forward-path</u></b> consists of an optional
+list of hosts and a required destination mailbox. When the list of hosts
+is present, it is a source route and indicates that the mail must be relayed
+to the next host on the list. If the receiver-SMTP does not implement the
+relay function it may user the same reply it would for an unknown local
+user (550). When mail is relayed, the relay host must remove itself from
+the beginning forward-path and put itself at the beginning of the reverse-path.
+When mail reaches its ultimate destination (the forward-path contains only
+a destination mailbox), the receiver-SMTP inserts it into the destination
+mailbox in accordance with its host mail conventions.
+<br>&nbsp;&nbsp;&nbsp;&nbsp; For example, mail received at relay host A
+with arguments
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FROM:&lt;USERX@HOSTY.ARPA>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+TO:&lt;@HOSTA.ARPA,@HOSTB.ARPA:USERC@HOSTD.ARPA>
+<br>&nbsp;&nbsp;&nbsp;&nbsp; will be relayed on to host B with arguments
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FROM:&lt;@HOSTA.ARPA:USERX@HOSTY.ARPA>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+TO:&lt;@HOSTB.ARPA:USERC@HOSTD.ARPA>.
+<br>&nbsp;&nbsp;&nbsp;&nbsp; This command causes its forward-path argument
+to be appended to the forward-path buffer.
+<p><b><u>Read command descriptions here:</u></b>
+<br><font color="#6699CC">*</font> <a href="http://www.freesoft.org/CIE/RFC/821/13.htm">http://www.freesoft.org/CIE/RFC/821/13.htm</a>
+-
+<br><font color="#6699CC">*</font> <a href="http://www.freesoft.org/CIE/RFC/821/14.htm">http://www.freesoft.org/CIE/RFC/821/14.htm</a>
+-
+<br><font color="#6699CC">*</font> <a href="http://www.nthelp.com/smtp_commands.htm">http://www.nthelp.com/smtp_commands.htm</a>
+-
+<br><font color="#6699CC">*</font> <a href="http://users.pandora.be/sonal.nv/ics/faq/TSMTPClient/SmtpMailCmds.html">http://users.pandora.be/sonal.nv/ics/faq/TSMTPClient/SmtpMailCmds.html</a>
+-
+<br><font color="#6699CC">*</font> <a href="http://www.ietf.org/rfc/rfc0821.txt">http://www.ietf.org/rfc/rfc0821.txt</a>
+- text of&nbsp; RFC 821 "SIMPLE MAIL TRANSFER PROTOCOL" by Jonathan B.
+Postel
+<br><a NAME="poop3_commands"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>POP3 commands</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>POP3</u></b>
+<br><b><font color="#3333FF">telnet pop.somedomain.com 110</font></b>
+<br>Try those commands (from RFC1225):
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" >
+<tr BGCOLOR="#FFCC99">
+<th><u>Command</u></th>
+
+<td>&nbsp;-&nbsp;</td>
+
+<th><u>Responses</u></th>
+
+<th><u>Examples</u></th>
+</tr>
+
+<tr>
+<td><font color="#CC0000"><b>USER</b> name</font></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td>+OK name is welcome here&nbsp;
+<br>-ERR never heard of name&nbsp;</td>
+
+<td>USER David&nbsp;
+<br>+OK Please enter a password&nbsp;</td>
+</tr>
+
+<tr>
+<td><font color="#CC0000"><b>PASS</b> string</font></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td>+OK maildrop locked and ready&nbsp;
+<br>-ERR invalid password&nbsp;
+<br>-ERR unable to lock maildrop&nbsp;</td>
+
+<td>PASS test&nbsp;
+<br>+OK valid logon&nbsp;</td>
+</tr>
+
+<tr>
+<td><b><font color="#CC0000">QUIT</font></b></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td>+OK&nbsp;</td>
+
+<td>+OK Server closing connection&nbsp;</td>
+</tr>
+
+<tr>
+<td><b><font color="#CC0000">STAT</font></b></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td>+OK nn mm&nbsp;</td>
+
+<td>STAT&nbsp;
+<br>+OK 2 320&nbsp;</td>
+</tr>
+
+<tr>
+<td><font color="#CC0000"><b>LIST</b> MsgNo</font></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td>+OK scan listing follows&nbsp;
+<br>-ERR no such message&nbsp;</td>
+
+<td>LIST&nbsp;
+<br>+OK 2 messages (320 octets)&nbsp;
+<br>1 120&nbsp;
+<br>2 200&nbsp;
+<br>...&nbsp;
+<p>LIST 2&nbsp;
+<br>+OK 2 200&nbsp;</td>
+</tr>
+
+<tr>
+<td><font color="#CC0000"><b>RETR</b> MsgNo</font></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td>+OK message follows
+<br>-ERR no such message&nbsp;</td>
+
+<td>RETR 1&nbsp;
+<br>+OK 120 octets&nbsp;
+<br>&lt; the POP3 server sends the entire message here >&nbsp;</td>
+</tr>
+
+<tr>
+<td><font color="#CC0000"><b>DELE</b> msg</font></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td>+OK message deleted&nbsp;
+<br>-ERR no such message&nbsp;</td>
+
+<td>DELE 2&nbsp;
+<br>+OK message deleted&nbsp;</td>
+</tr>
+
+<tr>
+<td><b><font color="#CC0000">NOOP</font></b></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td>+OK no transaction&nbsp;</td>
+
+<td>NOOP&nbsp;
+<br>+OK</td>
+</tr>
+
+<tr>
+<td><b><font color="#CC0000">LAST</font></b></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td>+OK nn&nbsp;</td>
+
+<td>LAST&nbsp;
+<br>+OK 2&nbsp;</td>
+</tr>
+
+<tr>
+<td><b><font color="#CC0000">RSET</font></b></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td>+OK&nbsp;</td>
+
+<td>RSET&nbsp;
+<br>+OK maildrop has 2 messages (320 octets)&nbsp;</td>
+</tr>
+
+<tr BGCOLOR="#FFCC99">
+<th COLSPAN="4">Additional Commands&nbsp;</th>
+
+<td></td>
+</tr>
+
+<tr>
+<td><font color="#CC0000"><b>TOP</b> msg nn</font></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td>+OK top of msg&nbsp;
+<br>-ERR&nbsp;</td>
+
+<td>TOP 1 10&nbsp;
+<br>+OK&nbsp;
+<br>&lt; first 10 lines of the header >&nbsp;</td>
+</tr>
+
+<tr>
+<td><font color="#CC0000"><b>RPOP</b> user</font></td>
+
+<td>&nbsp;-&nbsp;</td>
+
+<td>+OK&nbsp;
+<br>-ERR&nbsp;</td>
+
+<td>RPOP david&nbsp;
+<br>+OK enter password&nbsp;</td>
+</tr>
+</table>
+
+<p><b><u>Read command descriptions here:</u></b>
+<br><font color="#6699CC">*</font> <a href="http://www.freesoft.org/CIE/RFC/1725/index.htm">www.freesoft.org/CIE/RFC/1725/index.htm</a>
+-
+<br><font color="#6699CC">*</font> <a href="http://www.freesoft.org/CIE/RFC/1725/index.htm">www.freesoft.org/CIE/RFC/1725/index.htm</a>
+-
+<br><a NAME="main_mta-s"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Main MTAs</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Main MTAs (Mail Transport Agents&nbsp; - Servers):</u></b>
+<p><font color="#6699CC">*</font> <b><a href="http://www.sendmail.org/">www.sendmail.org</a></b>
+- sendmail - a 20-year old veteran MTA, comes standard with all Unix-s.
+<br><font color="#6699CC">*</font> <b><a href="http://www.sendmail.com/">www.sendmail.com</a></b>
+- commercial version of sendmail
+<br><font color="#6699CC">*</font> <a href="http://serverwatch.internet.com/reviews/mail-sendmail.html">http://serverwatch.internet.com/reviews/mail-sendmail.html</a>
+- good review
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td>Known to be difficult to configure (you have to spend hours trying
+to figure out how something like this works:&nbsp; $*&lt;$+@$-.$=W>$*).&nbsp;
+As Chris Lewis, author of UNIX Email Software Survey FAQ writes "Please
+don't take this as condescending - I've been working on/in/with email systems
+for over 12 years and I *still* won't play with (as just one example) sendmail.cf's."&nbsp;
+That's one of the reasons why many shrewd businesses use qmail or some
+other MTA instead of standard sendmail.
+<br>&nbsp; Sendmail can do just about anything - and this is also its main
+problem.
+The language of the sendmail.cf is cryptic, but the problem is that it's
+extremely difficult to know when the rules you are implementing are the
+right thing - many sendmail configurations do slightly buggy, or even extremely
+buggy, or illegal things.&nbsp; Default configurations and minimal changing
+is the approach to take.&nbsp; The major problem with sendmail is that
+it tries to do too many things.&nbsp; Rather than confining itself to handling
+local mail, and simply routing external mail and leaving transport-specific
+format/standards conversions to transport software, it attempts (nay virually
+*insists*) that you have to do all of the format/standards conversions
+for different transports all at once. Which results in configuration files
+that are veritable nightmares to maintain.&nbsp; And that many sendmail.cf
+files depend on out-of-date standards for different transports, rather
+than trying to unify them (as in RFC976).
+<br>&nbsp; Indeed, while common wisdom and practice mandates that MTAs
+don't rewrite headers, sendmail makes it extremely difficult to *not* rewrite
+headers.&nbsp; Which results in many major systems attempting to "be nice",
+yet, totally scramble return addresses and the like.
+<br>&nbsp; There are several different sendmail lineages in the world but
+they seem to be coming together now with Eric Allman's work creating sendmail
+V8.x.&nbsp; Sendmail V8.1 was shipped with BSD 4.4 UNIX.
+<br>&nbsp; It is strongly recommended that anyone contemplating running
+sendmail upgrade to at least 8.9.x (see www.sendmail.org), which has a
+number of serious security problems fixed. Administrators wishing something
+easier to configure than sendmail, particularly with the addition of filtering
+rules, are best advised to consider using <b><font color="#CC0000">qmail</font></b>,
+<b><font color="#CC0000">exim</font></b>
+instead, or, using <b><font color="#CC0000">mailshield</font></b> SMTP
+relaying to stand in "front" of sendmail.</td>
+</tr>
+</table>
+
+<p><font color="#6699CC">*</font> <b><a href="http://www.qmail.org">www.qmail.org</a></b>
+- fast and easier to configure than sendmail.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td>Was written originally by Dan Bernstein to overcome the limitations
+of and flaws in sendmail. <b><font color="#CC0000">qmail</font></b> is
+capable of handle large volumes, fast, secure. Docs available in many languages
+(for example, in Russian - <a href="http://www.ru.qmail.org:8101/">www.ru.qmail.org:8101/</a>
+) .&nbsp; Mailing lists: <a href="mailto:qmail-help@list.cr.yp.to">mailto:qmail-help@list.cr.yp.to</a>
+, <a href="mailto:qmailannounce-help@list.cr.yp.to">mailto:qmailannounce-help@list.cr.yp.to</a>.
+<br>&nbsp;- <b><font color="#CC0000">qmail</font></b> is designed using
+unix philosophy as a set of many small utilities each performing its own
+task.&nbsp; Even <b><font color="#CC0000">qmail</font></b>'s configuration
+is modular.&nbsp; <b><font color="#CC0000">qmail</font></b> doesn't have
+large monolithic configuration files with complex structures, that have
+to be read and parsed every time that a new mail process is created, only
+to have 70% or more of that information remain unused because it is irrelevant
+to the task at hand.&nbsp; <b><font color="#CC0000">qmail</font></b>'s
+configuration comprises individual files in /var/qmail/control, each file
+having a single job.&nbsp; The names of the local domains are listed, one
+per line, in /var/qmail/control/locals, for example.&nbsp; Many configuration
+tasks (and FAQ answers!)&nbsp; are, as a result of this philosophy, one-liners
+involving `echo' and `cat'.
+<br>&nbsp; - <b><font color="#CC0000">qmail</font></b> was designed to
+be secure.&nbsp; Not only does the mail system not trust the outside world,
+but different modules in the mail system don't even trust one another.&nbsp;
+Different parts of the mail system run under different non-privileged UIDs
+("qmaild", "qmailr", "qmailq", &amp;c.).&nbsp; So, for example, even if
+the SMTP server (qmail-smtpd, which runs as user "qmailr") were compromised,
+the rest of the system will not be. <b><font color="#CC0000">qmail</font></b>
+has only one setuid binary, qmail-queue which is setuid to one of the <b><font color="#CC0000">qmail</font></b>
+user IDs, not root.&nbsp; <b><font color="#CC0000">qmail</font></b> has
+only two programs that run as root, qmail-start which spawns the other
+daemon processes under the correct UIDs and qmail-lspawn which spawns the
+local delivery program qmail-local under the UID and GID of the user being
+delivered to.&nbsp; Neither program writes to any files or spawns any program
+under the root user ID.&nbsp; <b><font color="#CC0000">qmail</font></b>
+doesn't treat root as a "real" user, and so never delivers mail as root.
+<br>&nbsp; - <b><font color="#CC0000">qmail</font></b> provides a flexible
+aliasing/forwarding mechanism, supports /etc/aliases and .forward with
+its fastforward and dot-forward packages. Each user controls all local
+parts that begin with the user's username, allowing each user to have an
+unlimited number of different local parts.&nbsp; Delivery to each local
+part is (optionally) controlled by a separate .qmail-* file in the user's
+home directory.</td>
+</tr>
+</table>
+
+<p><font color="#6699CC">*</font> <a href="http://www.postfix.org/">www.postfix.org</a>
+- postfix - even faster server (use with <b><font color="#CC0000">procmail</font></b>).
+<p><font color="#6699CC">*</font> <a href="http://www.exim.org/">www.exim.org</a>
+- Exim (Author: Philip Hazel - ph10@cus.cam.ac.uk) is a message transfer
+agent (MTA), similar to Smail 3, but its facilities are more extensive,
+and in particular it has some defenses against mail bombs and unsolicited
+junk mail in the form of options for refusing messages from particular
+hosts, networks, or senders. It can be installed in place of sendmail,
+although the configuration of exim is quite different to that of sendmail.
+<p><font color="#6699CC">*</font> <a href="http://serverwatch.internet.com/mailservers.html">http://serverwatch.internet.com/mailservers.html</a>
+- some other email servers
+<br><a NAME="mail_ua-s"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>mail UAs</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>On MS Windows platform people mostly use:</u></b>
+<br>&nbsp; - Microsoft Outlook (Express),
+<br>&nbsp; - Netscape Composer built-in email client,
+<br>&nbsp; - Eudora,
+<br>&nbsp; - Forte Agent,
+<br>&nbsp; - Lotus Notes email,
+<br>&nbsp; - Pegasus,
+<br>&nbsp; - and some others (see list on <a href="http://www.tucows.com">www.tucows.com</a>).
+<p><b><u>On Unix there is a whole bunch of utilities:</u></b>
+<br>&nbsp; - <b><font color="#CC0000">mail</font></b> = <b><font color="#CC0000">binmail</font></b>
+- simple UA. Binmail stores mail in "mbox" format. It also may serve as
+a TA (Transport Agent) on some systems, but it is not any good at that.
+On BSD, binmail invokes sendmail to do the MTA function.
+<br>&nbsp; - <b><font color="#CC0000">rmail</font></b> - remote mail -
+handles remote mail received via uucp. You better replace it with smail
+2.5 etc.
+<br>&nbsp; - <b><font color="#CC0000">Mail</font></b> - the original BSD
+UA. Not bad, stores mail in "mbox" format.
+<br>&nbsp; - <b><font color="#CC0000">mailx</font></b> - AT&amp;T's answer
+to BSD "Mail", from which it is descended.&nbsp; Probably should be avoided,
+stores mail in "mbox" format.
+<br>&nbsp; - <b><font color="#CC0000">mush</font></b> (or Mush - also available
+commercially as Z-Mail from z-code.com) - "Mail User's Shell" (author Dan
+Heller &lt;argv@well.com>).&nbsp; Internally, mush has a csh-like scripting
+language, you can virtually build your own library of email features. Has
+several interfaces (command-line or screen).&nbsp; Mush stores its messages
+in "mbox" format, or MMDF format. Note: Z-Mail is not related at all to
+Zmailer.&nbsp; Zmailer is an MTA.
+<br>&nbsp; - <b><font color="#CC0000">elm</font></b> - a screen-interfaced
+replacement for "/bin/mail" and "mailx".&nbsp;&nbsp; Has conenient utilites
+(including autoreply), easy to use.
+<br>&nbsp; - <b><font color="#CC0000">mm</font></b> - a good UA similar
+to old MM program written and developed for DEC20s over a period of many
+years. Was developed at Columbia University. Uses mbox file format (can
+also use some others).
+<br>&nbsp; - <b><font color="#CC0000">MM</font></b> - good UAs for novices
+from Columbia University (free).
+<br>&nbsp; - <b><font color="#CC0000">MH</font></b> - Message Handling
+system, in which each command is a separate program, and the shell is used
+as an interpreter.&nbsp; So, all the power of UNIX shells (pipes, redirection,
+history, aliases, and so on) works with MH - you don't have to learn a
+new interface. Mail messages are stored in individual files.
+<br>&nbsp; - <b><font color="#CC0000">XMH</font></b> - provides a graphical
+user interface to the MH Message Handling System.
+<br>&nbsp; - <b><font color="#CC0000">EXMH</font></b> - an X interface
+to the MH mail system written in John Ousterhout's Tcl/Tk language system
+and requires that you have both Tcl/Tk and MH installed.&nbsp; If you have
+metamail
+installed, exmh supports MIME. Has many conenient features.
+<br>&nbsp; - GNU Emacs <b><font color="#CC0000">Rmail</font></b> - Rmail
+is an Emacs subsystem for reading and disposing of mail.&nbsp; Rmail stores
+mail messages in Rmail files in BABYL format (originally used under the
+ITS operating system), although it can incorporate new mail from MMDF and
+Unix format files, or mixed-format files.&nbsp; Reading the messages in
+an Rmail file is done in a special major mode, Rmail mode, which redefines
+most letters to run commands for managing mail. <i><u>Replying uses another
+Emacs subsystem, Mail mode.</u></i>
+<br>&nbsp; - <b><font color="#CC0000">VM</font></b> - View Mail - a GNU
+Emacs subsystem that allows UNIX mail to be read and disposed of within
+Emacs.&nbsp; Commands exist to do tasks like bursting and creating digests,
+message forwarding, and organizing message presentation according to various
+criteria.
+<br>&nbsp; - <b><font color="#CC0000">MH-E</font></b>: GNU Emacs front
+end for <b><font color="#CC0000">MH</font></b>.&nbsp; <b><i>It is a part
+of the standard GNU Emacs distribution.</i></b>&nbsp; It offers all the
+functionality of <b>MH</b>, the visual orientation and simplicity of use
+of <b>xmh</b>, and full integration with Emacs. The command set is similar
+to that of
+<b>rmail</b> (the Emacs front end for BSD mail) and BSD mail
+itself. Mh-e allows one to read and process mail very quickly. During a
+reply, the original message is displayed simultaneously in another window
+for easy reference where a mh-e command can quickly incorporate and format
+this text into your reply. With mh-e you compose outgoing messages in Emacs.
+<br>&nbsp; - <b><font color="#CC0000">C-Client</font></b> - a general library
+useful for creating MUA's (useful if you want to write a new MUA).
+<br>&nbsp; - <b><font color="#CC0000">Metamail</font></b> - a software
+implementation of Mime, designed for easy integration with traditional
+mail-reading interfaces.
+<br>&nbsp; - <b><font color="#CC0000">MailManager</font></b> - a A MUA
+implemented using C-Client for NeXT computers.
+<br>&nbsp; - <b><font color="#CC0000">MMail</font></b> - a WYSIWYG, text
+composition, visualization and MIME mailer.
+<br>&nbsp; - <b><font color="#CC0000">Pine</font></b> - an easy to use
+email UA developed by the University of Washington (Authors: Lundblade,
+Seibel, and Crispin). Originally based on Elm (Pine Is No-longer Elm).
+Very simple to use, works on all unixes and even on DOS. It's built-in
+text editor is also available as a stand-alone program (called Pico) -
+very simple, convenient, even has spell-checker.
+<br>&nbsp; - <b><font color="#CC0000">Ream</font></b> - similar to elm
+in a number of ways, but considerably smaller and with a stronger separation
+between MUA and MTA behaviours. It runs over sendmail, mmdf and PP.
+<br>&nbsp; - <b><font color="#CC0000">ML</font></b> - a mail reader for
+the X window system, using Motif and the IMAP protocol. It provides active
+filtering of mail into user-defined views using a simple but powerful filter
+language.
+<br>&nbsp; - <b><font color="#CC0000">Z-Mail</font></b> - a commercial
+variant of <b><font color="#CC0000">mush</font></b> - a UNIX World Magazine
+"Product of the Year" winner for 1991, is a complete electronic mail system
+for workstations, PCs, ASCII terminals and Macs.&nbsp; Z-Mail provides
+Motif and Open Look graphical user interfaces, as well as two character
+modes.&nbsp; The software has been ported to nearly every system that runs
+UNIX, and it works with all standard UNIX mail transport agents including
+sendmail, binmail, smail, MMDF and X.400 gateways.&nbsp; Z-Mail can replace
+or coexist with standard mail user agents on the system, including BSD
+Mail, AT&amp;T mailx, Sun Mail Tool, Elm or Mush.&nbsp; Most anyone can
+use Z-Mail "off the shelf" and immediately benefit from its simple interface
+and advanced features.
+<br><a NAME="misc_email_programs"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>misc email programs</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>&nbsp; - <b><font color="#CC0000">uumail</font></b> - Uumail is a very
+old and obsolete precursor to smail 2.5.
+<br>&nbsp; - <b><font color="#CC0000">smail 2.5</font></b> - a small, simple
+and hard-coded rule MTA for use on UUCP networks. Not recommended for new
+installations. Can be used with sendmail as a UUCP router.
+<br>&nbsp; - <b><font color="#CC0000">lmail</font></b> - implements mail-to-pipe
+and mail-to-file aliasing - to be used with smail 2.5. Has bugs.
+<br>&nbsp; - <b><font color="#CC0000">smail 3</font></b> - a domain-capable
+mail router and delivery program that works in the UUCP zone and on the
+Internet and that is capable of gatewaying between the two.&nbsp; It supports
+SMTP, UUCP mail, alias files, .forward files, mailing list directories,
+pathalias files, /etc/hosts files, the domain name system, and can also
+query uucp for neighboring sites, automatically. It is also very simple
+to configure with a reasonable certainty of correctness.
+<br>&nbsp; - <b><font color="#CC0000">ZMailer</font></b> - intended for
+gateways or mail servers or other large site environments that have extreme
+demands on the abilities of the mailer.
+<br>&nbsp; - <b><font color="#CC0000">MMDF</font></b> - a MTA older and
+simpler than sendmail. Understands smtp, uucp, and other protocols, maintained
+in Germany.
+<br>&nbsp; - <b><font color="#CC0000">PP</font></b> - A MTA for high volume
+message switching, protocol conversion, and format conversion. PP is an
+appropriate replacement for MMDF or Sendmail, and also supports SMTP and
+UUCP mail.PP is *very* large and ideal for large organizations, where PP
+would be used as "backbone mail servers", and something simpler on the
+"client" computers.&nbsp; It does have _substantial_ learning and support
+requirements, and is *not* suitable for smaller installations.&nbsp; It
+does, however, shine in large production environments, where policy-based
+routing, high levels of security, or extensive gatewaying to different
+transports is required.
+<br>&nbsp; - <b><font color="#CC0000">SVR4</font></b> mail - a domain-capable
+mail router and delivery, supports&nbsp; SMTP, UUCP mail, alias files,
+forwarding files, mailing list directories, /etc/hosts files, the domain
+name system, and can also query uucp for neighboring sites, automatically.&nbsp;
+It is also very simple to configure with a reasonable certainty of correctness.
+It also supports mail-to-pipe and mail-to-file. SVR4 mail uses configuration
+files to resolve addresses based on their syntax, somewhat similar to sendmail,
+but using regular expressions and a more easily understood syntax.
+<br>&nbsp; - <b><font color="#CC0000">deliver</font></b> - allows any user
+to write a shell script that processes all incoming mail messages for that
+user.&nbsp; The system administrator may also install scripts that process
+all messages by installing it as the Local Delivery Agent (LDA, lmail replacement).
+The output of a script is a list of mail addresses, files and programs
+that should receive the message.&nbsp; It has access to each message as
+it is processed, so the action can be content dependent.&nbsp; The script
+may also generate automatic replies, like the "vacation" program, or pass
+along a modified version of the original message. Deliver can be used to
+construct mail-based services (e.g. automatic mailing list maintenance).&nbsp;
+It can also be used to filter mail automatically in prearranged ways (e.g.
+encryption and decryption, tossing junk mail, or vacation notices).
+<br>&nbsp; - <b><font color="#CC0000">procmail</font></b> - can be used
+to create mail-servers, mailing lists, sort your incoming mail into separate
+folders/files (real convenient when subscribing to one or more mailing
+lists or for prioritising your mail), preprocess your mail, start any programs
+upon mail arrival (e.g. to generate different chimes on your workstation
+for different types of mail) or selectively forward certain incoming mail
+automatically to someone. Procmail can be used and installed by an unprivileged
+user (for himself only). It can be used as a drop in replacement for the
+local delivery agent /bin/mail (with biff/comsat support). It can be used
+as a general mailfilter for whole groups of messages (e.g. when called
+from within sendmail.cf rules). The accompanying <b><i>formail</i></b>
+program enables you to generate autoreplies, split up digests/mailboxes
+into the original messages, do some very simple header-munging/extraction,
+or force mail into mail-format (with leading From line). Also included
+is a comprehensive mailinglist/archive management system.&nbsp; Since procmail
+is written entirely in C, it poses a very low impact on your system's resources
+(under normal conditions, when you don't start other programs/scripts from
+within it). Procmail was designed to deliver the mail under the worst conditions
+(file system full, out of swap space, process table full, file table full,
+missing support files, unavailable executables; it all doesn't matter).&nbsp;
+Should (in the unlikely event) procmail be unable to deliver
+<br>&nbsp;your mail somewhere, the mail will bounce back to the sender
+or reenter the mailqueue (your choice).
+<br>&nbsp; - <b><font color="#CC0000">mailagent</font></b> - yet another
+mail filter, written in <b><font color="#3333FF">perl</font></b>, which
+will let you do anything with your mail. Plus it is very extensible.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td>It has all the features you may expect from a filter: mailing lists
+sorting, forwarding to MTA or to inews, pre-processing of message before
+saving into folder, vacation mode, etc... It was initially written as an
+ELM-filter replacement, but has now enough power to also supplant MMDF's
+.maildelivery. There is also a support for @SH mail hooks, which allows
+you to automatically distribute patches or software via command mails.&nbsp;
+The mailagent was designed to make mail filtering as easy as it can be.
+It is highly configurable and fairly complete. Rules are specified in a
+lex-like style, with the full power of perl's regular expressions. The
+automation supports the notion of mode, and header selection has many magic
+features built-in, to ease the rule writing process.&nbsp; To give a simple
+example, the two following rules:
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <b><font color="#3333FF">Subject: /cron output/
+{
+SAVE cron };</font></b>
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <b><font color="#3333FF">To Cc: dist-users&nbsp;
+{ FORWARD friend@acri.fr; LEAVE };</font></b>
+<br>would save in a folder 'cron' all cron-related mail, and forward mail
+from the dist-users mailing list to a friend, leaving a copy in the system
+mailbox for immediate processing... The distribution comes with a set of
+examples, an exhaustive test suite, and naturally a detailed manual page.
+It should be noted that the mailagent will work even if your system administrator
+forbids "| programs" hooks in the ~/.forward, provided you have access
+to some sort of cron daemon.&nbsp;
+<br>mailagent is available from CPAN: <a href="http://www.perl.com/CPAN-local/authors/Raphael_Manfredi/">http://www.perl.com/CPAN-local/authors/Raphael_Manfredi/</a></td>
+</tr>
+</table>
+&nbsp; - <b><font color="#CC0000">pathalias</font></b> - uucp, not recommended
+any more
+<br>&nbsp; - <b><font color="#CC0000">uuhosts</font></b> - uucp, no recommended
+any longer
+<br>&nbsp; - <b><font color="#CC0000">unpackmaps</font></b> - uucp, no
+recommended any longer
+<br>&nbsp; - <b><font color="#CC0000">unshar</font></b> - uucp - capable
+of automatically unpacking new files from a newsgroup spool directory,
+and requires no interaction whatsoever with the news system.&nbsp; Apart
+from UUCP maps, it can be used to automatically and safely unpack shar
+files from the sources newsgroups.&nbsp; It does not handle some of the
+newer, esoteric shar formats that do automatic uudecodes, etc.
+<br><a NAME="mailing_lists_managers"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>mailing lists managers (MLM)</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>MLM - Mailing List Managers (also called listserves):</u></b>
+<br>-
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#6699CC">* </font><b><font color="#CC0000">Lsoft Listserv</font></b>
+- <a href="http://www.lsoft.com/">www.lsoft.com</a> -&nbsp; The most popular
+mailing-list management software on the market (~50% of ALL email list
+messages on the Internet). Examples:&nbsp; C|NET - over 4 million users
+on 23 LISTSERV lists, University of Arizona - 1,934 lists on a single RS/6000
+server. Platforms - Unix, Windows, VMS. Listserv requires low maintenance
+after installation, and it is very reliable. But it is expensive for low-end
+users. Read this review - <a href="http://serverwatch.internet.com/listserver-listserv.html">serverwatch.internet.com/listserver-listserv.html</a>
+(also for <b><font color="#000000">Listserv Lite</font></b> version review
+- <a href="http://serverwatch.internet.com/listserver-listservlite.html">serverwatch.internet.com/listserver-listservlite.html</a>
+). Listserv has somewhat tricky installation - and it is not very intuitive
+for end-users.</td>
+</tr>
+</table>
+-
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#6699CC">* </font><b><font color="#CC0000">ezmlm</font></b>
+- <a href="http://www.ezmlm.org/">www.ezmlm.org</a> - a qmail-based mailing
+list manager written by Dan J. Bernstein (author of <b><font color="#CC0000">qmail</font></b>).
+It has all the basic functionality of a mailing list manager, such as subscriber
+address management including automated bounce handling as well as message
+distribution and archiving. <b><font color="#CC0000">ezmlm-idx</font></b>
+is an add-on to ezmlm. It adds multi-message threaded message retrieval
+from the archive, digests, message and subscription moderation, and a number
+of remote administration function.&nbsp; The whole package is very good
+and easy to work with.</td>
+</tr>
+</table>
+-
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#6699CC">* </font><b><font color="#CC0000">Lyris listmanager</font></b>
+- <a href="http://www.lyris.com">www.lyris.com</a> - very good. Unix, Windows,
+OS/2.&nbsp; Has probably the best Web-based interface for admins and users.
+Allows users to read, contribute, search, join, and leave mailing lists
+over the Web. Users also have the option of choosing to receive their messages
+from Lyris mailing lists by regular e-mail or by accessing and reading
+them on the Web.&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp; Free - unlimited number of small mailing lists
+(&lt;200 members per list).
+<br>&nbsp;&nbsp;&nbsp;&nbsp; $500 - 500 members/list
+<br>&nbsp;&nbsp;&nbsp;&nbsp; 5K - unlimited number of members per list
++ ultra high-performance mail sending engine ( hundreds of messages per
+second, good for 10K members and more).
+<br>&nbsp;&nbsp;&nbsp;&nbsp; For a little extra - get secure private newsgroups.
+<br>Additional features in Lyris include an extremely fast mail engine
+that is capable of delivering hundreds of messages per second, automatic
+e-mail error detection, an installation wizard, automatic message archiving,
+fast text-based searching capabilities for the mailing list archives, multithreading
+capabilities (offers better performance when the server is used in multiple
+CPU configurations), extensive logging capabilities, numerous moderation
+options (for moderated discussion groups), server action phrases (customized
+auto-responders with tailored responses based on the content of messages),
+and support for virtual hosts (allows multiple organizations to share one
+Lyris server while appearing to users to be separate, distinct servers).
+Excellent security options. Excellent documentation and support. Admin
+duties can be delegated to other users.&nbsp;
+<br>Failsafe unsubscription system, support for parent/child lists, site
+admin can now disable mailing lists and limit the number of members on
+a list, progress reports can now report full SMTP delivery summary, document
+mail merging, password option (pw=) when subscribing, server cookie and
+thread-priority commands added to Perl toolkit, speed improvements, security
+vulnerabity fix, improved mail loop detection, SMTP thread-tracking option;
+bug fixes; optional ODBC database connectivity. Random header/footer rotation;
+review options to obtain reports by type of member; headers and footers
+can be defined for an entire site or server; member id, site, and list
+document caching for increased speed; option to allow blank message bodies
+in postings; Built-in Web server; HTTP fetching of ads; in-memory message
+processing; versions go up to <b><u><font color="#CC0000">several million
+messages per hour</font></u></b>; rebranding option; Linux version now
+available; Enhanced analysis tools; mail engine now scales to <b><u><font color="#CC0000">500,000
+unique messages per hour</font></u></b>; more flexible mail merge; unique
+text or banner ads into can be added into every e-mail creating advertising
+opportunities; enhanced "documents" (e.g., Hello and Confirm) can now use
+double-byte characters, other international symbols (such as accents),
+and
+HTML to further improve list members' experiences; read review here:
+<a href="http://serverwatch.internet.com/listserver-lyris.html">serverwatch.internet.com/listserver-lyris.html</a>
+<br><font color="#6699CC">&nbsp; - </font><a href="http://www.lyris.com">www.lyris.com</a><font color="#6699CC">
+=</font> <a href="http://www.lyristechnologies.com">www.lyristechnologies.com</a>
+- Lyris Technologies, Inc. (since 1994, in CA):
+<br>&nbsp; -- <a href="http://www.lyris.com/products/listmanager/">listmanager</a>
+- Lyris ListManager helps you manage permission email campaigns, email
+announcement lists, and online discussion groups.
+<br>&nbsp; -- <a href="http://www.lyris.com/products/listmanager_sql/">listmanager_sql</a>
+- Lyris ListManagerSQL is opt-in email marketing software designed for
+targeted email campaigns and highly-scalable email broadcasting majordomo
+- program
+<br>&nbsp; -- <a href="http://www.lyris.com/products/mailengine/">mailengine</a>
+- Lyris MailEngine sends or relays email up to 150,000 messages per hour
+from a single server.
+<br>&nbsp; -- <a href="http://www.lyris.com/products/mailshield/">mailshield</a>
+- Lyris MailShield is a server-based email filtering program for businesses.
+(also <a href="http://www.mailshield.com">www.mailshield.com</a> )</td>
+</tr>
+</table>
+-
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#6699CC">* </font><b><font color="#CC0000">Majordomo</font></b>
+- <a href="http://www.greatcircle.com/majordomo/">http://www.greatcircle.com/majordomo/</a>
+- Majordomo is one of the first tools ever created for managing mailing
+lists on the Internet. Unix based. Small C-program + perl. Free. Works
+in conjunction with some MTA (sendmail, qmail, smail). Confusing setup.
+No tech support. Outdated. Doesn't attempt to detect mail loops. Read FAQ
+here: <a href="http://www.greatcircle.com/majordomo/majordomo-faq.html">www.greatcircle.com/majordomo/majordomo-faq.html</a>
+, Review - <a href="http://serverwatch.internet.com/listserver-majordomo.html">serverwatch.internet.com/listserver-majordomo.html</a>
+.</td>
+</tr>
+</table>
+-
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#6699CC">* </font><b><font color="#CC0000">SmartList</font></b>
+- an email list management system based on procmail (<a href="http://www.procmail.org">http://www.procmail.org</a>)
+and Perl.
+<br>&nbsp;&nbsp;&nbsp;&nbsp; - <a href="http://www.hartzler.net/smartlist/SmartList-FAQ.html">http://www.hartzler.net/smartlist/SmartList-FAQ.html</a>
+- FAQ
+<br>&nbsp;&nbsp;&nbsp;&nbsp; - <a href="http://www.hartzler.net/smartlist/Manual.html">http://www.hartzler.net/smartlist/Manual.html</a>&nbsp;
+- manual</td>
+</tr>
+</table>
+-
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><u>Some other programs (mostly Windows based):</u></b>
+<br><font color="#6699CC">*</font> <a href="http://www.mailloop.com/">www.mailloop.com</a>
+- <b><font color="#CC0000">Mailloop</font></b> ($400, Windows) - used and
+sold by some shrewd mailing list marketers&nbsp;
+<p><font color="#6699CC">*</font> <b><font color="#CC0000">Cren Listproc</font></b>
+- <a href="http://www.listproc.net/">www.listproc.net</a> - not very convenient
+to maintain http://serverwatch.internet.com/listserver-unity.html&nbsp;
+<br><font color="#6699CC">*</font> <a href="http://serverwatch.internet.com/listservers.html">serverwatch.internet.com/listservers.html</a>
+- List Servers
+<br><font color="#6699CC">*</font> <a href="http://serverwatch.internet.com/listserver-arrow.html">serverwatch.internet.com/listserver-arrow.html</a>
+- <b><font color="#CC0000">Arrow Mailing List Server</font></b> (Windows)
+<br><font color="#6699CC">*</font> <a href="http://serverwatch.internet.com/mailserver-dmail.html">serverwatch.internet.com/mailserver-dmail.html</a>
+- <b><font color="#CC0000">DMail Email Server</font></b> (Windows, Unix)
+- A POP3/SMTP/List server suite designed for the SOHO market
+<br><font color="#6699CC">*</font> <a href="http://serverwatch.internet.com/listserver-liststar.html">serverwatch.internet.com/listserver-liststar.html</a>
+- <b><font color="#CC0000">ListSTAR</font></b> (Macintosh)
+<br><font color="#6699CC">*</font> <a href="http://serverwatch.internet.com/listserver-ntlist.html">serverwatch.internet.com/listserver-ntlist.html</a>
+- <b><font color="#CC0000">NTList</font></b> (Windows)
+<br><font color="#6699CC">*</font> <a href="http://serverwatch.internet.com/listserver-sllist.html">serverwatch.internet.com/listserver-sllist.html</a>
+- <b><font color="#CC0000">Seattle Lab List Server</font></b> (Windows)
+<br><font color="#6699CC">*</font> <a href="http://serverwatch.internet.com/listserver-unity.html">serverwatch.internet.com/listserver-unity.html</a>
+- <b><font color="#CC0000">UnityMail</font></b> (Windows)
+<p>Comparing MLMs look for features like ability to restrict submissions,
+detecting loops, adding standard header &amp; footer (with info how to
+get help on unsubscribe), archiving, address translations (allows a person
+to have different addresses at which he receives email or sends email from).
+<p><font color="#6699CC">*</font> <a href="http://www.postcast.com/">http://www.postcast.com/</a>
+- PostCast is an e-mail and database software for MS Windows (MS Access)
+with integrated SMTP mail server, e-mail merge client, scheduler, autoresponders
+and many other tools.
+<br>&nbsp;</td>
+</tr>
+</table>
+-
+<br><b><u>There are some directories of mailing lists, for example:</u></b>
+<br><font color="#6699CC">*</font> <a href="http://catalog.com/vivian/interest-group-search.html">http://catalog.com/vivian/interest-group-search.html</a>
+-
+<br><font color="#6699CC">*</font> <a href="http://www.pubsgroup.com/MailingLists.htm">www.pubsgroup.com/MailingLists.htm</a>
+-
+<br>-
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><u>How to run a mailing list - and some history.</u></b>
+<br>The simpliest way to run a mailin list is to do it manually from your
+email program (for example Outlook). Send your email newsletter to yourself,
+and put all other addresses in the <b><font color="#CC0000">Bcc:</font></b>
+field so the whole list isn't visible to the recipients. As your lsit grows,
+you may need some tools to merge the lists, for example:
+<br><font color="#6699CC">*</font> Campaign - <a href="http://www.arialsoftware.com">www.arialsoftware.com</a>
+-&nbsp;
+<br><font color="#6699CC">*</font> NetMailer - <a href="http://www.alphasoftware.com/netmailer/">www.alphasoftware.com/netmailer/</a>
+-&nbsp;
+<br>Further you may find a Web hosting which would provide you with a mailing
+list functionality (for example Majordomo) for ~ $10..20/mo - or free,
+if you already use their hosting. Having mail-list server will allow recepients
+to subscribe/unsubscribe by themselves - a must for a large list. There
+are also some services out there which will serve your mailing list for
+you -Yahoo and other search engines will give you lists of companies which
+provide service for smaller newsletter and discussion lists, too. Search
+for "listbot" on&nbsp; <a href="http://www.wilsonweb.com">www.wilsonweb.com</a>&nbsp;
+to see some links. Also read PC Magazine review - <a href="http://www.zdnet.com/pcmag/stories/reviews/0,6755,2425991,00.html">www.zdnet.com/pcmag/stories/reviews/0,6755,2425991,00.html</a>.
+Some of these services are absolutely free, for example ListBot, - but
+will include some advertising.
+<p><font color="#6699CC">*</font> eGroups - bought by Yahoo! - <a href="http://groups.yahoo.com/local/news.html">http://groups.yahoo.com/local/news.html</a>
+<br><font color="#6699CC">*</font> OneList - bought by Yahoo! - <a href="http://groups.yahoo.com/">http://groups.yahoo.com/</a>
+<br><font color="#6699CC">*</font> Topica - <a href="http://www.topica.com/">www.topica.com</a>
+-&nbsp;
+<br><font color="#6699CC">*</font> ListBot - bought by Microsoft - <a href="http://www.listbot.com">www.listbot.com</a>
+<br><font color="#6699CC">*</font> CoolList - <a href="http://www.coollist.com/">www.coollist.com/</a>
+<br><font color="#6699CC">*</font> Envoy Mail - <a href="http://www.envoymail.com">www.envoymail.com</a>
+- <a href="http://www.envoyinc.com">www.envoyinc.com</a>
+<br><font color="#6699CC">*</font> LSoft ListPlex - <a href="http://www.lsoft.com/EASE-head.html">www.lsoft.com/EASE-head.html</a>
+-&nbsp;
+<br><font color="#6699CC">*</font> PostMaster General - <a href="http://www.postmasterdirect.com">www.postmasterdirect.com</a>
+<br><font color="#6699CC">*</font> SparkList - (uses Lyris) - <a href="http://www.sparklist.com">www.sparklist.com</a>
+-&nbsp;
+<br><font color="#6699CC">*</font> UnityMail Express from MessageMedia
+- <a href="http://www.messagemedia.com/solutions/unitymail/um_express.shtml">www.messagemedia.com/solutions/unitymail/um_express.shtml</a>
+<br><font color="#6699CC">*</font> Lyris - <a href="http://www.lyris.com">www.lyris.com</a>
+-&nbsp;
+<br><font color="#6699CC">*</font> Revnet Groupmaster - <a href="http://www.groupmaster.com/html/hosting.html">www.groupmaster.com/html/hosting.html</a>
+-&nbsp;
+<p><b><u>e-mail campaign provider:</u></b>
+<br><font color="#6699CC">*</font> eGain Communications - <a href="http://www.egain.com/">www.egain.com</a>
+-&nbsp;
+<br><font color="#6699CC">*</font> Exactis.com - <a href="http://www.exactis.com">www.exactis.com</a>
+= <a href="http://www.experian.com/">www.experian.com</a>
+<br><font color="#6699CC">*</font> Kana Communications -&nbsp;
+<p><b><u>Autoresponders with followup (for marketing):</u></b>
+<br><font color="#6699CC">*</font> <a href="http://www.Aweber.com">Aweber.com</a>
+- $30/mo for an autoresponder with 6 followups
+<br><font color="#6699CC">*</font> <a href="http://www.google.com/search?q=autoresponders&cat=gwd%2FTop">www.google.com/search?q=autoresponders&amp;cat=gwd%2FTop</a>
+- list of autoresponders on Google
+<br><font color="#6699CC">*</font> <a href="http://www.sendfree.com/">www.sendfree.com</a>
+- autoresponder ad exchange
+<br><font color="#6699CC">*</font> <a href="http://www.getresponse.com/">www.getresponse.com</a>
+-&nbsp;
+<br>&nbsp;</td>
+</tr>
+</table>
+-
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFFFCC" >
+<tr>
+<td>In 1986, Eric Thomas created <b><font color="#CC0000">ListServ</font></b>,
+- the first automated list server
+<br>Later, Anastosias Kotsikonas developed an automated list server, <b><font color="#CC0000">ListProc</font></b>,
+for Unix.&nbsp;
+<br>Later Brent Chapman created a simple list server called <b><font color="#CC0000">Majordomo</font></b>.
+This program was (and still is) very popular, it is free and easily customizable
+with Perl.
+<p>Initially, list servers were email command driven. In 1997, <b><font color="#CC0000">Lyris
+list server</font></b> appeared with new features like web browser administration.
+<br>Companies such as L-Soft (producer of ListServ) and Lyris began providing
+<b><font color="#CC0000">list
+hosting services</font></b> - reliable, easy administration. Some companies
+used ListServ, Lyris, ListProc, or Majordomo, others developed their own
+proprietary list server programs.&nbsp;
+<p>Some modern companies added some marketing/revenue-building features
+( <b><u><font color="#CC0000">response tracking, trackable URLs, dynamic
+content, and targeted content delivery</font></u></b>).&nbsp;
+<br><font color="#6699CC">*</font> <b><font color="#CC0000">Revnet</font></b>
+-
+<a href="http://www.revnet.com/">www.revnet.com</a> (messagemedia)
+<br><font color="#6699CC">*</font> <b><font color="#CC0000">Interstep</font></b>
+- was acquired by <b><font color="#CC0000">Flycast</font></b>, which was
+aquired by <b><font color="#CC0000">Engage</font></b> - <a href="http://www.engage.com/">www.engage.com</a>
+<br><font color="#6699CC">*</font> <b><font color="#CC0000">Exactis.com</font></b>
+- <a href="http://www.exactis.com">www.exactis.com</a> = <a href="http://www.experian.com/">www.experian.com</a>
+<br><font color="#6699CC">*</font> <a href="http://www.revnetdesign.com/">www.revnetdesign.com/</a>
+- content</td>
+</tr>
+</table>
+
+<p><a NAME="more_email_programs"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>more email programs</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b>Everything Email</b> - resource with many links, but strangely lacking
+main industry workhorses like sendmail, qmail, lyris, listserv, etc. Looks
+like the site is compiled by a non-technical person targeting small user.
+<br><font color="#6699CC">&nbsp; * </font><a href="http://everythingemail.net/">http://everythingemail.net/</a>
+-
+<br><font color="#6699CC">&nbsp; * </font><a href="http://everythingemail.net/email_software.html">http://everythingemail.net/email_software.html</a>
+-
+<br><font color="#6699CC">&nbsp; * </font><a href="http://everythingemail.net/email_services.html">http://everythingemail.net/email_services.html</a>
+-
+<br>&nbsp;
+<p>qpopper
+<br>cyrus
+<br>vpopmail homepage ( http://www.inter7.com/vpopmail )
+<br>qmail@planetsites.com - mailing list
+<br>Security and encryption:&nbsp; OpenPGP and S/MIME formats.
+<br>vCard - and vCalendar formats to distribute info about the person and
+scheduling info.
+<br><u>Mailbox formats:</u>
+<br>&nbsp; mbox (ant many variations of it) - many messages in one file
+<br>&nbsp; MH - each message in a separate file
+<br>&nbsp; Maildir - to be used with qmail - an enhancement of MH format.
+<br>&nbsp; Mailcap files
+<br><a NAME="email_related_books"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Email Related Books</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#6699CC">* </font>"Programming Internet Email - David
+Wood, O'Reilly, 1999 - very good. Describes protocols and software, provides
+perl and java examples of solving common tasks (for example - has a perl
+script mail.pl working similar to /bin/mail - but also capable of attaching
+binary files).&nbsp;
+<br><font color="#6699CC">* </font>"Running qmail" - by Richard Blum, 2000
+<br><font color="#6699CC">* </font>"The qmail Handbook" - by Dave Sill,
+2001
+<br><font color="#6699CC">* </font>"sendmail" - by Bryan Costales &amp;
+Eric Allman, O'Reilly, 2nd ed., 1997
+<br><font color="#6699CC">* </font>"Sendmail - Theory and Practice" - by
+Frederick Avolio &amp; Paul Vixie, 1995
+<br><font color="#6699CC">* </font>"sendmail for Linux" - by Richard Blum,
+2000&nbsp;
+<br><font color="#6699CC">* "</font>Managing Mailing Lists" - by Alan Schwartz,
+O'Reilly, 1998 (reviews Unix-based mailing lists -- Majordomo 1.94.4, Listproc
+6.0c, SmartList 3.10, and LISTSERV Lite 1.8d )</td>
+</tr>
+</table>
+<a NAME="email_related_perl_modules"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>email with perl&nbsp;</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Email can be sent from Perl by
+<br>&nbsp; either invoking some external client program (like mail),
+<br>&nbsp; or invoking some MTA (like sendmail)
+<br>&nbsp; or connecting directly to some SMTP server (usually via port
+25).
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#3333FF">$sendmail' => '/usr/sbin/sendmail -t -oi';</font>
+<br><font color="#3333FF">open(MAIL,"|$sendmail");</font>
+<br><font color="#3333FF">print MAIL &lt;&lt;EOM;</font>
+<br><font color="#3333FF">From: $from_email ($from_name)</font>
+<br><font color="#3333FF">To: $to_email ($to_name)</font>
+<br><font color="#3333FF">Subject: $subject</font>
+<p><font color="#3333FF">$email_txt</font>
+<br><font color="#3333FF">EOM</font>
+<br><font color="#3333FF">close(MAIL);</font></td>
+</tr>
+</table>
+
+<p><b><font color="#3333FF">Net::SMTP</font></b> - Simple Mail Transfer
+Protocol Client (Author - Graham Barr) - talks to SMTP server. The fastest
+way when you need to send many emails. Note: <b><font color="#CC0000">Net::SMTP</font></b>,
+<b><font color="#CC0000">Net::POP3</font></b>,
+<b><font color="#CC0000">Net::FTP</font></b>,
+etc. are part of famous libnet library (go to CPAN and search for libnet)
+- <a href="http://www.perl.com/CPAN-local//authors/id/G/GB/GBARR/">www.perl.com/CPAN-local//authors/id/G/GB/GBARR/</a>.
+<br><font color="#6699CC">* </font><a href="http://www.perldoc.com/perl5.6/lib/Net/SMTP.html">www.perldoc.com/perl5.6/lib/Net/SMTP.html</a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td>&nbsp;&nbsp;&nbsp; $smtp = Net::SMTP->new('mailhost',
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Hello => 'my.mail.domain'
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Timeout => 30,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Debug&nbsp;&nbsp; => 1,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+);
+<br>-------------------------
+<br>#!/usr/local/bin/perl -w
+<p>use Net::SMTP;
+<p>$smtp = Net::SMTP->new('mailhost');
+<p>$smtp->mail($ENV{USER});
+<br>$smtp->to('postmaster');
+<p>$smtp->data();
+<br>$smtp->datasend("To: postmaster\n");
+<br>$smtp->datasend("\n");
+<br>$smtp->datasend("A simple test message\n");
+<br>$smtp->dataend();
+<p>$smtp->quit;</td>
+</tr>
+</table>
+
+<p><b><font color="#3333FF">Mail::Mailer</font></b> - Simple interface
+to electronic mailing mechanisms.
+<br><font color="#6699CC">* </font><a href="http://www.perldoc.com/perl5.6/lib/Mail/Mailer.html">www.perldoc.com/perl5.6/lib/Mail/Mailer.html</a>
+<br>Sends mail using any of the built-in methods (mail, sendmail, smtp
+server).
+<br>You can alter the behaviour of a method by passing $command to the
+new method.
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#CCFFFF" >
+<tr>
+<td><b><font color="#3333FF">mail&nbsp;</font></b>
+<br>Use the Unix system mail program to deliver the mail. $command is the
+path to mail. Mail::Mailer will search for mailx, Mail and mail (in this
+order).
+<p><b><font color="#3333FF">sendmail</font></b>
+<br>Use the sendmail program to deliver the mail. $command is the path
+to sendmail.&nbsp;
+<p><b><font color="#3333FF">smtp</font></b>
+<br>Use the smtp protocol via Net::SMTP to deliver the mail. The server
+to use can be specified in @args with
+<p>&nbsp;&nbsp;&nbsp; $mailer = new Mail::Mailer 'smtp', Server => $server;
+<p><b><font color="#3333FF">test</font></b>
+<br>Used for debugging, this calls /bin/echo to display the data. No mail
+is ever sent. $command is ignored.&nbsp;</td>
+</tr>
+
+<tr>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>
+<br><font color="#3333FF">use Mail::Mailer;</font>
+<br><font color="#3333FF">use Mail::Mailer qw(mail);</font>
+<p><font color="#3333FF">$mailer = new Mail::Mailer;</font>
+<br><font color="#3333FF">$mailer = new Mail::Mailer $type, @args;</font>
+<p><font color="#3333FF">$mailer->open(\%headers);</font>
+<br><font color="#3333FF">print $mailer $body;</font>
+<br><font color="#3333FF">$mailer->close;</font>
+<br>&nbsp;</td>
+</tr>
+</table>
+
+<p>&nbsp;- <b><a href="http://www.perldoc.com/cpan/MIME/Lite.html">MIME::Lite</a></b>
+package - good way to send attachments. Example: sending log file in case
+of failure (in csh syntax):
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td>some_job >>&amp; $log1file
+<br>if ( "$status" != "0" ) then
+<br>&nbsp;&nbsp; echo "Error at:" >> $log1file
+<br>&nbsp;&nbsp; date >> $log1file
+<br>&nbsp;&nbsp; sendmime.pl --to=$mailTo --subject='some_job Failed' --msg_file=$log1file
+<br>&nbsp;&nbsp; exit(1)
+<br>endif</td>
+</tr>
+</table>
+Here is a working copy:&nbsp; <a href="mem/perl_cgi/sendmime.pl.txt">sendmime.pl</a>
+<br>It is a simple script using MIME::Lite, pieces of code looking like
+this:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td>&nbsp;$msg = MIME::Lite->new(&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+From&nbsp;&nbsp;&nbsp; =>'me@myhost.com',
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+To&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =>'you@yourhost.com',
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Cc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =>'some@other.com, some@more.com',
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Subject =>'A message with 2 parts...',
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Type&nbsp;&nbsp;&nbsp; =>'multipart/mixed'
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+);
+<p>&nbsp;&nbsp; ### Add parts (each "attach" has same arguments as "new"):
+<br>$msg->attach(Type&nbsp;&nbsp;&nbsp;&nbsp; =>'TEXT',&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Data&nbsp;&nbsp;&nbsp;&nbsp; =>"Here's the GIF file you wanted"
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+);&nbsp;
+<br>&nbsp;$msg->attach(Type&nbsp;&nbsp;&nbsp;&nbsp; =>'image/gif',
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Path&nbsp;&nbsp;&nbsp;&nbsp; =>'aaa000123.gif',
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Filename =>'logo.gif'
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+);
+<p>#Output a message:
+<br>### Format as a string:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$str = $msg->as_string;
+<br>### Print to a filehandle (say, a "sendmail" stream):
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$msg->print(\*SENDMAIL);
+<br>### Send in the "best" way (the default is to use "sendmail"):
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$msg->send;</td>
+</tr>
+</table>
+
+<p>Here is how to send an HTML formatted email with image(s) attached to
+the message itself:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td>#!/usr/local/bin/perl
+<br># email html with image attached
+<p>use MIME::Lite;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+# Standard CPAN module
+<br>my $from_address = 'selector@LevSelector.com';
+<br>my $to_address = 'selector@LevSelector.com';
+<p>my $subject = 'MIME test - HTML with image';
+<br>my $mime_type = 'multipart/related';
+<p># Create the message headers
+<br>my $mime_msg = MIME::Lite->new(
+<br>&nbsp;&nbsp; From => $from_address,
+<br>&nbsp;&nbsp; To&nbsp;&nbsp; => $to_address,
+<br>&nbsp;&nbsp; Subject => $subject,
+<br>&nbsp;&nbsp; Type => $mime_type
+<br>&nbsp;&nbsp; )
+<br>&nbsp; or die "Error creating MIME body: $!\n";
+<p># Attach the HTML content
+<br>my $message_body = '&lt;html>&lt;body>&lt;H3>Hello world!
+<br>&nbsp;&nbsp; &lt;img src="cid:myid.gif">&lt;/H3>&lt;/body>&lt;/html>';
+<p>$mime_msg->attach(Type => 'text/html',
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Data => $message_body);
+<p># Attach the image
+<br>$mime_msg->attach(
+<br>&nbsp;&nbsp; Type => 'image/gif',
+<br>&nbsp;&nbsp; Id => 'myid.gif',
+<br>&nbsp;&nbsp; Encoding => 'base64',
+<br>&nbsp;&nbsp; Path => 'pikachu.jpg');
+<p>$mime_msg->send;</td>
+</tr>
+</table>
+
+<p>&nbsp;- <b><a href="http://www.perldoc.com/perl5.6/lib/MIME/Base64.html">MIME::Base64</a></b>
+package:&nbsp; <font color="#3333FF">Base64.pm, Quotedprint.pm</font>
+<br>&nbsp;- <b><a href="http://www.perldoc.com/perl5.6/lib/MIME/Tools.html">MIME::tools</a></b>
+package: <font color="#3333FF">Body.pm, Decoder.pm, Entity.pm, Head.pm,
+Parser.pm, ParserBase.pm, ToolUtils.pm, Tools.pm, Words.pm</font>
+<br>&nbsp;- <b><a href="http://www.perldoc.com/cpan/Mail/Cclient.html">Mail::Cclient</a></b>
+package: <font color="#3333FF">Cclient.pm</font> - perl interface to c-client
+libraries.
+<br>&nbsp;- <b><a href="http://www.perldoc.com/cpan/Mail/Folder.html">Mail::Folder</a></b>
+package: <font color="#3333FF">Folder.pm</font> - provides access to multiple
+mailbox types
+<br>&nbsp;- <a href="http://www.gigawatt.com/perldoc/perl5/site_perl/5.6.0/Mail/?S=A">Mail</a>&nbsp;
+tools package: <font color="#3333FF">Address.pm, Alias.pm, Cap.pm, Field.pm,
+Filter.pm, Header.pm, Internet.pm, Mailer.pm, Send.pm, Util.pm</font>
+<br>&nbsp;- Libnet package: <font color="#3333FF">POP3.pm, SMTP.pm</font>,
+etc.
+<br>&nbsp;- POP3::Client package:&nbsp; <font color="#3333FF">POP3Client.pm</font>
+<p>some useful perl email programs:
+<br>&nbsp;- <b><font color="#CC0000">webmail</font></b> - <a href="http://opensource.jaos.org/">http://opensource.jaos.org/</a>
+- Perl webmail is a CGI script that interfaces with a POP mail server that
+you provide. It can check mail, read messages, reply, forward, and delete,
+and it doesn't have to be a local mail server. This script talks strictly
+POP3 and SMTP for sending mail.
+<br>&nbsp;- <b><font color="#CC0000">mailagent</font></b> - <a href="http://www.perl.com/CPAN-local/authors/Raphael_Manfredi/">www.perl.com/CPAN-local/authors/Raphael_Manfredi/</a>
+- mail filter and processor - see description earlier on this page.
+<br>&nbsp;- <b><font color="#CC0000">MailMan</font></b> -- <a href="http://www.endymion.com/portfolio/software/scripts/mailman.htm">www.endymion.com/portfolio/software/scripts/mailman.htm</a>
+- MailMan is a simple 1-file CGI script written in Perl5 (comes with some
+images and html templates). Just unzip it somewhere under your public_html
+- and you can start using it. MailMan presents a browser interface similar
+to hotmail, yahoomail, etc. and allows you to read and send email through
+standard POP3 and SMTP servers. It uses only libraries which are part of
+standard Perl5 distribution - so it works right out of the box on both
+Unix and Windows platforms. MailMan is designed for users who are away
+from their desks, in conjunction with a 'primary' mail reading program.
+By default, it does not delete messages from the server. You can download
+free version for private or non-profit use, but the perl script is sort-of
+encrypted (names are made meaningless, parts of the script are coded in
+hex strings - and packed/evaled on the fly). You can also buy ($250 - standard,
+$400 - pro). Very good script.
+<br>&nbsp;- <b><font color="#CC0000">MailMan</font></b> -- <a href="http://www.list.org/">www.list.org</a>
+- mailman Mailing list manager - written in Python (and a little bit in
+C).
+<br>&nbsp;- <b><font color="#CC0000">WWW-Mail</font></b> - <a href="http://www.vejrum.dk/www-mail/www_mail.htm">www.vejrum.dk/www-mail/www_mail.htm</a>
+- www Mail Client/Gateway
+<br>&nbsp;- <b><font color="#CC0000">PerlMx</font></b> - <a href="http://www.ActiveState.com/PerlMX">www.ActiveState.com/PerlMX</a>
+- Mail filtering
+<p><b><u>More scripts:</u></b>
+<br>&nbsp;- <a href="http://www.emailman.com/unix/mailinglist.html">http://www.emailman.com/unix/mailinglist.html</a>
+-
+<br>&nbsp;- <a href="http://www.mml.org.ua/">http://www.mml.org.ua/</a>
+- minimalist -
+<br>&nbsp;- <a href="http://totalscripts.com/pages/Perl_Scripts/MLM/">http://totalscripts.com/pages/Perl_Scripts/MLM/</a>
+-
+<br>&nbsp;- <a href="http://www.quikpix.com/pages/E_Design/Perl_CGI_Scripts/Mass_Mailing/">http://www.quikpix.com/pages/E_Design/Perl_CGI_Scripts/Mass_Mailing/</a>-
+<br>&nbsp;- <a href="http://www.devdaily.com/Dir/Perl/CGI/E_Mail/">http://www.devdaily.com/Dir/Perl/CGI/E_Mail/</a>
+-
+<br>&nbsp;- <a href="http://perl.miningco.com/compute/perl/cs/scriptswebbase/">http://perl.miningco.com/compute/perl/cs/scriptswebbase/</a>
+-
+<br>&nbsp;- <a href="http://www.cgifiles.com/scripts/perl/webmail.shtml">http://www.cgifiles.com/scripts/perl/webmail.shtml</a>
+-
+<br>&nbsp;- <a href="http://www.secureroot.com/security/advisories/9761547364.html">http://www.secureroot.com/security/advisories/9761547364.html</a>
+-
+<br>&nbsp;- <a href="http://webcab.de/we/Computers_and_Internet/Computers/Programming_Languages/PERL/Scripts/">http://webcab.de/we/Computers_and_Internet/Computers/Programming_Languages/PERL/Scripts/</a>
+-
+<br><a NAME="java"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Java Mail API</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#3333FF">javax.mail&nbsp;</font></b>&nbsp; package
+<p><a NAME="spam"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Avoiding Spam</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>- Avoid posting your real email on usenet groups, mailing lists, commercial
+web sites.
+<br>- Occasionally post a meaningful message to news.admin.netabuse.email
+using your real address.
+<p><u>Filter incoming messages:</u>
+<br>&nbsp; - use procmail to filter out spam before it gets to your mailbox.
+<br>&nbsp; - use filter in your UA.
+<p><u>Revenge:</u>
+<br>&nbsp;- mail bomb - send 1000s of long messages to the spammer - not
+recommended.&nbsp; Better to analyze the headers, find who the spammer
+is - or at least who is his provider - and send this ISP a note (or send
+it to their backbone ISP).
+<p>Spammers can use a misconfigured MTA. Normally an MTA does not allow
+SMTP relaying, that is to send email from outside address to any other
+address.&nbsp; They only send emails from outside to one of their "internal"
+clients. Because if it will allow anybody to connect to it and send messages
+to any address - this may be used by a spammer.
+<p>Here are some links:
+<br>&nbsp;- <a href="http://www.spamcop.net">www.spamcop.net</a> - for
+all of the spam-spanking goodness you crave.
+<br>&nbsp;- Mail::SpamAssassin - Perl module
+<br>&nbsp;- Mail::Audit - Perl module
+<br>&nbsp;- <a href="http://www.spambouncer.org/">http://www.spambouncer.org/</a>
+- Spam Bouncer which consists of a bunch of procmail scripts
+<br>&nbsp;- http://razor.sf.net/ - Vipul's Razor - a distributing system
+for identifying spam
+<br>&nbsp;
+</body>
+</html>

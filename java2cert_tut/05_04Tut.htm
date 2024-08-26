@@ -1,0 +1,983 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN"> 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<HTML>
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<HEAD>
+
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1"> 
+
+
+
+
+
+
+
+<META NAME="GENERATOR" CONTENT="Visual Page 2.0 for Windows"> 
+
+
+
+
+
+
+
+<TITLE>5.4) Operators and Assignment</TITLE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="tutor.css"></HEAD>
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<BODY BGCOLOR="#FFFFFF">
+
+<table width=95% border=0 cellpadding=2 cellspacing=0 style="page-break-before: always">
+
+  <col width=147*> <col width=109*> 
+
+  <tr> 
+
+    <td width=57% height=104> 
+
+      <p><a href= "introj2.htm" ><img src= "btnIndex.jpg"  name="Graphic1" alt="Return to Tutorial Index" align=BOTTOM width=55 height=39 border=0></a><a href= "introj2.htm" ><br>
+
+        <br>
+
+        </a><a href= "index.htm" ><img src= "btnHome.jpg"  name="Graphic2" alt="Back to the home page of this site" align=BOTTOM width=55 height=39 border=0></a> 
+
+      </p>
+
+    </td>
+
+    <td width=43%> 
+
+      <p align=RIGHT><img src= "hat.gif"  name="Graphic3" alt="morterboard" align=BOTTOM width=118 height=113 border=0></p>
+
+    </td>
+
+  </tr>
+
+  <tr> 
+
+    <td width=57% height=11> 
+
+      <h1 align=LEFT>Java2 Certification <br>
+
+        Tutorial </h1>
+
+    </td>
+
+    <td width=43% bgcolor="#ff9900"> 
+
+      <p>&nbsp;</p>
+
+    </td>
+
+  </tr>
+
+</table>
+
+<p> You can discuss this topic with others at <a href= "http://www.jchq.net/discus" >http://www.jchq.net/discus</a><br>
+
+  Read reviews and buy a Java Certification book at <a href= "http://www.jchq.net/bookreviews/jcertbooks.htm" >http://www.jchq.net/bookreviews/jcertbooks.htm</a> 
+
+  <br>
+
+</p>
+
+<hr size=5 noshade>
+
+<h1>5)<B><FONT FACE="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">Operators and Assignments</FONT></B></h1>
+
+
+
+
+
+
+
+<H3>Objective 4)</H3>
+
+
+
+
+
+
+
+<P><FONT FACE="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">Determine the effect upon
+
+
+
+
+
+
+
+objects and primitive values of passing variables into methods and performing
+
+
+
+
+
+
+
+assignments or other modifying operations in that method.</FONT></P>
+
+
+
+
+
+
+
+<H3><B>Note on the Objective</B></H3>
+
+
+
+
+
+
+
+<P>This objective appears to be asking you to understand what happens when you
+
+
+
+
+
+
+
+pass a value into a method. If the code in the method changes the variable, is
+
+
+
+
+
+
+
+that change visible from outside the method?. Here is a direct quote from Peter
+
+
+
+
+
+
+
+van der Lindens Java Programmers FAQ (available at <A
+
+
+
+
+
+
+
+HREF= "http://www.afu.com/" >http://www.afu.com</A>)<BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+//Quote<BR>
+
+
+
+
+
+
+
+<I>All parameters (values of primitive types and values that are references to
+
+
+
+
+
+
+
+objects) are passed by value. However this does not tell the whole story, since
+
+
+
+
+
+
+
+objects are always manipulated through reference variables in Java. Thus one
+
+
+
+
+
+
+
+can equally say that objects are passed by reference (and the reference
+
+
+
+
+
+
+
+variable is passed by value). This is a consequence of the fact that variables
+
+
+
+
+
+
+
+do not take on the values of &quot;objects&quot; but values of &quot;references
+
+
+
+
+
+
+
+to objects&quot; as described in the previous question on linked lists.<BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+Bottom line: The caller's copy of primitive type arguments (int, char, etc.)
+
+
+
+
+
+
+
+_do not_ change when the corresponding parameter is changed. However, the
+
+
+
+
+
+
+
+fields of the caller's object _do_ change when the called method changes the
+
+
+
+
+
+
+
+corresponding fields of the object (reference) passed as a parameter.<BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+</I>//End Quote<BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+If you are from a C++ background you will be familiar with the concept of
+
+
+
+
+
+
+
+passing parameters either by value or by reference using the &amp; operator.
+
+
+
+
+
+
+
+There is no such option in Java as everything is passed by value. However it
+
+
+
+
+
+
+
+does not always appear like this. If you pass an object it is an object
+
+
+
+
+
+
+
+reference and you cannot directly manipulate an object reference. <BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+Thus if you manipulate a field of an object that is passed to a method it has
+
+
+
+
+
+
+
+the effect as if you had passed by reference (any changes will be still be in
+
+
+
+
+
+
+
+effect on return to the calling method)..</P>
+
+
+
+
+
+
+
+<H3>Object references as method parameters</H3>
+
+
+
+
+
+
+
+<P>Take the following example</P>
+
+
+
+
+
+
+
+<PRE>class ValHold{
+        public int i = 10;
+}
+public class ObParm{
+public static void main(String argv[]){
+        ObParm o = new ObParm();
+        o.amethod();
+        }
+        public void amethod(){
+                ValHold v = new ValHold();
+                v.i=10;
+                System.out.println(&quot;Before another = &quot;+ v.i);
+                another(v);
+                System.out.println(&quot;After another = &quot;+ v.i);
+        }//End of amethod
+        public void another(ValHold v){
+                v.i = 20;
+                System.out.println(&quot;In another = &quot;+ v.i);
+        }//End of another
+}</PRE>
+
+
+
+
+
+
+
+<P>The output from this program is</P>
+
+
+
+
+
+
+
+<PRE>Before another = 10
+In another = 20
+
+After another = 20</PRE>
+
+
+
+
+
+
+
+<P>See how the value of the variable <I>i</I> has been modified. If Java always
+
+
+
+
+
+
+
+passes by value (i.e. a copy of a variable), how come it has been modified?
+
+
+
+
+
+
+
+Well the method received a copy of the handle or object reference but that
+
+
+
+
+
+
+
+reference acts like a pointer to the real value. Modifications to the fields
+
+
+
+
+
+
+
+will be reflected in what is pointed to. This is somewhat like how it would be
+
+
+
+
+
+
+
+if you had automatic dereferencing of pointers in C/C++.</P>
+
+
+
+
+
+
+
+<H3>Primitives as method parameters</H3>
+
+
+
+
+
+
+
+<P>When you pass primitives to methods it is a straitforward pass by value. A
+
+
+
+
+
+
+
+method gets its own copy to play with and any modifications are not reflected
+
+
+
+
+
+
+
+outside the method. Take the following example.</P>
+
+
+
+
+
+
+
+<PRE>public class Parm{
+public static void main(String argv[]){
+                Parm p = new Parm();
+                p.amethod();
+        }//End of main
+        public void amethod(){
+              int i=10;
+              System.out.println(&quot;Before another i= &quot; +i);
+              another(i);
+              System.out.println(&quot;After another i= &quot; + i);
+        }//End of amethod
+        public void another(int i){
+              i+=10;
+             System.out.println(&quot;In another i= &quot; + i);
+        }//End of another
+}
+
+</PRE>
+
+
+
+
+
+
+
+<P>The output from this program is as follows</P>
+
+
+
+
+
+
+
+<PRE>Before another i= 10
+In another i= 20
+After another i= 10
+</PRE>
+
+
+
+
+
+
+
+<HR>
+
+
+
+
+
+
+
+<TABLE BORDER="0" WIDTH="100%">
+
+
+
+
+
+
+
+<TR>
+
+
+
+
+
+
+
+<TD WIDTH="11%"> <P><IMG SRC= "Quiz.gif"  WIDTH="99" HEIGHT="101"
+
+
+
+
+
+
+
+ALIGN="BOTTOM" BORDER="0"> </P>
+
+
+
+
+
+
+
+</TD>
+
+
+
+
+
+
+
+<TD WIDTH="89%"> <P>&nbsp; </P>
+
+
+
+
+
+
+
+</TD>
+
+
+
+
+
+
+
+</TR>
+
+
+
+
+
+
+
+</TABLE>
+
+
+
+
+
+
+
+<H1>Questions</H1>
+
+
+
+
+
+
+
+<H4><B>Question 1)</B></H4>
+
+
+
+
+
+
+
+<P>Given the following code what will be the output?</P>
+
+
+
+
+
+
+
+<PRE>class ValHold{
+        public int i = 10;
+}
+public class ObParm{
+public static void main(String argv[]){
+        ObParm o = new ObParm();
+        o.amethod();
+        }
+        public void amethod(){
+              int i = 99;
+                ValHold v = new ValHold();
+                v.i=30;
+                another(v,i);
+                System.out.println(v.i);
+        }//End of amethod
+        public void another(ValHold v, int i){
+                i=0;
+                v.i = 20;
+                ValHold vh = new ValHold();
+                v =  vh;
+                System.out.println(v.i+ &quot; &quot;+i);
+        }//End of another
+}
+</PRE>
+
+
+
+
+
+
+
+<P>1) 10,0, 30<BR>
+
+
+
+
+
+
+
+2) 20,0,30<BR>
+
+
+
+
+
+
+
+3) 20,99,30<BR>
+
+
+
+
+
+
+
+4) 10,0,20 </P>
+
+
+
+
+
+
+
+<H1>Answers</H1>
+
+
+
+
+
+
+
+<H4><B>Answer 1)</B></H4>
+
+
+
+
+
+
+
+<P><B> </B>4) 10,0,20</P>
+
+
+
+
+
+
+
+<TABLE BORDER="1" WIDTH="100%">
+
+
+
+
+
+
+
+<CAPTION><B>Other sources on this topic</B>
+
+
+
+
+
+
+
+</CAPTION> <TR>
+
+
+
+
+
+
+
+<TD WIDTH="100%"><B>This topic is covered in the Sun Tutorial at </B><A
+
+
+
+
+
+
+
+HREF= "http://java.sun.com/docs/books/tutorial/java/javaOO/arguments.html" ><BR>
+
+
+
+
+
+
+
+http://java.sun.com/docs/books/tutorial/java/javaOO/arguments.html</A><BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+<B>Jyothi Krishnan on this topic at </B><A
+
+
+
+
+
+
+
+HREF= "http://www.geocities.com/SiliconValley/Network/3693/obj_sec5.html#obj18" ><BR>
+
+
+
+
+
+
+
+http://www.geocities.com/SiliconValley/Network/3693/obj_sec5.html#obj18</A>
+
+
+
+
+
+
+
+</TD>
+
+
+
+
+
+
+
+</TR>
+
+
+
+
+
+
+
+</TABLE>
+
+
+
+
+
+
+
+<P>Last updated<BR>
+
+
+
+
+
+
+
+11 Jan 2000<BR>
+
+
+
+  copyright &copy; Marcus Green 2000</P>
+
+
+
+
+
+
+
+<P>&nbsp;</P>
+
+
+
+
+
+
+
+<P>&nbsp;</P>
+
+
+
+
+
+
+
+</BODY>
+
+
+
+
+
+
+
+</HTML>
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+

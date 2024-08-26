@@ -1,0 +1,279 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="lev selector">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <title>unix_command_line_editing</title>
+</head>
+<body>
+<b><font face="Verdana">Unix Command Line Editing</font></b>
+<p>Using history and command line editing
+<p>One of the great features of the C shell and the Korn shell is history.
+The ability to recall and reuse commands that you have entered earlier
+can save many keystrokes of repetitive typing. History and command line
+editing are closely related. You may use command line editing to edit the
+command that you are currently working on after you have typed it in, or
+you may recall a previous command and then edit it.
+<p>In this article, I will show you some of the ins and outs of history
+and command line editing in the Korn shell. For history to work, you need
+to be in the Korn shell, so begin by typing:
+<p>ksh
+<p>to launch a Korn shell.
+<p>The second thing you need to make history work is an easy way to access
+it. History is more than just the ability to recall previous commands;
+it lets you recall commands and edit them before they are executed. The
+Korn shell allows you to use different editing styles depending on what
+you're trying to do. The primary editors are vi, emacs, and gmacs. I recommend
+vi, as most people are familiar with it. History and command line editing
+behave very differently depending on whether you are using vi, emacs, or
+gmacs. I will cover some of these differences.
+<p>To set vi up as your history editor type:
+<p>set -o vi
+<p>If you are going to continue to use history, you will want to include
+this in your profile, or the emacs/gmacs equivalents. These set -o commands
+only work in the Korn shell:
+<p>set -o emacs
+<br>or
+<br>set -o gmacs
+<p>Assuming that you have set -o vi as your history editor, you may now
+access history. Press the escape key once (esc) and release it and press
+k. The last command that you typed will appear on the screen:
+<p>$ set -o vi
+<p>Press enter and that command will be executed. Try a few more commands
+so that you can accumulate some history. End with ls -l on the current
+directory. Now press esc and k. The ls -l command appears once more. Press
+k again and the command just prior to ls -l will appear. Each time you
+press k you'll go back one more command in your history. The minus key
+( - ) works in exactly the same way. I use the minus key because it's easier
+for me to remember. Eventually, if you press k or minus enough times, you'll
+end up back at the set -o vi command.
+<p>Now press j or the plus key &lt; + > and you will move forward in the
+command history. (When you are rapidly running back through history looking
+for the command you need, and you realize you've passed it, it's good to
+know how to move forward again.)
+<p>If you have set -o emacs or gmacs, the keys are control-p for previous
+command and control-n for next command. In vi you hit esc once and then
+k or n will move you backward or forward through the commands. For emacs
+and gmacs, use control-p or control-n each time.
+<p>To view more of your history, type "history", and a list of your most
+recent commands will be displayed along with numbers. If you see the number
+of a command that you need, recall it by hitting the esc key, typing the
+number of the command as displayed by history, and then typing an upper
+case G. This will place the command with that number on the command line.
+<p>Once you have located the command that you want, you can press enter
+to execute the command, but you can also edit the command before executing
+it.
+<br>&nbsp;
+<p>Moving around in vi
+<br>There are several vi commands for moving around the command line and
+editing the line. I will only cover a few here. For further information
+consult the manual on ksh. If you are familiar with vi you will recognize
+the commands. The vi editor operates in two main modes. In command mode
+single keys move the cursor, delete characters and perform other actions.
+In input mode single keys are actually typed into the command line.
+<p>Command Editing -- Cursor Movement in command mode for vi
+<p>l (el)&nbsp;&nbsp;&nbsp; Move the cursor forward one character
+<br>h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Move the cursor back
+one character
+<br>w&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Move the cursor forward
+one word
+<br>b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Move the cursor back
+one word
+<br>fc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Find character c in the
+line
+<br>0 (zero)&nbsp; Cursor to the start of the line
+<br>$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Cursor to the end
+of the line
+<p>l, h, w, f and b can be preceded by a number, thus 2b moves the cursor
+back two words, and 3fx finds the third occurrence of x in the line. In
+emacs and gmacs mode, cursor movement is different.
+<p>Command Editing -- Cursor Movement in emacs/gmacs
+<p>CONTROL-F&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Move the cursor
+forward one character
+<br>CONTROL-B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Move the cursor
+back one character
+<br>ESCAPE then f&nbsp;&nbsp;&nbsp; Move the cursor forward one word
+<br>ESCAPE then b&nbsp;&nbsp;&nbsp; Move the cursor back one word
+<br>CONTROL-A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Cursor to the start
+of the line
+<br>CONTROL-E&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Cursor to the end
+of the line
+<p>The editing of a command line is not limited to history. You can also
+edit a command line that you are currently typing in. For example type
+the following, but do not press enter:
+<p>ls -l
+<p>You should be sitting with the cursor at the end of the command line.
+If you have set -o vi then hit the esc key to exit input mode and enter
+command mode. Now you can type h a few times and the cursor will move backward
+through the command line. If you have set -o emacs, there is no need to
+press esc, just start by typing control-b a few times, and the cursor will
+move backwards.
+<p>Now we have the cursor where we want it, but how do you actually edit
+the command? There are several editing options, and again I am going to
+describe just some of the more useful ones.
+<p>Command Editing -- Editing keys in command mode for vi
+<p>x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Delete the character
+over the cursor. Can be preceded by a count
+<br>X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Delete the character
+behind the cursor. Can be preceded by a count
+<br>~ (tilde) Change case of the character over the cursor. Can be preceded
+by a
+<br>count
+<br>u&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Undo the last change
+to the line
+<br>U&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Undo all changes
+to the line
+<br>a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Enter input mode
+and begin inserting after the current character
+<br>A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Enter input mode
+and begin inserting at the end of the line
+<br>i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Enter input mode
+and begin inserting before the current character
+<br>I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Enter input mode
+and begin inserting at the beginning of the line
+<p>You enter input mode by pressing a, A, i or I. To exit to command mode,
+press the esc key.
+<p>You may also press enter at any time, and the command as it appears
+on the command line will be executed.
+<p>In emacs and gmacs mode, you are always in input mode and normal characters
+that are typed appear in the command line. Editing commands are given as
+control + key or as esc + key ("key" is a variable).
+<p>Command Editing -- Editing keys for emacs/gmacs
+<p>CONTROL-D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Delete the
+character over the cursor
+<br>ESCAPE then d&nbsp;&nbsp;&nbsp;&nbsp; Delete the current word
+<br>CONTROL-C~&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Capitalize current
+character
+<br>ESCAPE then l&nbsp;&nbsp;&nbsp;&nbsp; Convert current character to
+lower case
+<p>In emacs and gmacs mode, you may also press enter at any time, and the
+command, as it appears on the command line, will be executed.
+<p>Remember that command line editing applies to the current command that
+you are typing, or any other command that you have recovered from your
+history.
+<br>&nbsp;
+<p>Fun with file name completion
+<br>The last piece of command line editing that I want to cover is file
+name completion. This is usually used in current command lines but of course
+it can also be used when editing a command retrieved from history.
+<p>Assume a directory and file structure as follows and you are currently
+in the abc directory.
+<br>&nbsp;
+<p><tt>(dir)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+topdir</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-------------------------------</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|</tt>
+<br><tt>(dir)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; abc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+def&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ghi</tt>
+<br><tt>(files)&nbsp; data.txt&nbsp;&nbsp;&nbsp;&nbsp; john.ltr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+news.doc</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; old.txt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+john.txt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; weather.doc</tt>
+<p>Type the following but do not press enter:
+<p>ls -l d
+<p>Now hit esc and then the backslash ( \ ). This causes the command line
+editor to attempt to locate a file (or directory) that can be used to complete
+the name that has been started. The search finds data.txt and that is typed
+in on the command line:
+<p>ls -l data.txt
+<p>The cursor is left after the txt of data.txt ready for you to type anything
+else that is needed to complete your command line.
+<p>This also works for directories. Assume, for example, that you are in
+the abc directory and need to edit news.doc in the ghi directory. You have
+the option to go to that directory and begin editing, or simply issue a
+vi command to edit directly from where you are:
+<p>cd ../ghi
+<br>vi news.doc
+<p>or
+<p>vi ../ghi/news.doc
+<p>If you try the following sequence you will see the ( \ ) at work completing
+the names for you. First type enough of the command to identify the directory:
+<p>vi ../g
+<p>Now type esc followed by ( \ ) and the directory name is completed for
+you:
+<p>vi ../ghi/
+<p>Now type enough to uniquely identify the file by adding an n:
+<p>vi ../ghi/n
+<p>Press esc followed by ( \ ) and the file name is completed for you:
+<p>vi ../ghi/news.doc
+<p>This feature is especially useful for long directory and file names
+and will save you much typing.
+<p>If two or more files match what you have typed so far, the file completion
+option will complete as much of the file as it can and then wait for you
+to provide more unique input. To edit the file john.txt from one of the
+adjacent directories type:
+<p>vi ../def/j
+<p>Press esc and backslash and it will fill in as much as it can and then
+wait for you to indicate whether you want john.txt or john.ltr:
+<p>vi ../def/john.
+<p>The sequence that does this for emacs and gmacs is esc followed by a
+second esc.
+<p>There is much more to command line editing and history, but I have found
+that just these few tips greatly speed up my work, and I hope they do the
+same for you.
+<p>If you like the idea of history, ask your system administrator to change
+your shell to a Korn shell, and then be sure to add set -o vi, emacs or
+gmacs into your .profile file.
+<p>======================================
+<br>http://www.yahoo.com/Computers_and_Internet/Software/Text_Editors/vi/
+- yahoo
+<br>http://teche.cacs.usl.edu/tutorial/unix-vi/tableofcontents3_2.html
+- The Association for Computing Machinery's vi manual pages
+<br>http://www.wcmh.com/uworld/archives/95/tutorial/009/009.html - A vi
+tutorial in UnixWorld Online
+<br>http://www.cs.vu.nl/~tmgil/vi.html - The vi lovers home page with information
+on vi and it's descendants vim, elvis, vile and others as well as links
+to other vi pages
+<br>http://cres20.anu.edu.au/manuals/korn_scr.html - Korn shell course
+notes
+<br>http://www.cs.stir.ac.uk/guides/unix/unix.html - Notes on using and
+programming the Korn shell
+<br>http://www.sun.com/sunworldonline/common/swol-backissues-columns.html#unix101&nbsp;
+- Full listing of previous Unix 101 columns in SunWorld
+<p>======================================
+<br><b><font face="Verdana">Main Editing Commands for emacs mode:</font></b>
+<br>If you are using tcsh (T-C-shell), then command line editing is built-in
+and you can simply use it.
+<p>If you are using Korn shell (ksh), your login file (.profile) must contain
+the line
+<br>&nbsp;&nbsp;&nbsp; set -o emacs
+<br>before command line editing will work. You can also type this at the
+command prompt.&nbsp; This step is not necessary if your default shell
+is tcsh
+<p>Specific Editing Commands:
+<br>Previous command:&nbsp;&nbsp;&nbsp; ^P
+<br>Next command:&nbsp;&nbsp;&nbsp; ^N
+<br>Back 1 character:&nbsp;&nbsp;&nbsp; ^B
+<br>Forward 1 character:&nbsp;&nbsp;&nbsp; ^F
+<br>Delete 1 character:&nbsp;&nbsp;&nbsp; ^D&nbsp; (NOTE: if you are not
+editing a command, ^D will log you out.)
+<br>Execute the retyped command:&nbsp;&nbsp;&nbsp;&nbsp; &lt;ENTER> key
+<p>Depending on the telnet program (terminal emulator) you are using, the
+cursor control keys on your keyboard may work. Try it and see.&nbsp; If
+so, then you only need remember how to delete a character.
+<p>'Broken' Delete Key
+<p>If the DELETE key produces unexpected results, there is a way to correct
+this.&nbsp; If you type ^C (control-C) to abort the current command line,
+and then carefully type:
+<p>&nbsp;&nbsp;&nbsp; stty erase [^H]
+<p>where [^H] represents your pressing the key that you want to be a backspace/delete
+key, and then press the ENTER key, then you will have reset the backspace/delete
+key for your current session. You can also use and editor (pico, emacs,
+or vi) to put this in your .login or .profile file and it will be set every
+time you login.
+<p>File name completion:
+<p>Hitting the escape key twice after you have typed enough characters
+of a file name to make it unique will enable the file-name completion feature
+of ksh, and the shell will fill in the remainder of the file name for you.
+<p>======================================
+<br>&nbsp;
+<br>&nbsp;
+</body>
+</html>

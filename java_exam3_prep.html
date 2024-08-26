@@ -1,0 +1,1307 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Exam 3</title>
+</head>
+<body text="#000000" bgcolor="#FF9999">
+Exam # 3 rearranged so that answers immediately follow the questions
+<p>===============================================
+<br>Question 1)
+<p>Which of the following are legal statements?
+<p>1) float f=1/3;
+<br>2) int i=1/3;
+<br>3) float f=1.01;
+<br>4) double d=999d;
+<p>===============================================
+<br>Answer to Question 1)
+<br>Objective 4.5)
+<p>1) float f=1/3;
+<br>2) int i=1/3;
+<br>4) double d=999d;
+<p>The fact that option 3 does not compile may be a surprise. The problem
+is because the default type for a number with a decimal component is a
+double and not a float. The additional trailing d in the option with 999
+doesn't help, but it doesn't harm.
+<p>===============================================
+<br>Question 2)
+<p>Which of the following are Java keywords?
+<p>1) NULL
+<br>2) new
+<br>3) instanceOf
+<br>4) wend
+<p>===============================================
+<br>Answer to Question 2)
+<br>Objective 4.3)
+<p>2) new
+<p>The option NULL (note the upper case letter) is definitely not a keyword.
+There is some discussion as to if null is a keyword but for the purpose
+of the exam you should probably assume it is a keyword.
+<p>The option instanceOf is a bit of a misleading option that would probably
+not occur on the exam. The real keyword is instanceof (note that the of
+has no capital letter O). I had the incorrect version in an earlier version
+of this tutorial as it looks more likely to my eyes. The instanceof keyword
+looks like a method, but it is actually an operator.
+<p>The option wend is probably valid in some other language to indicate
+the end of a while loop, but Java has no such keyword.
+<p>===============================================
+<br>Question 3)
+<p>Which of the following are valid statements?
+<p>1) System.out.println(1+1);
+<br>2) int i=2+'2';
+<br>3) c
+<br>4) byte b=255;
+<p>===============================================
+<br>Answer to Question 3)
+<br>Objective 4.5)
+<p>1) System.out.println(1+1);
+<br>2) int i=2+'2';
+<br>Option 3 is not valid because single quotes are used to indicate a
+character constant and not a string. Several people have emailed me to
+say that option 3 will compile. When they eventually compiled the exact
+code they have agreed, it will not compile. Let me re-state that
+<p>String s="on"+'one';
+<p>Will NOT compile.
+<p>Option 4 will not compile because 255 is out of the range of a byte
+<p>===============================================
+<br>Question 4)
+<p>Which of the following statements are true?
+<p>1) The garbage collection algorithm in Java is vendor implemented
+<br>2) The size of primitives is platform dependent
+<br>3) The default type for a numerical literal with decimal component
+is a float.
+<br>4) You can modify the value in an Instance of the Integer class with
+the setValue method
+<p>===============================================
+<br>Answer to Question 4)
+<br>Objective 7.1)
+<p>1) The garbage collection algorithm in Java is vendor implemented
+<p>Threading and garbage collection are two of the few areas that are platform
+dependent. This is one of the reasons why Java is not suitable for realtime
+programming. It is not a good idea use it to control your plane or nuclear
+power station. Once an instance of the Integer class has a value it cannot
+be changed.
+<p>===============================================
+<br>Question 5)
+<p>Which of the following are true statements?
+<p>1) I/O in Java can only be performed using the Listener classes
+<br>2) The RandomAccessFile class allows you to move directly to any point
+a file.
+<br>3) The creation of a named instance of the File class creates a matching
+file in the underlying operating system only when the close method is called.
+<br>4) The characteristics of an instance of the File class such as the
+directory separator, depend on the current underlying operating system
+<p>===============================================
+<br>Answer to Question 5)
+<br>Objective 10.1)
+<p>(Not on the official sub objectives but this topic does come up on the
+exam)
+<p>2) The RandomAccessFile class allows you to move directly to any point
+a file.
+<br>4) The characteristics of an instance of the File class such as the
+directory separator, depend on the current underlying operating system
+<p>The File class can be considered to represent information about a file
+rather than a real file object. You can create a file in the underlying
+operating system by passing an instance of a file to a stream such as FileOutputStream.
+The file will be created when you call the close method of the stream.
+<p>===============================================
+<br>Question 6).
+<p>Which of the following statements are true?
+<p>1) The instanceof operator can be used to determine if a reference is
+an instance of a class, but not an interface.
+<br>2) The instanceof operator can be used to determine if a reference
+is an instance of a particular primitive wrapper class
+<br>3) The instanceof operator will only determine if a reference is an
+instance of a class immediately above in the hierarchy but no further up
+the inheritance chain
+<br>4) The instanceof operator can be used to determine if one reference
+is of the same class as another reference thus
+<p>===============================================
+<br>Answer to Question 6)
+<br>Objective 5.1)
+<p>2) The instanceof operator can be used to determine if a reference is
+an instance of a particular primitive wrapper class
+<p>The instanceof operator can only be used to make a static comparison
+with a class type. Java1.1 added the isInstance method to the class Class
+to allow you to dynamically determine a class type. The exam does not test
+you on isInstance.
+<p>===============================================
+<br>Question 7)
+<p>Which of the following statements are true?
+<p>1) An interface can only contain method and not variables
+<br>2) Interfaces cannot have constructors
+<br>3) A class may extend only one other class and implement only one interface
+<br>4) Interfaces are the Java approach to addressing its lack of multiple
+inheritance, but require implementing classes to create the functionality
+of the Interfaces.
+<p>===============================================
+<br>Answer to Question 7)
+<br>Objective 4.1)
+<p>2) Interfaces cannot have constructors
+<p>If you try to create a constructor for an Interface the compiler will
+give you an error message something like "interface can't have constructors".
+<p>4) Interfaces are the Java approach to addressing the single inheritance
+model, but require implementing classes to create the functionality of
+the Interfaces.
+<p>An interface may contain variables as well as methods. However any variables
+are final by default and must be assigned values on creation. A class can
+only extend one other class (single inheritance) but may implement as many
+interfaces as you like (or is sensible).
+<p>===============================================
+<br>Question 8)
+<p>Which of the following are valid statements
+<p>1) public class MyCalc extends Math
+<br>2) Math.max(s);
+<br>3) Math.round(9.99,1);
+<br>4)Math.mod(4,10);
+<p>===============================================
+<br>Answer to Question 8)
+<br>Objective 9.1)
+<p>None of these are valid statements. The Math class is final and cannot
+be extended. The max method takes two parameters, round only takes one
+parameter and there is no mod parameter. You may get questions in the exam
+that have no apparently correct answer. If you are absolutely sure this
+is the case, do not check any of the options.
+<p>===============================================
+<br>Question 9)
+<p>Which of the following are methods of the Runnable interface
+<p>1) run
+<br>2) start
+<br>3) yield
+<br>4) stop
+<p>===============================================
+<br>Answer to Question 9)
+<br>Objective 7.1)
+<p>1) The Runnable interface has only one method run that needs to be created
+in any class that implements it. The start method is used to actually call
+and start the run method executing.
+<p>===============================================
+<br>Question 10)
+<p>Which of the following statements are true?
+<p>1) A byte can represent between -128 to 127
+<br>2) A byte can represent between -127 to 128
+<br>3) A byte can represent between -256 to 256
+<br>4) A char can represent between -2x2 pow 16 2 x2 pow 16 - 1
+<p>===============================================
+<br>Answer to Question 10)
+<br>Objective 4.5)
+<p>1) A byte can represent between -128 to 127
+<br>The char type is the only unsigned type in Java and thus cannot represent
+a negative number.
+<p>===============================================
+<br>Question 11)
+<p>What will happen when you attempt to compile and run the following code
+<br>class Base{
+<br>public void Base(){
+<br>&nbsp;System.out.println("Base");
+<br>&nbsp;}
+<br>}
+<br>public class In extends Base{
+<br>public static void main(String argv[]){
+<br>&nbsp;In i=new In();
+<br>&nbsp;}
+<br>}
+<p>1) Compile time error Base is a keyword
+<br>2) Compilation and no output at runtime
+<br>3) Output of Base
+<br>4) Runtime error Base has no valid constructor
+<p>===============================================
+<br>Answer to Question 11)
+<br>Objective 1.2)
+<p>2) Compilation and no output at runtime
+<p>Because the method in Base called Base has a return type it is not a
+constructor and there for does not get called on creation of an instance
+of its child class In
+<p>===============================================
+<br>Question 12)
+<p>You have a public class called myclass with the main method defined
+as follows
+<p>public static void main(String parm[]){
+<br>&nbsp;&nbsp;&nbsp; System.out.println(parm[0]);
+<br>&nbsp;}
+<p>If you attempt to compile the class and run the program as follows
+<p>java myclass hello
+<p>What will happen?
+<p>1) Compile time error, main is not correctly defined
+<br>2) Run time error, main is not correctly defined
+<br>3) Compilation and output of&nbsp; java
+<br>4) Compilation and output of hello
+<p>===============================================
+<br>Answer to Question 12)
+<br>Objective 4.2)
+<p>4) Compilation and output of hello
+<p>This type of question is particularly calculated to catch out C/C++
+programmers who might expect parameter zero to be the name of the compiler.
+<p>===============================================
+<br>Question 13)
+<p>Which of the following statements are true?
+<p>1) If a class has any abstract methods it must be declared abstract
+itself.
+<br>2) All methods in an abstract class must be declared as abstract
+<br>3) When applied to a class, the final modifier means it cannot be sub-classed
+<br>4) transient and volatile are Java modifiers
+<p>===============================================
+<br>Answer to Question 13)
+<br>Objective 1.2)
+<p>1) If a class has any abstract methods it must be declared abstract
+itself.
+<br>3) The final modifier means that a class cannot be sub-classed
+<br>4) transient and volatile are Java modifiers
+<p>An abstract class may have non abstract methods. Any class that descends
+from an abstract class must implement the abstract methods of the base
+class or declare them as abstract itself.
+<p>===============================================
+<br>Question 14)
+<p>Objective 1.2)
+<p>Which of the following are valid methods?
+<p>1) public static native void amethod(){}
+<br>2) public static void amethod(){}
+<br>3) private protected void amethod(){}
+<br>4) static native void amethod();
+<p>===============================================
+<br>Answer to Question 14)
+<br>Objective 1.2)
+<p>2) public static void amethod(){}
+<br>4) static native void amethod();
+<p>Option 1 is not valid because it has braces and the native modifier
+means that the method can have no body. This is because the body must be
+implemented in some other language (often C/C++). Option 3 is not valid
+because private and protected contradict themselves.
+<p>===============================================
+<br>Question 15)
+<p>Objective 6.2)
+<p>Which of the following statements are true?
+<p>1) Constructors cannot have a visibility modifier
+<br>2) Constructors can be marked public and protected, but not private
+<br>3) Constructors can only have a primitive return type
+<br>4) Constructors are not inherited
+<p>===============================================
+<br>Answer to Question 15)
+<br>Objective 6.2)
+<p>4) Constructors are not inherited
+<br>Constructors can be marked public, private or protected. Constructors
+do not have a return type.
+<p>===============================================
+<br>Question 16)
+<p>What will happen when you attempt to compile and run the following class?
+<p>class Base{
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Base(int i){
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("Base");
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+<br>}
+<p>class Severn extends Base{
+<br>&nbsp; public static void main(String argv[]){
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Severn s = new Severn();
+<br>&nbsp; }
+<p>&nbsp; void Severn(){
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("Severn");
+<br>&nbsp; }
+<br>}
+<p>1) Compilation and output of the string "Severn" at runtime
+<br>2) Compile time error
+<br>3) Compilation and no output at runtime
+<br>4) Compilation and output of the string "Base"
+<p>===============================================
+<br>Answer to Question 16)
+<br>Objective 1.3)
+<p>2) Compile time error
+<p>An error occurs when the class Severn attempts to call the zero parameter
+constructor in the class Base Because the Base class has an integer constructor
+Java does not provide the "behind the scenes" zero parameter constructor.
+<p>===============================================
+<br>Question 17)
+<p>Which of the following statements are true?
+<p>1) static methods do not have access to the implicit variable called
+this
+<br>2) A static method may be called without creating an instance of its
+class
+<br>3) A static method may not be overriden to be non-static
+<br>4) A static method may not be overloaded
+<p>===============================================
+<br>Answer to Question 17)
+<br>Objective 1.2)
+<p>1) static methods do not have access to the implicit variable called
+this
+<br>2) A static method may be called without creating an instance of its
+class
+<br>3) a static may not be overriden to be non-static
+<p>The implicit variable this refers to the current instance of a class
+and thus and by its nature a static method cannot have access to it.
+<p>===============================================
+<br>Question 18)
+<p>Which of the following will compile without error?
+<p>1)
+<br>char c='1';
+<br>System.out.println(c>>1);
+<p>2)
+<br>Integer i=Integer("1");
+<br>System.out.println(i>>1);
+<p>3)
+<br>int i=1;
+<br>System.out.println(i&lt;&lt;&lt;1);
+<p>4)
+<br>int i=1;
+<br>System.out.println(i&lt;&lt;1);
+<p>===============================================
+<br>Answer to Question 18)
+<br>Objective 5.1)
+<br>1)
+<br>char c='1';
+<br>System.out.println(c>>1);
+<br>4)
+<br>int i=1;
+<br>System.out.println(i&lt;&lt;1);
+<p>Be aware that Integer (not the upper case I) is a wrapper class and
+thus cannot be treated like a primitive. The fact that option 1 will compile
+may be a surprise, but although the char type is normally used to store
+character types, it is actually an unsigned integer type. The reason option
+3 does not compile is that Java has a >>> operator but not a &lt;&lt;&lt;
+operator.
+<p>===============================================
+<br>Question 19)
+<p>Which of the following are true?
+<p>1) A component may have only one event listener attached at a time
+<br>2) An event listener may be removed from a component
+<br>3) The ActionListener interface has no corresponding Adapter class
+<br>4) The processing of an event listener requires a try/catch block
+<p>===============================================
+<br>Answer to Question 19)
+<br>Objective 4.6)
+<p>2) An event listener may be removed from a component
+<br>3) The ActionListener interface has no corresponding Adapter class
+<p>A component may have multiple event listeners attached. Thus a field
+may need to respond to both the mouse and the keyboard, requiring multiple
+event handlers. The ActionListener has not matching Adapter class because
+it has only one method, the idea of the Adapter classes is to eliminate
+the need to create blank methods.
+<p>===============================================
+<br>Question 20)
+<p>Which of the following are Java keywords?
+<p>1) sizeof
+<br>2) main
+<br>3) transient
+<br>4) volatile
+<p>===============================================
+<br>Answer to Question 20)
+<br>Objective 4.3)
+<p>3) transient
+<br>4) volatile
+<p>Option 1, sizeof is designed to catch out the C/C++ programmers. Java
+does not have a sizeof keyword as the size of primitives should be consistent
+on all Java implementations. Although a program needs a main method with
+the standard signature to start up it is not a keyword. The real keywords
+are less commonly used and therefore might not be so familiar to you.
+<p>===============================================
+<br>Question 21)
+<p>Which of the following statements are true?
+<p>1) The default constructor has a return type of void
+<br>2) The default constructor takes a parameter of void
+<br>3) The default constructor takes no parameters
+<br>4) The default constructor is not created if the class has any constructors
+of its own.
+<p>===============================================
+<br>Answer to Question 21)
+<br>Objective 1.3)
+<p>3) The default constructor takes no parameters
+<br>4) The default constructor is not created if the class has any constructors
+of its own.
+<p>Option 1 is fairly obviously wrong as constructors never have a return
+type. Option 2 is very dubious as well as Java does not offer void as a
+type for a method or constructor.
+<p>===============================================
+<br>Question 22)
+<p>Which of the following statements are true?
+<p>1) All of the variables in an interface are implicitly static
+<br>2) All of the variables in an interface are implicitly final
+<br>3) All of the methods in an interface are implicitly abstract
+<br>4) A method in an interface can access class level variables
+<p>===============================================
+<br>Answer to Question 22)
+<br>Objective 4.1)
+<p>1) All of the variables in an interface are implicitly static
+<br>2) All of the variables in an interface are implicitly final
+<br>3) All of the methods in an interface are implictly abstract
+<p>All the variables in an interface are implicitly static and final. Any
+methods in an interface have no body, so may not access any type of variable
+<p>===============================================
+<br>Question 23)
+<p>Which of the following statements are true?
+<p>1 ) The String class is implemented as a char array, elements are addressed
+using the stringname[] convention
+<br>2) The + operator is overloaded for concatenation for the String class
+<br>3) Strings are a primitive type in Java and the StringBuffer is used
+as the matching wrapper type
+<br>4) The size of a string can be retrieved using the length property
+<p>===============================================
+<br>Answer to Question 23)
+<br>Objective 4.5)
+<p>2) The + operator is overloaded for concatenation for the String class
+<p>In Java Strings are implemented as a class within the Java.lang package
+with the special distinction that the + operator is overloaded. If you
+thought that the String class is implemented as a char array, you may have
+a head full of C/++ that needs emptying. There is not "wrapper class" for
+String as wrappers are only for primitive types.
+<p>If you are surprised that option 4 is not a correct answer it is because
+length is a method for the String class, but a property for and array and
+it is easy to get the two confused.
+<p>===============================================
+<br>Question 24)
+<p>Which of the following statements are true?
+<p>1) A method in an interface must not have a body
+<br>2) A class may extend one other class plus at most one interface
+<br>3) A class may extends at most one other class plus implement many
+interfaces
+<br>4) An class accesses an interface via the keyword uses
+<p>===============================================
+<br>Answer to Question 24)
+<br>Objective 6.1)
+<p>1) A method in an interface must not have a body
+<br>3) A class may extends one other class plus many interfaces
+<p>A class accesses an interface using the implements keyword (not uses)
+<p>===============================================
+<br>Question 25)
+<p>Which of the following statements are true?
+<p>1) The following statement will produce a result of 1. System.out.println(
+-1 >>>2);
+<br>2) Performing an unsigned left shift (&lt;&lt;&lt;) on a negative number
+will always produce a negative number result
+<br>3) The following statement will produce a result of zero, System.out.println(1
+>>1);
+<br>4) All the integer primitives in java are signed numbers
+<p>===============================================
+<br>Answer to Question 25)
+<br>Objective 5.1)
+<p>3) The following statement will produce a result of zero, System.out.println(1
+>>1);
+<p>Although you might not know the exact result of the operation -1 >>>
+2 a knowledge of the way the bits will be shifted will tell you that the
+result is not plus 1. (The result is more like 1073741823 ) There is no
+such Java operator as the unsigned left shift. Although it is normally
+used for storing characters rather than numbers the char Java primitive
+is actually an unsigned integer type.
+<p>===============================================
+<br>Question 26)
+<p>Which of the following statements are true?
+<p>1) The elements in a Java array can only be of primitive types, not
+objects
+<br>2) Arrays are initialized to default values wherever they are created
+<br>3) An array may be dynamically resized using the setSize method
+<br>4) You can find out the size of an array using the size method
+<p>===============================================
+<br>Answer to Question 26)
+<p>Objective 4.4)
+<p>2) Arrays are initialized to default values wherever they are created
+<p>You can find the size of an array using the length field. The method
+length is used to return the number of characters in a String. An array
+can contain elements of any type but they must all be of the same type.
+The size of an array is fixed at creation. If you want to change its size
+you can of course create a new array and assign the old one to it. A more
+flexible approach can be to use a collection class such as Vector.
+<p>===============================================
+<br>Question 27)
+<p>Given the following class
+<p>public class Ombersley{
+<br>&nbsp; public static void main(String argv[]){
+<br>&nbsp;&nbsp;&nbsp; boolean b1 = true;
+<br>&nbsp;&nbsp;&nbsp; if((b1 ==true) || place(true)){
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("Hello Crowle");
+<br>&nbsp;&nbsp;&nbsp; }
+<br>&nbsp; }
+<p>&nbsp; public static boolean place(boolean location){
+<br>&nbsp;&nbsp;&nbsp; if(location==true){
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("Borcetshire");
+<br>&nbsp;&nbsp;&nbsp; }
+<br>&nbsp;&nbsp;&nbsp; System.out.println("Powick");
+<br>&nbsp;&nbsp;&nbsp; return true;
+<br>&nbsp; }
+<br>}
+<p>What will happen when you attempt to compile and run it?
+<p>1) Compile time error
+<br>2) Output of "Hello Crowle"
+<br>3) Output of Hello Crowle followed by Borcetshire and Powick
+<br>4) No output
+<p>===============================================
+<br>Answer to Question 27)
+<br>Objective 5.3)
+<p>2) Output of "Hello Crowle"
+<p>This code is an example of a short circuited operator. Because the first
+operand of the || (or) operator returns true Java sees no reason to evaluate
+the second. Whatever the value of the second the overall result will always
+be true. Thus the method called place is never called.
+<p>===============================================
+<br>Question 28)
+<p>You are given a class hierarchy with an instance of the class Dog. The
+class Dog is a child of mammal and the class Mammal is a child of the class
+Vertebrate. The class Vertebrate has a method called move which prints
+out the string "move". The class mammal overrides this method and prints
+out the string "walks". The class Dog overrides this method and prints
+out the string "walks on paws". Given an instance of the class Dog,. how
+can you access the ancestor method move in Vertebrate so it prints out
+the string "move";
+<p>1) d.super().super().move();
+<br>2) d.parent().parent().move();
+<br>3) d.move();
+<br>4) none of the above;
+<p>===============================================
+<br>Answer to Question 28)
+<br>4) none of the above;
+<p>You may access methods of a direct parent class through the use of super
+but classes further up the hierarchy are not visible.
+<p>===============================================
+<br>Question 29)
+<p>Which of the following most closely describes the process of overriding?
+<p>1) A class with the same name replaces the functionality of a class
+defined earlier in the hierarchy
+<br>2) A method with the same name completely replaces the functionality
+of a method earlier in the hierarchy
+<br>3) A method with the same name but different parameters gives multiple
+uses for the same method name
+<br>4) A class is prevented from accessing methods in its immediate ancestor
+<p>===============================================
+<br>Answer to Question 29)
+<br>Objective 6.1)
+<p>2) A method with the same name completly replaces the functionality
+of a method earlier in the hierarchy
+<p>Option 3 is more like a description of overloading. I like to remind
+myself of the difference between overloading and overriding in that an
+overriden method is like something overriden in the road, it is squashed,
+flat no longer used and replaced by something else. An overloaded method
+has been given extra work to do (it is loaded up with work), but it is
+still being used in its original format. This is just my little mind trick
+and doesn't match to anything that Java is doing.
+<p>===============================================
+<br>Question 30)
+<p>Which of the following statements are true?
+<p>1) The % is used to calculate a percentage thus: 10 % 20=50
+<br>2) The / operator is used to divide one value by another
+<br>3) The # symbol may not be used as the first character of a variable
+<br>4) The $ symbol may not be used as the first character of a variable
+<p>===============================================
+<br>Answer to Question 30)
+<br>Objective 1.2)
+<p>2) The / operator is used to divide one value by another
+<br>3) The # symbol may not be used as the first character of a variable
+<p>The % is the modulo operator and returns the remainder after a division.
+Thus 10 % 3=1 The $ symbol may be used as the first character of a variable,
+but I would suggest that it is generally not a good idea. The # symbol
+cannot be used anywhere in the name of a variable. Knowing if a variable
+can start with the # or $ characters may seem like arbitrary and non essential
+knowlege but questions like this do come up on the exam.
+<p>===============================================
+<br>Question 31)
+<p>Which of the following statements are true?
+<p>1) The default layout manager for an Applet is FlowLayout
+<br>2) The default layout manager for a Frame is FlowLayout
+<br>3) A layout manager must be assigned to an Applet before the setSize
+method is called
+<br>4) The FlowLayout manager attempts to honor the preferred size of any
+components
+<p>===============================================
+<br>Answer to Question 31)
+<br>Objective 8.1)
+<p>1) The default layout manager for an Applet is FlowLayout
+<br>4) The FlowLayout manager attempts to honor the preferred size of any
+components
+<p>The default layout manager fror an Application is BorderLayout. An applet
+will use the default of FlowLayout if one is not specifically applied.
+<p>===============================================
+<br>Question 32)
+<p>Which of the following statements are true about a variable created
+with the static modifier?
+<p>1) Once assigned the value of a static variable may not be altered
+<br>2) A static variable created in a method will keep the same value between
+calls
+<br>3) Only one instance of a static variable will exist for any amount
+of class instances
+<br>4) The static modifier can only be applied to a primitive value
+<p>===============================================
+<br>Answer to Question 32)
+<br>Objective 1.2)
+<p>3) Only one instance of a static variable will exist for any amount
+of class instances
+<p>Option 1) is more a description of a final variable. Option 2 is designed
+to fool Visual Basic programmers like me as this is how you can use the
+keyword static in VB. The modifier static can be applied to a class, method
+or variable.
+<p>===============================================
+<br>Question 33)
+<p>Which of the following statements are true?
+<p>1) Java uses a system called UTF for I/O to support international character
+sets
+<br>2) The RandomAccessFile is the most suitable class for supporting international
+character sets
+<br>3) An instance of FileInputStream may not be chained to an instance
+of FileOutputStream
+<br>4) File I/O activities requires use of Exception handling
+<p>===============================================
+<br>Answer to Question 33)
+<br>Objective 11.1)
+<p>1) Java uses a system called UTF for I/O to support international character
+sets
+<br>3) An instance of FileInputStream may not be chained to an instance
+of FileOutputStream
+<br>4) File I/O activities requires use of Exception handling
+<p>Internally Java uses Unicode which are 16 bit characters. For I/O Java
+uses UTF which may be more thatn 16 bits per character.&nbsp; Generally
+InputStreams can only be chained to other InputStreams and OutputStreams
+can only be chained to other OutputStreams. The piped streams are an exception
+to this.
+<p>===============================================
+<br>Question 34)
+<p>What will happen when you attempt to compile and run the following code?
+<p>import java.io.*;
+<br>class ExBase{
+<br>&nbsp; abstract public void martley(){
+<br>&nbsp; }
+<br>}
+<p>public class MyEx extends ExBase{
+<br>&nbsp; public static void main(String argv[]){
+<br>&nbsp;&nbsp;&nbsp; DataInputStream fi = new DataInputStream(System.in);
+<br>&nbsp;&nbsp;&nbsp; try{
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fi.readChar();
+<br>&nbsp;&nbsp;&nbsp; }catch(IOException e){
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.exit(0);
+<br>&nbsp;&nbsp;&nbsp; }
+<br>&nbsp;&nbsp;&nbsp; finally {System.out.println("Doing finally");}
+<br>&nbsp; }
+<br>}
+<p>1) Compile time error
+<br>2) It will run, wait for a key press and then exit
+<br>3) It will run, wait for a keypress, print "Doing finally" then exit
+<br>4) At run and immediately exit
+<p>===============================================
+<br>Answer to Question 34)
+<br>Objective 1.2)
+<p>1) Compile time error
+<p>It wil produce an error like "Abstract and native method can't have
+a body. This is typical of the more misleading question where you might
+think it is asking you about the circumstances under which the finally
+clause runs, but actually it is about something else.
+<p>===============================================
+<br>Question 35)
+<p>What will happen when you attempt to compile and run the following code
+<p>public class Borley extends Thread{
+<br>&nbsp; public static void main(String argv[]){
+<br>&nbsp;&nbsp;&nbsp; Borley b = new Borley();
+<br>&nbsp;&nbsp;&nbsp; b.start();
+<br>&nbsp; }
+<p>&nbsp; public void run(){
+<br>&nbsp;&nbsp;&nbsp; System.out.println("Running");
+<br>&nbsp; }
+<br>}
+<p>1) Compilation and run but no output
+<br>2) Compilation and run with the output "Running"
+<br>3) Compile time error with complaint of no Thread target
+<br>4) Compile time error with complaint of no access to Thread package
+<p>===============================================
+<br>Answer to Question 35)
+<br>Objective 7.1)
+<p>2) Compilation and run with the output "Running"
+<p>This is perfectly legitimate if useless sample of creating an instnace
+of a Thread and causing its run method to execute via a call to the start
+method. The Thread class is part of the core java.lang package and does
+not need any explicit import statement. The reference to a Thread target
+is an attempt to mislead with a reference to the method of using the Runnable
+interface instead of simply inheriting from the Thread super class.
+<p>===============================================
+<br>Question 36)
+<p>Assuming any exception handling has been set up, which of the following
+will create an instance of the RandomAccessFile class
+<p>1) RandomAccessFile raf=new RandomAccessFile("myfile.txt","rw");
+<br>2) RandomAccessFile raf=new RandomAccessFile( new DataInputStream());
+<br>3) RandomAccessFile raf=new RandomAccessFile("myfile.txt");
+<br>4) RandomAccessFile raf=new RandomAccessFile( new File("myfile.txt"));
+<p>===============================================
+<br>Answer to Question 36)
+<br>Objective 11.1)
+<p>1) RandomAccessFile raf=new RandomAccessFile("myfile.txt","rw");
+<p>The RandomAccessFile is an anomaly in the Java I/O architecture. It
+descends directly from Object and is not part of the Streams architecture.
+<p>===============================================
+<br>Question 37)
+<p>Given the following class definition
+<p>public class Upton{
+<br>&nbsp; public static void main(String argv[]){
+<br>&nbsp; }
+<p>&nbsp; public void amethod(int i){}
+<p>&nbsp; //Here
+<p>}
+<p>Which of the following would be legal to place after the comment //Here
+?
+<br>1) public int amethod(int z){}
+<br>2) public int amethod(int i,int j){return 99;}
+<br>3) protected void amethod(long l){ }
+<br>4) private void anothermethod(){}
+<p>===============================================
+<br>Answer to Question 37)
+<br>Objective 6.2)
+<p>2) public int amethod(int i, int j) {return 99;}
+<br>3) protected void amethod (long l){}
+<br>4) private void anothermethod(){}
+<p>Option 1 will not compile on two counts. One is the obvious one that
+it claims to return an integer. The other is that it is effectivly an attempt
+to redefine a method within the same class. The change of name of the parameter
+from i to z has no effect and a method cannot be overriden within the same
+class.
+<p>===============================================
+<br>Question 38)
+<p>Which of the following statements are true?
+<p>1) Code must be written if the programmer wants a frame to close on
+selecting the system close menu
+<br>2) The default layout for a Frame is the BorderLayout Manager
+<br>3) The layout manager for a Frame cannot be changed once it has been
+assigned
+<br>4) The GridBagLayout manager makes extensive use of the the GridBagConstraints
+class.
+<p>===============================================
+<br>Answer to Question 38)
+<br>Objective 8.1)
+<p>1) Code must be written to cause a frame to close on selecting the system
+close menu
+<br>2) The default layout for a Frame is the BorderLayout Manager
+<br>4) The GridBagLayout manager makes extensive use of the the GridBagConstraints
+class.
+<p>You can change the layout manager for a Frame or any other container
+whenever you like.
+<p>===============================================
+<br>Question 39)
+<p>Given the following class definition
+<p>public class Droitwich{
+<br>&nbsp; class one{
+<br>&nbsp;&nbsp;&nbsp; private class two{
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void main(){
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("two");
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+<br>&nbsp;&nbsp;&nbsp; }
+<br>&nbsp; }
+<br>}
+<p>Which of the following statements are true
+<p>1) The code will not compile because the classes are nested to more
+than one level
+<br>2) The code will not compile because class two is marked as private
+<br>3) The code will compile and output the string two at runtime
+<br>4) The code will compile without error
+<p>===============================================
+<br>Answer to Question 39)
+<br>Objective 1.2)
+<p>4) The code will compile without error
+<p>There are no restrictions on the level of nesting for inner/nested classes.
+Inner classes may be marked private. The main method is not declared as
+public static void main, and assuming that the commandline was java Droitwich
+it would not be invoked anyway.
+<p>===============================================
+<br>Question 40)
+<p>Given the following code
+<p>class Base{
+<br>&nbsp; static int oak=99;
+<br>}
+<p>public class Doverdale extends Base{
+<br>&nbsp; public static void main(String argv[]){
+<br>&nbsp;&nbsp;&nbsp; Doverdale d = new Doverdale();
+<br>&nbsp;&nbsp;&nbsp; d.amethod();
+<br>&nbsp; }
+<p>&nbsp; public void amethod(){
+<br>&nbsp;&nbsp;&nbsp; //Here
+<br>&nbsp; }
+<br>}
+<p>Which of the following if placed after the comment //Here, will compile
+and modify the value of the variable oak?
+<p>1) super.oak=1;
+<br>2) oak=33;
+<br>3) Base.oak=22;
+<br>4) oak=50.1;
+<p>===============================================
+<br>Answer to Question 40)
+<br>Objective 1.2)
+<p>1) super.oak=1;
+<br>2) oak=33;
+<br>3) Base.oak=22;
+<p>Because the variable oak is declared as static only one copy of it will
+exist. Thus it can be changed either through the name of its class or through
+the name of any instance of that class. Because it is created as an integer
+it canot be assigned a fractional component without a cast.
+<p>===============================================
+<br>Question 41)
+<p>You are creating an application that has a form with a text entry field
+used to enter a persons age. Which of the following is appropriate for
+<br>capturing this information.
+<p>1) Use the Text field of a TextField and parse the result using Integer
+<br>2) Use the getInteger method of the TextField
+<br>3) Use the getText method of a TextBox and parse the result using the
+getInt method of Integer class
+<br>4) Use the getText method of a TextField and use the parseInt method
+of the Integer class
+<p>===============================================
+<br>Answer to Question 41)
+<br>Objective 4.6)
+<p>4) Use the getText method of a Textfield and use the parseInt method
+of the Integer class
+<p>Here is an example of how you might do this
+<p>Integer.parseInt(txtInputValue.getText());
+<p>I'm not sure that a question on this actually will come up in the exam
+but it is a very useful thing to know in the real world.
+<p>===============================================
+<br>Question 42)
+<p>Given the following declaration
+<p>Integer i=new Integer(99);
+<p>How can you now set the value of i to 10?
+<p>1) i=10;
+<br>2) i.setValue(10);
+<br>3) i.parseInt(10);
+<br>4) none of the above
+<p>===============================================
+<br>Answer to Question 42)
+<br>Objective 4.6)
+<p>4) none of the above
+<p>The wrapper classes are immutable. Once the value has been set it cannot
+be changed. A common use of the wrapper classes is to take advantage of
+their static methods such as Integer.parseInt(String s) that will returns
+an integer if the String contains one.
+<br>===============================================
+<br>Question 43)
+<p>Which of the following statements are true
+<p>1) constructors cannot be overloaded
+<br>2) constructors cannot be overridden
+<br>3) a constructor can return a primitive or an object reference
+<br>4) constructor code executes from the current class up the hierarchy
+to the ancestor class
+<p>===============================================
+<br>Answer to Question 43)
+<br>Objective 6.2)
+<p>2) constructors cannot be overriden
+<p>Overloading constructors is a key technique to allow multiple ways of
+initialising classes. By definition constructors have no return values
+so option 3 makes no sense. Option 4 is the inverse of what happens as
+constructor code will execute starting from the oldest ancestor class downwards.
+<br>You can test this by writing a class that inherits from a base class
+and getting the constructor to print out a message. When you create the
+child class you will see the order of constructor calling.
+<p>===============================================
+<br>Question 44)
+<p>Given a reference called
+<p>t
+<p>to to a class which extends Thread, which of the following will cause
+it to give up cycles to allow another thread to execute.
+<p>1) t.yield();
+<br>2) yield();
+<br>3) yield(100); //Or some other suitable amount in milliseconds
+<br>4) yield(t);
+<p>===============================================
+<br>Answer to Question 44)
+<br>Objective 7.1)
+<p>yield is a static method and causes whatever thread is currently executing
+to yield its cycles.
+<p>1) t.yield();
+<br>2) yield()
+<p>===============================================
+<br>Question 45)
+<p>What will happen when you attempt to compile and run the following code?
+<p>public class Sandys{
+<br>&nbsp; private int court;
+<br>&nbsp; public static void main(String argv[]){
+<br>&nbsp;&nbsp;&nbsp; Sandys s = new Sandys(99);
+<br>&nbsp;&nbsp;&nbsp; System.out.println(s.court);
+<br>&nbsp; }
+<p>&nbsp; Sandys(int ballcount){
+<br>&nbsp;&nbsp;&nbsp; court=ballcount;
+<br>&nbsp; }
+<br>}
+<p>1) Compile time error, the variable court is defined as private
+<br>2) Compile time error, s is not initialized when the System.out method
+is called
+<br>3) Compilation and execution with no output
+<br>4) Compilation and run with an output of 99
+<p>===============================================
+<br>Answer to Question 45)
+<br>Objective 6.2)
+<p>4) Compilation and run with an output of 99
+<p>The fact that the variable court is declared as private does not stop
+the constructor from being able to initialise it.
+<p>===============================================
+<br>Question 46)
+<p>Which of the following statements are true?
+<p>1) A method cannot be overloaded to be less public in a child class
+<br>2) To be overridden a method must have the same name and parameter
+types
+<br>3) To be overridden a method must have the same name, parameter and
+return types
+<br>4) An overridden method must have the same name, parameter names and
+parameter types
+<p>===============================================
+<br>Answer to Question 46)
+<br>Objective 6.2)
+<p>3) To be overriden a method must have the same name, parameter and return
+types
+<p>Option 1 is a sneaky one in that it should read overriden not overloaded.
+An overriden method must also have the same return type. Parameter names
+are purely a programmer convenience and are not a factor in either overloading
+and overriding. Parameter order is a factor however.
+<p>===============================================
+<br>Question 47)
+<p>What will happen when you attempt to compile and run the following code?
+<p>class Base{
+<br>&nbsp; Base(){
+<br>&nbsp;&nbsp;&nbsp; System.out.println("Base");
+<br>&nbsp; }
+<br>}
+<p>public class Checket extends Base{
+<br>&nbsp; public static void main(String argv[]){
+<br>&nbsp;&nbsp;&nbsp; Checket c = new Checket();
+<br>&nbsp;&nbsp;&nbsp; super();
+<br>&nbsp; }
+<p>&nbsp; Checket(){
+<br>&nbsp;&nbsp;&nbsp; System.out.println("Checket");
+<br>&nbsp; }
+<br>}
+<p>1) Compile time error
+<br>2) Checket followed by Base
+<br>3) Base followed by Checket
+<br>4) runtime error
+<p>===============================================
+<br>Answer to Question 47)
+<br>Objective 6.2)
+<p>1) Compile time error
+<p>With the sun JDK it will produce the following error
+<p>"Only constructors can invoke constructors".
+<p>If you took out the call to super that causes this error the program
+would compile and at runtime it would output Base and then Checket as constructors
+are called from the oldest ancestor class downwards.
+<p>===============================================
+<br>Question 48)
+<p>Which of the following statements are true?
+<p>1) Static methods cannot be overriden to be non static
+<br>2) Static methods cannot be declared as private
+<br>3) Private methods cannot be overloaded
+<br>4) An overloaded method cannot throw exceptions not checked in the
+base class
+<p>===============================================
+<br>Answer to Question 48)
+<br>Objective 1.2)
+<p>1) Static methods cannot be overriden to be non static
+<p>The JDK1.1 compiler will issue an error message "static methods cannot
+be overriden" if you atempt to do this. There is no logic or reason why
+private methods should not be overloaded or that static methods should
+not be declared private. Option 4 is a jumbled up version of the limitations
+of exceptions for overriden methods.
+<p>===============================================
+<br>Question 49)
+<p>Which of the following statements are true?
+<p>1) The automatic garbage collection of the JVM prevents programs from
+ever running out of memory
+<br>2) A program can suggest that garbage collection be performed but not
+force it
+<br>3) Garbage collection is platform independent
+<br>4) An object becomes eligible for garbage collection when all references
+denoting it are set to null.
+<p>===============================================
+<br>Answer to Question 49)
+<br>Objective 3.1)
+<p>2) A program can suggest that garbage collection be performed but not
+force it
+<br>4) A reference becomes eligable for garbage collection when it is assigned
+to null
+<p>If a program keeps creating new references without any being discarded
+it may run out of memory. Unlike most aspects of Java garbage collection
+is platform dependent.
+<p>===============================================
+<br>Question 50)
+<p>Given the following code
+<p>public class Sytch{
+<br>&nbsp; int x=2000;
+<br>&nbsp; public static void main(String argv[]){
+<br>&nbsp;&nbsp;&nbsp; System.out.println("Ms "+argv[1]+"Please pay $"+x);
+<br>&nbsp; }
+<br>}
+<p>What will happen if you attempt to compile and run this code with the
+command line java Sytch Jones Diggle
+<p>1) Compilation and output of Ms Diggle Please pay $2000
+<br>2) Compile time error
+<br>3) Compilation and output of Ms Jones Please pay $2000
+<br>4) Compilation but runtime error
+<p>===============================================
+<br>Answer to Question 50)
+<br>Objective 1.2)
+<p>2) Compile time error
+<p>The main method is static and cannot access the non static variable
+x
+<p>===============================================
+<br>Question 51)
+<p>What will happen when you attempt to compile and run the following code
+<p>class Base{
+<br>&nbsp; protected int i = 99;
+<br>}
+<p>public class Ab{
+<br>&nbsp; private int i=1;
+<br>&nbsp; public static void main(String argv[]){
+<br>&nbsp;&nbsp;&nbsp; Ab a = new Ab();
+<br>&nbsp;&nbsp;&nbsp; a.hallow();
+<br>&nbsp; }
+<p>&nbsp; abstract void hallow(){
+<br>&nbsp;&nbsp;&nbsp; System.out.println("Claines "+i);
+<br>&nbsp; }
+<br>}
+<p>1) Compile time error
+<br>2) Compilation and output of Claines 99
+<br>3) Compilation and output of Claines 1
+<br>4) Compilation and not output at runtime
+<p>===============================================
+<br>Answer to Question 51)
+<br>Objective 1.2)
+<p>1) Compile time error
+<p>When compiled with JDK 1.1 the following error is produced.
+<p>Abstract and native methods can't have a body: void hallow() abstract
+void hallow()
+<p>===============================================
+<br>Question 52)
+<p>You have been asked to create a scheduling system for a hotel and catering
+organsiation. You have been given the following information and asked to
+create a set of classes to represent it. On the catering side of the organsiation
+they have
+<p>Head Chefs
+<br>Chefs
+<br>Apprentice Chefs
+<p>The system needs to store an employeeid, salary and the holiday entitlement.
+How would you best represent this information in Java
+<p>1) Create classes for Head Chef, Chef, Apprentice Chef and store the
+other values in fields
+<br>2) Create an employee class and derive sub classes for Head Chef, Chef,
+Apprentice Chef and store the other values in fields.
+<br>3) Create and employee class with fields for Job title and fields for
+the other values.
+<br>4) Create classes for all of the items mentioned and create a container
+class to represent employees
+<p>===============================================
+<br>Answer to Question 52)
+<br>Objective 6.1)
+<p>3) Create and employee class with fields for Job title and fields for
+the other values.
+<p>These questions can appear tricky as the whole business of designing
+class structures is more art than science. It is asking you to decide if
+an item of data is best represented by the "Is a" or "Has a" relationship.
+Thus in this case any of the job titles mentioned will always refer to
+something that "Is a" employee. However the employee "has a" job title
+that might change.
+<p>One of the important points is to ask yourself when creating a class
+"Could this change into another class at some point in the future". Thus
+in this example an apprentice chef would hope one day to turn into a chef
+and if she is very good will one day be head chef. Few other mock exams
+seem to have this type of questions but they di come up in the real exam.
+<p>===============================================
+<br>Question 53)
+<p>You need to read in the lines of a large text file containing tens of
+megabytes of data. Which of the following would be most suitable for reading
+in
+<br>such a file
+<p>1) new FileInputStream("file.name")
+<br>2) new InputStreamReader(new FileInputStream("file.name"))
+<br>3) new BufferedReader(new InputStreamReader(new FileInputStream("file.name")));
+<br>4) new RandomAccessFile raf=new RandomAccessFile("myfile.txt","+rw");
+<p>===============================================
+<br>Answer to Question 53)
+<br>Objective 11.1)
+<p>3) new BufferedReader(new InputStreamReader(new FileInputStream("file.name")));
+<p>The key to this question is that it asks about tens of megabytes of
+data, implying that performance is an issue. A Buffered Reader will optimise
+the performance of accessing a file. Although the objectives do not specifically
+mention it questions on I/O do come up on the exam.
+<p>===============================================
+<br>Question 54)
+<p>What will happen when you attempt to compile and run the following code?
+<p>public class Inc{
+<br>&nbsp; public static void main(String argv[]){
+<br>&nbsp;&nbsp;&nbsp; Inc inc = new Inc();
+<br>&nbsp;&nbsp;&nbsp; int i =0;
+<br>&nbsp;&nbsp;&nbsp; inc.fermin(i);
+<br>&nbsp;&nbsp;&nbsp; i = i++;
+<br>&nbsp;&nbsp;&nbsp; System.out.println(i);
+<br>&nbsp; }
+<p>&nbsp; void fermin(int i){
+<br>&nbsp;&nbsp;&nbsp; i++;
+<br>&nbsp; }
+<br>}
+<p>1) Compile time error
+<br>2) Output of 2
+<br>3) Output of 1
+<br>4) Output of 0
+<p>===============================================
+<br>Answer to Question 54)
+<br>Objective 5.4)
+<p>4) Output of 0
+<p>The method fermin only receives a copy of the variable i and any modifications
+to it are not reflected in the version in the calling method. The post
+increment operator ++ effectivly modifes the value of i after the initial
+value has been assiged to the left hand side of the equals operator. This
+can be a very tricky conept to understand
+<p>===============================================
+<br>Question 55)
+<p>What will happen when you attempt to compile and run the following code?
+<p>public class Agg{
+<br>&nbsp; static public long i=10;
+<br>&nbsp; public static void main(String argv[]){
+<br>&nbsp;&nbsp;&nbsp; switch(i){
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; default:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("no
+value given");
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 1:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("one");
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 10:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("ten");
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 5:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("five");
+<br>&nbsp;&nbsp;&nbsp; }
+<br>&nbsp; }
+<br>}
+<p>1) Compile time error
+<br>2) Output of "ten" followed by "five"
+<br>3) Output of "ten"
+<br>4) Compilation and run time error because of location of default
+<p>===============================================
+<br>Answer to Question 55)
+<br>Objective 2.2)
+<p>1) Compile time error
+<p>This might be considered a "gocha" or deliberate attempt to mislead
+you because i has been given the data type of long and the parameter must
+be either a byte, char, short or int. If you attempt to compile this code
+with JDK 1.2 you will get an error that says something like "Incompatible
+type for switch, Explicit cast needed to convert long to int. Answering
+with option 2 would have been reasonable because if the parameter had been
+an integer type the lack of break statements would have caused this output.
+If you gave either of the answers you should probably revise the subject.
+<p>===============================================
+<br>Question 56)
+<p>Given the following class
+<p>public class ZeroPrint{
+<br>&nbsp; public static void main(String argv[]){
+<br>&nbsp;&nbsp;&nbsp; int i =0;
+<br>&nbsp;&nbsp;&nbsp; //Here
+<br>&nbsp; }
+<br>}
+<p>Which of the following lines if placed after the comment //Here will
+print out 0.
+<p>1) System.out.println(i++);
+<br>2) System.out.println(i+'0');
+<br>3) System.out.println(i);
+<br>4) System.out.println(i--);
+<p>===============================================
+<br>Answer to Question 56)
+<br>Objective 5.1)
+<p>1) System.out.println(i++);
+<br>3) System.out.println(i);
+<br>4) System.out.println(i--);
+<p>The options for this question might look suspiciously easy if you are
+not aware of the effects of the post-increment operators. The ++ and --
+operations for examples 1 and 4 only come into effect after the output
+operations, ie after whatever else is done to them on that line of code.
+<br>Option 2 should be fairly obvious as you should know that the single
+quote characters indicate a char value, ie storing the character rather
+than the numberical value for 0.
+<p>===============================================
+<br>Question 57)
+<p>Given the following code
+<p>class Base {}
+<p>class Agg extends Base{
+<br>&nbsp; public String getFields(){
+<br>&nbsp;&nbsp;&nbsp; String name =&nbsp; "Agg";
+<br>&nbsp;&nbsp;&nbsp; return name;
+<br>&nbsp; }
+<br>}
+<p>public class Avf{
+<br>&nbsp; public static void main(String argv[]){
+<br>&nbsp;&nbsp;&nbsp; Base a = new Agg();
+<br>&nbsp;&nbsp;&nbsp; //Here
+<br>&nbsp; }
+<br>}
+<p>What code placed after the comment //Here will result in calling the
+getFields method resulting in the output of the string "Agg"?
+<p>1) System.out.println(a.getFields());
+<br>2) System.out.println(a.name);
+<br>3) System.out.println((Base) a.getFields());
+<br>4) System.out.println( ((Agg) a).getFields());
+<p>===============================================
+<br>Answer to Question 57)
+<p>4) System.out.println( ((Agg) a).getFields());
+<p>The Base type reference to the instance of the class Agg needs to be
+cast from Base to Agg to get access to its methods.The method invoked depends
+on the object itself, not on the declared type. So, a.getField() invokes
+getField() in the Base class, which displays Base. But the call to ((Agg)a).getField()
+will invoke the getField() in the Agg class. You will be unlucky to get
+a question as complex as this on the exam.
+<p>===============================================
+<br>Question 58)
+<p>What will happen when you attempt to compile and run the following code.
+<p>public class Pvf{
+<br>&nbsp; static boolean Paddy;
+<br>&nbsp; public static void main(String argv[]){
+<br>&nbsp;&nbsp;&nbsp; System.out.println(Paddy);
+<br>&nbsp; }
+<br>}
+<p>1) Compile time error
+<br>2) compilation and output of false
+<br>3) compilation and output of true
+<br>4) compilation and output of null
+<p>===============================================
+<br>Answer to Question 58)
+<br>Objective 4.4)
+<p>2) compilation and output of false
+<p>A variable defined at class level will always be given a default value
+and the default value for the primitive type boolean is false
+<p>===============================================
+<br>Question 59)
+<p>Which of the following statements are true?
+<p>1) The x,y coordinates of an instance of MouseEvent can be obtained
+using the getX() and getY() methods
+<br>2) The x,y coordinates of an instance of MouseEvent can be obtained
+using the X and Y integer fields
+<br>3) The time of a MouseEvent can be extracted using the getTime() method
+<br>4) The time of a MouseEvent can be extracted using the when parameter
+of the MouseEvent constructor
+<p>===============================================
+<br>Answer to Question 59)
+<p>Objective 4.6)
+<p>1) The x,y coordinates of an instance of MouseEvent can be obtained
+using the getX() and getY() methods
+<br>4) The time of a MouseEvent can be extracted using the when parameter
+of the MouseEvent constructor
+<p>If you chose option 4, referring to the mythical getTime method you
+have made a reasonable guess based on the normal conventions of Java.
+<br>However the conventions do not always hold true. If you chose option
+3 perhaps you are not as aware of the conventions as you should be.
+<p>===============================================
+<br>Question 60)
+<p>Given the following code
+<p>import java.io.*;
+<p>public class Ppvg{
+<br>&nbsp; public static void main(String argv[]){
+<br>&nbsp;&nbsp;&nbsp; Ppvg p = new Ppvg();
+<br>&nbsp;&nbsp;&nbsp; p.fliton();
+<br>&nbsp; }
+<p>&nbsp; public int fliton(){
+<br>&nbsp;&nbsp;&nbsp; try{
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FileInputStream din = new FileInputStream("Ppvg.java");
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; din.read();
+<br>&nbsp;&nbsp;&nbsp; }catch(IOException ioe){
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("flytwick");
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 99;
+<br>&nbsp;&nbsp;&nbsp; }finally{
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("fliton");
+<br>&nbsp;&nbsp;&nbsp; }
+<br>&nbsp;&nbsp;&nbsp; return -1;
+<br>&nbsp; }
+<br>}
+<p>Assuming the file Ppvg.java is available to be read which of the following
+statements are true if you try to compile and run the program?
+<p>1) The program will run and output only "flytwick"
+<br>2) The program will run and output only "fliton"
+<br>3) The program will run and output both "fliton" and "flytwick"
+<br>4) An error will occur at compile time because the method fliton attempts
+to return two values
+<p>===============================================
+<br>Answer to Question 60)
+<br>Objective 2.3
+<p>2) The program will run and output only "fliton"
+<p>This question tests your knowledge of the principle that the finally
+clause will almost always run.
+<br>&nbsp;
+</body>
+</html>

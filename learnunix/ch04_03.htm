@@ -1,0 +1,589 @@
+<HTML
+><HEAD
+><TITLE
+>[Chapter 4] 4.3 File and Directory Wildcards</TITLE
+><META
+NAME="DC.title"
+CONTENT="Learning the Unix Operating System"><META
+NAME="DC.creator"
+CONTENT="Jerry Peek, Grace Todino &amp; John Strang"><META
+NAME="DC.publisher"
+CONTENT="O'Reilly &amp; Associates, Inc."><META
+NAME="DC.date"
+CONTENT="1998-08-03T20:51:27Z"><META
+NAME="DC.type"
+CONTENT="Text.Monograph"><META
+NAME="DC.format"
+CONTENT="text/html"
+SCHEME="MIME"><META
+NAME="DC.source"
+CONTENT="1-56592-390-1"
+SCHEME="ISBN"><META
+NAME="DC.language"
+CONTENT="en-US"><META
+NAME="generator"
+CONTENT="Jade 1.1/O'Reilly DocBook 3.0 to HTML 4.0"><LINK
+REV="made"
+HREF="mailto:online-books@oreilly.com"
+TITLE="Online Books Comments"><LINK
+REL="up"
+HREF="ch04_01.htm"
+TITLE="4. File Management "><LINK
+REL="prev"
+HREF="ch04_02.htm"
+TITLE="4.2 File and Directory Names"><LINK
+REL="next"
+HREF="ch04_04.htm"
+TITLE="4.4 Managing Your Files"></HEAD
+><BODY
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+><DIV
+CLASS="htmlnav"
+><H1
+><IMG
+SRC="gifs/smbanner.gif"
+ALT="Learning the Unix Operating System"
+USEMAP="#srchmap"
+BORDER="0"></H1
+><MAP
+NAME="srchmap"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,466,69"
+HREF="index.htm"
+ALT="Learning the Unix Operating System"><AREA
+SHAPE="RECT"
+COORDS="467,0,514,18"
+HREF="jobjects/fsearch.htm"
+ALT="Search this book"></MAP
+><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch04_02.htm"
+TITLE="4.2 File and Directory Names"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 4.2 File and Directory Names"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><B
+><FONT
+FACE="ARIEL,HELVETICA,HELV,SANSERIF"
+SIZE="-1"
+>Chapter 4<BR>File Management </FONT
+></B
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch04_04.htm"
+TITLE="4.4 Managing Your Files"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 4.4 Managing Your Files"
+BORDER="0"></A
+></TD
+></TR
+></TABLE
+>&nbsp;<HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"></DIV
+><DIV
+CLASS="SECT1"
+><H2
+CLASS="sect1"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-3"
+>4.3 File and Directory Wildcards</A
+></H2
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-FILENAMES-WILDCARDS-FOR"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-WILDCARDS"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-NAMING-FS-DIRS-WILDCARDS"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2676"
+></A
+>When you have a number of files named in series (for example,
+<EM
+CLASS="emphasis"
+>chap1</EM
+> to <EM
+CLASS="emphasis"
+>chap12</EM
+>) or filenames with common characters
+(like <EM
+CLASS="emphasis"
+>aegis</EM
+>, <EM
+CLASS="emphasis"
+>aeon</EM
+>, and <EM
+CLASS="emphasis"
+>aerie</EM
+>), you can use
+<EM
+CLASS="emphasis"
+>wildcards</EM
+> (also called <EM
+CLASS="emphasis"
+>metacharacters</EM
+>) to specify many
+files at once.  These special characters are * (asterisk), <CODE
+CLASS="literal"
+>?</CODE
+>
+(question mark), and <CODE
+CLASS="literal"
+>[&nbsp;]</CODE
+> (square brackets).  When used in a
+filename given as an argument to a command:
+
+<DL
+CLASS="variablelist"
+><DT
+CLASS="term"
+>*</DT
+><DD
+CLASS="listitem"
+><P
+CLASS="para"
+>An asterisk is replaced by any number of characters in a filename.<A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-ASTERISK-AS-WILDCARD"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-WILDCARD-ASTERISK"
+></A
+>
+For example, <EM
+CLASS="emphasis"
+>ae*</EM
+> would match <EM
+CLASS="emphasis"
+>aegis</EM
+>, <EM
+CLASS="emphasis"
+>aerie</EM
+>,
+<EM
+CLASS="emphasis"
+>aeon</EM
+>, etc. if those files were in the same directory.  You can
+use this to save typing for a single filename (for example, <EM
+CLASS="emphasis"
+>al*</EM
+>
+for <EM
+CLASS="emphasis"
+>alphabet.txt</EM
+>) or to name many files at once (as in
+<EM
+CLASS="emphasis"
+>ae*</EM
+>).</P
+></DD
+><DT
+CLASS="term"
+>?</DT
+><DD
+CLASS="listitem"
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-2708"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2710"
+></A
+>A question mark is replaced by any single character (so <EM
+CLASS="emphasis"
+>h?p</EM
+>
+matches <EM
+CLASS="emphasis"
+>hop</EM
+> and <EM
+CLASS="emphasis"
+>hip</EM
+>, but not <EM
+CLASS="emphasis"
+>help</EM
+>).</P
+></DD
+><DT
+CLASS="term"
+>[ ]</DT
+><DD
+CLASS="listitem"
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-2720"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2722"
+></A
+>Square brackets can surround a choice of characters
+you'd like to match.
+Any one of the characters between the brackets will be matched.
+For example, [<EM
+CLASS="emphasis"
+>Cc</EM
+>]<EM
+CLASS="emphasis"
+>hapter</EM
+> would match either <EM
+CLASS="emphasis"
+>Chapter</EM
+> or
+<EM
+CLASS="emphasis"
+>chapter</EM
+>, but [<EM
+CLASS="emphasis"
+>ch</EM
+>]<EM
+CLASS="emphasis"
+>apter</EM
+>
+would match either <EM
+CLASS="emphasis"
+>capter</EM
+> or <EM
+CLASS="emphasis"
+>hapter</EM
+>.
+Use a hyphen (-) to separate a range of consecutive characters.
+For example, <EM
+CLASS="emphasis"
+>chap</EM
+>[<EM
+CLASS="emphasis"
+>13</EM
+>] would match <EM
+CLASS="emphasis"
+>chap1</EM
+>, <EM
+CLASS="emphasis"
+>chap2</EM
+>,
+or <EM
+CLASS="emphasis"
+>chap3</EM
+>.</P
+></DD
+></DL
+></P
+><P
+CLASS="para"
+>The examples below demonstrate the use of wildcards.
+The first command lists all the entries in a directory, and the rest
+use wildcards to list just some of the entries.
+The last one is a little tricky; it matches files whose names contain
+two (or more) <EM
+CLASS="emphasis"
+>a</EM
+>'s.</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>ls</B
+></CODE
+>
+chap10       chap2        chap5     cold
+chap1a.old   chap3.old    chap6     haha
+chap1b       chap4        chap7     oldjunk
+% <CODE
+CLASS="userinput"
+><B
+>ls chap?</B
+></CODE
+>
+chap2    chap5    chap7
+chap4    chap6
+% <CODE
+CLASS="userinput"
+><B
+>ls chap[5-8]</B
+></CODE
+>
+chap5    chap6    chap7
+% <CODE
+CLASS="userinput"
+><B
+>ls chap??</B
+></CODE
+>
+chap10   chap1b
+% <CODE
+CLASS="userinput"
+><B
+>ls *old</B
+></CODE
+>
+chap1a.old   chap3.old    cold
+% <CODE
+CLASS="userinput"
+><B
+>ls *a*a*</B
+></CODE
+>
+chap1a.old   haha</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>Wildcards are useful for more than listing files.
+Most UNIX commands accept more than one filename, and you can use
+wildcards to put multiple files on the command line.
+For example, the command <B
+CLASS="emphasis.bold"
+>more</B
+> is used to display a file on the screen.
+Let's say you want to display files <EM
+CLASS="emphasis"
+>chap3.old</EM
+> and <EM
+CLASS="emphasis"
+>chap1a.old</EM
+>.
+Instead of specifying these files individually, you could enter the command as:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>more *.old</B
+></CODE
+></PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>This is equivalent to &quot;<B
+CLASS="emphasis.bold"
+>more chap1a.old chap3.old</B
+>&quot;.</P
+><P
+CLASS="para"
+>Wildcards match directory names, too.
+For example, let's say you have subdirectories named <EM
+CLASS="emphasis"
+>Jan</EM
+>, <EM
+CLASS="emphasis"
+>Feb</EM
+>,
+<EM
+CLASS="emphasis"
+>Mar</EM
+>, and so on.
+Each has a file named <EM
+CLASS="emphasis"
+>summary</EM
+>.
+You could read all the summary files by typing &quot;<B
+CLASS="emphasis.bold"
+>more */summary</B
+>&quot;.
+That's almost equivalent to &quot;<B
+CLASS="emphasis.bold"
+>more Jan/summary Feb/summary</B
+> ...&quot;
+but there's one important difference:
+The names will be alphabetized,
+so <EM
+CLASS="emphasis"
+>Apr/summary</EM
+> would be first in the list.<A
+CLASS="indexterm"
+NAME="AUTOID-2764"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2765"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2766"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2767"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2768"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2769"
+></A
+></P
+></DIV
+><DIV
+CLASS="htmlnav"
+><P
+></P
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch04_02.htm"
+TITLE="4.2 File and Directory Names"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 4.2 File and Directory Names"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="book"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"
+><IMG
+SRC="../gifs/txthome.gif"
+ALT="Learning the Unix Operating System"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch04_04.htm"
+TITLE="4.4 Managing Your Files"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 4.4 Managing Your Files"
+BORDER="0"></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+>4.2 File and Directory Names</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="index"
+HREF="index/idx_0.htm"
+TITLE="Book Index"
+><IMG
+SRC="../gifs/index.gif"
+ALT="Book Index"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+>4.4 Managing Your Files</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><IMG
+SRC="../gifs/smnavbar.gif"
+USEMAP="#map"
+BORDER="0"
+ALT="The UNIX CD Bookshelf Navigation"><MAP
+NAME="map"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,73,21"
+HREF="../index.htm"
+ALT="The UNIX CD Bookshelf"><AREA
+SHAPE="RECT"
+COORDS="74,0,163,21"
+HREF="../upt/index.htm"
+ALT="UNIX Power Tools"><AREA
+SHAPE="RECT"
+COORDS="164,0,257,21"
+HREF="../unixnut/index.htm"
+ALT="UNIX in a Nutshell"><AREA
+SHAPE="RECT"
+COORDS="258,0,321,21"
+HREF="../vi/index.htm"
+ALT="Learning the vi Editor"><AREA
+SHAPE="RECT"
+COORDS="322,0,378,21"
+HREF="../sedawk/index.htm"
+ALT="sed &amp; awk"><AREA
+SHAPE="RECT"
+COORDS="379,0,438,21"
+HREF="../ksh/index.htm"
+ALT="Learning the Korn Shell"><AREA
+SHAPE="RECT"
+COORDS="439,0,514,21"
+HREF="index.htm"
+ALT="Learning the UNIX Operating System"></MAP
+></DIV
+></BODY
+></HTML
+>

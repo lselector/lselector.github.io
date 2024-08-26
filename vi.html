@@ -1,0 +1,496 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="KeyWords" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>vi</title>
+<!-- "Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL" -->
+
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body>
+<p><a NAME="top"></a> </p>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+  <tr>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+    <td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b>
+        <spacer type=block width=1 height=1></td>
+    <td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1>
+        <b><font color="#CC0000">New
+          York</font></b></td>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+  <tr>
+    <td><spacer type=block width=1 height=1></td>
+  </tr>
+  <tr>
+    <td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+  </tr>
+  <tr>
+    <td><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+  <tr>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+    <td ALIGN=LEFT><spacer type=block width=1 height=1>
+        <b><a href="index.html">home</a> > Vi</b></td>
+    <td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1>
+        <b></b></td>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+  <tr>
+    <td><spacer type=block width=1 height=1></td>
+  </tr>
+  <tr>
+    <td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+  </tr>
+  <tr>
+    <td><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+<p><b><font color="#CC0000">Vi</font></b>
+<p class="sectionheader">Vi Reference (with some Vim hints):</p>
+<p><b><u><font color="#000000">2 Modes</font></u></b><font color="#000000"> - insertion &amp; command (also ":" commands)</font>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#000000">- The editor begins in </font><b><u><font color="#CC0000">command
+mode</font></u></b><font color="#000000">, where you can: move cursor,
+delete, copy(yank) / paste(put), save/restore, etc.</font>
+<br><font color="#000000">- </font><b><u><font color="#CC0000">Insertion
+mode</font></u></b><font color="#000000"> begins upon entering an insertion
+or change command.</font>
+<br><font color="#000000">- </font><b><u><font color="#CC0000">[ESC]</font></u></b><font color="#000000">
+- ends Insertion mode</font>
+<br><font color="#000000">- Most commands execute as soon as you type them
+except for "colon" commands which execute when you press the return key.</font></td>
+</tr>
+</table>
+
+<p><b><u><font color="#000000">File saving, reverting, quitting</font></u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#CC0000">:w&nbsp; </font></b><font color="#000000">save
+changes to file 'fname'</font>
+<br><b><font color="#CC0000">:w&nbsp; fname</font></b><font color="#000000">&nbsp;
+save changes to file 'fname'</font>
+<br><b><font color="#CC0000">:wq</font></b><font color="#000000">&nbsp;
+exit, saving changes (same as </font><b><font color="#CC0000">:x</font></b><font color="#000000">&nbsp;&nbsp;
+or&nbsp; </font><b><font color="#CC0000">:ZZ</font></b><font color="#000000">
+)</font>
+<br><b><font color="#CC0000">:q</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;
+quit (will quit if no changes made)</font>
+<br><b><font color="#CC0000">:q!</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;
+discard changes and quit</font>
+<br><b><font color="#CC0000">:e!</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;
+discard changes (revert to previous saved version)</font></td>
+</tr>
+</table>
+
+<p><b><u><font color="#000000">Inserting text</font></u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#CC0000">i , I</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+insert before cursor, before line</font>
+<br><b><font color="#CC0000">a , A</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+append after cursor, after line</font>
+<br><b><font color="#CC0000">o , O</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+open new line after, line before</font>
+<br><b><font color="#CC0000">r , R</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replace one char, many chars</font></td>
+</tr>
+</table>
+
+<p><b><u><font color="#000000">Motion</font></u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#CC0000">h , j , k , l</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;
+left, down, up, right (also arrows)</font>
+<br><b><font color="#CC0000">w , W</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+forward next word, blank delimited word</font>
+<br><b><font color="#CC0000">e , E</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+forward end of word, of blank delimited word</font>
+<br><b><font color="#CC0000">b , B</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+backward beginning of word, of blank delimited word</font>
+<br><b><font color="#CC0000">( , )</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+sentence back, forward</font>
+<br><b><font color="#CC0000">{ , }</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+paragraph back, forward</font>
+<br><b><font color="#CC0000">0 , $</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+beginning, end of line</font>
+<br><b><font color="#CC0000">1G , G</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+beginning, end of file</font>
+<br><b><font color="#CC0000">nG or :n</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+line n</font>
+<br><b><font color="#CC0000">fc , Fc</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+forward, back to char c</font>
+<br><b><font color="#3333FF">H , M , L</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+top, middle, bottom of screen</font></td>
+</tr>
+</table>
+
+<p><b><u><font color="#000000">Deleting text:</font></u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#CC0000">dw</font></b><font color="#000000"> - deletes
+a word (type <b>d</b> followed by a motion)</font>
+<br><b><font color="#CC0000">dd</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+line</font>
+<br><b><font color="#CC0000">:d</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+line</font>
+<br><b><font color="#CC0000">x , X</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+character to right, left</font>
+<br><b><font color="#CC0000">D</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+to end of line</font></td>
+</tr>
+</table>
+
+<p><b><u><font color="#000000">Yanking text (copying in a buffer):</font></u></b><font color="#000000">
+- type <b>y</b> followed by a motion.</font>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#CC0000">y$</font></b><font color="#000000"> - yanks
+to the end of line.</font>
+<br><b><font color="#CC0000">yy</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+line</font>
+<br><b><font color="#CC0000">:y</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+line</font></td>
+</tr>
+</table>
+
+<p><font color="#000000"><b><u>Changing text:</u></b> - The change command&nbsp;
+is is performed by typing <b>c</b> followed by a motion. It is effectively
+a deletion command that leaves the editor in insert mode.</font>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#000000"><b>cw</b> - change a word</font>
+<br><font color="#000000"><b>C</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+to end of line</font>
+<br><font color="#000000"><b>cc</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+line</font></td>
+</tr>
+</table>
+
+<p><b><u><font color="#000000">Putting text:</font></u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#CC0000">p</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;
+put yanked text after position or after line</font>
+<br><b><font color="#CC0000">P</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;
+put before position or before line</font></td>
+</tr>
+</table>
+
+<p><font color="#000000"><b><u>Bufers:</u></b> - Named buffers may be specifed
+before any deletion, change, yank, or put command.</font>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">"c</font></b><font color="#000000"> - named
+buffer <b>c</b> (may be any lower case letter)</font>
+<br><b><font color="#3333FF">"adw</font></b><font color="#000000"> - deletes
+a word into buffer </font><b><font color="#3333FF">a</font></b>
+<br><b><font color="#3333FF">"ap</font></b><font color="#000000"> - put
+the contents of the buffer back in the page</font></td>
+</tr>
+</table>
+
+<p><font color="#000000"><b><u>Markers:</u></b> - Named markers may be
+set on any line of a file. Any lower case letter may be a marker name.
+Markers may also be used as the limits for ranges.</font>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">mc</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;
+set marker c on this line</font>
+<br><b><font color="#3333FF">`c</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;
+goto marker c</font>
+<br><font color="#3333FF"><b>'c</b>&nbsp;</font><font color="#000000">&nbsp;&nbsp;&nbsp;
+goto marker c first non-blank</font></td>
+</tr>
+</table>
+
+<p><b><u>Example: copy&nbsp; /&nbsp; paste a block of text:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FFCC" NOSAVE >
+<tr NOSAVE>
+<td NOSAVE><font color="#000000">Put cursor on the first character of the
+block and set marker 'm':</font>
+<br><b><font color="#FF0000">mm</font></b>
+<p><font color="#000000">Move cursor to the position right after the last
+character of the block.</font>
+<br><font color="#000000">Yank from this position back to the marker 'm'&nbsp;
+into a named buffer 'b':</font>
+<br><b><font color="#FF0000">"by`m</font></b>
+<br><font color="#000000">("b - defines a buffer,&nbsp; y - yank command,&nbsp;
+`m - moves to the marker)</font>
+<p><font color="#000000">Now move to some other place and put the buffer
+after the cursor:</font>
+<br><b><font color="#FF0000">"bp</font></b></td>
+</tr>
+</table>
+
+<p><b><u>Example: cut /paste a block of text:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FFCC" NOSAVE >
+<tr NOSAVE>
+<td NOSAVE><font color="#000000">Put cursor on the first character of the
+block and set marker 'm':</font>
+<br><b><font color="#FF0000">mm</font></b>
+<p><font color="#000000">Move cursor to the position right after the last
+character of the block.</font>
+<br><font color="#000000">Yank from this position back to the marker 'm'&nbsp;
+into a named buffer 'b':</font>
+<br><b><font color="#FF0000">"bd`m</font></b>
+<br><font color="#000000">("b - defines a buffer,&nbsp; d - delete command,&nbsp;
+`m - moves to the marker)</font>
+<p><font color="#000000">Now move to some other place and put the buffer
+after
+the cursor:</font>
+<br><b><font color="#FF0000">"bp</font></b></td>
+</tr>
+</table>
+
+<p><b><u>Example: copy/paste in vim using visual mode:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FFCC" NOSAVE >
+<tr NOSAVE>
+<td NOSAVE><b><font color="#FF0000">v</font></b><font color="#000000">
+- mark first character of the block</font>
+<br><font color="#000000">move the cursor to te end</font>
+<br><b><font color="#FF0000">y</font></b><font color="#000000"> - mark
+last character of the block and yank block to this point (or "</font><b><font color="#FF0000">d</font></b><font color="#000000">"
+to delete to this point)</font>
+<br><font color="#000000">move the cursor to some other place</font>
+<br><b><font color="#FF0000">gp</font></b><font color="#000000"> - put
+the block starting on the line immediately after the cursor&nbsp;</font>
+<br><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (or use
+"</font><b><font color="#FF0000">p</font></b><font color="#000000">"or
+"</font><b><font color="#FF0000">P</font></b><font color="#000000">" to
+put on the next/previous line - as in vi)</font>
+<p><b><font color="#FF0000">vawy</font></b><font color="#000000"> - copy
+a word</font>
+<br><b><font color="#FF0000">vaby</font></b><font color="#000000"> - copy
+a ( .. ) block</font>
+<br><b><font color="#FF0000">vaBy</font></b><font color="#000000"> - copy
+a { .. } block</font></td>
+</tr>
+</table>
+
+<p><b><u><font color="#000000">Search for Strings:</font></u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#CC0000">/string</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;
+search forward</font>
+<br><b><font color="#CC0000">?string</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;
+search backward</font>
+<br><b><font color="#CC0000">n , N</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+repeat search in same, reverse direction</font>
+<br><b><font color="#3333FF">:se ic</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;
+set ignore case for searches</font>
+<br><b><font color="#3333FF">:se noic</font></b><font color="#000000">&nbsp;&nbsp;
+back to case sensitive searches</font>
+<br><b><font color="#CC0000">Shift-5</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;
+jump between matching parenthesis (or curlies or brackets)</font></td>
+</tr>
+</table>
+
+<p><b><u><font color="#000000">Replace:</font></u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 WIDTH="23%" BGCOLOR="#CCFFFF" >
+<tr>
+<td NOWRAP><b><font color="#CC0000">:s/pattern /string /flags</font></b><font color="#000000">&nbsp;
+-&nbsp; replace pattern with string</font></td>
+</tr>
+</table>
+<font color="#000000">The search and replace function is accomplished with
+the </font><b><font color="#CC0000">:s</font></b><font color="#000000">
+command.</font>
+<br><font color="#000000">It is commonly used in combination with ranges
+or the </font><b><font color="#CC0000">:g</font></b><font color="#000000">
+command (below).</font>
+<br><b><u><font color="#000000">flags:</font></u></b>
+<br><font color="#000000"><b>g , c</b>&nbsp;&nbsp;&nbsp;&nbsp; all on each
+line, confirm each</font>
+<br><font color="#000000"><b>&amp;</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+repeat last <b>:s</b> command</font>
+<p><font color="#000000">Example: how to find/replace in all the file (2
+methods):</font>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#CCFFFF" >
+<tr>
+<td><b><font color="#3333FF">:%s/from/to/g</font></b>
+<br><b><font color="#3333FF">:g/from/s//to/g</font></b></td>
+</tr>
+</table>
+
+<p><b><u><font color="#000000">Regular Expressions:</font></u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#CCFFFF" >
+<tr>
+<td><b><font color="#CC0000">. (dot)</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+any single character except newline</font>
+<br><b><font color="#CC0000">*</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+zero or more repeats</font>
+<br><b><font color="#CC0000">[...]</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+any character in set</font>
+<br><b><font color="#CC0000">[^ ...]</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+any character not in set</font>
+<br><font color="#CC0000"><b>^ , $</b>&nbsp;</font><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+beginning, end of line</font>
+<br>
+<b><font color="#CC0000">\&lt; , \></font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+beginning, end of word</font><br><b><font color="#CC0000">\(: : :\)</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;
+grouping (putting into memory)</font>
+<br><b><font color="#CC0000">\n</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+contents of n th grouping (recalling from memory)</font></td>
+</tr>
+</table>
+
+<p>&nbsp;</p>
+<p><b><u><font color="#000000">Counts:</font></u></b>
+<br><font color="#000000">Nearly every command may be preceded by a number
+that specifies how many times it is to be performed. For example
+<b>5dw</b>
+will delete 5 words and <b>3fe</b> will move the cursor forward to the
+3rd occurance of the letter e. Even insertions may be repeated conveniently
+with this method, say to insert the same line 100 times.</font>
+<p><b><u><font color="#000000">Ranges:</font></u></b>
+<br><font color="#000000">Ranges may precede most "colon" commands and
+cause them to be executed on a line or lines. For example </font><b><font color="#CC0000">:3,7d</font></b><font color="#000000">
+would delete lines 3-7. Ranges are commonly combined with the :s command
+to perform a replacement on several lines, as with </font><b><font color="#CC0000">:.,$s/pattern/string/g</font></b><font color="#000000">
+to make a replacement from the current line to the end of the file.</font>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#CC0000">:n ,m</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+lines n-m</font>
+<br><b><font color="#CC0000">:.</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+current line</font>
+<br><b><font color="#CC0000">:$</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Last line</font>
+<br><b><font color="#CC0000">:?c</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Marker c</font>
+<br><b><font color="#CC0000">:%</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+All lines</font>
+<br><b><font color="#CC0000">:g/pattern/</font></b><font color="#000000">&nbsp;
+All matching lines</font></td>
+</tr>
+</table>
+
+<p><b><u><font color="#000000">Files:</font></u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#CC0000">:w file</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Write file (current file if no name given):</font>
+<br><b><font color="#CC0000">:r file</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read file after line</font>
+<br><b><font color="#CC0000">:n</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Next file</font>
+<br><b><font color="#CC0000">:p</font><font color="#000000">&nbsp;</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Previous file</font>
+<br><b><font color="#CC0000">:e file</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Edit file</font>
+<br><b><font color="#CC0000">:e!</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;
+re-read current file (discard changes)</font>
+<br><b><font color="#CC0000">!!program</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;
+Replace line with program output</font>
+<br><b><font color="#CC0000">:r!command</font></b><font color="#000000">
+read in an output of shell command, for example:</font>
+<br><b><font color="#CC0000">:r!which perl</font></b></td>
+</tr>
+</table>
+
+<p><b><u><font color="#000000">Other</font></u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td><font color="#3333FF"><b>J</b>&nbsp;</font><font color="#000000">&nbsp;&nbsp;&nbsp;
+join lines</font>
+<br><font color="#3333FF"><b>.</b>&nbsp;&nbsp;</font><font color="#000000">&nbsp;&nbsp;
+repeat last text-changing command</font>
+<br><font color="#3333FF"><b>u</b>&nbsp;&nbsp;</font><font color="#000000">&nbsp;&nbsp;
+undo last change</font>
+<br><font color="#3333FF"><b>U</b>&nbsp;&nbsp;</font><font color="#000000">&nbsp;&nbsp;
+undo all changes on line</font>
+<br><b><font color="#3333FF">ctrl-L</font></b><font color="#000000">&nbsp;&nbsp;&nbsp;
+refresh the window</font></td>
+</tr>
+</table>
+
+<p><b><u><font color="#000000">Examples:</font></u></b>
+<p><font color="#000000">How to find/replace in all the file (2 methods):</font>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">:%s/from/to/g</font></b>
+<br><b><font color="#3333FF">:g/from/s//to/g</font></b>
+<br>&nbsp;
+<p><b><font color="#3333FF">for example:</font></b>
+<p><b><font color="#3333FF">:g/&lt;tab>/s//&lt;space>&lt;space>/g</font></b></td>
+</tr>
+</table>
+
+<p><font color="#000000">How to comment out current line and all following
+lines:</font>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td>&nbsp;<b><font color="#3333FF"> .</font></b> = current line
+<br>&nbsp;<b><font color="#3333FF"> $</font></b> = end of file
+<br>&nbsp; <b><font color="#3333FF">.,$</font></b> = here to end
+<br>&nbsp; <b><font color="#3333FF">%s</font></b> = whole file
+<br>so sepending what you wanna do, try something like
+<br><b><font color="#3333FF">&nbsp; :%s/^/# / to comment</font></b>
+<br><b><font color="#3333FF">&nbsp; :%s/^# // to uncomment</font></b>
+<br>Here is how to do the same substituting the whole string
+<br>(just to demonstrate the use of memory variable \1)
+<br><b><font color="#3333FF">:.,$s/\(.*\)/# \1/&nbsp;&nbsp;&nbsp; to comment</font></b>
+<br><b><font color="#3333FF">:.,$s/^# \(.*\)/\1/&nbsp;&nbsp; to uncomment</font></b></td>
+</tr>
+</table>
+
+<p><font color="#000000">How to repeat insert 50 times:</font>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">50i-&lt;ESC></font></b><font color="#000000">
+- will repeat '-'50 times</font></td>
+</tr>
+</table>
+<font color="#000000">Note: you can repeat not only one character, but
+any text you type between 'i' and pressing &lt;ESC></font>
+<p><font color="#000000">Inserting &lt;ctrl-character> - press </font><b><font color="#000099">&lt;ctrl-v></font></b><font color="#000000">
+- then </font><b><font color="#000099">&lt;ctrl-character></font></b>
+<p><font color="#000000">mapping tab as&nbsp; 2 spaces:</font>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">:map!&lt;space>&lt;ctrl-v>&lt;ctrl-v>&lt;ctrl-v>&lt;ctrl-i>&lt;space>&lt;ctrl-v>&lt;ctrl-v>&lt;ctrl-v>&lt;space>&lt;ctrl-v>&lt;ctrl-v>&lt;ctrl-v>&lt;space></font></b>
+<p><font color="#000000">Explanation:</font>
+<p><font color="#000000">The format is:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :map!
+&lt;key> &lt;substitution></font>
+<br><font color="#000000">For example:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+:map! h hello</font>
+<p><font color="#000000">To enter a control character you have to precede
+it with &lt;ctrl-v>.</font>
+<br><font color="#000000">To enter this &lt;ctrl-v> itself - you should
+precede it with &lt;ctrl-v> too.</font></td>
+</tr>
+</table>
+
+<p>I am programming on Linux using vim. My favorite settings in the file&nbsp;&nbsp;
+.vimrc:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td>:syntax on
+<br>:se ts=2
+<br>:map! ^V&nbsp;&nbsp; ^V ^V</td>
+</tr>
+</table>
+
+<p><font color="#000000">-------</font>
+<br>- <a href="http://www.jerrywang.net/vi/">www.jerrywang.net/vi/</a>
+- good vi tutorial
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+</body>
+</html>

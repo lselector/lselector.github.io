@@ -1,0 +1,4833 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN"> 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<HTML>
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<HEAD>
+
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1"> 
+
+
+
+
+
+
+
+<META NAME="GENERATOR" CONTENT="Visual Page 2.0 for Windows"> 
+
+
+
+
+
+
+
+<TITLE>8.1) java.awt package - Layout</TITLE>
+
+
+
+
+
+
+
+<STYLE TYPE="text/css">
+
+
+
+
+
+
+
+	<!--
+
+
+
+
+
+
+
+	-->
+
+
+
+
+
+
+
+	</STYLE>
+
+
+
+
+
+
+
+<link rel="stylesheet" href="tutor.css"></HEAD>
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<BODY BGCOLOR="#FFFFFF">
+
+<table width=95% border=0 cellpadding=2 cellspacing=0 style="page-break-before: always">
+
+  <col width=147*> <col width=109*> 
+
+  <tr> 
+
+    <td width=57% height=104> 
+
+      <p><a href= "introj2.htm" ><img src= "btnIndex.jpg"  name="Graphic1" alt="Return to Tutorial Index" align=BOTTOM width=55 height=39 border=0></a><a href= "introj2.htm" ><br>
+
+        <br>
+
+        </a><a href= "index.htm" ><img src= "btnHome.jpg"  name="Graphic2" alt="Back to the home page of this site" align=BOTTOM width=55 height=39 border=0></a> 
+
+      </p>
+
+    </td>
+
+    <td width=43%> 
+
+      <p align=RIGHT><img src= "hat.gif"  name="Graphic3" alt="morterboard" align=BOTTOM width=118 height=113 border=0></p>
+
+    </td>
+
+  </tr>
+
+  <tr> 
+
+    <td width=57% height=11> 
+
+      <h1 align=LEFT>Java2 Certification <br>
+
+        Tutorial </h1>
+
+    </td>
+
+    <td width=43% bgcolor="#ff9900"> 
+
+      <p>&nbsp;</p>
+
+    </td>
+
+  </tr>
+
+</table>
+
+<p> You can discuss this topic with others at <a href= "http://www.jchq.net/discus" >http://www.jchq.net/discus</a><br>
+
+  Read reviews and buy a Java Certification book at <a href= "http://www.jchq.net/bookreviews/jcertbooks.htm" >http://www.jchq.net/bookreviews/jcertbooks.htm</a> 
+
+  <br>
+
+</p>
+
+<hr size=5 noshade>
+
+<H1><B>8) The java.awt package - Layout</B></H1>
+
+
+
+
+
+
+
+<H3>Objective 1)</H3>
+
+
+
+
+
+
+
+<P>Write code using component container and layout manager classes of the
+
+
+
+
+
+
+
+<I>java.awt</I> package to present a GUI with specified appearance and resize
+
+
+
+
+
+
+
+the behavior and distinguish the responsibilities of layout managers from those
+
+
+
+
+
+
+
+of containers.</P>
+
+
+
+
+
+
+
+<H3>Note on this Objective</H3>
+
+
+
+
+
+
+
+<P><I>Although it does not mention it specifically this objective involves a
+
+
+
+
+
+
+
+new objective compared with the 1.1 exam. This is the <FONT
+
+
+
+
+
+
+
+SIZE="2">GridBag</FONT>layout It makes sense to cover this as it is a very
+
+
+
+
+
+
+
+useful LayoutManager, but because of its power it can take some learning. Peter
+
+
+
+
+
+
+
+van der Linden in Just Java and Beyond 3rd Edition describes it as excessively
+
+
+
+
+
+
+
+complicated and doesn't recommend it. Core Java merely says &quot;using grid
+
+
+
+
+
+
+
+bag layouts can be incredibly complex&quot;. Whilst it is complex to use by
+
+
+
+
+
+
+
+hand, the various GUI tools such as VisualCafe, Visual Age, JBuilder etc etc
+
+
+
+
+
+
+
+make it easier to understand.</I></P>
+
+
+
+
+
+
+
+<H3>Comparing Visual Basic and Java layout</H3>
+
+
+
+
+
+
+
+<P>Java uses a different philosophy to layout compared with tools such as
+
+
+
+
+
+
+
+Visual Basic or Delphi (if philosophy is not too grand an expression for laying
+
+
+
+
+
+
+
+out a program). Most design tools use an XY pixel based approach to placing a
+
+
+
+
+
+
+
+component. Thus in Visual Basic you can pick up a text box from the component
+
+
+
+
+
+
+
+palette and drop it at a location on a form, and its location is set. By
+
+
+
+
+
+
+
+contrast Java uses Layout classes to control where a component is placed
+
+
+
+
+
+
+
+according to the current screen. <BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+Part of the reason for this is the cross platform nature of Java. A Java applet
+
+
+
+
+
+
+
+may display on anything from a palm top computer to a 19 inch Sun Workstation.
+
+
+
+
+
+
+
+I have tried writing Visual Basic applications that take account of more than
+
+
+
+
+
+
+
+one screen resolution and it is not a trivial activity. Be warned, if you have
+
+
+
+
+
+
+
+a background in other RAD tools you may find the Layout Manager approach a
+
+
+
+
+
+
+
+little weird at first.</P>
+
+
+
+
+
+
+
+<H3>The LayoutManager philosophy</H3>
+
+
+
+
+
+
+
+<P>The FlowLayout manager is a good place to start as it is the default for
+
+
+
+
+
+
+
+Applets. The FlowLayout manager simply places components on a background one
+
+
+
+
+
+
+
+after the other from left to right. If it runs out of space to the right it
+
+
+
+
+
+
+
+wraps around the components to the next line. <BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+The following code creates a very simple application and adds a series of
+
+
+
+
+
+
+
+buttons</P>
+
+
+
+
+
+
+
+<PRE>import java.awt.*;
+public class FlowAp extends Frame{
+public static void main(String argv[]){
+            FlowAp fa=new FlowAp();
+            //Change from BorderLayout default
+            fa.setLayout(new FlowLayout());
+            fa.setSize(400,300);
+            fa.setVisible(true);
+    }
+    FlowAp(){
+                add(new Button(&quot;One&quot;));
+                add(new Button(&quot;Two&quot;));
+                add(new Button(&quot;Three&quot;));
+                add(new Button(&quot;Four&quot;));
+                add(new Button(&quot;Five&quot;));
+                add(new Button(&quot;Six&quot;));
+                add(new Button(&quot;Seven&quot;));
+                add(new Button(&quot;Eight&quot;));
+                add(new Button(&quot;Nine&quot;));
+                add(new Button(&quot;Ten&quot;));
+        }//End of constructor
+}//End of Application
+</PRE>
+
+
+
+
+
+
+
+<PRE></PRE>
+
+
+
+
+
+
+
+<P>The following image is the default appearance when you fire it up from the
+
+
+
+
+
+
+
+command line.</P>
+
+
+
+
+
+
+
+<H3>Default appearance of application FlowAp</H3>
+
+
+
+
+
+
+
+<P><IMG SRC= "WrapFlowAp.gif"  WIDTH="408" HEIGHT="312" ALIGN="BOTTOM"
+
+
+
+
+
+
+
+BORDER="0"></P>
+
+
+
+
+
+
+
+<H3>FlowAp after changing width</H3>
+
+
+
+
+
+
+
+<P><IMG SRC= "WideFlowAp.gif"  WIDTH="462" HEIGHT="203" ALIGN="BOTTOM"
+
+
+
+
+
+
+
+BORDER="0"></P>
+
+
+
+
+
+
+
+<P>Bear in mind that both images are the display for exactly the same Java
+
+
+
+
+
+
+
+code. The only thing that has changed is the width. The FlowLayout manager
+
+
+
+
+
+
+
+automatically changes the layout of the components when the Frame is re-sized.
+
+
+
+
+
+
+
+If you were to make the Frame very small the FlowLayout manager would change
+
+
+
+
+
+
+
+the layout so that the buttons were wrapped around in several rows. <BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+When you first come across this approach to the management of components it may
+
+
+
+
+
+
+
+seem a little arbitrary. Some of the GUI building tools such as Symantec Visual
+
+
+
+
+
+
+
+Cafe or Borland/Inprise JBuilder offer ways of specifically placing components.
+
+
+
+
+
+
+
+For the purposes of the exam though you must become familiar with the Layout
+
+
+
+
+
+
+
+Manager approach to GUI creation.</P>
+
+
+
+
+
+
+
+<H3>Layout Managers you need to know for the exam</H3>
+
+
+
+
+
+
+
+<P>For the exam you need to know the following layout managers</P>
+
+
+
+
+
+
+
+<UL>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+FlowLayout 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+BorderLayout 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+GridLayout 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+GridBagLayout
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+</UL>
+
+
+
+
+
+
+
+<P>(note: the first editions of the Roberts, Heller and Ernest book on
+
+
+
+
+
+
+
+certification say you do not need to know about the GridBagLayout, but this has
+
+
+
+
+
+
+
+been corrected in the online errata, see my FAQ) </P>
+
+
+
+
+
+
+
+<H3>Responsibilities of the layout manager vs containers</H3>
+
+
+
+
+
+
+
+<P>Containers and Layout Managers work in partnership. The LayoutManager
+
+
+
+
+
+
+
+generally controls where a component is positioned. A Container will control
+
+
+
+
+
+
+
+the default font for its components. A component may be specifically assigned a
+
+
+
+
+
+
+
+font for itself. Questions on this seemed to come up regularly in the 1.1 exam.
+
+
+
+
+
+
+
+You were given a text description of a Component/Container setup and then asked
+
+
+
+
+
+
+
+what background color or font a Button or label would display.</P>
+
+
+
+
+
+
+
+<H3>Oddities of the BorderLayout manager</H3>
+
+
+
+
+
+
+
+<P>If you add multiple components to a Container that uses the BorderLayout but 
+  do not pass a Constraint parameter (North, South, etc), you may get unexpected 
+  results. Here is a sample that illustrates this.</P>
+<pre>import java.awt.*;
+public class FlowAp extends Frame{
+public static void main(String argv[]){
+    FlowAp fa=new FlowAp();
+    // fa.setLayout(new FlowLayout());
+    fa.setSize(400,300);
+    fa.setVisible(true);
+}
+
+FlowAp(){
+        add(new Button("One"));
+        add(new Button("Two"));
+        add(new Button("Three"));
+        add(new Button("Four"));
+        add(new Button("Five"));
+        add(new Button("Six"));
+        add(new Button("Seven"));
+        add(new Button("Eight"));
+        add(new Button("Nine"));
+        add(new Button("Ten"));
+    }//End of constructor
+}//End of Appl
+   
+ </pre>
+
+
+
+
+
+
+
+<P></P>
+
+
+
+
+
+
+
+<H3>Using the default BorderLayout</H3>
+
+
+
+
+
+
+
+<P><IMG SRC= "BigButton.gif"  WIDTH="405" HEIGHT="307" ALIGN="BOTTOM"
+
+
+
+
+
+
+
+BORDER="0"></P>
+
+
+
+
+
+
+
+<P>The reason you get this unexpected big button in the center is that the
+
+
+
+
+
+
+
+BorderLayout uses a set of coordinates when arranging components. It divides
+
+
+
+
+
+
+
+its surface area up into</P>
+
+
+
+
+
+
+
+<UL>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+North 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+South 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+East 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+West 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+Center 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+</UL>
+
+
+
+
+
+
+
+<P>You might guess that the default when laying out components would be for
+
+
+
+
+
+
+
+them to be placed clockwise around the points of the compass or some such
+
+
+
+
+
+
+
+arrangement. Instead the designers decided to make the default the center of
+
+
+
+
+
+
+
+the layout area. Thus in this example every button has been laid out on the
+
+
+
+
+
+
+
+previous button, taking up the entire available area. As a result it appears
+
+
+
+
+
+
+
+that you only have one button, the last one added.</P>
+
+
+
+
+
+
+
+<P><BR>
+
+
+
+
+
+
+
+Because the BorderLayout only divides the area up into the five mentioned
+
+
+
+
+
+
+
+coordinates it is not the most useful of Layout Managers. However you need to
+
+
+
+
+
+
+
+be aware of it for the exam and you need to be aware of the way it defaults to
+
+
+
+
+
+
+
+placing all components in the center.</P>
+
+
+
+
+
+
+
+<H3>The GridLayout Manager</H3>
+
+
+
+
+
+
+
+<P>The <I>GridLayout</I> manager does approximately what you might expect. It
+
+
+
+
+
+
+
+divides the surface area up into a grid and when you add components it places
+
+
+
+
+
+
+
+them one after the other from left to right, top to bottom. Unlike the
+
+
+
+
+
+
+
+<I>BorderLayout</I> and <I>FlowLayout</I> it ignores any preferred size of the
+
+
+
+
+
+
+
+component. For example the preferred size of a button will be wide enough to
+
+
+
+
+
+
+
+show its text. The <I>FlowLayout</I> manager attempts to ensure that a button
+
+
+
+
+
+
+
+is this preferred size. The <I>GridLayout</I> has a more bondage and discipline
+
+
+
+
+
+
+
+approach. The only thing it cares about is making sure the component fits into
+
+
+
+
+
+
+
+the grid.</P>
+
+
+
+
+
+
+
+<P>The following code lays out a set of buttons within a Frame using a
+
+
+
+
+
+
+
+<I>GridLayout</I> that has been set up to have 2 rows and 5 columns.</P>
+
+
+
+
+
+
+
+<PRE>import java.awt.*;
+public class GridAp extends Frame{
+public static void main(String argv[]){
+        GridAp fa=new GridAp();
+        //Setup GridLayout with 2 rows and 5 columns
+        fa.setLayout(new GridLayout(2,5));
+        fa.setSize(400,300);
+        fa.setVisible(true);
+    }
+GridAp(){
+        add(new Button(&quot;One&quot;));
+        add(new Button(&quot;Two&quot;));
+        add(new Button(&quot;Three&quot;));
+        add(new Button(&quot;Four&quot;));
+        add(new Button(&quot;Five&quot;));
+        add(new Button(&quot;Six&quot;));
+        add(new Button(&quot;Seven&quot;));
+        add(new Button(&quot;Eight&quot;));
+        add(new Button(&quot;Nine&quot;));
+        add(new Button(&quot;Ten&quot;));
+        }//End of constructor
+}//End of Application
+
+</PRE>
+
+
+
+
+
+
+
+<H3>GridLayout sample</H3>
+
+
+
+
+
+
+
+<H3><IMG SRC= "GridLayAp.gif"  WIDTH="430" HEIGHT="329" ALIGN="BOTTOM"
+
+
+
+
+
+
+
+BORDER="0"></H3>
+
+
+
+
+
+
+
+<P>Note how the buttons are enlarged to fill all of the available space.</P>
+
+
+
+
+
+
+
+<H3>GridBagLayout</H3>
+
+
+
+
+
+
+
+<P>Peter van der Linden in Just Java and Beyond 3rd Edition describes the
+
+
+
+
+
+
+
+GridBagLayout manager as <I>&quot;excessively complicated &quot; </I>and
+
+
+
+
+
+
+
+doesn't recommend it. Core Java merely says &quot;using grid bag layouts can be
+
+
+
+
+
+
+
+incredibly complex&quot;. Whilst it is complex to use by hand, the various GUI
+
+
+
+
+
+
+
+tools such as VisualCafe, Visual Age, JBuilder etc etc make it easier to use,
+
+
+
+
+
+
+
+if not understand. Thus JBuilder will happily modify the <I>add</I> statement
+
+
+
+
+
+
+
+to include the following details for the GridBagLayout class.</P>
+
+
+
+
+
+
+
+<P><TT>add(pAps,new GridBagConstraints2(1, GridBagConstraints.RELATIVE, <BR>
+
+
+
+
+
+
+
+GridBagConstraints.RELATIVE, 3, 0.0, 0.0,GridBagConstraints.CENTER, <BR>
+
+
+
+
+
+
+
+GridBagConstraints.NONE, new Insets(0, 0, 0, 0), -3, 45));</TT></P>
+
+
+
+
+
+
+
+<P><TT>But when you create your code by hand it does not need to look as
+
+
+
+
+
+
+
+complex as this.</TT></P>
+
+
+
+
+
+
+
+<P>Feedback from people who have taken the exam indicates that the questions on
+
+
+
+
+
+
+
+the GridBagLayout are not very in-depth and a basic understanding of the
+
+
+
+
+
+
+
+various fields of the GridBagConstraints class may well be adequate.</P>
+
+
+
+
+
+
+
+<P>My favorite Java Tool is Borland/Inprise JBuilder which has its own Layout
+
+
+
+
+
+
+
+Manager called the XYLayout manager. This seems to be easier to use than the
+
+
+
+
+
+
+
+GridBagLayout, but if you are writing for the net it would require users to
+
+
+
+
+
+
+
+download that additional class, causing additional overhead.</P>
+
+
+
+
+
+
+
+<P>GridBagLayout is a little like the GridLayout except that different cell
+
+
+
+
+
+
+
+rows can have different heights, and columns can have different widths. The
+
+
+
+
+
+
+
+Java2 Docs come with a <A
+
+
+
+
+
+
+
+HREF= "http://www.jchq.net/applets/GridBagDemo/GridBagEx1.htm" >demonstration</A> applet that
+
+
+
+
+
+
+
+shows what can be done with the GridBagLayout manager.</P>
+
+
+
+
+
+
+
+<P>In the exam this is a prime moment to take advantage of the scrap paper to
+
+
+
+
+
+
+
+write out a grid and consider the effect of each cell. One of the problems with
+
+
+
+
+
+
+
+the GridBagLayout is that instead of being based strictly on the underlying
+
+
+
+
+
+
+
+grid, Java tries to guess the cells from the information given. The
+
+
+
+
+
+
+
+GridBagLayout manager uses a helper class GridBagConstraints which has a set of
+
+
+
+
+
+
+
+member variables that can be set to affect the appearance of each component.
+
+
+
+
+
+
+
+The fields that you modify on the GridBagConstraints class act as
+
+
+
+
+
+
+
+&quot;suggestions&quot; as to where the components will go. An instance of
+
+
+
+
+
+
+
+GridBagConstraints is passed as a parameter with the add method, in the form
+
+
+
+
+
+
+
+</P>
+
+
+
+
+
+
+
+<UL>
+
+
+
+
+
+
+
+<LI>add(component, GridBagConstraint); </LI>
+
+
+
+
+
+
+
+</UL>
+
+
+
+
+
+
+
+<P>GridBagConstraints goes against the general convention in Java in that you
+
+
+
+
+
+
+
+might expect its attributes to be configured with</P>
+
+
+
+
+
+
+
+<PRE>setFooParam() </PRE>
+
+
+
+
+
+
+
+<P>methods, where FooParam might be WeightX/Y or Padding between components.
+
+
+
+
+
+
+
+</P>
+
+
+
+
+
+
+
+<P><BR>
+
+
+
+
+
+
+
+Instead it takes the form</P>
+
+
+
+
+
+
+
+<P> </P>
+
+
+
+
+
+
+
+<PRE>GridBagLayout gbl=new GridBagLayout();</PRE>
+
+
+
+
+
+
+
+<PRE>gbl.weightx=100;</PRE>
+
+
+
+
+
+
+
+<P>If you use the GridBagLayout without the GridBagConstraints class it acts a
+
+
+
+
+
+
+
+little like a FlowLayout, simply dropping the components onto the background
+
+
+
+
+
+
+
+one by one.</P>
+
+
+
+
+
+
+
+<P>I have created a simple demonstration applet with source that shows how
+
+
+
+
+
+
+
+nothing much happens unless you play with the GridBagConstraints class..</P>
+
+
+
+
+
+
+
+<P><A
+
+
+
+
+
+
+
+HREF= "http://www.software.u-net.com/applets/GridBagDemo/GridBagTest.htm" >http://www.software.u-net.com/Applets/GridBagDemo/GridBagTest.htm</A>
+
+
+
+
+
+
+
+</P>
+
+
+
+
+
+
+
+<P>The GridBagLayout acts a little more like the GridLayout if you use the
+
+
+
+
+
+
+
+GridBagConstraints class and use the gridx and gridy fields to assign a
+
+
+
+
+
+
+
+position in a &quot;virtual&quot; grid to each component as you add it. This
+
+
+
+
+
+
+
+applet demonstrates this possibility. This is still a little dull and very like
+
+
+
+
+
+
+
+the other layout managers. Things start to get much more interesting when you
+
+
+
+
+
+
+
+start to modify other fields of the GridBagConstraints class to modify the
+
+
+
+
+
+
+
+appearance of different components within this &quot;virtual&quot; grid.</P>
+
+
+
+
+
+
+
+<P><BR>
+
+
+
+
+
+
+
+Remember that although you need to understand this for the purposes of the
+
+
+
+
+
+
+
+exam, it might be easier when programming in the real world to use a
+
+
+
+
+
+
+
+combination of container controls added with other layout managers. An example
+
+
+
+
+
+
+
+of when this is not an option is when you need to dynamically re-size
+
+
+
+
+
+
+
+components. This is a situation where GUI builders such as Visual Cafe or
+
+
+
+
+
+
+
+JBuilder are not much help and an understanding of the GridBagLayout may be
+
+
+
+
+
+
+
+essential.</P>
+
+
+
+
+
+
+
+<P>I have created a <A
+
+
+
+
+
+
+
+HREF= "http://www.jchq.net/applets/GridBagDemo/GridBagDynamic.htm" >demonstration</A> applet that
+
+
+
+
+
+
+
+shows the affect of dynamically changing the padding parameters for a single
+
+
+
+
+
+
+
+button in a group of buttons set out with a GridbagLayout manager</P>
+
+
+
+
+
+
+
+<P>The fields for the GridBagConstraints class are</P>
+
+
+
+
+
+
+
+<UL>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+gridx gridy 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+gridwidth and gridheight 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+fill 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+ipadx and ipady 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+insets 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+anchor 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+weightx and weighty 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+</UL>
+
+
+
+
+
+
+
+<P>Whilst browsing Bill Brogdens excellent Java2 Exam Cram Book I found a
+
+
+
+
+
+
+
+pointer to a comprehensive demo of the GridBagLayout at</P>
+
+
+
+
+
+
+
+<P><A
+
+
+
+
+
+
+
+HREF= "http://www.austria.eu.net/java/programs/applets/missgable/index.htm" >http://www.austria.eu.net/java/programs/applets/missgable/index.htm</A>
+
+
+
+
+
+
+
+</P>
+
+
+
+
+
+
+
+<H3>Using <I>gridx</I> and <I>gridy</I> to suggest component placing</H3>
+
+
+
+
+
+
+
+<P>For this example you are doing some basic code to design a appointment
+
+
+
+
+
+
+
+calendar program. It will show times down the left hand side and appointment
+
+
+
+
+
+
+
+details down the right. The time units will be in half hour chunks.</P>
+
+
+
+
+
+
+
+<P>Because an appointment may cover more than one time unit, ie may last an
+
+
+
+
+
+
+
+hour and a half you need to be able to dynamically change the height of an
+
+
+
+
+
+
+
+appointment to cover more than one half hour time unit. Because of this
+
+
+
+
+
+
+
+requirement to have a varying height for the appointments, a GridLayout is not
+
+
+
+
+
+
+
+suitable. <BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+You will be placing panels on the Frame as containers. The first step is to
+
+
+
+
+
+
+
+ensure that each panel sits side by side on the main Frame of the Application.
+
+
+
+
+
+
+
+</P>
+
+
+
+
+
+
+
+<PRE>import java.awt.*;
+import java.awt.event.*;
+public class GBCal extends Frame{
+    Panel pTimes=new Panel();
+    Panel pAps=new Panel();
+    TextField txTimes=new TextField(&quot;09.00&quot;);
+    TextField txAps=new TextField(&quot;Meet the boss&quot;);
+    GridBagLayout gbl=new GridBagLayout();
+    GridBagConstraints gbc=new GridBagConstraints();
+    public static void main(String argv[]){
+    GBCal gbc=new GBCal();
+    gbc.setLayout(new FlowLayout());
+}
+
+public GBCal() {
+    pTimes.add(txTimes);
+    pAps.add(txAps);
+    setLayout(gbl);
+    gbc.gridx=0;
+    gbc.gridy=0;
+    pTimes.setBackground(Color.pink);
+    add(pTimes,gbc);
+    gbc.gridx=1;
+    gbc.gridy=0;
+    pAps.setBackground(Color.lightGray);
+    add(pAps,gbc);
+    setSize(300,300);
+    setVisible(true);
+    }
+}
+
+
+
+</PRE>
+
+
+
+
+
+
+
+<P> The output will appear as follows</P>
+
+
+
+
+
+
+
+<P><IMG SRC= "GridBag1.gif"  WIDTH="311" HEIGHT="314" ALIGN="BOTTOM"
+
+
+
+
+
+
+
+BORDER="0"></P>
+
+
+
+
+
+
+
+<P>Note how the GridBagLayout and the GridBagConstraints classes work together.
+
+
+
+
+
+
+
+The GridBagConstraints instance gbc gets re-used for each time a component is
+
+
+
+
+
+
+
+added. At no point do you specifically state the number of rows and columns for
+
+
+
+
+
+
+
+the Grid as the GridBagLayout class deduces it from the gridx and gridy fields
+
+
+
+
+
+
+
+of the GridBagConstraints instance.</P>
+
+
+
+
+
+
+
+<H3><I>ipadx</I> and <I>ipady</I> to control the internal padding of components
+
+
+
+
+
+
+
+</H3>
+
+
+
+
+
+
+
+<P><BR>
+
+
+
+
+
+
+
+The code has set the background color so you can see the extent of the panel
+
+
+
+
+
+
+
+rather than simply the width of the text fields. This is fine but now you want
+
+
+
+
+
+
+
+the fields to stretch all the way from left to right of the main application
+
+
+
+
+
+
+
+Frame. This can be performed by modifying the <I>ipadx</I> field of the
+
+
+
+
+
+
+
+GridBagConstraints class. This is peformed by setting</P>
+
+
+
+
+
+
+
+<PRE>gbc.ipadx=30;</PRE>
+
+
+
+
+
+
+
+<PRE>For the times and</PRE>
+
+
+
+
+
+
+
+<PRE>gbc.ipadx=100;</PRE>
+
+
+
+
+
+
+
+<PRE>For the appointments</PRE>
+
+
+
+
+
+
+
+<P>The result is as follows</P>
+
+
+
+
+
+
+
+<P><IMG SRC= "GridBag2.gif"  WIDTH="327" HEIGHT="311" ALIGN="BOTTOM"
+
+
+
+
+
+
+
+BORDER="0"></P>
+
+
+
+
+
+
+
+<H3>Components within a panel with the GridBaglayout</H3>
+
+
+
+
+
+
+
+<P>For the next step I want to give each panel its own <I>GridBagLayout</I>
+
+
+
+
+
+
+
+manager and add additional time slots and appointments. For the purpose of this
+
+
+
+
+
+
+
+example I will add just one more time slot and simply stretch the single
+
+
+
+
+
+
+
+appointment to cover the time slots between 9.00 and 9.30.<BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+To do this I will create a new instance of GridBagLayout called <I>gbBut</I>
+
+
+
+
+
+
+
+and use it to set up the grid for the <I>pTimes</I> panel to place the time
+
+
+
+
+
+
+
+slot fields one on top of the other vertically.</P>
+
+
+
+
+
+
+
+<P>The code that performs this is</P>
+
+
+
+
+
+
+
+<P> </P>
+
+
+
+
+
+
+
+<PRE>//Control the Times panel with a GridBagLayout
+pTimes.setLayout(gbBut);
+gbc.gridx=0;
+gbc.gridy=0;
+pTimes.add(txTimes9,gbc);
+gbc.gridx=0;
+gbc.gridy=1;
+pTimes.add(txTimes930,gbc);</PRE>
+
+
+
+
+
+
+
+<P>Here is the complete code to the revised program</P>
+
+
+
+
+
+
+
+<PRE>import java.awt.*;
+import java.awt.event.*;
+public class GBCal extends Frame{
+Panel pTimes=new Panel();
+Panel pAps=new Panel();
+TextField txTimes9=new TextField(&quot;09.00&quot;);
+TextField txTimes930=new TextField(&quot;09.30&quot;);
+TextField txAps=new TextField(&quot;Meet the boss&quot;);
+GridBagLayout gbl=new GridBagLayout();
+GridBagLayout gbBut=new GridBagLayout();
+GridBagConstraints gbc=new GridBagConstraints();
+public static void main(String argv[]){
+    GBCal gbc=new GBCal();
+    gbc.setLayout(new FlowLayout());
+    }
+public GBCal() {
+    setLayout(gbl);
+    //Control the Times panel with 
+    //a GridBagLayout
+    pTimes.setLayout(gbBut);
+    gbc.gridx=0;
+    gbc.gridy=0;
+    pTimes.add(txTimes9,gbc);
+    gbc.gridx=0;
+    gbc.gridy=1;
+    pTimes.add(txTimes930,gbc);
+    pTimes.setBackground(Color.pink);
+    //Re-using gbc for the main panel layout 
+    gbc.gridx=0;
+    gbc.gridy=0; 
+    gbc.ipadx=30;
+    add(pTimes,gbc);
+    pAps.setLayout(gbBut);
+    gbc.gridx=0;
+    gbc.gridy=1;
+    pAps.add(txAps,gbc);
+    gbc.gridx=1;
+    gbc.gridy=0;
+    gbc.ipadx=100;
+    pAps.setBackground(Color.lightGray);
+    add(pAps,gbc);
+    setSize(300,300);
+    setVisible(true);
+    }
+}//End of class
+</PRE>
+
+
+
+
+
+
+
+<P>The resulting output is as followed</P>
+
+
+
+
+
+
+
+<P><IMG SRC= "GridBag3.gif"  WIDTH="322" HEIGHT="311" ALIGN="BOTTOM"
+
+
+
+
+
+
+
+BORDER="0"></P>
+
+
+
+
+
+
+
+<P>This has worked up to a point. We now have the two time slots, but
+
+
+
+
+
+
+
+unfortunatly the one appointment has defaulted to the centre of the
+
+
+
+
+
+
+
+appointments field and it is only one row thick. What I want is for it to be
+
+
+
+
+
+
+
+anchored at the top of the appointments area and to stretch to cover both time
+
+
+
+
+
+
+
+slots.</P>
+
+
+
+
+
+
+
+<H3>Anchoring components within the grid</H3>
+
+
+
+
+
+
+
+<P>f a component does not fill the whole area, you can specify where in the
+
+
+
+
+
+
+
+area you want it using the <I>anchor</I> field of the GridBagConstraints class.
+
+
+
+
+
+
+
+The possible values are</P>
+
+
+
+
+
+
+
+<P> </P>
+
+
+
+
+
+
+
+<PRE>GridBagconstraints.CENTER
+GridBagconstraints.NORTH
+GridBagconstraints.NORTHEAST</PRE>
+
+
+
+
+
+
+
+<P>etc etc</P>
+
+
+
+
+
+
+
+<P>In this case I want to position the fields at the top (North) of the
+
+
+
+
+
+
+
+containing panels. I have increased the depth of the Appointment field by
+
+
+
+
+
+
+
+increasing the <I>ipady</I> value for the address field.</P>
+
+
+
+
+
+
+
+<P>Here is the code to do this.</P>
+
+
+
+
+
+
+
+<PRE>import java.awt.*;
+import java.awt.event.*;
+public class GBCal extends Frame{
+Panel pTimes=new Panel();
+Panel pAps=new Panel();
+TextField txTimes9=new TextField(&quot;09.00&quot;);
+TextField txTimes930=new TextField(&quot;09.30&quot;);
+TextField txAps=new TextField(&quot;Meet the boss&quot;);
+GridBagLayout gbl=new GridBagLayout();
+GridBagLayout gbBut=new GridBagLayout();
+GridBagConstraints gbc=new GridBagConstraints();
+public static void main(String argv[]){
+        GBCal gbc=new GBCal();
+        gbc.setLayout(new FlowLayout());
+    }
+
+public GBCal() {
+    setLayout(gbl);
+    //Control the Times panel with a GridBagLayout
+    pTimes.setLayout(gbBut);
+    //Ensure the componants sit at 
+   //the top of the containers
+    gbc.anchor=GridBagConstraints.NORTH;
+    gbc.gridx=0;
+    gbc.gridy=0;
+    pTimes.add(txTimes9,gbc);
+    gbc.gridx=0;
+    gbc.gridy=1;
+    pTimes.add(txTimes930,gbc);
+    pTimes.setBackground(Color.pink);
+    //Re-using gbc for the main panel layout 
+    gbc.gridx=0;
+    gbc.gridy=0; 
+    gbc.ipadx=30;
+    add(pTimes,gbc);
+    pAps.setLayout(gbBut);
+    gbc.gridx=0;
+    gbc.gridy=1;
+    gbc.ipady=12;
+    pAps.add(txAps,gbc);
+    gbc.gridx=1;
+    gbc.gridy=0;
+    gbc.ipadx=100;
+    pAps.setBackground(Color.lightGray);
+    add(pAps,gbc);
+    setSize(300,300);
+    setVisible(true);
+    }
+}//End of class
+</PRE>
+
+
+
+
+
+
+
+<P>The output of this code is as follows</P>
+
+
+
+
+
+
+
+<P><IMG SRC= "GridBag4.gif"  WIDTH="314" HEIGHT="314" ALIGN="BOTTOM"
+
+
+
+
+
+
+
+BORDER="0"></P>
+
+
+
+
+
+
+
+<H3>GridBag items not covered by this exercise</H3>
+
+
+
+
+
+
+
+<P>This exercise has covered the following GridBagConstraints fields</P>
+
+
+
+
+
+
+
+<UL>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+ipadx/y 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+gridx/y 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+anchor 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+</UL>
+
+
+
+
+
+
+
+<P>The GridBagConstraints class has the following important fields</P>
+
+
+
+
+
+
+
+<UL>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+weightx/y 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+fill 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+gridwidth/height 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+<LI> <DIV ALIGN="left">
+
+
+
+
+
+
+
+insets 
+
+
+
+
+
+
+
+</DIV>
+
+
+
+
+
+
+
+<P ALIGN="left"> </P>
+
+
+
+
+
+
+
+</LI>
+
+
+
+
+
+
+
+</UL>
+
+
+
+
+
+
+
+<P>The weight fields control how an area grows or shrinks beyond its initial
+
+
+
+
+
+
+
+size. So if you set the weighty field to zero the field will remain a constant
+
+
+
+
+
+
+
+height when you resize the window.</P>
+
+
+
+
+
+
+
+<P>The fill field controls how a component stretches to fill the area. Like the
+
+
+
+
+
+
+
+anchor field you set the <I>fill</I> values using constants of the
+
+
+
+
+
+
+
+GridBagConstraints class. These are</P>
+
+
+
+
+
+
+
+<P> </P>
+
+
+
+
+
+
+
+<PRE>GridBagConstraints.NONE
+GridBagConstraints.HORIZONTAL
+GridBagConstraints.VERTICAL
+GridBagConstraints.BOTH</PRE>
+
+
+
+
+
+
+
+<P><BR>
+
+
+
+
+
+
+
+The <I>gridwidth/height</I> fields determine how many columns and rows a
+
+
+
+
+
+
+
+component occupies.</P>
+
+
+
+
+
+
+
+<P>The <I>insets</I> field indicates the &quot;external&quot; padding along the 
+
+
+
+
+
+
+
+  cell boundaries. </P>
+
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+
+
+<TABLE BORDER="0" WIDTH="100%">
+
+
+
+
+
+
+
+<TR>
+
+
+
+
+
+
+
+<TD WIDTH="11%"> <P><IMG SRC= "Quiz.gif"  WIDTH="99" HEIGHT="101"
+
+
+
+
+
+
+
+ALIGN="BOTTOM" BORDER="0"> </P>
+
+
+
+
+
+
+
+</TD>
+
+
+
+
+
+
+
+<TD WIDTH="89%"> <P>&nbsp; </P>
+
+
+
+
+
+
+
+</TD>
+
+
+
+
+
+
+
+</TR>
+
+
+
+
+
+
+
+</TABLE>
+
+
+
+
+
+
+
+<H1>Questions</H1>
+
+
+
+
+
+
+
+<H4><B>Question 1)</B></H4>
+
+
+
+
+
+
+
+<P>What best describes the apprearance of an applet with the following code?
+
+
+
+
+
+
+
+</P>
+
+
+
+
+
+
+
+<PRE>import java.awt.*;
+public class FlowAp extends Frame{
+public static void main(String argv[]){
+    FlowAp fa=new FlowAp();
+    fa.setSize(400,300);
+    fa.setVisible(true);
+}
+FlowAp(){
+        add(new Button(&quot;One&quot;));
+        add(new Button(&quot;Two&quot;));
+        add(new Button(&quot;Three&quot;));
+        add(new Button(&quot;Four&quot;));
+    }//End of constructor
+}//End of Application</PRE>
+
+
+
+
+
+
+
+<P>1) A Frame with buttons marked One to Four placed on each edge.<BR>
+
+
+
+
+
+
+
+2) A Frame with buutons Makred One to four running from the top to bottom<BR>
+
+
+
+
+
+
+
+3) A Frame with one large button marked Four in the Centre<BR>
+
+
+
+
+
+
+
+4) An Error at run time indicating you have not set a LayoutManager </P>
+
+
+
+
+
+
+
+<H4> </H4>
+
+
+
+
+
+
+
+<HR ALIGN="CENTER">
+
+
+
+
+
+
+
+<h4><B>Question 2)</B> </h4>
+
+
+
+
+
+
+
+<P> </P>
+
+
+
+
+
+
+
+<P>How do you indicate where a component will be positioned using Flowlayout?
+
+
+
+
+
+
+
+</P>
+
+
+
+
+
+
+
+<P>1) North, South,East,West<BR>
+
+
+
+
+
+
+
+2) Assign a row/column grid reference<BR>
+
+
+
+
+
+
+
+3) Pass a X/Y percentage parameter to the add method<BR>
+
+
+
+
+
+
+
+4) Do nothing, the FlowLayout will position the component</P>
+
+
+
+
+
+
+
+<H4> </H4>
+
+
+
+
+
+
+
+<HR ALIGN="CENTER">
+
+
+
+
+
+
+
+<h4><B>Question 3)</B> </h4>
+
+
+
+
+
+
+
+<P> </P>
+
+
+
+
+
+
+
+<P>How do you change the current layout manager for a container</P>
+
+
+
+
+
+
+
+<P>1) Use the setLayout method<BR>
+
+
+
+
+
+
+
+2) Once created you cannot change the current layout manager of a component<BR>
+
+
+
+
+
+
+
+3) Use the setLayoutManager method<BR>
+
+
+
+
+
+
+
+4) Use the updateLayout method</P>
+
+
+
+
+
+
+
+<H4> </H4>
+
+
+
+
+
+
+
+<HR ALIGN="CENTER">
+
+
+
+
+
+
+
+<h4><B>Question 4)</B> </h4>
+
+
+
+
+
+
+
+<P> </P>
+
+
+
+
+
+
+
+<P>What will happen if you add a vertical scroll bar to the North of a Frame?
+
+
+
+
+
+
+
+</P>
+
+
+
+
+
+
+
+<P>1) The Frame will enlarge to allow the scrollbar to become its preferred
+
+
+
+
+
+
+
+size<BR>
+
+
+
+
+
+
+
+2) It will be wide, fat and not very useful<BR>
+
+
+
+
+
+
+
+3) You cannot add a vertical scroll bar to the North of a frame, only the East
+
+
+
+
+
+
+
+or West<BR>
+
+
+
+
+
+
+
+4) The scrollbar will stretch from the top to the bottom of the Frame</P>
+
+
+
+
+
+
+
+<H4> </H4>
+
+
+
+
+
+
+
+<HR ALIGN="CENTER">
+
+
+
+
+
+
+
+<h4><B>Question 5)</B> </h4>
+
+
+
+
+
+
+
+<P>What happens if you add more buttons to a GridLayout than can fit and and
+
+
+
+
+
+
+
+fully display the button labels?</P>
+
+
+
+
+
+
+
+<P>1) The size of the container is increased to allow the button labels to
+
+
+
+
+
+
+
+fully display<BR>
+
+
+
+
+
+
+
+2) The GridLayout ignores the size of the label and the labels will be
+
+
+
+
+
+
+
+truncated<BR>
+
+
+
+
+
+
+
+3) A compile time error indicating the Buttons cannot be the preferred size<BR>
+
+
+
+
+
+
+
+4) A run time error indicating the buttons cannot be the preffered size.</P>
+
+
+
+
+
+
+
+<H4> </H4>
+
+
+
+
+
+
+
+<HR ALIGN="CENTER">
+
+
+
+
+
+
+
+<h4><B>Question 6)</B> </h4>
+
+
+
+
+
+
+
+<P>Which of the following statements are true?</P>
+
+
+
+
+
+
+
+<P>1) You can control component placing by calling <I>setLayout(new
+
+
+
+
+
+
+
+GridBagConstraints())</I><BR>
+
+
+
+
+
+
+
+2) The FlowLayout manager can be used to control component placing of the
+
+
+
+
+
+
+
+GridBagLayout<BR>
+
+
+
+
+
+
+
+3) The GridBagLayout manager takes constraints of North, South, East, West and
+
+
+
+
+
+
+
+Center<BR>
+
+
+
+
+
+
+
+4) None of these answers is true </P>
+
+
+
+
+
+
+
+<H4> </H4>
+
+
+
+
+
+
+
+<HR ALIGN="CENTER">
+
+
+
+
+
+
+
+<h4><B>Question 7)</B> </h4>
+
+
+
+
+
+
+
+<P>Which of the following are fields of the GridBagConstraints class?</P>
+
+
+
+
+
+
+
+<P>1) ipadx<BR>
+
+
+
+
+
+
+
+2) fill<BR>
+
+
+
+
+
+
+
+3) insets<BR>
+
+
+
+
+
+
+
+4)width</P>
+
+
+
+
+
+
+
+<H4> </H4>
+
+
+
+
+
+
+
+<HR ALIGN="CENTER">
+
+
+
+
+
+
+
+<h4><B>Question 8)</B> </h4>
+
+
+
+
+
+
+
+<P>What most closely matches the appearance when this code runs?</P>
+
+
+
+
+
+
+
+<PRE>import java.awt.*;
+public class CompLay extends Frame{
+    public static void main(String argv[]){
+    CompLay cl = new CompLay();
+    }
+CompLay(){
+    Panel p = new Panel();
+    p.setBackground(Color.pink);
+    p.add(new Button(&quot;One&quot;));
+    p.add(new Button(&quot;Two&quot;));
+    p.add(new Button(&quot;Three&quot;));
+    add(&quot;South&quot;,p);
+    setLayout(new FlowLayout());
+    setSize(300,300);
+    setVisible(true);
+    }
+}
+</PRE>
+
+
+
+
+
+
+
+<P>1) The buttons will run from left to right along the bottom of the Frame<BR>
+
+
+
+
+
+
+
+2) The buttons will run from left to right along the top of the frame<BR>
+
+
+
+
+
+
+
+3) The buttons will not be displayed<BR>
+
+
+
+
+
+
+
+4) Only button three will show occupying all of the frame</P>
+
+
+
+
+
+
+
+<H4> </H4>
+
+
+
+
+
+
+
+<HR ALIGN="CENTER">
+
+
+
+
+
+
+
+<h4><B>Question 9)</B> </h4>
+
+
+
+
+
+
+
+<P>Which statements are correct about the <I>anchor</I> field?</P>
+
+
+
+
+
+
+
+<P>1) It is a field of the GridBagLayout manager for controlling component
+
+
+
+
+
+
+
+placement<BR>
+
+
+
+
+
+
+
+2) It is a field of the GridBagConstraints class for controlling component
+
+
+
+
+
+
+
+placement<BR>
+
+
+
+
+
+
+
+3) A valid settting for the anchor field is GridBagConstraints.NORTH<BR>
+
+
+
+
+
+
+
+4) The anchor field controls the height of components added to a container</P>
+
+
+
+
+
+
+
+<H4> </H4>
+
+
+
+
+
+
+
+<HR ALIGN="CENTER">
+
+
+
+
+
+
+
+<h4><B>Question 10)</B> </h4>
+
+
+
+
+
+
+
+<P>When using the GridBagLayout manahger, each new component requires a new instance 
+
+
+
+
+
+
+
+  of the GridBagConstraints class. Is this statement</P>
+
+
+
+
+
+
+
+<P>1) true<BR>
+
+
+
+
+
+
+
+2) false</P>
+
+
+
+
+
+
+
+<H1>Answers</H1>
+
+
+
+
+
+
+
+<H4><B>Answer 1)</B></H4>
+
+
+
+
+
+
+
+<P>3) A Frame with one large button marked Four in the Centre<BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+If you do not specify a constraint any components added to a Container with the
+
+
+
+
+
+
+
+BorderLayout will be placed in the centre. The default layout for a Frame is
+
+
+
+
+
+
+
+the BorderLayout<BR>
+
+
+
+
+
+
+
+</P>
+
+
+
+
+
+
+
+<H4><B>Answer 2)</B></H4>
+
+
+
+
+
+
+
+<P>4) Do nothing, the FlowLayout will position the component<BR>
+
+
+
+
+
+
+
+</P>
+
+
+
+
+
+
+
+<H4><B>Answer 3)</B></H4>
+
+
+
+
+
+
+
+<P><B><BR>
+
+
+
+
+
+
+
+  </B>1) Use the setLayout method</P>
+
+
+
+
+
+
+
+<h4> <BR>
+
+
+
+
+
+
+
+  <B>Answer 4)</B></h4>
+
+
+
+
+
+
+
+<P><B> <BR>
+
+
+
+
+
+
+
+  </B>2) It will be wide, fat and not very useful<BR>
+
+
+
+
+
+
+
+</P>
+
+
+
+
+
+
+
+<H4><B>Answer 5)</B></H4>
+
+
+
+
+
+
+
+<P>2) The GridLayout ignores the size of the label and the labels will be
+
+
+
+
+
+
+
+truncated<BR>
+
+
+
+
+
+
+
+</P>
+
+
+
+
+
+
+
+<H4><B>Answer 6)</B></H4>
+
+
+
+
+
+
+
+<P><B><BR>
+
+
+
+
+
+
+
+</B>4) None of these answers is true<B><BR>
+
+
+
+
+
+
+
+</B> </P>
+
+
+
+
+
+
+
+<H4><B>Answer 7)</B></H4>
+
+
+
+
+
+
+
+<P>1) ipadx<BR>
+
+
+
+
+
+
+
+2) fill<BR>
+
+
+
+
+
+
+
+3) insets<BR>
+
+
+
+
+
+
+
+</P>
+
+
+
+
+
+
+
+<H4><B>Answer 8)</B></H4>
+
+
+
+
+
+
+
+<P><B><BR>
+
+
+
+
+
+
+
+</B>2) The buttons will run from left to right along the top of the frame<BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+When the layout manager is changed to FlowLayout the default BorderLayout no
+
+
+
+
+
+
+
+longer applies and the panel is placed at the top of the Frame<BR>
+
+
+
+
+
+
+
+</P>
+
+
+
+
+
+
+
+<H4><B>Answer 9)</B></H4>
+
+
+
+
+
+
+
+<P><B><BR>
+
+
+
+
+
+
+
+</B>2) It is a field of the GridBagConstraints class for controlling component
+
+
+
+
+
+
+
+placement<BR>
+
+
+
+
+
+
+
+3) A valid settting for the anchor field is GridBagconstraints.NORTH<B><BR>
+
+
+
+
+
+
+
+</B> </P>
+
+
+
+
+
+
+
+<H4><B>Answer 10)</B></H4>
+
+
+
+
+
+
+
+<P>2) false<BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+</P>
+
+
+
+
+
+
+
+<HR ALIGN="CENTER">
+<p><b>This topic is covered in the Sun Tutorial at </b><br>
+  <a
+
+
+
+
+
+
+
+ href= "http://java.sun.com/docs/books/tutorial/uiswing/layout/using.html" >http://java.sun.com/docs/books/tutorial/uiswing/layout/using.html</a><br>
+  <br>
+  <b>Richard Baldwin Covers this topic at<br>
+  BorderLayout<br>
+  </b><a
+
+
+
+
+
+
+
+href= "http://www.geocities.com/Athens/7077/Java114.htm" >http://www.geocities.com/Athens/7077/Java114.htm</a><br>
+  <b>FlowLayout</b><br>
+  <a
+
+
+
+
+
+
+
+ href= "http://www.geocities.com/Athens/7077/Java116.htm" >http://www.geocities.com/Athens/7077/Java116.htm</a><br>
+  <b>GridLayout<br>
+  </b><a
+
+
+
+
+
+
+
+href= "http://www.geocities.com/Athens/7077/Java118.htm" >http://www.geocities.com/Athens/7077/Java118.htm<br>
+  </a>Richard does not appear to cover the GridBagLayout<br>
+  <br>
+  <b>Jan Newmarsh in Australia has created this page</b><br>
+  <a
+
+
+
+
+
+
+
+ href= "http://pandonia.canberra.edu.au/java/xadvisor/gridbag/gridbag.html" >http://pandonia.canberra.edu.au/java/xadvisor/gridbag/gridbag.html 
+  </a><br>
+  <br>
+  <b>Jyothi Krishnan on this topic at <br>
+  </b><a
+
+
+
+
+
+
+
+href= "http://www.geocities.com/SiliconValley/Network/3693/obj_sec8.html#obj25" >http://www.geocities.com/SiliconValley/Network/3693/obj_sec8.html#obj25</a> 
+</p>
+<P></P>
+<P></P>
+
+
+
+
+
+
+
+<P>Last updated<BR>
+  12 Novemberr 2000<BR>
+  Copyright &copy; Marcus Green 2000</P>
+
+
+
+
+
+
+
+</BODY>
+
+
+
+
+
+
+
+</HTML>
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+

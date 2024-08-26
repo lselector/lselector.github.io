@@ -1,0 +1,453 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (X11; U; Linux 2.4.18-4GB i686) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>database</title>
+<!--
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+<style type="text/css">
+<!--
+.style1 {
+	color: #CC3366;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Database</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Working with data - databases.</font></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 >
+<tr>
+<td ROWSPAN="2"><img SRC="images/kiki-floppy2s.jpg" HSPACE=6 VSPACE=6 BORDER=0 height=150 width=200></td>
+
+<td><b><u><font color="#CC0000">On this page:</font></u></b></td>
+
+<td><b><u><font color="#CC0000">Other pages:</font></u></b></td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP NOWRAP><font color="#6699CC">*
+</font><b><font color="#000099"><a href="database.html#intro">Intro</a></font></b>
+<br><font color="#6699CC">* </font><b><font color="#000099"><a href="#client-server">client-server</a></font></b>
+<br><font color="#6699CC">* </font><b><font color="#000099"><a href="#oltp_olap">olap
+oltp</a></font></b>
+<br><font color="#6699CC">* </font><b><font color="#000099"><a href="#databases">databases</a></font></b>
+<br>
+<font color="#6699CC">* </font><b><font color="#000099"><a href="#tools">tools</a></font></b><br>
+<font color="#6699CC">*
+</font><b><font color="#000099"><a href="#mainframe">old,
+mainframe</a></font></b></td>
+
+<td ALIGN=LEFT VALIGN=TOP>
+    <font color="#6699CC">* </font><b><font color="#000099"><a href="sql.html">SQL</a></font></b>
+<br><font color="#6699CC">* </font><b><font color="#000099"><a href="teradata.html">Teradata</a></font></b>
+<br><font color="#6699CC">* </font><b><font color="#000099"><a href="oracle.html">Oracle</a></font></b>
+<br><font color="#6699CC">* </font><b><font color="#000099"><a href="db2.html">DB2</a></font></b>
+<br><font color="#6699CC">* </font><b><font color="#000099"><a href="sybase.html">Sybase</a></font></b>
+<br><font color="#6699CC">* </font><b><font color="#000099"><a href="ms_sql_server.html">Microsoft</a></font></b>
+<br><font color="#6699CC">* </font><b><font color="#000099"><a href="mysql.html">mysql</a></font></b>
+<br><font color="#6699CC">* </font><b><font color="#000099"><a href="etl.html">ETL</a></font></b>
+</td>
+</tr>
+</table>
+<a NAME="intro"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Intorduction</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#FF0000">Database</font></b> usually is a collection
+of <b><font color="#FF0000">tables</font></b> (and tables, and tables,
+and tables) - which constitute "<b><u><font color="#FF0000">relational</font></u></b>"
+database (relationships between tables).&nbsp; There are also alternative
+approaches, for example&nbsp; <a href="http://www.objectdesign.com/">objectdesign.com</a>&nbsp;
+uses objects instead of tables.
+<p><font color="#6699CC">* </font><a href="http://directory.google.com/Top/Computers/Software/Databases/">directory.google.com/Top/Computers/Software/Databases/</a>
+- databases on Google.
+<br><font color="#6699CC">* </font><a href="http://directory.google.com/Top/Computers/Programming/Databases/">directory.google.com/Top/Computers/Programming/Databases/</a>
+- databases on Google.
+<br><font color="#6699CC">* </font><b><a href="http://searchdatabase.com/">searchdatabase.com</a></b>
+- portal on DB technologes
+<br><font color="#6699CC">* </font><a href="http://searchdatabase.techtarget.com/searchDatabase_Editors_Picks_Page/0,281922,,00.html">searchdatabase.techtarget.com/searchDatabase_Editors_Picks_Page/0,281922,,00.html</a>
+- some good articles
+<p><b>Most databases are relationaland and understand standard language
+- <font color="#FF0000">SQL</font> (Structured Query Language). </b>SQL
+queries let you select, insert, update, find out the location of data,
+and so forth. See more at <a href="sql.html">sql.html</a>.
+<p><b><u>Here is the timeline (shows only some databases)</u></b>
+<br>1970 - Dr. E.F. Codd formulated concept of a relational database. (
+<a href="http://www.soi.city.ac.uk/~tony/dbms/relational_dm.html">explained
+here</a>)
+<br>1976 - IBM developed a prototype relational database management system
+and language (System/R).
+<br>1977 - Larry Ellison founded Oracle.
+<br>
+1979 - Oracle Corporation introduced the first commercial SQL database
+(written in assembler for PDP-11).
+ Teradata is founded. <br>
+ 1983 - IBM released the first version of DB2 (for mainframe - MVS).
+<br>1987 - Sybase releases its first commercial DBMS product ("DataServer")
+for Sun workstations (unix).
+<br>&nbsp;&nbsp;&nbsp; Sybase partner with Microsoft (divide the market
+- MS - on Windows &amp; OS/2, Sybase - on Unix &amp; VMS).
+<br>&nbsp;&nbsp;&nbsp; Microsoft also parners with Ashton-Tate (DBase).
+<br>1989 - Microsoft SQL Server Version 1.0 ships
+<br>
+1991  - NCR (AT&amp;T) acquires Teradata<br>1993 - Microsoft and Sybase end their partnership
+<br>1995 - Sybase - SQL Server 11. Sybase merges with PowerSoft (PowerBuilder).
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Microsoft SQL
+Server 6.0. DB2 for OS/2 and for AIX
+<br>1996 - Sybase Adaptive Server Enterprise 11.5, Microsoft SQL Server
+6.5.
+<br>1998 - Sybase v.11.9.2. Oracle 8.&nbsp; Microsoft SQL 7.
+<br>2000 - Sybase 12. Oracle 8i. Microsoft 2000. DB2 ver.7.
+<br>
+2001 - Oracle introduces RAC (Real Application Clusters)<br>
+2007 - Teradata is separated form NCR<br>2008 - Sybase 15. Oracle 11. Microsoft SQL Server 2008. DB2 ver. 9.
+<p><b><u>Note:</u></b>
+  <br>
+  As of today (January 2008) Sybase is still a very common database on Wall
+Street. Reasonable question may be why Sybase became so common, when Oracle
+and IBM had their products on the market much earlier ?".&nbsp; My guess
+is that Sybase had Client-Server architecture on Unix at the time when
+financial companies were starting to use Unix. 
+<p><br>
+  <a NAME="client-server"></a>
+  <br>
+  &nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Client-Server</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Database "server" can communicate with many "client" applications (<b><u>2
+layer Client-Server</u></b>).
+<p>There can be also some middle layer(s) - very common is a <b><i><u>3-tier
+architecture</u>.</i></b>
+<br>&nbsp; - Front-end (text, forms, etc.) - browser,&nbsp; Java application,
+MS Excel, etc.
+<br>&nbsp; - Middle - programms connecting the front-end with the back-end.
+<br>&nbsp; - Back-end - data (database, files).
+<p><b><u>Fat client</u></b> - lots of application code and some data are
+stored on the client side
+<br><b><u>Thin client</u></b> - code and data are not stored on the client.
+They are loaded fromthe server - and run on the client (browser).
+<p>There can be many layers (more than 3). Application can be distributed
+between different locations, use different databases, different clients,
+and different servers communicating with those databases, clients, and
+other servers.
+<p>In distributed environment of today's large financial institutions,
+people often use a messaging system (like MQSeries from IBM) and code messsages
+in XML. Many claim that messaging is much more convenient to use than CORBA
+or Orbix.
+<p>To communicate with the database from your application, you need drivers.
+Each database has each own drivers for different languages.&nbsp; Often
+it is a good idea to use standard drivers:
+<br><font color="#6699CC">* </font><b><font color="#FF0000">ODBC</font></b>
+(Open Database Connectivity) - standard and open API for database access
+(Windows).
+<br><font color="#6699CC">* </font><b><font color="#FF0000">JDBC</font></b>
+(Java Database Connectivity) - API for database access from Java
+<br><a NAME="oltp_olap"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>OLTP &amp; OLAP</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>&nbsp;<b><font color="#FF0000">OLTP</font></b> - Online Transaction
+Processing
+<br>&nbsp;&nbsp; - used to update database, typically high volume, response
+time is important
+<br>&nbsp;<b><font color="#FF0000">OLAP</font></b> - Online Analytical
+Processing (also called DSS - Decision Support Systems, EIS - Enterprise
+Information Systems)
+<br>&nbsp;&nbsp; - used to help review and analyse information in the database.
+Typically doesn't update database. Queries may be complicated and long.
+<br>&nbsp;&nbsp;&nbsp;&nbsp; Another name of this system type is <b><font color="#FF0000">DSS</font></b>
+(Decision Support System). Related terms - "<b><font color="#FF0000">data
+mining</font></b>" and "<b><font color="#FF0000">data warehouse</font></b>"
+- check their exact meaning on <a href="http://www.whatis.com">whatis.com</a>.
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#6699CC">* </font><a href="http://www.arsdigita.com/asj/data-warehousing">www.arsdigita.com/asj/data-warehousing</a>
+- Data Warehousing for Cavemen
+<br><font color="#6699CC">* </font><a href="http://perso.wanadoo.fr/bernard.lupin/english/">perso.wanadoo.fr/bernard.lupin/english/</a>
+- Bernard Lupin's OLAP site/tutorial
+<br><font color="#6699CC">* </font><a href="http://www.olapreport.com/">www.olapreport.com/</a>
+- The OLAP Report
+<br><font color="#6699CC">* </font><a href="http://www.datamining.com/bridge.htm">www.datamining.com/bridge.htm</a>
+- OLAP and DataMining: Bridging the Gap&nbsp;
+<br><font color="#6699CC">* </font><a href="http://www.olapcouncil.org/">www.olapcouncil.org/</a>
+- OLAP Council at 888-818-OLAP&nbsp;
+<br><font color="#6699CC">* </font><a href="http://msdn.microsoft.com/vfoxpro/technical/olap.asp">msdn.microsoft.com/vfoxpro/technical/olap.asp</a>
+- Microsoft SQL Server OLAP Services 7.0 OLAP Manager Tutorial
+<br><font color="#6699CC">* </font><a href="http://www.planetit.com/techcenters/docs/database/opinion/PIT20000612S0001">www.planetit.com/techcenters/docs/database/opinion/PIT20000612S0001</a>
+- How CRM Differs From OLAP</td>
+</tr>
+</table>
+
+<p>Since ~2005 - new generation of databases for data analytics:</p>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+  <tr>
+    <td><p>New grid analytic databases</p>
+      <ul>
+        <li>designed  to work on a grid of computers - massive parallelism and extensibility </li>
+        <li>optimized for massive loads and fast data retrieval</li>
+        <li>NOT   optimized for row-by-row operations (deletes/updates transactions). In   fact, architecture is "by column".</li>
+      </ul>
+      <p>Cells of data in a table - [row_id,column_id,value].</p>
+      <ul>
+        <li>In classical relational database data is stored on disk by row_id, and external index structures are created to enable searching by column values.</li>
+        <li>In new &quot;by column&quot; architecture data is stored on disk by column, and each column is sorted/indexed by its own value (as if it has built-in &quot;clustered&quot; index). To work with rows we need tobe able to connect cells in &quot;columns&quot; by row_id. Thus each column is optimized to search by value and by row_id.</li>
+      </ul>
+      <ul>
+        <li><A href="http://en.wikipedia.org/wiki/Vertica">http://en.wikipedia.org/wiki/Vertica</A></li>
+        <li><A href="http://www.greenplum.com/products/greenplum-database">http://www.greenplum.com/products/greenplum-database</A></li>
+        <li><A href="http://www.asterdata.com/">http://www.asterdata.com/</A></li>
+        <li>Sybase   IQ</li>
+        <li>http://en.wikipedia.org/wiki/KDB_(database)</li>
+        <li>Oracle   - <A href="http://www.oracle.com/us/technologies/grid/index.html">http://www.oracle.com/us/technologies/grid/index.html</A> "Oracle   Business Intelligence for Utilities"</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;<b><font color="#FF0000">REPLICATION</font></b> (Replication Server)
+- software technology to copy data from one database (primary server) to
+another (secondary) in more or less real time. Sybase has a very good replication
+server. There are 2 sides to replication process: to send information from
+the primary server (this takes ~ 10% of server load) - and to catch and
+update on the secondary server (this may put significant load on the secondary
+server, because you have to do inserts and deletes).
+<br><a NAME="databases"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Different databases - and how to use them</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#6699CC">* <a href="http://directory.google.com/Top/Computers/Software/Databases/">directory.google.com/Top/Computers/Software/Databases/</a></font>&nbsp;
+- all databases
+<br><font color="#6699CC">* </font><a href="http://www.arsdigita.com/asj/">www.arsdigita.com/asj/</a>&nbsp;
+- several excellent books and a lot of discussions
+<br><font color="#6699CC">* </font><a href="http://www.pcslink.com/~ej/dbweb.html">www.pcslink.com/~ej/dbweb.html</a>
+- Database Jump Site
+<p><font color="#6699CC">* </font><a href="http://www.ibm.com/">www.ibm.com</a>
+- DB2 universal database (Unix, NT, Mainframe, ...) - read on <a href="db2.html">db2.html
+page</a>.
+<br><font color="#6699CC">* </font><b><a href="http://www.oracle.com/">www.oracle.com</a></b>
+- very popular database - see <a href="oracle.html">oracle.html page</a>
+<br><font color="#6699CC">* </font><a href="http://www.sybase.com/">www.sybase.com</a>
+- see <a href="sybase.html">sybase.html page</a>.
+<br><font color="#6699CC">* </font><a href="http://www.microsoft.com/">www.microsoft.com</a>
+- for MS SQL server (also Exchange and Access) - see <a href="ms_sql_server.html">ms_sql_server.html
+page</a>.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( - <a href="http://msdn.microsoft.com/vfoxpro/">msdn.microsoft.com/vfoxpro/</a>
+- Microsoft Visual Fox Pro )
+<br>
+<font color="#6699CC">* </font><a href="http://www.teradata.com/">www.teradata.com</a> - Teradata - datawarehouse engine. <br>
+<font color="#6699CC"></font>
+<p><font color="#6699CC">* </font><a href="http://www.informix.com/">www.informix.com</a>
+-
+<br><font color="#6699CC">* </font><a href="http://www.objectdesign.com/">www.objectdesign.com</a>
+- object database (C++ or Java programming)
+<p><font color="#6699CC">* </font><a href="http://www.mysql.com/">www.mysql.com/</a>
+= <a href="http://www.mysql.org/">www.mysql.org/</a> - (see also <a href="mysql.html">mysql.html</a>)
+good, fast, support regular expression search, doesn't support transactions
+<br><font color="#6699CC">* </font><a href="http://www.postgresql.org/">www.postgresql.org/</a>
+- free database with transactions (a part of Linux distribution)
+<br><font color="#6699CC">* </font><a href="http://www.illustra.com">www.illustra.com</a>
+- Illustra database
+<p><font color="#6699CC">* </font><a href="http://www.pick.com/">www.pick.com</a>
+-
+<br><font color="#6699CC">* </font><a href="http://licensetospeed.com/homepage.html">licensetospeed.com/homepage.html</a>
+- InterSystems Corp. - Cache - good, and very fast
+<br><font color="#6699CC">* </font><a href="http://www.solidtech.com/">www.solidtech.com/</a>
+- good, but slow
+<br><font color="#6699CC">* </font><a href="http://www.unify.com/">www.unify.com/</a>
+- good sql database
+<p>Some older technologies:
+<br><font color="#6699CC">* </font><a href="http://www.netlib.com/rbffaq01.htm">www.netlib.com/rbffaq01.htm</a>
+- read about Clipper and Btrieve
+<br>
+<font color="#6699CC">* </font><a href="http://pervasive.sw.com.sg/products/">pervasive.sw.com.sg/products/</a>
+- "Pervasive.SQL" - developed from "Btrieve" and "Scalable"
+ <br>
+ <a NAME="tools"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Tools</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#6699CC">* </font><a href="http://www.cai.com/products/platinum/appdev/erwin_ps.htm">www.cai.com/products/platinum/appdev/erwin_ps.htm</a>
+- PLATINUM <b>ERwin</b> from Computer Assotiates - a database design tool.
+<br><font color="#6699CC">* </font><a href="http://www.embarcadero.com/">www.embarcadero.com/</a>
+- Embarcadero - creators of <b>DBArtisan</b> and <b>RapidSQL</b>. Excellent
+tools !!
+<br>&nbsp;&nbsp; ( read reviews on this site: <a href="http://www.mssqlserver.com/">http://www.mssqlserver.com/</a>&nbsp;
+- <b><a href="http://www.mssqlserver.com/products/dbartisan503_p1.asp">DBArtisan</a></b>
+and <a href="http://www.mssqlserver.com/products/rapidsql52_p1.asp">RapidSQL</a>
+)
+<br>&nbsp;&nbsp; Work with all modern databases, allow to transparently
+copy objects between databases of different types or versions.
+<p><a href="http://www.aquafold.com/downloads.html">http://www.aquafold.com/downloads.html</a> - Aqua Studio
+
+- supports multiple databases (Oracle, DB2, Sybase, MS SQL, MySQL, Informix, PostgreSQL, etc.<p><b><u>Short recommendatin:</u></b> - for all major databases (DB2, Oracle,
+Sybase, MS SQL Server) - use DBArtisan for administration and SQL Navigator
+or RapidSQL for development.&nbsp; For MySQL you can use their own command-line
+client or GUI.
+<p>See more offers on pages related to particular databases:&nbsp; <a href="db2.html">db2</a>
+- <a href="sybase.html">sybase</a> - <a href="oracle.html">oracle</a> -
+<a href="mysql.html">mysql</a>
+<br>
+
+<p><a NAME="mainframe" id="ETLtools2"></a><br></p>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Old, Mainframe</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Some old MainFrame technologies:</u></b>
+  <font color="#6699CC"><br>
+  * </font><a href="http://www.cai.com/solutions/">www.cai.com/solutions/</a>
+- Computer Associates International (bought Clipper, IDMS, Platinum)
+  <br>  
+  <font color="#6699CC">* </font><span class="style1">IDMS</span> - <a href="http://www.cai.com/products/idms_dds.htm">www.cai.com/products/idms_dds.htm</a> - hierarchical database (non-relational) <br>
+  <font color="#6699CC">* </font><span class="style1">ADABASE</span> (sets of tables) <br>
+  <font color="#6699CC">* </font><span class="style1">IMS</span> - hierarchical
+database (non-relational) - <A href="http://www-306.ibm.com/software/data/ims/" 
+EUDORA="AUTOURL">http://www-306.ibm.com/software/data/ims/</A> - used by 95% of Fortune 1000 companies. Serves 200 million end users, managing over 15 million gigabytes of production data. IMS processes over 50 billion transactions every day.&nbsp; IMS still owns the high-volume online transaction and database management environment. IMS comes with JDBC connectors, Java and XML support, gui administration front end, fastpathing, checkpoint recovery.&nbsp; Why would IBM continue releasing new versions of IMS when they own DB2?&nbsp; Because IMS is the fastest at transaction processing.&nbsp; They recently achieved the following: IMS Runs Over 21,000 Transactions per Second on a Sysplex (Nearly Two Billion Transactions per Day). This IMS fact sheet gives some highlights: <A href="http://www-306.ibm.com/software/data/ims/v9/v9fact.pdf" 
+EUDORA="AUTOURL">http://www-306.ibm.com/software/data/ims/v9/v9fact.pdf</A>
+<br>
+<font color="#6699CC">* </font><span class="style1">ISAM</span> - Indexed Sequential Access Method
+  (a file access method supporting both sequential and indexed access). <br>
+  <font color="#6699CC">* </font><span class="style1">VSAM</span> - Virtual Storage Access Method
+  - indexed files - check on <a href="http://www.whatis.com/">www.whatis.com</a>
+  <br>
+  <font color="#6699CC">* </font><span class="style1">DB2</span> <br>
+  <font color="#6699CC">* </font><span class="style1">DBase</span> - small database for personal
+  computers, produced by Ashton-Tate in 1979 (1984 - DOS version, 1991 -
+sold to Borland, 1993,95 - DBase for windows shipped by Borland).
+<p><b><u>Some old languages used with old databases:</u></b>
+<br><font color="#6699CC">* </font><span class="style1">JCL</span> - Job Control Language
+<br>
+<font color="#6699CC">* </font><span class="style1">COBOL-2</span> - Common Business-Oriented Language
+<br><font color="#6699CC">* </font><span class="style1">CICS</span> - Customer Information Control
+System - adds interactivity to COBOL, works with VSAM files, or with databases
+(DB-2, IMS, IDMS)
+<br>&nbsp;
+<br>&nbsp;
+</body>
+</html>

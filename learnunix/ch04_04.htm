@@ -1,0 +1,2303 @@
+<HTML
+><HEAD
+><TITLE
+>[Chapter 4] 4.4 Managing Your Files</TITLE
+><META
+NAME="DC.title"
+CONTENT="Learning the Unix Operating System"><META
+NAME="DC.creator"
+CONTENT="Jerry Peek, Grace Todino &amp; John Strang"><META
+NAME="DC.publisher"
+CONTENT="O'Reilly &amp; Associates, Inc."><META
+NAME="DC.date"
+CONTENT="1998-08-03T20:51:30Z"><META
+NAME="DC.type"
+CONTENT="Text.Monograph"><META
+NAME="DC.format"
+CONTENT="text/html"
+SCHEME="MIME"><META
+NAME="DC.source"
+CONTENT="1-56592-390-1"
+SCHEME="ISBN"><META
+NAME="DC.language"
+CONTENT="en-US"><META
+NAME="generator"
+CONTENT="Jade 1.1/O'Reilly DocBook 3.0 to HTML 4.0"><LINK
+REV="made"
+HREF="mailto:online-books@oreilly.com"
+TITLE="Online Books Comments"><LINK
+REL="up"
+HREF="ch04_01.htm"
+TITLE="4. File Management "><LINK
+REL="prev"
+HREF="ch04_03.htm"
+TITLE="4.3 File and Directory Wildcards"><LINK
+REL="next"
+HREF="ch04_05.htm"
+TITLE="4.5 Printing Files"></HEAD
+><BODY
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+><DIV
+CLASS="htmlnav"
+><H1
+><IMG
+SRC="gifs/smbanner.gif"
+ALT="Learning the Unix Operating System"
+USEMAP="#srchmap"
+BORDER="0"></H1
+><MAP
+NAME="srchmap"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,466,69"
+HREF="index.htm"
+ALT="Learning the Unix Operating System"><AREA
+SHAPE="RECT"
+COORDS="467,0,514,18"
+HREF="jobjects/fsearch.htm"
+ALT="Search this book"></MAP
+><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch04_03.htm"
+TITLE="4.3 File and Directory Wildcards"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 4.3 File and Directory Wildcards"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><B
+><FONT
+FACE="ARIEL,HELVETICA,HELV,SANSERIF"
+SIZE="-1"
+>Chapter 4<BR>File Management </FONT
+></B
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch04_05.htm"
+TITLE="4.5 Printing Files"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 4.5 Printing Files"
+BORDER="0"></A
+></TD
+></TR
+></TABLE
+>&nbsp;<HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"></DIV
+><DIV
+CLASS="SECT1"
+><H2
+CLASS="sect1"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-4"
+>4.4 Managing Your Files</A
+></H2
+><P
+CLASS="para"
+>The tree structure of the UNIX filesystem makes it easy
+to organize your files.
+After you make and edit some files, you may want
+to copy or move files from one directory to another, rename files to
+distinguish different versions of a file,
+or give several names to the same file.
+You may want to create new directories each time you start working
+on a different project.</P
+><P
+CLASS="para"
+>A directory tree can get cluttered with old files
+you don't need.
+If you don't need a file or a directory, delete it to free
+storage space on the disk.
+The sections below explain how to make and remove directories and files.</P
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-4.1"
+>4.4.1 Creating Directories</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-2777"
+></A
+>It's handy to group related files in the same directory.
+If you were writing a spy novel, you probably wouldn't want your
+intriguing files mixed with restaurant listings.
+You could create two directories: one for all the chapters in your novel
+(<EM
+CLASS="emphasis"
+>spy</EM
+>, for example), and another for restaurants (<EM
+CLASS="emphasis"
+>boston.dine</EM
+>).</P
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-4.1.1"
+>4.4.1.1 mkdir</A
+></H4
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-2785"
+></A
+>To create a new directory, use the <B
+CLASS="emphasis.bold"
+>mkdir</B
+> command.
+The format is:</P
+><BLOCKQUOTE
+CLASS="blockquote"
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>mkdir</B
+> <EM
+CLASS="emphasis"
+>dirname(s)</EM
+></P
+></BLOCKQUOTE
+><P
+CLASS="para"
+><EM
+CLASS="emphasis"
+>dirname</EM
+> is the name of the new directory.
+To make several directories, put a space between each directory name.
+To continue our example, you would enter:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>mkdir spy boston.dine</B
+></CODE
+></PRE
+></BLOCKQUOTE
+></P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-4.2"
+>4.4.2 Copying Files</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-COPYING-FILES"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-FILES-COPYING"
+></A
+>If you're about to edit a file, you may want to save a copy of it first.
+Doing that makes it easy to get back the original version.</P
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-4.2.1"
+>4.4.2.1 cp</A
+></H4
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-CP-COMMAND"
+></A
+>The <B
+CLASS="emphasis.bold"
+>cp</B
+> command can put a copy of a file into the same directory or
+into another directory.
+<B
+CLASS="emphasis.bold"
+>cp</B
+> doesn't affect the original file, so it's a good way to
+keep an identical backup of a file.</P
+><P
+CLASS="para"
+>To copy a file, use the command:</P
+><BLOCKQUOTE
+CLASS="blockquote"
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>cp</B
+> <EM
+CLASS="emphasis"
+>old new</EM
+></P
+></BLOCKQUOTE
+><P
+CLASS="para"
+>where <EM
+CLASS="emphasis"
+>old</EM
+> is a pathname to the original file
+and <EM
+CLASS="emphasis"
+>new</EM
+> is the pathname you want for the copy.
+For example, to copy the <EM
+CLASS="emphasis"
+>/etc/passwd</EM
+> file into a file
+called <EM
+CLASS="emphasis"
+>password</EM
+> in your
+working directory, you would enter:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>cp /etc/passwd password</B
+></CODE
+>
+%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>You can also use the form:</P
+><BLOCKQUOTE
+CLASS="blockquote"
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>cp</B
+> <EM
+CLASS="emphasis"
+>old olddir</EM
+></P
+></BLOCKQUOTE
+><P
+CLASS="para"
+>This puts a copy of the original file <EM
+CLASS="emphasis"
+>old</EM
+> into an existing
+directory <EM
+CLASS="emphasis"
+>olddir</EM
+>.  The copy will have the same filename as the
+original.</P
+><P
+CLASS="para"
+>If there's already a file with the same name as the copy, <B
+CLASS="emphasis.bold"
+>cp</B
+>
+will replace the old file with your new copy.  This is handy when you
+want to replace an old copy with a newer version, but it can cause
+trouble if you accidentally overwrite a copy you wanted to keep.  To
+be safe, use <B
+CLASS="emphasis.bold"
+>ls</B
+> to list the directory before you make a copy
+there.  Also, many versions of <B
+CLASS="emphasis.bold"
+>cp</B
+> have a <B
+CLASS="emphasis.bold"
+>-i</B
+> (interactive)
+option that will query the user before overwriting an existing file.</P
+><P
+CLASS="para"
+>You can copy more than one file at a time to a single directory by
+listing the pathname of each file you want copied, with the
+destination directory at the end of the command line.  You can use
+relative or absolute pathnames (see <A
+CLASS="xref"
+HREF="ch03_01.htm"
+TITLE="Your UNIX Account "
+>Chapter 3</A
+>) as well as simple
+filenames.  For example, let's say your working directory was
+<EM
+CLASS="emphasis"
+>/users/carol</EM
+> (from the filesystem diagrams in <A
+CLASS="xref"
+HREF="ch03_01.htm"
+TITLE="Your UNIX Account "
+>Chapter 3</A
+>).  To
+copy three files called <EM
+CLASS="emphasis"
+>ch1</EM
+>, <EM
+CLASS="emphasis"
+>ch2</EM
+>, and <EM
+CLASS="emphasis"
+>ch3</EM
+> from
+<EM
+CLASS="emphasis"
+>/users/john</EM
+> to a subdirectory called <EM
+CLASS="emphasis"
+>work</EM
+> (that's
+<EM
+CLASS="emphasis"
+>/users/carol/work</EM
+>), by entering:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>cp ../john/ch1 ../john/ch2 ../john/ch3 work</B
+></CODE
+></PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>Or, you could use wildcards and let the shell find all the appropriate
+files.  This time, let's add the <B
+CLASS="emphasis.bold"
+>-i</B
+> option for safety:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>cp -i ../john/ch[1-3] work</B
+></CODE
+>
+cp: overwrite work/ch2? <CODE
+CLASS="userinput"
+><B
+>n</B
+></CODE
+></PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>There was already a file named <EM
+CLASS="emphasis"
+>ch2</EM
+> in the <EM
+CLASS="emphasis"
+>work</EM
+> directory.
+When <B
+CLASS="emphasis.bold"
+>cp</B
+> asked, I answered <B
+CLASS="emphasis.bold"
+>n</B
+> to prevent copying <EM
+CLASS="emphasis"
+>ch2</EM
+>.
+Answering <B
+CLASS="emphasis.bold"
+>y</B
+> would overwrite the old <EM
+CLASS="emphasis"
+>ch2</EM
+>.</P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-2867"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2869"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2871"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2874"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2877"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2880"
+></A
+>The shorthand forms <CODE
+CLASS="literal"
+>.</CODE
+> and <CODE
+CLASS="literal"
+>..</CODE
+> will put the copy in
+the working directory or its parent.
+For example:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>cp ../john/ch[1-3] .</B
+></CODE
+></PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>puts the copies into the working directory.</P
+></DIV
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-4.2.2"
+>4.4.2.2 Problem checklist</A
+></H4
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-2892"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2895"
+></A
+></P
+><DL
+CLASS="variablelist"
+><DT
+CLASS="term"
+><EM
+CLASS="emphasis"
+>The system says something along the lines of 
+&quot;cp: cannot copy file to itself&quot;.</EM
+></DT
+><DD
+CLASS="listitem"
+><P
+CLASS="para"
+>If the copy is in the same directory as the original,
+the filenames must be different.</P
+></DD
+><DT
+CLASS="term"
+><EM
+CLASS="emphasis"
+>The system says something like &quot;cp: filename: no such file or directory&quot;.</EM
+></DT
+><DD
+CLASS="listitem"
+><P
+CLASS="para"
+>The system can't find the file you want to copy.  Check for a typing
+mistake.  If a file isn't in the working directory, be sure to use its
+pathname.</P
+></DD
+><DT
+CLASS="term"
+><EM
+CLASS="emphasis"
+>The system says something like &quot;cp: permission denied&quot;.</EM
+></DT
+><DD
+CLASS="listitem"
+><P
+CLASS="para"
+>You may not have permission to copy a file created by someone else or
+copy it into a directory that does not belong to you.  
+Use <B
+CLASS="emphasis.bold"
+>ls -l</B
+> to find the owner and the permissions for the file, or 
+<B
+CLASS="emphasis.bold"
+>ls -ld</B
+> to check the directory.  If you feel that you should have
+permission to copy a file whose access is denied to you, ask the
+file's owner or the system administrator to change the access modes
+for the file.</P
+></DD
+></DL
+><A
+CLASS="indexterm"
+NAME="AUTOID-2916"
+></A
+></DIV
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-4.2.3"
+>4.4.2.3 rcp</A
+></H4
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-RCP-COMMAND"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-NETWORKS-COPYING-FILES"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-COPYING-FILES-REMOTELY"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-REMOTE-FILES-COPYING"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-FILES-REMOTE-COPYING"
+></A
+>Some versions of UNIX have an <B
+CLASS="emphasis.bold"
+>rcp</B
+> (remote copy) command for copying
+files between two computers.
+In general, you must have accounts on both computers.
+The syntax of <B
+CLASS="emphasis.bold"
+>rcp</B
+> is like <B
+CLASS="emphasis.bold"
+>cp</B
+>, but <B
+CLASS="emphasis.bold"
+>rcp</B
+> also lets you add
+the remote hostname to the start of a file or directory pathname.
+The syntax of each argument is:</P
+><BLOCKQUOTE
+CLASS="blockquote"
+><P
+CLASS="para"
+><EM
+CLASS="emphasis"
+>hostname</EM
+><B
+CLASS="emphasis.bold"
+>:</B
+><EM
+CLASS="emphasis"
+>pathname</EM
+></P
+></BLOCKQUOTE
+><P
+CLASS="para"
+><EM
+CLASS="emphasis"
+>hostname</EM
+><B
+CLASS="emphasis.bold"
+>:</B
+> is needed only for remote files.
+You can copy from a remote computer to the local computer, from the local
+to a remote, or between two remote computers.</P
+><P
+CLASS="para"
+>For example, let's copy the files named <EM
+CLASS="emphasis"
+>report.may</EM
+> and <EM
+CLASS="emphasis"
+>report.june</EM
+>
+from your home
+directory on the computer named <EM
+CLASS="emphasis"
+>giraffe</EM
+>.
+Put the copies into your working directory (<CODE
+CLASS="literal"
+>.</CODE
+>) on the
+machine you're logged in to now:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>rcp giraffe:report.may giraffe:report.june .</B
+></CODE
+></PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>To use wildcards in the remote filenames, put quotation marks
+(&lt;&quot;&gt;<EM
+CLASS="emphasis"
+>name</EM
+>&lt;&quot;&gt;) around each remote name.  For
+example, to copy all files from your <EM
+CLASS="emphasis"
+>food/lunch</EM
+> subdirectory on
+your <EM
+CLASS="emphasis"
+>giraffe</EM
+> account into your working directory on the local
+account, enter:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>rcp &quot;giraffe:food/lunch/*&quot; .</B
+></CODE
+></PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>Unlike <B
+CLASS="emphasis.bold"
+>cp</B
+>, most versions of <B
+CLASS="emphasis.bold"
+>rcp</B
+> do not have a <B
+CLASS="emphasis.bold"
+>-i</B
+>
+safety option.  Also, even if your system has <B
+CLASS="emphasis.bold"
+>rcp</B
+>, your system
+administrator may not want you to use it for system security reasons.
+Another command, <B
+CLASS="emphasis.bold"
+>ftp</B
+>, is more flexible and secure than
+<B
+CLASS="emphasis.bold"
+>rcp</B
+>.<A
+CLASS="indexterm"
+NAME="AUTOID-2969"
+></A
+></P
+></DIV
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-4.2.4"
+>4.4.2.4 ftp</A
+></H4
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-FILE-TRANS-PROTOCOL"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-FTP"
+></A
+>The command <B
+CLASS="emphasis.bold"
+>ftp</B
+> (file transfer protocol) is a flexible way to copy
+files between two computers.
+(Some systems have a friendlier version of <B
+CLASS="emphasis.bold"
+>ftp</B
+> named <B
+CLASS="emphasis.bold"
+>ncftp</B
+>.)
+Both computers don't need to be running UNIX, though they do need to be
+connected by a network (like the Internet) that <B
+CLASS="emphasis.bold"
+>ftp</B
+> can use.
+To start <B
+CLASS="emphasis.bold"
+>ftp</B
+>, give the hostname of the remote computer:</P
+><BLOCKQUOTE
+CLASS="blockquote"
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>ftp</B
+> <EM
+CLASS="emphasis"
+>hostname</EM
+></P
+></BLOCKQUOTE
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>ftp</B
+> will prompt for your username and password on the remote computer.
+This is something like a remote login (see <A
+CLASS="xref"
+HREF="ch01_01.htm"
+TITLE="Getting Started "
+>Chapter 1, Getting Started </A
+>), but <B
+CLASS="emphasis.bold"
+>ftp</B
+>
+doesn't start your usual shell.
+Instead, <B
+CLASS="emphasis.bold"
+>ftp</B
+> prints its 
+own prompt and uses a special set of commands
+for transferring files.
+<A
+CLASS="xref"
+HREF="ch04_04.htm#LUX-CH-4-TAB-0"
+TITLE="Some ftp Commands"
+>Table 4.1</A
+>
+lists the most important <B
+CLASS="emphasis.bold"
+>ftp</B
+> commands.<A
+CLASS="indexterm"
+NAME="AUTOID-2993"
+></A
+></P
+><TABLE
+CLASS="table"
+><CAPTION
+CLASS="table"
+><A
+CLASS="title"
+NAME="LUX-CH-4-TAB-0"
+>Table 4.1: Some ftp Commands</A
+></CAPTION
+><THEAD
+CLASS="thead"
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TH
+CLASS="entry"
+ALIGN="LEFT"
+ROWSPAN="1"
+COLSPAN="1"
+>Command</TH
+><TH
+CLASS="entry"
+ALIGN="LEFT"
+ROWSPAN="1"
+COLSPAN="1"
+>Description</TH
+></TR
+></THEAD
+><TBODY
+CLASS="tbody"
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><B
+CLASS="emphasis.bold"
+>put</B
+> <EM
+CLASS="emphasis"
+>filename</EM
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Copies the file <EM
+CLASS="emphasis"
+>filename</EM
+> from your local computer
+to the remote computer. If you give a second argument, the remote copy will
+have that name.</P
+></TD
+></TR
+><A
+CLASS="indexterm"
+NAME="AUTOID-3011"
+></A
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><B
+CLASS="emphasis.bold"
+>mput</B
+> <EM
+CLASS="emphasis"
+>filenames</EM
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Copies the named files (you can use wildcards) from local
+to remote.</P
+></TD
+></TR
+><A
+CLASS="indexterm"
+NAME="AUTOID-3019"
+></A
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>get</B
+> <EM
+CLASS="emphasis"
+>filename</EM
+></P
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Copies the file <EM
+CLASS="emphasis"
+>filename</EM
+> from the 
+remote computer to your local computer. If you give a second argument, the
+local copy will have that name.</P
+></TD
+></TR
+><A
+CLASS="indexterm"
+NAME="AUTOID-3029"
+></A
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>mget</B
+> <EM
+CLASS="emphasis"
+>filenames</EM
+></P
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Copies the named files (you can use wildcards) from remote
+to local.</P
+></TD
+></TR
+><A
+CLASS="indexterm"
+NAME="AUTOID-3038"
+></A
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>cd</B
+> <EM
+CLASS="emphasis"
+>pathname</EM
+></P
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Changes the working directory on the remote machine
+to <EM
+CLASS="emphasis"
+>pathname</EM
+>
+(<B
+CLASS="emphasis.bold"
+>ftp</B
+> usually starts at your home 
+directory on the remote machine).</P
+></TD
+></TR
+><A
+CLASS="indexterm"
+NAME="AUTOID-3049"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3051"
+></A
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><B
+CLASS="emphasis.bold"
+>lcd</B
+> <EM
+CLASS="emphasis"
+>pathname</EM
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Changes <B
+CLASS="emphasis.bold"
+>ftp</B
+>'s working directory on
+the local machine to <EM
+CLASS="emphasis"
+>pathname</EM
+> (<B
+CLASS="emphasis.bold"
+>ftp</B
+> starts at your working directory on the local
+computer). Note that the <B
+CLASS="emphasis.bold"
+>ftp lcd</B
+> command
+changes only <B
+CLASS="emphasis.bold"
+>ftp</B
+>'s working
+directory. After you quit <B
+CLASS="emphasis.bold"
+>ftp</B
+>, your
+shell's working directory will not have changed.</P
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>dir</B
+></P
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Lists the remote directory (like <B
+CLASS="emphasis.bold"
+>ls -l</B
+>).</P
+></TD
+></TR
+><A
+CLASS="indexterm"
+NAME="AUTOID-3072"
+></A
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>binary</B
+></P
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Tells <B
+CLASS="emphasis.bold"
+>ftp</B
+> to copy the following file(s) 
+without translation.  This preserves pictures, sound, or other data.</P
+></TD
+></TR
+><A
+CLASS="indexterm"
+NAME="AUTOID-3081"
+></A
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><B
+CLASS="emphasis.bold"
+>ascii</B
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Transfers plain text files, translating data if needed.</P
+></TD
+></TR
+><A
+CLASS="indexterm"
+NAME="AUTOID-3088"
+></A
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><B
+CLASS="emphasis.bold"
+>quit</B
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-3095"
+></A
+>Ends the <B
+CLASS="emphasis.bold"
+>ftp</B
+> session and takes you 
+back to a shell prompt.</P
+></TD
+></TR
+></TBODY
+></TABLE
+><P
+CLASS="para"
+>Here's an example.
+Carol uses <B
+CLASS="emphasis.bold"
+>ftp</B
+> to copy the file <EM
+CLASS="emphasis"
+>todo</EM
+> from her <EM
+CLASS="emphasis"
+>work</EM
+>
+subdirectory on her account on the remote computer <EM
+CLASS="emphasis"
+>rhino</EM
+>:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>ls</B
+></CODE
+>
+afile   ch2    somefile
+% <CODE
+CLASS="userinput"
+><B
+>ftp rhino</B
+></CODE
+>
+Connected to rhino.zoo.com.
+Name (rhino:carol): <CODE
+CLASS="userinput"
+><B
+>csmith</B
+></CODE
+>
+Password:
+ftp&gt; <CODE
+CLASS="userinput"
+><B
+>cd work</B
+></CODE
+>
+ftp&gt; <CODE
+CLASS="userinput"
+><B
+>dir</B
+></CODE
+>
+total 3
+-rw-r--r--  1 csmith   mgmt    47 Feb  5  1997 for.ed
+-rw-r--r--  1 csmith   mgmt   264 Oct 11 12:18 message
+-rw-r--r--  1 csmith   mgmt   724 Nov 20 14:53 todo
+ftp&gt; <CODE
+CLASS="userinput"
+><B
+>get todo</B
+></CODE
+>
+ftp&gt; <CODE
+CLASS="userinput"
+><B
+>quit</B
+></CODE
+>
+% <CODE
+CLASS="userinput"
+><B
+>ls</B
+></CODE
+>
+afile   ch2    somefile    todo</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>We've covered the most basic <B
+CLASS="emphasis.bold"
+>ftp</B
+> commands here. Entering
+<B
+CLASS="emphasis.bold"
+>help</B
+> at an <CODE
+CLASS="literal"
+>ftp&gt;</CODE
+> prompt gives a list of all commands;
+entering <B
+CLASS="emphasis.bold"
+>help</B
+> followed by an <B
+CLASS="emphasis.bold"
+>ftp</B
+> command name gives a
+one-line summary of that command.<A
+CLASS="indexterm"
+NAME="AUTOID-3119"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3120"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3121"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3122"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3123"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3124"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3125"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3126"
+></A
+></P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-4.3"
+>4.4.3 Renaming and Moving Files</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-FILENAMES-CHANGING"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-FILES-RENAMING"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-MOVING-FILES"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-FILES-MOVING"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-MV-COMMAND"
+></A
+>You may need to change a filename.  To rename a file, use the
+<B
+CLASS="emphasis.bold"
+>mv</B
+> (move) command.  The <B
+CLASS="emphasis.bold"
+>mv</B
+> command can also move a file
+from one directory to another.</P
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-4.3.1"
+>4.4.3.1 mv</A
+></H4
+><P
+CLASS="para"
+>The <B
+CLASS="emphasis.bold"
+>mv</B
+> command has the same syntax as the <B
+CLASS="emphasis.bold"
+>cp</B
+> command:</P
+><BLOCKQUOTE
+CLASS="blockquote"
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>mv</B
+> <EM
+CLASS="emphasis"
+>old new</EM
+></P
+></BLOCKQUOTE
+><P
+CLASS="para"
+><EM
+CLASS="emphasis"
+>old</EM
+> is the old name of the file and <EM
+CLASS="emphasis"
+>new</EM
+> is the new name.
+<B
+CLASS="emphasis.bold"
+>mv</B
+> will write over existing files, which is handy for updating
+old versions of a file. If you don't want to overwrite an old file, be
+sure that the new name is unique.  If your <B
+CLASS="emphasis.bold"
+>cp</B
+> has a <B
+CLASS="emphasis.bold"
+>-i</B
+>
+option for safety, your <B
+CLASS="emphasis.bold"
+>mv</B
+> probably has one too.</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>mv chap1 intro</B
+></CODE
+>
+%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>The previous example changed the name of the file <EM
+CLASS="emphasis"
+>chap1</EM
+> to
+<EM
+CLASS="emphasis"
+>intro</EM
+>.  If you list your files with <B
+CLASS="emphasis.bold"
+>ls</B
+>, you will see that
+the filename <EM
+CLASS="emphasis"
+>chap1</EM
+> has disappeared.</P
+><P
+CLASS="para"
+>The <B
+CLASS="emphasis.bold"
+>mv</B
+> command can also move a file from one directory to
+another.  As with the <B
+CLASS="emphasis.bold"
+>cp</B
+> command, if you want to keep the same
+filename, you only need to give <B
+CLASS="emphasis.bold"
+>mv</B
+> the name of the destination
+directory.<A
+CLASS="indexterm"
+NAME="AUTOID-3174"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3175"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3176"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3177"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3178"
+></A
+></P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-4.4"
+>4.4.4 Finding Files</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-SEARCHING-FILES"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-FILES-FINDING-SEARCHING-FOR"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-FINDING-FILES"
+></A
+>If your account has lots of files, organizing those files into
+subdirectories can help you find the files later.  Sometimes you may<A
+CLASS="indexterm"
+NAME="AUTOID-3191"
+></A
+>
+not remember which subdirectory has a file.  The <B
+CLASS="emphasis.bold"
+>find</B
+> command
+can search for files in many ways; we'll look at two of them.</P
+><P
+CLASS="para"
+>Change to your home directory so <B
+CLASS="emphasis.bold"
+>find</B
+> will start its search
+there.  Then carefully enter one of the two <B
+CLASS="emphasis.bold"
+>find</B
+> commands below.
+(The syntax is strange and ugly&nbsp;- but <B
+CLASS="emphasis.bold"
+>find</B
+> does the job!)</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>cd</B
+></CODE
+>
+% <CODE
+CLASS="userinput"
+><B
+>find . -type f -name 'chap*' -print</B
+></CODE
+>
+./chap2
+./old/chap10b
+% <CODE
+CLASS="userinput"
+><B
+>find . -type f -mtime -2 -print</B
+></CODE
+>
+./work/to_do</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>The first command looked in your working (home) directory and all its
+subdirectories for files (<B
+CLASS="emphasis.bold"
+>type f</B
+>) whose names start with
+<EM
+CLASS="emphasis"
+>chap</EM
+>.  (<B
+CLASS="emphasis.bold"
+>find</B
+> understands wildcards in filenames.)  The
+second command looked for all files that have been created or modified
+in the last two days (<B
+CLASS="emphasis.bold"
+>-mtime -2</B
+>).  The relative pathnames
+that <B
+CLASS="emphasis.bold"
+>find</B
+> finds start with a dot (<B
+CLASS="emphasis.bold"
+>./</B
+>), the name of the
+working directory, which you can ignore.</P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-3211"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3214"
+></A
+>Linux systems, and some others, have the GNU <B
+CLASS="emphasis.bold"
+>locate</B
+> command.  If
+it's been set up and maintained on your system, you can use
+<B
+CLASS="emphasis.bold"
+>locate</B
+> to search part or all of a filesystem for a file with a
+certain name.  For instance, if you're looking for a file named
+<EM
+CLASS="emphasis"
+>alpha-test</EM
+>, <EM
+CLASS="emphasis"
+>alphatest</EM
+>, or something like that, try this:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>locate alpha</B
+></CODE
+>
+/users/alan/alpha3
+/usr/local/projects/mega/alphatest</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>You'll get the absolute pathnames of files and directories that have
+<EM
+CLASS="emphasis"
+>alpha</EM
+> in their names.
+(If you get a lot of output, add a pipe to <B
+CLASS="emphasis.bold"
+>more</B
+> or <B
+CLASS="emphasis.bold"
+>pg</B
+>&nbsp;- see
+<A
+CLASS="xref"
+HREF="ch05_01.htm"
+TITLE="Redirecting I/O "
+>Chapter 5</A
+>.)
+<B
+CLASS="emphasis.bold"
+>locate</B
+> may or may not list protected, private files;
+its listings usually also aren't completely up to date.
+To learn much more about <B
+CLASS="emphasis.bold"
+>find</B
+> and <B
+CLASS="emphasis.bold"
+>locate</B
+>,
+read your online documentation (see <A
+CLASS="xref"
+HREF="ch07_01.htm"
+TITLE="Where to Go from Here "
+>Chapter 7, Where to Go from Here </A
+>)
+or read the chapter about them in O'Reilly's <EM
+CLASS="emphasis"
+>UNIX Power Tools</EM
+>.<A
+CLASS="indexterm"
+NAME="AUTOID-3233"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3234"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3235"
+></A
+></P
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-4.5"
+>4.4.5 Removing Files and Directories</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-DELETING-FILES-DIRECTORIES"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-FILES-DELETING"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-DIRECTORIES-DELETING"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3247"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3250"
+></A
+>You may have finished working on a file or directory
+and see no need to keep it,
+or the contents may be obsolete.
+Periodically removing unwanted files and directories will
+free storage space.</P
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-4.5.1"
+>4.4.5.1 rm</A
+></H4
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-RM-COMMAND"
+></A
+>The <B
+CLASS="emphasis.bold"
+>rm</B
+> command removes files.
+The syntax is simple:</P
+><BLOCKQUOTE
+CLASS="blockquote"
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>rm</B
+> <EM
+CLASS="emphasis"
+>filename(s)</EM
+></P
+></BLOCKQUOTE
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>rm</B
+> removes the named files, as the following examples show:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>ls</B
+></CODE
+>
+chap10       chap2       chap5    cold
+chap1a.old   chap3.old   chap6    haha
+chap1b       chap4       chap7    oldjunk
+% <CODE
+CLASS="userinput"
+><B
+>rm *.old chap10</B
+></CODE
+>
+% <CODE
+CLASS="userinput"
+><B
+>ls</B
+></CODE
+>
+chap1b    chap4    chap6    cold    oldjunk
+chap2     chap5    chap7    haha
+% <CODE
+CLASS="userinput"
+><B
+>rm c*</B
+></CODE
+>
+% <CODE
+CLASS="userinput"
+><B
+>ls</B
+></CODE
+>
+haha    oldjunk
+%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>When you use wildcards with <B
+CLASS="emphasis.bold"
+>rm</B
+>, be sure you're deleting the
+right files!  If you accidentally remove a file you need, you can't
+recover it unless you have a copy in another directory or in the
+system backups.</P
+><BLOCKQUOTE
+CLASS="caution"
+><P
+CLASS="para"
+><STRONG
+>CAUTION:</STRONG
+> <A
+CLASS="indexterm"
+NAME="AUTOID-3276"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3278"
+></A
+>Do not enter <B
+CLASS="emphasis.bold"
+>rm *</B
+> carelessly.  It deletes all the files in your
+working directory.</P
+><P
+CLASS="para"
+>Here's another easy mistake to make: You want to enter a command like
+<B
+CLASS="emphasis.bold"
+>rm c*</B
+> (remove all filenames starting with &quot;c&quot;) but instead
+enter <B
+CLASS="emphasis.bold"
+>rm c *</B
+> (remove the file named <B
+CLASS="emphasis.bold"
+>c</B
+> and all files!).</P
+><P
+CLASS="para"
+>It's good practice to list the files with <B
+CLASS="emphasis.bold"
+>ls</B
+> before you remove
+them.  Or, if you use <B
+CLASS="emphasis.bold"
+>rm</B
+>'s <B
+CLASS="emphasis.bold"
+>-i</B
+> (<EM
+CLASS="emphasis"
+>i</EM
+>nteractive)
+option, <B
+CLASS="emphasis.bold"
+>rm</B
+> will ask you whether you want to remove each file.</P
+></BLOCKQUOTE
+><A
+CLASS="indexterm"
+NAME="AUTOID-3291"
+></A
+></DIV
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-4.5.2"
+>4.4.5.2 rmdir</A
+></H4
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-3295"
+></A
+>Just as you can create new directories, you can also remove them with
+the <B
+CLASS="emphasis.bold"
+>rmdir</B
+> command.  As a precaution, the <B
+CLASS="emphasis.bold"
+>rmdir</B
+> command
+will not let you delete directories that contain any files or
+subdirectories: the directory must first be empty.  
+(The <B
+CLASS="emphasis.bold"
+>rm -r</B
+>
+command removes a directory and everything in it.  It can be dangerous
+for beginners, though.)</P
+><P
+CLASS="para"
+>The syntax is:</P
+><BLOCKQUOTE
+CLASS="blockquote"
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>rmdir</B
+> <EM
+CLASS="emphasis"
+>dirname(s)</EM
+></P
+></BLOCKQUOTE
+><P
+CLASS="para"
+>If a directory you try to remove does contain files, you will get a message
+like &quot;rmdir: <EM
+CLASS="emphasis"
+>dirname</EM
+> not empty&quot;.</P
+><P
+CLASS="para"
+>To delete a directory that contains some files:</P
+><OL
+CLASS="orderedlist"
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+>Enter <B
+CLASS="emphasis.bold"
+>cd</B
+> <EM
+CLASS="emphasis"
+>dirname</EM
+> to get into the directory you want to delete.</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+>Enter <B
+CLASS="emphasis.bold"
+>rm *</B
+> to remove all files in that directory.</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+>Enter <B
+CLASS="emphasis.bold"
+>cd ..</B
+> to go to the parent directory.</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+>Enter <B
+CLASS="emphasis.bold"
+>rmdir</B
+> <EM
+CLASS="emphasis"
+>dirname</EM
+> to remove the unwanted directory.</P
+></LI
+></OL
+></DIV
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-4.5.3"
+>4.4.5.3 Problem checklist</A
+></H4
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-3326"
+></A
+></P
+><DL
+CLASS="variablelist"
+><DT
+CLASS="term"
+><EM
+CLASS="emphasis"
+>I still get the message &quot;dirname not 
+empty&quot; even after I've deleted all the files</EM
+>.</DT
+><DD
+CLASS="listitem"
+><P
+CLASS="para"
+>Use <B
+CLASS="emphasis.bold"
+>ls -a</B
+> to check that there are no hidden files (names that
+start with a period) other than <CODE
+CLASS="literal"
+>.</CODE
+> and <CODE
+CLASS="literal"
+>..</CODE
+> (the
+working directory and its parent).  The command <B
+CLASS="emphasis.bold"
+>rm .[a-zA-Z] .??*</B
+> is good for cleaning up hidden files.</P
+></DD
+></DL
+><A
+CLASS="indexterm"
+NAME="AUTOID-3339"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3340"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3341"
+></A
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-4.6"
+>4.4.6 Files on Other Operating Systems</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-REMOTE-FILES"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-FILES-REMOTE"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-DOS-ACCESS-WITH-UNIX"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-UNIX-ACCESS-OTHER-PLATFORMS"
+></A
+>You read above about <B
+CLASS="emphasis.bold"
+>ftp</B
+>, a program for transferring files across
+a network&nbsp;- possibly to non-UNIX operating systems.
+Your system may also be able to run operating systems other than UNIX.
+For instance, many Linux systems can also run MS-DOS and Windows 95.
+If yours does, you can probably use those files from your Linux account.</P
+><P
+CLASS="para"
+>If the DOS or Windows filesystem is <EM
+CLASS="emphasis"
+>mounted</EM
+> with your other
+filesystems, you'll be able to use its files by typing a UNIX-like
+pathname.
+For instance, from our PC under Linux, we can access the DOS file
+<EM
+CLASS="emphasis"
+>C:\WORD\REPORT.DOC</EM
+> through the pathname <EM
+CLASS="emphasis"
+>/dosc/word/report.doc</EM
+>.</P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-3361"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3364"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3367"
+></A
+>Your Linux (or other) system may also have the MTOOLS utilities.
+These give you DOS-like commands that interoperate with the UNIX-like system.
+For example, we can put a Windows 95 floppy disk in the A: drive and then
+copy a file named <EM
+CLASS="emphasis"
+>summary.txt</EM
+> into our current directory
+(<CODE
+CLASS="literal"
+>.</CODE
+>) by entering:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>mcopy a:summary.txt .</B
+></CODE
+>
+Copying summary.txt
+%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>Your system administrator should be able to tell you whether other
+filesystems are mounted, whether you have utilities like MTOOLS, and
+how to use them.<A
+CLASS="indexterm"
+NAME="AUTOID-3375"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3376"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3377"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3378"
+></A
+></P
+></DIV
+></DIV
+><DIV
+CLASS="htmlnav"
+><P
+></P
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch04_03.htm"
+TITLE="4.3 File and Directory Wildcards"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 4.3 File and Directory Wildcards"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="book"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"
+><IMG
+SRC="../gifs/txthome.gif"
+ALT="Learning the Unix Operating System"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch04_05.htm"
+TITLE="4.5 Printing Files"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 4.5 Printing Files"
+BORDER="0"></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+>4.3 File and Directory Wildcards</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="index"
+HREF="index/idx_0.htm"
+TITLE="Book Index"
+><IMG
+SRC="../gifs/index.gif"
+ALT="Book Index"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+>4.5 Printing Files</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><IMG
+SRC="../gifs/smnavbar.gif"
+USEMAP="#map"
+BORDER="0"
+ALT="The UNIX CD Bookshelf Navigation"><MAP
+NAME="map"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,73,21"
+HREF="../index.htm"
+ALT="The UNIX CD Bookshelf"><AREA
+SHAPE="RECT"
+COORDS="74,0,163,21"
+HREF="../upt/index.htm"
+ALT="UNIX Power Tools"><AREA
+SHAPE="RECT"
+COORDS="164,0,257,21"
+HREF="../unixnut/index.htm"
+ALT="UNIX in a Nutshell"><AREA
+SHAPE="RECT"
+COORDS="258,0,321,21"
+HREF="../vi/index.htm"
+ALT="Learning the vi Editor"><AREA
+SHAPE="RECT"
+COORDS="322,0,378,21"
+HREF="../sedawk/index.htm"
+ALT="sed &amp; awk"><AREA
+SHAPE="RECT"
+COORDS="379,0,438,21"
+HREF="../ksh/index.htm"
+ALT="Learning the Korn Shell"><AREA
+SHAPE="RECT"
+COORDS="439,0,514,21"
+HREF="index.htm"
+ALT="Learning the UNIX Operating System"></MAP
+></DIV
+></BODY
+></HTML
+>

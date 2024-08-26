@@ -1,0 +1,3740 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>patterns_java</title>
+<!--
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+-->
+<style>
+A:hover { COLOR: #FF0000; background: #FFA; TEXT-DECORATION: underline } 
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Verdana"><font size=-1>Patterns - 1</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Verdana"><font size=-1><a href="index.html">home</a>
+- <a href="#top">top of the page</a> - </font></font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<center>
+<h1>
+<b>Overview of Design Patterns</b></h1></center>
+
+<ul><u>Patterns in Java Volume 1: A Catalog of Reusable Design Patterns
+Illustrated with UML</u></ul>
+<a NAME="synopses"></a>The 41 patterns in volume 1 are organized into categories
+as shown in the following table:
+<center><table BORDER=3 COLS=3 WIDTH="60%" >
+<tr>
+<td VALIGN=CENTER WIDTH="60%">&nbsp;<a href="#Fundamental Patterns">Fundamental
+Design Patterns</a></td>
+
+<td><a href="#Delegation">Delegation</a>
+<br><a href="#Interface">Interface</a>
+<br><a href="#Proxy">Proxy</a>
+<br><a href="#Immutable">Immutable</a>
+<br><a href="#Marker Interface">Marker Interface</a></td>
+
+<td><a href="http://www.clickblocks.org/patterns1/visio/fundamental.zip">Download
+Visio 5.0 Drawings</a></td>
+</tr>
+
+<tr>
+<td>&nbsp;<a href="#Creational Patterns">Creational Patterns</a></td>
+
+<td><a href="#Abstract Factory">Abstract Factory</a>
+<br><a href="#Builder">Builder</a>
+<br><a href="#Factory Method">Factory Method</a>
+<br><a href="#Prototype">Prototype</a>
+<br><a href="#Singleton">Singleton</a>
+<br><a href="#Object Pool">Object Pool</a></td>
+
+<td><a href="http://www.clickblocks.org/patterns1/visio/creational.zip">Download
+Visio 5.0 Drawings</a></td>
+</tr>
+
+<tr>
+<td>&nbsp;<a href="#Partitioning Patterns">Partitioning Patterns</a></td>
+
+<td><a href="#Layered Initialization">Layered Initialization</a>
+<br><a href="#Decorator">Filter</a>
+<br><a href="#Composite">Composite</a></td>
+
+<td><a href="http://www.clickblocks.org/patterns1/visio/partitioning.zip">Download
+Visio 5.0 Drawings</a></td>
+</tr>
+
+<tr>
+<td>&nbsp;<a href="#Structural Patterns">Structural Patterns</a></td>
+
+<td><a href="#Structural Patterns">Adapter</a>
+<br><a href="#Iterator">Iterator</a>
+<br><a href="#Bridge">Bridge</a>
+<br><a href="#Facade">Fa&ccedil;ade</a>
+<br><a href="#Flyweight">Flyweight</a>
+<br><a href="#Dynamic Linkage">Dynamic Linkage</a>
+<br><a href="#Virtual Proxy">Virtual Proxy</a>
+<br><a href="#Decorator">Decorator</a>
+<br><a href="#Cache Management">Cache Management</a></td>
+
+<td><a href="http://www.clickblocks.org/patterns1/visio/structural.zip">Download
+Visio 5.0 Drawings</a></td>
+</tr>
+
+<tr>
+<td>&nbsp;<a href="#Behavioral Patterns">Behavioral Patterns</a></td>
+
+<td><a href="#Chain of Responsibility">Chain of Responsibility</a>
+<br><a href="#Command">Command</a>
+<br><a href="#Little Language / Interpreter">Little Language / Interpreter</a>
+<br><a href="#Mediator">Mediator</a>
+<br><a href="#Snapshot">Snapshot</a>
+<br><a href="#Observer">Observer</a>
+<br><a href="#State">State</a>
+<br><a href="#Null Object">Null Object</a>
+<br><a href="#Strategy">Strategy</a>
+<br><a href="#Template">Template Method</a>
+<br><a href="#Visitor">Visitor</a></td>
+
+<td><a href="http://www.clickblocks.org/patterns1/visio/behavioral.zip">Download
+Visio 5.0 Drawings</a></td>
+</tr>
+
+<tr>
+<td>&nbsp;<a href="#Concurrency Patterns">Concurrency Patterns</a></td>
+
+<td><a href="#Single Threaded Execution">Single Threaded Execution</a>
+<br><a href="#Guarded Suspension">Guarded Suspension</a>
+<br><a href="#Balking">Balking</a>
+<br><a href="#Scheduler">Scheduler</a>
+<br><a href="#Read/Write Lock">Read/Write Lock</a>
+<br><a href="#Producer-Consumer">Producer-Consumer</a>
+<br><a href="#Two-Phase">Two-Phase Termination</a></td>
+
+<td><a href="http://www.clickblocks.org/patterns1/visio/concurrency.zip">Download
+Visio 5.0 Drawings</a></td>
+</tr>
+</table></center>
+
+<hr WIDTH="100%">
+<h2>
+<a NAME="Fundamental Patterns"></a>Fundamental Design Patterns</h2>
+
+<ul>
+<li>
+&nbsp;<a NAME="Delegation"></a><b>Delegation (When not to use Inheritance)</b></li>
+
+<br>Delegation is a way of extending and reusing a class by writing another
+class with additional functionality that uses instances of the original
+class to provide the original functionality.</ul>
+
+<ul>
+<li>
+<a NAME="Interface"></a><b>Interface</b></li>
+
+<br>Keep a class that uses data and services provided by instances of other
+classes independent of those classes by having it access those instances
+through an interface.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Delegation">Delegation</a></li>
+
+<br>The Delegation and Interface patterns are often used together.</ul>
+
+<li>
+<a NAME="Immutable"></a><b>Immutable</b></li>
+
+<br>The Immutable pattern increases the robustness of objects that share
+references to the same object and reduces the overhead of concurrent access
+to an object. It accomplishes this by not allowing an object’s state information
+to change after it is constructed. The Immutable pattern also avoids the
+need to synchronize multiple threads of execution that share an object.
+<p>Related patterns are
+<ul>
+<li>
+&nbsp;<a href="#Single Threaded Execution">Single Threaded Execution</a></li>
+
+<br>The Single Threaded Execution pattern is the pattern most frequently
+used to coordinate access by multiple threads to a shared object. The Immutable
+object pattern can be used to avoid the need for the Single Threaded Execution
+pattern or any other kind of access coordination.</ul>
+
+<li>
+<a NAME="Marker Interface"></a><b>Marker Interface</b></li>
+
+<br>The Marker Interface pattern uses interfaces that declare no methods
+or variables to indicate semantic attributes of a class. It works particularly
+well with utility classes that must determine something about objects without
+assuming they are an instance of any particular class.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Snapshot">Snapshot</a></li>
+
+<br>The Marker Interface pattern is used as part of the Snapshot pattern
+to allow serialization of objects.</ul>
+
+<li>
+<a NAME="Proxy"></a><b>Proxy</b></li>
+
+<br>The Proxy pattern forces method calls to an object to occur indirectly
+through a proxy object that acts as a surrogate for the other object, delegating
+method calls to that object. Classes for proxy objects are declared in
+a way that usually eliminates client object’s awareness that they are dealing
+with a proxy. Proxy is a very general pattern that occurs in many other
+patterns, but never by itself in its pure form.
+<p>Related patterns are
+<ul>
+<li>
+Access Proxy</li>
+
+<br>The Access Proxy pattern uses a proxy to enforce a security policy
+on access to a service providing object.
+<br>&nbsp;
+<li>
+<a href="#Facade">Fa&ccedil;ade</a></li>
+
+<br>The Fa&ccedil;ade pattern uses a single object as a front end to a
+set of interrelated objects.
+<br>&nbsp;
+<li>
+Remote Proxy</li>
+
+<br>The Remote Proxy pattern uses a proxy to hide the fact that a service
+object is located on a different machine than the client objects that want
+to use it.
+<br>&nbsp;
+<li>
+<a href="#Virtual Proxy">Virtual Proxy</a></li>
+
+<br>This pattern uses a proxy to create the illusion that a service providing
+object exists before it has actually been created. It is useful if the
+object is expensive to create and its services may not be needed.
+<br>&nbsp;
+<li>
+<a href="#Decorator">Decorator</a></li>
+
+<br>The Decorator pattern is structurally similar to the Proxy pattern
+in that it forces access to a service providing object to be done indirectly
+through another object. The difference is a matter of intent. Instead of
+trying to manage the service, the indirection object in some way enhances
+the service.</ul>
+
+<hr WIDTH="100%">
+<h2>
+<a NAME="Creational Patterns"></a>Creational Patterns</h2>
+
+<li>
+<a NAME="Abstract Factory"></a><b>Abstract Factory</b></li>
+
+<br>Given a set of related abstract classes, the Abstract Factory pattern
+provides a way to create instances of those abstract classes from a matched
+set of concrete subclasses. The Abstract Factory pattern is useful for
+allowing a program to work with a variety of complex external entities
+such as different windowing systems with similar functionality.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Factory Method">Factory Method</a></li>
+
+<br>The Abstract Factory may uses the Factory Method pattern.
+<br>&nbsp;
+<li>
+<a href="#Singleton">Singleton</a></li>
+
+<br>Concrete Factory classes are usually implemented as Singleton classes.</ul>
+
+<li>
+<a NAME="Builder"></a><b>Builder</b></li>
+
+<br>The Builder pattern allows a client object to construct a complex object
+by specifying only its type and content. The client is shielded from the
+details of the object’s construction.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Interface">Interface</a></li>
+
+<br>The Builder pattern uses the Interface pattern to hide the actual class
+of the object it builds.
+<br>&nbsp;
+<li>
+<a href="#Composite">Composite</a></li>
+
+<br>The object built using the Builder pattern is typically a Composite.
+<br>&nbsp;
+<li>
+<a href="#Factory Method">Factory Method</a></li>
+
+<br>The Builder pattern uses the Factory Method pattern to decide which
+concrete class to instantiate to build the desired type of object.
+<br>&nbsp;
+<li>
+<a href="#Layered Initialization">Layered Initialization</a></li>
+
+<br>The Builder pattern uses the Layered Initialization pattern to create
+objects that build the desired type of object.
+<br>&nbsp;
+<li>
+<a href="#Null Object">Null Object</a></li>
+
+<br>The Null Object pattern may be used by the Builder pattern to provide
+“do nothing” implementations of methods.
+<br>&nbsp;
+<li>
+<a href="#Visitor">Visitor</a></li>
+
+<br>The Visitor pattern allows the creation requesting object to be more
+closely coupled to the construction of the new complex object. Instead
+of describing the content of the objects to be built through a series of
+method calls, the information is presented in bulk as a complex data structure.</ul>
+
+<li>
+<a NAME="Factory Method"></a><b>Factory Method</b></li>
+
+<br>You write a class for reuse with arbitrary data types. You organize
+this class so that it can instantiate other classes without being dependent
+on any of the classes it instantiates. The reusable class is able to remain
+independent of the classes it instantiates by it can delegatinge the choice
+of which class to instantiate to another object and referring to the newly
+created object through a common interface.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Abstract Factory">Abstract Factory</a></li>
+
+<br>The Factory Method pattern is useful for constructing individual objects
+for a specific purpose without the construction requester knowing the specific
+classes being instantiated. If you need to create a matched set of such
+objects, then the Abstract Factory pattern is a more appropriate pattern.
+<br>&nbsp;
+<li>
+<a href="#Template">Template Method</a></li>
+
+<br>The Factory Method pattern is often used with the Template Method pattern.
+<br>&nbsp;
+<li>
+<a href="#Prototype">Prototype</a></li>
+
+<br>The Prototype pattern provides an alternate way for an object to work
+with other objects without knowing the details of their construction.</ul>
+
+<li>
+<a NAME="Prototype"></a><b>Prototype</b></li>
+
+<br>The Prototype pattern allows an object to create customized objects
+without knowing their class or any details of how to create them. It works
+by giving prototypical objects to an object that initiates object creation.
+The creation initiating object then creates objects by asking the prototypical
+objects to make copies of themselves.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Composite">Composite</a></li>
+
+<br>The Prototype pattern is often used with the Composite pattern. Prototypical
+objects are often composite objects.
+<br>&nbsp;
+<li>
+<a href="#Abstract Factory">Abstract Factory</a></li>
+
+<br>The Abstract Factory pattern can be a good alternative to the Prototype
+pattern if there is no need for the dynamic changes that the Prototype
+pattern allows to a palette of prototypical objects.
+<br>&nbsp;
+<li>
+<a href="#Facade">Fa&ccedil;ade</a></li>
+
+<br>The class that manages a collection of prototypical objects commonly
+acts as fa&ccedil;ade that separates the other classes that participate
+in the Prototype pattern from the rest of the program.
+<br>&nbsp;
+<li>
+<a href="#Factory Method">Factory Method</a></li>
+
+<br>The Factory Method pattern may be an alternative to the Prototype pattern
+when the palette of prototypical objects never contains more than one object.
+<br>&nbsp;
+<li>
+<a href="#Decorator">Decorator</a></li>
+
+<br>The Prototype pattern is often used with the Decorator pattern.</ul>
+
+<li>
+<a NAME="Singleton"></a><b>Singleton</b></li>
+
+<br>The Singleton pattern ensures that only one instance of a class is
+created. All objects that use an instance of that class use the same instance.
+<p>You can use the Singleton pattern with many other patterns. In particular,
+it is often used with the <a href="#Abstract Factory">Abstract Factory</a>,
+<a href="#Builder">Builder</a>
+and <a href="#Prototype">Prototype</a> patterns.
+<p>The Singleton pattern has some similarity to the <a href="#Cache Management">Cache
+Management</a> pattern. A Singleton is functionally similar to a Cache
+that only contains one object.
+<p>If multiple threads will be getting the instance of a singleton class,
+you can use the <a href="pattern_synopses2.htm#Double Checked Locking">Double
+Checked Locking</a> coding pattern to ensure that only one instance is
+created while avoiding the overhead of unnecessary thread synchronization
+after the instance is created.
+<p>Related patterns are
+<ul>
+<li>
+<a href="pattern_synopses3.htm#Shared Object">Shared Object</a></li>
+
+<br>The Singleton pattern describes classes that have a single instance
+that may or may not be shared. The Shared Object pattern describes objects
+that are shared and may have multiple instances.</ul>
+
+<li>
+<a NAME="Object Pool"></a><b>Object Pool</b></li>
+
+<br>Manage the reuse of objects for a type of object that is expensive
+to create or only a limited number of a kind of object can be created.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Cache Management">Cache Management</a></li>
+
+<br>The Cache Management pattern manages the reuse of specific instances
+of a class. The Object Pool pattern manages and creates instances of a
+class that can be used interchangeably.
+<br>&nbsp;
+<li>
+<a href="#Factory Method">Factory Method</a></li>
+
+<br>The Factory Method pattern can be used to encapsulate the creation
+logic for objects. However, it does not manage them after their creation.
+<br>&nbsp;
+<li>
+<a href="#Singleton">Singleton</a></li>
+
+<br>Objects that manage object pools are usually singletons.</ul>
+
+<hr WIDTH="100%">
+<h2>
+<a NAME="Partitioning Patterns"></a>Partitioning Patterns</h2>
+
+<li>
+<a NAME="Layered Initialization"></a><b>Layered Initialization</b></li>
+
+<br>When you need multiple implementations of an abstraction, you usually
+define a class to encapsulate common logic and subclasses to encapsulate
+different specialized logic. That does not work when common logic must
+be used to decide which specialized subclass to create. The Layered Initialization
+pattern solves this problem by encapsulating the common and specialized
+logic to create an object in unrelated classes.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Builder">Builder</a></li>
+
+<br>The Builder pattern uses the Layered Initialization pattern to create
+a specialized object for representing data in a specific form.
+<br>&nbsp;
+<li>
+<a href="#Facade">Fa&ccedil;ade</a></li>
+
+<br>The Layered Initialization pattern uses the Fa&ccedil;ade pattern by
+hiding all of the other objects participating in the pattern from clients
+of service objects.
+<br>&nbsp;
+<li>
+<a href="#Factory Method">Factory Method</a></li>
+
+<br>When the choice of which kind of object to create does not involve
+any significant preprocessing of data, the Factory Method pattern may be
+a better choice. The Layered Initialization pattern may use the Factory
+Method pattern after it has decided what kind of specialized logic is needed.
+<br>&nbsp;
+<li>
+<a href="#Layered Initialization">Layered Initialization</a></li>
+
+<br>The Layered Initialization pattern recognizes a division of responsibilities
+into layers during design.
+<br>&nbsp;
+<li>
+<a href="#Composite">Composite</a></li>
+
+<br>When more than two layers of initialization are needed for initialization
+you can combine the Layered Initialization pattern with the Composite pattern
+to perform initialization in as many layers as needed.</ul>
+
+<li>
+<a NAME="Filter"></a><b>Filter</b></li>
+
+<br>The Filter pattern allows objects that perform different transformations
+and computations on streams of data and have compatible interfaces to be
+dynamically connected to perform combinations of operations on streams
+of data.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Composite">Composite</a></li>
+
+<br>The Composite pattern can be an alternative to the Filter pattern when
+the objects involved do not have a consistent interface and they can be
+composed statically.
+<br>&nbsp;
+<li>
+Layered Architecture</li>
+
+<br>The Layered Architecture pattern (described in volume 2) is similar
+to the Filter pattern. The most important difference is that the objects
+involved in the layered Architecture pattern correspond to different levels
+of abstraction.
+<br>&nbsp;
+<li>
+<a href="#Decorator">Decorator</a></li>
+
+<br>The Filter pattern is a special case of the Decorator pattern, where
+a data source or data sink object is wrapped to add logic to the handling
+of a data stream.</ul>
+
+<li>
+<a NAME="Composite"></a><b>Composite</b></li>
+
+<br>The Composite pattern allows you to build complex objects by recursively
+composing similar objects in a tree-like manner. The Composite pattern
+also allows the objects in the tree to be manipulated in a consistent manner,
+by requiring all of the objects in the tree to have a common superclass
+or interface.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Chain of Responsibility">Chain of Responsibility</a></li>
+
+<br>The Chain of Responsibility pattern can be combined with the Composite
+pattern by adding child to parent links so that children can get information
+from an ancestor without having to know which ancestor the information
+came from.
+<br>&nbsp;
+<li>
+High Cohesion</li>
+
+<br>The High Cohesion pattern (described in volume 2) discourages putting
+specialized methods in general purpose classes, which is something that
+the Composite pattern encourages.
+<br>&nbsp;
+<li>
+<a href="#Visitor">Visitor</a></li>
+
+<br>You can use the Visitor pattern to encapsulate operations in a single
+class that would otherwise be spread across multiple classes.</ul>
+
+<hr WIDTH="100%">
+<h2>
+<a NAME="Structural Patterns"></a>Structural Patterns</h2>
+
+<li>
+<a NAME="Adapter"></a><b>Adapter</b></li>
+
+<br>An Adapter class implements an interface known to its clients and provides
+access to an instance of a class not know to its clients. An adapter object
+provides the functionality promised by an interface without having to assume
+what class is being used to implement that interface.
+<p>Related patterns are
+<ul>
+<li>
+<a href="pattern_synopses2.htm#Anonymous Adapter">Anonymous Adapter</a></li>
+
+<br>This is a coding pattern that uses anonymous adapter objects to handle
+events.
+<br>&nbsp;
+<li>
+<a href="#Facade">Fa&ccedil;ade</a></li>
+
+<br>The Adapter class provides an object that acts as an intermediary for
+method calls between client objects and one other object not known to the
+client objects. The Fa&ccedil;ade pattern provides an object that acts
+as an intermediary for method calls between client objects and multiple
+objects not know to the client objects.
+<br>&nbsp;
+<li>
+<a href="#Iterator">Iterator</a></li>
+
+<br>The Iterator pattern is a specialized form of the Adapter pattern for
+sequentially accessing the contents of collection objects.
+<br>&nbsp;
+<li>
+<a href="#Proxy">Proxy</a></li>
+
+<br>The Proxy pattern, like the Adapter pattern, uses an object that is
+a surrogate for another object. However, a Proxy object has the same interface
+as the object for which it is a surrogate.
+<br>&nbsp;
+<li>
+<a href="#Strategy">Strategy</a></li>
+
+<br>The Strategy pattern is structurally similar to the Adapter pattern.
+The difference is in the intent. The Adapter pattern allows a Client object
+to carry out its originally intended function in collaboration by calling
+method of objects the implement a particular interface. The Strategy pattern
+provides objects that implement a particular interface for the purpose
+of altering or determining the behavior of a Client object.</ul>
+
+<li>
+<a NAME="Iterator"></a><b>Iterator</b></li>
+
+<br>The Iterator pattern defines an interface that declares methods for
+sequentially accessing the objects in a collection. A class that accesses
+a collection only through such an interface remains independent of the
+class that implements the interface.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Adapter">Adapter</a></li>
+
+<br>The Iterator pattern is a specialized form of the Adapter pattern for
+sequentially accessing the contents of collection objects.
+<br>&nbsp;
+<li>
+<a href="#Factory Method">Factory Method</a></li>
+
+<br>Some collection classes may use the Factory Method pattern to determine
+what kind of iterator to instantiate.
+<br>&nbsp;
+<li>
+<a href="#Null Object">Null Object</a></li>
+
+<br>Null iterators are sometimes used to implement the Null Object pattern.</ul>
+
+<li>
+<a NAME="Bridge"></a><b>Bridge</b></li>
+
+<br>The Bridge pattern is useful when there is a hierarchy of abstractions
+and a corresponding hierarchy of implementations. Rather than combining
+the abstractions and implementations into many distinct classes, the Bridge
+pattern implements the abstractions and implementations as independent
+classes that can be combined dynamically.
+<p>Related patterns are
+<ul>
+<li>
+Layered Architecture</li>
+
+<br>The Bridge design pattern is a way of organizing the entities identified
+using the Layered Architecture pattern (described in volume 2) into classes.
+<br>&nbsp;
+<li>
+<a href="#Abstract Factory">Abstract Factory</a></li>
+
+<br>The Abstract Factory pattern can be used by the Bridge pattern to decide
+which implementation class to instantiate for an abstraction object.</ul>
+
+<li>
+<a NAME="Facade"></a><b>Fa&ccedil;ade</b></li>
+
+<br>The Fa&ccedil;ade pattern simplifies access to a related set of objects
+by providing one object that all objects outside the set use to communicate
+with the set.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Interface">Interface</a></li>
+
+<br>The Interface pattern can be used with the Fa&ccedil;ade pattern to
+allow different sets of fa&ccedil;ade and implementation classes to be
+used without client classes having to be aware of the different classes.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses2.htm#Don't Talk to Strangers">Law of Demeter</a></li>
+
+<br>A conceptual model that uses the Law of Demeter pattern often gives
+rise to a design that follows the Fa&ccedil;ade pattern.</ul>
+
+<li>
+<a NAME="Flyweight"></a><b>Flyweight</b></li>
+
+<br>If instances of a class that contain the same information can be used
+interchangeably, the Flyweight pattern allows a program to avoid the expense
+of multiple instances that contain the same information by sharing one
+instance.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Composite">Composite</a></li>
+
+<br>The Flyweight pattern is often combined with the Composite pattern
+to represent the leaf nodes of a hierarchical structure with shared objects.
+<br>&nbsp;
+<li>
+<a href="#Factory Method">Factory Method</a></li>
+
+<br>The Flyweight pattern uses the factory method pattern to create new
+flyweight objects.
+<br>&nbsp;
+<li>
+<a href="#Immutable">Immutable</a></li>
+
+<br>Shared flyweight objects are often immutable.</ul>
+
+<li>
+<a NAME="Dynamic Linkage"></a><b>Dynamic Linkage</b></li>
+
+<br>Allow a program, upon request, to load and use arbitrary classes that
+implement a known interface.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Virtual Proxy">Virtual Proxy</a></li>
+
+<br>The Virtual Proxy sometimes uses the Dynamic Linkage pattern to load
+the class that it needs to create its underlying object.</ul>
+
+<li>
+<a NAME="Virtual Proxy"></a><b>Virtual Proxy</b></li>
+
+<br>If an object is expensive to instantiate and may not be needed, it
+may be advantageous to postpone its instantiation until the object is needed.
+The Virtual Proxy pattern hides the fact that an object may not yet exist
+from its clients, by having them access the object indirectly through a
+proxy object that implements the same interface as the object that may
+not exist. The technique of delaying the instantiation of an object until
+it is actually needed is sometimes called lazy instantiation.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Facade">Fa&ccedil;ade</a></li>
+
+<br>The Fa&ccedil;ade pattern can be used with the Virtual Proxy pattern
+to minimize the number of proxy classes that are needed.
+<br>&nbsp;
+<li>
+<a href="#Proxy">Proxy</a></li>
+
+<br>The Virtual Proxy pattern is a specialized form of the Proxy pattern.</ul>
+
+<li>
+<a NAME="Decorator"></a><b>Decorator</b></li>
+
+<br>The Decorator pattern extends the functionality of an object in a way
+that is transparent to its clients. It does that by using an instance of
+a subclass of the original class that delegates operations to the original
+object.
+<p>Related patterns are
+<ul>
+<li>
+&nbsp;<a href="#Delegation">Delegation</a></li>
+
+<br>The Decorator pattern is a structured way of applying the Delegation
+pattern.
+<br>&nbsp;
+<li>
+<a href="#Filter">Filter</a></li>
+
+<br>The Filter pattern is a specialized version of the Decorator pattern
+that focuses on manipulating a data stream.
+<br>&nbsp;
+<li>
+<a href="#Strategy">Strategy</a></li>
+
+<br>The Decorator pattern is useful for arranging for things to happen
+before or after the methods of another object are called. If you want to
+arrange for different things to happen in the middle of calls to a method,
+consider using the Strategy pattern.
+<br>&nbsp;
+<li>
+<a href="#Template">Template Method</a></li>
+
+<br>The Template Method pattern is an alternative to the Decorator pattern
+that allows variable behavior in the middle of a method call instead of
+before or after it.</ul>
+
+<li>
+<a NAME="Cache Management"></a><b>Cache Management</b></li>
+
+<br>The Cache Management pattern allows fast access to objects that would
+otherwise take a long time to access. It involves keeping a copy of objects
+that are expensive to construct after the immediate need for the object
+is over. The object may be expensive to construct for any number of reasons,
+such as requiring a lengthy computation or being fetched from a database.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Facade">Fa&ccedil;ade</a></li>
+
+<br>The Cache Management pattern uses the Fa&ccedil;ade pattern.
+<br>&nbsp;
+<li>
+Publish-Subscribe</li>
+
+<br>You can use the Publish-Subscribe pattern to ensure the read consistency
+of a cache.
+<br>&nbsp;
+<li>
+Remote Proxy</li>
+
+<br>The Remote Proxy provides an alternative to the Cache Management pattern
+by working with objects that exist in a remote environment rather than
+fetching them into the local environment.
+<br>&nbsp;
+<li>
+<a href="#Template">Template Method</a></li>
+
+<br>The Cache Management pattern uses the Template Method pattern to keep
+its Cache class reusable across application domains.
+<br>&nbsp;
+<li>
+<a href="#Virtual Proxy">Virtual Proxy</a></li>
+
+<br>The Cache Management pattern is often used with the Virtual Proxy pattern
+to make the cache transparent to objects that access object in the cache.</ul>
+
+<hr WIDTH="100%">
+<h2>
+<a NAME="Behavioral Patterns"></a>Behavioral Patterns</h2>
+
+<li>
+<a NAME="Chain of Responsibility"></a><b>Chain of Responsibility</b></li>
+
+<br>The Chain of Responsibility pattern allows an object to send a command
+without knowing what object or objects will receive it. It accomplishes
+that by passing the command to a chain of objects that is typically part
+of a larger structure. Each object in the chain may handle the command,
+pass the command on to the next object in the chain or do both.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Composite">Composite</a></li>
+
+<br>When the chain of objects used by the Chain of Responsibility pattern
+is part of a larger structure, that larger structure is usually built using
+the Composite pattern.
+<br>&nbsp;
+<li>
+<a href="#Command">Command</a></li>
+
+<br>The Chain of Responsibility pattern makes the particular object that
+executes a command indefinite. The Command pattern makes the object that
+executes a command explicit and specific.
+<br>&nbsp;
+<li>
+<a href="#Template">Template Method</a></li>
+
+<br>When the objects that make up a chain of responsibility are part of
+a larger organization built using the Composite pattern, the Template Method
+pattern is often used to organize the behavior of individual objects.</ul>
+
+<li>
+<a NAME="Command"></a><b>Command</b></li>
+
+<br>Encapsulate commands in objects so that you can control their selection,
+sequencing, queue them, undo them and otherwise manipulate them.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Factory Method">Factory Method</a></li>
+
+<br>The Factory Method pattern is sometimes used to provide a layer of
+indirection between a user interface and command classes.
+<br>&nbsp;
+<li>
+<a href="#Little Language / Interpreter">Little Language</a></li>
+
+<br>You can use the Command Pattern to help implement the Little Language
+pattern.
+<br>&nbsp;
+<li>
+<a href="#Snapshot">Snapshot</a></li>
+
+<br>You can use the Snapshot pattern to provide a coarse grained undo mechanism
+that saves the entire state of an object rather than a command by command
+account of how to reconstruct previous states.
+<br>&nbsp;
+<li>
+<a href="#Template">Template Method</a></li>
+
+<br>The Template Method pattern can be used to implement the top level
+undo logic of the Command pattern.</ul>
+
+<li>
+<a NAME="Little Language / Interpreter"></a><b>Little Language / Interpreter</b></li>
+
+<br>Suppose you need to solve many similar problems and you notice that
+the solutions to these problems can be expressed as different combinations
+of a small number of elements or operations. The simplest way to express
+solutions to these problems may be to define a little language. Common
+types of problems you can solve with little languages are searches of common
+data structures, creation of complex data structures and formatting of
+data.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Composite">Composite</a></li>
+
+<br>A parse tree is organized with the Composite pattern.
+<br>&nbsp;
+<li>
+<a href="#Visitor">Visitor</a></li>
+
+<br>The Visitor pattern allows you to encapsulate logic for simple manipulations
+of a parse tree in a single class.</ul>
+
+<li>
+<a NAME="Mediator"></a><b>Mediator</b></li>
+
+<br>The Mediator pattern uses an object to coordinate state changes between
+other objects. Putting the logic in one object to manage state changes
+of other objects, instead of distributing the logic over the other objects,
+results in a more cohesive implementation of the logic and decreased coupling
+between the other objects.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Adapter">Adapter</a></li>
+
+<br>Mediator classes often use adapter objects to receive notifications
+of state changes.
+<br>&nbsp;
+<li>
+<a href="#Interface">Interface</a></li>
+
+<br>The Mediator pattern uses the Interface pattern to keep the Colleague
+classes independent of the Mediator class.
+<p><a href="pattern_synopses2.htm#Low Coupling/High Cohesion">Low Coupling/High
+Cohesion</a>
+<br>The Mediator pattern is an good example of an exception to the advice
+of the Low Coupling/High Cohesion pattern.
+<br>&nbsp;
+<br>&nbsp;</ul>
+
+<li>
+<a NAME="Snapshot"></a><b>Snapshot</b></li>
+
+<br>Capture a snapshot of an object's state so that the object's state
+can be restored later. The object that initiates the capture or restoration
+of the state does not need to know anything about the state information.
+It only needs to know that the object whose state it is restoring or capturing
+implements a particular interface.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Command">Command</a></li>
+
+<br>The Command pattern allows state changes to be undone on a command
+by command basis without having to make a snapshot of an object’s entire
+state after every command.</ul>
+
+<li>
+<a NAME="Observer"></a><b>Observer</b></li>
+
+<br>Allow objects to dynamically register dependencies between objects,
+so that an object will notify those objects that are dependent on it when
+its state changes.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Adapter">Adapter</a></li>
+
+<br>The Adapter pattern can be used to allow objects that do not implement
+the required interface to participate in the Observer pattern.
+<br>&nbsp;
+<li>
+<a href="#Delegation">Delegation</a></li>
+
+<br>The Observer pattern uses the Delegation pattern.
+<br>&nbsp;
+<li>
+<a href="#Mediator">Mediator</a></li>
+
+<br>The Mediator pattern is sometimes used to coordinate state changes
+initiated by multiple objects to an Observable object.</ul>
+
+<li>
+<a NAME="State"></a><b>State</b></li>
+
+<br>Encapsulate the states of an object as discrete objects, each belonging
+to a separate subclass of an abstract state class.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Flyweight">Flyweight</a></li>
+
+<br>You can use the Flyweight pattern to share state objects.
+<br>&nbsp;
+<li>
+<a href="#Mediator">Mediator</a></li>
+
+<br>The State pattern is often used with the Mediator pattern when implementing
+user interfaces.
+<br>&nbsp;
+<li>
+<a href="#Singleton">Singleton</a></li>
+
+<br>You can implement non-parametric states using the Singleton pattern.</ul>
+
+<li>
+<a NAME="Null Object"></a><b>Null Object</b></li>
+
+<br>The Null Object pattern provides an alternative to using null to indicate
+the absence of an object to delegate an operation to. Using null to indicate
+the absence of such an object requires a test for null before each call
+to the other object’s methods. Instead of using null, the Null Object pattern
+uses a reference to an object that doesn’t do anything.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Singleton">Singleton</a></li>
+
+<br>If instances of a class whose methods do nothing contain no instance
+specific information, then you can save time and memory by implementing
+it as a singleton class.
+<br>&nbsp;
+<li>
+<a href="#Strategy">Strategy</a></li>
+
+<br>The Null Object pattern is often used with the Strategy pattern.</ul>
+
+<li>
+<a NAME="Strategy"></a><b>Strategy</b></li>
+
+<br>Encapsulate related algorithms in classes that are subclasses of a
+common superclass. This allows the selection of algorithm to vary by object
+and also allows it to vary over time.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Adapter">Adapter</a></li>
+
+<br>The Adapter pattern is structurally similar to the Strategy pattern.
+The difference is in the intent. The Adapter pattern allows a client object
+to carry out its originally intended function by calling methods of objects
+that implement a particular interface. The Strategy pattern provides objects
+that implement a particular interface for the purpose of altering or determining
+the behavior of a client object.
+<br>&nbsp;
+<li>
+<a href="#Flyweight">Flyweight</a></li>
+
+<br>If there are many client objects, they may share strategy objects if
+they are implemented as Flyweights.
+<br>&nbsp;
+<li>
+<a href="#Null Object">Null Object</a></li>
+
+<br>The Strategy pattern is often used with the Null Object pattern.
+<br>&nbsp;
+<li>
+<a href="#Template">Template Method</a></li>
+
+<br>The Template method pattern manages alternate behaviors through subclassing
+rather than delegation.</ul>
+
+<li>
+<a NAME="Template"></a><b>Template Method</b></li>
+
+<br>Write an abstract class that contains only part of the logic needed
+to accomplish its purpose. Organize the class so that its concrete methods
+call an abstract method where the missing logic would have appeared. Provide
+the missing logic in subclass’ methods that override the abstract methods.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Strategy">Strategy</a></li>
+
+<br>The Strategy pattern modifies the logic of individual objects. The
+Template Method pattern modifies the logic of an entire class.</ul>
+
+<li>
+<a NAME="Visitor"></a><b>Visitor</b></li>
+
+<br>One way to implement an operation that involves objects in a complex
+structure is to provide logic in each of their classes to support the operation.
+The Visitor pattern provides an alternative way to implement such operations
+that avoids complicating the classes of the objects in the structure by
+putting all of the necessary logic in a separate visitor class. The Visitor
+pattern also allows the logic to be varied by using different visitor classes.
+<p>Related patterns are
+<ul>
+<li>
+Iterator</li>
+
+<br>The Iterator pattern is an alternative to the Visitor pattern when
+the object structure to be navigated has a linear structure.
+<br>&nbsp;
+<li>
+<a href="#Little Language / Interpreter">Little Language</a></li>
+
+<br>In the Little Language pattern, you can use the Visitor Pattern to
+implement the interpreter part of the pattern.
+<br>&nbsp;
+<li>
+<a href="#Composite">Composite</a></li>
+
+<br>The Visitor pattern is often used with object structures that are organized
+according to the Composite pattern.</ul>
+
+<hr WIDTH="100%">
+<h2>
+<a NAME="Concurrency Patterns"></a>Concurrency Patterns</h2>
+&nbsp;
+<li>
+<a NAME="Single Threaded Execution"></a><b>Single Threaded Execution</b></li>
+
+<br>&nbsp;Some methods access data or other shared resources in a way that
+produces incorrect results if there are concurrent calls to a method and
+both calls access the data or other resource at the same time. The Single
+Threaded Execution pattern solves this problem by preventing concurrent
+calls to the method from resulting in concurrent executions of the method.
+<br>&nbsp;
+<li>
+<a NAME="Guarded Suspension"></a><b>Guarded Suspension</b></li>
+
+<br>&nbsp;Suspend execution of a method call until a precondition is satisfied.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Balking">Balking</a></li>
+
+<br>The Balking pattern provides a different strategy for handling method
+calls to objects that are not in an appropriate state to execute the method
+call.
+<br>&nbsp;
+<li>
+<a href="#Two-Phase">Two-Phase Termination</a></li>
+
+<br>Because the implementation of the Two-Phase Termination pattern usually
+involves the throwing and handling of <tt>InterruptedException</tt>, its
+implementation usually interacts with the Guarded Suspension pattern.</ul>
+
+<li>
+<a NAME="Balking"></a><b>Balking</b></li>
+
+<br>&nbsp;If an object’s method is called when the object is not in an
+appropriate state to execute that method, have the method return without
+doing anything.
+<p>Related patterns are
+<ul>
+<li>
+<a href="pattern_synopses2.htm#Double Checked Locking">Double Checked Locking</a></li>
+
+<br>The Double Checked Locking coding pattern (described in volume 2) is
+structurally simillar to the Balking pattern. Its intention is different.
+The balking pattern avoids executing code when an object is in the wrong
+state. The Double Checked Locking pattern avoids executing code to avoid
+unnecessary work.
+<br>&nbsp;
+<li>
+<a href="#Guarded Suspension">Guarded Suspension</a></li>
+
+<br>The Guarded Suspension pattern provides an alternate way to handle
+method calls to objects that are not in an appropriate state to execute
+the method call.
+<br>&nbsp;
+<li>
+<a href="#Single Threaded Execution">Single Threaded Execution</a></li>
+
+<br>The Balking pattern is often combined with the Single Threaded Execution
+pattern to coordinate changes to an object’s state.</ul>
+
+<li>
+<a NAME="Scheduler"></a><b>Scheduler</b></li>
+
+<br>&nbsp;Control the order in which threads are scheduled to execute single
+threaded code using an object that explicitly sequences waiting threads.
+The Scheduler pattern provides a mechanism for implementing a scheduling
+policy. It is independent of any specific scheduling policy.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Read/Write Lock">Read/Write Lock</a></li>
+
+<br>Implementations of the Read/Write Lock pattern usually use the Scheduler
+pattern to ensure fairness in scheduling.</ul>
+
+<li>
+<a NAME="Read/Write Lock"></a><b>Read/Write Lock</b></li>
+
+<br>&nbsp;Allow concurrent read access to an object but require exclusive
+access for write operations.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Single Threaded Execution">Single Threaded Execution</a></li>
+
+<br>The Single Threaded Execution pattern is a good and simpler alternative
+to the Read/Write Lock pattern when most of the accesses to data are write
+accesses.
+<br>&nbsp;
+<li>
+<a href="#Scheduler">Scheduler</a></li>
+
+<br>The Read/Write Lock pattern is a specialized form of the Scheduler
+pattern.</ul>
+
+<li>
+<a NAME="Producer-Consumer"></a><b>Producer-Consumer</b></li>
+
+<br>&nbsp;Coordinate the asynchronous production and consumption of information
+or objects.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Guarded Suspension">Guarded Suspension</a></li>
+
+<br>The Producer-Consumer pattern uses the Guarded Suspension pattern to
+manage the situation of a Consumer object wanting to get an object from
+an empty queue.
+<br>&nbsp;
+<li>
+Pipe</li>
+
+<br>The Pipe pattern is a special case of the Producer-Consumer pattern
+that involves only one Producer object an only one Consumer object. The
+Pipe pattern usually refers to the Producer object as a data source and
+the Consumer object as a data sink.
+<br>&nbsp;
+<li>
+<a href="#Scheduler">Scheduler</a></li>
+
+<br>The Producer-Consumer pattern can be viewed as a special form of the
+Scheduler pattern that has scheduling policy with two notable features.
+<ul>
+<li>
+The scheduling policy is based on the availability of a resource.</li>
+
+<li>
+The scheduler assigns the resource to a thread but does not need to regain
+control of the resource when the thread is done so it can reassign the
+resource to another thread.</li>
+</ul>
+</ul>
+
+<li>
+<a NAME="Two-Phase"></a><b>Two-Phase Termination</b></li>
+
+<br>Provide for the orderly shutdown of a thread or process through the
+setting of a latch. The thread or process checks the value of the latch
+at strategic points in its execution.
+<br>&nbsp;
+<table BORDER COLS=1 WIDTH="40%" BGCOLOR="#C0C0C0" >
+<tr>
+<td><a href="http://www.amazon.com/exec/obidos/ISBN=0471258393/markgrandA/">Order
+Volume 1</a></td>
+</tr>
+</table>
+<a href="http://www.mindspring.com/~mgrand/index.html">Return to Mark Grand's
+home page.</a></ul>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Verdana"><font size=-1>Patterns - 2</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Verdana"><font size=-1><a href="index.html">home</a>
+- <a href="#top">top of the page</a> - </font></font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<center>
+<h1>
+<b>Preview of Patterns in Java Volume 2</b></h1></center>
+The 50 patterns in volume 2 are organized into categories as shown in the
+following table:
+<br>&nbsp;
+<center><table BORDER=3 COLS=2 WIDTH="65%" >
+<tr>
+<td VALIGN=CENTER WIDTH="35%"><a href="#GRASP Patterns">GRASP Patterns</a></td>
+
+<td><a href="#Controller">Controller</a>
+<br><a href="#Creator">Creator</a>
+<br><a href="#Expert">Expert</a>
+<br><a href="#Don't Talk to Strangers">Law of Demeter</a>
+<br><a href="#Low Coupling/High Cohesion">Low Coupling/High Cohesion</a>
+<br><a href="#Polymorphism">Polymorphism</a>
+<br><a href="#Pure Fabrication">Pure Fabrication</a></td>
+</tr>
+
+<tr>
+<td><a href="#GUI Design Patterns">GUI Design Patterns</a></td>
+
+<td><a href="#Conversational Text">Conversational Text&nbsp;</a>
+<br><a href="#Direct Manipulation">Direct Manipulation</a>
+<br><a href="#Ephemeral Feedback">Ephemeral Feedback</a>
+<br><a href="#Explorable Interface">Explorable Interface</a>
+<br><a href="#Data Entry Form">Form</a>
+<br><a href="#Context Sensitive Menu Item">Disabled Irrelevant Things</a>
+<br><a href="#Interaction Style">Interaction Style</a>
+<br><a href="#Limited Selection Size">Limited Selection Size</a>
+<br><a href="#Menu">Selection</a>
+<br><a href="#Step-by-Step Instructions">Step-by-Step Instructions</a>
+<br><a href="#Dialog">Supplementary Window</a>
+<br><a href="#Window Per Task">Window per Task</a></td>
+</tr>
+
+<tr>
+<td><a href="#Organizational Coding Patterns">Organizational Coding Patterns</a></td>
+
+<td><a href="#Accessor Method">Accessor Method Name</a>
+<br><a href="#Anonymous Adapter">Anonymous Adapter</a>
+<br><a href="#Checked Versus Unchecked Exceptions">Checked vs. Unchecked
+Exceptions</a>
+<br><a href="#Conditional Compilation">Conditional Compilation</a>
+<br><a href="#Composed Method">Composed Method</a>
+<br><a href="#Convert Exceptions">Convert Exceptions</a>
+<br><a href="#Define Constants in Interfaces">Define Constants in Interfaces</a>
+<br><a href="#Extend Super">Extend Super</a>
+<br><a href="#Intention Revealing Method">Intention Revealing Method</a>
+<br><a href="#ServerSocket">ServerSocket</a>
+<br><a href="#Socket">Client Socket</a>
+<br><a href="#Switch">Switch</a>
+<br><a href="#Symbolic Name">Symbolic Constant Name</a></td>
+</tr>
+
+<tr>
+<td><a href="#Code Optimization Patterns">Optimization Coding Patterns</a></td>
+
+<td><a href="#Double Checked Locking">Double Checked Locking&nbsp;</a>
+<br><a href="#Hashed Adapter Objects">Hashed Adapter Objects</a>
+<br><a href="#Lazy Initialization">Lazy Initialization</a>
+<br><a href="#Lookup Table">Lookup Table</a>
+<br><a href="#Loop Unrolling">Loop Unrolling</a></td>
+</tr>
+
+<tr>
+<td><a href="#Robustness Coding Patterns">Robustness Coding Patterns</a></td>
+
+<td><a href="#Assertion Testing">Assertion Testing</a>
+<br><a href="#Copy Mutable Parameters">Copy Mutable Parameters</a>
+<br><a href="#Guaranteed Cleanup">Guaranteed Cleanup</a>
+<br><a href="#Maximize Privacy">Maximize Privacy</a>
+<br><a href="#Return New Objects from Accessor Method">Return New Objects
+from Accessor</a></td>
+</tr>
+
+<tr>
+<td><a href="#Testing Patterns">Testing Patterns</a></td>
+
+<td><a href="#Acceptance Testing">Acceptance Testing</a>
+<br><a href="#Black Box Testing">Black Box Testing</a>
+<br><a href="#Clean Room Testing">Clean Room Testing</a>
+<br><a href="#Integration Testing">Integration Testing</a>
+<br><a href="#Regression Testing">Regression Testing</a>
+<br><a href="#System Testing">System Testing</a>
+<br><a href="#Unit Testing">Unit Testing</a>
+<br><a href="#White Box Testing">White Box Testing</a></td>
+</tr>
+</table></center>
+If you have any suggestions about this page or would like to discuss a
+pattern with its author, send e-mail to&nbsp; <a href="mailto:mgrand@mindspring.com">mgrand@mindspring.com</a>
+.&nbsp;
+<hr WIDTH="100%">
+<h2>
+<a NAME="GRASP Patterns"></a>GRASP Patterns</h2>
+GRASP is an acronym for General Responsibility Assignment Software Patterns.
+GRASP Patterns provide guidance for assigning responsibilities to classes
+and, to a limited extent, determining the classes that will be in a design.
+<p>This book discusses GRASP patterns as they are applied to object oriented
+design. Most GRASP patterns apply equally well to business process reengineering.
+<p>During analysis, when you are building a conceptual model of an organization
+that has more than one way to do something, GRASP patterns can provide
+guidance in selecting paths through the organization to include in the
+conceptual model.
+<ul>
+<li>
+<a NAME="Low Coupling/High Cohesion"></a><b>Low Coupling/High Cohesion</b></li>
+
+<br>If you find that a class is so highly coupled or lacking in cohesion
+as to make a design brittle or difficult to modify, then apply other appropriate
+GRASP patterns to reassign the class’ responsibilities.
+<p>Related patterns are
+<ul>
+<li>
+<a href="pattern_synopses.htm#Interface">Interface</a></li>
+
+<br>One form of coupling between classes is the coupling between a subclass
+and its superclass. It is often possible to avoid subclassing by using
+the Interface pattern.</ul>
+
+<ul>
+<li>
+<a href="pattern_synopses.htm#Mediator">Mediator</a></li>
+
+<br>It is not necessary or even always desirable for all of the classes
+in a design to have low coupling and high cohesion. Sometimes the overall
+complexity of a class can be reduced by concentrating complexity in one
+class. The Mediator pattern provides an example of that.</ul>
+
+<ul>&nbsp;</ul>
+
+<ul>
+<li>
+<a href="#Composed Method">Composed Method</a></li>
+
+<br>It is possible for methods to be uncohesive and difficult to work with.
+Some common causes are excessive length or too many execution paths within
+a method. The Composed Method pattern provides guidance of breaking up
+such methods into smaller, simpler and more cohesive methods.</ul>
+
+<li>
+<a NAME="Expert"></a><b>Expert</b></li>
+
+<br>Assign a responsibility to the class that has the information needed
+to carry out the responsibility.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Low Coupling/High Cohesion">Low Coupling/High Cohesion</a></li>
+
+<br>The Expert pattern promotes low coupling by putting methods in the
+classes that have the information that the methods need. Classes whose
+methods only need the class’ own information have less need to rely on
+other classes. A set of methods that all operate on the same information
+tends to be cohesive.</ul>
+
+<li>
+<a NAME="Creator"></a><b>Creator</b></li>
+
+<br>Determine which class should create instances of a class based on the
+relationship between the potential creator classes and the class to be
+instantiated.
+<br>&nbsp;
+<li>
+<a NAME="Polymorphism"></a><b>Polymorphism</b></li>
+
+<br>When alternate behaviors are selected based on the type of an object,
+use a polymorphic method call to select the behavior, rather than using
+if statements to test the type.
+<p>Related patterns are
+<ul>
+<li>
+<a href="pattern_synopses.htm#Dynamic Linkage">Dynamic Linkage</a></li>
+
+<br>You can implement plug-ins or pluggable software components using a
+combination of polymorphism and the Dynamic Linkage pattern.</ul>
+
+<li>
+<a NAME="Pure Fabrication"></a><b>Pure Fabrication</b></li>
+
+<br>Fabricate a class that does not represent a problem domain entity when
+you must assign a responsibility to a class, but assigning it to a class
+that represents a problem domain entity would ruin its low coupling or
+high cohesion.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Low Coupling/High Cohesion">Low Coupling/High Cohesion</a></li>
+
+<br>The point of the Pure Fabrication pattern is to maintain the low coupling
+and high cohesion of the classes in an object oriented design.</ul>
+
+<li>
+<a NAME="Don't Talk to Strangers"></a><b>Law of Demeter</b></li>
+
+<br>If two classes have no other reason to be directly aware of each other
+or otherwise coupled, then the two classes should not directly interact.
+Instead of having a class call the methods of another class that it has
+no other reason to be coupled with, it should call that method indirectly
+through another class. Insisting on such indirection keeps a design’s overall
+level of coupling down.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Low Coupling/High Cohesion">Low Coupling/High Cohesion</a></li>
+
+<br>The fundamental motivation for the Don’t Talk to Strangers pattern
+is to maintain low coupling.
+<br>&nbsp;
+<li>
+<a href="#Pure Fabrication">Pure Fabrication</a></li>
+
+<br>There are sometimes good reasons for calls made to classes added to
+a design using the Pure Fabrication pattern to violate the guidelines of
+the Don’t Talk to Strangers pattern.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Mediator">Mediator</a></li>
+
+<br>The Mediator pattern provides an example of a class created through
+pure fabrication that receives direct method calls from classes unrelated
+to it with a benefit that outweighs the disadvantages of the direct calls.</ul>
+<a NAME="Controller"></a><b>Controller</b>
+<br>&nbsp;If a program will receive events from external sources other
+than its graphical user interface, add an event class to decouple the event
+source(s) from the objects that actually handle the events.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Pure Fabrication">Pure Fabrication</a></li>
+
+<br>The Controller pattern is a specialized form of the Pure Fabrication
+pattern.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Mediator">Mediator</a></li>
+
+<br>The Mediator pattern is used to coordinates events from a GUI.&nbsp;
+Like controller objects, a highly coupled and incohesive&nbsp; mediator
+object may involve less overall complexity than an arrangement that distributes
+the same responsibilities over more objects.</ul>
+</ul>
+
+<hr WIDTH="100%">
+<h2>
+<a NAME="GUI Design Patterns"></a>GUI Design Patterns</h2>
+
+<ul>
+<li>
+&nbsp;<a NAME="Window Per Task"></a><b>Window Per Task</b></li>
+
+<br>&nbsp;A GUI should have a separate window for each cohesive task a
+user must perform. All information needed to perform the task is available
+from the window. The application provides a way to navigate between windows
+that allows the coordination of tasks.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Low Coupling/High Cohesion">Low Coupling/High Cohesion</a></li>
+
+<br>The Task per Window pattern is based on the principles of low coupling
+and high cohesion.</ul>
+
+<li>
+&nbsp;<a NAME="Interaction Style"></a><b>Interaction Style</b></li>
+
+<br>&nbsp;Match the style of interaction offered by a GUI to the abilities
+of its users and the requirements of the application. The most common styles
+of interaction are Selection, Form, Direct Manipulation and Conversational
+Text.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Converational Text">Conversational Text</a></li>
+
+<br>This pattern describes one of the interaction styles that this pattern
+promotes.
+<br>&nbsp;
+<li>
+<a href="#Data Entry Form">Form</a></li>
+
+<br>This pattern describes one of the interaction styles that this pattern
+promotes.
+<br>&nbsp;
+<li>
+<a href="#Direct Manipulation">Direct Manipulation</a></li>
+
+<br>This pattern describes one of the interaction styles that this pattern
+promotes.
+<br>&nbsp;
+<li>
+<a href="#Menu">Selection</a></li>
+
+<br>This pattern describes one of the interaction styles that this pattern
+promotes.</ul>
+
+<ul>
+<li>
+<a href="#Step-by-Step Instructions">Step-by-Step Instructions</a></li>
+
+<br>The Step-by-Step Instruction pattern may be used to specifiy a sequence
+of interaction modes.</ul>
+
+<li>
+<a NAME="Explorable Interface"></a><b>Explorable Interface</b></li>
+
+<br>Design user interaction to be forgiving of the user’s mistakes by allowing
+the user to undo actions and go back to previous decision points.
+<p>Related patterns are
+<ul>
+<li>
+<a href="pattern_synopses.htm#Command">Command</a></li>
+
+<br>The Command pattern describes a way to undo the effects of a command
+or the performance of a task.
+<br>&nbsp;
+<li>
+<a href="#Converational Text">Conversational Text</a></li>
+
+<br>The Explorable Interface pattern is often used with the Conversational
+Text pattern.
+<br>&nbsp;
+<li>
+<a href="#Data Entry Form">Form</a></li>
+
+<br>The Explorable Interface pattern is often used with the Form pattern.</ul>
+
+<ul>
+<li>
+<a href="#Dialog">Supplementary Window</a></li>
+
+<br>The Explorable Interface pattern is often used with the&nbsp; Supplementary
+Window pattern.
+<br>&nbsp;
+<li>
+<a href="#Direct Manipulation">Direct Manipulation</a></li>
+
+<br>The Explorable Interface pattern is often used with the Direct Manipulation
+pattern.
+<br>&nbsp;
+<li>
+<a href="#Menu">Selection</a></li>
+
+<br>The Explorable Interface pattern is often used with the Selection pattern.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Snapshot">Snapshot</a></li>
+
+<br>The Snapshot pattern can be used to restore the state of a program
+to what it was at a previous time.</ul>
+
+<li>
+&nbsp;<a NAME="Conversational Text"></a><b>Conversational Text</b></li>
+
+<br>Design a GUI to accept commands in the form of textual input.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Explorable Interface">Explorable Interface</a></li>
+
+<br>The Interaction Style pattern is used to decide to use the Conversational
+Text pattern.
+<br>&nbsp;
+<li>
+<a href="#Interaction Style">Interaction Style</a></li>
+
+<br>The Interaction Style pattern is used to decide to use the Conversational
+Text pattern.</ul>
+
+<ul>
+<li>
+<a href="pattern_synopses.htm#Little Language / Interpreter">Little Language</a></li>
+
+<br>The Little Language pattern describes how to design and implement textual
+command input as a little language.</ul>
+
+<li>
+<a NAME="Menu"></a><b>Selection</b></li>
+
+<br>Allow users to interact with a GUI by selecting commands and data values
+from lists.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Explorable Interface">Explorable Interface</a></li>
+
+<br>&nbsp;The Explorable Interface pattern describes a technique for making
+a selection interaction more useable.
+<br>&nbsp;
+<li>
+<a href="#Limited Selection Size">Limited Selection Size</a></li>
+
+<br>The Limited Selection Size pattern provides additional guidance in
+determining the presentation of a menu interaction.</ul>
+
+<li>
+<a NAME="Data Entry Form"></a><b>Form</b></li>
+
+<br>Allow a user to enter structured data into a GUI as discrete pieces
+of information.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Dialog">Supplementary Window</a></li>
+
+<br>Data entry form interactions often occur within a dialog.</ul>
+
+<ul>
+<li>
+<a href="#Ephemeral Feedback">Ephemeral Feedback</a></li>
+
+<br>The Ephemeral Feedback pattern provides guidance in providing brief,
+short lived feedback to a user.</ul>
+
+<ul>
+<li>
+<a href="#Explorable Interface">Explorable Interface</a></li>
+
+<br>The Explorable Interface pattern describes a technique for making a
+data entry form interaction more useable.</ul>
+
+<ul>
+<li>
+<a href="#Menu">Selection</a></li>
+
+<br>Data Entry Form interactions often include selection interactions to
+select data values.</ul>
+
+<li>
+<a NAME="Direct Manipulation"></a><b>Direct Manipulation</b></li>
+
+<br>Allow users to interact with objects by manipulating representation
+of objects presented by a GUI.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Ephemeral Feedback">Ephemeral Feedback</a></li>
+
+<br>The Ephemeral Feedback pattern provides guidance in providing brief,
+short lived feedback to a user.
+<br>&nbsp;
+<li>
+<a href="#Explorable Interface">Explorable Interface</a></li>
+
+<br>The Explorable Interface pattern describes a technique for making a
+direct manipulation interaction more useable.
+<br>&nbsp;
+<li>
+<a href="#Menu">Selection</a></li>
+
+<br>When a direct manipulation interaction that supports Menus are used
+to select a command to manipulate previously selected objects.</ul>
+
+<li>
+<a NAME="Limited Selection Size"></a><b>Limited Selection Size</b></li>
+
+<br>Design the presentation of selection interactions to avoid displaying
+more than a limited number of choices at a time.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Menu">Selection</a></li>
+
+<br>The Limited Selection Size pattern provides guidance on designing the
+presentation of selection interactions.</ul>
+
+<li>
+<a NAME="Ephemeral Feedback"></a><b>Ephemeral Feedback</b></li>
+
+<br>Provide feedback to users about the status of their work, without interfering
+with the natural flow of their work.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Ease of Use">Ease of Use</a></li>
+
+<br>Use of the Ephemeral Feedback pattern can result in a GUI that presents
+uses with fewer surprises, which the Ease of Use pattern says is a good
+thing.</ul>
+
+<li>
+<a NAME="Context Sensitive Menu Item"></a><b>Disabled Irrelevant Things</b></li>
+
+<br>&nbsp;Hide or disable GUI elements that that are not relevant in the
+current context.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Menu">Selection</a></li>
+
+<br>The Disabled Irrelevant Things pattern is used with the Selection pattern.</ul>
+
+<li>
+<a NAME="Dialog"></a><b>Supplementary Window</b></li>
+
+<br>Display a window for a user interaction that supplements a parent window’s
+interaction. The purpose of the supplementary window is to collect information
+for the parent window’s interaction, display additional information about
+the parent window’s interaction or provide a notification about the status
+of the parent’s interaction. The supplementary window is shorter lived
+than its parent.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Limited Selection Size">Limited Selection Size</a></li>
+
+<br>Use the Limited Selection Size pattern to decide if a dialog will have
+pull-down menus.
+<br>&nbsp;
+<li>
+<a href="#Window Per Task">Window Per Task</a></li>
+
+<br>The Supplementary Window Pattern is partially motivated by the Window
+Per Task pattern.</ul>
+
+<li>
+<a NAME="Step-by-Step Instructions"></a><b>Step-by-Step Instructions</b></li>
+
+<br>Lead a user through the steps of a task, so that the GUI tells the
+user what to do next, rather than the user telling the GUI what to do next.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Menu">Selection</a></li>
+
+<br>Implementations of the Step-by-Step Instructions pattern usually rely
+heavily on selection interactions to acquire information from users.
+<br>&nbsp;
+<li>
+<a href="#Dialog">Supplementary Window</a></li>
+</ul>
+Sometimes the Step-by-Step Instructions pattern is used to supplement a
+GUI that requires the user to lead the program through tasks. Wizards that
+are available in popular word processing and spreadsheet programs are an
+example. When the Step-by-Step instructions pattern is used to design a
+supplementary GUI, it is usually in the context of a dialog.</ul>
+
+<hr WIDTH="100%">
+<h2>
+<a NAME="Organizational Coding Patterns"></a>Organizational Coding Patterns</h2>
+
+<ul>The patterns in this chapter provide guidance in organizing your code
+in ways that promote readability and maintainability. A principle that
+underlies many of these patterns is that simple code is easier to understand
+and less likely to contain bugs.
+<br>&nbsp;
+<li>
+<a NAME="Accessor Method"></a><b>Accessor Method Name</b></li>
+
+<br>Use names and signatures for accessor methods that are easy to read
+and conform to the JavaBeans specification.
+<br>&nbsp;
+<li>
+<a NAME="Anonymous Adapter"></a><b>Anonymous Adapter</b></li>
+
+<br>Use anonymous adapter objects to handle events. This simplifies the
+code and allows code relating to the same event source to be in the same
+part of the source code.
+<p>Related patterns are
+<ul>
+<li>
+<a href="pattern_synopses.htm">Adapter</a></li>
+
+<br>The Anonymous Adapters pattern uses Adapter objects.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Mediator">Mediator</a></li>
+
+<br>&nbsp;If handling events from multiple sources involves managing or
+using common or interrelated state information, then the Mediator pattern
+may provide a better way to handle the events.
+<br>&nbsp;
+<li>
+<a href="#Hashed Adapter Objects">Hashed Adapter Objects</a></li>
+
+<br>You can use the hashed Adapter Objects pattern to provide a more flexible
+way to manage event handlers than the Anonymous Adapters pattern.</ul>
+
+<li>
+<a NAME="Symbolic Name"></a><b>Symbolic Constant Name</b></li>
+
+<br>&nbsp;Use symbolic names for constants. A meaningful name makes the
+purpose of the constant clear to someone reading the code. Symbolic names
+can also simplify maintenance.
+<p>Related patterns are
+<ul>
+<li>
+<a href="pattern_synopses.htm#Immutable">Immutable</a></li>
+
+<br>The Immutable pattern describes other uses for immutable objects.
+<br>&nbsp;
+<li>
+<a href="#Switch">Switch</a></li>
+
+<br>Code that uses the Switch pattern should also use the Symbolic Constant
+Name pattern.</ul>
+
+<li>
+<a NAME="Define Constants in Interfaces"></a><b>Define Constants in Interfaces</b></li>
+
+<br>Avoid having to qualify symbolic constant names with the name of the
+class that defines them. Define them in an interface. That way, any class
+that implements the interface can use the symbolic names without any qualification.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Symbolic Name">Symbolic Constant Name</a></li>
+
+<br>This pattern only applies to classes that use symbolic names for constants.</ul>
+
+<li>
+<a NAME="Switch"></a><b>Switch</b></li>
+
+<br>Select a piece of code to execute from multiple alternatives based
+on an <tt>int</tt> data value by using a switch statement.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Hashed Adapter Objects">Hashed Adapter Objects</a></li>
+
+<br>Switch statements associate <tt>int</tt> values pieces of code. The
+Hashed Adapter Objects pattern associates objects with pieces of code.</ul>
+
+<ul>
+<li>
+<a href="#Symbolic Name">Symbolic Constant Name</a></li>
+
+<br>Code that uses the Switch pattern should also use the Symbolic Constant
+Name pattern.
+<br>&nbsp;
+<li>
+<a href="#Polymorphism">Polymorphism</a></li>
+
+<br>In many situations, polymorphic method calls are a more appropriate
+technique than switch statements. However, people with a background in
+procedural programming who are new to object oriented techniques often
+use switch statements when polymorphic method calls would be more appropriate.</ul>
+
+<li>
+<a NAME="Extend Super"></a><b>Extend Super</b></li>
+
+<br>Implement a method that modifies the behavior of a superclass’ method
+by calling the superclass’ method.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Composed Method">Composed Method</a></li>
+
+<br>The Composed Method pattern describes the more general case of composing
+the behavior of a method from the behavior of other methods.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Template">Template Method</a></li>
+
+<br>The Template Method pattern describes a way to design a class that
+plans for its behavior to be extended by a subclass’s methods. It provides
+more flixibility and control over how a subclass extends the behavior of
+its superclass than the Extend Super pattern at the expense of greater
+complexity. In particular, the Template Method patterns allows behavior
+of a subclass to occur in the middle of the exection of superclass’s methods.
+The template method pattern can also be used to force a subclass to extend
+a superclass in predefined ways.</ul>
+
+<li>
+<a NAME="Intention Revealing Method"></a><b>Intention Revealing Method</b></li>
+
+<br>If the intention of a call to a general purpose method is not obvious,
+then define a method with a meaningful name to call the general purpose
+method.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Intention Revealing Method">&nbsp;Intention Revealing Method</a></li>
+
+<br>The sort of methods described by the Intention Revealing Method pattern
+should be the smallest methods that you create when applying the Composed
+Method pattern.</ul>
+
+<ul>
+<li>
+<a href="#Composed Method">Composed Method</a></li>
+
+<br>&nbsp;The Composed Method pattern provides other reasons for moving
+code into a separate method.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Facade">Fa&ccedil;ade</a></li>
+
+<br>After applying the Composed Method pattern, you may decide to break
+a class up into smaller classes with the original class acting as a fa&ccedil;ade.
+<ul>&nbsp;</ul>
+</ul>
+
+<li>
+<a NAME="Conditional Compilation"></a><b>Conditional Compilation</b></li>
+
+<br>Control whether a compiler includes statements for debugging in the
+byte codes it generates or ignores those statements.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Assertion Testing">Assertion Testing</a></li>
+
+<br>The Conditional Compilation pattern is often used with the Assertion
+Testing pattern.
+<br>&nbsp;
+<li>
+<a href="#White Box Testing">White Box Testing</a></li>
+
+<br>The Conditional Compilation pattern is often used with the White Box
+Testing pattern.</ul>
+
+<li>
+<a NAME="Composed Method"></a><b>Composed Method</b></li>
+
+<br>Reorganize methods that are too large to easily understand into smaller
+methods.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Intention Revealing Method">Intention Revealing Method</a></li>
+
+<br>The sort of methods described by the Intention Revealing Method pattern
+should be the smallest methods that you create when applying the Composed
+Method pattern.</ul>
+
+<ul>
+<li>
+<a href="#Maximize Privacy">Maximize Privacy</a></li>
+
+<br>The Maximize Privacy pattern provide the motivation for making sub-methods
+private that are created by applying the Composed Method pattern.
+<p><a href="pattern_synopses.htm#Facade">Fa&ccedil;ade</a>
+<li>
+After applying the Composed Method pattern, you may decide to break a class
+up into smaller classes with the original class acting as a fa&ccedil;ade.</li>
+</ul>
+
+<ul>&nbsp;</ul>
+
+<li>
+&nbsp;<a NAME="Checked Versus Unchecked Exceptions"></a><b>Checked Versus
+Unchecked Exceptions</b></li>
+
+<br>As part of its contract with its callers, a method may be expected
+to throw exceptions under certain circumstances. Those exceptions should
+be checked exceptions. Any exceptions a method throws that are outside
+of its contract, such exceptions to indicate internal errors or to help
+with debugging, should be unchecked exceptions.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Assertion Testing">Assertion Testing</a></li>
+
+<br>The Assertion Testing pattern provides additional guidance about checked
+or unchecked exception to report unsatisfied assertions.
+<br>&nbsp;
+<li>
+<a href="#Conditional Compilation">Conditional Compilation</a></li>
+
+<br>The Conditional Compilation pattern can be used to prevent debug code
+that throws unchecked exceptions from being included in a production version
+of a class.</ul>
+
+<li>
+<a NAME="Convert Exceptions"></a><b>Convert Exceptions</b></li>
+
+<br>Many programs are organized into layers related to different domains,
+such as database management and an application domain. In such programs,
+some classes are part of one domain but have methods that call methods
+of classes that belong to another domain. Such methods should convert exceptions
+they do not catch from the other domain to their own domain.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Low Coupling/High Cohesion">Low Coupling/High Cohesion</a></li>
+
+<br>The Low Coupling/High Cohesion pattern tells us to avoid unnecessary
+dependencies between classes.</ul>
+
+<li>
+<a NAME="ServerSocket"></a><b>Server Socket</b></li>
+
+<br>You need to write code to manage the server side of a socket based
+network connection. The code that you write follows a very consistent pattern
+that revolves around ServerSocket and Socket objects.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Socket">Client Socket</a></li>
+
+<br>The Client Socket pattern described the common logic for implementing
+clients.</ul>
+
+<ul>
+<li>
+Thread Pool</li>
+
+<br>The Thread Pool pattern describes a more efficient way to to manage
+server threads. The Thread Pool pattern will be described in Volume 3.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Two-Phase">Two Phase Termination</a></li>
+
+<br>The Two Phase Termination pattern explains how to use a Thread object’s
+interrupt method to request that the thread show down in an orderly manner.
+<ul>&nbsp;</ul>
+</ul>
+
+<li>
+<a NAME="Socket"></a><b>Client Socket</b></li>
+
+<br>Most uses of the Socket class to implement a client follow a very consistent
+coding pattern.
+<p>Related patterns are
+<ul>
+<li>
+Heartbeat</li>
+
+<br>The Heartbeat pattern (described in Volume 3) describes a technique
+that allows a client program to detect that a server has gone down.</ul>
+
+<ul>
+<li>
+<a href="#ServerSocket">Server Socket</a></li>
+
+<br>The ServerSocket pattern described the common logic for implementing
+servers.</ul>
+</ul>
+
+<hr WIDTH="100%">
+<h2>
+<a NAME="Code Optimization Patterns"></a>Code Optimization Patterns</h2>
+
+<ul>The patterns in this chapter can be used to improve the performance
+of a program in ways that a compiler’s automatic optimizations cannot accomplish.
+Like any other kind of optimization, you should use the patterns in this
+chapter only after you have established a definite need for them. For example,
+the Loop Unrolling pattern reduces the amount of time required to execute
+a loop. It does so at the expense of making the code larger and harder
+to understand and maintain. If the program makes enough loop iterations
+for a small reduction in the duration of each iteration to produce a noticeable
+improvement, that is a good application of the Loop Unrolling pattern.
+If applying the Loop Unrolling pattern does not produce a noticeable improvement,
+then you have made you program more difficult to understand an maintain
+with no corresponding benefit.
+<p>The usual way to determine what to optimize is to run a program using
+a good execution profiling tool. Such tools are able to tell you how much
+time a program spends in different methods or statements. They are also
+able to indicate the percentage of time that the program spent in each
+place and the number of times that each statement or method was executed.
+<br>&nbsp;
+<li>
+<a NAME="Hashed Adapter Objects"></a><b>Hashed Adapter Objects</b></li>
+
+<br>Dispatch a method call to an adapter object associated with an arbitrary
+object. The arbitrary object is used to find the adapter object in a hash
+table. The Hashed Adapter Objects pattern is most commonly used when an
+object must be created from unencapsulated data or unencapsulated data
+must be dispatched to an object.
+<p>Related patterns are
+<ul>
+<li>
+<a href="pattern_synopses.htm#Adapter">Adapter</a></li>
+
+<br>The Hashed Adapter Objects pattern uses Adapter objects.
+<br>&nbsp;
+<li>
+<a href="#Lookup Table">Lookup Table</a></li>
+
+<br>Both the Hashed Adapter Objects pattern and the Lookup Table pattern
+involve the use of an aggregation. However, the aggegation serves a different
+purpose for each. The Lookup Table pattern uses an aggregation of precomputed
+results to save the time it would take to compute those results in the
+future. For the Hashed Adapter Objects pattern, it is that data structure
+that implements the aggregation that is the source of the time savings.
+<br>&nbsp;
+<li>
+<a href="#Polymorphism">Polymorphism</a></li>
+
+<br>When it is possible to select a behavior based on the type of an object,
+the Polymorphism pattern produces a simpler result than the Hashed Adapter
+Objects pattern.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Single Threaded Execution">Single Threaded
+Execution</a></li>
+
+<br>The Single Threaded Execution pattern is used to coordinate access
+by multiple threads to the hash table used by the Hashed Adapter Objects
+pattern.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Strategy">Strategy</a></li>
+
+<br>The Hashed Adapter Objects pattern can used to design the selection
+of strategy objects in the Strategy pattern.</ul>
+
+<li>
+<a NAME="Lazy Initialization"></a><b>Lazy Initialization</b></li>
+
+<br>Delay the creation of an object or other expensive action needed to
+initialize a variable until it is known that the variable will be used.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Maximize Privacy">Maximize Privacy</a></li>
+
+<br>The Maximize Privacy pattern provides a justification for making a
+lazily initialized variable private.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Virtual Proxy">Virtual Proxy</a></li>
+
+<br>Like the Lazy Initialization pattern, the Virtual Proxy pattern can
+be used to delay a computation or the creation of an object until it is
+actually needed. The difference is that the Virtual Proxy pattern uses
+a proxy object to hide the computation; the Lazy Initialization pattern
+uses a method to hide the computation.</ul>
+
+<li>
+<a NAME="Double Checked Locking"></a><b>Double Checked Locking</b></li>
+
+<br>&nbsp;A multi-threaded program does not initialize a resource until
+it actually needs the resource. One thread recognizes that that resource
+is not yet initialized when another thread has already begun the initialization.
+Avoid duplicating the initialization effort by coordinating the actions
+of multiple threads.
+<p>Related patterns are
+<ul>
+<li>
+<a href="pattern_synopses.htm#Balking">Balking</a></li>
+
+<br>The Balking design pattern is usually implemented using the same if-synchronized-if
+structure as the Double Checked Locking pattern.
+<br>&nbsp;
+<li>
+<a href="#Lazy Initialization">Lazy Initialization</a></li>
+
+<br>The Double Checked Locking pattern can be used to ensure the integrity
+of the Lazy Initialization pattern when it is used in multi-threaded application.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Singleton">Singleton</a></li>
+
+<br>The Double Checked Locking pattern can be used in a thread safe and
+efficient implementation of the Singleton pattern.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Virtual Proxy">Virtual Proxy</a></li>
+
+<br>&nbsp;The Double Checked Locking pattern can be used in a thread safe
+implementation of the Virtual Proxy pattern.</ul>
+
+<li>
+&nbsp;<a NAME="Loop Unrolling"></a><b>Loop Unrolling</b></li>
+
+<br>Reduce the overhead of a loop’s control logic by increasing the amount
+of work it does in each iteration so that it can accomplish the same amount
+of work in fewer iterations. This pattern trades memory for speed.
+<br>&nbsp;
+<li>
+<a NAME="Lookup Table"></a><b>Lookup Table</b></li>
+
+<br>Save the memory consumed by complex code and the time it takes to execute
+by precomputing the results and putting them in a lookup table.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Hashed Adapter Objects">Hashed Adapter Objects</a></li>
+
+<br>Both the Hashed Adapter Objects pattern and the Lookup Table pattern
+involve the use of an aggregation. However, the aggegation serves a different
+purpose for each. The Lookup Table pattern uses an aggregation of precomputed
+results to save the time it would take to compute those results in the
+future. For the Hashed Adapter Objects pattern, it is that data structure
+that implements the aggregation that is the source of the time savings.</ul>
+</ul>
+
+<h2>
+
+<hr WIDTH="100%"><a NAME="Robustness Coding Patterns"></a>Robustness Coding
+Patterns</h2>
+
+<ul>
+<li>
+<a NAME="Assertion Testing"></a><b>Assertion Testing</b></li>
+
+<br>Verify that a method conforms to its contract with its callers by inserting
+code to test its preconditions, postconditions, invariants and data conditions
+and run time.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Checked Versus Unchecked Exceptions">Checked vs. Unchecked Exceptions</a></li>
+
+<br>The Checked vs. Unchecked Exception pattern explains reasons for using
+unchecked exceptions to indicate assertion failures.
+<li>
+<a href="#Conditional Compilation">Conditional Compilation</a></li>
+
+<br>You can use the Conditional Compilation pattern with the Assertion
+Testing pattern to control whether or not assertion testing code is included
+in a particular configuration of a program.</ul>
+
+<li>
+<a NAME="Guaranteed Cleanup"></a><b>Guaranteed Cleanup</b></li>
+
+<br>Ensure that internal data are in a consistent state if an operation
+is unable to execute to its normal completion. Ensure that external resources
+are consistent state and, if appropriate, released after an operation is
+unable to execute to its normal completion.
+<br>&nbsp;
+<li>
+<a NAME="Maximize Privacy"></a><b>Maximize Privacy</b></li>
+
+<br>Make members of classes as private as possible.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Low Coupling/High Cohesion">Low Coupling/High Cohesion</a></li>
+
+<br>The Low Coupling/High Cohesion pattern also tries to avoid dependencies
+between classes.</ul>
+
+<li>
+<a NAME="Return New Objects from Accessor Method"></a><b>Return New Objects
+from Accessor Method</b></li>
+
+<br>Accessor methods return values or objects that indicate an object’s
+state. If the objects that an accessor method returns are mutable, then
+they should be copies rather than the actual state determining objects.
+That prevents changes to the returned object from also changing the state
+of the accessor method’s associated object.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Copy Mutable Parameters">Copy Mutable Parameters</a></li>
+
+<br>The Return New Objects from Accessor Method pattern avoids the situation
+of an object sharing its state determining objects with callers of its
+accessor methods. The Copy Mutable Parameters pattern avoids a similar
+situation with callers that pass state determining objects into its constructors
+and methods.</ul>
+
+<li>
+<a NAME="Copy Mutable Parameters"></a><b>Copy Mutable Parameters</b></li>
+
+<br>Objects may be passed to a method or constructor that will be used
+to determine the state of its associated object. If the passed objects
+are mutable, then copies of them should be used to determine the object’s
+state, rather than the original passed object. That prevents changes to
+the passed object from also changing the state of the object associated
+with the method or constructor.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Return New Objects from Accessor Method">Return New Objects from
+Accessor Method</a></li>
+
+<br>The Copy Mutable Parameters pattern avoids the situation of an object
+sharing its state determining objects with callers of its methods that
+specify those objects. The Return New Objects from Accessor Method pattern
+avoids a similar situation with callers of methods that return state determining
+objects.</ul>
+</ul>
+
+<h2>
+
+<hr WIDTH="100%"><a NAME="Testing Patterns"></a>Testing Patterns</h2>
+
+<ul>&nbsp;
+<li>
+<a NAME="Black Box Testing"></a><b>Black Box Testing</b></li>
+
+<br>Ensure that software satisfies requirements by designing tests based
+solely on requirements. Do not base tests on the way that the software
+is implemented.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#White Box Testing">White Box Testing</a></li>
+
+<br>White box testing is the compliment of black box testing. It involves
+designing test cases based on the internal structure of the software to
+be tested.</ul>
+
+<li>
+<a NAME="White Box Testing"></a><b>White Box Testing</b></li>
+
+<br>Design a suite of test cases to exhaustively test software by testing
+it in all meaningful situations. The set of meaningful situations is determined
+from knowledge of the software’s internal structure. A complete set of
+tests will exercise all the execution paths through the software.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Black Box Testing">Black Box Testing</a></li>
+
+<br>Black box testing is the compliment of white box testing. It involves
+designing test cases based only on the specifications of the software to
+be tested.</ul>
+
+<ul>
+<li>
+<a href="#Unit Testing">Unit Testing</a></li>
+
+<br>Because there are many fewer execution paths through an individual
+class than an entire program, it is more common to see white box testing
+applied to unit testing than it is to see it applied to larger pieces of
+software.
+<p>Unit testing may be able to exercise execution paths in classes that
+are currently unavailable in the environment that you are developing the
+classes for. Exercising those execution paths avoids surprises in the future.
+<br>&nbsp;</ul>
+
+<li>
+<a NAME="Unit Testing"></a><b>Unit Testing</b></li>
+
+<br>Test individual classes in isolation from the other classes of the
+program under development.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#System Testing">System Testing</a></li>
+
+<br>System testing is a compliment to unit testing. System testing involves
+testing an entire program rather than individual classes.</ul>
+</ul>
+
+<ul>
+<ul>
+<li>
+<a href="#White Box Testing">White Box Testing</a></li>
+
+<br>White box testing is used more often at the unit testing level than
+at larger levels of granularity. This is because at the unit testing level
+there are fewer combinations of execution paths to consider. It is also
+because white box testing at the unit level makes classes easier to reuse
+and lowers long term software maintenance costs.</ul>
+
+<li>
+<a NAME="Integration Testing"></a><b>Integration Testing</b></li>
+
+<br>Test individually developed classes together for the first time.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#System Testing">System Testing</a></li>
+
+<br>Integration testing generally involves testing smaller groups of classes
+than you test during system testing. Integration testing can be considered
+an activity that smooths the transition from not being sufficiently along
+in the development cycle to do system testing to a situation where system
+testing is a productive activity.</ul>
+
+<ul>
+<li>
+<a href="#Unit Testing">Unit Testing</a></li>
+
+<br>Unit testing deals with individual classes or very small groups of
+classes. System Testing deals with larger groups of classes.</ul>
+
+<li>
+<a NAME="System Testing"></a><b>System Testing</b></li>
+
+<br>Test a program as a whole entity, in an environment similar to the
+one it is intended to be run in, to ensure that it conforms to its specifications.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Integration Testing">Integration Testing</a></li>
+
+<br>Integration testing ensures that the software being tested is in a
+sufficiently functional state that it is possible to run groups of system
+tests and get meaningful results.</ul>
+
+<ul>
+<li>
+<a href="#Regression Testing">Regression Testing</a></li>
+
+<br>Regression testing allows you to use system tests to monitor the progress
+of programmers and to measure the overall readiness of the software to
+meet its requirements and specifications.</ul>
+
+<li>
+<a NAME="Regression Testing"></a><b>Regression Testing</b></li>
+
+<br>Keep track of the outcomes of testing software with a suite of tests
+over time. This allows you to monitor the progress of programmers in completing
+their coding as they make incremental changes. It allows you to determine
+if a change to a program introduced new bugs.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#System Testing">Systems Testing</a></li>
+
+<br>Regression testing is commonly used with system testing.
+<br>&nbsp;
+<li>
+<a href="#Unit Testing">Unit Testing</a></li>
+
+<br>Regression testing is sometimes used with unit testing.</ul>
+
+<li>
+<a NAME="Acceptance Testing"></a><b>Acceptance Testing</b></li>
+
+<br>Acceptance testing is testing done to ensure that delivered software
+meets the needs of the customer or organization that the software was developed
+for. Such testing is usually performed by the organization that the software
+was developed for. Acceptance testing is done according to a plan. The
+purpose of an acceptance testing plan is to ensure that software developers
+and the organization that they develop a software system for agree on when
+the software is ready to be delivered by developers.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#System Testing">Systems Testing</a></li>
+
+<br>System testing is often the final form of testing that a software developer
+performs on software before turning it over to the developer’s customer
+for acceptance testing.</ul>
+
+<li>
+<a NAME="Clean Room Testing"></a><b>Clean Room Testing</b></li>
+
+<br>People designing software should not discuss specifications or their
+implementation with people designing tests for the software.</ul>
+<a href="http://www.mindspring.com/~mgrand/index.html">Return to Mark Grand's
+home page.</a>
+<br>&nbsp;
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Verdana"><font size=-1>Patterns - 3</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Verdana"><font size=-1><a href="index.html">home</a>
+- <a href="#top">top of the page</a> - </font></font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<center>
+<h1>
+<a NAME="top"></a><b>Preview of Patterns in Java Volume 3</b></h1></center>
+The intended focus is design patterns for the enterprise (work in progress).
+<br>&nbsp;
+<br>&nbsp;
+<center><table BORDER=3 COLS=2 WIDTH="80%" >
+<tr>
+<td VALIGN=CENTER WIDTH="35%"><a href="#Transaction Patterns">Transaction
+Patterns</a></td>
+
+<td><a href="#ACID Transaction">ACID Transaction</a>
+<br><a href="#Audit Trail">Audit Trail</a>
+<br><a href="#Composite Transaction">Composite Transaction</a>
+<br><a href="#Two Phase Commit">Two Phase Commit</a></td>
+</tr>
+
+<tr>
+<td><a href="#Distributed Architecture Patterns">Distributed Architecture
+Patterns</a></td>
+
+<td><a href="#Demilitarized Zone">Demilitarized Zone</a>
+<br><a href="#Mobile Agent">Mobile Agent&nbsp;</a>
+<br><a href="#Object Replication">Object Replication</a>
+<br><a href="#Broker">Object Request Broker</a>
+<br><a href="#Process Pair">Process Pair</a>
+<br><a href="#High Availability">Prompt Repair</a>
+<br><a href="#Redundant Independant Objects">Redundant Independent Objects</a>
+<br><a href="#Shared Object">Shared Object</a></td>
+</tr>
+
+<tr>
+<td><a href="#Distributed Computing Patterns">Distributed Computing Patterns</a></td>
+
+<td><a href="#Connection Multiplexing">Connection Multiplexing</a>
+<br><a href="#Heartbeat">Heartbeat&nbsp;</a>
+<br><a href="#Heavyweight/Lightweight Object">Heavyweight/Lightweight Object</a>
+<br><a href="#Mailbox">Mailbox</a>
+<br><a href="#Object Identifier">Object Identifier</a>
+<br><a href="#Protection Proxy">Protection Proxy</a>
+<br><a href="#Publish-Subscribe">Publish-Subscribe</a>
+<br><a href="#Registry">Registry</a>
+<br><a href="#Retransmission">Retransmission</a></td>
+</tr>
+
+<tr>
+<td><a href="#Distributed Concurrency Patterns">Concurrency Patterns</a></td>
+
+<td><a href="#Cache Consistency">Cache Consistency</a>
+<br><a href="#Deep Transaction">Deep Transaction Nesting</a>
+<br><a href="#Lock File">Lock File</a>
+<br><a href="#Optimistic Concurrency">Optimistic Concurrency</a>
+<br><a href="#Session Object">Session Object</a>
+<br><a href="#Static Locking Order">Static Locking Order</a>
+<br><a href="#Thread Pool">Thread Pool&nbsp;</a></td>
+</tr>
+
+<tr>
+<td><a href="#Temporal Patterns">Temporal Patterns</a></td>
+
+<td><a href="#Temporal Property">Temporal Property</a>
+<br><a href="#Time Server">Time Server</a>
+<br><a href="#Versioned Object">Versioned Object</a></td>
+</tr>
+
+<tr>
+<td><a href="#Database Patterns">Database Patterns</a></td>
+
+<td><a href="#CRUD">CRUD</a>
+<br><a href="#Persistence Layer">Persistence Layer</a>
+<br>SQL Code Description&nbsp;
+<br>Attribute Mapping Methods&nbsp;
+<br>Type Conversion&nbsp;
+<br>Change Manager&nbsp;
+<br>Object ID Manager&nbsp;
+<br>Transaction Manager&nbsp;
+<br>Connection Manager&nbsp;
+<br>Table Manager&nbsp;
+<br>Database Authenticates Program&nbsp;
+<br>Represent Relational Database Tables as Objects&nbsp;
+<br>Represent Objects as Relational Database Tables</td>
+</tr>
+</table></center>
+
+<h2>
+<a NAME="Transaction Patterns"></a>Transaction Patterns</h2>
+
+<ul>
+<li>
+<a NAME="ACID Transaction"></a><b>ACID Transaction</b></li>
+
+<br>Ensure that a transaction will never have any unexpected or inconsistent
+outcome. You do that by ensuring that the transaction has the ACID properties:
+atomicity, consistency, isolation and durability.
+<p>Related patterns are
+<ul>
+<li>
+<a href="pattern_synopses.htm#Snapshot">Snapshot</a></li>
+
+<br>The Snapshot pattern describes techniques for saving and restoring
+the state of objects. This is the better way to recover from a transaction
+failure when a transaction involves a long sequence of operations that
+modify the state of a small number of simple objects.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Command">Command</a></li>
+
+<br>The command pattern describes techniques for remembering and undoing
+a sequence of operations. This is the better way to recover from a transaction
+failure when a transaction involves a short sequence of operations that
+modify the state of a large number of complex objects.
+<br>&nbsp;
+<li>
+<a href="#Audit Trail">Audit Trail</a></li>
+
+<br>Logging a sequence of operations to support the Command Pattern is
+structurally similar to maintaining an audit trail.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses2.htm#System Testing">System Testing</a></li>
+
+<br>The System Testing pattern should be used to ensure the consistency
+of transactions.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses2.htm#Unit Testing">Unit Testing</a></li>
+
+<br>The Unit Testing pattern may also help to ensure the consistency of
+transactions.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Single Threaded Execution">Single Threaded
+Execution</a></li>
+
+<br>The Single Threaded Execution Pattern can be used to keep transactions
+that modify the state of the same object isolated from each other, so that
+the modifications each transaction makes to the object’s state do not interfere
+with each other.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Read/Write Lock">Read/Write Lock</a></li>
+
+<br>The Read/Write Lock pattern can be used to keep transactions that use
+the same object isolated from each other while allowing transactions that
+do not modify the object’s state to execute concurrently.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Proxy">Copy on Write Proxy</a></li>
+
+<br>The Copy on Write Proxy pattern can be used to help ensured the isolation
+property of transactions. The Copy on Write Proxy is described as part
+of the write-up of the Proxy pattern in Volume 1.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses2.htm#Copy Mutable Parameters">Copy Mutable Parameters</a></li>
+
+<br>The Copy Mutable Parameters pattern can be used to help ensure the
+isoplation property of transactions.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses2.htm#Return New Objects from Accessor Method">Return
+New Objects from Accessor Method</a></li>
+
+<br>The Return New Objects from Accessor Method pattern (described in Volume
+2) can be used to help ensure the isolation property of transactions.
+<p>Return Mutable Objects from Accessor Method
+<br>The Return Mutable Objects from Accessor Method (described in Volume
+2) can be used to help ensure the isolation property of transactions.
+<br>&nbsp;
+<li>
+<a href="#Cache Consistency">Cache Consistency</a></li>
+
+<br>If you directly manage the storage of persistent distributed objects,
+you may need the Cache Consistency pattern to ensure that the result of
+a locally initiated read operation matches the current contents of a remote
+store.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Decorator">Decorator</a></li>
+
+<br>If an object that does not support access controls such as single threaded
+execution or read/write lock must participate in an ACID transaction, the
+object’s deficiency can be compensated for by making the TransactionManager
+access the object through a decorator object.</ul>
+
+<li>
+<a NAME="Composite Transaction"></a><b>Composite Transaction</b></li>
+
+<br>You want to design and implement transactions correctly and with a
+minimum of effort. Simple transactions are easier to implement and make
+correct than complex transactions. Design and implement complex transactions
+from simpler ACID transactions.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#ACID Transaction">ACID Transaction</a></li>
+
+<br>The Composite Transaction pattern is built on the ACID transaction
+pattern.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Command">Command</a></li>
+
+<br>The Command Pattern can be the basis for an undo mechanism used to
+undo operations and restore object to the state they were in at the beginning
+of a transaction.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses2.htm#Composed Method">Composed Method</a></li>
+
+<br>&nbsp;The Composed Method pattern is a coding pattern that describes
+a way of composing methods from other methods that is structurally similar
+to the way the Composite Transaction pattern composes transactions.
+<br>&nbsp;
+<li>
+<a href="#Lock File">Lock File</a></li>
+
+<br>&nbsp;The Lock File pattern can be used to enforce the isolation property
+for a composite transaction.</ul>
+</ul>
+
+<ul>
+<ul>
+<li>
+<a href="#Two Phase Commit">Two Phase Commit</a></li>
+
+<br>The Two Phase Commit pattern can be used to ensure the ACID properties
+of a composite transaction composed from simpler ACID transactions.
+<br>&nbsp;
+<li>
+<a href="#Mailbox">Mailbox</a></li>
+
+<br>When there is a need to ensure the reliability a composite transaction,
+you will want to take steps to ensure the reliability of the component
+transactions that constitute it. If the composite transaction is distributed,
+you will also want to ensure the reliable transmission of messages between
+the objects that participate in the transaction by such means as the Mailbox
+pattern.</ul>
+
+<li>
+&nbsp;<a NAME="Two Phase Commit"></a><b>Two Phase Commit</b></li>
+
+<br>If a transaction is composed of simpler transactions distributed across
+multiple database managers, you want them to either all complete successfully
+or to all abort, leaving all objects as they were before the transactions.
+You achieve this by making an object responsible for coordinating the transactions
+so that they all complete successfully or all abort.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#ACID Transaction">ACID Transaction</a></li>
+
+<br>The Two Phase Commit pattern is used to build composite transactions
+having the ACID properties from component transactions that have the ACID
+properties.
+<br>&nbsp;
+<li>
+<a href="#Composite Transaction">Composite Transaction</a></li>
+
+<br>The Two Phase Commit pattern is used with the Composite Transaction
+pattern
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Decorator">Decorator</a></li>
+
+<br>The Decorator pattern provides the basis for the organization of the
+wrapper objects used in the Two Phase Commit pattern.
+<br>&nbsp;
+<li>
+<a href="#Heartbeat">Heartbeat</a></li>
+
+<br>The Heartbeat pattern may be used with the Two Phase Commit pattern
+to ensure that the Coordinator object is able to detect catastrophic failures
+of component transactions in a bounded amount of time.</ul>
+<a NAME="Audit Trail"></a><b>Audit Trail</b>
+<br>You need to verify that transactions are being processed correctly
+and honestly. Maintain an historical record of transactions that have been
+applied to an object or set of objects. The record should contain enough
+detail to determine how the objects affected by the transactions reached
+their current state.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#ACID Transaction">ACID Transaction</a></li>
+
+<br>If the transactions in an historical record do not have the ACID properties,
+then it may not be possible to unambiguously determine the effect of each
+transaction on an object.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Snapshot">Snapshot</a></li>
+
+<br>The Snapshot pattern provides advice on how to capture the state of
+an object.</ul>
+</ul>
+
+<h2>
+<a NAME="Distributed Architecture Patterns"></a>Distributed Architecture
+Patterns</h2>
+
+<ul><a NAME="Shared Object"></a><b>Shared Object</b>
+<br>You have some information or a limited quantity of a resource. You
+share objects among multiple clients to share encapsulated information
+or underlying resources. You centrally manage the object sharing with a
+separate object, so the sharing does not add to the complexity of the objects
+being shared or the objects sharing them.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Static Locking Order">Static Locking Order</a></li>
+
+<br>If Client objects work with multiple <tt>Manager</tt> objects to concurrently
+access multiple types of <tt>Resource</tt> objects, it is possible for
+two client objects to deadlock while waiting for different resources. Client
+objects should use the Static Locking Order pattern to avoid this sort
+of deadlock.</ul>
+
+<ul TYPE=CIRCLE>
+<li>
+<a href="#Object Replication">Object Replication</a></li>
+
+<br>The Object Replication pattern provides a decentralized way for the
+clients of an object to share information.
+<br>&nbsp;
+<li>
+<a href="#Broker">Object Request Broker</a></li>
+
+<br>The Object Request Broker pattern can be used to allow objects to be
+shared by remote clients.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Scheduler">Scheduler</a></li>
+
+<br>The Scheduler pattern describes a way to schedule access, one client
+at a time, to shared resources.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Read/Write Lock">Read/Write Lock</a></li>
+
+<br>The Read/Write lock pattern is a specialized form of the Scheduler
+pattern. It allows multiple clients to concurrently have read access to
+a resource, but only allows exclusive access for a client that modifies
+the resource.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Singleton">Singleton</a></li>
+
+<br>The Singleton pattern describes classes that have a single instance
+that may or may not be shared. The Shared Object pattern describes objects
+that are shared and may have multiple instances.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Flyweight">Flyweight</a></li>
+
+<br>If an object has no intrinsic state, then there is generally no need
+to impose concurrency restrictions on access to the object. The Shared
+Object pattern is inappropriate for sharing such objects, because it adds
+unnecessary overhead. The Flyweight pattern (found in Volume 1) describes
+a way that objects with no intrinsic state can be shared by local clients
+any concurrency restrictions.</ul>
+<a NAME="Broker"></a><b>Object Request Broker</b>
+<br>&nbsp;Objects in a distributed environment need to call methods of
+remote objects. For remote calls to work, many details must be just right.
+Provide an infrastructure that allows objects to make remote calls, with
+most of the details of the call hidden and handled automatically by the
+infrastructure.
+<p>Related patterns are
+<ul TYPE=CIRCLE>
+<li>
+<a href="#Object Identifier">Object Identifier</a></li>
+
+<br>The Object Identifier pattern provides additional guidance on uniquely
+identifying possibly remote objects.
+<br>&nbsp;
+<li>
+<a href="#Heartbeat">Heartbeat Pattern</a></li>
+
+<br>The Heartbeat pattern provides a general purpose way to detect when
+the caller of a remote method will never see the call complete because
+the machine that the remote call runs on has crashed or the network connection
+to the remote machine has been lost.
+<br>&nbsp;
+<li>
+<a href="#Registry">Registry</a></li>
+
+<br>The Registry pattern describes a way for an Object Request Broker implementation
+to find remote objects that have a know name or unique object identifier.
+<br>&nbsp;
+<li>
+<a href="#Thread Pool">Thread Pool</a></li>
+
+<br>CallDispatcher objects need a thread to process each remote call. An
+implementation of the Object Request Broker pattern can use the Thread
+Pool pattern to recycle threads and avoid the expense of creating new threads.</ul>
+
+<li>
+<a NAME="Object Replication"></a><b>Object Replication</b></li>
+
+<br>You need to improve the throughput or availability of a distributed
+computation. A distributed computation is a computation that involves objects
+that reside on multiple computing elements and are able to communicate
+with each other. In some circumstances, it is possible to improve the availability
+and throughput of a computation by replicating an object onto multiple
+computing elements while maintaining the illusion to the object’s clients
+of there only being a single object.
+<p>Related patterns are
+<ul TYPE=CIRCLE>
+<li>
+<a href="#High Availability">High Availability</a></li>
+
+<br>The High Availability pattern is a more specialized pattern that describes
+the use of replication to make objects highly available.
+<br>&nbsp;
+<li>
+<a href="#Optimistic Concurrency">Optimistic Concurrency</a></li>
+
+<br>The Optimistic Concurrency pattern describes how to update data without
+the use of locks.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Immutable">Immutable</a></li>
+
+<br>The Immutable pattern explains the simplicity and safety that comes
+from designing objects to be immutable.
+<br>&nbsp;
+<li>
+<a href="#Broker">Object Request Broker</a></li>
+
+<br>The Object Request Broker pattern allows an object to be used in multiple
+places at the same time without it being in multiple places or replicated.</ul>
+
+<li>
+<a NAME="Redundant Independant Objects"></a><b>Redundant Independant Objects</b></li>
+
+<br>You need to ensure the availability of an object even if it or the
+platform it is running on experience a failure. You accomplish this by
+providing redundant objects that do not rely on any single common resource.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#High Availability">Prompt Repair</a></li>
+
+<br>The Prompt Repair pattern is often used with the Redundant Independent
+Objects pattern to ensure the continued availability of a set of redundant
+independent objects even after a failure occurs.
+<br>&nbsp;
+<li>
+<a href="#Object Replication">Object Replication</a></li>
+
+<br>The Redundant Independent Objects pattern is a specialized version
+of the Object Replication pattern.</ul>
+
+<li>
+<a NAME="High Availability"></a><b>Prompt Repair</b></li>
+
+<br>When one of a set of redundant independent objects fails, one fewer
+failures must occur before the entire set of redundant objects becomes
+unavailable. To minimize the likelihood of a catastrophic failure, repair
+the failed object as soon as possible.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Redundant Independant Objects">Redundant Independent Objects</a></li>
+
+<br>The Prompt Repair pattern is use with the Redundant Independent Object
+pattern.
+<br>&nbsp;
+<li>
+<a href="#Process Pair">Process Pair</a></li>
+
+<br>The Process Pair pattern is used to ensure that software components
+on the same computing element are restarted when they fail.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Snapshot">Snapshot</a></li>
+
+<br>The Snapshot pattern (described in Volume 1) can be used to implement
+checkpoint/restart.</ul>
+
+<li>
+<a NAME="Mobile Agent"></a><b>Mobile Agent</b></li>
+
+<br>An object needs to access very large volume of remote data. To conserve
+network bandwidth, Instead instead of bringing data to an object, move
+the object to the data.
+<p>Related patterns are:
+<ul>
+<li>
+<a href="#Broker">Object Request Broker</a></li>
+
+<br>The Object Request Broker pattern is usually used with the Mobile Agent
+pattern to facilitate communications between mobile agents and other objects.
+Mobile agents can be implemented on top of the Object Request Broker pattern.
+<br>&nbsp;
+<li>
+<a href="#Object Replication">Object Replication</a></li>
+
+<br>One of the applications of the Object Replication pattern is to ensure
+that an object is near its accessors. The Mobile Agent pattern provides
+a way for an object’s accessors to be near the object.</ul>
+
+<li>
+<a NAME="Demilitarized Zone"></a><b>Demilitarized Zone</b></li>
+
+<br>You don’t want hackers to be able to gain access to servers containing
+sensitive information if they are able to compromise the security of a
+publicly accessible server. Put servers that are accessible to the public
+Internet on a publicly accessible LAN that connects with bothbetween your
+private networkfirewall and the public Internet.
+<p>Related pattern are
+<ul>
+<li>
+<a href="#Protection Proxy">Protection Proxy</a></li>
+
+<br>The Protection Proxy pattern, at the object level, is structurally
+similar to the Demilitarized Zone pattern at the network level.</ul>
+
+<li>
+<a NAME="Process Pair"></a><b>Process Pair</b></li>
+
+<br>To keep a process or software component highly available, you want
+it to be automatically restarted if it fails. Organize highly available
+software components in pairs, so that if one fails the other restarts it.
+<p>Related pattern are
+<ul>
+<li>
+<a href="#Heartbeat">Heartbeat</a></li>
+
+<br>The Process Pair pattern uses the Heartbeat pattern.</ul>
+</ul>
+
+<h2>
+<a NAME="Distributed Computing Patterns"></a>Distributed Computing Patterns</h2>
+
+<ul>
+<li>
+<a NAME="Object Identifier"></a><b>Object Identifier</b></li>
+
+<br>You need to uniquely identify an object that exists in multiple environments.
+Assign a globally unique identifier to the object, allowing it to have
+a unique identity when it is shared between programs or databases.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Broker">Objecct Request Broker</a> and <a href="#Registry">Registry</a></li>
+
+<br>You can use the Object Request Broker pattern with the Registry pattern
+to encapsulate an implmentation of the Object Identifier pattern and minimize
+the number of classes that are dependent on it.
+<br>&nbsp;
+<li>
+<a href="#Mobile Agent">Mobile Agent</a></li>
+
+<br>The Mobile Agent pattern uses the Object ID pattern.
+<br>&nbsp;
+<li>
+<a href="#Object Replication">Object Replication</a></li>
+
+<br>The Object Replication pattern uses the Object ID pattern.</ul>
+
+<li>
+<a NAME="Registry"></a><b>Registry</b></li>
+
+<br>Objects need to contact another object, knowing only the object’s name
+or the name of the service it provides, but not its how to contact it.
+Provide a service that takes the name of an object, service or role and
+returns a remote proxy that encapsulates the knowledge of how to contact
+the named object.
+<p>Related patterns are
+<ul>
+<li>
+<a href="pattern_synopses.htm#Proxy">Proxy</a></li>
+
+<br>The Registry pattern uses the Proxy pattern.
+<br>&nbsp;
+<li>
+<a href="#Broker">Object Request Broker</a></li>
+
+<br>The Registry pattern is often used the Object Request Broker pattern.
+<br>&nbsp;
+<li>
+<a href="#Shared Object">Shared Object</a></li>
+
+<br>Registry objects are shared objects.</ul>
+
+<li>
+<a NAME="Protection Proxy"></a><b>Protection Proxy</b></li>
+
+<br>Malicious objects may attempt to violate the integrity of other objects
+by using reflection or other means to access methods or variables they
+should not. You can prevent this by requiring other objects to access sensitive
+objects through a proxy that limits access based on security considerations.
+The proxy implements measures to ensure that other objects do not gain
+access to features of a sensitive object that they are not entitled to.
+<p>Related patterns are
+<ul>
+<li>
+<a href="pattern_synopses.htm#Proxy">Proxy</a></li>
+
+<br>The Protection Proxy pattern is a specialized version of the Proxy
+pattern.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Template">Template Method</a></li>
+
+<br>The Protection Proxy pattern uses the Template Method pattern to abstract
+out the reusable portion of the thread management logic.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Template">Thread Pool</a></li>
+
+<br>You can use the Thread Pool pattern with the Protection Proxy pattern
+to create a multi-threaded proxy.</ul>
+
+<li>
+<a NAME="Publish-Subscribe"></a><b>Publish-Subscribe</b></li>
+
+<br>You need to provide timely delivery of messages to one or more objects.
+Deliver messages to subscribed recipient objects by transmitting each message
+to each recipient. Ensure reliable delivery by repeating the transmission
+after an attempt fails until delivery is successful.
+<p>Related patterns are:
+<ul>
+<li>
+<a href="#Broker">Object Request Broker</a></li>
+
+<br>The Publish-Subscribe pattern is often used with the Object Reqest
+Broker pattern to deliver messages to remote objects.
+<br>&nbsp;
+<li>
+<a href="#Mailbox">Mailbox</a></li>
+
+<br>The Mailbox pattern provides an alternate solution for the reliable
+delivery of messages.
+<br>&nbsp;
+<li>
+<a href="#Registry">Registry</a></li>
+
+<br>The registry pattern provides a way for Subscriber objects to find
+Publisher objects.
+<ul>&nbsp;</ul>
+</ul>
+
+<li>
+<a NAME="Retransmission"></a><b>Retransmission</b></li>
+
+<br>You need to ensure that an object can reliably send a message to a
+remote object. Following the maxim, “If at first you don’t succeed, try
+again”, you design the object to handle a failure to send a message by
+trying again until the send is successful.
+<p>Related patterns are:
+<ul>
+<li>
+<a href="#Broker">Object Request Broker</a></li>
+
+<br>The Retransmission pattern is often used with the Object Request Broker
+pattern to deliver messages to remote objects.
+<br>&nbsp;
+<li>
+<a href="#Mailbox">Mailbox</a></li>
+
+<br>The Mailbox pattern provides an alternate solution for the reliable
+delivery of messages.
+<br>&nbsp;
+<li>
+<a href="#High Availability">High Availability</a></li>
+
+<br>You can use the High Availability pattern to minimize the likelihood
+that a DeliveryAgent object will crash or become otherwise unavailable.
+<br>&nbsp;
+<li>
+<a href="#Process Pair">Process Pair</a></li>
+
+<br>The Process Pair pattern describes a way to ensure that a DeliveryAgent
+object is automatically restarted after a crash.</ul>
+
+<ul>&nbsp;</ul>
+
+<li>
+<a NAME="Mailbox"></a><b>Mailbox</b></li>
+
+<br>You need to provide reliable delivery of messages to objects. Facilitate
+the delivery of messages by storing messages for later retrieval by each
+recipient.
+<p>Related patterns are:
+<ul>
+<li>
+<a href="#Publish-Subscribe">Publish-Subscribe</a></li>
+
+<br>The Publish-Subscribe pattern provides an alternate solution for the
+reliable delivery of messages.
+<br>&nbsp;
+<li>
+<a href="#High Availability">High Availability</a></li>
+
+<br>The High Availability pattern can be used to ensure that a MailboxServer
+is highly available.
+<br>&nbsp;
+<li>
+<a href="#Broker">Object Request Broker</a></li>
+
+<br>The Mailbox pattern is often used with the Object Request Broker pattern
+to deliver messages to remote objects.
+<br>&nbsp;
+<li>
+<a href="#Process Pair">Process Pair</a></li>
+
+<br>The Process Pair pattern describes a way to ensure that a MailboxServer
+object is automatically restarted after a crash.
+<br>&nbsp;
+<li>
+<a href="#Registry">Registry</a></li>
+
+<br>The registry pattern provides a way for Subscriber objects to find
+MailboxServer objects.</ul>
+</ul>
+
+<ul>
+<li>
+<a NAME="Heavyweight/Lightweight Object"></a><b>Heavyweight/Lightweight
+Object</b></li>
+
+<br>You are designing an application client that should be as small and
+thin as possible. The client must access some objects that have many attributes
+and/or attributes that are large objects. The client does not always need
+the attributes, so you arrange for the client to download the objects without
+the attributes and then lazily download the attributes on an as needed
+basis.
+<p>Related Patterns are:
+<ul>
+<li>
+<a href="#Broker">Object Request Broker</a></li>
+
+<br>The Heavyweight/Lightweight pattern is usually implemented using the
+Object Request Broker to facilitate communication between the client and
+the server.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses2.htm#Lazy Initialization">Lazy Initialization</a></li>
+
+<br>The lazy Initialization pattern can be used to manage the download
+of Data objects if client objects are responsible for the download of their
+own Data object.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Virtual Proxy">Virtual Proxy</a></li>
+
+<br>The Virtual Proxy pattern should be used to manage the download of
+Data objects if the same class is used to implement the client and server
+version of the shared object.
+<br>&nbsp;
+<li>
+<a href="#Object Replication">Object Replication</a></li>
+
+<br>The Object Replication pattern addresses issues related to keeping
+the state of the client and server objects consistent.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Facade">Facade</a></li>
+
+<br>Like a fa&ccedil;ade object, a lightweight object hides the details
+of accessing objects behind it.</ul>
+</ul>
+
+<ul>
+<li>
+<a NAME="Heartbeat"></a><b>Heartbeat</b></li>
+
+<br>While a remote object is performing an operation on behalf of a client,
+periodically send a message back to the client indicating that the remote
+object is still alive.
+<p>Related patterns are:
+<ul>
+<li>
+<a href="#Broker">Object Request Broker</a></li>
+
+<br>The Heartbeat pattern is used with the Object Request Broker pattern.
+<br>&nbsp;
+<li>
+<a href="#Connection Multiplexing">Connection Multiplexing</a></li>
+
+<br>Whether or not the ORB being used with the Heartbeat pattern implements
+the Connection Multiplexing pattern can determine how you choose to implement
+the Heartbeat pattern.</ul>
+
+<li>
+<a NAME="Connection Multiplexing"></a><b>Connection Multiplexing</b></li>
+
+<br>You are designing a distributed system in which one object may establish
+many connections with another object. To avoid the overhead of setting
+up and shutting down many connections between the same two objects, you
+arrange for one actual connection to carry the contents of multiple virtual
+connections.
+<p>Related patterns are
+<ul>
+<li>
+<a href="pattern_synopses.htm#Object Pool">Object Pool</a></li>
+
+<br>The Connection Multiplexing pattern uses the Object Pool pattern to
+manage data buffers.
+<br>&nbsp;
+<li>
+<a href="#Object Identifier">Object Identifier</a></li>
+
+<br>The ConnectionID objects used by the Connection Multiplexing pattern
+are an application of the Object Identifier pattern.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Scheduler">Scheduler</a></li>
+
+<br>The Scheduler pattern can be used to ensure that all virtual connections
+get their fair share of the actual connection’s bandwidth. The Scheduling
+pattern describes how to enforce a policy that determines when a thread
+is scheduled to use a resource.</ul>
+</ul>
+
+<h2>
+&nbsp;<a NAME="Distributed Concurrency Patterns"></a>Concurrency Patterns</h2>
+
+<ul>
+<li>
+<a NAME="Session Object"></a><b>Session Object</b></li>
+
+<br>A server’s sessions with clients have state information associated
+with them, but you don’t want to duplicate a lot of objects for each session.
+Use a single object to contain all the state information needed during
+a session by the server and make that object accessible to all other objects
+that need state information for the current session.
+<p>Related patterns are
+<ul>
+<li>
+<a href="pattern_synopses.htm#Singleton">Singleton</a></li>
+
+<br>The Singleton pattern (described in Volume 1) uses a single instance
+of a class for an entire program. The Session pattern uses a single instance
+of a class per session.
+<br>&nbsp;
+<li>
+<a href="#Thread Pool">Thread Pool</a></li>
+
+<br>You can use the Thread Pool pattern to manage the association between
+threads and sessions over time.</ul>
+
+<li>
+<a NAME="Lock File"></a><b>Lock File</b></li>
+
+<br>A program will need to have exclusive access to an external resource.
+You design the program to check for the existence of a lock file prior
+to accessing the resource. If the lock file exists, the program does not
+use the resource. If the lock file does not exist, the program creates
+the file and then uses the resource.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Static Locking Order">Static Locking Order</a></li>
+
+<br>The Static Locking Order pattern is used with the Lock File pattern
+when there are multiple resources to be coordinated, in order to avoid
+deadlocks.
+<br>&nbsp;
+<li>
+<a href="#ACID Transaction">ACID Transaction</a></li>
+
+<br>The lock file pattern may be used in the implementation of the ACID
+Transaction pattern.</ul>
+
+<li>
+<a NAME="Static Locking Order"></a><b>Static Locking Order</b></li>
+
+<br>If two objects need exclusive access to the same set of resources,
+they can become deadlocked with each holding a lock on one resource and
+waiting for the other to release its resource. You can avoid such deadlocks
+by ensuring that all objects acquire locks on resources in the same order.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#ACID Transaction">ACID Transaction</a></li>
+
+<br>The Static Locking Order pattern can be used in the design of ACID
+transactions.
+<br>&nbsp;
+<li>
+<a href="#Lock File">Lock File</a></li>
+
+<br>The Static Locking Order pattern can be used with the Lock File pattern
+to avoid deadlocks.</ul>
+
+<li>
+<a NAME="Optimistic Concurrency"></a><b>Optimistic Concurrency</b></li>
+
+<br>Improve throughput of transaction processing by not waiting for locks
+that a transaction will need. Instead, be optimistic and perform the transaction
+logic on private copies of the records or objects involved. Do insist that
+the locks be granted before the updates can be committed, but abort the
+transaction if conflicting updates were made prior to the granting of the
+locks.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#ACID Transaction">ACID Transaction</a></li>
+
+<br>The Optimistic Concurrency pattern can be used in the implementation
+of the ACID Transaction pattern.
+<br>&nbsp;
+<li>
+<a href="#Object Replication">Object Replication</a></li>
+
+<br>The Optimistic Concurrency pattern can be used in the implementation
+of the Object Replication pattern.</ul>
+
+<li>
+<a NAME="Thread Pool"></a><b>Thread Pool</b></li>
+
+<br>The nature of many servers is that they are presented with a steady
+stream of tasks to perform that must each be performed in their own thread.
+Creating a thread is a relatively expensive operation. Avoid the expense
+of creating a thread for each task by reusing threads.
+<p>Related patterns are
+<br>&nbsp;
+<ul>
+<li>
+<a href="pattern_synopses.htm#Object Pool">Object Pool</a></li>
+
+<br>The Thread Pool pattern is a specialized form of the Object Pool pattern
+described Volume 1.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Factory Method">Factory Method</a></li>
+
+<br>Implementations of the Thread Pool pattern may use the Factory Method
+pattern to allow greater flexibility in how they create new threads.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Singleton">Singleton</a></li>
+
+<br>The Singleton pattern is often used with the Thread Pool pattern to
+ensure that all classes that want to use a ThreadPool object use the same
+ThreadPool object.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Guarded Suspension">Guarded Suspension</a></li>
+
+<br>Implementations of the Thread Pool pattern directly or indirectly use
+the Guarded Suspension pattern to manage the queuing of tasks.</ul>
+
+<li>
+<a NAME="Cache Consistency"></a><b>Cache Consistency</b></li>
+
+<br>A cache can be used to keep a local copy of data from a remote data
+source. From time to time, the content of the data in the remote data source
+may change. You want a local cache to reflect such changes in a remote
+data source. Ensure that the data in the local cache matches the remote
+data source within a bounded amount of time by considering data in a cache
+to have a maximum useful lifetime.
+<p>Related patterns are
+<ul>
+<li>
+<a href="pattern_synopses.htm#Cache Management">Cache Management</a></li>
+
+<br>The Cache Consistency pattern is a refinement to the Cache Management
+pattern. That discussion includes a much more detailed discussion of caching.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#scheduler">Scheduler</a></li>
+
+<br>The Cache Consistency pattern uses the Scheduler pattern.
+<br>&nbsp;
+<li>
+<a href="#Heavyweight/Lightweight Object">Heavyweight/LightWeight</a></li>
+
+<br>Application clients may use the Cache Consistency pattern with the
+Heavyweight/Lightweight pattern to manage lightweight objects.</ul>
+
+<li>
+<a NAME="Deep Transaction"></a><b>Deep Transaction Nesting</b></li>
+
+<br>Implement the ability to restore the original state of objects altered
+by possibly nested atomic transactions by saving the state of an object
+on a stack. This technique is most commonly used for transactions that
+only alter local objects or objects that are otherwise cheap to access.</ul>
+
+<blockquote>Related patterns are</blockquote>
+
+<ul>
+<ul>
+<li>
+<a href="#ACID Transaction">ACID Transaction</a></li>
+
+<br>The ACID Transaction pattern contains more information about the atomic
+and isolated properties of transactions.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Decorator">Decorator</a></li>
+
+<br>The logic to implement a TransactionParticipantIF interface for a class
+that participates in a transaction is often implemented using the Decorator
+pattern.
+<p><a href="pattern_synopses.htm#Snapshot">Snapshot</a>
+<br>The Deep Transaction pattern uses the Snapshot pattern to encapsulate
+the current state of an object in a way suitable for putting on a stack
+and possibly being restored later.
+<br>&nbsp;</ul>
+</ul>
+
+<h2>
+<a NAME="Temporal Patterns"></a>Temporal Patterns</h2>
+
+<ul>
+<li>
+<a NAME="Time Server"></a><b>Time Server</b></li>
+
+<br>In order for some distributed applications to function correctly, the
+clocks on the computers they run on must be synchronized. Ensure that clocks
+on multiple computers are synchronized by synchronizing them with a common
+clock.
+<p>Related patterns are</ul>
+
+<blockquote>
+<ul>
+<li>
+<a href="#Versioned Object">Versioned Object</a></li>
+
+<br>Distributed applications that use the Versioned Object pattern are
+likely to also use the Time Server pattern.
+<br>&nbsp;
+<li>
+<a href="#Temporal Property">Temporal Property</a></li>
+
+<br>Distributed applications that use the Temporal Property pattern are
+likely to also use the Time Server pattern.</ul>
+
+<li>
+<a NAME="Versioned Object"></a><b>Versioned Object</b></li>
+
+<br>You may need to access pervious or future states of an object. When
+an object gets a new state, keep both the object’s new state and its previous
+states. Identify the states by a timestamp or a version number. Allow access
+to a specific state of an object by identifying its timestamp or version
+number.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Time Server">Time Server</a></li>
+
+<br>The Versioned Object pattern is often used in conjunction with the
+Time Server pattern to ensure consistent timestamping of object versions.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Virtual Proxy">Virtual Proxy</a></li>
+
+<br>The Virtual Proxy pattern is sometimes used with the Versioned Object
+pattern to avoid having to load all the states of an object from a persistant
+store.
+<br>&nbsp;
+<li>
+<a href="#Temporal Property">Temporal Property</a></li>
+
+<br>The Temporal Property pattern provides a alternate way of organizing
+changes in an object’s state over time. It is more appropriate for classes
+whose state changes tend to involve only one attribute at a time.</ul>
+
+<li>
+<a NAME="Temporal Property"></a><b>Temporal Property</b></li>
+
+<br>The values of an object’s attributes may change over time. They usually
+change independently of each other. Keep historical values of attributes
+in a way that allows clients to get the effective value of a particular
+attribute as of a particular time.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Time Server">Time Server</a></li>
+
+<br>The Temporal Property pattern is often used in conjunction with the
+Time Server pattern to ensure consistent timestamping of property values.
+<br>&nbsp;
+<li>
+<a href="#Versioned Object">Versioned Object</a></li>
+
+<br>The Versioned Object pattern provides a alternate way of organizing
+changes in an object’s state over time. It is more appropriate for classes
+whose state changes tend to involve changes to multiple attributes.</ul>
+</blockquote>
+
+<h2>
+<a NAME="Database Patterns"></a>Database Patterns</h2>
+
+<ul>
+<li>
+<a NAME="Persistence Layer"></a><b>Persistence Layer</b></li>
+
+<br>Keep dependencies on the details of persisting objects or on a specific
+database out of application specific classes by organizing persistence
+related details into classes that make up a persistence layer.
+<p>Related patterns are
+<ul>
+<li>
+<a href="pattern_synopses.htm#Virtual Proxy">Virtual Proxy</a></li>
+
+<br>The Virtual Proxy pattern, described in Volume 1, may be used by an
+implementation of the Persistence Layer pattern to defer the fetching of
+objects that are part of a more complext object but may not be needed for
+some uses of the complex object.
+<br>&nbsp;
+<li>
+<a href="#CRUD">CRUD</a></li>
+
+<br>The CRUD pattern is used to design interfaces for the Persistence pattern
+for objects responsible for persisting business objects.
+<br>&nbsp;
+<li>
+<a href="#Stale Object">Stale Object</a></li>
+
+<br>The Stale Object pattern is used with the Persistence Layer pattern
+to ensure the consistency of updates.
+<br>&nbsp;
+<li>
+<a href="#Change Manager">Change Manager</a></li>
+
+<br>The Change Manager pattern is often used with the persistence pattern
+in order to determine, based on the state of an object whether it needs
+to be written to the persistent store or not.
+<br>&nbsp;
+<li>
+<a href="#Object ID Manager">Object ID Manager</a></li>
+
+<br>The Object ID Manager pattern is used with the Persistence Layer pattern
+to generate object IDs that will be unique across all domains that an object
+will be used in or from.
+<br>&nbsp;
+<li>
+<a href="#Transaction Manager">Transaction Manager</a></li>
+
+<br>The Persistence layer pattern uses the Transaction Manager pattern
+to manage transactions.
+<br>&nbsp;
+<li>
+<a href="#Connection Manager">Connection Manager</a></li>
+
+<br>The Connection Manager pattern is used in implementing the Persistence
+Layer pattern.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Abstract Factory">Abstract Factory</a></li>
+
+<br>The Persistence Layer pattern uses the Abstract Factory pattern to
+encapsulate the selection of a persistent store and to ensure that the
+persister objects that are used are all for the correct persistent store.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Cache Management">Cache Management</a></li>
+
+<br>The Cache Management pattern, described in Volume 1, is used with the
+Persistence Layer pattern to avoid unnecessary fetches from the persistent
+store.
+<br>&nbsp;
+<li>
+<a href="#Cache Consistency">Cache Consistency</a></li>
+
+<br>The Cache Consistency pattern may be used by a persistence layer to
+implement guarantees on how current the objects in a cache are.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Singleton">Singleton</a></li>
+
+<br>The Persistence Layer pattern uses the Singleton pattern to manage
+instances of classes.
+<br>&nbsp;
+<li>
+<a href="pattern_synopses.htm#Marker Interface">Marker Interface</a></li>
+
+<br>The Persistence Layer pattern uses the Marker Interface pattern to
+recognize objects that are instances of classes that it may persist.</ul>
+
+<li>
+<a NAME="CRUD"></a><b>CRUD</b></li>
+
+<br>Organize persistence operations into Create, Retrieve, Update and Delete
+operations.
+<p>Related patterns are
+<ul>
+<li>
+<a href="#Object Identifier">Object Identifier</a></li>
+
+<br>Implementations of CRUD interfaces use the Object Identifier pattern
+to identify objects in memory and in databases.
+<br>&nbsp;
+<li>
+<a href="#Object ID Manager">Object ID Manager</a></li>
+
+<br>The Object ID Manager pattern is used with the CRUD pattern to generate
+object IDs that will be unique across all domains that an object will be
+used in or from.
+<br>&nbsp;
+<li>
+<a href="#Persistence Layer">Persistence Layer</a></li>
+
+<br>The CRUD pattern is used by the Persistence Layer Pattern.
+<br>&nbsp;
+<li>
+<a href="#Stale Object">Stale Object</a></li>
+
+<br>The Stale Object pattern is used when implementing the CRUD pattern
+to ensure the consistency of updates.</ul>
+
+<p><br>SQL Code Description
+<br>The SQL Code Description pattern is used to implement the CRUD pattern
+when the persistent store is a relational database.
+<br>&nbsp;
+<li>
+<a NAME="Stale Object"></a><b>Stale Object</b></li>
+
+<br>&nbsp;
+<li>
+<a NAME="SQL Code Description"></a><b>SQL Code Description</b></li>
+
+<br>&nbsp;
+<li>
+<a NAME="Attribute Mapping Methods"></a><b>Attribute Mapping Methods</b></li>
+
+<br>&nbsp;
+<li>
+<a NAME="Type Conversion"></a><b>Type Conversion</b></li>
+
+<br>&nbsp;
+<li>
+<a NAME="Change Manager"></a><b>Change Manager</b></li>
+
+<br>&nbsp;
+<li>
+<a NAME="Object ID Manager"></a><b>Object ID Manager</b></li>
+
+<br>&nbsp;
+<li>
+<a NAME="Transaction Manager"></a><b>Transaction Manager</b></li>
+
+<br>&nbsp;
+<li>
+<a NAME="Connection Manager"></a><b>Connection Manager</b></li>
+
+<br>&nbsp;
+<li>
+<a NAME="Table Manager"></a><b>Table Manager</b></li>
+
+<br>&nbsp;</ul>
+
+<hr WIDTH="100%">
+<br>&nbsp;
+</body>
+</html>

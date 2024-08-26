@@ -1,0 +1,834 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>perl_examples_tutorial</title>
+<!--
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Perl examples tutorial</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Perl examples tutorial</font></b> - under construction
+but still useful
+<p>This is a compilation of examples borrowed from several tutorials or
+self-made. Arranged into chapters.
+<br>After you read them, copy/paste and run them - you will be able to
+program in Perl on an average beginner level.
+<p>- <a href="#ch1_2">Chapter 1, 2: Numeric and String Literals</a>
+<br>- <a href="#ch3_variables">Chapter 3: Variables</a>
+<br>- <a href="#ch4_operators">Chapter 4: Operators</a>
+<br>- <a href="#cg5_functions">Chapter 5: Functions</a>
+<br>- Chapter 6: Statements
+<br>- Chapter 7: Statements
+<br>- Chapter 8: References
+<br>- Chapter 9: Using Files
+<br>- Chapter 10: Regular Expressions
+<br>- Chapter 11: Creating Reports
+<br>- Chapter 12: Using Special Variables
+<br><a NAME="ch1_2"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>-- Chapter 1,2 --</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p># --------------------------------------------------
+<br>print("My name is Yon Yonson,\n");&nbsp;&nbsp;&nbsp; #&nbsp;&nbsp;&nbsp;
+this is a comment
+<br>print("I live in Wisconsin,\n",
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "I work in a lumbermill there.\n");
+<p>print("
+<br>&nbsp;&nbsp; I live in NY,
+<br>&nbsp;&nbsp; I work in GS there.
+<br>&nbsp;");
+<p>#&nbsp; decimal, octal, hexadecimal nubmers
+<br>&nbsp;print 123, ' ', 043, ' ', 0x23, "\n";
+<br>&nbsp;
+<br>#&nbsp; float numbers
+<br>&nbsp;print 100.5, ' ', 54.534, ' ', 3.4E-5, "\n";
+<br>&nbsp;
+<br># quotes - single and double. Note using '\' to include special
+<br># characters into the string:
+<br>&nbsp;print 'WasWaldo can\'t hit the broad side of a barn.', "\n";
+<br>&nbsp;print 'Morganna said, "WasWaldo can\'t hit anything."', "\n";
+<br>&nbsp;print "WasWaldo the Illusionist\n";
+<br>&nbsp;print "Morganna said, \"WasWaldo can't hit anything.\"", "\n";
+<br>&nbsp;
+<br>&nbsp;# using embeded line-breaks:
+<br>&nbsp;print 'Bill of Goods
+<br>&nbsp;&nbsp; Bread:&nbsp;&nbsp;&nbsp; $34 .45
+<br>&nbsp;&nbsp; Fruit:&nbsp;&nbsp;&nbsp; $45.00
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+======
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$79.45', "\n";
+<br>&nbsp;
+<br># ----- There are many Escape Sequences - to insert special characters
+into strings, capitalize, etc.:
+<br>&nbsp;print "\uwas\uwaldo is \x33\x34 years old.\n";
+<br>&nbsp;print "The kettle was \Uhot\E!\n";
+<br>&nbsp;print "\nYet another example:\n";
+<br>&nbsp;print "Bill of Goods\n
+<br>&nbsp;&nbsp; Bread:\t\$34.45\nFruit:\t\$45.00\n\t======\n\t\$79.45\n";
+<br>&nbsp;
+<br>print "Back-Quoted Strings are used to run external commands and collect
+their output\n";
+<p>$allfiles = `dir *.pl`;
+<br>print "$allfiles\n";
+<br>print "===== hit 'Enter' to continue";
+<br>&lt;>; # waiting for user to enter the line
+<p># note: you can use qx() notation instead of&nbsp; back quotes, for
+example:
+<br>print "------------------------------\n";
+<br>$allfiles = qx(dir *.pl);
+<br>print "$allfiles\n";
+<p># --------------------------------------------------
+<br># ----- arrays:
+<br>@arr1 = (); # empty array
+<br>@arr1 = ("This", "is", 'an', "array", 'of', "strings");
+<br>@arr2 = qw(This is an array of strings); # qw puts quotes and commas
+for you
+<br>for (@arr2) { print "$_\n" }
+<br>print "Here is an empty array:" . () . "&lt;-- Nothing there!\n";
+<br>print (12, 014, 0x0c, 34.34, 23.3E-3), "\n";
+<br>print ("This", "is", 'an', "array", 'of', "strings"), "\n";
+<br>print ("This", 30, "is", 'a', "mixed array", 'of', 0x08, "items", "\n");
+<br>print (1..15), "\n";
+<br>print (1, 2, 7..10, 14, 15, "\n");
+<br>print ("A", "B", "F".."H", "Y", "Z", "\n\n");
+<br># ----- putting to lists into one:
+<br>@arr1 = qw( a b c d e );&nbsp; @arr2 = qw( f g h i j);
+<br>@arr3 = (@arr1, @arr2);
+<br>print "@arr3 \n";
+<br># ----- array returns its length in scalar context:
+<br>$length1 = @arr1; $length3 = @arr3;
+<br>print "\$length1 = $length1, \$length3 = $length3\n";
+<br>print "\n";
+<br><a NAME="ch3_variables"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>-- Chapter 3 -- Variables</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p># --------------------------------------------------
+<br>print "\$ - scalars , \@ - arrays, \% - hashes\n";
+<br>$numberOfRooms = 23;
+<br>$bookTitle = "Perl by Example";
+<br>$numberOfRooms = $numberOfRooms + 5;&nbsp;&nbsp;&nbsp;&nbsp; # 23 +
+5 = 28
+<br>$numberOfRooms += $numberOfRooms + 5;&nbsp;&nbsp;&nbsp;&nbsp; # 28
++ 5 = 33
+<br>&nbsp;
+<br>@emptyArray = ();
+<br>@numberArray = (12, 014, 0x0c, 34.34, 23.3E-3);
+<br>@stringArray = ("This", "is", 'an', "array", 'of', "strings");
+<br>@mixedArray = ("This", 30, "is", 'a', "mixed array", 'of', 0x08, "items");
+<p>print "Here is an empty array:" . @emptyArray . "&lt;- Nothing there!\n";
+<br>print @numberArray;&nbsp; print "\n";
+<br>print @stringArray;&nbsp; print "\n";
+<br>print @mixedArray;&nbsp;&nbsp; print "\n";
+<br>print "======== press 'Enter' to continue:";&lt;>;
+<p>@smallArrayOne = (5..10);
+<br>@smallArrayTwo = (1..5);
+<br>@largeArray = (@smallArrayOne, @smallArrayTwo);
+<br>print @largeArray, "\n";
+<br>print "======== press 'Enter' to continue:";&lt;>;
+<br>&nbsp;
+<br>print "\narray indexing:\n";
+<br>@array = (1..5);&nbsp;&nbsp; # indexes 0..4, values 1..5
+<br>print @array, "\n";
+<br>print $array[0], "\n";
+<br>print $array[1], "\n";
+<br>print $array[2], "\n";
+<br>print $array[3], "\n";
+<br>print $array[4], "\n";
+<br>print $array[-1], "\n";&nbsp; # last element = $array[4]
+<br>print $array[-2], "\n";&nbsp; #&nbsp; = $array[3]
+<br>print $array[-3], "\n";&nbsp; #&nbsp; = $array[2]
+<br>print $array[-4], "\n";&nbsp; #&nbsp; = $array[1]
+<br>print $array[-5], "\n";&nbsp; #&nbsp; = $array[0]
+<br>print "======== press 'Enter' to continue:";&lt;>;
+<br>$index = 2;
+<br>print $array[$index], "\n";
+<br>&nbsp;
+<br>print "\nnumber of elements:\n";
+<br>$numberOfElements = @array;
+<br>print "$numberOfElements\n";
+<br>print "======== press 'Enter' to continue:";&lt;>;
+<br>&nbsp;
+<br>&nbsp;
+<br>print "\nGrab a slice of an Array:\n";
+<br>@array&nbsp; = ("One", "Two", "Three", "Four");
+<br>($first, $third) = @array[0, 2];
+<br>@arr = (0,2);
+<br>($first, $third) = @array[@arr];&nbsp; # same thing
+<br>print("\$first=$first&nbsp; \$third=$third\n");
+<br>print "======== press 'Enter' to continue:";&lt;>;
+<p>print "\nswap values of 2 variables:\n";
+<br>$aa = 'mama'; $bb='papa';
+<br>($aa, $bb) = ($bb, $aa);
+<br>print "$aa $bb\n";
+<p># swap array elements
+<br>@array[0, 3] = @array[3, 0];
+<br>print("\@array=@array\n");
+<br>&nbsp;
+<br>print "======== press 'Enter' to continue:";&lt;>;
+<p>print "\nhashes (key-value pairs) - also called assotiative arrays:\n";
+<br>%hh = ("Jack A.", "Dec 2",
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Joe B.",&nbsp; "June 2");
+<br>&nbsp;
+<br>&nbsp;$hh{"Jennifer S."} = "Mar 20";
+<br>&nbsp;
+<br>&nbsp;print "Joe's birthday is: " . $hh{"Joe B."} . "\n";
+<br>&nbsp;print "Jennifer's birthday is: " . $hh{"Jennifer S."} . "\n";
+<br>&nbsp;print "======== press 'Enter' to continue:";&lt;>;
+<br>&nbsp;
+<br>&nbsp;print "\nprinting arrays - see the difference:\n";
+<br>&nbsp;&nbsp; print @array, "\n";
+<br>&nbsp;&nbsp; print scalar(@array), "\n";
+<br>&nbsp;
+<br>&nbsp;&nbsp; print "@array\n";&nbsp; # by default separates by spaces
+<br>&nbsp;&nbsp; $" = ",";
+<br>&nbsp;&nbsp; print "@array\n";&nbsp; # no separates by commas
+<br>&nbsp;<a NAME="ch4_operators"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>-- 4 -- Operators</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Chapter 4 - operators
+<p># -----------------------------------------------
+<br>Operator Description
+<br>op1 + op2 Addition
+<br>op1 - op2 Subtraction
+<br>op1 * op2 Multiplication
+<br>op1 ** op2 Exponentiation
+<br>op1 / op2 Division
+<br>op1 % op2 Modulus
+<br>Example:
+<br>&nbsp; $aa = 4; print $aa ** 3, "\n";&nbsp; # 64
+<p># -----------------------------------------------
+<p>for($i=0;$i&lt;=100;$i++) {
+<br>&nbsp; if($i % 10 == 0) {
+<br>&nbsp;&nbsp;&nbsp; print "$i ";
+<br>&nbsp; }
+<br>}
+<br>&nbsp; # 0 10 20 30 40 50 60 70 80 90 100
+<p># -----------------------------------------------
+<p>++ and -- : pre - act before using operand in expression
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+after - act after using operand in expression
+<br>For example:
+<br>$aa = 5; $bb = $aa++;&nbsp;&nbsp; # now $bb == 5, $aa == 6;
+<br>$aa = 5; $bb = ++$aa;&nbsp;&nbsp; # now $bb == 6, $aa == 6;
+<p># -----------------------------------------------
+<p>$aa = 5;
+<br>$aa = $aa + 3;&nbsp; # inconvenient - has to write $aa two times
+<br>$aa += 3;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # shorter way - means
+"increase by 3"
+<p>Other similar operators:
+<br>&nbsp;+=
+<br>&nbsp;-=
+<br>&nbsp;*=
+<br>&nbsp;/=
+<br>&nbsp;%=
+<br>&nbsp;**=
+<br>&nbsp;.=&nbsp;&nbsp;&nbsp;&nbsp; concatenate strings together:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $aa= "We are "; $aa .= "friends";
+<p>NOTE: similar you can use = with other operators described later:
+<p>var&nbsp; x= op1; # repetition
+<br>var &lt;&lt;= op1; # bit shifting
+<br>var >>= op1; # bit shifting
+<br>var&nbsp; &amp;= op1; # bitwize AND
+<br>var&nbsp; |= op1; # bitwize OR
+<br>var ||= op1; # logical OR
+<br>var&nbsp; ^= op1; # logical XOR
+<p># -----------------------------------------------
+<p>Check if something is true or false
+<p>if ($aa) { print "TRUE\n"; } else { print "FALSE\n" };
+<p>Three types of false values:
+<br>&nbsp; $aa = 0;&nbsp;&nbsp;&nbsp;&nbsp; # number zero
+<br>&nbsp; $aa = "";&nbsp;&nbsp;&nbsp; # empty string
+<br>&nbsp; $aa = undef; # undefined value
+<p>Everything else is considered to be true
+<p># -----------------------------------------------
+<p>Comparing equality:
+<p>&nbsp;==&nbsp;&nbsp; number values are the same
+<br>&nbsp;!=&nbsp;&nbsp; numbers are different
+<br>&nbsp;eq&nbsp;&nbsp; string values are the same
+<br>&nbsp;ne&nbsp;&nbsp; string values are different
+<p>$str1 = "1";
+<br>$str2 = "01";
+<br>if ($str1 eq $str2) { print "equal strings,"; } else { print "different
+<br>strings,"; }
+<br>if ($str1 == $str2) { print " equal numbers\n"; } else { print " different
+<br>numbers\n"; }
+<p>&nbsp;&nbsp; #&nbsp;&nbsp; different strings, equal numbers
+<p># -----------------------------------------------
+<p>Comparing:
+<p>numbers:&nbsp; &lt; , &lt;= , > , >=
+<br>strings:&nbsp; lt, le , gt, ge&nbsp;&nbsp; # strings are compared by
+their ascii order
+<p># -----------------------------------------------
+<p>3-way comparing:
+<p>( op1 &lt;=> op2 )&nbsp; # this operator returns:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#&nbsp;&nbsp; 1 if op1 is greater than op2,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#&nbsp;&nbsp; 0 if op1 equals op2,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#&nbsp; -1 if op1 is less than op2.
+<p>( op1 cmp op2 )&nbsp; # similar thing for strings
+<p># -----------------------------------------------
+<p>Logical operators:
+<p>op1 &amp;&amp; op2 - Performs a logical AND of the two operands.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+NOTE: runs op2 only if op1 is "true"
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+returns result of the last operation
+<p>op1 || op2 - Performs a logical OR of the two operands.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+NOTE: performs op2 only if op1 is "false"
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+returns result of the last operation
+<p>!op1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Performs a logical NOT of
+the operand.
+<p>$aa = "mama";
+<br>$bb = "papa";
+<br>$cc = $aa &amp;&amp; $bb;
+<br>print "$cc\n";&nbsp;&nbsp; # papa
+<p># -----------------------------------------------
+<p>low-priority version of logical operators:
+<p>&nbsp; and&nbsp;&nbsp;&nbsp; or&nbsp;&nbsp;&nbsp; not
+<p>if ($aa == 9 || $aa == 10) { print("Error!") }
+<br>if ($aa == 9 or $aa == 10) { print("Error!") }
+<p># -----------------------------------------------
+<p>Bitwize operators:
+<p>1&nbsp;&nbsp; 00000001
+<br>2&nbsp;&nbsp; 00000010
+<br>3&nbsp;&nbsp; 00000011
+<br>4&nbsp;&nbsp; 00000100
+<br>etc.
+<p>op1 &amp; op2&nbsp;&nbsp; bitwize AND&nbsp; : (2 &amp; 3) == 2
+<br>op1 | op2&nbsp;&nbsp; bitwize OR&nbsp;&nbsp; : (2 &amp; 3) == 3
+<br>op1 ^ op2&nbsp;&nbsp; bitwize XOR (exclusive OR)&nbsp; : (2 ^ 3) ==
+1
+<br>~op1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bitwize NOT (COMPLEMENT):&nbsp;
+~63 = 4294967232
+<br>&nbsp;&nbsp; 63&nbsp; 11111111 11111111 11111111 00111111
+<br>&nbsp;&nbsp; ~63 11111111 11111111 11111111 11000000
+<p>op1 &lt;&lt; op2&nbsp; SHIFT bits LEFT (effectively multiplies by 2)
+<br>op1 >> op2&nbsp; SHIFT bits RIGHT (effectively divides by 2 for positive
+<br>numbers)
+<p>print "\n", 8 &lt;&lt; 3;&nbsp; # 64
+<br>print "\n", 8 >> 1;&nbsp; # 4
+<p># -----------------------------------------------
+<p>Terniary operator:&nbsp; __ ? __ : __
+<p>Example1: getting one of 2 values
+<br>$max = ( $aa >= $bb ) $aa : $bb;
+<p>Example2: assigning to one of 2 values
+<br>$a1=1;$a2=2;$a3=3;
+<br>($a3 == 0 ? $a1 : $a2) = 4;
+<br>print "$a1 $a2 $a3\n";&nbsp; # 1 4 3
+<p># -----------------------------------------------
+<p>Range operator: ( .. )
+<p>@a = (1..10);&nbsp; #&nbsp; $a[0] == 1, $a[1] == 2, ..., $a[9] = 10
+<p>Examples of usage:
+<br>@arr = ("AAA", 1..5, "A".."D", "ZZZ");
+<br>@arr = ("aa" .. "af");
+<p># -----------------------------------------------
+<p>The String Operators (. and x) - concatenation and repition.
+<p>$aa = "AA";
+<br>$bb = "BB";
+<br>$cc = $aa . $bb; # "AABB";
+<p>$separator = "-" x 20 . "\n";
+<br>print $separator;&nbsp; #&nbsp; --------------------
+<p>NOTE: you can use repetition operator to repeat array elements as well:
+<p>@arr = ('a') x 5;
+<br>print "@arr\n";&nbsp;&nbsp; # a a a a a
+<br>&nbsp;
+<p>Excercise:
+<br>@arr = ('A'..'G');
+<br>$aa = @arr x 2;
+<br>print("@arr\n");&nbsp; # A B C D E F G
+<br>print("$aa\n");&nbsp;&nbsp; # 77
+<p># -----------------------------------------------
+<p>Assigning using array slices:
+<br>Example1:
+<br>@arr = (0..10);
+<br>@arr[4, 7] = ("AA","BB");
+<br>print("@arr\n");&nbsp;&nbsp; #&nbsp;&nbsp; 0 1 2 3 AA 5 6 BB 8 9 10
+<p>Example2:
+<br>@arr1 = (0..10);
+<br>@arr2 = ("A".."Z");
+<br>@arr1[1..3] = @arr2[23..25];
+<br>print "@arr1\n";&nbsp;&nbsp; #&nbsp; 0 X Y Z 4 5 6 7 8 9 10
+<p># -----------------------------------------------
+<p>@arr = ("Tom Jones", "123 Harley Lane", "Birmingham", "AR");
+<br>($name, $street, $town, $state) = @arr;
+<br>print("$name, $street, $town, $state\n");
+<p># -----------------------------------------------
+<p>Operator precedence:
+<p>$a1 = -2 ** 4;
+<br>$a2 = -(2 ** 4);
+<br>$a3 = (-2) ** 4;
+<br>print "$a1&nbsp; $a2&nbsp; $a3\n";&nbsp; #&nbsp; -16&nbsp; -16&nbsp;
+16
+<p># -----------------------------------------------
+<p>Questions to repeat the main topics of the chapter:
+<p>What are three arithmetic operators?
+<br>What does the x operator do?
+<br>What does it mean to pre-decrement a variable?
+<br>What is the value of 1 ^ 1?
+<br>What is the value of 1 &lt;&lt; 3?
+<br>What is the ternary operator used for?
+<br>Can the x operator be used with arrays?
+<br>What is the precedence level of the range operator?
+<br>What is the value of 2 % 5 + 10?
+<br>What is the value of 65 >> 1?
+<br>What is the spaceship operator used for?
+<br>If an array were defined with ("fy".."gb"), what would its elements
+be?
+<br><a NAME="cg5_functions"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>-- 5 -- Functions</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p># functions = subroutins.
+<br># Parameters passed as aliases into one array - @_.
+<p># ----------------------------
+<br>sub s1 {
+<br>&nbsp; print "Hello, sub\n";
+<br>}
+<p>s1();&nbsp; # calling this sub
+<br># ----------------------------
+<br>sub s2 {
+<br>&nbsp; my ($a1, $a2) = @_;
+<br>&nbsp; print "$a $b\n";
+<br>}
+<br>&nbsp;
+<br>s2("mama", 123);
+<br># ----------------------------
+<br>sub s3 {
+<br>&nbsp; my $number = @_;&nbsp; # number of elements
+<br>&nbsp; print "number of parameters = $number : ";
+<br>&nbsp; for (@_) { print "$_ "; }
+<br>&nbsp; print "\n";
+<br>}
+<p>s3(1,2,3,"mama",'papa', 'crocodil');
+<br>s3(1, 2, 3, 4, 5, 6);
+<br>s3(1..3);
+<br>s3("A".."Z");
+<br># ----------------------------
+<br>sub s4 {
+<br>&nbsp; my $x1=shift;
+<br>&nbsp; my $x2=shift;
+<br>&nbsp; return $x2 >= $x1 ? $x2 : $x1;
+<br>}
+<br>$max = s4(4,5);
+<p># ----------------------------
+<br>sub s5 {
+<br>&nbsp; @_[0] +=1;
+<br>&nbsp; print "in sub: $_[0]\n";
+<br>}
+<br>$aa=1;
+<br>s5($aa);
+<br>print "after sub: $aa\n";
+<br># ----------------------------
+<br>sub s6 {
+<br>&nbsp; my $x = shift;
+<br>&nbsp; $x++;
+<br>&nbsp; print "in sub: $x\n";
+<br>}
+<br>$aa=1;
+<br>s6($aa);
+<br>print "$aa\n";
+<br># ----------------------------
+<br>sub s7 {
+<br>&nbsp; for (@_) { $_++ }
+<br>}
+<br>@arr = (1, 2, 3);
+<br>s7(@arr);
+<br>print "@arr\n";
+<br># ----------------------------
+<br>sub areaOfCircle {
+<br>&nbsp; $radius = $_[0];
+<br>&nbsp; return(3.1415 * ($radius ** 2));
+<br>}
+<br>print areaOfCircle(5),"\n";
+<br># ----------------------------
+<br># you can call functions from other functions.
+<br># You can even call function from itself recursively
+<p>$i=0;
+<br>sub p { print "$i "; p(++$i) if $i&lt;100; }
+<br>p(); print "\n";
+<p>sub factorial {
+<br>&nbsp; my $x = shift;
+<br>&nbsp; $x= int($x);
+<br>&nbsp; if ($x&lt;1) {
+<br>&nbsp;&nbsp;&nbsp; print "number should be a positive integer, exiting..";
+<br>&nbsp;&nbsp;&nbsp; exit(1);
+<br>&nbsp; }
+<br>&nbsp; return $x * factorial($x-1) if $x >=2;
+<br>&nbsp; return $x;
+<br>}
+<p>print factorial(5),"\n";
+<p># ----------------------------
+<p># local variables:
+<br>#&nbsp;&nbsp; local - temporarily make/substitute a global variable
+<br>#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; used
+to temporary change values of special variables
+<br>#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; like
+$/, $|, etc.
+<br>#
+<br>#&nbsp;&nbsp; my&nbsp;&nbsp;&nbsp; - create a true local variable
+<br>#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; which
+is not visible outside the body of the sub
+<p># ----------------------------
+<br># some standard string functions:
+<p># chomp(STRING) OR chomp(ARRAY)
+<br>#&nbsp;&nbsp;&nbsp; Uses the value of the $/ special variable to remove
+endings from STRING
+<br>#&nbsp;&nbsp;&nbsp; or each element of ARRAY. The line ending is only
+removed if it matches
+<br>#&nbsp;&nbsp;&nbsp; the current value of $/.
+<p># chop(STRING) OR chop(ARRAY)&nbsp; Removes the last character from
+a string or
+<br>#&nbsp;&nbsp;&nbsp; the last character from every element in an array.
+The last character
+<br>#&nbsp;&nbsp;&nbsp; chopped is returned.
+<p># chr(NUMBER)&nbsp; Returns the character represented by NUMBER in the
+ASCII table.
+<br>#&nbsp;&nbsp;&nbsp; For instaNCe, chr(65) returns the letter A.
+<p># crypt(STRING1, STRING2)&nbsp; ENCrypts STRING1.
+<br>#&nbsp;&nbsp;&nbsp; Unfortunately, Perl does not provide a decrypt
+fuNCtion.
+<p># index(STRING, SUBSTRING, POSITION)&nbsp; Returns the position of the
+first
+<br>#&nbsp;&nbsp;&nbsp; occurreNCe of SUBSTRING in STRING at or after POSITION.
+<br>#&nbsp;&nbsp;&nbsp; If you don't specify POSITION, the search starts
+at the beginning of STRING.
+<br>&nbsp;
+<br># join(STRING, ARRAY)&nbsp; Returns a string that consists of all of
+the elements
+<br>#&nbsp;&nbsp;&nbsp; of ARRAY joined together by STRING.
+<br>#&nbsp;&nbsp;&nbsp; For instaNCe, join(">>", ("AA", "BB", "cc")) returns
+"AA>>BB>>cc".
+<p># lc(STRING)&nbsp; Returns a string with every letter of STRING in lowercase.
+<br>#&nbsp;&nbsp;&nbsp; For instaNCe, lc("ABCD") returns "abcd".
+<p># lcfirst(STRING)&nbsp; Returns a string with the first letter of STRING
+in lowercase.
+<br>#&nbsp;&nbsp;&nbsp; For instaNCe, lcfirst("ABCD") returns "aBCD".
+<p># length(STRING)&nbsp; Returns the length of STRING.
+<p># rindex(STRING, SUBSTRING, POSITION)&nbsp; Returns the position of
+the last
+<br>#&nbsp;&nbsp;&nbsp; occurreNCe of SUBSTRING in STRING at or after POSITION.
+<br>#&nbsp;&nbsp;&nbsp; If you don't specify POSITION, the search starts
+at the end of STRING.
+<p># split(PATTERN, STRING, LIMIT)&nbsp; Breaks up a string based on some
+delimiter.
+<br>#&nbsp;&nbsp;&nbsp; In an array context, it returns a list of the things
+that were found.
+<br>#&nbsp;&nbsp;&nbsp; In a scalar context, it returns the number of things
+found.
+<br>&nbsp;
+<br># substr(STRING, OFFSET, LENGTH)&nbsp; Returns a portion of STRING
+as determined
+<br>#&nbsp;&nbsp;&nbsp; by the OFFSET and LENGTH parameters.
+<br>#&nbsp;&nbsp;&nbsp; If LENGTH is not specified, then everything from
+OFFSET to the end
+<br>#&nbsp;&nbsp;&nbsp; of STRING is returned. A negative OFFSET can be
+used to start from
+<br>#&nbsp;&nbsp;&nbsp; the right side of STRING.
+<br>#&nbsp;&nbsp;&nbsp; NOTE: also can be used to change a substring inside
+the string:
+<br>#&nbsp;&nbsp;&nbsp; for example:
+<br>&nbsp;&nbsp;&nbsp;&nbsp; $str = "my mother is living with me";
+<br>&nbsp;&nbsp;&nbsp;&nbsp; print "$str\n";
+<br>&nbsp;&nbsp;&nbsp;&nbsp; substr($str, 3, 6) = "dad";
+<br>&nbsp;&nbsp;&nbsp;&nbsp; print "$str\n";
+<br>&nbsp;
+<p># uc(STRING)&nbsp; Returns a string with every letter of STRING in uppercase.
+<br>#&nbsp;&nbsp;&nbsp; For instaNCe, uc("abcd") returns "ABCD".
+<p># Ucfirst(STRING)&nbsp; Returns a string with the first letter of STRING
+<br>#&nbsp;&nbsp;&nbsp; in uppercase. For instaNCe, ucfirst("abcd")
+<p># -------------------------------------------
+<p>&nbsp; $pathName = "C:\\WINDOWS\\TEMP\\somefile.txt";
+<br>&nbsp; $position = rindex($pathName, "\\") + 1;
+<br>&nbsp; $fileName = substr($pathName, $position);
+<br>&nbsp; print("$fileName\n");
+<p># -------------------------------------------
+<br># Some functions often used with arrays and hashes:
+<br># -------------------------------------------
+<p>$aa = undef;
+<br>print "NOT DEFINED\n" if not <b><font color="#CC0000">defined</font></b>
+$aa;
+<br>$aa = "";
+<br>print "DEFINED\n" if <b><font color="#CC0000">defined</font></b> $aa;
+<p># -------------------------------------------
+<br>%hh = ( k1 => 'v1', k2 => v2);
+<br>$kk = 'k3';
+<br>print "key '$kk' does not exist\n" if not <b><font color="#CC0000">exists</font></b>
+$hh{$kk};
+<br>$kk = 'k2';
+<br><b><font color="#CC0000">delete</font></b> $hh{$kk} if <b><font color="#CC0000">exists</font></b>
+$hh{$kk};
+<br>print "key '$kk' does not exist\n" if not <b><font color="#CC0000">exists</font></b>
+$hh{$kk};
+<p># -------------------------------------------
+<br># 2 ways to go through the elements of a hash
+<p>while (my ($kk,$vv) = <b><font color="#CC0000">each</font></b> %hh)
+{
+<br>&nbsp; do something with $kk and $vv
+<br>}
+<p>for my $key (<b><font color="#CC0000">keys</font></b> %hh) {
+<br>&nbsp;&nbsp; print $hh{$key},"\n";
+<br>}
+<p>for&nbsp; (<b><font color="#CC0000">sort</font></b> <b><font color="#CC0000">keys</font></b>
+%hh) {
+<br>&nbsp;&nbsp; print $hh{$_},"\n";
+<br>}
+<p># -------------------------------------------
+<p># 5 functions to add/remove elements of the array:
+<br># <b><font color="#3333FF">push, pop, shift, unshift, splice</font></b>
+<p><b><font color="#CC0000">push</font></b> @arr, $var;&nbsp;&nbsp; # add
+one element to the end of the array - and assign its value to be $var
+<br><b><font color="#CC0000">push</font></b> @arr, (1,2,3);&nbsp; # add
+3 elements
+<br><b><font color="#CC0000">push</font></b> @arr, @arr2, $var1, $var2;&nbsp;
+# add many elements
+<p>$var = <b><font color="#CC0000">pop</font></b> @arr;&nbsp; # remove
+last element from the array and return it. Array gets shorter by 1.
+<br>$var = <b><font color="#CC0000">shift</font></b> @arr;&nbsp; # same
+as pop - but takes element from the beginning of the array
+<p><b><font color="#CC0000">unshift</font></b> @arr, $var;&nbsp; # same
+as push, but adds elements to the beginning of the array.
+<p><b><font color="#CC0000">splice</font></b>(@arr, $ofset, $length, @arr2);
+<br>&nbsp; # Replaces elements of @arr (starting at $ofset, number - $length)
+<br>&nbsp; # with elements of @arr2 (number elements in it may differ $length).
+<br>&nbsp; # It returns a list holding any elements that were removed.
+<br>&nbsp; # Note: special variable $[&nbsp; may change the base array
+subscript when determining the OFFSET value.
+<p># -------------------------------------------
+<br>#&nbsp; make a string from the array of words using <b>join</b>( ):
+<br># split string into an array of words using <b>split</b>():
+<br>&nbsp; @arr = qw(word1 word2 word3 word4);
+<br>&nbsp; print "@arr\n";
+<br>&nbsp; $string = <b>join</b> (":", @arr);
+<br>&nbsp; print "$string\n";
+<br>&nbsp; @arr2 = <b>split</b> (/:/, $string);
+<br>&nbsp; print "@arr2\n";
+<p># -------------------------------------------
+<br># use <b>undef</b>()&nbsp; to undefine variable, array or hash
+<br>$var = "";
+<br>@arr = (1,2,3);
+<br>%hh = (1=>2,3=>4);
+<p>print "defined \$var\n" if <b>defined</b> $var;
+<br>print "defined \@arr\n" if <b>defined</b> @arr;
+<br>print "defined \%hh\n"&nbsp; if <b>defined</b> %hh;
+<p><b>undef</b> $var;
+<br><b>undef</b> @arr;
+<br><b>undef</b> %hh;
+<p>print "NOT defined \$var\n" if not <b>defined</b> $var;
+<br>print "NOT defined \@arr\n" if not <b>defined</b> @arr;
+<br>print "NOT defined \%hh\n"&nbsp; if not <b>defined</b> %hh;
+<p># -------------------------------------------
+<br>$length = <b>scalar</b> @arr;
+<br>&nbsp;&nbsp; #&nbsp; forces to dot he same as $length = @arr;
+<br>&nbsp;&nbsp; # that is - evaluate array in a scalar context
+<br>&nbsp;&nbsp; # which returns the length (number of elements) of the
+array
+<br># -------------------------------------------
+<br>&nbsp;@arr = (1,2,3,4,'mama');
+<br>&nbsp;@revarr = <b>reverse</b> @arr;&nbsp;&nbsp; # reverse the order
+of array elements
+<br>&nbsp;print "@revarr\n";
+<br>&nbsp;$revstr = <b>reverse</b> @arr; # concatenates all elements in
+a string and reverses the string
+<br>&nbsp;print <b>scalar</b> <b>reverse</b> @arr;&nbsp; # amam4321
+<br>&nbsp;print "\n";
+<p># -------------------------------------------
+<br>@sorted = <b>sort</b> @arr;
+<br>@sorted = <b>sort</b> { $a &lt;=> $b } $arr;
+<p># -------------------------------------------
+<br>#&nbsp; <b>map</b>&nbsp; and&nbsp;&nbsp; <b>grep</b>
+<p><b>map</b> { some code with $_ } @arr;
+<br>@result = <b>map</b> { some code with $_ } @arr; # result elements
+are calculated for each element of @arr;
+<br>@filtered = <b>grep</b> { some code with $_ } @arr;&nbsp;&nbsp; # filtered
+are those for which code returns true;
+<br># -------------------------------------------
+<br><b>pack</b>(format, @arr); # creates a binary structure from @arr using
+format
+<br><b>unpack</b>(format, @arr); # the opposite of pack().
+<p># -------------------------------------------
+<p>using q(), qq(), qw(), qx()
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>-- 6 --</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>-- 7 --</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>-- 8 --</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>-- 9 --</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>-- 10 --</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<br>&nbsp;
+</body>
+</html>

@@ -1,0 +1,1044 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+
+
+
+
+
+
+<head>
+
+
+
+
+
+
+
+<title>1.4) Declarations and access control</title>
+
+
+
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META name="GENERATOR" content="IBM WebSphere Homepage Builder V4.0.0 for Linux">
+<link rel="stylesheet" href="tutor.css"></head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body bgcolor="#FFFFFF">
+
+<table width=95% border=0 cellpadding=2 cellspacing=0 style="page-break-before: always">
+
+  <col width=147*> <col width=109*> 
+
+  <tr> 
+
+    <td width=57% height=104> 
+
+      <p><a href= "introj2.htm" ><img src= "btnIndex.jpg"  name="Graphic1" alt="Return to Tutorial Index" align=BOTTOM width=55 height=39 border=0></a><a href= "introj2.htm" ><br>
+
+        <br>
+
+        </a><a href= "index.htm" ><img src= "btnHome.jpg"  name="Graphic2" alt="Back to the home page of this site" align=BOTTOM width=55 height=39 border=0></a> 
+
+      </p>
+
+    </td>
+
+    <td width=43%> 
+
+      <p align=RIGHT><img src= "hat.gif"  name="Graphic3" alt="morterboard" align=BOTTOM width=118 height=113 border=0></p>
+
+    </td>
+
+  </tr>
+
+  <tr> 
+
+    <td width=57% height=11> 
+
+      <h1 align=LEFT>Java2 Certification <br>
+
+        Tutorial </h1>
+
+    </td>
+
+    <td width=43% bgcolor="#ff9900"> 
+
+      <p>&nbsp;</p>
+
+    </td>
+
+  </tr>
+
+</table>
+
+<p> You can discuss this topic with others at <a href= "http://www.jchq.net/discus" >http://www.jchq.net/discus</a><br>
+
+  Read reviews and buy a Java Certification book at <a href= "http://www.jchq.net/bookreviews/jcertbooks.htm" >http://www.jchq.net/bookreviews/jcertbooks.htm</a> 
+
+  <br>
+
+</p>
+
+<hr size=5 noshade>
+
+<h1>1)Declarations and Access Control </h1>
+
+
+
+
+
+
+
+<h3>Objective 4 </h3>
+
+
+
+
+
+
+
+<p><font face="Arial, Helvetica">State the legal return types for any method given 
+
+
+
+
+
+
+
+  the declarations of all related methods in this or parent classes.</font></p>
+
+
+
+
+
+
+
+<h3>Note on this objective </h3>
+
+
+
+
+
+
+
+<p><i>This seems to be a rather obscurely phrased objective. </i><i>It appears 
+
+
+
+
+
+
+
+  to be asking you to understand the difference between overloading and overriding. 
+
+
+
+
+
+
+
+  </i><br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  To appreciate this objective you need a basic understanding of overloading and 
+
+
+
+
+
+
+
+  overriding of methods. This is covered in<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  Section 6: Overloading Overriding Runtime Type and Object Orientation</p>
+
+
+
+
+
+
+
+<h3>Methods in the same class </h3>
+
+
+
+
+
+
+
+<p>By related methods I assume that the objective means a method with the same 
+
+
+
+
+
+
+
+  name. If two or more methods in the same class have the same name, the method 
+
+
+
+
+
+
+
+  is said to be <i>overloaded</i>. You can have two methods in a class with the 
+
+
+
+
+
+
+
+  same name but they must have different parameter types and order.</p>
+
+
+
+
+
+
+
+<p><br>
+
+
+
+
+
+
+
+  It is the parameter order and types that distinguish between any two versions 
+
+
+
+
+
+
+
+  of overloaded method. The return type does not contribute towards distinguishing 
+
+
+
+
+
+
+
+  between methods.</p>
+
+
+
+
+
+
+
+<p><br>
+
+
+
+
+
+
+
+  The following code will generate an error at compile time, the compiler sees 
+
+
+
+
+
+
+
+  <i>amethod</i> as an attempt to define the same method twice. It causes an error 
+
+
+
+
+
+
+
+  that will say something like</p>
+
+
+
+
+
+
+
+<pre>method  redefined with different return type: void amethod(int)
+was int amethod(int)</pre>
+
+
+
+
+
+
+
+<pre>
+class Same{
+public static void main(String argv[]){
+       Over o = new Over();
+        int iBase=0;
+        o.amethod(iBase);
+        }
+        //These two cause a compile time error
+        public void amethod(int iOver){
+                System.out.println(&quot;Over.amethod&quot;);
+        }
+       public int amethod(int iOver){
+                System.out.println(&quot;Over int return method&quot;);
+                return 0;
+        }
+}</pre>
+
+
+
+
+
+
+
+<table border="0" width="100%" height="31">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="23%">&nbsp;<img src= "becareful.gif"  width="77" height="90" align="BOTTOM" alt="Be Careful" border="0"></td>
+
+
+
+
+
+
+
+    <td width="77%"> 
+
+
+
+
+
+
+
+      <h4> <font color="red">The return data type does not contribute towards<br>
+        distinguishing between one method and another.</font> </h4>
+
+
+
+
+
+
+
+    </td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<h3>Methods in a sub class </h3>
+
+
+
+
+
+
+
+<p>You can overload a method in a sub class. All that it requires is that the 
+
+
+
+
+
+
+
+  new version has a different parameter order and type. The parameter names are 
+
+
+
+
+
+
+
+  not taken into account or the return type.</p>
+
+
+
+
+
+
+
+<p>If you are going to override a method, ie completely replace its functionality 
+
+
+
+
+
+
+
+  in a sub class, the overriding version of the method must have exactly the same 
+
+
+
+
+
+
+
+  signature as the version in the base class it is replacing. This includes the 
+
+
+
+
+
+
+
+  return type. If you create a method in a sub class with the same name and signature 
+
+
+
+
+
+
+
+  but a different return type you will get the same error message as in the previous 
+
+
+
+
+
+
+
+  example. i.e.</p>
+
+
+
+
+
+
+
+<pre>method  redefined with different return type: void amethod(int) 
+was int amethod(int)</pre>
+<p>The compiler sees it as a faulty attempt to overload the method rather than 
+
+
+
+
+
+
+
+  override it.</p>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="33%"><img src= "Quiz.gif"  width="99" height="101"> </td>
+
+
+
+
+
+
+
+    <td width="67%">&nbsp;</td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+
+
+<h1>Questions</h1>
+
+
+
+
+
+
+
+<h4>Question 1)</h4>
+
+
+
+
+
+
+
+<p>Given the following class definition</p>
+
+
+
+
+
+
+
+<pre>public class Upton{
+public static void main(String argv[]){
+        }
+        public void amethod(int i){}
+        //Here
+}
+</pre>
+
+
+
+
+
+
+
+<p>Which of the following would be legal to place after the comment //Here ?<br>
+
+
+
+
+
+
+
+  1) public int amethod(int z){} <br>
+
+
+
+
+
+
+
+  2) public int amethod(int i,int j){return 99;} <br>
+
+
+
+
+
+
+
+  3) protected void amethod(long l){ } </p>
+
+
+
+
+
+
+
+<p><br>
+
+
+
+
+
+
+
+  4) private void anothermethod(){}</p>
+
+
+
+
+
+
+
+<h4>Question 2)</h4>
+
+
+
+
+
+
+
+<p>Given the following class definition</p>
+
+
+
+
+
+
+
+<pre>class Base{
+        public void amethod(){
+        System.out.println(&quot;Base&quot;);
+        }
+}
+public class Hay extends Base{
+public static void main(String argv[]){
+        Hay h = new Hay();
+        h.amethod();
+        }
+}
+</pre>
+
+
+
+
+
+
+
+<p><br>
+
+
+
+
+
+
+
+  Which of the following methods in class Hay would compile and cause the program 
+
+
+
+
+
+
+
+  to print <br>
+
+
+
+
+
+
+
+  out the string &quot;Hay&quot;</p>
+
+
+
+
+
+
+
+<p>1) public int amethod(){ System.out.println("Hay");}<br>
+
+
+
+
+
+
+
+  2) public void amethod(long l){ System.out.println("Hay");}<br>
+
+
+
+
+
+
+
+  3) public void amethod(){ System.out.println("Hay");}<br>
+
+
+
+
+
+
+
+  4) public void amethod(void){ System.out.println("Hay");} </p>
+
+
+
+
+
+
+
+<h1>Answers</h1>
+
+
+
+
+
+
+
+<h4>Answer to Question 1)</h4>
+
+
+
+
+
+
+
+<p>2) public int amethod(int i, int j) {return 99;}<br>
+
+
+
+
+
+
+
+  3) protected void amethod (long l){}<br>
+
+
+
+
+
+
+
+  4) private void anothermethod(){}</p>
+
+
+
+
+
+
+
+<p>Option 1 will not compile on two counts. One is the obvious one that it claims 
+
+
+
+
+
+
+
+  to return an integer. The other is that it is effectivly an attempt to redefine 
+
+
+
+
+
+
+
+  a method within the same class. The change of name of the parameter from i to 
+
+
+
+
+
+
+
+  z has no effect and a method cannot be overriden within the same class. </p>
+
+
+
+
+
+
+
+<h4>Answer to Question 2)</h4>
+
+
+
+
+
+
+
+<p>3) public void amethod(){ System.out.println("Hay");}</p>
+
+
+
+
+
+
+
+<p>Option 3 represents an overriding of the method in the base class, so any zero 
+
+
+
+
+
+
+
+  parameter calls will invoke this version. </p>
+
+
+
+
+
+
+
+<p>Option 1 wll return an error indicating you are attempting to redefine a method 
+
+
+
+
+
+
+
+  with a different return type. Although option 2 will compile the call to amethod() 
+
+
+
+
+
+
+
+  invoke the Base class method and the string &quot;Base&quot; will be output.Option 
+
+
+
+
+
+
+
+  4 was designed to catch out those with a head full of C/C++, there is no such 
+
+
+
+
+
+
+
+  thing as a void method parameter in Java.</p>
+
+
+
+
+
+
+
+<h3>&nbsp;</h3>
+
+
+
+
+
+
+
+<table border="1" width="100%">
+
+
+
+
+
+
+
+  <caption><b>Other sources on this subject</b></caption>
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="100%"><br>
+
+
+
+
+
+
+
+      <b>Jyothi Krishnan<br>
+
+
+
+
+
+
+
+      </b><a href= "http://www.geocities.com/SiliconValley/Network/3693/obj_sec1.html#obj4" >http://www.geocities.com/SiliconValley/Network/3693/obj_sec1.html#obj4</a><br>
+
+
+
+
+
+
+
+      <br>
+
+
+
+
+
+
+
+      In that link Jyothi suggests you go to objective 19 which you can find at<br>
+
+
+
+
+
+
+
+      <a href= "http://www.geocities.com/SiliconValley/Network/3693/obj_sec6.html#obj19" >http://www.geocities.com/SiliconValley/Network/3693/obj_sec6.html#obj19</a></td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<p>Last updated<br>
+10 Nov 2000<br>
+copyright &copy; Marcus Green 2000<br>
+most recent copy at http://www.jchq.net</p>
+
+
+
+
+
+
+
+<h3>&nbsp;</h3>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<h3>&nbsp;</h3>
+
+
+
+
+
+
+
+<h3>&nbsp;</h3>
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>
+
+
+
+
+
+
+

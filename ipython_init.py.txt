@@ -1,0 +1,137 @@
+# save this file as ~/.ipython/profile_default/startup/ipython_init.py
+
+import sys
+import os
+import pandas
+from pandas import *
+import numpy as np
+from numpy.random import *
+import re
+import pkgutil
+# remove pandas's debug function - because it masks ipytohn %debug function
+del debug
+
+# --------------------------------------------------------------
+def remask(ser,regex,flags=re.I):
+    """
+    # uses regext ocreate a mask for a DataFrame column or a series
+    # Example of usage:
+    #   mm=bag.member
+    #   mask = remask(mm.billing_name, r'ebay')
+    #   mm[['id','billing_name']][mask]
+    # Noe: to make case sensitive match, provide 3rd parameter flags=0
+    # for example:
+    #   mask = remask(mm.billing_name, r'eBay', flags=0)
+    """
+    return ser.map(lambda x: True if re.search(regex, str(x), flags) else False)
+
+# --------------------------------------------------------------
+def ddd():
+    """
+    # returns a simple pandas DataFrame - useful for quick tests
+    """
+    aa = DataFrame({
+          'id':[0,1,2,3,4,5,np.nan],
+          'i1':[6,5,4,3,2,1,0],
+          'i2':[6,5,4,4,1,1,0],
+          'f1':[0.0,1.01,2.002,3.0003,4.00004,5.000005,6.0000006],
+          'f2':[0.0,1.0,2.0,np.NaN,4.0,5.0,6.0],
+          'f3':[0.0,1.0,1.0,np.NaN,2.0,2.0,6.0],
+          'bb':[True, False, True, False, True, False, True],
+          'ss':['s0','s1','s2','s3',np.nan,'s5','s6']
+    })
+
+    # add two columns to test linear regression
+    aa['xx'] = aa.index
+    aa['yy'] = aa.xx.map(lambda x: x*50 + 60 + randn())
+
+    return aa[['id','i1','i2','f1','f2','f3','bb','ss','xx','yy']]
+
+# --------------------------------------------------------------
+def ddd2():
+    """
+    # returns a simple pandas DataFrame useful for quick stack/unstack/pivot tests
+    # example of usage:
+    # xx=ddd2()
+    # xx.set_index(["Month","name"]).stack().unstack('Month')
+    """
+    aa = pandas.DataFrame([
+        ["Jan","name1",1,2,3],
+        ["Jan","name2",4,5,6],
+        ["Mar","name1",11,12,13],
+        ["Mar","name2",14,15,16]],columns=["Month","name","c1","c2","c3"])
+
+    return aa
+
+# --------------------------------------------------------------
+def ddd3():
+    """
+    # returns a simple pandas DataFrame useful for quick stack/unstack/pivot tests
+    # example of usage:
+    # xx=ddd3()
+    # xx.pivot('foo','bar','baz')
+    #         A   B   C
+    #    one  1   2   3
+    #    two  4   5   6
+    #
+    # xx.pivot('foo', 'bar')['baz']
+    #         A   B   C
+    #    one  1   2   3
+    #    two  4   5   6
+    """
+    aa = DataFrame({
+      'foo':3*['one'] + 3*['two'],
+      'bar':2*['A','B','C'],
+      'baz':[1,2,3,4,5,6] })
+
+    return aa[['foo','bar','baz']]
+
+# --------------------------------------------------------------
+def mygrep(df,ss):
+    """
+    # prints DataFrame or Series for some pattern. Returns a list of lines.
+    # Example: /mygrep   DF    r'some regex'
+    # notice leading "/" to tell ipython that this is a function call
+    """
+    lines = df.to_string().split("\n")
+    return [line for line in lines if re.search(ss,line)]
+
+# --------------------------------------------------------------
+def mymodules():
+    return sorted([m[1] for m in pkgutil.iter_modules()])
+
+# --------------------------------------------------------------
+def myhist(N=30, regex='', pr=True):
+    """
+    # ipython history function searches multiple sessions.
+    # You can specify number of lines to search, and optionally regex to select from these commands.
+    #     myhist(200)
+    #     myhist(1000, 'myword')
+    # You can return history list into a variable instead of printing:
+    #     aa = myhist(10000, 'cpx', pr=False)
+    # Note: alternative approach to this function is to create a magic function
+    # See how to do it here:
+    # http://ipython.org/ipython-doc/stable/interactive/reference.html
+    # Also you can create an ipython function which would use this ipython magic
+    # command to output history from a range of sessions:
+    #    ~2000/1-~0/2000
+    """
+    import subprocess
+    import re
+    cmd = '/usr/bin/sqlite3 ~/.ipython/profile_default/history.sqlite "select source_raw from history"'
+    txt = subprocess.check_output(cmd, shell=True)
+    lines = txt.split('\n')
+    lines2 = []
+    if len(regex) <= 0:
+        lines2 = lines[-N:]
+    else:
+        for line in lines:
+            if re.search(regex, line, re.I):
+                lines2.append(line)
+        lines2 = lines2[-N:]
+    if pr:
+        for line in lines2:
+            print line
+    else:
+        return lines2
+

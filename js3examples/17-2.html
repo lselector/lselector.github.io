@@ -1,0 +1,51 @@
+<!-- This example is from JavaScript: The Definitive Guide, 3rd Edition.   -->
+<!-- That book and this example were Written by David Flanagan.            -->
+<!-- They are Copyright (c) 1996, 1997, 1998 O'Reilly & Associates.        -->
+<!-- This example is provided WITHOUT WARRANTY either expressed or implied.-->
+<!-- You may study, use, modify, and distribute it for any purpose,        -->
+<!-- as long as this notice is retained.                                   -->
+
+<STYLE TYPE="text/javascript">
+// This is regular JavaScript code, running in the scope of the Document.
+
+/* Specify that headings display in blue italic text. */
+tags.H1.color = tags.H2.color = "blue";
+tags.H1.fontStyle = tags.H2.fontStyle = "italic";
+
+/* 
+ * Any element of CLASS="WARNING" displays in bold on an 
+ * indented yellow background with a fat red border.
+ */
+classes.WARNING.all.fontWeight = "bold"
+classes.WARNING.all.backgroundColor = "yellow";
+classes.WARNING.all.marginLeft = "1in";
+classes.WARNING.all.marginRight = "1in";
+classes.WARNING.all.borderWidth = "8px";
+classes.WARNING.all.borderStyle = "solid";
+classes.WARNING.all.borderColor = "red";
+
+/*
+ * A H1 or H2 heading within an element with CLASS="WARNING" 
+ * should be centered, in addition to appearing in blue italics.
+ */
+contextual(classes.WARNING.all, tags.H1).textAlign = "center";
+contextual(classes.WARNING.all, tags.H2).textAlign = "center";
+
+/* The single element with ID="P23" displays in centered uppercase. */
+ids.P23.textAlign = "center";
+ids.P23.textTransform = "uppercase";
+</STYLE>
+
+<SCRIPT>
+// We can also specify styles in regular SCRIPT tags, but here we
+// have to explicitly specify the Document object. Also, it is only
+// meaningful to write style properties in the HEAD of the document
+// before any text has been formatted and output.
+document.ids.P23.color = "green";
+
+// Style objects behave just like other objects, and we can read
+// style properties from them.
+var style = document.classes.WARNING.all, s = "";
+for (i in style) s += i + ": " + style[i] + "\n";
+alert(s);
+</SCRIPT>

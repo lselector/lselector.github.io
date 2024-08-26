@@ -1,0 +1,730 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>Multi-threading, shared memory, Inter-Process Communication (IPC)</title>
+<!--
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+<style type="text/css">
+<!--
+.style1 {color: #FF0000}
+.style2 {
+	color: #CC0000;
+	font-weight: bold;
+}
+.style3 {
+	color: #0000FF;
+	font-weight: bold;
+}
+.style4 {color: #0000FF}
+.style8 {color: #FF0000; font-weight: bold; }
+-->
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1>
+  <b><a href="index.html">home</a>
+>  Multi-Threading, Shared Memory, IPC, etc.</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Multi-Threading, Shared Memory, IPC, etc.</font></b> (page under construction - still you may find it very useful.)
+
+<table width="95%" border="0" cellpadding="3" cellspacing="0">
+  <tr>
+    <td><span class="style2">On This Page</span></td>
+    <td class="style2">Other</td>
+  </tr>
+  <tr>
+    <td valign="top"><p> - <a href="#intro">intro</a><br>
+      - <a href="#threads_in_java">threads in java</a><br>
+      - <a href="#more_about_threads">more_about_threads</a><br>
+      - <a href="#threads_in_perl">threads_in_perl</a><br>
+      - <a href="#cpp_threads">cpp_threads</a><br>
+    </p></td>
+    <td valign="top"><p>-<br>
+      -<br>
+      -<br>
+      <br>
+      <br>
+    </p></td>
+  </tr>
+</table>
+<p class="sectionheader"><a NAME="intro"></a>Intro ------------------------------</p>
+<p>This page contains some info about concurrent programming: multi-threading, multi-processing, shared memory,  semaphores, IPC (Inter-Process Communication). One application of these techniques is  trading systems, especially high-frequency/low latency  algorithmic trading systems.</p>
+<ul>
+  <li> <a href="http://en.wikipedia.org/wiki/Concurrent_programming" target="_blank">http://en.wikipedia.org/wiki/Concurrent_programming</a> - </li>
+  <li> <a href="http://en.wikipedia.org/wiki/Parallel_computing" target="_blank">http://en.wikipedia.org/wiki/Parallel_computing</a> - </li>
+  <li> <a href="http://en.wikipedia.org/wiki/Shared_memory" target="_blank">http://en.wikipedia.org/wiki/Shared_memory</a> - </li>
+  <li> <a href="http://en.wikipedia.org/wiki/Critical_section" target="_blank">http://en.wikipedia.org/wiki/Critical_section</a> - Critical section is a piece of code that accesses a shared resource. Some synchronization mechanism is required at the entry and exit of the critical section to ensure exclusive use, for example a semaphore.  </li>
+  <li> <a href="http://en.wikipedia.org/wiki/Software_lockout" target="_blank">http://en.wikipedia.org/wiki/Software_lockout</a> - software lockout - performance degradation due to the idle wait times spent<br>
+  by the CPUs in (kernel-level) critical sections.</li>
+  <li> <a href="http://en.wikipedia.org/wiki/Mutex" target="_blank">http://en.wikipedia.org/wiki/Mutex</a> - mutex - (mutual exclusion) - algorithm or object (lock) to prevent/negotiate simultaneous access to aa shared resource. </li>
+  <li> <a href="http://en.wikipedia.org/wiki/Dining_philosophers_problem" target="_blank">http://en.wikipedia.org/wiki/Dining_philosophers_problem</a> - example of cyclic deadloc. Different solutions (waiter, monitor, hierarchical, etc.) </li>
+  <li> <a href="http://en.wikipedia.org/wiki/Race_conditions" target="_blank">http://en.wikipedia.org/wiki/Race_conditions</a> - when 2 or more processes are reading/updating same resouce without proper sync.</li>
+  <li> <a href="http://en.wikipedia.org/wiki/Deadlock" target="_blank">http://en.wikipedia.org/wiki/Deadlock</a> - </li>
+  <li> <a href="http://en.wikipedia.org/wiki/Semaphore_(programming)" target="_blank">http://en.wikipedia.org/wiki/Semaphore_(programming)</a> - Binary semaphore - locked/unlocked. Counting semaphore - record of how many units of shared resource are available.</li>
+  <li> <a href="http://en.wikipedia.org/wiki/Linearizability" target="_blank">http://en.wikipedia.org/wiki/Linearizability</a> - linearizable = atomic =  indivisible =  uninterruptible.</li>
+  <li> <a href="http://en.wikipedia.org/wiki/Monitor_(synchronization)" target="_blank">http://en.wikipedia.org/wiki/Monitor_(synchronization)</a> - a shared object or module intended to be used by several threads, but no more than 1 thread at any time. Have mechanisms like wait, signal/notify/notify all. </li>
+  <li> <a href="http://en.wikipedia.org/wiki/Tuple_space" target="_blank">http://en.wikipedia.org/wiki/Tuple_space</a> - repository of tuples (hash, dictionary) to be accessed concurrently.</li>
+  <li> <a href="http://en.wikipedia.org/wiki/Reentrant_mutex" target="_blank">http://en.wikipedia.org/wiki/Reentrant_mutex</a> - the same thread can acquire the lock multiple times. Similar to a counting semaphore.</li>
+  <li> <a href="http://en.wikipedia.org/wiki/Pthreads" target="_blank">http://en.wikipedia.org/wiki/Pthreads</a> -  POSIX standard for threads. pthread.h - 
+uses mutexes and signals, 
+pthread_create(), 
+wait_thread(), 
+pthread_join()</li>
+  <li> <a href="http://en.wikipedia.org/wiki/Inter-process_communication" target="_blank">http://en.wikipedia.org/wiki/Inter-process_communication</a>  - (IPC) -  message passing, synchronization, shared memory, and remote procedure calls (RPC).</li>
+</ul>
+<p>Grid / Cloud computing</p>
+<ul>
+  <li><a href="http://en.wikipedia.org/wiki/Message_Passing_Interface" target="_blank">http://en.wikipedia.org/wiki/Message_Passing_Interface</a> - MPI = API for parallel programs running on computer clusters. </li>
+  <li><a href="https://computing.llnl.gov/tutorials/parallel_comp/" target="_blank">https://computing.llnl.gov/tutorials/parallel_comp/</a> - </li>
+  <li><a href="http://cloudscaling.com/blog/cloud-computing/grid-cloud-hpc-whats-the-diff#" target="_top">http://cloudscaling.com/blog/cloud-computing/grid-cloud-hpc-whats-the-diff#</a> - </li>
+  <li><a href="http://www.appistry.com/blog/2007/09/mpi-is-dead-and-its-about-time/" target="_blank">http://www.appistry.com/blog/2007/09/mpi-is-dead-and-its-about-time/</a> - </li>
+</ul>
+<p>Random notes<table width="95%" border="0" cellpadding="5" cellspacing="0">  <tr>
+    <td valign="top">multi-processing vs multi-threading</td>
+    <td valign="top">..</td>
+  </tr>
+  <tr>
+    <td valign="top">Critical section</td>
+    <td>A piece of code 
+that accesses (reads/writes to) a shared resource (memory) that must not be concurrently accessed by more than one 
+thread (think of transaction locking in databases). Some synchronization mechanism is required at the entry and exit 
+of the critical section to ensure exclusive use.</td>
+  </tr>
+  <tr>
+    <td valign="top">Application-level Critical Sections</td>
+    <td>#include &lt;pthread.h&gt;<br>
+static pthread_mutex_t cs_mutex = PTHREAD_MUTEX_INITIALIZER;<br>
+<br>
+void f() {<br>
+pthread_mutex_lock( &amp;cs_mutex );<br>
+/* Do some thread-safe processing! */<br>
+pthread_mutex_unlock( &amp;cs_mutex );<br>
+}</td>
+  </tr>
+  <tr>
+    <td valign="top">Kernel Level Critical Sections</td>
+    <td> Kernel Level Critical Sections are the base of the software lockout issue, 
+that is when CPU spends idle time in kernel-level critical sections.<br>
+(when one process in c.s. makes others to wait).<br>
+Solution - keeping critical sections as small and short as possible.<br>
+
+In a multiprocessor system, most of the conflicts are 
+kernel-level conflicts, due to the access to the kernel  
+level critical sections, and thus the idle wait periods 
+generated by them have a major impact in performance degradation. 
+This idle wait time decrease the average number of idle 
+processors and thus scalability and relative efficiency.</td>
+  </tr>
+  <tr>
+    <td valign="top">mutex</td>
+    <td>Mutual Exclusion algorithm (also object which is used in negotiation of execution between threads)</td>
+  </tr>
+</table>
+<p>  Random Examples:
+<p>  fine-grained flags,<br>
+  counters or queues<br>
+  Hardware solutions:<br>
+  - disable interrupts<br>
+  - test-and-set of a flag (spinlock / busy-wait)<br>
+  Similar atomic multiple-operation instructions, e.g., compare-and-swap,<br>
+  are commonly used for lock-free manipulation of linked lists and other data structures.<br>
+  Software solutions:<br>
+  - Dekker's algorithm (set intention flag - and wait for other intention flags to fall)<br>
+  guarantees  mutual exclusion, freedom from deadlock, and freedom from starvation<br>
+  limited to 2 processes, uses &quot;Busy waiting&quot;.<br>
+  - Peterson's algorithm - <br>
+  - Lamport's bakery algorithm (uses numbering: sequential + thread Id)<br>
+  - The black-white bakery algorithm <br>
+  - Semaphores (lock/unlock, or a counting semaphore)<br>
+  - Monitors -  object intended to be used safely by more than one thread<br>
+  (methods are executed with mutual exclusion). <br>
+  waiting, signaling (notify)<br>
+  Monitor can implement a simple semaphore, etc.<br>
+  - Message passing <br>
+  - Tuple space - hash (keys/values) accessed concurrently<br>
+  Object Spaces (shared objects)<br>
+  Java spaces (service - providiung distributed objects)<br>
+  Shared memory communication <br>
+Message passing communication 
+<p><a name="threads_in_java"></a>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Threads in Java</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>To start and run a thread you usually use 2 objects:
+<br>&nbsp;&nbsp; - one of your own class (make sure it has a run( ) method
+- that means it implements Runnable interface)
+<br>&nbsp;&nbsp; - and one of type Thread (it has start( ) method)
+<p>You can use just one object if it extends Thread (because Thread has
+both start( ) and run( ) methods)
+<p><b><u>Here are the steps with 2 objects:</u></b>
+<br>Step 1: You create a class (OurClass) extending whatever you like -
+and make sure it has a run( ) method.
+<br>Step 2: You create an instance of this class
+<br>Step3: You create an instance of a Thread class (with your runnable
+object as a parameter).
+<br>Step 4: You call start( ) method of this instance.
+<p>For example:
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 BGCOLOR="#CCFFFF" >
+<tr>
+<td><font color="#3333FF">import java.io.IOException; // this is for System.in.read(
+)</font><font color="#3333FF"></font>
+<p><font color="#3333FF">public class OurClass extends Object implements
+Runnable {</font>
+<br><font color="#3333FF">&nbsp; static int cc=0;</font>
+<br><font color="#3333FF">&nbsp; String ThreadName;</font><font color="#3333FF"></font>
+<p><font color="#3333FF">&nbsp; public t1(String name) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; ThreadName = name;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; System.out.println("Constructor
+" + name);</font>
+<br><font color="#3333FF">&nbsp; }</font><font color="#3333FF"></font>
+<p><font color="#3333FF">&nbsp; public void run(){</font>
+<br><font color="#3333FF">&nbsp;&nbsp; while(++cc &lt;= 10) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("Run
+" + ThreadName + "&nbsp; " + cc);</font>
+<br><font color="#009900">&nbsp;&nbsp;&nbsp;&nbsp; // try to run as is,
+or try to uncomment one of the following 2 lines</font>
+<br><font color="#009900">&nbsp;&nbsp;&nbsp;&nbsp; // try { Thread.sleep(500);
+} catch (InterruptedException e) {}&nbsp;</font>
+<br><font color="#009900">&nbsp;&nbsp;&nbsp;&nbsp; // Thread.yield();&nbsp;</font>
+<br><font color="#3333FF">&nbsp;&nbsp; }</font>
+<br><font color="#3333FF">&nbsp;&nbsp; System.out.print("Finished, press
+ENTER to exit:");</font>
+<br><font color="#3333FF">&nbsp;&nbsp; try { System.in.read(); } catch
+(IOException e) {}</font>
+<br><font color="#3333FF">&nbsp; }</font><font color="#3333FF"></font>
+<p><font color="#3333FF">&nbsp; public static void main(String[] args)
+{</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; (new Thread(new OurClass("first
+"))).start();</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; (new Thread(new OurClass("second"))).start();</font>
+<br><font color="#3333FF">&nbsp; }</font>
+<br><font color="#3333FF">&nbsp;&nbsp;</font>
+<br><font color="#3333FF">}</font></td>
+</tr>
+</table>
+
+<p><a name="more_about_threads"></a></p>
+<p class="sectionheader">more about threads</p>
+<p><br>
+  class java.lang.Thread - extends Object implements Runnable
+  <br>
+  Every thread has a priority (1..10) = static int MIN_PRIORITY, NORM_PRIORITY,
+MAX_PRIORITY
+  <br>
+  The new thread has its priority initially set equal to the priority
+of the creating thread.
+  <br>
+  Each thread may or may not also be marked as a daemon.</p>
+<p><b><u>Constructors:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 BGCOLOR="#CCFFFF" >
+<tr>
+<td><b>Thread</b>()&nbsp;
+<br><b>Thread</b>(Runnable target)&nbsp;
+<br><b>Thread</b>(Runnable target, String name)&nbsp;
+<br><b>Thread</b>(String name)&nbsp;
+<br><b>Thread</b>(ThreadGroup group, Runnable target)&nbsp;
+<br><b>Thread</b>(ThreadGroup group, Runnable target, String name)&nbsp;
+<br><b>Thread</b>(ThreadGroup group, String name)&nbsp;</td>
+</tr>
+</table>
+
+<p><b><u>Methods:</u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 BGCOLOR="#CCFFFF" >
+<tr>
+<td>&nbsp; static int <b>activeCount</b>() - Returns the current number
+of active threads in this thread's thread group.&nbsp;
+<br>&nbsp; void <b>checkAccess</b>() - Determines if the currently running
+thread has permission to modify this thread.&nbsp;
+<br>&nbsp; int <b>countStackFrames</b>() - Deprecated. The definition of
+this call depends on suspend(), which is deprecated. Further, the results
+of this call were never well-defined.&nbsp;
+<br>&nbsp; static Thread <b>currentThread</b>() - Returns a reference to
+the currently executing thread object.&nbsp;
+<br>&nbsp; void <b>destroy</b>() - Destroys this thread, without any cleanup.&nbsp;
+<br>&nbsp; static void <b>dumpStack</b>() - Prints a stack trace of the
+current thread.&nbsp;
+<br>&nbsp; static int <b>enumerate</b>(Thread[] tarray) - Copies into the
+specified array every active thread in this thread's thread group and its
+subgroups.&nbsp;
+<br>&nbsp; ClassLoader <b>getContextClassLoader</b>() - Returns the context
+ClassLoader for this Thread.&nbsp;
+<br>&nbsp; String <b>getName</b>() - Returns this thread's name.&nbsp;
+<br>&nbsp; int <b>getPriority</b>() - Returns this thread's priority.&nbsp;
+<br>&nbsp; ThreadGroup <b>getThreadGroup</b>() - Returns the thread group
+to which this thread belongs.&nbsp;
+<br>&nbsp; void <b>interrupt</b>() - Interrupts this thread.&nbsp;
+<br>&nbsp; static boolean <b>interrupted</b>() - Tests whether the current
+thread has been interrupted.&nbsp;
+<br>&nbsp; boolean <b>isAlive</b>() - Tests if this thread is alive.&nbsp;
+<br>&nbsp; boolean <b>isDaemon</b>() - Tests if this thread is a daemon
+thread.&nbsp;
+<br>&nbsp; boolean <b>isInterrupted</b>() - Tests whether this thread has
+been interrupted.&nbsp;
+<br>&nbsp; void <b>join</b>() - Waits for this thread to die.&nbsp;
+<br>&nbsp; void <b>join</b>(long millis) - Waits at most millis milliseconds
+for this thread to die.&nbsp;
+<br>&nbsp; void <b>join</b>(long millis, int nanos) - Waits at most millis
+milliseconds plus nanos nanoseconds for this thread to die.&nbsp;
+<br>&nbsp; void <b>resume</b>() - Deprecated. This method exists solely
+for use with suspend(), which has been deprecated because it is deadlock-prone.&nbsp;
+<br>&nbsp; void <b>run</b>() - If this thread was constructed using a separate
+Runnable run object, then that Runnable object's run method is called;
+otherwise, this method does nothing and returns.&nbsp;
+<br>&nbsp; void <b>setContextClassLoader</b>(ClassLoader cl) - Sets the
+context ClassLoader for this Thread.&nbsp;
+<br>&nbsp; void <b>setDaemon</b>(boolean on) - Marks this thread as either
+a daemon thread or a user thread.&nbsp;
+<br>&nbsp; void <b>setName</b>(String name) - Changes the name of this
+thread to be equal to the argument name.&nbsp;
+<br>&nbsp; void <b>setPriority</b>(int newPriority) - Changes the priority
+of this thread.&nbsp;
+<br>&nbsp; static void <b>sleep</b>(long millis) - Causes the currently
+executing thread to sleep (temporarily cease execution) for the specified
+number of milliseconds.&nbsp;
+<br>&nbsp;static void <b>sleep</b>(long millis, int nanos) - Causes the
+currently executing thread to sleep (cease execution) for the specified
+number of milliseconds plus the specified number of nanoseconds.&nbsp;
+<br>&nbsp; void <b>start</b>() - Causes this thread to begin execution;
+the Java Virtual Machine calls the run method of this thread.&nbsp;
+<br>&nbsp; void <b>stop</b>() - Deprecated as unsafe.
+<br>&nbsp; void <b>stop</b>(Throwable obj) - Deprecated as unsafe.
+<br>&nbsp; void <b>suspend</b>() - Deprecated as deadlock-prone.
+<br>&nbsp; String <b>toString</b>() - Returns a string representation of
+this thread, including the thread's name, priority, and thread group.&nbsp;
+<br>&nbsp;static void <b>yield</b>() - Causes the currently executing thread
+object to temporarily pause and allow other threads to execute.&nbsp;
+<p><b><u>Methods inherited from class java.lang.Object:</u></b>&nbsp;
+<br>clone, equals, finalize, getClass, hashCode, notify, notifyAll, wait,
+wait, wait</td>
+</tr>
+</table>
+
+<p>Threaded Program Models:
+
+<table border="1" bgcolor="#FFFFCC">
+  <tr>
+    <td><p><strong>Boss/Worker</strong> - one boss thread and several 'worker' threads. This model is common in GUI and server programs, where main thread (boss)  waits for some event and then passes that event to the appropriate worker threads for processing.
+      <p><strong>Work Crew</strong> - several threads work in parallel. This is usually used to distribute the load  across different processors (or in rendering engines).
+      <p><strong>Pipeline</strong> (assembly line) - the task is divided into steps. 
+  Threads are assigned to different steps.  Each thread does one thing to each piece of data and passes the results to the next thread in line. Threads can run in parallel - you can distribute tasks between different CPUs for greater performance.
+    </td>
+  </tr>
+</table>
+<p><a name="threads_in_perl"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+  <tr>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+    <td ALIGN=LEFT><p><strong>Threads in Perl (from docs by Dan Sugalski):</strong>  </td>
+    <td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top of the page</a> - </b></td>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+<p></p>- <span class="style2">Starting threads</span>:
+<table border="1" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>use threads;     
+      <p>$thr = threads-&gt;<span class="style1">new</span>(\&amp;sub1, @params1); <br>
+      $thr = threads-&gt;<span class="style1">new</span>(\&amp;sub2, @params2); 
+      <p>        sub sub1 { <br>
+        my @params = @_; <br>
+        print &quot;In the thread, sub1, params: &quot;, join(&quot;, &quot;, @params), &quot;\n&quot;; <br>
+  }       
+      <p>sub sub2 { <br>
+        my @params = @_; <br>
+        print &quot;In the thread, sub2, params: &quot;, join(&quot;, &quot;, @params), &quot;\n&quot;; <br>
+}</td>
+  </tr>
+</table>
+-
+<span class="style2">Waiting For A Thread To Exit</span><br>
+<table border="1" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>use threads;     
+      <p>$thr = threads-&gt;new(\&amp;sub1); <br>
+        @ReturnData = <span class="style1">$thr-&gt;join;</span> <br>
+      print &quot;Thread returned @ReturnData&quot;; <br>
+      <br>
+      sub sub1 { return &quot;Fifty-six&quot;, &quot;foo&quot;, 2; }
+    </td>
+  </tr>
+</table>
+- <span class="style2">Detach a thread and forget about it</span> - let it run by itself
+<table border="1" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>use threads;     
+      <p>$thr = threads-&gt;new(\&amp;sub1);<br>
+        <span class="style1">$thr-&gt;detach;</span><br>
+        sub sub1 { ... }      
+    </td>
+  </tr>
+</table>
+- <span class="style2">Sharing data between threads</span> (by default no data is shared, you should explicitly indicate what is shared)
+<table border="1" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>use threads;<br>
+use threads::shared; <br>
+my $foo : <span class="style1">shared</span> = 1;<br>
+my $bar = 1;<br>
+<br>
+threads-&gt;new(sub { $foo++; $bar++ })-&gt;join; <br>
+<br>
+print &quot;$foo\n&quot;; #prints 2 since $foo is shared<br>
+print &quot;$bar\n&quot;; #prints 1 since $bar is not shared</td>
+  </tr>
+</table>
+- <span class="style2">sharing arrays &amp; hashes</span>
+<table border="1" bgcolor="#FFFFCC">
+  <tr>
+    <td><p> use threads;<br>
+use threads::shared; <br>
+my $var = 1;<br>
+my $svar : shared = 2;<br>
+my %hash : shared;<br> 
+<br>
+... create some threads here ... <br>
+<br>
+$hash{a} = 1; # all threads see exists($hash{a}) and $hash{a} == 1<br>
+$hash{a} = $var # okay - copy-by-value: same effect as previous<br>
+$hash{a} = $svar # okay - copy-by-value: same effect as previous<br>
+$hash{a} = \$svar # okay - a reference to a shared variable<br>
+$hash{a} = \$var # <span class="style1">This will die - can't store unshared data in shared hash</span><br>
+delete $hash{a} # okay - all threads will see !exists($hash{a})</td>
+  </tr>
+</table>
+- <span class="style2">race condition</span>
+<table border="1" bgcolor="#FFFFCC">
+  <tr>
+    <td><p> use threads; <br>
+use threads::shared; <br>
+my $a : shared = 1; <br>
+<br>
+$thr1 = threads-&gt;new(\&amp;sub1); <br>
+$thr2 = threads-&gt;new(\&amp;sub2); <br>
+$thr1-&gt;join;<br>
+$thr2-&gt;join;<br>
+print &quot;$a\n&quot;; <br>
+sub sub1 { my $foo = $a; $a = $foo + 1; }<br>
+sub sub2 { my $bar = $a; $a = $bar + 1; }    
+      <p>__END__<br>
+       value of $a may be 2 or 3. This depends on which thread executes first (which depends on scheduling and thread implementation).<br>
+       <strong>Race conditions</strong> are caused by unsynchronized access to shared data. Even $a += 5 or $a++ are not guaranteed to be atomic.<br>Here is another example:
+      <p>use threads; <br>
+  my $a : shared = 2;<br>
+  my $b : shared;<br>
+  my $c : shared;<br>
+  my $thr1 = threads-&gt;create(sub { $b = $a; $a = $b + 1; }); <br>
+  my $thr2 = threads-&gt;create(sub { $c = $a; $a = $c + 1; });<br>
+  $thr1-&gt;join;<br>
+  $thr2-&gt;join;<br>
+  <br>
+  __END__<br>
+  Both threads have access to $a. <br>
+  Threads can be executed in any order and can be interrupted at any point.  <br>
+  At the end, $a could be 3 or 4, and both $b and $c could be 2 or 3.
+    </td>
+  </tr>
+</table>
+<p class="style2">Synchronization and control</p>
+<p>-  <span class="style2">lock()</span> - puts a lock on shared variable (scalar, array, hash). Can be unlocked only by the same thread - or when the thread exists the outermost block that contains lock() function.</p>
+<table border="1" bgcolor="#FFFFCC">
+  <tr>
+    <td><p> use threads;<br>
+use threads::shared; <br>
+my $total : shared = 0; <br>
+<br>
+sub calc {<br>
+&nbsp;&nbsp;for (;;) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;my $result;<br>
+&nbsp;&nbsp;&nbsp; # (... do some calculations and set $result ...)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lock($total); # block until we obtain the lock<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$total += $result;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;} # lock implicitly released at end of scope<br>
+&nbsp;&nbsp;&nbsp;&nbsp;last if $result == 0;<br>
+&nbsp;&nbsp;}<br>
+}<br>
+<br> 
+my $thr1 = threads-&gt;new(\&amp;calc);<br>
+my $thr2 = threads-&gt;new(\&amp;calc);<br>
+my $thr3 = threads-&gt;new(\&amp;calc);<br>
+$thr1-&gt;join;<br>
+$thr2-&gt;join;<br>
+$thr3-&gt;join;<br>
+print &quot;total=$total\n&quot;;</td>
+  </tr>
+</table>
+<p><strong>Note:</strong> Locking an array  will not block subsequent locks on array elements, just lock attempts on the array itself.<br>
+  <strong>Note:</strong> Tthere is no unlock() function - the only way to unlock a variable is to allow it to go out of scope.  <br>
+  <strong>Note:</strong> Locks are recursive, which means it's okay for a thread to lock a variable more than once. The lock will last until the <strong>outermost lock()</strong> on the variable goes out of scope. For example:</p>
+<table border="1" bgcolor="#FFFFCC">
+  <tr>
+    <td><p> my $x : shared;<br>
+doit(); <br>
+sub doit {<br> 
+&nbsp;&nbsp;&nbsp;{<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp; lock($x); # wait for lock<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lock($x); # NOOP - we already have the lock<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;  lock($x); # NOOP<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;  lock($x); # NOOP<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lockit_some_more();<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  }<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} # *** implicit unlock here ***<br>
+  &nbsp;&nbsp;&nbsp;} <br> } <br>
+        <br>
+        sub lockit_some_more {<br>
+&nbsp;&nbsp;lock($x); # NOOP<br>
+} # nothing happens here 
+    </td>
+  </tr>
+</table>
+<p> <br>
+A lock can be used to guard the data in the variable. You can also have this variable created for the sole purpose of being locked - to serve as a basic semaphore.</p>
+<p class="style2">A Thread Pitfall: Deadlocks</p>
+<table border="1" bgcolor="#FFFFCC">
+  <tr>
+    <td><p> use threads; <br>
+      my $a : shared = 4; <br>
+my $b : shared = &quot;foo&quot;; <br>
+my $thr1 = threads-&gt;new(sub { lock($a); sleep 20; lock($b); }); <br>
+my $thr2 = threads-&gt;new(sub { 
+lock($b); 
+sleep 20; 
+lock($a); 
+});</td>
+  </tr>
+</table>
+<p> This program will probably hang until you kill it, because 2 threads will lock $a and $b respectingly - and will wait for each other to release the lock forever. This condition is called a deadlock, and it occurs whenever two or more threads are trying to get locks on resources that the others own.<br>
+  One of the ways to handle this problem is to always have all threads acquire locks in the exact same order. If, for example, you lock variables $a, $b, and $c, always lock $a before $b, and $b before $c. It's also best to hold on to locks for as short a period of time to minimize the risks of deadlock.</p>
+<p><span class="style2">Queues: Passing Data Around</span><br>
+  <br>
+A queue is a special thread-safe object that lets you put data in one end and take it out the other without having to worry about synchronization issues. They're pretty straightforward, and look like this:</p>
+<table border="1" bgcolor="#FFFFCC">
+  <tr>
+    <td><p> use threads; <br>
+use <span class="style1">Thread::Queue</span>; <br>
+my $DataQueue = <span class="style1">Thread::Queue-&gt;new</span>; <br>
+$thr = threads-&gt;new(sub { 
+while ($DataElement = $DataQueue-&gt;<span class="style1">dequeue</span>) { print &quot;Popped $DataElement off the queue\n&quot;; } 
+}); <br>
+$DataQueue-&gt;<span class="style1">enqueue</span>(12); <br>
+$DataQueue-&gt;<span class="style1">enqueue</span>(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;); <br>
+$DataQueue-&gt;<span class="style1">enqueue</span>(\$thr); <br>
+sleep 10; <br>
+$DataQueue-&gt;<span class="style1">enqueue</span>(undef);<br>
+$thr-&gt;join;</td>
+  </tr>
+</table>
+<p>You create the queue with new Thread::Queue . Then you can add lists of scalars onto the end with <span class="style1"><strong>enqueue()</strong></span>, and pop scalars off the front of it with <span class="style1"><strong>dequeue()</strong></span>. A queue has no fixed size, and can grow as needed to hold everything pushed on to it. If a queue is empty, dequeue() blocks until another thread enqueues something. This makes queues ideal for event loops and other communications between threads.</p>
+<p class="style2">Semaphores: Synchronizing Data Access</p>
+<p>  <strong>Semaphores</strong> - object which behaves like a lock. There are <strong>basic</strong> (up/down = lock/unlock = 0/1) semaphores, and <strong>advanced</strong> (acting more like a counter).</p>
+<p><span class="style3">Basic semaphores</span> - set it to 0 or 1 using two methods: <strong>down()</strong> and <strong>up()</strong>.<br>
+  Calls to down() will block if the semaphore's current count would decrement below zero. <br>
+Example:</p>
+<table border="1" bgcolor="#FFFFCC">
+  <tr>
+    <td><p> use threads;<br>
+use <span class="style1">Thread::Semaphore</span>; my $semaphore = new Thread::Semaphore; <br>
+my $GlobalVariable : shared = 0; $thr1 = new threads \&amp;sample_sub, 1; <br>
+$thr2 = new threads \&amp;sample_sub, 2; <br>
+$thr3 = new threads \&amp;sample_sub, 3; <br>
+<br>
+sub sample_sub { <br>
+&nbsp;&nbsp;&nbsp;my $SubNumber = shift @_; <br>
+&nbsp;&nbsp;&nbsp;my $TryCount = 10; <br>
+&nbsp;&nbsp;&nbsp;my $LocalCopy; <br>
+&nbsp;&nbsp;&nbsp;sleep 1; <br>
+&nbsp;&nbsp;&nbsp;while ($TryCount--) { <br>
+<span class="style1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$semaphore-&gt;down; </span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$LocalCopy = $GlobalVariable; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print &quot;$TryCount tries left for sub $SubNumber (\$GlobalVariable is &nbsp;$GlobalVariable)\n&quot;; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sleep 2; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$LocalCopy++; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$GlobalVariable = $LocalCopy; <br>
+<span class="style1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$semaphore-&gt;up; </span><br>
+&nbsp;&nbsp;&nbsp;} <br>
+} <br>
+<br>
+$thr1-&gt;join;<br>
+$thr2-&gt;join;<br>
+$thr3-&gt;join;    
+      <p>__END__<br>
+      The three invocations of the subroutine all operate in sync.<br>
+      The semaphore, though, makes sure that only one thread is accessing the global variable at once.    </td>
+  </tr>
+</table>
+<p><span class="style3">Advanced Semaphores</span> - 
+  the same Semaphore object, but we use its ability to work as a counter by passing a value to up() and down() methods, for example: <span class="style1"><strong>up(5)</strong></span>. <br>
+  Semaphores with counters greater than one can be   useful for establishing quotas. 
+  For example, you can use a semaphore initialized to the maximum number of concurrent I/O requests (or open files) that you don't want to be exceeded. <br>
+  Another example of meamingful use of  inc/dec  &gt; 1  can be a GUI driven program.</p>
+<p class="style2">Several Thread Utility Routines</p>
+<ul>
+  <li><span class="style3">cond_wait()&nbsp; &amp; &nbsp;cond_signal()</span>&nbsp;- These two functions can be used in conjunction with locks to notify co-operating threads that a resource has become available. They are very similar in use to the functions found in pthreads. However for most purposes, queues are simpler to use and more intuitive. See threads::shared for more details.</li>
+  <li><span class="style3">yield()</span> function - can be used to explicitly give up the CPU to another thread. Note:  yield() is only a hint to give up the CPU. What it actually does  depends on hardware, OS, thread libraries.  On some OSs yield() is a no-op. Don't build  scheduling of the threads around yield() calls. It might work on your platform but it won't work on another platform.</li>
+  <li><span class="style3">threads-&gt;self</span> - class method, provides your program with a way to get an object representing the thread it's currently in.</li>
+  <li><span class="style3">tid()</span> -  thread object method that returns the thread ID  of the thread the object represents. The main thread has ID=0, and ather threads has IDs of 1,2,3, etc. - sequentially.</li>
+  <li><span class="style3">equal()</span> - method takes two thread objects and returns true if the objects represent the same thread, and false if they don't. Note: Thread objects also have an overloaded == comparison so that you can do comparison on them as you would with normal objects.</li>
+  <li><span class="style3">threads-&gt;list</span> - returns a list of thread objects, one for each thread that's currently running and not detached. </li>
+</ul>
+<table border="1" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>  # Loop through all the threads <br>
+      <br>
+foreach $thr (threads-&gt;list) { <br>
+&nbsp;&nbsp;&nbsp;# Don't join the main thread or ourselves <br>
+&nbsp;&nbsp;&nbsp;if ($thr-&gt;tid &amp;&amp; !threads::equal($thr, threads-&gt;self)) {
+$thr-&gt;join;
+} <br>
+}</td>
+  </tr>
+</table>
+<p><strong>Note:</strong> when the main perl ends and there are still some threads running - the perl <span class="style1">will warn and die</span>, because it can't  clean up itself while other threads are running.</p>
+<table width="70%" border="1" bgcolor="#CCFFCC">
+  <tr>
+    <td><p><strong>Different implementations of threads</strong></p>
+      <ul>
+        <li><strong>User-mode threads</strong> - live entirely within a program. The big disadvantage is that, since the OS knows nothing about threads, if one thread blocks they all do. Typical blocking activities include most system calls, most I/O, and things like sleep().</li>
+        <li><strong> Kernel threads</strong> - the OS knows about kernel threads, and makes allowances for them. The main difference between a <strong>kernel thread</strong> and a <strong>user-mode thread</strong> is blocking. With kernel threads, things that block a single thread don't block other threads. Threads that block performing I/O, for example, won't block threads that are doing other things. Each process still has only one thread running at once, though, regardless of how many CPUs a system might have. Since kernel threading can interrupt a thread at any time, they will uncover some of the implicit locking assumptions you may make in your program. For example, something as simple as $a = $a + 2 can behave unpredictably with kernel threads if $a is visible to other threads, as another thread may have changed $a between the time it was fetched on the right hand side and the time the new value is stored.</li>
+        <li><strong> Multiprocessor kernel threads</strong> - the OS may schedule two or more threads to run simultaneously on different CPUs. This can give a serious performance boost. </li>
+      </ul>      <p>Note that <strong>different OSes</strong> (and different thread implementations for a particular OS) allocate CPU cycles to threads in different ways. </p>      
+      <ul>
+        <li><strong>In &quot;Cooperative multitasking&quot; systems</strong> one thread can starve all the others for CPU time if it so chooses. A thread gives up control  if it calls a yield function, or does something that would cause it to block, such as perform I/O.</li>
+        <li><strong>In &quot;Preemptive multitasking&quot; systems</strong> (modern systems) one thread usually won't monopolize the CPU, because system <span class="style1">interrupts threads at regular intervals</span> and decides  which thread should run next.</li>
+        <li>On some systems, there can be <strong>cooperative and preemptive threads running simultaneously</strong>. For example, threads running with realtime priorities often behave cooperatively,  while threads running at normal priorities behave preemptively.</li>
+      </ul>      
+    </td>
+  </tr>
+</table>
+-
+<table border="1" bgcolor="#FFFFCC">
+  <tr>
+    <td><p><strong>Performance considerations</strong>&nbsp;- Thread creation can be quite expensive, because  a complete copy of all the variables and data of the parent thread has to be taken. So it is better to use  a relatively small  number of long-lived threads, all created fairly early on - before the base thread has accumulated too much data. Also note that under the current implementation, <span class="style1">shared variables</span> use a little more memory and are a little <span class="style1">slower than ordinary variables</span>.</p>
+      <p><strong>Process-scope Changes</strong>&nbsp;- One thread calls <span class="style1"><strong>chdir()</strong></span>, - and the working directory of all the threads changes. 
+   <span class="style1"><strong>chroot()</strong></span> - causes the root directory of all the threads change, and no thread can undo it. Further examples of process-scope changes include <span class="style1"><strong>umask()</strong></span> and changing <span class="style1"><strong>uids/gids</strong></span>.</p>
+      <p><strong>Dont' even t hinking of mixing fork() and threads?</strong> Why? Example, <span class="style1">some UNIX systems copy all the current threads into the child process, while others only copy the thread that called fork()</span>. You have been warned!</p>
+      <p><span class="style8">Mixing signals and threads should not be attempted</span>. Implementations are platform-dependent, and even the POSIX semantics may not be what you expect (and Perl doesn't even give you the full POSIX API).</p>
+      <p><strong>Thread-Safety of System Libraries</strong>&nbsp;- Examples of calls which are not thread-safe: <span class="style4">localtime(), gmtime(), get{gr,host,net,proto,serv,pw}*(), readdir(), rand(), and srand()</span> -- in general, calls that depend on some global external state. If OS  has thread-safe variants of such calls, they will/may be used. Beyond that, Perl is at the mercy of the thread-safety or -unsafety of the calls. Please consult your C library call documentation. On some platforms the thread-safe library interfaces may fail if the result buffer is too small. You can recompile Perl with PERL_REENTRANT_MAXSIZE defined to the maximum number of bytes you will allow.</p>
+      </td>
+  </tr>
+</table>
+<p><a name="cpp_threads"></a></p>
+<p class="sectionheader">C++ threads
+<p>C++ threads
+<ul>
+  <li><a href="http://www.linuxselfhelp.com/HOWTO/C++Programming-HOWTO-18.html" target="_blank">http://www.linuxselfhelp.com/HOWTO/C++Programming-HOWTO-18.html</a> - </li>
+  <li><a href="http://www.yolinux.com/TUTORIALS/LinuxTutorialPosixThreads.html" target="_blank">http://www.yolinux.com/TUTORIALS/LinuxTutorialPosixThreads.html</a> - </li>
+  <li><a href="http://www.boost.org/" target="_blank">http://www.boost.org/</a> - </li>
+  <li><a href="http://threads.sourceforge.net/" target="_blank">http://threads.sourceforge.net/</a> - </li>
+  <li><a href="http://www.stdthread.co.uk/" target="_blank">http://www.stdthread.co.uk/</a> - </li>
+  <li>https://computing.llnl.gov/tutorials/pthreads/</li>
+  <li>http://www.yolinux.com/TUTORIALS/LinuxTutorialPosixThreads.html</li>
+</ul>
+<table border="1" bgcolor="#CCFFCC">
+  <tr>
+    <td><pre>#include &lt;pthread.h&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#define NUM_THREADS     5
+// to compile:    g++ -lpthread test_pthreads.cpp
+
+void *PrintHello(void *threadid) {
+   long tid;
+   tid = (long)threadid;
+   printf(&quot;Hello World! It's me, thread #%ld!\n&quot;, tid);
+   pthread_exit(NULL);
+}
+
+int main (int argc, char *argv[]) {
+  pthread_t threads[NUM_THREADS];
+  int rc;
+  long t;
+  for(t=0; t&lt;NUM_THREADS; t++){
+    printf(&quot;In main: creating thread %ld\n&quot;, t);
+    rc = pthread_create(&amp;threads[t], NULL, PrintHello, (void *)t);
+    if (rc){
+      printf(&quot;ERROR\n&quot;);
+      printf(&quot;ERROR; return code from pthread_create() is %d\n&quot;, rc);
+      exit(-1);
+    }
+  }
+  pthread_exit(NULL);
+}</pre>
+    </td>
+  </tr>
+</table>
+<p>.</p>
+<p>
+
+</body>
+</html>

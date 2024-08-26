@@ -1,0 +1,466 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+ <HTML>
+ <HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+   <STYLE>
+        DIV { line-height: 0.65; font-size: 12pt; vertical-align: middle }
+   </STYLE>
+   <!-- Created with AOLpress/2.0 -->
+   <SCRIPT>
+ <!--
+ function surf()
+ {
+ // substituting ASURF for GET url
+ //     aLoc = "http://invis.free.anonymizer.com/" + document.SURFF.ASURF.value;
+        aLoc = "http://invis-draco.free.anonymizer.com/" + document.SURFF.elements[0].value;
+        document.SURFF.action = aLoc;
+        document.SURFF.ASURF.value = ""
+        document.SURFF.value
+        return true
+ }
+
+ function NCChoose()
+ {
+        document.f.action = "http://www.netcraft.com/";
+
+        if (document.f.restriction.selectedIndex == 0)
+        {
+                document.f.action = "http://www.netcraft.com/whats/";
+        }else
+                if (document.f.restriction.selectedIndex == 1)
+                {
+                        document.f.action = "http://www.netcraft.com/sslwhats/";
+                }else
+                if (document.f.restriction.selectedIndex == 6)
+                {
+                        document.f.action = "http://www.networksolutions.com/cgi-bin/whois/whois/";
+                        document.f.STRING.value = document.f.host.value;
+//                      location.href = ("http://www.networksolutions.com/cgi-bin/whois/whois/?STRING=" + document.f.host.value );
+
+
+                }else
+                {
+                        document.f.action = "http://www.netcraft.com/";
+                }
+
+        // http://www.networksolutions.com/cgi-bin/whois/whois/
+
+        return true
+ }
+
+ /////////////////////////////
+ // For Term Definitions
+ /////////////////////////////
+
+ function jump2form()
+ {
+        document.dict_form.sstring.select();
+        document.dict_form.sstring.focus();
+ }
+
+ function isblank(s)
+ {
+    for(var i = 0; i < s.length; i++)
+    {
+        var c = s.charAt(i);
+        if ((c != ' ') && (c != '\n') && (c != '\t')) return false;
+    }
+    return true;
+ }
+
+function formcheck() {
+        var d = document.dict_form.db.selectedIndex;
+        var e = document.dict_form.sstring.value;
+        if ((e == null) || (e == "") || isblank(e)) {
+                alert("Please enter a word to look up.");
+                jump2form();
+        }
+        else if (d == 1) { //Thesaurus
+                location.href = ("http://www.thesaurus.com/cgi-bin/search?config=roget&words=" + escape(e));
+        }
+        else if (d == 2) { //British National Corpus -  Best Thesaurus
+                location.href = ("http://thetis.bl.uk/cgi-bin/saraWeb?qy=" + escape(e));
+        }
+        else if (d == 3) { //TechWeb
+                location.href=("http://www.techweb.com/encyclopedia/defineterm.cgi?ls=UT_techencyclopedia&sstring=" + escape(e));
+        }
+        else if (d == 4) { //FOLDOC
+                location.href=("http://nightflight.com/cgi-bin/foldoc.cgi?action=Search&query=" + escape(e));
+        }
+        else if (d == 5) { //Investor Words
+        		document.dict_form.action="http://www.investorwords.com/cgi-bin/Database_search/db_search.cgi";
+        		document.dict_form.fname.value = escape(e);
+        		return true;
+        }
+        else if (d == 6) { //OneLook Dict
+        		location.href=("http://afen.onelook.com/cgi-bin/cgiwrap/bware/afen.cgi?word=" + escape(e));
+        } //Slovari
+
+        else if (d == 7) { //slovar' ruskogo yazyka Dalya
+        		document.dict_form.action="http://www.slova.ru/index.php";
+        		document.dict_form.subject.value = e;
+        		return true;
+        }
+        else if (d == 8) { //EN-RU
+        		location.href=("http://www.rambler.ru/dict/scripts/go.cgi?where=enru&query=" + escape(e));
+        }
+        else if (d == 9) { //EN-RU RU-EN
+        		location.href=("http://scripts.infoart.ru/cgi-bin/dictionary/lingvo.pl?mode=v&dict=1&word=" + escape(e));
+        }
+        else if (d == 7) { //Sokrasheniy
+        		document.dict_form.action="http://www.ets.ru/cgi-bin/udict";
+        		document.dict_form.request.value = e;
+        		return true;
+        }
+        else if (d == 10) { //RU-DE
+        		location.href=("http://www.rambler.ru/dict/scripts/go.cgi?where=rude&query=" + escape(e));
+        }
+        else if (d == 11) { //DE-RU
+        		location.href=("http://www.rambler.ru/dict/scripts/go.cgi?where=deru&query=" + escape(e));
+        }
+        else if (d == 12) { //EN-GREEK
+        		document.dict_form.action="http://kypros.org/cgi-bin/lexicon";
+        		document.dict_form.query_a.value = escape(e);
+        		return true;
+        }
+       else if (d == 13) { //Web Search - mamma.com
+                location.href=("http://partners.mamma.com/Dictionary?lang=1&timeout=6&rpp=10&cb=Dictionary&summaries=on&query=" + escape(e));
+        }
+        else { //Dictionary
+                location.href= ("http://www.dictionary.com/cgi-bin/dict.pl?term=" + escape(e));
+        }
+        return false;
+}
+
+ function cnetopen()
+ {
+  window.open("http://cnet.com","CNetWindow",
+  "height=400,width=800,resizable=yes,status=yes,toolbar=yes,scrollbars=yes,menubar=yes,resizable=yes,status=yes,screenX=100,screenY=240,directories=yes,location=yes,dependent=no")
+ }
+ //-->
+ </SCRIPT>
+   <TITLE>WorkLinks</TITLE>
+ </HEAD>
+ <BODY oonload="cnetopen()" onunload="" BGCOLOR="#510009">
+ <P>
+
+ <TABLE bgcolor="black" border=0 cellpadding=1 cellspacing=0 width="100%">
+ <TR><TD> <!-- Black border table-->
+
+ <TABLE border=0 cellpadding=0 cellspacing=0 width="100%">
+ <TR  _BGCOLOR="#510009" BGCOLOR="#FFFFBF"><TD align="left"> <!-- Black border table-->
+
+ <table border=0 width="100%" border="YES" cellpadding="2" bgcolor="#FFFFBF" VALIGN="middle">
+   <tr bgcolor="#FFFFBF">
+        <TD COLSPAN=2 VALIGN="top">
+                <div style="{ line-height: 0.5; font-size: 12pt; vertical-align: middle}">
+
+                <!--NOBR><A href="http://table.jps.net/~avoll" name="AV"><font face="Georgia"><I><b>AV</b></i></font></a></NOBR> | -->
+                <NOBR><A href="http://cnet.com" name="CNET">CNET</a></NOBR> |
+                <NOBR><A href="http://news.com" name="news.com">news.com</a></NOBR> |
+                <NOBR><A href="http://www.zdnet.com" name="ZDNet">ZDNet</a></NOBR> |
+                <NOBR><A href="http://cnn.com" name="CNN">CNN</a></NOBR> |
+                <NOBR><A href="http://Rambler.ru" name="Rambler">Rambler</a></NOBR> |
+                <NOBR><A href="http://www.accuweather.com/adcbin/local_index?thisZip=10019&nav=home" name="accuweather.com">AWeather</a></NOBR> |
+                <!-- NOBR><A href="http://www.weather.com/weather/us/zips/10019.html" name="weather.com/">Weather</a></NOBR -->
+                <!-- NOBR><A href="http://techrepublic.com/" name="techrepublic.com/">TechRep</a></NOBR -->
+                <NOBR><A href="http://www.stratfor.com" name="Strategy Forcasting">StratFor</a></NOBR> |
+                <NOBR><A href="http://www.nytimes.com" name="nytimes.com">NYTimes</a></NOBR> |
+                <NOBR><A href="http://kulichki-koi.rambler.ru/moshkow/" name="Moshkow on Rambler">Moshow's</a></NOBR>  |
+                <NOBR><A href="http://movielink.com" name="777film.com">777Film</a></NOBR> |
+                <NOBR><A href="http://800flowers.com" name="800flowers.com">800flowers</a></NOBR> |
+
+        <HR noshade>
+                <NOBR><A href="http://www.thestandard.com/" name="The Industry Standard.com">IStand</a></NOBR> |
+                <NOBR><A href="http://www.RedHerring.com/" name="RedHerring.com">RedHerring</a></NOBR> |
+                <NOBR><A href="http://IPOlockup.com/" name="IPO Lockup">IPOLockup</a></NOBR> |
+        		<NOBR><A href="http://IPO.com/" name="IPO">IPO</a></NOBR> |
+
+        <HR noshade>
+                <NOBR><A href="http://EvenBetter.com" name="EvenBetter.com">EvenBetter</a></NOBR> |
+                <NOBR><A href="http://AddAll.com" name="AddAll.com">AddAll</a></NOBR> |
+                <NOBR><A href="http://bestbookbuys.com" name="bestbookbuys.com">BBBuys</a></NOBR> ||
+                <NOBR><A href="http://www.pricewatch.com" name="pricewatch.com">pWatch</a></NOBR> |
+                <NOBR><A href="http://pricescan.com" name="pricescan.com">pScan</a></NOBR> ||
+                <NOBR><A href="http://compare.frictionless.com" name="compare.frictionless.com">Frictionless</a></NOBR> |
+                <NOBR><A href="http://nextag.com" name="nextag.com">NexTag</a></NOBR> |
+                <NOBR><A href="http://DealTime.com" name="DealTime.com">DealTime</a></NOBR> |
+                <NOBR><A href="http://mysimon.com" name="mysimon.com">MySimon</a></NOBR> ||
+                <NOBR><A href="http://streetprices.com" name="streetprices.com">StPrices</a></NOBR> |
+                <NOBR><A href="http://www.jango.com" name="jango.com">Jango</a></NOBR> |
+                <NOBR><A href="http://bottomdollar.com" name="bottomdollar.com">Bottom$</a></NOBR> ||
+<!--            <NOBR><A href="http://shopfind.com" name="ShopFind.com">ShopFind</a></NOBR> |
+                <NOBR><A href="http://20-20consumer.com" name="20-20consumer.com">20/20</a></NOBR> |-->
+        <HR noshade>
+                <NOBR><A href="http://www.amazon.com" name="Amazon.com">Amazon</a></NOBR> |
+                <NOBR><A href="http://www.cheapbytes.com" name="CheapBytes">CheapBytes</a></NOBR> |
+                <NOBR><A href="http://www.lsl.com" name="Linux Software Lab">LSL</a></NOBR> |
+                <NOBR><A href="http://www.cdrom.com" name="Cdrom">CDROM</a></NOBR> ||
+                <NOBR><A href="http://tigerdirect.com" name="tigerdirect.com">Tiger</a></NOBR> |
+                <NOBR><A href="http://dell.com" name="dell.com">Dell</a></NOBR> ||
+                <NOBR><A href="http://shopper.com" name="shopper.com">Shopper</a></NOBR> |
+                <NOBR><A href="http://shopping.com" name="shopping.com">Shopping</a></NOBR> |
+                <NOBR><A href="http://computershopper.com" name="computershopper.com">NetBuyer</a></NOBR> |
+        <HR noshade>
+                <NOBR><A href="http://slashdot.org" name="SlashDot">SlashDot</a></NOBR> |
+                <NOBR><A href="http://www.linuxplanet.com" name="Linux Planet">LPlanet</a></NOBR> |
+                <NOBR><A href="http://www.scripting.com" name="scripting.com">Scripting</a></NOBR> |
+                <NOBR><A href="http://www.hackzone.ru" name="Xak-Zone">Xak-Zone</a></NOBR> |
+                <NOBR><A href="http://freshmeat.net/" name="Freshmeat">Freshmeat</a></NOBR> |
+                <NOBR><A href="http://www.theregister.co.uk" name="The Register">TheRegister</a></NOBR> |
+                <NOBR><A href="http://packetstorm.securify.com" name="Pocket Storm Security">PSS</a></NOBR> ||
+                <NOBR><A href="http://www.daemonnews.org/" name="daemonnews.org/">DaeNews</a></NOBR> |
+                <NOBR><A href="http://www.deadly.org/" name="deadly.org/">Deadly</a></NOBR>
+        <HR noshade>
+                <NOBR><A href="http://netcraft.com/" name="NetCraft.com">NetCraft</a></NOBR> |
+                <NOBR><A href="http://www.bordercontrol.com/" name="BorderCTRL">BorderCTRL</a></NOBR> |
+                <NOBR><A href="http://eConstructors.com/" name="eConstructors.com">eConstructors</a></NOBR> |
+                <NOBR><A href="http://register.com/" name="Register.com">Register.com</a></NOBR> |
+                <NOBR><A href="http://tonic.to/" name="Tonic.to">Tonic.to</a></NOBR> |
+
+        <!--NOBR><A href="http://news.com" name="news.com">news.com</a></NOBR> |
+                <NOBR><A href="http://www.nytimes.com" name="nytimes.com">NY Times</a></NOBR> |
+                <NOBR><A href="http://slashdot.org" name="SlashDot">SlashDot</a></NOBR--> |
+        <HR noshade>
+        </div>
+        <DIV>
+         <TABLE border=0 cellpadding=0 cellspacing=0 width="100%">
+         <SMALL>
+          <TR> <!- Anonymous surfing -->
+                <FORM action="" method="GET" name="SURFF">
+          <TD align="left">
+                Anonymous Surfing
+          </TD>
+          <TD align="left">
+                <INPUT TYPE="text" size="49" value="http://">
+          </TD>
+          <TD align="right">
+                <INPUT type="submit" onclick="surf()" value="Browse">
+                <INPUT type="reset" value="Clear">
+          </TD>
+                </FORM>
+          </TR>
+
+          <TR> <!- Tech term look up-->
+                <FORM NAME="dict_form" action="http://www.techweb.com/encyclopedia/defineterm.cgi" method="POST" onsubmit="return formcheck();">
+          <TD align="left"><NOBR>
+                Define with
+                <SELECT NAME="db" style="font-size:9pt; font-family: arial, helvetica, sans-serif;">
+                        <OPTION VALUE="*">Dictionary</OPTION>
+                        <OPTION VALUE="roget">Thesaurus</OPTION>
+                        <OPTION VALUE="roget">Thesaurus (Brit NC Best)</OPTION>
+                        <OPTION VALUE="tech">Tech Dictionary 1</OPTION>
+                        <OPTION VALUE="tech">Tech Dictionary 2 (FOLDOC)</OPTION>
+                        <OPTION VALUE="invest">InvestorWords</OPTION>
+                        <OPTION VALUE="onelook">OneLook Dict</OPTION>
+                        <OPTION VALUE="ruD">RU Dal's Dictionary</OPTION>
+                        <OPTION VALUE="enru">EN -> RU</OPTION>
+                        <OPTION VALUE="enru">EN < - > RU </OPTION>
+                        <OPTION VALUE="rude">RU -> De</OPTION>
+                        <OPTION VALUE="deru">DE -> RU</OPTION>
+                        <OPTION VALUE="engk">EN -> Greek</OPTION>
+                        <OPTION VALUE="WEB">the Web</OPTION>
+                </SELECT></NOBR>
+                <!-- www.slovo.ru -->
+                <input type="hidden" name="subject" value="">
+                <INPUT TYPE="hidden" name="cont" value="search">
+                <INPUT TYPE="hidden" name="logic" value="AND">
+                <INPUT TYPE="hidden" name="book" value="sl">
+                <!-- www.ets.ru    http://www.ets.ru/udict-free-r.htm -->
+                <INPUT TYPE="hidden" name="request" value="">
+                <input type="hidden" name="language" value="r">
+                <input type="hidden" name="file" value="abbrbig;abbrnew">
+                <!-- -->
+                <INPUT TYPE="hidden" NAME="type" VALUE="type_a">
+                <INPUT TYPE="hidden" NAME="setup_file" VALUE="iwsearch.setup">
+                <INPUT TYPE="hidden" NAME="session_file" VALUE="34e946df5f2f3c21">
+                <INPUT TYPE="hidden" NAME="sort_by" VALUE="1">
+                <INPUT TYPE="hidden" NAME="fname" VALUE="">
+                <INPUT TYPE="hidden" NAME="submit_search" VALUE="Search">
+                <INPUT TYPE="hidden" NAME="query_a" VALUE="">
+          </TD>
+          <TD align="left">
+                <input type=text name="sstring" size=49>
+          </TD>
+          <TD align="right">
+                <input type="hidden" name=ls value=UT_techencyclopedia>
+                <input type="submit" value="Define">
+                <INPUT type="reset" value="Clear">
+          </TD>
+                </FORM>
+          </TR>
+
+          <TR>
+                <FORM NAME="f" METHOD="get" ACTION="http://www.netcraft.com/">
+                <INPUT TYPE="hidden" NAME="STRING" VALUE="">
+                <INPUT TYPE="hidden" NAME="position" VALUE="limited">
+                <TD  ALIGN=LEFT>
+                        Search what
+                </TD>
+                <TD  ALIGN=LEFT>
+                        <SELECT NAME="restriction" onChange="NCChoose()" >
+                                <OPTION  VALUE="0" SELECTED >site runs
+                                <OPTION  VALUE="1">ssl runs
+                                <OPTION  VALUE="2">site contains
+                                <OPTION  VALUE="3">site starts with
+                                <OPTION  VALUE="4">site ends with
+                                <OPTION  VALUE="5">subdomain matches
+                                <OPTION  VALUE="7">w-h-o-i-s info
+                        </SELECT>
+             <INPUT TYPE="text" NAME="host" VALUE="" SIZE=30 MAXLENGTH=80>
+                </TD>
+                <TD ALIGN=right>
+             <INPUT TYPE=submit VALUE='Lookup!' onclick="NCChoose()">
+                </TD>
+                </FORM>
+          </TR>
+         </TABLE>
+         </SMALL>
+    </DIV>
+        </TD>
+   </TR>
+
+   <tr bgcolor="#510009">
+     <TD width="50%"><FONT COLOR="#FFFFBF">STL documentation</FONT></TD>
+        <!--TD><FONT COLOR="#FFFFBF">Default Pages</FONT></TD-->
+        <TD><FONT COLOR="#FFFFBF">General</FONT></TD>
+   </tr>
+   <TR valign="top">
+     <TD valign="top">
+        SGI: <A href="http://www.sgi.com/Technology/STL/stl_introduction.html" name="STL Docs">Intro</a>
+        |
+        <A href="http://www.dinkumware.com/htm_cpl/index.html" ttarget= "_blank" name="Dinkum C++ Library Reference">Dinkum STL Reference</a>
+        <BR>
+        <A href="http://www.cpsc.ucalgary.ca/~kremer/STL/800x600/index.html" ttarget= "_blank" name="C++ STL Overview by Kremer">C++ STL Overview by Kremer</a>
+        |
+        <A href="http://www.stlport.org/" name="STL Port">stlPort</a><BR>
+
+        </TD>
+        <TD>
+        <!--A href="_default.asp" name="IIS default">IIS Default</a> |
+        <A href="Xitami/" name="Xitami default">Xitami Default</a-->
+        <A href="http://www.rexswain.com/perl5.html" name="Perl 5 Ref">Perl 5 Ref Guide</a> |
+        <A href="http://stein.cshl.org/WWW/software/CGI/cgi_docs.html" name="CGI.pm">CGI.pm</a> |
+        <A href="http://www.perl.com/pub/doc/manual/html/lib/CGI/Carp.html" name="Carp.pm">Carp.pm</a> |
+        <A href="http://www.perl.com/pub/doc/manual/html/pod/perlfunc.html" name="perlfun.pod">PerlFunc.pod</a> |
+        <A href="http://www.perlmonks.org/" name="perlmonks.org">PerlMonks</a> |
+        <BR>
+        <A href="http://www.linuxdoc.org/" name="Linux Doc Project">LDP</a> |
+		<A href="http://www.rocket99.com/sybase/index.html" name="Sybase 101">Sybase 101</a> |
+        <A href="http://nagual.pp.ru/~ache/koi8/framed-koi8.html" name="Chernov KOI">Russify Everything</a> |
+        <A href="http://www.counterpane.com/" name="Counterpane">Counterpane</a> |
+        <A href="http://csrc.nist.gov/icat/" name="ICAT vulnerability metabase">ICAT</a> |
+        <BR>
+        <A href="http://www-unix.mcs.anl.gov/mpi/" name="MPI">MPI</a> |
+        <A href="http://www-unix.mcs.anl.gov/dbpp/" name="Designing and Building Parallel Programs">Designing and Building Parallel Programs</a> |
+        <BR>
+        <A href="http://www.aspnews.com/" name="http://www.aspnews.com/">ASPnews</a>
+        <!--A href="_default.asp" name="IIS default">IIS Default</a-->
+        </TD>
+   </TR>
+   <TR bgcolor="#510009">
+     <TD><A href="http://www.cs.wustl.edu/~schmidt/ACE.html" name="ACE Home"><FONT COLOR="#FFFFBF">ACE</FONT></a><FONT COLOR="#FFFFBF"> documentation</FONT></TD>
+	 <td><FONT COLOR="#FFFFBF">XML related</FONT></td>
+   </TR>
+   <TR valign="top">
+     <TD>
+        <A href="http://www.cs.wustl.edu/~schmidt/ACE_wrappers/ACE-INSTALL.html" name="ACE Installation">ACE Installation</a>
+        <A href="http://www.cs.wustl.edu/~schmidt/ACE_wrappers/man/acewindex.html" name="ACE Manual Page Index">ACE Manual Page Index</a>
+        <br>
+        <A href="http://www.cs.wustl.edu/~schmidt/ACE_wrappers/docs/tutorials/" name="STL Docs">ACE tutorials</a> or <A href="http://www.cs.wustl.edu/~schmidt/tutorials-ace.html" name="STL Docs">Advanced ACE tutorials</a>
+        <br>
+        <A href="http://www.cs.wustl.edu/~schmidt/ACE_wrappers/docs/ACE-categories.html" name="STL Docs">ACE Class categories</a>
+        <br>
+        <A href="http://www.cs.wustl.edu/~schmidt/ACE_wrappers/docs/ACE-guidelines.html" name="ACE Software Development Guidelines">ACE Software Development Guidelines</a>
+        <br>
+
+
+
+        <!--a href="ACE/" name="STL Docs">ACE tutorials</a><br>
+        <a href="ACE/" name="STL Docs">ACE tutorials</a><br>
+        <a href="ACE/" name="STL Docs">ACE tutorials</a><br>
+        <a href="ACE/" name="STL Docs">ACE tutorials</a><br>
+        <a href="ACE/" name="STL Docs">ACE tutorials</a><br>
+        <a href="ACE/" name="STL Docs">ACE tutorials</a><br>
+        <a href="ACE/" name="STL Docs">ACE tutorials</a><br-->
+
+        </TD>
+        <TD>
+        XML(<A href="http://www.xml.com/pub/98/10/guide1.html" name="XML guide">guide</a> |
+        <A href="http://www.w3.org/TR/REC-xml" name="XML Spec">Spec</a>) |
+        <A href="http://www.w3.org/TR/REC-xml-names/" name="XML namespaces">Names</a> |
+        <A href="http://www.w3.org/TR/xml-infoset" name="XML Infospaces">Infospace</a> |
+        IBM(<A href="http://www.ibm.com/developer/xml/" name="XML papers">Zone</a> | <A href="http://www2.software.ibm.com/developer/papers.nsf/xml-papers-bytitle" name="XML papers"> XML papers</a>) |
+        <BR>
+        <A href="http://www.w3.org/TR/WD-xptr" name="XML Pointer">XPointer</a> |
+        <A href="http://www.w3.org/TR/xlink/" name="XML Link">XLink</a> |
+        <BR>
+        <A href="http://www.w3.org/Style/XSL/" name="XSL">XSL</a>(
+        <A href="http://www.w3.org/TR/xsl/" name="XSL">XSL</a> |
+        <A href="http://www.w3.org/TR/xslt/" name="XSLT">XSLT</a> |
+        <A href="http://www.w3.org/TR/xpath/" name="XPATH">XPath</a>) |
+        <A href="http://www.w3.org/XML/Schema.html" name="XML Schema">XML Schema</a> |
+        <BR>
+        <A href="http://cxml.org/" name="cXML">cXML</a> |
+        <A href="http://www.biztalk.org/" name="http://www.biztalk.org">BizTalk</a> |
+        <A href="http://www.Rosettanet.org/" name="RosettaNet">RosettaNet</a> |
+        <A href="http://ebxml.org/" name="Electronic Business XML">ebXML</a> |
+        <A href="http://finxml.org/" name="Financial XML">FinXML</a> |
+        <A href="http://www.commerceone.com/xml/index.html" name="xCBL: XML Common Business Language">xCBL/SOX</a> |
+        <br>
+        SOAP (<A href="http://www-4.ibm.com/software/developer/library/soap/soapv11.html" name="SOAP">IBM</a> |
+        <A href="http://www.develop.com/SOAP/" name="SOAP">DevMentor</a>) |
+        <A href="http://www-4.ibm.com/software/ad/standards/xmi.html" name="XMI">XMI</a> |
+		<A href="http://www.xml-rpc.com" name="XML-RPC">XML-RPC</a> |
+		<A href="http://www.megginson.com/SAX/" name="Simple API for XML">SAX 1 & 2</a> |
+		<br>
+		<A href="http://www.idealliance.org/ice/" name="The Information and Content Exchange Protocol">ICE current</a> |
+		<A href="http://www.w3.org/TR/NOTE-ice.html" name="The Information and Content Exchange Protocol">ICE</a> |
+		<A href="http://internetalchemy.org/ocs/" name="Open Content Syndication">OCS</a> |
+		<A href="http://www.w3.org/TR/REC-rdf-syntax/" name="Resource Description Framework">RDF</a> |
+
+        <!--A href="" name=""></a--> |
+
+        </TD>
+   </TR>
+   <!--
+   <TR bgcolor="#510009">
+     <TD><FONT COLOR="#FFFFBF">JavaScript</FONT></TD>
+   </TR>
+   <TR>
+     <TD><a href="JS/GeneralizedEvents/junk.shtml">Generalized Events in JS/CrossBrowser</a></TD>
+   </TR>
+   -->
+   <TR bgcolor="#510009">
+     <TD><FONT COLOR="#FFFFBF"></FONT></TD>
+   </TR>
+   <TR>
+     <TD><a href=""></a></TD>
+   </TR>
+   <TR bgcolor="#510009">
+     <TD><FONT COLOR="#FFFFBF"></FONT></TD>
+   </TR>
+   <TR>
+     <TD><a href=""></a></TD>
+   </TR>
+   <TR bgcolor="#510009">
+     <TD colspan=2 align=right><FONT COLOR="#FFFFBF"><!-- %s --></FONT></TD>
+   </TR>
+   <TR>
+     <TD><a href=""></a></TD>
+   </TR>
+ </table>
+
+ <!-- Inner(2nd) Black border table-->
+ </TD></TR>
+ </TABLE>
+
+ <!-- Outer(1st) Black border table-->
+ </TD></TR>
+ </TABLE>
+
+
+ </BODY>
+ </HTML>
+ 

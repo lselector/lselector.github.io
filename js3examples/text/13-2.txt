@@ -1,0 +1,29 @@
+<HTML>
+<HEAD>
+<SCRIPT>
+// This function displays the time in the status line.
+// Invoke it once to activate the clock; it will call itself from then on.
+function display_time_in_status_line()
+{
+    var d = new Date();                // Get current time.
+    var h = d.getHours();              // Extract hours: 0 to 23.
+    var m = d.getMinutes();            // Extract minutes: 0 to 59.
+    var ampm = (h >= 12)?"PM":"AM";    // Is it am or pm?
+    if (h > 12) h -= 12;               // Convert 24-hour format to 12-hour.
+    if (h == 0) h = 12;                // Convert 0 o'clock to midnight.
+    if (m < 10) m = "0" + m;           // Convert 0 minutes to 00 minutes, etc.
+    var t = h + ':' + m + ' ' + ampm;  // Put it all together.
+
+    defaultStatus = t;                 // Display it in the status line.
+
+    // Arrange to do it all again in 1 minute. 
+    setTimeout("display_time_in_status_line()", 60000); // 60000 ms is 1 minute.
+}
+</SCRIPT>
+</HEAD>
+<!-- Don't bother starting the clock till everything is loaded. The
+  -- status line will be busy with other messages during loading, anyway. -->
+<BODY onLoad="display_time_in_status_line();">
+<!-- The HTML document contents go here. -->
+</BODY>
+</HTML>

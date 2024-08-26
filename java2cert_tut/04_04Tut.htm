@@ -1,0 +1,1192 @@
+<html>
+
+
+
+
+
+
+
+<head>
+
+
+
+
+
+
+
+<title>4.4)Language fundamentals, Initialisation</title>
+
+
+
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="tutor.css"></head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body bgcolor="#FFFFFF">
+
+<table width=95% border=0 cellpadding=2 cellspacing=0 style="page-break-before: always">
+
+  <col width=147*> <col width=109*> 
+
+  <tr> 
+
+    <td width=57% height=104> 
+
+      <p><a href= "introj2.htm" ><img src= "btnIndex.jpg"  name="Graphic1" alt="Return to Tutorial Index" align=BOTTOM width=55 height=39 border=0></a><a href= "introj2.htm" ><br>
+
+        <br>
+
+        </a><a href= "index.htm" ><img src= "btnHome.jpg"  name="Graphic2" alt="Back to the home page of this site" align=BOTTOM width=55 height=39 border=0></a> 
+
+      </p>
+
+    </td>
+
+    <td width=43%> 
+
+      <p align=RIGHT><img src= "hat.gif"  name="Graphic3" alt="morterboard" align=BOTTOM width=118 height=113 border=0></p>
+
+    </td>
+
+  </tr>
+
+  <tr> 
+
+    <td width=57% height=11> 
+
+      <h1 align=LEFT>Java2 Certification <br>
+
+        Tutorial </h1>
+
+    </td>
+
+    <td width=43% bgcolor="#ff9900"> 
+
+      <p>&nbsp;</p>
+
+    </td>
+
+  </tr>
+
+</table>
+
+<p> You can discuss this topic with others at <a href= "http://www.jchq.net/discus" >http://www.jchq.net/discus</a><br>
+
+  Read reviews and buy a Java Certification book at <a href= "http://www.jchq.net/bookreviews/jcertbooks.htm" >http://www.jchq.net/bookreviews/jcertbooks.htm</a> 
+
+  <br>
+
+</p>
+
+<hr size=5 noshade>
+
+<h1>4) <font face="GENEVA, HELVETICA, ARIAL, LUCIDA SANS"><b>Language Fundamentals</b></font> 
+
+
+
+</h1>
+
+
+
+<h3>Objective4) </h3>
+
+
+
+
+
+
+
+<p><font face="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">State the effect of using 
+
+
+
+
+
+
+
+  a variable or array element of any kind when no explicit assignment has been 
+
+
+
+
+
+
+
+  made to it.</font></p>
+
+
+
+
+
+
+
+<h3>Variables </h3>
+
+
+
+
+
+
+
+<p>You could learn to program in Java without really understanding the agenda 
+
+
+
+
+
+
+
+  behind this objective, but it does represent valuable real world knowledge. 
+
+
+
+
+
+
+
+  Essentially a class level variable will always be assigned a default value and 
+
+
+
+
+
+
+
+  a member variable (one contained within a method) will not be assigned any default 
+
+
+
+
+
+
+
+  value. If you attempt to access an unassigned variable an error will be generated. 
+
+
+
+
+
+
+
+  For example&nbsp;</p>
+
+
+
+
+
+
+
+<pre>class MyClass{&nbsp;
+	public static void main(String argv[]){&nbsp;
+		int p;&nbsp;
+		int j = 10;&nbsp;
+		j=p;&nbsp;
+	}&nbsp;
+}</pre>
+
+
+
+
+
+
+
+<p>This code will result in an error along the lines&nbsp;</p>
+
+
+
+
+
+
+
+<pre>&quot;error variable p might not have been assigned&quot;&nbsp;</pre>
+
+
+
+
+
+
+
+<p>This can be viewed as a welcome change from the tendency of C/C++ to give you 
+
+
+
+
+
+
+
+  enough rope by leaving an arbitrary value in p. If p had been defined at class 
+
+
+
+
+
+
+
+  level it would have been assigned its default value and no error would be generated.&nbsp;</p>
+
+
+
+
+
+
+
+<pre>class MyClass{&nbsp;
+static int p;&nbsp;
+	public static void main(String argv[]){&nbsp; 
+		int j = 10;&nbsp;
+		j=p;&nbsp;System.out.println(j);&nbsp;
+		}&nbsp;
+}</pre>
+
+
+
+
+
+
+
+<p>The default value for an integer is 0, so this will print out a value of 0.&nbsp; 
+
+
+
+
+
+
+
+<h3></h3>
+
+
+
+
+
+
+
+<p>The default values for numeric types is zero, a boolean is false and an object 
+
+
+
+
+
+
+
+  reference is the only type that defaults to a null. </p>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="9%"><img src= "key2.gif"  width="106" height="73"
+
+
+
+
+
+
+
+align="bottom" border="0"></td>
+
+
+
+
+
+
+
+    <td width="91%"> 
+
+
+
+
+
+
+
+      <h3><font color="red">Before initialization arrays are always set to <br>
+        contain default values wherever they are created.</font> </h3>
+
+
+
+
+
+
+
+    </td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<p>Arrays </p>
+
+
+
+
+
+
+
+<p>Learning this part of the objective requires understanding a simple rule. The 
+
+
+
+  value of the elements of an array of any base type will <b>always</b> be initialised 
+
+
+
+  to a default value, wherever the array is defined. It does not matter if the 
+
+
+
+  array is defined at class or method level, the values will always be set to 
+
+
+
+  default values.&nbsp;You may get questions that ask you what value is contained 
+
+
+
+  in a particular element of an array. Unless it is an array of objects the answer 
+
+
+
+  will not be null (or if they are being particularly tricky NULL).</p>
+
+
+
+<hr>
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="11%"><img src= "Quiz.gif"  width="99" height="101"></td>
+
+
+
+
+
+
+
+    <td width="89%">&nbsp;</td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<h3><b>Question 1)</b></h3>
+
+
+
+
+
+
+
+<p>Given the following code what will element <i>b[5]</i> contain?</p>
+
+
+
+
+
+
+
+<pre>public class MyVal{
+public static void main(String argv[]){
+        MyVal m = new MyVal();
+        m.amethod();
+}
+
+public void amethod(){
+boolean b[] = new boolean[5];
+        }
+}
+</pre>
+
+
+
+
+
+
+
+<p>1) 0<br>
+
+
+
+
+
+
+
+  2) null<br>
+
+
+
+
+
+
+
+  3) &quot;&quot;<br>
+
+
+
+
+
+
+
+  4) none of these options</p>
+
+
+
+
+
+
+
+<p> 
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h3></h3>
+
+
+
+
+
+
+
+<h3><b>Question 2)</b></h3>
+
+
+
+
+
+
+
+<p>Given the following constructor what will element 1 of <i>mycon</i> contain?</p>
+
+
+
+
+
+
+
+<pre>MyCon(){
+	int[] mycon= new int[5];
+}</pre>
+
+
+
+
+
+
+
+<p>1) 0<br>
+
+
+
+
+
+
+
+  2) null<br>
+
+
+
+
+
+
+
+  3) &quot;&quot;<br>
+
+
+
+
+
+
+
+  4) None of these options</p>
+
+
+
+
+
+
+
+<p> 
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h3></h3>
+
+
+
+
+
+
+
+<h3><b>Question 3)</b></h3>
+
+
+
+
+
+
+
+<p>What will happen when you attempt to compile and run the following code?</p>
+
+
+
+
+
+
+
+<pre>public class MyField{
+int i=99;
+public static void main(String argv[]){
+        MyField m = new MyField();
+        m.amethod();
+       }
+void amethod(){
+        int i;
+        System.out.println(i);
+        }
+}
+</pre>
+
+
+
+
+
+
+
+<p>1) The value 99 will be output<br>
+
+
+
+
+
+
+
+  2) The value 0 will be output<br>
+
+
+
+
+
+
+
+  3) Compile time error<br>
+
+
+
+
+
+
+
+  4) Run time error</p>
+
+
+
+
+
+
+
+<p> 
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h3></h3>
+
+
+
+
+
+
+
+<h3><b>Question 4)</b></h3>
+
+
+
+
+
+
+
+<p>What will happen when you attempt to compile and run the following code?</p>
+
+
+
+
+
+
+
+<pre>public class MyField{
+String s;
+public static void main(String argv[]){
+        MyField m = new MyField();
+        m.amethod();
+        }
+void amethod(){
+        System.out.println(s);
+        }
+}
+</pre>
+
+
+
+
+
+
+
+<p>1) Compile time error s has not been initialised<br>
+
+
+
+
+
+
+
+  2) Runtime error s has not been initialised<br>
+
+
+
+
+
+
+
+  3) Blank output<br>
+
+
+
+
+
+
+
+  4) Output of null 
+
+
+
+
+
+
+
+<h1>Answers</h1>
+
+
+
+
+
+
+
+<h3><b>Answer 1)</b></h3>
+
+
+
+
+
+
+
+<p>4) none of these options</p>
+
+
+
+
+
+
+
+<p>Sneaky one here. Array element numbering starts at 0, therefore there is no 
+
+
+
+
+
+
+
+  element 5 for this array. If you were to attempt to perform</p>
+
+
+
+
+
+
+
+<pre>System.out.println(b[5])</pre>
+
+
+
+
+
+
+
+<p>You would get an exception.</p>
+
+
+
+
+
+
+
+<h3><b>Answer 2)</b></h3>
+
+
+
+
+
+
+
+<p>1) 0</p>
+
+
+
+
+
+
+
+<p>A constructor acts no different to any other method for this purpose and an 
+
+
+
+
+
+
+
+  array of integers will be initialised to contain zeros wherever it is created.</p>
+
+
+
+
+
+
+
+<h3><b>Answer 3)</b></h3>
+
+
+
+
+
+
+
+<p>3) Compile time error</p>
+
+
+
+
+
+
+
+<p>You will get a compile time error indicating that variable <i>i</i> may not 
+
+
+
+
+
+
+
+  have been initialised. The classs level variable <i>i</i> is a red herring, 
+
+
+
+
+
+
+
+  as it will be shadowed by the method level version. Method level variables do 
+
+
+
+
+
+
+
+  not get any default initialisation.</p>
+
+
+
+
+
+
+
+<h3><b>Answer 4)</b></h3>
+
+
+
+
+
+
+
+<p>4) Output of null</p>
+
+
+
+
+
+
+
+<p>A variable created at class level will always be given a default value. The 
+
+
+
+
+
+
+
+  default value of an object reference is <i>null</i> and the <i>toString</i> 
+
+
+
+
+
+
+
+  method implicitly called via System.out.println will output <i>null</i></p>
+
+
+
+
+
+
+
+<p> 
+
+
+
+
+
+
+
+<hr align="CENTER" noshade>
+
+
+
+
+
+
+
+<table border="1" width="100%">
+
+
+
+
+
+
+
+  <caption><b>Other sources on this topic</b></caption>
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="100%"><b>This topic is covered slightly in the Sun Tutorial at 
+
+
+
+
+
+
+
+      </b><br>
+
+
+
+
+
+
+
+      <a href= "http://java.sun.com/docs/books/tutorial/java/nutsandbolts/vars.html" >http://java.sun.com/docs/books/tutorial/java/nutsandbolts/vars.html</a><a
+
+
+
+
+
+
+
+						href= "http://java.sun.com/docs/books/tutorial/essential/exceptions/definition.html" >l</a><br>
+
+
+
+
+
+
+
+      <a href= "http://java.sun.com/docs/books/tutorial/java/javaOO/accesscontrol.html" ><br>
+
+
+
+
+
+
+
+      </a><b>Richard Baldwin Covers this topic at</b><br>
+
+
+
+
+
+
+
+      <a href= "http://www.geocities.com/Athens/Acropolis/3797/Java020.htm#variables" >http://www.geocities.com/Athens/Acropolis/3797/Java020.htm#variables</a><a
+
+
+
+
+
+
+
+						href= "http://www.geocities.com/Athens/Acropolis/3797/Java040.htm" ><br>
+
+
+
+
+
+
+
+      <br>
+
+
+
+
+
+
+
+      </a><b>Jyothi Krishnan on this topic at </b><br>
+
+
+
+
+
+
+
+      <a href= "http://www.geocities.com/SiliconValley/Network/3693/obj_sec4.html#obj12" >http://www.geocities.com/SiliconValley/Network/3693/obj_sec4.html#obj12</a></td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+Last updated<br>
+
+
+
+
+
+
+
+28 Dec 1999<br>
+
+
+
+copyright &copy; Marcus Green 1999 
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<h1>&nbsp;</h1>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>
+
+
+
+
+
+
+

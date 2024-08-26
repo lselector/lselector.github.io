@@ -1,0 +1,159 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Resume, Quantitative Analyst, Financial Engineer, Quantitative Finance, Mathematical Modeling, Algorithmic Trading, C++, Unix, VBA, Visual Basic, Perl, Java, Risk Management, Portfolio Management">
+<meta name="KeyWords" content="Resume, Quantitative Analyst, Financial Engineer, Quantitative Finance, Mathematical Modeling, Algorithmic Trading, C++, Unix, VBA, Visual Basic, Perl, Java, Risk Management, Portfolio Management">
+   <meta name="Author" content="Lev Selector">
+   <title>Effective C++</title>
+<!--
+"Resume, Quantitative Analyst, Financial Engineer, Quantitative Finance, Mathematical Modeling, Algorithmic Trading, C++, Unix, VBA, Visual Basic, Perl, Java, Risk Management, Portfolio Management"
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<p><a NAME="top"></a>
+    <b><font color="#CC0000">LevSelector.com</font></b></p>
+<p class="sectionheader"><a href="index.html">home</a> > Effective C++ </p>
+<p class="style1">Effective C++</p>
+<p>This page contains short notes on Scott Meyers books </p>
+<p class="sectionheader">Effective C++: 55 Specific Ways to Improve Your Programs and Designs.</p>
+<p><span class="style1">Item 1: View C++ as a federation of languages.  11 </span><br>
+-  C, OO C++, Template C++, STL</p>
+<p><span class="style1">Item 2: Prefer consts, enums, and inlines to #defines.  13</span><br>
+  - names of macros defined with #define are substituted by preprocessor, thus compiler/debugger never see them. It is better to use a const, for example:<br>
+  <span class="code">const double AspectRatio = 1.653;<br>
+  const std::string authorName(&quot;Scott Meyers&quot;);<br>
+  const char * const authorName = &quot;Scott Meyers&quot;; // 
+note 2 const to be used for pointers<br>
+<br>
+class GamePlayer {<br>
+&nbsp;&nbsp;&nbsp;private: static const int NumTurns = 5;<br>
+&nbsp;&nbsp;&nbsp;int scores[NumTurns];<br>
+};</span><br>
+<br>
+Declaration and definition<br>
+<span class="code">// enum hack:<br>
+enum {NumTurns = 5 };<br>
+int scores[NumTurns];<br>
+<br>
+// call f() with the maximum of a and b    <br>
+// using template to an inline function instead of a #define macro<br>
+template&lt;typename T&gt; inline void callWithMax(const T&amp; a, const T&amp; b)    {                                                  f(a &gt; b ? a : b);                                }</span></p>
+<p><span class="style1">Item 3: Use const whenever possible.  17</span><br>
+ // example - iterator to const values:<br>
+  <span class="code">std::vector&lt;int&gt;::</span><span class="style1">const_iterator</span><span class="code"> cIter =   //cIter acts like a const T*<br>
+  vec.begin();<br>
+  *cIter = 10;                               // error! *cIter is const<br>
+++cIter;                                  // fine, changes cIter</span></p>
+<p>functions returning const (for example to avoid assigning to the result)<br>
+  const member functions
+</p>
+<p>Item 4: Make sure that objects are initialized before they&rsquo;re used.  26Chapter 2: Constructors, Destructors, and Assignment Operators  34</p>
+<p>Item 5: Know what functions C++ silently writes and calls.  34</p>
+<p>Item 6: Explicitly disallow the use of compiler-generated functions you do not want.  37</p>
+<p>Item 7: Declare destructors virtual in polymorphic base classes.  40</p>
+<p>Item 8: Prevent exceptions from leaving destructors.  44</p>
+<p>Item 9: Never call virtual functions during construction or destruction.  48</p>
+<p>Item 10: Have assignment operators return a reference to *this.  52</p>
+<p>Item 11: Handle assignment to self in operator=.  53</p>
+<p>Item 12: Copy all parts of an object.  57Chapter 3: Resource Management  61</p>
+<p>Item 13: Use objects to manage resources.  61</p>
+<p>Item 14: Think carefully about copying behavior in resource-managing classes.  66</p>
+<p>Item 15: Provide access to raw resources in resource-managing classes.  69</p>
+<p>Item 16: Use the same form in corresponding uses of new and delete.  73</p>
+<p>Item 17: Store newed objects in smart pointers in standalone statements.  75Chapter 4: Designs and Declarations  78</p>
+<p>Item 18: Make interfaces easy to use correctly and hard to use incorrectly.  78</p>
+<p>Item 19: Treat class design as type design.  84</p>
+<p>Item 20: Prefer pass-by-reference-to-const to pass-by-value.  86</p>
+<p>Item 21: Don&rsquo;t try to return a reference when you must return an object.  90</p>
+<p>Item 22: Declare data members private.  94</p>
+<p>Item 23: Prefer non-member non-friend functions to member functions.  98</p>
+<p>Item 24: Declare non-member functions when type conversions should apply to all parameters. 102</p>
+<p>Item 25: Consider support for a non-throwing swap.  106Chapter 5: Implementations  113</p>
+<p>Item 26: Postpone variable definitions as long as possible.  113</p>
+<p>Item 27: Minimize casting.  116</p>
+<p>Item 28: Avoid returning &ldquo;handles&rdquo; to object internals.  123</p>
+<p>Item 29: Strive for exception-safe code.  127</p>
+<p>Item 30: Understand the ins and outs of inlining.  134</p>
+<p>Item 31: Minimize compilation dependencies between files.  140Chapter 6: Inheritance and Object-Oriented Design  149</p>
+<p>Item 32: Make sure public inheritance models &ldquo;is-a.&rdquo;  150</p>
+<p>Item 33: Avoid hiding inherited names.  156</p>
+<p>Item 34: Differentiate between inheritance of interface and inheritance of implementation.  161</p>
+<p>Item 35: Consider alternatives to virtual functions.  169</p>
+<p>Item 36: Never redefine an inherited non-virtual function.  178</p>
+<p>Item 37: Never redefine a function&rsquo;s inherited default parameter value.  180</p>
+<p>Item 38: Model &ldquo;has-a&rdquo; or &ldquo;is-implemented-in-terms-of&rdquo; through composition.  184</p>
+<p>Item 39: Use private inheritance judiciously.  187</p>
+<p>Item 40: Use multiple inheritance judiciously.  192Chapter 7: Templates and Generic Programming  199</p>
+<p>Item 41: Understand implicit interfaces and compile-time polymorphism.  199</p>
+<p>Item 42: Understand the two meanings of typename.  203</p>
+<p>Item 43: Know how to access names in templatized base classes.  207</p>
+<p>Item 44: Factor parameter-independent code out of templates.  212</p>
+<p>Item 45: Use member function templates to accept &ldquo;all compatible types.&rdquo;  218</p>
+<p>Item 46: Define non-member functions inside templates when type conversions are desired.  222</p>
+<p>Item 47: Use traits classes for information about types.  226</p>
+<p>Item 48: Be aware of template metaprogramming.  233Chapter 8: Customizing new and delete  239</p>
+<p>Item 49: Understand the behavior of the new-handler.  240</p>
+<p>Item 50: Understand when it makes sense to replace new and delete.  247</p>
+<p>Item 51: Adhere to convention when writing new and delete.  252</p>
+<p>Item 52: Write placement delete if you write placement new.  256Chapter 9: Miscellany  262</p>
+<p>Item 53: Pay attention to compiler warnings.  262</p>
+<p>Item 54: Familiarize yourself with the standard library, including TR1.  263</p>
+<p>Item 55: Familiarize yourself with Boost.  269</p>
+<p>Appendix A: Beyond Effective C++  273</p>
+<p>Appendix B: Item Mappings Between Second and Third Editions  277</p>
+<p>Index  280 </p>
+<p class="sectionheader">More Effective C++: 35 New Ways to Improve Your Programs and Designs - 
+Scott Meyers </p>
+<p>Introduction  1</p>
+<p>Basics  9</p>
+<p>Item 1: Distinguish between pointers and references.  9 <br>
+  Item 2: Prefer C++-style casts.  12<br>
+  Item 3: Never treat arrays polymorphically.  16 <br>
+  Item 4: Avoid gratuitous default constructors.  19</p>
+<p>Operators  24</p>
+<p>Item 5: Be wary of user-defined conversion functions.  24<br>
+  Item 6: Distinguish between prefix and postfix forms of increment and decrement operators.  31<br>
+  Item 7: Never overload &amp;&amp;, ||, or ,.  35 <br>
+  Item 8: Understand the different meanings of new and delete.  38</p>
+<p>Exceptions  44</p>
+<p>Item 9: Use destructors to prevent resource leaks.  45<br>
+  Item 10: Prevent resource leaks in constructors.  50<br>
+  Item 11: Prevent exceptions from leaving destructors.  58<br>
+  Item 12: Understand how throwing an exception differs from passing a parameter or calling a virtual function.  61<br>
+  Item 13: Catch exceptions by reference.  68<br>
+  Item 14: Use exception specifications judiciously.  72<br>
+  Item 15: Understand the costs of exception handling.  78</p>
+<p>Efficiency  81</p>
+<p>Item 16: Remember the 80-20 rule.  82<br>
+  Item 17: Consider using lazy evaluation.  85<br>
+  Item 18: Amortize the cost of expected computations.  93<br>
+  Item 19: Understand the origin of temporary objects.  98<br>
+  Item 20: Facilitate the return value optimization.  101<br>
+  Item 21: Overload to avoid implicit type conversions.  105<br>
+  Item 22: Consider using op= instead of stand-alone op.  107 <br>
+  Item 23: Consider alternative libraries.  110<br>
+  Item 24: Understand the costs of virtual functions, multiple inheritance, virtual base classes, and RTTI.  113</p>
+<p>Techniques  123</p>
+<p>Item 25: Virtualizing constructors and non-member functions.  123<br>
+  Item 26: Limiting the number of objects of a class.  130<br>
+  Item 27: Requiring or prohibiting heap-based objects.  145<br>
+  Item 28: Smart pointers.  159<br>
+  Item 29: Reference counting.  183<br>
+  Item 30: Proxy classes.  213 <br>
+  Item 31: Making functions virtual with respect to more than one object.  228</p>
+<p>Miscellany  252</p>
+<p>Item 32: Program in the future tense.  252<br>
+  Item 33: Make non-leaf classes abstract.  258<br>
+  Item 34: Understand how to combine C++ and C in the same program.  270<br>
+  Item 35: Familiarize yourself with the language standard.  277</p>
+<p>Recommended Reading  285</p>
+<p>An auto_ptr Implementation  291</p>
+<p>General Index  295</p>
+<p>Index of Example Classes, Functions, and Templates  313<br>
+</p>
+<p></p>
+<p></p>
+</body>
+</html>

@@ -1,0 +1,24 @@
+// This function requests the UniversalBrowserRead privilege to enable
+// it to read the array elements of the History object.
+function openHistoryWindow() {
+    // Open a new window.
+    var w = window.open("", "historyWindow", 
+                        "width=500,height=300,menubar,resizable");
+    var d = w.document;
+
+    // Request a privilege.
+    netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserRead");
+
+    // Output the browsing history of this window as links in the new window.
+    for(var i = 0; i < history.length; i++) {
+        d.write('<A TARGET="new" HREF="' + history[i] + '">');
+        d.write(history[i]);
+        d.writeln('</A>');
+    }
+    d.close();
+
+    // Return the new window.
+    return w;
+
+    // The privilege is automatically disabled when this function returns.
+}

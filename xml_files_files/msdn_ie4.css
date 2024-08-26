@@ -1,0 +1,90 @@
+BODY {
+	BACKGROUND-COLOR: #ffffff; COLOR: #000000; FONT: x-small Verdana, Arial, Helvetica, sans-serif
+}
+H1 {
+	COLOR: #000000; FONT-FAMILY: verdana, Arial, Helvetica, sans-serif; FONT-WEIGHT: bold
+}
+H2 {
+	COLOR: #000000; FONT-FAMILY: verdana, Arial, Helvetica, sans-serif; FONT-WEIGHT: bold
+}
+H3 {
+	COLOR: #000000; FONT-FAMILY: verdana, Arial, Helvetica, sans-serif; FONT-WEIGHT: bold
+}
+H4 {
+	COLOR: #000000; FONT-FAMILY: verdana, Arial, Helvetica, sans-serif; FONT-WEIGHT: bold
+}
+H1 {
+	FONT-SIZE: 145%; MARGIN-BOTTOM: 0.5em
+}
+H2 {
+	FONT-SIZE: 125%; MARGIN-BOTTOM: 0.5em; MARGIN-TOP: 1.5em
+}
+H3 {
+	FONT-SIZE: 115%; MARGIN-BOTTOM: 0.5em; MARGIN-TOP: 1.2em
+}
+H4 {
+	FONT-SIZE: 100%; MARGIN-BOTTOM: 0.5em; MARGIN-TOP: 1.2em
+}
+P {
+	COLOR: #000000; FONT: x-small Verdana, Arial, Helvetica, sans-serif
+}
+CODE {
+	FONT: 120% "Courier New", Courier, mono
+}
+TD {
+	FONT-SIZE: x-small
+}
+A:link {
+	COLOR: #0000ff
+}
+A:visited {
+	COLOR: #660066
+}
+A:hover {
+	COLOR: #ff9900
+}
+.label {
+	FONT-WEIGHT: bold
+}
+.tl {
+	MARGIN-BOTTOM: 0.75em
+}
+.atl {
+	PADDING-BOTTOM: 0.75em; PADDING-LEFT: 1.5em
+}
+.cfe {
+	FONT-WEIGHT: bold
+}
+.mini {
+	FONT-SIZE: smaller
+}
+LI {
+	COLOR: #000000; MARGIN-BOTTOM: 0.75em; MARGIN-TOP: 0.75em
+}
+UL {
+	LIST-STYLE: disc
+}
+UL UL {
+	MARGIN-BOTTOM: 1em; MARGIN-TOP: 1em
+}
+OL OL {
+	MARGIN-BOTTOM: 1em; MARGIN-TOP: 1em
+}
+OL UL {
+	MARGIN-BOTTOM: 1em; MARGIN-TOP: 1em
+}
+UL OL {
+	MARGIN-BOTTOM: 1em; MARGIN-TOP: 1em
+}
+LI P {
+	MARGIN-BOTTOM: 0.5em; MARGIN-TOP: 0.5em
+}
+.dt {
+	MARGIN-BOTTOM: -1em
+}
+.indent {
+	MARGIN-LEFT: 1.5em
+}
+SUP {
+	FONT-SIZE: smaller; TEXT-DECORATION: none
+}

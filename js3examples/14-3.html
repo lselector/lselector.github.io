@@ -1,0 +1,39 @@
+<!-- This example is from JavaScript: The Definitive Guide, 3rd Edition.   -->
+<!-- That book and this example were Written by David Flanagan.            -->
+<!-- They are Copyright (c) 1996, 1997, 1998 O'Reilly & Associates.        -->
+<!-- This example is provided WITHOUT WARRANTY either expressed or implied.-->
+<!-- You may study, use, modify, and distribute it for any purpose,        -->
+<!-- as long as this notice is retained.                                   -->
+
+<!-- The image that will be animated. Give it a name for convenience. -->
+<IMG SRC="images/0.gif" NAME=animation>
+
+<SCRIPT>
+// Create a bunch of off-screen images, and get them started 
+// loading the images we're going to animate.
+var images = new Array(10);
+for(var i = 0; i < 10; i++) {
+    images[i] = new Image();                 // Create an Image object.
+    images[i].src = "images/" + i + ".gif";  // Tell it what URL to load.
+}
+
+// Later, when we want to perform our animation, we can use these URLs,
+// knowing that they've been loaded into the cache. Note that we perform
+// the animation by assigning the URL, not the Image object itself.
+// Also note that we call the image by name, rather than as document.images[0].
+function animate()
+{
+    document.animation.src = images[frame].src;
+    frame = (frame + 1)%10;
+    timeout_id = setTimeout("animate()", 250);  // Display next frame later.
+}
+var frame = 0;         // Keep track of what frame of the animation we're on.
+var timeout_id = null; // This allows us to stop the animation.
+</SCRIPT>
+
+<FORM>                   <!-- Buttons to control the animation. -->
+  <INPUT TYPE=button VALUE="Start" 
+	 onClick="if (timeout_id == null) animate()">
+  <INPUT TYPE=button VALUE="Stop" 
+	 onClick="if (timeout_id) clearTimeout(timeout_id); timeout_id=null;">
+</FORM>

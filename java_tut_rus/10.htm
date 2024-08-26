@@ -1,0 +1,1712 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="ProgId" content="Word.Document">
+<meta name="Generator" content="Microsoft Word 9">
+<meta name="Originator" content="Microsoft Word 9">
+<link rel="File-List" href="./10%20files/filelist.xml">
+<xml:namespace ns="urn:schemas-microsoft-com:vml" prefix="v"/>
+<xml:namespace ns="urn:schemas-microsoft-com:office/office" prefix="o"/>
+<xml:namespace ns="urn:schemas-microsoft-com:office/word" prefix="w"/>
+<!--#if VML#><!#if ! VMLRender#>
+
+<object id="VMLRender" classid="CLSID:10072CEC-8CC1-11D1-986E-00A0C955B42E"
+ width="0" height="0">
+</object>
+
+<style>
+v\:* { behavior: url(#VMLRender); }
+o\:* { behavior: url(#VMLRender); }
+w\:* { behavior: url(#VMLRender); }
+.shape { behavior: url(#VMLRender); }
+</style>
+<!#endif#><!#endif#-->
+<title>Глава 10 Обработка исключений</title>
+<!--#if gte mso 9#><xml>
+ <o:DocumentProperties>
+  <o:Author>Картузов Александр</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>Картузов Александр</o:LastAuthor>
+  <o:Revision>1</o:Revision>
+  <o:TotalTime>1</o:TotalTime>
+  <o:Created>19981014T12:19:00Z</o:Created>
+  <o:LastSaved>19981014T12:20:00Z</o:LastSaved>
+  <o:Pages>7</o:Pages>
+  <o:Words>2058</o:Words>
+  <o:Characters>11733</o:Characters>
+  <o:Company>ЧКИ МУПК</o:Company>
+  <o:Lines>97</o:Lines>
+  <o:Paragraphs>23</o:Paragraphs>
+  <o:CharactersWithSpaces>14408</o:CharactersWithSpaces>
+  <o:Version>9.1819</o:Version>
+ </o:DocumentProperties>
+</xml><!#endif#--><!--#if gte mso 9#><xml>
+ <w:WordDocument>
+  <w:View>Print</w:View>
+  <w:Compatibility>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+  </w:Compatibility>
+ </w:WordDocument>
+</xml><!#endif#-->
+<style>
+<!--
+/* Font Definitions */
+@font-face {
+	font-family: "Arial Narrow";
+	panose-1: 2 11 5 6 2 2 2 3 2 4;
+	mso-font-charset: 0;
+	mso-generic-font-family: swiss;
+	mso-font-pitch: variable;
+	mso-font-signature: 647 0 0 0 159 0;
+}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal {
+	mso-style-parent: "";
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	font-size: 10.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+}
+h1 {
+	mso-style-next: Normal;
+	margin-top: 12.0pt;
+	margin-right: 0cm;
+	margin-bottom: 3.0pt;
+	margin-left: 0cm;
+	mso-pagination: widow-orphan;
+	page-break-after: avoid;
+	mso-outline-level: 1;
+	font-size: 14.0pt;
+	font-family: Arial;
+	mso-ascii-font-family: Arial;
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: Arial;
+	mso-bidi-font-family: "Times New Roman";
+	mso-font-kerning: 14.0pt;
+	mso-bidi-font-size: 10.0pt;
+	mso-bidi-font-weight: normal;
+}
+h2 {
+	mso-style-next: Normal;
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	text-align: center;
+	mso-pagination: widow-orphan;
+	page-break-after: avoid;
+	mso-outline-level: 2;
+	font-size: 14.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+	mso-bidi-font-size: 10.0pt;
+	mso-bidi-font-weight: normal;
+}
+h3 {
+	mso-style-next: Normal;
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	page-break-after: avoid;
+	mso-outline-level: 3;
+	font-size: 12.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+	mso-bidi-font-size: 10.0pt;
+	mso-bidi-font-weight: normal;
+}
+h4 {
+	mso-style-next: Normal;
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	page-break-after: avoid;
+	mso-outline-level: 4;
+	font-size: 10.0pt;
+	font-family: Arial;
+	mso-ascii-font-family: Arial;
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: Arial;
+	mso-bidi-font-family: "Times New Roman";
+	mso-bidi-font-size: 10.0pt;
+	mso-bidi-font-weight: normal;
+}
+h5 {
+	mso-style-next: Normal;
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	page-break-after: avoid;
+	mso-outline-level: 5;
+	font-size: 10.0pt;
+	font-family: "Courier New";
+	mso-ascii-font-family: "Courier New";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Courier New";
+	mso-bidi-font-family: "Times New Roman";
+	mso-bidi-font-style: italic;
+	font-style: italic;
+}
+p.MsoFooter, li.MsoFooter {
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	tab-stops: center 207.65pt right 415.3pt;
+	font-size: 10.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+}
+p.MsoBodyText, li.MsoBodyText {
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	mso-pagination: widow-orphan;
+	font-size: 10.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+}
+p.MsoBodyText2, li.MsoBodyText2 {
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	mso-pagination: widow-orphan;
+	font-size: 10.0pt;
+	mso-ascii-font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Times New Roman";
+	mso-bidi-font-family: "Times New Roman";
+}
+a:link, span.MsoHyperlink {
+	color: blue;
+	text-decoration: underline;
+	text-underline: single;
+}
+a:visited, span.MsoHyperlinkFollowed {
+	color: purple;
+	text-decoration: underline;
+	text-underline: single;
+}
+strong { font-weight: bold; }
+p.MsoPlainText, li.MsoPlainText {
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 0cm;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	font-size: 10.0pt;
+	font-family: "Courier New";
+	mso-ascii-font-family: "Courier New";
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: "Courier New";
+	mso-bidi-font-family: "Times New Roman";
+}
+p.FR1, li.FR1 {
+	mso-style-name: FR1;
+	mso-style-parent: "";
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 58.0pt;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	mso-pagination: widow-orphan;
+	font-size: 9.0pt;
+	font-family: Arial;
+	mso-ascii-font-family: Arial;
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: Arial;
+	mso-bidi-font-family: "Times New Roman";
+	mso-ansi-language: RU;
+	mso-fareast-language: RU;
+	layout-grid-mode: line;
+}
+p.FR2, li.FR2 {
+	mso-style-name: FR2;
+	mso-style-parent: "";
+	margin-top: 12.0pt;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 18.0pt;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	font-size: 11.0pt;
+	font-family: Arial;
+	mso-ascii-font-family: Arial;
+	mso-fareast-font-family: "Times New Roman";
+	mso-hansi-font-family: Arial;
+	mso-bidi-font-family: "Times New Roman";
+	mso-ansi-language: RU;
+	mso-fareast-language: RU;
+	layout-grid-mode: line;
+	font-weight: bold;
+}
+@page Section1 {
+	size: 595.3pt 841.9pt;
+	margin: 72.0pt 90.0pt 72.0pt 90.0pt;
+	mso-header-margin: 36.0pt;
+	mso-footer-margin: 36.0pt;
+	mso-forms-protection: yes;
+	mso-paper-source: 0;
+}
+div.Section1 { page: Section1; }
+/* List Definitions */
+@list l0 {
+	mso-list-id: 109398536;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l0:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l1 {
+	mso-list-id: 112093460;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l1:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l2 {
+	mso-list-id: 380398631;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l2:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l3 {
+	mso-list-id: 508519629;
+	mso-list-template-id: -1300598436;
+	mso-list-type: simple;
+}
+@list l3:level1 {
+	mso-level-start-at: 0;
+	mso-level-number-format: bullet;
+	mso-level-text: \F0B7;
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+	mso-ascii-font-family: Symbol;
+	mso-hansi-font-family: Symbol;
+}
+@list l4 {
+	mso-list-id: 1101028986;
+	mso-list-template-id: -979304872;
+	mso-list-type: simple;
+}
+@list l4:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l5 {
+	mso-list-id: 1220900427;
+	mso-list-template-id: -979304872;
+	mso-list-type: simple;
+}
+@list l5:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l6 {
+	mso-list-id: 1259289235;
+	mso-list-template-id: 68747265;
+	mso-list-type: simple;
+}
+@list l6:level1 {
+	mso-level-number-format: bullet;
+	mso-level-text: \F0B7;
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+	mso-ascii-font-family: Symbol;
+	mso-hansi-font-family: Symbol;
+}
+@list l7 {
+	mso-list-id: 1434129171;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l7:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l8 {
+	mso-list-id: 1686974182;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l8:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+@list l9 {
+	mso-list-id: 1871871804;
+	mso-list-template-id: 68747279;
+	mso-list-type: simple;
+}
+@list l9:level1 {
+	mso-level-tab-stop: 18.0pt;
+	mso-level-number-position: left;
+	margin-left: 18.0pt;
+	text-indent: -18.0pt;
+}
+ol { margin-bottom: 0cm; }
+ul { margin-bottom: 0cm; }
+-->
+</style>
+</head>
+
+<body link="blue" vlink="purple" style='tab-interval: 36.0pt'>
+
+<div class="Section1">
+
+<p class="MsoNormal"><b><span style='font-size: 14.0pt'>Глава 10 Обработка
+исключений&#13;</span></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>В этой главе обсуждается
+используемый в Java механизм <i>обработки исключений<span lang="RU"
+style='mso-ansi-language: RU'>.</span> </i>Исключение в Java — это объект, который
+описывает исключительное состояние, воз­никшее в каком-либо участке
+программного кода. Когда возникает ис­ключительное состояние, создается объект
+класса Exception. Этот объект пересылается в метод, обрабатывающий данный тип
+исключительной ситуации. Исключения могут возбуждаться и «вруч­ную» для того,
+чтобы сообщить о некоторых нештатных ситуациях.&#13;</p>
+
+<p class="MsoNormal"><b><span lang="RU" style='font-size: 12.0pt;
+mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'>Основы&#13;</span></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>К механизму обработки
+исключений в Java имеют отношение 5 клю­чевых слов: — <b><span
+style='mso-bidi-font-weight: bold'>try</span></b>, <b><span
+style='mso-bidi-font-weight: bold'>catch</span></b>, <b><span
+style='mso-bidi-font-weight: bold'>throw</span></b>, <b><span
+style='mso-bidi-font-weight: bold'>throws</span></b> и <b><span
+style='mso-bidi-font-weight: bold'>finally</span></b>. Схема работы этого
+механизма следующая. Вы пытаетесь (try) выполнить блок кода, и если при этом
+возникает ошибка, система возбуждает (throw) исключение, ко­торое в зависимости
+от его типа вы можете перехватить (catch) или пере­дать умалчиваемому (finally)
+обработчику.&#13;</p>
+
+<p class="MsoNormal">Ниже приведена общая форма блока обработки исключений.&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>try {&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>// блок кода } <span lang="RU"
+style='mso-ansi-language: RU'>&#13;</span></span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>catch (ТипИсключения1 е) {&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>// обработчик исключений типа ТипИсключения<span
+lang="RU" style='mso-ansi-language: RU'>1</span> } <span lang="RU"
+style='mso-ansi-language: RU'>&#13;</span></span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>catch (ТипИсключения2 е) {&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>// обработчик исключений типа ТипИсключения2<span
+lang="RU" style='mso-ansi-language: RU'>&#13;</span></span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'><span style="mso-spacerun:
+yes">&nbsp;</span>throw(e)<span style="mso-spacerun: yes">&nbsp;&nbsp;
+</span>// повторное возбуждение исключения } <span lang="RU"
+style='mso-ansi-language: RU'>&#13;</span></span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>finally { <span lang="RU" style='mso-ansi-language:
+RU'>&#13;</span></span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>}&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></b></p>
+
+<p class="MsoNormal"><span lang="RU" style='font-family: Arial;
+mso-ansi-language: RU; mso-bidi-font-weight: bold'>ЗАМЕЧАНИЕ </span><span
+lang="RU" style='font-family: Arial; mso-ansi-language: RU; mso-bidi-font-weight:
+bold'>&#13;</span></p>
+
+<p class="MsoNormal"><span lang="RU" style='font-family: Arial;
+mso-ansi-language: RU; mso-bidi-font-weight: bold'>В языке </span><span
+style='font-family: Arial; mso-bidi-font-weight: bold'>Delphi </span><span
+lang="RU" style='font-family: Arial; mso-ansi-language: RU; mso-bidi-font-weight:
+bold'>вместо ключевого слова </span><span style='font-family: Arial;
+mso-bidi-font-weight: bold'>catch </span><span lang="RU"
+style='font-family: Arial; mso-ansi-language: RU; mso-bidi-font-weight: bold'>используется
+</span><span style='font-family: Arial; mso-bidi-font-weight: bold'>except.</span><span
+style='font-family: Arial; mso-bidi-font-weight: bold'>&#13;</span></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'>Типы исключени<span
+lang="RU" style='mso-ansi-language: RU'>й</span>&#13;</span></b></p>
+
+<p class="MsoBodyText">В вершине иерархии исключений стоит класс Throwable.
+Каждый из типов исключений является подклассом класса Throwable. Два
+непосредственных наследника класса Throwable делят иерархию подклассов
+исключений на две различные ветви. Один из них — класс Ехception — используется
+для описания исключительных ситуации, кото­рые должны перехватываться
+программным кодом пользователя. Другая ветвь дерева подклассов Throwable —
+класс Error, который предназначен для описания исклю­чительных ситуаций,
+которые при обычных условиях не должны перехватываться в пользовательской
+программе. &#13;</p>
+
+<p class="MsoNormal"><b><span lang="RU" style='font-size: 12.0pt;
+mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'>Неперехваченные
+исключения&#13;</span></b></p>
+
+<p class="MsoBodyText">Объекты-исключения автоматически создаются исполняющей
+средой Java в результате возникновения определенных исключительных состо­яний.
+Например, очередная наша программа содержит выражение, при вычислении которого
+возникает деление на нуль.&#13;</p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><span lang="RU"
+style='font-family: Arial; mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+lang="RU" style='font-family: Arial; mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class Exc</span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>0</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'> {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(string args[]) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int d = 0;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int a = 42 / d;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'> </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal">Вот вывод, полученный при запуске нашего примера.&#13;</p>
+
+<p class="MsoNormal">С:\&gt; java Exc0&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>java.lang.ArithmeticException:
+/ by zero</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal" style='text-indent: 36.0pt'><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>at Exc0.main(Exc0.java:4)</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal" style='text-align: justify'><span lang="RU"
+style='mso-ansi-language: RU'>О</span>братите внимание на тот факт что типом
+возбужденного исклю­чения был не Exception и не Throwable. Это подкласс класса
+Exception, а именно: ArithmeticException, поясняющий, какая ошибка возникла при
+выполнении программы. Вот другая версия того же класса, в кото­рой возникает та
+же исключительная ситуация, но на этот раз не в про­граммном коде метода main.&#13;</p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class Exc1 {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>static void
+subroutine() { </span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int d = 0;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>int a = 10 / d;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) { </span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>Exc1.subroutine();</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><span lang="RU"
+style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoBodyText">Вывод этой программы показывает, как обработчик
+исключений ис­полняющей системы Java выводит содержимое всего стека вызовов.&#13;</p>
+
+<p class="MsoNormal">С:\&gt; java Exc1<span lang="RU" style='mso-ansi-language:
+RU'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>java.lang.ArithmeticException:
+/ by zero</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>at
+Exc1.subroutine(Exc1.java:4)</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>at
+Exc1.main(Exc1.java:7)</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'>try и catch&#13;</span></b></p>
+
+<p class="MsoBodyText">Для задания блока программного кода, который требуется
+защитить от исключений, исполь­зуется ключевое слово try. Сразу же после try-блока
+помещается блок catch, задающий тип исключения которое вы хотите обрабатывать. <span
+lang="RU" style='mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><span lang="RU"
+style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class Exc2 {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-size: 8.0pt; font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) { </span></i></b><b><i><span
+lang="RU" style='font-size: 8.0pt; font-family: "Courier New";
+mso-ansi-language: RU; mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-size: 8.0pt; font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>try {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span lang="RU" style='font-family: "Courier New";
+mso-ansi-language: RU; mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span></span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>int d = 0;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span lang="RU" style='font-size: 8.0pt;
+font-family: "Courier New"; mso-ansi-language: RU; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp; </span></span></i></b><b><i><span
+style='font-size: 8.0pt; font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>int a = 42 / d;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span lang="RU" style='font-size: 8.0pt;
+font-family: "Courier New"; mso-ansi-language: RU; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;
+</span></span></i></b><b><i><span style='font-size: 8.0pt; font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} </span></i></b><b><i><span
+lang="RU" style='font-size: 8.0pt; font-family: "Courier New";
+mso-ansi-language: RU; mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-size: 8.0pt; font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>catch
+(ArithmeticException e) {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-size: 8.0pt; font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;division
+by zero&quot;);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-size: 8.0pt; font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-size: 8.0pt; font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+lang="RU" style='font-size: 8.0pt; font-family: "Courier New";
+mso-ansi-language: RU; mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>
+</span></i></b><b><i><span style='font-family: "Courier New"; mso-bidi-font-weight:
+bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span lang="RU" style='font-family: "Courier New";
+mso-ansi-language: RU; mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>Целью большинства хорошо
+сконструированных catch-разделов долж­на быть обработка возникшей
+исключительной ситуации и приведение переменных программы в некоторое разумное
+состояние — такое, чтобы программу можно было продолжить так, будто никакой
+ошибки и не было<span lang="RU" style='mso-ansi-language: RU'> (в нашем примере
+выводится предупреждение – </span>division by zero<span lang="RU"
+style='mso-ansi-language: RU'>)</span>. <span lang="RU"
+style='mso-ansi-language: RU'>&#13;</span></p>
+
+<p class="MsoNormal"><b><span lang="RU" style='font-size: 12.0pt;
+mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'>Несколько разделов
+catch&#13;</span></b></p>
+
+<p class="MsoNormal">В некоторых случаях один и тот же блок программного кода
+может воз­буждать исключения различных типов. Для того, чтобы обрабатывать по­добные
+ситуации, Java позволяет использовать любое количество catch-разделов для
+try-блока. Наиболее специализированные классы исключений должны идти первыми,
+поскольку ни один подкласс не будет достигнут, если поставить его после
+суперкласса. Следующая про­грамма перехватывает два различных типа исключений,
+причем за этими двумя специализированными обработчиками следует раздел catch
+общего назначения, перехватывающий все подклассы класса Throwable.&#13;</p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><span style='font-family: "Arial Narrow"'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: "Arial Narrow"'>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class MultiCatch {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) { </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>try {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun: yes">&nbsp;</span><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp; </span>int a = args.length;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;
+</span>System.out.println(&quot;a = &quot; + a);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp; </span>int b = 42 / a;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp; </span>int c[] = { 1 };</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp; </span>c[42] = 99;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>} </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>catch
+(ArithmeticException e) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;div
+by 0: &quot; + e);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>catch(ArrayIndexOutOfBoundsException
+e) { </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;array
+index oob: &quot; + e);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoBodyText">Этот пример, запущенный без параметров, вызывает
+возбуждение ис­ключительной ситуации деления на нуль. Если же мы зададим в
+командной строке один или несколько параметров, тем самым установив а в
+значение боль­ше нуля, наш пример переживет оператор деления, но в следующем
+опе­раторе будет возбуждено исключение выхода индекса за границы масси­ва
+ArrayIndexOutOf Bounds. Ниже приведены результаты работы этой программы, за­пущенной
+и тем и другим способом.&#13;</p>
+
+<p class="MsoNormal">С:\&gt; java MultiCatch&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>а = 0</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>div by 0:
+java.lang.ArithmeticException: / by zero</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'>C:\&gt; java MultiCatch 1&#13;</p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>a = 1</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>array index oob:
+java.lang.ArrayIndexOutOfBoundsException: 42</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<h3>Вложенные операторы try&#13;</h3>
+
+<p class="MsoBodyText">Операторы try можно вкладывать друг в друга аналогично
+тому, как можно создавать вложенные области видимости переменных. Если у
+оператора try низкого уровня нет раздела catch, соответствующего возбужденному
+исключению, стек будет развернут на одну ступень выше, и в поисках подходящего
+обработчика будут прове­рены разделы catch внешнего оператора try. Вот пример,
+в котором два оператора try вложены друг в друга посредством вызова метода.&#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class MultiNest {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>static void
+procedure() {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>try {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp; </span>int c[] = { 1 };</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp; </span>c[42] = 99;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>catch(ArrayIndexOutOfBoundsException
+e) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;array
+index oob: &quot; + e); </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) { </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>try {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp; </span>int a =
+args.length();</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;
+</span>System.out.println(&quot;a = &quot; + a);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp; </span>int b = 42 / a;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'><span
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp; </span>procedure();</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>catch
+(ArithmeticException e) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;div
+by 0: &quot; + e);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'>throw&#13;</span></b></p>
+
+<p class="MsoBodyText">Оператор throw используется для возбуждения исключения
+«вруч­ную». Для того, чтобы сделать это, нужно иметь объект подкласса клас­са
+Throwable, который можно либо получить как параметр оператора catch, либо
+создать с помощью оператора new. Ниже приведена общая форма оператора throw.&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-style: italic'>throw ОбъектТипаThrowable;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoBodyText">При достижении этого оператора нормальное выполнение
+кода немед­ленно прекращается, так что следующий за ним оператор не выполня­ется.
+Ближайший окружающий блок try проверяется на наличие соот­ветствующего
+возбужденному исключению обработчика catch. Если такой отыщется, управление
+передается ему. Если нет, проверяется следующий из вложенных операторов try, и
+так до тех пор пока либо не будет най­ден подходящий раздел catch, либо
+обработчик исключений исполняю­щей системы Java не остановит программу, выведя
+при этом состояние стека вызовов. Ниже приведен пример, в котором сначала
+создается объект-исключение, затем оператор throw возбуждает исключительную
+ситуацию, после чего то же исключение возбуждается повторно — на этот раз уже
+кодом перехватившего его в первый раз раздела catch.&#13;</p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class ThrowDemo {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>static void demoproc()
+{ </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>try {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>throw new
+NullPointerException(&quot;demo&quot;);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>catch
+(NullPointerException e) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;caught
+inside demoproc&quot;);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>throw e;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) { </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>try {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>demoproc();</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>catch(NulPointerException
+e) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;recaught:
+&quot; + e);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoBodyText">В этом примере обработка исключения проводится в два
+приема. Метод main создает контекст для исключения и вызывает demoproc. Метод
+demoproc также устанавливает контекст для обработки исключе­ния, создает новый
+объект класса NullPointerException и с помощью опе­ратора throw возбуждает это
+исключение. Исключение перехватывается в следующей строке внутри метода
+demoproc, причем объект-исключение доступен коду обработчика через параметр e.
+Код обработчика выводит сообщение о том, что возбуждено исключение, а затем
+снова возбуждает его с помощью оператора throw, в результате чего оно
+передается обра­ботчику исключений в методе main. Ниже приведен результат,
+получен­ный при запуске этого примера.&#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'>С:\&gt; java ThrowDemo&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>caught inside demoproc</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>recaught:
+java.lang.NullPointerException: demo</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'>throws</span></b><span
+style='font-size: 12.0pt'>&#13;</span></p>
+
+<p class="MsoNormal" style='text-align: justify'>Если метод способен возбуждать
+исключения, которые он сам не об­рабатывает, он должен объявить о таком
+поведении, чтобы вызывающие методы могли защитить себя от этих исключений. Для
+задания списка исключений, которые могут возбуждаться методом, используется
+ключе­вое слово <b><span style='mso-bidi-font-weight: bold'>throws</span></b>.
+Если метод в явном виде (т.е. с помощью оператора throw) возбуждает исключе­ние
+соответствующего класса, тип класса исключений должен быть ука­зан в операторе
+throws в объявлении этого метода. С учетом этого наш прежний синтаксис
+определения метода должен быть расширен следую­щим образом:&#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>тип имя_метода(список
+аргументов) throws список_исключений {}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoBodyText">Ниже приведен пример программы, в которой метод
+procedure пыта­ется возбудить исключение, не обеспечивая ни программного кода
+для его перехвата, ни объявления этого исключения в заголовке метода. Такой
+программный код не будет оттранслирован.&#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class ThrowsDemo1 {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>static void
+procedure() {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;inside
+procedure&quot;);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>throw new
+IllegalAccessException(&quot;demo&quot;);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) { </span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>procedure();</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal" style='text-align: justify'>Для того, чтобы мы смогли
+оттранслировать этот пример, нам при­дется сообщить транслятору, что procedure
+может возбуждать исключе­ния типа IllegalAccessException <span lang="RU"
+style='mso-ansi-language: RU'>и в</span> методе main <span lang="RU"
+style='mso-ansi-language: RU'>добавить</span> код для обработки этого типа
+исключений<span lang="RU" style='mso-ansi-language: RU'> </span>:&#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class ThrowsDemo {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>static void
+procedure() throws IllegalAccessException {</span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;
+inside procedure&quot;);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>throw new
+IllegalAccessException(&quot;demo&quot;);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) { </span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>try {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>procedure();</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>catch
+(IllegalAccessException e) { </span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;caught
+&quot; + e);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} </span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><span lang="RU"
+style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal">Ниже приведен результат выполнения этой программы.&#13;</p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'>С:\&gt; java ThrowsDemo&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>inside procedure</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>caught
+java.lang.IllegalAccessException: demo</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><span lang="RU" style='font-size: 12.0pt;
+mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'>finally&#13;</span></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>Иногда требуется
+гарантировать, что определенный участок кода будет выпол­няться независимо от
+того, какие исключения были возбуждены и пере­хвачены. Для создания такого
+участка кода используется ключевое слово finally. Даже в тех случаях, когда в
+методе нет соответствующего воз­бужденному исключению раздела catch, блок
+finally будет выполнен до того, как управление перейдет к операторам, следующим
+за разделом try. У каждого раздела try должен быть по крайней мере или один раз­дел
+catch или блок finally. <span lang="RU" style='mso-ansi-language: RU'>Блок </span>finally
+очень удоб<span lang="RU" style='mso-ansi-language: RU'>е</span>н для закрытия
+файлов и освобождения любых других ресурсов, захваченных для времен­ного
+использования в начале выполнения метода. Ниже приведен пример класса с<span
+lang="RU" style='mso-ansi-language: RU'> </span>двумя<span
+style='mso-tab-count: 1'>&nbsp;&nbsp;&nbsp;&nbsp; </span>методами,<span
+lang="RU" style='mso-ansi-language: RU'> </span>завершение которых происходит
+по разным причинам, но<span lang="RU" style='mso-ansi-language: RU'> </span>в
+обоих<span lang="RU" style='mso-ansi-language: RU'> </span>перед выходом
+выполняется код раздела finally.&#13;</p>
+
+<p class="MsoFooter" style='tab-stops: 36.0pt'><span lang="RU"
+style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class FinallyDemo {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>static void procA() { </span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>try {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;inside
+procA&quot;);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>throw new
+RuntimeException(&quot;demo&quot;);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} </span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>finally {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;procA's
+finally&quot;);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>static void procB() { </span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>try {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;inside
+procB&quot;);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>return;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>finally {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;procB's
+finally&quot;);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) {</span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>try {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>procA();</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>catch (Exception e)</span></i></b><b><i><span
+lang="RU" style='font-family: "Courier New"; mso-ansi-language: RU;
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'> </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>{}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>procB();</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} }</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><span lang="RU" style='mso-ansi-language: RU'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></p>
+
+<p class="MsoBodyText">В этом примере в методе procA из-за возбуждения
+исключения про­исходит преждевременный выход из блока try, но по пути «наружу»
+вы­полняется раздел finally. Другой метод procB завершает работу выпол­нением
+стоящего в try-блоке оператора return, но и при этом перед выходом из метода
+выполняется программный код блока finally. Ниже приведен результат, полученный
+при выполнении этой программы.&#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal">С:\&gt; java FinallyDemo&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>inside procA</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>procA's finally</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>inside procB</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>procB's finally</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></b></p>
+
+<h3>Подклассы Exception&#13;</h3>
+
+<p class="MsoBodyText">Только подклассы класса Throwable могут быть возбуждены
+или пере­хвачены. Простые типы — int, char и т.п., а также классы, не являю­щиеся
+подклассами Throwable, например, String и Object, использоваться в качестве
+исключений не могут. Наиболее общий путь для использова­ния исключений —
+создание своих собственных подклассов класса Ex­ception. Ниже приведена
+программа, в которой объявлен новый подкласс класса Exception. &#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class MyException
+extends Exception {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>private int detail;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>MyException(int a) {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>detail = a:</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public String
+toString() {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>return
+&quot;MyException[&quot; + detail + &quot;]&quot;;</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>class ExceptionDemo {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>static void
+compute(int a) throws MyException {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;called
+computer + a + &quot;).&quot;);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>if (a &gt; 10)</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>throw new
+MyException(a);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;normal
+exit.&quot;);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>public static void
+main(String args[]) {</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>try {</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>compute(1);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>compute(20);</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>catch (MyException e)
+{</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>System.out.println(&quot;caught&quot;
++ e);</span></i></b><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>}</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>} } </span></i></b>&#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+<p class="MsoBodyText">Этот пример довольно сложен. В нем сделано объявление
+подкласса MyException класса Exception. У этого подкласса есть специальный кон­структор,
+который записывает в переменную объекта целочисленное значение, и совмещенный
+метод toString, выводящий значение, хранящееся в объекте-исключении. Класс
+ExceptionDemo определяет метод compute, который возбуждает исключение типа
+MyExcepton. Простая логика метода compute возбуждает исключение в том случае,
+когда значение пара-ветра метода больше 10. Метод main в защищенном блоке
+вызывает метод compute сначала с допустимым значением, а затем — с недопус­тимым
+(больше 10), что позволяет продемонстрировать работу при обоих путях выполнения
+кода. Ниже приведен результат выполнения програм­мы.&#13;</p>
+
+<p class="MsoNormal"><span style='font-family: "Arial Narrow"'><!#if !supportEmptyParas#>&nbsp;<!#endif#></span><span
+style='font-family: "Arial Narrow"'>&#13;</span></p>
+
+<p class="MsoNormal">С:\&gt; java ExceptionDemo&#13;</p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>called compute(1). </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>normal exit.</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>called compute(20). </span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><i><span style='font-family: "Courier New";
+mso-bidi-font-weight: bold; mso-bidi-font-style: italic'>caught MyException[20]</span></i></b><b><i><span
+style='font-family: "Courier New"; mso-bidi-font-weight: bold;
+mso-bidi-font-style: italic'>&#13;</span></i></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</span></b></p>
+
+<p class="MsoNormal"><b><span style='font-size: 12.0pt'>Заключительное резюме&#13;</span></b></p>
+
+<p class="MsoNormal" style='text-align: justify'>Обработка исключений
+предоставляет <i>исключительно</i> мощный меха­низм для управления сложными
+программами. Try, throw, catch дают вам простой и ясный путь для встраивания
+обработки ошибок и прочих нештатных ситуаций в программную логи­ку. Если вы
+научитесь должным об­разом использовать рассмотренные в данной главе механизмы,
+это при­даст вашим классам профессиональный вид, и любые будущие пользователи
+вашего программного кода, несомненно, оценят это.&#13;</p>
+
+<p class="MsoNormal"><!#if !supportEmptyParas#>&nbsp;<!#endif#>&#13;</p>
+
+</div>
+
+</body>
+
+</html>

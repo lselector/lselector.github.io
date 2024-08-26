@@ -1,0 +1,61 @@
+" -------------------------------------
+"Lev-s .vimrc file for Linux
+" -------------------------------------
+syntax on         " highlighting
+set nocompatible  " Use Vim defaults (even on Windows)
+set noautoindent  " so that when we copy/paste the code - it doesn't move diagonally
+set notitle       " to avoid vim renaming the title of the xterm window
+set nonumber      " Don't show line numbers - I have them in status line
+set ignorecase    " search case-insensitive (se ic, se noic)
+set smartcase     " overrides the 'ignorecase' if search pattern contains capital character(s)
+set incsearch     " search incremental
+set hlsearch      " search highlighting (se hls, se nohls)
+"set restorescreen " restore screen after you exit vim to what it was before you entered vim
+"set equalalways   " set size of windows equal when creating windows with :new, :split, :vsplit
+"set splitbelow    " open new window below the current one
+" -------------------------------------
+" use 2-space indentation
+set tabstop=2     " read :help tab for explanation of tabstop, softtabstop, shiftwidth
+set softtabstop=2 "
+set shiftwidth=2  "
+set expandtab     " inserts spaces instead of tab (for real tab use ctrl-V - tab)
+"set smarttab     " inserts spaces in the beginining, tabs in the middle, see :help smarttab
+
+" -------------------------------------
+" always show this custom status line
+set laststatus=2  " always show status line
+set statusline=%F%h%m%r%h%w%y\ %{&ff}\ ascii=\%03.3b\ hex=\%02.2B\ [%l,%v](%p%%\ of\ %L)(%o)\ %{strftime(\"%c\",getftime(expand(\"%:p\")))}%=\ 
+set showtabline=2 " always show tabs
+" -------------------------------------
+" use 1 to Esc - defence against accidentally pressing F1 instead of Esc
+:map <F1> <Esc>
+:imap <F1> <Esc>
+
+" -------------------------------------
+" use F3 to remove every 2nd newline
+:map <silent> <F3> :s/\(\n\)\n/\1/g<cr>
+
+" -------------------------------------
+" use F6 to go between tabs (for ver.7+)
+:map <silent> <F6> :tabn<cr>
+
+" -------------------------------------
+" use F7 to toggle highlight of search findings (for ver.7+)
+function ToggleHLSearch()
+  if &hls
+    set nohls
+  else
+    set hls
+  endif
+endfunction
+
+:map <silent> <F7> :call ToggleHLSearch() <CR>
+
+" -------------------------------------
+" use F8 to show/hide taglist on the left (works with taglist plugin and ctags)
+:map <F8> :TlistToggle<cr>
+:map <S-T> :TlistToggle<cr>
+let Tlist_Exit_OnlyWindow = 1
+
+source ~lselector/lselector/.vim/plugin/taglist.vim
+

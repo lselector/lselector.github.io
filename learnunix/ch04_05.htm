@@ -1,0 +1,1474 @@
+<HTML
+><HEAD
+><TITLE
+>[Chapter 4] 4.5 Printing Files</TITLE
+><META
+NAME="DC.title"
+CONTENT="Learning the Unix Operating System"><META
+NAME="DC.creator"
+CONTENT="Jerry Peek, Grace Todino &amp; John Strang"><META
+NAME="DC.publisher"
+CONTENT="O'Reilly &amp; Associates, Inc."><META
+NAME="DC.date"
+CONTENT="1998-08-03T20:52:15Z"><META
+NAME="DC.type"
+CONTENT="Text.Monograph"><META
+NAME="DC.format"
+CONTENT="text/html"
+SCHEME="MIME"><META
+NAME="DC.source"
+CONTENT="1-56592-390-1"
+SCHEME="ISBN"><META
+NAME="DC.language"
+CONTENT="en-US"><META
+NAME="generator"
+CONTENT="Jade 1.1/O'Reilly DocBook 3.0 to HTML 4.0"><LINK
+REV="made"
+HREF="mailto:online-books@oreilly.com"
+TITLE="Online Books Comments"><LINK
+REL="up"
+HREF="ch04_01.htm"
+TITLE="4. File Management "><LINK
+REL="prev"
+HREF="ch04_04.htm"
+TITLE="4.4 Managing Your Files"><LINK
+REL="next"
+HREF="ch05_01.htm"
+TITLE="5. Redirecting I/O "></HEAD
+><BODY
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+><DIV
+CLASS="htmlnav"
+><H1
+><IMG
+SRC="gifs/smbanner.gif"
+ALT="Learning the Unix Operating System"
+USEMAP="#srchmap"
+BORDER="0"></H1
+><MAP
+NAME="srchmap"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,466,69"
+HREF="index.htm"
+ALT="Learning the Unix Operating System"><AREA
+SHAPE="RECT"
+COORDS="467,0,514,18"
+HREF="jobjects/fsearch.htm"
+ALT="Search this book"></MAP
+><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch04_04.htm"
+TITLE="4.4 Managing Your Files"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 4.4 Managing Your Files"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><B
+><FONT
+FACE="ARIEL,HELVETICA,HELV,SANSERIF"
+SIZE="-1"
+>Chapter 4<BR>File Management </FONT
+></B
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="CHAPTER"
+HREF="ch05_01.htm"
+TITLE="5. Redirecting I/O "
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 5. Redirecting I/O "
+BORDER="0"></A
+></TD
+></TR
+></TABLE
+>&nbsp;<HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"></DIV
+><DIV
+CLASS="SECT1"
+><H2
+CLASS="sect1"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-5"
+>4.5 Printing Files</A
+></H2
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-FILES-PRINTING"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-PRINTING-FILES"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-TEXT-PRINTING-FORMAT"
+></A
+>Before you print a file on a UNIX system, you may want to reformat it
+to adjust the margins, highlight some words, and so on.  Most files
+can also be printed without reformatting, but the raw printout may not
+look quite as nice.</P
+><P
+CLASS="para"
+>Many versions of UNIX include two powerful text formatters,
+<B
+CLASS="emphasis.bold"
+>nroff</B
+> and <B
+CLASS="emphasis.bold"
+>troff</B
+>.  (There are also versions called
+<B
+CLASS="emphasis.bold"
+>gnroff</B
+> and <B
+CLASS="emphasis.bold"
+>groff</B
+>.)  They are much too complex to describe
+here.  Before we cover printing itself, let's look at a simple
+formatting program called <B
+CLASS="emphasis.bold"
+>pr</B
+>.</P
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-5.0.1"
+>4.5.1 pr</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-PR-COMMAND"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-SCR-PR-FILES-PR-COMMAND"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3404"
+></A
+>The <B
+CLASS="emphasis.bold"
+>pr</B
+> command does minor formatting of files on the terminal
+screen or for a printer.  For example, if you have a long list of
+names in a file, you can format it onscreen into two or more columns.</P
+><P
+CLASS="para"
+>The syntax is:</P
+><BLOCKQUOTE
+CLASS="blockquote"
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>pr</B
+> <EM
+CLASS="emphasis"
+>option(s) filename(s)</EM
+></P
+></BLOCKQUOTE
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>pr</B
+> changes the format of the file only on the screen or on the printed
+copy; it doesn't modify the original file.
+<A
+CLASS="xref"
+HREF="ch04_05.htm#LUX-CH-4-TAB-1"
+TITLE="Some pr Options"
+>Table 4.2</A
+>
+lists some <B
+CLASS="emphasis.bold"
+>pr</B
+> options.</P
+><TABLE
+CLASS="table"
+><CAPTION
+CLASS="table"
+><A
+CLASS="title"
+NAME="LUX-CH-4-TAB-1"
+>Table 4.2: Some pr Options</A
+></CAPTION
+><THEAD
+CLASS="thead"
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TH
+CLASS="entry"
+ALIGN="LEFT"
+ROWSPAN="1"
+COLSPAN="1"
+>Option</TH
+><TH
+CLASS="entry"
+ALIGN="LEFT"
+ROWSPAN="1"
+COLSPAN="1"
+>Description</TH
+></TR
+></THEAD
+><TBODY
+CLASS="tbody"
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>-<EM
+CLASS="emphasis"
+>k</EM
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Produces <EM
+CLASS="emphasis"
+>k</EM
+> columns of output.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>-d</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Double-spaces the output (not on all
+<B
+CLASS="emphasis.bold"
+>pr</B
+> versions).</P
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>-h &quot;<EM
+CLASS="emphasis"
+>header</EM
+>&quot;</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Takes the next item as a report <EM
+CLASS="emphasis"
+>header</EM
+>.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>-t</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Eliminates printing of header and top/bottom margins.</TD
+></TR
+></TBODY
+></TABLE
+><P
+CLASS="para"
+>Other options allow you to specify the width of the columns, set the
+page length, and so on.  </P
+><P
+CLASS="para"
+>Before using <B
+CLASS="emphasis.bold"
+>pr</B
+>, here are the contents
+of a sample file named <EM
+CLASS="emphasis"
+>food</EM
+>:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>cat food</B
+></CODE
+>
+Sweet Tooth
+Bangkok Wok
+Mandalay
+Afghani Cuisine
+Isle of Java
+Big Apple Deli
+Sushi and Sashimi
+Tio Pepe's Peppers
+	.
+	.
+	.</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>Let's use <B
+CLASS="emphasis.bold"
+>pr</B
+> options to make a two-column report with the header
+&quot;Restaurants.&quot;</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>pr -2 -h &quot;Restaurants&quot; food</B
+></CODE
+>
+
+Nov  7  9:58 1997  Restaurants   Page 1
+
+Sweet Tooth              Isle of Java
+Bangkok Wok              Big Apple Deli
+Mandalay                 Sushi and Sashimi
+Afghani Cuisine          Tio Pepe's Peppers
+	.
+	.
+	.
+%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>The text is output in two-column pages.  The top of each page has the
+date and time, header (or name of the file, if header is not
+supplied), and page number.  To send this output to the printer
+instead of the terminal screen, you create a pipe to the printer
+program&nbsp;- usually <B
+CLASS="emphasis.bold"
+>lp</B
+> or <B
+CLASS="emphasis.bold"
+>lpr</B
+>.  The following section
+describes <B
+CLASS="emphasis.bold"
+>lp</B
+> and <B
+CLASS="emphasis.bold"
+>lpr</B
+>; <A
+CLASS="xref"
+HREF="ch05_01.htm"
+TITLE="Redirecting I/O "
+>Chapter 5</A
+> covers pipes.<A
+CLASS="indexterm"
+NAME="AUTOID-3460"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3461"
+></A
+></P
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-5.0.2"
+>4.5.2 lp and lpr</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-LP-COMMAND"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-LPR-COMMAND"
+></A
+>If you have a long file, it may be best to print it so you can see it
+all on paper.  The command <B
+CLASS="emphasis.bold"
+>lp</B
+> or <B
+CLASS="emphasis.bold"
+>lpr</B
+> prints a file (onto
+paper as opposed to the screen display).  Your system will probably
+have one or the other&nbsp;- but not both.  The syntax is:</P
+><BLOCKQUOTE
+CLASS="literallayout"
+><P
+CLASS="literallayout"
+><B
+CLASS="emphasis.bold"
+>lp</B
+> <EM
+CLASS="emphasis"
+>option(s) filename(s)</EM
+><BR><B
+CLASS="emphasis.bold"
+>lpr</B
+> <EM
+CLASS="emphasis"
+>option(s) filename(s)</EM
+></P
+></BLOCKQUOTE
+><P
+CLASS="para"
+>Printers on UNIX systems are usually shared by a group of users.
+After you enter the command to print a file, the shell prompt returns
+to the screen and you can enter another command.  
+However, seeing the
+prompt doesn't mean that your file has been printed.  Your file has
+been added to the printer queue to be printed in turn.</P
+><P
+CLASS="para"
+>Your system administrator has probably set up a default printer at
+your site.  To print a file named <EM
+CLASS="emphasis"
+>bills</EM
+> on the default printer,
+use the <B
+CLASS="emphasis.bold"
+>lp</B
+> or <B
+CLASS="emphasis.bold"
+>lpr</B
+> command, as in this example:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>lp bills</B
+></CODE
+>
+request id is laserp-525  (1 file)
+%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>lp</B
+> shows an ID that you can use to cancel the print job or check
+its status.  If you need ID numbers for <B
+CLASS="emphasis.bold"
+>lpr</B
+> jobs, use the<A
+CLASS="indexterm"
+NAME="AUTOID-3487"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3489"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3491"
+></A
+>
+<B
+CLASS="emphasis.bold"
+>lpq</B
+> command (see &quot;lpstat and lpq&quot; in the following section).
+The file <EM
+CLASS="emphasis"
+>bills</EM
+> will be sent to a printer called <EM
+CLASS="emphasis"
+>laserp</EM
+>.
+The ID number of the request is &quot;laserp-525&quot;.</P
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>lp</B
+> and <B
+CLASS="emphasis.bold"
+>lpr</B
+> have several options.
+<A
+CLASS="xref"
+HREF="ch04_05.htm#LUX-CH-4-TAB-2"
+TITLE="Some lp and lpr Options"
+>Table 4.3</A
+>
+lists three of them.</P
+><TABLE
+CLASS="table"
+><CAPTION
+CLASS="table"
+><A
+CLASS="title"
+NAME="LUX-CH-4-TAB-2"
+>Table 4.3: Some lp and lpr Options</A
+></CAPTION
+><THEAD
+CLASS="thead"
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TH
+CLASS="entry"
+ALIGN="LEFT"
+ROWSPAN="1"
+COLSPAN="2"
+>Option</TH
+><TH
+CLASS="entry"
+ALIGN="LEFT"
+ROWSPAN="1"
+COLSPAN="1"
+>Description</TH
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TH
+CLASS="entry"
+ALIGN="LEFT"
+ROWSPAN="1"
+COLSPAN="1"
+>lp</TH
+><TH
+CLASS="entry"
+ALIGN="LEFT"
+ROWSPAN="1"
+COLSPAN="1"
+>lpr</TH
+><TH
+CLASS="entry"
+ALIGN="LEFT"
+ROWSPAN="1"
+COLSPAN="1"
+></TH
+></TR
+></THEAD
+><TBODY
+CLASS="tbody"
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>-d<EM
+CLASS="emphasis"
+>printer</EM
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>-P<EM
+CLASS="emphasis"
+>printer</EM
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Use given <EM
+CLASS="emphasis"
+>printer</EM
+> name if there is more than one
+printer at your site. The printer names are assigned by the system 
+administrator.</P
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>-n#</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>-#</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Print # copies of the file.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>-m</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>-m</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Notify sender by email when the printing is done.</TD
+></TR
+></TBODY
+></TABLE
+><P
+CLASS="para"
+>If <B
+CLASS="emphasis.bold"
+>lp</B
+> and <B
+CLASS="emphasis.bold"
+>lpr</B
+> don't work at your site, ask other users for the
+printer command.
+You'll also need the printer locations&nbsp;- so you know where to get your
+output.</P
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-5.0.3"
+>4.5.3 Problem checklist</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-3538"
+></A
+></P
+><DL
+CLASS="variablelist"
+><DT
+CLASS="term"
+><EM
+CLASS="emphasis"
+>My printout hasn't come out.</EM
+></DT
+><DD
+CLASS="listitem"
+><P
+CLASS="para"
+>See whether the printer is printing now.  If it is, other users may
+have made a request to the same printer ahead of you and your file
+should be printed in turn.  The section below explains how to check
+the print requests.</P
+><P
+CLASS="para"
+>If no file is printing, check the printer's physical connections and
+power switch.  The printer may also be hung.  If it is, ask your
+system administrator what to do.</P
+></DD
+></DL
+><A
+CLASS="indexterm"
+NAME="AUTOID-3548"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3549"
+></A
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-5.1"
+>4.5.4 Viewing the Printer Queue</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-QUEUE-PRINTER"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-4-IX-PRINTING-FILES-JQUEUE"
+></A
+>If you want to find out how many files or &quot;requests&quot; for output are ahead of yours in
+the printer queue, use the command <B
+CLASS="emphasis.bold"
+>lpstat</B
+> (for <B
+CLASS="emphasis.bold"
+>lp</B
+>)
+or <B
+CLASS="emphasis.bold"
+>lpq</B
+> (for <B
+CLASS="emphasis.bold"
+>lpr</B
+>).
+The <B
+CLASS="emphasis.bold"
+>cancel</B
+> command lets you terminate a printing request made by <B
+CLASS="emphasis.bold"
+>lp</B
+>;
+<B
+CLASS="emphasis.bold"
+>lprm</B
+> cancels jobs from <B
+CLASS="emphasis.bold"
+>lpr</B
+>.</P
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-5.1.1"
+>4.5.4.1 lpstat and lpq</A
+></H4
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-3569"
+></A
+>The <B
+CLASS="emphasis.bold"
+>lpstat</B
+> command shows what's in the printer queue: request
+IDs, owners, file sizes, when the jobs were sent for printing, and the
+status of the requests.  Use <B
+CLASS="emphasis.bold"
+>lpstat -o</B
+> if you want to see all
+output requests rather than just your own.  Requests are shown in the
+order they'll be printed:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>lpstat -o</B
+></CODE
+>
+laserp-573  john  128865  Nov 7  11:27  on laserp
+laserp-574  grace  82744  Nov 7  11:28
+laserp-575  john   23347  Nov 7  11:35
+%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>The first entry shows that the request &quot;laserp-573&quot; is currently printing on
+<EM
+CLASS="emphasis"
+>laserp</EM
+>.
+The exact format and amount of information given about the printer queue
+may differ from system to system.
+If the printer queue is empty, <B
+CLASS="emphasis.bold"
+>lpstat</B
+> will say &quot;No entries&quot; or
+simply give you back the shell prompt.</P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-3580"
+></A
+><B
+CLASS="emphasis.bold"
+>lpq</B
+> gives slightly different information than <B
+CLASS="emphasis.bold"
+>lpstat -o</B
+>:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>lpq</B
+></CODE
+>
+laserp is ready and printing
+Rank   Owner      Job  Files                  Total Size
+active john       573  report.ps              128865 bytes
+1st    grace      574  ch03.ps ch04.ps        82744 bytes
+2nd    john       575  standard input         23347 bytes
+%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>The first line displays the printer status.  If the printer is
+disabled or out of paper, you may see different messages on this first
+line.  The &quot;active&quot; job, the one being printed, is listed first.  The
+&quot;Job&quot; number is like the <B
+CLASS="emphasis.bold"
+>lpstat</B
+> request ID. To specify another
+printer, and the <B
+CLASS="emphasis.bold"
+>P</B
+> option (<A
+CLASS="xref"
+HREF="ch04_05.htm#LUX-CH-4-TAB-2"
+TITLE="Some lp and lpr Options"
+>Table 4.3</A
+>). </P
+></DIV
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-5.1.2"
+>4.5.4.2 cancel and lprm</A
+></H4
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-3594"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3597"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3600"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3602"
+></A
+><B
+CLASS="emphasis.bold"
+>cancel</B
+> terminates a printing request from the <B
+CLASS="emphasis.bold"
+>lp</B
+> command.
+<B
+CLASS="emphasis.bold"
+>lprm</B
+> terminates <B
+CLASS="emphasis.bold"
+>lpr</B
+> requests.  You can specify either the
+ID of the request (displayed by <B
+CLASS="emphasis.bold"
+>lp</B
+> or <B
+CLASS="emphasis.bold"
+>lpq</B
+>) or the name of
+the printer.</P
+><P
+CLASS="para"
+>If you don't have the request ID, get it from <B
+CLASS="emphasis.bold"
+>lpstat</B
+> or
+<B
+CLASS="emphasis.bold"
+>lpq</B
+>.  Then use <B
+CLASS="emphasis.bold"
+>cancel</B
+> or <B
+CLASS="emphasis.bold"
+>lprm</B
+>.  Specifying the
+request ID cancels the request, even if it is currently printing:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>cancel laserp-575</B
+></CODE
+>
+request &quot;laserp-575&quot; cancelled</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>To cancel whatever request is currently printing, regardless of its
+ID, simply enter <B
+CLASS="emphasis.bold"
+>cancel</B
+> and the printer name:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>cancel laserp</B
+></CODE
+>
+request &quot;laserp-573&quot; cancelled</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>The <B
+CLASS="emphasis.bold"
+>lprm</B
+> command will cancel the active job if it belongs to
+you.  Otherwise, you can give job numbers as arguments, or use a dash
+(<CODE
+CLASS="literal"
+>-</CODE
+>) to remove all of your jobs:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>lprm 575</B
+></CODE
+>
+dfA575diamond dequeued
+cfA575diamond dequeued</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>lprm</B
+> tells you the actual filenames removed from the printer queue
+(which you probably don't need).</P
+></DIV
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-4-SECT-5.1.3"
+>4.5.4.3 Exercise: Manipulating files</A
+></H4
+><P
+CLASS="para"
+>In this exercise, you'll create, rename and delete files.  Find out if
+your site has one or more printers as well as the appropriate command
+to use for printing.
+
+<TABLE
+CLASS="informaltable"
+><TBODY
+CLASS="tbody"
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Go to home directory.</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Enter <CODE
+CLASS="userinput"
+><B
+>cd</B
+></CODE
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Copy distant file to working directory.</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Enter <CODE
+CLASS="userinput"
+><B
+>cp /etc/passwd myfile</B
+></CODE
+></P
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Create new directory.</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Enter <CODE
+CLASS="userinput"
+><B
+>mkdir temp</B
+></CODE
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>List working directory.</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Enter <CODE
+CLASS="userinput"
+><B
+>ls -F</B
+></CODE
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Move file to new directory.</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Enter <CODE
+CLASS="userinput"
+><B
+>mv myfile temp</B
+></CODE
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Change working directory.</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Enter <CODE
+CLASS="userinput"
+><B
+>cd temp</B
+></CODE
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Copy file to working directory.</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Enter <CODE
+CLASS="userinput"
+><B
+>cp myfile</B
+></CODE
+>
+<CODE
+CLASS="userinput"
+><B
+>myfile.two</B
+></CODE
+></P
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Print the file.</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Enter your printer command and
+the filename</P
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>List filenames with wildcard.</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Enter <CODE
+CLASS="userinput"
+><B
+>ls -l myfile*</B
+></CODE
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Remove files.</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Enter <CODE
+CLASS="userinput"
+><B
+>rm myfile*</B
+></CODE
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Go up to parent directory.</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Enter <CODE
+CLASS="userinput"
+><B
+>cd ..</B
+></CODE
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Remove directory.</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Enter <CODE
+CLASS="userinput"
+><B
+>rmdir temp</B
+></CODE
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Verify that directory was removed.</P
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Enter <CODE
+CLASS="userinput"
+><B
+>ls -F</B
+></CODE
+></TD
+></TR
+></TBODY
+></TABLE
+><A
+CLASS="indexterm"
+NAME="AUTOID-3693"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3694"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3695"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3696"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-3697"
+></A
+></P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="htmlnav"
+><P
+></P
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch04_04.htm"
+TITLE="4.4 Managing Your Files"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 4.4 Managing Your Files"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="book"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"
+><IMG
+SRC="../gifs/txthome.gif"
+ALT="Learning the Unix Operating System"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="CHAPTER"
+HREF="ch05_01.htm"
+TITLE="5. Redirecting I/O "
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 5. Redirecting I/O "
+BORDER="0"></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+>4.4 Managing Your Files</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="index"
+HREF="index/idx_0.htm"
+TITLE="Book Index"
+><IMG
+SRC="../gifs/index.gif"
+ALT="Book Index"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+>5. Redirecting I/O </TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><IMG
+SRC="../gifs/smnavbar.gif"
+USEMAP="#map"
+BORDER="0"
+ALT="The UNIX CD Bookshelf Navigation"><MAP
+NAME="map"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,73,21"
+HREF="../index.htm"
+ALT="The UNIX CD Bookshelf"><AREA
+SHAPE="RECT"
+COORDS="74,0,163,21"
+HREF="../upt/index.htm"
+ALT="UNIX Power Tools"><AREA
+SHAPE="RECT"
+COORDS="164,0,257,21"
+HREF="../unixnut/index.htm"
+ALT="UNIX in a Nutshell"><AREA
+SHAPE="RECT"
+COORDS="258,0,321,21"
+HREF="../vi/index.htm"
+ALT="Learning the vi Editor"><AREA
+SHAPE="RECT"
+COORDS="322,0,378,21"
+HREF="../sedawk/index.htm"
+ALT="sed &amp; awk"><AREA
+SHAPE="RECT"
+COORDS="379,0,438,21"
+HREF="../ksh/index.htm"
+ALT="Learning the Korn Shell"><AREA
+SHAPE="RECT"
+COORDS="439,0,514,21"
+HREF="index.htm"
+ALT="Learning the UNIX Operating System"></MAP
+></DIV
+></BODY
+></HTML
+>

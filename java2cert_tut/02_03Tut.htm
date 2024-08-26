@@ -1,0 +1,1825 @@
+<html>
+
+
+
+
+
+
+
+<head>
+
+
+
+
+
+
+
+<title>2.3)Flow Control and Exception Handling</title>
+
+
+
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="tutor.css"></head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body bgcolor="#FFFFFF">
+
+<table width=95% border=0 cellpadding=2 cellspacing=0 style="page-break-before: always">
+
+  <col width=147*> <col width=109*> 
+
+  <tr> 
+
+    <td width=57% height=104> 
+
+      <p><a href= "introj2.htm" ><img src= "btnIndex.jpg"  name="Graphic1" alt="Return to Tutorial Index" align=BOTTOM width=55 height=39 border=0></a><a href= "introj2.htm" ><br>
+
+        <br>
+
+        </a><a href= "index.htm" ><img src= "btnHome.jpg"  name="Graphic2" alt="Back to the home page of this site" align=BOTTOM width=55 height=39 border=0></a> 
+
+      </p>
+
+    </td>
+
+    <td width=43%> 
+
+      <p align=RIGHT><img src= "hat.gif"  name="Graphic3" alt="morterboard" align=BOTTOM width=118 height=113 border=0></p>
+
+    </td>
+
+  </tr>
+
+  <tr> 
+
+    <td width=57% height=11> 
+
+      <h1 align=LEFT>Java2 Certification <br>
+
+        Tutorial </h1>
+
+    </td>
+
+    <td width=43% bgcolor="#ff9900"> 
+
+      <p>&nbsp;</p>
+
+    </td>
+
+  </tr>
+
+</table>
+
+<p> You can discuss this topic with others at <a href= "http://www.jchq.net/discus" >http://www.jchq.net/discus</a><br>
+
+  Read reviews and buy a Java Certification book at <a href= "http://www.jchq.net/bookreviews/jcertbooks.htm" >http://www.jchq.net/bookreviews/jcertbooks.htm</a> 
+
+  <br>
+
+</p>
+
+<hr size=5 noshade>
+
+<h1><font face="GENEVA, HELVETICA,
+
+
+
+
+
+
+
+                ARIAL, LUCIDA SANS"><b>2) Flow Control and Exception Handling</b></font></h1>
+
+
+
+
+
+
+
+<h2><font face="GENEVA, HELVETICA, ARIAL, LUCIDA
+
+
+
+
+
+
+
+                SANS"><b>Objective 3)</b></font></h2>
+
+
+
+
+
+
+
+<p><font face="Arial, Helvetica">Write code that makes proper use of exceptions 
+
+
+
+  and exception handling clauses (try catch finally) and declares methods and 
+
+
+
+  overriding methods that throw exceptions.</font></p>
+
+
+
+<p>An exception condition is a when a program gets into a state that is not quite 
+
+
+
+  normal. Exceptions trapping is sometimes referred to as error trapping. A typical 
+
+
+
+  example of an exception is when a program attempts to open a file that does 
+
+
+
+  not exsist or you try to refer to an element of an array that does not exist.</p>
+
+
+
+
+
+
+
+<p>The <i>try</i> and <i>catch</i> statements are part of the exception handling 
+
+
+
+
+
+
+
+  built into Java. Neither C/C++ nor Visual Basic have direct equivalents to Javas 
+
+
+
+
+
+
+
+  built in exceptions. C++ does support exceptions but they are optional, and 
+
+
+
+
+
+
+
+  Visual Basic supports <i>On Error/Goto</i> error trapping, which smacks somewhat 
+
+
+
+
+
+
+
+  of a throwback to an earlier less flexible era of BASIC programming.</p>
+
+
+
+
+
+
+
+<p>Java exceptions are a built in part of the language. For example if you are 
+
+
+
+
+
+
+
+  performing I/O you must put in exception handling. You can of course put in 
+
+
+
+
+
+
+
+  null handling that doesn't do anything. The following is a little piece of code 
+
+
+
+
+
+
+
+  I have used with Borland/Inprise JBuilder to temporarily halt output to the 
+
+
+
+
+
+
+
+  console and wait for any key to be pressed.</p>
+
+
+
+
+
+
+
+<pre>import java.io.*; 
+public class Try{ 
+    public static void main(String argv[]){
+        Try t = new Try(); 
+        t.go(); 
+    }//End of main
+public void go(){ 
+     try{ 
+        DataInputStream dis= new DataInputStream(System.in); 
+        dis.readLine(); 
+      } catch(Exception e){
+     /*Not doing anything when exception occurs*/
+     } //End of try
+    System.out.println("Continuing"); 
+   }//End of go 
+}</pre>
+
+
+
+
+
+
+
+<p>In this case nothing is done when an error occurs, but the programmer must 
+
+
+
+
+
+
+
+  still acknowledge that an error might occur. If you remove the <i>try</i> and 
+
+
+
+
+
+
+
+  <i>catch</i> clause the code will simply not compile. The compiler knows that 
+
+
+
+
+
+
+
+  the I/O methods can cause exceptions and demands exception handling code.</p>
+
+
+
+
+
+
+
+<h3><font face="GENEVA, HELVETICA, ARIAL, LUCIDA
+
+
+
+
+
+
+
+                SANS"><b>Comparing with Visual Basic and C/C++</b></font></h3>
+
+
+
+
+
+
+
+<p>This is a little more rigorous than Visual Basic or C/C++ which allows you 
+
+
+
+
+
+
+
+  to throw together "quick and dirty" programs that pretend they are in a world 
+
+
+
+
+
+
+
+  where errors do not occur. Remember that the original version of DOS was called 
+
+
+
+
+
+
+
+  QDOS for Quick and Dirty DOS by it's creator and look how long we have lived 
+
+
+
+
+
+
+
+  with the legacy of that bit of hackery. By the time you have gone to the trouble 
+
+
+
+
+
+
+
+  of putting in a <i>try/catch</i> block and blank braces you may as well put 
+
+
+
+
+
+
+
+  in some real error tracking.&nbsp;It's not exactly bondage and discipline programming, 
+
+
+
+
+
+
+
+  it just persuasively encourages you to "do the right thing".&nbsp;</p>
+
+
+
+
+
+
+
+<h3><font face="GENEVA, HELVETICA, ARIAL, LUCIDA
+
+
+
+
+
+
+
+                SANS"><b>The <i>finally</i> clause</b></font></h3>
+
+
+
+
+
+
+
+<p>The one oddity that you are likely to be questioned on in the exam, is under 
+
+
+
+
+
+
+
+  what circumstances the <i>finally</i> clause of a <i>try/catch</i> block is 
+
+
+
+
+
+
+
+  executed. The short answer to this is that the <i>finally</i> clause is almost 
+
+
+
+
+
+
+
+  always executed, even when you might think it would not be. Having said that, 
+
+
+
+
+
+
+
+  the path of execution of the <i>try/catch/finally</i> statements is something 
+
+
+
+
+
+
+
+  you really need to play with to convince yourself of what happens under what 
+
+
+
+
+
+
+
+  circumstances.&nbsp;</p>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="9%"><img src= "key2.gif"  width="106" height="73"
+
+
+
+
+
+
+
+align="bottom" border="0"></td>
+
+
+
+
+
+
+
+    <td width="91%"> 
+
+
+
+
+
+
+
+      <h4><font size="4" color="red">The finally clause of a try catch block will 
+        always execute,<br>
+        even if there are any return statements in the try catch part</font></h4>
+
+
+
+
+
+
+
+    </td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<p>One of the few occasions when the finally clause will not be executed is if 
+
+
+
+
+
+
+
+  there is a call to&nbsp;</p>
+
+
+
+
+
+
+
+<pre>System.exit(0);</pre>
+
+
+
+
+
+
+
+<p>The exam tends not to attempt to catch you out with this exception to the rule.</p>
+
+
+
+
+
+
+
+<p>The exam is more likely to give examples that include return statements in 
+
+
+
+
+
+
+
+  order to mislead you into thinking that the code will return without running 
+
+
+
+
+
+
+
+  the <i>finally</i> statement. Do not be mislead, the <i>finally</i> clause will 
+
+
+
+
+
+
+
+  almost always run.&nbsp;</p>
+
+
+
+
+
+
+
+<p>The <i>try/catch</i> clause must trap errors in the order their natural order 
+
+
+
+
+
+
+
+  of hierarchy. Thus you cannot attempt to trap the generic catch all <i>Exception</i> 
+
+
+
+
+
+
+
+  before you have put in a trap for the more specific <i>IOException</i>.</p>
+
+
+
+
+
+
+
+<p>The following code will not compile</p>
+
+
+
+
+
+
+
+<pre>try{
+    DataInputStream dis = new DataInputStream(System.in); 
+    dis.read(); 
+    }catch (Exception ioe) {} 
+    catch (IOException e) {//Compile time error cause} 
+    finally{}</pre>
+
+
+
+
+
+
+
+<p>This code will give an error message at compile time that the more specific 
+
+
+
+
+
+
+
+  <i>IOException</i> will never be reached.&nbsp;</p>
+
+
+
+
+
+
+
+<h3><font face="GENEVA, HELVETICA, ARIAL, LUCIDA
+
+
+
+
+
+
+
+                SANS"><b>Overriding methods that throw exceptions</b></font></h3>
+
+
+
+
+
+
+
+<p>An overriding method in a subclass may only throw exceptions declared in the 
+
+
+
+
+
+
+
+  parent class or children of the exceptions declared in the parent class. This 
+
+
+
+
+
+
+
+  is only true for overriding methods not overloading methods. Thus if a method 
+
+
+
+
+
+
+
+  has exactly the same name and arguments it can only throw exceptions declared 
+
+
+
+
+
+
+
+  in the parent class, or exceptions that are children of exceptions in the parent 
+
+
+
+
+
+
+
+  declaration. It can however throw fewer or no exceptions. Thus the following 
+
+
+
+
+
+
+
+  example will not compile</p>
+
+
+
+
+
+
+
+<pre>import java.io.*;
+class Base{
+public static void amethod()throws FileNotFoundException{}
+}
+public class ExcepDemo extends Base{
+  //Will not compile, exception not in base version of method
+  public static void amethod()throws IOException{}
+}</pre>
+
+
+
+
+
+
+
+<p>If it were the method in the parent class that was throwing <i>IOException</i> 
+
+
+
+
+
+
+
+  and the method in the child class that was throwing <i>FileNotFoundException</i> 
+
+
+
+
+
+
+
+  this code would compile. Again, remember that this only applies to overridden 
+
+
+
+
+
+
+
+  methods, there are no similar rules to overloaded methods. Also an overriden 
+
+
+
+
+
+
+
+  method in a sub class may throw Exceptions.</p>
+
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="11%"><img src= "Quiz.gif"  width="99" height="101"></td>
+
+
+
+
+
+
+
+    <td width="89%">&nbsp;</td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<h3><b>Question 1)</b></h3>
+
+
+
+
+
+
+
+<p>What will happen when you attempt to compile and run the following code?</p>
+
+
+
+
+
+
+
+<pre>import java.io.*;
+class Base{
+public static void amethod()throws FileNotFoundException{}
+}
+
+public class ExcepDemo extends Base{
+public static void main(String argv[]){
+       ExcepDemo e = new ExcepDemo();
+}
+public static void amethod(){}
+protected ExcepDemo(){
+	 try{
+	  DataInputStream din = new DataInputStream(System.in);
+	  System.out.println("Pausing");
+	  din.readChar();
+	  System.out.println("Continuing");
+	  this.amethod();
+	  }catch(IOException ioe) {}
+	}
+}</pre>
+
+
+
+
+
+
+
+<p>1) Compile time error caused by protected constructor<br>
+
+
+
+
+
+
+
+  2) Compile time error caused by <i>amethod</i> not declaring Exception<br>
+
+
+
+
+
+
+
+  3) Runtime error caused by amethod not declaring Exception<br>
+
+
+
+
+
+
+
+  4) Compile and run with output of "Pausing" and "Continuing" after a key is 
+
+
+
+
+
+
+
+  hit</p>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<hr align="center">
+
+
+
+
+
+
+
+<h3><b>Question 2)</b> </h3>
+
+
+
+
+
+
+
+<p>What will happen when you attempt to compile and run the following code?</p>
+
+
+
+
+
+
+
+<pre>import java.io.*;
+class Base{
+public static void amethod()throws FileNotFoundException{}
+}
+public class ExcepDemo extends Base{
+public static void main(String argv[]){
+       ExcepDemo e = new ExcepDemo();
+}
+
+public static void amethod(int i)throws IOException{}
+private ExcepDemo(){
+ try{
+    DataInputStream din = new DataInputStream(System.in);
+    System.out.println("Pausing");
+    din.readChar();
+    System.out.println("Continuing");
+    this.amethod();
+    }catch(IOException ioe) {}
+  }
+}</pre>
+
+
+
+
+
+
+
+<p>1) Compile error caused by private constructor<br>
+
+
+
+
+
+
+
+  2) Compile error caused by <i>amethod</i> declaring Exception not in base version<br>
+
+
+
+
+
+
+
+  3) Runtime error caused by <i>amethod</i> declaring Exception not in base version<br>
+
+
+
+
+
+
+
+  4) Compile and run with output of "Pausing" and "Continuing" after a key is 
+
+
+
+
+
+
+
+  hit</p>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<hr align="center">
+
+
+
+
+
+
+
+<h3><b>Question 3)</b> </h3>
+
+
+
+
+
+
+
+<p>What will happen when you attempt to compile and run this code?</p>
+
+
+
+
+
+
+
+<pre>import java.io.*;
+class Base{
+public static void amethod()throws FileNotFoundException{}
+}
+public class ExcepDemo extends Base{
+public static void main(String argv[]){
+       ExcepDemo e = new ExcepDemo();
+}
+public static void amethod(int i)throws IOException{}
+private boolean ExcepDemo(){
+	 try{
+	    DataInputStream din = new DataInputStream(System.in);
+	    System.out.println("Pausing");
+	    din.readChar();
+	    System.out.println("Continuing");
+	    this.amethod();
+	    return true;
+	    }catch(IOException ioe) {}
+	    finally{
+	    System.out.println("finally");
+	    }
+	   return false;
+	}
+}</pre>
+
+
+
+
+
+
+
+<p>1) Compilation and run with no output.<br>
+
+
+
+
+
+
+
+  2) Compilation and run with output of "Pausing", "Continuing" and "finally"<br>
+
+
+
+
+
+
+
+  3) Runtime error caused by <i>amethod</i> declaring Exception not in base version<br>
+
+
+
+
+
+
+
+  4) Compile and run with output of "Pausing" and "Continuing" after a key is 
+
+
+
+
+
+
+
+  hit</p>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<hr align="center">
+
+
+
+
+
+
+
+<h3><b>Question 4)</b> </h3>
+
+
+
+
+
+
+
+<p>What will happen when you attempt to compile and run the following code?</p>
+
+
+
+
+
+
+
+<pre>import java.io.*;
+class Base{
+public static void amethod()throws FileNotFoundException{}
+}
+public class ExcepDemo extends Base{
+public static void main(String argv[]){
+       ExcepDemo e = new ExcepDemo();
+}
+public boolean amethod(int i){
+	 try{
+	    DataInputStream din = new DataInputStream(System.in);
+	    System.out.println("Pausing");
+	    din.readChar();
+	    System.out.println("Continuing");
+	    this.amethod();
+	    return true;
+	    }catch(IOException ioe) {}
+	    finally{
+	   System.out.println("Doing finally");
+	   }
+	    return false;
+	  }
+		ExcepDemo(){
+      		amethod(99);
+	  }
+}</pre>
+
+
+
+
+
+
+
+<p>1) Compile time error amethod does not throw FileNotFoundException<br>
+
+
+
+
+
+
+
+  2) Compile, run and output of Pausing and Continuing<br>
+
+
+
+
+
+
+
+  3) Compile, run and output of Pausing, Continuing, Doing Finally<br>
+
+
+
+
+
+
+
+  4) Compile time error finally clause never reached</p>
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<h1>Answers</h1>
+
+
+
+
+
+
+
+<h3><b>Answer to Question 1)</b></h3>
+
+
+
+
+
+
+
+<p><b> </b>4) Compile and run with output of "Pausing" and "Continuing" after 
+
+
+
+
+
+
+
+  a key is hit<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  An overriden method in a sub class must not throw Exceptions not thrown in the 
+
+
+
+
+
+
+
+  base class. In the case of the method amethod it throws no exceptions and will 
+
+
+
+
+
+
+
+  thus compile without complaint. There is no reason that a constructor cannot 
+
+
+
+
+
+
+
+  be protected.</p>
+
+
+
+
+
+
+
+<h3> <br>
+
+
+
+
+
+
+
+  <b>Answer to Question 2)</b></h3>
+
+
+
+
+
+
+
+<p><b> </b>4) Compile and run with output of "Pausing" and "Continuing" after 
+
+
+
+
+
+
+
+  a key is hit<br>
+
+
+
+
+
+
+
+  In this version <i>amethod</i> has been overloaded so there are no restrictions 
+
+
+
+
+
+
+
+  on what Exceptions may or may not be thrown.</p>
+
+
+
+
+
+
+
+<h3> <br>
+
+
+
+
+
+
+
+  <b>Answer to Question 3)</b></h3>
+
+
+
+
+
+
+
+<p><b> </b>1) Compilation and run with no output.<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  OK, I have wandered off topic here a little. Note that the constructor now has 
+
+
+
+
+
+
+
+  a return value. This turns it into an ordinary method and thus it does not get 
+
+
+
+
+
+
+
+  called when an instance of the class is created.</p>
+
+
+
+
+
+
+
+<h3> <br>
+
+
+
+
+
+
+
+  <b>Answer to Question 4)</b></h3>
+
+
+
+
+
+
+
+<p><b> </b>3) Compile, run and output of Pausing, Continuing, Doing Finally<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  The finally clause will always be run.</p>
+
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+
+
+<table border="1" width="100%">
+
+
+
+
+
+
+
+  <caption><b>Other sources on this topic </b></caption>
+
+
+
+
+
+
+
+  <tbody> 
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="100%"><b>This topic is covered in the Sun Tutorial at</b><br>
+
+
+
+
+
+
+
+      <a
+
+
+
+
+
+
+
+                href= "http://java.sun.com/docs/books/tutorial/essential/exceptions/definition.html" >http://java.sun.com/docs/books/tutorial/essential/exceptions/definition.html</a><br>
+
+
+
+
+
+
+
+      <a
+
+
+
+
+
+
+
+                href= "http://java.sun.com/docs/books/tutorial/java/javaOO/accesscontrol.html" ><br>
+
+
+
+
+
+
+
+      </a><b>Richard Baldwin Covers this topic at</b><br>
+
+
+
+
+
+
+
+      <a
+
+
+
+
+
+
+
+                href= "http://www.geocities.com/Athens/Acropolis/3797/Java030.htm" >http://www.geocities.com/Athens/Acropolis/3797/Java030.htm</a><a
+
+
+
+
+
+
+
+                href= "http://www.geocities.com/Athens/Acropolis/3797/Java040.htm" ><br>
+
+
+
+
+
+
+
+      </a>and <a
+
+
+
+
+
+
+
+                href= "http://www.geocities.com/Athens/Acropolis/3797/Java040.htm" ><br>
+
+
+
+
+
+
+
+      </a><a
+
+
+
+
+
+
+
+                href= "http://www.geocities.com/Athens/Acropolis/3797/Java056.htm" >http://www.geocities.com/Athens/Acropolis/3797/Java056.htm</a><a
+
+
+
+
+
+
+
+                href= "http://www.geocities.com/Athens/Acropolis/3797/Java040.htm" ><br>
+
+
+
+
+
+
+
+      <br>
+
+
+
+
+
+
+
+      </a><b>Jyothi Krishnan on this topic at </b><br>
+
+
+
+
+
+
+
+      <a
+
+
+
+
+
+
+
+                href= "http://www.geocities.com/SiliconValley/Network/3693/obj_sec2.html#obj7" >http://www.geocities.com/SiliconValley/Network/3693/obj_sec2.html#obj7<br>
+
+
+
+
+
+
+
+      <br>
+
+
+
+
+
+
+
+      </a><b>Bruce Eckel Thinking in Java<br>
+
+
+
+
+
+
+
+      </b>Chapter 9)</td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+  </tbody> 
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<p>Last updated<br>
+
+
+
+
+
+
+
+  28 Dec 1999<br>
+
+
+
+
+
+
+
+  copyright &copy; Marcus Green 1999<br>
+
+
+
+  most recent version at www.jchq.net</p>
+
+
+
+
+
+
+
+<p><br>
+
+
+
+
+
+
+
+</p>
+
+
+
+
+
+
+
+<h3><br>
+
+
+
+
+
+
+
+</h3>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+      <p>&nbsp;</p>
+
+
+
+
+
+
+
+      </body>
+
+
+
+
+
+
+
+</html>
+
+
+
+
+
+
+

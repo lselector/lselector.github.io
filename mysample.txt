@@ -1,0 +1,104 @@
+#
+#!/usr/local/bin/perl
+
+# ------------------------------------------------------------------
+# example using MYSQL from a CGI perl script
+# using 2 simple functions: do_sql() and do_query()
+# ------------------------------------------------------------------
+
+use DBI;
+
+my $sql_flag=0;
+my $script_name = (split(/\//,$0))[-1];
+my $self_cgi = "$script_name";
+
+use CGI;
+my $q = new CGI;
+my $sql = $q->param("sql") || "select * from Emails";
+my $qf = $q->param("qf")|| 0;
+print $q->header("text/html"), $q->start_html("Welcome");
+my $dbhost = 'mysql.somedomain.com';
+my $database = 'mydatabase';
+my $dsn = "DBI:mysql:host=$dbhost;database=$database";
+my $user = 'mylogin';
+my $pass = 'mypassword';
+my $dbh = DBI->connect($dsn, $user, $pass)
+  or die "Can't connect to the DB: $DBI::errstr\n";
+
+
+&db_form_example();
+
+&myexit();
+# ------------------------------------------------------------------
+# end of the main part here
+# ------------------------------------------------------------------
+
+sub nn {"\n"};
+sub br {"<br>"};
+sub die2www {my $s=shift; print $q->p($s),$q->end_html;exit();}
+sub myexit{ $dbh->disconnect if $dbh;  print $q->end_html; exit(); }
+
+# ------------------------------------------------------------------
+# debug_sql($sql)
+# ------------------------------------------------------------------
+sub debug_sql {
+ my $sql = shift;
+ print $sql if $sql_flag;
+}
+
+# ------------------------------------------------------------------
+# do_sql($dbh,$sql)
+# ------------------------------------------------------------------
+sub do_sql {
+  my ($dbh, $sql) = @_;
+  debug_sql "\n$sql\n";
+  my $rows = $dbh->do($sql)
+    or die2www "Error running this SQL: \n$sql\nError: $DBI::errstr\n";
+  return $rows;
+}
+
+# ------------------------------------------------------------------
+# do_query($dbh,$sql)
+# ------------------------------------------------------------------
+sub do_query {
+  my ($dbh, $sql) = @_;
+  debug_sql "\n$sql\n";
+  my $sth = $dbh->prepare($sql)
+    or die2www "Can't prepare SQL statement: $DBI::errstr\n";
+  $sth->execute
+    or die2www "Can't execute SQL statement: $DBI::errstr\n";
+  my $result_ref = [];
+  $result_ref = $sth->fetchall_arrayref({});
+  $sth->finish();
+  return $result_ref;
+
+# ------------------------------------------------------------------
+#  db_form_example()
+# ------------------------------------------------------------------
+sub db_form_example {
+
+  print
+   $q->start_form(-name=>'form1', -method=>'POST', -action=>$self_cgi),
+   $q->p("Enter select SQL statement:"),
+   $q->radio_group( -name=>"qf", -values=>["query","do"], -default=>"query",
+           -labels=>{ query => "Query", do => "Just run sql" } ),br,nn,
+   $q->textarea(-name=>"sql", -rows=>'10', -columns=>'60',
+                -default=>"$sql\n"),nn,br,
+   $q->submit, $q->reset,nn, br,nn;
+
+  my $result;
+
+  if ($qf eq 'query') {
+    $result = do_query($dbh,$sql);
+    for my $row (@$result) {
+      for my $k (sort keys %$row) {
+        printf("<br>%-30s %-30s\n", $k, $row->{"$k"});
+      }
+    }
+    print br . ('-' x 77) . nn;
+  } else {
+    do_sql($dbh,$sql);
+  }
+
+}
+

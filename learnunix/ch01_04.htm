@@ -1,0 +1,569 @@
+<HTML
+><HEAD
+><TITLE
+>[Chapter 1] 1.4 The Unresponsive Terminal</TITLE
+><META
+NAME="DC.title"
+CONTENT="Learning the Unix Operating System"><META
+NAME="DC.creator"
+CONTENT="Jerry Peek, Grace Todino &amp; John Strang"><META
+NAME="DC.publisher"
+CONTENT="O'Reilly &amp; Associates, Inc."><META
+NAME="DC.date"
+CONTENT="1998-08-03T20:48:31Z"><META
+NAME="DC.type"
+CONTENT="Text.Monograph"><META
+NAME="DC.format"
+CONTENT="text/html"
+SCHEME="MIME"><META
+NAME="DC.source"
+CONTENT="1-56592-390-1"
+SCHEME="ISBN"><META
+NAME="DC.language"
+CONTENT="en-US"><META
+NAME="generator"
+CONTENT="Jade 1.1/O'Reilly DocBook 3.0 to HTML 4.0"><LINK
+REV="made"
+HREF="mailto:online-books@oreilly.com"
+TITLE="Online Books Comments"><LINK
+REL="up"
+HREF="ch01_01.htm"
+TITLE="1. Getting Started "><LINK
+REL="prev"
+HREF="ch01_03.htm"
+TITLE="1.3 Types of Commands"><LINK
+REL="next"
+HREF="ch02_01.htm"
+TITLE="2. Using Window Systems "></HEAD
+><BODY
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+><DIV
+CLASS="htmlnav"
+><H1
+><IMG
+SRC="gifs/smbanner.gif"
+ALT="Learning the Unix Operating System"
+USEMAP="#srchmap"
+BORDER="0"></H1
+><MAP
+NAME="srchmap"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,466,69"
+HREF="index.htm"
+ALT="Learning the Unix Operating System"><AREA
+SHAPE="RECT"
+COORDS="467,0,514,18"
+HREF="jobjects/fsearch.htm"
+ALT="Search this book"></MAP
+><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch01_03.htm"
+TITLE="1.3 Types of Commands"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 1.3 Types of Commands"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><B
+><FONT
+FACE="ARIEL,HELVETICA,HELV,SANSERIF"
+SIZE="-1"
+>Chapter 1<BR>Getting Started </FONT
+></B
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="CHAPTER"
+HREF="ch02_01.htm"
+TITLE="2. Using Window Systems "
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 2. Using Window Systems "
+BORDER="0"></A
+></TD
+></TR
+></TABLE
+>&nbsp;<HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"></DIV
+><DIV
+CLASS="SECT1"
+><H2
+CLASS="sect1"
+><A
+CLASS="title"
+NAME="LUX-CH-1-SECT-4"
+>1.4 The Unresponsive Terminal</A
+></H2
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-1-IX-HUNG-TERM"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-1-IX-FROZ-TERM"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-1-IX-TERM-UNRESPON"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-1-IX-TBLESHOOT-HUNGTERM"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-1-IX-SESS-UNRESPONSIVE"
+></A
+>During your UNIX session (while you're logged in),
+your terminal may not respond when you type a command,
+or the display on your screen may stop at an unusual place.
+That's called a &quot;hung&quot; or &quot;frozen&quot; terminal or session.</P
+><P
+CLASS="para"
+>A session can be hung for several reasons.
+One of the most common is that the connection between your terminal
+and the computer gets too busy and your terminal has to wait its turn.
+(Other users or computers are probably sharing the same connection.)
+In that case, your session will start by itself in a few moments.
+You should <EM
+CLASS="emphasis"
+>not</EM
+> try to &quot;un-hang&quot; the session by entering extra commands
+because those commands will all take effect after the connection resumes.</P
+><P
+CLASS="para"
+>If the system doesn't respond for quite a while (and how long that is
+depends on your individual situation; ask your system administrator
+for advice), the following solutions will usually work.  Try these in
+the order shown until the system responds.</P
+><OL
+CLASS="orderedlist"
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+>Press the
+<KBD
+CLASS="keycap"
+>[RETURN]</KBD
+>
+key.</P
+><P
+CLASS="para"
+>You may have typed a command but forgotten to press
+<KBD
+CLASS="keycap"
+>[RETURN]</KBD
+>
+to tell the shell that you're done typing and it should now interpret the
+command.</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+>If you can type commands, but nothing happens when you press
+<KBD
+CLASS="keycap"
+>[RETURN]</KBD
+>,
+try
+pressing
+<KBD
+CLASS="keycap"
+>[LINE&nbsp;FEED]</KBD
+>
+or typing<A
+CLASS="indexterm"
+NAME="AUTOID-711"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-714"
+></A
+>
+<KBD
+CLASS="keycap"
+>[CTRL-J]</KBD
+>.
+If this works, your terminal needs to be reset to fix the
+<KBD
+CLASS="keycap"
+>[RETURN]</KBD
+>
+key.
+Some systems have a <B
+CLASS="emphasis.bold"
+>reset</B
+> command that you can run by typing
+<KBD
+CLASS="keycap"
+>[CTRL-J]</KBD
+>
+<B
+CLASS="emphasis.bold"
+>reset</B
+> 
+<KBD
+CLASS="keycap"
+>[CTRL-J]</KBD
+>.
+If this doesn't work, you may need to log out and log back in or turn your
+terminal off and on again.</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-724"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-727"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-729"
+></A
+>If your shell has job control (see <A
+CLASS="xref"
+HREF="ch06_01.htm"
+TITLE="Multitasking "
+>Chapter 6</A
+>), type
+<KBD
+CLASS="keycap"
+>[CTRL-Z]</KBD
+>.</P
+><P
+CLASS="para"
+>This suspends a program that may be running and gives you another shell prompt.
+Now you can enter the <B
+CLASS="emphasis.bold"
+>jobs</B
+> command to find the program's name,
+then restart the program with <B
+CLASS="emphasis.bold"
+>fg</B
+> or terminate it with <B
+CLASS="emphasis.bold"
+>kill</B
+>.</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-740"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-742"
+></A
+>Use your interrupt key (found earlier in this chapter&nbsp;- typically
+<KBD
+CLASS="keycap"
+>[DELETE]</KBD
+>
+or
+<KBD
+CLASS="keycap"
+>[CTRL-C]</KBD
+>.</P
+><P
+CLASS="para"
+>&#13;This interrupts a program that may be running.
+(Unless a program is run in the background, as described in <A
+CLASS="xref"
+HREF="ch06_01.htm"
+TITLE="Multitasking "
+>Chapter 6</A
+>, the
+shell will wait for it to finish before giving a new prompt.
+A long-running program may thus appear to hang the terminal.)
+If this doesn't work the first time, try it once more;
+doing it more than twice usually won't help.</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-751"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-754"
+></A
+>Type
+<KBD
+CLASS="keycap"
+>[CTRL-Q]</KBD
+>.</P
+><P
+CLASS="para"
+>If output has been stopped with
+<KBD
+CLASS="keycap"
+>[CTRL-S]</KBD
+>,
+this will restart it. (Note that some systems will automatically
+issue
+<KBD
+CLASS="keycap"
+>[CTRL-S]</KBD
+>
+if they need to pause output; this character may not have been typed
+from the keyboard.)</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-763"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-765"
+></A
+>Check that the
+<KBD
+CLASS="keycap"
+>[NO SCROLL]</KBD
+>
+key is not locked or toggled on.</P
+><P
+CLASS="para"
+>This key stops the screen display from scrolling upward.
+If your keyboard has a
+<KBD
+CLASS="keycap"
+>[NO SCROLL]</KBD
+>
+key that can be toggled on and off by pressing it over and over, keep
+track of how many times you've pressed it as you try to free yourself.
+If it doesn't seem to help, be sure you've pressed it an even number
+of times; this leaves the key in the same state it was when you
+started.</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+>Check the physical connection from the terminal to the system.</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-774"
+></A
+>Type
+<KBD
+CLASS="keycap"
+>[CTRL-D]</KBD
+>
+at the beginning of a new line.</P
+><P
+CLASS="para"
+>Some programs (like <B
+CLASS="emphasis.bold"
+>mail</B
+>) expect text from the user.
+A program may be waiting for an end-of-input character from you to tell it
+that you've finished entering text.
+Typing
+<KBD
+CLASS="keycap"
+>[CTRL-D]</KBD
+>
+may cause you to log out, so you should try this only as a last resort.</P
+></LI
+><LI
+CLASS="listitem"
+><P
+CLASS="para"
+>If you're using a window system, close (terminate) the window you're using
+and open a new one.
+Otherwise, turn your terminal off, wait ten seconds or so, then turn it
+on again (this may also log you out).</P
+></LI
+></OL
+><P
+CLASS="para"
+>If none of these works, you should then ask a local system expert for
+help and watch carefully.<A
+CLASS="indexterm"
+NAME="AUTOID-784"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-785"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-786"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-787"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-788"
+></A
+></P
+></DIV
+><DIV
+CLASS="htmlnav"
+><P
+></P
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch01_03.htm"
+TITLE="1.3 Types of Commands"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 1.3 Types of Commands"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="book"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"
+><IMG
+SRC="../gifs/txthome.gif"
+ALT="Learning the Unix Operating System"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="CHAPTER"
+HREF="ch02_01.htm"
+TITLE="2. Using Window Systems "
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 2. Using Window Systems "
+BORDER="0"></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+>1.3 Types of Commands</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="index"
+HREF="index/idx_0.htm"
+TITLE="Book Index"
+><IMG
+SRC="../gifs/index.gif"
+ALT="Book Index"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+>2. Using Window Systems </TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><IMG
+SRC="../gifs/smnavbar.gif"
+USEMAP="#map"
+BORDER="0"
+ALT="The UNIX CD Bookshelf Navigation"><MAP
+NAME="map"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,73,21"
+HREF="../index.htm"
+ALT="The UNIX CD Bookshelf"><AREA
+SHAPE="RECT"
+COORDS="74,0,163,21"
+HREF="../upt/index.htm"
+ALT="UNIX Power Tools"><AREA
+SHAPE="RECT"
+COORDS="164,0,257,21"
+HREF="../unixnut/index.htm"
+ALT="UNIX in a Nutshell"><AREA
+SHAPE="RECT"
+COORDS="258,0,321,21"
+HREF="../vi/index.htm"
+ALT="Learning the vi Editor"><AREA
+SHAPE="RECT"
+COORDS="322,0,378,21"
+HREF="../sedawk/index.htm"
+ALT="sed &amp; awk"><AREA
+SHAPE="RECT"
+COORDS="379,0,438,21"
+HREF="../ksh/index.htm"
+ALT="Learning the Korn Shell"><AREA
+SHAPE="RECT"
+COORDS="439,0,514,21"
+HREF="index.htm"
+ALT="Learning the UNIX Operating System"></MAP
+></DIV
+></BODY
+></HTML
+>

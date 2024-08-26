@@ -1,0 +1,599 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>sql_test1.html</title>
+<!--
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+
+-->
+<style>
+
+A:hover { COLOR: #FF0000; background: #FFA; TEXT-DECORATION: underline } 
+
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Verdana"><font color="#CC0000">LevSelector.com</font></font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font face="Arial,Helvetica"><font color="#CC0000"><font size=-1>New
+York</font></font></font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><font face="Arial,Helvetica"><font size=-1><a href="index.html">home</a>
+> SQL_test1</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font face="Arial,Helvetica"><font size=-1></font></font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b>SQL_test1.</b>
+<br>Below there are 60+ problems (for 3 different databases) with answers.
+<br>The material is copied from the SQL Tutor.
+<br>&nbsp;
+<table BORDER CELLSPACING=0 COLS=1 WIDTH="100%" BGCOLOR="#FFFFCC" >
+<tr>
+<td>Company Database:
+<br>Tables:&nbsp;
+<br>DEPARTMENT (DNAME, DNUMBER, MGR, MGRSTARTDATE)
+<br>EMPLOYEE (IRD, LNAME, MINIT, FNAME, BDATE, ADDRESS, SEX, SALARY, SUPERVISOR,
+DNO)
+<br>DEPT_LOCATIONS (DNUMBER, DLOCATION)
+<br>PROJECT (PNAME, PNUMBER, PLOCATION, DNUM)
+<br>WORKS_ON (EIRD, PNO, HOURS)
+<br>DEPENDENT (EIRD, DEPENDENT_NAME, SEX, BDATE, RELATIONSHIP)</td>
+</tr>
+</table>
+<b>Q1.</b> List full details of all employees.
+<br><b>Q2.</b> Retrieve the birthdate adn address of the employee whose
+name is John Smith.
+<br><b>Q3.</b> Retrieve the name and address of all employees who work
+for the Research department.
+<br><b>Q4.</b> For every project located in Stafford, list the project
+number, the controlling department number and the manager's last name,
+address and birthdate.
+<br><b>Q5.</b> For each employee, retrieve the employee's first and last
+name and the first and last name of his or her immediate supervisor
+<br><b>Q6.</b> Select all employees' IRDs .
+<br><b>Q7.</b> Select all combinations of employee IRD and department name.
+<br><b>Q8.</b> List all information about employees of department 5.
+<br><b>Q9.</b> Retrieve the salary of every employee.
+<br><b>Q10.</b> Retrieve the IRDs of all employees who work on the project
+number 1,2 or 3.
+<br><b>Q11.</b> Find the names of employees whose salary is greater than
+the salary of all the employees in department 5.
+<br><b>Q12.</b> Retrieve the name of each employee who has a dependent
+with the same first name and same sex as the employee.
+<br><b>Q13.</b> Retrieve the names of employees who have no dependents.
+<br><b>Q14.</b> Retrieve the names of all employees who do not have supervisors.
+<br><b>Q15.</b> Find the names of all employees whose salary is greater
+than 30000 and less than 50000
+<br><b>Q16.</b> Retrieve the names of all employees whose address is in
+Houston,TX
+<br><b>Q17.</b> Retrieve the names of all employees who were born during
+the 1950s.
+<br><b>Q18.</b> Find the names of each employee and his or her supervisor
+<br><b>Q19.</b> Show the names of all employees and the resulting salaries
+if only employees working on the 'ProductX' project are given a 10% raise.
+<br><b>Q20.</b> Find the sum of salaries of all employees, the maximum
+salary, the minimum salary, and the average salary.
+<br><b>Q21.</b> Retrieve the number of employees in the 'Research' department.
+<br><b>Q22.</b> Retrieve the names of all employees who have more than
+two dependents.
+<br><b>Q23.</b> For each department, retrieve the department number, the
+number of employees in the department, and their average salary.
+<br><b>Q24.</b> For each project on which more than two employees work,
+retrieve the project number, the project name, and the number of employees
+who work on the project.
+<br><b>Q25.</b> Retrieve a list of all employees names, department names
+and the names of projects they are working on, ordered by department (descending)
+and, within each department, alphabetically by last name, first name.
+<br>&nbsp;
+<table BORDER CELLSPACING=0 COLS=1 WIDTH="100%" BGCOLOR="#FFFFCC" >
+<tr>
+<td>Movies Database:
+<br>Tables:&nbsp;
+<br>DIRECTOR (NUMBER, LNAME, FNAME, BORN, DIED)
+<br>MOVIE (NUMBER, TITLE, TYPE, AANOM, AAWON, YEAR, CRITICS, DIRECTOR)
+<br>STAR (LNAME, FNAME, NUMBER, BORN, DIED,CITY)
+<br>CUSTOMER (LNAME, FNAME, NUMBER, ADDRESS, RENTALS, BONUS, JDATE)
+<br>TAPE (CODE, MOVIE, PDATE, TIMES, CUSTOMER, HIREDATE)
+<br>STARS (MOVIE, STAR, ROLE)</td>
+</tr>
+</table>
+<b>Q26.</b> List full details of all movies.
+<br><b>Q27.</b> Produce a list of all movies, showing only the movie number,
+title and director number.
+<br><b>Q28.</b> What is the name of customer number 124?
+<br><b>Q29.</b> List the names of all directors born in or after 1920.
+<br><b>Q30.</b> List the titles and numbers of all movies that have won
+at least one Academy Award and have been made in or after 1988.
+<br><b>Q31.</b> List the titles of all comedies or dramas
+<br><b>Q32.</b> List the titles of all movies that have a critics rating.&nbsp;
+Note that the fact that a movie has not been rated is encoded in the database
+as 'NR'.
+<br><b>Q33.</b> Produce a list of customer names, numbers and bonuses,
+under the assumption that the BONUS attribute does not exists in the CUSTOMER
+table, but can be computed as one tenth of the RENTALS attribute.
+<br><b>Q34.</b> Produce a list of star numbers of all the stars that acted
+in the movie number 20.
+<br><b>Q35.</b> List the numbers and titles of all movies made between
+1990 and 1993.
+<br><b>Q36.</b> List the nubmers and titles of all movies whose type is
+COMEDY or DRAMA.
+<br><b>Q37.</b> For all customers who live in Ilam, list their number and
+name.
+<br><b>Q38.</b> Retrieve the names of all directors born during the 1950s.
+<br><b>Q39.</b> List the names of all directors who are still living.
+<br><b>Q40.</b> List the titles of all movies, arranged in descending order
+of the number of Academy Awards won.
+<br><b>Q41.</b> List the numbers, names, addresses and join dates of all
+members.&nbsp; Sort the output by last name descending and by first name
+ascending.
+<br><b>Q42.</b> How many movies won more than four Academy Awards.
+<br><b>Q43.</b> Find how many comedies there are and how many AA they won.
+<br><b>Q44.</b> Find the nubmer of movies in each category and the total
+of AA won in each of them.&nbsp; Show categories as well.
+<br><b>Q45.</b> For each director, list the director's number and the total
+number of awards won by comedies he or she directed if the total is greater
+than 1.
+<br><b>Q46.</b> List the numbers and names of all members who have rented
+more tapes than average.
+<br><b>Q47.</b> List the titles of all movies directed by Stanley Kubrick.
+<br><b>Q48.</b> Retrieve the titles of all movies directed by Stanley Kubrick.
+<br><b>Q49.</b> Select all combinations of movie titles and tape codes.
+<br><b>Q50.</b> List the names and addresses of all customers currently
+renting Mel Brooks' movies.
+<br><b>Q51.</b> Find the nubmers and names of all directors who have directed
+at least one comedy.
+<br><b>Q52.</b> List the names and numbers of all members. For those of
+them who are currently renting tapes, list the total number of tapes.
+<br><b>Q53.</b> List the movie number and title for all movies that were
+nominated for more Academy Awards than any movie directed by Woody Allen.
+<br><b>Q54.</b> Find the list of any pairs of stars who have the same first
+name.
+<br><b>Q55.</b> List the tape numbers of all tapes that have been rented
+at least 10 times.
+<br><b>Q56.</b> List the numbers, names and ages of all movie stars who
+are deceased.
+<br><b>Q57.</b> Find the number and name of the youngest director who has
+directed at least one comedy.
+<br><b>Q58.</b> For all directors who made more than 5 movies, list their
+number, names and thetotal number of movies.
+<br><b>••••-</b>
+<br><b>Q60.</b> Show the number of movies of each type made in 1980.
+<br><b>Q61.</b> Find the name of the director who have directed the most
+movies. Show the number of movies as well.
+<br><b>Q62.</b> Show types of movies for which there are more than 5 movies
+in the database. Order the results by decreasing number of movies.&nbsp;
+The number of movies in each category should be shown as a column names
+NO.
+<br><b>Q63.</b> Find the name of the star who played Vronsky in the movie
+entitled 'Anna Karenina'.
+<br><b>Q64.</b> Find the names of all directors who directed at least as
+many movies as the director number 0015.
+<br>&nbsp;
+<table BORDER CELLSPACING=0 COLS=1 WIDTH="100%" BGCOLOR="#FFFFCC" >
+<tr>
+<td>Registration Database:
+<br>Tables:&nbsp;
+<br>VEHICLE_TYPE (make, model, power, no_pass, cap, cc)
+<br>VEHICLE (plates, year, eng_no, ch_no, type, make, model)
+<br>EMPLOYEE (fname, init, lname, IRD, sex, bdate, office, reg_org, sdate)
+<br>OWNER (dr_lic, IRD, fname, init, lname, address, bdate, sex, emp, phone)
+<br>OWNS (plates, ownerid, date,drr)
+<br>COLOR (plates, color)
+<br>REG_ORG (number, street, st_num. city, manager)
+<br>FIRST_REG (plates, emp, reg_org, reg_date, country, status, drr, amount)
+<br>REGISTRATION (PLATES, emp, reg_org, reg_date, amount)</td>
+</tr>
+</table>
+<b>Q59.</b> List full details of all vehicles.
+<br><b>Q65.</b> Get names and addresses of all owners from Christchurch
+who registered their vehicles during March 1996
+<br><b>Q66.</b> Get the list of vehicles imported from japan since 1985
+which had less than 3 owners in New Zealand, listing their plates, makes
+nad models.
+<br><b>Q67.</b> Find how much money was collected in the organization 1352
+on February 1997 for registration of private cars.
+<br>
+<hr SIZE=1 NOSHADE WIDTH="100%">
+<br><b>A1.</b>
+<br>SELECT * FROM EMPLOYEE
+<br>••••••••••••••••••••
+<br><b>A2.</b>
+<br>SELECT BDATE, ADDRESS
+<br>FROM EMPLOYEE
+<br>WHERE LNAME='Smith' AND FNAME='John'
+<br>••••••••••••••••••••
+<br><b>A3.</b>
+<br>SELECT LNAME, FNAME, ADDRESS
+<br>FROM EMPLOYEE, DEPARTMENT
+<br>WHERE DNAME='Research' AND DNUMBER=DNO
+<br>••••••••••••••••••••
+<br><b>A4.</b>
+<br>SELECT PNUMBER, DNUM, LNAME, BDATE, ADDRESS
+<br>FROM PROJECT, DEPARTMENT, EMPLOYEE
+<br>WHERE DNUMBER=DNUM AND MGR=IRD AND PLOCATION='Stafford'
+<br>••••••••••••••••••••
+<br><b>A5.</b>
+<br>SELECT E.FNAME, E.LNAME, S.FNAME, S.LNAME
+<br>FROM EMPLOYEE E, EMPLOYEE S
+<br>WHERE E.SUPERVISOR=S.IRD
+<br>••••••••••••••••••••
+<br><b>A6.</b>
+<br>SELECT IRD
+<br>FROM EMPLOYEE
+<br>••••••••••••••••••••
+<br><b>A7.</b>
+<br>SELECT IRD, DNAME
+<br>FROM EMPLOYEE, DEPARTMENT
+<br>••••••••••••••••••••
+<br><b>A8.</b>
+<br>SELECT *
+<br>FROM EMPLOYEE
+<br>WHERE DNO=5
+<br>••••••••••••••••••••
+<br><b>A9.</b>
+<br>SELECT SALARY
+<br>FROM EMPLOYEE
+<br>••••••••••••••••••••
+<br><b>A10.</b>
+<br>SELECT DISTINCT EIRD
+<br>FROM WORKS_ON
+<br>WHERE PNO IN (1, 2, 3)
+<br>••••••••••••••••••••
+<br><b>A11.</b>
+<br>SELECT LNAME, FNAME
+<br>FROM EMPLOYEE
+<br>WHERE SALARY > ALL (SELECT SALARY FROM EMPLOYEE WHERE DNO=5)
+<br>••••••••••••••••••••
+<br><b>A12.</b>
+<br>SELECT E.LNAME, E.FNAME
+<br>FROM EMPLOYEE E
+<br>WHERE <b>EXISTS</b> (SELECT * FROM DEPENDENT WHERE E.IRD=EIRD AND SEX=E.SEX
+AND E.FNAME=DEPENDENT_NAME)
+<br>••••••••••••••••••••
+<br><b>A13.</b>
+<br>SELECT LNAME, FNAME
+<br>FROM EMPLOYEE
+<br>WHERE <b>NOT EXISTS</b> (SELECT * FROM DEPENDENT WHERE IRD=EIRD)
+<br>••••••••••••••••••••
+<br><b>A14.</b>
+<br>SELECT LNAME, FNAME
+<br>FROM EMPLOYEE
+<br>WHERE SUPERVISOR IS NULL
+<br>••••••••••••••••••••
+<br><b>A15.</b>
+<br>SELECT LNAME, FNAME
+<br>FROM EMPLOYEE
+<br>WHERE SALARY BETWEEN 30000 AND 50000
+<br>••••••••••••••••••••
+<br><b>A16.</b>
+<br>SELECT&nbsp; LNAME, FNAME
+<br>FROM EMPLOYEE
+<br>WHERE ADDRESS LIKE '%Houston,TX%'
+<br>••••••••••••••••••••
+<br><b>A17.</b>
+<br>SELECT&nbsp; LNAME, FNAME
+<br>FROM EMPLOYEE
+<br>WHERE BDATE LIKE '__5_______'
+<br>••••••••••••••••••••
+<br><b>A18.</b>
+<br>SELECT E.LNAME AS EMPLOYEE_NAME, S.LNAME AS SUPERVISOR_NAME
+<br>FROM EMPLOYEE E, EMPLOYEE S
+<br>WHERE E.SUPERVISOR=S.IRD
+<br>••••••••••••••••••••
+<br><b>A19.</b>
+<br>SELECT LNAME, FNAME, 1.1*SALARY
+<br>FROM EMPLOYEE, WORKS_ON, PROJECT
+<br>WHERE IRD=EIRD AND PNO=PNUMBER AND PNAME='ProductX'
+<br>••••••••••••••••••••
+<br><b>A20.</b>
+<br>SELECT SUM(SALARY), MAX(SALARY), MIN(SALARY), AVG(SALARY)
+<br>FROM EMPLOYEE
+<br>••••••••••••••••••••
+<br><b>A21.</b>
+<br>SELECT COUNT(*)
+<br>FROM EMPLOYEE, DEPARTMENT
+<br>WHERE DNAME='Research' AND DNO=DNUMBER
+<br>••••••••••••••••••••
+<br><b>A22.</b>
+<br>SELECT LNAME, FNAME
+<br>FROM EMPLOYEE
+<br>WHERE 2 &lt; (SELECT COUNT(*) FROM DEPENDENT WHERE IRD=EIRD)
+<br>••••••••••••••••••••
+<br><b>A23.</b>
+<br>SELECT DNO, COUNT(*), AVG(SALARY)
+<br>FROM EMPLOYEE
+<br>GROUP BY DNO
+<br>••••••••••••••••••••
+<br><b>A24.</b>
+<br>SELECT PNUMBER, PNAME, COUNT(*)
+<br>FROM PROJECT, WORKS_ON
+<br>WHERE PNO=PNUMBER
+<br>GROUP BY PNUMBER, PNAMEHAVING COUNT(*)>2
+<br>••••••••••••••••••••
+<br><b>A25.</b>
+<br>SELECT DNAME, LNAME, FNAME, PNAME
+<br>FROM DEPARTMENT, EMPLOYEE, WORKS_ON, PROJECT
+<br>WHERE DNUMBER=DNO AND IRD=EIRD AND PNO=PNUMBER
+<br>ORDER BY DNAME DESC, LNAME, FNAME
+<br>••••••••••••••••••••
+<br><b>A26.</b>
+<br>SELECT *
+<br>FROM movie
+<br>••••••••••••••••••••
+<br><b>A27.</b>
+<br>SELECT NUMBER,TITLE,DIRECTOR
+<br>FROM MOVIE
+<br>••••••••••••••••••••
+<br><b>A28.</b>
+<br>SELECT LNAME,FNAME
+<br>FROM CUSTOMER
+<br>WHERE NUMBER=124
+<br>••••••••••••••••••••
+<br><b>A29.</b>
+<br>SELECT LNAME,FNAME
+<br>FROM DIRECTOR
+<br>WHERE BORN>=1920
+<br>••••••••••••••••••••
+<br><b>A30.</b>
+<br>SELECT NUMBER,TITLE
+<br>FROM MOVIE
+<br>WHERE AAWON>=1 AND YEAR>=1988
+<br>••••••••••••••••••••
+<br><b>A31.</b>
+<br>SELECT TITLE
+<br>FROM MOVIE
+<br>WHERE TYPE='comedy' OR TYPE='drama'
+<br>••••••••••••••••••••
+<br><b>A32.</b>
+<br>SELECT TITLE
+<br>FROM MOVIE
+<br>WHERE NOT(CRITICS='NR')
+<br>••••••••••••••••••••
+<br><b>A33.</b>
+<br>SELECT LNAME,FNAME,NUMBER,<b><u>RENTALS/10 AS BONUS</u></b>
+<br>FROM CUSTOMER
+<br>••••••••••••••••••••
+<br><b>A34.</b>
+<br>SELECT DISTINCT STAR
+<br>FROM STARS
+<br>WHERE MOVIE=20
+<br>••••••••••••••••••••
+<br><b>A35.</b>
+<br>SELECT TITLE,NUMBER
+<br>FROM MOVIE
+<br>WHERE YEAR BETWEEN 1990 AND 1993
+<br>••••••••••••••••••••
+<br><b>A36.</b>
+<br>SELECT NUMBER,TITLE
+<br>FROM MOVIE
+<br>WHERE TYPE IN ('comedy','drama')
+<br>••••••••••••••••••••
+<br><b>A37.</b>
+<br>SELECT LNAME,FNAME,NUMBER
+<br>FROM CUSTOMER
+<br>WHERE ADDRESS LIKE '%Ilam%'
+<br>••••••••••••••••••••
+<br><b>A38.</b>
+<br>SELECT LNAME,FNAME
+<br>FROM DIRECTOR
+<br>WHERE BORN BETWEEN 1950 AND 1959
+<br>••••••••••••••••••••
+<br><b>A39.</b>
+<br>SELECT LNAME, FNAME
+<br>FROM DIRECTOR
+<br>WHERE DIED IS NULL
+<br>••••••••••••••••••••
+<br><b>A40.</b>
+<br>SELECT TITLE,AAWON
+<br>FROM MOVIE
+<br>ORDER BY AAWON DESC
+<br>••••••••••••••••••••
+<br><b>A41.</b>
+<br>SELECT NUMBER,LNAME,FNAME,ADDRESS,JDATE
+<br>FROM CUSTOMER
+<br>ORDER BY LNAME DESC, FNAME ASC
+<br>••••••••••••••••••••
+<br><b>A42.</b>
+<br>SELECT COUNT(*)
+<br>FROM MOVIE
+<br>WHERE AAWON>4
+<br>••••••••••••••••••••
+<br><b>A43.</b>
+<br>SELECT COUNT(*), SUM(AAWON)
+<br>FROM MOVIE
+<br>WHERE TYPE='comedy'
+<br>••••••••••••••••••••
+<br><b>A44.</b>
+<br>SELECT COUNT(*) AS COUNT, SUM(AAWON) AS SUM, TYPE
+<br>FROM MOVIE
+<br>GROUP BY TYPE
+<br>••••••••••••••••••••
+<br><b>A45.</b>
+<br>SELECT DIRECTOR,SUM(AAWON)
+<br>FROM MOVIE
+<br>WHERE TYPE='comedy'
+<br>GROUP BY DIRECTOR
+<br>HAVING SUM(AAWON)>1
+<br>••••••••••••••••••••
+<br><b>A46.</b>
+<br>SELECT NUMBER,FNAME,LNAME
+<br>FROM CUSTOMER
+<br>WHERE RENTALS > (SELECT AVG(RENTALS) FROM CUSTOMER)
+<br>••••••••••••••••••••
+<br><b>A47.</b>
+<br>SELECT TITLE
+<br>FROM MOVIE
+<br>WHERE DIRECTOR=(SELECT NUMBER FROM DIRECTOR WHERE FNAME='Stanley' AND
+LNAME='Kubrick')
+<br>••••••••••••••••••••
+<br><b>A48.</b>
+<br>SELECT
+<br>••••••••••••••••••••
+<br><b>A49.</b>
+<br>SELECT TITLE,CODE
+<br>FROM MOVIE,TAPE
+<br>••••••••••••••••••••
+<br><b>A50.</b>
+<br>SELECT C.LNAME,C.FNAME,ADDRESS
+<br>FROM CUSTOMER C, STAR S, STARS, TAPE
+<br>WHERE S.LNAME='Brooks' AND S.FNAME='Mel' AND S.NUMBER=STARS.STAR AND
+STARS.MOVIE=TAPE.MOVIE AND CUSTOMER=C.NUMBER
+<br>••••••••••••••••••••
+<br><b>A51.</b>
+<br>SELECT DIRECTOR.NUMBER,LNAME,FNAME
+<br>FROM DIRECTOR,MOVIE
+<br>WHERE TYPE='comedy' AND MOVIE.DIRECTOR=DIRECTOR.NUMBER
+<br>••••••••••••••••••••
+<br><b>A52.</b>
+<br>SELECT NUMBER,LNAME,FNAME,COUNT(*) AS NO
+<br>FROM CUSTOMER LEFT JOIN TAPE ON CUSTOMER.NUMBER=CUSTOMER
+<br>GROUP BY NUMBER,LNAME,FNAME
+<br>••••••••••••••••••••
+<br><b>A53.</b>
+<br>SELECT NUMBER,TITLE
+<br>FROM MOVIE
+<br>WHERE AANOM > ALL (SELECT AANOM FROM MOVIE,DIRECTOR WHERE DIRECTOR=DIRECTOR.NUMBER
+AND LNAME='Allen' AND FNAME='Woody')
+<br>••••••••••••••••••••
+<br><b>A54.</b>
+<br>SELECT S1.FNAME,S1.LNAME,S2.LNAME
+<br>FROM STAR S1, STAR S2
+<br>WHERE S1.FNAME=S2.FNAME AND S1.LNAME&lt;>S2.LNAME
+<br>••••••••••••••••••••
+<br><b>A55.</b>
+<br>SELECT CODE
+<br>FROM TAPE
+<br>WHERE TIMES>=10
+<br>••••••••••••••••••••
+<br><b>A56.</b>
+<br>SELECT NUMBER, FNAME, LNAME, DIED-BORN
+<br>FROM STAR
+<br>WHERE DIED IS NOT NULL AND BORN IS NOT NULL
+<br>••••••••••••••••••••
+<br><b>A57.</b>
+<br>SELECT DIRECTOR.NUMBER, FNAME, LNAME
+<br>FROM DIRECTOR JOIN MOVIE ON DIRECTOR.NUMBER=MOVIE.DIRECTOR
+<br>WHERE TYPE='comedy' AND BORN >= ALL(SELECT BORN FROM DIRECTOR,MOVIE
+WHERE TYPE='comedy' AND DIRECTOR.NUMBER = DIRECTOR)
+<br>••••••••••••••••••••
+<br><b>A58.</b>
+<br>SELECT DIRECTOR.NUMBER,FNAME,LNAME,COUNT(*)
+<br>FROM MOVIE JOIN DIRECTOR ON DIRECTOR=DIRECTOR.NUMBER
+<br>GROUP BY DIRECTOR.NUMBER,LNAME,FNAME
+<br>HAVING COUNT(*)>5
+<br>••••••••••••••••••••
+<br><b>A59.</b>
+<br>SELECT *
+<br>FROM VEHICLE
+<br>••••••••••••••••••••
+<br><b>A60.</b>
+<br>SELECT type,count(*)
+<br>FROM movie
+<br>WHERE year=1980
+<br>GROUP BY type
+<br>••••••••••••••••••••
+<br><b>A61.</b>
+<br>SELECT lname,fname,count(*)
+<br>FROM director join movie on director=director.number
+<br>GROUP BY lname,fname
+<br>HAVING count(*) >= all (select count(*) from director,movie where director=director.number
+group by director)
+<br>••••••••••••••••••••
+<br><b>A62.</b>
+<br>SELECT TYPE, COUNT(*) as NO
+<br>FROM MOVIE
+<br>GROUP BY TYPE
+<br>HAVING COUNT(*)>5
+<br>ORDER BY NO DESC
+<br>••••••••••••••••••••
+<br><b>A63.</b>
+<br>SELECT LNAME,FNAME
+<br>FROM MOVIE,STAR,STARS
+<br>WHERE ROLE='Vronsky'
+<br>&nbsp; AND TITLE='Anna Karenina'
+<br>&nbsp; AND STAR.NUMBER=STARS.STAR
+<br>&nbsp; AND MOVIE.NUMBER=STARS.MOVIE
+<br>••••••••••••••••••••
+<br><b>A64.</b>
+<br>SELECT LNAME,FNAME
+<br>FROM DIRECTOR JOIN MOVIE ON DIRECTOR.NUMBER=DIRECTOR
+<br>GROUP BY DIRECTOR.NUMBER,LNAME,FNAMEHAVING COUNT(*)>=(SELECT COUNT(*)
+FROM MOVIE WHERE DIRECTOR=0015)
+<br>••••••••••••••••••••
+<br><b>A65.</b>
+<br>SELECT FNAME,INIT,LNAME,ADDRESS
+<br>FROM REGISTRATION,OWNER,OWNS
+<br>WHERE OWNERID=DR_LIC
+<br>&nbsp;&nbsp; AND OWNS.PLATES=REGISTRATION.PLATES
+<br>&nbsp;&nbsp; AND REG_DATE BETWEEN DATE('01/03/1996') AND DATE('31/03/1996')
+<br>&nbsp;&nbsp; AND ADDRESS LIKE '%Christchurch%'
+<br>••••••••••••••••••••
+<br><b>A66.</b>
+<br>SELECT VEHICLE.PLATES, MAKE, MODEL
+<br>FROM VEHICLE, REGISTRATION
+<br>WHERE COUNTRY='Japan'
+<br>&nbsp; AND REG_DATE>DATE('01/01/1985')
+<br>&nbsp; AND VEHICLE.PLATES=REGISTRATION.PLATES
+<br>&nbsp; AND 3>(SELECT COUNT(*) FROM OWNS WHERE VEHICLE.PLATES=OWNS.PLATES)
+<br>••••••••••••••••••••
+<br><b>A67.</b>
+<br>SELECT SUM(AMOUNT)
+<br>FROM REGISTRATION, VEHICLE
+<br>WHERE REG_ORG=1352
+<br>&nbsp; AND REG_DATE=DATE('15/02/1997')
+<br>&nbsp; AND TYPE='p'
+<br>&nbsp; AND REGISTRATION.PLATES=VEHICLE.PLATES
+<br>••••••••••••••••••••
+<br>&nbsp;
+</body>
+</html>

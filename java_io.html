@@ -1,0 +1,681 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>java_io.html</title>
+<!--
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Java input / Output</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Java Input / Output</font></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=15 >
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">• </font><a href="#intro">intro</a>
+<br><font color="#6699CC">• </font><a href="#cat">cat</a>
+<br><font color="#6699CC">• </font><a href="#copy_in">copy_in</a>
+<br><font color="#6699CC">• </font><a href="#copy_bin">copy_bin</a></td>
+
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">• </font><a href="#copytext_test">copytext_test</a>
+<br><font color="#6699CC">• </font><a href="#copytext">copytext</a>
+<br><font color="#6699CC">• </font><a href="#tree">tree</a>
+<br><font color="#6699CC">• </font><a href="#unicode">unicode</a></td>
+
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">• </font><a href="#string_ex">string_ex</a>
+<br><font color="#6699CC">• </font><a href="#string_out">string_out</a>
+<br><font color="#6699CC">• </font><a href="#socket_client_server">socket
+client server</a>
+<br><font color="#6699CC">• </font><a href="#run_external_programs_from_java">run
+external programs</a></td>
+</tr>
+</table>
+<a NAME="intro"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>intro</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b>File:</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#CCFFFF" >
+<tr>
+<td>File a = new File("C:\\mydir");
+<br>File[] grp = a.listFiles( filter );&nbsp;&nbsp; <font color="#009900">//
+filter is an object implementing the FileNameFilter interface</font>
+<br>String[] names = a.list( filter);
+<p>if (a.exists( )) { }
+<br>if (a.isDirectory( )) { }
+<br>if (a.isFile( )) { }
+<p>Other methods:&nbsp; exists( ), isDirectory( ), isFile( ), canRead(
+),&nbsp; canWrite( ),&nbsp; long length( ),&nbsp; long lastModified( ),&nbsp;
+delete( ),&nbsp; createNewFile( )</td>
+</tr>
+</table>
+
+<p><b>InputStream</b> &amp; <b>OutputStream</b> - abstract classes
+<p><b>FileInputStream</b>, <b>FileOutputStream</b> - open file as a single-byte
+stream for reading/writing
+<br>ByteArrayInputStream, ByteArrayOutputStream - same, but you can read/write
+array of bytes.
+<p><u>Stream filters:</u>
+<br>&nbsp; <b>DataInputStream</b> &amp; <b>DataOutputStream</b> - bytes
+to double
+<br>&nbsp; BufferedInputStream &amp; Buffered OutputStream
+<br>&nbsp;&nbsp;&nbsp; PushbackInputStream
+<p><b>PrintStream</b> class - traps all IOExceptions.
+<br>&nbsp; Use PrintWriter instead
+<p><u>Interfaces DataOuput &amp; DataInput:</u>
+<br>&nbsp;&nbsp; specify methods&nbsp; void writeUTF(String s)&nbsp;&nbsp;
+&amp;&nbsp;&nbsp;&nbsp; String readUTF( ).
+<br>&nbsp;&nbsp; provide methods for reading/writing all of the java primitive
+types&nbsp; (big-endian - most significant byte is written first - which
+opposite of what DOS/Windows is doing)
+<p><u>Reader &amp; Writer - for reading chars, support locale:</u>
+<br>BufferedReader,&nbsp;&nbsp; BufferedWriter
+<br>CharArrayReader,&nbsp; CharArrayWriter
+<br>FileReader , FileWriter ( = InputStreamReader + FileInputStream&nbsp;
+,&nbsp; = OutputStreamWriter + FileOutputStream ).
+<br>InputStreamReader, OutputStreamWriter&nbsp; (bridge between byte and
+char streams)
+<br>PrintWriter - Writer-derived analog to PrintStream class
+<br>LineNubmerReader - counts lines as it reads a stream
+<p>RandomAccessFile (File f, String mode);&nbsp;&nbsp; //&nbsp; mode =
+'r'&nbsp; or 'rw';
+<br>RandomAccessFile (String fname, String mode);
+<p>URL myurl = new URL (getDocumentBase(), "mydata.bin");
+<br>InputStream ins = myurl.openStream();
+<p><a NAME="cat"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>cat</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#009900">/**</font>
+<br><font color="#009900">*&nbsp; read the file and output it on the console
+line-by-line</font>
+<br><font color="#009900">*/</font>
+<br><font color="#3333FF">import java.io.*;</font>
+<p><font color="#3333FF">public class cat {</font>
+<br><font color="#3333FF">&nbsp;public static void main(String [] args)
+{</font>
+<br><font color="#3333FF">&nbsp; String thisLine;</font>
+<br><font color="#3333FF">&nbsp; for(int i=0; i&lt;args.length;i++) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp; try {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; BufferedReader br = new BufferedReader(new
+FileReader(args[i]));</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; while ((thisLine = br.readLine())
+!= null) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(thisLine);</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; } // end while</font>
+<br><font color="#3333FF">&nbsp;&nbsp; } // end try</font>
+<br><font color="#3333FF">&nbsp;&nbsp; catch (IOException e) {System.err.println("Error:
+" + e);}</font>
+<br><font color="#3333FF">&nbsp; } // end for</font>
+<br><font color="#3333FF">&nbsp;} // end main</font>
+<br><font color="#3333FF">}</font>
+<br><a NAME="copy_in"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>copy_in</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#009900">/**</font>
+<br><font color="#009900">*&nbsp; console utility to read lines from STDIN</font>
+<br><font color="#009900">*&nbsp; and echo them back to the console</font>
+<br><font color="#009900">*/</font>
+<p><font color="#3333FF">import java.io.*;</font>
+<p><font color="#3333FF">public class copy_in {</font>
+<p><font color="#3333FF">&nbsp;public static void main(String [] args)
+{</font>
+<br><font color="#3333FF">&nbsp; String ss;</font>
+<br><font color="#3333FF">&nbsp; while(true) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp; ss = getLine();</font>
+<br><font color="#3333FF">&nbsp;&nbsp; ss = ss.trim();</font>
+<br><font color="#3333FF">&nbsp;&nbsp; if (ss.charAt(0) == 'q') System.exit(0);</font>
+<br><font color="#3333FF">&nbsp;&nbsp; System.out.println(ss);</font>
+<br><font color="#3333FF">&nbsp; }</font>
+<br><font color="#3333FF">&nbsp;} // end main</font>
+<br>&nbsp;
+<p><font color="#3333FF">&nbsp;/**</font>
+<br><font color="#3333FF">&nbsp;* reads a line from STDIN</font>
+<br><font color="#3333FF">&nbsp;&nbsp; */</font>
+<br><font color="#3333FF">&nbsp;public static String getLine () {</font>
+<br><font color="#3333FF">&nbsp; StringBuffer buf = new StringBuffer(80);</font>
+<br><font color="#3333FF">&nbsp; int c;</font>
+<br><font color="#3333FF">&nbsp; try {</font>
+<br><font color="#3333FF">&nbsp;&nbsp; while ((c = System.in.read()) !=
+-1) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; char ch = (char) c;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; if (ch == '\n') break;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; buf.append(ch);</font>
+<br><font color="#3333FF">&nbsp;&nbsp; }</font>
+<br><font color="#3333FF">&nbsp; }</font>
+<br><font color="#3333FF">&nbsp; catch (IOException e) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp; System.err.println(e);</font>
+<br><font color="#3333FF">&nbsp; }</font>
+<br><font color="#3333FF">&nbsp; return (buf.toString());</font>
+<br><font color="#3333FF">&nbsp;}</font>
+<p><font color="#3333FF">}</font>
+<br><a NAME="copy_bin"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>copy_bin</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#009900">/**</font>
+<br><font color="#009900">&nbsp; binary copy utility</font>
+<br><font color="#009900">&nbsp; usage: java copybin &lt;file_from> &lt;file_to></font>
+<br><font color="#009900">*/</font>
+<p><font color="#3333FF">import java.io.*;</font>
+<p><font color="#3333FF">public class copybin {</font>
+<p><font color="#3333FF">&nbsp;public static void main(String [] args)
+{</font>
+<br><font color="#3333FF">&nbsp; if (args.length != 2) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp; System.err.println("usage: java
+copybin infile outfile");</font>
+<br><font color="#3333FF">&nbsp;&nbsp; System.out.println("Exiting.");</font>
+<br><font color="#3333FF">&nbsp;&nbsp; System.exit(0);</font>
+<br><font color="#3333FF">&nbsp; }</font>
+<br><font color="#3333FF">&nbsp; try { copy(args[0], args[1]); }</font>
+<br><font color="#3333FF">&nbsp; catch (IOException e) {System.err.println("Error:
+" + e); }</font>
+<br><font color="#3333FF">&nbsp;}</font>
+<p><font color="#3333FF">&nbsp;public static void copy(String inFile, String
+outFile)</font>
+<br><font color="#3333FF">&nbsp; throws IOException {</font>
+<br><font color="#3333FF">&nbsp;&nbsp; FileInputStream in = null;</font>
+<br><font color="#3333FF">&nbsp;&nbsp; FileOutputStream out = null;</font>
+<br><font color="#3333FF">&nbsp; try {</font>
+<br><font color="#3333FF">&nbsp;&nbsp; in = new FileInputStream(inFile);</font>
+<br><font color="#3333FF">&nbsp;&nbsp; out = new FileOutputStream(outFile);</font>
+<br><font color="#3333FF">&nbsp;&nbsp; byte[]buffer = new byte[256];</font>
+<br><font color="#3333FF">&nbsp;&nbsp; while (true) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; int bytesRead = in.read(buffer);</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; if (bytesRead == -1) break;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; out.write(buffer, 0, bytesRead);</font>
+<br><font color="#3333FF">&nbsp;&nbsp; }</font>
+<br><font color="#3333FF">&nbsp; }</font>
+<br><font color="#3333FF">&nbsp; catch (IOException e) {}</font>
+<br><font color="#3333FF">&nbsp; finally {</font>
+<br><font color="#3333FF">&nbsp;&nbsp; try { if (in != null) in.close();
+} catch (IOException e) {}</font>
+<br><font color="#3333FF">&nbsp;&nbsp; try { if (out != null) out.close();
+} catch (IOException e) {}</font>
+<br><font color="#3333FF">&nbsp; }</font>
+<br><font color="#3333FF">&nbsp;} // copy</font>
+<p><font color="#3333FF">}</font>
+<br><a NAME="copytext_test"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>copytext_test</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#009900">/**</font>
+<br><font color="#009900">&nbsp; text copy (file names are hard coded)</font>
+<br><font color="#009900">*/</font>
+<br><font color="#3333FF">import java.io.*;</font>
+<p><font color="#3333FF">public class copytext_test {</font>
+<br><font color="#3333FF">&nbsp; public static void main(String[] args)
+{</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; try {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; File fout = new
+File("out.txt");</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PrintWriter out
+= new PrintWriter(new FileWriter(fout));</font>
+<p><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BufferedReader
+in = new BufferedReader(new FileReader("in.txt"));</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String line;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while((line=in.readLine())
+!= null) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; out.println(line);</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(line);</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in.close();</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; out.close();</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; } catch (IOException e) {}</font>
+<br><font color="#3333FF">&nbsp; }</font>
+<br><font color="#3333FF">}</font>
+<br><a NAME="copytext"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>copytext</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#009900">/**</font>
+<br><font color="#009900">&nbsp; text copy utility</font>
+<br><font color="#009900">&nbsp; usage: java copytext &lt;file_from> &lt;file_to></font>
+<br><font color="#009900">*/</font>
+<p><font color="#3333FF">import java.io.*;</font>
+<p><font color="#3333FF">public class copytext {</font>
+<p><font color="#3333FF">&nbsp;public static void main(String [] args)
+{</font>
+<p><font color="#3333FF">&nbsp; if (args.length != 2) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp; System.out.println("usage java filecopy
+&lt;file_from> &lt;file_to>");</font>
+<br><font color="#3333FF">&nbsp;&nbsp; System.out.println("Exiting.");</font>
+<br><font color="#3333FF">&nbsp;&nbsp; System.exit(0);</font>
+<br><font color="#3333FF">&nbsp; }</font>
+<p><font color="#3333FF">&nbsp; String line;</font>
+<br><font color="#3333FF">&nbsp; try {</font>
+<br><font color="#3333FF">&nbsp;&nbsp; BufferedReader in = new BufferedReader(new
+FileReader(args[0]));</font>
+<br><font color="#3333FF">&nbsp;&nbsp; PrintWriter out = new PrintWriter(new
+FileWriter(args[1]));</font>
+<br><font color="#3333FF">&nbsp;&nbsp; while ((line = in.readLine()) !=
+null) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; out.println(line);</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(line);</font>
+<br><font color="#3333FF">&nbsp;&nbsp; } // end while</font>
+<br><font color="#3333FF">&nbsp;&nbsp; in.close();</font>
+<br><font color="#3333FF">&nbsp;&nbsp; out.close();</font>
+<br><font color="#3333FF">&nbsp; } // end try</font>
+<br><font color="#3333FF">&nbsp; catch (IOException e) {System.err.println("Error:
+" + e);}</font>
+<br><font color="#3333FF">&nbsp;} // end main</font>
+<br><font color="#3333FF">}</font>
+<p><a NAME="tree"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>tree</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#3333FF">import java.awt.*;</font>
+<br><font color="#3333FF">import java.io.File;</font>
+<p><font color="#3333FF">public class tree extends Frame {</font>
+<br><font color="#3333FF">&nbsp;TextArea ta;</font>
+<p><font color="#3333FF">&nbsp;public static void main(String [] args)
+{</font>
+<br><font color="#3333FF">&nbsp; String path = ".";</font>
+<br><font color="#3333FF">&nbsp; if(args.length>=1) path=args[0];</font>
+<p><font color="#3333FF">&nbsp; File f = new File(path);</font>
+<br><font color="#3333FF">&nbsp; if (! f.isDirectory()) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp; System.out.println("Doesn't exists
+or not dir " + path);</font>
+<br><font color="#3333FF">&nbsp;&nbsp; System.exit(0);</font>
+<br><font color="#3333FF">&nbsp; }</font>
+<p><font color="#3333FF">&nbsp; tree tr = new tree(f);</font>
+<br><font color="#3333FF">&nbsp; tr.setVisible(true);</font>
+<br><font color="#3333FF">&nbsp;} // main</font>
+<p><font color="#3333FF">&nbsp;tree(File f) {</font>
+<br><font color="#3333FF">&nbsp; setSize(300,450);</font>
+<br><font color="#3333FF">&nbsp; ta = new TextArea();</font>
+<br><font color="#3333FF">&nbsp; ta.setFont(new Font("Monospaced", Font.PLAIN,
+14));</font>
+<br><font color="#3333FF">&nbsp; add(ta, BorderLayout.CENTER);</font>
+<br><font color="#3333FF">&nbsp; recurse(f,0);</font>
+<br><font color="#3333FF">&nbsp;}</font>
+<p><font color="#3333FF">&nbsp;void recurse(File dirfile, int depth) {</font>
+<br><font color="#3333FF">&nbsp; String contents[] = dirfile.list();</font>
+<br><font color="#3333FF">&nbsp; for (int i=0; i&lt;contents.length; i++)
+{</font>
+<br><font color="#3333FF">&nbsp;&nbsp; for (int spaces=0; spaces&lt;depth;
+spaces++)</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; ta.append("-");</font>
+<br><font color="#3333FF">&nbsp;&nbsp; ta.append(contents[i] + "\n");</font>
+<br><font color="#3333FF">&nbsp;&nbsp; File child = new File(dirfile, contents[i]);</font>
+<br><font color="#3333FF">&nbsp;&nbsp; if (child.isDirectory()) recurse(child,
+depth+1);</font>
+<br><font color="#3333FF">&nbsp; }</font>
+<br><font color="#3333FF">&nbsp;}</font>
+<p><font color="#3333FF">}</font>
+<br><a NAME="unicode"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>unicode</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#3333FF">public class unicode {</font>
+<p><font color="#3333FF">&nbsp; public static void main(String [] args)
+{</font>
+<br><font color="#3333FF">&nbsp; char c = '\uAAAA';</font>
+<br><font color="#3333FF">&nbsp; Character cc = new Character(c);</font>
+<br><font color="#3333FF">&nbsp; int ii = cc.hashCode();</font>
+<br><font color="#3333FF">&nbsp; String hh = Integer.toHexString(ii);</font>
+<br><font color="#3333FF">&nbsp; System.out.println("ii = " + ii + "&nbsp;
+" + hh);</font>
+<br><font color="#3333FF">&nbsp; }</font>
+<p><font color="#3333FF">}</font>
+<p><a NAME="string_ex"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>string_ex</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#3333FF">public class string_ex{</font>
+<br><font color="#3333FF">&nbsp;public static&nbsp; void main(String arg[]){</font>
+<br><font color="#3333FF">&nbsp; String str = new String("num\u3804ro");</font>
+<br><font color="#3333FF">&nbsp;&nbsp; System.out.println(str);</font>
+<p><font color="#3333FF">&nbsp; try{</font>
+<br><font color="#3333FF">&nbsp;&nbsp; byte[] def = str.getBytes();</font>
+<br><font color="#3333FF">&nbsp;&nbsp; byte[] utf = str.getBytes("Unicode");</font>
+<p><font color="#3333FF">&nbsp;&nbsp; for (int i=0; i&lt;def.length; i++){</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; System.out.println("[" + i
++ "]:" + def[i]);</font>
+<br><font color="#3333FF">&nbsp;&nbsp; }</font>
+<br><font color="#3333FF">&nbsp;&nbsp; System.out.println("------");</font>
+<br><font color="#3333FF">&nbsp;&nbsp; for (int i=0; i &lt; utf.length;
+i++){</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; System.out.println("[" + i
++ "]:" + utf[i]);</font>
+<br><font color="#3333FF">&nbsp;&nbsp; }</font>
+<br><font color="#3333FF">&nbsp;&nbsp; System.out.println("------");</font>
+<p><font color="#3333FF">&nbsp;&nbsp; // Reconstruct strings</font>
+<br><font color="#3333FF">&nbsp;&nbsp; String defstr = new String(def);</font>
+<br><font color="#3333FF">&nbsp;&nbsp; String utfstr = new String(utf,
+"Unicode");</font>
+<br><font color="#3333FF">&nbsp;&nbsp; System.out.println("default: " +
+defstr);</font>
+<br><font color="#3333FF">&nbsp;&nbsp; System.out.println("utf8: " + utfstr);</font>
+<br><font color="#3333FF">&nbsp; }</font>
+<br><font color="#3333FF">&nbsp; catch(java.io.UnsupportedEncodingException
+e){</font>
+<br><font color="#3333FF">&nbsp;&nbsp; e.printStackTrace();</font>
+<br><font color="#3333FF">&nbsp; }</font>
+<br><font color="#3333FF">&nbsp;}</font>
+<br><font color="#3333FF">}</font>
+<br><a NAME="string_out"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>string_out</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#3333FF">import java.io.*;</font>
+<p><font color="#3333FF">public class string_out {</font>
+<br><font color="#3333FF">&nbsp; public static void main(String [] args)
+{</font>
+<br><font color="#3333FF">try{</font>
+<br><font color="#3333FF">&nbsp;String str = "ir\u0438na";</font>
+<br><font color="#3333FF">&nbsp;OutputStreamWriter out = new OutputStreamWriter(
+new FileOutputStream("irina"),"UnicodeBig");</font>
+<br><font color="#3333FF">&nbsp;out.write(str);</font>
+<br><font color="#3333FF">&nbsp;out.close();</font>
+<br><font color="#3333FF">}</font>
+<br><font color="#3333FF">catch (IOException e) {System.err.println("Error:
+" + e);}</font>
+<br><font color="#3333FF">&nbsp; }</font>
+<br><font color="#3333FF">}</font>
+<p><a NAME="socket_client_server"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>socket connection - client-server</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#000000">Read explanation here:</font>
+<br><font color="#6699CC">• </font><font color="#000000"><a href="http://java.sun.com/docs/books/tutorial/networking/sockets/clientServer.html">http://java.sun.com/docs/books/tutorial/networking/sockets/clientServer.html</a></font>
+<p><u><font color="#000000">Here is a digest:</font></u>
+<p><font color="#000000">Server: "Knock knock!"</font>
+<br><font color="#000000">Client: "Who's there?"</font>
+<br><font color="#000000">Server: "Dexter."</font>
+<br><font color="#000000">Client: "Dexter who?"</font>
+<br><font color="#000000">Server: "Dexter halls with boughs of holly."</font>
+<br><font color="#000000">Client: "Groan."</font>
+<p><font color="#3333FF">=========================================</font>
+<br><font color="#3333FF">server</font>
+<br><font color="#3333FF">=========================================</font>
+<br><font color="#3333FF">Socket clientSocket = null;</font>
+<br><font color="#3333FF">try {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; clientSocket = serverSocket.accept();</font>
+<br><font color="#3333FF">} catch (IOException e) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; System.out.println("Accept
+failed: 4444");</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; System.exit(-1);</font>
+<br><font color="#3333FF">}</font>
+<p><font color="#3333FF">PrintWriter out = new PrintWriter(clientSocket.getOutputStream(),
+true);</font>
+<br><font color="#3333FF">BufferedReader in = new BufferedReader(</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+new InputStreamReader(</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+clientSocket.getInputStream()));</font>
+<br><font color="#3333FF">String inputLine, outputLine;</font>
+<p><font color="#009900">// initiate conversation with client</font>
+<br><font color="#3333FF">KnockKnockProtocol kkp = new KnockKnockProtocol();</font>
+<br><font color="#3333FF">outputLine = kkp.processInput(null);</font>
+<br><font color="#3333FF">out.println(outputLine);</font>
+<p><font color="#3333FF">while ((inputLine = in.readLine()) != null)</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; outputLine = kkp.processInput(inputLine);</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; out.println(outputLine);</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; if outputLine.equals("Bye."))</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;</font>
+<br><font color="#3333FF">}</font>
+<p><font color="#3333FF">out.close();</font>
+<br><font color="#3333FF">in.close();</font>
+<br><font color="#3333FF">clientSocket.close();</font>
+<br><font color="#3333FF">serverSocket.close();</font>
+<br>&nbsp;
+<p><font color="#3333FF">=========================================</font>
+<br><font color="#3333FF">client:</font>
+<br><font color="#3333FF">=========================================</font>
+<br><font color="#3333FF">kkSocket = new Socket("taranis", 4444);</font>
+<br><font color="#3333FF">out = new PrintWriter(kkSocket.getOutputStream(),
+true);</font>
+<br><font color="#3333FF">in = new BufferedReader(new InputStreamReader(</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+kkSocket.getInputStream()));</font>
+<p><font color="#3333FF">while ((fromServer = in.readLine()) != null) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; System.out.println("Server:
+" + fromServer);</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; if (fromServer.equals("Bye."))</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; fromUser = stdIn.readLine();</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; if (fromUser != null) {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println("Client:
+" + fromUser);</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; out.println(fromUser);</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; }</font>
+<br><font color="#3333FF">}</font>
+<p><font color="#3333FF">out.close();</font>
+<br><font color="#3333FF">in.close();</font>
+<br><font color="#3333FF">stdIn.close();</font>
+<br><font color="#3333FF">kkSocket.close();</font>
+<p><font color="#3333FF">=========================================</font>
+<br><a NAME="run_external_programs_from_java"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>run external programs from java</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#3333FF">import java.io.*;</font><font color="#3333FF"></font>
+<p><font color="#3333FF">public class Test{</font><font color="#3333FF"></font>
+<p><font color="#3333FF">&nbsp; public static void main(String args[])
+{</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; System.out.println("start");</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; Process p = null;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; try {p=Runtime.getRuntime().exec("dir");}</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; catch (java.io.IOException
+e){};</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; try {p.waitFor();}</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; catch (InterruptedException
+inte){};</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; int stat = p.exitValue();</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; System.out.println("finish
+with exit code: " + stat);</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; System.out.println();</font>
+<br><font color="#3333FF"></font>&nbsp;<font color="#3333FF"></font>
+<p><font color="#3333FF">&nbsp;&nbsp;&nbsp; BufferedReader br = new BufferedReader(</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; new InputStreamReader(p.getInputStream())</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; );</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; StringBuffer sb = new StringBuffer();</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; String line;</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; try {</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while ((line =
+br.readLine()) != null)</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sb.append(line
++ "\r\n");</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; } catch (java.io.IOException
+e){};</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; System.out.println("output:");</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; System.out.println(sb.toString());</font>
+<br><font color="#3333FF">&nbsp; }</font><font color="#3333FF"></font>
+<p><font color="#3333FF">}</font>
+<br>&nbsp;
+<br>&nbsp;
+</body>
+</html>

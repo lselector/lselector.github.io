@@ -1,0 +1,157 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="KeyWords" content="Description">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>HTML::Template</title>
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Perl CGI::Application module</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Perl HTML::Template module</font></b>
+<br>- <a href="http://www.perldoc.com/cpan/HTML/Template.html">www.perldoc.com/cpan/HTML/Template.html</a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>intro</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>HTML::Template is one of ~ 30 template modules on CPAN. It really helps
+to cut difficulty of designing and maintaining of sophisticated corporate
+projects. It enforces an important divide - design and programming.
+<p>In web design there are 2 processes which are usually done by different
+groups of people:
+<br>&nbsp;&nbsp; - Design of server-side processing scripts - done by <b><font color="#CC0000">programmers</font></b>
+<br>&nbsp;&nbsp; - Design of HTML/Graphics front-end - done by <b><font color="#CC0000">designers</font></b>
+<p>There are 2 common approaches to bridge these 2 activites:
+<br>&nbsp; 1. Include <b><u><font color="#CC0000">html into script</font></u></b>.
+Print html from script. Problem - can't use WYSIWYG
+<br>&nbsp; 2. Include <b><u><font color="#CC0000">script into html</font></u></b>
+(A la ASP, PHP, JSP).
+<p>Both of those approaches create problems with maintenance.&nbsp; For
+example, if designer changed the look - programmer now have to manually
+update html embeded into script, or check and correct script embeded into
+html.
+<p>HTML::Template tries to <b><u><font color="#CC0000">decrease the friction
+between programmers and designers</font></u></b> by using templates - but
+minimizing code-related entries in HTML (or design-related parts in the
+code). Only few special tags are allowed to be inserted into html.
+<br>&nbsp; - Programmer uses very limited set of tags and CAN NOT embed
+actual programming code into html.
+<br>&nbsp; - Designer can use Dreamweaver or other WYSIWYG development
+tool or HTML validator - the embeded tags will stay intact. He is instructed
+to watch for those few tags - which is easy, because there are just few
+of them - and they are simple.
+<p>In practice with HTML::Template, a designer can frequently update templates
+with out the need for a programmer to debug the code.
+<p>There are only 5 types of tags:
+<p>1. &lt;<b><font color="#CC0000">TMPL_VAR</font></b> NAME="PARAMETER_NAME">
+<br>2. &lt;<b><font color="#CC0000">TMPL_LOOP</font></b> NAME="LOOP_NAME">
+&lt;/TMPL_LOOP>
+<br>3. &lt;<b><font color="#CC0000">TMPL_INCLUDE</font></b> NAME="filename.tmpl">
+<br>4. &lt;<b><font color="#CC0000">TMPL_IF NAME</font></b>="CONTROL_PARAMETER_NAME">
+&lt;/TMPL_IF>&nbsp; &lt;TMPL_ELSE>
+<br>5. &lt;<b><font color="#CC0000">TMPL_UNLESS</font></b> NAME="CONTROL_PARAMETER_NAME">
+&lt;/TMPL_UNLESS>
+<p>By limiting the programmer to just using simple variables and loops
+in the HTML, the template remains accessible to designers and other non-perl
+people.
+<br>The use of HTML-esque syntax goes further to make the format understandable
+to others.
+<p>Example, test.tmpl:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td>&nbsp; &lt;html>&lt;head>
+<br>&lt;title>Test Template&lt;/title>
+<br>&lt;head>&lt;body>
+<br>My Home Directory is
+<br>&lt;<b><font color="#CC0000">TMPL_VAR</font></b> NAME=HOME>
+<br>&lt;p>
+<br>My Path is set to
+<br>&lt;<b><font color="#CC0000">TMPL_VAR</font></b> NAME=PATH>
+<br>&lt;/body>&lt;html></td>
+</tr>
+</table>
+
+<p>Now create a small CGI program:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td>use HTML::Template;
+<br>my $template = HTML::Template->new(filename => 'test.tmpl');
+<br><font color="#006600">&nbsp; # fill in some parameters</font>
+<br>$template->param(
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HOME => $ENV{HOME},
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PATH => $ENV{PATH},
+<br>&nbsp; );
+<br>print "Content-Type: text/html\n\n";
+<br>print $template->output;</td>
+</tr>
+</table>
+
+</body>
+</html>

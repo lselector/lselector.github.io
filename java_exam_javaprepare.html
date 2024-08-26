@@ -1,0 +1,879 @@
+<HTML>
+<HEAD>
+<title>java prepare</title>
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</HEAD>
+<BODY>
+<H2>javaprepare.com - Sample test 1</H2>
+
+<P>
+The sample test is modelled on the Sun Certification for Java 2 Programmer exam. The test has 59 questions and needs to be executed in 2 hours. The real exam may be a little tougher than this. The sample test is still in beta. So please <a href="mailto:ngabrani@javaprepare.com"><a href="mailto:ngabrani@javaprepare.com">let me know</a> if you find any issues with the test.
+<P>
+
+<OL TYPE=1>
+<LI>Which of the following are correct definitions of method main of a class. Select all correct answeres. </LI>
+
+<OL TYPE=A>
+<LI>public static int main(char args[]);</LI>
+<LI>public static void main(String args[]);</LI>
+<LI>public static void MAIN(String args[]);</LI>
+<LI>public static void main(String args);</LI>
+<LI>public static void main(char args[]);</LI>
+</OL>
+ 
+<LI> What all gets printed when the following code is compiled and run ? Select all correct answers.</LI>
+<CODE>
+<PRE>
+<FONT COLOR = "red">
+public class xyz {
+   public static void main(String args[]) {
+      for(int i = 0; i < 2; i++) {
+         for(int j = 2; j>= 0; j•) {
+            if(i == j) break;
+            System.out.println("i=" + i + " j="+j);
+         }
+      }
+   }
+}
+</FONT>
+</PRE>
+</CODE>
+
+<OL TYPE=A>
+<LI>i=0 j=0</LI>
+<LI>i=0 j=1</LI>
+<LI>i=0 j=2</LI>
+<LI>i=1 j=0</LI>
+<LI>i=1 j=1</LI>
+<LI>i=1 j=2</LI>
+<LI>i=2 j=0</LI>
+<LI>i=2 j=1</LI>
+<LI>i=2 j=2</LI>
+
+</OL>
+
+
+<LI> What gets printed when the following code is compiled and run with the following arguments - <BR>
+java test 2 <BR>
+Select the one correct answer.<BR></LI>
+<CODE>
+<PRE>
+<FONT COLOR = "red">
+public class test {
+   public static void main(String args[]) { 
+      Integer intObj = Integer.valueOf(args[args.length - 1]);
+      int i = intObj.intValue();
+
+      if(args.length > 1) 
+         System.out.println(i);
+      if(args.length > 0)
+         System.out.println(i - 1);
+      else 
+         System.out.println(i - 2);
+   }
+}
+        
+</FONT>
+</PRE>
+</CODE>
+
+<OL TYPE=A>
+<LI>test</LI>
+<LI>test -1</LI>
+<LI>0</LI>
+<LI>1</LI>
+<LI>2</LI>
+</OL>
+
+
+<LI> In Java what expression can be used to represent number of elements in an array named arr ?</LI>
+
+<LI> How would the number 5 be represented in hex using upto four characters. </LI>
+
+<LI> Which of the following is a Java keyword. Select all correct answers. </LI>
+<OL TYPE=A>
+<LI>extern</LI>
+<LI>synchronized</LI>
+<LI>volatile</LI>
+<LI>friend</LI>
+<LI>friendly</LI>
+<LI>transient</LI>
+<LI>this</LI>
+<LI>then</LI>
+</OL>
+
+<LI> Is the following statement true or false. The constructor of a class must not have a return type. </LI>
+<OL TYPE=A>
+<LI>true</LI>
+<LI>false</LI>
+</OL>
+
+
+<LI> What is the number of bytes used by Java primitive long. Select the one correct answer. </LI>
+<OL TYPE=A>
+<LI>The number of bytes is compiler dependent.</LI>
+<LI>2</LI>
+<LI>4</LI>
+<LI>8</LI>
+<LI>64</LI>
+</OL>
+
+<LI> What is the result of invoking the method substring(2, 4) on the string "example"? Include the answer in quotes as the result is of type String.</LI>
+ 
+<LI> Which of the following is correct ? Select all correct answers.</LI>
+<OL TYPE=A>
+<LI> The native keyword indicates that the method is implemented in another language like C/C++. </LI>
+<LI> The only statements that can appear before an import statement in a Java file are comments. </LI>
+<LI> The method definitions inside interfaces are public and abstract. They cannot be private or protected. </LI>
+<LI> A class constructor may have public or protected keyord before them, nothing else. </LI>
+</OL>
+
+
+
+<LI> What is the result of evaluating the expression  14 ^ 23. Select the one correct answer. </LI>
+<OL TYPE=A>
+<LI> 25 </LI>
+<LI> 37 </LI>
+<LI> 6 </LI>
+<LI> 31 </LI>
+<LI> 17 </LI>
+<LI> 9 </LI>
+<LI> 24 </LI>
+</OL>
+
+
+
+
+<LI> Which of the following are true. Select all correct answers. </LI>
+<OL TYPE=A>
+<LI> && operator is used for short-circuited logical AND. </LI>
+<LI> ~ operator is the bit-wise XOR operator. </LI>
+<LI> | operator is used to perform bitwise OR and also short-circuited logical OR. </LI>
+<LI> The unsigned right shift operator in Java is >>. </LI>
+</OL>
+
+
+
+<LI> Name the access modifier which when used with a method, makes it available to all the classes in the same package and to all the subclasses of the class. </LI>
+ 
+<LI> Which of the following is true. Select all correct answers. </LI> 
+
+<OL TYPE=A>
+<LI> A class that is abstract may not be instantiated. </LI>
+<LI> The final keyword indicates that the body of a method is to be found elsewhere. The code is written in non-Java language, typicaly in C/C++. </LI>
+<LI> A static variable indicates there is only one copy of that variable. </LI>
+<LI> A method defined as private indicates that it is accessible to all other classes in the same package.</LI>
+</OL>
+
+<LI> What all gets printed when the following program is compiled and run. Select all correct answers. </LI> 
+
+<BR>
+<CODE>
+<PRE>
+<FONT COLOR = "red">
+public class test {
+   public static void main(String args[]) { 
+      int i, j=1;
+      i = (j>1)?2:1;
+      switch(i) {
+        case 0: System.out.println(0); break;
+        case 1: System.out.println(1);
+        case 2: System.out.println(2); break;
+        case 3: System.out.println(3); break;
+      }
+   }
+}
+        
+</FONT>
+</PRE>
+</CODE>
+
+<OL TYPE=A>
+<LI> 0 </LI>
+<LI> 1 </LI>
+<LI> 2 </LI>
+<LI> 3 </LI>
+</OL>
+
+<LI> What all gets printed when the following program is compiled and run. Select all correct answers. </LI> 
+
+<BR>
+<CODE>
+<PRE>
+<FONT COLOR = "red">
+public class test {
+   public static void main(String args[]) { 
+      int i=0, j=2;
+      do {
+         i=++i;
+         j•;
+      } while(j>0);
+      System.out.println(i);
+   }
+}
+        
+</FONT>
+</PRE>
+</CODE>
+
+<OL TYPE=A>
+<LI> 0 </LI>
+<LI> 1 </LI>
+<LI> 2 </LI>
+<LI> The program does not compile because of statement "i=++i;" </LI>
+</OL>
+
+<LI> What all gets printed when the following gets compiled and run. Select all correct answers.
+<BR>
+<CODE>
+<PRE>
+<FONT COLOR = "red">
+public class test {
+    public static void main(String args[]) { 
+        int i=1, j=1;
+        try {
+            i++; 
+            j•;
+            if(i/j > 1)
+                i++;
+        }
+        catch(ArithemticException e) {
+            System.out.println(0);
+        }
+        catch(ArrayIndexOutOfBoundsException e) {
+            System.out.println(1);
+        }
+        catch(Exception e) {
+            System.out.println(2);
+        }
+        finally {
+            System.out.println(3);
+        }
+        System.out.println(4);
+     }
+}
+        
+</FONT>
+</PRE>
+</CODE>
+<OL TYPE=A>
+<LI> 0 </LI>
+<LI> 1 </LI>
+<LI> 2 </LI>
+<LI> 3 </LI>
+<LI> 4 </LI>
+</OL>
+
+
+<LI> What all gets printed when the following gets compiled and run. Select all correct answer. </LI>
+<BR>
+<CODE>
+<PRE>
+<FONT COLOR = "red">
+public class test {
+    public static void main(String args[]) { 
+        int i=1, j=1;
+        try {
+            i++; 
+            j•;
+            if(i == j)
+                i++;
+        }
+        catch(ArithmeticException e) {
+            System.out.println(0);
+        }
+        catch(ArrayIndexOutOfBoundsException e) {
+            System.out.println(1);
+        }
+        catch(Exception e) {
+            System.out.println(2);
+        }
+        finally {
+            System.out.println(3);
+        }
+        System.out.println(4);
+     }
+}
+        
+</FONT>
+</PRE>
+</CODE>
+<OL TYPE=A>
+<LI> 0 </LI>
+<LI> 1 </LI>
+<LI> 2 </LI>
+<LI> 3 </LI>
+<LI> 4 </LI>
+</OL>
+
+
+<LI> What all gets printed when the following gets compiled and run. Select all correct answer. </LI>
+<BR>
+<CODE>
+<PRE>
+<FONT COLOR = "red">
+public class test {
+    public static void main(String args[]) { 
+    String s1 = "abc";
+    String s2 = "abc";
+    if(s1 == s2)
+        System.out.println(1);
+    else
+        System.out.println(2);
+    if(s1.equals(s2))
+        System.out.println(3);
+    else
+        System.out.println(4);
+    }
+}
+        
+</FONT>
+</PRE>
+</CODE>
+<OL TYPE=A>
+<LI> 1 </LI>
+<LI> 2 </LI>
+<LI> 3 </LI>
+<LI> 4 </LI>
+</OL>
+
+
+<LI> What all gets printed when the following gets compiled and run. Select all correct answer. </LI>
+<BR>
+<CODE>
+<PRE>
+<FONT COLOR = "red">
+public class test {
+    public static void main(String args[]) { 
+    String s1 = "abc";
+    String s2 = new String("abc");
+
+    if(s1 == s2)
+        System.out.println(1);
+    else
+        System.out.println(2);
+    if(s1.equals(s2))
+        System.out.println(3);
+    else
+        System.out.println(4);
+    }
+}
+        
+</FONT>
+</PRE>
+</CODE>
+<OL TYPE=A>
+<LI> 1 </LI>
+<LI> 2 </LI>
+<LI> 3 </LI>
+<LI> 4 </LI>
+</OL>
+
+<LI> The default layout manager for a Frame is ... </LI>
+<OL TYPE=A>
+<LI> FlowLayout </LI>
+<LI> BorderLayout </LI>
+<LI> GridLayout </LI>
+<LI> GridBagLayout </LI>
+<LI> CardLayout </LI>
+</OL>
+
+<LI> Which of the following are valid adapter classes in Java. Select all correct answers. </LI>
+<OL TYPE=A>
+<LI> ComponentAdapter </LI>
+<LI> ActionAdapter </LI>
+<LI> AdjustmentAdapter </LI>
+<LI> ItemAdapter </LI>
+<LI> FocusAdapter </LI>
+</OL>
+
+<LI> Which of the following are legal array declarations. Select all correct answers. </LI>
+<OL TYPE=A>
+<LI> int i[5][];</LI>
+<LI> int i[][]; </LI>
+<LI> int []i[];</LI>
+<LI> int i[5][5]; </LI>
+<LI> int[][] a; </LI>
+</OL>
+
+<LI> What is the range of values that can be specified for an int. Select the one correct answer. </LI>
+<OL TYPE=A>
+<LI> The range of values is compiler dependent. </LI>
+<LI> -2<SUP>31</SUP> to 2<SUP>31</SUP> - 1</LI>
+<LI> -2<SUP>31</SUP>-1 to 2<SUP>31</SUP></LI>
+<LI> -2<SUP>15</SUP> to 2<SUP>15</SUP> - 1</LI>
+<LI> -2<SUP>15</SUP>-1 to 2<SUP>15</SUP></LI>
+</OL>
+
+<LI> How can you ensure that the memory allocated by an object is freed. Select the one correct answer.</LI>
+<OL TYPE=A>
+<LI> By invoking the free method on the object. </LI>
+<LI> By calling system.gc() method. </LI>
+<LI> By setting all references to the object to new values (say null).</LI>
+<LI> Garbage collection cannot be forced. The programmer cannot force the compiler to free the memory used by an object.</LI>
+</OL>
+
+
+
+<LI> What gets printed when the following code is compiled. Select the one correct answer.</LI>
+<BR>
+<CODE>
+<PRE>
+<FONT COLOR = "red">
+public class test {
+    public static void main(String args[]) { 
+    int i = 1;
+    do {
+        i•;
+    } while (i > 2);
+    System.out.println(i);
+    }
+}
+        
+</FONT>
+</PRE>
+</CODE>
+<OL TYPE=A>
+<LI> 0 </LI>
+<LI> 1 </LI>
+<LI> 2 </LI>
+<LI> -1 </LI>
+</OL>
+
+<LI>Which of these is a legal definition of a method named m assuming it throws IOException, and returns void. Also assume that the method does not take any arguments. Select all correct answers. </LI>
+<OL TYPE=A>
+<LI>void m() throws IOException{}</LI>
+<LI>void m() throw IOException{}</LI>
+<LI>void m(void) throws IOException{}</LI>
+<LI>m() throws IOException{}</LI>
+<LI>void m() throws IOException</LI>
+<LI>void m() {} throws IOException</LI>
+</OL>
+<LI>Which of the following are legal identifier names in Java. Select all correct answers. </LI>
+
+<OL TYPE=A>
+<LI> %abcd </LI>
+<LI> $abcd </LI>
+<LI> 1abcd </LI>
+<LI> package </LI>
+<LI> _a_long_name </LI>
+</OL>
+
+<LI>At what stage in the following method does the string "abc" becomes available for garbage collection. Select the one correct answer. </LI>
+<BR>
+<CODE>
+<PRE>
+<FONT COLOR = "red">
+void method X()  { 
+    String r = new String("abc");
+    String s = "abc";
+    r = r+1; //1
+    r = null; //2
+    s = s + r; //3
+} //4
+        
+</FONT>
+</PRE>
+</CODE>
+
+
+<OL TYPE=A>
+<LI> Before statement labelled 1 </LI>
+<LI> Before statement labelled 2 </LI>
+<LI> Before statement labelled 3 </LI>
+<LI> Before statement labelled 4 </LI>
+<LI> Never. </LI>
+</OL>
+
+
+
+<LI> 
+<CODE>
+<FONT COLOR = "red">
+String s = new String("xyz");
+</FONT>
+</CODE>
+<BR>
+Assuming the above declaration, which of the following statements would compile. Select all correct answers.</LI>
+
+<OL TYPE=A>
+<LI> s = 2 * s; </LI>
+<LI> int i = s[0]; </LI>
+<LI> s = s + s; </LI>
+<LI> s = s >> 2; </LI>
+<LI> None of the above. </LI>
+</OL>
+
+
+<LI>Which of the following statements related to Garbage Collection are correct. Select all correct answers. </LI>
+
+<OL TYPE=A>
+<LI> It is posible for a program to free memory at a given time. </LI>
+<LI> Garbage Collection feature of Java ensures that the program never runs out of memory. </LI>
+<LI> It is possible for a program to make an object available for Garbage Collection. </LI>
+<LI> The finalize method of an object is invoked before garbage collection is performed on the object. </LI>
+</OL>
+
+
+<LI>If a base class has a method defined as <BR>
+void method() { }
+<BR>
+Which of the following are legal prototypes in a derived class of this class. Select all correct answers. </LI>
+
+<OL TYPE=A>
+<LI> void method() { } </LI>
+<LI> int method() { return 0;}</LI> 
+<LI> void method(int i) { } </LI>
+<LI> private void method() { } </LI>
+
+</OL>
+
+
+
+<LI> In which all cases does an exception gets generated. Select all correct answers. </LI> <br>
+
+<CODE>
+<FONT COLOR = "red">
+int i = 0, j = 1;
+</FONT>
+</CODE>
+<BR>
+<OL TYPE=A>
+<LI> if((i == 0) || (j/i == 1)) </LI>
+<LI> if((i == 0) | (j/i == 1)) </LI>
+<LI> if((i != 0) && (j/i == 1)) </LI>
+<LI> if((i != 0) & (j/i == 1)) </LI>
+</OL>
+
+<LI> Which method defined in the EventObject class returns the Object that generated an event. The method should be given in the format - return_type method_name(); </LI>
+
+
+<LI> Which of the following object receives ActionEvent. Select all the correct answers. </LI>
+
+<OL TYPE=A>
+<LI> List </LI>
+<LI> Button </LI> 
+<LI> Choice </LI>
+<LI> CheckBox </LI>
+<LI> TextField </LI>
+<LI> MenuItem </LI>
+
+</OL>
+
+<LI> Name the class that may be used to create submenus in pull-down menus. </LI>
+
+<LI> Which of the following statements are true. Select all correct answers. </LI>
+<OL TYPE=A>
+<LI> The wait method defined in the Thread class, can be used to convert a thread from Running state to Waiting state. </LI>
+<LI> The wait(), notify(), notifyAll() must be executed in sybchronized code.</LI> 
+<LI> The notify() method can be used to signal and move waiting threads to ready-to-run state. </LI>
+<LI> The Thread class is an abstract class. </LI>
+ 
+</OL> 
+
+<LI> In which class is the wait() method defined. Select the one correct answer. </LI>
+<OL TYPE=A>
+<LI> Applet </LI>
+<LI> Runnable</LI> 
+<LI> Thread </LI>
+<LI> Object </LI>
+</OL> 
+
+
+
+<LI> Which keyword when applied on a method indicates that only one thread should execute the method at a time. Select the one correct answer. </LI>
+<OL TYPE=A>
+<LI> transient </LI>
+<LI> volatile</LI> 
+<LI> synchronized </LI>
+<LI> native </LI>
+<LI> static </LI>
+<LI> final </LI>
+</OL> 
+
+<LI> What is the name of the Collection interface used to represent elements in a sequence (in a particular order). Select the one correct answer. </LI>
+<OL TYPE=A>
+<LI> Collection </LI>
+<LI> Set</LI> 
+<LI> List </LI>
+<LI> Map </LI>
+</OL> 
+
+<LI> Which of these classes implement the Collection interface SortedMap. Select all correct answers. </LI>
+<OL TYPE=A>
+<LI> HashMap </LI>
+<LI> HashTable</LI> 
+<LI> TreeMap </LI>
+<LI> HashSet </LI>
+<LI> TreeSet </LI>
+<LI> Vector </LI>
+</OL> 
+
+<LI> Which is the only layout manager which always honours the size of a component. Select the one correct answers. </LI>
+<OL TYPE=A>
+<LI> FlowLayout </LI>
+<LI> GridLayout</LI> 
+<LI> BorderLayout </LI>
+<LI> CardLayout </LI>
+<LI> GridBagLayout </LI>
+</OL> 
+
+<LI> Which of the following are true about interfaces. Select all correct answers. </LI>
+
+<OL TYPE=A>
+<LI> Methods declared in interfaces are implicitly private. </LI>
+<LI> Variables declared in interfaces are implicitly public, static, and final. </LI>
+<LI> An interface can extend any number of interfaces. </LI>
+<LI> The keyword implements indicate that an interface inherits from another. </LI>
+</OL>
+
+<LI> Assume that class A extends class B, which extends class C. Also all the three classes implement the method test(). How can a method in class A invoke the test() method defined in class C. Select the one correct answers. </LI>
+
+<OL TYPE=A>
+<LI> test(); </LI>
+<LI> super.test(); </LI>
+<LI> super.super.test(); </LI>
+<LI> ::test(); </LI>
+<LI> C.test(); </LI>
+<LI> It is not possible to invoke test() method defined in C from a method in A. </LI>
+
+</OL>
+
+<LI> What is the return type of method round(double d) defined in Math class. </LI>
+
+<LI> What gets written on the screen when the following program is compiled and run. Select the one right answer.</LI>
+
+<CODE>
+<PRE>
+<FONT COLOR = "red">
+public class test {
+   public static void main(String args[]) { 
+   int i;
+   float  f = 2.3f;
+   double d = 2.7;
+   i = ((int)Math.ceil(f)) * ((int)Math.round(d));
+ 
+   System.out.println(i);
+   }
+}
+</FONT>
+</PRE>
+</CODE>
+
+
+<OL TYPE=A>
+<LI> 4 </LI>
+<LI> 5 </LI>
+<LI> 6 </LI>
+<LI> 6.1 </LI>
+<LI> 9 </LI>
+</OL>
+
+
+<LI> Is the following statement true or false. As the toString method is defined in the Object class, System.out.println can be used to print any object. </LI>
+<OL TYPE=A>
+<LI> true </LI>
+<LI> false </LI>
+</OL>
+
+<LI> Which of these classes defined in java.io and used for file-handling are abstract. Select all correct answers. </LI>
+<OL TYPE=A>
+<LI> InputStream </LI>
+<LI> PrintStream </LI>
+<LI> Reader </LI>
+<LI> FileInputStream </LI>
+<LI> FileWriter </LI>
+</OL>
+
+
+
+
+<LI>
+Which of these are valid Event Listener interfaces. Select all correct answer.
+</LI>
+<OL TYPE=A>
+<LI>MouseMotionListener</LI>
+<LI>WindowListener</LI>
+<LI>DialogListener</LI>
+<LI>PaintListener</LI>
+</OL>
+
+
+
+
+
+<LI> Name the collection interface used to represent collections that maintain unique elements. </LI>
+
+
+<LI> What is the result of compiling and running the following program. </LI>
+
+<CODE>
+<PRE>
+<FONT COLOR = "red">
+public class test {
+   public static void main(String args[]) { 
+      String str1="abc";
+      String str2="def";
+      String str3=str1.concat(str2);
+
+      str1.concat(str2);
+      System.out.println(str1);
+   }
+}
+</FONT>
+</PRE>
+</CODE>
+
+
+<OL TYPE=A>
+<LI> abc </LI>
+<LI> def </LI>
+<LI> abcabc </LI>
+<LI> abcdef </LI>
+<LI> defabc </LI>
+<LI> abcdefdef </LI>
+</OL>
+
+
+
+<LI> Select the one correct answer. The number of characters in an object of a class String is given by   </LI>
+<OL TYPE=A>
+<LI> The member variable called size </LI>
+<LI> The member variable called length </LI>
+<LI> The method size() returns the number of characters. </LI>
+<LI> The method length() returns the number of characters. </LI>
+</OL>
+
+<LI> Select the one correct answer. Which method defined in Integer class can be used to convert an Integer object to primitive int type. </LI>
+<OL TYPE=A>
+<LI> valueOf </LI>
+<LI> intValue </LI>
+<LI> getInt </LI>
+<LI> getInteger </LI>
+</OL>
+
+<LI> Name the return type of method hashCode() defined in Object class, which is used to get the unique hash value of an Object. </LI>
+
+<LI> Which of the following are correct. Select all correct answers.</LI>
+
+<OL TYPE=A>
+<LI> An import statement, if defined, must be the first statement of the file. </LI>
+<LI> private members are accessible to all classes in the same package. </LI>
+<LI> An abstract class can be declared as final. </LI>
+<LI> Local variables cannot be declared as static. </LI>
+</OL>
+
+
+<LI> Name the keyword which makes a variable belong to a class, rather than being defined for each instance of the class. Select the one correct answer. </LI>
+<OL TYPE=A>
+<LI> static </LI>
+<LI> final </LI>
+<LI> abstract </LI>
+<LI> native </LI>
+<LI> volatile </LI>
+<LI> transient </LI>
+</OL>
+
+
+<LI> Which of these are core interfaces in the collection framework. Select all correct answers. </LI>
+<OL TYPE=A>
+<LI> Tree </LI>
+<LI> Stack </LI>
+<LI> Queue </LI>
+<LI> Array </LI>
+<LI> LinkedList </LI>
+<LI> Map </LI>
+</OL>
+
+<LI> Which abstract class is the superclass of all menu-related classes. </LI>
+
+<LI> Which of these statements are true. Select all correct answers. </LI>
+<OL TYPE=A>
+<LI> For each try block there must be at least one catch block defined. </LI>
+<LI> A try block may be followed by any number of finally blocks. </LI>
+<LI> A try block must be followed by at least one finally or catch block. </LI>
+<LI> If both catch and finally blocks are defined, catch block must precede the finally block. </LI>
+</OL>
+
+
+</OL>
+
+<BR>
+
+
+<B>Answers to Sample Test 1 </B> <BR>
+<OL TYPE=1>
+<LI> b </LI>
+<LI> b, c, f </LI>
+<LI> d  </LI>
+<LI> arr.length  </LI>
+<LI> Any of these is correct - 0x5, 0x05, 0X05, 0X5</LI>
+
+<LI> b, c, f, g </LI>
+<LI> a </LI>
+<LI> d </LI>
+<LI> "am" </LI>
+<LI> a, c. b is not correct. A package statement may appear before an import statement. </LI>
+
+<LI> a </LI>
+<LI> a </LI>
+<LI> protected </LI>
+<LI> a, c </LI>
+<LI> b, c </LI>
+
+<LI> c </LI>
+<LI> a, d, e </LI>
+<LI> d, e </LI>
+<LI> a, c </LI>
+<LI> b, c </LI>
+
+<LI> b </LI>
+<LI> a, e </LI>
+<LI> b, c, e </LI>
+<LI> b </LI>
+<LI> d </LI>
+
+<LI> a </LI>
+<LI> a</LI>
+<LI> b, e </LI>
+<LI> d </LI>
+<LI> c </LI>
+
+<LI> c, d </LI>
+<LI> a, c</LI>
+<LI> b, d</LI>
+<LI> Object getSource();</LI>
+<LI> a, b, e, f</LI>
+
+<LI> Menu</LI>
+<LI> b, c</LI>
+<LI> d</LI>
+<LI> c</LI>
+<LI> c</LI>
+
+<LI> c</LI>
+<LI> a</LI>
+<LI> b, c</LI>
+<LI> f</LI>
+<LI> long</LI>
+
+<LI> e</LI>
+<LI> a</LI>
+<LI> a, c</LI>
+<LI> a, b </LI>
+<LI> Set</LI>
+
+<LI> a</LI>
+<LI> d</LI>
+<LI> b</LI>
+<LI> int</LI>
+<LI> d</LI>
+
+<LI> a </LI>
+<LI> f </LI>
+<LI> MenuComponent </LI>
+<LI> c, d </LI>
+<BR>
+</BODY>
+</HTML>
+

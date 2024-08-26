@@ -1,0 +1,210 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Глава 18 Работа с изображениями</TITLE>
+</HEAD>
+<BODY>
+
+<B><FONT FACE="Times New Roman" SIZE=4><P ALIGN="JUSTIFY">Глава 1</FONT><FONT SIZE=4>8</FONT><FONT FACE="Times New Roman" SIZE=4> Работа с изображениями</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Java работает с наиболее популярными во Всемирной паутине форматами изображений — JPEG и GIF. JPEG лучше подходит для естественных цветных изображений, таких, как фотографии, а формат GIF является наилучшими для графических эмблем, изображений кнопок, и т.п.</P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Сначала мы загрузим изображение с помощью очень короткой программы. Затем мы научимся использовать классы, которые управляют загрузкой одного или нескольких изображений. Кроме того, существует набор абстрактных классов, которые помогают создать поток изображений, и фильтры, позволяющие обращаться к отдельным элементам изображений и модифицировать их.</P>
+</FONT><B>
+<FONT FACE="Times New Roman"><P>Простой загрузчик изображений</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Простейший случай — загрузка в страницу одиночного изображения. Вот маленький апплет, выполняющий эту работу:</P>
+</FONT><FONT SIZE=2>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>/* &lt;title&gt;SimpleImageLoad&lt;/title&gt;</P>
+<P>*&lt;applet code="SimpleImageLoad" width=300 height=150&gt;</P>
+<P>* &lt;param name="img" value="mupk.gif"&gt;</P>
+<P>* &lt;/applet&gt;</P>
+<P>*/</P>
+<P>import java.applet.*;</P>
+<P>import java.awt.*;</P>
+<P>public class SimpleImageLoad extends Applet { </P>
+<P>Image art;</P>
+<P>public void init() {</P>
+<P>art = getImage(getDocumentBase(), getParameter("img"));</P>
+<P>}</P>
+<P>public void paint(Graphics g) {</P>
+<P>g.drawImage(art, 0, 0, this);</P>
+<P>} }</P>
+</B></I></FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Метод paint использует drawlmage с четырьмя аргументами: это ссылка на изображение art, координаты левого верхнего угла рисунка х, у и объект типа ImageObserver. Мы поговорим подробнее об ImageObserver в следующем параграфе; здесь мы использовали this в</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>качестве имени ImageObserver, поскольку он встроен в апплет. Когда этот апплет запускается, он в методе init начинает загрузку art. Процесс загрузки изображения по сети хорошо заметен – </FONT><A HREF="examples/18/SimpleImageLoad.html"><U><FONT SIZE=2 COLOR="#0000ff">SimpleImageLoad.html</U></FONT></A><FONT SIZE=2>,</FONT><FONT FACE="Times New Roman" SIZE=2> поскольку встроенный интерфейс ImageObserver вызывает процедуру paint при каждом поступлении новой порции данных из сети. Вы можете использовать ImageObserver для отслеживания загрузки изображения, а в это время выводить на экран другую информацию.</P>
+</FONT><FONT SIZE=2><P ALIGN="JUSTIFY"></P>
+</FONT><B><P>ImageObserver</P>
+</B><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">ImageObserver — это абстрактный интерфейс, используемый для получения сообщения о создании изображения, Метод imageUpdate из ImageObserver — это все, что вы должны реализовать в своем апплете для его использования. В то время, как вы получаете информацию о загрузке, вы можете показывать любую понравившуюся вам мультипликацию, индикатор степени завершения загрузки или любую другую заставку. Для использования ImageObserver в своем подклассе Applet вы должны добавить в него строку implement Image</FONT><FONT SIZE=2>O</FONT><FONT FACE="Times New Roman" SIZE=2>bserver, как показано в этом фрагменте программы:</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>public class MyApplet extends Applet implement ImageObserver {</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P>Затем вам придется вставить в свой класс метод imageUpdate для интерфейса ImageObserver, как показано в следующем фрагменте </FONT><FONT SIZE=2>:</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>public boolean imageUpdate(Image img, int status, </P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>                           int x, int у int width, int height) { </P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>if((status &amp; ALLBITS) != 1) {</P>
+<P>System.out.println("Still processing the image");</P>
+<P>return true;</P>
+<P>}</P>
+<P>else {</P>
+<P>System.out.println("Done processing the image");</P>
+<P>return false;</P>
+<P>} }</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Метод imageUpdate вызывается с изображением Image, которое находится в процессе изменения, целым параметром status, отражающим состояние изменения, и с координатами прямоугольника (x, у, width, height), которые соответствуют различным величинам в зависимости от информационных флагов, перечисленных ниже. ImageUpdate должен возвращать false по окончании загрузки изображения и true — если изображение еще обрабатывается.</P>
+</FONT><FONT SIZE=2><P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Целая переменная status поразрядно проверяется на наличие одного или нескольких флагов. Возможные флаги и информация, которую они несут, перечислены ниже:</P></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=2 WIDTH=633>
+<TR><TD WIDTH="15%" VALIGN="TOP">
+<FONT SIZE=2><P>WIDTH</FONT></TD>
+<TD WIDTH="85%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Ширина изображения доступна и может быть взята из аргумента width.</FONT></TD>
+</TR>
+<TR><TD WIDTH="15%" VALIGN="TOP">
+<FONT SIZE=2><P>HEIGHT</FONT></TD>
+<TD WIDTH="85%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Высота изображения доступна и может быть взята из аргумента height.</FONT></TD>
+</TR>
+<TR><TD WIDTH="15%" VALIGN="TOP">
+<FONT SIZE=2><P>PROPERTIES</FONT></TD>
+<TD WIDTH="85%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Свойства изображения теперь доступны. Вы можете получить их посредством art.properties.</FONT></TD>
+</TR>
+<TR><TD WIDTH="15%" VALIGN="TOP">
+<FONT SIZE=2><P>SOMEBITS</FONT></TD>
+<TD WIDTH="85%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Доступны пиксели, необходимые для рисования масштабированного варианта изображения. Область, содержащая новые пиксели, задается параметрами x, у, width и height.</FONT></TD>
+</TR>
+<TR><TD WIDTH="15%" VALIGN="TOP">
+<FONT SIZE=2><P>FRAMEBITS</FONT></TD>
+<TD WIDTH="85%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Еще один кадр ранее нарисованного изображения с несколькими кадрами, готов для перерисовки. Параметры x, у, width, height <I>не содержат информации.</I></FONT></TD>
+</TR>
+<TR><TD WIDTH="15%" VALIGN="TOP">
+<FONT SIZE=2><P>ALLBITS</FONT></TD>
+<TD WIDTH="85%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Обработка перерисовываемого изображения окончена, и оно может быть отрисовано в конечном виде. Значения аргументов x, у, width и height не содержат <I>значимой информации.</I></FONT></TD>
+</TR>
+<TR><TD WIDTH="15%" VALIGN="TOP">
+<FONT SIZE=2><P>ERROR</FONT></TD>
+<TD WIDTH="85%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>При пересылке изображения возникла ошибка. Поступление дальнейшей информации стало невозможным и рисование прервано. Для удобства выставляется и флаг ABORT для индикации прерывания загрузки изображения.</FONT></TD>
+</TR>
+<TR><TD WIDTH="15%" VALIGN="TOP">
+<FONT SIZE=2><P>ABORT</FONT></TD>
+<TD WIDTH="85%" VALIGN="TOP">
+<FONT FACE="Times New Roman" SIZE=2><P>Пересылка изображения была прервана до полного его получения. Поступление новой информации стало невозможным без дополнительных действий по повторному запуску операций по получению изображения. Если флаг ERROR не был выставлен, то приход любых данных изображения снова запустит процесс его получения.</FONT></TD>
+</TR>
+</TABLE>
+
+<B><FONT SIZE=2>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P>Теперь давайте рассмотрим программный пример, который использует ImageObserver для показа количества обработанных строк изображения и выводит эту информацию (переменная progress) на консоль:</P>
+</FONT><FONT SIZE=2>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>/* &lt;title&gt;ObservedImageLoad&lt;/title&gt;</P>
+<P>* &lt;applet code="ObservedImageLoad" width=290 height=140&gt;</P>
+<P>* &lt;param name="img" value="mupk.gif"&gt;</P>
+<P>* &lt;/applet&gt;</P>
+<P>*/</P>
+<P>import java.applet.*;</P>
+<P>import java.awt.*;</P>
+<P>import java.awt.image.*;</P>
+<P>public class ObservedImageLoad extends Applet</P>
+<P>                               implements Runnable, ImageObserver {</P>
+<P>Image art;</P>
+<P>Dimension d;</P>
+<P>int progress;</P>
+<P>Thread motor;</P>
+<P>boolean loaded;</P>
+<P>public void init() {</P>
+<P>art = getImage(getDocumentBase(), getParameter("img"));</P>
+<P>loaded = false;</P>
+<P>progress = 0;</P>
+<P>}</P>
+<P>public void paint(Graphics g)&#9;{</P>
+<P>d = this.getSize();</P>
+<P>loaded = g.drawImage(art, 0, 0, this);</P>
+<P>}</P>
+<P>public boolean imageUpdate(Image img, int&#9;info, </P>
+<P>                           int x, int y, int width, int height) {</P>
+<P>if((info &amp; ALLBITS) != 1) { </P>
+<P>    if(progress&lt;d.height) {</P>
+<P>       progress = progress + height;</P>
+<P>    }</P>
+<P>System.out.println(progress + "/" + d.height);</P>
+<P>return true;</P>
+<P>} </P>
+<P>else {</P>
+<P>return false;</P>
+<P>} }</P>
+<P>public void start() {</P>
+<P>motor = new Thread(this);</P>
+<P>motor. start();</P>
+<P>}</P>
+<P>public void stop() {</P>
+<P>motor.stop();</P>
+<P>}</P>
+<P>public void run() {</P>
+<P>motor.setPriority(Thread.MIN_PRIORITY);</P>
+<P>while(!loaded) { // update progress indicator (5 fps) </P>
+<P>repaint();</P>
+<P>try {</P>
+<P>motor.sleep(200);</P>
+<P>}</P>
+<P>catch(InterruptedException e) {}</P>
+<P>}</P>
+<P>} }</P>
+</B></I></FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Метод imageUpdate обрабатывает статус загрузки изображения. Информация о статусе передается через переменную info, с которой сравнивается статическая переменная ALLBITS. Если еще не получено все изображение, то мы добавляем величину heihgt к общему числу</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>обработанных строк изображения. Для проверки этой концепции мы выводим количество обработанных строк изображения на консоль. Метод run перерисовывает апплет пять раз в секунду (каждые 200 миллисекунд) до тех пор, пока изображение art не загрузится. То, как долго монитор статуса загрузки будет работать, зависит от скорости передачи данных изображения по сети</FONT><FONT SIZE=2> – </FONT><A HREF="examples/18/ObservedImageLoad.html"><U><FONT SIZE=2 COLOR="#0000ff">ObservedImageLoad.html</U></FONT></A><FONT SIZE=2>.</P>
+</FONT><B>
+<P>MediaTracker</P>
+</B><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">MediaTracker — это класс, предоставляющий удобный интерфейс для контроля статуса нескольких изображений. В следующих версиях этот класс будет контролировать другие мультимедийные форматы, такие, как звуковые файлы. Для использования MediaTracker нужно создать новый объект этого класса и использовать метод addImag</FONT><FONT SIZE=2>e</FONT><FONT FACE="Times New Roman" SIZE=2> для контроля статуса загрузки. Используйте MediaTracker при загрузке группы изображений. Пока все изображения, которые вас интересуют, не загружены, пользователя будет развлекать демонстрационный экран. </P>
+</FONT><B>
+<P>ImageProducer</P>
+</B><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">ImageProducer — это абстрактный интерфейс для объектов, которые готовят данные для Image. Объект, который реализует интерфейс ImageProducer, должен предоставлять массивы целых или байтовых переменных, представляющих собой данные изображений. Давайте познакомимся с очень полезным классом MemoryImageSource, реализующий ImageProducer. Мы создадим новый объект Image из данных, которые сгенерировал ImageProducer.</P>
+</FONT><B><FONT SIZE=2>
+<P>MemorylmageSource</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">MemoryImageSource — класс, используемый для создания нового изображения из массива пикселей. Вот конструктор, используемый для создания объекта MemoryImageSource:</P>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>MemoryImageSource(int width, int height, int pixel[], int offset, int scanLineWidth)</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Объект MemoryImageSource собирается из массива целых величин pixel[] в используемой по умолчанию модели цветов RGB для генерации данных объекта Image. В используемой по умолчанию цветовой модели пиксель — это целая величина состоящая из Alpha, Red, Green и Blue (OxAARRGGBB). Величина Alpha обозначает степень прозрачности элемента изображения. </P>
+</FONT><FONT SIZE=2><P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">MemoryImageSource возвращает объект ImageProducer, который используется с createImage для получения изображения, пригодного к использованию. Приведенный ниже короткий пример создает MemoryImageSource,   используя  вариант   простого  алгоритма  (побитовое исключающее ИЛИ значений х и у координат каждого элемента изображения) из книги Gerard </FONT><I><FONT SIZE=2>J.Holzmann “Beyond Photography, The Digital Darkroom”.</P>
+</I>
+</FONT><B><I><FONT FACE="Courier New" SIZE=2><P>/* &lt;title&gt;Memory Image Generator&lt;/title&gt;</P>
+<P>* &lt;applet code="MemoryImager" width=256 height=256&gt;</P>
+<P>* &lt;/applet&gt;</P>
+<P>*/</P>
+<P>import java.applet.*;</P>
+<P>import java.awt.*;</P>
+<P>import java.awt.image.*;</P>
+<P>public class MemoryImager extends Applet {</P>
+<P>Image art;</P>
+<P>Dimension d;</P>
+<P>public void init() {</P>
+<P>generateImage();</P>
+<P>}</P>
+<P>public void generateImage() {</P>
+<P>int pixels[] = new int[d.width * d.height];</P>
+<P>int i = 0;</P>
+<P>int r, g, b;</P>
+<P>for(int y=0; y&lt;h; y++) {</P>
+<P>for(int x=0; x&lt;h; x++) {</P>
+<P>r = (x^y)&amp;0xff; // red is x XOR</FONT><FONT FACE="Courier New" SIZE=2> у</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>g = (x*2^y*2)&amp;0xff; //green is 2x XOR 2y</P>
+<P>b = (x*4^y*4)&amp;0xff; // blue is 4x XOR 4y</P>
+<P>pixels[i++] = (255 &lt;&lt; 24) | (r &lt;&lt; 16) | (g &lt;&lt; 8) | b;</P>
+<P>} }</P>
+<P>art = createImage(new MemoryImageSource(d.width, d.height, pixels, 0, d.width));</P>
+<P>}</P>
+<P>public void paint(Graphics g) {</P>
+<P>g.drawlmage(art, 0, 0, this);</P>
+<P>} }</P>
+</B></I></FONT><FONT SIZE=2>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Посмотрите как это интересное изображение выглядит на экране – </FONT><A HREF="examples/18/MemoryImager.html"><U><FONT SIZE=2 COLOR="#0000ff">MemoryImager.html</U></FONT></A><FONT SIZE=2>.</P>
+</FONT><B>
+<FONT FACE="Times New Roman"><P>ImageFilter и ImageFilterSource</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Подклассы классов ImageFilter и ImageFilterSource используются совместно для создания новых изображений фильтрованием уже существующих. С двумя такими подклассами из пакета java.awt.image вы сейчас познакомитесь.</P>
+</FONT><B><FONT SIZE=2>
+<P>CropImageFilter</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">CropImageFilter создает новое изображение из фрагмента существующего. Использование этого фильтра полезно тогда, когда вы хотите использовать несколько маленьких изображений в одном апплете. Загрузка по сети двадцати изображений по 2 Кбайта происходит намного медленнее, чем загрузка одного файла размером 40 Кбайт. Если ваши изображения — одинакового размера, вы можете собрать их в единый блок и использовать CropImageFilter для разделения блока на отдельные изображения в Java-клиенте. </P>
+</FONT><FONT SIZE=2>
+<B><P>RGBImageFilter</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">RGBImageFilter используется для получения данных о каждом пикселе изображения, которые мы можем модифицировать, и таким образом модифицировать изображение. </P>
+</FONT><B>
+<FONT FACE="Times New Roman"><P>Мультимедиа-горизонты</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P>Существующая система обработки изображений в Java пока не полностью поддерживает потребительские стандарты из-за ограниченной переносимости в сегодняшнем многообразии компьютерных платформ. Но в Java нет никаких “врожденных” ограничений на разработку мультимедийных приложений. Я уверен, что мы станем свидетелями больших успехов в развитии и совершенствовании этой технологии в течении ближайших лет.</P></FONT></BODY>
+</HTML>

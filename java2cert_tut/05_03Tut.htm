@@ -1,0 +1,1373 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN"> 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<HTML>
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<HEAD>
+
+
+
+
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1"> 
+
+
+
+
+
+
+
+<META NAME="GENERATOR" CONTENT="Visual Page 2.0 for Windows"> 
+
+
+
+
+
+
+
+<TITLE>5.3) Operators and Assignments, Bitwise and Logical operators</TITLE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="tutor.css"></HEAD>
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<BODY BGCOLOR="#FFFFFF">
+
+<table width=95% border=0 cellpadding=2 cellspacing=0 style="page-break-before: always">
+
+  <col width=147*> <col width=109*> 
+
+  <tr> 
+
+    <td width=57% height=104> 
+
+      <p><a href= "introj2.htm" ><img src= "btnIndex.jpg"  name="Graphic1" alt="Return to Tutorial Index" align=BOTTOM width=55 height=39 border=0></a><a href= "introj2.htm" ><br>
+
+        <br>
+
+        </a><a href= "index.htm" ><img src= "btnHome.jpg"  name="Graphic2" alt="Back to the home page of this site" align=BOTTOM width=55 height=39 border=0></a> 
+
+      </p>
+
+    </td>
+
+    <td width=43%> 
+
+      <p align=RIGHT><img src= "hat.gif"  name="Graphic3" alt="morterboard" align=BOTTOM width=118 height=113 border=0></p>
+
+    </td>
+
+  </tr>
+
+  <tr> 
+
+    <td width=57% height=11> 
+
+      <h1 align=LEFT>Java2 Certification <br>
+
+        Tutorial </h1>
+
+    </td>
+
+    <td width=43% bgcolor="#ff9900"> 
+
+      <p>&nbsp;</p>
+
+    </td>
+
+  </tr>
+
+</table>
+
+<p> You can discuss this topic with others at <a href= "http://www.jchq.net/discus" >http://www.jchq.net/discus</a><br>
+
+  Read reviews and buy a Java Certification book at <a href= "http://www.jchq.net/bookreviews/jcertbooks.htm" >http://www.jchq.net/bookreviews/jcertbooks.htm</a> 
+
+  <br>
+
+</p>
+
+<hr size=5 noshade>
+
+<H1><B><FONT FACE="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">5) Operators and Assignments</FONT></B></H1>
+
+
+
+
+
+
+
+<H3><B><FONT FACE="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">Objective
+
+
+
+
+
+
+
+3)</FONT></B></H3>
+
+
+
+
+
+
+
+<P><FONT FACE="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">In an expression
+
+
+
+
+
+
+
+involving the operators &amp; | &amp;&amp; || and variables of known values
+
+
+
+
+
+
+
+state which operands are evaluated and the value of the expression.</FONT></P>
+
+
+
+
+
+
+
+<P>It is easy to forget which of the symbols mean logical operator and which
+
+
+
+
+
+
+
+mean bitwise operations, make sure you can tell the difference for the
+
+
+
+
+
+
+
+exam.&nbsp; If you are new to these operators it might be worth trying to come
+
+
+
+
+
+
+
+up with some sort of memory jogger so you do not get confused between the
+
+
+
+
+
+
+
+bitwise and the logical operators. You might like to remember the expression
+
+
+
+
+
+
+
+&quot;Double Logic&quot; as a memory jerker.</P>
+
+
+
+
+
+
+
+<H2><B><FONT FACE="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">The short circuit
+
+
+
+
+
+
+
+effect with logical operators</FONT></B></H2>
+
+
+
+
+
+
+
+<P>The logical operators <I>(&amp;&amp; ||)</I> have a slightly peculiar effect
+
+
+
+
+
+
+
+in that they perform &quot;short-circuited&quot; logical AND and logical OR
+
+
+
+
+
+
+
+operations as in C/C++. This may come as a surprise if you are a from a Visual
+
+
+
+
+
+
+
+Basic background as Visual Basic will evaluate all of the operands. The Java
+
+
+
+
+
+
+
+approach makes sense if you consider that for an AND, if the first operand is
+
+
+
+
+
+
+
+false it doesn't matter what the second operand evaluates to, the overall
+
+
+
+
+
+
+
+result will be false. Also for a logical OR, if the first operand has turned
+
+
+
+
+
+
+
+out true, the overall calculation will show up as true because only one
+
+
+
+
+
+
+
+evaluation must return true to return an overall true. This can have an effect
+
+
+
+
+
+
+
+with those clever compressed calculations that depend on side effects. Take the
+
+
+
+
+
+
+
+following example.</P>
+
+
+
+
+
+
+
+<PRE>public class MyClass1{
+                        public static void main(String argv[]){
+                        int Output=10;
+                        boolean b1 = false;
+                        if((b1==true) &amp;&amp; ((Output+=10)==20))
+                        {
+                        System.out.println(&quot;We are equal &quot;+Output);
+                        }else
+                        {
+                        System.out.println(&quot;Not equal! &quot;+Output);
+                        }
+                }
+}</PRE>
+
+
+
+
+
+
+
+<P></P>
+
+
+
+
+
+
+
+<P>The output will be &quot;Not equal 10&quot;.&nbsp; This illustrates that the
+
+
+
+
+
+
+
+Output +=10 calculation was never performed because processing stopped after
+
+
+
+
+
+
+
+the first operand was evaluated to be false. If you change the value of b1 to
+
+
+
+
+
+
+
+true processing occurs as you would expect and the output is &quot;We are equal
+
+
+
+
+
+
+
+20&quot;;.</P>
+
+
+
+
+
+
+
+<P>This may be handy sometimes when you really don't want to process the other
+
+
+
+
+
+
+
+operations if any of them return false, but it can be an unexpected side effect
+
+
+
+
+
+
+
+if you are not completely familiar with it.&nbsp;</P>
+
+
+
+
+
+
+
+<H2><B><FONT FACE="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">The bitwise
+
+
+
+
+
+
+
+operators</FONT></B></H2>
+
+
+
+
+
+
+
+<P>The &amp; and | operators when applied to integral bitwise AND and OR
+
+
+
+
+
+
+
+operations. You can expect to come across questions in the exam that give
+
+
+
+
+
+
+
+numbers in decimal and ask you to perform bitwise AND or OR operations. To do
+
+
+
+
+
+
+
+this you need to be familiar with converting from decimal to binary and learn
+
+
+
+
+
+
+
+what happens with the bit patterns. Here is a typical example&nbsp;</P>
+
+
+
+
+
+
+
+<P>What is the result of the following operation&nbsp;</P>
+
+
+
+
+
+
+
+<PRE>3 | 4&nbsp;</PRE>
+
+
+
+
+
+
+
+<P>The binary bit pattern for 3 is&nbsp;</P>
+
+
+
+
+
+
+
+<PRE>11&nbsp;</PRE>
+
+
+
+
+
+
+
+<P>The binary bit pattern for 4 is&nbsp;</P>
+
+
+
+
+
+
+
+<PRE>100&nbsp;</PRE>
+
+
+
+
+
+
+
+<P>For performing a binary OR, each bit is compared with the bit in the same
+
+
+
+
+
+
+
+position in the other number. If either bit contains a 1 the bit in the
+
+
+
+
+
+
+
+resulting number is set to one. Thus for this operation the result will be
+
+
+
+
+
+
+
+binary&nbsp;</P>
+
+
+
+
+
+
+
+<PRE>111&nbsp;</PRE>
+
+
+
+
+
+
+
+<P>Which is decimal 7.&nbsp;</P>
+
+
+
+
+
+
+
+<P>The objectives do not specifically ask for knowledge of the bitwise XOR
+
+
+
+
+
+
+
+operation, performed with ^</P>
+
+
+
+
+
+
+
+<H2><B><FONT FACE="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">Thinking in
+
+
+
+
+
+
+
+binary</FONT></B></H2>
+
+
+
+
+
+
+
+<P>If you do not feel comfortable thinking in binary (I am much more comfortable 
+
+
+
+  in decimal), you may want to do some exercises to help master this topic and 
+
+
+
+  also the bitwise shift operators topic. If you are running windows you may find 
+
+
+
+  it helpful to use the windows calculator in scientific mode. To do this choose 
+
+
+
+  View and switch from the default standard to scientific mode. In Scientific 
+
+
+
+  mode you can switch between viewing numbers ad decimal and binary, this displays 
+
+
+
+  the bit pattern of numbers. Here is another handy trick I wish I had known before 
+
+
+
+  I wrote my BitShift applet (see the applets menu from the front of this site), 
+
+
+
+  is how to use the Integer to display bit patterns. Here is a little program 
+
+
+
+  to demonstrate this.</P>
+
+
+
+
+
+
+
+<PRE>public class BinDec{
+public static void main(String argv[]){
+        System.out.println(Integer.parseInt(&quot;11&quot;,2));
+        System.out.println(Integer.toString(64,2));
+       }
+}</PRE>
+
+
+
+
+
+
+
+<P>If you compile and run this program the output will be</P>
+
+
+
+
+
+
+
+<P>3<BR>
+
+
+
+
+
+
+
+1000000</P>
+
+
+
+
+
+
+
+<P>Note how the program converts the bit pattern 11 into the decimal equivalent 
+
+
+
+  of the number 3 and the decimal number 64 into its equivalent bit pattern. The 
+
+
+
+  second parameter to each method is the &quot;radix&quot; or counting base. Thus 
+
+
+
+  in this case it is dealing with numbers to the base 2 whereas we normally deal 
+
+
+
+  with numbers to the base 10.</P>
+
+
+
+
+
+
+
+<HR ALIGN="CENTER" SIZE="4" NOSHADE="NOSHADE">
+
+
+
+
+
+
+
+<TABLE BORDER="0" WIDTH="100%">
+
+
+
+
+
+
+
+<TR>
+
+
+
+
+
+
+
+<TD WIDTH="11%"> <P><IMG SRC= "Quiz.gif"  WIDTH="99" HEIGHT="101"
+
+
+
+
+
+
+
+ALIGN="BOTTOM" BORDER="0"> </P>
+
+
+
+
+
+
+
+</TD>
+
+
+
+
+
+
+
+<TD WIDTH="89%"> <P>&nbsp; </P>
+
+
+
+
+
+
+
+</TD>
+
+
+
+
+
+
+
+</TR>
+
+
+
+
+
+
+
+</TABLE>
+
+
+
+
+
+
+
+<P></P>
+
+
+
+
+
+
+
+<H1>Questions</H1>
+
+
+
+
+
+
+
+<H4><B>Question 1)</B></H4>
+
+
+
+
+
+
+
+<P>What will happen when you attempt to compile and run the following code?</P>
+
+
+
+
+
+
+
+<PRE>int Output=10;
+boolean b1 = false;
+if((b1==true) &amp;&amp; ((Output+=10)==20)){
+    System.out.println(&quot;We are equal &quot;+Output);
+    }else
+   {
+    System.out.println(&quot;Not equal! &quot;+Output);
+}</PRE>
+
+
+
+
+
+
+
+<P>1) Compile error, attempting to peform binary comparison on logical data type<BR>
+  2) Compilation and output of &quot;We are equal 10&quot;<BR>
+  3) Compilation and output of &quot;Not equal! 20&quot;<BR>
+  4) Compilation and output of &quot;Not equal! 10&quot;</P>
+
+
+
+
+
+
+
+<P> </P>
+
+
+
+
+
+
+
+<P> </P>
+
+
+
+
+
+
+
+<HR ALIGN="CENTER">
+
+
+
+
+
+
+
+<H4><B>Question 2)</B></H4>
+
+
+
+
+
+
+
+<P></P>
+
+
+
+
+
+
+
+<P>What will be output by the following line of code?</P>
+
+
+
+
+
+
+
+<P>System.out.println(010|4);</P>
+
+
+
+
+
+
+
+<P>1) 14<BR>
+
+
+
+
+
+
+
+2) 0<BR>
+
+
+
+
+
+
+
+3) 6<BR>
+
+
+
+
+
+
+
+4) 12</P>
+
+
+
+
+
+
+
+<P> </P>
+
+
+
+
+
+
+
+<P> </P>
+
+
+
+
+
+
+
+<HR ALIGN="CENTER">
+
+
+
+
+
+
+
+<H4><B>Question 3)</B></H4>
+
+
+
+
+
+
+
+<P></P>
+
+
+
+
+
+
+
+<P>Which of the following will compile without error?</P>
+
+
+
+
+
+
+
+<P>1)</P>
+
+
+
+
+
+
+
+<PRE>int i=10;
+int j = 4;
+System.out.println(i||j);</PRE>
+
+
+
+
+
+
+
+<P>2)</P>
+
+
+
+
+
+
+
+<PRE>int i=10;
+int j = 4;
+System.out.println(i|j);</PRE>
+
+
+
+
+
+
+
+<P>3)</P>
+
+
+
+
+
+
+
+<PRE>boolean b1=true;
+boolean b2=true;
+System.out.println(b1|b2);</PRE>
+
+
+
+
+
+
+
+<P>4)</P>
+
+
+
+
+
+
+
+<PRE>boolean b1=true;
+boolean b2=true;
+System.out.println(b1||b2);</PRE>
+
+
+
+
+
+
+
+<P> </P>
+
+
+
+
+
+
+
+<H1>Answers</H1>
+
+
+
+
+
+
+
+<H4><B>Answer 1)</B></H4>
+
+
+
+
+
+
+
+<P><B> <BR>
+
+
+
+
+
+
+
+</B>4) Compilation and output of &quot;Not equal! 10&quot;<B><BR>
+
+
+
+
+
+
+
+<BR>
+
+
+
+
+
+
+
+</B>The output will be &quot;Not equal 10&quot;.&nbsp; This illustrates that
+
+
+
+
+
+
+
+the Output +=10 calculation was never performed because processing stopped
+
+
+
+
+
+
+
+after the first operand was evaluated to be false. If you change the value of
+
+
+
+
+
+
+
+b1 to true processing occurs as you would expect and the output is &quot;We are
+
+
+
+
+
+
+
+equal 20&quot;;.</P>
+
+
+
+
+
+
+
+<H4><B>Answer 2)</B></H4>
+
+
+
+
+
+
+
+<P>4) 12</P>
+
+
+
+
+
+
+
+<P>As well as the binary OR objective this questions requires you to understand
+
+
+
+
+
+
+
+the octal notation which means that the leading zero not means that the first 1
+
+
+
+
+
+
+
+indicates the number contains one eight and nothing else. Thus this calculation
+
+
+
+
+
+
+
+in decimal means</P>
+
+
+
+
+
+
+
+<PRE>8|0</PRE>
+
+
+
+
+
+
+
+<P>To convert this to binary means</P>
+
+
+
+
+
+
+
+<PRE>1000
+0100
+----
+1100
+----</PRE>
+
+
+
+
+
+
+
+<P>The | bitwise operator means that each position where there is a 1, results
+
+
+
+
+
+
+
+in a 1 in the same position in the answer.</P>
+
+
+
+
+
+
+
+<H4><B>Answer 3)</B></H4>
+
+
+
+
+
+
+
+<P>2,3,4</P>
+
+
+
+
+
+
+
+<P>Option 1 will not compile because it is an attempt to perform a logical OR
+
+
+
+
+
+
+
+operation on a an integral types. A logical or can only be performed with
+
+
+
+
+
+
+
+boolean arguments.</P>
+
+
+
+
+
+
+
+<table border="1" width="100%">
+
+
+
+  <caption><b>Other sources on this topic</b></caption>
+
+
+
+  <tr> 
+
+
+
+    <td width="100%"><b>The Sun Tutorial<br>
+
+
+
+      </b><a href= "http://java.sun.com/docs/books/tutorial/java/nutsandbolts/operators.html" >http://java.sun.com/docs/books/tutorial/java/nutsandbolts/operators.html</a><b><br>
+
+
+
+      </b><br>
+
+
+
+      <b>Richard Baldwin</b> <br>
+
+
+
+      <a href="http://home.att.net/%7Ebaldwin.dick/Intro/Java022f.htm%20">http://home.att.net/~baldwin.dick/Intro/Java022f.htm 
+
+
+
+      </a></td>
+
+
+
+  </tr>
+
+
+
+</table>
+
+
+
+<p>Last updated<BR>
+
+
+
+  10 Jan 2000<BR>
+
+
+
+  copyright &copy; Marcus Green 2000</p>
+
+
+
+</BODY>
+
+
+
+
+
+
+
+</HTML>
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+

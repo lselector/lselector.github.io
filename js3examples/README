@@ -1,0 +1,26 @@
+These are the examples from the book: 
+	
+	JavaScript: The Definitive Guide, Third Edition
+
+The book and the examples were written by David Flanagan.  They
+are Copyright (c) 1996, 1997, 1998 by O'Reilly & Associates.
+
+To browse the examples, load the file index.html into your
+JavaScript-enabled web browser.
+
+If you want to experiment with the examples, however, you should copy
+and modify the files in this directory.  The file names correspond to
+the example numbers from the book.  Different examples have different
+file extensions.  Those that end with .html are HTML files; typically
+these can be loaded and run directly in a web browser.  The files with a
+.js extension are files of pure JavaScript code.  They cannot be loaded
+directly into a browser.  A few particularly useful files of JavaScript
+code are also given textual names, such as DynEl.js.
+
+The files in the text/ directory are copies of the files in this
+directory, with a .txt extension.  These duplicate copies exist so that
+the HTML and JavaScript code can be displayed in a Web browser without
+interpretation.  
+
+The files in the images/ directory are images used by a few of the
+examples. 

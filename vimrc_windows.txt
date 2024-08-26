@@ -1,0 +1,104 @@
+" -------------------------------------
+"Lev-s .vimrc file for Windows
+" -------------------------------------
+syntax on         " highlighting
+set nocompatible  " Use Vim defaults (even on Windows)
+set ignorecase
+
+" -------------------------------------
+" use taglist plugin and ctags:
+:map <F8> :TlistToggle<cr>
+:map <S-T> :TlistToggle<cr>
+let Tlist_Exit_OnlyWindow = 1
+
+" -------------------------------------
+" use F3 to remove every 2nd newline
+:map <silent> <F3> :s/\(\n\)\n/\1/g<cr>
+
+" -------------------------------------
+" use F5 to go between tabs
+:map <silent> <F5> :tabn<cr>
+:map <silent> <S-F> :tabn<cr>
+
+" -------------------------------------
+" use 2-space indentation
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+
+" -------------------------------------
+" always show status line - and show more info on it
+set laststatus=2
+set statusline=%F%m%r%h%w\ %{&ff}\ %Y\ ascii=\%03.3b\ hex=\%02.2B\ [%04l,%04v](%p%%\ of\ %L)
+
+" -------------------------------------
+"use F7 to toggle line numbers
+function! ToggleLineNumbers()
+  if &number
+    set nonumber
+  else
+    set number
+  endif
+endfunction
+
+map <silent> <F7> :call ToggleLineNumbers() <CR>
+map <silent> <S-N> :call ToggleLineNumbers() <CR>
+
+" -------------------------------------
+function! TogglePerlComment()
+  let s:line = getline('.')
+  if s:line =~ "^#"
+    :s/^#//
+  else
+    :s/^/#/
+  endif
+endfunction
+
+map <silent> <F4> :call TogglePerlComment() <CR>
+map <silent> <S-B> :call TogglePerlComment() <CR>
+
+" -------------------------------------
+function ToggleHLSearch()  " toggle highlight after search
+  if &hls
+    set nohls
+  else
+    set hls
+  endif
+endfunction
+
+nmap <silent> <C-n> <Esc>:call ToggleHLSearch()<CR>.
+
+" -------------------------------------
+"To avoid invoking help when accidentally pressing F1, map it to Esc:
+map <F1> <Esc>
+imap <F1> <Esc>
+
+" -------------------------------------
+"source $VIMRUNTIME/vimrc_example.vim
+"
+"set diffexpr=MyDiff()
+"function MyDiff()
+"  let opt = '-a --binary '
+"  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+"  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+"  let arg1 = v:fname_in
+"  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+"  let arg2 = v:fname_new
+"  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+"  let arg3 = v:fname_out
+"  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+"  let eq = ''
+"  if $VIMRUNTIME =~ ' '
+"    if &sh =~ '\<cmd'
+"      let cmd = '""' . $VIMRUNTIME . '\diff"'
+"      let eq = '"'
+"    else
+"      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+"    endif
+"  else
+"    let cmd = $VIMRUNTIME . '\diff'
+"  endif
+"  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+"endfunction
+" -------------------------------------

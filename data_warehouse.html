@@ -1,0 +1,667 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.78 [en] (X11; U; Linux 2.4.10-4GB i686) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>data_warehouse</title>
+<!--
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+<style type="text/css">
+<!--
+.style1 {
+	color: #FF0000;
+	font-weight: bold;
+}
+.style2 {color: #0000FF}
+-->
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Data Warehouse&nbsp;</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Data Warehousing,</font></b>
+<br><b><font color="#CC0000">OLAP &amp; Reporting.</font></b>
+<br>&nbsp;
+<table WIDTH="100%" BORDER cellpadding="0" CELLSPACING=2 COLS=2 NOSAVE >
+  <tr bgcolor="#FFCC99"> 
+    <td>On This Page:</td>
+
+    <td>Other Pages:</td>
+</tr>
+
+<tr NOSAVE>
+<td>- <a href="#operations_vs_analysis">Operations vs. Analysis</a>
+<br>- <a href="#intro">Star &amp; Snowflake configurations</a>
+<br>- <a href="#data_mart_and_data_warehouse">data mart &amp; data warehouse</a>
+<br>- <a href="#multi-dimensional-analysis">multi-dimentional analysis,
+OLAP</a>
+<br>- <a href="#software">software</a>
+<br>- <a href="#books">books</a></td>
+
+<td ALIGN=LEFT VALIGN=TOP NOSAVE>- <a href="mdx.html">MDX (Multi-Dimensional 
+        Expressions)</a><br>
+      - <a href="informatica.html">Informatica</a><br>      - <a href="erp.html">ERP, 
+        CRM, etc.</a> <br>
+- <a href="etl.html">ETL</a><br>
+- <a href="teradata.html">Teradata</a></td>
+</tr>
+</table>
+
+<br>
+<a href="#books"></a> 
+<p><font color="#000000">(Executive Information Systems,&nbsp; Decision
+Support Systems,&nbsp; Statistics and Technical Data Analysis,&nbsp; Neural
+Networks,&nbsp; End-User Query and Reporting,&nbsp; Data Warehousing,&nbsp;
+Mapping and Visualization,&nbsp; Data Mining and OLAP,&nbsp; )</font>
+<p><a NAME="operations_vs_analysis"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Operations vs Analysis</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Let's distinguish between databases optimized for 2 types of work: operations
+and research.
+<br>&nbsp;
+<table BORDER COLS=3 WIDTH="100%" NOSAVE >
+<tr BGCOLOR="#FFCC00" NOSAVE>
+<td NOSAVE>--</td>
+
+<td><b>operational processing</b> - <b><font color="#FF0000">OLTP</font></b>(On-Line-Transaction-Processing)</td>
+
+<td><b>Research and Analysis</b> - <b><font color="#FF0000">DSS</font></b>
+(Decision Support System),&nbsp; <b><font color="#FF0000">OLAP</font></b>
+(On-Line-Analytical-Processing), Data mining</td>
+</tr>
+
+<tr>
+<td>Optimized for&nbsp;</td>
+
+<td>inserts, updates, and deletes</td>
+
+<td>queries</td>
+</tr>
+
+<tr>
+<td>Frequency of updates</td>
+
+<td>Frequently (may be every second)</td>
+
+<td>Usually once a day. Data for analysis is prepared once a day (at night)
+at a staging area, then loaded into the main OLAP database - and then used
+during the day.</td>
+</tr>
+
+<tr>
+<td>Number of indexes</td>
+
+<td>Few indexes</td>
+
+<td>Many indexes</td>
+</tr>
+
+<tr>
+<td>Level of normalizing the database</td>
+
+<td>Normalized to some reasonable degree</td>
+
+<td>Heavily de-normalized for easier and faster querying</td>
+</tr>
+</table>
+
+<p><font color="#000000">Some analysis (for example, Multi-Dimensional
+Analysis) is really much better done using <a href="#software">specialized
+software</a> instead of standard RDBMS.</font>
+<p><a NAME="star_snowflake"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Star schema &amp; Snowflake configurations</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>One of the difficulties of querying a normalized database is in the
+  big number of tables you may need to join sequentially in one query.&nbsp;
+  You can easily have to chain 10 and more tables.&nbsp; This is difficult
+  for a user (he must know his tables really well), and it may have very
+  poor performance. Or even crash the database.
+<p><center>
+    <img SRC="images/tables.gif" height=71 width=482>
+  </center>
+  The common approach to resolve this problem is to try to restructure the
+  data. You denormalize your tables. You also restructure them into so-called
+  <b><font color="#FF0000">"star"-configuration</font></b> to avoid long chains.&nbsp; This means that you create one big&nbsp; <b><font color="#FF0000">"facts"
+  table</font></b> (the center of the star) surrounded by 10-15 <b><font color="#FF0000">"dimension"
+  tables</font></b>.&nbsp; This way you avoid long chains. Then you basically
+  query one central <b><font color="#FF0000">"fact" table</font></b> - and
+  narrow your scope by joining it with some <b><font color="#FF0000">"dimension"
+  tables</font></b>.&nbsp; Your chain length =1. Sometimes you may add extra
+  2-nd layer (chain length=2 - details) - this is called the Snowflake configuration
+  - see images: <br>
+  &nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 NOSAVE >
+<tr>
+<td><b><u>Star Configuration</u></b></td>
+
+<td></td>
+
+<td><b><u>Snow Flake Configuration</u></b></td>
+</tr>
+
+<tr NOSAVE>
+<td><img SRC="images/tables_star.gif" height=210 width=150 align=LEFT></td>
+
+<td ALIGN=LEFT VALIGN=TOP NOSAVE></td>
+
+<td><img SRC="images/tables_snowflake.gif" HSPACE=6 VSPACE=6 height=182 width=211></td>
+</tr>
+</table>
+
+<p>The <span class="style1">Star Schema</span> is  also known as a &quot;<span class="style1">star-join schema</span>&quot;, &quot;<span class="style1">data cube</span>&quot;, and &quot;<span class="style1">multidimensional schema</span>&quot;. </p>
+<p>The main benefit of Star schema configuration is that it makes 
+  easy for users to to make reports/queries, 
+  especially implementing multi-dimensional views of data 
+with different granularity for different dimensions. The applications (reports) become simplier and easier to understand for the user.
+<ul>
+  <li><b><font color="#FF0000">Fact table</font></b> - usually contains "facts"
+    of events involving dimensions. For example, a purchase may be considered
+    as a fact, which is characterized by many dimensions (time, store, product,
+    promotion, etc.).&nbsp; Thus a row in a fact table corresponding to one
+  purchase will have foreign keys to all corresponding dimension tables. The fact table stores the data at the lowest level of granularity, for example, for time dimansion the granularity may be - seconds. The other levels  of granularity (hour, day, week, month,...) are stored in corresponding &quot;dimension&quot; table.</li>
+  <li><b><font color="#FF0000">Dimensions</font></b> - constitute the majority
+    of objects in your database. They are typically something by which you
+    would break your data into groups. For example, you could break your data
+  by time (min, hour, day, week, month, quater, year), by store (store, zip, city, state, country), by product (...), by promotion (...), etc. The multiple levels of granularity (for time - hour, day, week, month ,...) are stored in corresponding dimension table.</li>
+  <li><b><font color="#FF0000">Details</font></b> (for example 2nd layer
+    in the Snowflake) - some details associated with dimensions, separated
+    into separate tables. This make sense if these details not very important
+    (not required very frequently). </li>
+</ul>
+<p>To optimize queries, it is necessary to create corresponding indexes. For example, for a report using data from 4 dimensions (d1,d2,d3,d4) you may use the following index:</p>
+<p class="style2"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;create index i1 on MyFactTable (id_d1, id_d2, id_d3, id_d4) </p>
+<p>Database servers may have  special built-in optimizations to perform a query on a star schema. For example, in Oracle you can set <span class="style1">STAR_TRANSFORMATION_ENABLED=TRUE</span> and create bitmap indexes on keys in the fact table.</p>
+<p>Fact table is usually very big (tens  of millions of rows - and larger) and gets more and more new data on a daily basis. It make sense to partition it by some time interval, for example by a month or quater of the year. To do this you need to add a column to the fact table (for example, month) by which you will do the  partitionning. </p>
+<p>There are ways to bulk-load data in parallel - methods are different depending on the database brand (DB2, Oracle, ...). For example, for speed you can disable indexes and logging while doing the load - and then recreate the indexes after the load. Note - as rebuilding of an index for a big table takes a lot of time, there are ways to speed up this as well (partition the index, thus rebuilding index locally, use parallel calculations, turn off logging while rebuilding the index).</p>
+<p><br>
+<a NAME="data_mart_and_data_warehouse"></a></p>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Data Mart &amp; Data Warehouse</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><span class="style1">Data mart</span> is usually a set of partiular data designed to meet some specific knowledge needs. It may be one set of tables in <font color="#FF0000">Star</font> or <font color="#FF0000">Snowflake</font>
+configuration. But may be something else. A big database with thousands of tables can be represented (for analysis)
+  by tens of Data Marts.  
+  Together these <b><font color="#FF0000">Data Marts</font></b> constitute
+  a <b><font color="#FF0000">"Data Warehouse"</font></b>.
+<p>Note, that several different star systems can re-use the same dimension
+tables.
+<br>&nbsp;
+<p><a NAME="multi-dimensional-analysis"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Multi-Dimensional Analysis</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><img SRC="images/olap_cube.gif" height=168 width=187 align=RIGHT>Example
+- 4 dimensions:&nbsp; stores, time periods, products, measures.
+<br>
+Thus data relationships can not be fit in a 2-dimentional table. It
+is more like a multi-dimensional cube (<b><font color="#FF0000">hyper-cube</font></b>).
+<br>You can slice this cube in different directions - and show a 2-dimensional
+slice (or 3-dimensional picture).
+<br>Note, that some of cube dimensions correspond to Dimensions of the
+data mart (something you would group by - stores, time periods, products),
+whereas others may be calculated measures (total, average, etc.).
+<br>Each dimension usually has some <b><font color="#FF0000">hierarchy</font></b>
+- <b><font color="#FF0000">multiple levels of granularity</font></b> (for
+example for time: hour, day, week, month, etc.).
+<p>The OLAP existed for ~30 years, but the term <b>OLAP</b> (On-Line Analytical
+Processing) was introduced only in 1993 by Dr. Codd et al. in paper "Providing
+OLAP to User-Analysts: An IT Mandate".&nbsp; Yes, the same Codd who formulated
+database principles in 70s. The work was sponsored by Arbor Software, the
+creators of ESSBASE.
+<p>OLAP calculations should be fast (under 30 seconds).
+<p><b>ROLAP</b> - analysis system based on Relational database.
+<br><b>MOLAP</b> - analysis system using multidimensional database (much
+faster).
+<br><b>HOLAP</b> - Hybrid OLAP.
+<p>Formulas
+<br>Links.
+<p>When designing your model, adding hierarchies takes less computer resources
+than adding dimensions.
+<p>Search google for olap freethink, praxis olap software, infocube, oracle
+express, etc.
+<br>- <a href="http://altaplana.com/olap/olap.html">http://altaplana.com/olap/olap.html</a>
+- collection of information related to Online Analytical Processing (OLAP)
+<br>- <a href="http://www-users.cs.york.ac.uk/~kimble/research/ak/info.html">http://www-users.cs.york.ac.uk/~kimble/research/ak/info.html</a>
+-
+<br>- <a href="http://www.infogoal.com/dmc/dmcdwh.htm">www.infogoal.com/dmc/dmcdwh.htm</a>
+- Directory of Data Warehouse, Data Mining, and Decision Support Resources
+<br>- <a href="http://bprc.warwick.ac.uk/bp-tool.html">http://bprc.warwick.ac.uk/bp-tool.html</a>
+- hardware/software vendors
+<br>- <a href="http://www.praxisint.com/solution/businessintelligence/index.asp">www.praxisint.com/solution/businessintelligence/index.asp</a>
+- Praxis International (FreeThink)
+<br>- <a href="http://www.credata.com/research/dwsites.html">www.credata.com/research/dwsites.html</a>
+- Hot Sites on Data Warehousing
+<br>- <a href="http://www.dmreview.com/master.cfm?NavID=152&AuthorID=1573">http://www.dmreview.com/master.cfm?NavID=152&amp;AuthorID=1573</a>
+- OLAP Market Review
+<br>- <a href="http://www.dmreview.com/">www.dmreview.com/</a> - DM Review
+Magazine
+<p>Search Google for OLAP:
+<br>- <a href="http://directory.google.com/Top/Computers/Software/Databases/OLAP/?tc=1">http://directory.google.com/Top/Computers/Software/Databases/OLAP/?tc=1</a>
+-
+<br>- <a href="http://directory.google.com/Top/Computers/Software/Databases/Data_Warehousing/">http://directory.google.com/Top/Computers/Software/Databases/Data_Warehousing/</a>
+-
+<br>- <a href="http://directory.google.com/Top/Computers/Software/Databases/Data_Mining/">http://directory.google.com/Top/Computers/Software/Databases/Data_Mining/</a>
+-
+<p><a NAME="software"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>software</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>There are so many specialized software packages for data mining and
+OLAP - more than enough to have your head spin. For a sample list go to
+<br>- <b><a href="http://www.knowledgestorm.com/">www.knowledgestorm.com/</a></b>
+- and search for OLAP - you will get&nbsp; ~200s of software solutions.
+Here are some (not properly sorted, and I am sure that some important ones
+are missed - please let me know at - Lev.Selector@gmail.com) :
+<br>&nbsp;
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 COLS=1 WIDTH="100%" BGCOLOR="#CCFFFF" NOSAVE >
+<tr NOSAVE>
+<td NOSAVE>- <a href="http://www.businessobjects.com/">www.businessobjects.com/</a>
+- <b><font color="#003300">BusinessObjects</font></b> - powerful reporting
+system, a BI (Business Intelligence) platform and integrated BI toolset.&nbsp;
+Have designer application, deliver via browser. Has effective and optimized
+subscribtion/distribution mechanism. Allows to do multidimensional analysis,
+slicing/dicing, drill down/up.
+<p>- <a href="http://www.cognos.com/products/powerplay/">www.cognos.com/products/powerplay/</a>
+- <b>Cognos</b> <b>PowerPlay</b> - by Cognos, Inc. - the world's best-selling
+OLAP software lets users explore volumes of data with sub-second response.&nbsp;
+Can use browser or Excel as a client. Has data store and application server
+to serve thosands of users simultaneously.
+<p>- <a href="http://www.microsoft.com/sql/evaluation/features/compserv.asp"><b>Microsoft</b>
+Analysis Services for MS SQL Server</a>. Took big share of the market.
+<b>MDX</b>
+language (Multidimensional Expression (MDX) - like SQL, but works with
+multidimensional cubes).&nbsp; ProClarity (<a href="http://www.proclarity.com/">www.proclarity.com/</a>)
+offers third party OLAP CLient (<b>Knosys</b>).
+<p>- <a href="http://www.hyperion.com/">www.hyperion.com/</a> -
+<b>Hyperion</b>'s
+<b>Essbase</b>
+OLAP server and Analysis Tools - used by millions of users.
+<p>- <b><a href="http://www-4.ibm.com/software/data/bi/">DB2 OLAP server</a></b>
+- IBM's Essbase clone,&nbsp; <a href="http://www-4.ibm.com/software/data/informix/">IBM
+<b>Red
+Brick</b>&reg; Warehouse</a> - a high-performance database server (from
+Informix)
+<p>- <a href="http://www.teradata.com">http://www.teradata.com</a> - Teradata (<a href="http://www.ncr.com/about_ncr/company_overview/history.jsp">spin-off from  NCR in 2007</a>) - database engine optimized for Datawarehousing (for reading, not for inserting).&nbsp;
+  Used for huge data warehouses (Fortune 100 companies, for example, major
+  arilines). NCR = National Cash Register.
+<p>- <a href="http://www.oracle.com/olap/">www.oracle.com/olap/</a> - <b>Oracle
+Express</b> - Multidimensional Server (MOLAP), the 4GL SPL (Server Programming
+Language), Oracle Express Objects toolkit (to handle multi-dimensional
+data), many utilities for administraiont, monitoring, loading the data,
+OWB (Oracle Warehouse Builder - ROLAP), Oracle Express Analyzer, Oracle
+Discoverer, Express Web Publisher, Spreadsheet Add-ins, Oracle Darwin (datamining
+software that finds meaningful patterns hidden within corporate data),
+Oracle Financials, etc.
+<p>- <a href="http://www.crystaldecisions.com">www.crystaldecisions.com</a>
+- by <b>Crystal Decisions</b> (Former <b>Seagate Software</b>) - web-based
+infrastructure&nbsp; for analysis and reporting accross the enterprise
+(Crystal Reports, Crystal Enterprise, Crystal Applications, Crystal Analysis,
+Holos Analytic System, <b>Seagate Info</b>, BI Technology Spectrum). Simple
+distribution of pdf reports.
+<p>- <a href="http://www.applix.com/solutions/">www.applix.com/solutions/</a>
+- <b>Applix</b> ITM1
+<p>- <a href="http://www.MicroStrategy.com">www.MicroStrategy.com</a> -
+<b>MicroStrategy</b>
+- OLAP, etc.
+<p>- <a href="http://www.brio.com/products/overview.html">www.brio.com/products/overview.html</a>
+- <b>Brio</b> Intelligence, <b>Brio</b> Portal, <b>Brio</b> Reports - build
+business intelligence, enterprise reporting, analytics. Slow performance.
+Powerful query analyser tool which works over the web (via plugin).&nbsp;
+Good Javascript model which allows the building of "EIS screens" to give
+pushbutton / search box / sort etc. without the user having to understand
+how to use pivottables and drill-down graphs.
+<p>- <a href="http://www.sap.com/solutions/bi/">www.sap.com/solutions/bi/</a>
+- mySAP Business Intelligence, Business Warehouse, etc. - by <b>SAP</b>
+America, Inc.
+<p>- <a href="http://www.actuate.com">www.actuate.com</a> - Actuate - The
+Actuate e.Reporting Suite 5. Report server for report generation - produces
+ROI (proprietary format), PDF and spreadsheet.&nbsp; Reports have rich
+content and can be hyper-linked. Actuate runs on both Unix and NT servers.
+Example of usage: generate 30,000 reports each night.</td>
+</tr>
+</table>
+
+<p><font color="#6699CC">* </font><a href="http://www.hammerman.com/faq.html">www.hammerman.com/faq.html</a>
+- database reporting FAQ
+<br><font color="#6699CC">* </font><a href="http://www.livewarepub.com/">www.livewarepub.com/</a>
+- R&amp;R Report Writer - Liveware Publishing, Inc. (X-base and SQL versions
+(formerly known as Arpeggio))
+<br><font color="#6699CC">* </font><a href="http://www.srs-inc.com/Products/ReportSmith/RSFeatures.asp">www.srs-inc.com/Products/ReportSmith/RSFeatures.asp</a>
+- ReportSmith - (Strategic Reporting Systems, Inc.)
+<br>&nbsp;
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" NOSAVE >
+<tr NOSAVE>
+<td NOSAVE>- <a href="http://www.informatica.com/">www.informatica.com/
+</a>-
+<b><font color="#CC6600">Informatica</font></b>
+- good product for data preparation in the staging area.
+<br>- <a href="http://www.whitelight.com/">www.whitelight.com/</a> - WhiteLight
+analytic platform
+<br>- <a href="http://www.siebel.com">www.siebel.com</a> - Siebel eMarketing
+- by <b>Siebel</b> Systems, Inc.&nbsp; - Siebel eMarketing enables organizations
+to create, execute, and assess Web-based marketing campaigns.
+<br>-&nbsp; -&nbsp; ADAPT (Application Design for Analytical Processing
+Technologies) by Symmetry Corporation - design methodology specifically
+to represent the objects and operations found in OLAP applications.
+<br>-&nbsp; - OutlookSoft Enterprise Analytic Portal - by OutlookSoft
+<br>-&nbsp; - WebFOCUS Business Intelligence Dashboard &amp; Developers
+studiio - by <b>Information Builders</b>, Inc. - reporting
+<br>- <a href="http://www.PeopleSoft.com">www.PeopleSoft.com</a> - PeopleSoft
+Tree and Cube Manager - by <b>PeopleSoft</b> -&nbsp; users can define the
+data they want to extract into an OLAP cube.
+<p>-&nbsp; - KPMG's Interpreter - transfer pricing software -&nbsp; by
+KPMG LLP
+<br>-&nbsp; - Cardinal Supervisor and Cardinal Explorer - by Symtrax -
+automatically captures, formats and distributes output from Mainframe,
+ERP, database and other systems.
+<br>-&nbsp; - Outfront CRM[tm] by Primal Solutions, Inc. - helps you identify
+who your high-value customers are and why, and how to ...
+<br>-&nbsp; - PolyAnalyst - by Megaputer Intelligence Inc.&nbsp; - a complete
+high-end data mining tool.
+<br>-&nbsp; - Datapan manufacturerAgent - by Askfor Business Solutions
+- real-time pdf customized reports
+<br>-&nbsp; - DI-Atlantis - by Dimensional Insight, Inc.- multidimensional
+software package for intuitive access and analysis.
+<br>-&nbsp; - eEnterprise Business Analytics Series - by Microsoft Great
+Plains Business Solutions
+<p>-&nbsp; - DocuAnalyzer - by Mobius Management Systems, Inc.
+<br>-&nbsp; - Infinium Business Intelligence Analytic Server (BIAS) - by
+Infinium Software, Inc. - a multi-dimensional business analysis
+<br>-&nbsp; - Horizon OLAP Reporting and Analysis - by Walker Interactive
+Systems, Inc. - OLAP Reporting and Analysis is the first reporting application
+built specifically for financial reporting, analysis and modeling from
+a multi-dimensional database.
+<br>&nbsp;
+<p>-&nbsp; - DataTracker - by Silvon Software, Inc. - OLAP
+<br>-&nbsp; - MARS - by Salford Systems&nbsp; - an automated regression
+software tool which is highly competitive to Neural Nets in the solution
+but the insights are more clear.&nbsp; See also CART (decision tree tool
+to search for patterns)
+<br>-&nbsp; - Adaytum e.Planning - by Adaytum Software Inc&nbsp; - an enterprise
+business planning solution
+<p>-&nbsp; - IDENTITY SYSTEMS (IDS) - by Search Software America - Persons,
+Organizations and Addresses can be searched, matched and retrieved despite
+the error, variation or format of the data.
+<br>-&nbsp; - BizWorks - by interBiz - an eBusiness Process Management
+Suite
+<p>-&nbsp; - WizWhy - by WizSoft, Inc.&nbsp; - a data mining tool for revealing
+trends, rules, errors, and interesting phenomena in the data
+<br>-&nbsp; - Hummingbird BI/Suite - by Hummingbird Ltd.&nbsp; - a fully
+integrated, scalable business intelligence solution (OLAP)
+<br>-&nbsp; - CorManage - by CorVu Corporation - Balanced Scorecard applications,
+OLAP Query and Reporting, executive dashboard alerts, forecasting and what-if
+analysis.
+<br>-&nbsp; - AnalyzerSuite - by ChiCor Information Management, Inc.&nbsp;
+- OLAP-based AnalyzerSuite&nbsp; - create graphical representations of
+multi-dimensional data.
+<br>-&nbsp; - Comshare Decision - by Comshare, Inc.&nbsp; - Enables rapid
+development of custom business intelligence applications such as balanced
+scorecard, customer and market analysis and BI portals.
+<p>-&nbsp; - NetWORKS ONEview - by Manugistics, Inc.&nbsp; - a set of applications
+based on industry-standard OLAP technology
+<br>-&nbsp; - iM:Analyzer - by iMedeon, Inc. - a Results Performance Manager
+(RPM) with a knowledge repository
+<br>-&nbsp; - Monarch/ES Report Portal: Business Intelligence &amp; Web
+Enterprise Reporting - by Datawatch Corporation -
+<br>-&nbsp; - Nuggets - by Data Mining Technologies, Inc.&nbsp; - Data
+Mining Software Toolkit - Rule Induction Engine, Prediction, Segmentation,
+Validation. Uses state of the art proprietary rule induction without statistics.
+<br>-&nbsp; - WebFOCUS OLAP - by Information Builders, Inc.&nbsp; - automatically
+OLAP-enables any report, so users can slice-and-dice information and detect
+patterns in any data-with or without cubes.
+<br>-&nbsp; - BayesOn-Line - by Gensym Corporation&nbsp; -&nbsp; BayesOn-Line
+(BOL) is a software tool for reasoning about uncertainty and for learning
+relationships among variables using a graphical modeling technology.
+<br>-&nbsp; - Deap - by Deap Systems, Inc.&nbsp; - identification, extraction,
+transformation, and transportation of operational SAP R/3 data into alternate
+RDBMSs.
+<br>-&nbsp; - KnowledgeAccess, KnowledgeSeeker, KnowledgeSTUDIO - by ANGOSS
+Software Corp&nbsp; - data miningwith Excel data
+<p>-&nbsp; - Monarch Data Pump - by Datawatch Corporation - extracts data
+from reports and/or database - and passes it further in various formats
+<br>-&nbsp; - Commerce Intelligence[tm] 4.0
+<br>-&nbsp; - Proactive[, Accelerators, Essentials - by Personify, Inc.
+-
+<br>-&nbsp; - Affinium Model - by Unica Corporation - award-winning data
+mining software
+<br>-&nbsp; - Intelli-Mine Business Intelligence Software for Retail -
+by Intelli-Mine - an analytical platform
+<br>-&nbsp; - Data Warehouse and Data Mart Services - by Appix, Inc. -
+allow you to design, execute, and implement data warehouses.
+<br>-&nbsp; - DQmart - by Decision Support Inc.&nbsp; - a data mart solution
+for financial institutions that use the MISER system.
+<p>-&nbsp; - PROPHIX - by EPS Software - Multi-user financial software
+application used for Budgeting, analysis, planning, reporting.
+<br>-&nbsp; - Synergen Series? EAM/CMMS Solution - by Synergen, Inc.&nbsp;
+- enterprise asset management EAM/CMMS software solution
+<br>-&nbsp; - WebFOCUS Developers Studio
+<br>-&nbsp; - SPSS Base, SmartViewer - by SPSS, Inc. - share report cubes,
+graphs and tables electronically
+<br>-&nbsp; - Business Decision Manager, Baan Business Intelligence Suite
+(BaanBIS) - by Baan USA, Inc. manage real-time business knowledge across
+the entire enterprise</td>
+</tr>
+</table>
+
+<p><a NAME="books"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>books</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><u>Books:</u></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFFFCC" NOSAVE >
+<tr>
+    <td>- Corporate Information Factory, 2nd Edition - by <b>William H. Inmon</b>, 
+      Claudia Imhoff, Ryan Sousa (2000)<br>
+      - Building the Data Warehouse (3rd Edition) -- by<b>William H. Inmon</b> 
+      (2002); <br>
+      - Managing the Data Warehouse -- by <b>William H. Inmon</b> et al (1996)<br>
+      - Data Warehouse Performance -- by <b>William H. Inmon</b> et al (1998)<br> 
+      - The Data Warehouse Lifecycle Toolkit : Expert Methods for Designing, Developing, 
+      and Deploying Data Warehouses -- by <b>Ralph Kimball</b> (1998) <br>
+      - The Data Warehouse Toolkit: The Complete Guide to Dimensional Modeling 
+      (Second Edition) - by <b>Ralph Kimball</b>, et al (2002) <br>
+      - OLAP Solutions: Building Multidimensional Information Systems - by Erik 
+      Thomsen (1997) <br>
+      - Data Warehousing, Data Mining, and OLAP (Data Warehousing/Data Management)
+- by Alex Berson, Stephen J. Smith (Contributor) (????)&nbsp;
+<p>- Data Warehouse Design Solutions - by Christopher Adamson, Michael
+Venerable (????)
+<br>- Data Warehousing and Decision Support : The State of the Art, Volume
+1 - by Pam Roth (1995)
+<br>- Data Warehousing in the Real World : A Practical Guide for Building
+Decision Support Systems - by Sam Anahory, Dennis Murray (Contributor)
+(1997)
+<br>- Data Warehousing; Building the Corporate Knowledge Base - by Thomas
+Hammergren (????)
+<br>- Business Intelligence : The IBM Solution - by Mark Whitehorn, Mary
+Whitehorn (1999)
+      <p>- Data Model Patterns : Conventions of Thought - by David C. Hay (1995) <br>
+        - The Balanced Scorecard : Translating Strategy into Action - by Robert
+S. Kaplan, David P. Norton (1996)
+<br>- e-Business Intelligence: Turning Information into Knowledge into
+Profit - by Bernard Liautaud, Mark Hammond (Contributor) (????)
+<br>- Building the Customer-Centric Enterprise: Data Warehousing Techniques
+for Supporting Customer Relationship Management - by Claudia Imhoff, et
+al (????)
+<br>- Business Information Warehouse for SAP - by Naeem Hashmi (2000)
+<p>- Data Warehouse Project Management - by Sid Adelman, Larissa Terpeluk
+Moss (????)
+<br>- Data Warehousing For Dummies&reg; - by Alan R. Simon (????)
+<br>- Data Warehouse : From Architecture to Implementation - by Barry Devlin
+(1996)
+<br>- Building and Managing the Meta Data Repository: A Full Lifecycle
+Guide - by David Marco (????)
+<br>- Data Mining and Business Intelligence : A Guide to Productivity -
+by Stephan Kudyba, Richard Hoptroff (????)
+<p>- Business Intelligence Using Smart Techniques : Environmental Scanning
+Using Text Mining and Competitor Analysis Using Scenarios and Manual Simulation
+- by Charles Halliman (????)
+<br>- Data Warehousing and Business Intelligence for E-Commerce - by Alan
+R. Simon, Steven L. Shaffer (????)
+<br>- Data Mining Techniques : For Marketing, Sales, and Customer Support
+- by Michael J. A. Berry, Gordon S. Linoff (????)
+<br>- Introduction to Data Mining and Knowledge Discovery, Third Edition
+- by Herbert A. Edelstein (????)
+<br>- Advances in Knowledge Discovery and Data Mining - by Usama M. Fayyad
+(Editor), et al (????)
+<br>- Neural Networks for Pattern Recognition - by Christopher M. Bishop
+(1995)
+<br>- Web Analytics : Translating Clicks into Business [DOWNLOAD: PDF from
+Amazon] - by Guy Crease et al. (????)
+<p>- Professional SQL Server 2000 DTS (Data Transformation Service) - by
+Mark Chaffin, et al (2000)
+<br>- <b>MDX</b> Solutions: With Microsoft SQL Server Analysis Services
+-- by George Spofford (????) - <i><font color="#3333FF">Book about the
+language
+(MDX) used for querying Microsoft OLAP databases</font></i>.
+<br>- Microsoft(r) SQL Server(tm) 2000 Analysis Services Step by Step -
+by Olap Train (Editor), Reed Jacobson (????)
+<p>- Oracle Express Olap - by Sergei Arkhipenkov, Dmitri Golubev (2001)
+<br>- Microsoft(r) SQL Server(tm) 2000 Analysis Services Step by Step -
+by Olap Train (Editor), Reed Jacobson (????)
+<br>- SQL Server Developer's Guide to OLAP with Analysis Services - by
+Mike Gunderloy, Tim Sneath (????)
+<br>- Unlocking OLAP With SQL Server 7 and Excel 2000 - by Wayne S. Freeze
+(1999)
+<br>- <b>Microsoft Olap Solutions - by Erik Thomsen, et al (1999)</b>
+<br>- Professional Data Warehousing with SQL Server 7.0 and OLAP Services
+- by Sakhr Youness (2000)
+<br>- Microsoft OLAP Unleashed - by Timothy Peterson, et al (1997)
+<br>- Microsoft Olap/Analysis Services Unleashed - Timothy Peterson, Tim
+Peterson (2001)
+<p>- SQL Server 7 OLAP Developer's Guide (With CD-ROM) - by William C.
+Amo, Bill Amo (1999)
+<br>- A Practical Guide to Microsoft(R) OLAP Server - by John Shumate (1998)
+<br>- Data Warehousing, Data Mining, and OLAP (Data Warehousing/Data Management)
+- by Alex Berson, Stephen J. Smith (Contributor) (????)
+<br>- Visual Basic Developer's Guide to OLAP Services with ASP and SQL
+Server (With CD-ROM) - by Tim Sneath, Tim Sneath (2002)
+<br>- SQL Server Developer's Guide to OLAP with Analysis Services - by
+Mike Gunderloy, Tim Sneath (1998)</td>
+</tr>
+</table>
+
+<br>&nbsp;
+</body>
+</html>

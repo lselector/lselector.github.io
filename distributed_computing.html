@@ -1,0 +1,761 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (X11; U; Linux 2.4.18-4GB i686) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>enterprise application integration</title>
+<!--
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> EAI - Enterprise Application Integration</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Enterprise Application Integration.</font></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 >
+<tr>
+<td><b><font color="#CC0000">On this page:</font></b></td>
+
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td><font face="Verdana"><font color="#6699CC"><font size=-1>* </font></font></font><a href="#main">Main
+considerations</a>
+<br><font face="Verdana"><font color="#6699CC"><font size=-1>* </font></font></font><a href="#distr_services_vs_distr_objects">Use
+services instead of objects</a>
+<br><font face="Verdana"><font color="#6699CC"><font size=-1>* </font></font></font><a href="#transports_and_formats">Multiple
+transports - general format</a>
+<br><font face="Verdana"><font color="#6699CC"><font size=-1>* </font></font></font><a href="#EJB">Why
+EJBs are not recommended</a>
+<br><font face="Verdana"><font color="#6699CC"><font size=-1>* </font></font></font><a href="#servlets">Why
+servlets-daemons are recommended</a>
+<br><font face="Verdana"><font color="#6699CC"><font size=-1>* </font></font></font><a href="#XML">Use
+XML/SOAP</a>
+<br><font face="Verdana"><font color="#6699CC"><font size=-1>* </font></font></font><a href="#distributed_transactions">Distributed
+Transactions</a>
+<br><font face="Verdana"><font color="#6699CC"><font size=-1>* </font></font></font><a href="#deadlocks">Deadlocks</a>
+<br><font face="Verdana"><font color="#6699CC"><font size=-1>* </font></font></font><a href="#simple_locking_with_a_queue">Simple
+locking with a queue</a>
+<br><font face="Verdana"><font color="#6699CC"><font size=-1>* </font></font></font><a href="#links">Misc.
+Links</a></td>
+</tr>
+</table>
+<a NAME="main"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Main considerations</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>In big organizations you <font color="#000000">don't really see "ALL
+Java" or "ALL C++"&nbsp; or "ALL PERL" or "ALL MICROSOFT" architecture.
+It is futile trying to design the system as a single application (compiled
+together, high-coupled parts). In the long run it never happens this way.
+Different departments and groups could never agree on one language or platform.&nbsp;
+What you end up with is a system consisting of heterogenious parts </font>(mainframe,
+unix, Microsoft, etc.).&nbsp; The challenge is to make them work together.&nbsp;
+The problem is that these systems use different data formats and protocols
+internally.&nbsp; They may have different philosophy of how security or
+session issues are handled, etc.
+<p>To make these systems work together, the organization has to define
+(to limit the choice of) the methods and formats of communication (cooperation)
+between systems.
+<br>These methods should feature:
+<br>&nbsp;- low coupling/dependency between parts - to allow different
+parts of the system to <b><u>evolve independently</u></b> at their own
+speed and taste.
+<br>&nbsp;- being simple and flexible - to be used by ALL current and future
+systems.
+<p>An approach we see more and more lately is shifting from <font color="#CC0000"><b><u>Distributed
+Objects</u></b> </font><font color="#000000">(like CORBA or DCOM) to </font><b><font color="#CC0000"><u>Distributed
+Services (XML/SOAP)</u>.</font></b><font color="#000000">&nbsp; This is
+the essense of the whole concept of "<b><u>Web Services</u></b>" - the
+main defining feature of Microsoft's "<b><a href="microsoft.html#net">.NET</a></b>"
+architecture, as well as the competing with it J2EE.&nbsp; Both competing
+approaches use XML-based communication.</font>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" NOSAVE >
+<tr>
+<td><b><u><font color="#000000">Why using distributed objects (DO) is not
+good?</font></u></b>
+<br>&nbsp; -- 1. It is a "heavy-weight" technology (needs high qualification
+to implement and maintain through upgrades).
+<br>&nbsp; -- 2. Some 3rd party applications don't support it - and it
+is difficult and expensive to add it.
+<br>&nbsp; -- 3. Using DO means that you create "high coupling" in your
+system, that is high level of dependency between parts of the system.&nbsp;
+While developing and testing, you usually have to recompile both sides
+of communicating systems. And you have to make sure that you are using
+the same versions of compiler and distributed objects system.&nbsp; When
+the next version of CORBA or Java comes out - you can't upgrade just one
+part of the system - you usually have to upgrade all parts simultaneously
+- or none. Otherwise they will not be able to communicate. So in practice
+you wait and don't upgrade systems which need upgrades badly.&nbsp; This
+is NOT good.</td>
+</tr>
+</table>
+
+<p><b><u>The basic ideas described below on this page are:</u></b>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=10 BGCOLOR="#FFFFCC" >
+<tr>
+<td>&nbsp;- <font color="#CC0000"><a href="#distr_services_vs_distr_objects">Low
+coupling - use services instead of objects</a></font>.&nbsp; Allow parts
+of the system to evolve independently. Avoid high level of coupling between
+parts of the system. Instead of using distributed objects (which usually
+requires re-compilation and testing of both sides of communicating systems)
+- use distributed services. That is, make small independent services which
+can be developed and tested independently. And define how you can request
+and receive these services (communication). <u>Also teach those services
+a standard way of describing themselves to other services on request</u>.&nbsp;
+<p>&nbsp;- <a href="#transports_and_formats">Low-coupling - use multiple
+transport mechanisms, but avoid transport-protocol-specific formats and
+binary formats</a>. Instead use some simple common format (for example,
+XML and SOAP). Also use messaging middleware such as MQSeries (further
+decoupling, to assist with distributed transactions, etc.).
+<p>&nbsp;- <a href="#EJB">Why you should avoid using EJBs</a>. - instead
+you can <a href="#servlets">use servlets-daemons in commercial application
+server</a> - or write your own servers.
+<p>&nbsp;- <a href="#XML">Use XML/SOAP</a>.</td>
+</tr>
+</table>
+<a NAME="distr_services_vs_distr_objects"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Distributed Services vs. Distributed Objects</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Low coupling - use services instead of objects.&nbsp; Allow parts of
+the system to evolve independently. Avoid high level of coupling between
+parts of the system.
+<br>Instead of using distributed objects (which usually requires re-compilation
+and testing of both sides of communicating systems) - use distributed services.
+That is,
+<br>make small independent services which can be developed and tested independently.
+<p><b><u>Two main types of frameworks for distributed computing:</u></b>
+<br>&nbsp; <b><u><font color="#3333FF">Distributed objects</font></u></b>
+- CORBA, DCOM and EJB. All distributed objects architectures in their attempt
+to provide higher-level services, have become very intrusive and impose
+severe architectural restrictions on the application services (high-level
+coupling).
+<br>&nbsp; <b><u><font color="#3333FF">Distributed services</font></u></b>
+- Java Servlets and XML/SOAP.
+<p><b><u><font color="#3333FF">Distributed objects:</font></u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#990000" >
+<tr>
+<td>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#FFFFFF" >
+<tr>
+<td>&nbsp;&nbsp; <b><u>CORBA</u></b> - (Common Object Request Broker Architecture)
+- a specification for distributed object computing between applications
+written in different programming languages (C++, Java, VB, etc.). The interfaces
+between clients and servers are declared in a neutral language -&nbsp;
+Interface Definition Language (IDL) - and then compiled to generate language-specific
+<b><u>stubs</u></b>
+and <b><u>skeletons</u></b>.&nbsp; Various vendors provide their versions
+of IDL compilers for different platforms and languages.
+<br>CORBA allows to bridge the platform gap (for example between Windows-based
+clients and their Solaris/C++ servers). While CORBA is extremely promising
+in theory, it has failed to live up to expectations in practice:
+<br>&nbsp; - Version incompatibilities - you can't upgrade parts of the
+system - they have to wait for the whole system to upgrade (high degree
+of coupling).
+<br>&nbsp; - Complicated system - need very highly qualified developers,
+especially when using advanced capabilities such as the POA (Portable Object
+Adapter framework).
+<br>&nbsp; - Problems with stability, poor vendor support, slow adoption
+of features.
+<p>&nbsp;&nbsp; <b><u>DCOM</u></b> - (Distributed Component Object Model)
+- old Microsoft's framework similar to CORBA, but practically unusable
+without the Microsoft Transaction Server (MTS) which is only available
+for Windows platforms. Microsoft has essentially abandoned DCOM in favor
+of COM+/SOAP as the distributed computing model of choice.
+<p>&nbsp;&nbsp; <b><u>EJB</u></b> - (Enterprise JavaBeans) - framework
+included in the Java 2 Enterprise Edition (J2EE) specification proposed
+by Sun Microsystems. Similar to CORBA and DCOM.&nbsp; EJB components can
+leverage the various facilities provided by runtime environments known
+as EJB Containers, including object persistence, transaction management,
+and access control. Main Containers (Application Servers) - IBM's WebSphere
+and BEA's WebLogic.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<p><b><u><font color="#3333FF">Distributed services:</font></u></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#990000" >
+<tr>
+<td>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#FFFFFF" >
+<tr>
+<td>&nbsp;&nbsp; <b><u>Java Servlets</u></b> - a simple framework that
+allows HTTP-based access to Java services, it is part of Java 2 Enterprise
+Edition (J2EE) specification. Servlets are hosted in a Servlet Container,
+process HTTP requests (GET, POST), can communicate with databases (JDBC),
+use messaging services - and finally print the response back to the browser.
+<br>&nbsp;&nbsp; <b><u>SOAP</u></b> - (Simple Object Access Protocol) is
+a way to implement communication (RPCs (Remote Procedure Calls) and Callbacks)
+in XML via HTTP.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<p><b><u><font color="#CC0000">Idea:</font></u></b> decouple system by
+using "services" instead of "objects".&nbsp; That is, separate individual
+components into standalone services which can be changed and debugged independently.&nbsp;
+Thus you don't have to recompile and test the whole system - but just the
+small part of it.
+<p>Object-oriented programming is a proven winner for application design,
+but NOT for distributed applications.
+<br>Frameworks such as CORBA attempt to hide the fact that an object is
+remotely located when in reality that fact should not be hidden.
+<br>So use services instead of objects.
+<br><a NAME="transports_and_formats"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Transports and Formats</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#000000">Low-coupling - use multiple transport mechanisms,
+but avoid transport-protocol-specific formats and binary formats. Instead
+use some simple common format (for</font>
+<br><font color="#000000">example, XML and SOAP). Also use messaging middleware
+such as MQSeries (further decoupling, to assist with distributed transactions,
+etc.).</font>
+<p><b><font color="#CC0000">&nbsp; Transports: HTTP(S), MQSeries, IIOP,
+and plain TCP, SMTP, FTP and others.</font></b>
+<br><b><font color="#CC0000">&nbsp; Types of interraction: request-response
+(live chat) or messaging (e-mail).</font></b>
+<p><b><u><font color="#CC0000">Idea:</font></u></b><font color="#000000">
+don't use transport-specific data format.&nbsp; Instead use XML messages
+which can be passed over all transports. All you need to communicate via
+XML is an XML-parser, which is available for all languages and platforms.&nbsp;
+Use SOAP for RPCs and callbacks.</font>
+<p><b><u><font color="#CC0000">Idea:</font></u></b><font color="#000000">
+decouple systems by using mostly messaging instead of request-response
+communication. Messaging is asynchronous (thus puts less load on network).
+It is also convenient to implement broadcasting.</font>
+<p><b><u><font color="#CC0000">Note:</font></u></b><font color="#000000">
+Different transports may be required.&nbsp; Sometimes nothing can beat
+pure sockets. For example, broadcasting of real-time updates to thousands
+of subscribed clients can be done very effectively from one computer using
+open sockets, but it will require much more hardware power to provide similar
+information as an HTTP server responding to periodic update requests from
+clients.</font>
+<br><a NAME="EJB"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Why EJBs are NOT recommended</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Java is a good technology - but EJBs are NOT recommended.
+<br>Here is why.
+<p>&nbsp;- <b><u><font color="#CC0000">EJBs don't integrate good</font></u></b>
+with other languages (EJB use RMI/IIOP, which is similar to OMG' s (CORBA)
+and is impractical).
+<br>&nbsp;- <b><u>most of benefits of using EJBs are in fact provided by
+a container and is also available to servlets.</u></b>
+<p>&nbsp;- <b><u><font color="#CC0000">EJBs are complex</font></u></b>.
+<p>&nbsp;- <b><u><font color="#CC0000">EJBs are very restricted</font></u></b>in
+what they can do.&nbsp; For instance, EJBs are not allowed to start their
+own threads and therefore cannot start their own event loops; this means
+that they cannot support other transport protocols such as HTTP or MQSeries.
+<p>&nbsp;- <b><u><font color="#CC0000">EJBs are slow</font></u></b>
+<br>&nbsp;- EJB's implementation of <b><u><font color="#CC0000">object
+persistence (Entity Beans)</font></u></b> - leads to <b><u>very tight coupling</u></b>
+between the database and the application and to unmaintainable database
+schemas. This is bad, considering that data normally far outlives any application,
+and thus it is very important that the database schema be independent of
+the application services.&nbsp; Also it is largely futile exercise to try
+and hide the database from the application service developer. Also even
+EJB specification states that "the overhead of an inter-component call
+will likely be prohibitive for object interactions that are too fine-grained".
+It also says that EJBs should be very coarse in granularity and that finer
+business object modeling should be done without EJBs. Entity Beans use
+significant system resources <b><u>since each load or store forms a separate
+database operation</u></b> - in contrast data access objects would aggregate
+the database operations.
+<p>&nbsp;- <b><u><font color="#CC0000">Lifecycle Management</font></u></b>
+(activation/passivation of EJBeans) - is still an immature solution. CORBA
+faces the same problem and has gone through several iterations at trying
+to solve it. The latest Portable Object Adapter (POA) specification shows
+that container-managed lifecycles need to be driven by user-specified policies
+that are applied differently to different sets of objects. At the same
+time, anybody that has implemented a big POA-based system would concede
+that the paradigm introduces a lot of complexity. Furthermore, it is apparent
+that lifecycle management is a problem similar in nature to the <b><u>caching</u></b>
+implementations of relational databases. Decades of research has been poured
+into optimizing the caching abilities of databases - can we honestly expect
+to see better caching in EJB containers in the near future? Of course,
+data caching is a simpler problem than object lifecycle management, but
+the question becomes are we really gaining anything from the more complex
+solution? The rejection of IBM' s Component Broker in the marketplace would
+indicate that object lifecycle management is not a feature that developers
+and system architects are clamoring for.
+<p>&nbsp;- <b><u><font color="#CC0000">Distributed transaction management</font></u></b>
+- is not need for most of transactions (local transactions can be handled
+by the database itself).&nbsp; When you need distributed transaction -
+you don't have to depend on EJBs. You can use reliable messaging systems
+(such as IBM's MQSeries).&nbsp; Or use Java Transaction API (JTA)&nbsp;
+- which is an independent specification and is available to servlets as
+well.
+<p>&nbsp;- <b><u><font color="#CC0000">Component Interfaces</font></u></b>
+- The EJB framework dictates that Enterprise Beans can only be accessed
+though their Home or Remote interfaces via JNDI service which adds additional
+overhead. A better approach may be to use regular JavaBeans which don't
+impose this limitation.
+<p>&nbsp;- <b><u><font color="#CC0000">Session Management</font></u></b>
+- good thing provided by the container, it is also available to Servlets
+(you don't need EJBs for that).
+<p>&nbsp;- <b><u><font color="#CC0000">DB Connection Pooling</font></u></b>
+- good thing provided by the container, it is also available to Servlets
+(you don't need EJBs for that).
+<p>&nbsp;- <b><u><font color="#CC0000">Fine granularity access Control
+/ Security</font></u></b> - good thing, but fine granularity (on the method
+level) is note required by most of the applications. The security provided
+by the container to servlets is usually enough - and you don't need EJBs
+for that. When you need more - you can use other ways to enforce security
+(Kerberos, Netegrity, etc.)
+<p>&nbsp;- <b><u><font color="#CC0000">Rapid Development</font></u></b>
+- true feature if you consider the stand-alone application. But its inflexibility
+and difficulties of integrating with other systems may in fact make the
+development time longer (not shorter !). And further evolution is very
+difficult (as for all tightly-coupled systems). Better approach to RAD
+(Rapid Application Development) is to to <b><u>use pre-built services instead
+of pre-built components</u></b>.&nbsp; <u><font color="#009900">IBM' s
+MQSI v2</font></u> ( messaging ) and <u><font color="#009900">webMethods
+B2B</font></u> ( <a href="http://www.webmethods.com">webmethods.com</a>
+- xml ) are two examples where true rapid application development can be
+achieved when the required application services are available. The use
+of XML as a common data representation and XML-RPC (whether SOAP or not)
+as a common communication mechanism simplifies the evolution of our systems
+and thus offers significant time-to-market benefits in the long run.
+<p>&nbsp;- <b><u><font color="#CC0000">Portable Deployment</font></u></b>
+- not true.&nbsp; Different containers still don't allow portability of
+EJBs between them, because they differ in many pretty-basic aspects (for
+example, the find methods on EJB Home interfaces and the O/R mapping tools).
+<p>&nbsp;- <b><u><font color="#CC0000">Third-party Components</font></u></b>
+- not limited to EJBs. Most EJB vendors make their components also available
+in other forms such as plain class libraries or JavaBeans. Those components
+can also be built into standalone services providing an XML-based interface.
+<p>&nbsp;- <b><u><font color="#CC0000">Strong Vendor Support</font></u></b>
+- Yes. But it also exists for other technologies.
+<p>&nbsp;- <b><u><font color="#CC0000">Successful Adoption</font></u></b>
+- can't be fully exposed until a few years down the road and we have thus
+not seen this yet.
+<p>If SOAP does emerge as a viable platform for distributed computing,
+we will most likely see an effort to facilitate EJB-SOAP interoperability.
+Another aspect of container-managed systems that is interesting is the
+CORBA 3 specification which includes support for CORBA components (and
+promises more bells and whistles than EJB - four types of Components in
+place of two types of Beans, for starters).
+<br><a NAME="servlets"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Why Servlets are recommended</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>There are many ways how you can offer services.
+<br>In many cases you can use a web server model (webserver-script-database).
+<br>In others you can have your own server ( C++ or Java servers).
+<br>Probably the best way to make a server is to use Servlets - because
+they can take advantage of functionality provided by commercial application
+servers (such as session management, fail-over, load-balancing).
+<p>There are two types of servlets:
+<br>&nbsp; - typical servlets (request-response)
+<br>&nbsp; - daemon servlets - serve as services.
+<p>Unlike EJBs, Java Servlets are free to start their own threads. This
+allows servlets to manage event loops that can handle requests from other
+transports such as MQSeries. A servlet can use the init() and destroy()
+methods of an HTTPServlet to start and stop threads. Thus, a servlet can
+start a separate thread for each additional transport that it intends to
+support. If all the transports carry XML/SOAP messages, you can use centralized
+XML-processing functionality of the servlet for all the transport interfaces.
+<p>Session support - 2 types of sessions:
+<br>&nbsp;&nbsp; - transient per-client servlet sessions can be persisted
+temporarily, although at a fairly high cost.
+<br>&nbsp;&nbsp; - per-application context information can be stored through
+the lifetime of a servlet and can be accessed by other servlets that belong
+in the same logical application
+<p>The Servlet Container also provides access to a JNDI server where the
+application service can publish a reference to itself so that clients and
+other services can locate it through a JNDI lookup instead of a URL.
+<p>Developing application services as servlets also has its drawbacks.
+This model makes the application service dependent on the Servlet Container
+to provide a runtime environment. This may prove to be complexity that
+is unnecessary in the application architecture. So, if a service does not
+utilize any of the Container' s facilities, it may be better to run the
+service as a standalone process.
+<br><a NAME="XML"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>XML vs, binary formats</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Using XML is always slower than using binary formats.&nbsp; Especially
+for DOM API (SAX API was shown to be pretty fast).
+<p>DOM is in fact not the best representation for data-oriented XML since
+it supports many intricacies that only practically apply to full-featured
+XML documents. JDOM (<a href="http://www.jdom.org/">http://www.jdom.org/</a>),
+an emerging API for XML parsing in Java, alleviates some of these issues
+by making the representation more appropriate for XML data. Another approach
+may be a HashTree-based XML API that will optimize performance.
+<p>XML data takes more space and increases bandwidth requirements. <b><u>But
+the cost of bandwidth is usually much less than cost of software development
+and maintenance.</u></b>
+<p>XML is not the cure-all solution. In some situations it is impossible
+to reach required speed. Some 3rd party applications simply don't have
+XML interfaces.
+<p><a NAME="distributed_transactions"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Distributed transactions</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>The <b><u>"traditional" transaction</u></b> (not distributed) is simply
+a set of operations which should be either successfully performed together
+- or not performed at all. The simplest example - a money transfer between
+2 accounts. It involves 2 actions: removing money from one account and
+adding money to the other. Imagine that the computer loses power in the
+middle of this process.&nbsp; The money was removed from the 1st account
+- but was never added to the second. This is an error. How to prevent it?
+It is simple. We will record all steps of the transaction in a log file.
+This way after restarting the system can read the log and successfully
+finish the transaction (commit) or cancel all the changes (roll back).&nbsp;
+This was a simple explanation of something called&nbsp; "Transaction Protocol"
+(TP).&nbsp; TP should comply with 4 fundamental properties, usually denoted
+ACID: Atomicity, Consistency, Isolation, Durability.
+<p>Transaction may be <b><u>nested</u></b> (one big transaction includes
+several smaller transactions - and failure of any one of them would rollback
+the whole big transaction).&nbsp; There are some standards and specifications
+(ISO, OMG, JTA - Java Transaction API, etc.) for transaction protocol (basic
+decisions concerning the nested transaction models (open / closed subtransactions),
+the set of service primitives and their roles, etc.).
+<p>When individual actions of a transaction run of different systems -
+we are dealing with <b><u>distributed transactions</u></b>. (<b><u>DT</u></b>).
+<br>Example 1: money transfers between remote accounts (between different
+banks).
+<br>Example 2: data replication between corporate directory, Outlook, some
+sales CRM package, Web Authorization database, etc.
+<p>DT allows individual actions to run simultaneously (in parallel) - for
+some transaction this can be used to increase the speed.
+<p>Distributed transactions can be governed by different protocols. One
+of the simpliest and commonly used protocols - <b><u>two-phase commit (2PC)
+protocol.</u></b>&nbsp;&nbsp; The 2PC protocol uses a central "transaction
+monitor" process. It goes like this: first, all changes required by a transaction
+are stored temporarily by each database. The transaction monitor then issues
+a "<b><u>pre-commit</u></b>" command to each database which requires an
+acknowledgment. If the monitor receives the appropriate response from each
+database, the monitor issues the "<b><u>commit</u></b>" command, which
+causes all databases to simultaneously make the transaction changes permanent.
+<p>You may define your own transaction protocol (TP) to custom fit your
+transactions. Do you need nested transactions? Do you need parallel processing.
+Some TPs don't have a central monitor - but instead they have a truly distributed
+system. Some TPs define also a communication method they use (for example,
+XML messages). For example, TP for a system where all parts are almost
+never available simultaneously should be different from a standard banking
+2 phase commit system.&nbsp; Different time-outs. Probably messaging is
+a requirement. Etc.
+<p>Check out the links below. Or for more reading search Internet for "distributed
+transaction" or "two phase commit".
+<p>- <a href="http://ei.cs.vt.edu/~cs5204/fall99/distributedDBMS/duckett/tpcp.html">http://ei.cs.vt.edu/~cs5204/fall99/distributedDBMS/duckett/tpcp.html</a>
+-
+<br>- <a href="http://aspn.activestate.com/ASPN/Mail/Message/xml-dev/755432">http://aspn.activestate.com/ASPN/Mail/Message/xml-dev/755432</a>
+-
+<br>- <a href="http://www.computer.org/proceedings/dexa/7662/76620100abs.htm">http://www.computer.org/proceedings/dexa/7662/76620100abs.htm</a>
+-
+<br>- <a href="http://www.vermicelli.pasta.cs.uit.no/ipv6/students/andrer/doc/html/">http://www.vermicelli.pasta.cs.uit.no/ipv6/students/andrer/doc/html/</a>
+-
+<br>- <a href="http://java.sun.com/products/jta/">http://java.sun.com/products/jta/</a>
+- The Java Transaction API (JTA) 1.0.1 Specification
+<br>&nbsp;
+<p><b><u>Some books:</u></b>
+<table BORDER CELLSPACING=0 BGCOLOR="#FFFFCC" NOSAVE >
+<tr>
+<td>&nbsp;- Data Replication : Tools and Techniques for Managing Distributed
+Information - by Marie Buretta
+<br>&nbsp;- Principles of Distributed Database Systems - by M. Tamer Ozsu,
+Patrick Valduriez
+<br>&nbsp;- Transaction Management : Managing Complex Transactions and
+Sharing Distributed Databases - by Dimitris N. Chorofas, Dimitris N. Chorafas
+<br>&nbsp;- Transaction Processing : Concepts and Techniques (Morgan Kaufmann
+Series in Data Management Systems) - by Jim Gray, Andreas Reuter
+<br>&nbsp;- Distributed Algorithms (Data Management Series) - by Nancy
+A. Lynch</td>
+</tr>
+</table>
+
+<p><b><u>Transaction:</u></b>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 BGCOLOR="#99FFCC" NOSAVE >
+<tr NOSAVE>
+<td NOSAVE>&nbsp;- <b><u>Atomicity:</u></b> All updates are successful
+or no updates are successful. Must support commit and rollback, may support
+savepoints. Do one transaction at a time. Or, for parallel - what should
+be read: the cache (or rollback segment) or the database?
+<p>&nbsp;- <b><u>Consistency:</u></b> Each transaction leaves the database
+in a consistent state. Constraints are satisfied.
+<p>&nbsp;- <b><u>Isolation:</u></b> Concurrent transactions have the same
+effect as single transactions. Uncommitted changes are hidden from other
+transactions. Changes from other transactions are hidden from the app.
+<br>&nbsp; Problems:
+<br>&nbsp;&nbsp;&nbsp; - <u>Lost update</u>. A.Read B.Read B.write B.commit
+A.write (thus changes written by B are lost)
+<br>&nbsp;&nbsp;&nbsp; - <u>Dirty Read</u>. A.Read A.write B.read A.rollback
+(thus B doesn' have correct info)
+<br>&nbsp;&nbsp;&nbsp; - <u>Unrepeatable Read.</u> A.Read B.Write A.read.
+<br>&nbsp;&nbsp;&nbsp; - <u>Phantom problem</u>. A.read B.insert A.aggragate
+(like sum) B.rollback. A.commit.
+<p>&nbsp;- <b><u>Durability:</u></b> Changes should stick.&nbsp;</td>
+</tr>
+</table>
+
+<p><a NAME="deadlocks"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Deadlocks</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Example: what NOT to do.
+<br>Imagine that you have 2 processes reading/writing data from/between
+databases A &amp; B. Imagine further that reading and writing puts locks
+on the tables. Imagine that one process has locked A, but couldn't get
+a lock on B - and vice versa, another process got B and is waiting for
+A.&nbsp; What you have is a dead lock (mutual exclusion). Processes may
+wait for each other forever.
+<br>&nbsp;
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#990000" >
+<tr>
+<td>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#FFFFFF" >
+<tr>
+<td>&nbsp;<b><u>Solutions:</u></b>
+<br>&nbsp;- Avoid locks where possible (for example, use "dirty reads").
+<br>&nbsp;- Don't allow locking of more than one resource/process at a
+time.
+<br>&nbsp;- Don't hold and wait. Put limits on the length of the proceses.&nbsp;
+<br>&nbsp;- If you can't get a lock - release everything - and try again.
+If you can't get a lock after N attempts - report the problem or do something
+else (for example, put your request on a que of some sort).&nbsp;
+<br>&nbsp;- Institute rules helping to avoid deadlocks. For example, always
+allocate resources in the same order.
+<br>&nbsp;- Use a "Monitor" process to oversee and allow locks in the system.
+<br>&nbsp;- Use a "Cleaner" process which should wake up every couple minutes
+to resolve deadlocks (by killing one of the processes creating them).
+<br>&nbsp;- Use messaging to pass request and responses. This way user
+processes can never get a lock on your data. Instead they are forced to
+go through your messaging API. You control the API and make sure it does
+not cause problems.&nbsp;
+<br>&nbsp;- Review users' SQL. Better yet force users to use only stored
+procedures which are tested and reviewed.&nbsp;
+<br>&nbsp;- Users going from MS Windows platform (especially via ODBC)
+can be very dangerous. You will have to kill their processes pretty often.
+Make sure they identify themselves in their ODBC settings.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<p>Let's apply these principles to the A/B example above, namely let's
+forbid simlutaneous locking of more than one resource. If we can't do locking
+of A and B simultaneously by one job, we need to alternate between A and
+B.&nbsp; We can first read a little from A, release lock on A - then get
+a lock on B and write there. Repeat this process as many times as needed.&nbsp;
+Or we can first read everything from A into a temporary table, then release
+the A-lock. After that we can work between this temporary table and B.&nbsp;
+Yet another approach wouldbe to avoid locks on reading byusing "dirty reads".
+<p><a NAME="simple_locking_with_a_queue"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>simple locking with a queue</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b>simple locking with a queue</b>
+<br><b></b>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#66FFFF" NOSAVE >
+<tr>
+<td>sub lock {
+<br>&nbsp; delete locks where timestamp older than 15 sec
+<br>&nbsp; insert lock (tabname, my_pid, timestamp);
+<br>&nbsp; for (1 .. 10) &nbsp;{
+<br>&nbsp; &nbsp; if(my_pid = first lock)&nbsp;
+<br>&nbsp; &nbsp; &nbsp; { return $success }&nbsp;
+<br>&nbsp; &nbsp; else&nbsp;
+<br>&nbsp; &nbsp; &nbsp; { sleep(1), next }
+<br>&nbsp; }
+<br>&nbsp; delete lock (tabname, my_pid);
+<br>&nbsp; return $error;
+<br>}
+<p>sub unlock {
+<br>&nbsp; delete lock (tabname, my_pid);
+<br>}</td>
+</tr>
+</table>
+
+<p><a NAME="links"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>misc links</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><font color="#6699CC">* </font><a href="http://www.ittoolbox.com/">www.ittoolbox.com</a>
+- One of the children sites is EAI.Toolbox ( <a href="http://eai.ittoolbox.com/">http://eai.ittoolbox.com/</a>&nbsp;
+)
+<p>--------------------------------------
+<br>&nbsp;
+</body>
+</html>

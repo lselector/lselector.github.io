@@ -1,0 +1,630 @@
+
+<HTML>
+<HEAD>
+<TITLE>Net::LDAP -- Lightweight Directory Access Protocol</TITLE>
+<LINK REL="stylesheet" HREF="../../../Active.css" TYPE="text/css">
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<STRONG><P CLASS=block>&nbsp;Net::LDAP -- Lightweight Directory Access Protocol</P></STRONG>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI><LI><A HREF="#supportedplatforms">SUPPORTED PLATFORMS</A></LI>
+
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#constructor">CONSTRUCTOR</A></LI>
+	<LI><A HREF="#methods">METHODS</A></LI>
+	<LI><A HREF="#controls">CONTROLS</A></LI>
+	<LI><A HREF="#callbacks">CALLBACKS</A></LI>
+	<LI><A HREF="#ldap error codes">LDAP ERROR CODES</A></LI>
+	<LI><A HREF="#see also">SEE ALSO</A></LI>
+	<LI><A HREF="#acknowledgements">ACKNOWLEDGEMENTS</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+	<LI><A HREF="#copyright">COPYRIGHT</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>Net::LDAP -- Lightweight Directory Access Protocol</P>
+<P>
+<HR>
+<H1><A NAME="supportedplatforms">SUPPORTED PLATFORMS</A></H1>
+<UL>
+<LI>Linux</LI>
+<LI>Solaris</LI>
+<LI>Windows</LI>
+</UL>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<PRE>
+ use Net::LDAP;</PRE>
+<PRE>
+ $ldap = Net::LDAP-&gt;new('ldap.bigfoot.com') or die &quot;$@&quot;;</PRE>
+<PRE>
+ $ldap-&gt;bind ;    # an anonymous bind</PRE>
+<PRE>
+ $mesg = $ldap-&gt;search (  # perform a search
+                        base   =&gt; &quot;c=US&quot;,
+                        filter =&gt; &quot;(&amp;(sn=Barr) (o=Texas Instruments))&quot;
+                       );</PRE>
+<PRE>
+ $mesg-&gt;code &amp;&amp; die $mesg-&gt;error;</PRE>
+<PRE>
+ foreach $entry ($mesg-&gt;all_entries) { $entry-&gt;dump; }</PRE>
+<PRE>
+ $ldap-&gt;unbind;   # take down session
+</PRE>
+<PRE>
+
+ $ldap = Net::LDAP-&gt;new('ldap.umich.edu');</PRE>
+<PRE>
+
+ $ldap-&gt;bind (   # bind to a directory with dn and password
+              dn       =&gt; 'cn=root, o=University of Michigan, c=us',
+              password =&gt; 'secret'
+             );</PRE>
+<PRE>
+ $result = $ldap-&gt;add (
+              dn   =&gt; 'cn = Barbara Jensen, o=University of Michigan, c=us',
+              attr =&gt; [ 'cn'   =&gt; ['Barbara Jensen', 'Barbs Jensen'],
+                        'sn    =&gt; 'Jensen',
+                        'mail' =&gt; 'b.jensen@umich.edu'
+                      ]
+            );
+  $result-&gt;code &amp;&amp; warn &quot;failed to add entry: &quot;, $result-&gt;error ;</PRE>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P><STRONG>Net::LDAP</STRONG> is a collection of modules that implements a LDAP services API
+for Perl programs. The module may be used to search directories or
+perform maintenance functions such as add, deleting or modify entries in
+an LDAP directory.</P>
+<P>This document assumes that the reader has some knowledge of the LDAP
+protocol.</P>
+<P>
+<HR>
+<H1><A NAME="constructor">CONSTRUCTOR</A></H1>
+<DL>
+<DT><STRONG><A NAME="item_new">new ( HOST [, OPTIONS ] )</A></STRONG><BR>
+<DD>
+Creates a new <STRONG>Net::LDAP</STRONG> object and opens a connection to the named host.
+OPTIONS is a list of key-value pairs, valid options are :-
+<DL>
+<DT><STRONG><A NAME="item_port">port</A></STRONG><BR>
+<DD>
+Port to connect to on the remote server.
+<P></P>
+<DT><STRONG><A NAME="item_timeout">timeout</A></STRONG><BR>
+<DD>
+Timeout passed to <CODE>IO::Socket</CODE> when connecting the remote server.
+(Default: 120)
+<P></P>
+<DT><STRONG><A NAME="item_debug">debug</A></STRONG><BR>
+<DD>
+If passed a non-zero value then debug data will be sent to <CODE>STDERR</CODE>. The
+bits of this value are :-
+<PRE>
+ 1   Show outgoing packets.
+ 2   Show incoming packets.</PRE>
+<P></P>
+<DT><STRONG><A NAME="item_async">async</A></STRONG><BR>
+<DD>
+Perform all operations asynchronously if passed a <EM>true</EM> value.
+<P></P></DL>
+<P>Example</P>
+<PRE>
+  $ldap = Net::LDAP-&gt;new('remote.host', async =&gt; 1);</PRE>
+</DL>
+<P>
+<HR>
+<H1><A NAME="methods">METHODS</A></H1>
+<P>Each of the following methods take as arguments some number of fixed
+parameters followed by options, these options are passed in a named
+fashion, for example</P>
+<PRE>
+  $mesg = $ldap-&gt;bind( &quot;me&quot;, password =&gt; &quot;mypasswd&quot;);</PRE>
+<P>The return value from these methods is an object derived from the
+<A HREF="../../../site/lib/Net/LDAP/Message.html">the Net::LDAP::Message manpage</A> class. The methods of this class allow
+you to examine the status of request.</P>
+<DL>
+<DT><STRONG><A NAME="item_abandon">abandon ( ID [, OPTIONS ] )</A></STRONG><BR>
+<DD>
+Request server to abandon a request. The id to abandon may be passed as the
+first parameter or as part of the options list. The <CODE>ID</CODE> may be a number
+or a object which is a sub-class of <CODE>Net::LDAP::Message</CODE>, returned from
+a previous method call.
+<DL>
+<DT><STRONG><A NAME="item_id">id</A></STRONG><BR>
+<DD>
+This option is here for <STRONG>compatibility only</STRONG>, and may be removed in future.
+Previous releases did not take the <CODE>ID</CODE> argument which replaces this option.
+<P></P>
+<DT><STRONG><A NAME="item_control">control</A></STRONG><BR>
+<DD>
+See <A HREF="#controls">CONTROLS</A> below
+<P></P>
+<DT><STRONG><A NAME="item_callback">callback</A></STRONG><BR>
+<DD>
+See <A HREF="#callbacks">CALLBACKS</A> below
+<P></P></DL>
+<P><STRONG>Example</STRONG></P>
+<PRE>
+  $mesg = $ldap-&gt;search( @search_args );
+</PRE>
+<PRE>
+
+  $ldap-&gt;abandon( $mesg ); # This could be written as $mesg-&gt;abandon</PRE>
+<DT><STRONG><A NAME="item_add">add ( DN [, OPTIONS ] )</A></STRONG><BR>
+<DD>
+Add an entry to the directory. The <CODE>DN</CODE> argument can be either a
+<A HREF="../../../site/lib/Net/LDAP/Entry.html">the Net::LDAP::Entry manpage</A> object or a string.
+<DL>
+<DT><STRONG><A NAME="item_dn">dn</A></STRONG><BR>
+<DD>
+This option is here for <STRONG>compatibility only</STRONG>, and may be removed in future.
+Previous releases did not take the <CODE>DN</CODE> argument which replaces this option.
+<P></P>
+<DT><STRONG><A NAME="item_attrs">attrs</A></STRONG><BR>
+<DD>
+This argument is a reference to a list of attribute-value pairs. Attributes
+with multiple values can be added as either multiple entries or the value
+could be a reference to a list of values.
+<P>This argument is not used if <CODE>DN</CODE> is a <A HREF="../../../site/lib/Net/LDAP/Entry.html">the Net::LDAP::Entry manpage</A> object.</P>
+<P></P>
+<DT><STRONG>control</STRONG><BR>
+<DD>
+See <A HREF="#controls">CONTROLS</A> below
+<P></P>
+<DT><STRONG>callback</STRONG><BR>
+<DD>
+See <A HREF="#callbacks">CALLBACKS</A> below
+<P></P></DL>
+<P><STRONG>Example</STRONG></P>
+<PRE>
+  # $entry is an object of class Net::LDAP::Entry
+  $mesg = $ldap-&gt;add( $entry );
+</PRE>
+<PRE>
+
+  $mesg = $ldap-&gt;add( $DN,
+    attrs =&gt; [
+      name  =&gt; 'Graham Barr',
+      attr  =&gt; 'value1',
+      attr  =&gt; 'value2',
+      multi =&gt; [qw(value1 value2)]
+    ]
+  );</PRE>
+<DT><STRONG><A NAME="item_bind">bind ( [ DN [, OPTIONS ]] )</A></STRONG><BR>
+<DD>
+Bind to the server. <CODE>DN</CODE> is the DN to bind as. An anonymous bind may be done
+by calling bind without any arguments.
+<DL>
+<DT><STRONG>dn</STRONG><BR>
+<DD>
+This option is here for <STRONG>compatibility only</STRONG>, and may be removed in future.
+Previous releases did not take the <CODE>DN</CODE> argument which replaces this option.
+<P></P>
+<DT><STRONG>control</STRONG><BR>
+<DD>
+See <A HREF="#controls">CONTROLS</A> below
+<P></P>
+<DT><STRONG>callback</STRONG><BR>
+<DD>
+See <A HREF="#callbacks">CALLBACKS</A> below
+<P></P></DL>
+<P>Only one of the following should be given, if none are given then <A HREF="#item_noauth"><CODE>noauth</CODE></A>
+is assumed.</P>
+<DL>
+<DT><STRONG><A NAME="item_noauth">noauth</A></STRONG><BR>
+<DD>
+Bind without any password, the value passed with this option is ignored. This
+is the default if no password option is given.
+<P></P>
+<DT><STRONG><A NAME="item_password">password</A></STRONG><BR>
+<DD>
+Bind with the given password.
+<P></P>
+<DT><STRONG><A NAME="item_kerberos41">kerberos41</A></STRONG><BR>
+<DD>
+Bind using Kerberos V4.1 <EM>not supported</EM>.
+<P></P>
+<DT><STRONG><A NAME="item_kerberos42">kerberos42</A></STRONG><BR>
+<DD>
+Bind using Kerberos V4.2 <EM>not supported</EM>.
+<P></P>
+<DT><STRONG><A NAME="item_sasl">sasl</A></STRONG><BR>
+<DD>
+Bind using a SASL mechanism. The argument given should be a sub-class
+of <A HREF="../../../site/lib/Authen/SASL.html">the Authen::SASL manpage</A>.
+<P></P></DL>
+<P><STRONG>Example</STRONG></P>
+<PRE>
+  $ldap-&gt;bind; # Anonymous bind
+</PRE>
+<PRE>
+
+  $ldap-&gt;bind( $DN, password =&gt; $password);</PRE>
+<PRE>
+
+  # $sasl is an object of class Authen::SASL
+  $ldap-&gt;bind( $DN, sasl =&gt; $sasl, version =&gt; 3);</PRE>
+<DT><STRONG><A NAME="item_compare">compare ( DN, OPTIONS )</A></STRONG><BR>
+<DD>
+Perform a comparison on the server.  <CODE>DN</CODE> is the DN which the comparison is
+to be performed. <CODE>DN</CODE> May be a string or a <A HREF="../../../site/lib/Net/LDAP/Entry.html">the Net::LDAP::Entry manpage</A>
+object.
+<DL>
+<DT><STRONG>dn</STRONG><BR>
+<DD>
+This option is here for <STRONG>compatibility only</STRONG>, and may be removed in future.
+Previous releases did not take the <CODE>DN</CODE> argument which replaces this option.
+<P></P>
+<DT><STRONG><A NAME="item_attr">attr</A></STRONG><BR>
+<DD>
+The name of the attribute to compare.
+<P></P>
+<DT><STRONG><A NAME="item_value">value</A></STRONG><BR>
+<DD>
+The value to compare with.
+<P></P>
+<DT><STRONG>control</STRONG><BR>
+<DD>
+See <A HREF="#controls">CONTROLS</A> below.
+<P></P>
+<DT><STRONG>callback</STRONG><BR>
+<DD>
+See <A HREF="#callbacks">CALLBACKS</A> below.
+<P></P></DL>
+<P><STRONG>Example</STRONG></P>
+<PRE>
+  $ldap-&gt;compare( $DN,
+    attr  =&gt; 'cn',
+    value =&gt; 'Graham Barr'
+  );</PRE>
+<DT><STRONG><A NAME="item_delete">delete ( DN [, OPTIONS ] )</A></STRONG><BR>
+<DD>
+Delete <CODE>DN</CODE> from the server. <CODE>DN</CODE> May be a string or a <A HREF="../../../site/lib/Net/LDAP/Entry.html">the Net::LDAP::Entry manpage</A>
+object.
+<DL>
+<DT><STRONG>dn</STRONG><BR>
+<DD>
+This option is here for <STRONG>compatibility only</STRONG>, and may be removed in future.
+Previous releases did not take the <CODE>DN</CODE> argument which replaces this option.
+<P></P>
+<DT><STRONG>control</STRONG><BR>
+<DD>
+See <A HREF="#controls">CONTROLS</A> below.
+<P></P>
+<DT><STRONG>callback</STRONG><BR>
+<DD>
+See <A HREF="#callbacks">CALLBACKS</A> below.
+<P></P></DL>
+<P><STRONG>Example</STRONG></P>
+<PRE>
+ $ldap-&gt;delete( $dn );</PRE>
+<DT><STRONG><A NAME="item_moddn">moddn ( DN, OPTIONS )</A></STRONG><BR>
+<DD>
+Modify the DN for <CODE>DN</CODE> on the server. <CODE>DN</CODE> May be a string or a
+<A HREF="../../../site/lib/Net/LDAP/Entry.html">the Net::LDAP::Entry manpage</A> object.
+<DL>
+<DT><STRONG>dn</STRONG><BR>
+<DD>
+This option is here for <STRONG>compatibility only</STRONG>, and may be removed in future.
+Previous releases did not take the <CODE>DN</CODE> argument which replaces this option.
+<P></P>
+<DT><STRONG><A NAME="item_newrdn">newrdn</A></STRONG><BR>
+<DD>
+This value should be a new RDN to assign to <CODE>DN</CODE>.
+<P></P>
+<DT><STRONG><A NAME="item_deleteoldrdn">deleteoldrdn</A></STRONG><BR>
+<DD>
+This value should be <EM>true</EM> if the existing RDN is to be deleted.
+<P></P>
+<DT><STRONG><A NAME="item_newsuperior">newsuperior</A></STRONG><BR>
+<DD>
+If given this value should be the DN of the new superior for <CODE>DN</CODE>.
+<P></P>
+<DT><STRONG>control</STRONG><BR>
+<DD>
+See <A HREF="#controls">CONTROLS</A> below.
+<P></P>
+<DT><STRONG>callback</STRONG><BR>
+<DD>
+See <A HREF="#callbacks">CALLBACKS</A> below.
+<P></P></DL>
+<P><STRONG>Example</STRONG></P>
+<PRE>
+ $ldap-&gt;moddn( $dn, newrdn =&gt; 'cn=Graham Barr');</PRE>
+<DT><STRONG><A NAME="item_modify">modify ( DN, OPTIONS )</A></STRONG><BR>
+<DD>
+Modify the contents of <CODE>DN</CODE> on the server. <CODE>DN</CODE> May be a string or a
+<A HREF="../../../site/lib/Net/LDAP/Entry.html">the Net::LDAP::Entry manpage</A> object.
+<DL>
+<DT><STRONG>dn</STRONG><BR>
+<DD>
+This option is here for <STRONG>compatibility only</STRONG>, and may be removed in future.
+Previous releases did not take the <CODE>DN</CODE> argument which replaces this option.
+<P></P>
+<DT><STRONG>add</STRONG><BR>
+<DD>
+The <A HREF="#item_add"><CODE>add</CODE></A> option should be a reference to a HASH. The values of the
+HASH are the attributes to add, and the values may be a string or a reference
+to a list of values.
+<P></P>
+<DT><STRONG>delete</STRONG><BR>
+<DD>
+A reference to an ARRAY of attributes to delete or a reference to a
+HASH (as in <A HREF="#item_add"><CODE>add</CODE></A>) if only specific values should be deleted. If the
+value for any attribute in the HASH is a reference to an empty ARRAY
+the all instances of the attribute will be deleted.
+<P></P>
+<DT><STRONG><A NAME="item_replace">replace</A></STRONG><BR>
+<DD>
+The &lt;replace&gt; option takes a argument in the same form as <A HREF="#item_add"><CODE>add</CODE></A>, but will
+cause any existing attributes with the same name to be replaced. If the
+value for any attribute in the HASH is a reference to an empty ARRAY
+the all instances of the attribute will be deleted.
+<P></P>
+<DT><STRONG><A NAME="item_changes">changes</A></STRONG><BR>
+<DD>
+This is an alternative to <A HREF="#item_add"><CODE>add</CODE></A>, <A HREF="#item_delete"><CODE>delete</CODE></A> and <A HREF="#item_replace"><CODE>replace</CODE></A> where the
+whole operation can be given in a single argument. The argument should
+be a reference to an ARRAY.
+<P>Values in the ARRAY are used in pairs, the first is the operation
+<A HREF="#item_add"><CODE>add</CODE></A>, <A HREF="#item_delete"><CODE>delete</CODE></A> or <A HREF="#item_replace"><CODE>replace</CODE></A> and the second is a reference to an
+ARRAY of attribute values.</P>
+<P>The attribute value list is also used in pairs. The first value in each
+pair is the attribute name and the second is a reference to a list of values.</P>
+<P>Use this form if you want to control the order in which the operations will
+be performed.</P>
+<P></P>
+<DT><STRONG>control</STRONG><BR>
+<DD>
+See <A HREF="#controls">CONTROLS</A> below.
+<P></P>
+<DT><STRONG>callback</STRONG><BR>
+<DD>
+See <A HREF="#callbacks">CALLBACKS</A> below.
+<P></P></DL>
+<P><STRONG>Example</STRONG></P>
+<PRE>
+ $ldap-&gt;modify( $dn, add =&gt; { sn =&gt; 'Barr' } );
+</PRE>
+<PRE>
+
+ $ldap-&gt;modify( $dn, delete =&gt; [qw(faxNumber)]);</PRE>
+<PRE>
+
+ $ldap-&gt;modify( $dn, delete =&gt; { 'telephoneNumber' =&gt; '911' });</PRE>
+<PRE>
+
+ $ldap-&gt;modify( $dn, replace =&gt; { 'email' =&gt; 'gbarr@pobox.com' });</PRE>
+<PRE>
+
+ $ldap-&gt;modify( $dn,
+   changes =&gt; [
+     add     =&gt; [ sn =&gt; 'Barr' ],              # Add sn=Barr
+     delete  =&gt; [ faxNumber =&gt; []],            # Delete all fax numbers
+     delete  =&gt; [ telephoneNumber =&gt; ['911']], # delete phone number 911
+     replace =&gt; [ email =&gt; 'gbarr@pobox.com']  # change email address
+   ]
+ );</PRE>
+<DT><STRONG><A NAME="item_search">search ( OPTIONS )</A></STRONG><BR>
+<DD>
+The search method will return an object of class <A HREF="../../../site/lib/Net/LDAP/Search.html">the Net::LDAP::Search manpage</A>.
+<DL>
+<DT><STRONG><A NAME="item_base">base</A></STRONG><BR>
+<DD>
+The base DN to start the search.
+<P></P>
+<DT><STRONG><A NAME="item_scope">scope</A></STRONG><BR>
+<DD>
+The scope for the search. This can be one of <A HREF="#item_base"><CODE>base</CODE></A>, <CODE>one</CODE> or <A HREF="../../../lib/Pod/perlfunc.html#item_sub"><CODE>sub</CODE></A> or
+it can be the numeric value for each of these 0,1,2 respectively. The default
+is <A HREF="../../../lib/Pod/perlfunc.html#item_sub"><CODE>sub</CODE></A>.
+<P></P>
+<DT><STRONG><A NAME="item_deref">deref</A></STRONG><BR>
+<DD>
+What to do when a reference is found. This value can be one of <CODE>never</CODE>,
+<A HREF="#item_search"><CODE>search</CODE></A>, <CODE>find</CODE> or <CODE>always</CODE>. Or it can be the numeric value fro each
+of these. The default is <CODE>find</CODE>.
+<P></P>
+<DT><STRONG><A NAME="item_sizelimit">sizelimit</A></STRONG><BR>
+<DD>
+Set the size limit for the response. zero means no limit. The default is
+no limit.
+<P></P>
+<DT><STRONG><A NAME="item_timelimit">timelimit</A></STRONG><BR>
+<DD>
+Set the time limit for the response. zero means no limit. The default is
+no limit.
+<P></P>
+<DT><STRONG><A NAME="item_typesonly">typesonly</A></STRONG><BR>
+<DD>
+If <EM>true</EM> then only the attribute type will be returned. Default is <EM>false</EM>.
+<P></P>
+<DT><STRONG><A NAME="item_filter">filter</A></STRONG><BR>
+<DD>
+The filter to use for the search. This may be a string or a &lt;Net::LDAP::Filter&gt;
+object.
+<P></P>
+<DT><STRONG>attrs</STRONG><BR>
+<DD>
+A reference to a list of attributes to be returned from the server. If not
+specified then all attributes will be returned.
+<P></P>
+<DT><STRONG>control</STRONG><BR>
+<DD>
+See <A HREF="#controls">CONTROLS</A> below.
+<P></P>
+<DT><STRONG>callback</STRONG><BR>
+<DD>
+See <A HREF="#callbacks">CALLBACKS</A> below.
+<P></P></DL>
+<P><STRONG>Example</STRONG></P>
+<PRE>
+ $mesg = $ldap-&gt;search(
+   base   =&gt; $base_dn,
+   scope  =&gt; 'sub',
+   filter =&gt; '(|(objectclass=rfc822mailgroup)(sn=jones))'
+ );
+</PRE>
+<PRE>
+
+ Net::LDAP::LDIF-&gt;new(\*STDOUT,&quot;w&quot;)-&gt;write($mesg-&gt;entries);</PRE>
+<DT><STRONG><A NAME="item_unbind">unbind</A></STRONG><BR>
+<DD>
+The unbind method does not take any parameters and will unbind you
+from the server. You may then either re-bind with another DN and password
+or close the connection.
+<P><STRONG>Example</STRONG></P>
+<PRE>
+ $ldap-&gt;unbind;</PRE>
+<P></P></DL>
+<P>The following methods are for convenience.</P>
+<DL>
+<DT><STRONG>async</STRONG><BR>
+<DD>
+Returns <EM>true</EM> if the LDAP operations are being performed asynchronously.
+<P></P>
+<DT><STRONG>debug ( [ VALUE ] )</STRONG><BR>
+<DD>
+If <CODE>VALUE</CODE> is given the debug bit-value will be set to <CODE>VALUE</CODE> and the
+previous value will be returned. If not given the bit-value will remain
+unchanged and will be returned.
+<P></P>
+<DT><STRONG><A NAME="item_sync">sync ( [ MESG ] )</A></STRONG><BR>
+<DD>
+Calling this method will synchronize the client with the server. It will
+not return until all requests have been completed, or id <CODE>MESG</CODE> is given
+it will return when <CODE>MESG</CODE> has been completed.
+<P>Returns an error code defined in <A HREF="../../../site/lib/Net/LDAP/Constant.html">the Net::LDAP::Constant manpage</A>.</P>
+<P></P>
+<DT><STRONG><A NAME="item_version">version</A></STRONG><BR>
+<DD>
+Returns the version of the LDAP protocol that is being used.
+<P></P></DL>
+<P>
+<HR>
+<H1><A NAME="controls">CONTROLS</A></H1>
+<P>Many of the methods described above accept a <A HREF="#item_control"><CODE>control</CODE></A> option.
+This allows the user to pass controls to the server as described
+in LDAPv3. The value to the <A HREF="#item_control"><CODE>control</CODE></A> argument may be either a
+HASH reference to a reference to an array of HASH references.</P>
+<P>The HASH, or each HASH in the array may contain three elements.</P>
+<DL>
+<DT><STRONG><A NAME="item_type">type</A></STRONG><BR>
+<DD>
+This element must be present and is the name of the type of control
+being requested.
+<P></P>
+<DT><STRONG><A NAME="item_critical">critical</A></STRONG><BR>
+<DD>
+<A HREF="#item_critical"><CODE>critical</CODE></A> is optional and should be a boolean value, if it is not specified
+then it is assumed to be <EM>false</EM>.
+<P></P>
+<DT><STRONG>value</STRONG><BR>
+<DD>
+If the control being requested requires a value then this element should
+hold the value for the server.
+<P></P></DL>
+<P>
+<HR>
+<H1><A NAME="callbacks">CALLBACKS</A></H1>
+<P>Most of the above commands accept a <A HREF="#item_callback"><CODE>callback</CODE></A> option. This option
+should be a reference to a subroutine. This subroutine will be called
+for each packet received from the server as a response to the request
+sent.</P>
+<P>When the subroutine is called the first argument will be the
+<A HREF="../../../site/lib/Net/LDAP/Message.html">the Net::LDAP::Message manpage</A> object which was returned from the method.</P>
+<P>If the request is a search then multiple packets can be received from
+the server. Each entry is received as a separate packet. For each of these
+the subroutine will be called with a <A HREF="../../../site/lib/Net/LDAP/Entry.html">the Net::LDAP::Entry manpage</A> object as the second
+argument.</P>
+<P>During a search the server may also send a list of references. When such
+a list is received then the subroutine will be called with a
+<A HREF="../../../site/lib/Net/LDAP/Reference.html">the Net::LDAP::Reference manpage</A> object as the second argument.</P>
+<P>
+<HR>
+<H1><A NAME="ldap error codes">LDAP ERROR CODES</A></H1>
+<P><STRONG>Net::LDAP</STRONG> also exports constants for the error codes that can be received
+from the server, see <A HREF="../../../site/lib/Net/LDAP/Constant.html">the Net::LDAP::Constant manpage</A>.</P>
+<P>
+<HR>
+<H1><A NAME="see also">SEE ALSO</A></H1>
+<P><A HREF="../../../site/lib/Net/LDAP/BER.html">the Net::LDAP::BER manpage</A>,
+<A HREF="../../../site/lib/Net/LDAP/Constant.html">the Net::LDAP::Constant manpage</A>,
+<A HREF="../../../site/lib/Net/LDAP/Entry.html">the Net::LDAP::Entry manpage</A>,
+<A HREF="../../../site/lib/Net/LDAP/Filter.html">the Net::LDAP::Filter manpage</A>,
+<A HREF="../../../site/lib/Net/LDAP/Message.html">the Net::LDAP::Message manpage</A>,
+<A HREF="../../../site/lib/Net/LDAP/Reference.html">the Net::LDAP::Reference manpage</A>,
+<A HREF="../../../site/lib/Net/LDAP/Search.html">the Net::LDAP::Search manpage</A>,
+<A HREF="../../../site/lib/URI/URL/ldap.html">the URI::URL::ldap manpage</A>,</P>
+<P>The LDAP protocol is defined in the following RFC's</P>
+<DL>
+<DT><STRONG><A NAME="item_RFC%2D2251%7Chttp%3A%2F%2Finfo%2Einternet%2Eisi%2E"><EM>RFC-2251</EM></A></STRONG><BR>
+<DD>
+Lightweight Directory Access Protocol (v3).
+<P></P>
+<DT><STRONG><A NAME="item_RFC%2D2252%7Chttp%3A%2F%2Finfo%2Einternet%2Eisi%2E"><EM>RFC-2252</EM></A></STRONG><BR>
+<DD>
+Attribute Syntax Definitions.
+<P></P>
+<DT><STRONG><A NAME="item_RFC%2D2253%7Chttp%3A%2F%2Finfo%2Einternet%2Eisi%2E"><EM>RFC-2253</EM></A></STRONG><BR>
+<DD>
+UTF-8 String Representation of Distinguished Names.
+<P></P>
+<DT><STRONG><A NAME="item_RFC%2D2254%7Chttp%3A%2F%2Finfo%2Einternet%2Eisi%2E"><EM>RFC-2254</EM></A></STRONG><BR>
+<DD>
+The String Representation of LDAP Search Filters.
+<P></P>
+<DT><STRONG><A NAME="item_RFC%2D2255%7Chttp%3A%2F%2Finfo%2Einternet%2Eisi%2E"><EM>RFC-2255</EM></A></STRONG><BR>
+<DD>
+The LDAP URL Format.
+<P></P>
+<DT><STRONG><A NAME="item_RFC%2D2256%7Chttp%3A%2F%2Finfo%2Einternet%2Eisi%2E"><EM>RFC-2256</EM></A></STRONG><BR>
+<DD>
+A Summary of the X.500(96) User Schema for use with LDAPv3.
+<P></P></DL>
+<P>The homepage for the perl-ldap modules can be found at 
+<A HREF="http://www.pobox.com/~gbarr/perl-ldap/">http://www.pobox.com/~gbarr/perl-ldap/</A>.</P>
+<P>
+<HR>
+<H1><A NAME="acknowledgements">ACKNOWLEDGEMENTS</A></H1>
+<P>This document is based on a document originally written by Russell Fulton
+&lt;<EM><A HREF="mailto:r.fulton@auckland.ac.nz">r.fulton@auckland.ac.nz</A></EM>&gt;.</P>
+<P>Chris Ridd @isode.com for the many hours spent testing and contribution
+of the ldap* command line utilities.</P>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Graham Barr <EM><EM>&lt;<A HREF="mailto:gbarr@pobox.com">gbarr@pobox.com</A>&gt;</EM></EM></P>
+<P>Please report any bugs, or post any suggestions, to the perl-ldap mailing list
+<EM><EM>&lt;<A HREF="mailto:perl-ldap@mail.med.cornell.edu">perl-ldap@mail.med.cornell.edu</A>&gt;</EM></EM>.</P>
+<P>
+<HR>
+<H1><A NAME="copyright">COPYRIGHT</A></H1>
+<P>Copyright (c) 1997-1999 Graham Barr. All rights reserved. This program is
+free software; you can redistribute it and/or modify it under the same
+terms as Perl itself.</P>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<STRONG><P CLASS=block>&nbsp;Net::LDAP -- Lightweight Directory Access Protocol</P></STRONG>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

@@ -1,0 +1,2368 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+
+
+
+
+
+
+<head>
+
+
+
+
+
+
+
+<title>10.1) The java.util package</title>
+
+
+
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META name="GENERATOR" content="IBM WebSphere Homepage Builder V4.0.0 for Linux">
+<STYLE TYPE="text/css">
+
+
+
+
+
+
+
+<!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+</STYLE><link rel="stylesheet" href="tutor.css"></head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body bgcolor="#FFFFFF">
+
+<table width=95% border=0 cellpadding=2 cellspacing=0 style="page-break-before: always">
+
+  <col width=147*> <col width=109*> 
+
+  <tr> 
+
+    <td width=57% height=104> 
+
+      <p><a href= "introj2.htm" ><img src= "btnIndex.jpg"  name="Graphic1" alt="Return to Tutorial Index" align=BOTTOM width=55 height=39 border=0></a><a href= "introj2.htm" ><br>
+
+        <br>
+
+        </a><a href= "index.htm" ><img src= "btnHome.jpg"  name="Graphic2" alt="Back to the home page of this site" align=BOTTOM width=55 height=39 border=0></a> 
+
+      </p>
+
+    </td>
+
+    <td width=43%> 
+
+      <p align=RIGHT><img src= "hat.gif"  name="Graphic3" alt="morterboard" align=BOTTOM width=118 height=113 border=0></p>
+
+    </td>
+
+  </tr>
+
+  <tr> 
+
+    <td width=57% height=11> 
+
+      <h1 align=LEFT>Java2 Certification <br>
+
+        Tutorial </h1>
+
+    </td>
+
+    <td width=43% bgcolor="#ff9900"> 
+
+      <p>&nbsp;</p>
+
+    </td>
+
+  </tr>
+
+</table>
+
+<p> You can discuss this topic with others at <a href= "http://www.jchq.net/discus" >http://www.jchq.net/discus</a><br>
+
+  Read reviews and buy a Java Certification book at <a href= "http://www.jchq.net/bookreviews/jcertbooks.htm" >http://www.jchq.net/bookreviews/jcertbooks.htm</a> 
+
+  <br>
+
+</p>
+
+<hr size=5 noshade>
+
+<h1><b>10) The java.util package</b> </h1>
+
+
+
+<h1>Objective 1) </h1>
+
+
+
+
+
+
+
+<p>Make appropriate selection of collection classes/interfaces to suit specified 
+
+
+
+
+
+
+
+  behavior requirements.</p>
+
+
+
+
+
+
+
+<h3>Note on this Objective </h3>
+
+
+
+
+
+
+
+<p><i>Although it does not mention it specifically, this objective involves one 
+
+
+
+
+
+
+
+  of the new objectives for the Java2 version of the exam, a knowledge of the 
+
+
+
+
+
+
+
+  collection classes. The exam questions on these new collections are fairly basic, 
+
+
+
+
+
+
+
+  requiring a knowledge of where and how you might use them, rather than a detailed 
+
+
+
+
+
+
+
+  knowledge of the fields and methods.</i></p>
+
+
+
+
+
+
+
+<h3>The old collections </h3>
+
+
+
+
+
+
+
+<p>The Java 2 API includes new interfaces and classes to enhance the collections 
+
+
+
+
+
+
+
+  available. Earlier versions of Java included</p>
+
+
+
+
+
+
+
+<ul>
+
+
+
+
+
+
+
+  <li> 
+
+
+
+
+
+
+
+    <div align="left">vector </div>
+
+
+
+
+
+
+
+  <li> 
+
+
+
+
+
+
+
+    <div align="left">hashtable </div>
+
+
+
+
+
+
+
+  <li> 
+
+
+
+
+
+
+
+    <div align="left">array </div>
+
+
+
+
+
+
+
+  <li> 
+
+
+
+
+
+
+
+    <div align="left">BitSet </div>
+
+
+
+
+
+
+
+</ul>
+
+
+
+
+
+
+
+<p>Of these, only <i>array</i> was included in the objectives for the 1.1 certification 
+
+
+
+
+
+
+
+  exam. One of the noticeable omissions from Java 1.1 was support for sorting, 
+
+
+
+
+
+
+
+  a very common requirement in any programming situation,</p>
+
+
+
+
+
+
+
+<h3>The new collections </h3>
+
+
+
+
+
+
+
+<p>At the root of the Collection API is the <i>Collection</i> interface. This 
+
+
+
+
+
+
+
+  gives you a series of common methods that all collection classes will have. 
+
+
+
+
+
+
+
+  You would probably never create your own class that implements Collection as 
+
+
+
+
+
+
+
+  Java supplies a series of sub-interfaces and classes that uses the <i>Collection</i> 
+
+
+
+
+
+
+
+  interface.</p>
+
+
+
+
+
+
+
+<p>The Java2 API includes the following new collection interfaces 
+
+
+
+
+
+
+
+<dl> 
+
+
+
+
+
+
+
+  <dt></dt>
+
+
+
+
+
+
+
+</dl>
+
+
+
+
+
+
+
+<ul>
+
+
+
+
+
+
+
+  <li>
+
+
+
+
+
+
+
+    <div align="left">Sets </div>
+
+
+
+
+
+
+
+  <li>
+
+
+
+
+
+
+
+    <div align="left">Maps </div>
+
+
+
+
+
+
+
+</ul>
+
+
+
+
+
+
+
+<p>And a new class called <i>Set</i>.</p>
+
+
+
+
+
+
+
+<p>Classes that implement the <i>Collection</i> interface store objects as elements 
+
+
+
+
+
+
+
+  rather than primitives. This approach has the drawback that creating objects 
+
+
+
+
+
+
+
+  has a performance overhead and the elements must be cast back from <i>Object</i> 
+
+
+
+
+
+
+
+  to the appropriate type before being used. It also means that the collections 
+
+
+
+
+
+
+
+  do not check that the elements are all of the same type, as an object can be 
+
+
+
+
+
+
+
+  just about anything. 
+
+
+
+
+
+
+
+<h3>A Set </h3>
+
+
+
+
+
+
+
+<p>A <i>Set</i> is a collection interface that cannot contain duplicate elements. 
+
+
+
+
+
+
+
+  It thus matches nicely onto concepts such as a record set returned from a relational 
+
+
+
+
+
+
+
+  database. Part of the magic of the <i>Set</i> interface is in the <i>add</i> 
+
+
+
+
+
+
+
+  method.<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  add(Object o)<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  Any object passed to the <i>add</i> method must implement the <i>equals </i>method 
+
+
+
+
+
+
+
+  so the value can be compared with existing objects in the class. If the set 
+
+
+
+
+
+
+
+  already contains this object the call to <i>add</i> leaves the set unchanged 
+
+
+
+
+
+
+
+  and returns <i>false. </i>The idea of returning <i>false</i> when attempting 
+
+
+
+
+
+
+
+  to add an element seems more like the approach used in C/C++ than Java. Most 
+
+
+
+
+
+
+
+  similar java methods would seem to throw an Exception in this type of situation.</p>
+
+
+
+
+
+
+
+<h3>A List </h3>
+
+
+
+
+
+
+
+<p>A list is a sorted collection interface that can contain duplicates</p>
+
+
+
+
+
+
+
+<p>Some important methods are</p>
+
+
+
+
+
+
+
+<ul>
+
+
+
+
+
+
+
+  <li>
+
+
+
+
+
+
+
+    <div align="left">add </div>
+
+
+
+
+
+
+
+  <li>
+
+
+
+
+
+
+
+    <div align="left">remove </div>
+
+
+
+
+
+
+
+  <li>
+
+
+
+
+
+
+
+    <div align="left">clear </div>
+
+
+
+
+
+
+
+</ul>
+
+
+
+
+
+
+
+<p>The JDK documentation gives the example of using <i>List</i> to manage an actual 
+
+
+
+
+
+
+
+  GUI list control containing a list of the names of the Planets. 
+
+
+
+
+
+
+
+<h3>A Map </h3>
+
+
+
+
+
+
+
+<p><i>Map</i> is an interface, classes that implement it cannot contain duplicate 
+
+
+
+
+
+
+
+  keys, and it is similar to a hashtable.</p>
+
+
+
+
+
+
+
+<p>Why use Collections instead of arrays?.</p>
+
+
+
+
+
+
+
+<p>The big advantage of the collections over arrays is that the collections are 
+
+
+
+
+
+
+
+  growable, you do not have to assign the size at creation time. The drawback 
+
+
+
+
+
+
+
+  of collections is that they only store objects and not primitives and this comes 
+
+
+
+
+
+
+
+  with an inevitable performance overhead. Arrays do not directly support sorting, 
+
+
+
+
+
+
+
+  but this can be overcome by using the static methods of the Collections. Here 
+
+
+
+
+
+
+
+  is an example.</p>
+
+
+
+
+
+
+
+<pre>import java.util.*;
+public class Sort{
+    public static void main(String argv[]){
+    Sort s = new Sort();
+    }
+Sort(){
+    String s[] = new String[4];
+    s[0]=&quot;z&quot;;
+    s[1]=&quot;b&quot;;
+    s[2]=&quot;c&quot;;
+    s[3]=&quot;a&quot;;
+    Arrays.sort(s);
+    for(int i=0;i&lt; s.length;i++)
+    System.out.println(s[i]);
+    }
+}
+</pre>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="9%"><img src= "key2.gif"  width="106" height="73"
+
+
+
+
+
+
+
+align="bottom" border="0"></td>
+
+
+
+
+
+
+
+    <td width="91%"> 
+
+
+
+
+
+
+
+      <h4><font color="#FF0000">Set and Map collections ensure uniqueness, List 
+
+
+
+
+
+
+
+        Collections do not ensure uniqueness but are are sorted (ordered)</font> 
+
+
+
+
+
+
+
+      </h4>
+
+
+
+
+
+
+
+    </td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<h3>Using Vectors </h3>
+
+
+
+
+
+
+
+<p>The following example illustrates how you can add objects of different classes 
+
+
+
+
+
+
+
+  to a <i>Vector</i>. This contrasts with arrays where every element must be of 
+
+
+
+
+
+
+
+  the same type. The code then walks through each object printing to the standard 
+
+
+
+
+
+
+
+  output. This implicitly access the <i>toString</i>() method of each object.</p>
+
+
+
+
+
+
+
+<pre>import java.awt.*;
+import java.util.*;
+public class Vec{
+public static void main(String argv[]){
+    Vec v = new Vec();
+    v.amethod();
+    }//End of main
+
+public void amethod(){
+        Vector mv = new Vector();
+        //Note how a vector can store objects 
+        //of different types
+        mv.addElement(&quot;Hello&quot;);
+        mv.addElement(Color.red);
+        mv.addElement(new Integer(99));
+        //This would cause an error
+        //As a vector will not store primitives
+        //mv.addElement(99)
+        //Walk through each element of the vector
+        for(int i=0; i&lt; mv.size(); i++){
+            System.out.println(mv.elementAt(i));
+            }
+   }//End of amethod
+}</pre>
+
+
+
+
+
+
+
+<p>Prior to Java2 the <i>Vector</i> class was the main way of creating a re-sizable 
+
+
+
+
+
+
+
+  data structure. Elements can be removed from the Vector class with the <i>remove</i> 
+
+
+
+
+
+
+
+  method. 
+
+
+
+
+
+
+
+<h3>Using Hashtables </h3>
+
+
+
+
+
+
+
+<p>Hashtables are a little like the Visual Basic concept of a Collection used 
+
+
+
+
+
+
+
+  with a key. It acts like a <i>Vector</i>, except that instead of referring to 
+
+
+
+
+
+
+
+  elements by number, you refer to them by key. The <i>hash</i> part of the name 
+
+
+
+
+
+
+
+  refers to a math term dealing with creating indexes. A hashtable can offer the 
+
+
+
+
+
+
+
+  benefit over a <i>Vector</i> of faster look ups.</p>
+
+
+
+
+
+
+
+<h3>BitSet </h3>
+
+
+
+
+
+
+
+<p>A <i>BitSet</i> as its name implies, stores a sequence of Bits. Don't be misled 
+
+
+
+
+
+
+
+  by the &quot;set&quot; part of its name its not a set in the mathematical or 
+
+
+
+
+
+
+
+  database sense, nor is it related to the Sets available in Java2. It is more 
+
+
+
+
+
+
+
+  appropriate to think of it as a bit vector. A <i>BitSet</i> may useful for the 
+
+
+
+
+
+
+
+  efficient storage of bits where the bits are used to represent <i>true/false 
+
+
+
+
+
+
+
+  values</i>. The alternative of using some sort of collection containing Boolean 
+
+
+
+
+
+
+
+  values can be less efficient.<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  According to Bruce Eckel in &quot;Thinking in Java&quot;<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  <i>It’s efficient only from the standpoint of size; if you’re looking for efficient 
+
+
+
+
+
+
+
+  access, it is slightly slower than using an array of some native type.<br>
+
+
+
+
+
+
+
+  </i><br>
+
+
+
+
+
+
+
+  The BitSet is somewhat of a novelty class which you may never have a need for. 
+
+
+
+
+
+
+
+  I suspect that it might be handy for the purposes of cryptography or the processing 
+
+
+
+
+
+
+
+  of images. Please let me know if you come across a question relating to it in 
+
+
+
+
+
+
+
+  the Java2 exam.</p>
+
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="11%"><img src= "Quiz.gif"  width="99" height="101"></td>
+
+
+
+
+
+
+
+    <td width="89%">&nbsp;</td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<h4><b>Question 1)</b></h4>
+
+
+
+
+
+
+
+<p><b> </b>Which of the following are collection classes?<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  1) Collection<br>
+
+
+
+
+
+
+
+  2) Iterator<br>
+
+
+
+
+
+
+
+  3) HashSet<br>
+
+
+
+
+
+
+
+  4) Vector<b><br>
+
+
+
+
+
+
+
+  </b> </p>
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 2)</b></h4>
+
+
+
+
+
+
+
+<p><b> </b>Which of the following are true about the Collection interface?<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  1) The Vector class has been modified to implement Collection<br>
+
+
+
+
+
+
+
+  2) The Collection interface offers individual methods and Bulk methods such 
+
+
+
+
+
+
+
+  as addAll<br>
+
+
+
+
+
+
+
+  3) The Collection interface is backwardly compatible and all methods are available 
+
+
+
+
+
+
+
+  within the JDK 1.1 classes<br>
+
+
+
+
+
+
+
+  4) The collection classes make it unnecessary to use arrays<br>
+
+
+
+
+
+
+
+</p>
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 3)</b></h4>
+
+
+
+
+
+
+
+<p><b> </b>Which of the following are true?<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  1) The Set interface is designed to ensure that implementing classes have unique 
+
+
+
+
+
+
+
+  members<br>
+
+
+
+
+
+
+
+  2) Classes that implement the List interface may not contain duplicate elements<br>
+
+
+
+
+
+
+
+  3) The Set interface is designed for storing records returned from a database 
+
+
+
+
+
+
+
+  query<br>
+
+
+
+
+
+
+
+  4) The Map Interface is not part of the Collection Framework</p>
+
+
+
+
+
+
+
+<h4> <b><br>
+
+
+
+
+
+
+
+  Question 4)</b></h4>
+
+
+
+
+
+
+
+<p> Which of the following are true<b>?<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  </b>1) The elements of a Collection class can be ordered by using the sort method 
+
+
+
+
+
+
+
+  of the Collection interface<br>
+
+
+
+
+
+
+
+  2) You can create an ordered Collection by instantiating a class that implements 
+
+
+
+
+
+
+
+  the List interface<br>
+
+
+
+
+
+
+
+  3) The Collection interface sort method takes parameters of A or D to change 
+
+
+
+
+
+
+
+  the sort order, Ascending/Descending<br>
+
+
+
+
+
+
+
+  4) The elements of a Collection class can be ordered by using the order method 
+
+
+
+
+
+
+
+  of the Collection interface<b><br>
+
+
+
+
+
+
+
+  </b> </p>
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 5)</b></h4>
+
+
+
+
+
+
+
+<p><b> <br>
+
+
+
+
+
+
+
+  </b>You wish to store a small amount of data and make it available for rapid 
+
+
+
+
+
+
+
+  access. You do not have a need for the data to be sorted, uniqueness is not 
+
+
+
+
+
+
+
+  an issue and the data will remain fairly static Which data structure might be 
+
+
+
+
+
+
+
+  most suitable for this requirement?<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  1) TreeSet<br>
+
+
+
+
+
+
+
+  2) HashMap<br>
+
+
+
+
+
+
+
+  3) LinkedList<br>
+
+
+
+
+
+
+
+  4) an array<br>
+
+
+
+
+
+
+
+</p>
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 6)</b></h4>
+
+
+
+
+
+
+
+<p><b> </b>Which of the following are Collection classes?<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  1) ListBag<br>
+
+
+
+
+
+
+
+  2) HashMap<br>
+
+
+
+
+
+
+
+  3) Vector<br>
+
+
+
+
+
+
+
+  4) SetList<br>
+
+
+
+
+
+
+
+</p>
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 7)</b></h4>
+
+
+
+
+
+
+
+<p> How can you remove an element from a Vector?<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  1) delete method<br>
+
+
+
+
+
+
+
+  2) cancel method<br>
+
+
+
+
+
+
+
+  3) clear method<br>
+
+
+
+
+
+
+
+  4) remove method</p>
+
+
+
+
+
+
+
+<h1>Answers </h1>
+
+
+
+
+
+
+
+<h4><b>Answer 1)</b></h4>
+
+
+
+
+
+
+
+<p>3) HashSet<br>
+
+
+
+
+
+
+
+  4) Vector<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  The other two are Interfaces not classes</p>
+
+
+
+
+
+
+
+<h4> <br>
+
+
+
+
+
+
+
+  <b>Answer 2)</b></h4>
+
+
+
+
+
+
+
+<p><b> </b>1) The Vector class has been modified to implement Collection<br>
+
+
+
+
+
+
+
+  2) The Collection interface offers individual methods and Bulk methods such 
+
+
+
+
+
+
+
+  as addAll<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  The Collection classes are new to the JDK1.2 (Java2) release. With the exception 
+
+
+
+
+
+
+
+  of the classes that have been retrofitted such as Vector and BitSet the, if 
+
+
+
+
+
+
+
+  you run any of the Collections through an older JDK you will get a compile time 
+
+
+
+
+
+
+
+  error. </p>
+
+
+
+
+
+
+
+<h4><br>
+
+
+
+
+
+
+
+  <b>Answer 3)</b></h4>
+
+
+
+
+
+
+
+<p> 1) The Set interface is designed to ensure that implementing classes have 
+
+
+
+
+
+
+
+  unique members<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  Elements of a class that implements the List interface may contain duplicate 
+
+
+
+
+
+
+
+  elements. Although a class that implements the Set interface might be used for 
+
+
+
+
+
+
+
+  storing records returned from a database query, it is not designed particularly 
+
+
+
+
+
+
+
+  for that purpose. </p>
+
+
+
+
+
+
+
+<h4><br>
+
+
+
+
+
+
+
+  <b>Answer 4)</b></h4>
+
+
+
+
+
+
+
+<p> 2) You can create an ordered Collection by instantiating a class that implements 
+
+
+
+
+
+
+
+  the List interface</p>
+
+
+
+
+
+
+
+<h4> <br>
+
+
+
+
+
+
+
+  <b>Answer 5)</b></h4>
+
+
+
+
+
+
+
+<p><b> <br>
+
+
+
+
+
+
+
+  </b>4) an array<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  For such a simple requirement an ordinary array will probably be the best solution</p>
+
+
+
+
+
+
+
+<h4><b> <br>
+
+
+
+
+
+
+
+  Answer 6)</b></h4>
+
+
+
+
+
+
+
+<p><b> </b>2) HashMap<br>
+
+
+
+
+
+
+
+  3) Vector<br>
+
+
+
+
+
+
+
+  <b><br>
+
+
+
+
+
+
+
+  </b>With the release of JDK 1.2 (Java2) the Vector class was &quot;retro-fitted&quot; 
+
+
+
+
+
+
+
+  to become a member of the Collection Framework</p>
+
+
+
+
+
+
+
+<h4> <br>
+
+
+
+
+
+
+
+  <b>Answer 7)</b></h4>
+
+
+
+
+
+
+
+<p> 4) remove method</p>
+
+
+
+
+
+
+
+<table border="1" width="100%" height="110">
+
+
+
+
+
+
+
+  <caption><b>Other sources on this topic</b></caption>
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="100%"><b>The Sun Tutorial<br>
+
+
+
+
+
+
+
+      </b><a href= "http://java.sun.com/docs/books/tutorial/collections/index.html" >http://java.sun.com/docs/books/tutorial/collections/index.html</a><a
+
+
+
+
+
+
+
+						href= "http://java.sun.com/docs/books/tutorial/uiswing/events/intro.html" ><br>
+
+
+
+
+
+
+
+      <br>
+
+
+
+
+
+
+
+      </a><b>Jyothi Krishnan on this topic at </b><a href="http://www.Geocities.com/Athens/7077/Java080.htm#design goals of the jdk 1.1 delegation"><br>
+
+
+
+
+
+
+
+      </a><a href= "http://www.geocities.com/SiliconValley/Network/3693/obj_sec10.html#obj30" >http://www.geocities.com/SiliconValley/Network/3693/obj_sec10.html#obj30</a></td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<p>Last updated<br>
+
+
+
+
+
+
+
+  30 Jan 2000<br>
+
+
+
+
+
+
+
+  copyright &copy; Marcus Green 2000<br>
+
+
+
+
+
+
+
+  most recent version at www.software.u-net.com</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>
+
+
+
+
+
+
+

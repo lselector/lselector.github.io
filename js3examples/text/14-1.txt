@@ -1,0 +1,55 @@
+<SCRIPT>
+// A variable we use to ensure that each error window we create is unique.
+var error_count = 0;
+
+// Set this variable to your email address.
+var email = "myname@mydomain.com";
+
+// Define the error handler. It generates an HTML form so
+// the user can report the error to the author.
+function report_error(msg, url, line)
+{
+   var w = window.open("",                    // URL (none specified)
+                       "error"+error_count++, // Name (force it to be unique)
+                       "resizable,status,width=625,height=400"); // Features
+   var d = w.document;    // We use this variable to save typing!
+
+   // Output an HTML document, including a form, into the new window.
+   d.write('<DIV align=center>');
+   d.write('<FONT SIZE=7 FACE="helvetica"><B>');
+   d.write('OOPS.... A JavaScript Error Has Occurred!');
+   d.write('</B></FONT><BR><HR SIZE=4 WIDTH="80%">');
+   d.write('<FORM ACTION="mailto:' + email + '" METHOD=post');
+   d.write(' ENCTYPE="text/plain">');
+   d.write('<FONT SIZE=3>');
+   d.write('<I>Click the "Report Error" button to send a bug report.</I><BR>');
+   d.write('<INPUT TYPE="submit" VALUE="Report Error">&nbsp;&nbsp;');
+   d.write('<INPUT TYPE="button" VALUE="Dismiss" onClick="self.close()">');
+   d.write('</DIV><DIV align=right>');
+   d.write('<BR>Your name <I>(optional)</I>: ');
+   d.write('<INPUT SIZE=42 NAME="name" VALUE="">');
+   d.write('<BR>Error Message: ');
+   d.write('<INPUT SIZE=42 NAME="message" VALUE="' + msg + '">');
+   d.write('<BR>Document: <INPUT SIZE=42 NAME="url" VALUE="' + url + '">');
+   d.write('<BR>Line Number: <INPUT SIZE=42 NAME="line" VALUE="' + line +'">');
+   d.write('<BR>Browser Version: ');
+   d.write('<INPUT SIZE=42 NAME="version" VALUE="'+navigator.userAgent + '">');
+   d.write('</DIV></FONT>');
+   d.write('</FORM>');
+   // Remember to close the document when we're done.
+   d.close();
+
+   // Return true from this error handler, so that JavaScript does not
+   // display its own error dialog.
+   return true;
+}
+
+// Before the event handler can take effect, we have to register it
+// for a particular window.
+self.onerror = report_error;
+</SCRIPT>
+
+<SCRIPT>
+// The following line of code purposely causes an error as a test.
+self = null;
+</SCRIPT>

@@ -1,0 +1,532 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Инструментальные средства JDK</TITLE>
+<META NAME="Template" CONTENT="C:\PROGRAM FILES\MICROSOFT OFFICE\OFFICE\html.dot">
+</HEAD>
+<BODY>
+
+<B><I><FONT FACE="Times New Roman" SIZE=5><P ALIGN="CENTER">Инструментальные средства JDK</P>
+</FONT><FONT FACE="Times New Roman" SIZE=4><P ALIGN="CENTER">appletviewer — программа просмотра апплетов Java</P>
+</FONT><FONT FACE="Times New Roman"><P>Доступность</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P>JDK версии 1.0 и более поздних версий.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P>Синтаксис вызова</P>
+</B></I></FONT><FONT SIZE=2><P ALIGN="JUSTIFY">&nbsp;</P>
+</FONT><B><FONT FACE="Times New Roman" SIZE=2><P>appletviewer [-debug] [-Japryмeнт] [-encoding <I>кодировка] url/файл...</P>
+</FONT><FONT FACE="Times New Roman"><P>Описание</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Программа </FONT><I><FONT SIZE=2>appletviewer</I></FONT><FONT FACE="Times New Roman" SIZE=2> загружает один или несколько HTML-документов по указанным в командной строке URL. Она читает или загружает все апплеты, на которые содержатся ссылки в документах, и отображает каждый из них в собственном окне. Если ни один из названных документов не содержит тег &lt;applet&gt;, </FONT><I><FONT SIZE=2>appletviewer</I></FONT><FONT FACE="Times New Roman" SIZE=2> не делает ничего.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P>Параметры</P>
+</I></FONT><FONT SIZE=2><P ALIGN="JUSTIFY">-debug<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>При указании данного параметра </FONT><I><FONT SIZE=2>appletviewer</I></FONT><FONT FACE="Times New Roman" SIZE=2> запускается под управлением </FONT><I><FONT SIZE=2>jdb</I></FONT><FONT FACE="Times New Roman" SIZE=2> (отладчик Java). Это позволяет отлаживать апплет, на который ссылается документ или документы.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-J</FONT><I><FONT FACE="Times New Roman" SIZE=2>аргумент</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Передает аргумент командной строки интерпретатору Java. Указанный аргумент не должен иметь пробелов. Если интерпретатору Java нужно передать аргумент, включающий в себя несколько слов, следует использовать соответствующее количество параметров -J. Список допустимых параметров интерпретатора Java можно найти в параграфе, посвященном описанию </FONT><I><FONT SIZE=2>Java.</I></FONT><FONT FACE="Times New Roman" SIZE=2> Доступен в JDK версии 1.1 или более поздних версий.</P>
+</FONT><B><FONT SIZE=2><P>-encoding </FONT><I><FONT FACE="Times New Roman" SIZE=2>кодировка</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Определяет кодировку символов, которая должна использоваться программой </FONT><I><FONT SIZE=2>appletviewer</I></FONT><FONT FACE="Times New Roman" SIZE=2> при чтении содержимого указанных файлов или URL. Он используется в процессе преобразования значений параметров апплета в Unicode. Доступен в JDK версии 1.1 или более поздних версий.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P>Команды</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">В окне программы </FONT><I><FONT SIZE=2>appletviewer</I></FONT><FONT FACE="Times New Roman" SIZE=2> содержится единственное меню</FONT><B><FONT SIZE=2> Applet</B></FONT><FONT FACE="Times New Roman" SIZE=2> со следующими командами:</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">Restart</B></FONT><FONT FACE="Times New Roman" SIZE=2> Останавливает и уничтожает текущий апплет, затем заново инициализирует его и запускает повторно.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">Reload</B></FONT><FONT FACE="Times New Roman" SIZE=2> Останавливает, уничтожает и выгружает апплет, затем снова загружает, инициализирует и запускает его.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">Stop</B></FONT><FONT FACE="Times New Roman" SIZE=2> Останавливает текущий апплет. Доступна в JDK версии 1.1 или более поздних версий.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">Save</B></FONT><FONT FACE="Times New Roman" SIZE=2> Сериализует апплет и сохраняет его в файле </FONT><I><FONT SIZE=2>Applet.ser</I></FONT><FONT FACE="Times New Roman" SIZE=2> в домашнем каталоге пользователя. Перед вызовом этой команды апплет необходимо остановить. Доступна в JDK версии 1.1 или более поздних версий.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">Start</B></FONT><FONT FACE="Times New Roman" SIZE=2> Повторно запускает остановленный апплет. Доступна в JDK версии 1.1 или более поздних версий.</P>
+</FONT><B><FONT SIZE=2><P>Clone</B></FONT><FONT FACE="Times New Roman" SIZE=2> Создает копию апплета в новом окне </FONT><I><FONT SIZE=2>appletvlewer.</P>
+</I><B><P ALIGN="JUSTIFY">Tag</B></FONT><FONT FACE="Times New Roman" SIZE=2> Открывает диалоговое окно, где выводится тег &lt;applet&gt; со всеми соответствующими тегами &lt;param&gt;, которые создают данный апплет.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">Info</B></FONT><FONT FACE="Times New Roman" SIZE=2> Открывает диалоговое окно, содержащее информацию о данном апплете. Эту информацию позволяют получить методы getAppletInfo () и getParameterlnfo (),</FONT><B><FONT SIZE=2> </B></FONT><FONT FACE="Times New Roman" SIZE=2>которые реализуются апплетом.</P>
+</FONT><B><FONT SIZE=2><P>Edit</B></FONT><FONT FACE="Times New Roman" SIZE=2> Эта команда не реализована, поэтому меню</FONT><B><FONT SIZE=2> Edit</B></FONT><FONT FACE="Times New Roman" SIZE=2> не доступно.</P>
+</FONT><B><FONT SIZE=2><P>Character Encoding </B></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит текущую кодировку символов в строке состояния. Доступна в JDK версии 1.1 или более поздних версий.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">Print</B></FONT><FONT FACE="Times New Roman" SIZE=2> Выводит апплет на печать. Доступна в JDK версии 1.1 или более поздних версий.</P>
+</FONT><B><FONT SIZE=2><P>Properties </B></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит диалоговое окно, которое позволяет пользователю устанавливать любимый набор параметров </FONT><I><FONT SIZE=2>appletviewr,</I></FONT><FONT FACE="Times New Roman" SIZE=2> в том числе параметры брандмауэров и кэширующих Proxy-серверов.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">Close</B></FONT><FONT FACE="Times New Roman" SIZE=2> Закрывает текущее окно </FONT><I><FONT SIZE=2>appletviewer. </P>
+</I><B><P ALIGN="JUSTIFY">Quit</B></FONT><FONT FACE="Times New Roman" SIZE=2> Завершает работу </FONT><I><FONT SIZE=2>appletviewer,</I></FONT><FONT FACE="Times New Roman" SIZE=2> закрывая все открытые окна.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P>Свойства</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Программа </FONT><I><FONT SIZE=2>appletviewer</I></FONT><FONT FACE="Times New Roman" SIZE=2> при запуске читает определения свойств из файла </FONT><I><FONT SIZE=2>~/.hotjava/properties</I></FONT><FONT FACE="Times New Roman" SIZE=2> (в среде UNIX) или </FONT><I><FONT SIZE=2>\hotjava\properties</I></FONT><FONT FACE="Times New Roman" SIZE=2> (в среде Windows), путь к которому определяется относительно переменной среды home. Эти свойства хранятся в списке системных свойств и используются для определения различных ошибок и выводимых апплетом сообщений о состоянии, а также для определения политики безопасности и особенностей применения Proxy-серверов. Свойства, которые влияют на безопасность и работу Proxy-серверов, приведены ниже.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P>Безопасность</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Следующие свойства определяют те связанные с безопасностью ограничения, которые накладываются программой </FONT><I><FONT SIZE=2>appletviewer</I></FONT><FONT FACE="Times New Roman" SIZE=2> на работу не пользующихся доверием апплетов. </P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">acl.read<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Представляет собой список файлов и каталогов, которые разрешено читать не пользующимся доверием апплетам. Элементы списка должны разделяться двоеточиями в среде UNIX и точками с запятой в среде Windows. В среде UNIX символ - заменяется домашним каталогом текущего пользователя. Если в качестве элемента списка появляется символ +, он заменяется значением свойства acl.read.default. Проще всего разрешить доступ для чтения — задать acl.read равным +. По умолчанию не пользующимся доверием апплетам запрещено читать какие-либо файлы или каталоги.</P>
+</FONT><B><FONT SIZE=2><P>acl.read.default<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Представляет собой список файлов и каталогов, которые разрешено читать не пользующимся доверием апплетам, если свойство acl.read равно +.</P>
+</FONT><B><FONT SIZE=2><P>acl.write<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Представляет собой список файлов и каталогов, в которые разрешено записывать не пользующимся доверием апплетам. Элементы списка должны разделяться двоеточиями в среде UNIX и точками с запятой в среде Windows. В среде UNIX символ ~ заменяется именем домашнего каталога текущего пользователя. Если в качестве элемента списка появляется символ +, то он заменяется значением свойства acl.write, default. Проще всего разрешить доступ для записи — задать acl.write равным +. По умолчанию не пользующимся доверием апплетам запрещено записывать в какие-либо файлы или каталоги.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">acl.write.default<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Представляет собой список файлов и каталогов, в которые разрешено записывать не пользующимся доверием апплетам, если свойство acl.write равно +.</P>
+</FONT><B><FONT SIZE=2><P>appletviewer.security.mode<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Указывает типы сетевого доступа, разрешенного не пользующимся доверием апплетам. Значение none показывает, что апплет вообще не может работать в сети, значение host (принято по умолчанию), — что апплет в состоянии связываться только с узлом, с которого он загружен, а значение unrestricted, — что апплет имеет возможность связаться с любым узлом без ограничений.</P>
+</FONT><B><FONT SIZE=2><P>package.restrict.access. </FONT><I><FONT FACE="Times New Roman" SIZE=2>префикс_пакета</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Свойствам данного вида можно присвоить значение true, чтобы запретить не пользующимся доверием апплетам использовать классы любого пакета, имя которого начинается с указанного префикса. Например, чтобы помешать апплету использовать любой из классов Sun (такой как компилятор Java или сама программа просмотра апплетов), распространяемых в составе J</FONT><FONT SIZE=2>D</FONT><FONT FACE="Times New Roman" SIZE=2>K, можно определить следующее свойство:</P>
+</FONT><FONT SIZE=2><P>package . restrict. access. sun==true</P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">По умолчанию значение этого свойства равно true для пакетов sun.* и netscape.*.</P>
+</FONT><B><FONT SIZE=2><P>package.restrict.definition.</FONT><I><FONT FACE="Times New Roman" SIZE=2>префикс_пакета</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Свойствам данного вида можно присвоить значение true, чтобы запретить не пользующимся доверием апплетам определять класс любого пакета, имя которого начинается с указанного префикса. Например, чтобы помешать апплету определить классы в любом стандартном пакете Java, можно задать следующее свойство:</P>
+</FONT><FONT SIZE=2><P>package.restrict.definition.java=true</P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>По умолчанию значение этого свойства равно true для пакетов java.*, sun.* и netscape.*.</P>
+</FONT><B><FONT SIZE=2><P>property.applet<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Когда свойству с таким именем в Java I.I присваивается значение true, это значит, что апплету разрешается читать свойство под именем </FONT><I><FONT SIZE=2>property</I></FONT><FONT FACE="Times New Roman" SIZE=2> из списка системных свойств. По умолчанию апплетам можно читать лишь десять стандартных системных свойств (их список находится в </FONT><A HREF="12.htm"><U><FONT FACE="Times New Roman" SIZE=2 COLOR="#0000ff">главе 12</U></FONT></A><FONT FACE="Times New Roman" SIZE=2>). Например, чтобы разрешить апплету читать свойство user.home, необходимо указать это свойство в следующем виде:</P>
+</FONT><FONT SIZE=2><P>user.home.applet=true</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P>Proxy-серверы</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Свойства, перечисленные ниже, определяют работу программы </FONT><I><FONT SIZE=2>appletviewer</I></FONT><FONT FACE="Times New Roman" SIZE=2> с брандмауэрами и кэширующими Proxy-серверами.</P>
+</FONT><B><FONT SIZE=2><P>firewallHost<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Определяет брандмауэр, с которым надо связываться, если свойство firewallSet имеет значение true.</P>
+</FONT><B><FONT SIZE=2><P>firewallPort<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Определяет порт брандмауэра, с которым надо связываться, если свойство firewallSet имеет значение true.</P>
+</FONT><B><FONT SIZE=2><P>firewallSet<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Сообщает, должна ли программа просмотра апплетов использовать брандмауэр. Может иметь значения true и false.</P>
+</FONT><B><FONT SIZE=2><P>proxyHost<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Определяет кэширующий Proxy-сервер, с которым надо связываться, если свойство proxySet установлено в true.</P>
+</FONT><B><FONT SIZE=2><P>proxyPort<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Определяет порт кэширующего Proxy-сервера, с которым нужно связаться, если свойство proxySet установлено в true.</P>
+</FONT><B><FONT SIZE=2><P>proxySet<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Сообщает, должна ли программа просмотра апплетов использовать кэширующий Proxy-сервер. Может иметь значения true и false.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P>Переменные среды</P>
+</B></I></FONT><FONT SIZE=2><P>CLASSPATH<BR>
+</FONT><FONT FACE="Times New Roman" SIZE=2>Содержит упорядоченный список (с двоеточиями в качестве разделителей для UNIX и с точками с запятой — для Windows) каталогов и файлов с расширением zi<I>р,</I> в которых </FONT><I><FONT SIZE=2>appletviewer</I></FONT><FONT FACE="Times New Roman" SIZE=2> должен искать определения классов. Когда путь указан с помощью переменной среды, </FONT><I><FONT SIZE=2>appletviewer</I></FONT><FONT FACE="Times New Roman" SIZE=2> всегда неявно добавляет место расположения системных классов к концу пути. Если эта переменная не указана, по умолчанию список содержит текущий каталог и путь к системным классам. Отметим, что </FONT><I><FONT SIZE=2>appletviewer</I></FONT><FONT FACE="Times New Roman" SIZE=2> поддерживает аргумент командной строки -classpath, за исключением его косвенной поддержки через опцию -J.</P>
+<B><I><P>Смотри также</P>
+</B></FONT><FONT SIZE=2><P>java, javac, jdb</P>
+</FONT><B><FONT FACE="Times New Roman" SIZE=4><P ALIGN="CENTER">jar — программа создания архивов Java</P>
+</FONT><FONT FACE="Times New Roman"><P>Доступность</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P>JDK версии 1.1 и более поздних версий.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P>Синтаксис вызова</P>
+</I></FONT><FONT FACE="Times New Roman" SIZE=2><P>jar c|t|x[f][m][v] [jar-файл] <I>[файл описания} [файлы}</P>
+</FONT><FONT FACE="Times New Roman"><P>Описание</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Программа </FONT><I><FONT SIZE=2>jar</I></FONT><FONT FACE="Times New Roman" SIZE=2> используется для создания архивных файлов Java (JAR) и работы с ними. JAR-файл представляет собой сжатый ZIP-файл с дополнительным файлом описания. Синтаксис команды </FONT><I><FONT SIZE=2>jar</I></FONT><FONT FACE="Times New Roman" SIZE=2> напоминает синтаксис команды </FONT><I><FONT SIZE=2>tar</I></FONT><FONT FACE="Times New Roman" SIZE=2> (tape archive — архив на магнитной ленте)</FONT><B><FONT SIZE=2> </B></FONT><FONT FACE="Times New Roman" SIZE=2>ОС UNIX</FONT><B><FONT SIZE=2>.</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Параметры командной строки </FONT><I><FONT SIZE=2>jar</I></FONT><FONT FACE="Times New Roman" SIZE=2> задаются в виде блока записанных слитно букв, которые передаются в виде одного аргумента, а не через отдельные аргументы командной строки. Первая буква такого аргумента задает необходимое действие, которое должна выполнить программа </FONT><I><FONT SIZE=2>jar. </I></FONT><FONT FACE="Times New Roman" SIZE=2>Остальные буквы в этом аргументе являются необязательными. Различные аргументы файлов зависят от того, какие буквы параметров заданы.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P>Параметры</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Первым аргументом командной строки </FONT><I><FONT SIZE=2>jar</I></FONT><FONT FACE="Times New Roman" SIZE=2> является набор символов, задающих операцию, которая должна быть выполнена. Первый символ определяет основную операцию и является обязательным. Возможны следующие варианты:</P>
+<B><P ALIGN="JUSTIFY">с </B>Создать новый JAR-архив. В качестве последних аргументов командной строки </FONT><I><FONT SIZE=2>jar </I></FONT><FONT FACE="Times New Roman" SIZE=2>необходимо указать список файлов и/или каталогов.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">t</B></FONT><FONT FACE="Times New Roman" SIZE=2> Вывести список файлов, содержащихся в JAR-архиве. Если задано имя JAR-файла с помощью параметра f, то список файлов выводится для него. В противном случае имя JAR-файла читается со стандартного устройства ввода.</P>
+<B><P ALIGN="JUSTIFY">х</B> Извлечь содержимое JAR-архива. Если задано имя JAR-файла с помощью параметра f, то извлекается содержимое этого файла. В противном случае имя JAR-файла читается со стандартного устройства ввода. Когда командная строка завершается списком файлов и/или каталогов, из JAR-архива извлекаются только файлы и каталоги, перечисленные в этом списке. В противном случае из архива извлекаются все файлы.</P>
+<P>Вслед за идентификатором, определяющим выполняемое действие, могут следовать необязательные параметры:</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">f</B></FONT><FONT FACE="Times New Roman" SIZE=2> Указывает на то, что имя JAR-файла, который необходимо создать, из которого нужно извлечь файлы или получить список содержащихся файлов, задается в командной строке. Если f используется вместе с с, t или х, имя JAR-файла должно задаваться в качестве второго аргумента командной строки вызовауаг (т.е. оно должно располагаться непосредственно за блоком параметров). Когда этот параметр не задан, </FONT><I><FONT SIZE=2>jar</I></FONT><FONT FACE="Times New Roman" SIZE=2> записывает создаваемый JAR-файл в стандартное устройство вывода или читает его со стандартного устройства ввода.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">m </B></FONT><FONT FACE="Times New Roman" SIZE=2>Используется только в сочетании с параметром с и указывает на то, что </FONT><I><FONT SIZE=2>jar</I></FONT><FONT FACE="Times New Roman" SIZE=2> должна читать файл описания, указанный в командной строке и использовать его в качестве основы для создания описания, которое включается в JAR-файл. Когда этот параметр задается после параметра f, имя файла описания должно указываться после имени создаваемого архива. Если m стоит перед параметром f, то имя файла описания должно предшествовать имени файла создаваемого архива.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">v</B></FONT><FONT FACE="Times New Roman" SIZE=2> Описание. Если этот параметр задается вместе с параметром с, тоуаг выводит имя каждого добавляемого в архив файла со статистикой его сжатия. Когда параметр используется в сочетании с t, </FONT><I><FONT SIZE=2>jar</I></FONT><FONT FACE="Times New Roman" SIZE=2> выводит список файлов, в котором кроме имени файла содержится его объем и дата последнего изменения. Если v указывается одновременно с х, то </FONT><I><FONT SIZE=2>jar</I></FONT><FONT FACE="Times New Roman" SIZE=2> выводит имя каждого извлекаемого из архива файла.</P>
+<B><I><P>Примеры</P>
+</B></I><P>Создание простого JAR-архива:</P>
+</FONT><B><FONT SIZE=2><P>% jar cvf my.jar *.java images</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P>Получение списка содержимого архива:</P>
+</FONT><B><FONT SIZE=2><P>% jar tvf your.jar</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P>Извлечение файла описания из JAR-файла:</P>
+</FONT><B><FONT SIZE=2><P>% jar xf the.jar META-INF/MANIFEST.MF</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P>Создание JAR-файла с заданным описанием:</P>
+</FONT><B><FONT SIZE=2><P>% jar cfmv YesNoDialog.jar manifest.stub oreilly/beans/yesno</P>
+</FONT><I><FONT FACE="Times New Roman" SIZE=2><P>Смотри также</P>
+</B></FONT><FONT SIZE=2><P>javakey</P>
+</FONT><B><FONT FACE="Times New Roman" SIZE=4><P ALIGN="CENTER">Java — интерпретатор Java</P>
+</FONT><FONT FACE="Times New Roman"><P>Доступность</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P>JDK версии 1.0 и более поздних версий.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P>Синтаксис вызова</P>
+</FONT><FONT SIZE=2><P>Java </I></FONT><FONT FACE="Times New Roman" SIZE=2>[опции интерпретатора] имя класса [аргументы программы]</FONT><FONT SIZE=2><BR>
+<I>Javag </I></FONT><FONT FACE="Times New Roman" SIZE=2>[опции интерпретатора] имя класса [аргументы программы]</P>
+</FONT><I><FONT FACE="Times New Roman"><P>Описание</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Программа </FONT><I><FONT SIZE=2>Java</I></FONT><FONT FACE="Times New Roman" SIZE=2> представляет собой интерпретатор байт-кода Java, который запускает Java-программы. Программа </FONT><I><FONT SIZE=2>java_g —</I></FONT><FONT FACE="Times New Roman" SIZE=2> это версия интерпретатора с возможностью отладки. Она не оптимизирована и обладает дополнительными средствами для отслеживания процесса выполнения программы.</P>
+<P ALIGN="JUSTIFY">Программа, которую надо выполнить, — это класс, указанный в аргументе <I>имя_класса.</I> Имя должно быть полным и включать имя пакета, но не содержать расширение </FONT><I><FONT SIZE=2>class.</I></FONT><FONT FACE="Times New Roman" SIZE=2> Отметим, что имена пакета и класса разделяются точками, а не символами косой или обратной косой черты, как при указании пути. Если в классе Java отсутствует оператор package, значит, этот класс не принадлежит ни одному пакету, и указывается только его имя. Например:</P>
+</FONT><B><I><FONT SIZE=2><P ALIGN="JUSTIFY">%java david.games.Checkers %java test</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">В описании параметра -classpath и переменной среды classpath показано, где интерпретатор </FONT><I><FONT SIZE=2>Java</I></FONT><FONT FACE="Times New Roman" SIZE=2> должен искать классы. Класс, указанный с помощью аргумента <I>имя_класса,</I> должен содержать метод main () с таким объявлением:</P>
+</FONT><B><I><FONT SIZE=2><P ALIGN="JUSTIFY">public static void main(String argv[])</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Любые аргументы, следующие за именем класса в командной строке </FONT><I><FONT SIZE=2>Java, </I></FONT><FONT FACE="Times New Roman" SIZE=2>помещаются в массив и передаются методу main () при запуске </FONT><I><FONT SIZE=2>Java. </I></FONT><FONT FACE="Times New Roman" SIZE=2>Если в методе main () создаются какие-либо потоки, <I>то Java</I> выполняется то тех пор, пока не завершится последний поток. В противном случае интерпретатор выполняет тело main () и завершает работу. Хотя при вызове </FONT><I><FONT SIZE=2>Java</I></FONT><FONT FACE="Times New Roman" SIZE=2> указывается имя только одного класса, интерпретатор автоматически загружает все дополнительные классы, необходимые для выполнения программы. Эти файлы классов задаются относительно пути для классов Java, который определяется параметром -classpath, описанным ниже. </P>
+<P ALIGN="JUSTIFY">По умолчанию </FONT><I><FONT SIZE=2>Java</I></FONT><FONT FACE="Times New Roman" SIZE=2> запускает верификатор байт-кода во всех загруженных по сети классах. Такой верификатор выполняет ряд проверок байт-кода загруженного класса, чтобы убедиться, например, в том, что он не разрушает внутренний стек операндов и осуществляет соответствующие проверки, к примеру, ссылок на массивы во время выполнения. Параметры -verify, -nonverify и -verifyremote управляют процессом верификации байт-кода.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P ALIGN="JUSTIFY">Параметры</P>
+</I></FONT><FONT SIZE=2><P>-classpath </FONT><I><FONT FACE="Times New Roman" SIZE=2>путь</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Определяет путь, который </FONT><I><FONT SIZE=2>Java</I></FONT><FONT FACE="Times New Roman" SIZE=2> использует для поиска указанного имени класса и всех остальных загружаемых им классов. Указание этого параметра переопределяет путь, заданный по умолчанию, а также переменную среды classpath.</P>
+<P ALIGN="JUSTIFY">Путь — это упорядоченный список каталогов и ZIP-файлов, в которых </FONT><I><FONT SIZE=2>Java</I></FONT><FONT FACE="Times New Roman" SIZE=2> ищет названные классы. В среде Windows каталоги и ZIP-файлы (в них могут присутствовать спецификаторы дисков с использованием двоеточия) отделены друг от друга точками с запятой, а в среде UNIX — двоеточиями. Например, запись -classpath для UNIX выглядит таким образом:</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-classpath/usr/lib/java/classes:.:~/Java/classes</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">А в среде Windows она имеет следующий вид:</P>
+<B><P ALIGN="JUSTIFY">-classpath С:\tools\java\classes.zip;.;D:\users\david\classes</P>
+</B><P ALIGN="JUSTIFY">Точка в спецификации пути показывает, что поиск ведется в текущем рабочем каталоге. Каталоги и ZIP-файлы просматриваются в порядке их упоминания в списке. Размещайте стандартные классы Java первыми в строке пути, если вы не хотите, чтобы их случайно перекрыли одноименные классы из других каталогов.</P>
+<P ALIGN="JUSTIFY">Интерпретатор </FONT><I><FONT SIZE=2>Java</I></FONT><FONT FACE="Times New Roman" SIZE=2> предполагает найти файл класса в иерархии каталогов (или в имени каталога внутри ZIP-файла), в соответствии с его полным именем. Таким образом, в среде UNIX Java загрузит класс j ava. lang. String из файла </FONT><I><FONT SIZE=2>java/lang/String.class,</I></FONT><FONT FACE="Times New Roman" SIZE=2> расположенного в одном из каталогов, которые указаны в пути поиска класса. Аналогично в Windows 95 или Windows NT (которые поддерживают длинные имена) </FONT><I><FONT SIZE=2>Java</I></FONT><FONT FACE="Times New Roman" SIZE=2> будет искать файл </FONT><I><FONT SIZE=2>java\lang\String.class</I></FONT><FONT FACE="Times New Roman" SIZE=2> в одном из заданных каталогов или внутри указанного ZIP-файла.</P>
+<P ALIGN="JUSTIFY">Если не задан ни аргумент -classpath, ни переменная среды classpath, путь поиска класса по умолчанию следующий:</P>
+<B><P ALIGN="JUSTIFY">.:$JAVA/classes:$JAVA/lib/classes.zip в среде </FONT><I><FONT SIZE=2>UNIX </P>
+</I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">.:$JAVA\classes:$JAVA\lib\classes.zip в среде </FONT><I><FONT SIZE=2>Windows</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">где $java — каталог, в котором установлен JDK.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-cs,-checksourse<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Оба параметра указывают интерпретатору </FONT><I><FONT SIZE=2>Java</I></FONT><FONT FACE="Times New Roman" SIZE=2> на необходимость проверки времени модификации указанного файла класса и соответствующего ему файла с исходным текстом. Если файл класса не найден или устарел, он автоматически перекомпилируется из исходного.</P>
+<B><P ALIGN="JUSTIFY">-Dимя_свойства=значение</FONT><FONT SIZE=2><BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Присваивает свойству из списка системных свойств значение, равное указанному. Java-программа после этого может искать указанное свойство по его имени. Существует возможность задать любое количество параметров -D. Например:</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">%java -Dawt.button.color=gray -Dmy.class.pointsize=14 my.class</P>
+</FONT><FONT SIZE=1><P ALIGN="JUSTIFY">-debug<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Заставляет </FONT><I><FONT SIZE=2>Java</I></FONT><FONT FACE="Times New Roman" SIZE=2> выводить при запуске пароль, который используется для того, чтобы разрешать отладчику </FONT><I><FONT SIZE=2>jdb</I></FONT><FONT FACE="Times New Roman" SIZE=2> участвовать в данном сеансе работы интерпретатора. Заметим, что этот пароль не считается безопасным с точки зрения шифрования информации.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-help<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит сообщение о формате вызова данной программы.</P>
+<B><P ALIGN="JUSTIFY">-1цифра</FONT><FONT SIZE=2><BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Задает уровень ведения протокола трассировки. Применяется только для программы </FONT><I><FONT SIZE=2>java_g.</P>
+</I></FONT><B><FONT FACE="Times New Roman" SIZE=2><P>-ms начальная _память</FONT><FONT SIZE=2>[k | m]<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Указывает объем памяти, который выделяется под динамически распределяемую область памяти, или кучу (heap), при запуске интерпретатора. По умолчанию параметр <I>начальная_память</I> задается в байтах. Данное значение можно указать и в килобайтах, добавив опцию k, или в мегабайтах посредством опции m. По умолчанию выделяется 1 Мб. При запуске крупных или интенсивно использующих память приложений (например, компилятора Java) производительность такой программы можно увеличить, попросив интерпретатор выделить больше памяти при запуске. Начальный объем этой памяти должен быть по крайней мере 1000 байтов.</P>
+<B><P>-mх максимальная_память [ k | m ]</FONT><FONT SIZE=2><BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Указывает максимальный объем динамически распределяемой области памяти, которую может выделять интерпретатор для хранения объектов и массивов. По умолчанию объем указывается в байтах, однако это значение можно задать и в килобайтах, добавив опцию k, а также в мегабайтах, используя опцию т. По умолчанию используется значение 16 Мб. Нельзя указывать объем менее 1000 байтов.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-noasyncgc<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Не производит асинхронный сбор мусора. Если этот параметр указан, то </FONT><I><FONT SIZE=2>Java</I></FONT><FONT FACE="Times New Roman" SIZE=2> производит сбор мусора только при нехватке памяти или при явном вызове сборщика мусора. Когда параметр не задан, </FONT><I><FONT SIZE=2>Java</I></FONT><FONT FACE="Times New Roman" SIZE=2> запускает сборщик мусора как отдельный поток с низким приоритетом.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-noclassgc<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>He производит сбор мусора для загруженных классов, которые больше не используются. Этот параметр можно задавать только в JDK версии 1.1 и более поздних версий.</P>
+</FONT><B><FONT SIZE=1><P ALIGN="JUSTIFY">-noverify<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Никогда не проводит проверку байт-кода.</P>
+<B><P>-oss размеры_стека[k | m]</FONT><FONT SIZE=2><BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Устанавливает размер стека для кода каждого потока выполнения. По умолчанию параметр <I>размеры_стека</I> указывается в байтах. Но его можно задать в килобайтах, добавив опцию k, или в мегабайтах с помощью опции m. По умолчанию используется значение 400 Кб. Размер стека не должен быть меньше 1000 байтов.</P>
+<B><P>-prof[ :файл]</FONT><FONT SIZE=2><BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит информацию протоколирования в указанный файл или в файл </FONT><I><FONT SIZE=2>java.prof</I></FONT><FONT FACE="Times New Roman" SIZE=2> в текущем каталоге. Формат этой информации не достаточно полно документирован. До появления JDK 1.1 протокол всегда выводился в файл </FONT><I><FONT SIZE=2>/java.prof</I></FONT><FONT FACE="Times New Roman" SIZE=2> и указать другой файл было невозможно.</P>
+<B><P>-ss размер _cmeкa[k | m]</FONT><FONT SIZE=2><BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Устанавливает размер стека для каждого потока выполнения. По умолчанию указывается в байтах. Но можно задать и в килобайтах (опция k), и в мегабайтах (опция m). По умолчанию составляет 128 Кб. Размер стека не должен быть менее 1000 байтов.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-t<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит трассировку для всех выполняемых байт-кодов. Применимо только для </FONT><I><FONT SIZE=2>java_g,</P>
+</I><B><P ALIGN="JUSTIFY">-tm<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит трассировку для всех выполняемых методов. Применимо только для </FONT><I><FONT SIZE=2>java_g.</P>
+</I><B><P>-v, -verbose<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит на экран сообщение всякий раз, когда </FONT><I><FONT SIZE=2>Java</I></FONT><FONT FACE="Times New Roman" SIZE=2> загружает класс.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-verbosegc<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит сообщение каждый раз, когда сборщик мусора освобождает память.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-verify<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Запускает верификатор байт-кода для всех загруженных классов.</P>
+</FONT><B><FONT SIZE=2><P>-verify remote<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Запускает верификатор байт-кода для всех классов, загруженных через загрузчик классов. (Обычно это классы, динамически загруженные из не пользующегося доверием источника.) Для </FONT><I><FONT SIZE=2>Java</I></FONT><FONT FACE="Times New Roman" SIZE=2> данный параметр установлен по умолчанию.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-version<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит версию интерпретатора Java и выходит из программы.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P ALIGN="JUSTIFY">Переменные среды</P>
+</I></FONT><FONT SIZE=1><P ALIGN="JUSTIFY">CLASSPATH<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Задает упорядоченный список (с двоеточиями в качестве разделителей для UNIX и точками с запятой — для Windows) каталогов и файлов с расширением </FONT><I><FONT SIZE=2>zip,</I></FONT><FONT FACE="Times New Roman" SIZE=2> в которых интерпретатор </FONT><I><FONT SIZE=2>Java</I></FONT><FONT FACE="Times New Roman" SIZE=2> должен искать определения классов. Когда путь указан с помощью этой переменной среды, </FONT><I><FONT SIZE=2>Java</I></FONT><FONT FACE="Times New Roman" SIZE=2> всегда неявно добавляет в его конец места расположения системных классов. Если данная переменная не задана, по умолчанию список содержит текущий каталог и путь к системным классам. Эта переменная переопределяется параметром -classpath. Более подробную информацию об указании пути можно найти в приведенном выше описании параметра -classpath.</P>
+<B><I><P ALIGN="JUSTIFY">Смотри также</P>
+</B></FONT><FONT SIZE=2><P ALIGN="JUSTIFY">javac, jab</P>
+</FONT><B><FONT FACE="Times New Roman" SIZE=4><P ALIGN="CENTER">javac — компилятор Java</P>
+</FONT><FONT FACE="Times New Roman"><P>Доступность</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P>JDK версии 1.0 и более поздних версий.</P>
+</FONT><FONT SIZE=2><P>&nbsp;</FONT><B><I><FONT FACE="Times New Roman">Синтаксис вызова</P>
+</I></FONT><FONT SIZE=2><P>javac [</FONT><I><FONT FACE="Times New Roman" SIZE=2>параметры</I></FONT><FONT SIZE=2>] </FONT><I><FONT FACE="Times New Roman" SIZE=2>файлы</P>
+</FONT><FONT SIZE=2><P>&nbsp;</FONT><FONT FACE="Times New Roman">Описание</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Программа </FONT><I><FONT SIZE=2>javac</I></FONT><FONT FACE="Times New Roman" SIZE=2> компилирует исходные тексты Java (из файлов с расширением java) в байт-код Java (в файлы с расширением </FONT><I><FONT SIZE=2>class).</I></FONT><FONT FACE="Times New Roman" SIZE=2> Компилятор Java сам написан на языке Java.</P>
+</FONT><FONT SIZE=2><P ALIGN="JUSTIFY">&nbsp;</FONT><FONT FACE="Times New Roman" SIZE=2>Компилятор </FONT><I><FONT SIZE=2>javac</I></FONT><FONT FACE="Times New Roman" SIZE=2> может передать в командной строке любое количество файлов исходных текстов Java, чьи имена должны иметь расширение </FONT><I><FONT SIZE=2>Java. </I></FONT><FONT FACE="Times New Roman" SIZE=2>Компилятор </FONT><I><FONT SIZE=2>javac</I></FONT><FONT FACE="Times New Roman" SIZE=2> генерирует отдельный файл для каждого класса, определенного в файле исходного текста, независимо от количества файлов исходного текста. Другими словами, однозначного соответствия между файлами исходных текстов и файлами классов может и не быть. Отметим также, что компилятор требует, чтобы в одном файле исходного текста был определен только один public-класс и чтобы имя файла (без расширения </FONT><I><FONT SIZE=2>Java)</I></FONT><FONT FACE="Times New Roman" SIZE=2> совпадало с именем класса (без имени пакета).</P>
+<P ALIGN="JUSTIFY">По умолчанию </FONT><I><FONT SIZE=2>javac</I></FONT><FONT FACE="Times New Roman" SIZE=2> располагает созданные файлы классов в том же каталоге, где находились соответствующие файлы с исходными текстами. Это можно переопределить с помощью параметра -d.</P>
+<P ALIGN="JUSTIFY">Когда файл исходного текста ссылается на класс, не определенный в командной строке какого-либо другого файла исходного текста, </FONT><I><FONT SIZE=2>javac</I></FONT><FONT FACE="Times New Roman" SIZE=2> ищет этот класс, используя параметр -classpath. По умолчанию данный параметр содержит только текущий каталог и системные классы. Можно указать дополнительные классы и пакеты, где следует искать класс, используя параметр -classpath или переменную среды classpath.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P ALIGN="JUSTIFY">Параметры</P>
+</I></FONT><FONT SIZE=2><P>-classpath </FONT><I><FONT FACE="Times New Roman" SIZE=2>путь</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Определяет путь, используемый </FONT><I><FONT SIZE=2>javac</I></FONT><FONT FACE="Times New Roman" SIZE=2> для поиска классов, на которые имеются ссылки в исходных текстах. Данный параметр переопределяет путь по умолчанию и любой путь, заданный переменной среды classpath. Аргумент <I>путь</I> представляет собой упорядоченный список каталогов и ZIP-файлов, разделителями в котором служат двоеточия в среде UNIX и точки с запятой в среде Windows.</P>
+<P ALIGN="JUSTIFY">Для определения дополнительных каталогов и ZIP-файлов, без переопределения пути по умолчанию, используют переменную среды classpath. Более подробно об этом рассказано в описании </FONT><I><FONT SIZE=2>Java.</P>
+</I><B><P>-d </FONT><I><FONT FACE="Times New Roman" SIZE=2>каталог</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Определяет каталог, в котором должны храниться файлы классов. По умолчанию </FONT><I><FONT SIZE=2>javac</I></FONT><FONT FACE="Times New Roman" SIZE=2> помещает созданные им файлы с расширением </FONT><I><FONT SIZE=2>class </I></FONT><FONT FACE="Times New Roman" SIZE=2>в те же каталоги, что и файлы с расширением </FONT><I><FONT SIZE=2>Java,</I></FONT><FONT FACE="Times New Roman" SIZE=2> из которых они откомпилированы. Однако если определен флаг -d, то указанный каталог рассматривается в качестве корневого в иерархии классов, и файлы с расширением </FONT><I><FONT SIZE=2>class</I></FONT><FONT FACE="Times New Roman" SIZE=2> помещаются в этот каталог или в его соответствующий подкаталог в зависимости от имени пакета класса. Поэтому следующая команда:</P>
+</FONT><B><FONT SIZE=2><P>%javac -d Java/classes java/src/Checkers.Java</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">помещает файл </FONT><I><FONT SIZE=2>Checkers.class</I></FONT><FONT FACE="Times New Roman" SIZE=2> в каталог </FONT><I><FONT SIZE=2>Java/classes,</I></FONT><FONT FACE="Times New Roman" SIZE=2> если у файла </FONT><I><FONT SIZE=2>Checkers.java</I></FONT><FONT FACE="Times New Roman" SIZE=2> нет оператора package. С другой стороны, когда файл исходного текста указывает, что он находится в пакете:</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">package david.games;</P>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">файл с расширением class хранится в java/classes/david/games.</P>
+<P ALIGN="JUSTIFY">Если параметр -d указан, <I>то javac</I> автоматически создает нужный для хранения класса каталог в соответствующем месте.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-depend<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Сообщает javaс о необходимости перекомпилировать любой встретившийся ему устаревший файл класса и не только из числа тех, на которые имеются ссылки в заданных файлах с исходными текстами.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-deprecation<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Сообщает <I>javac о</I> необходимости выдавать предупреждение при каждом использовании устаревшего API. По умолчанию </FONT><I><FONT SIZE=2>javac</I></FONT><FONT FACE="Times New Roman" SIZE=2> генерирует такое предупреждение только один раз, в программе используются устаревшие API. Доступен в JDK версии 1.1 и более поздних версий.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-g<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Заставляет </FONT><I><FONT SIZE=2>javac</I></FONT><FONT FACE="Times New Roman" SIZE=2> добавлять в файл класса информацию о номерах строк и локальных переменных для использования ее отладчиками. По умолчанию </FONT><I><FONT SIZE=2>javac</I></FONT><FONT FACE="Times New Roman" SIZE=2> добавляет только номера строк, а при указании параметра -о не делает даже этого.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-J</FONT><I><FONT FACE="Times New Roman" SIZE=2>аргумент</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Передает аргумент непосредственно интерпретатору Java (пробелы в аргументе должны отсутствовать). Если интерпретатору необходимо передать несколько аргументов, следует использовать несколько параметров -J. Доступен в JDK версии 1.1 и более поздних версий.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-nowarn<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Отключает вывод предупреждений. Сообщения об ошибках выводятся, как обычно.</P>
+</FONT><B><FONT SIZE=1><P ALIGN="JUSTIFY">-nowrite<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Сообщает <I>javac о</I> том, что не следует создавать файл класса. Файлы с исходными текстами обрабатываются обычным путем, но результаты такой обработки не записываются. Этот параметр полезен в том случае, когда требуется, не выполняя фактической компиляции, проверить, может ли компилироваться некоторый файл.</P>
+<B><P ALIGN="JUSTIFY">-О</FONT><FONT SIZE=2><BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Разрешает оптимизировать файлы классов. Может заставить </FONT><I><FONT SIZE=2>javac </I></FONT><FONT FACE="Times New Roman" SIZE=2>компилировать методы, объявленные как static, final и private, в машинные коды, обеспечивая более быстрое их выполнение. Это достигается ценой увеличения объемов файлов классов. Данный параметр также предотвращает добавление отладочной информации о номерах строк в файлы классов.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-verbose<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Дает компилятору указание выдавать сообщения о том, что он делает.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P ALIGN="JUSTIFY">Переменные среды</P>
+</I></FONT><FONT SIZE=2><P ALIGN="JUSTIFY">CLASSPATH<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Содержит список (с двоеточиями в качестве разделителей для</FONT><B><FONT SIZE=2> </B></FONT><FONT FACE="Times New Roman" SIZE=2>UNIX и с точками с запятой — для Windows) каталогов и файлов с расширением zi<I>р,</I> в которых </FONT><I><FONT SIZE=2>javac</I></FONT><FONT FACE="Times New Roman" SIZE=2> должна искать определения классов. Когда путь указан с помощью переменной среды, </FONT><I><FONT SIZE=2>javac</I></FONT><FONT FACE="Times New Roman" SIZE=2> всегда неявно добавляет каталог расположения системных классов к концу пути. Если эта переменная среды не указана, то по умолчанию список будет содержать текущий каталог и путь к системным классам. Данная переменная переопределяется параметром -classpath.</P>
+<B><I><P>Смотри также</FONT><FONT SIZE=2><BR>
+</B>java, jdb</P>
+</FONT><B><FONT FACE="Times New Roman" SIZE=4><P ALIGN="CENTER">javadoc — генератор документации Java</P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Доступность</P>
+</B></I><P>JDK версии 1.0 и более поздних версий.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P>Синтаксис вызова</P>
+</I></FONT><FONT FACE="Times New Roman" SIZE=2><P>javadoc [параметры] имя пакета<BR>
+javadoc [параметры] имена <I>файлов</P>
+</FONT><FONT FACE="Times New Roman"><P ALIGN="JUSTIFY">Описание<BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Программа </FONT><I><FONT SIZE=2>javadoc</I></FONT><FONT FACE="Times New Roman" SIZE=2> создает документацию на</FONT><B><FONT SIZE=2> </B>API</FONT><B><FONT FACE="Times New Roman" SIZE=2> в</B> формате HTML для указанных пакетов или отдельных файлов исходных текстов Java, заданных в командной строке.</P>
+<P ALIGN="JUSTIFY">Если в командной строке указано имя пакета, </FONT><I><FONT SIZE=2>javadoc</I></FONT><FONT FACE="Times New Roman" SIZE=2> ищет соответствующий каталог пакета относительно параметра -classpath. Затем анализирует все файлы с исходными текстами в этом каталоге и формирует HTML-файл документации для каждого класса и HTML-индекс для классов пакета. По умолчанию HTML-файлы создаются в текущем каталоге. Изменить это положение позволяет параметр -d.</P>
+<P ALIGN="JUSTIFY">Отметим, что аргумент <I>имя_пакета</I> определяет имя пакета (компоненты, разделенные точками), а не имя каталога. Иногда возникает необходимость указать параметр -sourcepath, чтобы./avautoc мог найти файлы с исходными текстами пакета, если они хранятся не там же, где файлы классов пакета.</P>
+<P ALIGN="JUSTIFY">Генератор </FONT><I><FONT SIZE=2>javadoc</I></FONT><FONT FACE="Times New Roman" SIZE=2> может вызываться с любым числом файлов исходного текста на Java в командной строке. Заметим, что это имена файлов, а не классов, и они указываются с необходимыми компонентами каталогов и с расширением </FONT><I><FONT SIZE=2>Java.</I></FONT><FONT FACE="Times New Roman" SIZE=2> Когда </FONT><I><FONT SIZE=2>javadoc</I></FONT><FONT FACE="Times New Roman" SIZE=2> вызывается таким образом, он читает указанные файлы исходных текстов и создает HTML-файлы (по умолчанию в текущем каталоге), которые описывают каждый public-класс, определенный в указанных файлах.</P>
+<P ALIGN="JUSTIFY">Файлы документации классов, создаваемые </FONT><I><FONT SIZE=2>javadoc,</I></FONT><FONT FACE="Times New Roman" SIZE=2> описывают класс (или интерфейс) и его иерархию наследования, индекс и каждый член класса, объявленный как public или protected. Созданный файл также содержит комментарии для документации, которые связаны с классами и их методами, конструкторами и переменными. Комментарий для документации — это комментарий Java, начинающийся символами / * * и оканчивающийся символами * /. Он может включать любой HTML-тег (хотя не должен содержать структурных тегов типа &lt;Н1&gt; или &lt;hr&gt;), а также</FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>значения тегов, которые обрабатываются </FONT><I><FONT SIZE=2>javadoc</I></FONT><FONT FACE="Times New Roman" SIZE=2> специальным образом.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P ALIGN="JUSTIFY">Параметры</P>
+</I></FONT><FONT SIZE=2><P>-author </FONT><I><FONT FACE="Times New Roman" SIZE=2>путь<BR>
+</B></I>Указывает на необходимость вывода информации об авторе, заданной с помощью тега @author. Эта информация по умолчанию не выводится.</P>
+</FONT><B><FONT SIZE=2><P>-classpath </FONT><I><FONT FACE="Times New Roman" SIZE=2>путь</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Определяет путь, который </FONT><I><FONT SIZE=2>javadoc</I></FONT><FONT FACE="Times New Roman" SIZE=2> использует для поиска, как файлов классов, так и файлов с исходными текстами для указанного пакета. Чтобы указать </FONT><I><FONT SIZE=2>javadoc,</I></FONT><FONT FACE="Times New Roman" SIZE=2> где искать файлы с исходными текстами, при определении этого параметра следует не забыть включить в него стандартный системный путь поиска каталога с классами, иначе </FONT><I><FONT SIZE=2>javadoc</I></FONT><FONT FACE="Times New Roman" SIZE=2> не сможет найти нужные классы. Этот параметр переопределяет принимаемый по умолчанию или заданный переменной среды classpath путь, который представляет собой список каталогов и ZIP-файлов, где в качестве разделителей применяются двоеточия (в среде UNIX) или точки с запятой (в среде Windows).</P>
+<P ALIGN="JUSTIFY">Для указания дополнительных каталогов и ZIP-файлов без переопределения пути по умолчанию используется переменная среды classpath. Подробнее об определении пути рассказано в разделе, посвященном </FONT><I><FONT SIZE=2>Java.</P>
+</I><B><P>-d </FONT><I><FONT FACE="Times New Roman" SIZE=2>каталог<BR>
+</B></I>Каталог, в который </FONT><I><FONT SIZE=2>javadoc</I></FONT><FONT FACE="Times New Roman" SIZE=2> должен записывать создаваемые им HTML-файлы. По умолчанию это текущий каталог.</P>
+</FONT><B><FONT SIZE=2><P>-decoding </FONT><I><FONT FACE="Times New Roman" SIZE=2>название_кодировки<BR>
+</B></I>Задает кодировку символов, которая будет использоваться в документации, создаваемой с помощью </FONT><I><FONT SIZE=2>javadoc.</I></FONT><FONT FACE="Times New Roman" SIZE=2> Используется в Java версии 1.1 и более поздних версий.</P>
+</FONT><B><FONT SIZE=2><P>-encoding </FONT><I><FONT FACE="Times New Roman" SIZE=2>название_кодировки</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Задает кодировку символов, которая будет использоваться при чтении файлов с исходными текстами и комментариями, содержащимися в них. Доступен в Java версии 1.1 и более поздних версий.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-J</FONT><I><FONT FACE="Times New Roman" SIZE=2>аргумент</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Передает аргумент непосредственно интерпретатору Java (аргумент не должен содержать пробелы). Если в интерпретатор требуется передать несколько аргументов, следует использовать несколько параметров -J. Доступен в Java версии 1.1 и более поздних версий.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-nodeprecated<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Сообщает <I>javadoc о</I> том, что теги @deprecated в создаваемые документы включать не нужно (установка по умолчанию). Доступен в Java версии 1.1 и более поздних версий.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-noindex<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Сообщает <I>javadoc о</I></FONT><FONT SIZE=2> </FONT><FONT FACE="Times New Roman" SIZE=2>том, что формировать индексный файл </FONT><I><FONT SIZE=2>All-Names.html,</I></FONT><FONT FACE="Times New Roman" SIZE=2> который она создает по умолчанию, не требуется.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-notree<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Сообщает <I>javadoc о</I> том, что формировать файл иерархии классов </FONT><I><FONT SIZE=2>tree.html,</I></FONT><FONT FACE="Times New Roman" SIZE=2> который она создает по умолчанию, не нужно.</P>
+</FONT><B><FONT SIZE=2><P>-sourcepath </FONT><I><FONT FACE="Times New Roman" SIZE=2>каталог</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Синоним -classpath. Отметим, что любой задаваемый путь должен включать в себя системный путь поиска каталога классов.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-verbose<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Заставляет </FONT><I><FONT SIZE=2>javadoc</I></FONT><FONT FACE="Times New Roman" SIZE=2> выдавать сообщения о том, что он делает в данный момент.</P>
+</FONT><B><FONT SIZE=2><P>-version </FONT><I><FONT FACE="Times New Roman" SIZE=2>каталог</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Указывает на необходимость выводить информацию о версии, заданную с помощью тега @ version. Эта информация не выводится по умолчанию. Отметим, что данный параметр не заставляет </FONT><I><FONT SIZE=2>javadoc </I></FONT><FONT FACE="Times New Roman" SIZE=2>выводить номер собственной версии.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P ALIGN="JUSTIFY">Переменные среды</P>
+</I></FONT><FONT SIZE=2><P ALIGN="JUSTIFY">CLASSPATH<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Задает упорядоченный список (с двоеточиями в качестве разделителей для UNIX и с точками с запятой — для Windows) каталогов и файлов с расширением </FONT><I><FONT SIZE=2>zip,</I></FONT><FONT FACE="Times New Roman" SIZE=2> в которых </FONT><I><FONT SIZE=2>javadoc</I></FONT><FONT FACE="Times New Roman" SIZE=2> должна искать определения классов. Когда путь указан с помощью переменной среды, </FONT><I><FONT SIZE=2>javadoc </I></FONT><FONT FACE="Times New Roman" SIZE=2>всегда неявно добавляет место расположения системных классов к концу пути. Если эта переменная не указана, то по умолчанию список содержит текущий каталог и путь к системным классам. Данная переменная переопределяется параметром -classpath.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P ALIGN="JUSTIFY">Ошибки</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Когда </FONT><I><FONT SIZE=2>javadoc</I></FONT><FONT FACE="Times New Roman" SIZE=2> не может найти указанный пакет, она создает файл-заглушку HTML и не предупреждает, что пакет не найден.</P>
+<B><I><P ALIGN="JUSTIFY">Смотри также</P>
+</B></FONT><FONT SIZE=2><P>java, javac</P>
+</FONT><B><FONT FACE="Times New Roman" SIZE=4><P ALIGN="CENTER">javah — генератор С-файлов</P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Доступность</P>
+</B></I><P>JDK версии 1.0 и более поздних версий.</P>
+<B><I><P>Синтаксис вызова</P>
+</I><P>javah [параметры] имена_классов</P>
+</FONT><I><FONT FACE="Times New Roman"><P ALIGN="JUSTIFY">Описание<BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Программа </FONT><I><FONT SIZE=2>javah</I></FONT><FONT FACE="Times New Roman" SIZE=2> создает файлы заголовков и исходных текстов на С (файлы с расширением h и с), которые описывают указанные классы. Отметим, что классы задаются с помощью имен классов, а не имен файлов. Генерируемые файлы несут информацию, необходимую для реализации методов указанных классов на С способом, зависящим от платформы. По умолчанию </FONT><I><FONT SIZE=2>javah</I></FONT><FONT FACE="Times New Roman" SIZE=2> создает файлы, которые могут использоваться платформ-нозависимым интерфейсом JDK 1.0. Если задан параметр -jni, программа генерирует файлы, предназначенные для использования платформно-зависимым интерфейсом Java Native Interface (JNI) в Java 1.1.</P>
+<P ALIGN="JUSTIFY">По умолчанию </FONT><I><FONT SIZE=2>javah</I></FONT><FONT FACE="Times New Roman" SIZE=2> создает файл заголовков для указанного класса или классов. В этом файле объявляется С-структура struct, которая содержит переменные, соответствующие переменным экземпляра класса Java. В нем также объявляется процедура, которую необходимо реализовать для каждого платформно-зависимого метода, содержащегося в Java-классе. (Полное описание способов реализации методов Java на С выходит за рамки данной главы.)</P>
+<I><P ALIGN="JUSTIFY">Ест javah</I> выполняется с параметром -stubs, создается файл с расширением с, содержащий дополнительные процедуры-заглушки, необходимые для связи платформно-зависимого метода со средой Java. Отметим, что в этот файл не следует помещать текст реализации метода.</P>
+<P ALIGN="JUSTIFY">При заданном параметре -jni программа </FONT><I><FONT SIZE=2>javah</I></FONT><FONT FACE="Times New Roman" SIZE=2> создает файлы заголовков на С, в которых объявляются прототипы для платформно-зависимой реализации каждого метода указанных классов. При использовании этого нового интерфейса определять какую-либо структуру не требуется. Для JNI не нужны также файлы-заглушки, поэтому параметр -stub не может использоваться в сочетании с параметром -jni.</P>
+<P ALIGN="JUSTIFY">По умолчанию </FONT><I><FONT SIZE=2>javah</I></FONT><FONT FACE="Times New Roman" SIZE=2> создает С-файлы в текущем каталоге, и их имена включают имя класса. Если имя класса включает имя пакета, то С-файлы включают все компоненты полного имени класса с заменой точек символом подчеркивания. Этот заданный по умолчанию режим может быть переопределен с помощью параметров -d и -о.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P>Параметры</P>
+</I></FONT><FONT FACE="Times New Roman" SIZE=2><P>-classpath путь</FONT><FONT SIZE=2><BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Определяет путь, который </FONT><I><FONT SIZE=2>javah</I></FONT><FONT FACE="Times New Roman" SIZE=2> использует для поиска классов, указанных в командной строке. Этот параметр переопределяет путь, задаваемый по умолчанию или определяемый переменной среды classpath. Аргумент <I>путь</I> содержит упорядоченный список каталогов и ZIP-файлов, разделенных двоеточиями в среде UNIX или точками с запятой в среде Windows.</P>
+<P ALIGN="JUSTIFY">Чтобы указать дополнительные каталоги и ZIP-файлы, не переопределяя заданный по умолчанию путь поиска системных классов, используется переменная среды classpath. Подробнее об определении пути рассказано в описании </FONT><I><FONT SIZE=2>Java.</P>
+</I><B><P>-d </FONT><I><FONT FACE="Times New Roman" SIZE=2>каталог</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Указывает каталоги, в которые</FONT><FONT SIZE=2> <I>javah</I></FONT><FONT FACE="Times New Roman" SIZE=2> должен записывать создаваемые им файлы. По умолчанию они создаются в текущем каталоге. Этот параметр не работает вместе с параметром -о, поэтому внутри имени файла в параметре -о следует также указывать необходимый каталог.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-help<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Заставляет </FONT><I><FONT SIZE=2>javah</I></FONT><FONT FACE="Times New Roman" SIZE=2> вывести простое сообщение о формате вызова и завершить работу.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-jni<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Указывает </FONT><I><FONT SIZE=2>javah</I></FONT><FONT FACE="Times New Roman" SIZE=2> на необходимость создания файла заголовков, предназначенного для работы с новым интерфейсом JNI (Java Native Interface), а не со старым платформно-зависимым интерфейсом Java 1.0. Доступен в JDK версии 1.1 или более поздних версий.</P>
+<B><P>-о <I>выходной_файл</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Объединяет все файлы с расширением с и </FONT><I><FONT SIZE=2>h</I></FONT><FONT FACE="Times New Roman" SIZE=2> в один выходной файл. Это удобно при реализации зависящих от платформы методов для нескольких классов одного пакета, а также позволяет избежать наличия большого количества маленьких файлов с расширениями </FONT><I><FONT SIZE=2>h</I></FONT><FONT FACE="Times New Roman" SIZE=2> и с, с которыми приходится работать по отдельности.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-stubs<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Создает файлы с расширением с для класса или классов, но не файлы заголовков. Без этого параметра </FONT><I><FONT SIZE=2>javah</I></FONT><FONT FACE="Times New Roman" SIZE=2> создает файлы заголовков.</P>
+</FONT><B><FONT SIZE=2><P>-td </FONT><I><FONT FACE="Times New Roman" SIZE=2>каталог</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Каталог, в котором </FONT><I><FONT SIZE=2>javah</I></FONT><FONT FACE="Times New Roman" SIZE=2> должна хранить временные файлы. По умолчанию временные файлы хранятся в каталоге </FONT><I><FONT SIZE=2>/tmp.</P>
+</I><B><P ALIGN="JUSTIFY">-trace<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Указывает на необходимость для </FONT><I><FONT SIZE=2>javah</I></FONT><FONT FACE="Times New Roman" SIZE=2> включать команды вывода информации о трассировке в создаваемые ею файлы-заглушки.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-v<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Побуждает </FONT><I><FONT SIZE=2>javah</I></FONT><FONT FACE="Times New Roman" SIZE=2> выводить сообщения о выполняемых операциях.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-version<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Заставляет </FONT><I><FONT SIZE=2>javah</I></FONT><FONT FACE="Times New Roman" SIZE=2> выводить информацию о номере своей версии.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P ALIGN="JUSTIFY">Переменные среды</P>
+</I></FONT><FONT SIZE=2><P ALIGN="JUSTIFY">CLASSPATH<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Содержит упорядоченный список (с двоеточиями в качестве разделителей для UNIX и с точками с запятой — для Windows) каталогов и файлов с расширением </FONT><I><FONT SIZE=2>zip,</I></FONT><FONT FACE="Times New Roman" SIZE=2> в которых </FONT><I><FONT SIZE=2>javah</I></FONT><FONT FACE="Times New Roman" SIZE=2> должна искать определения классов. Когда путь указан с помощью переменной среды, </FONT><I><FONT SIZE=2>javah </I></FONT><FONT FACE="Times New Roman" SIZE=2>всегда неявно добавляет место расположения системных классов к концу пути. Если эта переменная не указана, то по умолчанию список содержит текущий каталог и путь к системным классам. Данная переменная переопределяется параметром -classpath.</P>
+<B><I><P ALIGN="JUSTIFY">Смотри также</P>
+</B></I></FONT><FONT SIZE=2><P ALIGN="JUSTIFY">java, javac</P>
+</FONT><B><I><FONT FACE="Times New Roman" SIZE=4><P ALIGN="CENTER">javakey — программа управления ключами и цифровыми подписями</P>
+</FONT><FONT FACE="Times New Roman"><P>Доступность</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P>JDK версии 1.1 и более поздних версий.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P>Синтаксис вызова</P>
+</I></FONT><FONT SIZE=2><P>javakey </FONT><I><FONT FACE="Times New Roman" SIZE=2>параметры</P>
+</FONT><FONT FACE="Times New Roman"><P>Описание</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Программа </FONT><I><FONT SIZE=2>javakey</I></FONT><FONT FACE="Times New Roman" SIZE=2> обеспечивает интерфейс командной строки для построения и работы с рядом сложных ключей и сертификатов, включая создание цифровых подписей. Существует всего несколько параметров, обеспечивающих выполнение ряда строго определенных операций. Программа </FONT><I><FONT SIZE=2>javakey</I></FONT><FONT FACE="Times New Roman" SIZE=2> работает с системной базой данных, для каждой записи которой могут быть заданы открытые и секретные ключи и/или сертификаты, связанные с ней. Кроме того, каждая из этих записей может быть объявлена вызывающей доверие, или наоборот, а также может быть либо <I>идентификатором</I> (identity), либо <I>подписчиком</I> (signer). С идентификаторами связывают только открытые ключи, тогда как для подписчиков существуют как открытые, так и секретные ключи, поэтому с помощью подписчиков можно создавать подписи для файлов.</P>
+</FONT><FONT SIZE=2><P ALIGN="JUSTIFY">&nbsp;</FONT><FONT FACE="Times New Roman" SIZE=2>Операции </FONT><I><FONT SIZE=2>javakey</I></FONT><FONT FACE="Times New Roman" SIZE=2> задаются посредством различных параметров, приведенных ниже.</P>
+</FONT><FONT SIZE=2><P ALIGN="JUSTIFY">&nbsp;</FONT><B><I><FONT FACE="Times New Roman">Параметры</P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>-с название идентификатора</I></FONT><FONT SIZE=2> [true | false]<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Создает и добавляет идентификатор с заданным именем в базу данных. Если после имени идентификатора следует true, он объявляется вызывающим доверие. В противном случае идентификатор считается не вызывающим доверия.</P>
+<B><P>-с <I>имя_подписчика</I></FONT><FONT SIZE=2> [true | false]<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Создает и добавляет подписчик с заданным именем в базу данных. Если после имени подписчика следует true, подписчик объявляется вызывающим доверие. В противном случае он не считается таковым.</P>
+</FONT><B><FONT SIZE=2><P>-t </FONT><I><FONT FACE="Times New Roman" SIZE=2>название_записи</I></FONT><FONT SIZE=2> [true | false]<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Указывает, является ли заданная запись вызывающей доверие (true) или нет (false)</FONT><FONT SIZE=2>.</P>
+<B><P ALIGN="JUSTIFY">-1<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит список имен всех записей в базе данных системы безопасности.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-ld<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит подробный список имен и прочей информации для записей в базе данных системы безопасности.</P>
+</FONT><B><FONT SIZE=2><P>-li </FONT><I><FONT FACE="Times New Roman" SIZE=2>название_записи</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит подробную информацию о записи с указанным именем из базы данных системы безопасности.</P>
+</FONT><B><FONT SIZE=2><P>-r </FONT><I><FONT FACE="Times New Roman" SIZE=2>название_записи</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Удаляет запись с указанным именем из базы данных системы безопасности.</P>
+</FONT><B><FONT SIZE=2><P>-ik </FONT><I><FONT FACE="Times New Roman" SIZE=2>название идентификатора файл_ключа</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Читает открытый ключ из указанного файла и связывает его с заданным идентификатором. Ключ должен задаваться в формате </FONT><I><FONT FACE="Times New Roman" SIZE=1>Х.509.</P>
+</I></FONT><B><FONT SIZE=2><P>-ikp </FONT><I><FONT FACE="Times New Roman" SIZE=2>имя_подписчика файл_открытого_ключа фаил_секретного_ключа</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Читает заданные открытый и секретный ключи из соответствующих файлов и связывает их с записью для именованного подписчика. Ключи должны задаваться в формате х. 509.</P>
+</FONT><B><FONT SIZE=2><P>-ic </FONT><I><FONT FACE="Times New Roman" SIZE=2>название_записи файл_сертификата</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Читает сертификат из именованного файла и связывает его с указанной записью. Если для этой записи открытый ключ уже существует, то он сравнивается с ключом, указанным в сертификате, и в случае, когда они не совпадают, выводится соответствующее предупреждение. Когда открытый ключ для записи не задан, используется соответствующий ключ из сертификата.</P>
+</FONT><B><FONT SIZE=2><P>-ii </FONT><I><FONT FACE="Times New Roman" SIZE=2>название_записи</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Эта команда позволяет ввести произвольную текстовую информацию об указанной записи в базу данных.</P>
+</FONT><B><FONT SIZE=2><P>-gk </FONT><I><FONT FACE="Times New Roman" SIZE=2>подписчик алгоритм размер [фаил_открытого_ключа [файл_секретного_ключа]]</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Создает открытый и секретный ключи и связывает их с указанным подписчиком, используя заданный алгоритм. В настоящее время поддерживается только алгоритм DSA. Создает ключи с заданным количеством битов (значение количества битов должно находиться в пределах от 512 до 1024). Если указан файл открытого ключа, в него записывается открытый ключ. Когда указан файл секретного ключа, туда записывается секретный ключ.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">&nbsp;</P>
+<P>-g </FONT><I><FONT FACE="Times New Roman" SIZE=2>подписчик алгоритм размер [файл_открытого_ключа [файл_секретного_ключа]]</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Синоним команды -gk.</P>
+</FONT><B><FONT SIZE=2><P>-gc </FONT><I><FONT FACE="Times New Roman" SIZE=2>командный_файл</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Создает сертификат в соответствии с параметрами, заданными в командном файле. Командный файл — это файл с расширением </FONT><I><FONT SIZE=2>properties,</I></FONT><FONT FACE="Times New Roman" SIZE=2> где должны содержаться значения следующих свойств:</P>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>issuer . name — имя записи, для которой создается сертификат.</LI></P>
+<P ALIGN="JUSTIFY"><LI>issuer.cert — номер сертификата создателя, который следует использовать в качестве подписи для нового сертификата (если сертификат не создает эту подпись сам).</LI></P>
+<P ALIGN="JUSTIFY"><LI>subject. name — имя записи в базе данных, для которой создается сертификат.</LI></P>
+<P ALIGN="JUSTIFY"><LI>subject. real. name — настоящее имя записи, для которой создается сертификат.</LI></P>
+<P ALIGN="JUSTIFY"><LI>subject. country — страна, к которой относится данная запись.</LI></P>
+<P ALIGN="JUSTIFY"><LI>subject.org — организация, с которой связана данная запись.</LI></P>
+<P ALIGN="JUSTIFY"><LI>subject.org.unit — подразделение организации, с которой связана данная запись.</LI></P>
+<P ALIGN="JUSTIFY"><LI>start. date — дата (и время) вступления в силу данного сертификата.</LI></P>
+<P ALIGN="JUSTIFY"><LI>end. date — дата (и время) окончания действия данного сертификата.</LI></P>
+<P ALIGN="JUSTIFY"><LI>serial, number — серийный номер сертификата (он должен быть уникальным для каждого сертификата, создаваемого данной организацией).</LI></P>
+<P ALIGN="JUSTIFY"><LI>out .file — необязательное имя файла, в который должен записываться данный сертификат.</LI></P></UL>
+
+</FONT><B><FONT SIZE=2><P>&nbsp;</P>
+<P>-dc </FONT><I><FONT FACE="Times New Roman" SIZE=2>файл_сертификата</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит содержимое сертификата, записанного в файле сертификата.</P>
+<B><P>-еc <I>запись номер _сертификата файл</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит заданный с помощью номера сертификат для определенной записи в указанный файл. С помощью команды -li можно проверить, какие номера сертификатов относятся к заданной записи.</P>
+</FONT><B><FONT SIZE=2><P>-ek </FONT><I><FONT FACE="Times New Roman" SIZE=2>запись файл_открытого_ключа [файл_секретного_ключа]</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит открытый ключ для заданной записи в указанный файл. Если эта запись соответствует подписчику и указан файл секретного ключа, то для заданной записи в этот файл дополнительно экспортируется секретный ключ.</P>
+</FONT><B><FONT SIZE=2><P>-gs </FONT><I><FONT FACE="Times New Roman" SIZE=2>командный_файл jar-файл</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Создает цифровую подпись для заданного JAR-файла с использованием директив, приведенных в указанном командном файле. Командный файл представляет собой файл с расширением </FONT><I><FONT SIZE=2>properties,</I></FONT><FONT FACE="Times New Roman" SIZE=2> в котором должны содержаться значения следующих свойств:</P>
+
+<UL>
+<P ALIGN="JUSTIFY"><LI>signer - имя записи для подписчика.</LI></P>
+<P ALIGN="JUSTIFY"><LI>cert - номер сертификата, который должен использоваться в подписи.</LI></P>
+<P ALIGN="JUSTIFY"><LI>chain - длина цепочки сертификатов, которые необходимо включить. В настоящее время этот параметр не поддерживается; его следует задавать равным 0.</LI></P>
+<P ALIGN="JUSTIFY"><LI>signature.file - базовое имя файла подписи, вставляемой в JAR-файл. Его длина не должна превышать 8 символов и имя не должно конфликтовать ни с одной другой цифровой подписью, которая может вводиться в JAR-файл.</LI></P>
+<P ALIGN="JUSTIFY"><LI>out.file - задает имя, которое должно использоваться для создаваемого JAR-файла с цифровой подписью. Свойство является необязательным.</LI></P></UL>
+
+<B><I><P>Смотри также<BR>
+</B></FONT><FONT SIZE=2>jar</P>
+</FONT><B><FONT FACE="Times New Roman" SIZE=4><P ALIGN="CENTER">javap — дизассемблер классов Java</P>
+</FONT><FONT FACE="Times New Roman"><P>Доступность</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P>JDK версии 1.0 и более поздних версий</FONT><FONT SIZE=2>.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P>Синтаксис вызова</P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>javap [параметры] имена_классов</P>
+</FONT><FONT FACE="Times New Roman"><P>Описание</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Программа </FONT><I><FONT SIZE=2>javap</I></FONT><FONT FACE="Times New Roman" SIZE=2> дизассемблирует файлы классов, имена которых указаны в командной строке, и выводит их тексты в доступном для чтения виде. </P>
+<P ALIGN="JUSTIFY">По умолчанию </FONT><I><FONT SIZE=2>javap</I></FONT><FONT FACE="Times New Roman" SIZE=2> выводит объявления членов (не объявленных как private) классов, указанных в командной строке. Параметры -1, -р и -с задают дополнительную информацию, которую следует выводить, включая результаты полного дизассемблирования байт-кода каждого из указанных классов. Программу </FONT><I><FONT SIZE=2>javap</I></FONT><FONT FACE="Times New Roman" SIZE=2> можно также использовать для запуска верификатора классов Java.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P ALIGN="JUSTIFY">Параметры</P>
+</I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">-с</FONT><FONT SIZE=2><BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит инструкции виртуальной машины Java для всех методов указанного класса. Дизассемблирует все методы, включая private.</P>
+</FONT><B><FONT SIZE=2><P>-classpath </FONT><I><FONT FACE="Times New Roman" SIZE=2>путь</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Путь, который </FONT><I><FONT SIZE=2>javap</I></FONT><FONT FACE="Times New Roman" SIZE=2> использует для поиска классов, указанных в командной строке. Этот параметр переопределяет путь, заданный по умолчанию или указанный в переменной среды classpath. Аргумент <I>путь —</I> это упорядоченный список каталогов и ZIP-файлов, разделяемых двоеточиями в среде UNIX и точками с запятой в среде</FONT><FONT SIZE=2> Windows.</P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Чтобы указать дополнительные каталоги и ZIP-файлы, не переопределяя пути, заданного по умолчанию, используется переменная среды classpath. Подробнее о ней рассказано в описании </FONT><I><FONT SIZE=2>Java.</P>
+</I><B><P ALIGN="JUSTIFY">-h<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит класс в форме, пригодной для включения его в файл заголовков С.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-1<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит номера строк и таблицы локальных переменных в дополнение к переменным public-класса. Отметим, что информация о номерах строк и локальных переменных используется отладчиками. Информация о локальных переменных присутствует только в том случае, если класс откомпилирован </FONT><I><FONT SIZE=2>ja vac</I></FONT><FONT FACE="Times New Roman" SIZE=2> с параметром -д; информация о номерах строк присутствует, если класс откомпилирован <I>без </I>параметра -o.</P>
+<B><P ALIGN="JUSTIFY">-р</FONT><FONT SIZE=2><BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Помимо методов и переменных, объявленных как public, выводит методы и переменные указанных классов, объявленные как private. Отметим, что некоторые компиляторы (но не </FONT><I><FONT SIZE=2>javac)</I></FONT><FONT FACE="Times New Roman" SIZE=2> могут искажать информацию о private-переменных, так что такие переменные и аргументы методов перестают иметь значащие имена. Это затрудняет дизассемблирование классов Java и восстановление исходного текста.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-s<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит объявления членов класса во внутреннем формате виртуальной машины Java.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-v<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит дополнительную информацию (в виде компонентов Java) обо всех членах каждого указанного класса.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-verify<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Заставляет </FONT><I><FONT SIZE=2>javap</I></FONT><FONT FACE="Times New Roman" SIZE=2> запускать верификатор для заданных классов и выводить результаты их проверки.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-version<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Заставляет </FONT><I><FONT SIZE=2>javap</I></FONT><FONT FACE="Times New Roman" SIZE=2> выводить информацию о номере своей версии.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P>Переменные среды</P>
+</I></FONT><FONT SIZE=2><P>CLASSPATH<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Содержит упорядоченный список (с двоеточиями в качестве разделителей для UNIX и с точками с запятой - для Windows) каталогов и файлов с расширением </FONT><I><FONT SIZE=2>zip,</I></FONT><FONT FACE="Times New Roman" SIZE=2> в которых </FONT><I><FONT SIZE=2>javap</I></FONT><FONT FACE="Times New Roman" SIZE=2> должна искать определения классов. Когда путь задан с помощью переменной среды, </FONT><I><FONT SIZE=2>javap </I></FONT><FONT FACE="Times New Roman" SIZE=2>всегда неявно добавляет место расположения системных классов к концу пути. Если эта переменная не указана, то по умолчанию список содержит текущий каталог и путь к системным классам. Данная переменная переопределяется параметром -classpath.</P>
+<B><I><P>Смотри также</P>
+</B></FONT><FONT SIZE=2><P>java, javac</P>
+</FONT><B><FONT FACE="Times New Roman" SIZE=4><P ALIGN="CENTER">jdb — отладчик Java</P>
+</FONT><FONT FACE="Times New Roman"><P>Доступность<BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>JDK версии 1.0 и более поздних версий.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P>Синтаксис вызова</P>
+</I></FONT><FONT SIZE=2><P>jdb [ </FONT><I><FONT FACE="Times New Roman" SIZE=2>параметры Java ]</I> класс<BR>
+jdb [ -host имя сервера ] -password пароль</P>
+</FONT><I><FONT FACE="Times New Roman"><P>Описание</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P>Программа </FONT><I><FONT SIZE=2>jdb —</I></FONT><FONT FACE="Times New Roman" SIZE=2> отладчик классов Java. Она работает в текстовом режиме, ориентирована на командную строку и синтаксис ее вызова аналогичен синтаксису отладчиков UNIX </FONT><I><FONT SIZE=2>dbx</I></FONT><FONT FACE="Times New Roman" SIZE=2> и </FONT><I><FONT SIZE=2>gdb.</P>
+</I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Когда </FONT><I><FONT SIZE=2>jdb</I></FONT><FONT FACE="Times New Roman" SIZE=2> вызывается с именем класса Java, она запускает другую копию интерпретатора </FONT><I><FONT SIZE=2>Java,</I></FONT><FONT FACE="Times New Roman" SIZE=2> передавая ему указанные параметры. Отладчик</FONT><FONT SIZE=2> <I>jdb</I></FONT><FONT FACE="Times New Roman" SIZE=2> сам является Java-программой, которая выполняется собственной копией интерпретатора. Эта новая копия загружает указанный файл класса и прерывает его выполнение, ожидая ввода команд отладки.</P>
+<P ALIGN="JUSTIFY">Отладчик </FONT><I><FONT SIZE=2>jdb</I></FONT><FONT FACE="Times New Roman" SIZE=2> может запускаться с аргументами -password и -host. При таком вызове </FONT><I><FONT SIZE=2>jdb</I></FONT><FONT FACE="Times New Roman" SIZE=2> подключается к уже выполняющейся копии интерпретатора, запущенного с параметром -debug. Когда интерпретатор запущен таким способом, он выводит пароль, который следует указать в параметре -password отладчика </FONT><I><FONT SIZE=2>jdb. </P>
+</I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">После запуска сеанса отладки, можно выполнять любую из директив, описанных ниже.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P ALIGN="JUSTIFY">Параметры</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">При вызове </FONT><I><FONT SIZE=2>jdb</I></FONT><FONT FACE="Times New Roman" SIZE=2> с заданным именем файла класса можно указать любой параметр интерпретатора </FONT><I><FONT SIZE=2>Java.</I></FONT><FONT FACE="Times New Roman" SIZE=2> Назначение этих параметров объяснялось в описании </FONT><I><FONT SIZE=2>Java.</P>
+</I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">При подключении </FONT><I><FONT SIZE=2>jdb</I></FONT><FONT FACE="Times New Roman" SIZE=2> к уже работающему интерпретатору Java можно задавать следующие параметры:</P>
+</FONT><B><FONT SIZE=2><P>-host </FONT><I><FONT FACE="Times New Roman" SIZE=2>имя_сервера<BR>
+</B></I>Указывает имя узла, на котором запущен нужный сеанс интерпретатора.</P>
+</FONT><B><FONT SIZE=2><P>-password </FONT><I><FONT FACE="Times New Roman" SIZE=2>пароль<BR>
+</B></I>Этот параметр необходим для присоединения к работающему интерпретатору. Интерпретатор должен быть запущен с параметром -debug, и параметр -password указывает пароль, который сообщает интерпретатор. К интерпретатору может присоединиться только отладчик, знающий этот пароль. Отметим, что созданный </FONT><I><FONT SIZE=2>Java</I></FONT><FONT FACE="Times New Roman" SIZE=2> пароль нельзя считать безопасным с точки зрения шифрования.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P>Команды</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P>Программа </FONT><I><FONT SIZE=2>jdb</I></FONT><FONT FACE="Times New Roman" SIZE=2> понимает следующие команды:</P>
+</FONT><B><FONT SIZE=2><P>! !<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Сокращенная команда, которая заменяется текстом последней введенной команды. За ней может следовать дополнительный текст, добавляемый к предшествовавшей команде.</P>
+</FONT><B><FONT SIZE=2><P>catch [ </FONT><I><FONT FACE="Times New Roman" SIZE=2>класс_исключения]<BR>
+</B></I>Прерывает выполнение программы, если сгенерировано указанное исключение. Когда исключение не указано, выводится текущий список перехваченных исключений. Для отмены прерывания используйте команду ignore.</P>
+</FONT><B><FONT SIZE=1><P>classes<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=1>Выводит список всех загруженных классов.</P>
+</FONT><B><FONT SIZE=2><P>clear [ </FONT><I><FONT FACE="Times New Roman" SIZE=2>класс : строка</I></FONT><FONT SIZE=2> ]<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Удаляет точку останова, установленную в указанной строке данного класса. Команды clear и stop без аргументов выводят список текущих точек останова вместе с номерами строк, в которых они заданы.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">cont<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Возобновляет выполнение программы и используется при остановке текущего потока выполнения в точке останова.</P>
+</FONT><B><FONT SIZE=2><P>down [ </FONT><I><FONT FACE="Times New Roman" SIZE=2>п ]</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Перемещается на </FONT><I><FONT SIZE=2>n</I></FONT><FONT FACE="Times New Roman" SIZE=2> кадров вниз в стеке вызовов текущего потока. Если </FONT><I><FONT SIZE=2>n</I></FONT><FONT FACE="Times New Roman" SIZE=2> не указано, перемещается вниз на один кадр.</P>
+</FONT><FONT SIZE=2><P>&nbsp;</P>
+<B><P>dump <I>id(s)<BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит значения всех переменных указанного объекта (объектов). Если задано имя класса, команда </FONT><I><FONT SIZE=2>dump</I></FONT><FONT FACE="Times New Roman" SIZE=2> отображает все (статические) методы и переменные класса, а также имя суперкласса и список реализуемых интерфейсов. Объекты и классы можно задать по имени или по их восьмизначному шестнадцатеричному ID-номеру, а потоки — по сокращенному имени </FONT><FONT FACE="Times New Roman">t@номер_потока</FONT><I><FONT SIZE=2>.</P>
+</I></FONT><B><FONT FACE="Times New Roman" SIZE=2><P>exit (или quit)</FONT><FONT SIZE=2><BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Выход из </FONT><I><FONT SIZE=2>jdb</I>.</P>
+<B><P ALIGN="JUSTIFY">gc<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Запускает сборщик мусора для удаления неиспользуемых объектов.</P>
+<B><P>help (или ?)</FONT><FONT SIZE=2><BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит список всех директив </FONT><I><FONT SIZE=2>jdb.</P>
+</I><B><P>ignore </FONT><I><FONT FACE="Times New Roman" SIZE=2>класс_исключения</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Генерирование указанного исключения не приводит к прерыванию выполнения программы. Эта команда отключает команду ca</FONT><FONT SIZE=2>tch.</P>
+<B><P>list [ </FONT><I><FONT FACE="Times New Roman" SIZE=2>номер _строки ]</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит указанную строку исходного текста и несколько строк, стоящих перед ней и позади нее. Если номер строки не указан, использует номер строки текущего кадра стека для текущего потока. При этом выводятся строки из файла с исходным текстом для текущего кадра стека текущего потока. Команда use сообщает </FONT><I><FONT SIZE=2>jdb</I></FONT><FONT FACE="Times New Roman" SIZE=2>, где искать файл с исходным текстом.</P>
+</FONT><B><FONT SIZE=2><P>load </FONT><I><FONT FACE="Times New Roman" SIZE=2>имя_класса</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Загружает указанный класс в </FONT><I><FONT SIZE=2>jdb.</P>
+</I><B><P ALIGN="JUSTIFY">locals<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит список локальных переменных для текущего кадра стека. Код на Java должен компилироваться с параметром -д, чтобы включать информацию о локальных переменных.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">memory<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит суммарный объем памяти, которую занимает отлаживаемая программа.</P>
+</FONT><B><FONT SIZE=2><P>methods </FONT><I><FONT FACE="Times New Roman" SIZE=2>класс</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит список всех методов указанного класса. Для получения списка переменных экземпляра, объекта или класса (статического) используется команда dump.</P>
+</FONT><B><FONT SIZE=2><P>print id(s)<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит значение указанного аргумента или аргументов. Каждый аргумент может представлять собой класс, объект, переменную или локальную переменную и может быть задан посредством их имени или шестнадцатеричного ГО-номера. Кроме того, существует возможность ссылаться на потоки при помощи специального синтаксиса t@<I>номер_потока.</I> Команда print отображает значение объекта, вызывая его метод toString ().</P>
+</FONT><B><FONT SIZE=2><P>resume [ </FONT><I><FONT FACE="Times New Roman" SIZE=2>поток(и)]</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Возобновляет выполнение указанного потока (потоков). Если поток не указан, возобновляется выполнение всех прерванных потоков (см. также suspend).</P>
+</FONT><B><FONT SIZE=2><P>run [ </FONT><I><FONT FACE="Times New Roman" SIZE=2>класс ] [ аргументы ]</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Выполняет метод main () данного класса, передавая ему указанные аргументы. Если класс или аргументы не заданы, используются класс и аргументы из командной строки </FONT><I><FONT SIZE=2>jdb.</P>
+</I><B><P ALIGN="JUSTIFY">step<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Выполняет текущую строку текущего потока и снова останавливает выполнение.</P>
+<B><P>stop [at класс : строка]</FONT><FONT SIZE=2><BR>
+</FONT><FONT FACE="Times New Roman" SIZE=2>stop [in класс : метод]</FONT><FONT SIZE=2><BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Устанавливают точку останова в указанной строке класса или в начале указанного метода класса. Выполнение программы останавливается при достижении этой строки или при вызове данного метода. Если команда stop выполняется без аргументов, то выводится текущий список точек останова.</P>
+</FONT><B><FONT SIZE=2><P>suspend [ </FONT><I><FONT FACE="Times New Roman" SIZE=2>поток(и)]<BR>
+</B></I>Приостанавливает указанный поток или потоки. Если поток не указан, останавливает все выполняющиеся потоки. Для их повторного запуска используется команда resume.</P>
+</FONT><B><FONT SIZE=2><P>thread </FONT><I><FONT FACE="Times New Roman" SIZE=2>поток<BR>
+</B></I>Устанавливает указанный поток выполнения в качестве текущего. Этот поток неявно используется несколькими другими командами./'^/”. Поток может быть задан по имени или номеру.</P>
+</FONT><B><FONT SIZE=2><P>threadgroup </FONT><I><FONT FACE="Times New Roman" SIZE=2>имя<BR>
+</B></I>Устанавливает указанную группу потоков в качестве текущей.</P>
+</FONT><B><FONT SIZE=2><P>threadgroups<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Выводит список всех групп потоков в отлаживаемой сеансе работы интерпретатора Java.</P>
+</FONT><B><FONT SIZE=2><P>threads [ </FONT><I><FONT FACE="Times New Roman" SIZE=2>группа _потоков ]<BR>
+</B></I>Выводит список всех потоков указанной группы. Если группа не задана, выводятся потоки текущей группы (заданной с помощью параметра <I>группа_потоков).</P>
+</I></FONT><B><FONT SIZE=2><P>up [ </FONT><I><FONT FACE="Times New Roman" SIZE=2>п</I></FONT><FONT SIZE=2>]<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Перемещается на п кадров вверх по стеку вызовов текущего потока. Если п не указано, перемещается вверх только на один кадр.</P>
+</FONT><B><FONT SIZE=2><P>use [ </FONT><I><FONT FACE="Times New Roman" SIZE=2>путь_к_исходному_файлу</I></FONT><FONT SIZE=2> ]<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Задает путь, используемый </FONT><I><FONT SIZE=2>jdb</I></FONT><FONT FACE="Times New Roman" SIZE=2> для поиска файлов с исходными текстами отлаживаемых классов. Если имя не указано, отображает текущее значение.</P>
+</FONT><B><FONT SIZE=2><P>where[ </FONT><I><FONT FACE="Times New Roman" SIZE=2>поток</I></FONT><FONT SIZE=2> ][ all ]<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Отображает стек вызовов указанного потока. Если поток не указан, отображает стек вызовов текущего потока. Когда указана опция all, отображаются стеки вызовов всех потоков.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P>Переменные среды</P>
+</I></FONT><FONT SIZE=2><P>CLASSPATH<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Указывает упорядоченный список (с двоеточиями в качестве разделительных знаков в UNIX, с точками с запятой — в Windows) каталогов и ZIP-файлов, в которых </FONT><I><FONT SIZE=2>jdb</I></FONT><FONT FACE="Times New Roman" SIZE=2> должна искать определения классов. Если путь задан с помощью этой переменной, то </FONT><I><FONT SIZE=2>jdb</I></FONT><FONT FACE="Times New Roman" SIZE=2> всегда неявно присоединяет местоположение системных классов к его концу. Когда данная переменная не задана, путь по умолчанию указывает на текущий каталог и на каталог системных классов. Эта переменная переопределяется параметром -classpath.</P>
+<B><I><P>Смотри также<BR>
+</B></FONT><FONT SIZE=2>j</FONT><FONT SIZE=1>ava</P>
+</FONT><B><FONT SIZE=4><P ALIGN="CENTER">native2ascii –</P>
+</FONT><FONT FACE="Times New Roman" SIZE=4><P ALIGN="CENTER">программа преобразования исходных текстов Java в ASCII-текст</P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Доступность</P>
+</B></I><P>JDK версии 1.1 и более поздних версий.</P>
+<B><I><P>Синтаксис вызова</P>
+</FONT><FONT SIZE=2><P>native2ascii [ </I></FONT><FONT FACE="Times New Roman" SIZE=2>параметры<I> ] [ входной </I>файл [ выходной файл ]]</P>
+</FONT><I><FONT FACE="Times New Roman"><P>Описание</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Программа </FONT><I><FONT SIZE=2>javac</I></FONT><FONT FACE="Times New Roman" SIZE=2> может обрабатывать только файлы, в которых используется кодировка символов ASCII и кодировка Unicode </FONT><I><FONT SIZE=2>\uxxxx.</I></FONT><FONT FACE="Times New Roman" SIZE=2> Программа </FONT><I><FONT SIZE=2>native2ascii</I></FONT><FONT FACE="Times New Roman" SIZE=2> осуществляет чтение файла с исходным текстом на Java, закодированным с использованием местной кодировки символов, и преобразование этого текста в кодировку ASCII плюс кодировку Unicode, необходимую для </FONT><I><FONT SIZE=2>javac.</P>
+</I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Параметры <I>входной_файл</I> и <I>выходной_файл</I> являются необязательными. Если они не заданы, используются стандартные устройства ввода-вывода, что позволяет применять </FONT><I><FONT SIZE=2>native2ascii</I></FONT><FONT FACE="Times New Roman" SIZE=2> для работы с каналами (pipes).</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P ALIGN="JUSTIFY">Параметры</P>
+</I></FONT><FONT SIZE=2><P>-encoding </FONT><I><FONT FACE="Times New Roman" SIZE=2>имя_кодировки</FONT><FONT SIZE=2><BR>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2>Задает кодировку, которая используется в исходном файле. Если параметр не задан, имя соответствующей кодировки извлекается из системного свойства file.encoding.</P>
+</FONT><B><FONT SIZE=2><P ALIGN="JUSTIFY">-reverse<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Указывает на то, что должно осуществляться обратное преобразование — символов, закодированных в виде <I>\ихххх,</I> в символы в местной кодировке.</P>
+<B><I><P ALIGN="JUSTIFY">Смотри также</P>
+</B></FONT><FONT SIZE=2><P ALIGN="JUSTIFY">j ava.io.InputStreamReader, java.io.OutputStreamWriter</P>
+</FONT><B><FONT FACE="Times New Roman" SIZE=4><P ALIGN="CENTER">serialver — генератор номера версии класса</P>
+</FONT><FONT FACE="Times New Roman" SIZE=2><P>Доступность</P>
+</B></I><P>JDK версии 1.1 и более поздних версий.</P>
+<B><I><P>Синтаксис вызова</P>
+</I><P>serialver [-show] имя класса...</P>
+</FONT><I><FONT FACE="Times New Roman"><P>Описание</P>
+</B></I></FONT><FONT FACE="Times New Roman" SIZE=2><P ALIGN="JUSTIFY">Программа </FONT><I><FONT SIZE=2>serialver</I></FONT><FONT FACE="Times New Roman" SIZE=2> выводит номер версии или уникальный идентификатор для сериализации указанного класса или классов. Если в классе объявлена константа serialVersionUID типа long, то выводится ее значение, в противном случае уникальный номер версии для API, определяемого в классе, вычисляется с помощью безопасного алгоритма шифрования SHA (Secure Hash Algorithm). Эта программа применяется, в первую очередь, для вычисления исходного уникального номера версии класса, который затем присваивается объявляемой в данном классе константе. Результатом работы программы </FONT><I><FONT SIZE=2>serialver</I></FONT><FONT FACE="Times New Roman" SIZE=2> является строка правильного текста на Java, которую можно затем вставить в определение класса.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P ALIGN="JUSTIFY">Параметры</P>
+</I></FONT><FONT SIZE=2><P ALIGN="JUSTIFY">-show<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Если параметр задан, </FONT><I><FONT SIZE=2>serialver</I></FONT><FONT FACE="Times New Roman" SIZE=2> выводит простой графический интерфейс, который позволяет пользователю вводить каждый раз по одному имени класса и получать для него уникальный идентификатор для сериализации. При задании параметра -show имя класса в командной строке можно не указывать.</P>
+</FONT><B><I><FONT FACE="Times New Roman"><P>Переменные среды</P>
+</I></FONT><FONT SIZE=2><P>CLASS PATH<BR>
+</B></FONT><FONT FACE="Times New Roman" SIZE=2>Программа </FONT><I><FONT SIZE=2>serialver</I></FONT><FONT FACE="Times New Roman" SIZE=2> написана на Java, и поэтому она чувствительна к значению переменной среды class path точно так же, как и интерпретатор </FONT><I><FONT SIZE=2>Java.</I></FONT><FONT FACE="Times New Roman" SIZE=2> Поиск указанных классов проводится относительно заданного пути для классов.</P>
+<B><I><P>Смотри также</P>
+</B></FONT><FONT SIZE=2><P>java.io.ObjectStreamClass</P></I></FONT></BODY>
+</HTML>

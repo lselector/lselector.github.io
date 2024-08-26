@@ -1,0 +1,65 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+   <meta name="rating" content="General">
+   <meta name="objecttype" content="Manual">
+   <meta name="keywords" content="software development, oo, object oriented, unix, x11, motif, windows nt, c++, html, rene brun, nenad buncic, fons rademakers">
+   <meta name="description" content="ROOT - An Object Oriented Framework For Large Scale Data Analysis.">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>Emacs Style Command Line Editing</title>
+<!-- saved from url=(0037)http://root.cern.ch/root/Getline.html -->
+<link 
+href="mailto:rootdev@root.cern.ch" rev=made>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#551A8B" alink="#FF0000">
+
+<pre><b><font face="Verdana"><font size=+0>Emacs Style Command Line Editing
+</font></font></b>--------------------------------------------------------------------------</pre>
+Entering printable keys generally inserts new text into the buffer (unless
+in overwrite mode, see below). Other special keys can be used to modify
+the text in the buffer. In the description of the keys below, <tt>^n</tt>
+means <tt>Control-n</tt>, or holding the CONTROL key down while pressing
+"<tt>n</tt>". Errors will ring the terminal bell.
+<pre>^A/^E&nbsp;&nbsp; : Move cursor to beginning/end of the line.
+^F/^B&nbsp;&nbsp; : Move cursor forward/backward one character.
+^D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Delete the character under the cursor.
+^H, DEL : Delete the character to the left of the cursor.
+^K&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Kill from the cursor to the end of line.
+^L&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Redraw current line.
+^O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Toggle overwrite/insert mode. Initially in insert mode. Text
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; added in overwrite mode (including yanks) overwrite
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; existing text, while insert mode does not overwrite.
+^P/^N&nbsp;&nbsp; : Move to previous/next item on history list.
+^R/^S&nbsp;&nbsp; : Perform incremental reverse/forward search for string on
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the history list.&nbsp; Typing normal characters adds to the current
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; search string and searches for a match. Typing ^R/^S marks
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the start of a new search, and moves on to the next match.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Typing ^H or DEL deletes the last character from the search
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string, and searches from the starting location of the last search.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Therefore, repeated DEL's appear to unwind to the match nearest
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the point at which the last ^R or ^S was typed.&nbsp; If DEL is
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; repeated until the search string is empty the search location
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; begins from the start of the history list.&nbsp; Typing ESC or
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; any other editing character accepts the current match and
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; loads it into the buffer, terminating the search.
+^T&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Toggle the characters under and to the left of the cursor.
+^U&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Kill from beginning to the end of the line.
+^Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Yank previously killed text back at current location.&nbsp; Note that
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this will overwrite or insert, depending on the current mode.
+TAB&nbsp;&nbsp;&nbsp;&nbsp; : By default adds spaces to buffer to get to next TAB stop
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (just after every 8th column), although this may be rebound by the
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; programmer, as described below.
+NL, CR&nbsp; : returns current buffer to the program.</pre>
+DOS and ANSI terminal arrow key sequences are recognized, and act like:
+<pre>&nbsp; up&nbsp;&nbsp;&nbsp; : same as ^P
+&nbsp; down&nbsp; : same as ^N
+&nbsp; left&nbsp; : same as ^B
+&nbsp; right : same as ^F
+--------------------------------------------------------------------------</pre>
+
+<pre></pre>
+
+</body>
+</html>

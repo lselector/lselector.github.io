@@ -1,0 +1,177 @@
+#!/usr/local/bin/perl5
+
+# ------------------------------------------------------------------
+# sample cgi script using Sybase::DBlib;
+# based on 2 simple functions: do_sql() and do_query()
+# ------------------------------------------------------------------
+
+use Sybase::DBlib; # constants: SUCCEED = 1, NO_MORE_RESULTS = 2
+
+use strict;
+
+print "Content-type: text/html\n\n";
+print "<html><head><title>Sample script</title></head><body>\n";
+my $script_name = (split(/\//,$0))[-1];
+my $self_cgi = $script_name;
+print "script = $script_name\n";
+
+my $debug_flag = 1;
+my %syb = (S=>'MYSERVER',U=>'myuser',P=>'mypassword',D=>'MYDB');
+my $syb_dbh = get_dblib_handle(%syb, T=>'MYDB');
+my ($sql,$result,$row);
+
+do_some_tests();
+
+myexit();
+
+####################################################################
+#######                                                      #######
+#######              end of the main part                    #######
+#######                                                      #######
+####################################################################
+
+
+# ------------------------------------------------------------------
+# myexit()
+# ------------------------------------------------------------------
+sub myexit {
+  my $message = shift || "";
+  $syb_dbh->dbclose if defined($syb_dbh);
+  print "\n$message</body></html>\n";
+  exit(0);
+}
+
+# ------------------------------------------------------------------
+# debug()
+# ------------------------------------------------------------------
+sub debug {
+  my $message=shift;
+  my $color = shift || "";
+  my ($font_start, $font_end);
+  if ($color) {$font_start = "<font color=$color>";$font_end = "</font>";}
+  print "\n<br>$font_start$message$font_end\n" if $debug_flag;
+}
+
+# ------------------------------------------------------------------
+# get_dblib_handle()
+# ------------------------------------------------------------------
+sub get_dblib_handle {
+  my %args = ( @_ );    # argument pair list goes here
+  my $server = $args{S};
+  my $user   = $args{U};
+  my $pass   = $args{P};
+  my $database = $args{D};
+  my $text   = $args{T};
+  my $dbh = Sybase::DBlib->dblogin($user, $pass, $server);
+  myexit("Unable to connect to the $text database.") if not defined($dbh);
+  $dbh->dbuse($database) == Sybase::DBlib::SUCCEED  # 1- success, 0 - failure
+  or myexit("failed to change the database to $database");
+  return $dbh;
+}
+
+# ------------------------------------------------------------------
+# do_sql($dbh,$sql)
+# ------------------------------------------------------------------
+sub do_sql {
+  my ($dbh, $sql) = @_;
+  return 0 if not $sql;
+  # ------------------------------------
+  # ---- running SQL
+  # ------------------------------------
+  $dbh->dbcmd($sql); # append statement to the buffer
+  my $status = $dbh->dbsqlexec;
+  if(not $status) {
+    myexit("Unable to execute '$sql'.\n<br>SYBASE error: $DBlib::SYBASE_ERROR\n")
+  }
+  my $rows = $dbh->DBCOUNT || 0;
+
+  # ------------------------------------
+  # ---- clean out other results if any
+  # ------------------------------------
+  while ($dbh->dbresults != Sybase::DBlib::NO_MORE_RESULTS) {
+    my @arr; while( @arr=$dbh->dbnextrow() ) { }
+  }
+  return $rows;
+}
+
+# ------------------------------------------------------------------
+# do_query($dbh,$sql)
+# ------------------------------------------------------------------
+sub do_query {
+  my ($dbh, $sql) = @_;
+  return 0 if not $sql;
+  $dbh->dbcmd ($sql);
+  my $status = $dbh->dbsqlexec;
+  if(not $status) {
+    myexit("Unable to execute '$sql'.\n<br>SYBASE error: $DBlib::SYBASE_ERROR\n")
+  }
+  # ------------------------------------
+  # ---- get results
+  # ------------------------------------
+  my $result_ref = [];
+  if ($dbh->dbresults != Sybase::DBlib::NO_MORE_RESULTS) {
+    my %hh;
+    while( %hh=$dbh->dbnextrow(1) ) { push @$result_ref, {%hh} }
+  }
+  # ------------------------------------
+  # ---- clean out other results if any
+  # ------------------------------------
+  while ($dbh->dbresults != Sybase::DBlib::NO_MORE_RESULTS) {
+    my @arr; while( @arr=$dbh->dbnextrow() ) { }
+  }
+  return $result_ref;
+}
+
+
+# ------------------------------------------------------------------ 
+# do_some_tests() 
+# ------------------------------------------------------------------ 
+sub do_some_tests { 
+
+  # ---------------------------- 
+  debug "----- test select which returns empty", "red"; 
+  # ---------------------------- 
+  $sql = qq{select * from MYDB where 1=2}; 
+  $result = do_query($syb_dbh,$sql); 
+  if (not @$result) {debug "SUCCESS - no results returned"} 
+
+  # ---------------------------- 
+  debug "----- test selecting simple 1-column 1-row data several times", "red"; 
+  # ---------------------------- 
+  for (qw(A B X Y)) { 
+    $sql = qq{select count(*) mycount from MYDB where name like '$_%'}; 
+    $result = do_query($syb_dbh,$sql); 
+    for $row (@$result){ 
+      my $number = $row->{mycount} || 0; 
+      debug "$_ => $number"; 
+    } 
+  } 
+
+  # ---------------------------- 
+  debug "----- test creating temp table #test", "red"; 
+  # ---------------------------- 
+  $sql = qq{create table #test (id int null, name varchar(120) null) }; 
+  do_sql($syb_dbh,$sql); 
+
+  # ---------------------------- 
+  debug "----- test inserting data into temp table #test 
+         and returning the number of rows affected", "red"; 
+  # ---------------------------- 
+  $sql = qq{insert #test select id, name from mydb..MYDB where name like 'X%'}; 
+  my $n_rows = do_sql($syb_dbh,$sql); 
+  debug "n_rows = $n_rows"; 
+
+  # ---------------------------- 
+  debug "----- test selecting multiple columns/rows", "red"; 
+  # ---------------------------- 
+  $sql = qq{select id, name from #test}; 
+  $result = do_query($syb_dbh,$sql); 
+  my $counter=0; 
+  for $row (@$result){ 
+    $counter++; 
+    my $id = $row->{id}; 
+    my $name = $row->{name}; 
+    debug "$counter -- &lt;$id&gt; $name"; 
+  } 
+}
+

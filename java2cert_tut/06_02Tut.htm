@@ -1,0 +1,2592 @@
+<html>
+
+
+
+
+
+
+
+<head>
+
+
+
+
+
+
+
+<title>6.2) Overloading overriding and OO</title>
+
+
+
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+
+
+
+
+
+
+<STYLE TYPE="text/css">
+
+
+
+
+
+
+
+<!--
+
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+</STYLE>
+
+
+
+
+
+
+
+<link rel="stylesheet" href="tutor.css"></head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body bgcolor="#FFFFFF">
+
+<table width=95% border=0 cellpadding=2 cellspacing=0 style="page-break-before: always">
+
+  <col width=147*> <col width=109*> 
+
+  <tr> 
+
+    <td width=57% height=104> 
+
+      <p><a href= "introj2.htm" ><img src= "btnIndex.jpg"  name="Graphic1" alt="Return to Tutorial Index" align=BOTTOM width=55 height=39 border=0></a><a href= "introj2.htm" ><br>
+
+        <br>
+
+        </a><a href= "index.htm" ><img src= "btnHome.jpg"  name="Graphic2" alt="Back to the home page of this site" align=BOTTOM width=55 height=39 border=0></a> 
+
+      </p>
+
+    </td>
+
+    <td width=43%> 
+
+      <p align=RIGHT><img src= "hat.gif"  name="Graphic3" alt="morterboard" align=BOTTOM width=118 height=113 border=0></p>
+
+    </td>
+
+  </tr>
+
+  <tr> 
+
+    <td width=57% height=11> 
+
+      <h1 align=LEFT>Java2 Certification <br>
+
+        Tutorial </h1>
+
+    </td>
+
+    <td width=43% bgcolor="#ff9900"> 
+
+      <p>&nbsp;</p>
+
+    </td>
+
+  </tr>
+
+</table>
+
+<p> You can discuss this topic with others at <a href= "http://www.jchq.net/discus" >http://www.jchq.net/discus</a><br>
+
+  Read reviews and buy a Java Certification book at <a href= "http://www.jchq.net/bookreviews/jcertbooks.htm" >http://www.jchq.net/bookreviews/jcertbooks.htm</a> 
+
+  <br>
+
+</p>
+
+<hr size=5 noshade>
+
+<h1>6) <font face="GENEVA, HELVETICA, ARIAL, LUCIDA SANS"><b>Overloading, overriding, 
+
+
+
+
+
+
+
+  runtime type and object orientation</b></font> </h1>
+
+
+
+
+
+
+
+<h2>Objective 2) </h2>
+
+
+
+
+
+
+
+<p><font face="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">Write code to invoke overridden 
+
+
+
+
+
+
+
+  or overloaded methods and parental or overloaded constructors; and describe 
+
+
+
+
+
+
+
+  the effect of invoking these methods.</font></p>
+
+
+
+
+
+
+
+<h3>Comment on the objective </h3>
+
+
+
+
+
+
+
+<p>The terms <i>overloaded</i> and <i>overridden</i> are similar enough to give 
+
+
+
+
+
+
+
+  cause for confusion. My way of remembering it is to imagine that something that 
+
+
+
+
+
+
+
+  is overriden has literally been ridden over by a heavy vehicle and no longer 
+
+
+
+
+
+
+
+  exists in its own right. Something that is overloaded is still moving but is 
+
+
+
+
+
+
+
+  loaded down with lots of functionality that is causing it plenty of effort. 
+
+
+
+
+
+
+
+  This is just a little mind trick to distinguish the two, it doesn't have any 
+
+
+
+
+
+
+
+  bearing of the reality on the operations in Java.&nbsp;</p>
+
+
+
+
+
+
+
+<h3><font face="GENEVA, HELVETICA, ARIAL, LUCIDA SANS"><b>Overloading methods</b></font> 
+
+
+
+
+
+
+
+</h3>
+
+
+
+
+
+
+
+<p>Overloading of methods is a compiler trick to allow you to use the same name 
+
+
+
+
+
+
+
+  to perform different actions depending on parameters.&nbsp;</p>
+
+
+
+
+
+
+
+<p>Thus imagine you were designing the interface for a system to run mock Java 
+
+
+
+
+
+
+
+  certification exams (who could this be?). An answer may come in as an integer, 
+
+
+
+
+
+
+
+  a boolean or a text string. You could create a version of the method for each 
+
+
+
+
+
+
+
+  parameter type and give it a matching name thus</p>
+
+
+
+
+
+
+
+<pre>markanswerboolean(boolean answer){ 
+        } 
+markanswerint(int answer){ 
+        }
+
+markanswerString(String answer){ 
+        }
+
+</pre>
+
+
+
+
+
+
+
+<p>This would work but it means that future users of your classes have to be aware 
+
+
+
+
+
+
+
+  of more method names than is strictly necessary. It would be more useful if 
+
+
+
+
+
+
+
+  you could use a single method name and the compiler would resolve what actual 
+
+
+
+
+
+
+
+  code to call according to the type and number of parameters in the call.&nbsp;</p>
+
+
+
+
+
+
+
+<p>This is the heart of overloading methods, part of what is known as <i>polymorphism</i>.</p>
+
+
+
+
+
+
+
+<p>There are no keywords to remember in order to overload methods, you just create 
+
+
+
+
+
+
+
+  multiple methods with the same name but different numbers and or types of parameters. 
+
+
+
+
+
+
+
+  The names of the parameters are not important but the number and types must 
+
+
+
+
+
+
+
+  be different. Thus the following is an example of an overloaded markanswer method</p>
+
+
+
+
+
+
+
+<pre>void markanswer(String answer){ 
+        } 
+void markanswer(int answer){ 
+       }
+
+</pre>
+
+
+
+
+
+
+
+<p>The following is not an example of overloading and will cause a compile time 
+
+
+
+
+
+
+
+  error indicating a duplicate method declaration.</p>
+
+
+
+
+
+
+
+<pre>void markanswer(String answer){ 
+        }
+
+void markanswer(String title){ 
+        }
+</pre>
+
+
+
+
+
+
+
+<p>The return type does not form part of the signature for the purpose of overloading.&nbsp;</p>
+
+
+
+
+
+
+
+<p>Thus changing one of the above to have an <i>int</i> return value will still 
+
+
+
+
+
+
+
+  result in a compile time error, but this time indicating that a method cannot 
+
+
+
+
+
+
+
+  be redefined with a different return type.&nbsp;</p>
+
+
+
+
+
+
+
+<p>Overloaded methods do not have any restrictions on what exceptions can be thrown. 
+
+
+
+
+
+
+
+  That is something to worry about with overriding.&nbsp; 
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="9%"><img src= "key2.gif"  width="106" height="73"
+
+
+
+
+
+
+
+align="bottom" border="0"></td>
+
+
+
+
+
+
+
+    <td width="91%"> 
+
+
+
+
+
+
+
+      <h3><font color="#FF0000">Overloaded methods are differentiated only on 
+
+
+
+
+
+
+
+        the number, type and order <br>
+
+
+
+
+
+
+
+        </font><font color="#FF0000">of parameters,</font><font color="#FF0000">not 
+
+
+
+
+
+
+
+        on the return type of the method</font> </h3>
+
+
+
+
+
+
+
+      </td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<h3><font face="GENEVA, HELVETICA, ARIAL, LUCIDA SANS"><b>Overriding methods</b></font> 
+
+
+
+
+
+
+
+</h3>
+
+
+
+
+
+
+
+<p>Overriding a method means that its entire functionality is being replaced. 
+
+
+
+
+
+
+
+  Overriding is something done in a child class to a method defined in a parent 
+
+
+
+
+
+
+
+  class. To override a method a new method is defined in the child class with 
+
+
+
+
+
+
+
+  exactly the same signature as the one in the parent class. This has the effect 
+
+
+
+
+
+
+
+  of shadowing the method in the parent class and the functionality is no longer 
+
+
+
+
+
+
+
+  directly accessible.&nbsp;<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  Java provides an example of overriding in the case of the equals method that 
+
+
+
+
+
+
+
+  every class inherits from the granddady parent Object. The inherited version 
+
+
+
+
+
+
+
+  of <i>equals</i> simply compares where in memory the instance of the class references. 
+
+
+
+
+
+
+
+  This is often not what is wanted, particularly in the case of a String. For 
+
+
+
+
+
+
+
+  a string you would generally want to do a character by character comparison 
+
+
+
+
+
+
+
+  to see if the two strings are the same. To allow for this the version of equals 
+
+
+
+
+
+
+
+  that comes with String is an overriden version that performs this character 
+
+
+
+
+
+
+
+  by character comparison.&nbsp;</p>
+
+
+
+
+
+
+
+<h3><font face="GENEVA, HELVETICA, ARIAL, LUCIDA SANS"><b>Invoking base class 
+
+
+
+
+
+
+
+  constructors</b></font> </h3>
+
+
+
+
+
+
+
+<p>A constructor is a special method that is automatically run every time an instance 
+
+
+
+
+
+
+
+  of a class is created. Java knows that a method is a constructor because it 
+
+
+
+
+
+
+
+  has the same name as the class itself and no return value. A constructor may 
+
+
+
+
+
+
+
+  take parameters like any other method and you may need to pass different parameters 
+
+
+
+
+
+
+
+  according to how you want the class initialised. Thus if you take the example 
+
+
+
+
+
+
+
+  of the Button class from the AWT package its constructor is overloaded to give 
+
+
+
+
+
+
+
+  it two versions. One is</p>
+
+
+
+
+
+
+
+<ul>
+
+
+
+
+
+
+
+  <li>
+
+
+
+
+
+
+
+    <div align="left">Button() </div>
+
+
+
+
+
+
+
+  <li>
+
+
+
+
+
+
+
+    <div align="left">Button(String label) </div>
+
+
+
+
+
+
+
+</ul>
+
+
+
+
+
+
+
+<p>Thus you can create a button with no label and give it one later on, or use 
+
+
+
+
+
+
+
+  the more common version and assign the label at creation time.</p>
+
+
+
+
+
+
+
+<p>Constructors are not inherited however, so if you want to get at some useful 
+
+
+
+
+
+
+
+  constructor from an ancestor class it is not available by default. Thus the 
+
+
+
+
+
+
+
+  following code will not compile</p>
+
+
+
+
+
+
+
+<pre>class Base{
+public  Base(){}
+public  Base(int i){}
+}
+
+
+public class MyOver extends Base{
+public static void main(String argvp[]){
+        MyOver m = new MyOver(10);//Will NOT compile
+        }
+}
+</pre>
+
+
+
+
+
+
+
+<p>The magic keyword you need to get at a constructor in an ancestor is <i>super. 
+
+
+
+
+
+
+
+  </i>This keyword can be used as if it were a method and passed the appropriate 
+
+
+
+
+
+
+
+  parameters to match up with the version of the parental constructor you require. 
+
+
+
+
+
+
+
+  In this modified example of the previous code the keyword <i>super</i> is used 
+
+
+
+
+
+
+
+  to call the single integer version of the constructor in the base class and 
+
+
+
+
+
+
+
+  the code compiles without complaint.</p>
+
+
+
+
+
+
+
+<pre>class Base{
+public Base(){}
+public Base(int i){}
+}
+
+public class MyOver extends Base{
+public static void main(String arg[]){
+                MyOver m = new MyOver(10);
+                }
+        MyOver(int i){
+                super(i);
+        }
+}</pre>
+
+
+
+
+
+
+
+<h3><font face="GENEVA, HELVETICA, ARIAL, LUCIDA SANS"><b>Invoking constructors 
+
+
+
+
+
+
+
+  with <i>this()</i></b></font> </h3>
+
+
+
+
+
+
+
+<p>In the same way that you can call a base class constructor using <i>super() 
+
+
+
+
+
+
+
+  </i>you can call another constructor in the current class by using <i>this</i> 
+
+
+
+
+
+
+
+  as if it were a method. Thus in the previous example you could define another 
+
+
+
+
+
+
+
+  constructor as follows</p>
+
+
+
+
+
+
+
+<pre>        MyOver(String s, int i){
+                this(i);
+                }</pre>
+
+
+
+
+
+
+
+<p>
+
+
+
+
+
+
+
+<p>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="9%"><img src= "key2.gif"  width="106" height="73"
+
+
+
+
+
+
+
+align="bottom" border="0"></td>
+
+
+
+
+
+
+
+    <td width="91%"> 
+
+
+
+
+
+
+
+      <h4><font color="#FF0000">Either <i>this</i> or <i>super</i> can be called 
+
+
+
+
+
+
+
+        as the first line from within <br>
+
+
+
+
+
+
+
+        a constructor, but not both.</font> </h4>
+
+
+
+
+
+
+
+    </td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<p>As you might guess this will call the other constructor in the current class 
+
+
+
+
+
+
+
+  that takes a single integer parameter. If you use <i>super() or this() </i>in 
+
+
+
+
+
+
+
+  a constructor it must be the first method call. As only one or the other can 
+
+
+
+
+
+
+
+  be the first method call, you can not use both <i>super()</i> and <i>this()</i> 
+
+
+
+
+
+
+
+  in a constructor</p>
+
+
+
+
+
+
+
+<p>Thus the following will cause a compile time error.</p>
+
+
+
+
+
+
+
+<pre>       MyOver(String s, int i){
+                this(i);
+		super();//Causes a compile time error 
+        }</pre>
+
+
+
+
+
+
+
+<p>Based on the knowledge that constructors are not inherited, it must be obvious 
+
+
+
+
+
+
+
+  that overriding is irrelevant. If you have a class called Base and you create 
+
+
+
+
+
+
+
+  a child that extends it, for the extending class to be overriding the constructor 
+
+
+
+
+
+
+
+  it must have the same name. This would cause a compile time error. Here is an 
+
+
+
+
+
+
+
+  example of this nonsense hierarchy.</p>
+
+
+
+
+
+
+
+<pre>class Base{}
+class Base extends Base{} //Compile time error!
+
+</pre>
+
+
+
+
+
+
+
+<h3> <font face="GENEVA, HELVETICA, ARIAL, LUCIDA SANS"><b>Constructors and the 
+  class hierarchy</b></font></h3>
+
+
+
+
+
+
+
+<p>Constructors are always called downward from the top of the hierarchy. You 
+
+
+
+
+
+
+
+  are very likely to get some questions on the exam that involve a class hierarchy 
+
+
+
+
+
+
+
+  with various calls to <i>this </i>and <i>super </i>and you have to pick what 
+
+
+
+
+
+
+
+  will be the output. Look out for questions where you have a complex hierarchy 
+
+
+
+
+
+
+
+  that is made irrelevant by a constructor that has a call to both <i>this </i>and 
+
+
+
+
+
+
+
+  <i>super </i>and thus results in a compile time error.</p>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="9%"><img src= "key2.gif"  width="106" height="73"
+
+
+
+
+
+
+
+align="bottom" border="0"></td>
+
+
+
+
+
+
+
+    <td width="91%"> 
+
+
+
+
+
+
+
+      <h4><font color="#FF0000">Constructors are called from the base (ancestor) 
+
+
+
+
+
+
+
+        of <br>
+
+
+
+
+
+
+
+        the hierarchy downwards.</font> </h4>
+
+
+
+
+
+
+
+    </td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<p>Take the following example</p>
+
+
+
+
+
+
+
+<pre>class Mammal{</pre>
+
+
+
+
+
+
+
+<pre>        Mammal(){
+                System.out.println(&quot;Creating Mammal&quot;);
+        }                
+}
+
+public class Human extends Mammal{
+public static void main(String argv[]){
+        Human h = new Human();
+        }
+        Human(){
+        System.out.println(&quot;Creating Human&quot;);
+       }
+}</pre>
+
+
+
+
+
+
+
+<p>When this code runs the string &quot;Creating Mammal&quot; is output first 
+
+
+
+
+
+
+
+  due to the implicit call to the no-args constructor at the base of the hierarchy. 
+
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="11%"><img src= "Quiz.gif"  width="99" height="101"></td>
+
+
+
+
+
+
+
+    <td width="89%">&nbsp;</td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<h1>Questions</h1>
+
+
+
+
+
+
+
+<h4><b>Question 1)</b></h4>
+
+
+
+
+
+
+
+<p>Given the following class definition, which of the following methods could 
+
+
+
+
+
+
+
+  be legally placed after the comment with the commented word &quot;//Here&quot;?</p>
+
+
+
+
+
+
+
+<pre>public class Rid{
+        public void amethod(int i, String s){}
+	//Here
+}</pre>
+
+
+
+
+
+
+
+<p>1) public void amethod(String s, int i){}<br>
+  2) public int amethod(int i, String s){} <br>
+  3) public void amethod(int i, String mystring){} <br>
+  4) public void Amethod(int i, String s) {}</p>
+
+
+
+
+
+
+
+<p> 
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 2)</b> </h4>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<p>Given the following class definition which of the following can be legally 
+
+
+
+
+
+
+
+  placed after the comment line<br>
+
+
+
+
+
+
+
+  //Here ?</p>
+
+
+
+
+
+
+
+<pre>class Base{
+public Base(int i){}
+}
+
+public class MyOver extends Base{
+public static void main(String arg[]){
+                MyOver m = new MyOver(10);
+               }
+        MyOver(int i){
+                super(i);
+       }
+
+        MyOver(String s, int i){
+                this(i);
+                 //Here
+        }
+}</pre>
+
+
+
+
+
+
+
+<p>1) MyOver m = new MyOver();<br>
+
+
+
+
+
+
+
+  2) super(); <br>
+
+
+
+
+
+
+
+  3) this(&quot;Hello&quot;,10);<br>
+
+
+
+
+
+
+
+  4) Base b = new Base(10);</p>
+
+
+
+
+
+
+
+<p> 
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 3)</b> </h4>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<p>Given the following class definition</p>
+
+
+
+
+
+
+
+<pre>class Mammal{
+        Mammal(){
+                System.out.println(&quot;Mammal&quot;);
+        }
+}
+
+class Dog extends Mammal{
+        Dog(){
+                System.out.println(&quot;Dog&quot;);
+        }
+}
+
+public class Collie extends Dog {
+public static void main(String argv[]){
+        Collie c = new Collie();
+
+}
+
+        Collie(){
+             this(&quot;Good Dog&quot;);
+             System.out.println(&quot;Collie&quot;);
+        }
+        Collie(String s){
+        System.out.println(s);
+       }
+}
+</pre>
+
+
+
+
+
+
+
+<p>What will be output?</p>
+
+
+
+
+
+
+
+<p>1) Compile time error<br>
+
+
+
+
+
+
+
+  2) Mammal, Dog, Good Dog, Collie<br>
+
+
+
+
+
+
+
+  3) Good Dog, Collie, Dog, Mammal<br>
+
+
+
+
+
+
+
+  4) Good Dog, Collie<br>
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 4)</b> </h4>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<p>Which of the following statements are true?</p>
+
+
+
+
+
+
+
+<p>1) Constructors are not inherited<br>
+
+
+
+
+
+
+
+  2) Constructors can be overriden<br>
+
+
+
+
+
+
+
+  3) A parental constructor can be invoked using this<br>
+
+
+
+
+
+
+
+  4) Any method may contain a call to <i>this</i> or <i>super<br>
+
+
+
+
+
+
+
+  </i> 
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 5)</b> </h4>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<p>What will happen when you attempt to compile and run the following code?</p>
+
+
+
+
+
+
+
+<pre>class Base{
+        public void amethod(int i, String s){
+        System.out.println(&quot;Base amethod&quot;);
+        }
+        Base(){
+        System.out.println(&quot;Base Constructor&quot;);
+        }
+
+}
+
+public class Child extends Base{
+int i;
+String Parm=&quot;Hello&quot;;
+public static void main(String argv[]){
+        Child c = new Child();
+        c.amethod();
+}
+
+void amethod(int i, String Parm){
+        super.amethod(i,Parm);
+        }
+public void amethod(){}
+}
+</pre>
+
+
+
+
+
+
+
+<p>1) Compile time error<br>
+
+
+
+
+
+
+
+  2) Error caused by illegal syntax super.amethod(i,Parm)<br>
+
+
+
+
+
+
+
+  3) Output of &quot;Base Constructor&quot;<br>
+
+
+
+
+
+
+
+  4) Error caused by incorrect parameter names in call to <i>super.amethod</i></p>
+
+
+
+
+
+
+
+<p> 
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<h4><b>Question 6)</b> </h4>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<p>What will be output if you attempt to compile and run this code?</p>
+
+
+
+
+
+
+
+<pre>class Mammal{
+Mammal(){
+        System.out.println(&quot;Four&quot;);
+        }
+public void ears(){
+        System.out.println(&quot;Two&quot;);
+        }
+}
+class Dog extends Mammal{
+        Dog(){
+        super.ears();
+        System.out.println(&quot;Three&quot;);
+        }
+}
+
+public class Scottie extends Dog{
+public static void main(String argv[]){
+        System.out.println(&quot;One&quot;);
+        Scottie h = new Scottie();
+        }
+}
+</pre>
+
+
+
+
+
+
+
+<p>1) One, Three, Two, Four<br>
+
+
+
+
+
+
+
+  2) One, Four, Three, Two<br>
+
+
+
+
+
+
+
+  3) One, Four, Two, Three<br>
+
+
+
+
+
+
+
+  4) Compile time error 
+
+
+
+
+
+
+
+<h2>Answers</h2>
+
+
+
+
+
+
+
+<h4><b>Answer 1)</b></h4>
+
+
+
+
+
+
+
+<p><b> </b>1) public void amethod(String s, int i){}<br>
+
+
+
+
+
+
+
+  4) public void Amethod(int i, String s) {}</p>
+
+
+
+
+
+
+
+<p><br>
+
+
+
+
+
+
+
+  The upper case A on Amethod means that this is a different method.</p>
+
+
+
+
+
+
+
+<h4> <br>
+
+
+
+
+
+
+
+  <b>Answer 2)</b></h4>
+
+
+
+
+
+
+
+<p>4) Base b = new Base(10);</p>
+
+
+
+
+
+
+
+<p>Any call to <i>this</i> or super must be the first line in a constructor. As 
+
+
+
+
+
+
+
+  the method already has a call to this, no more can be inserted.
+
+
+
+
+
+
+
+<h4> <b><br>
+
+
+
+
+
+
+
+  Answer 3)</b></h4>
+
+
+
+
+
+
+
+<p><b> </b>2) Mammal, Dog, Good Dog, Collie
+
+
+
+
+
+
+
+<h4> <br>
+
+
+
+
+
+
+
+  <b>Answer 4)</b></h4>
+
+
+
+
+
+
+
+<p><b> <br>
+
+
+
+
+
+
+
+  </b>1) Constructors are not inherited<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  Parental constructors are invoked using <i>super, </i>not <i>this</i>. 
+
+
+
+
+
+
+
+<h4><br>
+
+
+
+
+
+
+
+  <b>Answer 5)</b></h4>
+
+
+
+
+
+
+
+<p> 1) Compile time error<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  This will cause an error saying something like &quot;you cannot override methods 
+
+
+
+
+
+
+
+  to be more private&quot;. The base version of <i>amethod</i> was specifically 
+
+
+
+
+
+
+
+  marked as public whereas the child had no specifier. OK so this was not a test 
+
+
+
+
+
+
+
+  of your knowlege of constructors overloading but they don't tell you the topic 
+
+
+
+
+
+
+
+  in the exam either. If it were not for the omission of the keyword <i>public</i> 
+
+
+
+
+
+
+
+  this code would output &quot;Base constructor&quot;, option 3.
+
+
+
+
+
+
+
+<h4> <br>
+
+
+
+
+
+
+
+  <b>Answer 6)</b></h4>
+
+
+
+
+
+
+
+<p><b> </b>3) One, Four, Two, Three<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  The classes are created from the root of the hierarchy downwards. Thus One is 
+
+
+
+
+
+
+
+  output first as it comes before the instantiation of the Scottie h. Then the 
+
+
+
+
+
+
+
+  JVM moves to the base of the hierarchy and runs the constructor for the grandparent 
+
+
+
+
+
+
+
+  Mammal. This outputs &quot;Four&quot;. Then the constructor for Dog runs. The 
+
+
+
+
+
+
+
+  constructor for Dog calls the <i>ears </i>method in Mammal and thus &quot;Two&quot; 
+
+
+
+
+
+
+
+  is output. Finally the constructor for Dog completes and outputs &quot;Three&quot;.<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+<hr align="CENTER">
+
+
+
+
+
+
+
+<table border="1" width="100%">
+
+
+
+
+
+
+
+  <caption><b>Other sources on this topic</b></caption>
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="100%"><b>This topic is covered in the Sun Tutorial at </b><br>
+
+
+
+
+
+
+
+      <a href= "http://java.sun.com/docs/books/tutorial/java/javaOO/methoddecl.html" >http://java.sun.com/docs/books/tutorial/java/javaOO/methoddecl.html</a><br>
+
+
+
+
+
+
+
+      <br>
+
+
+
+
+
+
+
+      <b>Richard Baldwin covers this topic at<br>
+
+
+
+
+
+
+
+      </b><a href= "http://www.geocities.com/Athens/Acropolis/3797/Java004.htm#polymorphism in general" >http://www.Geocities.com/Athens/Acropolis/3797/Java004.htm#polymorphism 
+
+
+
+
+
+
+
+      in general</a><a href= "http://www.geocities.com/Athens/Acropolis/3797/Java004.htm#an initial description of oop" ><br>
+
+
+
+
+
+
+
+      </a>(This is general stuff on OOP rather than concentrating on &quot;is 
+
+
+
+
+
+
+
+      a&quot; &quot;has a&quot;<b>)<br>
+
+
+
+
+
+
+
+      <br>
+
+
+
+
+
+
+
+      Jyothi Krishnan on this topic at <br>
+
+
+
+
+
+
+
+      </b><a href= "http://www.geocities.com/SiliconValley/Network/3693/obj_sec6.html#obj20" >http://www.geocities.com/SiliconValley/Network/3693/obj_sec6.html#obj20</a></td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<p>Last updated<br>
+
+
+
+
+
+
+
+  12 Jan 2000<br>
+
+
+
+  copyright &copy; Marcus Green 2000</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<h2>&nbsp;</h2>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>
+
+
+
+
+
+
+

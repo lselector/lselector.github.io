@@ -1,0 +1,1210 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>cobol</title>
+<!--
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Cobol</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=6 >
+<tr>
+<td><b><font color="#CC0000">Cobol - incomplete tutorial</font></b></td>
+
+<td></td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">• </font><a href="#cobol_introduction">Introduction</a>
+<br><font color="#6699CC">• </font><a href="#cobol_the_basics">The Basics</a>
+<br><font color="#6699CC">• </font><a href="#cobol_screen_output">Screen
+Output</a>
+<br><font color="#6699CC">• </font><a href="#cobol_data_declaration">Data
+Declaration</a>
+<br><font color="#6699CC">• </font><a href="#cobol_keyboard_input">Keyboard
+Input</a>
+<br><font color="#6699CC">• </font><a href="#cobol_assigning_values_to_variables">Assigning
+Values to Variables</a>
+<br><font color="#6699CC">• </font><a href="#cobol_arithmetic_operations">Arithmetic
+Operations</a>
+<br><font color="#6699CC">• </font><a href="#cobol_procedural_abstraction">Procedural
+Abstraction : Paragraphs</a></td>
+
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">• </font><a href="#cobol_sections">Procedural
+Abstraction : Sections</a>
+<br><font color="#6699CC">• </font><a href="#cobol_control_structures_selection">Control
+Structures : Selection</a>
+<br><font color="#6699CC">• </font><a href="#cobol_control_structures_iteration">Control
+Structures : Iteration</a>
+<br><font color="#6699CC">• </font><a href="#cobol_records">Records</a>
+<br><font color="#6699CC">• </font><a href="#cobol_sequential_files">Sequential
+Files</a>
+<br><font color="#6699CC">• </font><a href="#cobol_data_editing">Data Editing</a>
+<br><font color="#6699CC">• </font><a href="#cobol_arrays">Arrays</a>
+<br><font color="#6699CC">• </font><a href="#cobol_indexed_files">Indexed
+Files</a></td>
+</tr>
+</table>
+<a NAME="cobol_introduction"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>introduction</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>This tutorial is adapted from: <a href="http://homepages.paradise.net.nz/milhous/cobol.htm">http://homepages.paradise.net.nz/milhous/cobol.htm</a>
+<p>COBOL is an old language, it is used on mainframes.&nbsp; There was
+quite a demand for COBOL programmers before year 2000 - to fix old programs.&nbsp;
+Today (2001) it is still an important language, but mainly because there
+are thousands and thousands of applications out there written in COBOL,
+and someone has got to fix them and add to them. There aren't as many jobs
+for COBOL as for C++ or Java, but then again, not a lot of people are learning
+COBOL anymore.
+<p>COBOL really isn't that difficult either, especially if you know other
+structured languages like Pascal and C. You can easily learn enough to
+sound intelligent in a day. There aren't many data-structures (actually,
+everything is really a record), and there are no notions of scope or parameter
+passing.
+<br><a NAME="cobol_the_basics"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>The Basics</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>A "hello world" program is as good a way as any to understand the structure
+of a COBOL program, so here it is:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td><b><font color="#3333FF">IDENTIFICATION DIVISION</font></b>
+<br><font color="#3333FF"><b>PROGRAM-ID</b> HELLO-WORLD</font>
+<br><b><font color="#3333FF">ENVIRONMENT DIVISION</font></b>
+<br><b><font color="#3333FF">DATA DIVISION</font></b>
+<br><b><font color="#3333FF">PROCEDURE DIVISION</font></b>
+<br><font color="#3333FF">FIRST-PARA.</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; <b>DISPLAY</b> "Hello World".</font>
+<br><b><font color="#3333FF">STOP RUN</font></b></td>
+</tr>
+</table>
+This is quite a bit more complex than a similar program an Pascal or C
+<br>The first thing to notice are the four divisions :
+<br>&nbsp;&nbsp;&nbsp; <b>IDENTIFICATION DIVISION</b> : This is where you
+must enter the program name. You can also enter when and by whom it was
+written.
+<br>&nbsp;&nbsp;&nbsp; <b>ENVIRONMENT DIVISION </b>: This is where you
+define the files the program needs. You also used to put hardware information
+here, but that isn't really necessary anymore.
+<br>&nbsp;&nbsp;&nbsp; <b>DATA DIVISION </b>: This is where you declare
+variables, records, files etc. It is similar to the top of a Pascal program.
+<br>&nbsp;&nbsp;&nbsp; <b>PROCEDURE DIVISION </b>: This is where you write
+the program. In the sample above this is all in one paragraph. A paragraph
+is a series of statements named by a label (FIRST-PARA in this case). There
+is no specific mark to the end of a paragraph.
+<p>Each statement begins with a word like <b>DISPLAY</b> that describes
+the action to be performed by the statement.
+<br>There are a couple of hundred reserved words in COBOL so it is useful
+to put hyphens in user defined names like HELLO-WORLD.
+<br><a NAME="cobol_screen_output"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Screen output</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Screen output is always one of the first things you want to master with
+a new language. You have seen an example of screen output with the
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; <b>DISPLAY</b> "Hello World".</font>
+<br>statement. You can also use it to write digits:
+<br><font color="#3333FF">&nbsp;&nbsp; <b>DISPLAY</b> 300.</font>
+<br>Or a combination:
+<br><font color="#3333FF">&nbsp;&nbsp; <b>DISPLAY</b> "The number is "
+300.</font>
+<br>The problem with number is that this technique only works for unsigned
+integers, a way around this is as follows:
+<br><font color="#3333FF">&nbsp;&nbsp; <b>DISPLAY</b> "-766.32".</font>
+<br>To find out more about using floating-point and signed numbers, see
+the <a href="#cobol_arithmetic_operations">Arithmetic Operations</a> section.
+<br>Also note that you can't make statements like :
+<br><font color="#3333FF">&nbsp;&nbsp; <b>DISPLAY</b> 2 + 3</font>
+<br>You have to store the result of 2 + 3 in a variable first. See the
+<a href="#cobol_assigning_values_to_variables">Assigning
+Values to Variables</a> section.
+<br><a NAME="cobol_data_declaration"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Data Declaration</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>The HELLO-WORLD program can be altered to demonstrate basic data declaration.
+In this program two string variables and one number variable are created
+and given initial values. These are then printed out.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td><b><font color="#3333FF">IDENTIFICATION DIVISION</font></b>
+<br><font color="#3333FF"><b>PROGRAM-ID</b> HELLO-WORLD</font>
+<br><b><font color="#3333FF">ENVIRONMENT DIVISION</font></b>
+<br><b><font color="#3333FF">DATA DIVISION</font></b>
+<br><b><font color="#3333FF">WORKING-STORAGE SECTION.</font></b>
+<br><font color="#3333FF">01 WS_STRING-1&nbsp;&nbsp;&nbsp; <b>PIC </b>X(20)</font>
+<br><font color="#3333FF">&nbsp;&nbsp; <b>VALUE </b>"Hello World".</font>
+<br><font color="#3333FF">01 WS-STRING-2&nbsp;&nbsp;&nbsp; <b>PIC </b>X(30)</font>
+<br><font color="#3333FF">&nbsp;&nbsp; <b>VALUE </b>"This is program number
+".</font>
+<br><font color="#3333FF">01 WS-PROGRAM-NUMBER&nbsp;&nbsp;&nbsp; <b>PIC
+</b>9(2)</font>
+<br><font color="#3333FF">&nbsp;&nbsp; <b>VALUE </b>1.</font>
+<br><b><font color="#3333FF">PROCEDURE DIVISION</font></b>
+<br><font color="#3333FF">FIRST-PARA.</font>
+<br><font color="#3333FF">&nbsp;&nbsp; <b>DISPLAY</b> WS-STRING-1.</font>
+<br><font color="#3333FF">&nbsp;&nbsp; <b>DISPLAY </b>WS-STRING-2.</font>
+<br><font color="#3333FF">&nbsp;&nbsp; <b>DISPLAY </b>WS-PROGRAM-NUMBER.</font>
+<br><b><font color="#3333FF">STOP RUN</font></b></td>
+</tr>
+</table>
+
+<p>The <b>WORKING-STORAGE SECTION </b>is used for declaring variables other
+than files and associated records. The 01 before each variable is its level
+number - the need for these becomes apparent when we deal with <a href="#cobol_records">records</a>.
+This is followed by the data name, and then a <b>PIC</b> clause. The <b>PIC
+</b>clause
+establishes the type and size of the variable. 'X' represents a character,
+'9' represents a number. The number following in brackets tells the size
+(for X(4) you could also write XXXX).
+<br><a NAME="cobol_keyboard_input"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Keyboard Input</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Keyboard input is simple. We can use the variable WE-PROGRAM-NUMBER
+from above to store a new program number:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td><b>DISPLAY </b>"Enter the program number".
+<br><b>ACCEPT</b> WS-PROGRAM-NUMBER.</td>
+</tr>
+</table>
+This can only be used to obtain a single variable at a time.
+<br><a NAME="cobol_assigning_values_to_variables"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Assigning Values to Variables</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>The two main keywords used for this are <b>MOVE </b>and <b>COMPUTE</b>.
+<br>Continuing with our variable WS-PROGRAM-NUMBER from the <a href="#cobol_data_declaration">Data
+Declaration</a> section, we can assign a new value for it with the following
+structure in the <b>PROCEDURE DIVISION</b> section :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>MOVE </b>5&nbsp;<b>
+TO&nbsp;</b> WS-PROGRAM-NUMBER.</font>
+<br>We can give WS-STRING-1 a new value like this :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>MOVE </b>"Hello
+Everyone" <b>TO </b>WS-STRING-1.</font>
+<br>There is a more advanced type of assignment that <b>MOVE </b>can't
+help us with. Given correctly declared variables, we can write the following
+in Pascal :
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>numA := numB * numC;</b>
+<br>The value of numA becomes the value of the expression numB * numC.
+To do this in COBOL we need to use the <b>COMPUTE&nbsp;</b> keyword.
+<p>Suppose we have created two number variables in the <b>DATA DIVISION
+</b>section
+called WS-NUMBER-1 and WS-NUMBER-2. These have been given values, and we
+want to multiply them together and store the result in WS-PROGRAM-NUMBER.
+We can do this with the following code in the <b>PROCEDURE DIVISION </b>section
+:
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>COMPUTE</b>
+WS-PROGRAM-NUMBER = WS-NUMBER-1 * WS-NUMBER-2.</font>
+<br>You could also just use numbers :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>COMPUTE </b>WS-PROGRAM-NUMBER
+= 10 * 5.</font>
+<br>Remember to be careful when assigning values to variables. <i><u><font color="#CC0000">COBOL
+won't check to see if the new value is appropriate for the variable in
+either size or type.</font></u></i> In fact, it is worth pointing out here,
+COBOL has very little built in error checking, so be careful.
+<br><a NAME="cobol_arithmetic_operations"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#000000">Arithmetic Operations</font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>The <b>COMPUTE </b>keyword above introduced arithmetic. Bare in mind
+that there is no <b>mod </b>operator available, and division is done with
+/.
+<br>With division, numbers can be rounded up like this :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>COMPUTE </b>WS-NUMBER-1
+<b>ROUNDED
+</b>=
+37/10.</font>
+<br>COBOL can also handle floating point numbers. Floating point numbers
+are declared like this in <b>DATA DIVISION </b>:
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WS-NUMBER-10&nbsp;
+<b>PIC </b>99V99.</font>
+<br>This number can hold values with two leading and two trailing spaces
+like 23.98.
+<br>A confusing aspect of this is that to enter a number like this <i><u><font color="#CC0000">with<b>
+ASSIGN </b>the user would have to enter 2398</font></u></i>.
+<br>COBOL can also deal with signed numbers. Simply put an S at the front
+:
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WS-NUMBER-10&nbsp;
+<b>PIC </b>S99V99.</font>
+<br>We could now give it the value -32.76.
+<p>There are also a collection of keywords that deal with arithmetic. Given
+the right declarations statements like these sometimes occur :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>ADD </b>WS-NUMBER-1
+<b>TO
+</b>WS-NUMBER-2.</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>MULTIPLY </b>WS-NUMBER-1
+<b>BY
+</b>WS-NUMBER-2
+<b>GIVING
+</b>WS-NUMBER-3.</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>DIVIDE </b>WS-NUMBER-1
+<b>INTO
+</b>WS-NUMBER-2
+<b>GIVING
+</b>WS-NUMBER-3
+<b>REMAINDER
+</b>WS-NUMBER-4.</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>SUBTRACT </b>WS-NUMBER-1
+<b>FROM
+</b>WS-NUMBER-2
+<b>GIVING
+</b>WS-NUMBER-3.</font>
+<br>This is all very silly, but COBOL is an old language. As you can see,
+the <b>GIVING </b>clause is optional.
+<p>There is an additional clause you may add to the end :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>ADD </b>WS-NUMBER-1
+<b>TO
+</b>WS-NUMBER-2</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>ON SIZE ERROR</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>
+DISPLAY </b>"Size error"</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>NOT SIZE ERROR</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>
+DISPLAY </b>WS-NUMBER-1</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>END-ADD</b></font>
+<br><a NAME="cobol_procedural_abstraction"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#000000">Procedural Abstraction</font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Just like Pascal and C, COBOL allows you to split your code up into
+small procedures. This is what the <b>PROCEDURE DIVISION
+</b>portion of
+a program will resemble when the <b>PERFORM </b>keyword is used to split
+the code into separate procedures. In this example the procedures (with
+names like PARA-ONE) call each other in turn :
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td><font color="#3333FF">CONTROL-PARA.</font>
+<br><font color="#3333FF">.....................</font>
+<br><font color="#3333FF"><b>PERFORM </b>PARA-TWO.</font>
+<br><font color="#3333FF"><b>DISPLAY </b>"Paragraph two has been executed".</font>
+<br><b><font color="#3333FF">STOP RUN.</font></b>
+<p><font color="#3333FF">PARA-ONE.</font>
+<br><font color="#3333FF">.....................</font>
+<p><font color="#3333FF">PARA-TWO.</font>
+<br><font color="#3333FF">.....................</font>
+<p><font color="#3333FF"><b>PERFORM </b>PARA-THREE.</font>
+<br><font color="#3333FF"><b>DISPLAY </b>"Paragraph three has been executed"</font>
+<p><font color="#3333FF">PARA-THREE.</font>
+<br><font color="#3333FF"><b>DISPLAY </b>"This is the last paragraph"</font>
+<br><font color="#3333FF">..................</font></td>
+</tr>
+</table>
+
+<p>Note that the paragraph names are arbitrary, and nothing explicitly
+marks the end of them. They can be called with <b>PERFORM </b>followed
+by their name. Also, unlike in Pascal, the code to be executed when the
+program begins is before the other procedures. Make sure the last statement
+in the first paragraph is <b>STOP RUN</b> or you will find yourself in
+a lot of trouble.
+<br><a NAME="cobol_sections"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#000000">Sections</font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>A whole group of <a href="#cobol_procedural_abstraction">paragraphs</a>
+can be combined in a larger structure called a <b>SECTION</b>. A section
+can then be called with <b>PERFORM</b>, so in effect a section is like
+a sub-program.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td><font color="#3366FF">SEC-ONE <b>SECTION.</b></font>
+<br><font color="#3366FF">SEC-CONTROL.</font>
+<br><font color="#3366FF">................</font>
+<br><font color="#3366FF"><b>PERFORM </b>SEC-ONE-ONE.</font>
+<br><font color="#3366FF">..............</font>
+<br><font color="#3366FF"><b>GO TO </b>SEC-EXIT.</font>
+<br><font color="#3366FF">SEC-ONE-ONE.</font>
+<br><font color="#3366FF">.....................</font>
+<br><font color="#3366FF">SEC-EXIT.</font>
+<br><b><font color="#3366FF">EXIT.</font></b></td>
+</tr>
+</table>
+This could then be called by :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>PERFORM </b>SECTION-ONE.</font>
+<br>Control is then passed to the first paragraph in SECTION-ONE, and doesn't
+return to the rest of the program until <b>GO TO </b>is executed. This
+is the equivalent of <b>STOP RUN</b>.
+<p>In case you were wondering, these aren't really procedures in the Pascal
+sense. You cannot pass them parameters, and they can't create their own
+independent variables - everything is global in COBOL.
+<br><a NAME="cobol_control_structures_selection"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#000000">Control Structures : Selection</font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>COBOL has fewer structures for controlling program flow than other languages
+like C, but it does the job.
+<br>Control Structures rely on conditionals to evaluate between alternatives.
+COBOL includes the following :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;, >, >=, &lt;=,
+=, <b>NOT=</b></font>
+<br>These are self explanatory, and they also have word form equivalents:
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LESS, GREATER,
+GREATER OR EQUAL, LESS OR EQUAL, EQUAL, NOT EQUAL</font></b>
+<br>There are also the three main logical operators :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>AND, NOT, OR</b></font>
+<br>Selection statements can now be made as follows :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>IF&nbsp;</b>
+WS-NUMBER-1 > 100</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>THEN</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>
+DISPLAY </b>"Greater than 100".</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+...........</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>END IF.</b></font>
+<br>We can also add an <b>ELSE </b>clause :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>IF&nbsp;</b>
+WS-NUMBER-1 > 100</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>THEN</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>
+DISPLAY </b>"Greater than 100".</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>ELSE</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b>DISPLAY </b>"Not greater than 100"</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>END IF.</b></font>
+<br>You can also nest selection structures inside other selection structures,
+just remember to put the right number of <b>END IF </b>statements in.
+<p>There is also the<b><i><u> equivalent of the Pascal Case statement</u></i></b>.
+This one evaluates WS-NUMBER-1, and calls a different procedure for each
+possible value :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>ACCEPT </b>WS-NUMBER-1.</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>EVALUATE </b>WS-NUMBER-1</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b>WHEN </b>"1" <b>PERFORM </b>PARA-ONE</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b>WHEN </b>"2" <b>PERFORM </b>PARA-TWO</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b>WHEN </b>"3" <b>PERFORM </b>PARA-THREE</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b>WHEN OTHER PERFORM </b>PARA-FOUR</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>END-EVALUATE</b></font>
+<p>You can also test to see if a piece of data is one of four class types
+:
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>ALPHABETIC,
+ALPHABETIC-UPPER, ALPHABETIC-LOWER, NUMERIC</b></font>
+<br>So we can have statements like
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>IF </b>WS-NUMBER-1
+<b>NUMERIC
+</b>......</font>
+<br><a NAME="cobol_control_structures_iteration"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#000000">Control Structures : Iteration</font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>The Pascal While statement can be performed like this :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>ACCEPT </b>WS-NUMBER-1</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>PERFORM UNTIL
+</b>WS-NUMBER-1
+> 100</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b>AND </b>WS-NUMBER-1 &lt; 1000</font>
+<br><font color="#3333FF"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DISPLAY </b>"Still between 100 and 1000"</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b>ACCEPT </b>WS-NUMBER-1</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>END-PERFORM</b></font>
+<p>The Pascal For statement is implemented&nbsp; like this :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>PERFORM
+TEST AFTER VARYING </b>WS-INDEX <b>FROM</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>&nbsp;&nbsp;&nbsp;
+</b>1 <b>BY</b> 1 <b>UNTIL
+</b>WS-INDEX = 10</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b>DISPLAY </b>"WS-INDEX is now equal to " WS-INDEX</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>END-PERFORM</b></font>
+<br>This is more complex than Pascal, but it is still pretty obvious what
+is going on - it starts at 1, increments by 1, and goes until 10.
+<br><a NAME="cobol_records"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#000000">Records</font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>A record is a set of related information grouped together. They are
+extremely common in COBOL applications. Here is how one might be declared
+in COBOL to hold information about a person :
+<br><b><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATA DIVISION</font></b>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>WORKING STORAGE
+SECTION</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 01 WS-PERSON-RECORD</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+03 WS-NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>PIC
+</b>X(20)</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+03 WS-ADDRESS&nbsp; <b>PIC </b>X(40)</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+03 WS-AGE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>PIC
+</b>9(2)</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 01 WS-STRING&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b>PIC
+</b>X(80)</font>
+<p>Note that the top line has no <b>PIC </b>clause - this is the<i> group
+item</i>. The others are the <i>elementary items</i>.
+<p>We can now use this is various ways. Firstly, we can initialize it as
+empty like this :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>MOVE SPACES
+TO </b>WS-PERSON-RECORD</font>
+<br>We can now put some values into the elements :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>MOVE </b>22
+<b>TO
+</b>WS-AGE</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>MOVE </b>"Dane"
+<b>TO
+</b>WS-NAME</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>MOVE </b>"New
+Zealand"<b> TO </b>WS-ADDRESS</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>MOVE </b>WS-ADDRESS
+<b>TO
+</b>WS-STRING</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>DISPLAY </b>WS-STRING.</font>
+<br>This is also possible :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>MOVE </b>WS-PERSON-RECORD
+<b>TO
+</b>WS-STRING</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>DISPLAY </b>WS-STRING</font>
+<br>The data in a record is alphanumeric. Even if it is a number, though,
+arithmetic arguments can't be applied to it.
+<p>You can also nest records inside records :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 01 WS-PERSON-RECORD</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+03 WS-NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<b>PIC </b>X(20)</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+03 WS-ADDRESS</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+05 WS-STREET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>PIC </b>X(20)</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+05 WS-CITY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>PIC</b>
+X(20)</font>
+<p>Note now that WS-ADDRESS doesn't have a <b>PIC </b>clause.
+<p>The reason the levels have been ordered 01, 03, 05 is simple. They could
+be ordered 01, 02, 03; but then if you wanted to insert a new level between
+01 and 02, you would also have to change the value of 03.
+<p>Notice that you can directly reference a field, unlike in Pascal where
+you need to use A dot operator like&nbsp; RecordName.FieldName. However,
+if a field name is used elsewhere for another purpose you need to give
+the record name :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>MOVE SPACES
+TO </b>WS-AGE
+<b>IN </b>WS-PERSON-RECORD</font>
+<br><a NAME="cobol_sequential_files"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#000000">Sequential Files</font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>A sequential file consists of a sequence of data items terminated by
+an end marker, and stored on a disk or some other permanent storage device.
+<br>To use a sequential file in COBOL you must make declarations in three
+of the four divisions.
+<br>Firstly, the following code is placed in the <b>ENVIRONMENT DIVISION
+:</b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td><b><font color="#3333FF">ENVIRONMENT DIVISION</font></b>
+<br><b><font color="#3333FF">INPUT-OUTPUT SECTION.</font></b>
+<br><b><font color="#3333FF">FILE-CONTROL.</font></b>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;<b> SELECT </b>DATA-FILE-1</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; <b>ASSIGN TO </b><i>DEVICE-NAME</i></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; <b>ORGANIZATION IS SEQUENTIAL</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;<b> ACCESS MODE IS SEQUENTIAL</b></font></td>
+</tr>
+</table>
+
+<p>Actually, the last two lines aren't needed since they are the default
+conditions for a sequential file.
+<br>Each file that is going to be used must have its own <b>SELECT </b>division.
+<br>With regards to <i>DEVICE-NAME, </i>this can vary, but usually DISK
+and PRINTER will be two of the options available.
+<br>Each file must also be defined in the <b>DATA DIVISION</b> section:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td><b><font color="#3333FF">DATA DIVISION.</font></b>
+<br><b><font color="#3333FF">FILE SECTION.</font></b>
+<br><font color="#3333FF"><b>FD </b>DATA-FILE-1.</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; 01 PERSON-REC.</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 03
+NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>PIC</b> X(20)</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 03
+ADDRESS&nbsp;&nbsp;&nbsp; <b>PIC </b>X(30)</font></td>
+</tr>
+</table>
+
+<p>These records are defined just the same as those in the <b>WORKING-STORAGE</b>
+section.
+<p>Now we can use <b>READ </b>and <b>WRITE </b>to work with these files
+in the <b>PROCEDURE DIVISION </b>section, but first it must be opened in
+this section. This code opens the file and transfers the first record to
+the record area defiled in <b>FILE SECTION</b> :
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td><b><font color="#3333FF">PROCEDURE DIVISON.</font></b>
+<br><font color="#3333FF">PARA-1.</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; <b>OPEN INPUT </b>DATA-FILE-1.</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; <b>READ </b>DATA-FILE-1</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>AT
+END</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MOVE </b>"E" <b>TO </b>WS-END-OF-DATA-FILE.</font></td>
+</tr>
+</table>
+
+<p>To open a file for writing use the structure :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>OPEN OUTPUT
+</b>DATA-FILE-1.</font>
+<p>The <b>AT END </b>clause is necessary : it tells the file what to do
+when it hits the end of the file. In this example a status variable is
+assigned to WS-END-OF-DATA-FILE. Naturally, this needs to be declared and
+initialized earlier like this :
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td><b><font color="#3333FF">WORKING-STORAGE SECTION.</font></b>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; 01 WS-END-OF-DATA-FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b>PIC </b>X</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<b>VALUE </b>"N".</font></td>
+</tr>
+</table>
+
+<p>It is also useful to add a condition name like this on the next line
+:
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 88
+END-OF-DATA-FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>VALUE</b> "E"</font>
+<p>We can now test for the end of the file in a loop :
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td><b><font color="#3333FF">PROCEDURE DIVISION</font></b>
+<br><font color="#3333FF">PARA-1.</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; <b>OPEN INPUT </b>DATA-FILE-1.</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; <b>READ </b>DATA-FILE-1.</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>AT
+END</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MOVE </b>"E" <b>TO </b>WS-END-OF-DATA-FILE</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>NOT
+AT END</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ADD </b>1 <b>TO </b>RECORD-COUNT</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; <b>END READ</b></font>
+<br><b><font color="#3333FF">............</font></b></td>
+</tr>
+</table>
+
+<p>Given that RECORD-COUNT had been declared, it would count the number
+of records in the file.
+<p>We use the keyword <b>WRITE </b>to transfer data to a file. This code
+opens a file and writes a record :
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td><b><font color="#3333FF">PROCEDURE DIVISION.</font></b>
+<br><font color="#3333FF">PARA-1.</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; <b>OPEN OUTPUT </b>DATA-FILE-1.</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; <b>MOVE </b>"Dane" <b>TO </b>NAME</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; <b>MOVE </b>"New Zealand"
+<b>TO
+</b>ADDRESS.</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;<b> WRITE </b>PERSON-REC.</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; <b>CLOSE </b>DATA-FILE-1.</font>
+<br><b><font color="#3333FF">............</font></b></td>
+</tr>
+</table>
+
+<p>Take into account though, that is DATA-FILE-1 already had data in it,
+a new file would be created, and the old data would be written over. Also
+note that unlike <b>READ </b>which accepted a file name as its parameter,
+<b>WRITE
+</b>accepts
+a record name. Also remember to <b>CLOSE </b>each file you open or bad
+things will happen.
+<p><b>WRITE </b>also allows you to append records to an existing file.
+Simply declare the file as in the previous examples, and then open it with
+the following code :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>OPEN&nbsp;&nbsp;&nbsp;&nbsp;
+EXTEND&nbsp; </b>DATA-FILE-1.</font>
+<p>It is also possible to edit existing records in place by opening the
+file for input and output. This code searches the file for a record with
+a certain address, and then changes that address (note : RECORD-FOUND must
+first be declared in a similar fashion to WS-END-OF-DATA-FILE) :
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td><b><font color="#3333FF">PROCEDURE DIVISION.</font></b>
+<br><font color="#3333FF">PARA-1.</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>OPEN&nbsp;
+I-O </b>DATA-FILE-1.</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>READ
+</b>DATA-FILE-1</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<b>AT END</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MOVE </b>"E" <b>TO </b>WS-END-OF-DATA-FILE</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<b>DISPLAY </b>"DATA NOT FOUND"</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>END-READ</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;<b>&nbsp;&nbsp;&nbsp;&nbsp;
+PERFORM UNTIL </b>END-OF-DATA-FILE
+<b>OR
+</b>RECORD-FOUND</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<b>IF
+</b>ADDRESS = "New Zealand"</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<b>THEN</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MOVE </b>"Australia" <b>TO </b>ADDRESS</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<b>REWRITE </b>PERSON-REC</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<b>MOVE </b>"Y" <b>TO</b> WS-RECORD-FOUND</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<b>ELSE</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+READ </b>DATA-FILE-1</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<b>AT END</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MOVE </b>"E" <b>TO </b>WS-END-OF-DATA-FILE</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<b>DISPLAY </b>"DATA NOT FOUND"</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<b>END-READ</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+END-IF</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;<b>&nbsp;&nbsp;&nbsp;&nbsp;
+END-PERFORM</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;<b>&nbsp;&nbsp;&nbsp;&nbsp;
+CLOSE </b>DATA-FILE-1</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>STOP
+RUN.</b></font></td>
+</tr>
+</table>
+COBOL also allows you to create<a href="#cobol_indexed_files"> indexed
+files</a>.
+<br><a NAME="cobol_data_editing"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#000000">Data Editing</font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>COBOL is mainly a language for creating data storage applications, so
+it has many built in facilities for data editing and report making. COBOL
+can handle these topics far better than other structured languages like
+Pascal and C.
+<p>A common situation in report writing is the need to write right aligned
+output like this
+<div align=right><font color="#CC0000">$200.50</font>
+<br><font color="#CC0000">$45,600.00</font>
+<br><font color="#CC0000">$20.00</font>
+<br><font color="#CC0000">$1,800,900.00</font></div>
+This would be very difficult in many languages, but COBOL can easily handle
+it. We simply create a data type like this :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; 01 WS-CURRENCY-OUTPUT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b>PIC </b>$$,$$$,$$9.99.</font>
+<br>This is how the following numbers would be outputted :
+<div align=right><font color="#CC0000">2050&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$20.50</font>
+<br><font color="#CC0000">3045000&nbsp;&nbsp;&nbsp; $30,450.00</font>
+<br><font color="#CC0000">50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$0.50</font></div>
+As you can see, a number signaled by a "$" is only included if it's needed,
+and the output is right aligned.
+<br>Remember that these special data types are only used for output, you
+can't do arithmetic with them.
+<br>You can also do the same thing with "+" and "-" signs :
+<br><font color="#3333FF"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PIC </b>++++++9.99</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>PIC </b>----9.9</font>
+<br>This allows you to get rid of irrelevant zeros when you are outputting
+data.
+<br><a NAME="cobol_arrays"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#000000">Arrays</font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Arrays aren't quite as natural to COBOL as they are to most other languages,
+but that is a sign of COBOL's age. Here is how an array might be created
+to store the salaries of ten employees :
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td><font color="#3333FF">01 WS-EMPLOYEE-REC</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; 03 WS-EMPLOYEE-SALARY&nbsp;&nbsp;
+
+<b>PIC
+</b>99999</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>OCCURS
+</b>10
+<b>TIMES</b></font></td>
+</tr>
+</table>
+
+<p>You may think it would make sense to declare all this at level 01, but
+the <b>OCCURS </b>clause cannot be used at level 01.
+<br>You can then use parenthesis to refer to a particular element in the
+array :
+<br><font color="#3333FF"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DISPLAY&nbsp;</b>
+WS-EMPLOYEE-SALARY(3)</font>
+<br>This will print out the fifth element (as opposed to C, where it would
+print out the sixth element).
+<br>We can create a variable like WS-INDEX, and use it in place of the
+number :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>DISPLAY&nbsp;</b>
+WS-EMPLOYEE-SALARY(WS-INDEX)</font>
+<br>But we can't use expressions like :
+<br><font color="#3333FF"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DISPLAY&nbsp;</b>
+WS-EMPLOYEE-SALARY(WS-INDEX + 1)</font>
+<br>The value of WS-INDEX would need to be incremented before hand.
+<br>It is also simple to declare an array of records. This code creates
+20 records with three fields each :
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td><font color="#3333FF">01 EMPLOYEE-REC-TABLE</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; 03 WS-EMPLOYEES&nbsp;&nbsp;
+
+<b>OCCURS </b>50
+<b>TIMES.</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+</b>05 WS-NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>PIC</b> X(20)</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+05 WS-ADDRESS&nbsp; <b>PIC </b>X(40)</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+05 WS-SALARY&nbsp;&nbsp;&nbsp; <b>PIC </b>99999</font></td>
+</tr>
+</table>
+
+<p>We can now refer to an entire record at a time with :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WS-EMPLOYEE(10)</font>
+<br>Or to a single field of a record :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WS-ADDRESS(30)</font>
+<br>We can also create multi-dimensional arrays :
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FF99" >
+<tr>
+<td><font color="#3333FF">01 WS-TABLE <b>VALUE ZEROS.</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; 03 WS-MONTH</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<b>OCCURS
+</b>12
+<b>TIMES</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;<b>&nbsp;&nbsp;&nbsp; 
+</b>05
+WS-FIVE-HIGHEST-TEMPERATURES&nbsp; <b>PIC </b>999</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<b>OCCURS
+</b>5
+<b>TIMES</b></font></td>
+</tr>
+</table>
+
+<p>Note here the <b>VALUE ZEROS. </b>clause : this initializes all the
+elements to zero (including strings).
+<br>We can now access a specific element like this (which shows the 2nd
+highest temperature in May):
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WS-TABLE(5, 2)</font>
+<br>Or we could access all the temperatures for November like this :
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#3333FF">WS-MONTH(11)</font>
+<br><a NAME="cobol_indexed_files"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#000000">Indexed Files</font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Indexed Files have an advantage over <a href="#cobol_sequential_files">sequential
+files</a> in the sense that they can be accessed randomly. To find a record
+in a sequential file we need to look through all the records in order,
+but with an indexed file we can identify and retrieve records according
+to their unique key values.
+<p>This is how a file might be declared in the <b>ENVIRONMENT DIVISION
+</b>section
+:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">ENVIRONMENT DIVISION.</font></b>
+<br><b><font color="#3333FF">INPUT-OUTPUT SECTION.</font></b>
+<br><b><font color="#3333FF">FILE-CONTROL.</font></b>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;<b>&nbsp;&nbsp;&nbsp;&nbsp;
+SELECT </b>EMPLOYEE-FILE</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>ASSIGN
+TO </b>DISK</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>ORGANIZATION
+IS INDEXED</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;<b>&nbsp;&nbsp;&nbsp;&nbsp;
+ACCESS MODE IS RANDOM</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;<b>&nbsp;&nbsp;&nbsp;&nbsp;
+RECORD KEY IS </b>EMPLOYEE-NUMBER</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>FILE
+STATUS IS </b>EMPLOYEE-STATUS</font></td>
+</tr>
+</table>
+
+<p>The <b>RECORD KEY </b>is equivalent to a primary key in a relational
+database. Bare in mind that this cannot be changed once the record has
+been created.
+<br>The <b>FILE STATUS </b>clause is optional. It is must be declared as
+a two byte character in <b>WORKING-STORAGE</b>, and is used mainly for
+error handling.
+<br>The declaration in <b>DATA DIVISION </b>is the same as with sequential
+files, but remember to use the same key value as in <b>ENVIRONMENT DIVISION
+</b>:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><b><font color="#3333FF">DATA DIVISION.</font></b>
+<br><b><font color="#3333FF">FILE SECTION.</font></b>
+<br><font color="#3333FF"><b>FD&nbsp;&nbsp;&nbsp; </b>EMPLOYEE-FILE.</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp; 01 EMPLOYEE-REC.</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 03
+EMPLOYEE-NUMBER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>PIC </b>X(6).</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 03
+EMPLOYEE-NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<b>PIC
+</b>X(20).</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 03
+EMPLOYEE-SALARY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>PIC
+</b>9(5).</font>
+<br><b><font color="#3333FF">WORKING-STORAGE SECTION.</font></b>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;<b> </b>01 EMPLOYEE-STATUS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<b>PIC </b>XX.</font></td>
+</tr>
+</table>
+
+<p>We can now move onto the <b>PROCEDURE DIVISION
+</b>section.
+<br>Firstly we must open the file for input and output :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>OPEN&nbsp;&nbsp;&nbsp;
+I-O&nbsp;&nbsp;&nbsp; </b>EMPLOYEE-FILE.</font>
+<br>Also, remember to close it when you have finished :
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>CLOSE </b>EMPLOYEE-FILE.</font>
+<p>To work with the file we use the keywords <b>READ, WRITE, DELETE </b>and
+<b>REWRITE</b>.
+<p>If we want to read a file, we give the key value of the record we want,
+and if it exists it will be transferred into the file's record area :
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#3333FF"><b>&nbsp;</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>MOVE
+</b>"AR8763"
+<b>TO
+</b>EMPLOYEE-NUMBER.</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>READ
+</b>EMPLOYEE-FILE</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b>INVALID KEY</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DISPLAY </b>"No such file exists."</font></td>
+</tr>
+</table>
+
+<p>This is how we write a record to file, supposing the variables mentioned
+had been created in the <b>WORKING-STORAGE</b> section :
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>MOVE
+</b>"RW3425"
+<b>TO
+</b>WS-EMPLOYEE-NUMBER</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>MOVE
+</b>"JERRY
+SEINFELD" <b>TO
+</b>WS-EMPLOYEE-NAME.</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>MOVE
+</b>56000
+<b>TO
+</b>WS-EMPLOYEE-SALARY</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>WRITE
+</b>EMPLOYEE-REC
+<b>FROM
+</b>WS-EMPLOYEE-REC.</font></td>
+</tr>
+</table>
+We have first put the values into an intermediary storage area, and then
+written the record to file in one go.
+<p>To modify a record we would usually do a <b>READ </b>followed by a <b>REWRITE&nbsp;</b>
+:
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>MOVE
+</b>"RW3425"
+<b>TO
+</b>WS<b>-</b>EMPLOYEE-NUMBER</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>MOVE
+</b>"KRAMER"
+<b>TO
+</b>WS-EMPLOYEE-NAME</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>MOVE
+</b>65000
+<b>TO
+</b>WS-EMPLOYEE-SALARY</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>REWRITE
+</b>EMPLOYEE-REC
+<b>FROM
+</b>WS-EMPLOYEE-REC</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<b>INVALID KEY</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DISPLAY </b>"Record doesn't exist."</font></td>
+</tr>
+</table>
+
+<p>This is how we could delete the record we just created (you would normally
+do a <b>READ</b> first to make sure you have the right record :
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+<tr>
+<td><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>MOVE
+</b>"RW3425"
+<b>TO
+</b>EMPLOYEE-NUMBER</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>DELETE
+</b>EMPLOYEE-FILE</font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b>INVALID KEY</b></font>
+<br><font color="#3333FF">&nbsp;&nbsp;&nbsp;<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DISPLAY </b>"That record doesn't exist."</font></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<br>&nbsp;
+</body>
+</html>

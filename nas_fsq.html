@@ -1,0 +1,947 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <title>FAQ Not FoundNot FoundNot Found</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>Server (NES) / App Server
+(iPS)
+<table>
+<tr>
+<td><a href="#q1">1. How to improve the performance of the servers with
+ndd ?</a></td>
+</tr>
+
+<tr>
+<td><a href="#q2">2. What causes FIN_WAIT_2 and TIME_WAIT? Are they cause
+for alarm?</a></td>
+</tr>
+
+<tr>
+<td><a href="#q3">3. NAS Load Balancing And Clustering Question/Answers
+!</a></td>
+</tr>
+
+<tr>
+<td><a href="#q4">4. How can I determine the number of concurrent active
+NAS sessions?</a></td>
+</tr>
+
+<tr>
+<td><a href="#q5">5. I have installed at least two Netscape Application
+Server instances as single instances and configured them with a common
+Directory Server under the same global configuration name. How can I configure
+them in a cluster so that they can participate in distributed data synchronization?&nbsp;</a></td>
+</tr>
+
+<tr>
+<td><a href="#q6">6. What is the key to disable UDP ping in the registry?&nbsp;</a></td>
+</tr>
+
+<tr>
+<td><a href="#q7">7. When accessing servlets, the Netscape Application
+Server(NAS) 4.x binds to NASApp. Is it possible to change the NASApp to
+another name?</a></td>
+</tr>
+
+<tr>
+<td><a href="#q8">8. Netscape Application Server: kcs.log file shows entries
+"10096• Communication failure" or "unknown host IP address : myhost".&nbsp;</a></td>
+</tr>
+
+<tr>
+<td><a href="#q9">9. NAS Clustering - web connector recognises the NAS
+Servers with a different ip address ?&nbsp;</a></td>
+</tr>
+
+<tr>
+<td><a href="#q10">10. How to see if your web server is using Persistent
+Connections (Keep-Alives).</a></td>
+</tr>
+</table>
+<a NAME="q10"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Arial,Helvetica"><font size=-1>xxx</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Arial,Helvetica"><font size=-1><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </font></font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+10. How to see if your web server is using Persistent Connections (Keep-Alives).
+<p>Persistent Connections, often known as HTTP Keep-Alives, allow a client
+and a server to exchange more data with fewer connections. This feature
+can increase or decrease overall performance in certain contexts.
+<p>You can verify your server's behavior with two methods:
+<p>Telnet
+<br>You can simulate the behavior of a real browser by typing the
+<br>correct header lines. Lines you need to type are in blue.
+<p>telnet sampleserver 80
+<br>Trying 123.456.789.012...
+<br>Connected to sampleserver.
+<br>Escape character is '^]'.
+<br>GET /foobar.html HTTP/1.0[Return]
+<br>Connection: keep-alive[Return]
+<br>[Return]
+<br>HTTP/1.1 404 Not found
+<br>Server: Netscape-Enterprise/3.5.1G
+<br>Date: Fri, 13 Nov 1998 21:09:59 GMT
+<br>Content-type: text/html
+<br>Content-length: 207
+<br>Connection: keep-alive&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;• note the
+header line in the
+<br>response
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<p>Not Found
+<br>The requested object does not exist on this server. The link you followed
+is either outdated, inaccurate, or the server has been instructed not to
+let you have it. GET /barfoo.html HTTP/1.0[Return] &lt;•connection stays
+for next request Connection: keepalive[Return] [Return] HTTP/1.1 404 Not
+found Server: Netscape-Enterprise/3.5.1G Date: Fri, 13 Nov 1998 21:10:18
+GMT Content-type: text/html Content-length: 207 Connection: keep-alive
+<br>Not Found
+<br>The requested object does not exist on this server. The link you followed
+is either outdated, inaccurate, or the server has been instructed not to
+let you have it. (connection closes after timout period) If a server has
+Persistent Connections turned off, the server will respond with "Connection:
+close" and disconnect after responding. Trying 123.456.789.012... Connected
+to sampleserver. Escape character is '^]'. GET /Foobar.html HTTP/1.0[Return]
+Connection: keep-alive[Return] [Return] HTTP/1.1 404 Not found Server:
+Netscape-Enterprise/3.5.1G Date: Fri, 13 Nov 1998 21:19:38 GMT Content-type:
+text/html Content-length: 207 Connection: close
+<br>Not Found
+<br>The requested object does not exist on this server. The link you followed
+is either outdated, inaccurate, or the server has been instructed not to
+let you have it. Connection closed by foreign host. (The disconnect happens
+immediately) Use of a packet trace. If Persistent Connections are in use,
+a single TCP/IP connection will service more than one HTTP request. Reading
+packet traces is a complex topic beyond the scope of this article. To learn
+more about packet level tracing, read Troubleshooting Tcp/Ip (Network Troubleshooting
+Library), by Mark A. Miller. Servers running in secure mode (HTTPS): Servers
+using HTTPS present a problem because the methods provided above do not
+work with encryption. You can consider two solutions if you are using the
+telnet method: Temporarily restart the server without encryption. Telnet
+through a utility that performs SSL encryption. A version of Telnet that
+support SSL encryption is necesary. Note for Enterprise Server administrators:
+Persistent connections exist as a connection state and as an open connection.
+Using "KeepAliveTimeout 0" in the magnus.conf is insufficient to fully
+disable this feature. KeepAliveTimeout causes the Enterprise Server to
+disconnect a connection immediately after sending an HTTP response. The
+server still sends a "Connection: keepalive" header in the response. In
+other words, it sends the same response as normal, then waits zero seconds
+and disconnects. Since the client still receives "Connection: keepalive",
+the normal chain of events for handling a persistent connection will occur
+on the client side, even if the connection itself closes very soon. Some
+clients may fail to properly support persistent connections. In some cases,
+the reception of "Connection: keepalive" may create problems even if the
+network connection closes. "KeepAliveTimeout 0" changes the network (TCP/IP
+connection) behavior to be identical to non-persistent connection; however,
+it is not the same from a system-wide (client-network-server) perspective.
+To fully deactivate persistent connections in the Enterprise Server, see
+article http://help.netscape.com/kb/server/980226- 1.html.
+<br><a NAME="q9"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Arial,Helvetica"><font size=-1>xxx</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Arial,Helvetica"><font size=-1><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </font></font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+9. I want to form a cluster with 3 machines running NAS 4.0. The IP addresses
+are ip1, ip2 and ip3. The WebConnector is installed in a different network.
+We have a NAT between these two networks. The webconnector sees the 3 nas
+machines as ip4, ip5 and ip6. The ip address translation is done by the
+NAT. For forming a cluster, what are the ip addresses should i enter ?
+all the six ip addresses or [ip1, ip2 and ip3].
+<br>You have two topics, the addresses used for the cluster and the
+<br>addresses used for the distributed application components.
+<br>Remember that the cluster mearly addresses the distributed
+<br>synchronization of session and state data. The cluster
+<br>communication is between the NAS servers only. The web
+<br>connection plays no part in the cluster and isn't even aware
+<br>that one exists. Therefore, the cluster addresses used should be
+<br>the addresses that the NAS servers can use to talk to each
+<br>other ... ip1,ip2, ip3.
+<br>When you deploy application components to NAS servers, and you
+<br>want the NAS servers to share the load (load balance), then you
+<br>have to configure a few more things. For one, you need to tell
+<br>each NAS server about the other NAS servers that host the same
+<br>application components. That way, one NAS server can bounce a
+<br>request to another if the first is too busy. This information is
+<br>also used by the web connector to know where it is possible to
+<br>send a particular request. This request bouncing is done only if
+<br>you're using "user defined" load balancing and is accomplished
+<br>by one NAS sending the request back to the web connector and
+<br>telling it which other NAS server to send the request to. In
+<br>that case, the IP address has to be one that the web connector
+<br>can use to reach a NAS server ... ip4, ip5, ip6. The trick here
+<br>is that the NAS servers are sharing load statistics with each
+<br>other to determine who is the "best" for any specific
+<br>servlet/applogic during a period of time. The statistics are
+<br>shared via an IP multicaste but the servers know of eachother by
+<br>their IP address - the same IP address that's used to tell the
+<br>web connector where to bounce a request to.
+<p>Each of your NAS server has two IP addresses, one that they can
+<br>use themselves (ip1, ip2, ip3) and another that they can't use
+<br>(ip4, ip5, ip6) but they still need to know about so they can
+<br>communicate it to the web connector. This makes the
+<br>configuration for the load balancing a bit tough if you want to
+<br>use the "user defined" load balancing strategy. If you want to
+<br>use any of the web-connector based response-time load balancing
+<br>strategies then that makes things a lot easier. If you use web-
+<br>connector driver load balancing then the NAS servers don't need
+<br>to do anything except run the requests that they're told to run
+<br>by the web connectors. They no longer bounce requests if they're
+<br>too busy. They nolonger swap load statistics with each other.
+<br>Note that they can still be in a cluster sharing session and
+<br>state data - that's a different topic and it's configured with a
+<br>different set of IPs.
+<p>So, what I would recommend is...
+<br>1) configure the clusters using the IP addresses that the NAS
+<br>servers can use to talk to eachother (ip1, ip2, ip3).
+<br>2) mark you application components as being distributed between
+<br>application servers identified using the web connector usable IP
+<br>addresses (ip4, ip5, ip6).
+<br>3) use web-connector driver (response-time) load balancing
+<br>strategies - not the server-driver (user-defined) load balancing.
+<br><a NAME="q8"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Arial,Helvetica"><font size=-1>xxx</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Arial,Helvetica"><font size=-1><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </font></font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+8. Netscape Application Server: kcs.log file shows entries "10096• Communication
+failure" or "unknown host IP address : myhost". When I examine the kcs.log
+file for my Netscape Application Server, I see entries that resemble the
+following: [09/05/99 16:10:02:3] info: REQ-012: thread add 10096- - Communication
+failure - unknown host IP address : myhost What does this mean? How do
+I prevent this error from happening?
+<br>Probable Cause:
+<p>This error means that the server running the Application Server
+<br>engine was unable to translate the text string "myhost" into a
+<br>full IP Address.
+<p>If you visually inspect the &lt;NASROOT>/registry/reg.dat file, you
+<br>may see references to the "myhost" string within the entries,
+<br>along with a port number. (for instance,
+<br>LSOFTWARE\Kiva\Enterprise\2.0\Admin\Host most likely contains
+<br>the name of your host).
+<p>Solution:
+<p>Per the man page (man resolver), the operating system goes
+<br>through a series of steps to translate a "chatty" name in to an
+<br>actual IP address. The most common steps to resolve the problem
+<br>listed in this technote is to verify whether a simple
+<br>interactive shell session (on the same machine that the
+<br>Application Server server is running on) is able to resolve the
+<br>address (using the ping myhost command, possibly).
+<p>(If this succeeds, then additional steps will need to be
+<br>followed to determine why the address is resolvable within a
+<br>shell and not by the other processes on the operating system -
+<br>this is beyond the scope of this TechNote.)
+<p>Assuming that your interactive shell session is not able to
+<br>resolve the name into an IP address, you should check the
+<br>following:
+<p>Check that your /etc/resolv.conf file contains lines similar to
+<br>the following:
+<p>search mcom.com netscape.com
+<br>nameserver 192.168.1.1
+<p>(With appropriate domain name suffixes used instead
+<br>of "mcom.com" and "netscape.com" and a valid DNS server instead
+<br>of 192.168.1.1).
+<p>When you try to "ping myhost", the resolver will add each of the
+<br>suffixes that are listed in your resolv.conf file (i.e.: in the
+<br>sample config file given above, myhost.mcom.com and
+<br>myhost.netscape.com would both be sent as queries to the DNS
+<br>server at 192.168.1.1).
+<p>You should also try to manually ping your DNS servers to
+<br>validate that they are, indeed, accessible via the network from
+<br>your Application Server.
+<p>If this does successful resolve your problem, you may consider
+<br>adding the actual IP address of your host to the /etc/hosts file
+<br>to allow the resolver to convert the name to an IP address even
+<br>in the absence of your DNS server.
+<p>The appropriate entries would look something like this:
+<br>192.168.1.55 myhost myhost.mycompany.com
+<p>This would tell the operating system that if a request is made
+<br>to convert the string "myhost" or "myhost.mycompany.com" to an
+<br>IP address, then the operating system should use the address
+<br>192.168.1.55 as the address.
+<p>Note: For Solaris operating systems only, you should also
+<br>manually inspect your /etc/nsswitch.conf file to ensure that dns
+<br>and files are being referenced to translate strings to IP
+<br>addresses. A sample /etc/nsswitch.conf file is given:
+<br>&nbsp;
+<p>#
+<br># /etc/nsswitch.nis:
+<br>#
+<br># An example file that could be copied over
+<br>to /etc/nsswitch.conf; it
+<br># uses NIS (YP) in conjunction with files.
+<br>#
+<br># "hosts:" and "services:" in this file are used only if the
+<br># /etc/netconfig file has a "-" for nametoaddr_libs of "inet"
+<br>transports.
+<br># the following two lines obviate the "+" entry in /etc/passwd
+<br>and /etc/group.
+<p>passwd:&nbsp;&nbsp;&nbsp;&nbsp; files nis
+<br>group:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; files nis
+<p># consult /etc "files" only if nis is down.
+<br>hosts:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; files dns
+<br>networks:&nbsp;&nbsp; nis [NOTFOUND=return] files
+<br>protocols:&nbsp; nis [NOTFOUND=return] files
+<br>rpc:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nis [NOTFOUND=return]
+files
+<br>ethers:&nbsp;&nbsp;&nbsp;&nbsp; nis [NOTFOUND=return] files
+<br>netmasks:&nbsp;&nbsp; nis [NOTFOUND=return] files
+<br>bootparams: nis [NOTFOUND=return] files
+<br>publickey:&nbsp; nis [NOTFOUND=return] files
+<p>netgroup:&nbsp;&nbsp; nis
+<p>automount:&nbsp; files nis
+<br>aliases:&nbsp;&nbsp;&nbsp; files nis
+<p># for efficient getservbyname() avoid nis
+<br>services:&nbsp;&nbsp; files nis
+<br>sendmailvars:&nbsp;&nbsp; files
+<p>For more information, consult the man pages for your operating system.
+<br><a NAME="q7"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Arial,Helvetica"><font size=-1>xxx</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Arial,Helvetica"><font size=-1><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </font></font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+7. When accessing servlets, the Netscape Application Server(NAS) 4.x binds
+to NASApp. Is it possible to change the NASApp to another name? For example,
+is it possible to change the path as follows From http://web server instance/NASApp/nsFortune/fortune
+to http://web server instance/abcd/nsFortune/fortune
+<br>Yes. To change the path for accessing servlets, use the
+<br>following steps to change the two keys in the registry:
+<p>Open kregedit.
+<br>Go to 4.0 (or 6.0 for NAS 6.x), CCS0, HTTPAPI.
+<p>Change the key value from SSPL_APP_PREFIX=NASApp to
+<br>SSPL_APP_PREFIX=new_name (abcd in the example above).
+<br>Go down to the folder SSPL_APP_PREFIX .
+<br>Change the default from NASApp to the new name ( abcd in the
+<br>example above).
+<p>Restart NAS, Netscape Enterprise Server, and Netscape Directory
+<br>Server. If you have a webless install, make sure you change the
+<br>registry settings in the web connector registry.
+<br><a NAME="q6"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Arial,Helvetica"><font size=-1>xxx</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Arial,Helvetica"><font size=-1><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </font></font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+6. What is the key to disable UDP ping in the registry?
+<br>In NAS 2.1, the flag is set under the CONN. In NAS 4.0, you will
+<br>have to manually add this key entry as follows:
+<p>Application Server/4.0/CCS0/CONN/DisableEcho 1
+<p>Setting that to "0" will enable the DisableEcho feature.
+<br><a NAME="q5"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Arial,Helvetica"><font size=-1>xxx</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Arial,Helvetica"><font size=-1><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </font></font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+5. I have installed at least two Netscape Application Server instances
+as single instances and configured them with a common Directory Server
+under the same global configuration name. How can I configure them in a
+cluster so that they can participate in distributed data synchronization?
+<br>Let's say there is one NAS instance running on host pss07 with
+<br>IP 206.222.250.10 and KXS port 13545, and a second NAS instance
+<br>is running on host naspat3with IP 206.222.250.25 and KXS port
+<br>10818. Assume both these instances are configured with the same
+<br>LDAP server under the same global configuration name. To create
+<br>a cluster of naspst3 and pss07, we need to make the following
+<br>changes in the Registry using kregedit:
+<p>Note: Do not modify the reg.dat with an editor as following
+<br>changes should be reflected in LDAP.)
+<br>Create a new key HKEY_LOCAL_MACHINE/SOFTWARE/Netscape/Application
+<br>Server/Clusters/CLUSTER NAME where CLUSTER NAME = name of the
+<br>the Cluster (for example, "pgoel-cluster".)
+<p>Create new key values MaxBackups MaxHops SyncPersChunkSz
+<br>SyncTimerInterval and a new subkey SyncServers under the key
+<br>pgoel-cluster.
+<br>Create new key value under the key
+<br>HKEY_LOCAL_MACHINE/SOFTWARE/Netscape/Application
+<br>Server/Clusters/CLUSTER NAME/SyncServers of format HOST IP:KXS
+<br>PORT No.=0 one for each NAS machine to participate in this
+<br>cluster.
+<br>Modify the following in the pss07 Registry:
+<br>Delete HKEY_LOCAL_MACHINE/SOFTWARE/Netscape/Application
+<br>Server/4.0/CCSO/ClusterName/pss07-NoDsync=0
+<br>Add HKEY_LOCAL_MACHINE/SOFTWARE/Netscape/Application
+<br>Server/4.0/CCSO/ClusterName/pgoel-cluster=0
+<p>Modify the following in the naspst3 Registry:
+<br>Delete HKEY_LOCAL_MACHINE/SOFTWARE/Netscape/Application
+<br>Server/4.0/CCSO/ClusterName/naspst3-NoDsync=0
+<p>Add HKEY_LOCAL_MACHINE/SOFTWARE/Netscape/Application
+<br>Server/4.0/CCSO/ClusterName/pgoel-cluster=0
+<p>To verify the modified configuration, follow these steps:
+<p>Deploy the FORTUNE sample application on both NAS machines.
+<br>Using the NAS administration tool, distribute the FORTUNE
+<br>application on both machines.
+<p>Start NAS on one of the machines. The KXS and KJS logs should
+<br>show the following messages:
+<p>KXS log :
+<br>[04/Oct/1999 16:25:47:6] info: PROT-004: protocol data added
+<br>[04/Oct/1999 16:25:47:6] info: SERVER-029: initialized DLM -
+<br>LoadB
+<br>[04/Oct/1999 16:25:47:6] info: SERVER-029: initialized DLM -
+<br>Request
+<br>[04/Oct/1999 16:25:47:6] info: PROT-004: protocol data added
+<br>[04/Oct/1999 16:25:47:6] info: SERVER-029: initialized DLM -
+<br>RequestP
+<br>[04/Oct/1999 16:25:47:6] info: SERVER-029: initialized DLM -
+<br>RequestStep
+<br>[04/Oct/1999 16:25:47:6] info: PROT-004: protocol data added
+<br>[04/Oct/1999 16:25:47:6] info: PROT-004: protocol data added
+<p>[04/Oct/1999 16:25:47:6] info: SERVER-029: initialized DLM -
+<br>ExecCli_NSAPI
+<br>[04/Oct/1999 16:25:47:6] info: PROT-004: protocol data added
+<br>[04/Oct/1999 16:25:47:6] info: SERVER-029: initialized DLM -
+<br>AdminCli
+<br>[04/Oct/1999 16:25:47:6] info: DSYNC-039: We(0xcedefa0a:13545),
+<br>are coming up as a Primary and max # of hot backup(s)=0
+<br>[04/Oct/1999 16:25:55:6] warning: CONN-OS: No such file or
+<br>directory
+<br>[04/Oct/1999 16:25:55:6] warning: CONN-025: connect failed
+<br>during MakeConn GXMGR&nbsp; (host 0xcedefa19, port 10818, IsAlive)
+<br>[04/Oct/1999 16:25:55:6] warning: DSYNC-002: MakeConn failed in
+<br>Synch(SendMsg), prot=0x4
+<br>[04/Oct/1999 16:25:55:6] warning: DSYNC-011: RegisterServer:
+<br>SendRecv() failed; errno=0x2
+<br>[04/Oct/1999 16:25:55:6] info: PROT-004: protocol data added
+<p>KJS log :
+<br>Connected to LDAP server on pss07.mcom.com port 498
+<br>[06/Oct/1999 16:06:18:3] info: ENGINE-class_loader_created: New
+<br>class loader
+<br>com.kivasoft.engine.EngineClassLoaderNonVersionable@1dacd6d5 has
+<br>just been created
+<br>[06/Oct/1999 16:06:18:3] info: ENGINE-class_loader_created: New
+<br>class loader
+<br>com.kivasoft.engine.EngineClassLoader@1dace553 has just been
+<br>created
+<br>Initializing LDAP cache from server pss07.mcom.com port 498
+<br>LDAP cache initialization completed successfully.
+<br>[06/Oct/1999 16:06:18:8] info: PROT-004: protocol data added
+<br>[06/Oct/1999 16:06:18:8] info: PROT-004: protocol data added
+<br>[06/Oct/1999 16:06:18:8] info: PROT-004: protocol data added
+<br>[06/Oct/1999 16:06:18:8] info: PROT-004: protocol data added
+<br>[06/Oct/1999 16:06:18:8] info: PROT-006: new connection established
+<br>[06/Oct/1999 16:06:18:8] info: PROT-006: new connection
+<br>established
+<br>[06/Oct/1999 16:06:18:8] info: PROT-004: protocol data added
+<br>[06/Oct/1999 16:06:18:8] info: PROT-007: new acceptor spawned
+<br>[06/Oct/1999 16:06:18:8] info: PROT-006: new connection
+<br>established
+<br>[06/Oct/1999 16:06:19:0] info: PROT-004: protocol data added
+<br>[06/Oct/1999 16:06:19:0] info: EXTMGR-003: GXExtensionManager:
+<br>Extension service&nbsp; ExtensionData is disabled
+<br>[06/Oct/1999 16:06:19:0] info: EXTMGR-003: GXExtensionManager:
+<br>Extension service&nbsp; JavaExtData is disabled
+<br>[06/Oct/1999 16:06:19:0] info: EXTMGR-003: GXExtensionManager:
+<br>Extension service&nbsp; LockManager is disabled
+<br>[06/Oct/1999 16:06:19:0] info: EXTMGR-003: GXExtensionManager:
+<br>Extension service&nbsp; RLOPManager is disabled
+<br>[06/Oct/1999 16:06:19:3] info: PROT-004: protocol data added
+<br>[06/Oct/1999 16:06:19:7] info: REQ-012: thread add
+<br>[06/Oct/1999 16:06:19:7] info: REQ-012: thread add
+<br>[06/Oct/1999 16:06:19:7] info: REQ-012: thread add
+<br>[06/Oct/1999 16:06:19:7] info: REQ-012: thread add
+<br>[06/Oct/1999 16:06:19:7] info: REQ-012: thread add
+<br>[06/Oct/1999 16:06:19:7] info: REQ-012: thread add
+<br>[06/Oct/1999 16:06:19:7] info: REQ-012: thread add
+<br>[06/Oct/1999 16:06:19:7] info: REQ-012: thread add
+<br>[06/Oct/1999 16:06:20:0] info: REQ-012: thread add
+<br>[06/Oct/1999 16:06:20:0] info: REQ-012: thread add
+<br>[06/Oct/1999 16:06:20:0] info: PROT-006: new connection
+<br>established
+<br>[06/Oct/1999 16:06:20:0] info: REQ-012: thread add
+<br>[06/Oct/1999 16:06:20:0] info: REQ-012: thread add
+<br>[06/Oct/1999 16:06:20:0] info: REQ-012: thread add
+<br>[06/Oct/1999 16:06:20:0] info: REQ-012: thread add
+<br>[06/Oct/1999 16:06:20:0] info: REQ-012: thread add
+<br>[06/Oct/1999 16:06:20:0] info: ENGINE-ready: ready: 10820
+<br>Start NAS on the second machine. The KXS and KJS logs should
+<br>show the following messages:
+<p>KXS log :
+<p>[04/Oct/1999 16:34:15:5] info: PROT-004: protocol data added
+<br>[04/Oct/1999 16:34:15:5] info: SERVER-029: initialized DLM -
+<br>LoadB
+<br>[04/Oct/1999 16:34:15:5] info: SERVER-029: initialized DLM -
+<br>Request
+<br>[04/Oct/1999 16:34:15:5] info: PROT-004: protocol data added
+<br>[04/Oct/1999 16:34:15:5] info: SERVER-029: initialized DLM -
+<br>RequestP
+<br>[04/Oct/1999 16:34:15:5] info: SERVER-029: initialized DLM -
+<br>RequestStep
+<br>[04/Oct/1999 16:34:15:5] info: PROT-004: protocol data added
+<br>[04/Oct/1999 16:34:15:5] info: PROT-004: protocol data added
+<br>[04/Oct/1999 16:34:15:5] info: SERVER-029: initialized DLM -
+<br>ExecCli_NSAPI
+<br>[04/Oct/1999 16:34:15:5] info: PROT-004: protocol data added
+<br>[04/Oct/1999 16:34:15:5] info: SERVER-029: initialized DLM -
+<br>AdminCli
+<br>[04/Oct/1999 16:34:15:5] info: DSYNC-039: We(0xcedefa0a:13545),
+<br>are coming up as&nbsp; a Primary and max # of hot backup(s)=0
+<br>[04/Oct/1999 16:34:15:6] info: PROT-006: new connection
+<br>established
+<br>[04/Oct/1999 16:34:15:6] warning: DSYNC-009: RegisterServer:
+<br>yielding to another&nbsp; Primary
+<br>[04/Oct/1999 16:34:15:6] info: PROT-004: protocol data added
+<br>[04/Oct/1999 16:34:15:6] info: SERVER-029: initialized DLM -
+<br>Synchronizer
+<br>[04/Oct/1999 16:34:15:6] info: SERVER-029: initialized DLM -
+<br>State
+<br>[04/Oct/1999 16:34:15:6] info: SERVER-029: initialized DLM -
+<br>Session
+<p>KJS log :
+<p>Connected to LDAP server on pss07.mcom.com port 498
+<br>[04/Oct/1999 18:10:04:6] info: ENGINE-class_loader_created: New
+<br>class loader
+<br>com.kivasoft.engine.EngineClassLoaderNonVersionable@1dacd6d5 has
+<br>just been created
+<br>[04/Oct/1999 18:10:04:6] info: ENGINE-class_loader_created: New
+<br>class loader com.kivasoft.engine.EngineClassLoader@1dace553 has
+<br>just been created
+<br>Initializing LDAP cache from server pss07.mcom.com port 498
+<br>LDAP cache initialization completed successfully.
+<br>[04/Oct/1999 18:10:05:2] info: PROT-004: protocol data added
+<br>[04/Oct/1999 18:10:05:2] info: PROT-004: protocol data added
+<br>[04/Oct/1999 18:10:05:2] info: PROT-004: protocol data added
+<br>[04/Oct/1999 18:10:05:2] info: PROT-004: protocol data added
+<br>[04/Oct/1999 18:10:13:2] warning: CONN-OS: No such file or
+<br>directory
+<br>[04/Oct/1999 18:10:13:2] warning: CONN-025: connect failed
+<br>during MakeConn GXMGR&nbsp; (host 0xcedefa0a, port 13545, IsAlive)
+<br>[04/Oct/1999 18:10:13:2] warning: DSYNC-002: MakeConn failed in
+<br>Synch(SendMsg), prot=0x4
+<br>[04/Oct/1999 18:10:13:2] warning: DSYNC-011: RegisterServer:
+<br>SendRecv() failed; errno=0x2
+<br>[04/Oct/1999 18:10:13:2] info: PROT-006: new connection
+<br>established
+<br>[04/Oct/1999 18:10:13:2] info: PROT-004: protocol data added
+<br>[04/Oct/1999 18:10:13:2] info: PROT-006: new connection
+<br>established
+<br>[04/Oct/1999 18:10:13:2] info: PROT-007: new acceptor spawned
+<br>[04/Oct/1999 18:10:13:4] info: PROT-004: protocol data added
+<br>[04/Oct/1999 18:10:13:4] info: PROT-004: protocol data added
+<br>[04/Oct/1999 18:10:13:4] info: EXTMGR-003: GXExtensionManager:
+<br>Extension service&nbsp; ExtensionData is disabled
+<br>[04/Oct/1999 18:10:13:4] info: EXTMGR-003: GXExtensionManager:
+<br>Extension service&nbsp; JavaExtData is disabled
+<br>[04/Oct/1999 18:10:13:4] info: EXTMGR-003: GXExtensionManager:
+<br>Extension service&nbsp; LockManager is disabled
+<br>[04/Oct/1999 18:10:13:4] info: EXTMGR-003: GXExtensionManager:
+<br>Extension service&nbsp; RLOPManager is disabled
+<br>[04/Oct/1999 18:10:14:0] info: PROT-004: protocol data added
+<br>[04/Oct/1999 18:10:14:3] info: REQ-012: thread add
+<br>[04/Oct/1999 18:10:14:3] info: REQ-012: thread add
+<br>[04/Oct/1999 18:10:14:3] info: REQ-012: thread add
+<br>[04/Oct/1999 18:10:14:3] info: REQ-012: thread add
+<br>[04/Oct/1999 18:10:14:3] info: REQ-012: thread add
+<br>[04/Oct/1999 18:10:14:3] info: REQ-012: thread add
+<br>[04/Oct/1999 18:10:14:3] info: REQ-012: thread add
+<br>[04/Oct/1999 18:10:14:3] info: REQ-012: thread add
+<br>[04/Oct/1999 18:10:15:1] info: REQ-012: thread add
+<br>[04/Oct/1999 18:10:15:1] info: REQ-012: thread add
+<br>[04/Oct/1999 18:10:15:1] info: REQ-012: thread add
+<br>[04/Oct/1999 18:10:15:1] info: REQ-012: thread add
+<br>[04/Oct/1999 18:10:15:1] info: REQ-012: thread add
+<br>[04/Oct/1999 18:10:15:1] info: REQ-012: thread add
+<br>[04/Oct/1999 18:10:15:1] info: REQ-012: thread add
+<br>[04/Oct/1999 18:10:15:1] info: REQ-012: thread add
+<br>[04/Oct/1999 18:10:15:1] info: ENGINE-ready: ready: 10820
+<br>[04/Oct/1999 18:10:18:0] info: PROT-006: new connection
+<br>established
+<br>[04/Oct/1999 18:11:46:4] info: PROT-006: new connection
+<br>established
+<p>Stop NAS on the first machine. The KJS logs of the second should
+<br>show the following messages:
+<p>KJS log :
+<p>[04/Oct/1999 17:34:52:8] info: ENGINE-ready: ready: 10820
+<br>[04/Oct/1999 17:46:59:9] error: CONN-003: socket receive error
+<br>(RecvBuffer 1) (conn 0x460048, sock 38, host 0xcedefa0a, port
+<br>13545)
+<br>[04/Oct/1999 17:46:59:9] info: PROT-001: RecvBuffer failed
+<br>during GXRunConn::Main()
+<br>[04/Oct/1999 17:46:59:9] warning: DSYNC-045: We 0xcedefa19:10820),
+lost connection to the Primary,
+<br>0xcedefa0a:13545
+<br>[04/Oct/1999 17:46:59:9] warning: DSYNC-029: Primary died and no
+<br>backups are configured; we(0xcedefa19:10820), are going LOCAL
+<br>(NOTE : it says no backup configured because MaxBackups set to 0
+<br>here , set it appropriately )
+<br>[04/Oct/1999 17:51:32:8] info: ENGINE-ready: ready: 10820
+<p>Note: Your logs need not be exactly the same since the
+<br>configuration may differ.These logs are for reference only.
+<br><a NAME="q4"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Arial,Helvetica"><font size=-1>xxx</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Arial,Helvetica"><font size=-1><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </font></font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+4. How can I determine the number of concurrent active NAS sessions?
+<br>In NAS 2.1 SP7 and in NAS 4.0 SP1, a registry flag is added that
+<br>when enabled will print the number of active sessions to the kxs
+<br>log. Under Clusters, set the registry parameter SyncNodeDebug to
+<br>1. (Set to 0 to disable.)
+<br><a NAME="q3"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Arial,Helvetica"><font size=-1>xxx</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Arial,Helvetica"><font size=-1><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </font></font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+3. NAS Load Balancing And Clustering Question/Answers !
+<br>Greetings,
+<p>This topic of clusters versus load balancing versus
+<br>configuration of the web connector has been discussed several
+<br>times on this mailing list.&nbsp; Please refer to the archives.
+<p>For the most part, this information comes right out of the
+<br>manual.
+<p>First, there are three separate topics to keep clear: Clustering
+<br>has to do with the synchronization of session and state data,
+<br>application distribution/deployment has to do with which
+<br>components are available on which machines and do the other
+<br>achines know about it, load balancing has to do with routing
+<br>requests based on various forms of performance feedback.&nbsp; These
+<br>are three different topics.&nbsp; You want to plan them together but
+<br>they are different topics.&nbsp; Before you can load balance a
+<br>request you have to know which machines have the requested
+<br>component so you know which machines you can choose to balance
+<br>with (application deployment/distribution), then you have to
+<br>have some idea of which of those machines is "preferred" (load
+<br>balancing statistics), and finally, once the request gets routed
+<br>and starts to run on that machine you want to be sure that that
+<br>servlet can get access to the user's session data (cluster -
+<br>distributed session synchronization).
+<br>&nbsp;
+<p>The cluster has to do with the distribution of session and state
+<br>data.&nbsp; You don't get to say which server will be the primary.
+<br>You do get to give each server a priority that is used for
+<br>breaking ties when the servers need to find someone (a server)
+<br>to take on a job (be the one primary, be one of the backups,
+<br>etc.).&nbsp;&nbsp; The servers will figure out for themselves which
+one
+<br>will take on the role of primary and backup.&nbsp; The most you get
+<br>to influence that decision is in specifying the piorities and in
+<br>starting the servers in a particular order.&nbsp; When you bring up
+<br>the first server it is the only one in the cluster at that point
+<br>and, therefore, has the best priority and so takes on the job of
+<br>Primary.&nbsp; The next server to start up joins a cluster that
+<br>already has a Primary and so, of the servers available (it being
+<br>the only one without a job) it has the highest priority and so
+<br>takes on the job of Backup.&nbsp; This continues as new servers come
+<br>up until the configured number of backup servers is reached and
+<br>then all other servers come up as Alternates.&nbsp; This is a
+<br>simplified explination - there are other variations.
+<p>The role of Primary, Backup, and Alternate has to do with
+<br>session data synchronization and has nothing to do with load
+<br>balancing.&nbsp; The roles of the NAS servers related to
+<br>synchronization of session data is in addition to the role of
+<br>handling requests.&nbsp; When a request runs on some NAS server and
+<br>the running component (eg Servlet) needs to access the user's
+<br>session data then that NAS server will retrieve that user's
+<br>session from the Primary NAS.&nbsp; That servlet will then use the
+<br>session data as necessary and that NAS will then send the
+<br>updated session object back to the Primary NAS who will then
+<br>send a copy of it to each of the Backup NAS servers.&nbsp; All of the
+<br>NAS servers (regardless of cluster role) will be handling
+<br>requests.&nbsp; If the Primary dies then the Backup with the best
+<br>(lowest) priority will take over as Primary.&nbsp; That leave an
+<br>opening for a new Backup.&nbsp; The Alternate with the best priority
+<br>will get promoted to Backup by the new Primary and will start
+<br>getting updates of session and state data.&nbsp; This shifting of
+<br>cluster roles has nothing to do with how requests are getting
+<br>routed.
+<p>When you deploy your application components you need to make
+<br>sure that each NAS server knows which other NAS servers have the
+<br>same components.&nbsp; This can be accomplished when you use NAB or
+<br>the deployment manager to deploy the application to more than
+<br>one NAS at the same time.&nbsp; Otherwise, you can use the NAS
+<br>Administrator to manually set this information for each
+<br>servlet.&nbsp; You can choose to say that your application components
+<br>are distributed with a specific set of servers (listing each IP
+<p>address) or with any NAS server that can be discovered via load
+<br>balancing statistics broadcasts (see below).
+<p>There are three different kinds of load balancing strategies
+<br>that you can pick from for NAS 4.0: user defined (this was the
+<br>only choice in NAS 2.1 - iAS6 adds a round-robbin strategy), or
+<br>per component response time (as measured by each web connector)
+<br>or server (regardless of component) response time (as measured
+<br>by each web connector).&nbsp; Each has strengths and weaknesses,
+<br>costs and benefits.&nbsp; The "User Defined" strategy provides the
+<br>greates control but also places the highest demands on the NAS
+<br>servers since they must then monitor each other's performance
+<br>and calculate which is "preferred" based on weighted priorities
+<br>that you define.&nbsp; The servers exchange load statistics with each
+<br>other via an IP multicast to a specific multicast port.&nbsp; It's
+<br>possible to load balance with machines that aren't in your
+<br>cluster or to leave out machines that are in your cluster
+<br>because they may be listening on a different multicast
+<br>address/port.&nbsp; By default, all NAS servers are installed with
+<br>the same multicast address and port.&nbsp; You have to use kregedit
+<br>to change this setting - it's not available in the NAS
+<br>Administrator.
+<p>With "User Define" load balancing, the web connector makes the
+<br>first attempt to figure out which NAS server to send a request
+<br>to (see below).&nbsp; If the receiving NAS doesn't think that it's
+<br>the best suited then it can "hop" (bounce) the request to
+<br>another NAS server by bouncing it back to the web connector and
+<br>tell web connector to send the request to a different specific
+<br>NAS server.&nbsp; The second NAS server can then check with it's load
+<br>table to see if it is really the best choice or if it too want's
+<br>to hop the request to another NAS server.&nbsp; Once a NAS server
+<br>accepts the request then it sends it's response directly back
+<br>through the web connector and web server.&nbsp; The other NAS servers
+<br>that had rejected the request has nothing more to do with it.
+<br>The web connector keeps track of these hops so that it can make
+<br>a better choice in the future.&nbsp; This helps the web connector
+<br>build up a load table (see more below) to use for subsequent
+<br>routing decisions.&nbsp; There's a limit (you specify for each NAS)
+<br>on how many times a request can be hopped to keep if from
+<br>getting endlessly bounced around.&nbsp; Once a request has been
+<br>hopped more than the limit then the NAS to receive the request
+<br>must accept it - can't reject it.
+<p>With either of the "Response Time" load balancing strategies
+<br>it's entirely up to the web connector to decide where to send
+<br>the request.&nbsp; The NAS servers no longer get a say.&nbsp; They
+can't
+<br>reject a request.&nbsp; The web connectors keep track of the response
+<br>time for requests and route the requests to the NAS servers that
+<br>have been servicing the requests the fastest.&nbsp; This helps the
+<br>web connector build up a load table (see more below) to use for
+<br>subsequent routing decisions.
+<p>When you configure the web connector you give it the IP and Port
+<br>number of the KXS of one of the NAS servers.&nbsp; The IP address you
+<br>pick has nothing to do with the cluster.&nbsp; This is the "default"
+<br>NAS server for that web connector.&nbsp; If the web connector can't
+<br>figure out where to send a request then it will send it to
+<br>the "default" NAS server.&nbsp; Each web connector can be given a
+<br>different "default" NAS server.
+<p>When the Web Connector gets a request and tries to figure out
+<br>where to send it it goes through a few steps.
+<p>Check it's local load table to see which NAS server to send this
+<br>request to.&nbsp; This load table is dynamically generated as the web
+<br>connector runs and routes requests.&nbsp; It's not stored anywhere.
+<br>When the web server restarts the web connector starts with a
+<br>fresh (empty) load table.&nbsp; Since it's generated based on the
+<br>results of doing request routing by that web connector, each web
+<br>connecor's load table will likely be different than any other
+<br>web connector's load table.&nbsp; The load table's purpose is to keep
+<br>track of which NAS server is the "best" choice for a request.
+<br>The different load balancing strategies produce different types
+<br>of load tables.
+<p>If the web connector can't figure out where to send the request
+<br>after checking it's load table then it tries to just figure out
+<br>which servers the requested component (AppLogic, Servlet) lives
+<br>on.&nbsp; It checks the CLASSDEF section of the NAS "registry".&nbsp;
+The
+<br>CLASSDEF section is actually stored in the directory server.
+<br>The CLASSDEF section contains information about each registered
+<br>component and which NAS servers it's deployed to.&nbsp; This doesn't
+<br>explain which server is the "best" choice at this time - only
+<br>which servers are candidates to receive a request for this
+<br>component.
+<p>If the web connector still can't figure out where to send the
+<br>request after checking the CLASSDEF section then it sends it to
+<br>the "default" NAS configured for that web connector.
+<p>There's no single NAS that does the load balancing for the
+<br>group.&nbsp; You don't want that - single point of failure.&nbsp; They
+<br>each are doing their own load balancing.&nbsp; The exact activities
+<br>of the web connectors and NAS servers depends on which load
+<br>balancing strategy you've picked.&nbsp; For "User Defined" it is the
+<br>NAS servers (each of them) which calculate which server is the
+<br>best, 2nd best, etc. for each component.
+<br>&nbsp;
+<p>Regarding Q#4 - Generally, you can not use host names when
+<br>configuring NAS.&nbsp; It want's IP addresses.&nbsp; Perhaps this was
+an
+<br>attempt by the engineers to avoid the cost of doing DNS
+<br>lookups.&nbsp; Even if you give host names for some of the
+<br>installation questions it does a one-time DNS lookup and stores
+<br>the IP address in the configuration.
+<br>&nbsp;
+<p>Regarding Q#5 - the web connector has no idea of which NAS is
+<br>Primary and doesn't need to.&nbsp; Remember that "Primary" only
+<br>refers to which NAS is the Primary state synch server and has
+<br>nothing to do with which NAS would be best suited to execute a
+<br>particular servlet.
+<br>&nbsp;
+<p>Related to articles about load balancing - You should read the
+<br>Administration Guide for a more complete discussion of the load
+<br>balancing.&nbsp; Or - take the class - it includes this full
+<br>discussion along with some labs (I'm one of the instructors).
+<br>Or check the knowledge base on
+<br>http://www.iplanet.com/support/online/browse/
+<br><a NAME="q2"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Arial,Helvetica"><font size=-1>xxx</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Arial,Helvetica"><font size=-1><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </font></font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+2. What causes FIN_WAIT_2 and TIME_WAIT? Are they cause for alarm?
+<br>TCP sockets have certain states that they go through. TIME_WAIT
+<br>&nbsp;and FIN_WAIT_2 are perfectly normal states for sockets to go
+<br>through, and can be safely ignored. Netscape's website routinely
+<br>sees thousands of sockets left in the TIME_WAIT state and
+<br>hundreds of them in the FIN_WAIT_2 state.
+<p>TIME_WAIT is caused when the server closes the connection with
+<br>the client. As the initiator of the close of a connection, the
+<br>&nbsp;TCP specification states that the server must keep the socket
+<br>&nbsp;around in the TIME_WAIT state for at least 120 seconds. Because
+<br>of the high volume of connections inherent in a webserver, and
+<br>because the webserver initiates the close, it is normal for this
+<br>to lead to lots of TIME_WAITs. These connections are fully
+<br>&nbsp;closed but will remain on the system for a minimum of 120
+<br>seconds.
+<p>The FIN_WAIT_2 connections are also normal for webservers. Many
+<br>web clients (including both Microsoft's Internet Explorer and
+<br>our own Netscape Navigator, (but not Netscape Communicator))
+<br>send RST packets when closing connections. Using a RST packet is
+<br>one of two ways of closing a connection. The other is
+<br>the "graceful shutdown" which includes a FIN/ACK/FIN/ACK
+<br>sequence. When closing via a graceful shutdown, both sides are
+<br>able to positively confirm shutdown (the remote system will
+<br>confirm the FIN packet with an ACK packet, ensuring that both
+<br>parties have been notified that the socket is closing). A RST
+<br>packet can become lost in transit and it will not be resent. If
+<br>this happens, the remote system is not notified that the socket
+<br>is being closed and will keep it open. In other words, RST is an
+<br>unreliable shutdown. If the RST packet gets lost in transit the
+<br>server is left waiting in the FIN_WAIT_2 state waiting to
+<br>receive the last FIN. The OS should timeout FIN_WAIT_2
+<br>connections after several minutes (possibly as many as 20-30
+<br>minutes).
+<br>&nbsp;
+<p>Both of these conditions are normal for a active webserver, and
+<br>can be safely ignored. Both states will eventually be timed out
+<br>by the OS.
+<br><a NAME="q1"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font face="Arial,Helvetica"><font size=-1>xxx</font></font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><font face="Arial,Helvetica"><font size=-1><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </font></font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+1. How to improve the performance of the servers with ndd ?
+<p>A high traffic web site can often be drowned with accumulated,
+<br>dead,idle connections which have not properly closed.
+<br>The default timeout value is 2 hours (7200000ms). If you have a
+<br>high traffic website you should lower this value.
+<br>&nbsp; /usr/sbin/ndd -set /dev/tcp tcp_keepalive_interval 900000
+<br>Setting to 900000 will reduce the number of FIN_WAIT_2
+<br>connections reported by netstat.
+<p>Retransmission's: Monitor the number of retransmits using the
+<br>"netstat -s" command. Examine the following values:
+<br>tcpOutDataSegs,tcpRetransSegs, tcpOutDataBytes, tcpRetransBytes;
+<br>if the retransmission values are greater than 30-40% of the
+<br>total, you should delay the retransmission to accommodate slower
+<br>networks with the following command:
+<p>&nbsp;/usr/sbin/ndd -set /dev/tcp tcp_rexmit_interval_min 1000
+<p>Setting tcp_rexmit_interval_min as high as 10000 may be
+<br>necessary.
+<p>These settings can be added at system boot, e.g., by adding them
+<br>to /etc/init.d/inetinit (values are in milliseconds):
+<br>&nbsp; /usr/sbin/ndd -set /dev/tcp tcp_keepalive_interval 900000
+<br>&nbsp; /usr/sbin/ndd -set /dev/tcp tcp_rexmit_interval_min 3000
+<br>&nbsp; /usr/sbin/ndd -set /dev/tcp tcp_rexmit_interval_initial 3000
+<br>&nbsp; /usr/sbin/ndd -set /dev/tcp tcp_rexmit_interval_max 10000
+<br>&nbsp; /usr/sbin/ndd -set /dev/tcp tcp_close_wait_interval 60000
+<br>&nbsp; /usr/sbin/ndd -set /dev/tcp tcp_ip_abort_interval 60000
+<p>By default, the maximum connections for listenQ is 32 on Solaris
+<br>2.5.1. This may not be large enough on high traffic sites and
+<br>can be changed by setting:
+<br>&nbsp; /usr/sbin/ndd /dev/tcp -set tcp_conn_req_max 1024
+<p>Note:
+<br>&nbsp; This procedure is NOT for 2.5.1 w/patch 103582-11 or higher.
+<br>&nbsp; Starting in Solaris 2.5.1 w/patch 103582-11 or higher and
+<br>Solaris 2.6,
+<br>&nbsp; tcp_conn_req_max no longer exists.
+<br>&nbsp; The ndd tcp_conn_req_max parameter has been replaced with two
+<br>enhanced parameters:
+<br>&nbsp;&nbsp;&nbsp; tcp_conn_req_max_q and&nbsp; tcp_conn_req_max_q0
+parameters.
+<p>&nbsp; The default values of these new parameters are equivalent (in
+<br>performance terms) to the value of 1024 in tcp_conn_req_max
+<br>(before tcp patch 103582-11) .These two variable were created by
+<br>Solaris 2.5.1 patch: 103582 (Version 11&nbsp; on up) and built-in to
+<br>Solaris 2.6.&nbsp; This Solaris patch addressed the TCP SYN attack
+<br>threat which was a CERT advisory&nbsp; and bug 1182957.
+<p>To increase maximum connections w/patch 103582-11 or higher, use
+<br>this:
+<br>&nbsp; /usr/sbin/ndd /dev/tcp -set tcp_conn_req_max_q 1024
+<p>Each server will behave differently and there is not an exact
+<br>set of settings that will work for all.&nbsp; As always, make sure
+<br>you have the latest recommend patch cluster. The above should
+<br>only be used as guidelines and tried on your server as needed to
+<br>improve performance.
+<br><a href="#top">Go to Top</a>
+</body>
+</html>

@@ -1,0 +1,1202 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Description" content="Scala Programming Language">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>Scala Programming Language</title>
+<!--
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+<style type="text/css">
+<!--
+.style1 {
+	color: #CC0000;
+	font-weight: bold;
+}
+.code {color: #0000FF}
+.comment {color: #669900}
+-->
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1>
+<b><a href="index.html">home</a>
+> Scala</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Scala Programming Language</font></b>
+<table width="95%" border="0" cellpadding="3" cellspacing="0">
+  <tr>
+    <td class="style1">On This Page</td>
+    <td class="style1">More</td>
+    <td class="style1">Other Pages</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p>
+- <a href="#intro">intro</a><br>
+    - <a href="#hello_world">hello world</a><br>
+    - <a href="#arithmetics">arithmetics</a><br>
+    - <a href="#functions">functions</a><br>
+    - <a href="#strings">strings</a><br>
+    - <a href="#array">array</a><br>
+    - <a href="#collections_list">list</a><br>
+    - <a href="#collections_set">set</a><br>
+    - <a href="#collections_map">map</a><br>
+    - <a href="#collections_tuple">tuple</a><br>
+    - <a href="#collections_option">option</a><br>
+    - <a href="#iterator">iterator</a><br>
+    - <a href="#classes">classes</a><br>
+    - <a href="#matching">matching</a><br>
+    - <a href="#exceptions">exceptions</a><br>
+    - <a href="#misc">misc</a></p></td>
+    <td valign="top">-<br></td>
+    <td valign="top">
+    <p>
+-<br>
+<br>
+    </p>    </td>
+  </tr>
+</table>
+<p class="sectionheader"><a NAME="intro"></a>Intro ------------------------------</p>
+  <table border="0" cellspacing="5" cellpadding="5">
+    <tr>
+      <td><p>Scala programs run on JVM (Java Virtual Machine), <br>
+        but Scala syntax is much simpler than that of Java, and it is very consice - similar to Python. <br>
+        Scala is object-oriented. Scala is functional. Statically typed. Runs on JVM and can execute Java code, but in Scala:</p>
+        <ul>
+          <li>All types are objects.</li>
+          <li>Type inference.</li>
+          <li>Nested Functions.</li>
+          <li>Functions are objects.</li>
+          <li>Domain specific language (DSL) support.</li>
+          <li>Traits.</li>
+          <li>Closures.</li>
+          <li>Concurrency support inspired by Erlang.<br>      
+            <br>
+          </li>
+        </ul>      </td>
+      <td><img src="images/MartinOdersky.jpg" width="194" height="259" alt="Martin Odersky"><br>
+      Martin Odersky, creator of Scala</td>
+    </tr>
+  </table>
+  <ul>
+    <li><a href="http://en.wikipedia.org/wiki/Scala_(programming_language)">http://en.wikipedia.org/wiki/Scala_(programming_language)</a></li>
+    <li><a href="http://www.scala-lang.org/">http://www.scala-lang.org/</a></li>
+    <li><a href="https://typesafe.com/">https://typesafe.com/</a> - Martin Odersky</li>
+    <li><a href="http://www.scala-sbt.org/">http://www.scala-sbt.org/</a> - SBT == build tool for Scala</li>
+    <li><a href="http://www.tutorialspoint.com/scala/">http://www.tutorialspoint.com/scala/</a> - good tutorial</li>
+  </ul>
+  <p> It was successfully used to develop Apache Spark - architecture for fast distributed data processing.</p>
+  <ul>
+    <li> <a href="http://spark.apache.org/">http://spark.apache.org/</a> - </li>
+    <li> <a href="http://en.wikipedia.org/wiki/Apache_Spark">http://en.wikipedia.org/wiki/Apache_Spark</a> - </li>
+    <li><a href="https://amplab.cs.berkeley.edu/">https://amplab.cs.berkeley.edu/</a> - AMPlab (started in 2011, AMP = Algoriths, Machines, People) - technologies for bid data mining, information retriaval, machine learning (ML), etc. </li>
+  </ul>
+  <a NAME="hello_world"></a>
+  <br>
+<p class="sectionheader">Hello, world ------------------------------</p>
+<table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFF99"><pre>
+<span class="code">object MyApp extends App {
+  var a = 0;
+  for( a <- 1 to 10){  </span><span class="comment">/* comment */</span><span class="code">
+    println( "Value of a: " + a ); </span><span class="comment">// comment</span><span class="code">
+  }
+}</span>
+<br></pre></td>
+    </tr>
+  </table>
+
+<p>Now you can compile and run:<br>
+  <span class="code">scalac test.scala<br>
+scala MyApp</span></p>
+
+<p>Note in the above example:</p>
+<ul>
+  <li>case-sensitive</li>
+  <li>class mames start with Capital letter: MyFirstScalaClass</li>
+  <li>  method names start with lower case letter: myMethodName()</li>
+  <li>  name of the program file should exactly match the object name (+'.scala')</li>
+  <li>  main() method is mandatory</li>
+  <li>semicolon at the end of a  line is optional</li>
+</ul>
+<p>If you run scala without file name - it enters interactive mode:</p>
+<table border="0" cellspacing="0" cellpadding="5">
+  <tr>
+    <td bgcolor="#FFFF99"><pre class="code">&gt; scala
+Welcome to Scala version 2.11.0 (Java HotSpot(TM) 64-Bit Server VM, Java 1.6.0_65).
+Type in expressions to have them evaluated.
+Type :help for more information.
+       
+scala&gt; var a=1
+a: Int = 1</pre>
+      <pre class="code">scala&gt; for(a &lt;- 1 to 3) println(&quot;help&quot; + a)
+help1
+help2
+help3</pre>
+    <pre class="code">scala&gt; :quit</pre></td>
+  </tr>
+</table>
+--
+<table border="0" cellspacing="0" cellpadding="5">
+  <tr>
+    <td bgcolor="#FFFFCC"><pre class="code">In interactive mode scala has many convenient commands which start with &quot;:&quot;, for example:
+  :help [command]          print this summary or command-specific help  
+  :history [num]           show the history (optional num is commands to show)
+  :load &lt;path&gt;             interpret lines in a file
+  :paste [-raw] [path]     enter paste mode or paste a file
+  :power                   enable power user mode
+  :quit                    exit the interpreter
+  :save &lt;path&gt;             save replayable session to a file
+  :sh &lt;command line&gt;       run a shell command (result is implicitly =&gt; List[String])
+etc.
+etc. - use :help to see the whole list
+
+Note: In interactive mode you can use auto-expansion help by hitting &lt;TAB&gt; key</pre></td>
+  </tr>
+</table>
+--
+<table border="0" cellspacing="0" cellpadding="5">
+  <tr>
+    <td bgcolor="#FFFFCC"><pre class="code">// Two ways to run a scala script in file test.scala: 
+// file test.scala:
+var word = "World"
+println("Hello " + word)
+
+// running from unix prompt:
+> scala test.scala
+
+// running from scala prompt
+scala>:load test.scala</pre></td>
+  </tr>
+</table>
+<p>Similarly you can run scala from spark prompt.</p>
+<ul>
+  <li><a href="http://spark.apache.org/">http://spark.apache.org/</a> - Spark</li>
+</ul>
+<p>You can also use an IDE with scala plugin, for example:</p>
+<ul>
+  <li><a href="http://www.jetbrains.com/idea/">http://www.jetbrains.com/idea/</a> - IntelliJ IDEA</li>
+  <li><a href="http://www.eclipse.org/">http://www.eclipse.org/</a> - Eclipse</li>
+</ul>
+<p><a NAME="arithmetics"></a></p>
+<p class="sectionheader">arithmetics ------------------------------</p>
+  <p>arithmetics</p>
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">scala&gt; print(1);print(2)<br>12<br>scala&gt; println(1);println(2)<br>1<br>2<br><br>var ii=5            // type not specified, it will be inferredto be Int<br>var ii=5L           // type will be inferred to be Long<br>var ff=1.0*ii       // 5F , 5D (make it Float or Double explicitly, Double is the default)
+var ii2 = ff.toInt  // toByte, toChar, toDouble, toFloat, toInt, toLong, toShort, toString
+
+// declaring a constant using &quot;val&quot;:<br>val aa = 5  // aa is immutable constant, can not be changed (val = 'constant')<br><br>// declaring several variables at once:<br>var (a1: Int, a2: String, a3: Int) = Tuple3(40, &quot;Foo&quot;, 50)
+<br></pre></td>
+    </tr>
+  </table>
+  --<br>
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">// removing decimals
+
+ff = 5.9
+ii = ff.toInt  // 5
+ff = -5.9
+ii = ff.toInt  // -5
+
+// rounding
+
+ff = 5.9
+ii = ff.round        // 6, Long
+ii = ff.round.toInt  // 6, Int 
+
+// round, ceil, floor
+
+// rounding to cents
+
+ff = 12.34567
+var ff2 = ((ff*100.0).round)/100.0  // 12.35
+ff2 = ((ff*100.0).round)/100.0  // 12.35
+      </pre></td>
+    </tr>
+  </table>
+  --<br>
+<table border="0" cellspacing="0" cellpadding="5">
+  <tr>
+     <td bgcolor="#FFFFCC"><pre class="code">// provide type while declaring the variable:<br>var ss : String = &quot;ABCDE&quot;<br><br>// string to number
+
+var ss = &quot;   55.01   &quot;
+ff = ss.toFloat        // 55.0099983215332
+ii = ss.toFloat.toInt  // 55
+
+
+ss = ff.toString + &quot;-----&quot; + ii.toString // &quot;55.0099983215332-----55&quot;
+
+ss = &quot;&quot; + ff + &quot;-----&quot; + ii  // same
+
+// using format - similar to % in Python or sprintf in C
+ss = &quot;%5.2f %10d&quot; format(ff,ii)  // &quot;55.01         55&quot;
+
+// use printf() as in C
+printf(&quot;%5.2f %10d&quot;, ff,ii)</pre></td>
+  </tr>
+ </table>
+--<br>
+<table border="0" cellspacing="0" cellpadding="5">
+   <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">
+// checking type
+def getInteger(obj: Any) = obj match {
+  case n: Number => n.longValue
+  case b: Boolean => if(b) 1L else 0L
+  case s: String if s.length != 0 && s != "null" => s.toLong
+  case _ => null
+}
+// <a href="http://stackoverflow.com/questions/19386964/i-want-to-get-the-type-of-a-variable-at-runtime">http://stackoverflow.com/questions/19386964/i-want-to-get-the-type-of-a-variable-at-runtime</a>
+
+// testing if two variables point to the same object (or equal for primitive types)
+
+def refEquals(a: Any, b: Any) = a match {   
+  case x: Boolean if b.isInstanceOf[Boolean] =&gt; x == b   
+  case x: Byte    if b.isInstanceOf[Byte]    =&gt; x == b   
+  case x: Short   if b.isInstanceOf[Short]   =&gt; x == b
+  case x: Char    if b.isInstanceOf[Char]    =&gt; x == b 
+  case x: Int     if b.isInstanceOf[Int]     =&gt; x == b   
+  case x: Float   if b.isInstanceOf[Float]   =&gt; x == b   
+  case x: Double  if b.isInstanceOf[Double]  =&gt; x == b   
+  case x: Long    if b.isInstanceOf[Long]    =&gt; x == b   
+  case _ =&gt; a.asInstanceOf[AnyRef] eq b.asInstanceOf[AnyRef] 
+}
+
+// <a href="http://stackoverflow.com/questions/8087066/method-to-check-reference-equality-for-any-type">http://stackoverflow.com/questions/8087066/method-to-check-reference-equality-for-any-type</a>
+// <a href="http://www.slideshare.net/knoldus/object-equality-inscala">http://www.slideshare.net/knoldus/object-equality-inscala</a>
+// <a href="http://www.artima.com/pins1ed/object-equality.html">http://www.artima.com/pins1ed/object-equality.html</a> - very good article discussing how to define custom
+equals() method to avoid problems when placing objects into collections, subclassing, etc.</pre></td>
+  </tr>
+</table>
+<p>Scala doesn't have primitive types, all types are objects. <br>
+    It has same data types as Java: <br>
+ &nbsp; &nbsp; &nbsp; <span class="code">Byte, Short, Int, Long, Float, Double, Char, String, Boolean</span><br>
+ <br>
+ also:</p>
+  <ul>
+    <li><span class="code">Unit</span> - Corresponds to no value (void)</li>
+    <li>      <span class="code">Null</span> - null or empty reference</li>
+    <li>      <span class="code">Nothing</span> - The subtype of every other type; includes no values</li>
+    <li>      <span class="code">Any</span> - The supertype of any type; any object is of type Any</li>
+    <li>    <span class="code">AnyRef</span> - The supertype of any reference type  </li>
+  </ul>
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">// char,string, multiline-string:
+'\n' - char
+&quot;\n&quot; - string
+&quot;&quot;&quot; multiline
+    string&quot;&quot;&quot;</pre></td>
+    </tr>
+</table>
+  <p>Access Modifiers - <span class="code">private, protected, public</span> (default is public)</p>
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">// if/else:
+if( x == 10 ){
+  println("10");
+}else if( x == 20 ){
+  println("Value of X is 20");
+}else{
+  println("This is else statement");
+}
+</pre></td>
+    </tr>
+  </table>
+  --
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">// loops: <br>while (condition) { ... }<br>do { ... } while (condition)
+for (var x &lt;- 1 to 10) { ... }  // 1 ... 10
+for (var x &lt;- 1 until 10) { ... }  // 1 ... 9
+for( a &lt;- 1 to 3; b &lt;- 1 to 3) { ... }<br>val numList = List(1,2,3,4,5);<br>for( a &lt;- numList ){ ... }
+for( a &lt;- numList if a != 3; if a &lt; 8 ){ println( &quot;Value of a: &quot; + a ); }
+
+// return values from a for() loop through a function using yield:
+var retVal = for{ var x &lt;- List if condition ... } yield x
+
+// breaking out of a loop
+// http://stackoverflow.com/questions/2742719/how-do-i-break-out-of-a-loop-in-scala
+
+import scala.util.control._
+
+val br1 = new Breaks;
+val br2 = new Breaks;
+
+br1.breakable {
+  for(a <- myList1){
+    ...
+    br2.breakable {
+      for( b <- myList2){
+        ...
+        if( ... ){
+          br2.break;
+        }
+      } // for
+    } // br2.breakable
+  }  // for
+} // br1.breakable</pre></td>
+    </tr>
+</table>
+<p><a NAME="functions"></a></p>
+<p class="sectionheader">functions ------------------------------</p>
+  <p>functions</p>
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">// function definition (parameters, return_type, and return_expression are optional):
+
+def myFunc ([parameters]) : [return_type] = {
+   statements
+   return [expr]
+}
+
+// function working with specific types
+def addInt( a:Int, b:Int ) : Int = {
+  var sum:Int = 0
+  sum = a + b
+  return sum
+}
+
+// if no return statement - the result of last executed statement is returned
+def addInt( a:Int, b:Int ) : Int = {
+  a + b
+}
+
+// function working with different types
+// <a href="http://stackoverflow.com/questions/4056452/how-do-i-implement-a-generic-mathematical-function-in-scala">http://stackoverflow.com/questions/4056452/how-do-i-implement-a-generic-mathematical-function-in-scala</a>
+// <a href="http://stackoverflow.com/questions/485896/how-does-one-write-the-pythagoras-theorem-in-scala">http://stackoverflow.com/questions/485896/how-does-one-write-the-pythagoras-theorem-in-scala</a>
+def addAny[T](a:T, b:T)(implicit num: Numeric[T]): T = {
+  import num._
+  var sum: T = a
+  sum = a + b
+  return sum
+}
+
+// void function (type "Unit")
+def printMe( ) : Unit = {
+  println("Hello, Scala!")
+}</pre></td>
+    </tr>
+  </table>
+  --
+<table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">// anonymous functions and closures:
+var factor = 4
+val myMult = (i:Int) => i * factor
+
+println("myMult(2) value = " +  myMult(2)) // 8
+println("myMult(3) value = " +  myMult(3)) // 12
+
+
+      </pre></td>
+    </tr>
+  </table>
+  <p><a NAME="strings"></a></p>
+  <p class="sectionheader">strings ------------------------------</p>
+  <p>More about strings</p>
+<table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">// strings: <br>var aa = &quot;AA&quot;
+var aa:String = &quot;AA&quot;
+aa.concat(&quot;BB&quot;) //  &quot;AABB&quot;
+aa + &quot;BB&quot;       //  &quot;AABB&quot;
+aa.length()     //  2
+aa.toLowerCase() // &quot;aa&quot;
+etc.
+etc.
+scala String is same as java.lang.String, so it understands many java methods:<br>
+char charAt(int index) <br>Returns the character at the specified index.<br>2	int compareTo(Object o) <br>Compares this String to another Object.<br>3	int compareTo(String anotherString)<br>Compares two strings lexicographically.<br>4	int compareToIgnoreCase(String str) <br>Compares two strings lexicographically, ignoring case differences.<br>5	String concat(String str)<br>Concatenates the specified string to the end of this string.<br>6	boolean contentEquals(StringBuffer sb) <br>Returns true if and only if this String represents the same sequence of characters as the specified StringBuffer.<br>7	static String copyValueOf(char[] data) <br>Returns a String that represents the character sequence in the array specified.<br>8	static String copyValueOf(char[] data, int offset, int count)<br>Returns a String that represents the character sequence in the array specified.<br>9	boolean endsWith(String suffix) <br>Tests if this string ends with the specified suffix.<br>10	boolean equals(Object anObject)<br>Compares this string to the specified object.<br>11	boolean equalsIgnoreCase(String anotherString)<br>Compares this String to another String, ignoring case considerations.<br>12	byte getBytes() <br>Encodes this String into a sequence of bytes using the platform's default charset, storing the result into a new byte array.<br>13	byte[] getBytes(String charsetName<br>Encodes this String into a sequence of bytes using the named charset, storing the result into a new byte array.<br>14	void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)<br>Copies characters from this string into the destination character array.<br>15	int hashCode()<br>Returns a hash code for this string.<br>16	int indexOf(int ch) <br>Returns the index within this string of the first occurrence of the specified character.<br>17	int indexOf(int ch, int fromIndex) <br>Returns the index within this string of the first occurrence of the specified character, starting the search at the specified index.<br>18	int indexOf(String str)<br>Returns the index within this string of the first occurrence of the specified substring.<br>19	int indexOf(String str, int fromIndex)<br>Returns the index within this string of the first occurrence of the specified substring, starting at the specified index.<br>20	String intern()<br>Returns a canonical representation for the string object.<br>21	int lastIndexOf(int ch) <br>Returns the index within this string of the last occurrence of the specified character.<br>22	int lastIndexOf(int ch, int fromIndex) <br>Returns the index within this string of the last occurrence of the specified character, searching backward starting at the specified index.<br>23	int lastIndexOf(String str)<br>Returns the index within this string of the rightmost occurrence of the specified substring.<br>24	int lastIndexOf(String str, int fromIndex) <br>Returns the index within this string of the last occurrence of the specified substring, searching backward starting at the specified index.<br>25	int length() <br>Returns the length of this string.<br>26	boolean matches(String regex)<br>Tells whether or not this string matches the given regular expression.<br>27	boolean regionMatches(boolean ignoreCase, int toffset, String other, int ooffset, int len) <br>Tests if two string regions are equal.<br>28	boolean regionMatches(int toffset, String other, int ooffset, int len)<br>Tests if two string regions are equal.<br>29	String replace(char oldChar, char newChar)<br>Returns a new string resulting from replacing all occurrences of oldChar in this string with newChar.<br>30	String replaceAll(String regex, String replacement<br>Replaces each substring of this string that matches the given regular expression with the given replacement.<br>31	String replaceFirst(String regex, String replacement) <br>Replaces the first substring of this string that matches the given regular expression with the given replacement.<br>32	String[] split(String regex) <br>Splits this string around matches of the given regular expression.<br>33	String[] split(String regex, int limit) <br>Splits this string around matches of the given regular expression.<br>34	boolean startsWith(String prefix)<br>Tests if this string starts with the specified prefix.<br>35	boolean startsWith(String prefix, int toffset)<br>Tests if this string starts with the specified prefix beginning a specified index.<br>36	CharSequence subSequence(int beginIndex, int endIndex)<br>Returns a new character sequence that is a subsequence of this sequence.<br>37	String substring(int beginIndex)<br>Returns a new string that is a substring of this string.<br>38	String substring(int beginIndex, int endIndex)<br>Returns a new string that is a substring of this string.<br>39	char[] toCharArray() <br>Converts this string to a new character array.<br>40	String toLowerCase()<br>Converts all of the characters in this String to lower case using the rules of the default locale.<br>41	String toLowerCase(Locale locale)<br>Converts all of the characters in this String to lower case using the rules of the given Locale.<br>42	String toString()<br>This object (which is already a string!) is itself returned.<br>43	String toUpperCase() <br>Converts all of the characters in this String to upper case using the rules of the default locale.<br>44	String toUpperCase(Locale locale) <br>Converts all of the characters in this String to upper case using the rules of the given Locale.<br>45	String trim() <br>Returns a copy of the string, with leading and trailing whitespace omitted.<br>46	static String valueOf(primitive data type x) <br>Returns the string representation of the passed data type argument.
+      </pre></td>
+    </tr>
+  </table>
+--
+<p><a NAME="array" id="array"></a></p>
+<p class="sectionheader">Array ------------------------------</p>
+<p>Array - fixed nubmer of elements (variables) of the same type.</p>
+<table border="0" cellspacing="0" cellpadding="5">
+  <tr>
+    <td bgcolor="#FFFFCC"><pre class="code">// Array:
+var aa = Array(11,22,33)                // Array[String]
+var aa = Array("mama", "papa123", null) // Array[String]
+var aa = new Array[String](3)           // Array[String] = Array(null, null, null)
+aa(0) = "mama"
+aa(1) = "papa123"
+aa(2) = "dada4"
+for (ii <- 0 to (aa.length - 1))  println(aa(ii))
+
+// concatenate arrays
+var aa = Array(1,2,3)
+var bb = Array(4,5)
+var cc = concat(aa,bb)  // Array(1, 2, 3, 4, 5)
+
+// multi-dimensional array = array of arrays
+import Array._
+var mm = ofDim[Int](3,3)
+for (ii <- 0 to 2) {
+  for ( jj <- 0 to 2) {
+    mm(ii)(jj) = ii + jj;
+  }
+}
+
+// using range() function
+import Array._
+var aa = range(0,5)    // Array[Int] = Array(0, 1, 2, 3, 4)
+var aa = range(0,5,2)  // Array[Int] = Array(0, 2, 4)
+var aa = range(5,0,-1) // Array[Int] = Array(5, 4, 3, 2, 1)
+
+// creating array of objects using apply():
+import Array._
+var aa = apply(1,2,3)
+
+// copy elements from src into dest array:
+// copy(src, srcPos, dest, destPos, length)
+import Array._
+var aa = range(0,3)   // Array(0, 1, 2)
+var bb = range(10,15) // Array(10, 11, 12, 13, 14)
+copy(aa, 1, bb, 2, 2) // Array(10, 11, 1, 2, 14)
+
+// create an empty array of a given type
+var aa = Array.empty[Float]  // Array[Float] = Array()
+
+// apply a function repeatedly - return Array of progressive results
+// Array.iterate(start_val, num_steps)(func) 
+Array.iterate(10, 3)(_ + 2)      // Array(10, 12, 14)
+Array.iterate(1, 5)(2 * _)       // Array(1, 2, 4, 8, 16)
+Array.iterate(1, 5)(n => 2 * n)  // Array(1, 2, 4, 8, 16)
+
+// fill array with some computed values
+Array.fill(3){ "%.3f" format (math.random) } // Array[String] = Array(0.722, 0.079, 0.421)
+
+
+// Note - you can use Array.fill(M,N)(func) to fill in 2-dimensional array
+
+// fill Array applying simple function to indexes
+Array.tabulate(3)(_ + 3.1)   // Array(3.1, 4.1, 5.1)
+Array.tabulate(4)(_*2)       // Array(0, 2, 4, 6)
+Array.tabulate(2,3)(_ + 3*_) // Array(Array(0, 3, 6), Array(1, 4, 7))
+    </pre></td>
+  </tr>
+</table>
+--
+<p><a NAME="collections_list"></a></p>
+<p class="sectionheader">collections - List ------------------------------</p>
+<p>Collections - List</p>
+<table border="0" cellspacing="0" cellpadding="5">
+  <tr>
+    <td bgcolor="#FFFFCC"><pre class="code">// List
+List(1,2,3,4) // immutable linked list
+List()  // empty list
+Nil // empty list
+val zeros = List.fill(10)(0.0)  // create list of 10 elements - and fill with 0.0
+val squares = List.tabulate(6)(n => n * n) // List(0, 1, 4, 9, 16, 25)
+List("AA", "BB", "CC")
+var aa = "AA" :: "BB" :: "CC" :: Nil  // List("AA", "BB", "CC")
+aa(2)  // third element of the list
+
+var bb = List("a", "b")
+var cc = List("c", "d")
+bb ++ cc   // concatenate two lists together
+bb ::: cc  // same
+Lisc.concat(bb,cc)  // same
+
+// count elements whic satisfy a criterium<br>var aa = List(&quot;a&quot;,&quot;bc&quot;,&quot;def&quot;)
+aa.count(s => s.length &gt;= 2)  // 2
+
+aa.drop(2)  // return list without firt 2 elements
+aa.dropRight(2) // return list without last 2 elements
+aa.exists(s => s == "bc")
+aa.filter(s => s.length == 2)
+aa.forall(s => s.endsWith("c"))
+aa.foreach(s => println(s))
+for (s &lt;- aa) println(s)
+aa.foreach(println)
+
+aa.head // first element
+aa.tail // all list except 1st element
+aa.last // last element
+aa.init // all list except last element
+
+aa.isEmpty
+aa.length
+aa.map(s => s + " mama")
+aa.mkString(", ")  / join elements
+aa.remove(s => s.length == 4)
+aa.reverse
+aa.sort((s, t) => s.charAt(0).toLower &lt; t.charAt(0).toLower)
+// remove duplicates
+var aa=List(1,1,2,2)
+var bb=aa.distinct  // List(1,2)
+
+// check if the list is sorted incrementally
+if(myList.sliding(2).forall(x=>x(1) >= x(0)))
+  println("sorted")
+else
+  println("not")
+
+    </pre></td>
+  </tr>
+</table>
+<p><a NAME="collections_set"></a></p>
+<p class="sectionheader">collections - Set ------------------------------</p>
+<p>Collections - Set</p>
+<table border="0" cellspacing="0" cellpadding="5">
+  <tr>
+    <td bgcolor="#FFFFCC"><pre class="code">// Set - elements of the same type, no duplicates, no guaranteed order
+var nums1 = Set(2,3,4,5) // immutable Set (no duplicates)
+import scala.collection.mutable.Set  // switch to mutable sets
+var nums2 = Set(2,3,4,5)  // mutable set
+
+nums1.head  // get one (first) element
+nums1.tail  // get a Set of all other elements
+nums1.last  // last element
+nums1.init  // get a Set of all elements except last
+
+// Empty set of integer type
+var ss : Set[Int] = Set()
+ss.isEmpty  // true
+
+// combining two sets:
+s1 ++ s2
+s1.++(s2)
+s1 | s2
+
+// find max or min:
+s1.max
+s1.min
+
+// find intersection of two sets
+s1 & s2
+s1.&(s2)
+s1.intersect(s2)
+
+// find differenece between sets
+s2 &~ s1  // same as s2 diff s1
+s1 &~ s2  // same as s1 diff s2
+
+// check is one set is a subset of another
+s2 subsetOf s1
+
+// add or remove an element (creates a new set)
+s1 + 55
+s1 - 2
+
+// check if element is in the Set:
+s1.contains(2)
+s1.apply(1)
+s1.exists(_ > 0)
+
+// length of the set
+s1.size
+
+// count number of elements satisfying some criteria
+s1.count(_>=1)
+
+// copy elements to array
+s1.copyToArray(arr, arr_start, len)
+
+// check if two sets are the same
+var s1 = Set(1,2,3)
+var s2 = Set(3,2,1)
+s1 == s2 // true (actually compares values)
+s1 eq s2 // false (compares if ref. point to the same object)
+
+// more methods
+drop
+dropRight
+dropWhile
+filter(_ > 0)
+find(_ > 0)  // returns first element which satisfies
+forall(_ > 0) // tests for all elements
+foreach()
+iterator
+map
+mkString // all elements as a string
+mkString("|")
+toString
+toSeq
+toList
+toMap
+toBuffer
+toArray
+take(2) / get 2 elements
+product // product of all elements
+sum // sum of all elements
+splitAt(5) // splits a set into 2 (5 and N-5 elements) 
+take(5) // first 5 elements
+takeRight(5) // last 5 elements
+      </pre></td>
+  </tr>
+</table>
+<p><a NAME="collections_map"></a></p>
+<p class="sectionheader">collections - Map ------------------------------</p>
+<p>Collections - Map</p>
+<table border="0" cellspacing="0" cellpadding="5">
+  <tr>
+    <td bgcolor="#FFFFCC"><pre class="code">
+// Map (dictionary, hash) - by default immutable (can add elements, but can not remove them)
+import scala.collection.mutable.Map   // switch to mutable Maps
+var xx = Map("k1" -> 1, "k2" -> 2, "k3" -> 3)
+xx.keys<br>xx.values
+xx.keys.foreach{ kk =>
+  print("Key = " + kk)
+  println(", Val = " + xx(kk))
+}
+if (xx.contains(&quot;k1&quot;)) 
+  print(&quot;found the key&quot;)
+xx += ("k4" -> 44)  // add a key/value pair
+xx.remove("k4")     // remove key/value pair
+xx = Map() // empty the map
+// concatenating two maps:
+m1 ++ m2
+m1.++(m2)
+
+// sorting - get a sorted list of keys
+var sorted_keys   = xx.keysIterator.toList.sorted // List(k1, k2, k3)
+var sorted_values = xx.valuesIterator.toList.sorted // List(1, 2, 3)
+
+// sorting by keys using custom sorting function
+xx.toSeq.sortWith(_._1 < _._1)  // ArrayBuffer((k1,1), (k2,2), (k3,3))
+// sorting by values ...
+xx.toSeq.sortWith(_._2 < _._2)  // ArrayBuffer((k1,1), (k2,2), (k3,3))
+
+// or
+xx.toSeq.sortBy(_._1)
+xx.toSeq.sortBy(_._2)
+
+// or use TreeMap
+import scala.collection.immutable.TreeMap
+TreeMap(xx.toSeq:_*) // Map(k1 -> 1, k2 -> 2, k3 -> 3)
+
+// or use SortedMap
+import collection.immutable.SortedMap
+val sorted = SortedMap.empty[String, Int] ++ xx</pre></td>
+  </tr>
+</table>
+
+
+<p><a NAME="collections_tuple"></a></p>
+<p class="sectionheader">collections - Tuple ------------------------------</p>
+<p>Collections - Tuple</p>
+<table border="0" cellspacing="0" cellpadding="5">
+  <tr>
+    <td bgcolor="#FFFFCC"><pre class="code">// Tuple - can hold objects of different types, but not more than 22 of them
+val xx = (10, "Hello", 5.5)  // Tuple3[Int, String, Double]
+
+// accessing elements of a tuple
+xx._1
+xx._2
+etc.
+
+// looping through a tuple:
+xx.productIterator.foreach{ i =>println("Value = " + i )}
+Value = 10
+Value = Hello
+Value = 5.5
+
+// string representation
+xx.toString  // "(10,Hello,5.5)"</pre></td>
+  </tr>
+</table>
+<p><a NAME="collections_option"></a></p>
+<p class="sectionheader">collections - Option ------------------------------</p>
+<p>Collections - Option</p>
+<table border="0" cellspacing="0" cellpadding="5">
+  <tr>
+    <td bgcolor="#FFFFCC"><pre class="code">// Option - container for zero or one element of a given type
+val x:Option[Int] = Some(5)
+// An Option[T] can be either Some[T] or None object, which represents a missing value. 
+
+// getOrElse or isEmpty methods:
+a.getOrElse(0)   // will return 0 instead of None
+isEmpty          // true or false
+
+// option methods:
+get // returns the value (or None)
+isEmpty
+exists(_ > 2)
+filter(_ > 2)
+filterNot(_ > 2)
+flatMap
+foreach
+getOrElse
+isDefined
+iterator
+map
+orElse
+orNull</pre></td>
+  </tr>
+</table>
+<p><a NAME="iterator"></a></p>
+<p class="sectionheader">Iterator ------------------------------</p>
+<p>Iterator</p>
+<table border="0" cellspacing="0" cellpadding="5">
+  <tr>
+    <td bgcolor="#FFFFCC"><pre class="code">// Iterator - not a collection, but rather a way to access the elements of a collection one by one
+val it = Iterator("a", "number", "of", "words")
+while (it.hasNext){
+  println(it.next())
+}
+
+// methods
+it.max
+it.min
+it.size
+it.length
+it1.++(it2)
+addString(sb)
+addString(sb,"|")
+buffered
+contains
+copyToArray(arr, arr_start, len)
+count(_ > 2)
+drop(5)
+dropWhile(_ > 2)
+duplicate
+exists
+filter
+filterNot
+find
+flatMap
+forall
+foreach
+hasDefiniteSize
+indexOf
+indexWhere
+isEmpty
+isTraversableAgain
+length
+map
+max
+min
+mkString
+mkString("|")
+nonEmpty
+padTo
+patch
+product
+sameElements
+seq
+size
+slice
+sum
+take
+toArray
+toBuffer
+toIterable
+toIterator
+toList
+toMap
+toSeq
+toString()
+zip</pre></td>
+  </tr>
+</table>
+--
+
+<p><a NAME="classes"></a></p>
+<p class="sectionheader">Classes ------------------------------</p>
+  <p>Classes</p>
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">// classes and objects: 
+      
+import java.io._
+
+class Point(val xc: Int, val yc: Int) {
+   var x: Int = xc
+   var y: Int = yc
+   def move(dx: Int, dy: Int) {
+      x = x + dx
+      y = y + dy
+      println ("Point x location : " + x);
+      println ("Point y location : " + y);
+   }
+}
+
+class Location(override val xc: Int, override val yc: Int,
+   val zc :Int) extends Point(xc, yc){
+   var z: Int = zc
+
+   def move(dx: Int, dy: Int, dz: Int) {
+      x = x + dx
+      y = y + dy
+      z = z + dz
+      println ("Point x location : " + x);
+      println ("Point y location : " + y);
+      println ("Point z location : " + z);
+   }
+}
+
+
+object Test {
+   def main(args: Array[String]) {
+      val pt = new Location(10, 20, 30); // created an object
+      pt.move(10, 11, 12);               // invoke a method
+   }
+}      
+
+
+
+      </pre></td>
+    </tr>
+  </table>
+  --
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">// Singleton objects:
+// In Scala we cannot have static members.
+// Instead, Scala has singleton objects. 
+// Just put the constructor code in the body of the object definition:
+
+object MyObject {
+  println("Hello") // This will print hello the first time
+                   // the Foo object is accessed (and only
+                   // that once).
+}</pre></td>
+    </tr>
+  </table>
+  --
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">// A trait is similar to interface in Java.
+// A trait may contain method and field definitions
+// A class can extend multiple traits
+// A trait definition looks like class definition (but using word "trait" instead of "class", 
+// and a trait can not have constructor parameters)
+// note - if you expect inheriting from it in Java code, 
+// or expect outside groups to inherit from it, 
+// or need performance - it is better to use classes than traits.
+
+trait Equal {
+  def isEqual(x: Any): Boolean
+  def isNotEqual(x: Any): Boolean = !isEqual(x)
+}
+
+class Point(xc: Int, yc: Int) extends Equal {
+  var x: Int = xc
+  var y: Int = yc
+  def isEqual(obj: Any) =
+    obj.isInstanceOf[Point] &&
+    obj.asInstanceOf[Point].x == x
+}</pre></td>
+    </tr>
+  </table>
+  <p>-- </p>
+  <p><a NAME="matching"></a></p>
+<p class="sectionheader">Matching ------------------------------</p>
+  <p>xxxxxxx</p>
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">// match:
+def matchTest(x: Any): String = {
+  var aa = x match {
+    case 1      => "one"
+    case "two"  => "two2"
+    case y: Int => "scala.Int"  // testing type
+    case _      => "many"       // default
+  }
+  return " " + x + " " + aa
+}
+
+// match using "case" Classes:
+
+val p1 = new Person("name1", 25)
+val p2 = new Person("name2", 35) 
+for (person <- List(p1,p2)) {
+  person match {
+    case Person("name1", 25) => println("p1")
+    case Person(name, age) =>
+      println("Age: " + age + " year, name: " + name + "?")
+  }
+}
+
+// prepending the "case" before a class name does the following:
+// compiler automatically converts the constructor arguments
+// into immutable fields, it automatically implements equals,
+// hashCode, and toString methods to the class.</pre></td>
+    </tr>
+  </table>
+  --
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">// regex matching:
+// when defining regex, use raw strings (""")
+val ss = """\.+((xyz)|(abc))""" // String = \.+((xyz)|(abc))
+
+// adding .r at the end of the script creates a Regex object
+import scala.util.matching.Regex
+val ss = """\.+((xyz)|(abc))""".r  // scala.util.matching.Regex = \.+((xyz)|(abc))
+
+// use Regex constructor explicitly
+import scala.util.matching._
+val Name = new Regex("""(\w+)\s+(\w+)""")  // scala.util.matching.Regex = (\w+)\s+(\w+)
+
+// use .matches() method
+"mama papa dada".matches("(?i).*\\sPAPA\\s.*")   // true
+
+// ways to match / replace:
+
+// regex findFirstIn  mystr
+// regex replaceFirstIn(mystr, &quot;mama&quot;)
+// regex findAllIn    mystr  - returns an iterator over the matches.  
+// regex replaceAllIn(mystr, &quot;mama&quot;)
+// Example:
+"l|he".r findAllIn "hello xyz" foreach {println _}
+he
+l
+l
+
+
+("(h)(e)|(l)".r findAllIn "hello xyz").matchData foreach { m => println(m.start, m.end, m.before, m.after, m.source)}
+(0,2,,llo xyz,hello xyz)
+(2,3,he,lo xyz,hello xyz)
+(3,4,hel,o xyz,hello xyz)
+
+
+val date = "11/01/2010"
+val DateRegex = """(\d\d)/(\d\d)/(\d\d\d\d)""".r
+Date: scala.util.matching.Regex = (\d\d)/(\d\d)/(\d\d\d\d)
+val Date(day, month, year) = date          
+println(day)   // 11
+println(month) // 01
+println(year)  // 2010
+
+Some examples were taken from these posts:
+// <a href="http://daily-scala.blogspot.com/2010/01/regular-expression-1-basics-and.html">http://daily-scala.blogspot.com/2010/01/regular-expression-1-basics-and.html</a>
+// <a href="http://daily-scala.blogspot.com/2010/01/regular-expression-2-rest-regex-class.html">http://daily-scala.blogspot.com/2010/01/regular-expression-2-rest-regex-class.html</a>
+// <a href="http://daily-scala.blogspot.com/2010/01/regular-expression-3-regex-matching.html">http://daily-scala.blogspot.com/2010/01/regular-expression-3-regex-matching.html</a></pre></td>
+    </tr>
+</table>
+  <p><a NAME="exceptions"></a></p>
+  <p class="sectionheader">exceptions  ------------------------------</p>
+  <p>exceptions</p>
+<table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">// exceptions:
+// try{}catch{}finaly{} blocks like in Java, 
+// but the &quot;catch&quot; block uses matching to identify and handle the exceptions.
+// You can also &quot;throw&quot; exceptions (like in java)
+
+import java.io.FileReader
+import java.io.FileNotFoundException
+import java.io.IOException
+
+object Test {
+   def main(args: Array[String]) {
+      try {
+         val f = new FileReader("input.txt")
+      } catch {
+         case ex: FileNotFoundException => {
+            println("Missing file exception")
+         }
+         case ex: IOException => {
+            println("IO Exception")
+         }
+      } finally {
+         println("Exiting finally...")
+      }
+   }
+}</pre></td>
+    </tr>
+  </table>
+<p><a NAME="misc"></a></p>
+  <p class="sectionheader">misc ------------------------------</p>
+  <p>misc</p>
+  <ul>
+    <li><a href="http://stackoverflow.com/questions/1445629/how-to-copy-a-list-in-scala">http://stackoverflow.com/questions/1445629/how-to-copy-a-list-in-scala</a></li>
+    <li><a href="http://www.simplyscala.com">http://www.simplyscala.com</a></li>
+  </ul>
+<p>&nbsp;</p>
+<table border="0" cellspacing="0" cellpadding="5">
+  <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">// exctractor: 
+// extractor is an object with method unapply() to match 
+// a value and take it apart.</pre></td>
+    </tr>
+  </table>
+  --
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">// reading directory:
+import java.io.File
+var allFiles = new File(myDirectoryPath).listFiles
+var textFiles = allFiles.filter(_.getName.endsWith(".txt"))
+var text_fnames = textFiles.map(_.getName)</pre></td>
+    </tr>
+  </table>
+  --
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">// reading lines from file:
+import scala.io.Source
+val lines = Source.fromFile(someFileName).getLines()
+var mylines = lines.toList</pre></td>
+    </tr>
+  </table>
+  --
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">// Currying: <br>// <a href="http://www.ibm.com/developerworks/library/j-ft10/">http://www.ibm.com/developerworks/library/j-ft10/</a>
+&quot;&quot;&quot;Currying is a feature of many functional languages. <br>Named after mathematician Haskell Curry <br>(for whom the Haskell programming language is also named), <br>currying transforms a multiargument function so that it can be called <br>as a chain of single-argument functions.&quot;&quot;&quot;</pre></td>
+    </tr>
+  </table>
+  --
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">
+// scala.concurrent
+// Explore Scala concurrency 
+// - <a href="http://www.ibm.com/developerworks/java/library/j-scala02049/index.html">http://www.ibm.com/developerworks/java/library/j-scala02049/index.html</a>
+// Dive deeper into Scala concurrency 
+// - <a href="http://www.ibm.com/developerworks/java/library/j-scala04109/index.html">http://www.ibm.com/developerworks/java/library/j-scala04109/index.html</a>
+// (actor based message passing model)</pre></td>
+    </tr>
+  </table>
+  --
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">// processing command line arguments:
+
+object Lev1 {<br>  def main(args: Array[String]) = {<br>    args.foreach(arg =&gt; println(&quot;arg = &quot; + arg))<br>  }<br>}
+
+// or if running a scala script, you can do simply use array args:
+args.foreach(arg =&gt; println(&quot;arg = &quot; + arg))<br>
+// <a href="http://alvinalexander.com/scala/scala-shell-script-command-line-arguments-args">http://alvinalexander.com/scala/scala-shell-script-command-line-arguments-args</a>
+// <a href="http://alvinalexander.com/scala/scala-shell-script-example-exec-syntax">http://alvinalexander.com/scala/scala-shell-script-example-exec-syntax</a>
+// <a href="http://stackoverflow.com/questions/2315912/scala-best-way-to-parse-command-line-parameters-cli">http://stackoverflow.com/questions/2315912/scala-best-way-to-parse-command-line-parameters-cli</a></pre></td>
+    </tr>
+  </table>
+  --
+  
+  --
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">// SBT (Simple Build Tool): 
+- an open source build tool for Scala and Java projects.
+- build descriptions written in Scala using a DSL
+- integrated Scala interpreter for rapid debugging</pre></td>
+    </tr>
+  </table>
+  --
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">// running system commands<br>
+import scala.sys.process._
+var aa = "/usr/bin/true" .!  // 0
+var aa = "/usr/bin/false" .!  // 1
+
+"ls -alF" .!  // prints output
+var dirContents = "ls -alF".!!   // output in a variable
+
+// <a href="http://www.scala-lang.org/files/archive/nightly/docs/library/#scala.sys.process.package">http://www.scala-lang.org/files/archive/nightly/docs/library/#scala.sys.process.package</a>
+      </pre></td>
+    </tr>
+  </table>
+  --
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">// speed considerations - loops or recursion
+// <a href="http://stackoverflow.com/questions/15138624/scala-recursion-vs-loop-performance-and-runtime-considerations">http://stackoverflow.com/questions/15138624/scala-recursion-vs-loop-performance-and-runtime-considerations</a>
+// while loops and tail recursion are the same speed and fast
+// regular recursion and for-loops are slower.
+// (Regular recursion may not be slower if the JVM optimization makes it equivalent)</pre></td>
+    </tr>
+</table>
+  --
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">// write to file:
+import java.io._
+val writer = new PrintWriter(new File("test.txt" ))
+writer.write("Hello Scala")
+writer.close()
+
+// read from file
+import scala.io.Source
+Source.fromFile("test.txt" ).foreach{ print }
+
+// receive line from console screen
+print("Enter line : " )
+val line = Console.readLine
+println("You entered: " + line)</pre></td>
+    </tr>
+  </table>
+  --
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">// xxxxx: <br>xxxxxxx
+      </pre></td>
+    </tr>
+  </table>
+  --
+  <table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td bgcolor="#FFFFCC"><pre class="code">// xxxxx: <br>xxxxxxx
+      </pre></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+</body>
+</html>

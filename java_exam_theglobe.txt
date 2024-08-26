@@ -1,0 +1,704 @@
+Q 1. What is the output of the following 
+   StringBuffer sb1 = new StringBuffer("Amit"); 
+   StringBuffer sb2= new StringBuffer("Amit"); 
+   String ss1 = "Amit"; 
+   System.out.println(sb1==sb2); 
+   System.out.println(sb1.equals(sb2)); 
+   System.out.println(sb1.equals(ss1)); 
+   System.out.println("Poddar".substring(3)); 
+Ans: 
+a) false 
+   false 
+   false 
+   dar 
+b) false 
+   true 
+   false 
+   Poddar 
+c) Compiler Error 
+d) true 
+   true 
+   false 
+   dar 
+
+Correct Answer is a) 
+
+***** Look carefully at code and answer the following questions ( Q2 to Q8) 
+1     import java.applet.Applet; 
+2    import java.awt.*; 
+3    import java.awt.event.*; 
+4     public class hello4 extends Applet { 
+5       public void init(){ 
+6           add(new myButton("BBB")); 
+7     } 
+8       public void paint(Graphics screen) { 
+9   } 
+10       class myButton extends Button{ 
+11             myButton(String label){ 
+12                super(label); 
+13            } 
+14           public String paramString(){ 
+15                return super.paramString(); 
+16              } 
+17     } 
+18   public static void main(String[] args){ 
+19        Frame myFrame = new Frame( 
+20                           "Copyright Amit"); 
+21      myFrame.setSize(300,100); 
+22     Applet myApplet = new hello4(); 
+23     Button b = new Button("My Button"); 
+24     myApplet.add(b); 
+25     b.setLabel(b.getLabel()+"New"); 
+26    // myButton b1 =(new hello4()).new myButton("PARAMBUTTON"); 
+27     System.out.println(b1.paramString()); 
+28     myFrame.add(myApplet); 
+29     myFrame.setVisible(true); 
+30     myFrame.addWindowListener(new WindowAdapter(){ 
+31              public void windowClosing(WindowEvent e){ 
+32                                       System.exit(0);}}); 
+33   } 
+34 } //End hello4 class. 
+
+Q2. If you run the above program via appletviewer ( defining a HTML file), You see on screen. 
+ a) Two buttons 
+ b) One button with label as "BBB" 
+c) One button with label as "My ButtonNew" 
+d) One button with label as "My Button" 
+
+Correct answer is b) 
+
+Q3. In the above code if line 26 is uncommented  and program runs as standalone application 
+
+a) Compile Error 
+b) Run time error 
+c) It will print the the label as PARAMBUTTON for button b1 
+
+Correct answer is c) 
+
+Q4 In the code if you compile as "javac hello4.java" following files will be generated. 
+a) hello4.class, myButton.class,hello41.class 
+b)hello4.class, hello4$myButton.class,hello4$1.class 
+c)hello4.clas,hello4$myButton.class 
+
+Correct answer is b) 
+
+Q5. If above program is run as a standalone application. How many buttons will be displayed 
+
+a) Two buttons 
+b) One button with label as "BBB" 
+c) One button with label as "My ButtonNew" 
+d) One button with label as "My Button" 
+
+correct answer is C) 
+
+Q6. If from line no 14 keyword "public" is removed, what will happen.( Hint :paramString() method in java.awt.Button  is a protected method. (Assume line 26 is uncommented) 
+
+a) Code will not compile. 
+b) Code will compile but will give a run time error. 
+c) Code will compile and no run time error. 
+
+Correct answer is a). As you can not override a method with weaker access privileges 
+
+Q7.  If from line no 14 keyword "public" is replaced with "protected", what will happen.(Hint :paramString() method in java.awt.Button is a protected method.(Assume line 26 is uncommented) 
+
+a) Code will not compile. 
+b) Code will compile but will give a run time error. 
+c) Code will compile and no run time error. 
+
+Correct answer is c) . As you can access a protected variable in the same package. 
+
+Q8.If line no 26 is replaced with Button b1 = new Button("PARAMBUTTON").(Hint :paramString() method in java.awt.Button is a protected method.(Assume line 26 is uncommented) 
+
+a) Code will not compile. 
+b) Code will compile but will give a run time error. 
+c) Code will compile and no run time error. 
+
+Correct answer is a) Because protected variables and methods can not be accssed in another package directly. They can only be accessed if the class is subclassed and instance of subclass is used. 
+
+Q9. What is the output of following if the return value is "the value 0 if the argument string is equal to this string; a value less than 0 if this string is lexicographically less than the string argument; and a value greater than 0 if this string is lexicographically greater than the string argument"  (Assuming  written inside main) 
+
+String s5 = "AMIT"; 
+String s6 = "amit"; 
+System.out.println(s5.compareTo(s6)); 
+System.out.println(s6.compareTo(s5)); 
+System.out.println(s6.compareTo(s6)); 
+
+Ans 
+a> -32 
+    32 
+    0 
+b>  32 
+    32 
+    0 
+c>  32 
+   -32 
+    0 
+d>  0 
+    0 
+    0 
+
+Correct Answer is a) 
+
+Q 10) What is the output  (Assuming  written inside main) 
+    String s1 = new String("amit"); 
+    String s2 = s1.replace('m','i'); 
+    s1.concat("Poddar"); 
+    System.out.println(s1); 
+    System.out.println((s1+s2).charAt(5)); 
+
+a) Compile error 
+b) amitPoddar 
+   o 
+c) amitPoddar 
+   i 
+d) amit 
+   i 
+
+Correct answer is d)As String is imutable.so s1 is always "amit". and s2 is "aiit". 
+
+Q 11) What is the output  (Assuming  written inside main) 
+    String s1 = new String("amit"); 
+    System.out.println(s1.replace('m','r')); 
+    System.out.println(s1); 
+    String s3="arit"; 
+    String s4="arit"; 
+    String s2 = s1.replace('m','r'); 
+    System.out.println(s2==s3); 
+    System.out.println(s3==s4); 
+
+a)  arit 
+    amit 
+    false 
+    true 
+b)  arit 
+    arit 
+    false 
+    true 
+c)  amit 
+    amit 
+    false 
+    true 
+d)  arit 
+    amit 
+    true 
+    true 
+Correct answer is a)  s3==s4 is true because java points both s3 and s4 to same memory location in string pool 
+
+Q12) Which one does not extend java.lang.Number 
+    1)Integer 
+    2)Boolean 
+    3)Character 
+    4)Long 
+    5)Short 
+
+Correct answer is  2) and 3) 
+
+Q13) Which one does not have a valueOf(String) method 
+    1)Integer 
+    2)Boolean 
+    3)Character 
+    4)Long 
+    5)Short 
+Correct answer is 3) 
+
+Q.14) What is the output of following (Assuming  written inside main) 
+    String s1 = "Amit"; 
+    String s2 = "Amit"; 
+    String s3 = new String("abcd"); 
+    String s4 = new String("abcd"); 
+    System.out.println(s1.equals(s2)); 
+    System.out.println((s1==s2)); 
+    System.out.println(s3.equals(s4)); 
+    System.out.println((s3==s4)); 
+a)  true 
+    true 
+    true 
+    false 
+b)  true 
+    true 
+    true 
+    true 
+c)  true 
+    false 
+    true 
+    false 
+Correct answer is a) 
+
+Q15. Which checkbox will be selected in the following code ( Assume with main and added to a Frame) 
+        Frame myFrame = new Frame("Test"); 
+        CheckboxGroup  cbg = new CheckboxGroup(); 
+        Checkbox cb1 = new Checkbox("First",true,cbg); 
+        Checkbox cb2 = new Checkbox("Scond",true,cbg); 
+        Checkbox cb3 = new Checkbox("THird",false,cbg); 
+        cbg.setSelectedCheckbox(cb3); 
+        myFrame.add(cb1); 
+        myFrame.add(cb2); 
+        myFrame.add(cb3); 
+a)     cb1 
+b)     cb2,cb1 
+c)     cb1,cb2,cb3 
+d)     cb3 
+
+Correct Answer is d) As in a CheckboxGroup only one can be selected 
+
+Q16) Which checkbox will be selected in the following code ( Assume with main and added to a Frame) 
+        Frame myFrame = new Frame("Test"); 
+        CheckboxGroup  cbg = new CheckboxGroup(); 
+        Checkbox cb1 = new Checkbox("First",true,cbg); 
+        Checkbox cb2 = new Checkbox("Scond",true,cbg); 
+        Checkbox cb3 = new Checkbox("THird",true,cbg); 
+        myFrame.add(cb1); 
+        myFrame.add(cb2); 
+        myFrame.add(cb3); 
+a)     cb1 
+b)     cb2,cb1 
+c)     cb1,cb2,cb3 
+d)     cb3 
+
+Correct Answer is d) As in a CheckboxGroup only one can be selected 
+
+Q17) What will be the output of line 5 
+    1 Choice c1 = new Choice(); 
+    2 c1.add("First"); 
+    3 c1.addItem("Second"); 
+    4 c1.add("Third"); 
+    5 System.out.println(c1.getItemCount()); 
+a)    1 
+b)    2 
+c)    3 
+d)    None of the above 
+
+Correct Answer is c) 
+
+Q18) What will be the order of four items added 
+    Choice c1 = new Choice(); 
+    c1.add("First"); 
+    c1.addItem("Second"); 
+    c1.add("Third"); 
+    c1.insert("Lastadded",2); 
+    System.out.println(c1.getItemCount()); 
+a)    First,Second,Third,Fourth 
+b)    First,Second,Lastadded,Third 
+c)    Lastadded,First,Second,Third 
+
+Correct ANswer is b) 
+  
+
+Q19) Answer based on following code 
+    1 Choice c1 = new Choice(); 
+    2 c1.add("First"); 
+    3 c1.addItem("Second"); 
+    4 c1.add("Third"); 
+    5 c1.insert("Lastadded",1000); 
+    6 System.out.println(c1.getItemCount()); 
+
+a)   Compile time error 
+b)    Run time error at line 5 
+c)   No error and line 6 will print 1000 
+d)   No error and line 6 will print 4 
+
+Correct ANswer is d) 
+
+Q20) Which one of the following does not extends java.awt.Component 
+
+a) CheckBox 
+b) Canvas 
+c) CheckbocGroup 
+d) Label 
+
+Correct answer is c) 
+
+Q21) What is default layout manager for panels and applets? 
+a) Flowlayout 
+b) Gridlayout 
+c) BorderLayout 
+
+Correct answer is a) 
+
+Q22) For awt components which of the following statements are true? 
+
+a) If a component is not explicitly assigned a font, it usese the same font that it container uses. 
+b) If a component is not explicitly assigned a foreground color , it usese the same foreground color  that it container uses. 
+c) If a component is not explicitly assigned a backround color , it usese the same background color  that it container uses. 
+d) If a component is not explicitly assigned a layout manager , it usese the same layout manager  that it container uses. 
+
+correct answer is a),b),c) 
+
+Q23)java.awt.Component class method getLocation() returns Point (containg x and y cordinate).What does this x and y specify 
+
+a) Specify the postion of components lower-left component in the coordinate space of the component's parent. 
+b) Specify the postion of components upper-left component in the coordinate space of the component's parent. 
+c) Specify the postion of components upper-left component in the coordinate space of the screen. 
+
+correct answer is b) 
+
+Q24. Q. What will be the output of follwing 
+{ 
+double d1 = -0.5d; 
+System.out.println("Ceil for d1 " + Math.ceil(d1)); 
+System.out.println("Floor for d1 " +Math.floor(d1)); 
+} 
+
+Answers: 
+a)  Ceil for d1 0 
+    Floor for d1 -1; 
+b)  Ceil for d1 0 
+    Floor for d1 -1.0; 
+c)  Ceil for d1 0.0 
+    Floor for d1 -1.0; 
+d)  Ceil for d1 -0.0 
+    Floor for d1 -1.0; 
+
+correct answer is d) as 0.0 is treated differently from -0.0 
+
+Q25. What is the output of following 
+{ 
+float f4 = -5.5f; 
+float f5 = 5.5f; 
+float f6 = -5.49f; 
+float f7 = 5.49f; 
+System.out.println("Round f4 is " + Math.round(f4)); 
+System.out.println("Round f5 is " + Math.round(f5)); 
+System.out.println("Round f6 is " + Math.round(f6)); 
+System.out.println("Round f7 is " + Math.round(f7)); 
+} 
+a)Round f4 is -6 
+  Round f5 is 6 
+  Round f6 is -5 
+  Round f7 is 5 
+
+b)Round f4 is -5 
+  Round f5 is 6 
+  Round f6 is -5 
+  Round f7 is 5 
+
+Correct answer is b) 
+  
+
+Q26. Given Integer.MIN_VALUE = -2147483648 
+           Integer.MAX_VALUE = 2147483647 
+
+What is the output of following 
+
+{ 
+float f4 = Integer.MIN_VALUE; 
+float f5 = Integer.MAX_VALUE; 
+float f7 = -2147483655f; 
+System.out.println("Round f4 is " + Math.round(f4)); 
+System.out.println("Round f5 is " + Math.round(f5)); 
+System.out.println("Round f7 is " + Math.round(f7)); 
+} 
+
+a)Round f4 is -2147483648 
+  Round f5 is 2147483647 
+  Round f7 is -2147483648 
+
+b)Round f4 is -2147483648 
+  Round f5 is 2147483647 
+  Round f7 is -2147483655 
+
+correct answer is a) 
+//Reason If the argument is negative infinity or any value less than or equal to the value of Integer.MIN_VALUE, the result is 
+equal to the value of Integer.MIN_VALUE. 
+    If the argument is positive infinity or any value greater than or equal to the value of Integer.MAX_VALUE, the result is 
+equal to the value of Integer.MAX_VALUE. // From JDK api documentation 
+
+Q27) 
+    1 Boolean b1 = new Boolean("TRUE"); 
+    2 Boolean b2 = new Boolean("true"); 
+    3 Boolean b3 = new Boolean("JUNK"); 
+    4 System.out.println("" + b1 + b2 + b3); 
+
+a) Comiler error 
+b) RunTime error 
+c)truetruefalse 
+d)truetruetrue 
+
+Correct answer is c) 
+
+Q 28) In the above question if line 4 is changed to 
+      System.out.println(b1+b2+b3); The output is 
+a) Compile time error 
+b) Run time error 
+c) truetruefalse 
+d) truetruetrue 
+
+Correct answer is a) As there is no method to support  Boolean + Boolean 
+  Boolean b1 = new Boolean("TRUE"); 
+ Think ----->System.out.println(b1); // Is this valid or not? 
+
+Q 29. What is the output 
+{ 
+Float f1 = new Float("4.4e99f"); 
+Float f2 = new Float("-4.4e99f"); 
+Double d1 = new Double("4.4e99"); 
+System.out.println(f1); 
+System.out.println(f2); 
+System.out.println(d1); 
+} 
+
+a) Runtime error 
+b) Infinity 
+  -Infinity 
+   4.4E99 
+c) Infinity 
+  -Infinity 
+   Infinity 
+d) 4.4E99 
+  -4.4E99 
+   4.4E99 
+
+Correct answer is b) 
+  
+
+Q30 Q. Which of the following wrapper classes can not 
+take a "String" in constructor 
+
+1) Boolean 
+2) Integer 
+3) Long 
+4) Character 
+5) Byte 
+6) Short 
+
+correct answer is 4) 
+
+Q31. What is the output of following 
+    Double d2 = new Double("-5.5"); 
+    Double d3 = new Double("-5.5"); 
+    System.out.println(d2==d3); 
+    System.out.println(d2.equals(d3)); 
+
+a)  true 
+    true 
+b)  false 
+    false 
+c)  true 
+    false 
+d)  false 
+    true 
+
+Correct answer is d) 
+
+Q32) Which one of the following always honors the components's preferred size. 
+a) FlowLayout 
+b) GridLayout 
+c) BorderLayout 
+
+Correct answer is a) 
+
+Q33) Look at the following code 
+    import java.awt.*; 
+    public class visual extends java.applet.Applet{ 
+     static Button b = new Button("TEST"); 
+     public void init(){ 
+          add(b); 
+     } 
+     public static void main(String args[]){ 
+          Frame f = new Frame("Visual"); 
+          f.setSize(300,300); 
+          f.add(b); 
+          f.setVisible(true); 
+    } 
+} 
+
+What will happen if above code is run as a standalone application 
+
+a) Displays an empty frame 
+b) Displays a frame with a button covering the entire frame 
+c) Displays a frame with a button large enough to accomodate its label. 
+
+Correct answer is b) Reason- Frame uses Border Layout which places the button to CENTRE 
+ (By default) and ignores Button's preferred size. 
+
+Q34  If the code in Q33 is compiled and run  via appletviewer what will happen 
+a) Displays an empty applet 
+b) Displays a applet with a button covering the entire frame 
+c) Displays a applet with a button large enough to accomodate its label. 
+
+Correct answer is c) Reason- Applet uses FlowLayout which honors  Button's preferred size. 
+
+Q35. What is the output 
+    public static void main(String args[]){ 
+       Frame f = new Frame("Visual"); 
+          f.setSize(300,300); 
+          f.setVisible(true); 
+          Point p =  f.getLocation(); 
+          System.out.println("x is " + p.x); 
+          System.out.println("y is " + p.y); 
+} 
+
+a) x is 300 
+   y is 300 
+b) x is 0 
+   y is 0 
+c) x is 0 
+   y is 300 
+
+correct answer is b) Because postion is always relative to parent container and in this 
+    case Frame f is the topemost container 
+
+Q36) Which one of the following always ignores the components's preferred size. 
+a) FlowLayout 
+b) GridLayout 
+c) BorderLayout 
+
+Correct answer is b) 
+
+Q37) Consider a directory structure like this (NT or 95) 
+    C:\JAVA\12345.msg  --FILE 
+           \dir1\IO.class  -- IO.class is under dir1 
+
+    Consider the following code 
+
+    import java.io.*; 
+    public class IO { 
+        public static void main(String args[]) { 
+            File f = new File("..\\12345.msg"); 
+            try{ 
+                  System.out.println(f.getCanonicalPath()); 
+                  System.out.println(f.getAbsolutePath()); 
+             }catch(IOException e){ 
+                  System.out.println(e); 
+             } 
+         } 
+    } 
+
+What will be the output of running "java IO" from C:\java\dir1 
+a)  C:\java\12345.msg 
+    C:\java\dir1\..\12345.msg 
+
+b)  C:\java\dir1\12345.msg 
+    C:\java\dir1\..\12345.msg 
+
+c)  C:\java\dir1\..\12345.msg 
+    C:\java\dir1\..\12345.msg 
+
+correct answer is a) as getCanonicalPath Returns the canonical form of this File object's pathname. The precise definition of canonical form is system-dependent, but it usually 
+specifies an absolute pathname in which all relative references and references to the current user directory have been completely resolved. 
+WHERE AS 
+getAbsolutePath Returns the absolute pathname of the file represented by this object. If this object represents an absolute pathname, then return the pathname. Otherwise, return a pathname that is a concatenation of the current user directory, the separator character, and the pathname of this file object. 
+
+  
+Q 38) Suppose we copy IO.class from C:\java\dir1 to c:\java 
+       What will be the output of running "java IO" from C:\java. 
+a)  C:\java\12345.msg 
+    C:\java\..\12345.msg 
+
+b)  C:\12345.msg 
+    C:\java\..\12345.msg 
+
+c)  C:\java\..\12345.msg 
+    C:\java\\..\12345.msg 
+
+correct answer is b) 
+
+Q39) Which one of the following methods of java.io.File throws IOException and why 
+
+a) getCanonicalPath and getAbsolutePath both require filesystem queries. 
+b) Only getCannonicalPath as it require filesystem queries. 
+c) Only getAbsolutePath as it require filesystem queries. 
+
+Correct answer is b) 
+
+Q40) What will be the output  if 
+    Consider a directory structure like this (NT or 95) 
+        C:\JAVA\12345.msg  --FILE 
+           \dir1\IO.class  -- IO.class is under dir1 
+
+              import java.io.*; 
+              public class IO { 
+                  public static void main(String args[]) { 
+                  File f = new File("12345.msg"); 
+                  String arr[] = f.list(); 
+                  System.out.println(arr.length); 
+                 } 
+              } 
+
+a) Compiler error as 12345.msg is a file not a directory 
+b) java.lang.NullPointerException at run time 
+c) No error , but nothing will be printed on screen 
+
+Correct ansewer is b) 
+
+Q41) What will be the output 
+    Consider a directory structure like this (NT or 95) 
+        C:\JAVA\12345.msg  --FILE 
+
+    import java.io.*; 
+    public class IO { 
+        public static void main(String args[]) { 
+        File f1 = new File("\\12345.msg"); 
+        System.out.println(f1.getPath()); 
+        System.out.println(f1.getParent()); 
+        System.out.println(f1.isAbsolute()); 
+        System.out.println(f1.getName()); 
+        System.out.println(f1.exists()); 
+        System.out.println(f1.isFile()); 
+       } 
+    } 
+
+a) \12345.msg 
+   \ 
+   true 
+   12345.msg 
+   true 
+   true 
+
+b) \12345.msg 
+   \ 
+   true 
+   \12345.msg 
+   false 
+   false 
+
+c) 12345.msg 
+   \ 
+   true 
+   12345.msg 
+   false 
+   false 
+d) \12345.msg 
+   \ 
+   true 
+   12345.msg 
+   false 
+   false 
+
+correct answer is d) 
+
+Q42) If in question no 41 the line 
+     File f1 = new File("\\12345.msg"); is replaced with File f1 = new File("12345.msg"); 
+    What will be the output 
+
+a) 12345.msg 
+   \ 
+   true 
+   12345.msg 
+   true 
+   true 
+
+b) 12345.msg 
+   null 
+   true 
+   12345.msg 
+   true 
+   true 
+  
+c) 12345.msg 
+   null 
+   false 
+   12345.msg 
+   true 
+   true 
+
+d) \12345.msg 
+   \ 
+   true 
+   12345.msg 
+   false 
+   false 
+  
+  
+
+Correct answer is c) 

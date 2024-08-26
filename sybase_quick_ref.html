@@ -1,0 +1,4720 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.51 [en]C-CCK-MCD CPT-2  (WinNT; I) [Netscape]">
+   <title>Sybase Quick Reference</title>
+</head>
+<body>
+
+<h1>
+SYBASE SQL Server Quick Reference Guide</h1>
+Document ID: 30200-00-1000<a href="@ebt-reveal;hf=0;pt=2?stylesheet=bkinhtml;title=%22copyright+information%22;height=550;width=550);root=5" TARGET="dynaweb_content">&auml;</a>
+<br><a href="@ebt-reveal;hf=0;pt=2?stylesheet=bkinhtml;title=%22copyright+information%22;height=550;width=550);root=5" TARGET="dynaweb_content">Document
+ID: 30200-00-1000</a>
+<br>Conventions
+<br>Chapter 1: Transact-SQL Commands
+<br>Chapter 2: Transact-SQL Functions
+<br>Chapter 3: Transact-SQL Topics
+<br>Chapter 4: System Procedures
+<br>Chapter 5: Catalog Stored Procedures
+<br>Chapter 6: Error Messages and Message Numbers
+<br>&nbsp;
+<h3>
+Conventions</h3>
+The font and syntax conventions in this reference are as follows:
+<table BORDER CELLSPACING=0 >
+<caption><b>Table 1: : Font and Syntax Conventions</b></caption>
+
+<tr>
+<th>Element&nbsp;</th>
+
+<th>Example&nbsp;</th>
+</tr>
+
+<tr>
+<td>Command names, command option names, utility names, utility flags,
+and other keywords are <b>bold </b>.&nbsp;</td>
+
+<td><b>select&nbsp;</b></td>
+</tr>
+
+<tr>
+<td>Database names, datatypes, file names, and path names are in <i>italics
+</i>.&nbsp;</td>
+
+<td><i>master </i>database&nbsp;</td>
+</tr>
+
+<tr>
+<td>Variables, or words that stand for values that you fill in, are in
+<i>italics </i>.&nbsp;</td>
+
+<td>select <i>column_name&nbsp;</i>
+<br>from <i>table_name&nbsp;</i>
+<br>where <i>search_conditions&nbsp;</i></td>
+</tr>
+
+<tr>
+<td>Parentheses are typed as part of the command.&nbsp;</td>
+
+<td>compute <i>row_aggregate </i>( <i>column_name </i>)&nbsp;</td>
+</tr>
+
+<tr>
+<td>Curly braces indicate that you must choose at least one of the enclosed
+options. Do not type the braces.&nbsp;</td>
+
+<td>{cash, check, credit}&nbsp;</td>
+</tr>
+
+<tr>
+<td>Brackets mean choosing one or more of the enclosed options is optional.
+Do not type the brackets.&nbsp;</td>
+
+<td>[anchovies]&nbsp;</td>
+</tr>
+
+<tr>
+<td>The vertical bar means you can select only one of the options shown.&nbsp;</td>
+
+<td>{die_on_your_feet | live_on_your_knees | live_on_your_feet}&nbsp;</td>
+</tr>
+
+<tr>
+<td>The comma means you can choose as many of the options shown as you
+like, separating your choices with commas to be typed as part of the command.&nbsp;</td>
+
+<td>[extra_cheese, avocados, sour_cream]&nbsp;</td>
+</tr>
+
+<tr>
+<td>An ellipsis (...) means that you can repeat the last unit as many times
+as you like.&nbsp;</td>
+
+<td>buy thing = price [cash | check | credit]&nbsp;
+<br>[, thing = price [cash | check | credit]]... You must buy at least
+one thing and give its price. You may choose a method of payment: one of
+the items enclosed in square brackets. You may also choose to buy additional
+things: as many of them as you like. For each thing you buy, give its name,
+its price, and (optionally) a method of payment.&nbsp;</td>
+</tr>
+</table>
+
+<h4>
+Formatting</h4>
+SQL is a free-form language: there are no rules about the number of words
+you can put on a line, or where you must break a line.
+<h4>
+Case</h4>
+
+<pre>&nbsp;select&nbsp;&nbsp;<i> column_name&nbsp;</i>&nbsp;&nbsp;
+&nbsp;from&nbsp;&nbsp;<i> table_name&nbsp;</i>&nbsp;&nbsp;
+&nbsp;where&nbsp;&nbsp;<i> search_conditions&nbsp;</i></pre>
+In syntax statements, keywords (commands) are in normal font and identifiers
+and user-supplied words are in italics. You can disregard case when you
+type keywords:
+<br>"SELECT" is the same as "Select" is the same as "select".
+<h4>
+Expressions</h4>
+Several different types of expressions are used in SQL Server syntax statements.
+<table BORDER=2 >
+<caption><b>Table 2: : Types of Expressions Used in Syntax Statements</b></caption>
+
+<tr>
+<th>Usage&nbsp;</th>
+
+<th>Definition&nbsp;</th>
+</tr>
+
+<tr>
+<td><i>expression&nbsp;</i></td>
+
+<td>Can include constants, literals, functions, column identifiers, variables
+or parameters&nbsp;</td>
+</tr>
+
+<tr>
+<td><i>logical expression&nbsp;</i></td>
+
+<td>An expression that returns TRUE, FALSE or UNKNOWN&nbsp;</td>
+</tr>
+
+<tr>
+<td><i>constant expression&nbsp;</i></td>
+
+<td>An expression that always returns the same value, such as "5+3" or
+"ABCDE"&nbsp;</td>
+</tr>
+
+<tr>
+<td><i>float_expr&nbsp;</i></td>
+
+<td>Any floating-point expression or expression that implicitly converts
+to a floating value&nbsp;</td>
+</tr>
+
+<tr>
+<td><i>integer_expr&nbsp;</i></td>
+
+<td>Any integer expression, or an expression that implicitly converts to
+an integer value&nbsp;</td>
+</tr>
+
+<tr>
+<td><i>numeric_expr&nbsp;</i></td>
+
+<td>Any numeric expression that returns a single value&nbsp;</td>
+</tr>
+
+<tr>
+<td><i>char_expr&nbsp;</i></td>
+
+<td>Any expression that returns a single character-type value&nbsp;</td>
+</tr>
+
+<tr>
+<td><i>binary_expression&nbsp;</i></td>
+
+<td>An expression that returns a single <i>binary </i>or <i>varbinary </i>value&nbsp;</td>
+</tr>
+</table>
+
+<h3>
+Chapter 1</h3>
+
+<h2>
+Transact-SQL Commands</h2>
+
+<h3>
+alter database</h3>
+
+<h3>
+Function</h3>
+Increases the amount of space allocated to a database.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;alter database&nbsp;&nbsp;<i> database_name&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;[on {default |&nbsp;&nbsp;<i> database_device&nbsp;</i>&nbsp; } [=&nbsp;<i>&nbsp; size&nbsp;</i> ]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [,&nbsp;&nbsp;<i> database_device&nbsp;</i>&nbsp; [=&nbsp;<i>&nbsp; size&nbsp;</i> ]]...]&nbsp;&nbsp;
+&nbsp;[log on { default | database_device } [ = size ]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [ ,&nbsp;&nbsp;<i> database_device&nbsp;</i>&nbsp; [=&nbsp;<i>&nbsp; size&nbsp;</i> ]]...]&nbsp;&nbsp;
+&nbsp;[with override]&nbsp;
+&nbsp;[for load]</pre>
+
+<h3>
+alter table</h3>
+
+<h3>
+Function</h3>
+Adds new columns and constraints, changes constraints, or drops constraints
+on an existing table.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;alter table [&nbsp;<i> database&nbsp;</i> .[&nbsp;<i> owner&nbsp;</i> ].]&nbsp;<i> table_name&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;{add&nbsp;&nbsp;<i> column_name&nbsp;</i>&nbsp;&nbsp;&nbsp;<i> datatype&nbsp;
+&nbsp;&nbsp;</i>&nbsp;&nbsp;&nbsp;&nbsp; [default {&nbsp;<i> constant_expression&nbsp;&nbsp;</i> | user | null}]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; {[{identity | null}]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; | [[constraint&nbsp;&nbsp;<i> constraint_name&nbsp;</i> ]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{unique | primary key}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [clustered | nonclustered]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [with fillfactor = x] [on&nbsp;&nbsp;<i> segment_name&nbsp;</i> ]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | references [[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> ref_table&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [(&nbsp;<i> ref_column&nbsp;</i> )]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | check (&nbsp;<i> search_condition&nbsp;</i> )}]}...&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; {[,&nbsp;&nbsp;<i> next_column&nbsp;</i> ]}...&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;| add {[constraint constraint_name]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; {unique | primary key}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [clustered | nonclustered]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (&nbsp;<i> column_name&nbsp;</i>&nbsp; [{,&nbsp;&nbsp;<i> column_name&nbsp;</i> }...])&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [with fillfactor = x] [on&nbsp;&nbsp;<i> segment_name&nbsp;</i> ]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; | foreign key (&nbsp;<i> column_name&nbsp;</i>&nbsp; [{,&nbsp;<i>&nbsp; column_name&nbsp;</i> }...])&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; references [[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> ref_table&nbsp;
+&nbsp;&nbsp;</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [(&nbsp;<i> ref_column&nbsp;</i>&nbsp; [{,&nbsp;&nbsp;<i> ref_column&nbsp;</i> }...])]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; | check (&nbsp;<i> search_condition&nbsp;</i> )}&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;| drop constraint constraint_name&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;| replace column_name&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; default {&nbsp;<i> constant_expression&nbsp;&nbsp;</i> | user | null}}</pre>
+
+<h3>
+begin...end</h3>
+
+<h3>
+Function</h3>
+Encloses a series of SQL statements so that control-of-flow language, such
+as <b>if ... else </b>, can affect the performance of the whole group.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;begin&nbsp;&nbsp;
+&nbsp;&nbsp;<i>&nbsp;&nbsp;&nbsp;&nbsp; statement block&nbsp;</i>&nbsp;&nbsp;
+&nbsp;end</pre>
+
+<h3>
+begin transaction</h3>
+
+<h3>
+Function</h3>
+Marks the starting point of a user-defined transaction.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;begin {transaction | tran } [&nbsp;<i> transaction_name&nbsp;</i> ]</pre>
+
+<h3>
+break</h3>
+
+<h3>
+Function</h3>
+Causes an exit from a <b>while </b>loop. <b>break </b>is often activated
+by an <b>if </b>test.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;while&nbsp;&nbsp;<i> logical_expression&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;<i>&nbsp;&nbsp;&nbsp;&nbsp; statement&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;break&nbsp;&nbsp;
+&nbsp;&nbsp;<i>&nbsp;&nbsp;&nbsp;&nbsp; statement&nbsp;
+&nbsp;&nbsp;</i> continue</pre>
+
+<h3>
+checkpoint</h3>
+
+<h3>
+Function</h3>
+Writes all "dirty" pages (pages that have been updated since they were
+last written) to the database device.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;checkpoint</pre>
+
+<h3>
+close</h3>
+
+<h3>
+Function</h3>
+Deactivates a cursor.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;close&nbsp;&nbsp;<i> cursor_name&nbsp;</i></pre>
+
+<h3>
+commit</h3>
+
+<h3>
+Function</h3>
+Marks the ending point of a user-defined transaction.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;commit [transaction | tran | work] [&nbsp;<i> transaction_name&nbsp;</i> ]</pre>
+
+<h3>
+compute Clause</h3>
+
+<h3>
+Function</h3>
+Generates summary values that appear as additional rows in the query results.
+This allows you to see the detail and summary rows in one set of results.
+You can calculate summary values for subgroups, and you can calculate more
+than one aggregate for the same group.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;Start of&nbsp;&nbsp;<b> select&nbsp;</b>&nbsp; statement&nbsp;&nbsp;
+&nbsp;compute&nbsp;&nbsp;<i> row_aggregate&nbsp;</i>&nbsp; (&nbsp;<i> column_name&nbsp;</i> )&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [,&nbsp;&nbsp;<i> row_aggregate&nbsp;</i> (&nbsp;<i> column_name&nbsp;</i> )]...&nbsp;&nbsp;
+&nbsp;[by&nbsp;&nbsp;<i> column_name&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> column_name&nbsp;</i> ]...]</pre>
+
+<h3>
+continue</h3>
+
+<h3>
+Function</h3>
+Causes the <b>while </b>loop to restart. <b>continue </b>is often activated
+by an <b>if </b>test.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;while&nbsp;&nbsp;<i> boolean_expression&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;<i>&nbsp;&nbsp;&nbsp;&nbsp; statement&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;break&nbsp;&nbsp;
+&nbsp;&nbsp;<i>&nbsp;&nbsp;&nbsp;&nbsp; statement&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;continue</pre>
+
+<h3>
+create database</h3>
+
+<h3>
+Function</h3>
+Creates a new database. Use <b>create database </b>from the <i>master </i>database.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;create database&nbsp;&nbsp;<i> database_name&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;[on {default |&nbsp;&nbsp;<i> database_device&nbsp;</i> } [=&nbsp;&nbsp;<i> size&nbsp;</i> ]&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [,&nbsp;&nbsp;<i> database_device&nbsp;</i>&nbsp; [=&nbsp;&nbsp;<i> size&nbsp;</i> ]]...]&nbsp;&nbsp;
+&nbsp;[log on&nbsp;&nbsp;<i> database_device&nbsp;</i>&nbsp; [=&nbsp;&nbsp;<i> size&nbsp;</i> ]&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [,&nbsp;&nbsp;<i> database_device&nbsp;</i>&nbsp; [=&nbsp;&nbsp;<i> size&nbsp;</i> ]]...]&nbsp;
+&nbsp;[with override]&nbsp;
+&nbsp;[for load]</pre>
+
+<h3>
+create default</h3>
+
+<h3>
+Function</h3>
+Specifies a value to insert in a column (or in all columns of a user-defined
+datatype) if no value is explicitly supplied at insert time.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;create default [&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> default&nbsp;</i> _&nbsp;<i> name&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;as&nbsp;&nbsp;<i> constant&nbsp;</i> _&nbsp;<i> expression&nbsp;</i></pre>
+
+<h3>
+create index</h3>
+
+<h3>
+Function</h3>
+Creates an index on one or more columns in a table.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;create [unique] [clustered | nonclustered]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; index&nbsp;&nbsp;<i> index_name&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;on [[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> table_name&nbsp;</i>&nbsp; (&nbsp;<i> column_name&nbsp;
+&nbsp;&nbsp;</i>&nbsp;&nbsp;&nbsp;&nbsp; [,&nbsp;&nbsp;<i> column_name&nbsp;</i> ]...)&nbsp;&nbsp;
+&nbsp;[with {fillfactor = x, ignore_dup_key, sorted_data,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [ignore_dup_row | allow_dup_row]}]&nbsp;&nbsp;
+&nbsp;[on&nbsp;&nbsp;<i> segment_name&nbsp;</i> ]</pre>
+
+<h3>
+create procedure</h3>
+
+<h3>
+Function</h3>
+Creates a stored procedure that can take one or more user-supplied parameters.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;create procedure [&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> procedure_name&nbsp;</i> [;&nbsp;<i> number&nbsp;</i> ]&nbsp;
+&nbsp;[[(]@&nbsp;<i> parameter_name&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;<i>&nbsp;&nbsp;&nbsp;&nbsp; datatype&nbsp;</i>&nbsp; [(length) | (precision [, scale])&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [=&nbsp;&nbsp;<i> default&nbsp;</i> ][output]&nbsp;
+&nbsp;[, @&nbsp;<i> parameter_name&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;<i>&nbsp;&nbsp;&nbsp;&nbsp; datatype&nbsp;</i>&nbsp; [(length) | (precision [, scale])&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [=&nbsp;<i>&nbsp; default&nbsp;</i> ][output]]...[)]]&nbsp;
+&nbsp;[with recompile]&nbsp;&nbsp;
+&nbsp;as&nbsp;&nbsp;<i> SQL_statements&nbsp;</i></pre>
+
+<h3>
+create rule</h3>
+
+<h3>
+Function</h3>
+Specifies the domain of acceptable values for a particular column or for
+any column of a user-defined datatype.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;create rule [&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> rule_name&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;as&nbsp;&nbsp;<i> condition_expression&nbsp;</i></pre>
+
+<h3>
+create schema</h3>
+
+<h3>
+Function</h3>
+Creates a new collection of tables, views and permissions for a database
+user.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;create schema authorization authorization_name&nbsp;
+&nbsp;create_oject_statement&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [ create_object_statement ... ]&nbsp;
+&nbsp;[ permission_statement ... ]</pre>
+
+<h3>
+create table</h3>
+
+<h3>
+Function</h3>
+Creates new tables and optional integrity constraints.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp; create table [&nbsp;<i> database&nbsp;</i> .[&nbsp;<i> owner&nbsp;</i> ].]&nbsp;<i> table_name&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;(&nbsp;<i> column_name&nbsp;</i> )&nbsp;&nbsp;<i> datatype&nbsp;
+&nbsp;&nbsp;</i>&nbsp;&nbsp;&nbsp;&nbsp; [default {&nbsp;<i> constant_expression&nbsp;&nbsp;</i> | user | null}]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; {[{identity | null | not null}]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; | [[constraint&nbsp;&nbsp;<i> constraint_name&nbsp;</i> ]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{unique | primary key}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [clustered | nonclustered]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [with fillfactor = x] [on&nbsp;&nbsp;<i> segment_name&nbsp;</i> ]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | references [[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> ref_table&nbsp;
+&nbsp;&nbsp;</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [(&nbsp;<i> ref_column&nbsp;</i> )]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | check (&nbsp;<i> search_condition&nbsp;</i> )}]}...&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;| [constraint&nbsp;&nbsp;<i> constraint_name&nbsp;</i> ]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; {{unique | primary key}&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [clustered | nonclustered]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (&nbsp;<i> column_name&nbsp;</i>&nbsp; [{,&nbsp;&nbsp;<i> column_name&nbsp;</i> }...])&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [with fillfactor = x] [on&nbsp;&nbsp;<i> segment_name&nbsp;</i> ]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; | foreign key (&nbsp;<i> column_name&nbsp;</i>&nbsp; [{,&nbsp;<i>&nbsp; column_name&nbsp;</i> }...])&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; references [[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> ref_table&nbsp;
+&nbsp;&nbsp;</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [(&nbsp;<i> ref_column&nbsp;</i>&nbsp; [{,&nbsp;&nbsp;<i> ref_column&nbsp;</i> }...])]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; | check (&nbsp;<i> search_condition&nbsp;</i> )}&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;[{, {&nbsp;<i> next_column&nbsp;</i>&nbsp; |&nbsp;&nbsp;<i> next_constraint&nbsp;</i> }}...])&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;[on&nbsp;&nbsp;<i> segment_name&nbsp;</i> ]</pre>
+
+<h3>
+create trigger</h3>
+
+<h3>
+Function</h3>
+Creates a trigger, a type of stored procedure often used for enforcing
+integrity constraints. A trigger executes automatically when a user attempts
+a specified data modification statement on a specified table.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;create trigger [&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> trigger_name&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;on [&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> table_name&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;{for {insert , update , delete}&nbsp;&nbsp;
+&nbsp;as&nbsp;&nbsp;<i> SQL_statements&nbsp;</i></pre>
+Or, using the <b>if update </b>clause:
+<pre>&nbsp;create trigger [&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> trigger_name&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;on [&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> table_name&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;for {insert , update}&nbsp;&nbsp;
+&nbsp;as&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [if update (&nbsp;<i> column_name&nbsp;</i> )&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [{and | or} update (&nbsp;<i> column_name&nbsp;</i> )]...]&nbsp;&nbsp;
+&nbsp;&nbsp;<i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SQL_statements&nbsp;
+&nbsp;&nbsp;</i>&nbsp;&nbsp;&nbsp;&nbsp; [if update (&nbsp;<i> column_name&nbsp;</i> )&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [{and | or} update (&nbsp;<i> column_name&nbsp;</i> )]...&nbsp;&nbsp;
+&nbsp;&nbsp;<i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SQL_statements&nbsp;</i> ]...</pre>
+
+<h3>
+create view</h3>
+
+<h3>
+Function</h3>
+Creates a view, which is an alternative way of looking at the data in one
+or more tables.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;create view [&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> view_name&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;[(&nbsp;<i> column_name&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> column_name&nbsp;</i> ]...)]&nbsp;&nbsp;
+&nbsp;as select [distinct]&nbsp;<i>&nbsp; select_statement&nbsp;
+&nbsp;&nbsp;</i> [with check option]</pre>
+
+<h3>
+dbcc</h3>
+
+<h3>
+Function</h3>
+Database Consistency Checker ( <b>dbcc </b>) checks the logical and physical
+consistency of a database. <b>dbcc </b>should be used regularly as a periodic
+check, or if damage is suspected.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;dbcc&nbsp;&nbsp;
+&nbsp;{checktable({&nbsp;<i> table_name&nbsp;</i> |&nbsp;<i> table_id&nbsp;</i> }[, skip_ncindex]) |&nbsp;&nbsp;
+&nbsp; checkdb [(&nbsp;<i> database_name&nbsp;</i>&nbsp; [, skip_ncindex] )] |&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp; checkalloc [(database_name [, fix | nofix])] |&nbsp;
+&nbsp; tablealloc ({&nbsp;<i> table_name&nbsp;</i>&nbsp; | table_id}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [, {full | optimized | fast | null}&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [, fix | nofix ] ]] )|&nbsp;
+&nbsp; indexalloc&nbsp;&nbsp;<i> (&nbsp;</i> {&nbsp;<i> table_name&nbsp;</i>&nbsp; | table_id}, index_id&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [, {full | optimized | fast | null}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [, fix | nofix ]] ) |&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp; checkcatalog [(&nbsp;<i> database_name&nbsp;</i> )] |&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp; dbrepair (&nbsp;<i> database_name&nbsp;</i> , dropdb) |&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp; reindex ({table_name | table_id}) |&nbsp;
+&nbsp; fix_text ({&nbsp;<i> table_name&nbsp;</i>&nbsp; | table_id}) }</pre>
+
+<h3>
+deallocate cursor</h3>
+
+<h3>
+Function</h3>
+Makes a cursor inaccessible and releases all memory resources committed
+to that cursor.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;deallocate cursor&nbsp;&nbsp;<i> cursor_name&nbsp;</i></pre>
+
+<h3>
+declare</h3>
+
+<h3>
+Function</h3>
+Declares the name and type of local variables for a batch or procedure.
+Local variables are assigned values with a <b>select </b>statement.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;&nbsp;<b> Variable declaration:&nbsp;</b></pre>
+
+<pre>&nbsp;declare&nbsp;&nbsp;<i> @variable_name datatype&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;[,&nbsp;&nbsp;<i> @variable_name datatype&nbsp;</i> ]...</pre>
+
+<pre>&nbsp;&nbsp;<b> Variable assignment:&nbsp;</b></pre>
+
+<pre>&nbsp;select&nbsp;&nbsp;<i> @variable&nbsp;</i>&nbsp; = {&nbsp;<i> expression&nbsp;</i>&nbsp; |&nbsp;&nbsp;<i> select_statement&nbsp;</i> }&nbsp;&nbsp;
+&nbsp;[,&nbsp;&nbsp;<i> @variable&nbsp;</i>&nbsp; = {&nbsp;<i> expression&nbsp;</i>&nbsp; |&nbsp;&nbsp;<i> select_statement&nbsp;</i> } ...]&nbsp;
+&nbsp;[from&nbsp;&nbsp;<i> table_list&nbsp;</i> ]&nbsp;&nbsp;
+&nbsp;[where&nbsp;&nbsp;<i> search_conditions&nbsp;</i> ]&nbsp;&nbsp;
+&nbsp;[group by&nbsp;&nbsp;<i> group_by_list&nbsp;</i> ]&nbsp;&nbsp;
+&nbsp;[having&nbsp;&nbsp;<i> search_conditions&nbsp;</i> ]&nbsp;&nbsp;
+&nbsp;[order by&nbsp;&nbsp;<i> order_by_list&nbsp;</i> ]&nbsp;&nbsp;
+&nbsp;[compute&nbsp;&nbsp;<i> function_list&nbsp;</i>&nbsp; [by&nbsp;&nbsp;<i> by_list&nbsp;</i> ]]</pre>
+
+<h3>
+declare cursor</h3>
+
+<h3>
+Function</h3>
+Defines a cursor.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;declare&nbsp;&nbsp;<i> cursor_name&nbsp;</i>&nbsp; cursor&nbsp;
+&nbsp;for&nbsp;&nbsp;<i> select_statement&nbsp;
+&nbsp;&nbsp;</i> [for {read only | update [of&nbsp;&nbsp;<i> column_name_list&nbsp;</i> ]}]</pre>
+
+<h3>
+delete</h3>
+
+<h3>
+Function</h3>
+Removes rows from a table.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;delete [from] [[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]{&nbsp;<i> table_name&nbsp;</i> |&nbsp;<i> view_name&nbsp;</i> }&nbsp;
+&nbsp;[where&nbsp;&nbsp;<i> search_conditions&nbsp;</i> ]</pre>
+
+<pre>&nbsp;delete [[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]{&nbsp;<i> table_name&nbsp;</i>&nbsp; |&nbsp;&nbsp;<i> view_name&nbsp;</i> }&nbsp;&nbsp;
+&nbsp;[from [[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]{&nbsp;<i> table_name&nbsp;</i>&nbsp; |&nbsp;&nbsp;<i> view_name&nbsp;</i> }&nbsp;&nbsp;
+&nbsp; [, [[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]{&nbsp;<i> table_name&nbsp;</i>&nbsp; |&nbsp;<i>&nbsp; view_name&nbsp;</i> }]...]&nbsp;&nbsp;
+&nbsp;[where&nbsp;&nbsp;<i> search_conditions&nbsp;</i> ]</pre>
+
+<pre>&nbsp;delete [from] [[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]{&nbsp;<i> table_name&nbsp;</i> |&nbsp;<i> view_name&nbsp;</i> }&nbsp;
+&nbsp;where current of&nbsp;&nbsp;<i> cursor_name&nbsp;</i></pre>
+
+<h3>
+disk init</h3>
+
+<h3>
+Function</h3>
+Makes a physical device or file usable by SQL Server. (The master device
+is initialized by the <b>sybinit </b>installation program; it is not necessary
+to initialize this device with <b>disk init </b>.)
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;disk init&nbsp;&nbsp;
+&nbsp;name = "&nbsp;<i> device_name&nbsp;</i> " ,&nbsp;&nbsp;
+&nbsp;physname = "&nbsp;<i> physicalname&nbsp;</i> " ,&nbsp;&nbsp;
+&nbsp;vdevno = virtual_device_number ,&nbsp;&nbsp;
+&nbsp;size = number_of_&nbsp;<i> block&nbsp;</i> s&nbsp;&nbsp;
+&nbsp;[, vstart = virtual_address ,&nbsp;&nbsp;
+&nbsp;cntrltype = controller_number ]&nbsp;&nbsp;
+&nbsp;[, contiguous] (&nbsp;<i> OpenVMS only&nbsp;</i> )</pre>
+
+<h3>
+disk mirror</h3>
+
+<h3>
+Function</h3>
+Creates a software mirror that immediately takes over when the primary
+device fails. You can mirror the master device, devices that store data,
+and devices that store transaction logs; you cannot mirror dump devices.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;disk mirror&nbsp;&nbsp;
+&nbsp;name = "&nbsp;<i> device_name&nbsp;</i> " ,&nbsp;&nbsp;
+&nbsp;mirror = "&nbsp;<i> physicalname&nbsp;</i> "&nbsp;&nbsp;
+&nbsp;[ ,writes = { serial | noserial }]&nbsp;&nbsp;
+&nbsp;[ ,contiguous ] (&nbsp;<i> OpenVMS only&nbsp;</i> )</pre>
+
+<h3>
+disk refit</h3>
+
+<h3>
+Function</h3>
+Rebuilds the <i>master </i>database's <i>sysusages </i>and <i>sysdatabases
+</i>system tables from information contained in <i>sysdevices </i>. Use
+<b>disk refit </b>after <b>disk reinit </b>as part of the procedure to
+restore the master database.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;disk refit</pre>
+
+<h3>
+disk reinit</h3>
+
+<h3>
+Function</h3>
+Rebuilds the <i>master </i>database's <i>sysdevices </i>system table. Use
+<b>disk reinit </b>as part of the procedure to restore the master database.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;disk reinit&nbsp;&nbsp;
+&nbsp;name = "&nbsp;<i> device_name&nbsp;</i> ",&nbsp;&nbsp;
+&nbsp;physname = "&nbsp;<i> physicalname&nbsp;</i> " ,&nbsp;&nbsp;
+&nbsp;vdevno = virtual_device_number ,&nbsp;&nbsp;
+&nbsp;size = number_of_&nbsp;<i> block&nbsp;</i> s&nbsp;&nbsp;
+&nbsp;[, vstart = virtual_address ,&nbsp;&nbsp;
+&nbsp;cntrltype = controller_number]</pre>
+
+<h3>
+disk remirror</h3>
+
+<h3>
+Function</h3>
+Restarts disk mirroring after it is stopped by failure of a mirrored device
+or temporarily disabled by the <b>disk unmirror </b>command.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;disk remirror&nbsp;&nbsp;
+&nbsp;name = "&nbsp;<i> device_name&nbsp;</i> "</pre>
+
+<h3>
+disk unmirror</h3>
+
+<h3>
+Function</h3>
+De-activates disk mirroring to allow hardware maintenance or the changing
+of a hardware device. <b>disk unmirror </b>disables either the original
+database device or the mirror, so that it is no longer available to SQL
+Server for reads or writes. It does not remove the associated file from
+the operating system.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;disk unmirror&nbsp;&nbsp;
+&nbsp;name = "&nbsp;<i> device_name&nbsp;</i> "&nbsp;&nbsp;
+&nbsp;[ ,side = { "primary" | secondary }]&nbsp;&nbsp;
+&nbsp;[ ,mode = { retain | remove }]</pre>
+
+<h3>
+drop database</h3>
+
+<h3>
+Function</h3>
+Removes one or more databases from SQL Server.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;drop database database_name [,&nbsp;&nbsp;<i> database_name&nbsp;</i> ]...</pre>
+
+<h3>
+drop default</h3>
+
+<h3>
+Function</h3>
+Removes a user-defined default.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;drop default [&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> default&nbsp;</i> _name&nbsp;&nbsp;
+&nbsp;[, [&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> default&nbsp;</i> _name]...</pre>
+
+<h3>
+drop index</h3>
+
+<h3>
+Function</h3>
+Removes an index from a table in the current database.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;drop index table_name.index_name&nbsp;&nbsp;
+&nbsp;[,&nbsp;&nbsp;<i> table_name&nbsp;</i> .&nbsp;<i> index_name&nbsp;</i> ]...</pre>
+
+<h3>
+drop procedure</h3>
+
+<h3>
+Function</h3>
+Removes user-defined stored procedures.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;drop procedure [&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> procedure_name&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;[, [&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> procedure_name&nbsp;</i> ] ...</pre>
+
+<h3>
+drop rule</h3>
+
+<h3>
+Function</h3>
+Removes a user-defined rule.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;drop rule [&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> rule_name&nbsp;</i>&nbsp; [, [&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> rule_name&nbsp;</i> ]...</pre>
+
+<h3>
+drop table</h3>
+
+<h3>
+Function</h3>
+Removes a table definition and all of its data, indexes, triggers, and
+permission specifications from the database.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;drop table [[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> table_name&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;[, [[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> table_name&nbsp;</i>&nbsp; ]...</pre>
+
+<h3>
+drop trigger</h3>
+
+<h3>
+Function</h3>
+Removes a trigger.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;drop trigger [owner.]trigger_name&nbsp;&nbsp;
+&nbsp;[, [&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> trigger_name&nbsp;</i> ]...</pre>
+
+<h3>
+drop view</h3>
+
+<h3>
+Function</h3>
+Removes one or more views from the current database.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;drop view [owner.]view_name [, [&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> view_name&nbsp;</i> ]...</pre>
+
+<h3>
+dump database</h3>
+
+<h3>
+Function</h3>
+Makes a backup copy of the entire database, including the transaction log,
+in a form that can be read in with <b>load database </b>. Dumps and loads
+are performed through a Backup Server.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;dump database database_name&nbsp;&nbsp;
+&nbsp;to stripe_device [ at backup_server_name ]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [density = density_value,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; blocksize =&nbsp;&nbsp;<i> number_bytes&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; capacity =&nbsp;&nbsp;<i> number_kilobytes&nbsp;</i> ,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dumpvolume =&nbsp;&nbsp;<i> volume_name&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file =&nbsp;<i>&nbsp; file_name&nbsp;</i> ]&nbsp;
+&nbsp;[stripe on stripe_device [ at backup_server_name ]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [density = density_value,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; blocksize =&nbsp;&nbsp;<i> number_bytes&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; capacity =&nbsp;&nbsp;<i> number_kilobytes&nbsp;</i> ,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dumpvolume =&nbsp;&nbsp;<i> volume_name&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file =&nbsp;&nbsp;<i> file_name&nbsp;</i> ]]&nbsp;
+&nbsp;[[stripe on stripe_device [ at backup_server_name ]&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [density = density_value,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; blocksize =&nbsp;&nbsp;<i> number_bytes&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; capacity =&nbsp;&nbsp;<i> number_kilobytes&nbsp;</i> ,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dumpvolume =&nbsp;&nbsp;<i> volume_name&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file =&nbsp;&nbsp;<i> file_name&nbsp;</i> ]]...]&nbsp;
+&nbsp;[with {&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; density = density_value,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; blocksize =&nbsp;&nbsp;<i> number_bytes&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; capacity =&nbsp;&nbsp;<i> number_kilobytes&nbsp;</i> ,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dumpvolume =&nbsp;&nbsp;<i> volume_name&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file =&nbsp;&nbsp;<i> file_name&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [dismount | nodismount],&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [nounload | unload],&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; retaindays =&nbsp;&nbsp;<i> number_days&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [noinit | init],&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; notify = {client | operator_console}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; }]]</pre>
+
+<h3>
+dump transaction</h3>
+
+<h3>
+Function</h3>
+Makes a copy of a transaction log and removes the inactive portion.
+<br>To make a routine log dump:
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;dump tran[saction] database_name&nbsp;&nbsp;&nbsp;
+&nbsp;to stripe_device [ at backup_server_name ]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [density = density_value,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; blocksize = number_bytes,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; capacity = number_kilobytes,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dumpvolume =&nbsp;&nbsp;<i> volume_name&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file =&nbsp;&nbsp;<i> file_name&nbsp;</i> ]&nbsp;
+&nbsp;[stripe on stripe_device [ at backup_server_name ]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [density = density_value,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; blocksize = number_bytes,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; capacity = number_kilobytes,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dumpvolume =&nbsp;&nbsp;<i> volume_name&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file =&nbsp;&nbsp;<i> file_name&nbsp;</i> ]]&nbsp;
+&nbsp;[[stripe on stripe_device [ at backup_server_name ]&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [density = density_value,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; blocksize = number_bytes,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; capacity = number_kilobytes,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dumpvolume =&nbsp;&nbsp;<i> volume_name&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file =&nbsp;&nbsp;<i> file_name&nbsp;</i> ] ]...]&nbsp;
+&nbsp;[with {&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; density = density_value,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; blocksize = number_bytes,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; capacity = number_kilobytes,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; dumpvolume =&nbsp;&nbsp;<i> volume_name&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; file =&nbsp;&nbsp;<i> file_name&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [dismount | nodismount],&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [nounload | unload],&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; retaindays = number_days,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [noinit | init],&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; notify = {client | operator_console}}]</pre>
+To truncate the log without making a backup copy:
+<pre>&nbsp;dump tran[saction] database_name&nbsp;&nbsp;&nbsp;
+&nbsp;with truncate_only</pre>
+To truncate a log that is filled to capacity. <b>Use only as a last resort
+</b>:
+<pre>&nbsp;dump tran[saction] database_name&nbsp;&nbsp;&nbsp;
+&nbsp;with no_log</pre>
+To back up the log after a database device fails:
+<pre>&nbsp;dump tran[saction] database_name&nbsp;&nbsp;&nbsp;
+&nbsp;to stripe_device [ at backup_server_name ]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [density = density_value,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; blocksize = number_bytes,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; capacity = number_kilobytes,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dumpvolume =&nbsp;&nbsp;<i> volume_name&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file =&nbsp;&nbsp;<i> file_name&nbsp;</i> ]&nbsp;
+&nbsp;[stripe on stripe_device [ at backup_server_name ]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [density = density_value,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; blocksize = number_bytes,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; capacity = number_kilobytes,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dumpvolume =&nbsp;&nbsp;<i> volume_name&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file =&nbsp;&nbsp;<i> file_name&nbsp;</i> ]]&nbsp;
+&nbsp;[[stripe on stripe_device [ at backup_server_name ]&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [density = density_value,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; blocksize = number_bytes,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; capacity = number_kilobytes,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dumpvolume =&nbsp;&nbsp;<i> volume_name&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file =&nbsp;&nbsp;<i> file_name&nbsp;</i> ] ]...]&nbsp;
+&nbsp;[with {&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; density = density_value,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; blocksize = number_bytes,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; capacity = number_kilobytes,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; dumpvolume =&nbsp;&nbsp;<i> volume_name&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; file =&nbsp;&nbsp;<i> file_name&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [dismount | nodismount],&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [nounload | unload],&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; retaindays = number_days,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [noinit | init],&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; no_truncate,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; notify = {client | operator_console}}]</pre>
+
+<h3>
+execute</h3>
+
+<h3>
+Function</h3>
+Runs a system procedure or a user-defined stored procedure.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;[execute] [@return_status = ]&nbsp;
+&nbsp;[[[server.]&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> procedure_name&nbsp;</i> [;number]&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [[@parameter_name =]&nbsp;&nbsp;<i> value&nbsp;</i>&nbsp; |&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [@&nbsp;<i> parameter_name&nbsp;</i>&nbsp; =] @variable [output]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [,[@parameter_name =]&nbsp;&nbsp;<i> value&nbsp;</i>&nbsp; |&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [@&nbsp;<i> parameter_name&nbsp;</i>&nbsp; =] @variable [output]...]]&nbsp;&nbsp;
+&nbsp;[with recompile]</pre>
+
+<h3>
+fetch</h3>
+
+<h3>
+Function</h3>
+Returns a row or a set of rows from a cursor result set.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;fetch&nbsp;&nbsp;<i> cursor_name&nbsp;</i>&nbsp; [ into&nbsp;&nbsp;<i> fetch_target_list&nbsp;</i>&nbsp; ]</pre>
+
+<h3>
+goto Label</h3>
+
+<h3>
+Function</h3>
+Branches to a user-defined label.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;&nbsp;<i> label&nbsp;</i> :&nbsp;&nbsp;
+&nbsp;goto&nbsp;&nbsp;<i> label&nbsp;</i></pre>
+
+<h3>
+grant</h3>
+
+<h3>
+Function</h3>
+Assigns permissions to users.
+<br>To grant permission to access database objects:
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;grant {all [privileges]|&nbsp;&nbsp;<i> permission_list&nbsp;</i> }&nbsp;&nbsp;
+&nbsp;on {&nbsp;<i>&nbsp; table_name&nbsp;</i>&nbsp; [(&nbsp;<i> column_list&nbsp;</i> )]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;<i>&nbsp; view_name&nbsp;</i> [(&nbsp;<i> column_list&nbsp;</i> )]&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; | stored_&nbsp;<i> procedure_name&nbsp;</i> }&nbsp;
+&nbsp;to {public |&nbsp;&nbsp;<i> name_list&nbsp;</i>&nbsp; |&nbsp;&nbsp;<i> role_name&nbsp;</i> }&nbsp;
+&nbsp;[with grant option]</pre>
+To grant permission to create database objects:
+<pre>&nbsp;grant {all [privileges] |&nbsp;&nbsp;<i> command_list&nbsp;</i> }&nbsp;&nbsp;
+&nbsp;to {public |&nbsp;&nbsp;<i> name_list&nbsp;</i>&nbsp; |&nbsp;&nbsp;<i> role_name&nbsp;</i> }</pre>
+
+<h3>
+group by and having Clauses</h3>
+
+<h3>
+Function</h3>
+Used in <b>select </b>statements to divide a table into groups.
+<h3>
+Syntax</h3>
+Start of <b>select </b>statement
+<pre>&nbsp;group by [all]&nbsp;&nbsp;<i> aggregate_free_expression&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [,&nbsp;&nbsp;<i> aggregate_free_expression&nbsp;</i> ]...&nbsp;
+&nbsp;[having&nbsp;&nbsp;<i> search_conditions&nbsp;</i> ]</pre>
+End of <b>select </b>statement
+<h3>
+if...else</h3>
+
+<h3>
+Function</h3>
+Imposes conditions on the execution of a SQL statement. The statement following
+an <b>if </b>keyword and its condition is executed if the condition is
+satisfied (when the logical expression returns "true"). The optional <b>else
+</b>keyword introduces an alternate SQL statement that executes when the
+<b>if </b>condition is not satisfied (when the logical expression returns
+"false").
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;if&nbsp;&nbsp;<i> logical_expression&nbsp;
+&nbsp;statement&nbsp;</i> s</pre>
+
+<pre>&nbsp;[else&nbsp;&nbsp;
+&nbsp;[if&nbsp;&nbsp;<i> logical_expression&nbsp;</i> ]&nbsp;&nbsp;
+&nbsp;&nbsp;<i> statement&nbsp;</i> ]</pre>
+
+<h3>
+insert</h3>
+
+<h3>
+Function</h3>
+Adds new rows to a table or view.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;insert [into] [&nbsp;<i> database&nbsp;</i> .[&nbsp;<i> owner&nbsp;</i> .]]{&nbsp;<i> table_name&nbsp;</i> |&nbsp;<i> view_name&nbsp;</i> }&nbsp;
+&nbsp;[(&nbsp;<i> column_list&nbsp;</i> )]&nbsp;&nbsp;
+&nbsp;{values (&nbsp;<i> expression&nbsp;</i>&nbsp; [,&nbsp;<i>&nbsp; expression&nbsp;</i> ]...)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;<i> select_statement&nbsp;</i>&nbsp; }</pre>
+
+<h3>
+kill</h3>
+
+<h3>
+Function</h3>
+Kills a process.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;kill&nbsp;&nbsp;<i> spid&nbsp;</i></pre>
+
+<h3>
+load database</h3>
+
+<h3>
+Function</h3>
+Loads a backup copy of a user database, including its transaction log,
+that was created with <b>dump database </b>. The <b>listonly </b>and <b>headeronly
+</b>options display information about the dump files without loading them.
+Dumps and loads are performed through a Backup Server.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;load database&nbsp;&nbsp;<i> database_name&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;from stripe_device [at backup_server_name ]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [density = density_value,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; blocksize = number_bytes,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dumpvolume =&nbsp;&nbsp;<i> volume_name,&nbsp;&nbsp;
+&nbsp;&nbsp;</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file =&nbsp;&nbsp;<i> file_name&nbsp;</i> ]&nbsp;
+&nbsp;[stripe on stripe_device [at backup_server_name ]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [density = density_value,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; blocksize = number_bytes,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dumpvolume =&nbsp;&nbsp;<i> volume_name&nbsp;</i> ,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file =&nbsp;&nbsp;<i> file_name&nbsp;</i> ]&nbsp;
+&nbsp;[stripe on stripe_device [at backup_server_name ]&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [density = density_value,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; blocksize = number_bytes,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dumpvolume =&nbsp;&nbsp;<i> volume_name&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file =&nbsp;&nbsp;<i> file_name&nbsp;</i> ]...]&nbsp;
+&nbsp;[with {&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; density = density_value,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; blocksize = number_bytes,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; dumpvolume =&nbsp;&nbsp;<i> volume_name,&nbsp;&nbsp;
+&nbsp;&nbsp;</i>&nbsp;&nbsp;&nbsp;&nbsp; file =&nbsp;&nbsp;<i> file_name&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [dismount | nodismount],&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [nounload | unload],&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; listonly [= full],&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; headeronly,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; notify = {client | operator_console}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; }]</pre>
+
+<h3>
+load transaction</h3>
+
+<h3>
+Function</h3>
+Loads a backup copy of the transaction log that was created with the <b>dump
+transaction </b>command. The <b>listonly </b>and <b>headeronly </b>options
+display information about the dump files without loading them. Dumps and
+loads are performed through a Backup Server.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;load tran[saction]&nbsp;&nbsp;<i> database_name&nbsp;
+&nbsp;&nbsp;</i> from stripe_device [at backup_server_name]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [density = density_value,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; blocksize = number_bytes,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dumpvolume =&nbsp;&nbsp;<i> volume_name&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file = file_name]&nbsp;
+&nbsp;[stripe on stripe_device [at backup_server_name]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [density = density_value,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; blocksize = number_bytes,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dumpvolume =&nbsp;&nbsp;<i> volume_name&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file = file_name]&nbsp;
+&nbsp;[stripe on stripe_device [at backup_server_name]&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [density = density_value,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; blocksize = number_bytes,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dumpvolume =&nbsp;&nbsp;<i> volume_name&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file = file_name]...]&nbsp;
+&nbsp;[with {&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; density = density_value,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; blocksize = number_bytes,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; dumpvolume =&nbsp;&nbsp;<i> volume_name&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; file = file_name,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [dismount | nodismount],&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [nounload | unload],&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; listonly [= full],&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; headeronly,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; notify = {client | operator_console}&nbsp;
+&nbsp;}]</pre>
+
+<h3>
+open</h3>
+
+<h3>
+Function</h3>
+Opens a cursor for processing.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;open&nbsp;&nbsp;<i> cursor_name&nbsp;</i></pre>
+
+<h3>
+order by Clause</h3>
+
+<h3>
+Function</h3>
+Returns query results in the specified column(s) in sorted order.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;[order by {[&nbsp;<i> table_name&nbsp;</i> .|&nbsp;&nbsp;<i> view_name&nbsp;</i> .]&nbsp;<i> column_name&nbsp;
+&nbsp;&nbsp;</i>&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;<i> select_list_number&nbsp;</i>&nbsp; |&nbsp;&nbsp;<i> expression&nbsp;</i> } [asc | desc]&nbsp;
+&nbsp;[,{[&nbsp;<i> table_name&nbsp;</i> .|&nbsp;&nbsp;<i> view_name&nbsp;</i> .]&nbsp;&nbsp;<i> column_name&nbsp;
+&nbsp;&nbsp;</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i> select_list&nbsp;</i> _number|e&nbsp;<i> xpression&nbsp;</i> } [asc |desc]]...]</pre>
+
+<h3>
+prepare transaction</h3>
+
+<h3>
+Function</h3>
+Used by DB-Library in a two-phase commit application to see if a server
+is prepared to commit a transaction.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;prepare transaction</pre>
+
+<h3>
+print</h3>
+
+<h3>
+Function</h3>
+Prints a user-defined message on the user's screen.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;print&nbsp;&nbsp;
+&nbsp;{&nbsp;<i> format_string&nbsp;</i>&nbsp; | @&nbsp;<i> local_variable&nbsp;</i>&nbsp; |&nbsp;<i>&nbsp; @@global_variable&nbsp;</i> }&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [,&nbsp;&nbsp;<i> arg_list&nbsp;</i> ]</pre>
+
+<h3>
+raiserror</h3>
+
+<h3>
+Function</h3>
+Prints a user-defined error message on the user's screen and sets a system
+flag to record that an error condition has occurred.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;raiserror&nbsp;&nbsp;<i> error_number&nbsp;&nbsp;
+&nbsp;&nbsp;</i> [{&nbsp;<i> format_string&nbsp;</i>&nbsp; | @&nbsp;<i> local_variable&nbsp;</i> }] [,&nbsp;&nbsp;<i> arg_list&nbsp;</i> ]&nbsp;
+&nbsp;[&nbsp;<i> extended_value&nbsp;&nbsp;</i> =&nbsp;<i>&nbsp; extended_value&nbsp;&nbsp;</i> [{,&nbsp;<i>&nbsp; extended_value&nbsp;&nbsp;</i> =&nbsp;<i>&nbsp; extended_value&nbsp;</i> }...]]</pre>
+
+<h3>
+readtext</h3>
+
+<h3>
+Function</h3>
+Reads <i>text </i>and <i>image </i>values, starting from a specified offset
+and reading a specified number of bytes or characters.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;readtext [[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> table_name&nbsp;</i> .&nbsp;<i> column_name&nbsp;
+&nbsp;text_pointer&nbsp;</i>&nbsp;&nbsp;&nbsp;<i> offset&nbsp;</i>&nbsp;&nbsp;&nbsp;<i> size&nbsp;</i>&nbsp; [holdlock]&nbsp;
+&nbsp;[using {bytes | chars | characters}]</pre>
+
+<h3>
+reconfigure</h3>
+
+<h3>
+Function</h3>
+Sets configuration variables that control various aspects of SQL Server's
+memory allocation, performance, and options. Used with the system procedure
+<b>sp_configure </b>.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;reconfigure [with override]</pre>
+
+<h3>
+return</h3>
+
+<h3>
+Function</h3>
+Exits from a batch or procedure unconditionally, optionally providing a
+return status. Statements following <b>return </b>are not executed.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;return [&nbsp;<i> integer_expression&nbsp;</i> ]</pre>
+
+<h3>
+revoke</h3>
+
+<h3>
+Function</h3>
+Revokes permissions from users.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;revoke [grant option for]&nbsp;&nbsp;
+&nbsp;{all [privileges] |&nbsp;&nbsp;<i> permission_list&nbsp;</i> }&nbsp;&nbsp;
+&nbsp;on {&nbsp;<i>&nbsp; table_name&nbsp;</i>&nbsp; [(&nbsp;<i> column_list&nbsp;</i> )]&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;<i> view_name&nbsp;</i>&nbsp; [(&nbsp;<i> column_list&nbsp;</i> )]&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; | stored_&nbsp;<i> procedure_name&nbsp;</i> }&nbsp;
+&nbsp;from {public |&nbsp;&nbsp;<i> name_list&nbsp;</i>&nbsp; |&nbsp;&nbsp;<i> role_name&nbsp;</i> }&nbsp;
+&nbsp;[cascade]</pre>
+
+<pre>&nbsp;revoke {all [privileges] |&nbsp;&nbsp;<i> command_list&nbsp;</i> }&nbsp;&nbsp;
+&nbsp;from {public |&nbsp;&nbsp;<i> name_list&nbsp;</i>&nbsp; |&nbsp;&nbsp;<i> role_name&nbsp;</i> }</pre>
+
+<h3>
+rollback</h3>
+
+<h3>
+Function</h3>
+Rolls a user-defined transaction back to the last savepoint inside the
+transaction or to the beginning of the transaction.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;rollback {transaction | tran | work}&nbsp;
+&nbsp;[&nbsp;<i> transaction_name&nbsp;</i>&nbsp; |&nbsp;<i>&nbsp; savepoint_name&nbsp;</i> ]</pre>
+
+<h3>
+rollback trigger</h3>
+
+<h3>
+Function</h3>
+Rolls back the work done in a trigger, including the data modification
+that caused the trigger to fire, and issues an optional <b>raiserror </b>statement.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;rollback trigger&nbsp;
+&nbsp;[with&nbsp;&nbsp;<i> raiserror_statement&nbsp;</i> ]</pre>
+
+<h3>
+save transaction</h3>
+
+<h3>
+Function</h3>
+Sets a savepoint within a transaction.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;save transaction&nbsp;&nbsp;<i> savepoint_name&nbsp;</i></pre>
+
+<h3>
+select</h3>
+
+<h3>
+Function</h3>
+Retrieves rows from database objects.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;select [all | distinct]&nbsp;&nbsp;<i> select_list&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;[into [[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> table_name&nbsp;</i> ]&nbsp;&nbsp;
+&nbsp;[from [[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]{&nbsp;<i> table_name&nbsp;</i>&nbsp; |&nbsp;<i> view_name&nbsp;</i> }&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [holdlock | noholdlock] [shared]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [,[[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]{&nbsp;<i> table_name&nbsp;</i>&nbsp; |&nbsp;<i> view_name&nbsp;</i> }&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [holdlock | noholdlock] [shared]]... ]&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;[where&nbsp;&nbsp;<i> search_conditions&nbsp;</i> ]&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;[group by [all]&nbsp;&nbsp;<i> aggregate_free_expression&nbsp;
+&nbsp;&nbsp;</i>&nbsp;&nbsp;&nbsp;&nbsp; [,&nbsp;&nbsp;<i> aggregate_free_expression&nbsp;</i> ]... ]&nbsp;
+&nbsp;[having&nbsp;&nbsp;<i> search_conditions&nbsp;</i> ]&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;[order by&nbsp;&nbsp;
+&nbsp;{[[[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]{&nbsp;<i> table_name&nbsp;</i> .|&nbsp;<i> view_name&nbsp;</i> .}]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i> column_name&nbsp;</i>&nbsp; |&nbsp;<i>&nbsp; select_list&nbsp;</i> _number |&nbsp;<i>&nbsp; expression&nbsp;</i> }&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [asc | desc]&nbsp;
+&nbsp;[,{[[[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]{&nbsp;<i> table_name&nbsp;</i> |&nbsp;<i> view_name&nbsp;</i> .}]&nbsp;
+&nbsp;&nbsp;<i>&nbsp;&nbsp;&nbsp;&nbsp; column_name&nbsp;</i>&nbsp; |&nbsp;<i>&nbsp; select_list_number&nbsp;</i>&nbsp; |&nbsp;&nbsp;<i> expression&nbsp;</i> }&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [asc | desc]]...]&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;[compute&nbsp;&nbsp;<i> row_aggregate&nbsp;</i> (&nbsp;<i> column_name&nbsp;</i> )&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [,&nbsp;&nbsp;<i> row_aggregate&nbsp;</i> (&nbsp;<i> column_name&nbsp;</i> )]...&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [by&nbsp;&nbsp;<i> column_name&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> column_name&nbsp;</i> ]...]]&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;[for {read only | update [of&nbsp;&nbsp;<i> column_name_list&nbsp;</i> ]}]&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;[for browse]</pre>
+
+<h3>
+set</h3>
+
+<h3>
+Function</h3>
+Sets SQL Server query-processing options for the duration of the user's
+work session. Can be used to set some options inside a trigger or stored
+procedure.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;set ansinull {on | off}</pre>
+
+<pre>&nbsp;set ansi_permissions {on | off}</pre>
+
+<pre>&nbsp;set arithabort [arith_overflow | numeric_truncation]&nbsp;
+&nbsp;{on | off}</pre>
+
+<pre>&nbsp;set arithignore [arith_overflow] {on | off}</pre>
+
+<pre>&nbsp;set {chained, close on endtran, nocount, noexec, parseonly, procid, self_recursion, showplan}&nbsp;
+&nbsp;{on | off}</pre>
+
+<pre>&nbsp;set char_convert {off | on [with {error | no_error}] |&nbsp;
+&nbsp;charset [with {error | no_error}]}</pre>
+
+<pre>&nbsp;set cursor rows&nbsp;<i>&nbsp; number&nbsp;</i>&nbsp; for&nbsp;&nbsp;<i> cursor_name&nbsp;</i></pre>
+
+<pre>&nbsp;set {datefirst&nbsp;&nbsp;<i> number&nbsp;</i> , dateformat&nbsp;&nbsp;<i> format&nbsp;</i> ,&nbsp;
+&nbsp;language&nbsp;&nbsp;<i> language&nbsp;</i> }</pre>
+
+<pre>&nbsp;set dup_in_subquery {on | off}</pre>
+
+<pre>&nbsp;set fipsflagger {on | off}</pre>
+
+<pre>&nbsp;set flushmessage {on | off}</pre>
+
+<pre>&nbsp;set identity_insert [database.[owner.]]table_name&nbsp;
+&nbsp;{on | off}</pre>
+
+<pre>&nbsp;set offsets {select, from, order, compute, table,&nbsp;
+&nbsp;procedure, statement, param, execute} {on | off}</pre>
+
+<pre>&nbsp;set quoted_identifier {on | off}</pre>
+
+<pre>&nbsp;set role {"sa_role" | "sso_role" | "oper_role"}&nbsp;&nbsp;
+&nbsp;{on | off}</pre>
+
+<pre>&nbsp;set {rowcount&nbsp;&nbsp;<i> number&nbsp;</i> , textsize&nbsp;&nbsp;<i> number&nbsp;</i> }</pre>
+
+<pre>&nbsp;set statistics {io, time} {on | off}</pre>
+
+<pre>&nbsp;set string_rtruncation {on | off}</pre>
+
+<pre>&nbsp;set textsize {&nbsp;<i> number&nbsp;</i> }</pre>
+
+<pre>&nbsp;set transaction isolation level {1 | 3}</pre>
+
+<h3>
+setuser</h3>
+
+<h3>
+Function</h3>
+Allows a Database Owner to impersonate another user.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;setuser ["&nbsp;<i> user_name&nbsp;</i> "]</pre>
+
+<h3>
+shutdown</h3>
+
+<h3>
+Function</h3>
+Shuts down the SQL Server from which the command is issued, its local Backup
+Server, or a remote Backup Server. This command can only be issued by a
+System Administrator.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;shutdown [&nbsp;<i> srvname&nbsp;</i> ] [with {wait | nowait}]</pre>
+
+<h3>
+truncate table</h3>
+
+<h3>
+Function</h3>
+Removes all rows from a table.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;truncate table [[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> table_name&nbsp;</i></pre>
+
+<h3>
+union Operator</h3>
+
+<h3>
+Function</h3>
+Returns a single result set that combines the results of two or more queries.
+Duplicate rows are eliminated from the result set unless the <b>all </b>keyword
+is specified.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; select&nbsp;&nbsp;<i> select_list&nbsp;</i>&nbsp; [into&nbsp;&nbsp;<i> clause&nbsp;</i> ]&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [from&nbsp;&nbsp;<i> clause&nbsp;</i> ] [where&nbsp;&nbsp;<i> clause&nbsp;</i> ]&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [group by&nbsp;&nbsp;<i> clause&nbsp;</i> ] [having&nbsp;&nbsp;<i> clause&nbsp;</i> ]&nbsp;&nbsp;
+&nbsp;[union [all]&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; select&nbsp;&nbsp;<i> select_list&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [from&nbsp;<i>&nbsp; clause&nbsp;</i> ] [where&nbsp;&nbsp;<i> clause&nbsp;</i> ]&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [group by&nbsp;&nbsp;<i> clause&nbsp;</i> ] [having&nbsp;&nbsp;<i> clause&nbsp;</i> ] ]...&nbsp;&nbsp;
+&nbsp;[order by&nbsp;&nbsp;<i> clause]&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;[compute&nbsp;&nbsp;<i> clause&nbsp;</i> ]</pre>
+
+<h3>
+update</h3>
+
+<h3>
+Function</h3>
+Changes data in existing rows, either by adding data or by modifying existing
+data.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;update [[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]{&nbsp;<i> table_name&nbsp;</i>&nbsp; |&nbsp;&nbsp;<i> view_name&nbsp;</i> }&nbsp;&nbsp;
+&nbsp;set [[[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]{&nbsp;<i> table_name&nbsp;</i> .|&nbsp;<i> view_name&nbsp;</i> .}]&nbsp;
+&nbsp;&nbsp;<i>&nbsp;&nbsp;&nbsp;&nbsp; column_name1&nbsp;</i>&nbsp; =&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;<i> expression1&nbsp;</i> |NULL|(&nbsp;<i> select_statement&nbsp;</i> )}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [,&nbsp;&nbsp;<i> column_name2&nbsp;</i>&nbsp; =&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;<i> expression2&nbsp;</i> |NULL|(&nbsp;<i> select_statement&nbsp;</i> )}]...&nbsp;
+&nbsp;[from [[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]{&nbsp;<i> table_name&nbsp;</i>&nbsp; |&nbsp;&nbsp;<i> view_name&nbsp;</i> }&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [,[[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]{&nbsp;<i> table_name&nbsp;</i> |&nbsp;<i> view_name&nbsp;</i> }]...]&nbsp;
+&nbsp;[where&nbsp;&nbsp;<i> search_conditions&nbsp;</i> ]</pre>
+
+<pre>&nbsp;update [[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]{&nbsp;<i> table_name&nbsp;</i>&nbsp; |&nbsp;&nbsp;<i> view_name&nbsp;</i> }&nbsp;&nbsp;
+&nbsp;set [[[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]{&nbsp;<i> table_name&nbsp;</i> .|&nbsp;<i> view_name&nbsp;</i> .}]&nbsp;
+&nbsp;&nbsp;<i>&nbsp;&nbsp;&nbsp;&nbsp; column_name1&nbsp;</i>&nbsp; =&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;<i> expression1&nbsp;</i> |NULL|(&nbsp;<i> select_statement&nbsp;</i> )}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [,&nbsp;&nbsp;<i> column_name2&nbsp;</i>&nbsp; =&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;<i> expression2&nbsp;</i> |NULL|(&nbsp;<i> select_statement&nbsp;</i> )}]...&nbsp;
+&nbsp;where current of&nbsp;&nbsp;<i> cursor_name&nbsp;</i></pre>
+
+<h3>
+update statistics</h3>
+
+<h3>
+Function</h3>
+Updates information about the distribution of key values in specified indexes.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;update statistics&nbsp;&nbsp;<i> table_name&nbsp;</i>&nbsp; [&nbsp;<i> index_name&nbsp;</i> ]</pre>
+
+<h3>
+use</h3>
+
+<h3>
+Function</h3>
+Specifies the database with which you want to work.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;use&nbsp;&nbsp;<i> database_name&nbsp;</i></pre>
+
+<h3>
+waitfor</h3>
+
+<h3>
+Function</h3>
+Specifies a specific time, a time interval, or an event for the execution
+of a statement block, stored procedure, or transaction.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;waitfor { delay&nbsp;&nbsp;<i> time&nbsp;</i>&nbsp; | time&nbsp;&nbsp;<i> time&nbsp;</i>&nbsp; | errorexit&nbsp;&nbsp;
+&nbsp;| processexit | mirrorexit }</pre>
+
+<h3>
+where Clause</h3>
+
+<h3>
+Function</h3>
+Sets the search conditions in a <b>select </b>, <b>insert </b>, <b>update
+</b>, or <b>delete </b>statement. (Joins and subqueries are specified in
+the search conditions: see the <b><a href="@ebt-link;hf=0;pt=339?target=%25N%14_6364_START_RESTART_N%25;window=current#X" TARGET="_top">"Joins"
+</a></b>and <b><a href="@ebt-link;hf=0;pt=339?target=%25N%14_6652_START_RESTART_N%25;window=current#X" TARGET="_top">"Subqueries"
+</a></b>sections for full details.)
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;where [not]&nbsp;&nbsp;<i> expression comparison_operator expression&nbsp;</i></pre>
+
+<pre>&nbsp;where [not]&nbsp;&nbsp;<i> expression&nbsp;</i>&nbsp; [not] like&nbsp;&nbsp;&nbsp;<i> "match_string&nbsp;</i> "&nbsp;
+&nbsp;[escape&nbsp;&nbsp;<i> "escape_character&nbsp;</i> "]</pre>
+
+<pre>&nbsp;where [not]&nbsp;&nbsp;<i> expression&nbsp;</i>&nbsp; is [not] null</pre>
+
+<pre>&nbsp;where [not]&nbsp;&nbsp;
+&nbsp;expression [not] between&nbsp;&nbsp;<i> expression&nbsp;</i>&nbsp; and&nbsp;&nbsp;<i> expression&nbsp;</i></pre>
+
+<pre>&nbsp;where [not]&nbsp;
+&nbsp;&nbsp;<i> expression&nbsp;</i>&nbsp; [not] in ({&nbsp;<i> value&nbsp;</i> _list |&nbsp;<i>&nbsp; subquery&nbsp;</i> })</pre>
+
+<pre>&nbsp;where [not] exists (&nbsp;<i> subquery&nbsp;</i> )</pre>
+
+<pre>&nbsp;where [not]&nbsp;&nbsp;
+&nbsp;&nbsp;<i> expression&nbsp;</i>&nbsp;&nbsp;&nbsp;<i> comparison_operator&nbsp;</i>&nbsp; {any|all} (&nbsp;<i> subquery&nbsp;</i> )</pre>
+
+<pre>&nbsp;where [not]&nbsp;&nbsp;<i> column_name&nbsp;</i>&nbsp;&nbsp;&nbsp;<i> join_operator&nbsp;</i>&nbsp;&nbsp;&nbsp;<i> column_name&nbsp;</i></pre>
+
+<pre>&nbsp;where [not]&nbsp;&nbsp;<i> boolean_expression&nbsp;</i></pre>
+
+<pre>&nbsp;where [not]&nbsp;&nbsp;<i> expression&nbsp;</i>&nbsp; {and | or} [not]&nbsp;&nbsp;<i> expression&nbsp;</i></pre>
+
+<h3>
+while</h3>
+
+<h3>
+Function</h3>
+Sets a condition for the repeated execution of a statement or statement
+block. The statement(s) are executed repeatedly as long as the specified
+condition is true.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;while&nbsp;<i>&nbsp; logical_expression&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;<i>&nbsp;&nbsp;&nbsp;&nbsp; statement&nbsp;</i></pre>
+
+<h3>
+writetext</h3>
+
+<h3>
+Function</h3>
+Permits non-logged, interactive updating of an existing text or image column.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;writetext [[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> table_name&nbsp;</i> .&nbsp;<i> column_name&nbsp;
+&nbsp;text_pointer&nbsp;&nbsp;</i> [with log]&nbsp;&nbsp;<i> data&nbsp;</i></pre>
+
+<pre></pre>
+&nbsp;
+<h3>
+Chapter 2</h3>
+
+<h2>
+Transact-SQL Functions</h2>
+
+<h3>
+Aggregate Functions</h3>
+The aggregate functions generate summary values that appear as new columns
+in the query results. They can be used in the select list or the <b>having
+</b>clause of a <b>select </b>statement or subquery, and often appear in
+a statement that includes a <b>group by </b>clause.
+<br>&nbsp;
+<table>
+<tr>
+<th>Aggregate Function&nbsp;</th>
+
+<th>Result&nbsp;</th>
+</tr>
+
+<tr>
+<td><b>sum([all | distinct] </b><i>expression </i>)&nbsp;</td>
+
+<td>Total of (distinct) values in the numeric column&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>avg([all | distinct] </b><i>expression </i>)&nbsp;</td>
+
+<td>Average of (distinct) values in the numeric column&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>count([all | distinct] </b><i>expression </i>)&nbsp;</td>
+
+<td>Number of (distinct) non-null values in the column&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>count(*)&nbsp;</b></td>
+
+<td>Number of selected rows&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>max </b>( <i>expression </i>)&nbsp;</td>
+
+<td>Highest value in the expression&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>min </b>( <i>expression </i>)&nbsp;</td>
+
+<td>Lowest value in the expression&nbsp;</td>
+</tr>
+</table>
+
+<h3>
+Datatype Conversion Functions</h3>
+Datatype conversion functions change expressions from one datatype to another
+and specify new display formats for date/time information. SQL Server provides
+three datatype conversion functions, <b>convert() </b>, <b>inttohex() </b>,
+and <b>hextoint() </b>, which can be used in the select list, in the <b>where
+</b>clause, and anywhere else an expression is allowed.
+<table>
+<tr>
+<th>Function&nbsp;</th>
+
+<th>Argument&nbsp;</th>
+
+<th>Result&nbsp;</th>
+</tr>
+
+<tr>
+<td><b>convert&nbsp;</b></td>
+
+<td>( <i>datatype&nbsp;</i>
+<br>[( <i>length </i>) | ( <i>precision </i>[, <i>scale </i>])], <i>expression
+</i>[, <i>style </i>])&nbsp;</td>
+
+<td>Converts between a wide variety of datatypes and reformats date/time
+and money data for display purposes.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>hextoint&nbsp;</b></td>
+
+<td>( <i>hexadecimal_string </i>)&nbsp;</td>
+
+<td>Returns the platform- independent integer equivalent of a hexadecimal
+string.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>inttohex&nbsp;</b></td>
+
+<td>( <i>integer_expression </i>)&nbsp;</td>
+
+<td>Returns the platform- independent hexadecimal equivalent of an integer.&nbsp;</td>
+</tr>
+</table>
+
+<h3>
+Date Functions</h3>
+Manipulate <i>datetime </i>values.
+<table>
+<tr>
+<th>Function&nbsp;</th>
+
+<th>Argument&nbsp;</th>
+
+<th>Result&nbsp;</th>
+</tr>
+
+<tr>
+<td><b>getdate&nbsp;</b></td>
+
+<td>()&nbsp;</td>
+
+<td>Returns the current system date and time.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>datename&nbsp;</b></td>
+
+<td>( <i>datepart </i>, <i>date </i>)&nbsp;</td>
+
+<td>Returns the name of the specified part (such as the month "June") of
+a <i>datetime </i>value, as a character string. If the result is numeric,
+such as "23" for the day, it is still returned as a character string.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>datepart&nbsp;</b></td>
+
+<td>( <i>datepart </i>, <i>date </i>)&nbsp;</td>
+
+<td>Returns an integer value for the specified part of a <i>datetime </i>value.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>datediff&nbsp;</b></td>
+
+<td>( <i>datepart </i>, <i>date1 </i>, <i>date2 </i>)&nbsp;</td>
+
+<td>Returns <i>date2 </i>- <i>date1 </i>, measured in the specified date
+part.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>dateadd&nbsp;</b></td>
+
+<td>( <i>datepart </i>, <i>numeric_expression </i>, <i>date </i>)&nbsp;</td>
+
+<td>Returns the date produced by adding the specified number of the specified
+date parts to the date <i>. numeric_expression </i>can be any numeric type;
+the value is truncated to an integer.&nbsp;</td>
+</tr>
+</table>
+
+<h3>
+Mathematical Functions</h3>
+Mathematical functions return values commonly needed for operations on
+mathematical data. Mathematical function names are not keywords.:
+<table>
+<tr>
+<th>Function&nbsp;</th>
+
+<th>Argument&nbsp;</th>
+
+<th>Result&nbsp;</th>
+</tr>
+
+<tr>
+<td><b>abs&nbsp;</b></td>
+
+<td>( <i>numeric </i>)&nbsp;</td>
+
+<td>Returns the absolute value of a given expression. Results are of the
+same type and have the same precision and scale as the numeric expression.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>acos&nbsp;</b></td>
+
+<td>( <i>approx_numeric </i>)&nbsp;</td>
+
+<td>Returns the angle (in radians) whose cosine is the specified value.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>asin&nbsp;</b></td>
+
+<td>( <i>approx_numeric </i>)&nbsp;</td>
+
+<td>Returns the angle (in radians) whose sine is the specified value.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>atan&nbsp;</b></td>
+
+<td>( <i>approx_numeric </i>)&nbsp;</td>
+
+<td>Returns the angle (in radians) whose tangent is the specified value.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>atn2&nbsp;</b></td>
+
+<td>( <i>approx_numeric1, approx_numeric2 </i>)&nbsp;</td>
+
+<td>Returns the angle (in radians) whose tangent is ( <i>approx_numeric1
+</i>/ <i>approx_numeric2 </i>).&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>ceiling&nbsp;</b></td>
+
+<td>( <i>numeric </i>)&nbsp;</td>
+
+<td>Returns the smallest integer greater than or equal to the specified
+value. Results are of the same type as the numeric expression. For <i>numeric
+</i>and <i>decimal </i>expressions, the results have a precision equal
+to that of the expression and a scale of 0.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>cos&nbsp;</b></td>
+
+<td>( <i>approx_numeric </i>)&nbsp;</td>
+
+<td>Returns the cosine of the specified angle (in radians).&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>cot&nbsp;</b></td>
+
+<td>( <i>approx_numeric </i>)&nbsp;</td>
+
+<td>Returns the cotangent of the specified angle (in radians).&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>degrees&nbsp;</b></td>
+
+<td>( <i>numeric </i>)&nbsp;</td>
+
+<td>Converts radians to degrees. Results are of the same type as the numeric
+expression. For <i>numeric </i>and <i>decimal </i>expressions, the results
+have an internal precision of 77 and a scale equal to that of the expression.
+When <i>money </i>datatypes are used, internal conversion to <i>float </i>may
+cause loss of precision.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>exp&nbsp;</b></td>
+
+<td>( <i>approx_numeric </i>)&nbsp;</td>
+
+<td>Returns the exponential value of the specified value.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>floor&nbsp;</b></td>
+
+<td>( <i>numeric </i>)&nbsp;</td>
+
+<td>Returns the largest integer less than or equal to the specified value.
+Results are of the same type as the numeric expression. For <i>numeric
+</i>and <i>decimal </i>expressions, the results have a precision equal
+to that of the expression and a scale of 0.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>log&nbsp;</b></td>
+
+<td>( <i>approx_numeric </i>)&nbsp;</td>
+
+<td>Returns the natural logarithm of the specified value.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>log10&nbsp;</b></td>
+
+<td>( <i>approx_numeric </i>)&nbsp;</td>
+
+<td>Returns the base 10 logarithm of the specified value.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>pi&nbsp;</b></td>
+
+<td>()&nbsp;</td>
+
+<td>Returns the constant value of 3.1415926535897936.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>power&nbsp;</b></td>
+
+<td>( <i>numeric </i>, power)&nbsp;</td>
+
+<td>Returns the value of <i>numeric </i>raised to the power <i>power </i>.
+Results are of the same type as <i>numeric </i>. For expressions of type
+<i>numeric </i>or <i>decimal </i>, the results have an internal precision
+of 77 and a scale equal to that of the expression.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>radians&nbsp;</b></td>
+
+<td>( <i>numeric </i>)&nbsp;</td>
+
+<td>Converts degrees to radians. Results are of the same type as <i>numeric
+</i>. For expressions of type <i>numeric </i>or <i>decimal </i>, the results
+have an internal precision of 77 and a scale equal to that of the numeric
+expression. When money datatypes are used, internal conversion to <i>float
+</i>may cause loss of precision.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>rand&nbsp;</b></td>
+
+<td>([ <i>integer </i>])&nbsp;</td>
+
+<td>Returns a random <i>float </i>value between 0 and 1, using the optional
+<i>integer </i>as a seed value.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>round&nbsp;</b></td>
+
+<td>( <i>numeric </i>, <i>integer)&nbsp;</i></td>
+
+<td>Rounds the <i>numeric </i>so that it has <i>integer </i>significant
+digits. A positive integer determines the number of significant digits
+to the right of the decimal point; a negative <i>integer </i>, the number
+of significant digits to the left of the decimal point. Results are of
+the same type as the numeric expression and, for <i>numeric </i>and <i>decimal
+</i>expressions, have an internal precision of 77 and scale equal to that
+of the numeric expression.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>sign&nbsp;</b></td>
+
+<td>( <i>numeric </i>)&nbsp;</td>
+
+<td>Returns the positive (+1), zero (0), or negative (-1). Results are
+of the same type, and have the same precision and scale, as the numeric
+expression.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>sin&nbsp;</b></td>
+
+<td>( <i>approx_numeric </i>)&nbsp;</td>
+
+<td>Returns the sine of the specified angle (measured in radians).&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>sqrt&nbsp;</b></td>
+
+<td>( <i>approx_numeric </i>)&nbsp;</td>
+
+<td>Returns the square root of the specified value.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>tan&nbsp;</b></td>
+
+<td>( <i>approx_numeric </i>)&nbsp;</td>
+
+<td>Returns the tangent of the specified angle (measured in radians).&nbsp;</td>
+</tr>
+</table>
+
+<h3>
+Row Aggregate Functions</h3>
+Generate summary values that appear as additional rows in the query results.
+<pre>&nbsp;&nbsp;<i> Start of select statement&nbsp;</i></pre>
+
+<pre>&nbsp;compute&nbsp;&nbsp;<i> row_aggregate&nbsp;</i> (&nbsp;<i> column_name&nbsp;</i> )&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; [,&nbsp;&nbsp;<i> row_aggregate&nbsp;</i> (&nbsp;<i> column_name&nbsp;</i> )]...&nbsp;&nbsp;
+&nbsp;[by&nbsp;&nbsp;<i> column_name&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> column_name&nbsp;</i> ]...]</pre>
+
+<pre>&nbsp;</pre>
+
+<table>
+<tr>
+<th>Name&nbsp;</th>
+
+<th>Meaning&nbsp;</th>
+</tr>
+
+<tr>
+<td><b>sum&nbsp;</b></td>
+
+<td>Total of values in the (numeric) column&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>avg&nbsp;</b></td>
+
+<td>Average of values in the (numeric) column&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>min&nbsp;</b></td>
+
+<td>Lowest value in the column&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>max&nbsp;</b></td>
+
+<td>Highest value in the column&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>count&nbsp;</b></td>
+
+<td>Number of non-null values in the column&nbsp;</td>
+</tr>
+</table>
+
+<h3>
+String Functions</h3>
+Operate on binary data, character strings, and expressions. String functions
+can be nested, and they can be used anywhere an expression is allowed.
+When you use constants with a string function, enclose them in single or
+double quotes. String function names are not keywords.
+<table>
+<tr>
+<th><b>Function&nbsp;</b></th>
+
+<th><b>Argument&nbsp;</b></th>
+
+<th><b>Result&nbsp;</b></th>
+</tr>
+
+<tr>
+<td><b>ascii&nbsp;</b></td>
+
+<td>( <i>char_expr </i>)&nbsp;</td>
+
+<td>Returns the ASCII code for the first character in the expression.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>char&nbsp;</b></td>
+
+<td>( <i>integer_expr)&nbsp;</i></td>
+
+<td>Converts a single-byte <i>integer </i>value to a <i>character </i>value.
+( <b>char </b>is usually used as the inverse of <b>ascii </b>.) <i>integer_expr
+</i>must be between 0 and 255. Returns a <i>char </i>datatype. If the resulting
+value is the first byte of a multibyte character, the character may be
+undefined.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>charindex&nbsp;</b></td>
+
+<td>( <i>expression1,&nbsp;</i>
+<br><i>expression2)&nbsp;</i></td>
+
+<td>Searches <i>expression2 </i>for the first occurrence of <i>expression1
+</i>and returns an integer representing its starting position. If <i>expression1
+</i>is not found, returns 0. If <i>expression1 </i>contains wildcard characters,
+<b>charindex </b>treats them as literals.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>char_length&nbsp;</b></td>
+
+<td>( <i>char_expr)&nbsp;</i></td>
+
+<td>Returns an integer representing the number of characters in a character
+expression or <i>text </i>value. For variable- length data, <b>char_length
+</b>strips the expression of trailing blanks before counting the number
+of characters. For multi-byte character sets, the number of characters
+in the expression is usually less than the number of bytes; use <b>datalength
+</b>(See <b><a href="@ebt-link;hf=0;pt=3566?target=%25N%14_4836_START_RESTART_N%25;window=current#X" TARGET="_top">"System
+Functions" </a></b>) to determine the number of bytes.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>difference&nbsp;</b></td>
+
+<td>( <i>char_expr1,&nbsp;</i>
+<br><i>char_expr2)&nbsp;</i></td>
+
+<td>Returns an integer representing the difference between two <b>soundex
+</b>values. See <b>soundex </b>, below.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>lower&nbsp;</b></td>
+
+<td>( <i>char_expr)&nbsp;</i></td>
+
+<td>Converts upper to lower case, returning a character value.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>ltrim&nbsp;</b></td>
+
+<td>( <i>char_expr)&nbsp;</i></td>
+
+<td>Removes leading blanks from the character expression. Only values equivalent
+to the space character in the current character set are removed.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>patindex&nbsp;</b></td>
+
+<td>("% <i>pattern </i>%",&nbsp;
+<br><i>char_expr </i>[, <b>using&nbsp;</b>
+<br>{ <b>bytes </b>| <b>chars </b>|&nbsp;
+<br><b>characters </b>} ] )&nbsp;</td>
+
+<td>Returns an integer representing the starting position of the first
+occurrence of <i>pattern </i>in the specified character expression, or
+a zero if <i>pattern </i>is not found. By default, <b>patindex </b>returns
+the offset in characters; to return the offset in bytes (multibyte character
+strings), specify <b>using bytes </b>. The `%' wildcard character must
+precede and follow <i>pattern </i>(except when searching for first or last
+characters). See <b><a href="@ebt-link;hf=0;pt=3566?target=%25N%14_6814_START_RESTART_N%25;window=current#X" TARGET="_top">"Wildcard
+Characters" </a></b>for a description of the wildcard characters that can
+be used in <i>pattern </i>. Can be used on <i>text </i>data.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>replicate&nbsp;</b></td>
+
+<td>( <i>char_expr,&nbsp;</i>
+<br><i>integer_expr)&nbsp;</i></td>
+
+<td>Returns a string with the same datatype as <i>char_expr </i>, containing
+the same expression repeated the specified number of times or as many times
+as will fit into a 255 byte space, whichever is less.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>reverse&nbsp;</b></td>
+
+<td>( <i>char_expr)&nbsp;</i></td>
+
+<td>Returns the reverse of <i>char_expr </i>; if <i>char_expr </i>is "abcd",
+it returns "dcba".&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>right&nbsp;</b></td>
+
+<td>( <i>char_expr,&nbsp;</i>
+<br><i>integer_expr)&nbsp;</i></td>
+
+<td>Returns the part of the character expression starting the specified
+number of <i>characters </i>from the right. Return value has the same datatype
+as the character expression.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>rtrim&nbsp;</b></td>
+
+<td>( <i>char_expr)&nbsp;</i></td>
+
+<td>Removes trailing blanks. Only values equivalent to the space character
+in the current character set are removed.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>soundex&nbsp;</b></td>
+
+<td>( <i>char_expr)&nbsp;</i></td>
+
+<td>Returns a four-character <b>soundex </b>code for character strings
+that are composed of a contiguous sequence of valid single- or double-byte
+roman letters.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>space&nbsp;</b></td>
+
+<td>( <i>integer_expr)&nbsp;</i></td>
+
+<td>Returns a string with the indicated number of single-byte spaces.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>str&nbsp;</b></td>
+
+<td>( <i>approx_numeric&nbsp;</i>
+<br>[, <i>length </i>[, <i>decimal </i>] ])&nbsp;</td>
+
+<td>Returns a character representation of the floating point number. <i>length
+</i>sets the number of characters to be returned (including the decimal
+point, all digits to the right and left of the decimal point, and blanks);
+<i>decimal </i>sets the number of decimal digits to be returned.&nbsp;
+<br><i>length </i>and <i>decimal </i>are optional. If given, they must
+be non-negative. Default <i>length </i>is 10; default <i>decimal </i>is
+0. <b>str() </b>rounds the decimal portion of the number so that the results
+fit within the specified <i>length </i>.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>stuff&nbsp;</b></td>
+
+<td>( <i>char_expr1, start,&nbsp;</i>
+<br><i>length, char_expr2 </i>)&nbsp;</td>
+
+<td>Deletes <i>length </i>characters from <i>char_expr1 </i>at <i>start
+</i>, then inserts <i>char_expr2 </i>into <i>char_expr1 </i>at <i>start
+</i>. To delete characters without inserting other characters, <i>char_expr2
+</i>should be NULL (not "", which indicates a single space).&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>substring&nbsp;</b></td>
+
+<td>( <i>expression, start,&nbsp;</i>
+<br><i>length </i>)&nbsp;</td>
+
+<td>Returns part of a character or binary string. <i>start </i>specifies
+the character position at which the substring begins. <i>length </i>specifies
+the number of characters in the substring.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>upper&nbsp;</b></td>
+
+<td>( <i>char_expr </i>)&nbsp;</td>
+
+<td>Converts lower to upper case, returning a character value.&nbsp;</td>
+</tr>
+</table>
+
+<h3>
+System Functions</h3>
+Return special information from the database.
+<table>
+<tr>
+<th><b>Function&nbsp;</b></th>
+
+<th>Argument&nbsp;</th>
+
+<th>Result&nbsp;</th>
+</tr>
+
+<tr>
+<td><b>col_name&nbsp;</b></td>
+
+<td>( <i>object_id , column_id&nbsp;</i>
+<br><i>[, database_id ])&nbsp;</i></td>
+
+<td>Returns the column name.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>col_length&nbsp;</b></td>
+
+<td>( <i>object_name , column_name )&nbsp;</i></td>
+
+<td>Returns the defined length of column. Use <b>datalength </b>to see
+the actual data size.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>curunreservedpgs&nbsp;</b></td>
+
+<td>( <i>database_id </i>, <i>page_number </i>, <i>free_pages </i>)&nbsp;</td>
+
+<td>Returns the number of free pages in the disk piece that contains <i>page_number
+</i>. Use <i>free_pages </i>to specify a default value to be returned by
+the function. If the database is open, <b>curunreservedpgs </b>replaces
+this value with the actual number of free pages stored in memory for that
+disk piece.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>data_pgs&nbsp;</b></td>
+
+<td>( <i>object_id , { doampg | ioampg } )&nbsp;</i></td>
+
+<td>Returns the number of pages used by table ( <i>doampg) </i>or index
+( <i>ioampg </i>). The result does not include pages used for internal
+structures.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>datalength&nbsp;</b></td>
+
+<td>( <i>expression </i>)&nbsp;</td>
+
+<td>Returns the length of <i>expression </i>in bytes. <i>expression </i>is
+usually a column name. If <i>expression </i>is a character constant, it
+must be enclosed in quotes.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>db_id&nbsp;</b></td>
+
+<td>( <i>[database_name] </i>)&nbsp;</td>
+
+<td>Returns the database ID number. <i>database_name </i>must be a character
+expression; if it is a constant expression, it must be enclosed in quotes.
+If no <i>database_name </i>is supplied, <b>db_id </b>returns the ID number
+of the current database.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>db_name&nbsp;</b></td>
+
+<td>([ <i>database_id </i>])&nbsp;</td>
+
+<td>Returns the database name. <i>database_id </i>must be a numeric expression.
+If no <i>database_id </i>is supplied, <b>db_name </b>returns the name of
+the current database.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>host_id&nbsp;</b></td>
+
+<td>( )&nbsp;</td>
+
+<td>Returns the host process ID of the client process (not the Server process).&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>host_name&nbsp;</b></td>
+
+<td>( )&nbsp;</td>
+
+<td>Returns the current host computer name of the client process (not the
+Server process).&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>index_col&nbsp;</b></td>
+
+<td>( <i>object_name , index_id , key_ # [, user_id ])&nbsp;</i></td>
+
+<td>Returns the name of the indexed column; returns NULL if <i>object_name
+</i>is not a table or view name.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>isnull&nbsp;</b></td>
+
+<td>( <i>expression1 </i>, <i>expression2 </i>)&nbsp;</td>
+
+<td>Substitutes the value specified in <i>expression2 </i>when <i>expression1
+</i>evaluates to NULL.The datatypes of the expressions must convert implicitly,
+or you must use the <b>convert </b>function.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>lct_admin&nbsp;</b></td>
+
+<td>({{ " <b>lastchance </b>" | " <b>logfull </b>" | " <b>unsuspend </b>"}
+, <i>database_id </i>} | " <b>reserve </b>", <i>log_pages </i>})&nbsp;</td>
+
+<td>Manages the log segment's last- chance threshold.&nbsp;
+<br><b>lastchance </b>creates a last-chance threshold in the specified
+database.&nbsp;
+<br><b>logfull </b>returns 1 if the last- chance threshold has been crossed
+in the specified database and 0 if it has not. <b>unsuspend </b>awakens
+suspended tasks in the database and disables the last-chance threshold
+if that threshold has been crossed.&nbsp;
+<br><b>reserve </b>returns the number of free log pages required to successfully
+dump a transaction log of the specified size.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>object_id&nbsp;</b></td>
+
+<td>( <i>object_name </i>)&nbsp;</td>
+
+<td>Returns the object ID.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>object_name&nbsp;</b></td>
+
+<td>( <i>object_id </i>[, <i>database_id </i>] <i>)&nbsp;</i></td>
+
+<td>Returns the object name.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>proc_role&nbsp;</b></td>
+
+<td>( <b>"sa_role </b>" | <b>"sso_role </b>" | <b>"oper_role </b>")&nbsp;</td>
+
+<td>Checks to see if the invoking user possesses the correct role to execute
+the procedure. Returns 1 if the invoker has the required role. Otherwise,
+returns 0.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>reserved_pgs&nbsp;</b></td>
+
+<td><i>( object_id , { doampg| ioampg })&nbsp;</i></td>
+
+<td>Returns the number of pages allocated to table or index. This function
+<b>does </b>report pages used for internal structures.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>rowcnt&nbsp;</b></td>
+
+<td>( <i>doampg </i>)&nbsp;</td>
+
+<td>Returns the number of rows in a table (estimate).&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>show_role&nbsp;</b></td>
+
+<td>( )&nbsp;</td>
+
+<td>Returns the user's current active roles, if any ( <b>sa_role </b>,
+<b>sso_role </b>, or <b>oper_role </b>). If the user has no roles, returns
+NULL.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>suser_id&nbsp;</b></td>
+
+<td>([ <i>server_user_name </i>])&nbsp;</td>
+
+<td>Returns the server user's ID number from <i>syslogins. </i>If no <i>server_user_name
+</i>is supplied, it returns the server ID of the current user.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>suser_name&nbsp;</b></td>
+
+<td>([ <i>server_user_id </i>])&nbsp;</td>
+
+<td>Returns the server user's name. Server user's ID's are stored in <i>syslogins.
+</i>If no <i>server_user_id </i>is supplied, it returns the name of the
+current user.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>used_pgs&nbsp;</b></td>
+
+<td><i>( object_id , doampg , ioampg )&nbsp;</i></td>
+
+<td>Returns the total number of pages used by a table and its clustered
+index.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>tsequal&nbsp;</b></td>
+
+<td>( <i>timestamp </i>, <i>timestamp2 </i>)&nbsp;</td>
+
+<td>Compares <i>timestamp </i>values to prevent update on a row that has
+been modified since it was selected for browsing. <i>timestamp </i>is the
+timestamp of the browsed row; <i>timestamp2 </i>is the timestamp of the
+stored row. Allows you to use browse mode without calling DB-Library. (See
+"Browse Mode.")&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>user&nbsp;</b></td>
+
+<td></td>
+
+<td>Returns the user's name.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>user_id&nbsp;</b></td>
+
+<td>([ <i>user_name </i>])&nbsp;</td>
+
+<td>Returns the user's ID number. Reports the number from <i>sysusers </i>in
+the current database. If no <i>user_name </i>is supplied, it returns the
+ID of the current user.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>user_name&nbsp;</b></td>
+
+<td>([ <i>user_id </i>])&nbsp;</td>
+
+<td>Returns the user's name, based on the user's ID in the current database.
+If no <i>user_id </i>is supplied, it returns the name of the current user.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>valid_name&nbsp;</b></td>
+
+<td>( <i>character_expression </i>)&nbsp;</td>
+
+<td>Returns 0 if <i>string </i>is not a valid identifier (illegal characters
+or <i>string </i>is more than 30 bytes long), a nonzero number if <i>string
+</i>is a valid identifier.&nbsp;</td>
+</tr>
+</table>
+
+<h3>
+<i>text </i>and <i>image </i>Functions</h3>
+Operate on <i>text </i>and <i>image </i>data. Text and image built-in function
+names are not keywords. Use the <b>set textsize </b>option to limit the
+amount of <i>text </i>or <i>image </i>data that a <b>select </b>statement
+retrieves.
+<table>
+<tr>
+<th>Function&nbsp;</th>
+
+<th>Argument&nbsp;</th>
+
+<th>Result&nbsp;</th>
+</tr>
+
+<tr>
+<td><b>patindex&nbsp;</b></td>
+
+<td>("% <i>pattern </i>%", <i>char_expr&nbsp;</i>
+<br>[, <b>using </b>{ <b>bytes </b>| <b>chars </b>| <b>characters </b>}
+] )&nbsp;</td>
+
+<td>Returns an integer value representing the starting position of the
+first occurrence of <i>pattern </i>in the specified character expression,
+or zero if <i>pattern </i>is not found. By default, <b>patindex </b>returns
+the offset in characters; to return the offset in bytes for multibyte character
+strings, specify <b>using bytes </b>. The % wildcard character must precede
+and follow <i>pattern </i>, except when searching for first or last characters.
+See <b><a href="@ebt-link;hf=0;pt=3566?target=%25N%14_6814_START_RESTART_N%25;window=current#X" TARGET="_top">"Wildcard
+Characters" </a></b>for a description of the wildcard characters that can
+be used in <i>pattern </i>.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>patindex&nbsp;</b></td>
+
+<td>( <i>text_columname </i>)&nbsp;</td>
+
+<td>Returns the text pointer value, a 16-byte binary value. The text pointer
+is checked to ensure that it points to the first text page.&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>patindex&nbsp;</b></td>
+
+<td>( <i>"table_name </i>. <i>col_name </i>", <i>textpointer </i>)&nbsp;</td>
+
+<td>Checks if a given text pointer is valid. Note that the identifier for
+a <i>text </i>or <i>image </i>column must include the table name. Returns
+1 if the pointer is valid, or 0 if the pointer is invalid.&nbsp;</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<h3>
+Chapter 3</h3>
+
+<h2>
+Transact-SQL Topics</h2>
+
+<h3>
+Comments</h3>
+Attach explanatory text to SQL statements, statement blocks, and system
+procedures. Comments are not executed.
+<br>A comment can be inserted on a line by itself or at the end of a command
+line. Two comment styles are available: the "slash-asterisk" style:
+<pre>&nbsp;/* text of comment (slash-asterisk style) */</pre>
+and the "double-hyphen" style:
+<pre>&nbsp;-- text of comment (double-hyphen style)</pre>
+
+<h3>
+Cursors</h3>
+A cursor provides access to the set of rows returned by a SQL query. A
+cursor is a symbolic name that is associated with a <b>select </b>statement.
+Cursors enable you to access individual rows of data returned by SQL Server.
+Cursors consist of two parts: the <b>cursor result set </b>and the <b>cursor
+position </b>.
+<br>To create a cursor, use the <b>declare cursor </b>statement:
+<pre>&nbsp;declare&nbsp;&nbsp;<i> cursor_name&nbsp;</i>&nbsp; cursor&nbsp;
+&nbsp;for&nbsp;&nbsp;<i> select_statement&nbsp;
+&nbsp;&nbsp;</i> [for {read only | update [of&nbsp;&nbsp;<i> column_name_list&nbsp;</i> ]}]</pre>
+To open the cursor:
+<pre>&nbsp;open&nbsp;&nbsp;<i> cursor_name&nbsp;</i></pre>
+After opening the cursor, you can fetch a row:
+<pre>&nbsp;fetch&nbsp;&nbsp;<i> cursor_name&nbsp;</i>&nbsp; [into&nbsp;&nbsp;<i> fetch_target_list&nbsp;</i> ]</pre>
+When you are finished with the result set of a cursor, you can <b>close
+</b>it:
+<pre>&nbsp;close&nbsp;&nbsp;<i> cursor_name&nbsp;</i></pre>
+If you want to discard the cursor, you must <b>deallocate </b>it:
+<pre>&nbsp;deallocate cursor&nbsp;&nbsp;<i> cursor_name&nbsp;</i></pre>
+
+<h3>
+Datatypes</h3>
+Specify the type of information, size, and storage format of columns, stored
+procedure parameters, and local variables.
+<table>
+<tr>
+<th>Datatypes by Category&nbsp;</th>
+
+<th>Synonyms&nbsp;</th>
+
+<th>Range&nbsp;</th>
+
+<th>Bytes of Storage&nbsp;</th>
+</tr>
+
+<tr>
+<td COLSPAN="2"><b>Exact numeric: integers&nbsp;</b></td>
+</tr>
+
+<tr>
+<td><i>tinyint&nbsp;</i>
+<br><i>smallint&nbsp;</i>
+<br><i>int&nbsp;</i></td>
+
+<td>
+<br><i>integer&nbsp;</i></td>
+
+<td>0 to 255&nbsp;
+<br>2 (^ 15 ) -1 (32,767) to -2 (^ 15 ) (-32,768)&nbsp;
+<br>2 (^ 31 ) (2,147,483,647) to&nbsp;
+<br>-2 (^ 31 ) (-2,147,483,648)&nbsp;</td>
+
+<td>1&nbsp;
+<br>2&nbsp;
+<br>4&nbsp;</td>
+</tr>
+
+<tr>
+<td COLSPAN="2"><b>Exact numeric: decimals&nbsp;</b></td>
+</tr>
+
+<tr>
+<td><i>numeric (p, s)&nbsp;</i>
+<br><i>decimal (p, s)&nbsp;</i></td>
+
+<td>
+<br><i>dec&nbsp;</i></td>
+
+<td>10 (^ 38 ) -1 to -10 (^ 38&nbsp;
+<br>) 10 (^ 38 ) -1 to -10 (^ 38 )&nbsp;</td>
+
+<td>2 to 17&nbsp;
+<br>2 to 17&nbsp;</td>
+</tr>
+
+<tr>
+<td COLSPAN="2"><b>Approximate numeric&nbsp;</b></td>
+</tr>
+
+<tr>
+<td><i>float (precision)&nbsp;</i>
+<br><i>double precision&nbsp;</i>
+<br><i>real&nbsp;</i></td>
+
+<td></td>
+
+<td>machine dependent&nbsp;
+<br>machine dependent&nbsp;
+<br>machine dependent&nbsp;</td>
+
+<td>4 or 8&nbsp;
+<br>8&nbsp;
+<br>4&nbsp;</td>
+</tr>
+
+<tr>
+<td COLSPAN="2"><b>Money&nbsp;</b></td>
+</tr>
+
+<tr>
+<td><i>smallmoney&nbsp;</i>
+<br><i>money&nbsp;</i></td>
+
+<td></td>
+
+<td>214,748.3647 to -214,748.3648&nbsp;
+<br>922,337,203,685,477.5807 to&nbsp;
+<br>-922,337,203,685,477.5808&nbsp;</td>
+
+<td>4&nbsp;
+<br>8&nbsp;</td>
+</tr>
+
+<tr>
+<td COLSPAN="2"><b>Date/time&nbsp;</b></td>
+</tr>
+
+<tr>
+<td><i>smalldatetime&nbsp;</i>
+<br><i>datetime&nbsp;</i></td>
+
+<td></td>
+
+<td>January 1, 1900 to June 6, 2079&nbsp;
+<br>January 1, 1753 to December 31,9999&nbsp;</td>
+
+<td>4&nbsp;
+<br>8&nbsp;</td>
+</tr>
+
+<tr>
+<td COLSPAN="2"><b>Character&nbsp;</b></td>
+</tr>
+
+<tr>
+<td><i>char(n)&nbsp;</i></td>
+
+<td><i>character&nbsp;</i></td>
+
+<td>255 characters or less&nbsp;</td>
+
+<td>n&nbsp;</td>
+</tr>
+
+<tr>
+<td><i>varchar(n)&nbsp;</i></td>
+
+<td><i>character varying, char varying&nbsp;</i></td>
+
+<td>255 characters or less&nbsp;</td>
+
+<td>actual entry length&nbsp;</td>
+</tr>
+
+<tr>
+<td><i>nchar(n)&nbsp;</i></td>
+
+<td><i>national character, national char&nbsp;</i></td>
+
+<td>255 characters or less&nbsp;</td>
+
+<td><i>n </i>* @@ <i>ncharsize&nbsp;</i></td>
+</tr>
+
+<tr>
+<td><i>nvarchar(n)&nbsp;</i></td>
+
+<td><i>nchar varying, national char varying, national character varying&nbsp;</i></td>
+
+<td>255 characters or less&nbsp;</td>
+
+<td><i>n&nbsp;</i></td>
+</tr>
+
+<tr>
+<td><i>text&nbsp;</i></td>
+
+<td></td>
+
+<td>2 (^ 31 ) -1 (2,147,483,647) bytes or less&nbsp;</td>
+
+<td>0 or multiple of 2K (4K on Stratus)&nbsp;</td>
+</tr>
+
+<tr>
+<td COLSPAN="2"><b>Binary&nbsp;</b></td>
+</tr>
+
+<tr>
+<td><i>binary(n)&nbsp;</i>
+<br><i>varbinary(n)&nbsp;</i>
+<br><i>image&nbsp;</i></td>
+
+<td></td>
+
+<td>255 bytes or less&nbsp;
+<br>255 bytes or less&nbsp;
+<br>2 (^ 31 ) -1 (2,147,483,647) bytes or less&nbsp;</td>
+
+<td><i>n&nbsp;</i>
+<br>actual entry length&nbsp;
+<br>0 or multiple of 2K (4K on Stratus)&nbsp;</td>
+</tr>
+
+<tr>
+<td COLSPAN="2"><b>Bit&nbsp;</b></td>
+</tr>
+
+<tr>
+<td><i>bit&nbsp;</i></td>
+
+<td></td>
+
+<td>0 or 1&nbsp;</td>
+
+<td>1 (one byte holds up to 8 <i>bit </i>columns)&nbsp;</td>
+</tr>
+
+<tr>
+<td COLSPAN="2"><b>Sensitivity Label&nbsp;</b></td>
+</tr>
+
+<tr>
+<td><i>sensitivity&nbsp;</i>
+<br><i>sensitivity_&nbsp;</i>
+<br><i>boundary&nbsp;</i></td>
+
+<td></td>
+
+<td>Data Low Data High&nbsp;
+<br>Data Low Data High&nbsp;</td>
+
+<td>4&nbsp;
+<br>4&nbsp;</td>
+</tr>
+</table>
+
+<h3>
+Disk Mirroring</h3>
+Creates a software mirror of a user database device, the master database
+device, or a database device used for user database transaction logs. If
+a database device fails, its mirror immediately takes over.
+<h3>
+Expressions</h3>
+An expression is a combination of one or more constants, literals, functions,
+column identifiers and/or variables, separated by operators, that returns
+a single value. Expressions can be of several types, including <b>arithmetic
+</b>, <b>relational </b>, <b>logical </b>(or <b>Boolean </b>), and <b>character
+string </b>. In some Transact-SQL clauses, a subquery can be used in an
+expression.
+<pre>&nbsp;expression&nbsp;&nbsp;<i> comparison_operator&nbsp;</i>&nbsp; [any | all]&nbsp;&nbsp;<i> expression&nbsp;</i></pre>
+
+<pre>&nbsp;expression [not] in&nbsp;&nbsp;<i> expression&nbsp;</i></pre>
+
+<pre>&nbsp;[not]exists&nbsp;&nbsp;<i> expression&nbsp;</i></pre>
+
+<pre>&nbsp;expression [not] between expression and&nbsp;&nbsp;<i> expression&nbsp;</i></pre>
+
+<pre>&nbsp;expression [not] like "&nbsp;<i> match_string&nbsp;</i> "&nbsp;
+&nbsp;[escape&nbsp;&nbsp;<i> "escape_character&nbsp;</i> "]</pre>
+
+<pre>&nbsp;not expression like "&nbsp;<i> match_string&nbsp;</i> "&nbsp;&nbsp;
+&nbsp;[escape&nbsp;&nbsp;<i> "escape_character&nbsp;</i> "]</pre>
+
+<pre>&nbsp;&nbsp;<i> expression&nbsp;</i>&nbsp; is [not] null</pre>
+
+<pre>&nbsp;not&nbsp;&nbsp;<i> logical_expression&nbsp;</i></pre>
+
+<pre>&nbsp;logical_expression {and | or}&nbsp;&nbsp;<i> logical_expression&nbsp;</i></pre>
+SQL Server uses the following arithmetic operators:
+<table>
+<tr>
+<th>Symbol&nbsp;</th>
+
+<th>Meaning&nbsp;</th>
+</tr>
+
+<tr>
+<td>+&nbsp;</td>
+
+<td>addition&nbsp;</td>
+</tr>
+
+<tr>
+<td>-&nbsp;</td>
+
+<td>subtraction&nbsp;</td>
+</tr>
+
+<tr>
+<td>*&nbsp;</td>
+
+<td>multiplication&nbsp;</td>
+</tr>
+
+<tr>
+<td>/&nbsp;</td>
+
+<td>division&nbsp;</td>
+</tr>
+
+<tr>
+<td>%&nbsp;</td>
+
+<td>modulo (Transact-SQL extension)&nbsp;</td>
+</tr>
+</table>
+
+<br>SQL Server uses the following bitwise operators:
+<table>
+<tr>
+<th>Symbol&nbsp;</th>
+
+<th>Meaning&nbsp;</th>
+</tr>
+
+<tr>
+<td>&amp;&nbsp;</td>
+
+<td>bitwise and (two operands)&nbsp;</td>
+</tr>
+
+<tr>
+<td>|&nbsp;</td>
+
+<td>bitwise or (two operands)&nbsp;</td>
+</tr>
+
+<tr>
+<td>^&nbsp;</td>
+
+<td>bitwise exclusive or (two operands)&nbsp;</td>
+</tr>
+
+<tr>
+<td>~&nbsp;</td>
+
+<td>bitwise not, unary not (one operand)&nbsp;</td>
+</tr>
+</table>
+
+<br>SQL Server uses the following comparison operators:
+<table>
+<tr>
+<th>Symbol&nbsp;</th>
+
+<th>Meaning&nbsp;</th>
+
+<th></th>
+
+<th></th>
+</tr>
+
+<tr>
+<td>=&nbsp;</td>
+
+<td>equal to&nbsp;</td>
+
+<td></td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>>&nbsp;</td>
+
+<td>greater than&nbsp;</td>
+
+<td></td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>&lt;&nbsp;</td>
+
+<td>less than&nbsp;</td>
+
+<td></td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>>=&nbsp;</td>
+
+<td>greater than or equal to&nbsp;</td>
+
+<td></td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>&lt;=&nbsp;</td>
+
+<td>less than or equal to&nbsp;</td>
+
+<td></td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>&lt;>&nbsp;</td>
+
+<td>not equal to&nbsp;</td>
+
+<td></td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>!=&nbsp;</td>
+
+<td>not equal to (Transact-SQL extension)&nbsp;</td>
+
+<td></td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>!>&nbsp;</td>
+
+<td>not greater than (Transact-SQL extension)&nbsp;</td>
+
+<td></td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>!&lt;&nbsp;</td>
+
+<td>not less than (Transact-SQL extension)&nbsp;</td>
+
+<td></td>
+
+<td></td>
+</tr>
+</table>
+
+<h3>
+Identifiers</h3>
+SQL Server identifiers can be a maximum of 30 bytes in length, whether
+single-byte or multibyte characters are used. The first character of an
+identifier must be either an alphabetic character as defined in the current
+character set or the underscore (_ ) symbol.
+<br>Subsequent characters can include letters, numbers, the symbols #, @,
+_, or currency symbols such as $ (dollars), &yen; (yen) and &pound; (pound
+sterling). Identifiers cannot include special characters such as !%^&amp;*.
+or embedded spaces.
+<h3>
+IDENTITY Columns</h3>
+IDENTITY columns contain system-generated values that uniquely identify
+each row within a table. They are used to store sequential numbers, such
+as invoice numbers or employee numbers, that are generated automatically
+by SQL Server. The value of the IDENTITY column uniquely identifies each
+row in a table.
+<br>Each table in a database can have a single IDENTITY column, of type
+numeric and scale zero. You can define an IDENTITY column when you create
+a table with a <b>create table </b>or <b>select into </b>statement, or
+add it later with an <b>alter table </b>statement.
+<br>By definition, IDENTITY columns cannot be updated and do not allow nulls.
+Each time you insert a row into a table, SQL Server automatically supplies
+a unique, sequential value for its IDENTITY column, beginning with the
+value "1". Manual insertions, deletions, transaction rollbacks, and server
+failures can create gaps in IDENTITY column values.
+<h3>
+Joins</h3>
+Joins compare two or more tables (or views) by specifying a column from
+each, comparing the values in those columns row by row, and concatenating
+rows that have matching values. Joins can also be stated as subqueries.
+(See <b><a href="@ebt-link;hf=0;pt=5594?target=%25N%14_6652_START_RESTART_N%25;window=current#X" TARGET="_top">"Subqueries"
+</a></b>for more information.)
+<br>A join can be embedded in a <b>select </b>, <b>update </b>, <b>insert
+</b>, <b>delete </b>, or <i>subquery </i>. Other search conditions and
+clauses may follow the join condition(s). Joins use the following syntax:
+<pre>&nbsp;&nbsp;<i> Start of&nbsp;&nbsp;</i>&nbsp;&nbsp;<b> select, update, insert, delete&nbsp;</b>&nbsp;&nbsp;<i> , or subquery&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;from {table_list | view_list}&nbsp;&nbsp;
+&nbsp;where [not]&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [&nbsp;<i> table_name&nbsp;</i> . |&nbsp;&nbsp;<i> view_name&nbsp;</i> .]&nbsp;<i> column_name&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;<i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; join_operator&nbsp;&nbsp;
+&nbsp;&nbsp;</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [&nbsp;<i> table_name&nbsp;</i> . |&nbsp;&nbsp;<i> view_name&nbsp;</i> .]&nbsp;<i> column_name&nbsp;
+&nbsp;&nbsp;</i> [{and | or} [not]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [&nbsp;<i> table_name&nbsp;</i> .|&nbsp;<i> view_name&nbsp;</i> .]&nbsp;<i> column_name&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; join_operator&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [&nbsp;<i> table_name&nbsp;</i> .|&nbsp;<i> view_name&nbsp;</i> .]&nbsp;<i> column_name&nbsp;</i> ]...</pre>
+
+<pre>&nbsp;&nbsp;<i> End of&nbsp;&nbsp;</i>&nbsp;&nbsp;<b>&nbsp; select, update, insert, delete&nbsp;</b>&nbsp;&nbsp;<i> , or subquery&nbsp;</i></pre>
+
+<h3>
+Null Values</h3>
+Marks columns having an unknown value (as opposed to those that have 0
+or blank as a value). NULL allows you to distinguish between a deliberate
+entry of zero (for numerical columns) or blank (for character columns)
+and a non-entry (NULL for both numerical and character columns).
+<br>In <b>create table </b>statements, declare each columns as <b>null </b>,
+<b>not null </b>, or <b>identity </b>or accept the default null type for
+the database:
+<pre>&nbsp;&nbsp;<i> column_name datatype&nbsp;</i>&nbsp; [null | not null | identity]</pre>
+When adding a column to an existing table, you can specify it as <b>null
+</b>or <b>identity </b>:
+<pre>&nbsp;&nbsp;<i> column_name datatype&nbsp;</i>&nbsp; [null | identity]</pre>
+You can explicitly insert NULL into a column:
+<pre>&nbsp;values({&nbsp;<i> expression&nbsp;</i>&nbsp; | null}&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [, {&nbsp;<i> expression&nbsp;</i>&nbsp; | null}]...)</pre>
+Use the <b>update </b>statement to set a column value to NULL. It's syntax
+is:
+<pre>&nbsp;set&nbsp;&nbsp;<i> column_name&nbsp;</i>&nbsp; = {&nbsp;<i> expression&nbsp;</i>&nbsp; | null}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [,&nbsp;&nbsp;<i> column_name&nbsp;</i>&nbsp; = {&nbsp;<i> expression&nbsp;</i>&nbsp; | null}]...</pre>
+In the <b>create procedure </b>statement, you can declare NULL as the default
+value for individual parameters:
+<pre>&nbsp;create procedure procedure_name&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @param datatype [ = null ]&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [, @param datatype [ = null ]]...</pre>
+Use the <b>isnull </b>built-in function to substitute a particular value
+for nulls. The substitution is made only for display purposes; actual column
+values are not affected. The syntax is:
+<pre>&nbsp;isnull(&nbsp;<i> expression&nbsp;</i> ,&nbsp;&nbsp;<i> value&nbsp;</i> )</pre>
+
+<h3>
+Parameters</h3>
+Parameters are arguments to a stored procedure. You define parameters when
+you create the procedure and supply their values when you execute the procedure.
+Not all procedures require parameters.
+<pre>&nbsp;create procedure [&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> procedure_name&nbsp;</i> [;number]&nbsp;
+&nbsp;[ [(] @&nbsp;<i> parameter_name&nbsp;</i>&nbsp;&nbsp;&nbsp;<i> datatype&nbsp;</i>&nbsp; [=&nbsp;&nbsp;<i> default&nbsp;</i> ] [output]&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [,@&nbsp;<i> parameter_name&nbsp;</i>&nbsp;&nbsp;&nbsp;<i> datatype&nbsp;</i>&nbsp; [=&nbsp;<i>&nbsp; default&nbsp;</i> ] [output]]&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ... [)] ]&nbsp;
+&nbsp;[with recompile]&nbsp;&nbsp;
+&nbsp;as&nbsp;&nbsp;<i> SQL_statements&nbsp;</i></pre>
+
+<pre>&nbsp;[execute] [@return_status = ]&nbsp;
+&nbsp;[[server.]&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]&nbsp;<i> procedure_name&nbsp;</i> [;number]&nbsp;
+&nbsp;[[@parameter_name =]&nbsp;&nbsp;<i> value&nbsp;</i>&nbsp; |&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [@&nbsp;<i> parameter_name&nbsp;</i>&nbsp; =] @variable [output]&nbsp;&nbsp;
+&nbsp;[,[@parameter_name =]&nbsp;&nbsp;<i> value&nbsp;</i>&nbsp; |&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [@&nbsp;<i> parameter_name&nbsp;</i>&nbsp; =] @variable [output]... ]]&nbsp;&nbsp;
+&nbsp;[with recompile]</pre>
+
+<h3>
+Subqueries</h3>
+Used to "nest" a <b>select </b>statement inside a <b>select </b>, <b>insert
+</b>, <b>update </b>, or <b>delete </b>statement, another subquery, or
+anywhere an expression is allowed (if it returns a single value). A subquery
+is always enclosed in parentheses.
+<pre>&nbsp;(select [all | distinct]&nbsp;&nbsp;<i> subquery_select_list&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;[from [[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]{&nbsp;<i> table_name&nbsp;</i>&nbsp; |&nbsp;&nbsp;<i> view_name&nbsp;</i> }&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [holdlock]&nbsp;&nbsp;
+&nbsp;[, [[&nbsp;<i> database&nbsp;</i> .]&nbsp;<i> owner&nbsp;</i> .]{&nbsp;<i> table_name&nbsp;</i>&nbsp; |&nbsp;<i>&nbsp; view_name&nbsp;</i> }&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [holdlock]]...]&nbsp;&nbsp;
+&nbsp;[where&nbsp;&nbsp;<i> search_conditions&nbsp;</i> ]&nbsp;&nbsp;
+&nbsp;[group by&nbsp;&nbsp;<i> aggregate_free_expression&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> [,&nbsp;&nbsp;<i> aggregate_free_expression&nbsp;</i> ]...]&nbsp;
+&nbsp;[having&nbsp;&nbsp;<i> search_conditions&nbsp;</i> ])</pre>
+
+<h3>
+text and image Datatypes</h3>
+<i>text </i>columns are variable-length columns that can hold up to 2,147,483,647
+( 2 (^ 31 ) - 1) bytes of printable characters.
+<br><i>image </i>columns are variable-length columns that can hold up to
+2,147,483,647 ( 2 (^ 31 ) - 1) bytes of hexadecimal-like data.
+<br>You define a text or image column as you would any other column, with
+a create table or alter table statement. <i>text </i>and <i>image </i>datatype
+definitions do not include lengths. They do permit null values. The column
+definition takes the form:
+<pre>&nbsp;&nbsp;<i> column_name&nbsp;</i>&nbsp; {text | image} [null]</pre>
+
+<h3>
+Variables (Local and Global)</h3>
+Variables are defined entities that are assigned values. SQL Server has
+two kinds of variables:
+<pre>&nbsp;declare&nbsp;&nbsp;<i> @variable_name&nbsp;</i>&nbsp;&nbsp;&nbsp;<i> datatype&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;[,&nbsp;&nbsp;<i> @variable_name datatype&nbsp;</i> ]...</pre>
+
+<pre>&nbsp;select @&nbsp;<i> variable_name&nbsp;</i>&nbsp; =&nbsp;&nbsp;<i> expression&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ , @&nbsp;<i> variable_name&nbsp;</i>&nbsp; =&nbsp;&nbsp;<i> expression&nbsp;</i>&nbsp; ]...&nbsp;&nbsp;
+&nbsp;[from&nbsp;&nbsp;<i> clause&nbsp;</i> ] [where&nbsp;&nbsp;<i> clause&nbsp;</i> ] [group by&nbsp;&nbsp;<i> clause&nbsp;</i> ]&nbsp;&nbsp;
+&nbsp;[having&nbsp;&nbsp;<i> clause&nbsp;</i> ] [order by&nbsp;&nbsp;<i> clause&nbsp;</i> ] [compute&nbsp;&nbsp;<i> clause&nbsp;</i> ]</pre>
+
+<h3>
+Wildcard Characters</h3>
+Represent one or more characters, or a range of characters, in a match
+string.
+<br>Use wildcards in <b>where </b>and <b>having </b>clauses to find character
+or date/time information that is <b>like </b>-or <b>not like </b>-the match
+string:
+<pre>&nbsp;{where | having} [not]&nbsp;
+&nbsp;&nbsp;<i> expression&nbsp;</i>&nbsp; [not] like&nbsp;&nbsp;<i> match_string&nbsp;
+&nbsp;&nbsp;</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [escape "&nbsp;<i> escape_character&nbsp;</i> "]</pre>
+&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<h3>
+Chapter 4</h3>
+
+<h2>
+System Procedures</h2>
+
+<h3>
+sp_addalias</h3>
+
+<h3>
+Function</h3>
+Allows a SQL Server user to be known in a database as another user.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_addalias&nbsp;&nbsp;<i> login_name&nbsp;</i> ,&nbsp;&nbsp;<i> name_in_db&nbsp;</i></pre>
+
+<h3>
+sp_addauditrecord</h3>
+
+<h3>
+Function</h3>
+Allows users to enter user-defined audit records (comments) into the audit
+trail.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_addauditrecord [@text="&nbsp;<i> message text&nbsp;</i> "]&nbsp;&nbsp;
+&nbsp;[, @db_name="&nbsp;<i> db_name&nbsp;</i> "] [, @obj_name="&nbsp;<i> object_name&nbsp;</i> "]&nbsp;
+&nbsp;[, @owner_name="&nbsp;<i> object_owner&nbsp;</i> "]&nbsp;&nbsp;
+&nbsp;[,&nbsp;<i>&nbsp; @&nbsp;</i> dbid=&nbsp;<i> database_ID&nbsp;</i> ] [, @objid=&nbsp;<i> object_ID&nbsp;</i> ]</pre>
+
+<h3>
+sp_addgroup</h3>
+
+<h3>
+Function</h3>
+Adds a group to a database. Groups are used as collective names in granting
+and revoking privileges.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_addgroup&nbsp;&nbsp;<i> grpname&nbsp;</i></pre>
+
+<h3>
+sp_addlanguage</h3>
+
+<h3>
+Function</h3>
+Defines the names of the months and days for an alternate language and
+its date format.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_addlanguage&nbsp;&nbsp;<i> language&nbsp;</i> ,&nbsp;&nbsp;<i> alias&nbsp;</i> ,&nbsp;&nbsp;<i> months&nbsp;</i> ,&nbsp;&nbsp;<i> shortmons&nbsp;</i> ,&nbsp;&nbsp;
+&nbsp;&nbsp;<i> days&nbsp;</i> ,&nbsp;&nbsp;<i> datefmt&nbsp;</i> ,&nbsp;&nbsp;<i> datefirst&nbsp;</i></pre>
+
+<h3>
+sp_addlogin</h3>
+
+<h3>
+Function</h3>
+Adds a new user account to SQL Server.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_addlogin&nbsp;&nbsp;<i> login_name&nbsp;</i> ,&nbsp;&nbsp;<i> password&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> defdb&nbsp;
+&nbsp;&nbsp;</i>&nbsp; [,&nbsp;<i>&nbsp; deflanguage&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> fullname&nbsp;</i> ]]]</pre>
+
+<h3>
+sp_addmessage</h3>
+
+<h3>
+Function</h3>
+Adds user-defined messages to <i>sysusermessages </i>for use by stored
+procedure <b>print </b>and <b>raiserror </b>calls and by <b>sp_bindmsg
+</b>.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_addmessage&nbsp;&nbsp;<i> message_num&nbsp;</i> ,&nbsp;&nbsp;<i> message_text&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> language&nbsp;</i> ]</pre>
+
+<h3>
+sp_addremotelogin</h3>
+
+<h3>
+Function</h3>
+Authorizes a new remote server user by adding an entry to <i>master.dbo.sysremotelogins
+</i>.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_addremotelogin&nbsp;&nbsp;<i> remoteserver&nbsp;</i>&nbsp; [,&nbsp;<i>&nbsp; login_name&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;[,&nbsp;&nbsp;<i> remote_name&nbsp;</i> ] ]</pre>
+
+<h3>
+sp_addsegment</h3>
+
+<h3>
+Function</h3>
+Defines a segment on a database device in the current database.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_addsegment&nbsp;&nbsp;<i> segname&nbsp;</i> ,&nbsp;&nbsp;<i> dbname, devname&nbsp;</i></pre>
+
+<h3>
+sp_addserver</h3>
+
+<h3>
+Function</h3>
+Defines a remote server, or defines the name of the local server.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_addserver&nbsp;&nbsp;<i> srvname&nbsp;</i>&nbsp; [, {local | null}&nbsp;&nbsp;
+&nbsp;[,&nbsp;<i>&nbsp; network_name&nbsp;</i> ]]</pre>
+
+<h3>
+sp_addthreshold</h3>
+
+<h3>
+Function</h3>
+Creates a threshold to monitor space on a database segment. When free space
+on the segment falls below the specified level, SQL Server executes the
+associated stored procedure.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_addthreshold&nbsp;&nbsp;<i> database, segment, free_pages, procedure&nbsp;</i></pre>
+
+<h3>
+sp_addtype</h3>
+
+<h3>
+Function</h3>
+Creates a user-defined datatype.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_addtype&nbsp;&nbsp;<i> typename&nbsp;</i> ,&nbsp;&nbsp;
+&nbsp;phystype [(length) | (precision [, scale])]&nbsp;
+&nbsp;[, "identity" | nulltype]</pre>
+
+<h3>
+sp_addumpdevice</h3>
+
+<h3>
+Function</h3>
+Adds a dump device to SQL Server.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_addumpdevice {"tape" | "disk"}, device_name,&nbsp;
+&nbsp;physicalname [, size]</pre>
+
+<h3>
+sp_adduser</h3>
+
+<h3>
+Function</h3>
+Adds a new user to the current database.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_adduser&nbsp;&nbsp;<i> login_name&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> name_in_db&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> grpname&nbsp;</i> ]]</pre>
+
+<h3>
+sp_auditdatabase</h3>
+
+<h3>
+Function</h3>
+Establishes auditing of different types of events within a database, or
+of references to objects within that database from another database.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_auditdatabase [&nbsp;<i> dbname&nbsp;</i>&nbsp; [, "ok | fail | both | off"&nbsp;
+&nbsp;[, {"d u g r t o"}]]]</pre>
+
+<h3>
+sp_auditlogin</h3>
+
+<h3>
+Function</h3>
+Audits a SQL Server user's attempts to access tables and views; audits
+the text of a user's command batches; lists users on which auditing is
+enabled; gives the auditing status of a user; or displays the status of
+table, view, or command text auditing.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_auditlogin [&nbsp;<i> login_name&nbsp;</i>&nbsp; [, "table" | "view"&nbsp;
+&nbsp;[, "ok" | "fail" | "both" | "off"]]]</pre>
+
+<pre>&nbsp;sp_auditlogin [&nbsp;<i> login_name&nbsp;&nbsp;</i> [, "cmdtext"&nbsp;&nbsp;
+&nbsp;[, "on" | "off"]]]</pre>
+
+<h3>
+sp_auditobject</h3>
+
+<h3>
+Function</h3>
+Audits accesses to tables and views.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_auditobject&nbsp;&nbsp;<i> objname&nbsp;</i> ,&nbsp;&nbsp;<i> dbname&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;[, {"ok" | "fail" | "both" | "off"}&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [, "{d i s u}"]]</pre>
+
+<pre>&nbsp;sp_auditobject {"default table"|"default view"},&nbsp;
+&nbsp;&nbsp;<i> dbname&nbsp;</i>&nbsp; [, {"ok" | "fail" | "both" | "off"}&nbsp;&nbsp;
+&nbsp;[, "{d i s u}"]]</pre>
+
+<h3>
+sp_auditoption</h3>
+
+<h3>
+Function</h3>
+Enables or disables system-wide auditing and global audit options, or reports
+on the status of audit options.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_auditoption {"all" | "enable auditing" | "logouts"&nbsp;
+&nbsp;| "server boots" | "adhoc records"}&nbsp;&nbsp;
+&nbsp;[, {"on" | "off"}]</pre>
+
+<pre>&nbsp;sp_auditoption {"logins" | "rpc connections" |&nbsp;
+&nbsp;"roles"} [, {"ok" | "fail" | "both" | "off"}]</pre>
+
+<pre>&nbsp;sp_auditoption "errors" [, {"nonfatal" | "fatal"&nbsp;&nbsp;
+&nbsp;| "both"}]</pre>
+
+<pre>&nbsp;sp_auditoption "{sa | sso | oper | navigator |&nbsp;
+&nbsp;&nbsp;&nbsp; replication} commands"&nbsp;&nbsp;
+&nbsp;[, {"ok" | "fail" | "both" | "off"}]</pre>
+
+<h3>
+sp_auditsproc</h3>
+
+<h3>
+Function</h3>
+Audits the execution of stored procedures and triggers.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_auditsproc [&nbsp;<i> sproc_name&nbsp;</i>&nbsp; | "all"&nbsp;<i> , dbname&nbsp;
+&nbsp;&nbsp;</i> [, {"ok" | "fail" | "both" | "off"}]]</pre>
+
+<pre>&nbsp;sp_auditsproc "default",&nbsp;&nbsp;<i> dbname&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;[, {"ok" | "fail" | "both" | "off"}]</pre>
+
+<h3>
+sp_bindefault</h3>
+
+<h3>
+Function</h3>
+Binds a default to a column or user-defined datatype.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_bindefault&nbsp;&nbsp;<i> defaultname&nbsp;</i> ,&nbsp;&nbsp;<i> objectname&nbsp;</i>&nbsp; [, futureonly]</pre>
+
+<h3>
+sp_bindmsg</h3>
+
+<h3>
+Function</h3>
+Binds a user message to a referential integrity constraint or check constraint.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_bindmsg&nbsp;&nbsp;<i> constraint_name&nbsp;</i> ,&nbsp;&nbsp;<i> message_num&nbsp;</i></pre>
+
+<h3>
+sp_bindrule</h3>
+
+<h3>
+Function</h3>
+Binds a rule to a column or user-defined datatype.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_bindrule&nbsp;&nbsp;<i> rulename&nbsp;</i> ,&nbsp;&nbsp;<i> objectname&nbsp;</i>&nbsp; [, futureonly]</pre>
+
+<h3>
+sp_changedbowner</h3>
+
+<h3>
+Function</h3>
+Changes the owner of a database. <b>Do not </b>change the owner of the
+<i>sybsystemprocs </i>database.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_changedbowner&nbsp;&nbsp;<i> login_name&nbsp;&nbsp;</i> [, true ]</pre>
+
+<h3>
+sp_changegroup</h3>
+
+<h3>
+Function</h3>
+Changes a user's group.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_changegroup&nbsp;&nbsp;<i> grpname&nbsp;</i> ,&nbsp;&nbsp;<i> name_in_db&nbsp;</i></pre>
+
+<h3>
+sp_checknames</h3>
+
+<h3>
+Function</h3>
+Checks the current database for names that contain characters not in the
+7-bit ASCII set.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_checknames</pre>
+
+<h3>
+sp_checkreswords</h3>
+
+<h3>
+Function</h3>
+Detects and displays identifiers that are Transact-SQL reserved words.
+Checks server names, device names, database names, segment names, user-defined
+datatypes, object names, column names, user names, login names, and remote
+login names.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_checkreswords [&nbsp;<i> username&nbsp;</i> ]</pre>
+
+<h3>
+sp_clearstats</h3>
+
+<h3>
+Function</h3>
+Initiates a new accounting period for all server users or for a specified
+user. Prints statistics for the previous period by executing <b>sp_reportstats
+</b>.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_clearstats [&nbsp;<i> user_name&nbsp;</i> ]</pre>
+
+<h3>
+sp_commonkey</h3>
+
+<h3>
+Function</h3>
+Defines a common key-columns that are frequently joined-between two tables
+or views.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_commonkey&nbsp;&nbsp;<i> tabaname&nbsp;</i> ,&nbsp;&nbsp;<i> tabbname&nbsp;</i> ,&nbsp;&nbsp;<i> col1a&nbsp;</i> ,&nbsp;&nbsp;<i> col1b&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; [,&nbsp;&nbsp;<i> col2a&nbsp;</i> ,&nbsp;&nbsp;<i> col2b&nbsp;</i> , ...,&nbsp;&nbsp;<i> col8a&nbsp;</i> ,&nbsp;&nbsp;<i> col8b&nbsp;</i> ]</pre>
+
+<h3>
+sp_configure</h3>
+
+<h3>
+Function</h3>
+Displays or changes configuration variables.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_configure [&nbsp;<i> config_name&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> config_value&nbsp;</i> ]]</pre>
+
+<h3>
+sp_cursorinfo</h3>
+
+<h3>
+Function</h3>
+Reports information about a specific cursor or all cursors that are active.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_cursorinfo [{&nbsp;<i> cursor_level&nbsp;</i>&nbsp; | null}] [&nbsp;<i> , cursor_name&nbsp;</i> ]</pre>
+
+<h3>
+sp_dboption</h3>
+
+<h3>
+Function</h3>
+Displays or changes database options.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_dboption [&nbsp;<i> dbname&nbsp;</i> ,&nbsp;&nbsp;<i> optname&nbsp;</i> , {true | false}]</pre>
+
+<h3>
+sp_dbremap</h3>
+
+<h3>
+Function</h3>
+Forces SQL Server to recognize changes made by <b>alter database </b>.
+Run this procedure only if instructed to do so by SQL Server messages.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_dbremap database_name</pre>
+
+<h3>
+sp_depends</h3>
+
+<h3>
+Function</h3>
+Displays information about database object dependencies-the view(s), trigger(s),
+and procedure(s) that depend on a specified table or view, and the table(s)
+and view(s) that the specified view, trigger, or procedure depends on.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_depends&nbsp;&nbsp;<i> objname&nbsp;</i></pre>
+
+<h3>
+sp_diskdefault</h3>
+
+<h3>
+Function</h3>
+Sets a database device's status to <b>defaulton </b>or <b>defaultoff </b>.
+This indicates whether or not a database device can be used for database
+storage if the user does not specify a database device or specifies <b>default
+</b>with the <b>create database </b>or <b>alter database </b>commands.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_diskdefault&nbsp;&nbsp;<i> logical_name&nbsp;</i>&nbsp; {defaulton | defaultoff}</pre>
+
+<h3>
+sp_displaylogin</h3>
+
+<h3>
+Function</h3>
+Displays information about a login account.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_displaylogin [&nbsp;<i> login_name&nbsp;</i> ]</pre>
+
+<h3>
+sp_dropalias</h3>
+
+<h3>
+Function</h3>
+Removes the alias user name identity established with <b>sp_addalias </b>.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_dropalias&nbsp;&nbsp;<i> login_name&nbsp;</i></pre>
+
+<h3>
+sp_dropdevice</h3>
+
+<h3>
+Function</h3>
+Drops a SQL Server database device or dump device.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_dropdevice&nbsp;&nbsp;<i> device_name&nbsp;</i></pre>
+
+<h3>
+sp_dropgroup</h3>
+
+<h3>
+Function</h3>
+Drops a group from a database.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_dropgroup&nbsp;&nbsp;<i> grpname&nbsp;</i></pre>
+
+<h3>
+sp_dropkey</h3>
+
+<h3>
+Function</h3>
+Removes from the <i>syskeys </i>table a key that had been defined using
+<b>sp_primarykey </b>, <b>sp_foreignkey </b>, or <b>sp_commonkey </b>.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_dropkey&nbsp;&nbsp;<i> keytype&nbsp;</i> ,&nbsp;&nbsp;<i> tabaname&nbsp;</i>&nbsp; [,&nbsp;<i>&nbsp; tabbname]&nbsp;</i></pre>
+
+<h3>
+sp_droplanguage</h3>
+
+<h3>
+Function</h3>
+Drops an alternate language from the server and removes its row from <i>master.dbo.syslanguages
+</i>.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_droplanguage&nbsp;&nbsp;<i> language&nbsp;</i>&nbsp; [, dropmessages]</pre>
+
+<h3>
+sp_droplogin</h3>
+
+<h3>
+Function</h3>
+Drops a SQL Server user login by deleting the user's entry in <i>master.dbo.syslogins
+</i>.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_droplogin&nbsp;&nbsp;<i> login_name&nbsp;</i></pre>
+
+<h3>
+sp_dropmessage</h3>
+
+<h3>
+Function</h3>
+Drops user-defined messages from <i>sysusermessages </i>.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_dropmessage&nbsp;&nbsp;<i> message_number [&nbsp;</i> ,&nbsp;&nbsp;<i> language&nbsp;</i> ]</pre>
+
+<h3>
+sp_dropremotelogin</h3>
+
+<h3>
+Function</h3>
+Drops a remote user login.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_dropremotelogin&nbsp;&nbsp;<i> remoteserver&nbsp;</i>&nbsp; [,&nbsp;<i>&nbsp; login_name&nbsp;</i>&nbsp;&nbsp;&nbsp;
+&nbsp;[,&nbsp;&nbsp;<i> remotename&nbsp;</i> ] ]</pre>
+
+<h3>
+sp_dropsegment</h3>
+
+<h3>
+Function</h3>
+Drops a segment from a database or unmaps a segment from a particular database
+device.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_dropsegment&nbsp;&nbsp;<i> segname&nbsp;</i> ,&nbsp;&nbsp;<i> dbname&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> devname&nbsp;</i> ]</pre>
+
+<h3>
+sp_dropserver</h3>
+
+<h3>
+Function</h3>
+Drops a server from the list of known servers.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_dropserver&nbsp;&nbsp;<i> server&nbsp;</i>&nbsp; [, droplogins]</pre>
+
+<h3>
+sp_dropthreshold</h3>
+
+<h3>
+Function</h3>
+Removes a free-space threshold from a segment.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_dropthreshold&nbsp;&nbsp;<i> database, segment, free_pages&nbsp;</i></pre>
+
+<h3>
+sp_droptype</h3>
+
+<h3>
+Function</h3>
+Drops a user-defined datatype.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_droptype&nbsp;&nbsp;<i> typename&nbsp;</i></pre>
+
+<h3>
+sp_dropuser</h3>
+
+<h3>
+Function</h3>
+Drops a user from the current database.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_dropuser&nbsp;&nbsp;<i> name_in_db&nbsp;</i></pre>
+
+<h3>
+sp_estspace</h3>
+
+<h3>
+Function</h3>
+Estimates the amount of space required for a table and its indexes, and
+the time needed to create the index.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_estspace&nbsp;&nbsp;<i> table_name,&nbsp;</i>&nbsp;&nbsp;&nbsp;<i> no_of_rows&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> fill_factor&nbsp;
+&nbsp;&nbsp;</i> [,&nbsp;&nbsp;<i> cols_to_max&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> textbin_len&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> iosec&nbsp;</i> ]]]]</pre>
+
+<h3>
+sp_extendsegment</h3>
+
+<h3>
+Function</h3>
+Extends the range of a segment to another database device, or extends an
+existing segment on the current database device.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_extendsegment&nbsp;&nbsp;<i> segname&nbsp;</i> ,&nbsp;&nbsp;<i> dbname, devname&nbsp;</i></pre>
+
+<h3>
+sp_foreignkey</h3>
+
+<h3>
+Function</h3>
+Defines a foreign key on a table or view in the current database.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_foreignkey&nbsp;&nbsp;<i> tabname&nbsp;</i> ,&nbsp;&nbsp;<i> pktabname&nbsp;</i> ,&nbsp;&nbsp;<i> col1&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> col2&nbsp;</i> ] ...&nbsp;&nbsp;
+&nbsp;[,&nbsp;&nbsp;<i> col8&nbsp;</i> ]</pre>
+
+<h3>
+sp_getmessage</h3>
+
+<h3>
+Function</h3>
+Retrieves stored message strings from <i>sysmessages </i>and <i>sysusermessages
+</i>for <b>print </b>and <b>raiserror </b>statements.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_getmessage&nbsp;&nbsp;<i> message_num&nbsp;</i> ,&nbsp;&nbsp;<i> @msg_var&nbsp;</i>&nbsp; output [,&nbsp;&nbsp;<i> language&nbsp;</i> ]</pre>
+
+<h3>
+sp_help</h3>
+
+<h3>
+Function</h3>
+Reports information about a database object (any object listed in <i>sysobjects
+</i>), and about SQL Server-supplied or user-defined datatypes.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_help [&nbsp;<i> objname&nbsp;</i> ]</pre>
+
+<h3>
+sp_helpconstraint</h3>
+
+<h3>
+Function</h3>
+Reports information about any integrity constraints specified for a table.
+This information includes the constraint name and the definition of the
+default, unique/primary key constraint, referential constraint, or check
+constraint.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_helpconstraint&nbsp;&nbsp;<i> tabname&nbsp;</i>&nbsp; [, detail]</pre>
+
+<h3>
+sp_helpdb</h3>
+
+<h3>
+Function</h3>
+Reports information about a particular database or about all databases.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_helpdb [&nbsp;<i> dbname&nbsp;</i> ]</pre>
+
+<h3>
+sp_helpdevice</h3>
+
+<h3>
+Function</h3>
+Reports information about a particular device or about all SQL Server database
+devices and dump devices.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_helpdevice [&nbsp;<i> device_name&nbsp;</i> ]</pre>
+
+<h3>
+sp_helpgroup</h3>
+
+<h3>
+Function</h3>
+Reports information about a particular group or about all groups in the
+current database.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_helpgroup [&nbsp;<i> grpname&nbsp;</i> ]</pre>
+
+<h3>
+sp_helpindex</h3>
+
+<h3>
+Function</h3>
+Reports information about the indexes created on a table.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_helpindex&nbsp;&nbsp;<i> tabname&nbsp;</i></pre>
+
+<h3>
+sp_helpjoins</h3>
+
+<h3>
+Function</h3>
+Lists the columns in two tables or views that are likely join candidates.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_helpjoins&nbsp;&nbsp;<i> lefttab&nbsp;</i> ,&nbsp;&nbsp;<i> righttab&nbsp;</i></pre>
+
+<h3>
+sp_helpkey</h3>
+
+<h3>
+Function</h3>
+Reports information about a primary, foreign, or common key of a particular
+table or view, or about all keys in the current database.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_helpkey [&nbsp;<i> objname&nbsp;</i> ]</pre>
+
+<h3>
+sp_helplanguage</h3>
+
+<h3>
+Function</h3>
+Reports information about a particular alternate language or about all
+languages.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_helplanguage [&nbsp;<i> language&nbsp;</i> ]</pre>
+
+<h3>
+sp_helplog</h3>
+
+<h3>
+Function</h3>
+Reports the name of the device that contains the first page of the log.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_helplog</pre>
+
+<h3>
+sp_helpremotelogin</h3>
+
+<h3>
+Function</h3>
+Reports information about a particular remote server's logins or about
+all remote servers' logins.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_helpremotelogin [&nbsp;<i> remoteserver&nbsp;</i>&nbsp; [,&nbsp;<i> remotename&nbsp;</i> ]]</pre>
+
+<h3>
+sp_helprotect</h3>
+
+<h3>
+Function</h3>
+Reports on permissions for database objects, users, or groups.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_helprotect [&nbsp;<i> name&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> name_in_db&nbsp;</i>&nbsp; [, "grant"]]]</pre>
+
+<h3>
+sp_helpsegment</h3>
+
+<h3>
+Function</h3>
+Reports information on a particular segment or on all of the segments in
+the current database.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_helpsegment [&nbsp;<i> segname&nbsp;</i> ]</pre>
+
+<h3>
+sp_helpserver</h3>
+
+<h3>
+Function</h3>
+Reports information about a particular remote server or about all remote
+servers.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_helpserver [&nbsp;<i> server&nbsp;</i> ]</pre>
+
+<h3>
+sp_helpsort</h3>
+
+<h3>
+Function</h3>
+Displays SQL Server's default sort order and character set.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_helpsort</pre>
+
+<h3>
+sp_helptext</h3>
+
+<h3>
+Function</h3>
+Prints the text of a system procedure, trigger, view, default, rule, or
+integrity check constraint.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_helptext&nbsp;&nbsp;<i> objname&nbsp;</i></pre>
+
+<h3>
+sp_helpthreshold</h3>
+
+<h3>
+Function</h3>
+Reports the segment, free-space value, status, and stored procedure associated
+with all thresholds in the current database or all thresholds for a particular
+segment.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_helpthreshold [&nbsp;<i> segment_name&nbsp;</i> ]</pre>
+
+<h3>
+sp_helpuser</h3>
+
+<h3>
+Function</h3>
+Reports information about a particular user or about all users in the current
+database.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_helpuser [&nbsp;<i> name_in_db&nbsp;</i> ]</pre>
+
+<h3>
+sp_indsuspect</h3>
+
+<h3>
+Function</h3>
+Checks user tables for indexes that have been marked as suspect during
+recovery following a sort order change.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_indsuspect [&nbsp;<i> table_name&nbsp;</i> ]</pre>
+
+<h3>
+sp_lock</h3>
+
+<h3>
+Function</h3>
+Reports information about processes that currently hold locks.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_lock [&nbsp;<i> spid1&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> spid2&nbsp;</i> ]]</pre>
+
+<h3>
+sp_locklogin</h3>
+
+<h3>
+Function</h3>
+Locks a SQL Server account so that the user cannot log in, or displays
+a list of all locked accounts.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_locklogin [&nbsp;<i> login_name&nbsp;</i> , "{lock | unlock}"]</pre>
+
+<h3>
+sp_logdevice</h3>
+
+<h3>
+Function</h3>
+Puts the system table <i>syslogs </i>, which contains the transaction log,
+on a separate database device.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_logdevice&nbsp;&nbsp;<i> dbname&nbsp;</i> ,&nbsp;&nbsp;<i> device_name&nbsp;</i></pre>
+
+<h3>
+sp_modifylogin</h3>
+
+<h3>
+Function</h3>
+Modifies the default database, default language, or full name for a SQL
+Server login account.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_modifylogin&nbsp;&nbsp;<i> login_name&nbsp;</i> ,&nbsp;&nbsp;<i> option&nbsp;</i> ,&nbsp;&nbsp;<i> value&nbsp;</i></pre>
+
+<h3>
+sp_modifythreshold</h3>
+
+<h3>
+Function</h3>
+Modifies a threshold by associating it with a different threshold procedure,
+level of free space, or segment. You <b>cannot </b>use <b>sp_modifythreshold
+</b>to change the amount of free space or the segment name for the last-chance
+threshold.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_modifythreshold&nbsp;<i>&nbsp; database, segment, free_pages&nbsp;
+&nbsp;&nbsp;</i> [&nbsp;<i> , new_procedure&nbsp;</i> ] [,&nbsp;&nbsp;<i> new_free_pages&nbsp;</i> ]&nbsp;&nbsp;
+&nbsp;[,&nbsp;&nbsp;<i> new_segment&nbsp;</i> ]</pre>
+
+<h3>
+sp_monitor</h3>
+
+<h3>
+Function</h3>
+Displays statistics about SQL Server.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_monitor</pre>
+
+<h3>
+sp_password</h3>
+
+<h3>
+Function</h3>
+Adds or changes a password for a SQL Server login account.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_password&nbsp;&nbsp;<i> caller_passwd&nbsp;</i> ,&nbsp;&nbsp;<i> new_passwd&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> login_name&nbsp;</i> ]</pre>
+
+<h3>
+sp_placeobject</h3>
+
+<h3>
+Function</h3>
+Puts future space allocations for a table or index on a particular segment.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_placeobject&nbsp;&nbsp;<i> segname&nbsp;</i> ,&nbsp;&nbsp;<i> objname&nbsp;</i></pre>
+
+<h3>
+sp_primarykey</h3>
+
+<h3>
+Function</h3>
+Defines a primary key on a table or view.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_primarykey&nbsp;&nbsp;<i> tabname&nbsp;</i> ,&nbsp;&nbsp;<i> col1&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> col2&nbsp;</i> ,&nbsp;&nbsp;<i> col3&nbsp;</i> , ...,&nbsp;&nbsp;<i> col8&nbsp;</i> ]</pre>
+
+<h3>
+sp_procxmode</h3>
+
+<h3>
+Function</h3>
+Displays or changes the transaction modes associated with stored procedures.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_procxmode [&nbsp;<i> procedure_name&nbsp;&nbsp;</i> [,&nbsp;<i>&nbsp; transaction_mode&nbsp;</i> ]]</pre>
+
+<h3>
+sp_recompile</h3>
+
+<h3>
+Function</h3>
+Causes each stored procedure and trigger that uses the named table to be
+recompiled the next time it runs.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_recompile&nbsp;&nbsp;<i> tabname&nbsp;</i></pre>
+
+<h3>
+sp_remap</h3>
+
+<h3>
+Function</h3>
+Remaps a Release 4.8 or later stored procedure, trigger, rule, default,
+or view to be compatible with Release 10.0. Use <b>sp_remap </b>on objects
+that the Release 10.0 upgrade procedure failed to remap.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_remap&nbsp;&nbsp;<i> object_name&nbsp;</i></pre>
+
+<h3>
+sp_remoteoption</h3>
+
+<h3>
+Function</h3>
+Displays or changes remote login options.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_remoteoption [&nbsp;<i> remote_server&nbsp;</i> ,&nbsp;&nbsp;<i> login_name&nbsp;</i> ,&nbsp;
+&nbsp;&nbsp;<i> remote_name&nbsp;</i> ,&nbsp;&nbsp;<i> opt_name&nbsp;</i> , {true | false}]</pre>
+
+<h3>
+sp_rename</h3>
+
+<h3>
+Function</h3>
+Changes the name of a user-created object in the current database.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_rename&nbsp;&nbsp;<i> objname&nbsp;</i> ,&nbsp;&nbsp;<i> newname&nbsp;</i></pre>
+
+<h3>
+sp_renamedb</h3>
+
+<h3>
+Function</h3>
+Changes the name of a database. You <b>cannot </b>rename system databases
+or databases with external referential integrity constraints.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_renamedb&nbsp;&nbsp;<i> dbname&nbsp;</i> ,&nbsp;&nbsp;<i> newname&nbsp;</i></pre>
+
+<h3>
+sp_reportstats</h3>
+
+<h3>
+Function</h3>
+Reports statistics on system usage.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_reportstats [&nbsp;<i> user_name&nbsp;</i> ]</pre>
+
+<h3>
+sp_role</h3>
+
+<h3>
+Function</h3>
+Grants or revokes roles to a SQL Server login account.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_role {"grant" | "revoke"},&nbsp;&nbsp;
+&nbsp;{sa_role | sso_role | oper_role},&nbsp;&nbsp;<i> login_name&nbsp;</i></pre>
+
+<h3>
+sp_serveroption</h3>
+
+<h3>
+Function</h3>
+Displays or changes remote server options.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_serveroption [&nbsp;<i> server&nbsp;</i> ,&nbsp;&nbsp;<i> optname&nbsp;</i> , {true | false}]</pre>
+
+<h3>
+sp_setlangalias</h3>
+
+<h3>
+Function</h3>
+Assigns or changes the alias for an alternate language.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_setlangalias&nbsp;&nbsp;<i> language&nbsp;</i> ,&nbsp;&nbsp;<i> alias&nbsp;</i></pre>
+
+<h3>
+sp_spaceused</h3>
+
+<h3>
+Function</h3>
+Displays the number of rows, the number of data pages, and the space used
+by one table or by all tables in the current database.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_spaceused [&nbsp;<i> tablename]&nbsp;</i></pre>
+
+<h3>
+sp_syntax</h3>
+
+<h3>
+Function</h3>
+Displays the syntax of Transact-SQL statements, system procedures, utilities,
+and other routines (depending on which products and corresponding <b>sp_syntax
+</b>scripts exist on your server).
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_syntax {&nbsp;<i> command&nbsp;</i>&nbsp; | fragment} [, module_name]&nbsp;
+&nbsp;[,&nbsp;&nbsp;<i> language&nbsp;</i> ]</pre>
+
+<h3>
+sp_thresholdaction</h3>
+
+<h3>
+Function</h3>
+Executes automatically when the number of free pages on the log segment
+falls below the last-chance threshold (unless the threshold has been associated
+with a different procedure). Sybase does not provide this procedure.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_thresholdaction&nbsp;&nbsp;<i> @dbname,&nbsp;
+&nbsp;&nbsp;</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @segment_name,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @space_left,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @status</pre>
+
+<h3>
+sp_unbindefault</h3>
+
+<h3>
+Function</h3>
+Unbinds a created default value from a column or from a user-defined datatype.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_unbindefault&nbsp;&nbsp;<i> objname&nbsp;</i>&nbsp; [, futureonly]</pre>
+
+<h3>
+sp_unbindmsg</h3>
+
+<h3>
+Function</h3>
+Unbinds a user-defined message from a constraint.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_unbindmsg&nbsp;&nbsp;<i> constraint_name&nbsp;</i></pre>
+
+<h3>
+sp_unbindrule</h3>
+
+<h3>
+Function</h3>
+Unbinds a rule from a column or from a user-defined datatype.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_unbindrule&nbsp;&nbsp;<i> objname&nbsp;</i>&nbsp; [, futureonly]</pre>
+
+<h3>
+sp_volchanged</h3>
+
+<h3>
+Function</h3>
+Notifies the Backup Server that the operator performed the requested volume
+handling during a dump or load.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_volchanged&nbsp;&nbsp;<i> session_id, device_name, action&nbsp;
+&nbsp;&nbsp;</i> [&nbsp;<i> , filename&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> volume_nam&nbsp;</i> e]]</pre>
+
+<h3>
+sp_who</h3>
+
+<h3>
+Function</h3>
+Reports information about all current SQL Server users and processes, or
+about a particular user or process.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_who [&nbsp;<i> login_name&nbsp;</i>&nbsp; |&nbsp;&nbsp;<i> "spid&nbsp;</i> "]</pre>
+
+<h3>
+</h3>
+&nbsp;
+<h3>
+</h3>
+
+<h3>
+Chapter 5</h3>
+
+<h2>
+Catalog Stored Procedures</h2>
+
+<h3>
+sp_column_privileges</h3>
+
+<h3>
+Function</h3>
+Returns permissions information for one or more columns in a table or view.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_column_privileges&nbsp;&nbsp;<i> table_name&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> table_owner&nbsp;
+&nbsp;&nbsp;</i> [,&nbsp;&nbsp;<i> table_qualifier&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> column_name&nbsp;</i> ]]]</pre>
+
+<h3>
+sp_columns</h3>
+
+<h3>
+Function</h3>
+Returns information about the type of data that can be stored in one or
+more columns.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_columns&nbsp;&nbsp;<i> table_name&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> table_owner&nbsp;</i>&nbsp; ]&nbsp;
+&nbsp;[,&nbsp;&nbsp;<i> table_qualifier&nbsp;</i> ] [,&nbsp;&nbsp;<i> column_name&nbsp;</i> ]</pre>
+
+<h3>
+sp_databases</h3>
+
+<h3>
+Function</h3>
+Returns a list of databases on a SQL Server.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_databases</pre>
+
+<h3>
+sp_datatype_info</h3>
+
+<h3>
+Function</h3>
+Returns information about a particular datatype or about all supported
+datatypes.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_datatype_info [&nbsp;<i> data_type&nbsp;</i> ]</pre>
+
+<h3>
+sp_fkeys</h3>
+
+<h3>
+Function</h3>
+Returns logical foreign key information for the current database. Foreign
+keys must have been declared through the ANSI integrity constraint mechanism.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_fkeys&nbsp;&nbsp;<i> pktable_name&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> pktable_owner&nbsp;</i> ]&nbsp;
+&nbsp;[,&nbsp;&nbsp;<i> pktable_qualifier&nbsp;</i> ] [,&nbsp;<i>&nbsp; fktable_name&nbsp;</i> ]&nbsp;&nbsp;
+&nbsp;[,&nbsp;<i>&nbsp; fktable_owner&nbsp;</i> ] [,&nbsp;<i>&nbsp; fktable_qualifier&nbsp;</i> ]</pre>
+
+<h3>
+sp_pkeys</h3>
+
+<h3>
+Function</h3>
+Returns primary key information for a single table. Primary keys must have
+been declared through the ANSI integrity constraint mechanism.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_pkeys&nbsp;&nbsp;<i> table_name&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> table_owner&nbsp;</i> ]&nbsp;&nbsp;
+&nbsp;[,&nbsp;&nbsp;<i> table_qualifier&nbsp;</i> ]</pre>
+
+<h3>
+sp_server_info</h3>
+
+<h3>
+Function</h3>
+Returns a list of attribute names and matching values for SQL Server.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_server_info [&nbsp;<i> attribute_id&nbsp;</i> ]</pre>
+
+<h3>
+sp_special_columns</h3>
+
+<h3>
+Function</h3>
+Returns the optimal set of columns that uniquely identify a row in a table
+or view; can also return a list of the columns that are automatically updated
+when any value in the row is updated by a transaction.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_special_columns&nbsp;&nbsp;<i> table_name&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> table_owner&nbsp;</i> ]&nbsp;&nbsp;
+&nbsp;[,&nbsp;&nbsp;<i> table_qualifier&nbsp;</i> ] [,&nbsp;&nbsp;<i> col_type&nbsp;</i> ]</pre>
+
+<h3>
+sp_sproc_columns</h3>
+
+<h3>
+Function</h3>
+Returns information about a stored procedure's input and return parameters.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_sproc_columns&nbsp;&nbsp;<i> sp_name&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> sp_owner&nbsp;</i> ]&nbsp;&nbsp;
+&nbsp;[,&nbsp;&nbsp;<i> sp_qualifier&nbsp;</i> ] [,&nbsp;&nbsp;<i> column_name&nbsp;</i> ]</pre>
+
+<h3>
+sp_statistics</h3>
+
+<h3>
+Function</h3>
+Returns a list of indexes on a single table.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_statistics&nbsp;&nbsp;<i> table_name&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> table_owner&nbsp;</i> ]&nbsp;&nbsp;
+&nbsp;[,&nbsp;&nbsp;<i> table_qualifier&nbsp;</i> ] [,&nbsp;&nbsp;<i> index_name&nbsp;</i> ] [,&nbsp;&nbsp;<i> is_unique&nbsp;</i> ]</pre>
+
+<h3>
+sp_stored_procedures</h3>
+
+<h3>
+Function</h3>
+Returns information about one or more stored procedures.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_stored_procedures [&nbsp;<i> sp_name&nbsp;</i> ] [,&nbsp;&nbsp;<i> sp_owner&nbsp;</i> ]&nbsp;
+&nbsp;[,&nbsp;&nbsp;<i> sp_qualifier&nbsp;</i> ]</pre>
+
+<h3>
+sp_table_privileges</h3>
+
+<h3>
+Function</h3>
+Returns privilege information for all columns in a table or view.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_table_privileges&nbsp;&nbsp;<i> table_name&nbsp;</i>&nbsp; [,&nbsp;&nbsp;<i> table_owner&nbsp;
+&nbsp;&nbsp;</i> [,&nbsp;&nbsp;<i> table_qualifier&nbsp;</i> ]]</pre>
+
+<h3>
+sp_tables</h3>
+
+<h3>
+Function</h3>
+Returns a list of objects that can appear in a <b>from </b>clause.
+<h3>
+Syntax</h3>
+
+<pre>&nbsp;sp_tables [&nbsp;<i> table_name&nbsp;</i> ] [,&nbsp;&nbsp;<i> table_owner&nbsp;</i> ]&nbsp;&nbsp;
+&nbsp;[,&nbsp;&nbsp;<i> table_qualifier&nbsp;</i> ][,&nbsp;&nbsp;<i> table_type&nbsp;</i> ]</pre>
+&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<h3>
+Chapter 6</h3>
+
+<h2>
+Error Messages and Message Numbers</h2>
+
+<h3>
+Severity Levels 10 Through 18</h3>
+Error messages with severity levels 10 through 16 are generated by problems
+caused by user errors, and can always be corrected by the user. Severity
+levels 17 and 18 do not terminate the user's session.
+<br>Error messages with severity levels 17 or higher should be reported
+to the System Administrator or Database Owner.
+<h3>
+Severity Levels 19 Through 24</h3>
+Fatal problems generate error messages with severity levels 19 and higher.
+They break the user's connection to SQL Server. To continue working, the
+user must restart the client program.
+<br>&nbsp;
+<table>
+<tr>
+<th>Severity Level&nbsp;</th>
+
+<th>Explanation/Cause&nbsp;</th>
+
+<th>Action&nbsp;</th>
+</tr>
+
+<tr>
+<td>10: Status Information&nbsp;</td>
+
+<td>Not an error. The SQL Server provides additional information after
+certain commands have been executed.&nbsp;</td>
+
+<td>none&nbsp;</td>
+</tr>
+
+<tr>
+<td>11: Specified Database Object Not Found&nbsp;</td>
+
+<td>SQL Server can't find an object referenced in the command because the
+user has made a mistake in typing the name of a database object, because
+the user did not specify the object owner's name, or because of confusion
+about which database is current.&nbsp;</td>
+
+<td>Check spelling of object names, use owner names if the object is not
+owned by you or "dbo", and make sure you're in the correct database.&nbsp;</td>
+</tr>
+
+<tr>
+<td>12: Wrong Datatype Encountered&nbsp;</td>
+
+<td>A problem with datatypes. For example, the user may have tried to enter
+a value of the wrong datatype into a column, or to compare columns of different
+(and incompatible) datatypes.&nbsp;</td>
+
+<td>To correct comparison problems, use the <b>convert </b>function with
+<b>select </b>.&nbsp;</td>
+</tr>
+
+<tr>
+<td>13: User Transaction Syntax Error&nbsp;</td>
+
+<td>Something is wrong with the current user-defined transaction. For example,
+issuing a <b>commit </b>command without having issued a <b>begin transaction
+</b>, or trying to roll a transaction back to a savepoint that has not
+been defined (sometimes there may be a typing or spelling mistake in the
+name of the savepoint).&nbsp;</td>
+
+<td>Severity level 13 can also indicate a deadlock, in which case the deadlock
+victim's process is rolled back. The user must restart his or her command.&nbsp;</td>
+</tr>
+
+<tr>
+<td>14: Insufficient Permission to Execute Command&nbsp;</td>
+
+<td>You don't have the permission necessary to execute the command or access
+the database object.&nbsp;</td>
+
+<td>Ask the owner of the database object, the owner of the database, or
+the System Administrator to grant you permission to use the command or
+object in question.&nbsp;</td>
+</tr>
+
+<tr>
+<td>15: Syntax Error in SQL Statements&nbsp;</td>
+
+<td>The user has made a mistake in the syntax of the command. The text
+of these error messages includes the line numbers on which the mistake
+occurs, and the specific word near which it occurs.&nbsp;</td>
+
+<td>Retype the command.&nbsp;</td>
+</tr>
+
+<tr>
+<td>16: Miscellaneous User Error&nbsp;</td>
+
+<td>The user has made some kind of non-fatal mistake that doesn't fall
+into any of the other categories.&nbsp;</td>
+
+<td>Check command syntax and working database context.&nbsp;</td>
+</tr>
+
+<tr>
+<td>17: Insufficient Resources&nbsp;</td>
+
+<td>The command has caused SQL Server to run out of resources (usually
+space for the database on the disk) or to exceed some limit set by the
+System Administrator. These system limits include the number of databases
+that can be open at the same time and the number of connections allowed
+to SQL Server. They are stored in system tables, and can be checked with
+the <b>sp_configure </b>command&nbsp;</td>
+
+<td>The Database Owner can correct level 17 error messages indicating that
+you have run out of space. Other level 17 error messages should be corrected
+by the System Administrator.&nbsp;</td>
+</tr>
+
+<tr>
+<td>18: Non-Fatal Internal Error Detected&nbsp;</td>
+
+<td>Error messages with severity level 18 indicate some kind of internal
+software bug. However, the command runs to completion, and the connection
+to SQL Server is maintained.&nbsp;</td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>19: SQL Server Fatal Error in Resource&nbsp;</td>
+
+<td>Some non-configurable internal limit has been exceeded, and SQL Server
+cannot recover gracefully.&nbsp;</td>
+
+<td>Reconnect to SQL Server. See your System Administrator.&nbsp;</td>
+</tr>
+
+<tr>
+<td>20: SQL Server Fatal Error in Current Process&nbsp;</td>
+
+<td>SQL Server has encountered a bug in some command. The problem has affected
+only the current process; it is unlikely that the database itself has been
+damaged.&nbsp;</td>
+
+<td>Run <b>dbcc </b>diagnostics. Reconnect to SQL Server. See your System
+Administrator.&nbsp;</td>
+</tr>
+
+<tr>
+<td>21: SQL Server Fatal Error in Database Processes&nbsp;</td>
+
+<td>SQL Server has encountered a bug that affects all the processes in
+the current database. However, it is unlikely that the database itself
+has been damaged.&nbsp;</td>
+
+<td>Restart SQL Server and run the <b>dbcc </b>diagnostics. Reconnect to
+SQL Server. See your System Administrator.&nbsp;</td>
+</tr>
+
+<tr>
+<td>22: SQL Server Fatal Error: Table Integrity Suspect&nbsp;</td>
+
+<td>The table or index specified in the message has been damaged at some
+previous time by a software or hardware problem.&nbsp;</td>
+
+<td>First, restart SQL Server and run <b>dbcc </b>to determine if other
+objects in the database are also damaged. If the problem is in the cache
+only, and not on the disk itself, restarting SQL Server will fix the problem.
+If restarting doesn't help, the problem is on the disk as well. Sometimes
+the problem can be solved by dropping the object specified in the error
+message.&nbsp;</td>
+</tr>
+
+<tr>
+<td>23: SQL Server Fatal Error: Database Integrity Suspect&nbsp;</td>
+
+<td>The integrity of the entire database is suspect due to damage caused
+at some previous time by a software or hardware problem.&nbsp;</td>
+
+<td>Restart SQL Server and run the <b>dbcc </b>diagnostics. Even when the
+whole database is suspect, the damage may be confined to the cache, and
+the disk itself may be fine. If so, restarting SQL Server with <b>startserver
+</b>will fix the problem.&nbsp;</td>
+</tr>
+
+<tr>
+<td>24: Hardware Error or System Table Corruption&nbsp;</td>
+
+<td>Error messages with severity level 24 reflect some kind of media failure
+or (in rare cases) the corruption of <i>sysusages </i>.&nbsp;</td>
+
+<td>The System Administrator may have to reload the database. It may be
+necessary to call your hardware vendor.&nbsp;</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+</body>
+</html>

@@ -1,0 +1,1046 @@
+<HTML
+><HEAD
+><TITLE
+>[Chapter 3] 3.4 Electronic Mail</TITLE
+><META
+NAME="DC.title"
+CONTENT="Learning the Unix Operating System"><META
+NAME="DC.creator"
+CONTENT="Jerry Peek, Grace Todino &amp; John Strang"><META
+NAME="DC.publisher"
+CONTENT="O'Reilly &amp; Associates, Inc."><META
+NAME="DC.date"
+CONTENT="1998-08-03T20:50:28Z"><META
+NAME="DC.type"
+CONTENT="Text.Monograph"><META
+NAME="DC.format"
+CONTENT="text/html"
+SCHEME="MIME"><META
+NAME="DC.source"
+CONTENT="1-56592-390-1"
+SCHEME="ISBN"><META
+NAME="DC.language"
+CONTENT="en-US"><META
+NAME="generator"
+CONTENT="Jade 1.1/O'Reilly DocBook 3.0 to HTML 4.0"><LINK
+REV="made"
+HREF="mailto:online-books@oreilly.com"
+TITLE="Online Books Comments"><LINK
+REL="up"
+HREF="ch03_01.htm"
+TITLE="3. Your UNIX Account "><LINK
+REL="prev"
+HREF="ch03_03.htm"
+TITLE="3.3 Protecting and Sharing Files"><LINK
+REL="next"
+HREF="ch03_05.htm"
+TITLE="3.5 Changing Your Password"></HEAD
+><BODY
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+><DIV
+CLASS="htmlnav"
+><H1
+><IMG
+SRC="gifs/smbanner.gif"
+ALT="Learning the Unix Operating System"
+USEMAP="#srchmap"
+BORDER="0"></H1
+><MAP
+NAME="srchmap"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,466,69"
+HREF="index.htm"
+ALT="Learning the Unix Operating System"><AREA
+SHAPE="RECT"
+COORDS="467,0,514,18"
+HREF="jobjects/fsearch.htm"
+ALT="Search this book"></MAP
+><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch03_03.htm"
+TITLE="3.3 Protecting and Sharing Files"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 3.3 Protecting and Sharing Files"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><B
+><FONT
+FACE="ARIEL,HELVETICA,HELV,SANSERIF"
+SIZE="-1"
+>Chapter 3<BR>Your UNIX Account </FONT
+></B
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch03_05.htm"
+TITLE="3.5 Changing Your Password"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 3.5 Changing Your Password"
+BORDER="0"></A
+></TD
+></TR
+></TABLE
+>&nbsp;<HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"></DIV
+><DIV
+CLASS="SECT1"
+><H2
+CLASS="sect1"
+><A
+CLASS="title"
+NAME="LUX-CH-3-SECT-4"
+>3.4 Electronic Mail</A
+></H2
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-2286"
+></A
+><A
+CLASS="indexterm"
+NAME="LUX-CH-3-IX-EMAIL"
+></A
+>When you log in to your system, you may see a notice that says &quot;You have mail.&quot;
+Someone has sent you a message or document
+by <EM
+CLASS="emphasis"
+>electronic mail</EM
+> (email).
+With email, you can compose a message at your terminal and send it to
+another user or list of users.
+You can also read any messages that others may have sent to you.</P
+><P
+CLASS="para"
+>Email has several advantages over paper mail:
+it's convenient if you're already logged in,
+it's delivered much more quickly,
+you can send it to any number of people almost as easily as to just one person,
+and the messages can be stored for later reference.</P
+><P
+CLASS="para"
+>There are a lot of email programs for UNIX.  Some UNIX systems have
+only an old, simple program named <B
+CLASS="emphasis.bold"
+>mail</B
+>, which this book doesn't
+cover.  Most UNIX systems have a Berkeley program called <B
+CLASS="emphasis.bold"
+>Mail</B
+>
+(with an uppercase &quot;M&quot;), <B
+CLASS="emphasis.bold"
+>mailx</B
+>, or just <B
+CLASS="emphasis.bold"
+>mail</B
+>.  A popular
+menu-driven program that's easier to learn is called <B
+CLASS="emphasis.bold"
+>pine</B
+>.  All
+programs' basic principles are the same, though.  We'll cover the
+Berkeley <B
+CLASS="emphasis.bold"
+>mail</B
+> program.</P
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-3-SECT-4.1"
+>3.4.1 Sending Mail</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-2303"
+></A
+>Your mail's recipient doesn't have to be logged in.  The messages you
+send are stored in the recipient's &quot;mailbox,&quot; a file deep in the UNIX
+filesystem (often located in the directory <EM
+CLASS="emphasis"
+>/usr/mail</EM
+>).
+Messages are kept there until the recipient logs in and decides to
+read them.</P
+><P
+CLASS="para"
+>To send mail, give the address of each person you want to send a
+message to, like this:<A
+CLASS="indexterm"
+NAME="AUTOID-2307"
+></A
+></P
+><BLOCKQUOTE
+CLASS="blockquote"
+><P
+CLASS="para"
+><B
+CLASS="emphasis.bold"
+>mail</B
+> <EM
+CLASS="emphasis"
+>address1 address2</EM
+> ...</P
+></BLOCKQUOTE
+><P
+CLASS="para"
+>There are several kinds of addresses, too many to explain here.  If
+you have questions, see one of the references in <A
+CLASS="xref"
+HREF="appa_01.htm"
+TITLE="Reading List "
+>Appendix A</A
+> or ask
+your system administrator or postmaster (the person who maintains your
+email system).  The most common addresses have this syntax:</P
+><BLOCKQUOTE
+CLASS="blockquote"
+><P
+CLASS="para"
+><EM
+CLASS="emphasis"
+>username@hostname</EM
+></P
+></BLOCKQUOTE
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-2320"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2322"
+></A
+><EM
+CLASS="emphasis"
+>username</EM
+> is the person's username and <EM
+CLASS="emphasis"
+>hostname</EM
+> is
+the name of their computer.
+If the recipient reads email on the same computer you do, you may omit the
+<EM
+CLASS="emphasis"
+>@hostname</EM
+>.
+To keep a copy of your message, just add your username to the list of
+addresses.</P
+><P
+CLASS="para"
+>After you enter <B
+CLASS="emphasis.bold"
+>mail</B
+> and the addresses, in most cases the
+program (depending on how it's set up)
+will prompt you for the subject of the message.
+Type a one-line summary of the message (just like a paper memo) and
+press
+<KBD
+CLASS="keycap"
+>[RETURN]</KBD
+>.
+Type in your message, line by line, pressing the
+<KBD
+CLASS="keycap"
+>[RETURN]</KBD
+>
+key after every line, just as you
+would on a typewriter.
+When you have finished entering text, type
+<KBD
+CLASS="keycap"
+>[CTRL-D]</KBD
+>
+(just once!) on a separate line.
+You should get the shell prompt at this point&nbsp;- though it might take a
+few seconds.
+If you change your mind before you type
+<KBD
+CLASS="keycap"
+>[CTRL-D]</KBD
+>
+you can cancel a message (while you are still entering text) by
+entering <B
+CLASS="emphasis.bold"
+>~q</B
+> (a tilde character, then the letter &quot;q&quot;) at the start of a
+line.<A
+CLASS="indexterm"
+NAME="AUTOID-2334"
+></A
+>
+The cancelled message is placed in a file called <EM
+CLASS="emphasis"
+>dead.letter</EM
+> in your
+home directory.
+To see other commands you can use while sending mail, enter <B
+CLASS="emphasis.bold"
+>~?</B
+>
+(tilde question mark) at the start of a line of your message, then press
+<KBD
+CLASS="keycap"
+>[RETURN]</KBD
+>.
+To redisplay your message after using <B
+CLASS="emphasis.bold"
+>~?</B
+>, enter <B
+CLASS="emphasis.bold"
+>~p</B
+> at the start
+of a line.</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>mail alicia@moxco.chi.il.us</B
+></CODE
+>
+Subject: <CODE
+CLASS="userinput"
+><B
+>My trip to Chicago is on!</B
+></CODE
+>
+<CODE
+CLASS="userinput"
+><B
+>Alicia, I will be able to attend your meeting.
+Please send me the agenda.  Thanks.
+^D</B
+></CODE
+>
+%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+>You can't cancel a message after you type
+<KBD
+CLASS="keycap"
+>[CTRL-D]</KBD
+>.
+(Unless you're a system administrator and you're lucky to catch the
+message in time, that is.)
+So, if you change your mind about Alicia's meeting, you'll need to send
+her another message.</P
+></DIV
+><DIV
+CLASS="sect2"
+><H3
+CLASS="sect2"
+><A
+CLASS="title"
+NAME="LUX-CH-3-SECT-4.2"
+>3.4.2 Reading Your Mail</A
+></H3
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-2351"
+></A
+>To read your mail, simply enter <B
+CLASS="emphasis.bold"
+>mail</B
+> (or the name of your
+system's email command) at the shell prompt.
+You can do this at any time during the UNIX session, not just when you log in.</P
+><P
+CLASS="para"
+>Let's read Jerry's message to Alicia:</P
+><P
+CLASS="para"
+><BLOCKQUOTE
+CLASS="screen"
+><PRE
+CLASS="screen"
+>% <CODE
+CLASS="userinput"
+><B
+>mail</B
+></CODE
+>
+Mail version SMI 4.0 Wed Oct 23 10:38:28 PDT 1991  Type ? for help.
+&quot;/usr/spool/mail/alicia&quot;: 2 messages 1 new
+&gt;U  1 bigboss         Sat May 22 06:56  19/529  In your spare time
+ N  2 jpeek@jpeek.com Tue Nov  4 14:25  14/362  My trip to Chicago
+&amp; <CODE
+CLASS="userinput"
+><B
+>2</B
+></CODE
+>
+Message 2:
+Date: Tue, 4 Nov 1997 14:25:43 EST
+From: jpeek@jpeek.com (Jerry Peek)
+To: alicia@moxco.chi.il.us
+Subject: My trip to Chicago is on!
+Alicia, I will be able to attend your meeting.
+Please send me the agenda.  Thanks.
+&amp; <CODE
+CLASS="userinput"
+><B
+>d</B
+></CODE
+>
+&amp; <CODE
+CLASS="userinput"
+><B
+>q</B
+></CODE
+>
+Held 1 message in /usr/spool/mail/alicia
+%</PRE
+></BLOCKQUOTE
+></P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-2363"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-2365"
+></A
+>When you start <B
+CLASS="emphasis.bold"
+>mail</B
+>, it prints a &quot;message header&quot; that shows whether
+each message is
+&quot;new&quot; (N) or &quot;unread&quot; (U), a message number, the sender, and when the message
+was sent.
+A &quot;&gt;&quot; marks the current message.
+You can read any message by entering its number; if you use a command
+without a number, the command acts on the current message.
+If you read a message and don't delete it, the message
+is automatically moved to a file called
+<EM
+CLASS="emphasis"
+>mbox</EM
+> in your home directory.</P
+><P
+CLASS="para"
+>The output of <B
+CLASS="emphasis.bold"
+>mail</B
+> says that the message was sent by Jerry on Tuesday,
+November 4, at 2:25 p.m.
+The ampersand (&amp;) on the last line is the <B
+CLASS="emphasis.bold"
+>mail</B
+> program prompt.
+Just as the UNIX shell prompt is a sign that the shell is waiting for you to
+enter a command, the mail prompt is a sign that the <B
+CLASS="emphasis.bold"
+>mail</B
+> program is
+waiting for you to enter a mail command.
+Your mail prompt may consist of a single character.
+Learn the mail prompt on your system and
+enter one of the commands in
+<A
+CLASS="xref"
+HREF="ch03_04.htm#LUX-CH-3-TAB-1"
+TITLE="Some mail Commands (at mail Prompt)"
+>Table 3.2</A
+>.<A
+CLASS="indexterm"
+NAME="AUTOID-2375"
+></A
+>
+For instance, Alicia might have chosen to enter <B
+CLASS="emphasis.bold"
+>r</B
+> to reply to Jerry
+before using <B
+CLASS="emphasis.bold"
+>d</B
+> to delete his message.</P
+><TABLE
+CLASS="table"
+><CAPTION
+CLASS="table"
+><A
+CLASS="title"
+NAME="LUX-CH-3-TAB-1"
+>Table 3.2: Some mail Commands (at mail Prompt)</A
+></CAPTION
+><THEAD
+CLASS="thead"
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TH
+CLASS="entry"
+ALIGN="LEFT"
+ROWSPAN="1"
+COLSPAN="1"
+>Command</TH
+><TH
+CLASS="entry"
+ALIGN="LEFT"
+ROWSPAN="1"
+COLSPAN="1"
+>Description</TH
+></TR
+></THEAD
+><TBODY
+CLASS="tbody"
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>?</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Display menu of mail commands.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>#</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Show message number #.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>n</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Display the next message.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>p</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Display current message.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>d</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Delete the message.
+Messages you read and don't delete are
+saved in <EM
+CLASS="emphasis"
+>mbox</EM
+>.</P
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>m <EM
+CLASS="emphasis"
+>addrs</EM
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Mail a message to the addresses
+<EM
+CLASS="emphasis"
+>addrs</EM
+>.</P
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>r</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Reply to sender of current message.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>R</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Reply to sender and other recipients of current message.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>s <EM
+CLASS="emphasis"
+>file</EM
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Save a message in the named <EM
+CLASS="emphasis"
+>file</EM
+>.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>file <EM
+CLASS="emphasis"
+>file</EM
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Handle the messages in the named <EM
+CLASS="emphasis"
+>file</EM
+>.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>file %</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Handle the messages in your system mailbox.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>h</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Display summary of messages.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>q</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Quit the <B
+CLASS="emphasis.bold"
+>mail</B
+> program.</TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>x</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><P
+CLASS="para"
+>Exit the <B
+CLASS="emphasis.bold"
+>mail</B
+> 
+program, ignoring any changes you made during this session.</P
+></TD
+></TR
+></TBODY
+></TABLE
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+CLASS="title"
+NAME="LUX-CH-3-SECT-4.2.1"
+>3.4.2.1 Exercise: Sending mail</A
+></H4
+><P
+CLASS="para"
+>You can practice sending mail to your friends in this exercise.
+List the users logged on to the system and choose a name.
+You can also use your username to send mail to yourself.
+Enter the following message.
+Do not forget to press the
+<KBD
+CLASS="keycap"
+>[RETURN]</KBD
+>
+key at the end of each line, and type
+<KBD
+CLASS="keycap"
+>[CTRL-D]</KBD
+>
+on a line by itself when you're done.
+<TABLE
+CLASS="informaltable"
+><TBODY
+CLASS="tbody"
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>List logged-on users.</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Enter <CODE
+CLASS="userinput"
+><B
+>who</B
+></CODE
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Send mail to someone.</TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+>Enter  <CODE
+CLASS="userinput"
+><B
+>mail <CODE
+CLASS="replaceable"
+><I
+>name</I
+></CODE
+></B
+></CODE
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><CODE
+CLASS="userinput"
+><B
+>Hi there!</B
+></CODE
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><CODE
+CLASS="userinput"
+><B
+>I'm just trying</B
+></CODE
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><CODE
+CLASS="userinput"
+><B
+>the mail program.</B
+></CODE
+></TD
+></TR
+><TR
+CLASS="row"
+VALIGN="TOP"
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+></TD
+><TD
+CLASS="entry"
+ROWSPAN="1"
+COLSPAN="1"
+><CODE
+CLASS="userinput"
+><B
+>^D</B
+></CODE
+></TD
+></TR
+></TBODY
+></TABLE
+><A
+CLASS="indexterm"
+NAME="AUTOID-2475"
+></A
+></P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="htmlnav"
+><P
+></P
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch03_03.htm"
+TITLE="3.3 Protecting and Sharing Files"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 3.3 Protecting and Sharing Files"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="book"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"
+><IMG
+SRC="../gifs/txthome.gif"
+ALT="Learning the Unix Operating System"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch03_05.htm"
+TITLE="3.5 Changing Your Password"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 3.5 Changing Your Password"
+BORDER="0"></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+>3.3 Protecting and Sharing Files</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="index"
+HREF="index/idx_0.htm"
+TITLE="Book Index"
+><IMG
+SRC="../gifs/index.gif"
+ALT="Book Index"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+>3.5 Changing Your Password</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><IMG
+SRC="../gifs/smnavbar.gif"
+USEMAP="#map"
+BORDER="0"
+ALT="The UNIX CD Bookshelf Navigation"><MAP
+NAME="map"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,73,21"
+HREF="../index.htm"
+ALT="The UNIX CD Bookshelf"><AREA
+SHAPE="RECT"
+COORDS="74,0,163,21"
+HREF="../upt/index.htm"
+ALT="UNIX Power Tools"><AREA
+SHAPE="RECT"
+COORDS="164,0,257,21"
+HREF="../unixnut/index.htm"
+ALT="UNIX in a Nutshell"><AREA
+SHAPE="RECT"
+COORDS="258,0,321,21"
+HREF="../vi/index.htm"
+ALT="Learning the vi Editor"><AREA
+SHAPE="RECT"
+COORDS="322,0,378,21"
+HREF="../sedawk/index.htm"
+ALT="sed &amp; awk"><AREA
+SHAPE="RECT"
+COORDS="379,0,438,21"
+HREF="../ksh/index.htm"
+ALT="Learning the Korn Shell"><AREA
+SHAPE="RECT"
+COORDS="439,0,514,21"
+HREF="index.htm"
+ALT="Learning the UNIX Operating System"></MAP
+></DIV
+></BODY
+></HTML
+>

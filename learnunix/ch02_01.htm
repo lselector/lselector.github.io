@@ -1,0 +1,420 @@
+<HTML
+><HEAD
+><TITLE
+>[Chapter 2] Using Window Systems </TITLE
+><META
+NAME="DC.title"
+CONTENT="Learning the Unix Operating System"><META
+NAME="DC.creator"
+CONTENT="Jerry Peek, Grace Todino &amp; John Strang"><META
+NAME="DC.publisher"
+CONTENT="O'Reilly &amp; Associates, Inc."><META
+NAME="DC.date"
+CONTENT="1998-08-03T20:48:45Z"><META
+NAME="DC.type"
+CONTENT="Text.Monograph"><META
+NAME="DC.format"
+CONTENT="text/html"
+SCHEME="MIME"><META
+NAME="DC.source"
+CONTENT="1-56592-390-1"
+SCHEME="ISBN"><META
+NAME="DC.language"
+CONTENT="en-US"><META
+NAME="generator"
+CONTENT="Jade 1.1/O'Reilly DocBook 3.0 to HTML 4.0"><LINK
+REV="made"
+HREF="mailto:online-books@oreilly.com"
+TITLE="Online Books Comments"><LINK
+REL="up"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"><LINK
+REL="prev"
+HREF="ch01_04.htm"
+TITLE="1.4 The Unresponsive Terminal"><LINK
+REL="next"
+HREF="ch02_02.htm"
+TITLE="2.2 Starting X"></HEAD
+><BODY
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+><DIV
+CLASS="htmlnav"
+><H1
+><IMG
+SRC="gifs/smbanner.gif"
+ALT="Learning the Unix Operating System"
+USEMAP="#srchmap"
+BORDER="0"></H1
+><MAP
+NAME="srchmap"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,466,69"
+HREF="index.htm"
+ALT="Learning the Unix Operating System"><AREA
+SHAPE="RECT"
+COORDS="467,0,514,18"
+HREF="jobjects/fsearch.htm"
+ALT="Search this book"></MAP
+><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch01_04.htm"
+TITLE="1.4 The Unresponsive Terminal"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 1.4 The Unresponsive Terminal"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><B
+><FONT
+FACE="ARIEL,HELVETICA,HELV,SANSERIF"
+SIZE="-1"
+>Chapter 2</FONT
+></B
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch02_02.htm"
+TITLE="2.2 Starting X"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 2.2 Starting X"
+BORDER="0"></A
+></TD
+></TR
+></TABLE
+>&nbsp;<HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+CLASS="chapter"
+><A
+CLASS="title"
+NAME="LUX-CH-2"
+>2. Using Window Systems </A
+></H1
+><DIV
+CLASS="htmltoc"
+><P
+><B
+>Contents:</B
+><BR><A
+CLASS="sect1"
+HREF="#LUX-CH-2-SECT-1"
+TITLE="2.1 Introduction to Windowing"
+>Introduction to Windowing</A
+><BR><A
+CLASS="sect1"
+HREF="ch02_02.htm"
+TITLE="2.2 Starting X"
+>Starting X</A
+><BR><A
+CLASS="sect1"
+HREF="ch02_03.htm"
+TITLE="2.3 Running Programs"
+>Running Programs</A
+><BR><A
+CLASS="sect1"
+HREF="ch02_04.htm"
+TITLE="2.4 Working with a Mouse"
+>Working with a Mouse</A
+><BR><A
+CLASS="sect1"
+HREF="ch02_05.htm"
+TITLE="2.5 Working with Windows"
+>Working with Windows</A
+><BR><A
+CLASS="sect1"
+HREF="ch02_06.htm"
+TITLE="2.6 Other X Clients"
+>Other X Clients</A
+><BR><A
+CLASS="sect1"
+HREF="ch02_07.htm"
+TITLE="2.7 Quitting"
+>Quitting</A
+></P
+><P
+></P
+></DIV
+><DIV
+CLASS="sect1"
+><H2
+CLASS="sect1"
+><A
+CLASS="title"
+NAME="LUX-CH-2-SECT-1"
+>2.1 Introduction to Windowing</A
+></H2
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="LUX-CH-2-IX-WINDOW-SYSTEMS-S"
+></A
+>All versions of UNIX work with computer terminals that handle a single
+window or a single login session.
+Most modern UNIX versions support one or more <EM
+CLASS="emphasis"
+>window systems</EM
+>.
+A window system is a package of programs that let a terminal
+handle many sessions at once.
+Along with the keyboard, window systems use a <EM
+CLASS="emphasis"
+>mouse</EM
+> or another device
+(such as a trackball) to move a <EM
+CLASS="emphasis"
+>pointer</EM
+> across the screen.
+The pointer can select parts of the screen, move them, help you copy and
+paste text, work with menus of commands, and more.
+If you've used a Macintosh, any version of Microsoft Windows, or OS/2 and its Presentation
+Manager (among others), you've used a window system.
+<A
+CLASS="xref"
+HREF="ch02_01.htm#LUX-CH-2-FIG-0"
+TITLE="An X display with the mwm window manager"
+>Figure 2.1</A
+>
+shows a typical display with windows.</P
+><P
+CLASS="para"
+>Here's a special note for Linux users.
+Most Linux systems support window systems.<A
+CLASS="indexterm"
+NAME="AUTOID-801"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-803"
+></A
+>
+But they also have a surprisingly handy substitute: <EM
+CLASS="emphasis"
+>virtual consoles</EM
+>.
+If you're using the terminal that's directly connected to a personal
+computer running Linux, you can access up to eight separate screens on the
+same display.
+To use virtual consoles, hold down the left
+<KBD
+CLASS="keycap"
+>[ALT]</KBD
+>
+key and press one of the function keys
+<KBD
+CLASS="keycap"
+>[F1]</KBD
+>
+through
+<KBD
+CLASS="keycap"
+>[F8]</KBD
+>.
+Each of those function keys will bring up a separate UNIX session with
+its own shell prompt.  Use each one for whatever you want&nbsp;- just
+remember to log out from each virtual console when you're done!</P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-811"
+></A
+><A
+CLASS="indexterm"
+NAME="AUTOID-813"
+></A
+>We won't mention Linux virtual consoles any more.  This chapter
+introduces the X Window System (called X for short), the most common
+UNIX window system.  This introduction should also help you use non-X
+window systems.</P
+><P
+CLASS="para"
+><A
+CLASS="indexterm"
+NAME="AUTOID-817"
+></A
+>Like UNIX, X is very flexible.  The appearance of windows, the way
+menus work, and other features are controlled by a program called the
+<EM
+CLASS="emphasis"
+>window manager</EM
+>.  Three common window managers are <B
+CLASS="emphasis.bold"
+>mwm</B
+>,
+<B
+CLASS="emphasis.bold"
+>fvwm</B
+>, and <B
+CLASS="emphasis.bold"
+>twm</B
+>.  There are plenty of other window
+managers&nbsp;- including <B
+CLASS="emphasis.bold"
+>fvwm95</B
+>, which simulates a Windows 95 desktop
+on UNIX.  This chapter explains <B
+CLASS="emphasis.bold"
+>mwm</B
+> and uses it in examples.
+The details of using other window managers, and the ways they appear on
+the display, are somewhat different&nbsp;- but this chapter should help you
+use them, too.</P
+><H4
+CLASS="figure"
+><A
+CLASS="title"
+NAME="LUX-CH-2-FIG-0"
+>Figure 2.1: An X display with the mwm window manager</A
+></H4
+><IMG
+CLASS="graphic"
+SRC="figs/lu0201.gif"
+ALT="Figure 2.1"></DIV
+></DIV
+><DIV
+CLASS="htmlnav"
+><P
+></P
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><TABLE
+WIDTH="515"
+BORDER="0"
+CELLSPACING="0"
+CELLPADDING="0"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch01_04.htm"
+TITLE="1.4 The Unresponsive Terminal"
+><IMG
+SRC="../gifs/txtpreva.gif"
+ALT="Previous: 1.4 The Unresponsive Terminal"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="book"
+HREF="index.htm"
+TITLE="Learning the Unix Operating System"
+><IMG
+SRC="../gifs/txthome.gif"
+ALT="Learning the Unix Operating System"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+><A
+CLASS="SECT1"
+HREF="ch02_02.htm"
+TITLE="2.2 Starting X"
+><IMG
+SRC="../gifs/txtnexta.gif"
+ALT="Next: 2.2 Starting X"
+BORDER="0"></A
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="172"
+>1.4 The Unresponsive Terminal</TD
+><TD
+ALIGN="CENTER"
+VALIGN="TOP"
+WIDTH="171"
+><A
+CLASS="index"
+HREF="index/idx_0.htm"
+TITLE="Book Index"
+><IMG
+SRC="../gifs/index.gif"
+ALT="Book Index"
+BORDER="0"></A
+></TD
+><TD
+ALIGN="RIGHT"
+VALIGN="TOP"
+WIDTH="172"
+>2.2 Starting X</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="515"
+TITLE="footer"><IMG
+SRC="../gifs/smnavbar.gif"
+USEMAP="#map"
+BORDER="0"
+ALT="The UNIX CD Bookshelf Navigation"><MAP
+NAME="map"
+><AREA
+SHAPE="RECT"
+COORDS="0,0,73,21"
+HREF="../index.htm"
+ALT="The UNIX CD Bookshelf"><AREA
+SHAPE="RECT"
+COORDS="74,0,163,21"
+HREF="../upt/index.htm"
+ALT="UNIX Power Tools"><AREA
+SHAPE="RECT"
+COORDS="164,0,257,21"
+HREF="../unixnut/index.htm"
+ALT="UNIX in a Nutshell"><AREA
+SHAPE="RECT"
+COORDS="258,0,321,21"
+HREF="../vi/index.htm"
+ALT="Learning the vi Editor"><AREA
+SHAPE="RECT"
+COORDS="322,0,378,21"
+HREF="../sedawk/index.htm"
+ALT="sed &amp; awk"><AREA
+SHAPE="RECT"
+COORDS="379,0,438,21"
+HREF="../ksh/index.htm"
+ALT="Learning the Korn Shell"><AREA
+SHAPE="RECT"
+COORDS="439,0,514,21"
+HREF="index.htm"
+ALT="Learning the UNIX Operating System"></MAP
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,405 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<head>
+
+<title>The Java.io package</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META name="GENERATOR" content="IBM WebSphere Homepage Builder V4.0.0 for Linux">
+<STYLE TYPE="text/css">
+
+<!--
+
+
+
+-->
+
+</STYLE>
+
+<link rel="stylesheet" href="tutor.css"></head>
+
+
+
+<body bgcolor="#FFFFFF">
+<table width=95% border=0 cellpadding=2 cellspacing=0 style="page-break-before: always">
+  <col width=147*> <col width=109*> 
+  <tr> 
+    <td width=57% height=104> 
+      <p><a href= "introj2.htm" ><img src= "btnIndex.jpg"  name="Graphic1" alt="Return to Tutorial Index" align=BOTTOM width=55 height=39 border=0></a><a href= "introj2.htm" ><br>
+        <br>
+        </a><a href= "index.htm" ><img src= "btnHome.jpg"  name="Graphic2" alt="Back to the home page of this site" align=BOTTOM width=55 height=39 border=0></a> 
+      </p>
+    </td>
+    <td width=43%> 
+      <p align=RIGHT><img src= "hat.gif"  name="Graphic3" alt="morterboard" align=BOTTOM width=118 height=113 border=0></p>
+    </td>
+  </tr>
+  <tr> 
+    <td width=57% height=11> 
+      <h1 align=LEFT>Java2 Certification <br>
+        Tutorial </h1>
+    </td>
+    <td width=43% bgcolor="#ff9900"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p> You can discuss this topic with others at <a href= "http://www.jchq.net/discus" >http://www.jchq.net/discus</a><br>
+  Read reviews and buy a Java Certification book at <a href= "http://www.jchq.net/bookreviews/jcertbooks.htm" >http://www.jchq.net/bookreviews/jcertbooks.htm</a> 
+</p>
+<hr>
+<h3><b>The Rusty Harold/O'Reilly Java I/O book</b></h3>
+<p>O'Reilly have published a book specifically about Java I/O It get very good 
+  reviews at amazon. If you buy it from the following links I will get a small 
+  commission on the purchase</p>
+<p>Buy from <a href= "http://www.amazon.com/exec/obidos/ASIN/1565924851/jchqjavaprogramm" >Amazon.com 
+  </a> or from <a href= "http://www.amazon.co.uk/exec/obidos/ASIN/1565924851/jchqjavaprogramm" >Amazon.co.uk</a></p>
+<hr>
+<h2>11) The java.io package </h2>
+
+<h2>Objective 1) </h2>
+<p><i><font face="Arial, Helvetica, sans-serif">Write code that uses objects of 
+  the file class to navigate a file system. </font> </i></p>
+
+<p>In his excellent book Just Java and Beyond Peter van der Linden starts his 
+  chapter on File I/O by saying <br>
+  <br>
+  <i>&quot;It is not completely fair to remark, as some have, that support for 
+  I/O in java is &quot;bone headed&quot;.</i></p>
+<p>I think he was implying that it is not the
+perfect system, and so it is an area worthy
+of double checking your knowledge of before
+you go for the exam. When you are learning
+it you have the compensation that at least
+it is a useful area of the language to understand.</p>
+<p>The java.io package is concerned with input and output. Any non trivial program 
+  will require I/O. Anything from reading a plain comma delimeted text file, a 
+  XML data file or something more exotic such as a network stream. The good news 
+  is that the Programmer Certification Exam only expects you to understand the 
+  basics of I/O, you do not have to know about Networking or the more exotic aspects 
+  of I/O.</p>
+<p>Java I/O is based on the concept of streams. The computer term streams was 
+  first popularised with the Unix operating system and you may like to consider 
+  it as being an analogy with a stream of water. You have a stream of bits coming 
+  in at one end, you apply certain filter to process the stream. Out the other 
+  end of the pipe you send a modified version of the stream which your program 
+  can process..</p>
+<p>The names of the I/O Stream classes are not intuitive and things do not always 
+  work as you might guess. </p>
+<h3>The File Class</h3>
+<p>The File class is not entirely descriptive as an instance of the File class 
+  represents a file or directory name rather than a file itself.</p>
+<p> My first assumption when asked about navigating a file system would be to 
+  look for a method to change directory. Unfortunately the File class does not 
+  have such a method and it seems that you simply have to create a new File object 
+  with a different directory for the constructor.</p>
+<p>Also the exam may ask you questions about
+the ability to make and delete files and
+directories which may be considered to come
+under the heading of navigating the file
+system. </p>
+<TABLE width="100%" border="0">
+  <TBODY>
+    <TR>
+      <TD width="9%"><IMG src= "key2.gif"  width="106" height="73" border="0"></TD>
+      <TD width="91%">
+      <H4><FONT color="#FF0000">Creating an instance of the File class does
+      not create a file in the underlying operating
+      system</FONT></H4>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>The file class offers<BR>
+<BR>
+<i>delete()</i></P>
+<p>To delete a file or directory</p>
+
+<p><i>mkdir() and mkdirs()</i></p>
+
+<p>To create directories.</p>
+
+<p>The File class contains the list() which returns a string array containing 
+
+  all of the files in a directory. This is very handy for checking to see if a 
+
+  file is available before attempting to open it. An example of using list.</p>
+
+<pre>import java.io.*;
+public class FileNav{
+public static void main(String argv[]){
+          String[] filenames;
+          File f = new File(&quot;.&quot;);
+          filenames = f.list();
+          for(int i=0; i&lt; filenames.length; i++)
+            System.out.println(filenames[i]);
+          }
+}
+</pre>
+<P>This simply outputs a list of the files in
+the current directory (&quot;*.*&quot;)</P>
+<H3><BR>
+Platform Independence</H3>
+<P>The file class is important in writing pure
+java. I used to think that pure Java was
+just about not including native code, but
+it also refers to writing platform independent
+code. Because of the differences between
+in the way File systems work it is important
+to be aware of platform dependencies such
+as the directory separator character. On
+Win/DOS it is a backslash \, on Unix it is
+a forward slash / and on a Mac it is something
+else. You can get around this dependency
+by using the File.separator constant that
+instead of hard coding in the separator literal.
+You can see this in use in the Filer example
+program that follows.<BR>
+</P>
+<H3>A program to navigate the file system</H3>
+<P>The following code is rather long (90 odd
+lines), but if you can make sense of this
+you will know most of what you need to understand
+the objective. The program allows you to
+browse the files in a directory and to change
+directories. It was partly inspired by some
+code in the Java in a Nutshell Examples book
+from O'reilly. A book I highly recommend.
+Here is a screen shot of this program in
+action under Linux</P>
+<P><BR>
+<IMG src= "Filer.png"  width="312" height="428" border="0"></P>
+<PRE>import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+public class Filer extends Frame implements ActionListener{
+  /**************************************************************
+  Marcus Green October 2000 Part of the Java Programmer Certification
+  tutorial available at http://www.jchq.net. Addressing the objective to be able
+  to use the File class to navigate the File system.This program will show a 
+  list of files in a directory .Clicking on a directory will change to the directory
+  and show the contentsNote the use of File.separator to allow this to work on
+  Unix or PC (and maybe even the Mac)
+  ****************************************************************/
+  List lstFiles;
+  File currentDir;
+  String[] safiles;
+  int iEntryType = 6;
+  int iRootElement = 0;
+  int iElementCount = 20;
+  
+  public static void main(String argv[]){
+    Filer f = new Filer();
+    f.setSize(300,400);
+    f.setVisible(true);
+  }
+  Filer(){
+    setLayout(new FlowLayout());
+    lstFiles = new List(iElementCount);
+    lstFiles.addActionListener(this);
+    //set the current directory
+    File dir = new File(System.getProperty(&quot;user.dir&quot;));
+    currentDir = dir;
+    listDirectory(dir);
+    add(lstFiles);
+    addWindowListener(
+    new WindowAdapter(){
+      public void windowClosing(WindowEvent e){
+        System.exit(0);
+      }
+
+    } );
+
+
+  }
+
+  public  void actionPerformed(ActionEvent e){
+    int i = lstFiles.getSelectedIndex();
+    if(i==iRootElement){
+      upDir(currentDir);
+    }else{
+    String sCurFile = lstFiles.getItem(i);
+    //Find the length of the file name and then
+    //chop of the filetype part (dir or file)
+    int iNameLen = sCurFile.length();
+    sCurFile = sCurFile.substring(iEntryType,iNameLen);
+    File fCurFile = new File(currentDir.toString()+File.separator + sCurFile);
+    if(fCurFile.isDirectory()){
+         listDirectory(fCurFile);
+          }
+    }
+       
+  }
+  public void  upDir(File currentDir){
+    File fullPath = new File(currentDir.getAbsolutePath());
+    String sparent = fullPath.getAbsoluteFile().getParent();
+   if(sparent == null) {
+    //At the root so put in the dir separator to indicate this
+      lstFiles.remove(iRootElement);
+      lstFiles.add(&quot; &quot;+File.separator+&quot; &quot;,iRootElement);
+      return;
+    }else{
+      File fparent = new File(sparent);
+      listDirectory(fparent);
+    }
+  }
+  public void listDirectory(File dir){      
+    String sCurPath = dir.getAbsolutePath()+File.separator ;
+    //Get the directorie entries
+    safiles = dir.list();
+    //remove the previous lis and add in the entry
+    //for moving up a directory
+    lstFiles.removeAll();
+    lstFiles.addItem(&quot;[ .. ]&quot;);
+    String sFileName = new String();
+    //loop through the file names and 
+    //add them to the list control
+    for(int i=0; i&lt; safiles.length; i++){
+      File curFile = new File(sCurPath + safiles[i]);
+       if(curFile.isDirectory()){
+          sFileName = &quot;[dir ]&quot; + safiles[i];
+          }else{
+            sFileName = &quot;[file]&quot;+safiles[i]; 
+        }
+      lstFiles.addItem(sFileName);
+    }
+    add(lstFiles);
+  currentDir=dir; 
+  }
+    
+}</PRE>
+<p></p><hr>
+<img src= "Quiz.gif"  name="Graphic6" align=BOTTOM width=99 height=101 border=0> 
+<h1>Questions</h1>
+<H4>Question 1)</H4>
+<p>Which of the following will distinguish between a directory and a file</p>
+<p>1) FileType()<br>
+  2) isDir()<br>
+  3) isDirectory()<br>
+  4) getDirectory() </p>
+<hr>
+<H4>Question 2)</H4>
+<p>Which of the following methods of the File
+class will delete a directory or file</p>
+<p>1) The file class does not allow you to delete a file or directory<br>
+  2) remove()<br>
+  3) delete()<br>
+  4) del()</p>
+<hr>
+<H4>Question 3)</H4>
+<p>How can you obtain the names of the files contained in an instance of the File 
+  class called dir?</p>
+<p>1) dir.list()<br>
+  2) dir.list<br>
+  3) dir.files()<br>
+  4) dir.FileNames()</p>
+<hr>
+<H4>Question 4) </H4>
+<p>Which of the following will populate an instance of the File class with the 
+  contents of the current directory?</p>
+<p>1) File f = new File();<br>
+  2) File f = new File(&quot;*.*&quot;);<br>
+  3) File f = new File('*.*');<br>
+  4) File f = new File(&quot;.&quot;);</p>
+<hr>
+<h4>Question 5)</h4>
+<p>Given the following code </p>
+<p>File f = new File("myfile.txt");</p>
+<p> What method will cause the file &quot;myfile.txt&quot; to be created in the 
+  underlying operating system.?</p>
+<p>1) f.write();<br>
+  2) f.close();<br>
+  3) f.flush();<br>
+  4) none of the above<BR>
+<BR>
+</p>
+<HR>
+<H4>Question 6)</H4>
+<P>Which of the following will chenge to the
+next directory above the current directory<BR>
+1) chDir(&quot;..&quot;);<BR>
+2) cd(&quot;.&quot;);<BR>
+3) up();<BR>
+4) none of the above</P>
+<HR>
+<H4>Question 7)</H4>
+<P>Which of the following are fields or methods
+of the File class<BR>
+1) getParent()<BR>
+2) separator<BR>
+3) dirname<BR>
+4) getName();</P>
+<hr>
+<h1>Answers</h1>
+<hr>
+<H4>Answer to Question 1)</H4>
+<p>3) isDirectory()</p>
+<hr>
+<H4>Answer to Question 2)</H4>
+<p>3) delete()</p>
+<hr>
+<H4>Answer to Question 3)</H4>
+<p>1) dir.list()</p>
+<p>The list method will return a string array containing the contents of the current 
+  directory. </p>
+<hr>
+<H4>Answer to Question 4)</H4>
+<p>4) File f = new File(&quot;.&quot;);</p>
+<p>This construction for the File class will obtain the contents of the current 
+  directory on a Dos or Unix style system but I am not sure what might happen 
+  on some other system with a more exotic file structure such as the Mac OS.</p>
+<hr>
+<h4>Answer to Question 5)</h4>
+<p>4) none of the above</p>
+<p>The File class mainly just describes a file that might exist. To actually create 
+  it in the underlying operating system you need to pass the instance of the File 
+  class to an instance of one of the OutputStream classes. </p>
+<H4>Answer to Question 6)</H4>
+<P>4) none of these<BR>
+Java has no direct way to change the current
+directory. A way around this is to create
+a new instance of the file class pointing
+to the new directory<BR>
+</P>
+<H4>Answer to Question 7)</H4>
+<P><BR>
+Which of the following are fields or methods
+of the File class<BR>
+1) getParent()<BR>
+2) separator<BR><BR>
+</P>
+<hr>
+<h3>Other Sources on this topic </h3>
+<p><b>You can browse the samples of the O'Reilly Java I/O book at </b></p>
+<p><a href= "http://metalab.unc.edu/javafaq/books/javaio/index.html" >http://metalab.unc.edu/javafaq/books/javaio/index.html</a></p>
+<p><b>This topic is covered in the Sun Tutorial at</b> <br>
+  <a href= "http://java.sun.com/docs/books/tutorial/essential/io/" >http://java.sun.com/docs/books/tutorial/essential/io/</a></p>
+<p><b>The Java API on the File class at Sun</b><br>
+  <a href= "http://java.sun.com/products/jdk/1.2/docs/api/java/io/File.html" >http://java.sun.com/products/jdk/1.2/docs/api/java/io/File.html</a></p>
+<p>The JLS on Java IO a bit academic and bare <br>
+  <a href= "http://www.infospheres.caltech.edu/resources/langspec-1.0/javaio.doc.html" >http://www.infospheres.caltech.edu/resources/langspec-1.0/javaio.doc.html</a></p>
+<p>Richard Baldwin on I/O<br>
+  <a href= "http://home.att.net/%7Ebaldwin.rg/Intermediate/Java060.htm" >http://home.att.net/~baldwin.rg/Intermediate/Java060.htm</a></p>
+<p>Joyothi has some handy tables for the I/O classes at <br>
+  <a href= "http://www.geocities.com/SiliconValley/Network/3693/io.html" >http://www.geocities.com/SiliconValley/Network/3693/io.html</a></p>
+<p>Last updated<br>
+24 Oct 2000<br>
+  copyright &copy; Marcus Green 2000<br>
+  most recent version at www.jchq.net </p>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;
+
+<h3>&nbsp;</h3>
+
+<h3>&nbsp; </h3>
+
+</body>
+
+</html>
+

@@ -1,0 +1,2281 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>Actionscript</title>
+<!--
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+<style type="text/css">
+<!--
+.style1 {
+	color: #CC0000;
+	font-weight: bold;
+}
+.code {color: #0000FF}
+.comment {color: #669900}
+-->
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1>
+<b><a href="index.html">home</a>
+> Actionscript</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Actionscript</font></b> (page under construction - still you may find it very useful)
+<table width="95%" border="0" cellpadding="3" cellspacing="0">
+  <tr>
+    <td><span class="style1">On This Page</span></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="style1">Other Pages</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p>
+- <a href="#intro">intro</a><br>
+- <a href="#books">books</a> - <a href="#links">links</a><br>
+- <a href="#tutorials">tutorials</a> 
+- <a href="#tools">tools</a><br>
+- <a href="#more_links">More Links</a><br>
+
+- <a href="#basics">basics</a><br>
+- <a href="#datatypes">datatypes</a><br>
+- <a href="#classes">classes</a> &amp; <a href="#objects">objects</a><br>
+- running in <a href="#running_in_flash">flash</a>  &amp; <a href="#running_in_air">air</a><br>
+- <a href="#casting">casting</a><br>
+- <a href="#arrays">arrays</a>, <a href="#sorting">sorting</a>,   <a href="#hashes">hashes</a><br>
+- <a href="#if">if</a>, <a href="#truth">truth</a>, <a href="#switch">switch</a>, <a href="#while">while</a><br>
+- <a href="#break_continue">break, continue</a><br>
+- <a href="#try_catch_finally">try_catch_finally</a><br>
+- <a href="#strings">strings</a><br>
+- <a href="#math">Math</a>, <a href="#date">Date</a><br>
+- <a href="#create_objects_on_stage">create_objects_on_stage</a><br>
+    </p>    </td>
+    <td valign="top">
+    <p>
+- <a href="#function_reference">function reference</a><br>
+- <a href="#function_vars">function vars</a><br>
+- <a href="#import_include">import/include</a><br>
+- <a href="#multiple_inheritance">multiple_inheritance</a><br>- <a href="#files_dirs">files dirs</a><br>
+- <a href="#database">database</a><br>
+- <a href="#closures">closures</a><br>
+- <a href="#dynamic_functions">dynamic functions</a><br>
+
+- <a href="#graphical_hierarchy">graphical_hierarchy</a><br>
+- <a href="#graphical_properties">manipulating graphical object</a><br>
+- <a href="#flash_vs_flex">Flash vs Flex</a><br>
+- <a href="#cloning_objects">Cloning Objects</a><br>
+- <a href="#multiple_timelines">multiple timelines</a>, <a href="#this">this</a><br>
+- <a href="#stage_root">stage vs root</a><br>
+    </p>    </td>
+    <td valign="top">
+    <p>- <a href="#threads">threads</a><br>
+       - <a href="#memory">memory</a><br>
+- <a href="#performance">performance</a><br>
+- <a href="#fscommand">fscommand</a><br>
+- <a href="#keyboard">keyboard</a> - <a href="#mouse">mouse</a> - <br>
+- <a href="#mouse_release_outside">Mouse release outside</a><br>
+- <a href="#graphics">Graphics</a><br>
+- <a href="#timer">timer</a><br>
+- <a href="#prevent_caching">prevent caching</a><br>
+- <a href="#decompilers">decompilers</a><br>
+- <a href="#sound">sound</a> - <a href="#video">video</a> - <br>
+- <a href="#e4x">E4X</a><br>
+- <a href="#scenes">scenes</a><br>
+- <a href="#embed_swf_info_html">embed_swf_info_html</a><br>
+- <a href="#mxmlc">mxmlc</a> <br>
+- <a href="#classpath">classpath</a><br>
+- <a href="#convert_mxml_to_as">convert_mxml_to_as</a><br>
+- <a href="#flash_games">flash games</a><br>
+- <a href="#miscellaneous">miscellaneous</a></p>
+    </td>
+    <td valign="top">
+    <p>
+- <a href="#xx">xx</a><br>
+- <a href="#xx">xx</a><br>
+- <a href="#xx">xx</a><br>
+- <a href="#xx">xx</a><br>
+    </p>    </td>
+  </tr>
+</table>
+  <p class="sectionheader"><a NAME="intro"></a>Intro ------------------------------</p>
+  <p>  ActionScript - programming language to write Adobe Flash applications (animations, video/audio players, e-commerce applications, games, interactive business applications, etc.). Source files (*.as) are compiled/packaged into swf /  swc files, which can be run  in browsers (using Adobe Flash Player), or on desktop (using Adobe Air runtime).  </p>
+<p>To attract java programmers, Macromedia/Adobe have developed Flex - a downloadable collection of technologies (plugin for Eclipse IDE - including  graphical designer, libraries (SDK),  J2EE integration). Many programmers prefer Flex Builder development environment as opposed to Adobe Flash CS, which is more suited for graphical/animation designers. 
+<p>Also Adobe made SDK free and open (comes with stand-alone compiler) - so it is possible to do ActionScript devlopment using only free tools.
+<p>Actionscript can also be used to write server-side applications (for example, using Macromedia Flash Communication Server MX).
+<p>Front-end applications written in Actionscript can directly communicate with server-side applications written in other languages (java, etc.) using different protocols.
+<p>Timeline:
+<ul>
+  <li>before 2000 -  Macromedia Flash 4 - very limited  programming capabilities</li>
+  <li>2000 - Macromedia Flash 5 - Actionscript 1.0 (similar to Javascript)</li>
+  <li>2002 - Flash MX &amp; Flash Player 6 - Drawing API, video player, FLV format</li>
+  <li>2004 - Actionscript 2.0, Flash MX 2004, Flash Player 7, Flex 1.5 (SDK + IDE + J2EE integration)</li>
+  <li>2005 - youtube - made FLV a defacto standard, Flash 8 (new flash player), Adobe bought Macromedia</li>
+  <li>2006 - Actionscript 3, Flash Player 9 </li>
+  <li>2007 - Adobe Integrated Runtime (AIR)</li>
+  <li>2008 - Current tools and technologies: Adobe Flash CS3, Adobe Flex Builder 3, Adobe Flash Player 9,  Adobe AIR 1.1</li>
+</ul>
+<p class="sectionheader"><a name="books" id="books"></a>Books ------------------------------
+<ul>
+  <li class="comment">Learning ActionScript 3.0: A Beginner's Guide by Rich Shupe and Zevan Rosser </li>
+  <li class="comment">    Foundation Actionscript 3.0 Animation: Making Things Move! - by Keith Peters </li>
+  <li class="comment">ActionScript 3.0 Cookbook (O'Reilly) - by Joey Lott, Darron Scball, Keith Peters (libraries at <a href="http://www.rightactionscript.com/ascb">http://www.rightactionscript.com/ascb</a>) </li>
+  <li class="comment">&quot;Essential Actionscript 3.0&quot; (O'Reilly) - by Colin Moock </li>
+  <li class="comment">ActionScript 3.0: Visual Quickstart Guide - by Derrick Ypenburg</li>
+  <li class="comment">    Flash CS3 Professional: Visual Quickstart Guide - by Katherine Ulrich </li>
+  <li class="comment">    Flash CS3 Professional Advanced: Visual Quickstart Guide - by Russel Chun </li>
+</ul>
+<p>Also Flex:</p>
+<ul>
+  <li class="comment">    Flex Solutions: Essential Techniques for Flex 2 and 3 Developers (Solutions) - by Marco Casario </li>
+  <li class="comment">    Adobe Flex 3: Training from the Source - Jeff Tapper et al </li>
+</ul>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="links"></a>Links ------------------------------
+<p>
+<ul><li><a href="http://en.wikipedia.org/wiki/ActionScript">http://en.wikipedia.org/wiki/ActionScript</a> - </li>
+  <li><a href="http://www.focusonmedia.com/vqs/as3">http://www.focusonmedia.com/vqs/as3</a> - </li>
+  <li>    <a href="http://labs.adobe.com">http://labs.adobe.com</a> - new stuff</li>
+  <li><a href="http://www.adobe.com/cfusion/exchange/">http://www.adobe.com/cfusion/exchange/</a> - download 100s of  extensions,  functions, code, etc.</li>
+  <li><a href="http://www.adobe.com/devnet/actionscript/">http://www.adobe.com/devnet/actionscript/</a> - </li>
+  <li><a href="http://livedocs.adobe.com/flash/9.0/ActionScriptLangRefV3/">http://livedocs.adobe.com/flash/9.0/ActionScriptLangRefV3/</a> - AS reference</li>
+  <li><a href="http://livedocs.adobe.com/flash/9.0/ActionScriptLangRefV3/index.html?fl/controls/ColorPicker.html&fl/controls/class-list.html">http://livedocs.adobe.com/flash/9.0/ActionScriptLangRefV3/index.html?fl/controls/ColorPicker.html&amp;fl/controls/class-list.html</a></li>
+  <li><a href="http://livedocs.adobe.com/flex/3/langref/">http://livedocs.adobe.com/flex/3/langref/</a> - Flex  reference</li>
+  <li> <a href="http://livedocs.adobe.com/flex/201/langref/migration.html">http://livedocs.adobe.com/flex/201/langref/migration.html</a> - </li>
+  <li>    <a href="http://livedocs.adobe.com/flex/201/langref/compilerErrors.html">http://livedocs.adobe.com/flex/201/langref/compilerErrors.html</a> - </li>
+  <li><a href="http://livedocs.adobe.com/flex/3/html/help.html?content=Part6_ProgAS_1.html">http://livedocs.adobe.com/flex/3/html/help.html?content=Part6_ProgAS_1.html</a> -  &quot;Programming ActionScript 3.0&quot;</li>
+  <li><a href="http://livedocs.adobe.com/flex/3/html/help.html">http://livedocs.adobe.com/flex/3/html/help.html</a> - </li>
+  <li><a href="http://livedocs.adobe.com/air/1/devappsflash/">http://livedocs.adobe.com/air/1/devappsflash/</a> - Developing Adobe&reg; AIR&trade; Applications with Adobe&reg; Flash&reg; CS3 Professional</li>
+  <li>    <a href="http://www.adobe.com/products/flash/">http://www.adobe.com/products/flash/</a> - </li>
+  <li><a href="http://www.communitymx.com">http://www.communitymx.com</a> -  </li>
+  <li><a href="http://www.actionscript.org">http://www.actionscript.org</a> - </li>
+  <li><a href="http://flex.org">http://flex.org</a> - Flex</li>
+  <li><a href="http://www.kirupa.com/forum/">http://www.kirupa.com/forum/</a> - </li>
+  <li><a href="http://www.actionscript.org/forums/">http://www.actionscript.org/forums/</a> - </li>
+</ul>
+<p class="sectionheader"><a name="tutorials"></a>Tutorials ------------------------------</p>
+<ul>
+  <li><a href="http://www.adobe.com/devnet/flash/articles/flash_in_a_flash.html">http://www.adobe.com/devnet/flash/articles/flash_in_a_flash.html</a> - Flash video tutorials</li>
+  <li><a href="http://www.adobe.com/devnet/flash/">http://www.adobe.com/devnet/flash/</a> - Learn Flash</li>
+  <li><a href="http://www.adobe.com/devnet/flex/videotraining/">http://www.adobe.com/devnet/flex/videotraining/</a> - Learn Flex in one week by going through this video training course.</li>
+  <li><a href="http://www.senocular.com/flash/tutorials/as3withflashcs3/">http://www.senocular.com/flash/tutorials/as3withflashcs3/</a> - excellent 5-page tutorial from Trevor McCauley</li>
+  <li><a href="http://www.senocular.com/flash/tutorials/as3withmxmlc/">http://www.senocular.com/flash/tutorials/as3withmxmlc/</a> - how to edit and compile without GUI</li>
+  <li><a href="http://www.senocular.com/flash/actionscript.php">http://www.senocular.com/flash/actionscript.php</a> - many interesting scripts</li>
+  <li>search google for actionscript 3 tutorial / flash video tutorial / flex tutorial</li>
+  <li>search  youtube for  actionscript, ChadandToddPodcast, 
+        flashbuilding, 
+  tutvid</li>
+  <li><a href="http://www.gotoandlearn.com/">http://www.gotoandlearn.com/</a> - video tutorials</li>
+  <li><a href="http://www.adobe.com/support/flash/action_scripts/actionscript_tutorial/">http://www.adobe.com/support/flash/action_scripts/actionscript_tutorial/</a></li>
+  <li><a href="http://www.actionscript.org/resources/categories/Tutorials/">http://www.actionscript.org/resources/categories/Tutorials/</a></li>
+  <li><a href="http://www.moock.org/lectures/introToActionScript/">http://www.moock.org/lectures/introToActionScript/</a></li>
+  <li><a href="http://www.moock.org/lectures/groundUpAS3/">http://www.moock.org/lectures/groundUpAS3/</a></li>
+  <li><a href="http://www.killeractionscript.com/">http://www.killeractionscript.com/</a> - video tutorials</li>
+  <li><a href="http://www.developphp.com/Flash_tuts/">http://www.developphp.com/Flash_tuts/</a></li>
+  <li><a href="http://www.flashandmath.com/">http://www.flashandmath.com/</a> - many downloadable scripts</li>
+  <li><a href="http://www.flashscript.biz/flashas3.html">http://www.flashscript.biz/flashas3.html</a></li>
+  <li><a href="http://actionscriptcheatsheet.com/blog/">http://actionscriptcheatsheet.com/blog/</a> - Actionscript Cheat Sheet</li>
+  <li><a href="http://www.moock.org/lectures/ActionScriptAndFlashCS3/">http://www.moock.org/lectures/ActionScriptAndFlashCS3/</a></li>
+  <li>etc.</li>
+</ul>
+<p class="sectionheader"><a name="tools"></a>Tools ------------------------------</p>
+
+<ul>
+<li>Adobe Flash CS (~$700) - <a href="http://www.adobe.com/products/flash/">http://www.adobe.com/products/flash/</a> - - <a href="http://www.adobe.com/downloads/">http://www.adobe.com/downloads/</a> - </li>
+<li>Adobe Flex Builder ($250..$700) - Eclipse-based IDE - <a href="http://www.adobe.com/products/flex/">http://www.adobe.com/products/flex/</a> - IDE</li>
+<li>FlashDevelop (free) - <a href="http://www.flashdevelop.org/community/">http://www.flashdevelop.org/community/</a> - very good editor</li>
+<li>Flash Debug Player - <a href="http://www.adobe.com/support/flashplayer/downloads.html">http://www.adobe.com/support/flashplayer/downloads.html</a>
+    <ul>
+      <li>setup trace reporting - <a href="http://www.digitalflipbook.com/archives/2005/07/trace_from_the.php">http://www.digitalflipbook.com/archives/2005/07/trace_from_the.php</a> - </li>
+    </ul>
+  </li>
+  <li>&quot;Charles&quot; - <a href="http://www.charlesproxy.com/">http://www.charlesproxy.com/</a> - Charles is an HTTP proxy/monitor/reverse_proxy to vewi all your http requests/responses. You can view the contents of LoadVariables, LoadMovie and XML loads.</li>
+  <li>Flex SDK (free compiler (mxmlc) + libraries) - <a href="http://opensource.adobe.com/wiki/display/flexsdk/Downloads">http://opensource.adobe.com/wiki/display/flexsdk/Downloads</a> - (Adobe Flex SDK,  Open Source Flex SDK,  Adobe Add-ons for Open Source Flex SDK) </li>
+  <li>FDT - <a href="http://fdt.powerflasher.com/">http://fdt.powerflasher.com/</a> - good (but expensive) tool based on Eclipse.</li>
+  <li>TextMate Editor for Mac - <a href="http://macromates.com">http://macromates.com</a></li>
+  <li>HaXe - <a href="http://haxe.org/">http://haxe.org/</a> - simple language which you can compile into swf  files - </li>
+  <li>MTASC = Motion-Twin ActionScript 2 Compiler - <a href="http://www.mtasc.org/">http://www.mtasc.org/</a> - </li>
+  <li>Many more Open Source Flash projects - <a href="http://osflash.org/projects">http://osflash.org/projects</a> - </li>
+  <li>PrimalScript - <a href="http://www.primalscript.com">http://www.primalscript.com</a> - multilanguage editor</li>
+  <li>TextMate (for Mac only) - <a href="http://www.macromates.com">http://www.macromates.com</a> - </li>
+  <li>etc.</li>
+</ul>
+<p class="sectionheader"><a name="more_links"></a>More Links ------------------------------</p>
+<ul>
+  <li><a href="http://www.learningactionscript3.com/resources/">http://www.learningactionscript3.com/resources/</a> - excellent list of resources</li>
+  <li>Papervision (3d graphics libraries) - <a href="http://blog.papervision3d.org">http://blog.papervision3d.org</a>, <a href="http://pv3d.org">http://pv3d.org</a></li>
+  <li>MXML - XML-based user interface markup language (Macromedia, 2004). MX came from Macromedia. The MXML files can be compiled into  swf files by Flex-related software (Builder or server). <a href="http://en.wikipedia.org/wiki/MXML">http://en.wikipedia.org/wiki/MXML</a></li>
+  <li>Tween Engines:
+    <ul>
+      <li>Tweener - <a href="http://code.google.com/p/tweener">http://code.google.com/p/tweener</a></li>
+      <li>Tween Lite/Max - <a href="http://blog.greensock.com/">http://blog.greensock.com/</a></li>
+    </ul>
+  </li>
+  <li>Actionscript Physics Engine (APE) - <a href="http://www.cove.org/ape/">http://www.cove.org/ape/</a> -  free AS3 open source code  for use in Flash and Flex</li>
+  <li>Skinnable ActionScript 3.0 card engine/libraries - 
+  http://as3cards.riaforge.org/</li>
+  <li>Data structure for Game Developers - http://
+  code.google.com/p/as3ds/</li>
+  <li> Hexagon Framework -  <a href="http://code.google.com/p/hexagon/">http://code.google.com/p/hexagon/</a>
+    -  </li>
+  <li>mecheye-as3-libraries - <a href="http://code.google.com/p/mecheye-as3-libraries/">http://code.google.com/p/mecheye-as3-libraries/</a> - </li>
+  <li><a href="http://kaourantin.net/">http://kaourantin.net/</a> - inner workings</li>
+  <li>etc.</li>
+</ul>
+<p class="sectionheader"><a NAME="basics" id="basics"></a> Basics ------------------------------</p>
+<p>Short Actionscript tutorial.
+<p>Note: This page is mostly Flash CS3 - compatible. It  covers AS 3.0 (which is very different from AS 2).
+<p>Actionscript syntax is very similar to Javascript and Java.<br>
+  It also uses
+  classes, objects, properties, methods, events.<br>
+  It uses similar dot-syntax, and it uses similar comment notations:
+<p class="code"><span class="comment">/* multi-line<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;comment */<br>
+// single line comment</span><br>
+truck.color = &quot;yellow&quot;; <span class="comment">// property</span><br>
+function driveTruck( ):void { <span class="comment">// defining a function</span><br>
+&nbsp;&nbsp;truck.start(); <span class="comment">// calling a method</span><br>
+&nbsp;&nbsp;truck.accelerate(50);<br>
+}
+<p class="sectionheader"><a NAME="datatypes" id="basics2"></a>Datatypes ------------------------------
+<p>Primitive data types
+<p><span class="code">var v1:String=&quot;ABC&quot;;<br>
+  var v2:Boolean=true;<br>
+  var v3:Number=12; trace(v3);<br>
+  var v3i:int=12; trace(v3i);<br>
+  var v3ui:uint=12; trace(v3ui);<br>
+  var v4:Array=[&quot;a&quot;,&quot;b&quot;,&quot;c&quot;];<br>
+  var v5:XML = &lt;node&gt;&lt;child/&gt;&lt;/node&gt;;</span><span class="comment"> //Note that the primitive XML is not quoted</span><br>
+<p class="sectionheader"><a NAME="classes" id="basics3"></a><a NAME="objects" id="basics4"></a>Classes and Objects ------------------------------
+<p>Classes &amp;  Objects:
+<p><span class="style1">Class</span> is a template for creating objects. Or its methods and properties can be used directly (like Math class). Usually you define each class in a separate file. A class can inherit from (<span class="style1">extend</span>) another class:
+<p class="code">public class MySubClass extends MyBaseClass {<br>
+&nbsp;&nbsp;override public function myfunction:void { ... } <span class="comment">// note the use of word &quot;override&quot;</span><br>}
+<p>Note: available access attributes:    <span class="code">public, 
+      private, 
+      protected, 
+      internal</span> (default - internal).</p>
+<p class="code"><span class="style1">constructor</span> - is a method in a class with the same name as a class which is automatically called when an object (a class instance) is created.
+<p>If we have a class &quot;Crane&quot;, then we can create a new object like this:
+<p class="code">var mobileCrane:Crane = new Crane( );<br>
+  mobileCrane.type = &quot;mobile&quot;;<br>
+mobileCrane.height = &quot;150&quot;;
+<p>And you can call methods:
+<p class="code">mobileCrane.lift();<br>
+  mobileCrane.lower();
+<p>We can define event listeners for this objects:
+<p><span class="code">mobileCrane.addEventListener (CraneEvent.LIFT_FINISHED, eventListener);<br>
+mobileCrane.addEventListener (CraneEvent.LOWER_FINISHED, eventListener);
+</span>
+<p><span class="code">function
+eventListener (evt:
+CraneEvent):void {<br>
+&nbsp;&nbsp;&nbsp;// execute some code in response to event<br>
+}
+</span>
+<p>------------------------------
+<p>Example: MovieClip object:
+<p class="code">var myMC:MovieClip = new 
+MovieClip(); <span class="comment">// calling a constructor</span><br>
+myMC.x = 100; <span class="comment">// position on the stage</span><br>
+myMC.y = 100;<br>
+addChild(myMC); <span class="comment">// add this movie to the display</span><br>
+myMC.gotoAndStop(5); <span class="comment">// goto frame #5 and stop</span><br>
+myMC.addEventListener(Event.ENTER_FRAME, eventHandlerFunction);</p>
+<p>Interfaces:</p>
+<p>  <span class="code">public interface IMonster {<br>
+&nbsp;&nbsp;function getShot(damage:uint):void;<br>
+&nbsp;&nbsp;function getCanShoot():Boolean;<br>
+  }<br>
+</span></p>
+<p class="code">public class spriteMouton extends MovieClip implements IMonster { ... }</p>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="running_in_flash"></a>Running in Flash CS3 ------------------------------
+<p>Writing/Running ActionScript in Adobe Flash CS:
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>Open FlashCS3, create a new Flash file, select the 1st keyframe on Layer 1, <br>
+  open the Actions panel (press F9, or Windows &gt;&gt; Actions). <br>
+        Note: Action panel has a list of classes, objects, events, methods.<br> 
+        Also clicking the down-pointing triangle on the upper-right corner opens the panel menu where you can set your preferences.
+      
+    <p>Copy-paste the following into the editor window:
+      <p class="code"><span class="comment">// -------------------------------------------------------<br>
+        //trace() - statement - to display something in the output panel.<br>
+        </span>trace(&quot;The sum of 2+2 is:&quot;);<br>
+        trace(2+2); </p>
+      <p class="code">var v1 = &quot;mama&quot;; trace(v1); </p>
+      <p class="code"><span class="comment">// typed variables<br>
+        </span>var v2:String = &quot;line1 \&quot;\&quot; \n&quot; <br>
+        + '\t line2 \'\' \n' <br>
+        + '\t\tline3 \\ \\ \n'; <br>
+        trace(v2 + &quot;\ncrocodil\n&quot;);<span class="comment"> // use &quot;+&quot; to concatenate strings</span></p>
+      <p><span class="code">var v3:Number = 100 + 10.5; trace(v3 + 30); </span></p>
+      <p><span class="code">var b1:Boolean = true; trace(b1); // true<br>
+        </span><span class="comment">// -------------------------------------------------------<br>
+      </span></p>
+      <p>Now press Ctrl-S to save the file. <br>
+        Then press Ctrl-ENTER (or F9 or Control &gt;&gt; Test Movie).<br>
+    You should see the output on the output panel (under the &quot;output&quot; tab).</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="running_in_air"></a>Running in AIR ------------------------------ 
+<p>How to make your first &quot;Hello World&quot; application in Adobe AIR:
+<p><a href="http://livedocs.adobe.com/air/1/devappsflash/help.html?content=FlashHelloWorld_1.html">http://livedocs.adobe.com/air/1/devappsflash/help.html?content=FlashHelloWorld_1.html
+</a>
+<p class="sectionheader"><a name="casting"></a>Casting ------------------------------
+<p>With numbers you can use same common operators as in other languages:</p>
+<p>+ - * / ++ -- += -= /= *= </p>
+<p>Number types: int (integer - 32 bit with sign), uint *unsigned integer), Number - can be up to 53 bits</p>
+<p>Data type conversions:</p>
+<p class="code">var s:String = &quot;15.0&quot;;<br>
+  var i:Number = 1;<br>
+  i = Number(s) + 1; <span class="comment">// 16 - convert string to Number</span><br>
+    s = s + i; <span class="comment">// 15.016 - convert number to string</span><br>
+      trace(i);<br>
+  trace(s);</p>
+<p class="code">var mycontainer:DisplayObject = new MovieClip();<span class="comment"> // OK, because MovieClip inherits from DisplayObject</span><br>
+var mc:MovieClip = MovieClip(someObject); // throws an error if cast fails<br>
+var mc:MovieClip = someObject as MovieClip; // a bit slower, doesn't throw an error, returns null if cast fails</p>
+<p> Casting to Dynamic classes:<br>
+  If you attempt to pass a Date instance (Date is dynamic) into a method that accepts only Numbers, an error will occur.<br>
+  But if you pass Date.doesnotexist - no error, because Date is dynamic, so the property will be created on the fly.<br>
+  <br>
+Often you need to invoke MovieClip methods on the parent(s) of your MovieClip object. Example:</p>
+<p class="code">  MovieClip(parent.parent.parent).play();</p>
+<p>Note: There are libraries to have formatting similar to &quot;sprintf&quot; - search Google for actionscript sprintf. Or use mx.Formatter.* from Flex SDK.</p>
+<p class="sectionheader"><a name="arrays"></a>Arrays ------------------------------</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#CCFFCC">
+  <tr>
+    <td><p>Arrays</p>
+      <p class="code">var a:Array = new Array(); <span class="comment">// empty array</span><br>
+        var a:Array = []; <span class="comment">// empty array</span><br>
+        var a:Array = new Array(&quot;aa&quot;,&quot;bb&quot;); <span class="comment">// array with some elements</span><br>
+        var a:Array = [&quot;a&quot;,2, true, new Object()];<br>
+        trace(a[1]);<br>
+         a = [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;];<br>
+      trace(a.toString()); // &quot;a&quot;,&quot;b&quot;,&quot;c&quot;<br>
+      a = [];<span class="comment"> // make array empty</span></p>
+      <p class="code">function my1(el:*, i:int, a:Array):void {
+  trace(&quot;&quot; + el + &quot;, &quot; + i);
+      }<br>
+      a.forEach(my1);</p>
+      <p class="code">a.push(&quot;v1&quot;,&quot;v2&quot;);<br>
+  a[a.length] = &quot;v3&quot;;<br>
+  a[100] = &quot;fff&quot;; <span class="comment">// array will be extended to have 101 elements</span><br>
+  a.unshift(&quot;zz&quot;);<br>
+      </p>
+      <p class="code">for (var i:int = 0; i &lt; a.length; i++) {trace(i + &quot;: &quot; + a[i]); }<br>
+      for (i in a) {trace(i + &quot;: &quot; + a[i]); } <span class="comment">// for - goes my index</span><br>
+      for each (var v:* in a) {
+trace(v);
+} <span class="comment">// for each - goes my values</span><br>
+      </p>
+      <p class="code">        a.splice(start,delete_count); <span class="comment">// deleting</span><br>
+        a.splice(start,0,&quot;aa&quot;,&quot;bb&quot;); <span class="comment">// inserting</span><br>
+        a.slice(start,end); <span class="comment">// return a slice</span><br>
+a.pop();<br>
+      a.shift();</p>
+      <p class="code">var s:String = a.join(&quot;|&quot;);<span class="comment"> // default separator is a comma</span><br>
+        var a:Array = s.split(&quot;|&quot;);<span class="comment"> //splitting a sting into an array</span><br>
+      </p>
+      <p>2-dim array:</p>
+      <p> <span class="code">var a:Array = new Array();<br>
+        a.push([0,1,2]);<br>
+        a.push([3,4,5]);<br>
+        a.push([6,7,8]);</span><br>
+      </p>
+      <p>Copying array:</p>
+      <p class="code">var a1:Array = [1,2,3];<br>
+        var a2:Array = a1; <span class="comment">// this doesn't create a new array - just creates a new pointer to the same array</span><br>
+        var a3:Array = a1.concat(); <span class="comment">// this creates a new copy of the array.</span><br>
+        var a4:Array = a1.slice(); <span class="comment">// this creates a new copy of the array.</span></p>
+      <p> Copying 2-dim array - use  a recursive procedure. Or you can use some generic methods to copy objects - see a section on this topic lower on this page.</p>
+      <p>As array is a dynamic object - you can add properties to it.<br>
+      To make sure that they will not show when you go through an array - you can set them as Enumerable or not.</p>
+      <p><span class="code">var a:Array = [&quot;a&quot;,&quot;b&quot;];<br>
+  a.prop1 = &quot;crocodile&quot;;<br>
+  a.setPropertyIsEnumerable(&quot;prop1&quot;, true);<br>
+      var ii;<br>
+      for (ii in a) {trace(ii + &quot;: &quot; + a[ii]); } </span><span class="comment">// traces 0,1,prop1</span><span class="code"><br>
+      trace(&quot;==========&quot;);<br>
+      a.setPropertyIsEnumerable(&quot;prop1&quot;, false);<br>
+      for (ii in a) {trace(ii + &quot;: &quot; + a[ii]); } </span><span class="comment">// traces only 0,1</span></p>
+      <p><br>
+      </p>    </td>
+  </tr>
+</table>
+<p class="sectionheader"><a name="sorting"></a>Sorting --------------------</p>
+<p>Array Sorting ( see here:<a href="http://livedocs.adobe.com/flash/9.0/ActionScriptLangRefV3/Array.html">http://livedocs.adobe.com/flash/9.0/ActionScriptLangRefV3/Array.html</a> )</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#99FFFF">
+  <tr>
+    <td><p class="style1">Array.sort(compareFunction, sortOptions);</p>
+      <p class="code">a.sort(); <span class="comment">// sorts in place, default - ascii case-sensitive ascending sort</span><br>
+        a.sort(Array.CASEINSENSITIVE);<br>
+        a.sort(Array.DESCENDING | Array.NUMERIC );<br>
+        a.sort(mySort); <span class="comment">// we provide custom sort function</span></p>
+      <p>General form: Array.sort(compareFunction, sortOptions);</p>
+      <p>where:<br>
+  &nbsp;&nbsp;&nbsp;compareFunction - optional, accepts 2 args (A,B) and returns -1,0,+1<br>
+  &nbsp;&nbsp;&nbsp;sortOptions - optional, can be combined using bitwise OR - &quot;|&quot;:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 -  Array.CASEINSENSITIVE<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 -  Array.DESCENDING<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4 -  Array.UNIQUESORT<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8 -  Array.RETURNINDEXEDARRAY <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;16 -  Array.NUMERIC</p>
+      <p class="style1">Array.sortOn(fieldName:Object, options:Object = null):Array</p>
+      <p>Sort array of objects by some property(ies).</p>
+      <p class="code">trees.sortOn(&quot;y&quot;,  Array.DESCENDING | Array.NUMERIC);<span class="comment"> // sorts array of tree objects by their &quot;y&quot; property</span><br>
+    Array.sortOn ([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;], [Array.DESCENDING, Array.NUMERIC, Array.CASEINSENSITIVE]);<span class="comment"> //sorts &quot;a&quot;  using  descending,  &quot;b&quot; - numeric, &quot;c&quot; -case-insensitive sort</span></p>
+      <p class="style1">Array.reverse()</p>
+      <p>Reverses the array in place</p>      
+    <p class="code">&nbsp;</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="sectionheader"> <a name="hashes"></a>Hashes ------------------------------</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>Associative array (hash):</p>
+        <p class="code">var h:Object = new Object(); <br>
+          var h:Object = {};<br>
+          var h:Object = { k1: &quot;v1&quot;, k2: &quot;v2&quot; };<span class="comment"> // object notation</span><br>
+          h.k1 = &quot;v1&quot;; h.k2 = &quot;v2&quot;; h.k3 = &quot;v3&quot;;<span class="comment"> // property dot notation</span><br>
+          h['k1']=&quot;v1&quot;; h['k2'] = &quot;v2&quot;; h['k3'] = &quot;v3&quot;;<span class="comment"> // array accessor notation</span></p>
+        <p class="code"> trace(h.k2);</p>
+        <p class="code">delete h.k2;<span class="comment"> // delete one key/value pair</span></p>
+        <p class="code">if (h.hasOwnProperty('k1')) { ... } <span class="comment">// test existance of a key 'k1'</span><br>
+        </p>
+        <p><span class="code">for (var kk:String in h) { </span><span class="comment">// similar to &quot;foreach&quot; in other languages</span><span class="code"><br>
+  &nbsp;&nbsp;trace(kk + &quot; =&gt; &quot; + h[kk]); </span><span class="comment">// note that here we have to use array accessor [] notation, not a dot-notation<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// to avoid validation during compile time</span><span class="code"><br>
+      }</span></p>
+        <p><span class="code">for each (var vv:* in h) { <span class="comment">// for..each iterates through values (not keys)</span></span><br>
+          <span class="code">&nbsp;&nbsp; trace(vv);</span><span class="comment"> // values (1, 2, 3)</span><span class="code"><br>
+      }</span></p>
+      <p class="code">h = {}; <span class="comment">// empty the hash</span><br>
+        h = null;<span class="comment"> // cannot delete an object,  only able to set to null</span></p>
+        <p class="code">var h:Object = {};<br>
+  h.s1 = {n1:&quot;Jim&quot;,n2:&quot;Smith&quot;};<br>
+  trace(h.s1.n2 + &quot;, &quot; + h.s1.n1);<span class="comment"> // Smith, Jim</span></p>
+        <p>or</p>
+        <p class="code">var h:Object = {<br>
+  &nbsp;&nbsp;s1: {n1:&quot;Jim&quot;,n2:&quot;Smith&quot;},<br>
+  &nbsp;&nbsp;s2: {n1:&quot;Oleg&quot;,n2:&quot;Kolosov&quot;}<br>
+          };<br>
+          trace(h.s1.n2 + &quot;, &quot; + h.s1.n1); <span class="comment">// Smith, Jim</span><br>
+          trace(h.s2.n2 + &quot;, &quot; + h.s2.n1);<span class="comment"> // 
+    Kolosov, Oleg</span></p>
+        <p>Note: if you want to keep object refs as keys, you should use <span class="code">Dictionary</span> instead of an <span class="code">Object</span>:</p>
+        <p class="code">var arr:Array = [&quot;abc&quot;,&quot;def&quot;];<br>
+        var obj:Object = {k1:&quot;v1&quot;};<br>
+        var dict:Dictionary = new Dictionary();<br>
+  dict[arr] = &quot;val1&quot;;<br>
+  dict[obj] = &quot;val2&quot;;</p>    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="if"></a>if else ------------------------------</p>
+<p class="code">if (n &gt;= 10) {<br>
+&nbsp;&nbsp;&nbsp;doSomething();<br>
+} else if (val == &quot;myname&quot;) {<br>
+&nbsp;&nbsp;&nbsp;doSomething();<br>
+} else if (n != 5) {<br>
+&nbsp;&nbsp;&nbsp;doSomething();<br>
+} else {<br>
+&nbsp;&nbsp;&nbsp;doSomething();<br>
+}</p>
+<p class="code">var boo:Boolean = false;<br>
+if(!boo) { ... }</p>
+<p class="code">if (e &gt; 5 &amp;&amp; e &lt; 10) { ... }<br>
+if (e &lt; 5 || e &gt; 10) { ... }</p>
+<p class="code">  var b = a&gt;1 ? 1 : 0; // syntax: ( )? ... : ...</p>
+<p class="code">  var mc:MovieClip = new MovieClip();<br>
+  if (mc is MovieClip) { ... }</p>
+<p class="code">var s:String = &quot;&quot;;<br>
+  if(typeof(s) == &quot;string&quot;){ 
+trace(&quot;var is a string&quot;);
+}</p>
+<p class="sectionheader"><a name="truth" id="truth"></a>Truth ------------------------------</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#CCFFCC">
+  <tr>
+    <td><p class="code">if(blah) { ... } <span class="comment">// can be false if blah is udefined or null or false or 0 or &quot;&quot;</span></p>
+      <p class="code"><span class="comment">// you can check explicitly:</span><br>
+        if(blah != false) { ... }<br>
+if(blah != underfined) { ... }<br>
+        if(blah != null) { ... }<br>
+        if(blah != 0) { ... }<br>
+    if(blah != &quot;&quot;) { ... }</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="switch"></a>switch ------------------------------</p>
+<p class="code">switch(day) {<br>
+&nbsp;&nbsp;case 0 : trace(&quot;Sunday&quot;);break;<br>
+&nbsp;&nbsp;case 6 : trace(&quot;Saturday&quot;);break;<br>
+&nbsp;&nbsp;default: trace(&quot;Work day&quot;);<br>
+}</p>
+<p class="sectionheader"><a name="while"></a>while ------------------------------</p>
+<p class="code">while (i &lt; 5) { trace(i); i++; }<br>
+do { trace(i); i++; } while(i&lt;5);</p>
+<p class="code"><span class="comment">// label, break to a label</span></p>
+<p class="sectionheader"><a name="break_continue"></a>break , continue ------------------------------</p>
+<p class="code">outerLoop: for (var i:int = 0; i &lt; 10; i++) {<br>
+&nbsp;&nbsp;for (var j:int = 0; j &lt; 10; j++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if ( (i == 8) &amp;&amp; (j == 0)) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break outerLoop;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;trace(10 * i + j);<br>
+&nbsp;&nbsp;}<br>
+}</p>
+<p class="code"><span class="comment">// continue - to skip the rest of the loop</span><br>
+var i:int = 0;   while (i &lt; 10) {       if (i % 3 == 0) {           i++;           continue;       }       trace(i);       i++;   }</p>
+<p class="sectionheader"><a name="try_catch_finally"></a>try catch finally ------------------------------</p>
+<p class="code">with (object:Object) { doSomething();doSomething(); }<br>
+try { doSomthing(); } finally { doSomthing(); }<br>
+  try { doSomthing(); } catch(error:type1) { doSomthing(); }  catch(error:type2) { doSomthing(); } finally { doSomthing(); }<br>
+throw new Error("Invalid email address"); </p>
+<p>Note: For asynchronous errors which can not be caught by try..catch block, you can create event handlers:</p>
+<p class="code">someobj.addEventListener(ErrorEvent.TYPE, handler);<span class="comment"> // ErrorEvent - flash.events.ErrorEvent</span><br>
+  function handler(event:ErrorEvent):void {<br>
+&nbsp;&nbsp;<span class="comment">// handle error</span><br>
+  }<br>
+  </p>
+<p class="code">someobj.dispatchEvent(new ErrorEvent(&quot;type&quot;)); <span class="comment">// this is how to dispatch the error</span></p>
+<p class="code">&nbsp;</p>
+<p class="sectionheader"><a name="strings"></a>Strings ------------------------------</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>Working with Strings:</p>
+      <p>property - only 1 property:</p>
+      <p class="code">s.length</p>
+      <p>methods:</p>
+      <p class="code">s.charAt(pos)<br>
+      s.concat(s2) <br>
+      s.slice(pos1,pos2)<br>
+      s.split(&quot;|&quot;)<br>
+      s.substring(pos1,pos2)<br>
+      s.toLowerCase()<br>
+      s.toUpperCase()</p>
+    <p class="code">s = s1 + s2; <span class="comment">// concatenating</span><br>
+    s += s3; <span class="comment">// concatenating</span></p>
+    <p>Convert number n to string s:</p>
+    <p class="code"> s =  n;<span class="comment"> // error</span><br>
+      s = &quot;&quot;+n;<span class="comment"> // OK</span><br>
+s = String(n);<span class="comment"> // OK</span><br>
+      s = &quot;&quot; + n1 + n2;<span class="comment"> // n1 and n2 concatenated</span><br>
+      s = &quot;&quot; + (n1 + n2);<span class="comment"> // n1 and n2 added</span></p>
+    <p>Regular expressions - similar to Perl (understands  standard modifiers (g,i,x,s,m), parentheses, etc.).<br>
+      The exec() method returns null if no match, or an object with array of matches. </p>
+    <p><a href="http://livedocs.adobe.com/flash/9.0/ActionScriptLangRefV3/RegExp.html">http://livedocs.adobe.com/flash/9.0/ActionScriptLangRefV3/RegExp.html</a><br>
+    </p>
+    <p><span class="code">var p:RegExp = /(gold).+(kruka)/is;<br>
+  var s:String = &quot; foo  gold beee\n  kruka car\n&quot;; <br>
+  var res:Object = p.exec(s); </span><span class="comment">// exec() method </span><span class="code"><br>
+  if(res) {<br>
+&nbsp;&nbsp;for (var i in res) { trace(i + &quot; =&gt; &quot; + res[i]); }<br>
+</span><span class="comment">&nbsp;&nbsp;// 0 - full match,  1,2,... - in parentheses (equiv. to $1, $2, etc. in perl),<br>
+&nbsp;&nbsp;// input property - original string<br>
+&nbsp;&nbsp;// index property - position of matched substring</span><span class="code"><br>
+} </span><br>
+    </p>    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="math"></a>Math ------------------------------</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#CCFFCC">
+  <tr>
+    <td><p>Math class: </p>
+      <p>Constants: Math.PI, Math.E<br>
+        <br>
+        abs(n), 
+        ceil(n), floor(n), round(n), <br>
+        max(n1,n2,...), min(n1,n2,...), pow(n1,n2), random(), sqrt(n), <br>
+        acos(n), asin(n), atan(n), atan2(y,x), cos(n), sin(n), tan(n)</p>    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="date" id="date"></a>Dates ------------------------------</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#99FFFF">
+  <tr>
+    <td><p>Working with dates: </p>
+        <p>Final class Date: <a href="http://livedocs.adobe.com/flash/9.0/ActionScriptLangRefV3/Date.html">http://livedocs.adobe.com/flash/9.0/ActionScriptLangRefV3/Date.html</a></p>
+        <p class="code">var mydate:Date = new Date(); <span class="comment">// now</span><br>
+          mydate = new Date(2000, 0, 1); <span class="comment">// year(2000), month(0 = January),  day(1) </span><br>
+          mydate = new Date(65, 2, 6, 9, 30, 15, 0); <span class="comment">// year(65=1965),   	 month(2 = March),  day(6), hour(9), min(30),  sec(15),  ms(0) </span><br>
+          mydate = new Date(-14159025000); <span class="comment">// milliseconds since january 1, 1970 - negtive means &quot;before 1970&quot;</span><br>
+          trace(mydate); <span class="comment">// Sun Jul 20 19:56:15 GMT-0700 1969</span></p>
+        <p>Examples of properties:</p>
+        <p>mydate.time -  milliseconds since midnight January 1, 1970, universal time<br>
+          mydate.date - day of the month (1..31)<br>
+          mydate.day - day of the week (0-Sun, 2-Mon, etc.)<br>
+          mydate.fullYear - 4-digit year<br>
+          mydate.month - (0-11)<br>
+          mydate.hours -  (0-23) <br>
+          mydate.minutes - (0-59) <br>
+          mydate.seconds - (0-59) <br>
+          mydate.timezoneOffset - The difference, in minutes, between universal time (UTC) and the computer's local time.</p>
+        <p>var time:int = mydate.time;<br>
+          var month:int = mydate.month;</p>
+        <p></p>
+        <p>Examples of methods:</p>
+        <p><span class="code">mydate.getDate(); </span><span class="comment">// returns day of the month</span><span class="code"><br>
+          mydate.getMinutes();<br>
+          mydate.getFullYear();<br>
+          ...<br>
+          mydate.setDate(day);</span><span class="comment"> // sets day of the month, returns new time in ms since 1/1/1970</span><span class="code"><br>
+            mydate.setMinutes(min,sec,ms); </span><span class="comment">// sets minutes, returns new time in ms</span><span class="code"><br>
+              mydate.setTime(ms);</span><span class="comment"> // setsand returns time in ms</span><span class="code"><br>
+                ...<br>
+                mydate.parse(some_date_string);</span><span class="comment"> // returns number of ms since 1/1/1970</span><span class="code"><br>
+  </span>Here are some supported formats: <br>
+  &nbsp;&nbsp;  MM/DD/YYYY HH:MM:SS TZD<br>
+  &nbsp;&nbsp;&nbsp;HH:MM:SS TZD Day Mon/DD/YYYY <br>
+  &nbsp;&nbsp;&nbsp;Mon DD YYYY HH:MM:SS TZD<br>
+  &nbsp;&nbsp;&nbsp;Day Mon DD HH:MM:SS TZD YYYY<br>
+  &nbsp;&nbsp;&nbsp;Day DD Mon HH:MM:SS TZD YYYY<br>
+  &nbsp;&nbsp;&nbsp;Mon/DD/YYYY HH:MM:SS TZD<br>
+  &nbsp;&nbsp;&nbsp;YYYY/MM/DD HH:MM:SS TZD<br>
+  <br>
+          mydate.valueOf(); // returns number of ms since 1/1/1970 for the mydate object<br>
+          mydate.toString(); // example: Wed Apr 12 15:30:17 GMT-0700 2006<br>
+          mydate.toTimeString(); // only time and timezone<br>
+          mydate.toUTCString(); // in universal time (UTC)<br>
+          mydate.toDateString(); // day and date only<br>
+  <br>
+          Note: google for simple formatting functions for date, for example:<br>
+  &nbsp;&nbsp;&nbsp;function doubleDigitFormat(num:uint):String {
+          if(num &lt; 10) {
+          return (&quot;0&quot; + num);
+          }
+          return num;
+          }</p>    </td>
+  </tr>
+</table>
+<p>Note: for calculating date differences you can use something like this:<br>
+&nbsp;&nbsp;&nbsp;<a href="http://jeff.mxdj.com/datediff_for_actionscript.htm">http://jeff.mxdj.com/datediff_for_actionscript.htm</a><br>
+Here is this code:</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p class="code">class DateFunction {<br>
+        <span class="comment">&nbsp;&nbsp;// ------------------------------------------------------------<br>
+&nbsp;&nbsp;// var n = dateDiff(datePart,date1,date2);<br>
+&nbsp;&nbsp;// where valid dateParts: s, n (minutes), h,d,m,y */<br>
+&nbsp;&nbsp;//-------------------------------------------------------------</span><br>
+&nbsp;&nbsp;public static function dateDiff(datePart:String, date1:Date, date2:Date):Number {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return getDatePartHashMap()[datePart.toLowerCase()](date1,date2);<br>
+    <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;// the above return statement can be simplified if you split it in 3 line as following:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// &nbsp;&nbsp;&nbsp;&nbsp;var dphm:Object = getDatePartHashMap(); // returns hash object where values are function refs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// &nbsp;&nbsp;&nbsp;&nbsp;var fref:Function = dphm[datePart.toLowerCase()]; // get this function ref from the hash<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// &nbsp;&nbsp;&nbsp;&nbsp;return fref(date1,date2); // call the function<br>
+    </span>&nbsp;&nbsp;}</p>
+      <p class="code"> <span class="comment">//-------------------------------------------------------------<br>
+// var n = getDatePartHashMap()[&quot;...&quot;](date1,date2)<br>
+//-------------------------------------------------------------</span><br>
+private static function getDatePartHashMap():Object{<br>
+&nbsp;&nbsp;var dpHashMap:Object = new Object();<br>
+&nbsp;&nbsp;dpHashMap[&quot;s&quot;] = getSeconds;<br>
+&nbsp;&nbsp;dpHashMap[&quot;n&quot;] = getMinutes;<br>
+&nbsp;&nbsp;dpHashMap[&quot;h&quot;] = getHours;<br>
+&nbsp;&nbsp;dpHashMap[&quot;d&quot;] = getDays;<br>
+&nbsp;&nbsp;dpHashMap[&quot;m&quot;] = getMonths;<br>
+&nbsp;&nbsp;dpHashMap[&quot;y&quot;] = getYears;<br>
+&nbsp;&nbsp;return dpHashMap;<br>
+        }<br>
+        <br>
+        private static function compareDates(date1:Date,date2:Date):Number{
+        return date1.getTime() - date2.getTime();
+        }<br>
+        private static function getSeconds(date1:Date,date2:Date):Number{
+        return Math.floor(compareDates(date1,date2)/1000);
+        }<br>
+        private static function getMinutes(date1:Date,date2:Date):Number{
+        return Math.floor(getSeconds(date1,date2)/60);
+        }<br>
+        private static function getHours(date1:Date,date2:Date):Number{
+        return Math.floor(getMinutes(date1,date2)/60);
+        }<br>
+        private static function getDays(date1:Date,date2:Date):Number{
+        return Math.floor(getHours(date1,date2)/24);
+        }<br>
+        private static function getMonths(date1:Date,date2:Date):Number{<br>
+&nbsp;&nbsp;var yearDiff = getYears(date1,date2);<br>
+&nbsp;&nbsp;var monthDiff = date1.getMonth() - date2.getMonth();<br>
+&nbsp;&nbsp;if(monthDiff &lt; 0){
+        monthDiff += 12;
+        }<br>
+&nbsp;&nbsp;if(date1.getDate()&lt; date2.getDate()){
+        monthDiff -=1;
+        }<br>
+&nbsp;&nbsp;return 12 *yearDiff + monthDiff;<br>
+        }<br>
+        private static function getYears(date1:Date,date2:Date):Number{
+        return Math.floor(getDays(date1,date2)/365);
+        }<br>
+      }<span class="comment"> // end of class DateFunction</span></p>
+      <p>there is only one public method to interact with, that is dateDiff.<br>
+        You can use it like this:</p>
+      <p><span class="code">var now:Date = new Date();<br>
+        var kaliBDay = new Date(2004,5,23,11,17);<br>
+        trace(&rdquo;Diff between &ldquo;+ kaliBDay + &rdquo; and now &rdquo; +<br>
+        DateFunction.dateDiff(&rdquo;y&rdquo;,now,kaliBDay) +&rdquo; in years&rdquo;);</span><br>
+    </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="create_objects_on_stage" id="create_objects_on_stage"></a>Creates Objects On Stage ------------------------------</p>
+<p>Creating Objects on Stage. </p>
+<p>You can define object instance in the script (var mc:MovieClip  = new MovieClip(); ) <br>
+or you can create an object on the stage of Adobe Flash CS. </p>
+<p>For example, select a drawing tool on the stage (say, rectangle) - and draw a rectangle. Then press F8 (Modify &gt;&gt; Convert to Symbol) - and select MovieClip and some name (say, n1)- and click OK. Then select the object on the stage, and in the properties panel (if it is not visible - press Ctrl-F3 or Window &gt; Properties &gt; Properties) - and type in some name for the instance (say, n2). Then create a new layer (say, Actions) and in this layer type:</p>
+<p><span class="code">n2.x=10;<br>
+  n2.y=10;<br>
+  n2.width = 200;<br>
+  n2.height = 75;</span><br>
+</p>
+<p>and run it (ctrl-ENTER) .</p>
+<p class="sectionheader"><a name="function_reference"></a>Function Reference ------------------------------</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#CCFFCC">
+  <tr>
+    <td><p>Function reference to anonymous function</p>
+      <p class="code">function f1(num){return num*2;}<br>
+        var f2 = function(num){return num*3;}<span class="comment"> // f2 is a ref to an anonymous function</span><br>
+        var i:Number = 3;<br>
+        trace(f1(i));<span class="comment"> // 6</span><br>
+      trace(f2(i)); <span class="comment">// 9</span></p>
+      <p>Good practice is to provide all types:</p>
+      <p class="code">var f2:Function = function(num:Number):Number{return num*2;}</p>    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="function_vars" id="function_vars"></a>Function arguments and local variables ------------------------------</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#99FFFF">
+  <tr>
+    <td><p>Function arguments and local variables:</p>
+      <ul>
+        <li> Arguments are passed &quot;by value&quot;. For simple variable types (Number, String, Boolean, etc)  changing them in the function doesn't change the outside values. But for arrays, associative arrays (hashes), and other objects the argument is actually a reference to an object. 
+        So changing array elements inside the function will change the values in the original array object.</li>
+        <li>Variables defined inside a function are loal to this function and not visible from outside</li>
+      </ul>
+      <p class="code">var v1:Number = 1;<br>
+  var v2:String = &quot;A&quot;;<br>
+        var v3:Array = [1,2,3];<br>
+        trace(&quot;\nOutput:\n&quot;);<br>
+        trace(&quot;before: &quot; + v1 + &quot;, &quot; +v2+&quot;, &quot;+v3);<span class="comment"> // v3 will expand into a list of array elements</span></p>
+      <p class="code">function test(v1:Number, v2:String, v3:Array):String {<br>
+  trace(&quot;in1: &quot; + v1 + &quot;, &quot; +v2);<br>
+  v1 = 2; v2 = &quot;B&quot;;<span class="comment"> // here v1 &amp; v2 are local, so changing them doesn't change v1 &amp; v2 outside</span><br>
+  trace(&quot;in2: &quot; + v1 + &quot;, &quot; +v2);<br>
+        v3[1] *=2; <span class="comment">// change external array element</span><br>
+        var v4:String = &quot;C + &quot;; <span class="comment">// local var</span><br>
+        return v4 + v2;<br>
+        }</p>
+      <p class="code">var v4:String = test(v1,v2,v3);<br>
+  trace(&quot;after: &quot; + v1 + &quot;, &quot; +v2 + &quot;, &quot; +v3);<br>
+  trace(&quot;v4: &quot; + v4);</p>
+      <p class="comment">Output:</p>
+      <p class="comment">before: 1, A, 1,2,3<br>
+        in1: 1, A<br>
+        in2: 2, B<br>
+        after: 1, A, 1,4,3<br>
+        v4: C + B</p>      </td>
+  </tr>
+</table>
+<p>------------------------------------------------------------------------------------------</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>Default values for optional parameters:</p>
+      <p class="code">function f1(v1:Number, v2:String = &quot;hello&quot;):void { doSomething(); } <span class="comment">// here v2 is optional</span></p>
+      <p>Note: parameters without default values are required - thus they should go before the optional parameters.</p>    </td>
+  </tr>
+</table>
+<p>------------------------------------------------------------------------------------------</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#CCFFCC">
+  <tr>
+    <td><p>If you want the function to receive variable number of  parameters, <br>
+      you should use the syntax ...a, where a is a ref to array of parameters.</p>
+      <p class="code">function f1(...a):void {trace(a.length +&quot;: &quot;+ a);}<br>
+      f1();<span class="comment"> //  0:</span><br>
+      f1(1); <span class="comment">//  1: 1</span><br>
+      f1(&quot;a&quot;, true, 0);<span class="comment"> //  3: a,true,0</span></p>    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="import_include"></a>import, include ------------------------------</p>
+<p>Classes, Objects, Methods, external files - package, import, include.</p>
+<p>Class is a blueprint for an object.<br>
+Object is an instance of a class.<br>
+Class hierarchy is organized into packages.<br>
+  Package is simply a directory to store classes (each class in a separate file).<br>
+  Class inheritance - the deeper class into a package - the more it inherits from parent classes.<br>
+  <br>
+  <span class="code">import flash.utils.getTimer; </span><span class="comment">// flash packages start with flash.*</span><span class="code"><br>
+  import mx.automation.IAutomationObject; </span><span class="comment">// flex packages start with mx.*</span><span class="code"><br>
+  import org.papervision3d.scenes.*; </span><span class="comment">// papervision packages</span><br>
+  <br>
+Using fully-qualified class name:</p>
+<p class="code">var mc:MovieClip = new flash.display.MovieClip();</p>
+<p>Using short name:</p>
+<p><span class="code">import flash.display.MovieClip();<br>
+  var mc:MovieClip = new MovieClip();</span></p>
+<p>By the way, to include external &quot;.as&quot; file (not a package) you can do:</p>
+<p class="code">include &quot;somefile.as&quot;;</p>
+<p class="sectionheader"><a name="multiple_inheritance"></a>Multiple Inheritance (not really) ------------------------------</p>
+<p>  Method - a function associated with a class.<br>
+  Public methods - available for all objects outside the class.<br>
+</p>
+<table height="75" border="0" cellpadding="3" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p class="comment">// How to simulate multiple inheritance (modified from <a href="http://www.darronschall.com">http://www.darronschall.com</a>)</p>
+      <p class="code"><span class="comment">// In Animal.as</span><br>
+        interface Animal 
+        {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function setSpeechBubbleText( text:String ):void;<br>
+        }</p>
+      <p class="code"><span class="comment">// In Animal_impl.as</span><br>
+  public function setSpeechBubbleText( text:String ) 
+        {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;trace( &quot;setting speech bubble text to: &quot; + text );<br>
+        }</p>
+      <p class="code"><span class="comment">// In Dog.as</span><br>
+        public class Dog extends Sprite implements Animal
+        {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;#include &quot;Animal_impl.as&quot;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;public function Dog()
+        { /* constructor */&nbsp;}<br>
+        }</p>
+      <p><span class="comment">// In Cat.as</span><span class="code"><br>
+  public class Cat extends Sprite implements Animal
+        {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;#include &quot;Animal_impl.as&quot;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;public function Cat()
+        { /* constructor */&nbsp;}<br>
+        }</span><br>
+      </p>
+      <p>If you ask the dog if he's an Animal - he'll surely respond that he is:</p>
+      <p><span class="code">var dog:Dog = new Dog;<br>
+  if ( dog is Animal )
+        { 
+        trace(&quot;bow wow!&quot;); }</span><br>
+      </p>    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="files_dirs" id="files_dirs"></a>Files and Directories ------------------------------</p>
+<p>Reading/writing files: <a href="http://labs.adobe.com/wiki/index.php/Apollo:Articles:Apollo_Local_File_System">http://labs.adobe.com/wiki/index.php/Apollo:Articles:Apollo_Local_File_System</a></p>
+<p>Here is how to read a file</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td class="code">import flash.filesystem.FileMode;<br>
+import flash.filesystem.FileStream;<br>
+import flash.filesystem.File;<br>
+<br>
+var myFile:File = File.appResourceDirectory; <span class="comment">// Create out file object and tell our File Object where to look for the file</span><br>
+myFile = myFile.resolve(&quot;mySampleFile.txt&quot;); <span class="comment">// Point it to an actual file</span><br>
+
+var fileStream:FileStream = new FileStream();<span class="comment"> // Create our file stream</span><br>
+fileStream.open(myFile, FileMode.READ);<span class="comment"> // other modes: WRITE, APPEND, UPDATE (read/write)</span><br>
+
+var fileContents:String = fileStream.readUTFBytes(fileStream.bytesAvailable); <span class="comment">// Read the contens of the file</span><br>
+fileContents_txt.text = fileContents; <span class="comment">// Display the contents in the  TextArea on the stage</span><br>
+<br>
+fileStream.close(); <span class="comment">// Clean up and close the file stream </span></td>
+  </tr>
+</table>
+<p>Example - write/read  binary file</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#99FFFF">
+  <tr>
+    <td><p>var file:File = File.desktopDirectory.resolve( &quot;apollo test.dat&quot; );<br>
+      var stream:FileStream = new FileStream();<br>
+      stream.open( file, FileMode.WRITE );<br>
+  <br>
+      // Write some raw data to the file<br>
+      stream.writeBoolean( false );<br>
+      stream.writeInt( 1000 );<br>
+      stream.writeByte( 0xC );<br>
+      </p>
+      <p>stream.close(); // Clean up<br>
+        <br>
+      // now read this data from the file<br>
+      stream.open( file, FileMode.READ );<br>
+      <br>
+      trace( stream.readBoolean() ); // false<br>
+      trace( stream.readInt() ); // 1000<br>
+      trace( stream.readByte().toString( 16 ) ); // c<br>
+      <br>
+      stream.close(); // Clean up<br>
+    </p></td>
+  </tr>
+</table>
+<p>Working with directories:</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#CCFFCC">
+  <tr>
+    <td><p class="code">var dir:File = File.desktopDirectory.resolve( &quot;path/to/dir&quot; );<br>
+  if ( !dir.exists ) 
+{ 
+dir.createDirectory(); 
+trace( &quot;Directory created.&quot; ); 
+} 
+else 
+{ 
+trace( &quot;Directory already exists.&quot; ); 
+}<br>
+dir.listDirectoryAsync();<br>
+        dir.addEventListener( FileListEvent.DIRECTORY_LISTING, 
+        handleDirectoryListing );<span class="comment"> // wait until listing is done</span></p>
+      <p><span class="code"> private function handleDirectoryListing( event:FileListEvent ):void 
+        {<br>
+&nbsp;&nbsp;trace( &quot;Name\tSize\tDir?\tCreated On&quot; ); // Display a header<br>
+&nbsp;&nbsp;for each ( var item:File in event.files )
+        {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;trace( item.name + &quot;\t&quot; 
+        + item.size + &quot;\t&quot; 
+        + item.isDirectory + &quot;\t&quot; 
+        + item.creationDate );<br>
+&nbsp;&nbsp;}<br>
+        }</span><br>
+      </p>    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="database"></a>Database Connection ------------------------------</p>
+<p>Connecting to a database.</p>
+<p>It is possible to connect to a database directly from actionscript, for example: <a href="http://code.google.com/p/assql/">http://code.google.com/p/assql/</a> . This can be used for applications running locally (from Adobe AIR). But it is not a good idea to imbed database credentials into a swf file exposed to web. </p>
+<p>So for web-based applications you need to generate a helper  server-side application. You can create it using almost any technology -  php, java servlet, ASP .NET, ColdFusion, Perl/cgi, server-side actionscript, etc. You can communicate with this helper application using HTTPService, WebService, or  RemoteObject. Flex now has tools (wizards) to generate this server-side application.</p>
+<ul>
+  <li><a href="http://livedocs.adobe.com/flex/3/html/help.html?content=data_3.html">http://livedocs.adobe.com/flex/3/html/help.html?content=data_3.html</a></li>
+  <li><a href="http://coenraets.org/blog/2006/11/building-database-driven-flex-applications-without-writing-client-or-server-side-code/">http://coenraets.org/blog/2006/11/building-database-driven-flex-applications-without-writing-client-or-server-side-code/</a></li>
+</ul>
+<p class="sectionheader"><a name="closures"></a>Closures ------------------------------</p>
+<p>Closures</p>
+<p>Define a function within a function - and return the reference:</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#99FFFF">
+  <tr>
+    <td><p class="code">function new_greeting(name:String):Function {<br>
+  &nbsp;&nbsp;var s:String = &quot;Hello &quot; + name;<br>
+      &nbsp;&nbsp;var counter:int;<br>
+      &nbsp;&nbsp;function greet():void { trace(s + &quot; -- &quot; + ++counter); }<br>
+      &nbsp;&nbsp;return greet;<br>
+      }</p>
+      <p class="code">var v1:Function = new_greeting(&quot;person1&quot;);<br>
+  var v2:Function = new_greeting(&quot;person2&quot;);</p>
+      <p class="code">v1(); <span class="comment">// Hello person1 -- 1</span><br>
+        v2(); <span class="comment">// Hello person2 -- 1</span><br>
+        v1();<span class="comment"> // Hello person1 -- 2</span><br>
+    v2();<span class="comment"> // Hello person2 -- 2</span></p>    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="dynamic_functions"></a>Dynamic Functions ------------------------------</p>
+<p>Dynamic classes vs. sealed classes. Dynamic properties. Dynamic functions.</p>
+<ul>
+  <li><span class="style1">Sealed class</span> - default. You can NOT add properties/methods dynamically. In java all classes are sealed.</li>
+  <li><span class="style1">Dynamic</span> - you can add properties and methods to the class at run time. In actionscript many classes are dynamic: Object, Array, MovieClip, NetConnection, TextField, etc. You can create your own by using word &quot;dynamic&quot; - dynamic class Foo. </li>
+</ul>
+<p>Example adding a method to an object:</p>
+<p><span class="code">function f1():String { return &quot;Hello&quot;; }<br>
+  var o1:Object = new Object();</span><span class="comment"> // it can be SomeOtherObject instead of just Object</span><span class="code"><br>
+  o1.f1=f1; </span><span class="comment">//add function reference as a property to the object - this means &quot;dynamic function&quot;</span>
+  <br>
+  <span class="code"> 
+trace(o1.f1());</span><span class="comment"> //use the method</span></p>
+<p>Note: these are equivalent:<br>
+  <span class="code">this.path.reference<br>
+  this[&quot;path&quot;][&quot;reference&quot;]<br>
+  this[&quot;path&quot;].reference<br>
+  this.path[&quot;reference&quot;]</span><br>
+<br>
+Example: create a dynamic property: <span class="code">this[&quot;myMovieClip&quot;+ i]</span><br>
+</p>
+<p>Calling function by name:</p>
+<p class="code">var funcName:String = &quot;doTrace&quot;;<br>
+  function doTrace():void { trace(&quot;Hello&quot;); }<br>
+this[funcName]();</p>
+<p> Instantiate a class based on the value of a string:</p>
+<p><span class="code">var className = 'flash.net.LocalConnection';</span><span class="comment"> // you need fully-qualified name</span><span class="code"><br>
+var ClassReference:Class = getDefinitionByName(className) as Class;</span></p>
+<p>Note: Latest Actionscript 3.0 doesn't have eval() function.</p>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="components"></a>Components ------------------------------</p>
+<p>Components</p>
+<p>A component is  a  widget, like a button or a menu bar. You can create it in Flash CS3,  save as swc file - and then use in many projects.<br>
+  <a href="http://www.adobe.com/devnet/flash/articles/creating_as3_components.html">http://www.adobe.com/devnet/flash/articles/creating_as3_components.html</a> - tutorial</p>
+<p class="sectionheader"><a name="graphical_hierarchy"></a>Graphical Hierarchy ------------------------------</p>
+<p>Graphical hierarchy</p>
+<ul>
+  <li><a href="http://developer.yahoo.com/flash/articles/display-list.html">http://developer.yahoo.com/flash/articles/display-list.html</a></li>
+  <li><a href="http://www.moock.org/lectures/ActionScriptAndFlashCS3/">http://www.moock.org/lectures/ActionScriptAndFlashCS3/</a></li>
+  <li>etc.</li>
+</ul>
+<table border="0" cellpadding="0" cellspacing="3">
+  <tr>
+    <td align="right">&nbsp;</td>
+    <td align="right">&nbsp;</td>
+    <td align="right">&nbsp;</td>
+    <td align="center" bgcolor="#FFFF99">Object</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right">&nbsp;</td>
+    <td align="right">&nbsp;</td>
+    <td align="right">&nbsp;</td>
+    <td align="center" bgcolor="#FFFF99">|<br>
+    EventDispatcher</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr bgcolor="#FFFF99">
+    <td align="right">&nbsp;</td>
+    <td align="right">&nbsp;</td>
+    <td align="right">&nbsp;</td>
+    <td align="center">|    <br>
+    DisplayObject</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#CCFF66">/<br>
+    Video</td>
+    <td align="right" bgcolor="#CCFF66">/<br>
+    Bitmap</td>
+    <td align="right" bgcolor="#CCFF66">/<br>
+    Shape</td>
+    <td align="center" bgcolor="#FFFF99"><p> |<br>
+    InteractiveObject</p></td>
+    <td bgcolor="#99CCFF">\<br>
+    MorphShape</td>
+    <td bgcolor="#99CCFF">\<br>
+    StaticText</td>
+  </tr>
+  <tr>
+    <td align="right">&nbsp;</td>
+    <td align="right">&nbsp;</td>
+    <td align="right"><br></td>
+    <td align="center"><table width="95%" border="0" cellspacing="3" cellpadding="0">
+      <tr>
+        <td align="right" bgcolor="#CCFF66">/<br>
+          TextField</td>
+        <td align="center" bgcolor="#FFFF99"> |<br>
+          DisplayObjectContainer</td>
+        <td bgcolor="#CCFF66">\<br>
+          SimpleButton</td>
+      </tr>
+      <tr>
+        <td align="right">&nbsp;</td>
+        <td align="center" valign="top"><table border="0" cellspacing="3" cellpadding="0"><tr valign="top" bgcolor="#CCFF66">
+            <td align="right">/ <br>
+              Stage</td>
+            <td align="center">|<br>
+              Sprite</td>
+            <td align="left"> &nbsp;\<br>
+              Loader</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td><td align="center" bgcolor="#FFCCCC">|<br>MovieClip</td>
+            <td>&nbsp;</td>
+          </tr></table></td>
+        <td>&nbsp;</td>
+      </tr>
+    </table></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>InteractiveObject -  adds mouse/keyboard functionality<br>
+  DisplayObjectContainer -  adds containment for grouping<br>
+  Sprite: adds dragability, button-style interaction features<br>
+MovieClip: adds timeline control</p>
+<p>How swf file is formed: instance of stage class + instance of main class (Sprite or MovieClip).</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#FFFF99">
+  <tr>
+    <td>instance of Stage<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+instance of either Sprite or MovieClip (this is root)</td>
+  </tr>
+</table>
+<p>In Flash CS3 - main class is called &quot;document class&quot; (Properties panel's &quot;Document class&quot; field)</p>
+<p>Here is example of the code which creates some new objects - and then goes through the list of objects</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#99FFFF">
+  <tr>
+    <td><pre>// file Hello.as - saved in the same directory where my test.fla file is
+// Then in Flash CS properties panel in &quot;Document class&quot; I write: Hello
+
+package {
+  import flash.display.*;
+  
+  public class Hello extends Sprite{
+    public function Hello(){
+      var mc1:BlueCircle = new BlueCircle();
+      this.addChild(mc1);
+   
+      var mc2:MovieClip = new mc1.constructor();
+      this.addChild(mc2);
+      mc2.x = 100;
+      mc2.y = 100;
+   
+      var bm:BitmapData = new BitmapData(mc1.width, mc1.height, true, 0);
+      bm.draw(mc1);
+      var mc3:Bitmap = new Bitmap(bm);
+      this.addChild(mc3);
+      mc3.x = 200;
+      mc3.y = 200;
+      trace(mc3);
+
+      //trace(describeType(this)); // this line generates lots of XML output
+   
+      for (var i:Number=0; i&lt;this.numChildren; i++){
+        trace(this.getChildAt(i), this.getChildAt(i).name);
+      }
+    }
+  }
+}
+</pre></td>
+  </tr>
+</table>
+<p>Note: in the example above: you draw on <span class="code">BitmapData</span>, then to show it - you create <span class="code">Bitmap</span> object - and attach it to display (addChild(bm)).<br>
+Note: to remove from display - use <span class="code">removeChild(bm);</span> To further remove from memory - set all references to null - and it will be garbage collected.</p>
+<p>Frame scripts: the code inserted in &quot;Actions&quot; window in Flash will be associated with the corresponding frame. A main document class instance method will be created - and will be named frame1(), frame2(), etc. (starts with 1).</p>
+<p>You can also add the frame code right from your main document .This is actually much better from maintenane perspective:</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p><span class="comment">// Invoke doSomething when playhead reaches frame 1<br>
+      // (Replaces any existing script on frame 1)</span><br>
+      <span class="code">addFrameScript(0, doSomething);</span><br>
+    </p>
+      <p><span class="comment">// Remove frame 1's script</span><br>
+        <span class="code">addFrameScript(0, null);</span></p></td>
+  </tr>
+</table>
+<p>Code for  library symbols: In Flash CS3 click on the symbol in the library, then click on top-right drop-down menu - and select &quot;Linkage&quot;. Check the &quot;Export for ActionScript&quot; option, and enter the full path to your class definition in the &quot;Class&quot; textfield. Note:   if the path is not found, flash will generate a linked class using the specified name and extending the specified base class</p>
+<p>xxx</p>
+<p class="sectionheader"><a name="graphical_properties"></a>Graphical Properties ------------------------------</p>
+<p>manipulating graphical object:</p>
+<p class="code">square.graphics.beginFill(0xffcc00);<br>
+  square.graphics.lineStyle(2,0x000000);<br>
+  square.graphics.drawRect(0,0,200,200);<br>
+  square.graphics.endFill();<br>
+  addChild(square);<br>
+  <span class="comment">// run to see<br>
+    // now change:</span><br>
+  square.x=200;<br>
+  square.y=50;<br>
+  square.alpha = 0.5;<span class="comment"> // opacity</span><br>
+  square.scaleX=1.5;<br>
+  square.saleY=.5;<br>
+  square.rotation=45;</p>
+<p>xxx</p>
+<p class="sectionheader"><a name="flash_vs_flex"></a>Flash vs Flex ------------------------------</p>
+<p> Flash CS vs Flex - 2 IDEs from Adobe</p>
+<p>If you design your application in <span class="style1">Flash CS</span> - then in many cases you can build your animation without coding. You can drag and drop objects from the <span class="style1">palettes</span> or libraries to the <span class="style1">stage</span>, manipulate objects on the stage graphically, convert them to reusable symbols (often of type MovieClip),  arrange events on the <span class="style1">timeline</span> using <span class="style1">frames</span>, use <span class="style1">layers</span>, group pieces into <span class="style1">scenes</span> for easy manipulation. You can define different transition and movement effects between frames. You can copy/export/import parts of the design as XML (for example, Copy Motion XML).   You can import external libraries and resources - and save your work into *.fla project file, and publish into compressed *.swf file(s).</p>
+<p>If you design in <span class="style1">Flex</span> - then the graphical interface of your application  is recorded mostly using  <span class="style1">MXML</span> (XML-based markup langage). You can manipulate positions, sizes, and properties of the graphical objects using the &quot;<span class="style1">Design</span>&quot; mode. The events and actions can be programmed in actionscript and included into MXML inside <span class="style1">CDATA</span> blocks, or in separate files. </p>
+<p><a href="http://www.adobe.com/devnet/flex/articles/paradigm.html">http://www.adobe.com/devnet/flex/articles/paradigm.html</a></p>
+<p>Here is a simple MXML application (from Flex SDK examples folder):</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#99FFFF">
+  <tr>
+    <td><pre>&lt;?xml version=&quot;1.0&quot;?&gt;
+       &lt;!-- Simple example to demonstrate the Move effect. --&gt;
+       &lt;mx:Application xmlns:mx=&quot;http://www.adobe.com/2006/mxml&quot;&gt;</pre>
+      <pre> &lt;mx:Script&gt;
+   &lt;![CDATA[</pre>
+      <pre> private function moveImage():void {
+         myMove.end();
+         myMove.xTo=mouseX-60; 
+         myMove.play();
+         }
+         ]]&gt;
+   &lt;/mx:Script&gt;</pre>
+      <pre> &lt;mx:Move id=&quot;myMove&quot; target=&quot;{img}&quot;/&gt;</pre>
+      <pre> &lt;mx:Panel title=&quot;Move Effect Example&quot; width=&quot;95%&quot; height=&quot;95%&quot; 
+         paddingTop=&quot;5&quot; paddingLeft=&quot;10&quot; paddingRight=&quot;10&quot; paddingBottom=&quot;5&quot;&gt;</pre>
+      <pre> &lt;mx:Text width=&quot;100%&quot; color=&quot;blue&quot; 
+         text=&quot;Click anywhere on the canvas to move the phone horizontally to that position&quot;/&gt;</pre>
+      <pre> &lt;mx:Canvas id=&quot;canvas&quot; width=&quot;100%&quot; height=&quot;100%&quot; mouseDown=&quot;moveImage();&quot;&gt;</pre>
+      <pre> &lt;mx:Image id=&quot;img&quot; source=&quot;@Embed(source='assets/Nokia_6630.png')&quot;/&gt;</pre>
+    <pre> &lt;/mx:Canvas&gt;
+           
+   &lt;/mx:Panel&gt;
+   &lt;/mx:Application&gt;</pre></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="cloning_objects"></a>Copying Objects ------------------------------</p>
+<p>Copying (cloning) objects:</p>
+<p>For simple objects you can either write your own recursive procedure, or do something like this:</p>
+<p class="code">import flash.utils.ByteArray;<br>
+  function myclone(source:Object):* 
+  {<br>
+  &nbsp;&nbsp;var ba:ByteArray = new ByteArray();<br>
+  &nbsp;&nbsp;ba.writeObject(source);<br>
+  &nbsp;&nbsp;ba.position = 0;<br>
+  &nbsp;&nbsp;return(ba.readObject());<br>
+  }</p>
+<p>Note: the above method will not work properly for  DisplayObjects, or for any object which  need to keep references to specific instances (because  the method creates fresh copies of everything).</p>
+<p>Note: you may also have a problem casting the clone into the right class. To resolve this you may add a line like this:</p>
+<p class="code">flash.net.registerClassAlias(&quot;com.tests.TestClass&quot;,TestClass); </p>
+<p>Here is an example on how to create a symbol  in one swf file - and then load it into another file:<br>
+(from <a href="http://darylteo.com/blog/2007/11/16/abstracting-assets-from-actionscript-in-as30-asset-libraries/">http://darylteo.com/blog/2007/11/16/abstracting-assets-from-actionscript-in-as30-asset-libraries/</a>):</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>create a Circle (of class &quot;Circle&quot;) - and save as circle.swf<br>
+    Then you can laod and use it as following:</p>
+      <p>var loader:Loader = new Loader();<br>
+        loader.contentLoaderInfo.addEventListener(Event.COMPLETE, assetLoaded, false, 0, true);<br>
+        loader.load(new URLRequest(&quot;circle.swf&quot;);<br>
+        stop();</p>
+      <p>function assetLoaded(e:Event):void{<br>
+        &nbsp;&nbsp;var circle:Class = e.target.applicationDomain.getDefinition(&quot;Circle&quot;);<br>
+        &nbsp;&nbsp;for(var i:int = 0;i&lt;10;i++){<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;this.addChild(temp);<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;temp.x = Math.random()*300;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;temp.y = Math.random()*300;<br>
+        &nbsp;&nbsp;}<br>
+    }</p></td>
+  </tr>
+</table>
+<p>Yet another method of copying is to use Bitmap object:</p>
+<table width="95%" border="0" cellpadding="3" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p class="code">public function copyBitmap(o1: DisplayObject) : Bitmap 
+        {<br>
+&nbsp;&nbsp;var data : BitmapData = new BitmapData(o1.width, o1.height, true, 0);<br>
+&nbsp;&nbsp;data.draw(o1);<br>
+&nbsp;&nbsp;var o2: Bitmap = new Bitmap(data);<br>
+&nbsp;&nbsp;return o2;<br>
+        }</p>    </td>
+  </tr>
+</table>
+<p>Yet another method is to do 2 steps. First, create a new object by calling a constructor: objref.constructor(). Then copy the properties one by one (same as you would do with a hash). Here is an example from <a href="http://www.senocular.com/flash/actionscript.php?file=ActionScript_3.0/com/senocular/display/duplicateDisplayObject.as">http://www.senocular.com/flash/actionscript.php?file=ActionScript_3.0/com/senocular/display/duplicateDisplayObject.as</a></p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><pre>
+package com.senocular.display {
+
+  import flash.display.DisplayObject;
+  import flash.geom.Rectangle;
+  import flash.system.Capabilities; // version check for scale9Grid bug
+
+  // duplicateDisplayObject (similar to duplicateMovieClip in AVM1)
+  // creates and returns a duplicate of the DisplayObject (target).
+  // similar to duplicateMovieClip in AVM1. If using Flash 9, make sure
+  // you export for ActionScript the symbol you are duplicating
+  // if parameter autoAdd if true, adds the duplicate to the display list
+
+  public function duplicateDisplayObject(target:DisplayObject, autoAdd:Boolean = false):DisplayObject {
+    var targetClass:Class = Object(target).constructor;
+    var duplicate:DisplayObject = new targetClass() as DisplayObject;
+  
+    // duplicate properties
+    duplicate.transform = target.transform;
+    duplicate.filters = target.filters;
+    duplicate.cacheAsBitmap = target.cacheAsBitmap;
+    duplicate.opaqueBackground = target.opaqueBackground;
+    if (target.scale9Grid) {
+      var rect:Rectangle = target.scale9Grid;
+  
+      if (Capabilities.version.split(&quot; &quot;)[1] == &quot;9,0,16,0&quot;){
+        // Flash 9 bug where returned scale9Grid as twips
+        rect.x /= 20, rect.y /= 20, rect.width /= 20, rect.height /= 20;
+      }
+  
+      duplicate.scale9Grid = rect;<br>
+    }
+  
+    // add to target parent's display list
+    // if autoAdd was provided as true
+    if (autoAdd &amp;&amp; target.parent) {
+      target.parent.addChild(duplicate);
+    }
+
+    return duplicate;
+
+  } // function
+  
+} // package
+</pre></td>
+  </tr>
+</table>
+<p>Some good links:</p>
+<ul>
+  <li><a href="http://www.kirupa.com/forum/showthread.php?t=284233">http://www.kirupa.com/forum/showthread.php?t=284233</a></li>
+  <li><a href="http://darylteo.com/blog/2007/11/16/abstracting-assets-from-actionscript-in-as30-asset-libraries/">http://darylteo.com/blog/2007/11/16/abstracting-assets-from-actionscript-in-as30-asset-libraries/</a></li>
+  <li><a href="http://labs.bigspaceship.com/archive/2007/11/">http://labs.bigspaceship.com/archive/2007/11/</a></li>
+</ul>
+<p class="sectionheader"><a name="multiple_timelines"></a>Multiple Timelines ------------------------------</p>
+<p>Multiple Timelines</p>
+<p>Basic operations within a timeline: 
+<span class="code">gotoAndStop(), gotoAndPlay(), stop(), play(), nextFrame(), prevFrame()</span></p>
+<p>You can manipulate particular movieclip like this: <span class="code">mc1.gotoAndStop()</span>;</p>
+<p>You can use relative or absolute paths to refer to an object:</p>
+<p>this = current timeline<br>
+root = main timeline<br>
+parent = parent timeline</p>
+<p>Here is an example of nested movie-clips:</p>
+<table border="1" cellpadding="20" cellspacing="0" bgcolor="#FF9933">
+  <tr>
+    <td><p>Stage instance</p>
+      <table width="400" border="1" cellpadding="20" cellspacing="0" bgcolor="#FFFFCC">
+      <tr>
+        <td><p>root (main timeline)</p>
+            <table width="240" height="58" border="1" cellpadding="20" cellspacing="0" bgcolor="#99FFCC">
+              <tr>
+                <td>mc1</td>
+              </tr>
+            </table>
+          <p>&nbsp;</p>
+          <table width="240" height="58" border="1" cellpadding="20" cellspacing="0" bgcolor="#99FFCC">
+              <tr>
+                <td><p>mc2</p>
+                    <table width="100" height="58" border="1" cellpadding="20" cellspacing="0" bgcolor="#00FFFF">
+                      <tr>
+                        <td>mc21</td>
+                      </tr>
+                  </table></td>
+              </tr>
+          </table></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+<p>Here is how to reference objects from above example using absolute or relative paths:</p>
+<table width="95%" border="1" cellpadding="3" cellspacing="0" bgcolor="#FFCCFF">
+  <tr bgcolor="#FF9999">
+    <td>Absolute paths</td>
+    <td>relative paths (from mc2)</td>
+  </tr>
+  <tr>
+    <td>root<br>
+MovieClip(root).mc1<br>
+MovieClip(root).mc2<br>
+MovieClip(root).mc2.mc21</td>
+    <td>parent<br>
+MovieClip(parent).mc1<br> 
+this
+<br>
+mc21</td>
+  </tr>
+</table>
+<p>You can specify the action in the form: path.method(), for example:</p>
+<p><span class="code">mc1.gotoAndStop();<br>
+  MovieClip(root).mc2.mc21.stop();<br>
+  train_mc.wheels_mc.stop();<br>
+this.train_mc.wheels_mc.stop();</span></p>
+<p class="sectionheader"><a name="this"></a>this --------------------</p>
+<p>this = &quot;whichever object or scope you are working with right now&quot;.</p>
+<p>this.mc.width;<br>
+  this.parent.mc.width;</p>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="stage_root"></a>Stage vs Root ------------------------------</p>
+<p>Display List -  instances of all displayed objects </p>
+<ul>
+  <li><span class="style1">Stage instance </span>is created automatically when the Flash runtime starts (before it loads any files).</li>
+  <li> Then when it opens first SWF file - it locates that file's main class,  creates an instance of it, and adds it to the display list as the first child of the Stage instance. This first child is often referred to as  &quot;<span class="style1">main-class instance</span>&quot; or  &quot;<span class="style1">stage owner</span>&quot;.</li>
+  <li>More objects can be added by invoking <span class="code">addChild(new_obj)</span> on either the Stage instance or on the main-class instance. Some of those objects can be containers, so later we can children to them (nesting). The <span class="style1">root</span> of those objects will be correspondingly either the stage instance of the main-class instance - and can be referenced as <span class="code">someObj.root</span>. (compare:  <span class="code">someObj.stage</span> -  ref to Stage instance). The <span class="style1">root</span> is null for objects which were not added to the display list.</li>
+  <li>For SWF files loaded by other SWF files the root property is set as  ref to main class instance for for display objects that are display descendants of the main class instance (or set to null if they are not on the display list and not descendants).</li>
+</ul>
+<p>Note: you can not access properties of Stage instance directly as Class properties or methods like this : trace(Stage.align); You need to reference stage instance from some display object, like this: <span class="code">trace(someDisplayObject.stage.align);</span></p>
+<p>Note: the SWF file's main class must extend either Sprite or MovieClip, for example:</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#CCFFCC">
+  <tr>
+    <td><pre>
+package {
+  import flash.display.*
+  import flash.text.TextField;
+
+  public class Hello extends Sprite {
+
+    public function Hello() {
+      // do somethig here
+    }
+  }
+}
+</pre></td>
+  </tr>
+</table>
+<p>Note: as we add children to the same container, they are automatically get assigned <span class="style1">depth index</span> (0,1,2,...). The first child gets 0, next - 1, etc. If children overlap, the one with higher index will be visible (will be on top of others). Here how you can see/manipulate things:</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#CCFFCC">
+  <tr>
+    <td>
+      <p>// c - container<br>
+        trace(getChildIndex(child_ref)); // traces depth<br>
+        trace(c.numChildren);<br>
+        c.addChildAt(newChild, N); // insert new_obj at depth N
+  <br>
+        c.addChildAt(newChild, c.numChildren); // add on top - equivalent to c.addChild(newChild);<br>
+        c.swapChildren(ch1,ch2); // exchanges depths of ch1 and ch2<br>
+        c.setChildIndex(ch1,N);<br>
+        c.setChildIndex(ch1,c.numChildren-1); // move ch1 to the top<br>
+        c.removeChild(ch1);<br>
+        c.removeChildAt(depth);<br>
+    while(theParent.numChildren &gt; 0) {theParent.removeChildAt(0);}<br>
+      // children can be accessed by id or by name:<br>
+      getChildAt(5).name = &quot;SomeName&quot;;<br>
+    getChildByName(&quot;SomeName&quot;).x = 100;</p>    </td>
+  </tr>
+</table>
+<p>When you add an object to a container - it automatically detaches from its previous parent (if any).<br>
+If you move, rotate, or transform the container - child objects will also move/rotate/transform.</p>
+<p class="sectionheader"><a name="threads"></a>Threads ------------------------------</p>
+<p>Actionscript 3 doesn't have support for multi-threading. So you can't  take advantage of multiple CPU cores. No threads.  But you can implement some work-arounds (pseudo-threading). Basically you emulate threads by chunking your code - and queuing the pieces:</p>
+<ul>
+  <li><a href="http://blogs.adobe.com/aharui/2008/01/threads_in_actionscript_3.html">http://blogs.adobe.com/aharui/2008/01/threads_in_actionscript_3.html</a> - Alex Harui from the Flex SDK Engineering team</li>
+  <li><a href="http://blog.aldobucchi.com/2008/06/emulating-threads-in-flash-simple-way.html">http://blog.aldobucchi.com/2008/06/emulating-threads-in-flash-simple-way.html</a> - Aldo Bucchi</li>
+</ul>
+<p>Note (from Alex's blog):</p>
+<p>1) Actionscript   3.0 is not multithreaded. In case of a pop-up creation - the next line will not run until after the popup returns from being created. The popup creation may return before creation complete because of invalidation, but if your code that follows the popup keeps running, you'll never see the popup.</p>
+<p>2) Flash uses a deferred rendering model. Scripts run and update the <span class="style1">display list</span> objects, but the screen is not updated until scripts stop running, then the screen is rendered based on the current state of the display list objects. If your scripts do not stop running, Flash will kill the scripts after 60 seconds.</p>
+<p class="sectionheader"><a name="memory"></a>Memory Usage ------------------------------</p>
+<p>Memory usage:</p>
+<p><a href="http://blog.pixelbreaker.com/flash/as30-memory-monitoring/">http://blog.pixelbreaker.com/flash/as30-memory-monitoring/</a> - here how to monitor it:</p>
+<table border="1" cellpadding="3" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><span class="code">var mem:String = Number( System.totalMemory / 1024 / 1024 ).toFixed( 2 ) + 'Mb';<br>
+trace( mem );<span class="comment"> // eg traces &quot;24.94Mb&quot; </span></span></td>
+  </tr>
+</table>
+<p>The memory usage of components built with MXML tag is much bigger than that of components built using Actionscript:<br>
+  <a href="http://dobeweb.com/2008/mxml-components-vs-actionscript-components–is-the-memory-usage-of-components-built-with-mxml-tag-bigger-than-that-of-components-built-in-actionscript.html">http://dobeweb.com/2008/mxml-components-vs-actionscript-components&ndash;is-the-memory-usage-of-components-built-with-mxml-tag-bigger-than-that-of-components-built-in-actionscript.html</a></p>
+<p>Memory optimization: <br>
+  <a href="http://actionscript-blog.imaginationdev.com/12/memory-optimization-flash-action-script-3/">http://actionscript-blog.imaginationdev.com/12/memory-optimization-flash-action-script-3/</a> :<br>
+Problem: you can not free memory of a fixed property. Solution - make it a dynamic property, for example:</p>
+<table border="1" cellpadding="3" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><span class="code">var playerObject:Object = new Object(); <br>
+playerObject.sound = new Sound();<span class="comment"> // create  property at run time</span><br>
+...<br>
+delete playerObject.sound; <span class="comment">// de-allocate memory</span></span></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="performance"></a>Performance ------------------------------</p>
+<p>Performance:</p>
+<p> Actionscript 3.0 is ~5-10 times slower than Java, and 100-500 times slower than C:<br>
+<a href="http://blog.richnetapps.com/index.php/as3-chess-engine-performance">http://blog.richnetapps.com/index.php/as3-chess-engine-performance</a></p>
+<p>This is because AS runs inside a virtual machine, and because it can't take advantage of multi-treading, multiple cores, or 64-bit architecture (the Number type in Flash is only 57 bits long).</p>
+<p>Optimising performance: <a href="http://livedocs.adobe.com/flashlite/2/main/wwhelp/wwhimpl/common/html/wwhelp.htm?context=LiveDocs_Parts&file=00000089.html">http://livedocs.adobe.com/flashlite/2/main/wwhelp/wwhimpl/common/html/wwhelp.htm?context=LiveDocs_Parts&amp;file=00000089.html</a></p>
+<table width="95%" border="0" cellpadding="3" cellspacing="0" bgcolor="#EEEEEE">
+  <tr>
+    <td><p>Guidelines for optimizing ActionScript performance for mobile devices (Flash Lite):</p>
+      <ul>
+        <li>Keep the ActionScript as simple as possible.</li>
+        <li>          Limit the number of loops that you use and the amount of code that each loop contains.</li>
+        <li>          Stop frame-based looping as soon as it is no longer needed.</li>
+        <li>          When possible, avoid string and array processing because it can be CPU-intensive.</li>
+        <li>          Always try to access properties directly rather than using ActionScript getter and setter methods, which have more overhead than other method calls.</li>
+        <li>          Manage events wisely and specifically. Keep your event listener arrays compacted by using conditions to check whether a listener exists (is not null) before calling it.</li>
+        <li>          Delete variables or set them to null when you no longer need them. Doing this marks the data for garbage collection. Deleting variables helps optimize memory use during runtime, because unneeded assets are removed from the SWF file. It is better to delete variables than to set them to null.</li>
+        <li>Explicitly remove listeners from objects by calling removeListener() before garbage collection.</li>
+        <li>          If you are dynamically calling a function and passing a fixed set of parameters, use call() instead of apply().</li>
+        <li>          Make your namespaces (such as paths) more compact to save startup time. Every level in the package is compiled to an IF statement and causes a new Object() call, so having fewer levels in the path saves time. 
+        For example, a path with the levels com.xxx.yyy.aaa.bbb.ccc.functionName() causes an object to be instantiated for com, xxx, yyy, aaa, bbb, and ccc. Some Flash developers use preprocessor software to reduce the path to a unique identifier, such as 58923409876.functionName(), before compiling the SWF.</li>
+        <li>If your application consists of multiple SWF files that use the same ActionScript classes, you can exclude those classes from select SWF files during compilation. This can help reduce application download time and runtime memory requirements. For more information, see <a href="http://livedocs.adobe.com/flashlite/2/main/wwhelp/wwhimpl/common/html/wwhelp.htm?context=LiveDocs_Parts&file=00000089.html">Excluding classes from compilation</a>.</li>
+        <li>          Avoid using Object.watch() and Object.unwatch(), since every change to an object property requires the player to determine whether a change notification must be sent.<br>
+          If ActionScript code that executes on a keyframe in the timeline requires more than 1 second to complete, consider splitting up that code to execute over multiple keyframes.</li>
+        <li>          Remove trace() statements from your code when you publish the SWF file. To do this, select the Omit Trace Actions check box on the Flash tab in the Publish Settings dialog box.</li>
+        <li>          Inheritance increases the number of method calls and uses more memory: a class that includes all the functionality it needs is more efficient at runtime than a class that inherits some of its functionality from a superclass. Therefore, you may need to make a design trade-off between extensibility of your classes and efficiency of your code.</li>
+        <li>          When one SWF file loads another SWF file that contains a custom ActionScript class (for example, foo.bar.CustomClass) and then unloads the SWF file, the class definition remains in memory. To save memory, explicitly delete any custom classes in unloaded SWF files. Use the delete statement and specify the fully qualified class name, as the following example shows:<br>
+          <span class="code">delete foo.bar.CustomClass</span></li>
+        <li>          Limit the use of global variables, because they are not garbage collected if the movie clip that defined them was removed.</li>
+        <li>          Avoid using the standard user interface components (available in the Components panel in Flash Professional 8). These components are designed to run on desktop computers and are not optimized to run on mobile devices.</li>
+        <li>          Whenever possible, avoid deeply nested functions.</li>
+        <li>          Avoid referencing nonexistent variables, objects, or functions. Compared to the desktop version of Flash Player, Flash Lite 2.0 looks up references to nonexistent variables slowly, which can significantly affect application performance.</li>
+    </ul></td>
+  </tr>
+</table>
+<p class="sectionheader"><a name="fscommand" id="fscommand"></a>fscommand ------------------------------------------------------------------------------------------=</p>
+<p>The flash.system package contains one package-level function, fscommand(), which facilitates communication between a SWF file and its container (with the browser, or, for stand-alone projectors, you can call other applications if you put them into the same folder).<br>
+http://livedocs.adobe.com/flash/9.0/ActionScriptLangRefV3/flash/system/package.html</p>
+<p>Example:</p>
+<p class="code"> 
+fscommand (&quot;exec&quot;, &quot;myappl.exe&quot;);</p>
+<p>Here - an example of communication between JavaScript and Adobe Flash Player:<br>
+<a href="http://kb.adobe.com/selfservice/viewContent.do?externalId=tn_15683">http://kb.adobe.com/selfservice/viewContent.do?externalId=tn_15683</a></p>
+<p class="code"><a name="event_propagation"></a>Event Propagation --------------------</p>
+<p>Three stages of event propagation:</p>
+<ul>
+  <li><span class="code">event.eventPhase.CAPTURING_PHASE</span> - from stage down to specific element pressed -  no processing is done here <br> 
+  unless you provide a 3rd parameter &quot;true&quot; : <span class="code">object.addEventListener(MouseEvent.CLICK, onClick, </span><span class="style1">true</span><span class="code">);</span></li>
+  <li><span class="code">event.eventPhase.AT_TARGET</span> - on specific element: if (event.target == event.currentTarget) { .. }</li>
+  <li>    <span class="code">event.eventPhase.BUBBLING_PHASE</span> - going up hierarchy</li>
+</ul>
+<p>&nbsp;</p>
+<p>Here is a great summary of common mouse and keyboard events - from <a href="http://www.senocular.com/flash/tutorials/as3withflashcs3/?page=3">http://www.senocular.com/flash/tutorials/as3withflashcs3/?page=3</a></p>
+<table border="1" cellpadding="1">
+  <thead>
+    <tr bgcolor="#FFCC33">
+      <th colspan="3">Common Interactive Events </th>
+    </tr>
+  </thead>
+  <tr bgcolor="#CC9933">
+    <th>ActionScript 2 </th>
+    <th>ActionScript 3 </th>
+    <th>Differences</th>
+  </tr>
+  <tr bgcolor="#FFFFCC">
+    <td>onPress</td>
+    <td>&quot;mouseDown&quot; (MouseEvent.MOUSE_DOWN)</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr bgcolor="#FFFFCC">
+    <td>onRelease</td>
+    <td>&quot;mouseUp&quot; (MouseEvent.MOUSE_UP), &quot;click&quot; (MouseEvent.CLICK) </td>
+    <td>The click event is most like onRelease since it depends on the object first receiving a mouseDown event whereas mouseUp can occur regardless of what was pressed </td>
+  </tr>
+  <tr bgcolor="#FFFFCC">
+    <td>onReleaseOutside</td>
+    <td>&quot;mouseUp&quot; (MouseEvent.MOUSE_UP)</td>
+    <td>This has been removed, but using the mouseUp event with the stage (because of propagation) will allow you to detect when the mouse has been released outside of the object originally pressed </td>
+  </tr>
+  <tr bgcolor="#FFFFCC">
+    <td>onRollOver</td>
+    <td>&quot;mouseOver&quot; (MouseEvent.MOUSE_OVER), &quot;rollOver&quot; (MouseEvent.ROLL_OVER)</td>
+    <td>Two events can now be used for rolling over objects; mouseOver will propagate, rollOver will not </td>
+  </tr>
+  <tr bgcolor="#FFFFCC">
+    <td>onRollOut</td>
+    <td>&quot;mouseOut&quot; (MouseEvent.MOUSE_OUT), &quot;rollOut&quot; (MouseEvent.ROLL_OUT)</td>
+    <td>Two events can now be used for rolling off of objects; mouseOut will propagate, rollOut will not </td>
+  </tr>
+  <tr bgcolor="#FFFFCC">
+    <td>onDragOver</td>
+    <td>&quot;mouseOver&quot; (MouseEvent.MOUSE_OVER), &quot;rollOver&quot; (MouseEvent.ROLL_OVER)</td>
+    <td>Detecting a &quot;drag&quot; will have to be done manually in combination with the mouseDown event. </td>
+  </tr>
+  <tr bgcolor="#FFFFCC">
+    <td>onDragOut</td>
+    <td>&quot;mouseOut&quot; (MouseEvent.MOUSE_OUT), &quot;rollOut&quot; (MouseEvent.ROLL_OUT)</td>
+    <td>Detecting a &quot;drag&quot; will have to be done manually in combination with the mouseDown event. </td>
+  </tr>
+  <tr bgcolor="#FFFFCC">
+    <td>mouseDown</td>
+    <td>&quot;mouseDown&quot; (MouseEvent.MOUSE_DOWN)</td>
+    <td>Now only works when the mouse is over the object dispatching the event (like onPress); normal objects cannot be made listeners of the Mouse to be able to recieve this event, only InteractiveObject instances can </td>
+  </tr>
+  <tr bgcolor="#FFFFCC">
+    <td>mouseUp</td>
+    <td>&quot;mouseUp&quot; (MouseEvent.MOUSE_UP)</td>
+    <td>Now only works when the mouse is over the object dispatching the event (like onRelease but not requiring that the object be clicked first); normal objects cannot be made listeners of the Mouse to be able to recieve this event, only InteractiveObject instances can </td>
+  </tr>
+  <tr bgcolor="#FFFFCC">
+    <td>mouseMove</td>
+    <td>&quot;mouseMove&quot; (MouseEvent.MOUSE_MOVE)</td>
+    <td>Now only works when the mouse is over the object dispatching the event; normal objects cannot be made listeners of the Mouse to be able to recieve this event, only InteractiveObject instances can </td>
+  </tr>
+  <tr bgcolor="#FFFFCC">
+    <td>onKeyDown</td>
+    <td>&quot;keyDown&quot; (KeyboardEvent.KEY_DOWN) </td>
+    <td>Object must now have focus to receive this event; normal objects cannot be made listeners of the Key to be able to recieve this event, only InteractiveObject instances can </td>
+  </tr>
+  <tr bgcolor="#FFFFCC">
+    <td>onKeyUp</td>
+    <td>&quot;keyUp&quot; (KeyboardEvent.KEY_UP) </td>
+    <td>Object must now have focus to receive this event; normal objects cannot be made listeners of the Key to be able to recieve this event, only InteractiveObject instances can </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="keyboard"></a>Keyboard Events ------------------------------</p>
+<p>Keyboard Events</p>
+<p class="code">KEY_DOWN, KEY_UP</p>
+<p><span class="code">event.keyCode</span> - actual char which was pressed (&quot;a&quot; or &quot;A&quot;, etc.)<br>
+  <span class="code">event.keyCode</span> - ascii code (for SHIFT it is 16, for a - 65, etc.)<br>
+  If you want to monitor keyboard events only while being focused on a particular object:<br>
+  <span class="code">s.focus;<br>
+stage.focus;</span></p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#CCFFCC">
+  <tr>
+    <td>
+    <pre>
+import flash.display.Sprite;
+import flash.events.KeyboardEvent;
+import flash.ui.Keyboard; // convenient names for non-alphanumeric keys
+
+var s:Sprite = new Sprite();
+addChild(s);
+
+s.addEventListener(KeyboardEvent.KEY_DOWN, onKeyboardEvent);
+s.addEventListener(KeyboardEvent.KEY_UP, onKeyboardEvent);
+
+public function onKeyboardEvent(event:KeyboardEvent):void {
+  switch(event.keyCode) { 
+    case Keyboard.UP:    ball.y -=10; break;
+    case Keyboard.DOWN:  ball.y +=10; break;
+    case Keyboard.LEFT:  ball.x -=10; break;
+    case Keyboard.RIGHT: ball.x +=10; break;
+    default: break;
+  }
+
+}
+</pre>    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="mouse"></a>Mouse Events ------------------------------</p>
+<p>Mouse Events</p>
+<p class="code">CLICK, DOUBLE_CLICK, MOUSE_DOWN, MOUSE_MOVE, MOUSE_OUT, MOUSE_OVER, MOUSE_UP, MOUSE_WHEEL, ROLL_OUT,ROLL_OVER</p>
+<p><span class="code">import flash.display.Sprite;<br>
+  import flash.events.MouseEvent;<br>
+  var s:Sprite = new Sprite();<br>
+  addChild(s);<br>
+  s.addEventListener(MouseEvent.CLICK, onMouseEvent);<br>
+  s.addEventListener(MouseEvent.DOUBLE_CLICK, onMouseEvent);<br>
+  public function onMouseEvent(event:MouseEvent):void { ... }<br>
+  mouse_x_pos = s.mouseX<br>
+  mouse_y_pos = s.mouseY</span><br>
+  <br>
+Note: the &quot;hand&quot;  cursor for mouse-over will not be visible unless the display object's <span class="style1">buttonMode</span> and <span class="style1">useHandCursor</span> properties are true (useHandCursor is true by default but buttonMode is not). Setting buttonMode to true will also enable a focused object to receive a click event if the space bar or the Enter key is pressed on the keyboard.</p>
+<p class="code">myButton.buttonMode = true;</p>
+<p>To disable mouse handling in the object - and let it pass the even through to the object behind it  - do this:</p>
+<p class="code">overlay.mouseEnabled = false;</p>
+<p>To disable mouse handling in all children of a Display object instance:</p>
+<p class="code">myobj.mouseChildren = false;</p>
+<p>In ActionScript 3, the mouseMove event for display objects is only triggered when the mouse is over the display object.  If you need the mouseMove event to be more global -  listen to the stage:</p>
+<p class="code">stage.addEventListener(MouseEvent.MOUSE_MOVE, anyMouseMove);<br>
+function anyMouseMove(event:MouseEvent):void { .. }</p>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="mouse_release_outside"></a>Mouse Release Outside ------------------------------</p>
+<p>onReleaseOutside() is removed in AS3. So the workaround is the following:</p>
+<p>Once you mouse-down on an object, you have to add an event to the stage through objectReference.stage.addEventListener and then handle it through a function within the button.</p>
+<p>Then once it gets fired you remove the listener from the stage right away: stage.removeEventListener(MouseEvent.MOUSE_UP, releaseOutsideHandler);</p>
+<p>Here is a simple example:</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#99FFFF">
+  <tr>
+    <td><pre>// simple class for button (release outside):
+
+package {
+
+  import flash.display.Sprite;
+  import flash.events.MouseEvent;
+
+  public class Btn extends Sprite{
+
+    function Btn ():void {
+      addEventListener(MouseEvent.MOUSE_DOWN, on_press);
+    }
+
+    function on_press(event:MouseEvent):void{
+      trace(&quot;press&quot;);
+      stage.addEventListener(MouseEvent.MOUSE_UP, on_release_outside);
+    }
+
+    function on_release_outside(event:MouseEvent):void{
+      stage.removeEventListener(MouseEvent.MOUSE_UP, on_release_outside);
+      if (event.target == this) 
+        trace(&quot;release inside&quot;);
+      else
+        trace(&quot;release outside&quot;);
+    } // function
+
+  } // class
+
+} // package 
+</pre></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="graphics"></a>Graphics ------------------------------</p>
+<p>flash.display.Graphics - to draw lines, fill bitmaps with gradients, etc. (moveTo, lineTo, clear, beginFill, endFill, 
+drawEllipse, drawCircle, drawRect, drawRoundRect, etc.)</p>
+<p class="sectionheader"><a name="timer"></a>Timer-based animation --------------------</p>
+<p>Flash movie circles through its frames. If you have only 1 frame - it will re-enter it over and over again. So you can use <span class="style1">ENTER_FRAME</span> event as a timer. Very innacurate, though, because if the code in the frame takes too long - Flash player will wait up to 15 seconds to let the code to finish. On the other side, if the code takes very short time to run - Flash will not update the frame immediately - it will wait according to frame rate.</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#99FFFF">
+  <tr>
+    <td><pre>
+package {
+
+  import flash.display.Sprite;
+  import flash.events.Event;
+
+  public class MyAnimation extends Sprite {
+    private var ball:Sprite;
+    
+    public function MyAnimation() { init(); } // constructor
+
+    private function init():void {
+      ball = new Sprite();
+      addChild(ball);
+      ball.graphics.beginFill(0xff000000);
+      ball.graphics.drawCircle(0,0,40);
+      ball.graphics.endFill();
+      ball.x = 20;
+      ball.y = stage.stageHeight / 2;
+      ball.addEventListener(Event.ENTER_FRAME, onEnterFrame);
+    }
+
+    private function onEnterFrame(event:Event):void {
+      ball.x++;
+    }
+
+  } // class
+
+} // package 
+</pre></td>
+  </tr>
+</table>
+<p>Another approach is to use  Timer() class:</p>
+<p class="code">mytimer = new Timer(interval_in_ms, how_many_times);<br>
+  mytimer.addEventListener(TimerEvent.TIMER, my_on_timer);<br>
+  mytimer.start();<br>
+  mytimer.stop();<br>
+  event.updateAfterEvent(); <span class="comment">// necessary to update the screen</span></p>
+<p>Here is an example:</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#99FFFF">
+  <tr>
+    <td><pre>
+package {
+
+  import flash.display.Sprite;
+  import flash.utils.Timer;
+  import flash.events.TimerEvent;
+
+  public class Timer1 extends Sprite
+  {
+    private var mytimer:Timer;
+
+    public function Timer1() { init(); } // constructor
+
+    private function init():void {
+      mytimer = new Timer(30,300); //every 30 millisec, 300 times
+      mytimer.addEventListener(TimerEvent.TIMER, my_on_timer);
+      mytimer.start();
+    }
+
+    private function my_on_timer(timer:TimerEvent):void {
+      // do something
+      event.updateAfterEvent(); // this is to update the screen
+
+    }
+
+  } // class
+
+} // package 
+</pre></td>
+  </tr>
+</table>
+<p>Note: timer max frequency (min interval) in practice depends on the setting of the frame rate, and is ~ 1/10th of the frame rate. So if you want to set timer to do updates every 10 ms, then you need to set frame rate to 100 ms:</p>
+<p class="code">stage.frameRate = 10; <span class="comment">// default is 12</span></p>
+<p>Note: if you need your animation to move with the same speed on different computers, you can adjust the speed by measuring actual time: </p>
+<p class="code">time1 = getTimer(); <span class="comment">// gives time in ms</span><br>
+...<br>
+time2 = getTimer();<br>
+  step_to_make = velocity*(time2 - time1);</p>
+<p class="code">&nbsp;</p>
+<p class="sectionheader"><a name="prevent_caching"></a>How To Prevent Caching of SWF files --------------------</p>
+<p>How To Prevent Caching of SWF files in browser cache</p>
+<p>1. Using http headers:<br>
+</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>To prevent client browsers from caching the SWF file, try setting the following 
+      HTTP headers in the wrapper that returns the Flex application's SWF file Here are examples:<br>
+      ==================<br>
+      //(in php syntax):<br>
+      header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); <BR>
+    header("Last-Modified: " .   gmdate("D, d M Y   H:i:s") . " GMT"); <BR>
+    header("Cache-Control:   no-store, no-cache, must-revalidate"); <BR>
+    header("Cache-Control:   post-check=0, pre-check=0", false); <BR>
+    header("Pragma:   no-cache");
+    <br>
+    ==================<br>
+Cache-control: no-cache, no-store, must-revalidate, max-age=-1<br>
+        Pragma: no-cache, no-store<br>
+        Expires: -1<br>
+    ==================<br>
+ HMLT page:<br>
+    &lt;HEAD&gt;<br>
+        ...<br>
+&lt;!-- BEGIN INSERT --&gt;&lt;META HTTP-EQUIV=&quot;Expires&quot; CONTENT=&quot;Mon, 04 Dec 1999 01:00:00 GMT&quot;&gt;&lt;!-- END INSERT --&gt;<br>
+&lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+        ...<br>
+&lt;/BODY&gt;<br>
+&lt;!-- BEGIN INSERT --&gt;&lt;HEAD&gt;&lt;META HTTP-EQUIV=&quot;PRAGMA&quot; CONTENT=&quot;NO-CACHE&quot;&gt;&lt;/HEAD&gt;&lt;!-- END INSERT --&gt;<br>
+        </p>    </td>
+  </tr>
+</table>
+<p> 2. Adding random parameter to the end of URL address in actionscript or javascript:</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>// var pageLink ='http://somedomain/somepath/somefile?key1=value1&amp;key2=value2'; </p>
+      <p>var cc = '&amp;';    // use '?' if this will be the first parameter <br> 
+        var myURL = ...;<br>
+myURL += cc +   &quot;t=&quot; + (new Date()).getTime()); <br>
+        myURL += cc + Math.random()*1000;</p>    </td>
+  </tr>
+</table>
+<p>3. Using proxy page to set up HTTP headers:</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>Instead of loading the SWF directly, you load the php page which loads it with http headers set to avoid caching:</p>
+      <p>((swf_proxy.php))<br>
+  &lt;?php<br>
+        $filename = &quot;test_cache.swf&quot;;<br>
+        header('Content-type: application/x-shockwave-flash');header(&quot;Expires: Thu, 01 Jan 1970 00:00:00 GMT, -1 &quot;);<br>
+        header(&quot;Cache-Control: no-cache, no-store, must-revalidate&quot;);<br>
+        header(&quot;Pragma: no-cache&quot;);<br>
+        $content = file_get_contents($filename);<br>
+        echo$content;<br>
+        ?&gt;<br>
+      </p>    </td>
+  </tr>
+</table>
+<p>Read some discussions here:</p>
+<ul>
+  <li><a href="http://www.permadi.com/tutorial/flashcache/index.html">http://www.permadi.com/tutorial/flashcache/index.html</a></li>
+  <li><a href="http://ryanfait.com/resources/protect-flash-files-from-download/">http://ryanfait.com/resources/protect-flash-files-from-download/</a></li>
+  <li><a href="http://kb.adobe.com/selfservice/viewContent.do?externalId=tn_14743&sliceId=1">http://kb.adobe.com/selfservice/viewContent.do?externalId=tn_14743&amp;sliceId=1</a></li>
+  <li><a href="http://oddhammer.com/tutorials/dont_cache/">http://oddhammer.com/tutorials/dont_cache/</a></li>
+  <li><a href="http://www.laflash.org/forum/archive/index.php/t-533.html">http://www.laflash.org/forum/archive/index.php/t-533.html</a></li>
+  <li><a href="http://www.kirupa.com/forum/archive/index.php/t-200009.html">http://www.kirupa.com/forum/archive/index.php/t-200009.html</a></li>
+  <li><a href="http://www.nutrixinteractive.com/blog/?p=134">http://www.nutrixinteractive.com/blog/?p=134</a></li>
+  <li><a href="http://board.flashkit.com/board/showthread.php?threadid=588418&highlight=caching">http://board.flashkit.com/board/showthread.php?threadid=588418&amp;highlight=caching</a></li>
+</ul>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="decompilers"></a>SWF Decompilers and SWF protection</p>
+<p>Decompilers:</p>
+<ul>
+  <li>google for: decompile SWF </li>
+  <li><a href="http://www.sothink.com/product/flashdecompiler/">http://www.sothink.com/product/flashdecompiler/</a></li>
+  <li> <a href="http://www.flash-decompiler.com/">http://www.flash-decompiler.com/</a></li>
+  <li> <a href="http://www.flashprobe.com">http://www.flashprobe.com</a> - extract text and images</li>
+  <li> <a href="http://www.buraks.com/asv/">http://www.buraks.com/asv/</a></li>
+</ul>
+<p>Protection:</p>
+<ul>
+  <li> google for: protect SWF</li>
+  <li> <a href="http://www.kindisoft.com">http://www.kindisoft.com</a> - secureSWF</li>
+  <li><a href="http:// www.swfprotect.net">http:// www.swfprotect.net</a> - SWF Protect</li>
+  <li>DCoM SWF Protector 1.0 by Dcomsoft</li>
+  <li>http://board.flashkit.com/board/archive/index.php/t-46868.html - good discussion</li>
+  <li><a href="http://www.buraks.com">http://www.buraks.com</a></li>
+  <li><a href="http://www.openswf.org">http://www.openswf.org</a></li>
+  <li>article &quot;Protect Flash From Theft&quot; by David Emberton<br>
+    <a href="http://www.builder.com/Graphics/FlashPoint/072500/?tag=st.bl.7335.dir1.bl_fp072500">http://www.builder.com/Graphics/FlashPoint/072500/?tag=st.bl.7335.dir1.bl_fp072500</a></li>
+</ul>
+<p>One simple trick to make your SWF files less accessible is to load them dynamically. 
+Read section &quot;Using Socket to Load Display Assets at Runtime&quot; in O'Reilly book &quot;Essential Actionscript 3.0&quot; by Colin Moock (pp.796-807). After the content is loaded into the buffer:</p>
+<pre class="code">Loader = new Loader();
+loader.loadBytes(buffer);
+loader.contentLoaderInfo.addEventListener(Event.INIT, assetInitListener);
+</pre>
+<pre><span class="code">private function assetInitListener(e:Event):void {
+  addChild(loader.content);
+}</span> </pre>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="sound"></a>Play Sound -------------------- </p>
+<p>Play Sound</p>
+<p class="code">var song:Sound = new Sound();<br>
+var p:URLRequest = newURLRequest(&quot;/somedir/mysound.mp3&quot;);<br>
+song.load(p);<br>
+song.play();<br>
+<span class="comment">// or simply</span><br>
+  var song:Sound = new Sound(new URLRequest(&quot;/somedir/mysound.mp3&quot;));<br>
+song.play();<br>
+trace(song.bytesTotal);</p>
+<p><span class="comment">//Volume</span><span class="code"><br>
+  var sc:SoundChannel = new SoundChannel();<br>
+  sc = song.play();<br>
+  var st:SoundTransform = new SoundTransform();<br>
+  st.volume = 0.5 </span><span class="comment">// 50%</span><span class="code"><br>
+  sc.soundTransform = st;</span><br>
+</p>
+<p class="sectionheader"><a name="video"></a>Play Video --------------------</p>
+<p>Play Video</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#99FFFF">
+  <tr>
+    <td><pre>import flash.video.FLVPlayback;
+import flash.video.VideoScaleMode;
+var v:FLVPlayback = new FLVPlayback();
+
+var src:String = 'http://.../myfile.flv';
+v.width = 320;
+v.height = 240;
+v.autoPlay = false;
+v.scaleMode = VideoScaleMode.MAINTAIN_ASPECT_RATIO;
+v.skinAutoHide = true;
+v.skinBackgroundAlpha = .5;
+v.skinBackgroundColor = 0xff0000;
+v.source = src;
+v.volume = .5;
+</pre></td>
+  </tr>
+</table>
+<p>xxx</p>
+<p class="sectionheader"><a name="e4x"></a>E4X = ECMAScript for XML --------------------</p>
+<p>E4X =  ECMAScript for XML (<a href="http://www.ecma-international.org/publications/standards/Ecma-357.htm">E4X</a>) Specification.</p>
+<p class="code">flash.xml.XMLDocument;</p>
+<p>There are two primary, top level ActionScript classes that Flash uses to work with E4X XML: XML and XMLList.</p>
+<p><span class="code">var xml:XML = &lt;inline&gt;
+&lt;example /&gt;
+&lt;/inline&gt;;</span><span class="comment"> // example of inline literal</span><br>
+</p>
+<p>Note: inline literal must have a  single root node. So you cannot create an inline XMLList.</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#99FFFF">
+  <tr>
+    <td><pre>
+// Child elements accessible as
+// properties of XML instance
+var sport:XML =
+   &lt;sport&gt;
+   &lt;name&gt;Basketball&lt;/name&gt;
+   &lt;players&gt;men&lt;/players&gt;
+   &lt;players&gt;women&lt;/players&gt;
+   &lt;nationalTV&gt;NBC&lt;/nationalTV&gt;
+   &lt;nationalTV&gt;ESPN&lt;/nationalTV&gt;
+   &lt;/sport&gt;;
+trace(sport.players is XMLList); // true
+trace(sport.players);
+//output:
+//   &lt;players&gt;men&lt;/players&gt;
+//   &lt;players&gt;women&lt;/players&gt;
+trace(sport.players[0] is XML); // true<br>trace(sport.players[0]); // traces &quot;men&quot;
+
+trace(sport.players[0].toString()); // traces &quot;men&quot;<br>trace(sport.players[0].toXMLString()); // traces &quot;&lt;players&gt;men&lt;/players&gt;&quot;</pre></td>
+  </tr>
+</table>
+<p>Use (..) operator - to access children and all childrens children, for example:</p>
+<p class="code">trace(channel..title.toXMLString());</p>
+<p>Use &quot;@&quot; prefix to access xml wattributes:</p>
+<p class="code">var item:XML =&lt;item name=&quot;attribute&quot;&gt;&lt;name&gt;element&lt;/name&gt;
+&lt;/item&gt;;<br>
+trace(item.name); <span class="comment">// traces &quot;element&quot;</span><br>
+trace(item.@name);<span class="comment"> // traces &quot;attribute&quot;</span></p>
+<p>Attributes form a list:</p>
+<p class="code">var images:XML = &lt;images&gt;
+&lt;img href=&quot;image1.jpg&quot; /&gt;
+&lt;img href=&quot;image2.jpg&quot; /&gt;
+&lt;img href=&quot;image3.jpg&quot; /&gt; &lt;/images&gt;;<br>
+trace(images.img.@href is XMLList); <span class="comment">//  true</span><br>
+trace(images.img.@href); <span class="comment">//  &quot;image1.jpgimage2.jpgimage3.jpg&quot;</span><br>
+trace(images.img.@href[0]); <span class="comment">//  &quot;image1.jpg&quot;</span></p>
+<p>Name conflicts: in XML dot notaion you can use element names or methods (like name() ,  children(), attribute()). But what if the xml has an element called &quot;name&quot;? We have a conflict. Be cautious, put braces &quot;()&quot; after the name if you want to use the method.</p>
+<p>Here - accessing elements with complex names:<br>
+</p>
+<p class="code">var values:XML = &lt;values for-example=&quot;see below&quot;&gt;
+&lt;complex-name&gt;simple value&lt;/complex-name&gt;
+&lt;/values&gt;;<br>
+<span class="comment">// trace(values.@for-example); // Syntax error<br>
+</span>trace(values.attribute(&quot;for-example&quot;));<span class="comment"> // traces &quot;see below&quot;</span><br>
+  <span class="comment">// trace(values.complex-name); // Syntax error<br>
+  </span>trace(values.elements(&quot;complex-name&quot;));<span class="comment"> // traces &quot;simple value&quot;</span></p>
+<p>Filtering:</p>
+<p><span class="code">trace(grades.student.(name == &quot;Michelle&quot;));</span><span class="comment"> // find student with the name &quot;Michelle&quot;</span><span class="code"><br>
+  trace(grades.student.quiz.(@num == &quot;1&quot;));<br>
+  trace(grades.student.(name != &quot;Michelle&quot; &amp;&amp; quiz.length() &lt; 2));<br>
+  trace(grades.student.(quiz.score == 90));<br>
+  trace(grades.student.(quiz.(score == 90).length()));<br>
+  var scoreCheck:int = 90;<br>
+  trace(grades.student.(quiz.score == scoreCheck));</span><br>
+</p>
+<p>Define XML dynamically:</p>
+<p class="code"><span class="comment">// Dynamic XML definition with braces<br>
+  </span>var elemName:String = &quot;e1&quot;; 
+  var attrName:String = &quot;a1&quot;; 
+  var attrValue:String = &quot;v1&quot;; 
+  var textNode:String = &quot;text1&quot;;<br>
+  var xml:XML =&lt;{elemName} {attrName}={attrValue}&gt;
+{textNode} &lt;/{elementName}&gt;;<br>
+trace(xml.toXMLString()); <span class="comment">// traces &quot;&lt;elem attr=&quot;value&quot;&gt;text&lt;/elem&gt;&quot;</span><br>
+<br>
+<span class="comment">// XML generation with strings</span><br>
+var tagContents:String = &quot;elem att=\&quot;value\&quot;&quot;;<br>
+var xml:XML = new XML(&quot;&lt;&quot; + tagContents + &quot;/&gt;&quot;);<br>
+trace(xml.toXMLString());<span class="comment"> // traces &lt;elem att=&quot;value&quot;/&gt;</span></p>
+<p>XML Namespaces:</p>
+<p>Setting a default namespace - both parent and child get into the same namespace:</p>
+<p><span class="code">&lt;xml&gt;<br>
+&nbsp;&nbsp;&lt;parent xmlns=&quot;http://www.example.com/uri/&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;child /&gt;<br>
+&nbsp;&nbsp;&lt;/parent&gt;<br>
+&lt;/xml&gt;</span></p>
+<p>Using prefix for namespaces - in this example only child element is in the namespace because only that node is using the ns prefix:</p>
+<p><span class="code">&lt;xml xmlns:ns=&quot;http://www.example.com/uri/&quot;&gt;<br>
+&nbsp;&nbsp;&lt;parent&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;ns:child /&gt;<br>
+&nbsp;&nbsp;&lt;/parent&gt;<br>
+&lt;/xml&gt;</span></p>
+<p>Using Namespace instance (has 2 properties: uri &amp; prefix):</p>
+<p><span class="code">var xml:XML =&lt;xml xmlns:xpl=&quot;http://www.example.com/uri/&quot;&gt;
+  &lt;text&gt;Hello World&lt;/text&gt;
+  &lt;xpl:text&gt;Hello Namespace&lt;/xpl:text&gt;
+  &lt;/xml&gt;;<br>
+  var xplNs:Namespace = new Namespace(&quot;http://www.example.com/uri/&quot;); </span><span class="comment">// same uri as xpl namespace</span><span class="code"><br>
+  trace(xml.text);</span><span class="comment"> // traces &quot;Hello World&quot;</span><span class="code"><br>
+  trace(xml.xplNs::text); </span><span class="comment">// traces &quot;Hello Namespace&quot;. Note the use of &quot;::&quot; operator</span><br>
+  <span class="code">trace(xml.children().(name().localName == &quot;text&quot;));</span> <span class="comment">// traces both, note the use of localName property.</span><br>
+  <br>
+  method <span class="code">namespace()</span> - returns a single Namespace instance that represents the Namespace of that XML node.<br>
+method <span class="code">namespaceDeclarations() </span>- returns a list of all the namespaces defined within the XML element - the default namespace (if exists) and all namespaces with their defined prefix</p>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="scenes"></a>Scenes --------------------</p>
+<p>In FlashCS3 press SHIFT-F2 to open the &quot;scenes&quot; window where you can switchadd new scenes, make duplicate scenes, rename a scene (double-click), change order of scenes. Note: frames are numbered consecutively through scenes. For example, if a document contains two scenes with ten frames each, the frames in Scene 2 are numbered 11&ndash;20.</p>
+<p>In actionscript 3.0 we have array &quot;scenes&quot; and assoc. array &quot;labels&quot;:</p>
+<p><span class="code">trace(scenes[0].name);<br>
+trace(scenes[0].numFrames);<br>
+trace(scenes[0].labels[0].name);<br>
+trace(scenes[0].labels[0].frame);<br>
+trace(&quot;The main movie has &quot; + scenes.length + &quot; scenes.&quot;);<br>
+trace(&quot;The current scene is '&quot; + currentScene.name + &quot;'.&quot;);<br>
+trace(&quot;It has &quot; + currentScene.numFrames + &quot; frame(s),&quot;);<br>
+trace(&quot;  and &quot; + currentScene.labels.length + &quot; label(s). &quot;);<br>
+trace(&quot;The second scene's first label is '&quot; + scenes[1].labels[0].name + &quot;',&quot;);<br>
+trace(&quot;  which is in frame &quot; + scenes[1].labels[0].frame + &quot;.&quot;);<br>
+trace(&quot;Movie clip 'mc' has &quot; + mc.currentLabels.length + &quot; labels.&quot;);<br>
+trace(&quot;Its last label is '&quot; + mc.currentLabels.pop().name + &quot;'.&quot;);<br>
+trace(isFrameLabel(&quot;mylabel&quot;, mc)); </span><span class="comment">// check if a frame label exists</span><br>
+</p>
+<p class="sectionheader"><a name="embed_swf_info_html"></a>Embedding swf into html --------------------</p>
+<p>Minimum minimum code:</p>
+<p class="code">&lt;object width=&quot;550&quot; height=&quot;400&quot;&gt;<br>
+  &lt;param name=&quot;movie&quot; value=&quot;somefilename.swf&quot;&gt;<br>
+  &lt;embed src=&quot;somefilename.swf&quot; width=&quot;550&quot; height=&quot;400&quot;&gt;<br>
+  &lt;/embed&gt;<br>
+  &lt;/object&gt;</p>
+<p>Things to add:</p>
+<ul>
+  <li>classid  attribute to the &lt;object&gt; tag - to tell  Internet Explorer to load the ActiveX plug-in if it is not installed</li>
+  <li>    pluginspage  attribute to the &lt;embed&gt; tag - to display a link  to the Shockwave download page if Netscape does not have it.</li>
+  <li>etc.</li>
+</ul>
+<p>Better way:</p>
+<ul>
+  <li>create a simple test.fla project in FLASH CS3</li>
+  <li><span class="style1">File &gt; Publish Settings</span> - to choose from many available settings.</li>
+  <li><span class="style1">File &gt; Piblish (SHIFT-F12)</span> - to create 3 files: <span class="code">test.html, test.swf, AC_RunActiveContent.js</span></li>
+  <li>Copy/paste corresponding pieces of html/javascript into your own html page. </li>
+</ul>
+<p>See also (google for how to embed swf into html):</p>
+<ul>
+  <li><a href="http://www.alistapart.com/articles/flashsatay/">http://www.alistapart.com/articles/flashsatay/</a></li>
+  <li><a href="http://animation.about.com/od/flashanimationtutorials/qt/embedswfwebpage.htm">http://animation.about.com/od/flashanimationtutorials/qt/embedswfwebpage.htm</a></li>
+  <li><a href="http://www.tizag.com/flashTutorial/flashhtmlcode.php">http://www.tizag.com/flashTutorial/flashhtmlcode.php</a></li>
+</ul>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="mxmlc"></a>mxmlc compiler --------------------</p>
+<p>When working on a big project with a lot of people it is getting inconvenient to use a .fla file as the main project. Instead developers prefer to use .as or .mxml files - and compile projects using batch files and free mxmlc compiler which comes with the free Flex SDK. You don't have to buy expensive IDE - you can use any text editor you like, - or some free IDE, for example - <a href="http://www.flashdevelop.org/community/">http://www.flashdevelop.org/community/</a> .</p>
+<p>The compile command may look something like this:</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td>&quot;c:\path\to\flexSDK\bin\mxmlc.exe&quot;  
+      -load-config+=C:\projects\myproject\src\obj\MyOutConfig.xml <br>
+      -debug=true 
+      -benchmark=false 
+      -o C:\path\to\output\myfile.swf</td>
+  </tr>
+</table>
+<p>Here is a great tutorial on how to compile from command line:<br>
+  <a href="http://www.senocular.com/flash/tutorials/as3withmxmlc/">http://www.senocular.com/flash/tutorials/as3withmxmlc/</a></p>
+<p>And here is an  example for Linux:<br>
+  <a href="http://asantoso.wordpress.com/2008/05/18/flex-3-sdk-command-line-development-with-example-on-linux/">http://asantoso.wordpress.com/2008/05/18/flex-3-sdk-command-line-development-with-example-on-linux/</a></p>
+<p>Here is how to compile for Adobe AIR: <br>
+  <a href="http://help.adobe.com/en_US/AIR/1.1/devappsflex/WS5b3ccc516d4fbf351e63e3d118666ade46-7fa1.html">http://help.adobe.com/en_US/AIR/1.1/devappsflex/WS5b3ccc516d4fbf351e63e3d118666ade46-7fa1.html</a></p>
+<p><br>
+</p>
+<p class="sectionheader"><a name="classpath"></a>Classpath ------------------------------</p>
+<p>Classpath</p>
+<p>Flash searches for libraries under directories listed in classpath. You can edit this list from your development tool, for example:</p>
+<ul>
+  <li> Flash CS3 - goto  File &gt; Publish Settings,  click Settings</li>
+  <li>FlashDevelop - goto Project &gt; Properties</li>
+  <li>etc.</li>
+</ul>
+<p>If you use a stand-alone compiler, you can provide (class)path information in the command line using options:</p>
+<ul>
+  <li><span class="style1">-sp </span>( -compiler.source-path [path-element] [...]) - 
+    list of paths that form the roots of ActionScript class (repeatable)</li>
+  <li><span class="style1">-external-library-path</span> (-compiler.external-library-path [path-element] [...] )  - 
+    list of SWC files or directories to compile against but to omit from linking (repeatable)</li>
+  <li><span class="style1">-l</span> ( -compiler.library-path [path-element] [...]) - 
+    list of SWC files or directories that contain SWC files (repeatable)</li>
+  <li><span class="style1">-rslp</span> (-runtime-shared-library-path [path-element] [rsl-url] [policy-file-url] [rsl-url] [policy-file-url]) - 
+    (repeatable)<br>
+  </li>
+  <li><span class="style1">-static-rsls</span> (-static-link-runtime-shared-libraries) - 
+    statically link the libraries specified by the<br>
+    -runtime-shared-libraries-path option.</li>
+</ul>
+<p>You can add options into the main <span class="style1">flex-config.xml</span> file in the frameworks subdirectory. <br>
+Or you can create your own config file - and load it using option <span class="style1">-load-config</span> <br>
+Or you can create your own  custom batch file,  for example:</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>REM compile.bat<br>
+      @ECHO off<br>
+      SET mxmlcPath=&quot;C:\flex_sdk_3\bin\mxmlc.exe&quot;<br>
+      SET opts=-benchmark=true -creator=&quot;YourName&quot;<br>
+      IF EXIST &quot;%~dp0%~n1.swf&quot; (DEL &quot;%~dp1%~n1.swf&quot;)<br>
+      ECHO on<br>
+      %mxmlcPath% %opts% -file-specs %1<br>
+      @ECHO off<br>
+      IF EXIST &quot;%~dp0%~n1.swf&quot; (CALL &quot;%~dp1%~n1.swf&quot;) ELSE (PAUSE)<br>
+    </p></td>
+  </tr>
+</table>
+<p>Note about batch-syntax macros:</p>
+<p>&quot;%~dp0&quot; - the path to the directory containing the batch file. <br>
+  &quot;%~n1&quot;	- the  filename without the extension from the first parameter (%1).</p>
+<p>Note: you can invoke compilation by dragging-dropping the .as file onto the .bat file<br>
+  Or you can run from the prompt: compile.bat HelloWorld.as<br>
+Once the .swf file is created - you can invoke it by double-clicking on it, or by invoking it from the prompt: HelloWorld.swf.</p>
+<p>Avery good tutorial is here:<a href="http://www.senocular.com/flash/tutorials/as3withmxmlc/">http://www.senocular.com/flash/tutorials/as3withmxmlc/</a><br>
+</p>
+<p>To get command-line options (on DOS prompt) run this command: <span class="style1">mxmlc.exe -help list advanced options</span></p>
+<p>On unix when you calling the mxmlc executable - it is actually a script which invokes java - something like this:</p>
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>java -jar &quot;/path/to/flex/lib/mxmlc.jar&quot; -flexlib &quot;/path/to/flex/frameworks/&quot; MyApp.as</p></td>
+  </tr>
+</table>
+<p>To further simplify your life you can write  a simple shell script - like described here:<br>
+  <a href="http://www.mikechambers.com/blog/2005/12/22/compiling-actionscript-3-and-mxml-on-mac-and-linux/">http://www.mikechambers.com/blog/2005/12/22/compiling-actionscript-3-and-mxml-on-mac-and-linux/</a></p>
+<p class="sectionheader"><a name="convert_mxml_to_as"></a>converting mxml to as: --------------------</p>
+<p>It is inconvenient to write MXML files by hand - as it is inconvenient to write HTML by hand. But you don't have to, because there are WYSIWYG tools which will generate HTML or MXML for you - like Dreamweaver for HTML, or Flex Builder's design mode for MXML. </p>
+<p>You can completely exclude  MXML   and write everything in .as files. See discussion here: <a href="http://www.kirupa.com/forum/showthread.php?t=269107">http://www.kirupa.com/forum/showthread.php?t=269107</a> . </p>
+<p>Reusable pieces of code can be precompiled as SWF or SWC files. </p>
+<p>When you compile mxml application, mxmlc compiler first converts it into actionscript source - and then compiles. To see the intermediary ActionScript files that Flex generates, add the <span class="style1">-keep-generated-actionscript </span>option to your mxmlc command. But this process creates too many files - the result  is far from optimal. For example, if you create a simple hello1.mxml application like this:</p>
+<pre class="code">&lt;?xml version=&quot;1.0&quot;?&gt;
+   &lt;Application xmlns=&quot;http://www.adobe.com/2006/mxml&quot;&gt;
+ &lt;Label text=&quot;Hello, world!&quot; /&gt;
+ &lt;/Application&gt;</pre>
+<p>and compile it like this:</p>
+<pre class="code">C:\flex_sdk_3\bin\mxmlc.exe -keep-generated-actionscript hello1.mxml</pre>
+<p> then a subdirectory called &quot;generated&quot; will be created with  38 actionscript files in it. And the SWF file will have size 153 KBytes</p>
+<p>If you compile the equivalent actionscript:</p>
+<pre class="code">package {
+ import flash.display.Sprite;
+ import flash.text.TextField;
+ 
+ public class HelloWorld extends Sprite {
+ 
+   public function HelloWorld() {
+     var display_txt:TextField = new TextField();
+     display_txt.text = &quot;Hello World!&quot;;
+     addChild(display_txt);
+   } //func
+ }  // class
+} // package</pre>
+<p>then  &quot;generated/*.as&quot; files are NOT created, and the size of the SWF file is only 627 bytes (yes, less than 1 KByte, i.e 200 times smaller than when using mxml source).</p>
+<p>Note: if you want to convert manually:</p>
+<ul>
+  <li>convert each tag as a variable</li>
+  <li>convert attributes as initialization values in the constructor</li>
+  <li> override createChildren and add all 'Component' tags inside that</li>
+  <li> override measure to set up the size of children</li>
+  <li>etc. (Meta Tag.. Binding ...) <br>
+  </li>
+</ul>
+<p>Having everything in &quot;as&quot; files is attractive (and you can make resulting swf files much smaller). But on the other hand, it is relatively easy to maintain mxml files in Adobe Flex Builder because you have the convenience of using GUI WYSIWYG editor. I guess you can use either approach depending on the task.</p>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="flash_games"></a>Flash Games --------------------</p>
+<ul>
+  <li><a href="http://www.miniclip.com/games/en/"> http://www.miniclip.com</a> (good example - 
+  <a href="http://www.miniclip.com/games/sewer-run/en/">http://www.miniclip.com/games/sewer-run/en/</a> )</li>
+  <li>    <a href="http://www.xtremetop100.com/">http://www.xtremetop100.com</a></li>
+  <li>    <a href="http://www.addictinggames.com/">http://www.addictinggames.com</a></li>
+  <li>    <a href="http://www.ebizmba.com/articles/video-games.html">http://www.ebizmba.com/articles/video-games.html</a> </li>
+  <li>    <a href="http://www.gamezarena.com/gaming_websites.php">http://www.gamezarena.com/gaming_websites.php</a> </li>
+  <li>    <a href="http://www.flashgames247.com/">http://www.flashgames247.com</a></li>
+  <li>    <a href="http://www.flash-game.net/">http://www.flash-game.net</a></li>
+  <li>    <a href="http://www.funflashgames.com/">http://www.funflashgames.com</a></li>
+  <li>    <a href="http://sess.net/">http://sess.net</a></li>
+  <li>    <a href="http://www.onlineflashgames.org/">http://www.onlineflashgames.org</a></li>
+  <li><a href="http://armorgames.com/">http://armorgames.com</a></li>
+  <li>    <a href="http://www.newgrounds.com/">http://www.newgrounds.com</a></li>
+  <li><a href="http://crazymonkeygames.com/">    http://crazymonkeygames.com</a></li>
+  <li>    <a href="http://www.bubblebox.com/">http://www.bubblebox.com</a></li>
+  <li><a href="http://www.freeonlinegames.com/">http://www.freeonlinegames.com</a><br>
+        </li>
+</ul>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="miscellaneous" id="miscellaneous"></a> Miscellaneous ------------------------------</p>
+<p>Cool widgets, sound spectrum, etc.</p>
+<ul>
+  <li><a href="http://www.gotoandlearn.com/">http://www.gotoandlearn.com/</a> - many great examples with code</li>
+  <li><a href="http://www.trickundtronic.at/tnt.php?page=experiments.php&language=eng">http://www.trickundtronic.at/tnt.php?page=experiments.php&amp;language=eng</a> - several cool widgets</li>
+  <li><a href="http://www.franto.com/collected-links-to-actionscript-30-examples?cp=1">http://www.franto.com/collected-links-to-actionscript-30-examples?cp=1</a> - good links collection</li>
+  <li><a href="http://www.franto.com/new-flash-collection-flash-player-10">http://www.franto.com/new-flash-collection-flash-player-10</a> - good links collection</li>
+  <li><a href="http://blog.richnetapps.com/index.php/zx_spectrum_annivers">http://blog.richnetapps.com/index.php/zx_spectrum_annivers</a> - AS3 emulator of an old computer</li>
+  <li><a href="http://www.cartoonsmart.com/actionscript3_index.html">http://www.cartoonsmart.com/actionscript3_index.html</a> - cool widgets (not free)</li>
+  <li><a href="http://www.actionscript.org/showMovie.php?id=579">http://www.actionscript.org/showMovie.php?id=579</a> - audio player - live real-time spectrum</li>
+  <li><a href="http://spbarber.com/blog/pop3-socket-example-using-flex-2/">http://spbarber.com/blog/pop3-socket-example-using-flex-2/</a> - POP3 Socket Example using Flex 2</li>
+  <li><a href="http://www.todaycreate.com/wp-content/creations/2007/02/BasicAudioSpectrumAnalyzer/">http://www.todaycreate.com/wp-content/creations/2007/02/BasicAudioSpectrumAnalyzer/</a> -  live real-time spectrum</li>
+  <li><a href="http://www.todaycreate.com/2007/02/18/actionscript-3-spectrum-analyzer">http://www.todaycreate.com/2007/02/18/actionscript-3-spectrum-analyzer</a> -  live real-time spectrum</li>
+  <li><a href="http://www.boostworthy.com/blog/?p=200">http://www.boostworthy.com/blog/?p=200</a> - drawing color spectrums</li>
+  <li><a href="http://www.trickundtronic.at/swf/colorbar/">http://www.trickundtronic.at/swf/colorbar/</a> - Color Picker Class, AS3</li>
+  <li><a href="http://www.thetechlabs.com/sound/create-a-as3-flash-9-mp3-player-with-spectrum-display/">http://www.thetechlabs.com/sound/create-a-as3-flash-9-mp3-player-with-spectrum-display/</a> - Create a AS3 / Flash 9 MP3 Player with spectrum display</li>
+  <li><a href="http://www.thetechlabs.com/3d/create-a-as3-mp3-player-with-papervision3d-spectrum-display/">http://www.thetechlabs.com/3d/create-a-as3-mp3-player-with-papervision3d-spectrum-display/</a> - Create a AS3 MP3 Player with papervision3d spectrum display</li>
+  <li><a href="http://www.flashcomponents.net/component/spectrum_spectral_sound_visualizing_effect_v1.0.html">http://www.flashcomponents.net/component/spectrum_spectral_sound_visualizing_effect_v1.0.html</a> - </li>
+  <li><a href="http://www.flashkit.com/search.php?term=rss">http://www.flashkit.com/search.php?term=rss</a> - Flash Kit, developer resources, Tutorials, SWF, FLA, images, clipart, Sounds, WAVS, Animations, Help and Support</li>
+  <li><a href="http://blog.joa-ebert.com/2006/02/15/flirc-next-version-with-flex2-beta-1/">http://blog.joa-ebert.com/2006/02/15/flirc-next-version-with-flex2-beta-1/</a> - IRC - chat in AS3</li>
+  <li><a href="http://www.anttikupila.com/flash/flash-spectrum-analyzer/">http://www.anttikupila.com/flash/flash-spectrum-analyzer/</a> - </li>
+  <li><a href="http://www.anttikupila.com/flash/revolt-actionscript-3-based-spectrum-analyzer-source-released/">http://www.anttikupila.com/flash/revolt-actionscript-3-based-spectrum-analyzer-source-released/</a> - </li>
+  <li><a href="http://manewc.com/2008/04/18/sound-spectrum-analyzer-part-ii/">http://manewc.com/2008/04/18/sound-spectrum-analyzer-part-ii/</a> - </li>
+  <li><a href="http://www.neave.com/webcam/">http://www.neave.com/webcam/</a> ( <a href="http://code.google.com/p/neave/downloads/detail?name=neave_webcam.zip">http://code.google.com/p/neave/downloads/detail?name=neave_webcam.zip</a> ) - webcam - video conferencing in flash</li>
+</ul>
+<p>&nbsp;</p>
+<p>--------------------</p>
+<p>--------------------</p>
+<p>--------------------</p>
+<p>--------------------</p>
+<p></p>
+</body>
+</html>

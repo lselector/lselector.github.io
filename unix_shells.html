@@ -1,0 +1,983 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>unix_shells</title>
+<!--
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Unix Shells</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=6 >
+<tr>
+<td><b><font color="#CC0000">Shell Scripting</font></b></td>
+
+<td><b><font color="#CC0000">Other pages</font></b></td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">• <a href="#intro">intro</a></font>
+<br><font color="#6699CC">• <a href="#setting_environment">setting environment</a></font>
+<br>&nbsp; (&nbsp; - <a href="#ksh">ksh .profile</a>, - <a href="#tcsh_dot_cshrc">tcsh&nbsp;
+.cshrc</a>&nbsp;&nbsp; <a href="#tcsh_dot_login">.login</a>&nbsp; <a href="#tcsh_dot_aliases">.aliases</a>,
+- <a href="#bash">bash</a> )
+<br><font color="#6699CC">• <a href="#wrappers">wrappers</a></font>
+<br>&nbsp; ( - <a href="#wrapper1">wrapper1</a>, - <a href="#datbase_1">db1</a>,
+<a href="#database_2">db2</a>,
+<a href="#database_3">db3</a>,
+<a href="#database_4">db4</a>)
+<br>
+      <font color="#6699CC">• <a href="#ftp_1">ftp</a> • <a href="#telnet">telnet</a><br>
+      • <a href="#bash_event_designators">bash_event_designators</a> </font></td>
+
+<td ALIGN=LEFT VALIGN=TOP><font color="#6699CC">• <b><a href="unix_os.html">unix</a></b></font>
+<br><font color="#6699CC">• <a href="unix_tcsh.html">tcsh</a></font>
+<br><font color="#6699CC">• <a href="unix_sh.html">Bourne sh_short</a></font>
+<br><font color="#6699CC">• <a href="unix_sh_tut.html">Bourne sh_tutorial</a></font></td>
+</tr>
+</table>
+
+<p><a NAME="intro"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>intro</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>A shell is a command interpreter. You type commands on the prompt. Shell
+interprets them and passes further for the execution. Over the years unix
+developers created many shells. Here are manpages for 5 most important
+ones:
+<br><font color="#6699CC">• </font><a href="http://www.engin.umich.edu/htbin/mangate?manpage=sh">www.engin.umich.edu/htbin/mangate?manpage=sh</a>
+- sh (bourne shell) - first, simpliest.
+<br><font color="#6699CC">• </font><a href="http://www.engin.umich.edu/htbin/mangate?manpage=csh">www.engin.umich.edu/htbin/mangate?manpage=csh</a>
+- csh - from Berkley. Use tcsh instead of it.
+<br><font color="#6699CC">• </font><a href="http://www.engin.umich.edu/htbin/mangate?manpage=ksh">www.engin.umich.edu/htbin/mangate?manpage=ksh</a>
+- ksh (korn shell) - common, many programming features
+<br><font color="#6699CC">• </font><a href="http://www.engin.umich.edu/htbin/mangate?manpage=tcsh">www.engin.umich.edu/htbin/mangate?manpage=tcsh</a>
+- tcsh - very good convenient shell (enchanced csh)
+<br><font color="#6699CC">• </font><a href="http://www.engin.umich.edu/htbin/mangate?manpage=bash">www.engin.umich.edu/htbin/mangate?manpage=bash</a>
+- bash (born again shell) - main shell in the Linux world
+<p><font color="#6699CC">• </font><a href="http://www.whereisit.com/shellscript/index2.html">www.whereisit.com/shellscript/index2.html</a>
+- shellscript.com - some good links
+<p>If you have any experience at all with Unix - you worked with one of
+those. The first one (Bourne shell) is very common - you can use it to
+write scripts. The C-shell (csh) is common, but should be avoided. You
+better use tcsh for command line editing, and bourne shell for installation
+scripts (read <a href="http://www.tac.nyc.ny.us/mirrors/tcsh-book/csh-whynot">Tom
+Christiansen's article</a> why csh (and tcsh) should not be used for writing
+shell scripts).
+<p>The last 3 scripts (ksh,tcsh, bash) are much more convenient to work
+with and you can use one of them as your command-line shell.
+<p>To find which shell you are running login to the prompt and use <b><u><font color="#CC0000">ps</font></u></b>
+command with no options.
+<br>Often $SHELL variable will show the current shell too.
+<br>Also in the /etc/passwd file you can see what is your default shell.
+<br>Here is what you can see on the prompt (your login name is "mylogin"):
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td>> ps
+<br>&nbsp; PID&nbsp; TT&nbsp; STAT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TIME COMMAND
+<br>&nbsp;6111&nbsp; p0&nbsp; Ss&nbsp;&nbsp;&nbsp;&nbsp; 0:00.06 -bash
+(bash)
+<br>&nbsp;6124&nbsp; p0&nbsp; R+&nbsp;&nbsp;&nbsp;&nbsp; 0:00.01 ps
+<br>> echo $SHELL
+<br>/bin/bash
+<br>> which bash
+<br>/usr/local/bin/bash
+<br>> which tcsh
+<br>/bin/tcsh
+<br>> which ksh
+<br>/bin/ksh
+<br>> which sh
+<br>/bin/sh
+<br>> which csh
+<br>/bin/csh
+<br>> which zsh
+<br>/bin/zsh
+<br>> whoami
+<br>mylogin
+<br>> cat /etc/passwd | grep mylogin
+<br>mylogin:*:1487:102:,,,,:/home/mylogin:/bin/bash
+<br>></td>
+</tr>
+</table>
+
+<p><font color="#6699CC">• </font><a href="http://www.opennc.org/onlinepubs/7908799/xcu/sh.html">www.opennc.org/onlinepubs/7908799/xcu/sh.html</a>
+- using sh (includes vi-mode command line editing).
+<br><font color="#6699CC">• </font><a href="http://codedata.box.sk/ghostrider/bash.tutor">http://codedata.box.sk/ghostrider/bash.tutor</a>
+- bash tutorial
+<br><font color="#6699CC">• </font><a href="http://uracil.cmc.uab.edu/MolModLab/tutor/irix/basecmd.shtml">http://uracil.cmc.uab.edu/MolModLab/tutor/irix/basecmd.shtml</a>
+- intro into unix, includes shell scripting
+<p><b><u>2 ways to run shel scripts:</u></b>
+<br>&nbsp; 1.start a new shell (from command line or from a "shabang" line
+(first line of your script)).
+<br>&nbsp; 2.source the file (using <b><font color="#CC0000">source</font></b>
+or <b><font color="#CC0000">'.'</font></b> (dot command)) - this way you
+can change the enviromental variables in the currently running shell.
+<p><b><u>To force shell to echo commands:</u></b>
+<br>&nbsp; use -v option (works with ksh, csh, tcsh &amp; bash), for example:
+<br>&nbsp;&nbsp;&nbsp;<font color="#3333FF"> tcsh -v myscript.sh</font>
+<p><b><u>Using shell scripts:</u></b>
+<br>I mostly use Perl instead of shell scripting. But you still need to
+know at least a little bit of shell scripting for:
+<br>&nbsp; - writing very short scripts or installations scripts (see examples
+below).
+<br>&nbsp; - setting environment (in .profile or .cshrc file)
+<br>&nbsp; - writing thin wrappers (see examples below)
+<p><b><u>Again, let me repeat main recommendations:</u></b>
+<br>1. use tcsh, ksh or bash for your command-line editing.
+<br>2. use perl for scripting
+<br>3. If you need to write a shell script (for installation, for example)
+- use bourne shell (sh) and NOT csh.
+<br><a NAME="setting_environment"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>setting environment</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<a NAME="ksh"></a>
+<p><font color="#CC0000"><b><u>ksh:</u></b>&nbsp;&nbsp; .profile</font>
+<p><b><font color="#CC0000">.profile</font></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 WIDTH="100%" BGCOLOR="#99FF99" >
+<tr>
+<td># ------------------------------------------
+<br>#&nbsp; .profile for ksh on Solaris
+<br># ------------------------------------------
+<p>if [ -f /somedir/setEnv.sh ]; then
+<br>&nbsp;&nbsp;&nbsp; . /somedir/setEnv.sh
+<br>fi
+<p>set -o vi
+<br>EDITOR=vi; export EDITOR
+<br>VISUAL=vi; export VISUAL
+<p>ulimit -c 0&nbsp;&nbsp;&nbsp;&nbsp; # LIMIT CORE DUMP SIZE
+<p>rev=`uname -r`
+<br>case $rev in
+<br>5.*)&nbsp; echo Solaris Profile
+<br>&nbsp;PATH=$PATH:/usr/bin:/usr/sbin:/opt/bin:/opt/systools:/opt/sybase/bin:/usr/ucb:/usr/ccs/bin:/usr/java/bin:.
+<br>&nbsp;export PATH
+<br>&nbsp;LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib:/usr/java/lib:.:/opt/sybase/openclient/11.11/lib:/opt/sybase/lib
+<br>&nbsp;export LD_LIBRARY_PATH
+<br>&nbsp;CLASSPATH=$CLASSPATH:/opt/jconnect-5.2/classes/jconn2.jar:/usr/java/lib:.:/opt/devshare/htdocs/classes:/somedir/selector.jar
+<br>&nbsp;export CLASSPATH
+<br>&nbsp;;;
+<br>4.*) echo SunOS Profile
+<br>&nbsp;PATH=$PATH:/bin:/usr/bin:/opt/bin:/etc:/usr/ucb:/usr/bin/X11:/usr/lib:/usr/etc:/usr/man:$HOME:/opt/systools:/usr/openwin/bin
+<br>&nbsp;export PATH
+<br>&nbsp;;;
+<br>esac
+<p># ------------------------------------------
+<br>#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; set up ksh
+<br># ------------------------------------------
+<br>TERM=xterm;&nbsp; export TERM
+<br>set -o emacs
+<br>umask 002
+<p>PS1=`/usr/ucb/whoami`:'$PWD:'" "
+<br>PS2=">"
+<p>HISTSIZE=1024
+<br>HISTFILE=$HOME/.sh_history
+<p>stty erase ^H
+<p># ------------------------------------------
+<br>#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; set up MAN path
+<br># ------------------------------------------
+<br>MANPATH=$MANPATH:/usr/local/man:/usr/dt/man:/usr/openwin/man
+<br>MANPATH=/usr/share/man:$MANPATH:/opt/perl/perl5.003/man
+<br>export MANPATH
+<br>##### Check printer ###
+<br>if [ -f $HOME/.printer ] ; then
+<br>&nbsp;PRINTER=`cat $HOME/.printer` ; export PRINTER
+<br>fi
+<p># ------------------------------------------
+<br>if [ -f $HOME/.profile.local ]; then
+<br>&nbsp;. $HOME/.profile.local
+<br>fi
+<p># ------------------------------------------
+<br>LD_LIBRARY_PATH=/opt/sybase/lib:/usr/lib:/usr/local/lib:/usr/lib/X11:/usr/local/openwin/lib:/wrk/staging/FrameWork/rogue/lib
+<br>export LD_LIBRARY_PATH
+<p>export SYBASE=/opt/sybase
+<p>PATH=$PATH:$HOME/bin:$HOME/util
+<br>export PATH
+<p>CVSEDITOR=vi; export CVSEDITOR
+<br>CVSROOT=/home/proj/cvs_repository; export CVSROOT
+<p>alias l='ls -alF'
+<br>alias ii='isql -S PRODSERV -U mylogname -P mypasswd'
+<br>alias ss='sqsh -S PRODSERV -U mylogname -P mypasswd'&nbsp;
+<br>alias cgi="cd ~/proj/www/cgi-bin"
+<br>alias myupdate="cvs update -d -P"</td>
+</tr>
+</table>
+
+<p><b><u>Settings for your xterm:</u></b>
+<br><font color="#000000"><font size=-1>/usr/local/bin/dtterm -d 10.3.3.101:0.0
+-fg black -bg white &amp;</font></font>
+<br><font color="#000000"><font size=-1>xterm -d daddypc:0.0 -fg green
+-bg black &amp;</font></font>
+<br><font color="#000000"><font size=-1>xemacs -d daddypc:0.0 &amp;</font></font>
+<br><font size=-1>alias term='xterm -d daddypc:0.0 -fn -*-Fixed-Medium-R-*-*-*-120-75-75-*-*-ISO8859-1
+-bg DarkCyan -fg White -geom 90x30 -cr red &amp;'</font>
+<br><font size=-1>alias term0='xterm -d daddypc:0.0 -fg black -bg white
+&amp;'</font>
+<br><font size=-1>alias term1='xterm -d daddypc:0.0 -fn -*-Fixed-Medium-R-*-*-*-120-75-75-*-*-ISO8859-1
+-bg black -fg LemonChiffon -geom 90x30 -cr red'</font>
+<br><font size=-1>alias term2='xterm -d daddypc:0.0 -fn -*-Fixed-Medium-R-*-*-*-140-75-75-*-*-ISO8859-1
+-bg black -fg LemonChiffon -geom 100x40 -cr red'</font>
+<br><font color="#000000"><font size=-1># export DISPLAY=daddypc:0.0</font></font>
+<br><font color="#000000"><font size=-1>/usr/openwin/bin/<b>xfontsel -d
+daddypc:0.0 &amp;</b></font></font>
+<br><font color="#000000"><font size=-1>/usr/openwin/bin/xlsfonts</font></font>
+<br><font size=-1>CTRL-(right-mouse-button)</font>
+<br><a NAME="tcsh_dot_cshrc"></a>
+<br><font color="#CC0000"><b><u>tcsh:</u></b>&nbsp;&nbsp; .cshrc&nbsp;
+.login&nbsp;&nbsp; .aliases</font>
+<p><b><font color="#CC0000">.cshrc</font></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td># ------------------------------------------
+<br># .cshrc file for tcsh
+<br># ------------------------------------------
+<br>if ( $?prompt ) then
+<br>&nbsp;&nbsp;&nbsp; echo "Running cshrc..."
+<br>endif
+<p>if ($?DEBUGCSHRC) set echo
+<p>umask 2
+<p># figure out what os we're in
+<br>set os=`/usr/bin/uname -r -s | /usr/bin/sed -e 's/ \([0-9]\).*$/\1/'`
+<br>switch ($os)
+<br>&nbsp;case "SunOS4":
+<br>&nbsp; setenv VERSION sunos
+<br>&nbsp; breaksw
+<br>&nbsp;case "SunOS5":
+<br>&nbsp; setenv VERSION sparc
+<br>&nbsp; breaksw
+<br>&nbsp;default:
+<br>endsw
+<p>if ( $?prompt ) then
+<br>&nbsp;&nbsp;&nbsp; test -f ~hallro/.aliases &amp;&amp; source ~/.aliases
+<br>&nbsp;&nbsp;&nbsp; set notify
+<br>&nbsp;&nbsp;&nbsp; set filec
+<br>&nbsp;&nbsp;&nbsp; set nobeep
+<br>&nbsp;&nbsp;&nbsp; <b><font color="#CC0000">set history</font></b>=100
+<br>endif
+<p>if ($?HAVEPATH == 0) then
+<br>&nbsp;&nbsp; if ($?OPENWINHOME == 0) setenv OPENWINHOME /usr/local/openwin
+<br>&nbsp;&nbsp; set path=(/home/hallro/usr/bin \
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/home/oedev/usr/bin \
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/home/slsdev/bin \
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/opt/perl-5.004/bin \
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/opt/workshop/SUNWspro/bin \
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$OPENWINHOME/bin \
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/bin \
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/usr/bin \
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/usr/ucb \
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/usr/sbin \
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/opt/bin \
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/opt/systools \
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/opt/sybase/bin \
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/usr/ucb \
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/usr/ccs/bin \
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/usr/java/bin \
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/opt/java/jdk1.2.2/bin \
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+. \
+<br>&nbsp;&nbsp; )
+<p>&nbsp;&nbsp; if (-d /home/nysid10/sqllib/) then
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; source /home/nysid10/sqllib/db2cshrc
+<br>&nbsp;&nbsp; endif
+<p>&nbsp; setenv HOSTNAME `/bin/hostname`
+<br>&nbsp; setenv HAVEPATH
+<br>endif
+<p>if ($?SYBASE == 0) then
+<br>&nbsp;&nbsp;&nbsp; if (-d /opt/sybase) then
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if ($?LD_LIBRARY_PATH == 0) then
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setenv
+LD_LIBRARY_PATH ""
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; endif
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setenv LD_LIBRARY_PATH $LD_LIBRARY_PATH\/opt/sybase/lib:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setenv LD_LIBRARY_PATH $LD_LIBRARY_PATH\/opt/sybase/openclient/11.11/lib
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setenv SYBASE /opt/sybase
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setenv PATH $PATH\/opt/systools:/opt/sybase/bin:
+<br>&nbsp;&nbsp;&nbsp; else if (-d /usr/local/sybase) then
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setenv SYBASE /usr/local/sybase
+<br>&nbsp;&nbsp;&nbsp; endif
+<br>endif
+<p>if ($?OPENWINHOME) then
+<br>&nbsp;&nbsp;&nbsp; if (-d /usr/local/openwin) then
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setenv OPENWINHOME /usr/local/openwin
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setenv LD_LIBRARY_PATH $LD_LIBRARY_PATH$OPENWINHOME/lib
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setenv PATH $PATH\/usr/openwin/bin:
+<br>&nbsp;&nbsp;&nbsp; endif
+<br>endif</td>
+</tr>
+</table>
+<a NAME="tcsh_dot_login"></a>
+<p><b><font color="#CC0000">.login</font></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td># ------------------------------------------
+<br># .login file for tcsh
+<br># ------------------------------------------
+<p>if ( $?prompt ) then
+<br>&nbsp;&nbsp;&nbsp; echo "Running login..."
+<br>endif
+<p>if ($?DISPLAY == 0) then
+<br>&nbsp;&nbsp;&nbsp; if ($?REMOTEHOST != 0) then
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setenv DISPLAY $REMOTEHOST":0.0"
+<br>&nbsp;&nbsp;&nbsp; endif
+<br>endif
+<p>if ($?MANPATH == 0) then
+<br>&nbsp;&nbsp;&nbsp; setenv MANPATH ""
+<br>endif
+<br>setenv MANPATH $MANPATH\/usr/local/man:/usr/openwin/man:/usr/man:/opt/man:
+<br>setenv MANPATH $MANPATH\/home/hallro/usr/man:
+<p>if ($?PRINTER) then
+<br>&nbsp;&nbsp;&nbsp; setenv PRINTER pusg25a
+<br>endif
+<p>setenv EDITOR vi
+<br>setenv CVSROOT /home/mydev/cvs_repository
+<br>setenv CVSEDITOR vi</td>
+</tr>
+</table>
+<a NAME="tcsh_dot_aliases"></a>
+<p><b><font color="#CC0000">.aliases</font></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td># ------------------------------------------
+<br># .aliases file for tcsh
+<br># ------------------------------------------
+<br>if ( $?prompt ) then
+<br>&nbsp; echo "Running aliases..."
+<p>&nbsp; alias ls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "\ls -F"
+<br>&nbsp; alias l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "\ls -alF"
+<br>&nbsp; alias cls&nbsp;&nbsp;&nbsp;&nbsp; "\clear"
+<br>&nbsp; alias cl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "\clear; ls"
+<br>&nbsp; alias h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; history
+<br>&nbsp; alias DISPLAY "setenv DISPLAY fcfrnb419.jany.gs.com:0.0"
+<br>&nbsp; alias hw&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "\hostname; \whoami"
+<p>&nbsp; # ---- Find Magic :-)
+<p>&nbsp; alias fpcgi 'find . -name "*.cgi" -print -exec grep "\!^" {}
+\;'
+<br>&nbsp; alias fcgi&nbsp; 'find . -name "*.cgi" -exec grep "\!^" {} \;'
+<br>&nbsp; alias fppl&nbsp; 'find . -name "*.pl" -print -exec grep "\!^"
+{} \;'
+<br>&nbsp; alias fpl&nbsp;&nbsp; 'find . -name "*.pl" -exec grep "\!^"
+{} \;'
+<br>&nbsp; alias fppm&nbsp; 'find . -name "*.pm" -print -exec grep "\!^"
+{} \;'
+<br>&nbsp; alias fpm&nbsp;&nbsp; 'find . -name "*.pm" -exec grep "\!^"
+{} \;'
+<p>&nbsp; # ---- Web development...
+<p>&nbsp; alias GET&nbsp;&nbsp;&nbsp; "setenv REQUEST_METHOD GET"
+<br>&nbsp; alias POST&nbsp;&nbsp; "setenv REQUEST_METHOD POST"
+<p>&nbsp; # ---- Project Specific
+<p>&nbsp; alias pf "cd ~someuser/somedir; pwd"
+<p>&nbsp; alias DEVSERV "echo 'DEVSERV as mylogname'; \
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+isql -S DEVSERV -U mylogname"
+<br>&nbsp; alias PRODSERV "echo 'PRODSERV as mylogname'; \
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+isql -S PRODSERV -U mylogname"
+<p>&nbsp; alias sybdev "echo 'DEVSERV as mylogname'; \
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+isql -S DEVSERV -U mylogname"
+<br>&nbsp; alias sybprd "echo 'PRODSERV as mylogname'; \
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+isql -S PRODSERV -U mylogname"
+<p>&nbsp; alias iifiam="isql -U mylogname -P mylogname -S SERV2"
+<p>&nbsp; alias cdcom "cd ~/dir/common; pwd"
+<br>&nbsp; alias cdpr "cd ~/dir/project/www/cgi-bin; pwd"
+<p>&nbsp; alias london "rlogin -l mylogin&nbsp; serv.domain.com"
+<p>&nbsp; # ---- Host specific
+<p>&nbsp; if (`hostname` == "host1.dom1.com") then&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alias&nbsp; wl&nbsp; "tail&nbsp; -f&nbsp;
+somepath/logs/errors"
+<br>&nbsp; endif
+<p>&nbsp; alias&nbsp;&nbsp; psgrep&nbsp; 'ps -auxgww | grep $1'
+<br>&nbsp; alias&nbsp;&nbsp; psapi&nbsp;&nbsp; 'ps -auxgww | grep api'
+<br>&nbsp; alias&nbsp;&nbsp; ldir&nbsp;&nbsp;&nbsp; 'ls -al | grep "^d"'
+<br>&nbsp; alias&nbsp;&nbsp; tm&nbsp;&nbsp;&nbsp;&nbsp; '(set d = `date`
+; echo $d[4])'
+<br>&nbsp; alias&nbsp;&nbsp; since&nbsp;&nbsp; 'set t = `who | grep $USER`
+; echo $t[5]; unset t'
+<br>&nbsp; alias&nbsp;&nbsp; fixt&nbsp;&nbsp;&nbsp; 'stty erase'&nbsp;
+<br>&nbsp; alias&nbsp;&nbsp; sett&nbsp;&nbsp;&nbsp; 'setenv TERM vt100'
+<br>&nbsp; alias&nbsp;&nbsp; l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ls -alF
+<br>&nbsp; alias&nbsp;&nbsp; em&nbsp; 'emacs -fg white -bg black -fn 6x13'
+<br>endif
+<p># setting nice prompt (see <a href="http://www.engin.umich.edu/caen/faqs/setprompt.html">www.engin.umich.edu/caen/faqs/setprompt.html</a>
+)
+<p>&nbsp;&nbsp; if( ${?prompt} ) then
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alias setprompt 'set prompt = `whoami`:"%/->
+"'
+<br>#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alias setprompt 'set prompt = `whoami`:"%~->
+"'
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alias cwdcmd 'setprompt'
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setprompt
+<br>&nbsp;&nbsp; endif
+<p># --------------------
+<br># and some more
+<br># --------------------
+<br>set addsuffix
+<br>set ampm
+<br><b><font color="#CC0000">set autolist=ambiguous</font></b>
+<br><b><font color="#CC0000">set autoexpand</font></b>
+<br>#set autologout=600
+<br><b><font color="#CC0000">unset autologout</font></b>
+<br>set cdpath=(~/user ~/user/procmon ~/user/src ~)
+<br>set complete = enhance
+<br>set symlinks=chase&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+# $cwd has real path (follows links)
+<br>#set correct=all
+<br>set correct=cmd
+<br>set echo_style=both&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+# an hpux thing to make -n opt work
+<br>set fignore = (\- .o CVS)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+# suffixes of files for tab to ignore
+<br>set filec
+<br>set history = 500&nbsp;
+<br>set hislit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#tcsh-show history as typed
+<br>set host = "`hostname`"; set host=$host:r; set host=$host:r
+<br>#set hostfull = (`nslookup $host | sed -n -e "/Name:/s/\(Name: \)\(.*\)/\2/p"
+`)
+<br>set listjobs = long&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#tcsh-list all jobs when suspending
+<br>#set mail=(10 /usr/mail/lane)
+<br>set nobeep
+<br>set nonomatch
+<br>set nostat = (~/xstuff)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#tcsh-dirs not to stat for completion
+<br>set notify
+<br>set printexitvalue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#tcsh-exit val for interactive prog
+<br>set prompt2
+<br>set prompt3="CORRECT> %R (y|n|e)?"
+<br>set rmstar
+<br>set savehist = 500</td>
+</tr>
+</table>
+<a NAME="bash"></a>
+<br><b><font color="#CC0000">bash&nbsp;&nbsp;&nbsp; .bashrc&nbsp;&nbsp;&nbsp;&nbsp;
+.bash_profile</font></b>
+<p><b><font color="#CC0000">.bashrc</font></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFFFCC" >
+<tr>
+<td># --------------------
+<br># .bashrc
+<br># --------------------
+<br>alias rm='rm -i'
+<br>alias cp='cp -i'
+<br>alias mv='mv -i'
+<p># ---- User specific aliases and functions
+<p># ---- Source global definitions
+<br>if [ -f /etc/bashrc ]; then
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; . /etc/bashrc
+<br>fi</td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">.bash_profile</font></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#FFFFCC" >
+<tr>
+<td># --------------------
+<br># .bash_profile
+<br># --------------------
+<p># ---- Get the aliases and functions
+<br>if [ -f ~/.bashrc ]; then
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; . ~/.bashrc
+<br>fi
+<p># ---- User specific environment and startup programs
+<br>umask 022
+<p>ORACLE_BASE=/usr/local/oracle/8i/u01/app/oracle
+<br>ORACLE_HOME=$ORACLE_BASE/product/8.1.6
+<br>ORACLE_SID=starter
+<p>BASH_ENV=$HOME/.bashrc
+<br>USERNAME=""
+<br>JAVA_HOME=/usr/local/java
+<br>JSDK_HOME=/usr/local/jsdk
+<br>CLASSPATH=.:$JAVA_HOME/lib/dt.jar
+<br>CLASSPATH=$CLASSPATH:$JSDK_HOME/servlet-2.0.jar
+<br>CLASSPATH=$CLASSPATH:/usr/local/java/lib/xalan.jar
+<br>CLASSPATH=$CLASSPATH:/usr/local/java/lib/xerces.jar
+<br>CLASSPATH=$CLASSPATH:/usr/local/oracle/8i/u01/app/oracle/product/8.1.6/jdbc/lib/classes111.zip
+<br>CLASSPATH=$CLASSPATH:/usr/local/oracle/8i/u01/app/oracle/product/8.1.6/jdbc/lib/nls_charset11.zip
+<p>PATH=.:$HOME/util:$PATH:$HOME/bin:$ORACLE_HOME/bin:$JAVA_HOME/bin
+<br>export USERNAME BASH_ENV PATH JAVA_HOME JSDK_HOME CLASSPATH ORACLE_BASE
+ORACLE_HOME ORACLE_SID</td>
+</tr>
+</table>
+<a NAME="wrappers"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>writing thin wrappers</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<a NAME="wrapper1"></a>
+<p>Example: a thin wrapper running a perl script (note how syntax is different
+in 2 shells):
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 COLS=2 WIDTH="100%" BGCOLOR="#CCFFFF" >
+<tr>
+<td><b><font color="#CC0000">C-shell</font></b></td>
+
+<td><b><font color="#CC0000">Bourne shell</font></b></td>
+</tr>
+
+<tr>
+<td ALIGN=LEFT VALIGN=TOP>#! /bin/csh
+<br>set mailTo='me@somedomain.com'
+<br>set bindir='/home/some_directory'
+<br>set log1file='/tmp/myfile.log'
+<br>rm -f $log1file
+<br>touch $log1file
+<br>echo "Start time:" >> $log1file
+<br>date >> $log1file
+<p>$bindir/some_script.pl >>&amp; $log1file
+<br>if ( "$status" != "0" ) then
+<br>&nbsp; echo "Error at:" >> $log1file
+<br>&nbsp; date >> $log1file
+<br>&nbsp; /opt/fax/bin/sendmime.pl --to=$mailTo&nbsp; \
+<br>&nbsp; --subject='myjob failed' --msg_file=$log1file
+<br>&nbsp; exit(1)
+<br>endif
+<p>echo "Successful end time:" >> $log1file
+<br>date >> $log1file
+<br>/opt/fax/bin/sendmime.pl --to=$mailTo \
+<br>--subject='myjob Successful' --msg_file=$log1file
+<br>exit(0)</td>
+
+<td BGCOLOR="#FFFFCC">#!/bin/sh
+<br>mailTo='Lev.Selector@gmail.com'
+<br>bindir='/home/selecl/tests'
+<br>log1file="/tmp/myfile.log"
+<br>rm -f $log1file
+<br>touch $log1file
+<br>echo "Start time:" >> $log1file
+<br>date >> $log1file
+<p>$bindir/some_script.pl&nbsp; 1>>$log1file 2>>$log1file
+<br>if [ $? -ne 0 ]; then
+<br>&nbsp;&nbsp; echo "Error at:" >> $log1file
+<br>&nbsp;&nbsp; date >> $log1file
+<br>&nbsp;&nbsp; /opt/fax/bin/sendmime.pl --to=$mailTo \
+<br>&nbsp;&nbsp; --subject='myjob failed' --msg_file=$log1file
+<br>&nbsp;&nbsp; exit 1
+<br>fi
+<p>echo "Successful end time:" >> $log1file
+<br>date >> $log1file
+<br>/opt/fax/bin/sendmime.pl --to=$mailTo \
+<br>--subject='myjob Successful' --msg_file=$log1file
+<br>exit 0</td>
+</tr>
+</table>
+<a NAME="datbase_1"></a>
+<p>Example: a simple shell script I use to install tables and stored procedures
+into Sybase database.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td>#! /bin/csh
+<br>set&nbsp; dbServer="-S MY_DB_SERVER -U someuser -P somepasswd"
+<br>isql $dbServer -ifile1.sp
+<br>isql $dbServer -ifile2.sp
+<br>isql $dbServer -ifile3.sp
+<br>isql $dbServer -ifile4.sp</td>
+</tr>
+</table>
+<a NAME="database_2"></a>
+<p>Two small examples of including text into the script as "here doc" -
+or reading from a file&nbsp; (csh syntax):
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 WIDTH="62%" BGCOLOR="#CCFFFF" >
+<tr>
+<td>
+<br>$SYBASE/bin/isql -U$DB_USER -P$DB_PASSWD -S$SERVER -w300 &lt;&lt;EOF
+> $resultFile&nbsp;
+<br>use $DATABASE&nbsp;
+<br>go&nbsp;
+<br>exec some_stored_procedure
+<br>go&nbsp;
+<br>EOF&nbsp;
+<br>&nbsp;
+<p>$SYBASE/bin/isql -U$DB_USER -P$DB_PASSWD -S$SERVER -w300 &lt;&lt;!&nbsp;
+<br>:r /home/somefile.sql
+<br>go&nbsp;
+<br>!&nbsp;
+<br>&nbsp;</td>
+</tr>
+</table>
+<a NAME="database_3"></a>
+<p>More sophisticated version - requires one parameter - a name of a text
+file with SQL to run
+<table BORDER=0 CELLSPACING=0 CELLPADDING=3 BGCOLOR="#CCFFFF" >
+<tr>
+<td>#!/usr/bin/sh
+<br>SERVER="MY_DB_SERVER"
+<br>DATABASE="mydatabase"
+<br>DB_USER=someuser
+<br>DB_PASSWD=somepasswd
+<p>if [ $# != 1 ]
+<br>then&nbsp;
+<br>&nbsp;&nbsp;&nbsp; echo "Usage: $0 &lt;file>"
+<br>&nbsp;&nbsp;&nbsp; exit 1
+<br>fi
+<p>file=$1
+<p>if [ ! -f $file ]
+<br>then
+<br>&nbsp;&nbsp;&nbsp; echo "File \"$file\" Does Not Exist"
+<br>&nbsp;&nbsp;&nbsp; exit 1
+<br>fi
+<p>PATH="/bin:/usr/bin:/usr/local/bin:/usr/local/sybase/bin:someotherdirectories"
+<br>SYBASE="/usr/local/sybase"
+<br>export PATH
+<br>export SYBASE
+<p>$SYBASE/bin/isql -U$DB_USER -P$DB_PASSWD -S$SERVER -w250 &lt;&lt;EOF
+<br>print "Installing $file in Database: $DATABASE Server: $SERVER"
+<br>go
+<br>use $DATABASE
+<br>go
+<br>`cat $file`
+<br>EOF
+<br>exit 0</td>
+</tr>
+</table>
+<a NAME="database_4"></a>
+<p># db.sh - wrapper to prevent password from showing in ps:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFCC99" >
+<tr>
+<td>#!/bin/sh
+<br>MYSQL="sql.txt"
+<br>MYPASS="somepaswd"
+<p>isql -S SOMESERVER -U someuser &lt;&lt;EOF
+<br>$MYPASS
+<br>`cat $MYSQL`
+<br>EOF
+<br>exit(0)</td>
+</tr>
+</table>
+Here "sql.txt" is a file with SQL commands, for example:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#FFCC99" >
+<tr>
+<td>use somedatabase
+<br>go
+<br>select * from sometable
+<br>go</td>
+</tr>
+</table>
+<a NAME="ftp_1"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>writing thin wrappers</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Automating FTP:
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td NOWRAP>#!/bin/sh
+<p>ftp -n &lt;&lt;EOF
+<br>open www.LevSelector.com
+<br>user myname mypass
+<br>get sleep.pl
+<br>quit
+<br>EOF</td>
+</tr>
+</table>
+<b><u>Note:</u></b> "-n" option prevents ftp from asking the login and
+passwd on open command.
+<br>Thus you can supply them both using the user command.
+<br>Here is another way of doing the same plus some minimal error checking
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td NOWRAP>#!/bin/sh&nbsp;
+<p>echo "open webprod
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; user login passwd&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; verbose
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cd dir1/dir2
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bin
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; get file1.cgi
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; close
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; quit" | ftp -n > myftplog&nbsp;
+<p># Check FTP log to see if the file was retrieved okay&nbsp;
+<p>if grep "^226" myftplog&nbsp;
+<br>then&nbsp;
+<br>&nbsp; echo "Successfully got the file from remote server" >> myftplog
+<br>else&nbsp;
+<br>&nbsp; echo "Failed to get the file" >> myftplog&nbsp;
+<br>fi</td>
+</tr>
+</table>
+
+<p>By the way, you can always use Perl:
+<br>Example using&nbsp; <b><a href="http://www.perldoc.com/perl5.6/lib/Net/FTP.html">Net::FTP</a></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>use Net::FTP;
+<br>$ftp = Net::FTP->new("some.host.name");
+<br>$ftp->login("anonymous","me@here.there");
+<br>$ftp->cwd("/pub");
+<br>$ftp->binary;
+<br>$ftp->get("that.file");
+<br>$ftp->quit;</td>
+</tr>
+</table>
+
+<p>Example using <b><a href="http://www.perldoc.com/cpan/LWP/Simple.html">LWP::Simple</a></b>
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>use LWP::Simple;
+<br>my $status = getstore('ftp://user:password@host/foo/file', 'localfile');</td>
+</tr>
+</table>
+<a NAME="telnet"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Automating telnet</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Sending telnet from a script - I don't know how to do this from a shell
+script, because it doesn't have options for that. I think.
+<br>Usually people use something like remote shell (rsh)
+<br>&nbsp;&nbsp;&nbsp; <a href="http://www.engin.umich.edu/htbin/mangate?manpage=rsh">http://www.engin.umich.edu/htbin/mangate?manpage=rsh</a>
+<br>or kermit
+<br>&nbsp;&nbsp;&nbsp; <a href="http://www.columbia.edu/kermit/ckermit.html">http://www.columbia.edu/kermit/ckermit.html</a>
+<br>&nbsp;&nbsp;&nbsp; <a href="http://www.columbia.edu/kermit/telnetd.html">http://www.columbia.edu/kermit/telnetd.html</a>
+<br>&nbsp;&nbsp;&nbsp; <a href="http://www.columbia.edu/kermit/ck80.html">http://www.columbia.edu/kermit/ck80.html</a>
+<p>I would prefer to use a Perl script using NET::Telnet module from CPAN:
+<br>&nbsp;&nbsp;&nbsp; <a href="http://www.perldoc.com/cpan/Net/Telnet.html">http://www.perldoc.com/cpan/Net/Telnet.html</a>
+<p>Here are examples right from documentation of NET::Telnet&nbsp; :
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>use Net::Telnet ();
+<br>$t = new Net::Telnet (Timeout => 10,&nbsp; Prompt => '/bash\$ $/');
+<br>$t->open("sparky");
+<br>$t->login($username, $passwd);
+<br>@lines = $t->cmd("/usr/bin/who");&nbsp;&nbsp; # give command
+<br>print @lines;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # collect response
+<br>&nbsp;&nbsp; # etc.</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td>my ($forecast, $t);
+<br>use Net::Telnet ();
+<br>$t = new Net::Telnet;
+<br>$t->open("rainmaker.wunderground.com");
+<br>## Wait for first prompt and "hit return".
+<br>$t->waitfor('/continue:.*$/');
+<br>$t->print("");
+<br>## Wait for second prompt and respond with city code.
+<br>$t->waitfor('/city code.*$/');
+<br>$t->print("BRD");
+<br>## Read and print the first page of forecast.
+<br>($forecast) = $t->waitfor('/[ \t]+press return to continue/i');
+<br>print $forecast;
+<br>exit;</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 BGCOLOR="#99FF99" >
+<tr>
+<td># -----------------------------------------------------------
+<br># example checking mail on a pop server
+<br># -----------------------------------------------------------
+<br>my ($hostname, $line, $passwd, $pop, $username);
+<br>$hostname = "your_destination_host_here";
+<br>$username = "your_username_here";
+<br>$passwd = "your_password_here";
+<br>use Net::Telnet ();
+<br>$pop = new Net::Telnet (Telnetmode => 0);
+<br>$pop->open(Host => $hostname, Port => 110);
+<br>## Read connection message.
+<br>$line = $pop->getline;
+<br>die $line unless $line =~ /^\+OK/;
+<br>## Send user name.
+<br>$pop->print("user $username");
+<br>$line = $pop->getline;
+<br>die $line unless $line =~ /^\+OK/;
+<br>## Send password.
+<br>$pop->print("pass $passwd");
+<br>$line = $pop->getline;
+<br>die $line unless $line =~ /^\+OK/;
+<br>## Request status of messages.
+<br>$pop->print("list");
+<br>$line = $pop->getline;
+<br>print $line;
+<br>exit;</td>
+</tr>
+</table>
+
+<p><br>
+  <a NAME="bash_event_designators"></a> <br>
+  &nbsp; </p>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+  <tr> 
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+    <td ALIGN=LEFT><strong>BASH Event Designators</strong></td>
+    <td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top 
+      of the page</a> - </b></td>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+<p><br>
+  - <a href="http://www.gnu.org/software/bash/manual/bashref.html">www.gnu.org/software/bash/manual/bashref.html</a> 
+  - Bash Reference<br>
+
+<p> <strong>An event designator is a reference to a command line entry in the 
+  history list.</strong> 
+<table border="1" cellpadding="0" cellspacing="0" bgcolor="#FFFFCC">
+  <tr> 
+    <td width="15%" align="center">!</td>
+    <td>Start a history substitution, except when followed by a space, tab, the 
+      end of the line, `=' or `('</td>
+  </tr>
+  <tr> 
+    <td align="center">!n</td>
+    <td>Refer to command line n</td>
+  </tr>
+  <tr> 
+    <td align="center">!-n</td>
+    <td>Refer to the command n lines back</td>
+  </tr>
+  <tr> 
+    <td align="center">!!</td>
+    <td>Refer to the previous command. This is a synonym for `!-1'</td>
+  </tr>
+  <tr> 
+    <td align="center">!string</td>
+    <td>Refer to the most recent command starting with string</td>
+  </tr>
+  <tr> 
+    <td align="center">!?string[?]</td>
+    <td>Refer to the most recent command containing string. The trailing `?' may 
+      be omitted if the string is followed immediately by a newline</td>
+  </tr>
+  <tr> 
+    <td align="center">^string1^string2^</td>
+    <td>Quick Substitution. Repeat the last command, replacing string1 with string2. 
+      Equivalent to !!:s/string1/string2/</td>
+  </tr>
+  <tr>
+    <td align="center">!#</td>
+    <td>The entire command line typed so far</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

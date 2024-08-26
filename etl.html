@@ -1,0 +1,228 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>ETL - Extract Transform Load</title>
+<!--
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+<style type="text/css">
+<!--
+.style1 {
+	color: #CC0000;
+	font-weight: bold;
+}
+.code {color: #0000FF}
+.comment {color: #669900}
+-->
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1>
+<b><a href="index.html">home</a>
+> ETL - Extract, Transform, Load</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">ETL - Extract, Transform, Load </font></b> (page under construction - still you may find it very useful)
+<table width="95%" border="0" cellpadding="3" cellspacing="0">
+  <tr>
+    <td><span class="style1">On This Page</span></td>
+    <td class="style1">Other Pages</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p>
+- <a href="#intro">intro</a><br>
+- <a href="#performance">performance</a><br>
+- <a href="#parallel_processing">parallel processing</a><br>
+    - <a href="#rerunability_recoverability">rerunability recoverability</a><br>
+    - <a href="#good_practicies">good practicies</a><br>
+    - <a href="#etl_tools">etl_tools</a><br>
+    - xx</p>
+    </td>
+    <td valign="top">
+    <p>
+- <a href="#xx">xx</a><br>
+- <a href="#xx">xx</a><br>
+- <a href="#xx">xx</a><br>
+- <a href="#xx">xx</a><br>
+    </p>    </td>
+  </tr>
+</table>
+<p class="sectionheader"><a NAME="intro"></a>Intro ------------------------------</p>
+  <p><span class="style1">ETL ( Extract, Transorm, Load )</span> - the process to handle data loads for big databases and massive transaction streams.  </p>
+  <p>The typical real-life ETL cycle consists of the following execution steps
+  
+  <ol>
+    <li>      Cycle initiation</li>
+    <li>      Build reference data</li>
+    <li>      Extract (from sources)</li>
+    <li>      Validate</li>
+    <li>      Transform (clean, apply business rules, check for data integrity, create aggregates)</li>
+    <li>      Stage (load into staging tables - if they are used)</li>
+    <li>      Audit reports (Are business rules met? Also in case of failure - helps to diagnose/repair).</li>
+    <li>      Publish (to target tables)</li>
+    <li>      Archive</li>
+    <li>      Clean up</li>
+  </ol>
+  <p></p>
+<p class="sectionheader"><a NAME="performance" id="performance"></a>Performance --------------------
+<p>Performance
+
+<p>ETL vendors benchmark their record-systems at multiple TB (terra-bytes) per hour (or ~1 GB per second) using powerful servers with multiple CPUs, multiple hard drives, multiple gigabit-network connections, and lots of memory. In average day-to-day systems you will see ~1MB/sec.</p>
+<p>  In real life the slowest part of an ETL process is usually in the database load phase. Database is slow because it has to take care of concurrency, integrity maintenance, indexes. Thus for better performance it makes sense to do most of the ETL processing outside of the database - and use bulk load operations whenever possible. Still even using bulk operations, database access is usually the bottleneck in the ETL process. Here are some common tricks used to increase performance:</p>
+<p>  Partition tables (and indexes). Try to keep partitions similar in size (watch for &quot;null&quot; values which can skew the partitionning.</p>
+<p>  Do all validation in ETL layer. Disable integrity checking (disable constraint ...) in the target database tables during the load.</p>
+<p>  Disable triggers (disable trigger ...) in the target database tables during the load. Simulate their effect as a separate step.</p>
+<p>  Generate IDs in the ETL layer (not in the database).<br>
+  Drop the indexes (on a table or partition) before the load - and recreate them after the load (drop index ...; create index ...).</p>
+<p>  Use parallel bulk load when possible - works good when the table is partitioned or there are no indexes. Note: attempt to do parallel loads into the same table (partition) usually causes locks - if not on the data rows - then on indexes.</p>
+<p>  If you need to do insert/update/delete - find out which rows should be processd in which way in the ETL layer - and then process these 3 operations in the database separately. You often can do bulk load for inserts, but updates and deletes commonly go through API (using SQL).</p>
+<p>  Whether or not to do certain operation in the database or outside may be a tradeoff. For example, removing duplicates using &quot;distinct&quot; may be slow in the database - thus it makes sense to do it outside. On the other side if using distinct will significantly (x100) decrease the number rows to be extracted - then it makes sense to do de-duping as early as possible - in the database before unloading data.</p>
+<p>  Common source of problems in ETL is a big number of interdependencies between ETL jobs. For example, job &quot;B&quot; can not start while job &quot;A&quot; is not finished. You can usually achieve better performance by visualizing all processes on a graph, and trying to reduce the graph making maximum use of parallelism, and making &quot;chains&quot; of consecutive processing as short as possible. Again, partitionning of big tables and of their indexes can really help.</p>
+<p>  Another common example is a situation when the data is spread between several databases, and processing is done in those databases sequentially. Sometimes database replication may be involved as a method of copying data between databases - and this can significantly slow down the whole process. The common solution is to reduce the processing graph to only 3 layers:</p>
+<ul>
+  <li>  Sources</li>
+  <li>    Central ETL layer</li>
+  <li>    Targets</li>
+</ul>
+<p>This allows to take maximum advantage of parallel processing. For example, if you need to load data into 2 databases - you can run the loads in parallel (instead of loading into 1st - and then replicating into the 2nd).</p>
+<p>  Of course, sometimes the sequential processing is required. For example, you usually need to get dimensional (reference) data before you can get and validate the rows for main &quot;fact&quot; tables.</p>
+<p class="sectionheader"><a name="parallel_processing"></a>Parallel processing</p>
+<p>There are 3 main types of parallelisms in  ETL applications:<br>
+</p>
+<ul>
+  <li>Split a single sequential file (or table) into smaller pieces (partitions) for  parallel access.</li>
+  <li> Push data through a series of components so that these components work in parallel - but on different rows of the same data set.</li>
+  <li> Run multiple  different data streams in parallel.</li>
+</ul>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="rerunability_recoverability"></a>Rerunability, Recoverability</p>
+<p>A big ETL process is usually subdivided into smaller pieces running sequentially or in parallel. To keep track of data flows, it makes sense to tag each data row with &quot;row_id&quot;, and tag each piece of the process with &quot;run_id&quot;. In case of a failure having these IDs will hellp to roll-back and re-run the failed piece. It is also good idea to have &quot;checkpoints&quot; - states when certain phases of the process are completed. Once at a checkpoint, it is a good idea to write everything to disk, clean out some temporary files, log the state, etc.</p>
+<p class="sectionheader"><a name="good_practicies" id="good_practicies"></a>Good Practicies</p>
+<p>Four Layered Approach for ETL Architecture Design</p>
+<ul>
+  <li>Functional Layer &ndash; Core functional ETL processing (Extract ,Transform, and Load).</li>
+  <li> Operational Management Layer &ndash; Job Stream Definition &amp; Management, Parameters, Scheduling, Monitoring, Communication &amp; Alerting.</li>
+  <li> Audit, Balance and Control (ABC) Layer &ndash; Job Execution Statistics, Balancing &amp; Controls, Rejects &amp; Error Handling, Codes Management.</li>
+  <li> Utility Layer &ndash; Common components supporting all other layers.<br>
+  </li>
+</ul>
+<p>Use file based ETL processing where possible</p>
+<ul>
+  <li>  Storage is relatively inexpensive in cost</li>
+  <li> Intermediate files serve multiple purposes
+    <ul>
+      <li> Used for testing and debugging</li>
+      <li> Used for restart and recover processing</li>
+      <li>Used to calculate control statistics</li>
+    </ul>
+  </li>
+  <li> Helps to reduce dependencies - enables modular programming.</li>
+  <li> Allows flexibility for job execution &amp; scheduling</li>
+  <li> Better performance if coded properly, and can take advantage
+    of parallel processing capabilities when the need arises.</li>
+</ul>
+<p> Use data driven methods and minimize custom ETL coding.</p>
+<ul>
+  <li>	Parameter driven jobs, functions, and job control</li>
+  <li> Code definitions &amp; mapping in database</li>
+  <li> Consideration for data driven tables to support more complex 
+    code mappings and business rule application.</li>
+</ul>
+<p>Qualities of a good ETL architecture design:</p>
+<ul>
+  <li> Performance</li>
+  <li> Scalable</li>
+  <li> Migrateable</li>
+  <li> Recoverable (run_id, ...)</li>
+  <li> Operable ( completion codes for phases, rerunning from checkpoints, etc.)</li>
+  <li> Auditable (business requirements dimension and technical troubleshooting dimension)</li>
+</ul>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="etl_tools"></a>ETL Tools</p>
+<ul>
+  <li><a href="http://www.kjube.be/tnenopxe/index.php?section=28">http://www.kjube.be/tnenopxe/index.php?section=28</a> </li>
+  <li><a href="http://www.etltool.com/etltoolslist.htm">http://www.etltool.com/etltoolslist.htm</a> - list of some ETL tools (definitely not complete - they don't even have 
+  Ab Initio).</li>
+</ul>
+<p>You can achieve this with simple shell/Perl scripts or 3rd party products:
+<ul>
+  <li>perl/shell scripts</li>
+  <li><a href="informatica.html">Informatica</a> </li>
+  <li>Ab Initio - high priced and secretive, but very good, especially for big tasks. Just one tool. Generates ksh scripts which  can be run by any scheduler. High performance (parallel execution), very robust. </li>
+  <li>Oracle Warehouse Builder</li>
+  <li>Business Objects (Data Integrator)</li>
+  <li>IBM (Ascential) </li>
+  <li> Wherescape RED</li>
+  <li> Pervasive tools</li>
+  <li> Altova</li>
+  <li> SQL Server 2005 Integration Services (CTP=beta)</li>
+  <li>Embarcadero</li>
+  <li>DataFlux</li>
+  <li> Sybase (Solande ETL)</li>
+  <li>SAS Institute</li>
+  <li>IWay Software</li>
+  <li>Sunopsis (Oracle)</li>
+</ul>
+<p>
+
+</body>
+</html>

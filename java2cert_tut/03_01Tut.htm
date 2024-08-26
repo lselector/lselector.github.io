@@ -1,0 +1,1128 @@
+<html>
+
+
+
+
+
+
+
+<head>
+
+
+
+
+
+
+
+<title>3.1) Garbage Collection</title>
+
+
+
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="tutor.css"></head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body bgcolor="#FFFFFF">
+
+<table width=95% border=0 cellpadding=2 cellspacing=0 style="page-break-before: always">
+
+  <col width=147*> <col width=109*> 
+
+  <tr> 
+
+    <td width=57% height=104> 
+
+      <p><a href= "introj2.htm" ><img src= "btnIndex.jpg"  name="Graphic1" alt="Return to Tutorial Index" align=BOTTOM width=55 height=39 border=0></a><a href= "introj2.htm" ><br>
+
+        <br>
+
+        </a><a href= "index.htm" ><img src= "btnHome.jpg"  name="Graphic2" alt="Back to the home page of this site" align=BOTTOM width=55 height=39 border=0></a> 
+
+      </p>
+
+    </td>
+
+    <td width=43%> 
+
+      <p align=RIGHT><img src= "hat.gif"  name="Graphic3" alt="morterboard" align=BOTTOM width=118 height=113 border=0></p>
+
+    </td>
+
+  </tr>
+
+  <tr> 
+
+    <td width=57% height=11> 
+
+      <h1 align=LEFT>Java2 Certification <br>
+
+        Tutorial </h1>
+
+    </td>
+
+    <td width=43% bgcolor="#ff9900"> 
+
+      <p>&nbsp;</p>
+
+    </td>
+
+  </tr>
+
+</table>
+
+<p> You can discuss this topic with others at <a href= "http://www.jchq.net/discus" >http://www.jchq.net/discus</a><br>
+
+  Read reviews and buy a Java Certification book at <a href= "http://www.jchq.net/bookreviews/jcertbooks.htm" >http://www.jchq.net/bookreviews/jcertbooks.htm</a> 
+
+  <br>
+
+</p>
+
+<hr size=5 noshade>
+
+<h1><font face="GENEVA, HELVETICA, ARIAL, LUCIDA SANS"><b>3)Garbage Collection</b></font> 
+
+
+
+
+
+
+
+</h1>
+
+
+
+
+
+
+
+<h2><font face="GENEVA, HELVETICA, ARIAL, LUCIDA SANS"><b>Objective 1)</b></font></h2>
+
+
+
+
+
+
+
+<p><font face="GENEVA, HELVETICA, ARIAL, LUCIDA SANS">State the behavior that 
+
+
+
+
+
+
+
+  is guaranteed by the garbage collection system and write code that explicitly 
+
+
+
+
+
+
+
+  makes objects eligible for collection.</font> </p>
+
+
+
+
+
+
+
+<h3>Why would you want to collect the garbage? </h3>
+
+
+
+
+
+
+
+<p>You can be a very experienced Java programmer and yet may never had to familiarise 
+
+
+
+
+
+
+
+  yourself with the details of garbage collection. Even the expression garbage 
+
+
+
+
+
+
+
+  collection is a little bizarre. In this context it means the freeing up of memory 
+
+
+
+
+
+
+
+  that has been allocated and used by the program. When the memory is no longer 
+
+
+
+
+
+
+
+  needed it can be considered to be garbage, i.e. something that is no longer 
+
+
+
+
+
+
+
+  needed and is simply cluttering up the living space. <br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  One of the great touted beauties of the Java language is that you don't have 
+
+
+
+
+
+
+
+  to worry about garbage collection. If you are from a Visual Basic background 
+
+
+
+
+
+
+
+  it may seem absurd that any system would not look after this itself. In C/C++ 
+
+
+
+
+
+
+
+  the programmer has to keep track of the allocation and deallocation of memory 
+
+
+
+
+
+
+
+  by hand. As a result &quot;memory leaks&quot; are a big source of hard to track 
+
+
+
+
+
+
+
+  bugs. This is one of the reasons that with some versions of Microsoft applications 
+
+
+
+
+
+
+
+  such as Word or Excel, simply starting and stopping the program several times 
+
+
+
+
+
+
+
+  can cause problems. As the memory leaks away eventually the whole system hangs 
+
+
+
+
+
+
+
+  and you need to hit the big red switch. Somewhere in those hundreds of thousands 
+
+
+
+
+
+
+
+  of lines of C++ code, a programmer has allocated a block of memory but forgot 
+
+
+
+
+
+
+
+  to ensure that it gets released.</p>
+
+
+
+
+
+
+
+<h3>Java and garbage </h3>
+
+
+
+
+
+
+
+<p>Unlike C/C++ Java automatically frees up unused references. You don't have 
+
+
+
+
+
+
+
+  to go through the pain of searching for allocations that are never freed and 
+
+
+
+
+
+
+
+  you don't need to know how to <i>alloc</i> a <i>sizeof</i> a data type to ensure 
+
+
+
+
+
+
+
+  platform compatibility. So why would you want to know about the details of garbage 
+
+
+
+
+
+
+
+  collection? Two answers spring to mind, one is to pass the exam and the other 
+
+
+
+
+
+
+
+  is to understand what goes on in extreme circumstances.&nbsp;<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  If you write code that creates very large numbers of objects or variables it 
+
+
+
+
+
+
+
+  can be useful to know when references are released.&nbsp; <br>
+
+
+
+
+
+
+
+  If you read the newsgroups you will see people reporting occasions of certain 
+
+
+
+
+
+
+
+  Java implementations exhausting memory resources and falling over. This was 
+
+
+
+
+
+
+
+  not in the brochure from Sun when they launched Java.&nbsp;<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+
+
+
+
+  In keeping with the philosophy of automatic garbage collection, you can suggest 
+
+
+
+
+
+
+
+  or encourage the JVM to perform garbage collection but you can not force it.&nbsp; 
+
+
+
+
+
+
+
+</p>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="9%"><img src= "key2.gif"  width="106" height="73"
+
+
+
+
+
+
+
+align="bottom" border="0"></td>
+
+
+
+
+
+
+
+    <td width="91%"> 
+
+
+
+
+
+
+
+      <h3><font color="#FF0000"><b>Let me re-state that point, you cannot force 
+
+
+
+
+
+
+
+        garbage collection, just suggest it.&nbsp;</b></font> </h3>
+
+
+
+
+
+
+
+    </td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<p>At first glance finalisation sounds a little like the destructors in C++ used 
+
+
+
+
+
+
+
+  to clean up resources before an object is destroyed. The difference is that 
+
+
+
+
+
+
+
+  Java internal resources do not need to be cleaned up during finalisation because 
+
+
+
+
+
+
+
+  the garbage collector looks after memory allocation. However if you have external 
+
+
+
+
+
+
+
+  resources such as file information, finalisation can be used to free external 
+
+
+
+
+
+
+
+  resources.&nbsp;</p>
+
+
+
+
+
+
+
+<p>Garbage collection is a tricky one to write exercises with or practice with 
+
+
+
+
+
+
+
+  as there is no obvious way to get code to indicate when it is available for 
+
+
+
+
+
+
+
+  garbage collection. You cannot write a piece of code with a syntax like</p>
+
+
+
+
+
+
+
+<pre></pre>
+
+
+
+
+
+
+
+<pre>if(EligibleForGC(Object){ //Not real code
+    System.out(&quot;Ready for Garbage&quot;);
+    }
+</pre>
+
+
+
+
+
+
+
+<p>Because of this you just have to learn the rules. To re-state. <br>
+</p>
+
+
+
+
+
+
+
+<p>Once a variable is no longer referenced by anything it is available for garbage 
+
+
+
+
+
+
+
+  collection.</p>
+
+
+
+
+
+
+
+<p>You can suggest garbage collection with <i>System.gc()</i>, but this does not 
+
+
+
+
+
+
+
+  guarantee when it will happen 
+
+
+
+
+
+
+
+<h3></h3>
+
+
+
+
+
+
+
+<p>Local variables in methods go out of scope when the method exits. At this point 
+
+
+
+
+
+
+
+  the methods are eligible for garbage collection. Each time the method comes 
+
+
+
+
+
+
+
+  into scope the local variables are re-created.&nbsp; 
+
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+
+
+<table width="100%" border="0">
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="9%"><img src= "Quiz.gif"  width="99" height="101"></td>
+
+
+
+
+
+
+
+    <td width="91%">&nbsp;</td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<h3><b>Question 1)</b></h3>
+
+
+
+
+
+
+
+<p>Which of the following is the correct syntax for suggesting that the JVM performs 
+
+
+
+
+
+
+
+  garbage collection?</p>
+
+
+
+
+
+
+
+<p>1) System.free();<br>
+
+
+
+
+
+
+
+  2) System.setGarbageCollection();<br>
+
+
+
+
+
+
+
+  3) System.out.gc();<br>
+
+
+
+
+
+
+
+  4) System.gc();</p>
+
+
+
+
+
+
+
+<p> 
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<h3><b>Question 2)</b></h3>
+
+
+
+
+
+
+
+<p>What code can you write to ensure that the Integer variables are garbage collected 
+
+
+
+  at a particular point in this code?</p>
+
+
+
+
+
+
+
+<pre>public class Rub{
+        Integer  i= new Integer(1);
+        Integer  j=new Integer(2);
+        Integer k=new Integer(3);
+public static void main(String argv[]){
+            Rub r = new Rub();
+        r.amethod();
+    }
+    public void amethod(){
+        i=0;
+        j=0;
+        k=0;
+    }
+}
+</pre>
+
+
+
+
+
+
+
+<p>1) System.gc();<br>
+
+
+
+
+
+
+
+  2) System.free();<br>
+
+
+
+
+
+
+
+  3) Set the value of each int to null<br>
+
+
+
+
+
+
+
+  4) None of the above</p>
+
+
+
+
+
+
+
+<pre></pre>
+
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+
+
+<h1>Answers</h1>
+
+
+
+
+
+
+
+<h3><b>Answer to Question 1)</b></h3>
+
+
+
+
+
+
+
+<p> 4) System.gc();<br>
+
+
+
+
+
+
+
+</p>
+
+
+
+
+
+
+
+<h3> <b>Answer to Question 2)</b></h3>
+
+
+
+
+
+
+
+<p> 4) None of the above<br>
+
+
+
+
+
+
+
+  <br>
+
+
+
+  You can only suggest garbage collection, therefore you cannot be certain that 
+
+
+
+  it will run at any particular point in your code. Note that only instances of 
+
+
+
+  classes are subject to garbage collection not primitives.</p>
+
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+
+
+<table border="1" width="70%">
+
+
+
+
+
+
+
+  <caption><b>Other sources on this topic</b></caption>
+
+
+
+
+
+
+
+  <tr> 
+
+
+
+
+
+
+
+    <td width="100%">
+
+
+
+      <p><b>An article from SUN<br>
+
+
+
+        </b></p>
+
+
+
+      <p><a href= "http://developer.java.sun.com/developer/technicalArticles/ALT/RefObj/index.html" >http://developer.java.sun.com/developer/technicalArticles/ALT/RefObj/index.html</a></p>
+
+
+
+      <p><b>Jyothi Krishnan on this topic at </b><br>
+
+
+
+        <a href= "http://www.geocities.com/SiliconValley/Network/3693/obj_sec3.html#obj8" >http://www.geocities.com/SiliconValley/Network/3693/obj_sec3.html#obj8</a></p>
+
+
+
+    </td>
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<p>Last updated<br>
+
+
+
+
+
+
+
+  13 Jan 1999<br>
+
+
+
+  copyright &copy; Marcus Green 1999</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<p></p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>
+
+
+
+
+
+
+

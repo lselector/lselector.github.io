@@ -1,0 +1,373 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <title>vi command line editing</title>
+</head>
+<body>
+<a NAME="top"></a><b><font face="Verdana">Edit Command String In A Shell
+-</font></b>
+<br><b><font face="Verdana">&nbsp;&nbsp;&nbsp; A Complete List Of All vi
+Control Mode Commands.</font></b>
+<br>&nbsp;
+<table>
+<tr>
+<td><b><u>Command</u></b></td>
+
+<td><b><u>Meaning</u></b></td>
+</tr>
+
+<tr>
+<td>h</td>
+
+<td>Move left one character&nbsp;</td>
+</tr>
+
+<tr>
+<td>l</td>
+
+<td>Move right one character&nbsp;</td>
+</tr>
+
+<tr>
+<td>w</td>
+
+<td>Move right one word&nbsp;</td>
+</tr>
+
+<tr>
+<td>b</td>
+
+<td>Move left one word&nbsp;</td>
+</tr>
+
+<tr>
+<td>W</td>
+
+<td>Move to beginning of next non-blank word&nbsp;</td>
+</tr>
+
+<tr>
+<td>B</td>
+
+<td>Move to beginning of preceding non-blank word&nbsp;</td>
+</tr>
+
+<tr>
+<td>e</td>
+
+<td>Move to end of current word&nbsp;</td>
+</tr>
+
+<tr>
+<td>E</td>
+
+<td>Move to end of current non-blank word&nbsp;</td>
+</tr>
+
+<tr>
+<td>0</td>
+
+<td>Move to beginning of line&nbsp;</td>
+</tr>
+
+<tr>
+<td>^</td>
+
+<td>Move to first non-blank character in line&nbsp;</td>
+</tr>
+
+<tr>
+<td>$</td>
+
+<td>Move to end of line&nbsp;</td>
+</tr>
+
+<tr>
+<td>&nbsp;</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>i</td>
+
+<td>Insert text before current character&nbsp;</td>
+</tr>
+
+<tr>
+<td>a</td>
+
+<td>Insert text after current character&nbsp;</td>
+</tr>
+
+<tr>
+<td>I</td>
+
+<td>Insert text at beginning of line&nbsp;</td>
+</tr>
+
+<tr>
+<td>A</td>
+
+<td>Insert text at end of line&nbsp;</td>
+</tr>
+
+<tr>
+<td>R</td>
+
+<td>Overwrite existing text&nbsp;</td>
+</tr>
+
+<tr>
+<td></td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>dh</td>
+
+<td>Delete one character backwards&nbsp;</td>
+</tr>
+
+<tr>
+<td>dl</td>
+
+<td>Delete one character forwards&nbsp;</td>
+</tr>
+
+<tr>
+<td>db</td>
+
+<td>Delete one word backwards&nbsp;</td>
+</tr>
+
+<tr>
+<td>dw</td>
+
+<td>Delete one word forwards&nbsp;</td>
+</tr>
+
+<tr>
+<td>dB</td>
+
+<td>Delete one non-blank word backwards&nbsp;</td>
+</tr>
+
+<tr>
+<td>dW</td>
+
+<td>Delete one non-blank word forwards&nbsp;</td>
+</tr>
+
+<tr>
+<td>d$</td>
+
+<td>Delete to end of line&nbsp;</td>
+</tr>
+
+<tr>
+<td>d0</td>
+
+<td>Delete to beginning of line&nbsp;</td>
+</tr>
+
+<tr>
+<td>D</td>
+
+<td>Equivalent to d$ (delete to end of line)&nbsp;</td>
+</tr>
+
+<tr>
+<td>dd</td>
+
+<td>Equivalent to 0d$ (delete entire line)&nbsp;</td>
+</tr>
+
+<tr>
+<td>C</td>
+
+<td>Equivalent to c$ (delete to end of line, enter input mode)&nbsp;</td>
+</tr>
+
+<tr>
+<td>cc</td>
+
+<td>Equivalent to 0c$ (delete entire line, enter input mode)&nbsp;</td>
+</tr>
+
+<tr>
+<td>x</td>
+
+<td>Equivalent to dl (delete character backwards)&nbsp;</td>
+</tr>
+
+<tr>
+<td>X</td>
+
+<td>Equivalent to dh (delete character forwards)&nbsp;</td>
+</tr>
+
+<tr>
+<td></td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>k</td>
+
+<td>or - Move backward one line&nbsp;</td>
+</tr>
+
+<tr>
+<td>j</td>
+
+<td>or + Move forward one line&nbsp;</td>
+</tr>
+
+<tr>
+<td>G</td>
+
+<td>Move to line given by repeat count&nbsp;</td>
+</tr>
+
+<tr>
+<td>/string</td>
+
+<td>Search forward for string&nbsp;</td>
+</tr>
+
+<tr>
+<td>?string</td>
+
+<td>Search backward for string&nbsp;</td>
+</tr>
+
+<tr>
+<td>n</td>
+
+<td>Repeat search forward&nbsp;</td>
+</tr>
+
+<tr>
+<td>N</td>
+
+<td>Repeat search backward&nbsp;</td>
+</tr>
+
+<tr>
+<td></td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>fx</td>
+
+<td>Move right to next occurrence of x&nbsp;</td>
+</tr>
+
+<tr>
+<td>Fx</td>
+
+<td>Move left to previous occurrence of x&nbsp;</td>
+</tr>
+
+<tr>
+<td>tx</td>
+
+<td>Move right to next occurrence of x, then back one space&nbsp;</td>
+</tr>
+
+<tr>
+<td>Tx</td>
+
+<td>Move left to previous occurrence of x, then forward one space&nbsp;</td>
+</tr>
+
+<tr>
+<td>,</td>
+
+<td>Undo motion of last character finding command&nbsp;</td>
+</tr>
+
+<tr>
+<td>;</td>
+
+<td>Redo last character finding command&nbsp;</td>
+</tr>
+
+<tr>
+<td></td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>\</td>
+
+<td>Do filename completion&nbsp;</td>
+</tr>
+
+<tr>
+<td>*</td>
+
+<td>Do wildcard expansion (onto command line)&nbsp;</td>
+</tr>
+
+<tr>
+<td>\=</td>
+
+<td>Do wildcard expansion (as printed list)&nbsp;</td>
+</tr>
+
+<tr>
+<td>~</td>
+
+<td>Invert ("twiddle") case of current character(s)&nbsp;</td>
+</tr>
+
+<tr>
+<td>\_</td>
+
+<td>Append last word of previous command, enter input mode&nbsp;</td>
+</tr>
+
+<tr>
+<td></td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>v</td>
+
+<td>Run the fc command on the current line (actually, run the command fc
+-e ${VISUAL:-${EDITOR:-vi}}). Usually this means run the full vi on the
+current line.&nbsp;</td>
+</tr>
+
+<tr>
+<td>[CTRL-L]</td>
+
+<td>Start a new line and redraw the current line on it&nbsp;</td>
+</tr>
+
+<tr>
+<td>#</td>
+
+<td>Prepend # (comment character) to the line and send it&nbsp;</td>
+</tr>
+
+<tr>
+<td>x</td>
+
+<td>Insert expansion of alias _x&nbsp;</td>
+</tr>
+</table>
+
+</body>
+</html>

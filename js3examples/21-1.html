@@ -1,0 +1,38 @@
+<!-- This example is from JavaScript: The Definitive Guide, 3rd Edition.   -->
+<!-- That book and this example were Written by David Flanagan.            -->
+<!-- They are Copyright (c) 1996, 1997, 1998 O'Reilly & Associates.        -->
+<!-- This example is provided WITHOUT WARRANTY either expressed or implied.-->
+<!-- You may study, use, modify, and distribute it for any purpose,        -->
+<!-- as long as this notice is retained.                                   -->
+
+<!-- 
+  This is an included script. Its contents will be placed in the JAR
+  file. The ARCHIVE attribute specifies the name of the JAR file, and
+  the SRC file specifies the name for the code within the archive, and
+  also the name of the digital signature of that code.
+-->
+<SCRIPT ARCHIVE="history.jar" SRC="history.js"></SCRIPT>
+
+<SCRIPT ID="s1">
+/*
+ * This is an inline script. It implicitly uses the ARCHIVE attribute
+ * specified in the first SCRIPT tag. The ID tag specifies the name
+ * under which the digital signature for this code will be stored.
+ */
+var history_window;
+</SCRIPT>
+
+<FORM>
+<!--
+  These two buttons both have event handlers that contain JavaScript
+  code, and must therefore be signed. The ID attributes specify the
+  names under which the digital signatures of the code will be stored
+  in the JAR file specified by a previous ARCHIVE attribute. Note that
+  an ARCHIVE attribute can only be specified for a SCRIPT tag, so 
+  a SCRIPT tag must appear before any event handlers appear.
+-->
+<INPUT TYPE=BUTTON VALUE="Show History" ID="s2"
+       onClick="history_window = openHistoryWindow();">
+<INPUT TYPE=BUTTON VALUE="Hide History" ID="s3"
+       onClick="history_window.close();">
+</FORM>

@@ -1,0 +1,351 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Description" content="Algorithmic trading">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>Algorithmic Trading</title>
+<!--
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL, Algorithmic trading"
+
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+<style type="text/css">
+<!--
+.style1 {
+	color: #CC0000;
+	font-weight: bold;
+}
+.code {color: #0000FF}
+.comment {color: #669900}
+-->
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1>
+<b><a href="index.html">home</a>
+> Algorithmic Trading</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Algorithmic Trading</font></b>
+<table width="95%" border="0" cellpadding="3" cellspacing="0">
+  <tr>
+    <td class="style1">On This Page</td>
+    <td class="style1">Other Pages</td>
+  </tr>
+  <tr>
+    <td valign="top">
+    <p>
+    - <a href="#intro">intro</a><br>
+    - <a href="#terminology">terminology</a><br>
+    - <a href="#books">books</a><br>
+    - <a href="#high_frequency_data_analysis">high_frequency_data_analysis</a><br>
+    - <a href="#programming_languages">programming_languages</a><br>
+    - <a href="#tick_data">tick_data</a><br>
+    - <a href="#low_latency">low_latency</a><br>
+    - <a href="#misc_resources">misc_resources</a><br>
+    </p>
+    </td>
+    <td valign="top">
+    <p>
+- <a href="#xx">xx</a><br>
+<br>
+    </p>    </td>
+  </tr>
+</table>
+  <p class="sectionheader"><a NAME="intro"></a>Intro ------------------------------</p>
+  <p><span class="style1">Algorithmic trading</span> (also known as Black-box trading) - computer-guided trading, where  a program with direct market access can   monitor the market and order trades when certain conditions are met. As of this writing (2009) probably ~40% of all trades are done this way. The companies run by quants using algorithmic trading produce higher returns than conventional companies. At least during more or less stable times.</p>
+  <p>As computers eventually has beaten people in chess, it is expected that the same will happen in investing. </p>
+  <p>Algorithmic trading is usually performed on a relatively short-term basis (from thousandths of a second -  to seconds, minutes, hours, days). So the Artificial Intelligence (AI) of those algorithms doesn't compete (yet) with  Warren Buffett (long-term investing based on choosing good companies/teams/culture).</p>
+  <p><a href="http://en.wikipedia.org/wiki/Algorithmic_trading">http://en.wikipedia.org/wiki/Algorithmic_trading</a></p>
+  <p>Direct Market Access (DMA) today is provided by many brokers, thus making Algorithmic Trading possible to even small investors. If you set up a personal account with a service  like <a href="http://www.interactivebrokers.com">Interactivebrokers</a>, and run a script on your own  server to communicate via their API to monitor the prices and order trades - you can be in business. If, of course, your algorithms are profitable (statistically).</p>
+  <p> The benefits of algorithmic trading:</p>
+  <ul>
+    <li>Can do things which humans can not do - like making decisions based on complicated calculations, grabing a security as soon as it becomes available (whereas a human trader may be off the desk), making complex trades (splitting orders, selecting pools of liquidity, etc.), sniffing &quot;gaming&quot; - and protecting against it, etc. </li>
+    <li>Predictability. Algorithms can be extensively tested (historical backtesting) before going live.</li>
+    <li>Efficiency, fast reaction, precision.</li>
+    <li>Data-based. No emotions.</li>
+    <li>Time to market - implementing an algorithm may be as easy as punching several parametersin in a form on the screen.</li>
+    <li>Working with decreasing margins, high-speed  markets, increased data flows (options - ~ 1 mln updates per second), multiplicity of execution venues, cross-asset class opportunities, etc.</li>
+  </ul>
+<p>There are many kinds of algorithms, tactics and strategies of algorithmic trading. </p>
+<ul>
+    <li>Algorithms can be based on price, volume, timing, etc. (for example, trigger a buy order on a certain percentage upward movement in a share price).</li>
+    <li>Slicing a big order into many small orders  to hide large order from market participants or to minimize its market impact. (CSFB - &quot;Guerrilla&quot; algorithm).</li>
+    <li>&quot;Benchmark&quot; algorithms -  to achieve a specific benchmark (for example,  the volume weighted average price over a certain time period), etc.</li>
+    <li>&quot;Participating&quot; algorithms (for example, % of trading volume)</li>
+    <li>&quot;smart order routing&quot; - orders are sent out to the destinations offering the best prices or liquidity</li>
+    <li>&quot;dark pools of liquidity&quot; - pools of liquidity not provided by conventional platforms (stock exchanges or crossing networks). CSFB &quot;Sniper&quot; algorithm to detect such pools.</li>
+    <li>&quot;Gamer&quot; - sniff out large orders - and then try to use that knowledge to trade against the block at a profit.    </li>
+    <li>"sniffers" -  algorithms to detect the presence of   algorithmic trading and the algorithms they are using (bespoke, etc.).</li>
+    <li>Artificial Intelligence algorithms of different kind. For example, a program can &quot;read&quot; news and web blogs (NLP = Natural Language Processing) searching for certain factors (hurricanes, wars, economic or political events, public opinions) - and make trading decisions based on that. &quot;Hurricane&quot; could signal  to sell insurance stocks,  &quot;Drought&quot; could affect wheat prices. Some vendors started to provide "machine readable news".</li>
+    <li>It is possible to run hundreds of algorithms from one server - and to make cooperative algorithms.</li>
+    <li>etc.</li>
+</ul>
+
+<p class="sectionheader"><a name="terminology"></a>Some relevant terminology:</p>
+<ul>
+  <li><span class="style1">DMA</span> - Direct Market Data</li>
+  <li>  <span class="style1">backtesting</span> - process of testing algorithms on historical data </li>
+  <li><span class="style1">DOT</span> and <span class="style1">SuperDOT</span> - (Super Designated Order Turnaround System) - electronic system used to place orders for stocks </li>
+  <li><span class="style1">ECN</span> - Electronic Communication Network - electronic system to execute orders outside of an Exchange</li>
+  <li><span class="style1">ATS</span> - Alternative Trading System</li>
+  <li><span class="style1">Dark Pool Liquidity</span> - trading volume created from institutional orders done &quot;anonymously&quot; and away from central exchanges.<br>
+  </li>
+  <li><span class="style1">VWAP</span> algorithm (Volume Weighted Average Price)</li>
+  <li>AMEX, BOE (Boston Options Exchange), CBOE (Chicago Board Options Exchange), ISE (International Securities Exchange), NYSE Arca, NASDAQ OMX PHLX - exchanges</li>
+  <li><span class="style1">MiFID</span> (<SPAN id="nointelliTXT" itxtvisited="1">Markets in Financial Instruments Directive</SPAN>) - November 2007 - new rules created to help trading in Europe.</li>
+  <li><span class="style1">Regulation NMS</span> - (National Market System) - set of rules from SEC (Securities and Exchange Commission) to improve fairness in price execution. <br>
+  </li>
+  <li><a href="http://en.wikipedia.org/wiki/FIX_protocol" class="style1">FIX protocol</a> ( Financial Information eXchange) - eExample of the message: 8=FIX.4.2 | 9=67 | 35=8 | 49=PHLX | 56=PERS | 11=ATOMNOCCC9990900 |   52=20071123-05:30:00.000 | 20=3 | 150=E | 39=E | 55=MSFT | 167=CS | 54=1 | 38=15   | 40=2 | 44=15 | 58=PHLX EQUITY TESTING | 59=0 | 47=C | 32=0 | 31=0 | 151=15 |   14=0 | 6=0 | 10=102 |</li>
+  <li><a href="http://en.wikipedia.org/wiki/FAST_protocol" class="style1">FAST protocol</a> (FIX Adapted for STreaming) - optimized for low latency</li>
+  <li><span class="style1">Alpha</span> - measure of performance adjusted to risk.</li>
+  <li><span class="style1">Smart Order Routing</span> - select the &quot;best&quot; place to do the trade - and route the order there.</li>
+  <li><span class="style1">Latency</span> - network latency, response latency, etc. Some algorithms need very low latency (milliseconds).</li>
+  <li><span class="style1">Tick data</span> - time series data containing both  volume and price (and more) for each point.<br>
+  </li>
+  <li><span class="style1">Statistical Arbitrage</span> - A profit situation arising from pricing &quot;inefficiencies&quot; between securities.</li>
+  <li><span class="style1">ATD</span> (Automated Trading Desk, LLC) - was bought in2007 by Citi for $680 million.</li>
+  <li>Credit Suisse, Goldman Sachs, Morgan Stanley, Deutsche Bank, Citadel - major algorithmic trading movers</li>
+</ul>
+<p>&nbsp;</p>
+<p class="sectionheader"><a NAME="books" id="Books"></a>Books</p>
+<p>Important 2 books:</p>
+<ul>
+  <li class="code"><strong>Active Portfolio Management</strong>: A   Quantitative Approach for Producing Superior   Returns and Controlling Risk (1999) <strong>by Richard Grinold, Ronald   Kahn</strong><br>
+  (This is very importand book - although it may take time to go through.)</li>
+  <li class="code">    <strong>Investment Management</strong>: Portfolio Diversification, Risk, and Timing--Fact and Fiction (Wiley Finance) (2003)
+    <strong>by Robert L. Hagin</strong><br>
+  (This book is lighter, should help with intuition for investing.) </li>
+</ul>
+<p>More good books:</p>
+<ul>
+  <li class="code">Pairs Trading: Quantitative Methods   and Analysis (Wiley Finance) 
+    (2004) by Ganapathy   Vidyamurthy</li>
+  <li class="code">Quantitative Strategies for   Achieving Alpha (McGraw-Hill Finance &amp;   Investing) (2008) by Richard Tortoriello </li>
+  <li class="code"><span class="code">High Probability Trading Strategies:   Entry to Exit Tactics for the Forex, Futures, and Stock Markets (Wiley Trading) (2008) by Robert  Miner </span></li>
+  <li class="code">Fibonacci Trading: How to Master the   Time and Price Advantage (2008) by Carolyn Boroden</li>
+  <li class="code">Quantitative Trading: How to Build   Your Own Algorithmic Trading Business (Wiley   Trading) (2008)  by Ernie Chan</li>
+</ul>
+<p>Journals:</p>
+<ul>
+  <li> Journal of Portfolio Management, </li>
+  <li> Journal of Financial Engineering, </li>
+  <li> Quantitative Finance, </li>
+  <li>Journal of Investing, </li>
+  <li> etc.</li>
+</ul>
+<p>websites:</p>
+<p>&nbsp;&nbsp;&nbsp; <A href="http://www.wilmott.com/">http://www.wilmott.com</A></p>
+<p>&nbsp;</p>
+<p class="sectionheader"><a NAME="high_frequency_data_analysis" id="high_frequency_data_analysis"></a>High Frequency Data Analysis</p>
+<p>Problems:</p>
+  <ul>
+    <li>High volume of data (millions of data points (ticks) every day.</li>
+    <li><span class="style1">Bad ticks</span> (up to 2-3%) cause bad trades. So sophisticated <span class="style1">data filtering</span>/<span class="style1">data cleaning</span> algorithms are required. And they have to work in real time. Note:  overscrubbing data also causes problems. <a href="http://www.tickdata.com/FilteringWhitePaper.pdf">http://www.tickdata.com/FilteringWhitePaper.pdf</a></li>
+    <li>Sometimes information providers fail to deliver data on time</li>
+    <li>Patterns - seasonal paterns, patterns during the wekk, during the day, 1st minute high volume</li>
+  </ul>
+  <p>For <span class="style1">historical backtesting</span> one need to store tick data. It is a time series data. So using standard SQL database may be not the best solution. There are many approaches and things to pay attention to. Usually for processing people use arrays in memory (C, C++, J, OCaml). For data storage people use flat files, SQL databases, linea database, etc. You can google for: <span class="code">how to present tick data in the database</span><br> 
+    Here is excellent discussion:<br>
+  <a href="http://www.elitetrader.com/vb/showthread.php?threadid=81345&perpage=6&pagenumber=1"> http://www.elitetrader.com/vb/showthread.php?threadid=81345&amp;perpage=6&amp;pagenumber=1</a></p>
+  <ul>
+    <li>RDBMS. Big databases provide for intelligent memory caching, or even  &quot;in memory&quot; database solutions, for example: <a href="http://www.oracle.com/technology/products/timesten/index.html">Oracle TimesTen In-Memory Database</a>. <br>
+    DB2, MS Server, MS SQL (Falcon Engine), etc. also have fast in-memory solutions. Still, SQL databases have a lot of overhead.</li>
+    <li>Specialized  database/interface solutions - fast in both storing and retrieving, can work with terrabytes of data, and can process thousands of transactions per second:
+      <ul>
+        <li><a href="http://www.onetick.com">onetick.com</a> - very very good</li>
+        <li><a href="http://www.vhayu.com">vhayu.com</a> - Vhayu  tick database - used by <a href="http://www.modulusfe.com/rmdserver/">RMD Server</a> (Reuters).</li>
+        <li><a href="http://www.sungard.com/financialsystems/products/famesoftware.aspx">SunGard's data server</a> - FAME</li>
+        <li><a href="http://hdf.ncsa.uiuc.edu/HDF5/whatishdf5.html">hdf5</a> - <span class="style1">HDF5</span> is better and faster than flat files for backtesting (<a href="http://hdf.ncsa.uiuc.edu/HDF5/hdf5_hl/doc/RM_hdf5pt_intro.html">HDF5 Packet Table API</a>)</li>
+        <li><a href="http://www.mightyware.com/commodity_server.htm">Commodity Server</a> </li>
+        <li><a href="http://www.xenomorph.com/solutions/">Xenomorth</a> -TimeScape XDB, not very good</li>
+        <li><a href="http://kx.com/Products/kdb+tick.php">kdb+tick</a> (<span class="style1">kx.com</span>) - 64 bit commercial and <a href="http://kx.com/Developers/software.php">32 bit non-commercial</a> (has restrictions)</li>
+        <li><a href="http://www.lmt-expo.com/lmt/products/TICKBASE.asp">TickBase</a></li>
+        <li><a href="http://monetdb.cwi.nl/">MonetDB</a> - Open Source</li>
+        <li><a href="http://en.wikipedia.org/wiki/StreamSQL">StreamSQL</a> - <span class="style1">StreamSQL</span> is an extension to SQL - procesing using sliding time-based windows </li>
+        <li><a href="http://www.streambase.com/">streambase</a>, <a href="http://esper.codehaus.org/">Esper</a> (can use HDF5 for storage, Esper for analysis).</li>
+        <li><a href="http://www.unidata.ucar.edu/software/netcdf/">NetCDF</a> - Network Common Data Form -  a set of software libraries/formats for array-oriented  data</li>
+        <li> <a href="http://en.wikipedia.org/wiki/FITS">FITS</a> - Flexible Image Transport System - data file format to manipulate/store/transmit images.<br>
+        </li>
+        <li><a href="http://www.db40.com">db40</a> - object database</li>
+        <li><a href="http://www.deltixlab.com">Deltix QuantOffice</a> - has its own tick database - and can work with <a href="http://www.vhayu.com">vhayu.com</a> and others.</li>
+        <li><a href="http://en.wikipedia.org/wiki/ReiserFS">ReiserFS</a> - journalling filesystem (supported on  Linux)</li>
+        <li><a href="http://en.wikipedia.org/wiki/K_programming_language">K programming language</a> (processing arrays, derivative of <a href="http://en.wikipedia.org/wiki/APL_(programming_language)">APL</a> and a cousin to the <a href="http://en.wikipedia.org/wiki/J_programming_language">J programming language</a>).</li>
+        <li><a href="http://www.vertica.com/">http://www.vertica.com/</a> - Analytic database</li>
+        <li><a href="http://en.wikipedia.org/wiki/Ocaml">OCaml</a> - high performance programming language (also <a href="http://cristal.inria.fr/~starynke/persil/">persistent library</a>)</li>
+        <li><a href="http://www.sqlite.org">sqlite.org</a> - memory-resident database written in C - convenient as a buffer between datafeed and real storage (say, MySQL database). Idea is to accumulate ticks in sqlite one-by-one - and then write them to real database in blocks (bulk) - thus increasing performance.</li>
+      </ul>
+    </li>
+    <li>For high frequency data disk speed can be a limitation. One way of solving this problem is to &quot;compress&quot; data by storing only differences - in minimal number of bits per tick (say, 5 bits on average).</li>
+  </ul>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="programming_languages"></a>Programming languages - Functional or Imperative ?</p>
+<p>Algorithmic trading (and modeling/backtesting) can be implemented in many different programming languages. See for example:</p>
+<ul>
+  <li><a href="http://www.algotradinggroup.com/cgi-bin/yabb2/YaBB.pl?num=1215367637/13">http://www.algotradinggroup.com/cgi-bin/yabb2/YaBB.pl?num=1215367637/13</a> - good discussion</li>
+  <li><a href="http://www.janestreet.com/yaron_minsky-cufp_2006.pdf">http://www.janestreet.com/yaron_minsky-cufp_2006.pdf</a> - good presentation/discussion making case for using  OCaml</li>
+</ul>
+<p>Generally FP (Functional Programming)  Languages are very good for fast prototyping, although they are generally slower. But, again, this is not always the case - for example, <a href="http://en.wikipedia.org/wiki/Ocaml">OCaml</a> works really fast. FPLs are also easier to parallelize (to run on several computers in parallel). </p>
+<p>For some projects you can use combinations of languages. For some tasks selecting a language is just a matter of personal preference. For others </p>
+<p>Here are some languages to choose from:</p>
+<ul>
+  <li>C/C++ - fast. There are libraries to provide FP features: <a href="http://www.boost.org/doc/libs/1_36_0/libs/libraries.htm#Function-objects">Boost</a>, <a href="http://www.boost.org/doc/libs/1_36_0/libs/spirit/phoenix/doc/html/index.html">phoenix</a>, <a href="http://www.boost.org/doc/libs/1_36_0/doc/html/lambda.html">lambda</a> </li>
+  <li> Java - fast (if you don't overuse the OOP features).</li>
+  <li><a href="http://en.wikipedia.org/wiki/Q_(programming_language_from_Kx_Systems)">Q</a> - based on K - programming language, a query language for  KDB+ ( see also <a href="http://en.wikipedia.org/wiki/Pure_(programming_language)">Pure_programming_language</a> ).</li>
+  <li><a href="http://en.wikipedia.org/wiki/K_programming_language">K</a> - variant of APL with elements of Scheme and A+.  Fast. Used by <a href="http://www.kx.com">kx.com</a>  for  <span class="style1">kdb</span> (in-memory column-based database). The executable can be made very small - fit into CPU cache.</li>
+  <li><a href="http://en.wikipedia.org/wiki/J_programming_language">J</a> - from APL and FP, very terse, great for math, statistics, matrices. The executable can be made very small - fit into CPU cache.</li>
+  <li><a href="http://en.wikipedia.org/wiki/APL_(programming_language)">APL</a> - Array Programming Language (since 1957, was used in IBM, etc.), usually interpreted, slow</li>
+  <li><a href="http://caml.inria.fr/">OCaml</a> - very fast (matches C/C++), OOP, FP, static typing</li>
+  <li><a href="http://www.scala-lang.org">Scala</a> - good, works with Java, a bit slower</li>
+  <li><a href="http://www.haskell.org/">Haskell</a> - FP, slow</li>
+  <li><a href="http://en.wikipedia.org/wiki/Erlang_(programming_language)">Erlang</a> - FP, slow, used in telecom industry, designed to run distributed, fault-tolerant, real-time, non-stop applications.</li>
+  <li><a href="http://research.microsoft.com/fsharp/fsharp.aspx">F#</a> - from Microsoft for .NET platform, siimlar to OCaml</li>
+  <li><a href="http://msdn.microsoft.com/en-us/devlabs/dd795202.aspx">Axum</a> - from Microsoft - parallel programming ( see also <a href="http://msdn.microsoft.com/en-us/concurrency/default.aspx">concurrency</a> )</li>
+</ul>
+<p class="sectionheader"><a name="tick_data"></a>Tick Data</p>
+<p>Formal definition of a &quot;<span class="style1">tick</span>&quot; is a &quot;<span class="style1">minimum change in price a security</span>&quot;. For stocks it may be as little as  one cent, for  US Treasuries -  1/32 of a point, or 31.25 cents. For futures it may be different depending on the contract. The tick size is determined by the exchange. Different products may have different tick sizes.</p>
+<p>When people talk about &quot;<span class="style1">Tick Data</span>&quot; - they usually mean any type of  time series data which includes both <span class="style1"> volume and price</span> for every point. Additional info may include time (for asynchronous time series), bid/ask, partial Level 2 information (information not only for the best bid/ask, but for several others), etc. Depending on the feed, you can get more or less data. Also you can get absolute values - or only differences (this sometimes is useful to &quot;compress&quot; the data flow).</p>
+<p>Sometimes people use the term &quot;<a href="http://en.wikipedia.org/wiki/Market_data">Market Data</a>&quot;. It is similar. Market data feed may contain more information (for example: Ticker Symbol, 
+  Bid, 
+  Ask, 
+  Bid size, 
+  Ask size, 
+  Last sale (price), 
+  Last size, 
+  Quote time, 
+  Trade time, Exchange, 
+Volume). The feed may be an aggregation of several feeds.</p>
+<p>Tick data can be very big (it is not uncommon to handle terrabytes of data for analysis).</p>
+<p>To receive  high-frequency data in real time you may need special hardware, because regular ethernet cable and regular hard drive may be not fast enough to handle the traffic. So you may need to  parallelize your systems.</p>
+<p>For many applications when you don't need fine granularity, you can decrease the amount of data 100 times (and more) by using  data presented on a &quot;per minute&quot; basis (or even &quot;per day&quot;). People refer to this data as &quot;bars&quot; or &quot;candlesticks&quot;.</p>
+<p class="sectionheader"><a name="low_latency"></a>Low Latency</p>
+<p>Low Latency Trading - done electronically using network connections to exchanges and ECNs (Electronic Communication Networks). ~ 60-70% of the NYSE volume is done this way. Today with algorithmic trading even a millisecond improvement in latency gives a competitive advantage.</p>
+<p>Causes of latency:</p>
+<ul>
+  <li>physical distance</li>
+  <li>too much traffic causes network delays</li>
+  <li>delays in feed/message handling components</li>
+  <li> applications can't handle the volume fast enough</li>
+  <li>market centers themselves may introduce latency - gateways, different  subscribtions (direct pipe is faster than going through a consolidation process).</li>
+</ul>
+<p>Measuring latency</p>
+<ul>
+  <li>average latency, standard deviation, trends in latency</li>
+  <li>bespoke (custom) latency measurement (ground-up - measure each step).</li>
+  <li>another way  collect statistics - and make conclusions from that.</li>
+  <li>histograms, heat maps, etc.</li>
+</ul>
+<p>Who is affected by latency:</p>
+<ul>
+  <li>algorithmic trading</li>
+  <li>statistical and arbitrage models' trading</li>
+  <li><span class="style1">Rebate Trading</span> - when you trade large volumes on ECN (electronic communication networks), ECN will give you a small rebate (%) for each big transaction. If you do large volume of transactions - you will make money on rebates. The key is not to hold - but to get in/get out ASAP. </li>
+</ul>
+<p>Methods to reduce latency:</p>
+<ul>
+  <li>Move closer to ECN or exchange (colocate boxes on the exchange sites).</li>
+  <li>Use fiber-optic  direct pipes with enough bandwidth</li>
+  <li>Use diversity in vendors for your connections</li>
+  <li>Get fast hardware
+    <ul>
+      <li><span class="style1">bespoke</span> hardware - custom made to the buyer's specs.</li>
+      <li><span class="style1">FPGA hardware acceleration</span> (<a href="http://en.wikipedia.org/wiki/Field-programmable_gate_array">FPGA</a> = Field-Programmable Gate Array) - semiconductor device that can be reconfigured by the customer. </li>
+      <li>multi-core chips</li>
+      <li>lots of memory - cache everything, minimize usage of hard drive</li>
+      <li>fast hard drives (icluding solid-state drives)</li>
+    </ul>
+  </li>
+  <li>fast software to speed-up prcessing, analysis, decision making</li>
+  <li>reducing the number of messages (remove unnecessary talk), using native messages (converting to <a href="http://en.wikipedia.org/wiki/FIX_protocol">FIX</a> and back takes time), compressed messages.</li>
+  <li>etc.</li>
+</ul>
+<p><br>
+</p>
+<p class="sectionheader"><a name="misc_resources"></a>Misc Resources</p>
+<ul>
+    <li><a href="http://epchan.blogspot.com/">http://epchan.blogspot.com</a> - Ernie Chan's excellent blog</li>
+    <li><a href="http://www.algotradingpodcast.com/">http://www.algotradingpodcast.com</a> - interviews about algorithmic trading</li>
+    <li><a href="http://www.algotradinggroup.com">http://www.algotradinggroup.com</a> - forum</li>
+    <li><a href="http://www.thetrade.ltd.uk/resources.asp">http://www.thetrade.ltd.uk/resources.asp</a> - good resources</li>
+    <li><a href="http://www.marketcetera.com/site/">http://www.marketcetera.com/site/</a> - <span class="style1">open source trading platform</span></li>
+    <li><a href="http://www.datashaping.com/">http://www.datashaping.com</a> - collection of resources.</li>
+    <li><a href="http://www.stacresearch.com/">http://www.stacresearch.com/</a> performance</li>
+    <li><a href="http://www.suitellc.com">http://www.suitellc.com</a> - Suite LLC&rsquo;s <span class="style1">ALib</span>&trade; analytic library for fixed-income and credit derivatives.</li>
+    <li><a href="http://streambase.typepad.com/streambase_stream_process/algorithmic-trading/">http://streambase.typepad.com/streambase_stream_process/algorithmic-trading/</a> - </li>
+    <li><a href="http://www.investopedia.com">http://www.investopedia.com</a> - good place to search for term definitions</li>
+  </ul>
+<p>Some articles on short-term effects of trades:</p>
+<ul>
+  <li><a href="http://weber.ucsd.edu/~mbacci/engle/291.pdf">http://weber.ucsd.edu/~mbacci/engle/291.pdf</a> - (2000) - Time and the Price Impact of a Trade - Alfonso Dufour, Robert F. Engle</li>
+  <li><a href="http://www.courant.nyu.edu/~almgren/papers/costestim.pdf">http://www.courant.nyu.edu/~almgren/papers/costestim.pdf</a> - (2005) - Direct Estimation of 
+    Equity Market Impact - Robert Almgren, Chee Thum, Emmanuel Hauptmann, and Hong Li</li>
+  <li> <a href="http://www.courant.nyu.edu/~almgren/papers/optliq.pdf">http://www.courant.nyu.edu/~almgren/papers/optliq.pdf</a> - (2000) - Optimal Execution 
+    of Portfolio Transactions - 
+    Robert Almgren, Neil Chriss</li>
+  <li> <a href="http://www.santafe.edu/~jdf/papers/mastercurve.pdf">http://www.santafe.edu/~jdf/papers/mastercurve.pdf</a> - (2003) - Master curve for price-impact function - Fabrizio Lillo, J. Doyne Farmer, Rosario N. Mantegna</li>
+  <li> <a href="http://arxiv.org/pdf/cond-mat/0406224v2">http://arxiv.org/pdf/cond-mat/0406224v2</a> - (2008) - Random walks, liquidity molasses and critical response in financial markets - Jean-Philippe Bouchaud, Julien Kockelkoren, Marc Potters<br>
+  </li>
+  <li> <a href="http://papers.ssrn.com/sol3/papers.cfm?abstract_id=931667">http://papers.ssrn.com/sol3/papers.cfm?abstract_id=931667</a> - (2006) - Tactical Liquidity Trading and Intraday Volume  - Merrell Hora</li>
+</ul>
+<p>More misc. resources:</p>
+<ul>
+  <li><a href="http://www.29West.com">29West.com</a> - fast and affordable messaging middleware (up to 2.4 mln messages per second, latency under 50 microsec on a regular PC hardware)</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

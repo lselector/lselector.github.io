@@ -1,0 +1,812 @@
+# -------------------------------------------------------------
+# Below are pandas questions/answers
+# -------------------------------------------------------------
+
+
+Question ------------------------------
+
+How to read dataframe from a CSV file,
+and how to write it back
+
+Answer --------------------------------
+
+bb = read_csv('data.csv', sep='|')
+
+aa.to_csv('data.csv',sep='|',header=True, index=False)
+
+Question ------------------------------
+
+pandas DataFrame - create and populate with data
+    from dict of columns,
+    from list
+    from numpy array, 
+    from list of serieses
+    from list of list
+
+Answer --------------------------------
+
+df = pd.DataFrame({'x'  : 3 * ['a'] + 2 * ['b'],
+                'nn' : np.arange(5, dtype=np.float64), 
+                'y'  : np.random.normal(size=5),
+                'z'  : range(5)})
+
+df = pd.DataFrame([[1,2,3]], columns=['A','B','C'])
+
+df = pd.DataFrame(np.arange(12).reshape((3,4)),
+               index = ['A','B','C'],
+               columns = ['AA','BB','CC','DD'])
+
+nrows  = 10
+ncols  =  5
+mydata = np.random.rand(nrows, ncols)
+#mydata = np.random.randn(nrows, ncols)
+aa = pd.DataFrame(data=mydata)
+aa = pd.DataFrame(data=mydata, 
+               index=range(nrows), 
+               columns=[chr(65+x)*2 for x in range(ncols)])
+
+aa = pd.DataFrame( np.random.normal(size=12).reshape((3,4)), 
+                   index = ['A','B','C'], 
+                   columns = ['AA','BB','CC','DD'])
+
+s1 = pd.Series({'x':1,'y':2})
+s2 = pd.Series({'x':3,'y':4})
+aa = pd.DataFrame([s1,s2])   # s1 and s2 - rows
+
+mydata = [[1,2],[3,4],[5,6]]
+aa = pd.DataFrame(mydata, columns=['AA','BB'])
+
+Question ------------------------------
+
+ddd() - convenient function to test DataFrame operations
+
+Answer --------------------------------
+
+def ddd():
+    """
+    # returns a simple pandas DataFrame useful for quick tests
+    """
+    nrows = 7
+    aa = pd.DataFrame({
+          'ii':[0,1,2,3,4,5,np.nan],                                           # float64
+          'i1':[6,5,4,3,2,1,0],
+          'i2':[6,5,4,4,1,1,0],
+          'ff':[0.0,1.0,2.0,np.NaN,4.0,5.0,6.0],                               # float64
+          'f1':[0.0,1.01,2.002,3.0003,4.00004,5.000005,6.0000006],
+          'f2':[1.11,2.22,3.33,4.44,5.55,7.77,9.99],
+          'ss':['s0','s1','','',np.nan,'s5','s6'],                        # dtype=object, np.nan is float64
+          's1':np.array(['s0','s1','s2','s2',np.nan,'s5','s6'],dtype=np.str),  # dtype=object, 'nan' is string
+          's2':['1.11','2.22','3.33','4.44','5.55','7.77','9.99'],
+          'bb':[True, False, True, False, np.nan, False, True],                # dtype=object, np.nan is float64
+          'b1':[True, False, True, False, True, False, True],                  # dtype=bool
+          'xx':range(nrows),
+          'yy':[x*50 + 60 + np.random.randn() for x in range(nrows)]
+    })
+
+    return aa[['ii','i1','i2','ff','f1','f2','ss','s1','s2','bb','b1','xx','yy']]
+
+Question ------------------------------
+
+How to take a value from a particular cell of a dataframe
+    - using df[][]
+    - using df.loc, df.iloc, df.ix
+
+Answer --------------------------------
+
+aa['i2'][1]
+aa.loc[1,'i2']    # label-based
+aa.iloc[1,'i2']   # positional-indexing
+aa.ix[1,'i2']     # deprecated
+
+Question ------------------------------
+How to set a value in a particula cell in a dataframe
+
+Answer --------------------------------
+Use .loc[row,col] or .iloc[i_row, i_col]
+
+aa.loc[1,'ii']=77.0
+
+Question ------------------------------
+How to set values in one column based 
+on a values in other columns (using mask)?
+
+Answer --------------------------------
+
+aa = ddd()
+mask = aa.i2 == 4
+aa.loc[mask,'ii'] = 99 + aa.i1
+
+Question ------------------------------
+
+How to deal with "SettingwithCopyWarning" 
+"A value is trying to be set on a copy of a slice from a DataFrame"
+
+Answer --------------------------------
+
+Try this:
+aa['ii'][1] = 77.0
+
+and you get the warning.
+
+The right way is to do:
+aa.loc[1,'ii']=77.0
+
+To understand why you see the warning read this page:
+ - https://www.dataquest.io/blog/settingwithcopywarning/
+
+Question ------------------------------
+
+a) How to test the type of the Python variable 
+   (is it an int? float? str?, list? dict? etc.) 
+b) How to test type of a column in a DataFrame 
+c) How to list types of all columns in a dataFrame
+
+Answer   ------------------------------
+
+a) 
+def print_type(obj):
+    if type(obj) == int:
+        print("int")
+    elif type(obj) == float:
+        print("float")
+    elif type(obj) == str:
+        print("str")
+    else:
+        print("unknown type")
+
+(b)
+aa = ddd()
+aa.f1.dtype
+
+c)
+aa.dtypes
+
+Question ------------------------------
+
+Extract a row from a DataFrame into a regular python list
+
+Answer --------------------------------
+
+aa.loc[1].tolist()
+aa.loc[len(aa)-1].tolist()
+OR
+aa.loc[1,:].values.tolist()
+list(aa.loc[1,:])
+
+Question ------------------------------
+
+Extract a column or a row from a DataFrame into a regular python list
+Hint - use .loc to convert col/row into a Series
+
+Answer --------------------------------
+
+list(aa.loc[:,'i2'])    # list from Series
+aa.loc[2].tolist()      # list from Series
+
+# for col you can also do:
+aa['i2'].tolist() 
+aa['i2'].values.tolist()
+list(aa['i2'])
+
+Question ------------------------------
+
+a) How to find rows which has the same value 
+   in a particular column ?
+b) How to use value_counts()  ?
+c) How to count number of times each unique value 
+   appears in group, and for multiple columns? 
+d) what is np.unique - and how to use it?
+e) Procedure to extract duplicate rows 
+   (by one or more columns)
+
+Answer --------------------------------
+
+a) 
+aa.duplicated(['i2'])  # creates true/false mask
+
+b)
+aa['i2'].value_counts()
+Returns Series containing counts of unique values (excluding NaN)
+in descending order (the first element is the most frequently occuring).
+
+c)
+df_src = pd.DataFrame([
+    ['amazon.com',  'correct',   'correct'  ], 
+    ['amazon.com',  'incorrect', 'correct'  ], 
+    ['walmart.com', 'incorrect', 'correct'  ], 
+    ['walmart.com', 'incorrect', 'incorrect']
+  ], 
+  columns=['domain', 'price', 'product'])
+
+df_src.groupby('domain')                   \
+    .apply(lambda x: x[['price','product']]  \
+    .apply(lambda y: y.value_counts())).fillna(0)
+
+d) np.unique(aa.i2)  # array([0, 1, 4, 5, 6])
+   # np.unique is a Numpy function 
+   # which shows unique values in a column,
+   # and where they were found first time.
+  
+e)
+def show_duplicates(df, cols=[], include_nulls=True):
+    """
+    # accepts a dataframe df and a column (or list of columns)
+    # if list of columns is not provided - uses all df columns
+    # returns a dataframe consisting of rows of df
+    # which have duplicate values in "cols"
+    # sorted by "cols" so that duplciates are next to each other
+    # Note - doesn't change index values of rows
+    """
+    # ---------------------------------
+    aa = df.copy()
+    mycols = cols
+    # ---------------------------------
+    if len(mycols) <= 0:
+        mycols = aa.columns.tolist()
+    elif type(mycols) != list:
+        mycols = list(mycols)
+    # ---------------------------------
+    if not include_nulls:
+        mask = False
+        for mycol in mycols:
+            mask = mask | (aa[mycol] != aa[mycol])  # test for null values
+        aa = aa[~mask]                              # remove rows with nulls in mycols
+    if len(aa) <= 0:
+        return aa[:0]
+    # ---------------------------------
+    # duplicated() method returns Boolean Series denoting duplicate rows
+    mask = aa.duplicated(cols=mycols, take_last=False).values \
+         | aa.duplicated(cols=mycols, take_last=True).values
+    aa = aa[mask]
+    if len(aa) <= 0:
+        return aa[:0]
+    # ---------------------------------
+    # sorting to keep duplicates together
+    # Attention - can not sort by nulls
+    # bb contains mycols except for cols which are completely nulls
+    bb = aa[mycols]
+    bb = bb.dropna(how='all',axis=1)
+    # sort aa by columns in bb (thus avoiding nulls)
+    aa = aa.sort_index(by=bb.columns.tolist())
+    # ---------------------------------
+    # sorting skips nulls thus messing up the order. 
+    # Let's put nulls at the end
+    mask = False
+    for mycol in mycols:
+        mask = mask | (aa[mycol] != aa[mycol])  # test for null values
+    aa1 = aa[~mask]
+    aa2 = aa[mask]
+    aa = aa1.append(aa2)
+
+    return aa
+
+
+Question ------------------------------
+
+How to append a list of data to a dataframe
+How to append a series as a row to a database
+
+Answer --------------------------------
+aa = ddd()               # create test DataFrame
+bb = aa.loc[1].tolist()   # take 2nd row as a list
+
+# append list
+aa = aa.append(pd.DataFrame([bb], columns=aa.columns))
+
+# append Series by converting Series to a list
+ss = aa.loc[1]
+aa = aa.append(pd.DataFrame([ss.tolist()], columns=aa.columns))
+
+# alternatively you can make 1-column dataframe - and transpose it
+bb = pd.DataFrame(ss)
+bb.index = aa.columns
+aa.append(bb.T)
+
+Question ------------------------------
+
+How to remove duplicate rows 
+(duplicate is defined as having same value(s) in a list of columns)
+
+Answer --------------------------------
+
+aa = aa.drop_duplicates(['i2']) 
+or
+aa = aa.drop_duplicates(['i2'], keep='last') 
+
+Question ------------------------------
+
+How to use a mask using   &, |, ~, .isin(), .isnull()
+
+Answer --------------------------------
+
+mask = aa.f2.isnull()
+aa[mask]
+
+mask = aa.i1.isin([1,3,5])
+aa[mask]
+aa[~mask] # shows the records where mask is False
+
+mask = (aa.i1==3) & (aa.i2 == 4)
+mask = (aa.ii==1) | (aa.i2 == 4)
+
+Question ------------------------------
+
+Give an example of using a map() function
+on a pandas DataFrame column
+
+Answer --------------------------------
+
+aa['yy'] = aa.yy.map(int)
+
+Question ------------------------------
+Give example using map with lambda for dataframe operations
+
+Answer --------------------------------
+
+aa['s2'] = aa.ss + '__' + aa.i1.map(lambda x: str(x))
+
+# make a list of values in column 'yy' rounded to 2 digits after dot
+aa['yy'].map(lambda x: round(x,2)).tolist()
+
+Question ------------------------------
+
+Give example using  groupby().sum()
+
+Answer --------------------------------
+
+cc = aa.groupby(['i2'], as_index=False).sum()
+
+# note - groupby().sum() will usually remove all 
+# string columns from the result. To avoid it, you can
+# use agg():
+
+cc = aa.groupby('i2', as_index=False).agg({'i1':np.sum,'ss':np.max})
+
+Question ------------------------------
+
+Give example using groupby().aggregate()
+
+Answer --------------------------------
+
+bb = aa.groupby('i2', as_index=True).aggregate({'yy':np.sum, 'xx':np.max}) 
+
+Question ------------------------------
+How to sort a dataframe by a list of columns
+
+Answer --------------------------------
+
+cc = aa.sort_values(by=['i2','yy'])
+
+Question ------------------------------
+How to delete some rows from dataframe - and reindex.
+
+Answer --------------------------------
+
+aa = aa.drop([3,4])
+
+mask = aa['ii'].map(lambda x: x > 3)
+aa = aa[~mask]
+
+aa.reindex() # doesn't change index
+             # unless you provide it 
+aa.index = range(len(aa))
+
+mask = aa['id'].map(lambda x: x in (0,1,4))
+aa = aa[~mask]
+
+Question ------------------------------
+
+How to add rows to a dataframe (add 2 dataframes together vertically)
+
+Answer --------------------------------
+
+bb = aa.copy()
+aa = aa.append(bb,ignore_index=True)
+
+Question ------------------------------
+  - how to add columns to pandas DataFrame
+  - how to calculate column values from numeric/string values in other columns.
+  - how to delete one or more columns
+
+Answer --------------------------------
+
+df['c4']=None         # populate with same value
+col2=[1,2,3,4,5,6,7]
+df['c4']=col2         # list becomes a column
+df['c4'] = "-"
+df['c2'] = 0
+
+# adding a column - and populating it using vectorized operation on columns
+df['c5']= 2*df['c1'] + 3*df['c2'] + 5
+
+# calculating column values from other columns:
+df['c4']= 2*df['c1'] + 3*df['c2'] + 5
+aa['s2'] = aa.ss + '__' + aa.i1.map(lambda x: str(x))
+
+# Deleting one column
+del ff['s5']
+
+# Deleting many columns
+ff = ff.drop(['c1','c2',c3'], axis=1)  
+
+Question ------------------------------
+How to calculate a pandas DataFrame column 
+as a linear combination of some other columns
+
+Answer --------------------------------
+
+ff['c4']= 2*ff['i1'] + 3*ff['i2'] + 5 
+
+Question ------------------------------
+How to calculate a DataFrame column 
+from several other columns while using str() and int().
+Hint - use map(lambda ..)
+
+Answer --------------------------------
+
+ff['s3'] = ff['yy'].map(lambda x: int(x)) 
+ff['s4']= '>>>' + ff.s3.map(lambda x: str(x)) + '<<<'
+
+Question ------------------------------
+String operations on columns
+How to define a mask using a regular expression
+
+Answer --------------------------------
+
+mask = aa.ss.map(lambda x: True if re.search(r's[1,3]',str(x)) else False)
+
+Question ------------------------------
+How to define a mask using regex on one column, and numeric comparison on the other column
+
+Answer --------------------------------
+
+mask = (aa.i2.map(lambda x: True if re.search(r'4',str(x)) else False)) & (aa.xx > 2)
+mask = ( df.a == 1) & (df.b == 2)
+mask = ( df.a == 1) | (df.b == 2)
+mask = ( df.a == 1) | df.b.isin([1,2,3])
+mask = ( df.a == 1) | df.b.map(lambda x: ......)
+mask = ( df.a == 1) | df.b.map(lambda x: ......)  |  df.c.map(lambda x: ......) 
+
+Question ------------------------------
+How to change the order of columns in a dataframe
+
+Answer --------------------------------
+
+aa = pd.DataFrame({'a':range(3),'b':range(3),'c':range(3)})
+col_list_ordered = ['a','b','c']
+aa = aa[col_list_ordered]
+# or (notice double-brackets)
+aa = aa[['a','b','c']]
+
+Question ------------------------------
+How to check if a dataframe has a column with a particular name
+
+Answer --------------------------------
+
+    if 'i2' in aa.columns:
+        print("true")
+
+Question ------------------------------
+select rows of a pandas DataFrame which have null values (in any column)
+
+Answer --------------------------------
+
+def rows_with_nulls(df):
+    mask=False
+    for col in df.columns: mask = mask | df[col].isnull()
+    return df[mask]
+
+Question ------------------------------
+a) how to substitute null values in a column ? 
+b) in the whole dataframe ?
+
+Answer --------------------------------
+
+    aa.ss.fillna(0.0)
+    aa.ss.fillna(0)
+    aa.ss.fillna('-')
+
+    aa.fillna(0)
+
+Question ------------------------------
+Can an integer column in pandas DataFrame have a NaN value?
+
+Answer --------------------------------
+
+No. Float column can.
+
+Question ------------------------------
+How to convert value type of a column to int64 or float64 ?
+
+Answer --------------------------------
+
+    aa.mycol = aa.mycol.astype(np.float64)
+    aa.mycol = aa.mycol.astype(np.int64)
+
+Question ------------------------------
+Take first several rows for a dataframe (regardless of index)
+Take last several rows of a dataframe (regardless of index)
+Take group of rows in the middle (regardless of index)
+
+Take one row as a list (first / last / middle)
+
+Answer --------------------------------
+
+# first rows as dataframe:
+aa.head()
+aa.head(1)
+aa[:5]
+aa[:1]
+
+# last rows rows as dataframe:
+aa.tail()
+aa.tail(1)
+aa[-5:]
+aa[-1:]
+
+# rows in the middle as dataframe
+aa[2:4]
+
+# Take one row as a list (first / last / middle)
+# for this we use DF.ix[] construct, because for 1 row it returns a Series
+aa.loc[aa.index[0]].tolist()
+aa.loc[aa.index[-1]].tolist()
+aa.loc[aa.index[3]].tolist()
+
+Question ------------------------------
+Take first row of a DataFrame as a list or dict
+
+Answer --------------------------------
+
+aa.loc[aa.index[0]].tolist()
+aa.loc[aa.index[0]].to_dict()
+
+Question ------------------------------
+How to combine data of two pandas DataFrames ?
+
+Answer --------------------------------
+
+pd.merge(df1,df2, on=[..], how='inner')  # like joining 2 tables in SQL, inner,outer,left
+aa.append(bb,ignore_index=True)
+concat([s1,s2,s3])      - stacks together objects along an axis (vertically)
+concat([aa,bb],axis=1) - stacking horizontally
+df.combine_first() - splices together overlapping data to fill missing values
+
+Question ------------------------------
+pandas stack()/unstack() functions
+grouping by mask
+
+Answer --------------------------------
+
+xx = pd.DataFrame([ ["Jan","name1",1,2,3],   ["Jan","name2",4,5,6],
+                    ["Mar","name1",11,12,13],["Mar","name2",14,15,16]
+                  ],
+                  columns=["Month","name","c1","c2","c3"])
+
+wide = xx.set_index(["Month","name"]).stack(1).unstack('Month')
+
+Month     Jan  Mar
+name              
+name1 c1    1   11
+      c2    2   12
+      c3    3   13
+name2 c1    4   14
+      c2    5   15
+      c3    6   16
+
+mask = wide.Jan > 3
+wide.groupby(by=mask).sum()
+
+Month  Jan  Mar
+Jan            
+False    6   36
+True    15   45
+
+Question ------------------------------
+pandas DataFrame - pivot()
+
+Answer --------------------------------
+
+aa = pd.DataFrame({
+   'foo':3*['one'] + 3*['two'],
+   'bar':2*['A','B','C'],
+   'baz':[1,2,3,4,5,6] })
+aa = aa[['foo','bar','baz']]
+
+#       foo bar  baz
+#    0  one   A    1
+#    1  one   B    2
+#    2  one   C    3
+#    3  two   A    4
+#    4  two   B    5
+#    5  two   C    6
+
+xx.pivot('foo','bar','baz')
+# or
+xx.pivot('foo', 'bar')['baz']
+
+#    bar  A  B  C
+#    foo         
+#    one  1  2  3
+#    two  4  5  6
+
+Question ------------------------------
+How to generate random numbers to populate DataFrame
+
+Answer --------------------------------
+
+np.random.randn(rows, cols)
+np.random.rand(rows, cols)
+np.random.normal(size=25).reshape(5,5)
+np.random.normal(loc=0.0, scale=1.0, size=None)
+np.random.<TAB>
+np.random.seed(int)
+
+Question ------------------------------
+pandas DataFrame - transform a row using flexible 
+    custom function operating on all columns.
+
+Answer --------------------------------
+
+aa = pd.DataFrame({'aa':range(5), 'bb':range(5)})
+
+def fn(df):
+    dd = df.loc[df.index[0]].to_dict()
+    df['lev'] = str(dd['aa']**2) + '_' + str(dd['bb']**2)
+    return df
+
+bb = aa.groupby(aa.index,as_index=False).apply(fn)
+print(bb)
+   aa  bb    lev
+0   0   0    0_0
+1   1   1    1_1
+2   2   2    4_4
+3   3   3    9_9
+4   4   4  16_16
+
+Question ------------------------------
+how to loop through rows of pandas DataFrame?
+
+Answer --------------------------------
+
+aa=ddd()
+for rr in aa.itertuples(): print(rr)
+for rr in aa.itertuples(index=False): print(rr)
+
+DataFrame.iterrows()  - a generator
+    yields tuple (index, row_as_Series)
+    Slow, because needs to create a Series from each row.
+  
+for row in df.iterrows():
+    ind = row[0]
+    ser = row[1]
+    cols = list(ser.index)
+    vals = list(ser)
+    print("ind = ",ind,", vals = ",vals)
+
+for row in df.iterrows():   print(row[1].values)
+for row in df.iterrows():   print(list(row[1].values))
+
+# Another way:
+for ii in df.index: do_something(df.loc[ii])
+
+Question ------------------------------
+String operations on columns
+
+Answer --------------------------------
+aa = pd.DataFrame({
+    'ss':['aa1','bb2','cc3',np.nan],
+    'ff':['  11.11  ','  22.22  ','  33.33  ','  44.44  '],
+    'ii':['  11     ','  22     ','  33     ','  44     ']})
+
+# use str method on Series/Column:
+aa.ss.str.<TAB>
+aa.ss.str.contains('bb')
+aa.ss.str[:2]   # first 2 characters
+aa.ss.str.upper()
+aa.ss.str.len()
+# etc.
+
+# using regular expression
+mask = aa.ss.map(lambda x: True if re.search(r's[1,3]',str(x)) else False)
+
+# convert from string to number and back
+aa['zz'] = aa.ff.astype(np.int64) # error
+aa['zz'] = aa.ff.map(lambda x: int(float(x)) if x==x else np.nan).astype(np.int64)
+aa['zz'] = aa.ii.astype(np.int64) # works
+print(aa.zz.dtype)
+aa['zz'] = aa.ff.astype(np.float64) # works
+aa['zz'] = aa.ii.astype(np.float64) # works
+print(aa.zz.dtype)
+aa['zz'] = aa.ii.str.strip().astype(float)
+print(aa.zz.dtype)
+aa['zz'] = aa.ii.str.strip().str[0].astype(int)
+print(aa.zz.dtype)
+aa['zz'] = aa.ff.astype(object)  # use this to work with a string
+print(aa.zz.dtype)
+aa['zz'] = aa.ff.astype(str)     # silent error
+print(aa.zz.dtype)
+
+# mask = aa.ss.str.match(r'1|3') - doesn't work yet
+# mask = aa.ss.get(label) # ?? 
+
+Question ------------------------------
+Making histogram (cutting data into bins)
+
+Answer --------------------------------
+
+aa=np.random.normal(size=100)
+aa
+bins=[-3, -2.5, -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5, 3]
+vals = pandas.cut(aa,bins)
+pandas.value_counts(vals)
+
+# also look at pandas.qcut
+
+Question ------------------------------
+How to get a short summary of data in the numeric DataFrame?
+How to remove outliers (values which are too big or small)
+
+Answer --------------------------------
+
+aa = ddd()
+print(aa.describe())
+
+np.random.seed(12345)
+data = pd.DataFrame(np.random.randn(1000, 4), columns=['A','B','C','D'])
+data
+data.describe()
+data.describe().index  # [count, mean, std, min, 25%, 50%, 75%, max]
+
+# look at outliers (numbers more than 3)
+print(data[(np.abs(data) > 3).any(1)])
+
+# remove outliers
+data[(np.abs(data) > 3)] = np.sign(data) * 3
+
+Question ------------------------------
+How to search and replace values in a column in a DataFrame
+
+Answer --------------------------------
+
+# most common way is in 2 steps:
+#   step1 - create a mask to identify rows in hwich we need to do change
+#   step2 - do the change to the column using the mask
+
+aa = ddd()
+mask = aa.i2 == 4
+aa.loc[mask,'ii'] = 99
+
+# alternative may be to use replace based on value(s)
+aa.ss.replace(list_of_values, replacing_value)
+#or
+aa.ss.replace({val1:repl1, val2:repl2, etc.})
+
+Question ------------------------------
+How to combine a list of sets into one sorted list
+
+Answer --------------------------------
+
+gg = [{1,2,3},{2,3,4},{3,4,5}]
+print(sorted(set.union(*gg)))
+
+##=======================================
+##df.groupby(...).size()
+##=======================================
+##for name, group in df.groupby(..): ...
+##=======================================
+##dict(list(df.groupby(...)
+##=======================================
+##what's the difference between quantiles and buckets?
+##median as a quantile
+##=======================================
+## difference between agg and apply
+## df.groupby(...).agg(fn) - fn to work on an array
+## df.groupby(...).apply(fn) - fn to work on a DataFrame
+## you can provide args to fn in apply:
+##  .apply(fn, args)
+## ser.apply(fn) - apply can be use on a Series - but I prefer map for this 
+##=======================================
+##OLS = Ordinary Least Squares
+##=======================================
+##pivot vs crosstab

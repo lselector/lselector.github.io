@@ -1,0 +1,424 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="KeyWords" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="Author" content="Lev Selector">
+   <title>Informatica</title>
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+    <td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a> 
+      > Informatica</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+<b><font color="#CC0000">Informatica</font></b> 
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 WIDTH="100%" >
+  <tr> 
+    <td ALIGN=LEFT VALIGN=TOP WIDTH="20%"><ul>
+        <li><a href="#intro">intro</a></li>
+        <li><a href="#working_with_informatica">working with informatica</a></li>
+        <li><a href="#repository_manager">repository_manager</a></li>
+        <li><a href="#informatica_designer">informatica designer</a></li>
+        <li><a href="#server_manager">server manager</a></li>
+      </ul></td>
+  </tr>
+</table>
+
+<p><a NAME="intro" id="intro"> </a></p>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+  <tr> 
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+    <td ALIGN=LEFT><b>What is Informatica</b></td>
+    <td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top 
+      of the page</a> - </b></td>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+<p>TEST</p>
+<p>If you want to set up a Data Warehouse - then you will love to have Informatica 
+  software. It will greatly simplify DW design, and numerous routine tasks related 
+  to data transformation and migration (ETL - Extract, Transform, and Load), day-to-day 
+  maintenance and management. </p>
+<ul>
+  <li><a href="http://www.informatica.com/">www.informatica.com</a></li>
+</ul>
+<p>Informatica has a simple visual interface. You do most of the work by simply 
+  dragging and dropping with your mouse in the Designer. This graphical approach 
+  makes it also very easy to understand what is going on (it is &quot;self-documenting&quot; 
+  in a sense).</p>
+<p>Informatica can communicate with all major databases, can move/transform data 
+  between them. It can move huge volumes of data in a very effective way. It can 
+  throttle the transactions (do big updates in small chunks to avoid long locking 
+  and filling the transactional log). It can effectively do joins between tables 
+  in different databases on different servers. The tasks are performed by <strong>Informatica 
+  Server</strong> (Unix or MS Windows). You get a client application called &quot;<strong>Server 
+  Manager</strong>&quot; to work with the server.</p>
+<p>You design your processes in a client application called &quot;<strong>Designer</strong>&quot;. 
+  This is where you you tell what the source databases and tables will be, what 
+  will be the targets, and how you move/transform the data.</p>
+<p>Informatica uses its own database called &quot;Metadata Repository Database&quot;, 
+  or simply a <strong>Repository</strong>. Repository stores the data (rules) 
+  needed for data extraction, transformation, loading, and management. You get 
+  a client application &quot;<strong>Repository Manager</strong>&quot; to work 
+  with the repository.</p>
+<p><strong><em>Informatica comes in different packages:</em></strong></p>
+<ul>
+  <li>Informatica <strong>PowerCenter</strong> license - has all options, including 
+    distributed metadata, ability to organize repositories into a data mart domain 
+    and share metadata accross repositories.</li>
+  <li>PowerMart <strong>PowerMart</strong> - a limited license (all features except 
+    distributed metadata and multiple registered servers).</li>
+</ul>
+<p>The short overview below is based on PowerCenter v.1.7, and PowerMart 4.7 (this 
+  is dated at ~2000). Since then new versions were made, and all the version numbering 
+  was changed. The latest version of the PowerCenter is v.7 (end of 2003 - cost 
+  ~$200,000).</p>
+<p><strong><em>Other products by Informatica:</em></strong></p>
+<ul>
+  <li>Informatica <em><strong>PowerAnalyzer</strong></em> (web based tool for 
+    data analysis - Business Intelligence)</li>
+  <li>Informatica <em><strong>SuperGlue</strong></em> - managing metadata (data 
+    about data). Directory of data (personalized), graphical representation of 
+    data quality and flow, flexible analysis and reporting (based on PowerAnalyzer) 
+    of overall data volumes, loading performance, etc.</li>
+</ul>
+<p><a NAME="working_with_informatica" id="working_with_informatica"> </a></p>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+  <tr> 
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+    <td ALIGN=LEFT><b>Working with Informatica</b></td>
+    <td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top 
+      of the page</a> - </b></td>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+<p>Here are the pieces of the puzzle:</p>
+<ul>
+  <li>source database(s), target database(s), repository metadata database</li>
+  <li>Informatica server</li>
+  <li>PC-based client software (Designer, Server Manager, Repository Manager)</li>
+</ul>
+<p>Setting everything up is also straighforward. Once the server components are 
+  installed and configured, you install the client applications, configure ODBC, 
+  register the Informatica Server in the Server Manager. Create a Repository, 
+  create users and groups, edit users profiles. Add source and target definitions, 
+  set up mapping between the sources and targets, create a session for each mapping 
+  - and run sessions (resulting in writing data to targets).</p>
+<p><a name="repository_manager"></a></p>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+  <tr> 
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+    <td ALIGN=LEFT><b>Repository Manager</b></td>
+    <td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top 
+      of the page</a> - </b></td>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+<p>The <strong>Repository Manager</strong> allows you navigate through multiple 
+  repositories and folders inside the repositories. Navigating it is very similar 
+  to navigating standard MS Windows Explorer. You have expandable tree on the 
+  left (<strong>Navigator Window</strong>) - and list of details of the objects 
+  in the selected folder (<strong>Main Window</strong>).</p>
+<table border="0" align="center" cellpadding="10" cellspacing="0">
+  <tr> 
+    <td align="center">
+<p><a href="images/informatica/repository_manager_window.jpg"><img src="images/informatica/repository_manager_window_s.jpg" alt="click on the image to enlarge it." width="145" height="100" border="2"></a><br>
+        Repository Manager</p></td>
+    <td align="center"><a href="images/informatica/rep_login.jpg"><img src="images/informatica/rep_login_s.jpg" alt="click on the image to enlarge it." width="100" height="30" border="2"></a><br>
+      Repository Login</td>
+  </tr>
+</table>
+<p>Folders main contain Nodes (subfolders) - Sessions, Batches, Sources, Targets, 
+  Transformations, Mapplets (reusable sets of transformations) and Mappings. They 
+  in turn may contain corresponding individual repository objects - sessions, 
+  batches, sources, targets, transformations, mapplets and mappings, as well as 
+  shortcuts, batches, and session logs.</p>
+<p> Interface is simple and intuitive, For example, to see the properties of an 
+  object - right-click on it - and select Properties. To create a new repository 
+  - choose Repository-Create Repository (you have to run in admin mode to be able 
+  to do this). Etc. You can reorder the columns in the main window by dragging, 
+  and sort by any column (just click on the corresponding header). The set of 
+  columns in the main window is different for each kind of the node or object.</p>
+<p>Note: PowerMart Repositories are standalone. PowerCenter repositories can be 
+  standalone, local, or global. </p>
+<p>You can work with:</p>
+<ul>
+  <li> <strong>Repositories</strong> - create, backup, copy, restore, upgrade, 
+    and delete repositories. </li>
+  <li><strong>Users &amp; Groups</strong> - (choose Security menu) - Create, edit, 
+    and delete repository users and groups, assign and revoke repository privileges 
+    (on a group or user level), and folder permissions, view locks - and unlock 
+    objects, versions, and folders. Privelege types: 
+    <ul>
+      <li><em>Session Operator</em></li>
+      <li><em> Use Designer</em></li>
+      <li><em> Browse Repository</em></li>
+      <li><em> Create Sessions and Batches</em></li>
+      <li><em> Administer Repository</em></li>
+      <li><em>Administer Server</em></li>
+      <li><em>Super User</em></li>
+    </ul>
+  </li>
+  <li><strong>Folders</strong> - (choose Folder menu) - create/edit/delete folders 
+    inside repositories, copy within a repository or between repositories. Folders 
+    can be shared or not shared. </li>
+  <li><strong>Reports</strong> - add/remove reports</li>
+  <li>Import/export repository connection info</li>
+  <li>Analyze source/target, mapping, shortcut dependencies.</li>
+  <li>Search by keyword</li>
+  <li>View properties of repository objects</li>
+  <li>Customize the Repository Manager (add, edit, remove repositories in the 
+    Navigator, edit repository connection info, view/hide windows)</li>
+</ul>
+<p>Below the Navigator and the Main Window you may see two more windows:</p>
+<ul>
+  <li>Dependency window - to see dependencies for a selected object (source-target, 
+    mapping, shortcut dependencies).</li>
+  <li>Output window - shows what is happening.</li>
+</ul>
+<p><a NAME="informatica_designer" id="informatica_designer"> </a> </p>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+  <tr> 
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+    <td ALIGN=LEFT><b>Designer Client Application</b></td>
+    <td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top 
+      of the page</a> - </b></td>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+<p>Designer consists of several tools (choose Tools menu):</p>
+<ul>
+  <li><strong>Source Analyzer</strong> - (choose Sources menu) to import or create 
+    source definitions for flat file, Cobol, ERP, and Relational Databases. Note 
+    - double-click on the title-bar opens a pop-up to edit definitions.</li>
+  <li><strong>Warehouse Designer</strong> - to import or create target definitions 
+    (choose Targets - Generate/Execute SQL, or Targets-Create to create manually).</li>
+  <li><strong>Transformation Developer</strong> - to create reusable transformations.</li>
+  <li><strong>Mapplet Designer</strong> - to create mapplets (reusable sets of 
+    transformations) </li>
+  <li><strong>Mapping Designer</strong> - to create mappings (m_somename).</li>
+</ul>
+<p>Windows:</p>
+<ul>
+  <li><strong>Navigator</strong> - to connect and word with multiple repositories 
+    and folders, copy objects and create shortcuts.</li>
+  <li><strong>Workspace</strong> - to view/edit sources, targets, mapplets, transformations, 
+    and mappings.</li>
+  <li><strong>Output window</strong> and Status bar</li>
+  <li><strong>Overview</strong> (choose View-Overview) - optional window - to 
+    simplify wiewing workbooks containing large mappings or large number of objects.</li>
+</ul>
+<p><strong><em>Warehouse Designer - Import Tables:</em></strong></p>
+<p align="center"><a href="images/informatica/wh_designer_import_tables.jpg"><img src="images/informatica/wh_designer_import_tables_s.jpg" alt="Click on the image to enlarge it" width="133" height="100" border="2"></a></p>
+<p><strong><em>Edit Table's Definitions:</em></strong></p>
+<p align="center"><a href="images/informatica/wh_designer_edit_tab_definitions.jpg"><img src="images/informatica/wh_designer_edit_tab_definitions_s.jpg" width="128" height="100" border="2"></a></p>
+<p><strong><em>Mapping Designer - creating mappings:</em></strong></p>
+<table border="0" align="center" cellpadding="10" cellspacing="0">
+  <tr> 
+    <td align="center"><a href="images/informatica/designer.jpg"><img src="images/informatica/designer_s.jpg" alt="Click on the image to enlarge it" width="121" height="100" border="2"></a><br>
+      Mapping Designer</td>
+    <td align="center"><a href="images/informatica/mapping_example.jpg"><img src="images/informatica/mapping_example_s.jpg" alt="Click on the image to enlarge it." width="193" height="100" border="2"></a><br>
+      Example of a mapping</td>
+    <td align="center"><p><a href="images/informatica/designer_overview.jpg"><img src="images/informatica/designer_overview_s.jpg" alt="Click on the image to enlarge it." width="155" height="100" border="2"></a><br>
+        Overview window</p>
+      </td>
+  </tr>
+</table>
+<p>Note: you can open several workspaces (workbooks) - choose Window - New Window, 
+  and then select appropriate tool.</p>
+<p><strong><em>To make a mapping:</em></strong></p>
+<ul>
+  <li>Switch to the Mapping Designer</li>
+  <li>Choose Mapping-Create - and enter a new name (m_xxxx)</li>
+  <li>Drag a source table from the navigator to the work space. Note, that the 
+    designer will also automatically create and show a Source Qualifier transformation 
+    (this is a temp. table created by Informatica Server).</li>
+  <li>Drag a target table to the work space</li>
+  <li>Drag one-by-one fields from source to target - thus creating graphical connections. 
+    Note - you can also delete connection by selecting it - and pressing DEL button.</li>
+  <li>Choose Layout-Arrange</li>
+</ul>
+<p>Note: Source has only Ouput ports, Source Qualifier has both input and output 
+  ports.</p>
+<p><strong><em>Here are some transformations:</em></strong></p>
+<ul>
+  <li><font color="#993300"><strong>Advanced External Procedure</strong> - <em>...</em></font></li>
+  <li><font color="#993300"><strong>Aggregator</strong> - <em>to do things like 
+    &quot;group by&quot;.</em></font></li>
+  <li><font color="#993300"><strong>ERP Source Qualifier</strong> - <em>...</em></font></li>
+  <li><font color="#993300"><strong>Expression</strong> - <em>to use various expressions.</em></font></li>
+  <li><font color="#993300"><strong>External procedure</strong> - <em>...</em></font></li>
+  <li><font color="#993300"><strong>Filter</strong> - <em>to filter data.</em></font></li>
+  <li><font color="#993300"><strong>Joiner</strong> - <em>to make joins between 
+    separate databases, file, ODBC sources.</em></font></li>
+  <li><font color="#993300"><strong>Lookup</strong> - <em>to create local copy 
+    of the data.</em></font></li>
+  <li><font color="#993300"><strong>Normalizer</strong> - <em>to transform denormalized 
+    data into normalized data.</em></font></li>
+  <li><font color="#993300"><strong>Rank</strong> - <em>to select only top (or 
+    bottom) ranked data.</em></font></li>
+  <li><font color="#993300"><strong>Sequence Generator</strong> - <em>to generate 
+    unique IDs for target tables.</em></font></li>
+  <li><font color="#993300"><strong>Source Qualifier</strong> - <em>to filter 
+    sources (SQL, select distinct, join, etc.)</em></font></li>
+  <li><font color="#993300"><strong>Stored Procedure</strong> - <em>to run stored 
+    procedures in the database - and capture their returned values.</em></font></li>
+  <li><font color="#993300"><strong>Update Strategy</strong> - <em>to flag records 
+    in target for insert,delete, update (defined inside a mapping).</em></font></li>
+</ul>
+<p>To create a transformation, simply click on the corresponding transformation 
+  icon on the transformations toolbar - and then click in the workspace between 
+  the tables. The Designer adds a new transformation.</p>
+<p align="center"><a href="images/informatica/designer_mapping_adding_transformation.jpg"><img src="images/informatica/designer_mapping_adding_transformation_s.jpg" alt="Click on the image to enlarge it." width="106" height="120" border="2"></a></p>
+<p>Chose Layout-Link Columns, drag needed fields from Source Qualifier to the 
+  Transformation, double-click on the title bar of the transformation to edit 
+  the transformation. </p>
+<p>In the &quot;Edit Transformations&quot; dialog box you can check/uncheck necessary 
+  options (I/O ports, Group-By), add new ports as necessary, edt the expressions 
+  for each port (and validate them).</p>
+<p align="center"><a href="images/informatica/edit_trans.jpg"><img src="images/informatica/edit_trans_s.jpg" alt="Click on the image to enlarge it." width="140" height="102" border="2"></a></p>
+<p>You can click on the Expression field - and edit expression in the <strong>Expression 
+  Editor</strong>:</p>
+<p align="center"><a href="images/informatica/expression_editor.jpg"><img src="images/informatica/expression_editor_s.jpg" width="161" height="100" border="2"></a></p>
+<p>You can chain transformations. You can do joins between tables in different 
+  databases using &quot;<strong>Lookup</strong>&quot; transformation to create 
+  local copy of the data. You connect transformations by dragging with the mouse 
+  from port to port.</p>
+<p><a NAME="server_manager" id="server_manager"> </a></p>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+  <tr> 
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+    <td ALIGN=LEFT><b>Server Manager</b></td>
+    <td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top 
+      of the page</a> - </b></td>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+<p>Sessions are sets of instructions for Informatica Server when and how to move 
+  data from sources to targets. </p>
+<p>Server Manager - a client application used to create and manage sessions and 
+  batches, and to configure session connections. You can monitor multiple Informatica 
+  Servers, navigate through folders and repositories. Here is what you can do 
+  in Server Manager:</p>
+<ul>
+  <li>Monitor, add, edit, delete Informatica Server info in the repository</li>
+  <li>Stop the infomratica Server</li>
+  <li>Configure database, external loader, and FTP connections</li>
+  <li>Manage sessions and batches - create, edit, delete, copy/move within a folder, 
+    start/stop, abort sessions, view session logs, details, session performance 
+    details.</li>
+</ul>
+<p>Windows:</p>
+<ul>
+  <li><strong>Navigator</strong> &amp; <strong>Configure</strong> windows</li>
+  <li><strong>Monitor</strong></li>
+  <li><strong>Output</strong></li>
+  <li>Status bar</li>
+</ul>
+<p><a href="images/informatica/server_manager.jpg"><img src="images/informatica/server_manager_s.jpg" alt="Click on the image to enlarge it." width="134" height="100" border="2"></a></p>
+<p>- <em><strong>Note</strong></em>:As usual you can dock/undock the windows by 
+  double-clicking the title bar and/or dragging.<br>
+  - <strong><em>Note</em></strong>: Cancel button - appears at the bottom-left 
+  when the program communicates with the Informatica Server.<br>
+  - <em><strong>Note</strong></em>: Server Manager can mark a session invalid 
+  if something is wrong. You can open session properties, edit, and try again.<br>
+  - <em><strong>Note</strong></em>: you can create/customize toolbars.</p>
+<p><strong><em>To create a session in Server Manager:</em></strong></p>
+<ul>
+  <li>Select a Repository in the Navigator - and connect to it.</li>
+  <li>Choose &quot;Server Configuration - Database Conections&quot; - and add 
+    connections to sources and target.</li>
+  <li>Choose &quot;Server Configuration - Register Server&quot; - to connect to 
+    the server.</li>
+  <li>In the Navigator - open a folder with mappings. </li>
+  <li>Choose Operations - Add Sessions (or click on &quot;Add Session&quot; button) 
+    and select the mapping.</li>
+  <li>You will get a session Wizard:</li>
+</ul>
+<table border="0" align="center" cellpadding="10" cellspacing="0">
+  <tr> 
+    <td><a href="images/informatica/session_wizard.jpg"><img src="images/informatica/session_wizard_s.jpg" width="125" height="120" border="2"></a></td>
+    <td><a href="images/informatica/session_wizard2.jpg"><img src="images/informatica/session_wizard2_s.jpg" width="126" height="120" border="2"></a></td>
+    <td><a href="images/informatica/session_wizard3.jpg"><img src="images/informatica/session_wizard3_s.jpg" width="126" height="120" border="2"></a></td>
+    <td><a href="images/informatica/session_wizard4.jpg"><img src="images/informatica/session_wizard4_s.jpg" width="125" height="120" border="2"></a></td>
+  </tr>
+</table>
+<p><strong><em>Monitoring and Running a Session:</em></strong></p>
+<ul>
+  <li>Select the Informatica Server in the navigator - and choose <strong>Server 
+    Configuration - Monitor</strong> - to toggle the monitor window. Then you 
+    can choose Server Requests - Start/Stop polling, or you can choose <strong>Server 
+    Requests - Session overview</strong> - to refresh the monitor.</li>
+</ul>
+<p><strong><em>Running the Session:</em></strong></p>
+<ul>
+  <li>Select the session wit the mouse - and choose <strong>Server Requests - 
+    Start</strong> (or click on the start button on the toolbar).</li>
+</ul>
+<p><strong><em>Organize sessions in a batch:</em></strong></p>
+<ul>
+  <li>To create a batch choose <strong>Operations - Add Batch</strong> (or click 
+    on the corresponding button on the toolbar).</li>
+  <li> Once you created and opened the batch - you can add seesions into it by 
+    dragging them into the batch. You can reorder them inside the batch, or you 
+    can check the Concurrent option to run the sessions concurrently inside the 
+    batch.</li>
+  <li>You start the batch the same way as a session - select it - and click the 
+    start button (or choose <strong>Server Requests - Start</strong>).</li>
+</ul>
+<p>======================</p>
+<p>&nbsp;</p>
+</body>
+</html>

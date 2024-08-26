@@ -1,0 +1,9 @@
+<!-- Here's the applet. -->
+<APPLET NAME="animation" CODE="Animation.class" WIDTH=500 HEIGHT=200>
+</APPLET>
+
+<!-- And here are the buttons that start and stop it. -->
+<FORM>
+<INPUT TYPE=button VALUE="Start" onclick="document.animation.start()">
+<INPUT TYPE=button VALUE="Stop" onclick="document.animation.stop()">
+</FORM>

@@ -1,0 +1,232 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>emacs</title>
+<!--
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+<style type="text/css">
+<!--
+.code {color: #0000FF}
+.keys {font-size: x-small; color: #3333FF;  font-weight: bold}
+.description {font-size: x-small}
+.comment {color: #669900}
+-->
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<p>Basic emacs is easy to learn. In fact, you can be an effective user in ~30 min. Here are the main commands you need to know.<br>
+Note:  Ctrl key is represented with &quot;^&quot; or C-, and Meta key (Alt, Option) is represented by &quot;Alt&quot; or &quot;M&quot;. </p>
+<table WIDTH="100%" BORDER CELLSPACING=0 >
+<tr bgcolor="#FFCC99">
+  <td ALIGN=LEFT VALIGN=TOP>Exit / get help</td>
+  <td ALIGN=LEFT VALIGN=TOP>Open/Save file</td>
+  <td ALIGN=LEFT VALIGN=TOP> emacs windows and buffers</td>
+</tr>
+<tr>
+      <td ALIGN=LEFT VALIGN=TOP><p class="description"><span class="keys">^x^c</span> - close window (exit) <br>
+          <span class="keys">^g</span> - get out (of a command entry) - may be several times <br>
+          <span class="keys">^x u</span> - undo <br>
+          <span class="keys">^x _</span> - undo <br>
+          <span class="keys">^x /</span> - undo </p>
+        <p class="description"> <span class="keys"></span><span class="keys">^h</span> - help<br>
+          <span class="keys">^h^h</span> - Help on help<br>
+          <span class="keys">^h t</span> - tutorial<br>
+          <span class="keys">^h i</span> - info (documentation)<br>
+          <span class="keys">^h k &lt;key&gt;</span> - help on this key <br>
+          <span class="keys">^h k &lt;function&gt;</span> - describe function<br>
+        <span class="keys">Alt-` or ESC` or F10</span> - menubarAlt-x - switch to minibuffer (<span class="keys">^g</span> - out)</p>      </td>
+      <td ALIGN=LEFT VALIGN=TOP><p><span class="keys">^x^f</span><span class="description"> - open file (press </span><span class="keys">Enter</span><span class="description"> to get file listing)<br>
+      </span><span class="keys">^x d</span><span class="description"> - open a directory <br>
+  </span><span class="keys">^x i</span><span class="description"> - insert text from another file. <br>
+  </span><span class="keys">^x^s</span><span class="description"> - save file <br>
+  </span><span class="keys">C-x C-c y</span><span class="description"> &ndash; exit and save<br>
+  </span><span class="keys">^x^w</span><span class="description"> - write to another file <br>
+  </span><span class="keys">^x^v</span><span class="description"> - find alternate file&nbsp;(with ~)</span>      
+        <p class="description">        <span class="keys">Alt-!</span> - run shell command <br>
+          <span class="keys">Alt-x shell</span> - open shell window</td>
+      <td ALIGN=LEFT VALIGN=TOP><p class="description">You can split the main window in several. <br>
+        Each window can be attached to a buffer (file, scratch, etc.)<br>
+        <span class="keys">^x b</span> - change/create buffer <br>
+        <span class="keys">^x^b</span> - list of buffers <br>
+        <span class="keys">^x k</span> - close buffer <br>  
+        <span class="keys">^x o</span> - select &quot;other&quot; window</p>
+        <p class="description"><span class="keys">^x0</span> - kill current window <br>
+          <span class="keys">^x1</span> - kill all  windows except current <br>
+          <span class="keys">^x2</span> - split  horizontal <br>
+          <span class="keys">^x3</span> - split vertical&nbsp;<br>
+          <span class="keys">^x40</span> - kill current window and buffer</p>
+        <p class="description">Current window resize:<br>
+          <span class="keys">^x^</span> - taller / 
+          <span class="keys">^x-</span> - shorter<br>
+          <span class="keys">^x}</span> - wider / 
+          <span class="keys">^x{</span> - narrower<br>
+          <span class="keys">^x +</span> - make all windows same height<br>
+        </p>
+        <p class="description"><span class="keys">^l</span> ( small L ) - redraw the screen</p>        </td>
+    </tr>
+    <tr bgcolor="#FFCC99">
+      <td ALIGN=LEFT VALIGN=TOP>Move in a window</td>
+      <td ALIGN=LEFT VALIGN=TOP>delete, mark, cut/copy, yank(paste)</td>
+      <td ALIGN=LEFT VALIGN=TOP>more on selecting, ...</td>
+    </tr>
+    <tr>
+      <td ALIGN=LEFT VALIGN=TOP><p class="description">usually arrows work, but PgUp/PgDn don't.<br>
+          <span class="keys">^f, ^b, ^n, ^p</span>        (forward, back, next, previous)<br>
+        <br>
+        Move faster:</p>
+        <table width="99%" border="0" cellpadding="2" cellspacing="0">
+          <tr>
+            <td>&nbsp;</td>
+            <td>forward</td>
+            <td>back</td>
+          </tr>
+          <tr>
+            <td><span class="description">word</span></td>
+            <td><span class="keys">Alt-f</span></td>
+            <td><span class="keys">Alt-b</span></td>
+          </tr>
+          <tr>
+            <td>line</td>
+            <td><span class="keys">^e</span></td>
+            <td><span class="keys">^a</span></td>
+          </tr>
+          <tr>
+            <td><span class="description">sentence</span></td>
+            <td><span class="keys">Alt-e</span></td>
+            <td><span class="keys">Alt-a</span></td>
+          </tr>
+          <tr>
+            <td><span class="description">page</span></td>
+            <td><span class="keys">^x ]</span></td>
+            <td><span class="keys">^x [</span></td>
+          </tr>
+          <tr>
+            <td><span class="description">buffer(file)</span></td>
+            <td><span class="keys">Alt-&gt;</span></td>
+            <td><span class="keys">Alt-&lt;</span></td>
+          </tr>
+          <tr>
+            <td>screen (cursor in mid-screen)</td>
+            <td><span class="keys">^Alt-e</span></td>
+            <td><span class="keys">^Alt-a</span></td>
+          </tr>
+          <tr>
+            <td><span class="description">screen</span></td>
+            <td><span class="keys">^v</span></td>
+            <td><span class="keys">Alt-v</span></td>
+          </tr>
+        </table>
+        <p class="description"><span class="keys">Alt-# n</span> - goto line n.<br>  
+          <span class="keys">Alt-x goto-line</span> RET 5 RET - goto line 5</p>
+      </td>
+      <td ALIGN=LEFT VALIGN=TOP><p class="description"><span class="keys">^d, Del</span>&nbsp;- del char (forw/back) <br>
+        (note: ^h is for help)<br>
+        <span class="keys">Alt-d, ^Del</span>&nbsp;- word <br>
+        <span class="keys">^k</span> -  rest of the line <br>
+        <span class="keys">^k^k^k^k</span> - cut several lines <br>
+        <span class="keys"></span><span class="keys">Alt-k</span> -  rest of sentence. <br>
+        <span class="keys">^a^k</span> - delete the line </p>
+        <p class="description"><span class="keys">^SPACE ,  ^@</span> - set beginning mark<br>
+            <span class="keys">^x ^x</span> - jump to/from mark point<br>
+              <span class="keys">Alt-@</span> - select word<br>
+                <span class="keys">Alt-h</span> - select paragraph<span class="keys"><br>
+          ^x h</span> - select all (mark-whole-buffer)<br>
+<br>
+          <span class="keys">^w</span> - cut from current pos. to mark (kill-region - put it on the kill ring)<br>
+          <br>
+          <span class="keys">Alt-w</span>&nbsp;- copy from current pos to mark (kill-ring-save - equivalent to <span class="keys">^w^y</span>)<br>
+          <br>
+          <span class="keys">^y</span> - paste (yank) last killed thing <br>
+        <span class="keys">Alt-y</span> -Yank earlier kills.</p>
+      </td>
+      <td ALIGN=LEFT VALIGN=TOP class="description"><p class="description"><span class="keys">^u 0 ^k</span> - kill-line<br>
+          <span class="keys">^u -1 ^k</span> - kill-line including preceding newline<br>
+          <br>
+              <span class="keys">^Alt-k</span> - kill-sexp. Kills the sexp after the cursor.<br>
+              <span class="keys">^u -1 ^Alt-k</span> - kill-sexp. Kills the sexp before the cursor.<br>
+        The command backward-kill-sexp exists, but is not bound to any key by default.</p>
+        <p class="description"><span class="keys">^Alt-@</span> - mark-sexp. Sets the region around matching parenths. 
+        (the same sexp that C-M-f would move to). </p>
+        <p class="description"><span class="keys">^Alt-h</span> - mark-defun. Mark function definnition.</p>
+        <p class="description"><span class="keys">^x^i</span> - indent-rigidly the region by 1 or more chars (default is 1).</p>
+      </td>
+    </tr>
+    <tr bgcolor="#FFCC99">
+      <td ALIGN=LEFT VALIGN=TOP>Search</td>
+      <td ALIGN=LEFT VALIGN=TOP>Search and  Replace</td>
+      <td ALIGN=LEFT VALIGN=TOP>Capital/low case, debugger</td>
+    </tr>
+    <tr>
+      <td ALIGN=LEFT VALIGN=TOP><p><span class="keys">^s</span><span class="description"> str RET - isearch-forward (as you type) <br>
+  </span><span class="keys">^r</span><span class="description"> str RET - isearch-backward<br>
+  </span><span class="keys">^s</span><span class="description"> RET str RET - regular search<br>
+  <br>
+  </span><span class="keys">^s</span><span class="description"> - to repeat search<br>
+        <br>
+        </span><span class="keys">^s^w</span><span class="description"> - search for word <br>
+        </span><span class="keys">^s^y</span><span class="description"> - search for the rest of the line <br>
+      </span><span class="keys">^s Alt-y</span><span class="description"> - search for copied text<br>
+      <br>
+      =====================<br>
+      <br>
+      I</span><span class="description">f C-s doesn&rsquo;t work because C-s is &ldquo;stop output&rdquo;, do the following:<br>
+M-x enable-flow-control<br>
+Then use C-\ instead of C-s, and C-^ instead of C-q<br>
+auto-fill-mode<br>
+C-q C-l &ndash; to enter control-l</span>
+      </td>
+      <td ALIGN=LEFT VALIGN=TOP><p><span class="keys">Alt-%</span><span class="description"> oldstr RET newstr RET. </span>
+          <br>
+        <table width="99%" border="0" cellpadding="2" cellspacing="0">
+          <tr>
+            <td><span class="keys">Space, y</span></td>
+            <td><span class="description">replace oldstr with newstr.</span></td>
+          </tr>
+          <tr>
+            <td><span class="keys">Delete, n</span></td>
+            <td><span class="description">skip to the next occurrence 
+(without replacing this one). </span></td>
+          </tr>
+          <tr>
+            <td><span class="keys">Enter, Esc, q</span></td>
+            <td><span class="description">exit without any more replacements.</span></td>
+          </tr>
+          <tr>
+            <td><span class="keys">. (period)</span></td>
+            <td><span class="description">replace this occurrence and exit. </span></td>
+          </tr>
+          <tr>
+            <td><span class="keys">^</span></td>
+            <td><span class="description">go back to the location of the&nbsp;<br>
+previous occurrence if you changed it. </span></td>
+          </tr>
+          <tr>
+            <td><span class="keys">!</span></td>
+            <td><span class="description">replace all remaining occurrences&nbsp;<br>
+without asking again.</span></td>
+          </tr>
+        </table>
+        </td>
+      <td ALIGN=LEFT VALIGN=TOP><p class="description"><span class="keys">^x^u,  ^x^l</span> - convert region to upper / lower case. <br>
+          <span class="keys">Alt-u,  Alt-l</span> - conv. word to upper / lower case. <br>
+          <span class="keys">Alt-c</span>&nbsp;- capitalize the word.<br>
+        <br>
+        Using debugger: <br>
+        <span class="keys">^x3</span> - create second window <br>
+        <span class="keys">Alt-x</span> - perldb RET - enter command perldb <br>
+        n - next <br>
+        q - quit  </td>
+    </tr>
+  </table>
+
+<p>&nbsp;</p>
+</body>
+</html>

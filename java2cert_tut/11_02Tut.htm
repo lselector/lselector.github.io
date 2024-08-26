@@ -1,0 +1,337 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<head>
+
+<title>The Java.io package</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META name="GENERATOR" content="IBM WebSphere Homepage Builder V4.0.0 for Linux">
+<STYLE TYPE="text/css">
+
+<!--
+
+
+
+-->
+
+</STYLE>
+
+<link rel="stylesheet" href="tutor.css"></head>
+
+
+
+<body bgcolor="#FFFFFF">
+<table width=95% border=0 cellpadding=2 cellspacing=0 style="page-break-before: always">
+  <col width=147*> <col width=109*> 
+  <tr> 
+    <td width=57% height=104> 
+      <p><a href= "introj2.htm" ><img src= "btnIndex.jpg"  name="Graphic1" alt="Return to Tutorial Index" align=BOTTOM width=55 height=39 border=0></a><a href= "introj2.htm" ><br>
+        <br>
+        </a><a href= "index.htm" ><img src= "btnHome.jpg"  name="Graphic2" alt="Back to the home page of this site" align=BOTTOM width=55 height=39 border=0></a> 
+      </p>
+    </td>
+    <td width=43%> 
+      <p align=RIGHT><img src= "hat.gif"  name="Graphic3" alt="morterboard" align=BOTTOM width=118 height=113 border=0></p>
+    </td>
+  </tr>
+  <tr> 
+    <td width=57% height=11> 
+      <h1 align=LEFT>Java2 Certification <br>
+        Tutorial </h1>
+    </td>
+    <td width=43% bgcolor="#ff9900"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p> You can discuss this topic with others at <a href= "http://www.jchq.net/discus" >http://www.jchq.net/discus</a><br>
+  Read reviews and buy a Java Certification book at <a href= "http://www.jchq.net/bookreviews/jcertbooks.htm" >http://www.jchq.net/bookreviews/jcertbooks.htm</a> 
+  <br>
+</p>
+<hr size=5 noshade>
+<h2>11) The java.io package </h2>
+<h2>Objective 2 )</h2>
+<p><font face="Arial, Helvetica, sans-serif">Write code that uses objects of the 
+  classes InputStreamReader and OutputStreamWriter to translate between Unicode 
+  and either platform default or ISO 8859-1 character encodings. </font></p>
+<P>I was surprised that this objective was not
+be emphasized in the JDK1.2 exams 
+  as internationalization has been enhanced
+and is a big feature with Java. It's 
+  nice to sell software to a billion Europeans
+and Americans but a billion Chinese 
+  would be a nice additional market (even
+if you only got 10% of it). This is 
+  the kind of objective that even experienced
+Java programmers may not have experience
+
+  with, so take note!.<BR>
+</P>
+<H3>Java Character Encoding: UTF and Unicode<BR>
+</H3>
+<P>Java uses two closely related encoding systems
+UTF and unicode. Java was designed from the
+ground up to deal with multibyte character
+sets and can deal with the vast numbers of
+characters that can be stored using the unicode
+character set. Unicode characters are stored
+in two bytes which allows for up to 65K worth
+of characters. This means it can deal with
+Japanese Chinese, and just about any other
+character set known. You will be pleased
+to know that you don't have to give examples
+of any of these for the exam.</P>
+<P>Although unicode can represent almost any
+character you would ever likely to use it
+is not an efficient coding method for programming.
+Most of the text data within a program uses
+standard ASCII, most of which can easily
+be stored within one byte. For reasons of
+compactness Java uses a system called UTF-8
+for string literals, identifiers and other
+text within programs. This can result in
+a considerable saving by comparison with
+using unicode where every character requires
+2 bytes.<BR>
+</P>
+<H3>The StreamReader Class</H3>
+<P>The StreamReader class converts a byte input
+(i.e. not relating to any character set)
+into a character input stream, one that has
+a concept of a character set. If you are
+only concerned with ASCII style character
+sets you will probably only use these Reader
+classes in the form with the constructor</P>
+<p>InputStreamReader(InputStream in)</p>
+
+<p>This version uses the platform-dependent default encoding. In JDK 1.1 this 
+  default is identified by the file.encoding system property. There seems to be 
+  no standard way of finding out what encodings are supported on your platform 
+  The default encoding is generally ISO Latin-1 except on a Mac where it is MacRoman.. 
+  If this system property is not defined, the default encoding identifier is 8859_1 
+  (ISO-LATIN-1). The assumption seems to be that if all else fails, revert back 
+  to English. Experimenting with other character sets is problematic as the characters 
+  may not show up correctly if you environment is not configured appropriately. 
+  Thus if you attempt to output a character from the Chinese character set you 
+  system may not support it.<br>
+
+  <br>
+
+  If you are dealing with other character sets you can use<br>
+
+<pre>InputStreamReader(InputStream in, String encoding);</pre>
+<TABLE width="100%" border="0">
+  <TBODY>
+    <TR>
+      <TD width="9%"><IMG src= "key2.gif"  width="106" height="73" border="0"></TD>
+      <TD width="91%">
+      <H4><FONT color="#FF0000">The StreamReader and Writer classes can take
+      either a character encoding parameter or
+      be left to use the platform default encoding</FONT></H4>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<p> Remember that the InputStream comes first and encoding second. 
+<h3>The read and and write methods</h3>
+<p>The InputStreamReader class has a read() method and the OutputStreamWriter 
+  has a write() method that read and write characters. When the read method is 
+  called it reads bytes from the input stream and converts them to Unicode characters 
+  using the encoding specified in the stream constructor. When the write() method 
+  is called the the characters from the stream are converted to their corresponding 
+  byte encoding and stored in an internal buffer. When the buffer becomes full 
+  the contents are written to the underlying byte output stream.</p>
+<h3>GreekWriter Example</h3>
+<p> The sample code for GreekWriter writes a text output file containing some 
+  letters in the Greek alphabet. If you open this file Out.txt with an editor 
+  you will just see what looks like junk.</p>
+<pre>import java.io.*;
+
+class GreekWriter {
+    public static void main(String[] args) {
+	String str = "\u03B1\u03C1\u03B5\u03C4\u03B7";
+
+        try {
+            Writer out = 
+                new OutputStreamWriter(new FileOutputStream("out.txt"), "8859_7");
+		//8859_7 is the ISO code for ASCII plus greek, although this
+		//example also works on my machine if it is set to UTF8
+            out.write(str);
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+</pre>
+<h3>GreekReader Example</h3>
+<pre>import java.io.*;
+import java.awt.*;
+
+class GreekReader extends Frame{
+/*******************************************************
+*Companion program to GreekWriter to illustrate
+*InputStreamReader and OutputStreamWriter as part
+*of the objectives for the Sun Certified Java Programmers
+*exam. Marcus Green 2000
+*********************************************************/
+String str;
+    public static void main(String[] args) {
+        GreekReader gr = new GreekReader();
+	gr.go(); 
+	gr.setWin();
+    }
+public void go(){
+
+        try {
+        FileInputStream fis = new FileInputStream("out.txt");    
+	InputStreamReader isr = new InputStreamReader(fis,"8859_7");
+	Reader in = new BufferedReader(isr);
+
+            StringBuffer buf = new StringBuffer();
+            int ch;
+            while ((ch = in.read()) > -1) {
+                buf.append((char)ch);
+            }
+            in.close();
+	   str = buf.toString();
+	  
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+ }
+
+    public void paint(Graphics g) {
+	//paint method automatically called by the system
+        Insets insets = getInsets();
+        int x = insets.left, y = insets.top;
+	//Add 30 to y or we will only see the
+	//downstrokes of the letters 
+        g.drawString(str, x, y +30);
+    }
+public void setWin(){
+     //Nice big font so we can see the characters.
+     Font font = new Font("Monospaced", Font.BOLD, 59);
+     setFont(font);
+     setSize(200,200);
+     setVisible(true);
+     //Show the frame
+        show();
+    }
+
+}
+<br></pre>
+<h3><br>
+  Screen Capture from GreekReader</h3>
+<h3>&nbsp; </h3>
+<p><img src= "GreekReader.gif"  width="200" height="100"></p>
+<h3>&nbsp;</h3>
+<h3>&nbsp;</h3>
+<p>&nbsp;
+<hr>
+<img src= "Quiz.gif"  name="Graphic6" align=BOTTOM width=99 height=101 border=0> 
+<h1>Questions</h1>
+<h3>Question 1)</h3>
+<p>Which of the following statements are true?</p>
+<p>1) The OutputStreamWriter must take a character encoding as a constructor parameter<br>
+  2) The default encoding for the OutputStreamWriter is ASCII<br>
+  3) The InputStreamWriter and OutputStreamWriter may take a character encoding 
+  as a constructor<br>
+  4) InputStreamReader must take a stream as one of its constructors</p>
+<h3>Question 2)</h3>
+<p>Which of the following statements are true?</p>
+<p>1) Java can display character sets independently of the underlying operating 
+  system<br>
+2) The InputStreamReader class may take an
+instance of another InputStream class as
+a constructor<br>
+  3) An InputStreamReader may act as a constructor to an OutputStreamReader to 
+  convert between character sets<br>
+4) Java uses the ASCII encoding system to
+store strings internally</p>
+<h3>Question 3)</h3>
+<p> Which of the following are correct signatures for InputStreamReader?</p>
+<p>1) InputStreamReader(InputStream in, String encoding);<br>
+  2) InputStreamReader(String encoding,InputStream in);<br>
+  3) InputStreamReader(String encoding,File f); <br>
+  4) InputStreamReader(InputStream in); </p>
+<h4>Question 4)</h4>
+<p>Which of the following are methods of the InputStreamReader class?</p>
+<p>1) read()<br>
+  2) write()<br>
+  3) getBuffer()<br>
+  4) getString()</p>
+<h4>Question 5)</h4>
+<p>Which of the following statements are true?</p>
+<p>1) Java uses unicode to internally to store string literals<br>
+  2) Java uses ASCII to internally store string literals<br>
+  3) Java uses UTF-8 to internally store string literals<br>
+  4) Java uses the platform native encoding to store string literals</p>
+<p>&nbsp;</p>
+<h1>Answers</h1>
+<h4>Answer to Question 1)</h4>
+<p> 3) The InputStreamWriter and OutputStreamWriter may take a character encoding 
+  as a constructor<br>
+  4) InputStreamReader must take a stream as one of its constructors</p>
+<h4>Answer to Question 2)</h4>
+<p>1) Java can display character sets independently of the underlying operating 
+  system<br>
+2) The InputStreamReader class takes may
+take an instance of another InputStream class
+as a constructor<br>
+</p><p>Although Java can store characters independently
+of the underlying operating system, the appropriate
+font must be installed on the underlying
+operating system in order to display those
+characters. Generally streams are chained
+with like streams, ie InputStreams take constructors
+of other InputStreams and OutputStreams take
+constructors of OutputStreams. Java uses
+the UTF encoding system to store strings
+internally.</p>
+<h4>Answer to Question 3)</h4>
+<p>1) InputStreamReader(InputStream in, String encoding); <br>
+  4) InputStreamReader(InputStream in); </p>
+<p>If you do not specify an encoding the JVM will assume the platform default 
+  encoding </p>
+<h3>Answer to Question 4)</h3>
+<p>1) read()</p>
+<h4>Answer to Question 5)</h4>
+<p>3) Java uses UTF-8 to internally store string literals</p>
+<p>&nbsp;</p>
+<hr>
+<h4>Other sources on this topic</h4>
+<p>The Sun API docs on InputStreamReader and OutputStreamWriter<br>
+  <a href= "http://java.sun.com/products/jdk/1.2/docs/api/java/io/OutputStreamWriter.html" >http://java.sun.com/products/jdk/1.2/docs/api/java/io/OutputStreamWriter.html 
+  </a> <br>
+  <a href= "http://java.sun.com/products/jdk/1.2/docs/api/java/io/InputStreamReader.html" >http://java.sun.com/products/jdk/1.2/docs/api/java/io/InputStreamReader.html</a> 
+</p>
+<P>JavaCaps on this topic<br>
+<a href= "http://www.javacaps.com/sjpc_io_obj2.html" >http://www.javacaps.com/sjpc_io_obj2.html</a><BR>
+</P>
+<p>Everything you could want to know about unicode<BR>
+<A href= "http://www.unicode.org/" >
+http://www.unicode.org/</A></p>
+<p>Last updated<br>
+8 Nov 2000<br>
+  copyright &copy; Marcus Green 2000<br>
+  most recent version at http://www.jchq.net</p>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;
+
+<h3>&nbsp;</h3>
+
+<h3>&nbsp; </h3>
+
+</body>
+
+</html>
+

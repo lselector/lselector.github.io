@@ -1,0 +1,816 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lev Selector">
+   <title>lisp_tut</title>
+<!--
+
+
+
+"Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL"
+
+
+
+-->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<a NAME="top"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b><spacer type=block width=1 height=1></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b><font color="#CC0000">New
+York</font></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><spacer type=block width=1 height=1><b><a href="index.html">home</a>
+> Cobol</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1><b></b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+</tr>
+
+<tr>
+<td><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#CC0000">Lisp tutorial</font></b>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=6 >
+<tr>
+<td><font color="#6699CC">• </font><a href="#lisp_introduction">Introduction</a>
+<br><font color="#6699CC">• </font><a href="#lisp_basic_primitives">Basic
+Primitives</a>
+<br><font color="#6699CC">• </font><a href="#lisp_basic_data_types">Basic
+Data Types</a>
+<br><font color="#6699CC">• </font><a href="#lisp_structures">Structures</a>
+<br><font color="#6699CC">• </font><a href="#lisp_more_number_orientated_primitives">More
+Number Orientated Primitives</a>
+<br><font color="#6699CC">• </font><a href="#lisp_defining_your_own_functions">Defining
+Your Own Functions</a>
+<br><font color="#6699CC">• </font><a href="#lisp_predicates">Predicates</a>
+<br><font color="#6699CC">• </font><a href="#lisp_conditionals">Conditionals</a></td>
+
+<td><font color="#6699CC">• </font><a href="#lisp_recursion">Recursion</a>
+<br><font color="#6699CC">• </font><a href="#lisp_iteration">Iteration</a>
+<br><font color="#6699CC">• </font><a href="#lisp_printing">Printing</a>
+<br><font color="#6699CC">• </font><a href="#lisp_reading">Reading</a>
+<br><font color="#6699CC">• </font><a href="#lisp_beyond_the_basics">Beyond
+the Basics</a>
+<br><font color="#6699CC">• </font><a href="#lisp_property_lists">Property
+Lists</a>
+<br><font color="#6699CC">• </font><a href="#lisp_arrays">Arrays</a>
+<br><font color="#6699CC">• </font><a href="#lisp_macros">Macros</a></td>
+</tr>
+</table>
+<a NAME="lisp_introduction"></a>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>intro</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b><font color="#000000">Good Common LISP for Windows Interpreter: <a href="http://corman.net/CormanLisp.html">Corman
+Lisp</a> 1.3</font></b>
+<br><a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/cltl2.html">www.cs.cmu.edu/Groups/AI/html/cltl/cltl2.html</a>
+- download "Common Lisp the Language" by Guy L. Steele, 2nd ed., 1990.
+<p>Why should you learn LISP? The short answer is you shouldn't, you are
+being made to learn it in your Computer Science course. There are very
+few jobs in LISP outside of Universities and research centers, so it probably
+isn't going to make you a whole lot of money. Bear in mind though, LISP
+is the language of Artificial Intelligence, and if AI makes it really big
+it could be a handy language to know. Luckily LISP is quite easy to learn,
+even if you don't know much about programming. It actually can be quite
+fun as well, because you just type a command into the interpreter and you
+can have it evaluated immediately. The best way to learn LISP is to know
+how to do the examples below. Once you learn a few basics the rest of the
+language opens up to you.
+<br><a NAME="lisp_basic_primitives"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>Basic Primitives</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>This section introduces you to basic symbolic manipulation primitives.
+Some primitives used work on numbers, others work on lists.
+<p>Addition, multiplication etc is performed as follows:
+<p><b>(+ 5 17)</b> : equivalent to 5 + 17
+<p><b>(* 2 3 5)</b> : equivalent to 2 * 3 * 5
+<p>Function calls can also be used in place of arguments:
+<p><b>(+ (- 5 2) (* 2 3 5))</b> : equivalent to (5 - 2) + (2 * 3 * 5)
+<p>+&nbsp; - etc are called primitives. These ones can work with any number
+of arguments. The numbers these things have been manipulating are called
+numeric atoms.
+<p>Creating sets (actually, creating variables) can be done with <b>setf</b>
+: this creates a set called <b>learned</b> with three members:
+<p><b>(setf learned '(VB C++ LISP))</b>
+<p>The apostrophe is uses to designate that something in brackets isn't
+a function (or an <i>S-expression</i>). Basically, if LISP receives something
+like (VB C++ LISP) it assumes VB is the name of a function and C++ and
+LISP are its arguments. The apostrophe says that this isn't a function,
+it's a list, and can itself be an argument in a function.
+<p>now when you type
+<p><b>learned</b>
+<p>the list will be displayed.
+<p>We can make another set called <b>notlearned:</b>
+<p><b>(setf notlearned '(Cobol Java Fortran))</b>
+<p>Now we have two sets. We can remove an element from one set like this:
+<p><b>(setf notlearned (remove 'Java notlearned))</b>
+<p>And add an element to a list like this:
+<p><b>(setf learned(cons 'Java learned))</b>
+<p>You can also make more than one list at a time:
+<p><b>(setf lista '(A B C)</b>
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; listb '(D E F))</b>
+<p>This returns <b>(D E F)</b> but both lists are created.
+<p>Basic list Functions:
+<p><b>(first '(a b c d))</b> : this returns A
+<p><b>(rest '(a b c d))</b> : this returns (B C D)
+<p><b>First</b> and <b>Rest</b> always return a list.
+<p>The following examples give a better idea of how these functions work
+in more complex situations:
+<p><b>(rest '(a))</b> : this one element list returns <b>NIL</b>
+<p><b>(first ()) </b>: an empty list passed to <b>first</b> or <b>rest</b>
+will return <b>NIL</b>
+<p><b>(first '((A B) (C D)))</b> : this returns <b>(A B)</b>
+<p><b>(first (rest '(A B C D)))</b> : this returns <b>B</b>
+<p>Note also, that
+<p><b>(second '(A B C D))</b>
+<p>will return the same thing. Primitives <b>FIRST</b> .. <b>TENTH</b>
+are part of the language.
+<p>Remember though, the apostrophe placement is critical:
+<p><b>(first '(rest (A B C)))</b> : this will return <b>REST</b> because
+it thinks that <b>rest</b> is an element in the list.
+<p>We can also use <b>first</b> and <b>rest</b> on the sets we made with
+<b>setf
+</b>above:
+<p><b>(first learned)</b>
+<p><b>(rest notlearned)</b>
+<p>Cons takes an expression and a list, and returns a new list where the
+first element is the expression:
+<p><b>(cons 'z '(a b c d))</b> : this returns<b> (Z A B C D)</b>
+<p>The expression can also be a list (but look carefully at the returned
+list).
+<p><b>(cons '(x y z) '(a b c))</b> : this returns
+<b>((X Y Z) A B C)</b>
+<p>Append is similar, but it combines the elements of two or more lists
+in a new list:
+<p><b>(append '(x y z) '(a b c))</b> : this returns <b>(X Y Z A B C)</b>
+<p>You can also use your own sets:
+<p><b>(append learned notlearned)</b>
+<p>The List primitive is a little different again, it makes a list out
+of its arguments:
+<p><b>(list '(A B C) '(D E F) '(G H I))</b> : this will return <b>((A B
+C) (D E F) (G H I))</b>
+<p>It is important to remember that <b>CONS</b>,
+<b>APPEND</b> and <b>LIST</b>
+do not alter the values of their arguments (the lists they send to the
+primitives).
+<p>If you want to add an element to a list you do what we did above:
+<p><b>(setf learned(cons 'Java learned))</b>
+<p><b>NTHCDR </b>is like <b>REST</b>, except you can specify how many elements
+it chops of the front:
+<p><b>(nthcdr 3 '(A B C D E F))</b> : this returns <b>(D E F) </b>: three
+elements have been trimmed off.
+<p><b>BUTLAST</b> is similar again, but it trims the elements of the end:
+<p><b>(butlast '(A B C D E F) 3) </b>: this returns <b>(A B C)</b> : note
+the number is at the end this time.
+<p><b>LAST</b> returns the last elements:
+<p><b>(last '(A B C D E))</b> : returns <b>(E)</b>
+<p><b>LENGTH </b>returns the number of top level elements:
+<p><b>(length '((A B) (C D)))</b> : this returns 2.
+<p><b>REVERSE </b>reverses the order of the elements:
+<p><b>(reverse '((A B) (C D)))</b> : this returns <b>((C D) (A B))</b>
+<p>Another basic primitive are:
+<p><b>(print 10)</b> : prints out <b>10 10</b>
+<p>It is also possible to create a global variable like this:
+<p><b>(defvar *my_name* 'Dane)</b>
+<p>By convention global variables are inside asterisks. These should be
+at the top, not inside functions.
+<br><a NAME="lisp_basic_data_types"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>LISP Basic Data Types</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Three of the most popular data types are integers, ratios and floating-point.
+Ratios represent something like 2/3. Integers are whole numbers, but they
+can have a point after them. Floating point, of course are numbers like
+5.432.
+<p>The result of division depends on the numbers involved.
+<p>Two floating point numbers return another floating point number.
+<p>Two integers that don't divide evenly will return a ratio:
+<p><b>(/ 31 5)</b> : this returns<b> 31/5</b>.
+<p>but you can get a floating point result like this:
+<p><b>(float (/ 31 5)) </b>: this returns <b>6.2</b>.
+<p>or you can get an integer result like this:
+<p><b>(round (/ 31 5))</b> : this returns
+<p><b>6</b>
+<p><b>1/5</b>
+<br><a NAME="lisp_structures"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>LISP Structures</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>You can also define a structure in LISP:
+<br><b>(defstruct person</b>
+<br><b>&nbsp;&nbsp; name</b>
+<br><b>&nbsp;&nbsp; age)</b>
+<br>: This has made a type, not any instance of it.&nbsp; We can use a
+function that will make instances though.
+<br><b><font color="#000000">(setf P1</font></b>
+<p><b><font color="#000000">(make-person</font></b>
+<p><b><font color="#000000">:name 'Dane</font></b>
+<p><b><font color="#000000">:age 18))</font></b>
+<p>And then access it like this:
+<p><b>(person-age p1)</b>
+<p><b>(person-name p1)</b>
+<p>Values in the structure can also be changed:
+<p><b>(setf (person-name p1) 'Jerry)</b>
+<p>To test if something is an example of the <b>person</b> structure use
+this<b> person-p</b>:
+<p><b>(person-p p1) </b>: this returns <b>T</b>
+<br><a NAME="lisp_more_number_orientated_primitives"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#000000">More Number Orientated Primitives</font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b>MIN</b> and <b>MAX</b> are self explanatory:
+<p><b>(MIN 3 5 7 1)</b> : this returns 1
+<p><b>(MAX 3 5 7 1)</b> : this returns 7
+<p><b>EXPT </b>raises a number to a power:
+<p><b>(expt 2 4)</b> : this returns 16
+<p><b>SQRT </b>returns the square root:
+<p><b>(sqrt 9)</b> : this returns 3
+<p><b>ABS </b>returns the absolute value :
+<p><b>(ABS -10) </b>: this returns 10
+<br><a NAME="lisp_defining_your_own_functions"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#000000">Defining Your Own Functions</font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>To define your own procedure you use the special form called <b>defun</b>
+<p><b>(defun second-element (arg)</b> : <b>arg</b> is the element the function
+takes
+<p>&nbsp;&nbsp; <b>(first (rest arg)))</b>
+<p>We can now use this as follows
+<p><b>(second-element '(a b c d e))</b> : this will print out B
+<p>This function adds two arguments:
+<p><b>(defun addition(arg1 arg2)</b>
+<p><b>(+ arg1 arg2))</b>
+<p><b>(addition 2 4)</b> : this prints out 6
+<p>There is no real point to these two procedures, they just reproduce
+<b>second</b>
+and <b>+</b> respectively. It does show the basic formula though. This
+could all be put on the same line, but it is easier to split it up. On
+the first line we first use the <b>defun</b> keyword to show we are making
+our own procedure. Next we give this procedure a name, and follow that
+with an argument list - the names for the variables should be kept relevant.
+<p>We then define what the procedure does with these variables on the following
+line(s). Remember to keep track of all the brackets, they can start to
+build up.
+<p>Here is another one that returns the first and last elements in a list:
+<p><b>(defun firstlast(arg)</b>
+<p><b>&nbsp;&nbsp;&nbsp; (cons(first arg)</b>
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(last arg)))</b>
+<p>We can then call the function like this:
+<p><b>(firstlast '(A B C D))</b> : which will return <b>(A D)</b>.
+<p>Or we could use a list made by<b> setf:</b>
+<p><b>(setf month '(JAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC))</b>
+<p><b>(firstlast month)</b> : which returns <b>(JAN DEC)</b>.
+<p>Remember, this hasn't changed the value of <b>month</b>, it has returned
+a new set.
+<p>Or we can make it accept two sets and return the first from one and
+the last from the other
+<p><b>(defun firstlast(arg1 arg2)</b>
+<p><b>&nbsp;&nbsp;&nbsp; (cons(first arg1)</b>
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(last arg2)))</b>
+<p><b>(firstlast '(A B C) '(D E F))</b> : which returns<b> (A F)</b>.
+<p>LET is another popular primitive that binds parameters. These only last
+for the duration of the function, so they are a temporary form of primitives
+like <b>setf</b>. This is how it works:
+<p><b>(defun firstlast(arg)</b>
+<p><b>&nbsp;&nbsp;&nbsp; (let ((ele1(first arg))</b>
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(ele2 (last arg)))</b>
+<p><b>(cons ele1 ele2)))</b>
+<p>This is exactly the same function, but the operations are being read
+into the variables <b>ele1</b> and <b>ele2</b>.
+<br><a NAME="lisp_predicates"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>LISP Predicates</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>A predicate returns a value of true or false. In LISP false is always
+signaled by<b> NIL</b>, and truth by anything else, but often by <b>T</b>.
+<p><b>EQUAL</b> tests to see if two expressions are the same:
+<p><b>(equal (* 3 3) 9) </b>: this returns
+<b>T</b>.
+<p><b>(equal (* 3 3) 8)</b> : this returns N<b>IL</b>.
+<p>There are more predicates like <b>EQUAL</b> which are more specific:
+<p><b>EQL</b> tests to see if two arguments are the same symbol or number:
+<p><b>(eql 7 7.0)</b> : this returns <b>NIL</b>
+<p><b>(eql (+3 4) 7) </b>: this returns <b>T</b>
+<p>= tests to see if two arguments are the same number:
+<p><b>(= 7 7.0)</b> : this returns <b>T</b>
+<p><b>MEMBER </b>tests to see if its first argument is in its second argument.
+Given the set:
+<p><b>(setf tv '(seinfeld friends frasier er happydays))</b>
+<p><b>(member 'frasier tv) </b>: this will return <b>(FRASIER ER HAPPYDAYS)</b>
+:notice that it returns everything to the right of the element you searched
+for.
+<p>To find a member that happens to be a set you have to do things differently:
+<p><b>(setf characters '((jerry kramer) (rachel monica) (fonzie richie)))</b>
+<p>Using just member won't find the elements:
+<p><b>(member '(rachel monica) characters)</b> : this returns<b> NIL</b>
+<p>This is because member uses <b>EQL</b> when we need it to use <b>EQUAL</b>.
+Therefore we have to specify the test to use:
+<p><b>(member '(rachel monica) characters :test #'equal)</b>
+<p>This returns<b> ((RACHEL MONICA (FONZIE RICHIE))</b>
+<p>Any symbol beginning with a : is a keyword (remember not to have a space
+between colon and word). The test keyword can be used to modify the natural
+behavior of <b>member</b>. The <b>#' </b>is used to create what is called
+a procedural object.
+<p>There are several other predicates:
+<p><b>LISTP</b> takes any Lisp data-item, and returns T if it is a list,
+and NIL otherwise.
+<p><b>ENDP</b> which takes a list, and returns T if the list is empty,
+NIL otherwise. (This function is also known as <b>NULL</b>.) Note that
+<b>(endp
+nil) </b>returns <b>T</b> : nil is an empty set.
+<p><b>NUMBERP </b>tests to see if it is a number.
+<p><b>SYMBOLP </b>tests to see if it is a symbol.
+<p>There are quite a few number predicates. A few of them are:
+<p><b>ZEROP </b>: is it zero
+<p><b>PLUSP </b>and <b>MINUSP</b> : is it positive or negative
+<p><b>EVENP </b>and <b>ODDP</b> : is it even or odd
+<p><b>> </b>and &lt; : Are they in descending or ascending order.
+<p>Two combine the results of more than one predicate in a test use the
+words <b>AND</b> and <b>OR</b>.
+<p>Suppose we have these two sets:
+<p><b>(setf comedy '(frasier happydays allymcbeal seinfeld))</b>
+<p><b>(setf drama '(er allymcbeal nypdblue))</b>
+<p>If we want to find if something is a member of both we use:
+<p><b>(and (member 'allymcbeal comedy) (member 'allymcbeal drama)) </b>:
+this will return<b> (ALLYMCBEAL NYPDBLUE)</b>
+<p>Or if we want to know if something is in one or the other:
+<p><b>(or (member 'seinfeld comedy) (member 'seinfeld drama)) </b>: this
+will return<b> (SEINFELD)</b>
+<br><a NAME="lisp_conditionals"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>LISP Conditionals</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>The <b>IF</b> form is a common structure from other languages. In LISP
+it looks like this:
+<p><b>(if (listp comedy) 'full 'empty)</b> : returns <b>FULL</b>
+<p>This expression contains a test form (<b>listp</b>), something to evaluate
+(<b>comedy</b>), something to return if the result is true (<b>full</b>)
+and something if false (<b>empty</b>)
+<p>The <b>WHEN</b> structure is similar, but it only does something if
+the condition is true:
+<p><b>(setf hightemp 80 todaytemp 90)</b>
+<p><b>(when (> todaytemp hightemp)</b>
+<p>&nbsp;&nbsp;&nbsp;<b> (setf hightemp todaytemp)</b>
+<p>&nbsp;&nbsp;&nbsp;<b> 'today_had_highest_temp)</b>
+<p>When the temperature of <b>todaytemp</b> is higher than <b>hightemp</b>,
+<b>hightemp</b>
+is changed to <b>todaytemp</b> and a message is printed. Otherwise <b>NIL</b>
+is displayed.
+<p>If you only want to do something in place of <b>NIL</b>, use the <b>UNLESS</b>
+structure:
+<p><b>(unless (> todaytemp hightemp)</b>
+<p><b>&nbsp;&nbsp;&nbsp; 'today_was_not_the_hightest)</b>
+<p>Now if it would normally evaluate to <b>NIL</b> the message is printed,
+otherwise <b>NIL</b> is printed.
+<p><b>COND </b>is a more versatile conditional structure.
+<p><b>(setf temp 80)</b>
+<p><b>(cond((> temp 100) 'very_hot)</b>
+<p><b>((> temp 85) 'hot)</b>
+<p><b>((> temp 75) 'quite_hot)</b>
+<p><b>((> temp 60) 'mild)) </b>: this returns <b>QUITE_HOT</b>
+<p>Once it got down to something that is true, the corresponding consequent
+is triggered. No more conditions are evaluated after that.
+<p>This could then be put in a user defined procedure:
+<p><b>(defun today (temp)</b>
+<p><b>(cond((> temp 100) 'very_hot)</b>
+<p><b>((> temp 85) 'hot)</b>
+<p><b>((> temp 75) 'quite_hot)</b>
+<p><b>((> temp 60) 'mild)))</b>
+<p>and then called like this:
+<p><b>(today 90) </b>which returns <b>HOT</b>
+<br><a NAME="lisp_recursion"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>LISP Recursion</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>A lot of people only know one thing about recursion : there is always
+a way of doing a recursive function non-recursively. Simple recursion isn't
+too difficult though, just remember that there must be a condition that
+stops the recursion, or it will go on for ever.
+<p>Here is a simple function that takes two numbers and raises the first
+to the power of the second:
+<p><b>(defun raise(num1 num2)</b>
+<p><b>&nbsp;&nbsp;&nbsp; (if (zerop num2)</b>
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1</b>
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (* num1 (raise num1 (- num2 1)))))</b>
+<p>This is quite simple. <b>Raise</b> excepts two integers. It then goes
+into a loop - if the second number is 1 then the recursion stops, otherwise
+<b>raise</b>
+is called again taking 1 of the second number.
+<p>The other example always used to demonstrate recursion is Fibonacci
+numbers: for number 4 we want to find (4 + 3 + 2 +1).
+<p>The recursive function for this is:
+<p><b>(defun Fibonacci (num)</b>
+<p><b>&nbsp;&nbsp;&nbsp; (if (= num 1)</b>
+<p><b>&nbsp;&nbsp;&nbsp; 1</b>
+<p><b>&nbsp;&nbsp;&nbsp; (+ num (Fibonacci(- num 1)))))</b>
+<p>We can then find out that<b> (fibonacci 4)</b> gives <b>10</b>.
+<p>These are just two basic examples, but many procedures can be done recursively,
+usually in an effort to make them faster and easier to read.
+<br><a NAME="lisp_iteration"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>LISP Iteration</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Iteration, usually performed with the <b>for</b> keyword in other languages,
+can also be done in LISP. In LISP the primitive is called <b>DOTIMES</b>.
+<p><b><font color="#000000">(defun power (num1 num2)</font></b>
+<p><b>(let ((result 1))</b>
+<p><b><font color="#000000">(dotimes (count num2 result)</font></b>
+<p><b><font color="#000000">(setf result (* num1 result))))</font>)</b>
+<p>We can then use it :
+<p><b>(power 2 3)</b> : which gives <b>8</b>
+<p>It is not so simple on the face of it. The first line is familiar enough.
+In the second line we create the variable that will hold the result and
+give it the value of 1 to begin with.
+<p>The <b>dotimes</b> statement takes three parameters. The first is the
+count parameter. This is followed by the upper limit form and finally the
+result form.
+<p>The final line is the body of the loop. The first time through the loop
+result becomes equal to 2 (2 * result). The second time through it takes
+the value of 4 (2 * result (which was now 2)). The final time through it
+takes the value of 8 (2 * result (which had been made 4)). The result is
+then printed.
+<p>Here is another example:
+<p><b>(dotimes (c 4 'done)</b>
+<p><b>&nbsp;(princ "Counter =")</b>
+<p><b>(princ c)</b>
+<p><b>(terpri))</b>
+<p>This prints out:
+<p><b>Counter =0</b>
+<p><b>Counter =1</b>
+<p><b>Counter =2</b>
+<p><b>Counter =3</b>
+<p><b>DONE</b>
+<p>The <b>terpri </b>command provides a carriage return.
+<p>The <b>DO</b> primitive is even more difficult. This is how the example
+above can be done with the <b>DO</b> loop:
+<p><b>(defun dopower (num1 num2)</b>
+<p><b>&nbsp;&nbsp;&nbsp; (do ((result 1)</b>
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(exponent num2))</b>
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+((zerop exponent) result)</b>
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (setf result (* num1 result))</b>
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (setf exponent (- exponent
+1))))</b>
+<p>This does work, copy and paste it into your interpreter and see, but
+it is nowhere near as easy as a do loop in most other languages. This is
+how it works:
+<p>The first part of a <b>do</b> loop contains a list of parameters that
+are given initial values on entering the loop. If these variables had values
+before the loop, these values are restored after the loop. If there are
+no parameters an empty list must be placed in the line instead.
+<p>The second part of the loop, <b>((zerop exponent) result),</b> contains
+the terminating condition, and what will be returned.
+<p>The rest of the loop describes what happens if the termination test
+isn't met.
+<p>You can break out of a loop prematurely with the keyword <b>RETURN</b>
+<p>Iteration isn't a whole lot of fun in LISP.
+<br><a NAME="lisp_printing"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>LISP Printing</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>The primitive <b>PRINT</b> can be used to print a single element:
+<p><b>(setf today 'monday)</b>
+<p><b>(print today)</b>
+<p>This will printout <b>MONDAY</b> twice.
+<p><b>(print (- 10 5))</b> : this prints out<b> 5&nbsp;&nbsp; 5</b>
+<p>The <b>FORMAT </b>primitive lets you do more complex printing. <b>Strings</b>
+are data types in LISP. They are characters surrounded by double quotes.
+We can use <b>format</b> to print strings:
+<p><b>(format t "Hello World")</b> : the<b> t </b>stands for terminal.
+Notice that it puts <b>NIL</b> at the end.
+<p>You can indicate you want a fresh line with <b>~%</b> :
+<p><b>(format t "~%Hello ~%World")</b>
+<p>Another useful directive is <b>~a</b> which lets you put something after
+the string:
+<p><b>(setf temp 100)</b>
+<p><b>(format t "The temperature is ~a" temp)</b>
+<p>There are a lot more directives that format takes. If you want to know
+what they are, go to section 22.3.3 of <b><u><font color="#000000"><a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/cltl2.html">Common
+LISP</a></font></u></b>
+<br><a NAME="lisp_reading"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>LISP Reading</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p><b>READ </b>is used to put information into a program. When it is encountered
+the program stops and waits for a value. The biggest problem is that <b>READ
+</b>never
+bothers to tell you it is waiting for anything, so you should provide a
+prompt separately.
+<p>This is how to read information:
+<p>(let ((temp 0))
+<p>(print '(Enter the temperature))
+<p>(setf temp(read))
+<p>(print (append '(The temperature today was) (temp)))))
+<br><a NAME="lisp_beyond_the_basics"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#000000">Beyond the Basics</font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>Congratulations, you are now a geek: go and ring your parents. All the
+categories above demonstrate the essential aspects of lisp, but there are
+many more features all good geeks should know. There are many quite interesting
+things you can do with LISP if you have the patience. It is probably the
+best language around for writing Artificial Intelligence applications from
+Expert Systems to voice recognition.
+<br><a NAME="lisp_property_lists"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>LISP Property Lists</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>A property list is a collection of property names and values associated
+with a symbol. For instance, the symbol could be a person: Chandler. Then
+we can have properties associated with this: Parents (Rachel Ross) and
+Children (Monica Joey).
+<p>This is how we do it:
+<p><b>(setf person '(Chandler))</b> : (returns <b>(CHANDLER)</b>)
+<p><b>(setf (get 'chandler 'parents) '(Rachel Ross))</b> : this returns<b>
+(RACHEL ROSS)</b>
+<p><b>(setf (get 'chandler 'children) '(Monica Joey))</b> : this returns
+<b>(MONICA
+JOEY)</b>
+<p>Retrieving these values is very easy - just remove the setf:
+<p><b>(get 'chandler 'parents)</b>
+<p><b>(get 'chandler 'children)</b>
+<p>You can also remove a property:
+<p><b>(remprop 'chandler 'children)</b> : this returns <b>T</b>.
+<p><b>(get 'chandler 'children) </b>: this now returns <b>NIL</b>
+<p>That is really all there is to property lists.
+<br><a NAME="lisp_arrays"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b>LISP Arrays</b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>To create an array you need to tell LISP how many dimensions it has,
+and how many elements are in each dimension with <b>MAKE-ARRAY:</b>
+<p><b>(setf numarray (make-array 10))</b> : this makes the one dimensional
+array <b>numarray</b> with ten elements. This will return <b>#(0 0 0 0
+0 0 0 0 0 0 )</b>
+<p><b>(setf twodimension (make-array '(4 4))) : </b>this creates a two
+dimensional array called <b>twodimension</b>, and returns <b>#2A((0 0 0
+0)(0 0 0 0)(0 0 0 0)(0 0 0 0))</b>
+<p>You can also initialize the elements as you declare the array.
+<p><b>(setf initarray (make-array 10 :initial-element 20)) </b>: this returns
+<b>#(20
+20 20 20 20 20 20 20 20 20)</b>
+<p>To find out what is stored in an element use this structure:
+<p><b>(aref numarray 3)</b>
+<p><b>(aref twodimension 2 4)</b>
+<p>You also use the same base structure to write data into the array:
+<p><b>(setf (aref numarray 3) 40)</b>
+<p>The <b>dotimes</b> loop is used a lot with arrays: this one counts how
+many elements in <b>numarray</b> equal to a given number:
+<p><b>(defun equalnum (num)</b>
+<p><b>&nbsp;&nbsp;&nbsp; (let ((result 0))</b>
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (dotimes (n 4 result)</b>
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(when (equal num (aref numarray n))</b>
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(setf result (+ result 1))))))</b>
+<p>If it is called like this:
+<p><b>(equalnum 40) </b>: this returns <b>1</b>.
+<br><a NAME="lisp_macros"></a>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+<tr>
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+
+<td ALIGN=LEFT><b><font color="#000000">Macros</font></b></td>
+
+<td ALIGN=RIGHT VALIGN=BOTTOM><b><a href="index.html">home</a> - <a href="#top">top
+of the page</a> - </b></td>
+
+<td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+</tr>
+</table>
+
+<p>A macro is like a function, except that its arguments aren't evaluated
+when it's called. To demonstrate the difference between functions and macros,
+consider this this function.
+<p><b>&nbsp;(defun mycons (item list)</b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp; (cons item list))</b>
+<br>It can then be called like this:
+<p><b>(mycons 'a '(b c))</b> which returns<b> (A B C)</b>
+<br>This function could be written as a macro:
+<br><b>(defmacro mycons (item list)</b>
+<br><b>&nbsp;&nbsp;&nbsp; `(cons ',item ',list))</b>
+<br>It can then be called like this:
+<br><b>(mycons a (b c))</b> which returns <b>(A B C)</b>
+<br>A macro uses its arguments to create a LISP expression, and then evaluates
+it.
+<br>There is never any real need to use macros if you don't want to, functions
+can always be used to do the same things. Many people find macros more
+convenient in certain situations however.
+<br>&nbsp;
+<br>&nbsp;
+</body>
+</html>

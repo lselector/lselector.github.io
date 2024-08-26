@@ -1,0 +1,1218 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <title>CQF notes</title>
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+<style type="text/css">
+<!--
+.style1 {
+	color: #CC0000;
+	font-weight: bold;
+}
+.code {color: #0000FF}
+.comment {color: #669900}
+-->
+</style>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<p><a NAME="top"></a><b><font color="#CC0000">Certificate In Quantitative Finance (CQF) Notes</font></b></p>
+<p>CQF course consists of 6 parts (<a href="#part1">1</a> - <a href="#part2">2</a> - <a href="#part3">3</a> - <a href="#part4">4</a> - <a href="#part5">5</a> - <a href="#part6">6</a>). <br>
+Each part takes ~ 1 month, so it is 6 months. <br>
+Here are the sessions:</p>
+<p><a href="#part1">Part 1.</a><br>
+  -  Session 1.1 The Random Behaviour of Assets<br>
+  - Session 1.2 Calculus Refresher, Taylor Series and Transition Density Functions<br>
+    - Session 1.3 Methods for Quant Finance:I<br>
+    - Session 1.4 Stochastic Calculus and Itô&rsquo;s Lemma<br>
+    - Session 1.5 From VBA to C++ Workshop<br>
+    - Session 1.6 Introductory Trading Simulator<br>
+  - Session 1.7 Simulating and Manipulating Stochastic Differential Equations</p>
+<p><a href="#part2">Part 2.</a><br>
+    - <a href="#s12"></a>Session 2.1 Portfolio Management<br>
+    - <a href="#s12"></a>Session 2.2 Products and Strategies<br>
+    - <a href="#s12"></a>Session 2.3 Martingale Theory - Fundamentals<br>
+    - <a href="#s12"></a>Session 2.4 Value at Risk and Volatility<br>
+    - <a href="#s12"></a> <a href="#s12"></a>Session 2.5 Binomial Model<br>
+    - <a href="#s12"></a>Session 2.6 Fundamentals of Optimization and Application to Portfolio Selection<br>
+    - <a href="#s12"></a>Session 2.7 Methods for Quant Finance: II</p>
+<p><a href="#part3">Part 3.</a><br>
+    - <a href="#s12"></a>Session 3.1 Black-Scholes Model<br>
+    - <a href="#s12"></a>Session 3.2 Martingale Theory - Application to Option Pricing<br>
+    - <a href="#s12"></a>Session 3.3 Advanced Greeks<br>
+    - <a href="#s12"></a>Session 3.4 Trading Simulator - Trading Equity Optins<br>
+    - <a href="#s12"></a>Session 3.5 Understanding Volatility<br>
+    - <a href="#s12"></a>Session 3.6 Monte Carlo and Finite Differences<br>
+    - <a href="#s12"></a>Session 3.7 Martingales and PDEs: Which, when and why Part I</p>
+<p><a href="#part4">Part 4.</a><br>
+    - <a href="#s12"></a>Session 4.1 Fixed Income Products and Analysis<br>
+    - <a href="#s12"></a>Session 4.2 Stochastic Interest Rate Modelling<br>
+    - <a href="#s12"></a>Session 4.3 Calibration and data Analysis<br>
+    - <a href="#s12"></a>Session 4.4 Probabilistic methods for interest rates<br>
+    - <a href="#s12"></a>Session 4.5 Heath Jarrow and Morton Model<br>
+    - <a href="#s12"></a>Session 4.6 The Libor Market Model</p>
+<p><a href="#part5">Part 5.</a><br>
+    - <a href="#s12"></a>Session 5.1 Structural Models<br>
+    - <a href="#s12"></a>Session 5.2 Intensity Models<br>
+    - <a href="#s12"></a>Session 5.3 Introduction to Credit Derivatives<br>
+    - <a href="#s12"></a>Session 5.4 Credit Default Swaps<br>
+    - <a href="#s12"></a>Session 5.5 Collateralized Debt Obligations<br>
+    - <a href="#s12"></a>Session 5.6 Advanced Credit Derivatives</p>
+<p><a href="#part6">Part 6.</a><br>
+    - <a href="#s12"></a>Session 6.1 Time Series in Financial Markets<br>
+    - <a href="#s12"></a>Session 6.2 Exotic Options<br>
+    - <a href="#s12"></a>Session 6.3 Incomplete Markets: Jump Diffusion and Stochastic Volatility<br>
+    - <a href="#s12"></a>Session 6.4 'Advanced' Volatility Modeling in Complete Markets<br>
+    - <a href="#s12"></a>Session 6.5 Further Monte Carlo<br>
+    - <a href="#s12"></a>Session 6.6 Martingales and PDEs: More &quot;Which, When and Why&quot; Part II<br>
+    - <a href="#s12"></a>Session 6.7 Further Finite Difference Methods<br>
+    - <a href="#s12"></a>Session 6.8 Discrete Hedging and Transaction Costs<br>
+  - <a href="#s12"></a>Session 6.9 Correlation Sensitivity and State Dependence</p>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="part1" id="part1"></a>Part1</p>
+<p>&nbsp;</p>
+<table width="99%" border="1" cellpadding="1" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td width="4%" valign="top">1.1</td>
+    <td width="36%" valign="top">Session  The Random Behaviour of Assets</td>
+    <td width="60%" valign="top"><p>- Fundamental Analysis, Technical Analysis, Quantitative Analysis<br>
+    - Discrete time, continuous time<br>
+    - stochastic calculus, random walk, <a href="http://en.wikipedia.org/wiki/Brownian_motion">brownian motion</a>, <a href="http://en.wikipedia.org/wiki/Wiener_process">Wiener process</a><br>
+    - return = (change of value + accum.cash flows)/orig.value<br>
+    &nbsp;&nbsp;&nbsp; Ri = (Si+1-Si)/Si<br>
+    - mean = average = (1/N)*sum(Ri)<br>
+    - STDEV=sqrt((1/(N-1)*sum(Ri-mean)^2)<br>
+    - Normal distribution: (1/sqrt(2pi))*exp(-x^2/2)<br>
+    - changing the size of dt without randomness:<br>   
+&nbsp;&nbsp;&nbsp;    Sn = so(1+m*dt)^N, or S(t) ~ So*exp(mt), <br>
+&nbsp; &nbsp;&nbsp;where m called growth rate or drift rate<br>
+    - stdev scales ~ &sigma;/sqrt(dt), where &sigma; = volatility = annualized stdev of returns<br>
+    - (Si+1 - Si)/Si = m*dt + &sigma;*fi/sqrt(dt)<br>
+     &nbsp;&nbsp;&nbsp;time deriv. = drift + random<br>
+        - Si+1 = (1+m*dt)Si + &sigma;*Si*fi/sqrt(dt) - used for Monte-Carlo<br>
+    - short term - volatility dominates, long term - drift dominates<br>
+    - dS = m*S*dt + &sigma;*S*dX - main stochastic diff. equation (SDE)<br>
+    <img src="images/sde1.png" width="194" height="18"><br>
+    - The above equation has analytic solution:<br>
+    <img src="images/sde1_solution.png" width="290" height="51"><br>
+    which is <a href="http://en.wikipedia.org/wiki/Lognormal">lognormal</a> distribution (meaning - its logarithm is normaly distributed).<br>
+    - <a href="http://en.wikipedia.org/wiki/Geometric_Brownian_motion">Geometric_Brownian_motion</a> (dS/S)<br>
+    </p>    </td>
+  </tr>
+  <tr>
+    <td width="4%" valign="top">1.2</td>
+    <td width="36%" valign="top"> Calculus Refresher, Taylor Series and Transition Density Functions</td>
+    <td valign="top"><p>- <a href="http://en.wikipedia.org/wiki/Taylor_series">Taylor series</a><br>
+        <img src="images/taylor_series.jpg" width="327" height="70"><br>
+        - PDE = partial differential equation<br>
+&nbsp;&nbsp;&nbsp;V(S,t) - value of derivative<br>
+      -  A trinomial random walk<br>
+      <img src="images/trinominal_walk.jpg" width="202" height="134"><br>
+      -  Transition probability density function p(y,t,y',t')<br>
+      - Fokker&ndash;Planck or forward Kolmogorov equation<br>
+      (independent vars are t' and y')<br>
+      <img src="images/trinominal_walk2.jpg" alt="" width="126" height="106"> <img src="images/forward_equation.jpg" width="132" height="60"><br>
+      <img src="images/forward_solution.jpg" width="253" height="73"><br>
+      If starting point is no (0,0), but (y,t) - then:<br>
+      <img src="images/transition_probability_density.jpg" width="442" height="66"><br>
+      <br>
+      - backward Kolmogorov equation - independent vars are t and y:<br>
+      <img src="images/backward_diagram.jpg" width="200" height="138"> <img src="images/backward_equation.jpg" width="159" height="60"></p>
+      <p>Note: term &quot;<span class="style1">similarity solution</span>&quot;  is used when we are trying to find a solution of an equation in some specific form (similar to something). For example, for diffusion equation the similarity solution may be in the form form <br>
+        <img src="images/similarity_solution.jpg" width="146" height="66"><br>
+      And then taking derivatives, substituting into the equation, and making reasonable suggestions - we get to the fundamental solution above (power = -0.5, and f() is exponent).</p></td>
+  </tr>
+  <tr>
+    <td width="4%" valign="top">1.3</td>
+    <td width="36%" valign="top">Methods for Quant Finance:I</td>
+    <td valign="top"><p>- diff equations: <br>
+      - exact equation - can be presented as complete differential dG<br>
+       - Bernoulli equation: y' + P(x)y = q(x)y^n<br>
+       -  Homogeneous equation: dy/dx = f(x,y),<br>
+&nbsp;&nbsp;       where f is homogenious: f(tx,ty) = (t^k)*f(x,y)<br>
+    - Complex numbers:<br>
+      exp(iz) = cos(z) +i*sin(z)<br>
+       Moivres Theorem:<br>
+    (cos(a) +i*sin(a))^n = cos(n*a) + i*sin(n*a)<br>
+    </p>    </td>
+  </tr>
+  <tr>
+    <td width="4%" valign="top">1.4</td>
+    <td width="36%" valign="top">Stochastic Calculus and It&ocirc;&rsquo;s Lemma</td>
+    <td valign="top">MGF = Moment Generating Function<br>
+        <img src="images/moment_generating_function.jpg" width="308" height="96"><br>
+        So the nth moment = E(X^n) is simply the coefficient in the above series, or n-th derivative of the above series at teta=0.<br>      - Construction of Brownian Motion/Wiener Process<br>
+        (it is a martingale, it is a Markov process).<br>
+      - Functions of a stochastic variable F(X), mean square convergence dX^2 = dt,  It&ocirc;&#146;s Lemma for f(t,W):<br>
+      <img src="images/ito_lemma.jpg" width="281" height="53"><br>
+      - Stochastic Integration<br>
+      - <a href="http://en.wikipedia.org/wiki/It%C5%8D_integral">The It&ocirc; Integral</a> (explicit, non-anticipatory).<br>
+      <img src="images/ito_integral.jpg" width="184" height="46"> = <img src="images/ito_integral_sum.jpg" width="309" height="58"><br>
+    - Examples of popular Stochastic Di&curren;erential Equations</td>
+  </tr>
+  <tr>
+    <td width="4%" valign="top">1.5</td>
+    <td width="36%" valign="top"> From VBA&nbsp;to C++&nbsp;Workshop</td>
+    <td valign="top">Using VBA in Excel, using ExcelDNA to build Excel add-ins, also translating VB code into C++ to run externally.</td>
+  </tr>
+  <tr>
+    <td width="4%" valign="top">1.6</td>
+    <td width="36%" valign="top">Introductory Trading Simulator</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="4%" valign="top">1.7</td>
+    <td width="36%" valign="top">Simulating and Manipulating Stochastic Differential Equations</td>
+    <td valign="top">- Using It&circ;o&rsquo;s lemma to manipulate stochastic differential equations. We will describe the change in option price V(S), where the underlying S follows geometric Brownian motion (aka EMB = Exponential Brownian Motion). Specificly when V(S)=log(S).<br>
+        <img src="images/pdf_lognormal_walk.jpg" width="258" height="133"><br>
+      - Continuous-time stochastic differential equations as discretetime 
+      processes.  Simulating random walk - method Euler: <br>
+&nbsp;&nbsp;&nbsp;      S(i+1) = S(i)(1+mu*dt+&sigma;*fi*sqrt(dt))<br>
+      - Simple ways of generating random numbers in Excel:<br>
+      -- normsinv(rand()), or (sum(rand()) - 6)<br>
+      Other random walks: Ornstein-Uhlenbeck process (mean-reverting random walk), <a href="http://en.wikipedia.org/wiki/Vasicek_model">Vasicek model</a>:<br>
+      <img src="images/mean_reverting_random_walk.jpg" width="217" height="25"><br>
+    - Correlated random walks (fi1=r1; fi2 = p*r1 + sqrt(1-p*p)*r2;)</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="part2"></a>Part 2</p>
+  <p>&nbsp;</p>
+  <table width="99%" border="1" cellpadding="1" cellspacing="0" bgcolor="#CCFFFF">
+    <tr>
+      <td width="4%">2.1</td>
+      <td width="35%" valign="top">Portfolio Management</td>
+      <td width="61%" valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="4%">2.2</td>
+      <td width="35%" valign="top">Products and Strategies</td>
+      <td valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="4%">2.3</td>
+      <td width="35%" valign="top">Martingale Theory - Fundamentals</td>
+      <td valign="top"><p><span class="style1">ProbabilitySpace</span> (SampleSpace, Filtration, ProbabilityMeasure)</p>
+      <p><span class="style1">SampleSpace</span> = set of all outcomes.<br>
+        <span class="style1">Event</span> = subset of SampleSpace<br>
+        <span class="style1">Union, Intersection, Difference</span> (&quot;\&quot;) of sets, <span class="style1">Null set</span> {0}<br>
+        <span class="style1">RandomVariable</span> - assigns a value to each individual event<br>
+        <span class="style1">StochasticProcess</span> S(t) =S(w)(t) - a sequence of random variables indexd by time<br>
+        <span class="style1">SamplePath</span> - ...<br>
+        <span class="style1">Filtration</span> - a &sigma;-field (from Measure theory, <a href="http://en.wikipedia.org/wiki/Sigma-algebra">sigma-algebra</a>)<br>
+        <span class="style1">&sigma;-algebra over a set <em>X</em></span> is a nonempty collection &Sigma; of subsets of <em>X</em> (including <em>X</em> itself) that is closed under complementation and  countable unions of its   members. It is a Boolean algebra, completed to include countably   infinite operations. The pair (<em>X</em>,&nbsp;&Sigma;) is also a field of sets, called a measurable space.<br>
+        <span class="style1">P - ProbabilityMeasure</span> - a type of &quot;function&quot;, assigns probabilities to subsets (outcomes).<br>
+        <span class="style1">Probability</span>: 0&lt;=P&lt;=1, P(all) = 1, sum of Pi = 1<br>
+        <span class="style1">PDF</span> - Probability Density Function<br>
+        <span class="style1">CDF</span> - Cumulative Distribution Function<br>
+      <span class="style1">E[..] - Mathematical Expectation</span><br>
+      E[h(X)] = integral_lebesgue( h(x) dP )<br>
+      Relation between expectation and probability - <span class="style1">Indicator Function</span> (=1 when x blong to subset, 0 otherwise).<br>
+      Uncontidional Expectations, <span class="style1">Conditional Expectations</span> E[X|F]<br>
+      Properties:<br> 
+      linearity,<br> 
+      <span class="style1">Tower property</span> E[E[X|G]|F] = E[X|F],<br>
+      E[E[X|F]] = E[X].<br> 
+      If X is F-measurable, then X is known once we know F, then E[X|F] = X, and E[XY|F] = XE[Y|F].<br>
+      If X is independent from F, then E[X|F] = E[X]<br>
+      E[X|F] &gt;=0<br>
+      <span class="style1">Jensen's Inequality</span>: if f() is a convex function, then<br>
+      f(E[X|F]) &lt;= E[f(X)|F]</p>
+      <p>Measure Q is <span class="style1">absolutely continuous</span> with respect to measure P if for every subset if P(A) = 0, then Q(A) = 0 (impossibilities are preserved). It is denoted as <span class="style1">Q&lt;&lt;P</span>.<br>
+        <br>
+      If Q&lt;&lt;P and P&lt;&lt;Q - then the two <span class="code">measures said to be equivalent</span>.</p>
+      <p><span class="style1">Radon Nikodym Theorem</span>: If measures P &amp; Q share the same null sets, then there exists a random variable V such that for all subsets A<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;Q(A) = integral_over_A(VdP), where V=dQ/dP<br>
+      For descrete distributions Q(A) = V(A)*P(A), V(.)=Q/P(.)<br>
+      Technique - <span class="style1">changing the measure to simplify the solution</span>.<br>
+      <span class="style1">Multi-dmensional Ito Formula</span> - n different Brownian motions and pairwise correlations.</p>
+      <p>Discrete Time Martingale: E[M<sub>t+1</sub>|F] = M<sub>t</sub> - no drift.<br>
+        Supermartingale, submartingale =&lt; or &gt;= instead of &quot;=&quot;.<br>
+          <br>
+        Markov process - no memory, t+1 depends only on time t.<br>
+          <br>
+        Levy - The Brownian Motion as a martingale: |X<sub>t</sub>|2 - t is a martingale.<br>
+        <br>
+        Ito integrals are martingales and vice versa, if M is a martingale - then exist a function such as M = Mo + Ito Integral of this function.</p>
+      <p>Properties of Ito Integrals - linearity, Ito isometry, Martingale.<br>
+          <br>
+        Exponential Martingale: if S is a random walk, then find f(t) <br>
+        so that <span class="style1">M(t) = exp(S<sub>t</sub>+f(t))</span> is a Martingale<br>
+      </p></td>
+    </tr>
+    <tr>
+      <td width="4%">2.4</td>
+      <td width="35%" valign="top">Value at Risk and Volatility</td>
+      <td valign="top"><p>We say &quot;1-day VaR at 95% confidence level&quot;. <span class="style1">VaR</span> is a probability  estimate of max dollar amount which could be lost during  a given time at given confidence level for normal (stable) market conditions. For stable conditions without drift:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;VaR  = N * S *  F * &sigma; * sqrt(dt)<br>
+        where:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;N - number of shares<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;S - stock price<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&sigma; - volatility expressed as fraction of stock price (for example, 0.15).<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;dt - (1/252) for 1-day.<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;F = number of standard deviations to reach certain degree of confidence.<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;(for example, F=1.28 for 90%, or F=1.64 for 95%, or F=2.33 for 99%.)<br>
+        Introducing the drift:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;VaR = N*S*(&mu;*dt - F*&sigma;*sqrt(dt))<br>
+        For a portfolio with many securities:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;VaR = F*sqrt(dt)*sqrt(sum(sum(N<sub>i</sub>N<sub>j</sub>&sigma;<sub>i</sub>&sigma;<sub>j</sub>&rho;<sub>ij</sub>S<sub>i</sub>S<sub>j</sub>)))<br>
+      VaR for derivatives - nonlinear. But for small moves and  short times can be approximated. For larger movements need higher orders of approximation.<br>
+      Delta-approximation - &Delta;<sub>i</sub> - sensitivity of a portfolio to i-th asset.<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;VaR = F*sqrt(dt)*sqrt(sum(sum(&Delta;<sub>i</sub>&Delta;<sub>j</sub>&sigma;<sub>i</sub>&sigma;<sub>j</sub>&rho;<sub>ij</sub>S<sub>i</sub>S<sub>j</sub>)))<br>
+      Gamma - introduce asymmetry.<br>
+      Simulations: <span class="style1">Monte Carlo</span> (using Normally distributed rand. numbers) or  <span class="style1">Bootstrapping</span> (using historical data).<br>
+      VaR doesn't satisfiy Artzner's criteria for being <span class="style1">coherent</span>:<br>
+      1. r(x+y) &lt;= r(x) + r(y) - <em class="code">VaR doesn't satisfy this</em>.<br>
+      2. if x&lt;=y, then r(x) &lt;= r(y)<br>
+      3. r(kx) = kr(x)<br>
+      4. r(x+c) = r(x) - c<br>
+      VaR measure is not coherent.<br>
+      The example of a coherent measure: &quot;Expected Shortfall&quot;. This is average of all PnLs making the tail of interest.<br>
+      Estimate volatility: &sigma;<sup>2</sup> = (1/N)(1/dt)<strong>&Sigma;</strong>R<sub>i</sub><sup>2</sup> , where R -return of i-th asset.<br>
+      Problem with this - too much memory (picks look like plateaus).<br>
+      Better - use exponentially-weighted moving average estimate with parameter &lambda;.</p>        </td>
+    </tr>
+    <tr>
+      <td width="4%">2.5</td>
+      <td width="35%" valign="top">Binomial Model (delta hedging, BS equation)</td>
+      <td valign="top"><p>a simple model for an asset price random walk (probab. p,q).<br>
+      p=0.5+&mu;*sqrt(dt)/(2*&sigma;)<br>
+      The expected change is &mu;*S*dt, expected return is &mu;*dt,<br>
+        standard deviation of returns is &sigma;*sqrt(dt).<br>
+        -  delta hedging<br>
+        construct a portfolio at time t consisting of one option and<br>
+          a short position in a quantity &Delta; of the underlying - and choose &Delta; so that the value of the portfolio remains const.<br>
+        &bull; no arbitrage<br>
+        <img src="images/no_arbitrage.jpg" width="294" height="42"><br>
+        where p' - risk-neutral probability.<br>
+        The option value at any time is the present value of the 
+        expected value at any later time.<br>
+        binominal trees: of asset prices,  of option prices.<br>
+        - risk neutrality<br>
+      - limit dt-&gt;0 =&gt; Black-Scholes equation.</p>      </td>
+    </tr>
+    <tr>
+      <td width="4%">2.6</td>
+      <td width="35%" valign="top">Fundamentals of Optimization and Application to Portfolio Selection</td>
+      <td valign="top"><p><span class="style1">optimization</span> - finding max/min; objective function f(x) &amp; constraints g<sub>i</sub>(x)=b<sub>i</sub>.<br>
+        use gradient vector and <span class="style1">Hessian</span> (matrix of 2nd derivatives).<br>
+                method Lagrange - combine objective function and constraints into one <span class="style1">Lagrangian</span> function <span class="code">L(x,&lambda;) = f(x) + &Sigma;&lambda;<sub>i</sub>(g<sub>i</sub>(x)-b<sub>i</sub>)</span> - and find its max/min. Then we take 1st order partial derivatives by x and by &lambda;. At extremum they should be zero - thus get (n+m) equations.<br>
+        Another case - constraints are not &quot;=&quot;, but &quot;&lt;=&quot; (inequality). For this we use 
+        <span class="style1">Kuhn-Tucker conditions</span>:<br>        
+                <img src="images/Kuhn-Tucker.jpg" width="256" height="72"><br>        
+        Markowitz world:<br>
+        Portfolio of n assets: <STRONG>&mu;</STRONG>        - vector of <span class="style1">returns</span>, <strong>w</strong> - vector of <span class="style1">weights</span>, <STRONG>&Sigma;</STRONG> - <span class="style1">covariance matrix</span>:<br>
+        <img src="images/covariance_matrix.jpg" width="210" height="66"><br>
+        Then portfolio return <STRONG>&mu;</STRONG><sub>&pi;</sub> = <STRONG>&mu;</STRONG><sup>T</sup><strong>w</strong> , and portfolio variance <STRONG>&sigma;<sup>2</sup></STRONG> =<strong>w</strong><sup>T</sup><strong>&Sigma;w</strong> .<br>
+        Diagonalization of Covariance Matrix.<br>
+        <span class="style1">Portfolio optimization</span>: minimize risk (portfolio variance) for given return constraint by finding the optimal weight vector <strong>w</strong> using Lagrange method.<br>
+        Also we can solve another problem: find return <strong>m</strong> at which we can get min.variance.<br>
+        Any efficient portfolio can be presented as a linear combinatin of 2 efficient portfolios: the global minimum variance portfolio + (<strong>&Sigma;<sup>-1</sup>&mu;/B</STRONG>) portfolo.<br>
+        Covariance of 2 portfolios.<br>
+      Risk-free asset: return r, variance =0, correlation with other (risky) =0.<br>
+      Tangency Portfolio:<img src="images/tangency_portfolio_weights.jpg" width="90" height="33"> <img src="images/tangency_portfolio_mean.jpg" alt="" width="102" height="29"> <img src="images/tangency_portfolio_covariance.jpg" width="170" height="34"><br>
+      <a href="http://en.wikipedia.org/wiki/Capital_Asset_Pricing_Model">CAPM</a> (Capital Asset pricing Model) derivation is based on 4 assumptions: 1) all investors want to max their utility from the investment; 2) all investors have common time horizon and predictions; 3) All assets can be bought and sold in unlimited amounts; 4) Any investment is infinitely divisible.<br>
+      <span class="style1">Sharpe-Lintner CAPM</span>: <STRONG>&mu;</STRONG> - R<strong>1</strong> = <STRONG>&beta;<sub>M</sub>(&mu;<sub>M</sub></STRONG> - r)<br>
+      where M - market (portfolio)</p>        </td>
+    </tr>
+    <tr>
+      <td width="4%">2.7</td>
+      <td width="35%" valign="top">Methods for Quant Finance: II</td>
+      <td valign="top"><p><span class="style1">Generalised Functions</span>, <span class="style1">&delta;-function</span>  as a limit of sequence of Gaussian functions.<br>
+          <span class="style1">Double Integration</span>: area, changing variables, <span class="style1">Jacobean</span>, <span class="style1">polar coordinates</span>.<br>
+          <span class="style1">Fourier Transforms</span>, take F() of both parts of  the 
+        heat equation.<br>
+        Theory of <span class="style1">Residues</span> (Complex Analysis).<br>
+      Singular points (while solving PDEs) - no Taylor expansion.<br>
+      <span class="style1">Regular Singular Point</span>: x*p(x) and x*x*p(x) have taylor expansions.<br>
+      Irregular Singular Point - all other points.<br>
+      <a href="http://en.wikipedia.org/wiki/Indicial_equation" class="style1">Fr&ouml;benius method</a> - find solution of ordinary 2-nd order diff. equation as an infinite sum (<span class="style1">Power Series solution</span>, Indicial Equation).<br>
+      </p>      </td>
+    </tr>
+  </table>
+<p>&nbsp;</p>
+  <p class="sectionheader"><a name="part3"></a>Part 3.</p>
+  <p>&nbsp;    </p>
+  
+  <table width="99%" border="1" cellpadding="1" cellspacing="0" bgcolor="#FFFFCC">
+    <tr>
+      <td width="4%" valign="top">3.1</td>
+      <td width="36%" valign="top">Black-Scholes Model</td>
+      <td width="60%" valign="top"><p>xxx<br>
+        - <a href="http://en.wikipedia.org/wiki/Black%E2%80%93Scholes">http://en.wikipedia.org/wiki/Black%E2%80%93Scholes</a><br>
+        <br>
+        <img src="images/black_scholes.jpg" width="319" height="54"></p>
+        <p><a href="images/800px-Optionpricesurface.jpg"><img src="images/black_scholes_euro_put_option_pricing.jpg" width="190" height="171"></a></p>
+      <p>delta-hedging - dynamic hedging to remove risk. The rate should be same as no-risk rate (to remove arbitrage possibilities).<br>
+      BS equation - linear, parabolic.<br>
+      Note - drift didn't make it into the equation. ( !! ).<br>
+      Final conditions (at expiry time T)<br>
+      Variations - add dividends (paying continuously), currency options (r = r1-r2), commodity options (add cost of carry).<br>
+      Solving the equation:<br>
+      Do several transformations:<br>
+      1. remove the rV<br>
+      2. change t into (T-t)<br>
+      3. use log(S) to get rid of S*d../dS situation<br>
+      4. rotate coordinates to remove first derivative<br>
+      </p>
+      <p>General solution V(S,t) = discount_function * integral (payoff_function(S) * Green_function(S,t)dS)<br>
+      Where Green_function is a &quot;response&quot; to a delta-function.<br>
+      Binary options, european options, american options (ability to excercise early makes them more valuable), put/call parity.<br>
+      Greeks:<br>
+        <span class="code">delta 
+        &Delta; = dV/dS - for delta-hedging<br>
+        gamma &Gamma; = d<sup>2</sup>V/dS<sup>2</sup> - sensitivity of delta hedge ration to S<br>
+        theta &Theta; = dV/dt - rate of change of option price with time<br>
+        vega (zeta,kappa) = dV/d&sigma; - sensitivity to vloatility<br>
+        rho &rho; = dV/dr - sensitivity to interest rate</span><br>
+        Bermudian options (can be excersized only on certain days of the week)<br>
+        Comparison between Kolmogorov Equation and BS equation.<br>
+      </p></td>
+    </tr>
+    <tr>
+      <td width="4%" valign="top">3.2</td>
+      <td width="36%" valign="top">Martingale Theory - Application to Option Pricing</td>
+      <td valign="top"><p>- <a href="http://en.wikipedia.org/wiki/Martingale_(probability_theory)">http://en.wikipedia.org/wiki/Martingale_(probability_theory)</a> - <br>
+        <img src="images/martingale.jpg" width="240" height="55"><br>
+      a martingale is a stochastic process (i.e., a sequence of random variables) such that the conditional expected value of an observation at some time t, given all the observations up to some earlier time s, is equal to the observation at that earlier time s. Example: Suppose <em>X</em><em>n</em> is a gambler's fortune after <em>n</em> tosses   of a coin, where the   gambler wins $1 if the coin comes up heads and loses $1 if the coin comes up   tails. The gambler's conditional expected fortune after the next trial, given   the history, is equal to his present fortune, so this sequence is a martingale.</p>
+        <p>Girsanov's Theorem: ____</p>
+        <p>Fundamental Asset pricing formula: ____</p>
+        <p>Black-Scholes ____</p>
+        <p>Feynman-Kac formula:</p>
+        <p>BS: dividends, time-dependent params, BS for options on futures.</p></td>
+    </tr>
+    <tr>
+      <td width="4%" valign="top">3.3</td>
+      <td width="36%" valign="top">Advanced Greeks</td>
+      <td valign="top"><p>- <a href="http://en.wikipedia.org/wiki/Greeks_(finance)">http://en.wikipedia.org/wiki/Greeks_(finance)</a></p>
+
+<table border="1" cellpadding="1">
+<tr>
+  <td><br></td>
+  <td valign="bottom"><i>Spot<br/>Price (S)</i></td>
+  <td valign="bottom"><i>Volatility<br/>(&sigma;)</i></td>
+  <td valign="bottom"><i>Time to<br/>Expiry (T)</i></td>
+  <td valign="bottom"><i>Risk-Free<br/>Rate (r)</i></td>
+</tr>
+<tr>
+  <td align="right"><i>Value(V)</i></td>
+  <td bgcolor="#8EBDED" align="center">&Delta; Delta</td>
+  <td bgcolor="#8EBDED" align="center">v Vega</td>
+  <td bgcolor="#8EBDED" align="center">&Theta; Theta</td>
+  <td bgcolor="#8EBDED" align="center">&rho; Rho</td>
+</tr>
+<tr>
+<td align="right"><i>Delta(&Delta;)</i></td>
+<td bgcolor="#90EE90" align="center">&Gamma; Gamma</td>
+<td bgcolor="#90EE90" align="center">Vanna</td>
+<td bgcolor="#90EE90" align="center">Charm</td>
+<td bgcolor="#90EE90" align="center"><br></td>
+</tr>
+<tr>
+<td align="right"><i>Vega(v)</i></td>
+<td bgcolor="#90EE90" align="center">Vanna</td>
+<td bgcolor="#90EE90" align="center">Vomma</td>
+<td bgcolor="#90EE90" align="center">DvegaDtime</td>
+<td bgcolor="#90EE90" align="center"><br></td>
+</tr>
+<tr>
+<td align="right"><i>Gamma(&Gamma;)</i></td>
+<td bgcolor="#EDED8E" align="center">Speed</td>
+<td bgcolor="#EDED8E" align="center">Zomma</td>
+<td bgcolor="#EDED8E" align="center">Color</td>
+<td bgcolor="#EDED8E" align="center"><br></td>
+</tr>
+<tr>
+<td align="right"><i>Vomma</i></td>
+<td bgcolor="#EDED8E" align="center"><br></td>
+<td bgcolor="#EDED8E" align="center">Ultima</td>
+<td bgcolor="#EDED8E" align="center"><br></td>
+<td bgcolor="#EDED8E" align="center"><br></td>
+</tr>
+</table>
+
+        <p>cost of carry can cause delta (dc/dS) to be higher than 1<br>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td width="4%" valign="top">3.4</td>
+      <td width="36%" valign="top">Trading Simulator - Trading Equity Optins</td>
+      <td valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="4%" valign="top">3.5</td>
+      <td width="36%" valign="top">Understanding Volatility</td>
+      <td valign="top"><p>Volatility types: actual (local, instant), historical (realized), implied (for BS model), forward<br>
+        Volatility Calibration: from market option prices =&gt; calculate implied volatility<br>
+        Volatility Arbitrage: we assume that we know better than the market - thus have arbitrage opportunities.<br>
+        Vega = dV/d<i>&sigma;</i> - option price can change even when underlying doesn't move.<br>
+        Bastard greek - sensitivity to a parameter<br>
+        Increasing volatility will increase option value if Gamma is positive.<br>
+        Volatility ~ sqrt(T)<br>
+        Increasing volatility smoothes out curvature in asset direction, makes Gamma less &quot;severe&quot;.<br>
+        Volatility changes with time.<br>
+        Avereging volatility - actually sum variances - and take sq.root.<br>
+        Hedging with actual or Impleid volatility ?<br>
+      Mark to Market<br>
+      </p>
+        </td>
+    </tr>
+    <tr>
+      <td width="4%" valign="top">3.6</td>
+      <td width="36%" valign="top">Monte Carlo and Finite Differences</td>
+      <td valign="top"><p>- simple case - European option, SDE is integrable, not path dependent - then you get  payoff distribution analytically.<br>
+        - general case - you have to model the walk going forward. Euler method (primitive step-by-step numeric integration - not stable). dS = r*S*dt+&sigma;*S*sqrt(dt)*&phi; (where &phi; is from standard normal distribution).<br>
+        <br> 
+        Errors - dt size, N (number of realizations) is limited (error ~1/sqrt(N)), random numbers are not independent and/or normal.<br>
+        Fast normal computations (sum 12 rand numbers - 6).<br>
+        Example - calculations of European or asian options in Excel.<br>
+        Explaining why US options is difficult - the model shoul make decisions about selling option at every step - for this it needs to know option value at each step.<br>
+        <br>
+      xxx<br>
+      xxx</p>
+      <p>- <a href="http://en.wikipedia.org/wiki/Leibniz_integral_rule">http://en.wikipedia.org/wiki/Leibniz_integral_rule</a><br>
+      ddddd</p></td>
+    </tr>
+    <tr>
+      <td width="4%" valign="top">3.7</td>
+      <td width="36%" valign="top">Martingales and PDEs: Which, when and why Part I</td>
+      <td valign="top">Show how 3 approaches (binomial model, PDE,  martingale) give the same result.<br>
+      Pricing an option using binomial model. <br>
+        <span class="style1">CRR implementation of binomial model</span> (Cox, Ross and Rubinstien) - converges to geometric brownian motion and leads to Black-Scholes PDE.<br>
+      In the Black-Scholes setting, the no-arbitrage approach 
+      and the martingale measure approach are strictly equivalent!<br>
+      <span class="style1">Complete market</span> = a market in which we have 
+      enough tradeable instruments to perfectly hedge all of the risk(s) 
+      of the derivative we are intending to price.<br></td>
+    </tr>
+  </table>
+<p>&nbsp;</p>
+  <p class="sectionheader"> <a name="part4"></a>Part 4.</p>
+  <p>&nbsp;    </p>
+  
+  <table width="99%" border="1" cellpadding="1" cellspacing="0" bgcolor="#CCFFFF">
+    <tr>
+      <td width="4%" valign="top">4.1</td>
+      <td width="36%" valign="top">Fixed Income Products and Analysis</td>
+      <td width="60%"><p>bonds, coupon, zero-coupon bonds, interest rate, floating rate bonds (LIBOR), FRA (Forward Rate Agreement), STRIPS, Amortization, Callable bonds.<br>
+        Swaps - huge market<br>
+        Interest rate swap (exchange fixed to floating rate).<br>
+        Swap curve<br>
+        swap prices determine the bonds yield curve.<br>
+        <br>
+        Callable /puttable swaps<br>
+        Extendible swaps, <br>
+        Index amortizing rate swaps<br>
+        Currency swaps<br>
+        Modeling Interest Rates:<br>
+        1. deterministic<br>
+        2. Black 1976<br>
+        3. Stochastic spot rate (Vasicek, Hull &amp; White)<br>
+        4. Multi-Factor (more sources of randomnes, spot and long-term)<br>
+        5. HJM (Heath, Jarrow, Morton) - evolution of whole curve, non-markov, computer-simulation.<br>
+        6. LMM (LIBOR Market Model - correlated random walks) - the most complex model.</p>
+        <p>Deterministic:<br>
+          Yeld, current yield, Yield to Maturity (YTM = IRR = Internal Rate of Return)<br>
+          Int.rate go up - bond prices go down.<br>
+          Duration - measure of how much bond value (V) changes when interest rate changes: <span class="style1">Macauley duration</span> = -(1/V)*dV/dy<br>
+          The higher duration - the more volatile the bond.<br>
+          Duration = the average life of the bond.<br>
+          Excel spreadsheet calc of YTM and Duration<br>
+            Taylor expansion of V(y). Convexity = (1/V)*d2V/dy2.<br>
+            Time-dependent Interest Rate<br>
+            Forward Rates and Bootstrapping.<br>
+            <br>
+          </p></td>
+    </tr>
+    <tr>
+      <td width="4%" valign="top">4.2</td>
+      <td width="36%" valign="top">Stochastic Interest Rate Modelling</td>
+      <td><p>Bonds, Interest Rate - many models (one-factor and multi-factor), popular 2-factor models, tractable models, affine models (affine = constant + linear).<br>
+        Deriving pricing equation<br>
+        SDE - Stochastic Differential Equation<br>
+        r- interest rate, random variable (1-factor model - SDE of a random walk of r).<br>
+        r is an underlying asset (like S in equities). Bond is  a derivative of r with expiring = maturity.<br>
+        spot rate - yield at a very short time (in practice - 1 month),<br>
+        dr = u(r,t)dt + w(r,t)dX<br>
+        &nbsp;&nbsp;Vasicek model: u = (&eta; - &gamma;r), w=&sigma;<br>
+        &nbsp;&nbsp;Cox_Ingersoll_Ross model:  u = (&eta; - &gamma;r), w=&sigma;*sqrt(r)<br>
+        Derivation of pricing SDE - similar to B.S., but as  r is not a traded, we can not use it to hedge while creating risk-free portfolio. The trick - hedge a bond with a bond of different maturity.<br>
+      &Pi; = V<sub>1</sub> - &Delta;V<sub>2</sub>. To remove randomness: &Delta; = (dV<sub>1</sub>/dr)/(dV<sub>2</sub>/dr).<br>
+      Using Ito and the above expression for &Delta;, we separate variables of V1 one one side, and V2 on the other. They should be equal regardless of which bond / maturity we use =&gt; so they shold be equal to some universal a(r,t) which represent drift:<br>
+      <img src="images/int_rate1.jpg" width="337" height="97"><br>
+      We write a() as:<br>
+      <img src="images/int_rate2.jpg" width="359" height="39"><br>
+      where:<br>
+      &nbsp;&nbsp;w - volatility<br>
+      &nbsp;&nbsp;&lambda; -  &quot;market price of risk&quot;<br>
+      &nbsp;&nbsp;u - drift<br>
+&nbsp;&nbsp;(u - &lambda;w) - risk neutral drift (or risk adjusted drift)<br>
+dr = (u - &lambda;w)dt + wdX - risk neutral spot rate SDE<br>
+        Then we get BPE (Bond Pricing Equation) (similar to BS equation for equities):<br>
+        <img src="images/int_rate3.jpg" width="465" height="80"><br>
+        Final Condition for a zero-coupon bond is V(r,T) = 1.<br>
+        Similar to equities - the value of derivative is a risk-neutral expectation of the present value of the payoff:<br>
+        <img src="images/bond_value1.jpg" width="394" height="65"><br>
+        Tractable models - SDE with closed-form solutino (for example, in a form Z=exp(A-rB)).<br>
+        <span class="style1">Examples of models:</span><br>
+        - <span class="style1">Vasicek</span> - dr = (&eta; - &gamma;r)dt + sqrt(&beta;)dX, where w = sqrt(&beta;). Solution in the form exp(A(t)-rB(t)<br>
+        - <span class="style1">Cox, Ingersoll &amp; Ross</span> - dr = (&eta; - &gamma;r)dt + sqrt(&alpha;r)dX. Solution againin the form exp(A(t)-rB(t)<br>
+        - <span class="style1">Ho &amp; Lee</span> - dr = &eta;(t)dt + sqrt(&beta;)dX, where drift is time dependent (for calibration), and volatility is constant. <br>
+&nbsp;      Solution in the form: V(r,t;T) = exp(A(t)-rB(t)<br>
+&nbsp;&nbsp;The expression for A(t) contains integral of &eta;(t).<br>
+&nbsp;&nbsp;We can chose &eta;(t) so that output of the model will == market prices (Yield-curve fitting).<br>
+&nbsp;&nbsp;This was the first &quot;no-arbitrage&quot; model of the term structure of interest rates. <br>
+        - <span class="style1">Hull &amp; White</span> - similar to Vasicek and CIR, but parameters are made time-dependent. This allows to fit yield curve. <br>
+        - etc.<br>
+        A more general model: <br>
+&nbsp;&nbsp;- drift = (&eta;(t) - &gamma;(t)r) - this is mean reversion<br>
+&nbsp;&nbsp;- w(r,t) = sqrt( &alpha;(t)r + &beta;(t) ) - we can assure that r is positive (&gt; -&beta;/&alpha;)<br>
+        Solution is still in form V(r,t) = exp(A(t)-rB(t)).<br>
+        ========= <em><strong>Multi-factor interest rate modeling</strong></em><br>
+        dr = udt + wdX<sub>1</sub><br>
+        dl = pdt + qdX<sub>2</sub> - where l may be another interest rate, a long rate, volatility of spot rate, etc. etc.<br>
+        E[dX<sub>1</sub>+dX<sub>2</sub>] = &rho;dt<br>
+        V = V(r,l,t)<br>
+        As we have 2 randomnesses - we need 2 hedges to eliminate risk. The pricing SDE will have derivatives by t,r,l.<br>
+        <span class="style1">Multi-factor models:</span><br>
+        - <span class="style1">Brennan and Schwartz</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dr = (a1+b1(l-r))dt + &sigma;1*r*dX<sub>1</sub> - mean-reverting to l<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dl = l*(a2-b2*r+c2*l)dt + &sigma;2*r*dX<sub>2</sub> - has its own drift<br>
+        - <span class="style1">Fong and Vasicek</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dr = a(r<sub>m</sub>-r)dt + sqrt(&xi;)*dX<sub>1</sub> - mean-reverting to r<sub>m</sub><br>
+&nbsp;&nbsp;&nbsp;&nbsp;d&xi; = b*(&xi;<sub>m</sub> - &xi;)dt + c*sqrt(&xi;)*dX<sub>2</sub> - volatility<br>
+        - <span class="style1">Longstaff and Schwartz</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dx = a(x<sub>m</sub>- x)dt + sqrt(x)*dX<sub>1</sub> <br>
+&nbsp;&nbsp;&nbsp;&nbsp;dy = a(y<sub>m</sub>- y)dt + sqrt(y)*dX<sub>2</sub> <br>
+&nbsp;&nbsp;&nbsp;&nbsp;r = cx + dy<br>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td width="4%" valign="top">4.3</td>
+      <td width="36%" valign="top">Calibration and data Analysis</td>
+      <td>Theorietical yield curve vs market yield curve. Calibration (fitting of the yield curve).<br>
+        Ho &amp; Lee: dr = &eta;(t)dt + c 
+        dX<br>
+        Knowing &eta;(t) we find Z(r,t;T). Inverse problem - we know Z from market - find &eta;(t). That's calibration.<br>
+        Another example - Hull &amp; White's extension of Vasicek: dr = (&eta;(t) - &gamma;r)dt + c dX<br>
+        In real life when finding &eta;(t) we make some assumptions, for example that it doesn't depend on price, or it is pricewise linear, etc.<br>
+        how to analyze short-term interest rates to select the best model<br>
+        dr = u(r,t)dt + w(r,t)dX<br>
+        Z(r,t;T) = exp(A(t,T)-rB(t,T))<br>
+        <table width="90%" border="0" cellpadding="5" cellspacing="0" bgcolor="#FFFFCC">
+          <tr bgcolor="#FFCC66">
+            <td><strong>Model</strong></td>
+            <td><strong>u(r,t) - &lambda;(r,t)w(r,t) - risk-adjusted drift<br>
+            (where &lambda;(r,t) - market price of risk).</strong></td>
+            <td><strong>w(r,t)</strong></td>
+          </tr>
+          <tr>
+            <td>Vasicek</td>
+            <td>a - br</td>
+            <td>c</td>
+          </tr>
+          <tr>
+            <td>CIR</td>
+            <td>a - br</td>
+            <td>c*sqrt(r)</td>
+          </tr>
+          <tr>
+            <td>Ho &amp; Lee</td>
+            <td>a(t)</td>
+            <td>c</td>
+          </tr>
+          <tr>
+            <td>Hull &amp; White I</td>
+            <td>a(t) - b(t)r</td>
+            <td>c(t)</td>
+          </tr>
+          <tr>
+            <td>Hull &amp; White II</td>
+            <td>a(t) - b(t)r</td>
+            <td>c(t)*sqrt(r)</td>
+          </tr>
+          <tr>
+            <td>General affine</td>
+            <td>a(t) - b(t)r</td>
+            <td>sqrt(c(t)r-d(t))</td>
+          </tr>
+        </table>
+        <p>How to deduce spot-rate model from data.<br>
+        (1) find from data how volatility depends on r: w(r)<br>
+        (2)  examine the steady-state PDF for the spot rate =&gt; find drift rate u(r)<br>
+        (3) slope of yield curve =&gt; 
+        &lambda;(r)<br>
+        The volatility structure - usually in the form &nu;*r<sup>&beta;</sup><br>
+        We find the &beta; which makes the best fit.<br>
+        Note - It is difficult to model the &lambda;(r) due to big errors.<br>
+        Forward rate vs spot rate:<br>
+        <span class="style1">Forward rate curve = expected future path of the risk-adjusted spot rate.</span><br>
+        - <a href="http://en.wikipedia.org/wiki/Forward_rate">http://en.wikipedia.org/wiki/Forward_rate</a> - forward rate is the future yield on a bond. It is calculated using the yield curve. For example, the yield on a three-month Treasury bill six months from now is a forward rate.<br>
+        The general formula used to calculate the forward rate is:<br>
+        <img src="images/forward_rate1.jpg" width="324" height="60"><br>
+        Where<br>
+        r<sub>1,2</sub> is the forward rate between term t<sub>1</sub> and term t<sub>2</sub>,<br>
+        d<sub>1</sub> is the time length between time 0 and term t<sub>1</sub> (in years),<br>
+        d<sub>2</sub> is the time length between time 0 and term t<sub>2</sub> (in years),<br>
+        r<sub>1</sub> is the interest rate for the period time 0 to term t<sub>1</sub> ,<br>
+        r<sub>2</sub> is the interest rate for the period time 0 to term t<sub>2</sub> ,<br>
+        </p>
+        <p>In order to extract the forward rate, one needs the term structure of interest rates = <a href="http://en.wikipedia.org/wiki/Term_structure_of_interest_rates">yield curve</a>. <br>
+          </p></td>
+    </tr>
+    <tr>
+      <td width="4%" valign="top">4.4</td>
+      <td width="36%" valign="top">Heath Jarrow and Morton Model</td>
+      <td>HJM - model F(t,T) - forward rate curve.<br>
+        dF(t;T) = m(t,T)dt + &nu;(t,T)dX<br>
+        where m(t,T) = &nu;(t,T) * Integral<sub>t</sub><sup>T</sup> &nu;(t,s)ds<br>
+        Monte-Carlo simulations:  simulate evolution of the whole curve; calculate cashflows under each evolution;  discount cashflows at the realized rate r(t) - get expected present value for this realization. Repeat the cycle.<br>
+        Problems: calculations are slow. Also as the process is non-Markov, trees become &quot;bushy&quot; (forward curve after up-down movement is not the same as after down-up movement).<br>
+        Musiela parametrization :  &nu;(t,T) =  &nu;<sub>m</sub>(t,T-t)<br>
+        Multi-factor HJM:<br>
+        dF(t;T) = m(t,T)dt + &Sigma;&nu;<sub>i</sub>(t,T)dX<sub>i</sub><br>
+        Spot rat process: r(t) = F(t;t). Non-Markov nature of HJM - dependence on history (path-dependent).<br>
+        Comparison of HJM model and Ho &amp; Lee:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;dr =  &eta;(t)dt + cdX<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;dF(t,T) = -c<sup>2</sup>(T-t)dt +cdX<br>
+        Two main ways to use HJM:<br>
+        1) choose volatility structure &nu;<sub>i</sub>(t,T) to be nice to make a tractable model (Markov)<br>
+        2) use 'classical' popular spot-rate models.<br>
+        Yet another way - to choose volatility structure to match the data.<br>
+        Principal Component Analysis (PCA) - we take historical data for forward rates for several years, calculate covariances between rates of different maturities - get a 10x10 symmetric covariance matrix, find eigen vectors/values - essentially find common movements in the rates. Those eigenvectors sorted by eigenvalues starting from largest ones are called principal components. In practice ~95% of the dynamics of the F(t) can be explained by first 2 components.<br></td>
+    </tr>
+    <tr>
+      <td width="4%" valign="top">4.5</td>
+      <td width="36%" valign="top">Probabilistic methods for interest rates</td>
+      <td><p>Martingales and Fixed Income Valuation<br>  
+        under Physical measure P: dr(t) = &mu;(t,r)dt + &sigma;(t,r)X(t), r(0) = r<br>
+        money-in-the-bank process A(t) = exp(Integral<sub>0</sub><sup>t</sup> r(s)ds)<br>
+        B(t,T) - zero-coupon bond (ZCB) which pays 1 at maturity T<br>
+        zero-coupon market - all bonds B(t,T) for t&lt;=T &lt;= maxT<br>
+        Each bonds =&gt;  sequence of coupons, and coupons =&gt;  ZCBs.<br>
+        Equivalent Martingales Measures Q for ZCB Market:<br>
+        Z*(t,T) = B(t,T)/A(t) - should be a martingale for  any maturity T.<br>
+      Note - there may be zero, one, or many equivalent measures. (page18)</p>
+        <p>============<br>
+        fundamental asset pricing formula for bonds<br>
+        dynamics of bond prices<br>
+        Pricing forward contracts<br>
+        The forward (martingale) measure<br>
+        Fundamental asset pricing formula for derivatives on bonds<br>
+        Pricing of European call on a zero-coupon bond.<br>
+        Rights and wrongs of short-term interest rate models:<br>
+        - bad:<br> 
+        if we start with rate to calc bonds - we get &quot;fudge function&quot;. So it may be better to start with bond dynamics first - and then deduce dynamics of interest rates (HJM class of models).<br>
+        - satisfactory:<br> 
+        --the forward measure, term structure of forward rates. Interpretation of Radon-Nikod'ym derivative lambda as an intemporal no-arbitrage condition is particularly intuitive and elegant.<br>
+        -- As long as bonds follow geometric dynamics, the value of the derivative will be of the same form (irrespecive of the model).<br>
+        Next - forward rates models: Heath, Jarrow &amp; Morton (1992), Brace, Gatarek &amp; Musiela (1997).<br>
+        Good about F.R.Models:<br>
+        - they start with nice geometric dynamics for Zero-Coupon Bonds - then deduce term structure of forward rates.<br>
+        - they encompass all existing interest rate models<br>
+        - - you can use then to manage the risk of anything (short and long term).<br>
+        Problems with F.R.Models:<br>
+        - non-Markov. But at certain assumptions may be Markov.<br>
+        - complex (math)<br>
+        - not clear which form of model to use</p>
+        </td>
+    </tr>
+    <tr>
+      <td width="4%" valign="top">4.6</td>
+      <td width="36%" valign="top">The Libor Market Model</td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+<p>&Alpha; &alpha; Alpha - &Nu; &nu; Nu <br>
+&Beta; &beta; Beta - &Xi; &xi; Xi <br>
+&Gamma; &gamma; Gamma - &Omicron; &omicron; Omicron <br>
+&Delta; &delta; Delta - &Pi; &pi; Pi <br>
+&Epsilon; &epsilon; Epsilon - &Rho; &rho; Rho <br>
+&Zeta; &zeta; Zeta - &Sigma; &sigma; &sigmaf; Sigma <br>
+&Eta; &eta; Eta - &Tau; &tau; Tau <br>
+&Theta; &theta; Theta - &Upsilon; &upsilon; Upsilon <br>
+&Iota; &iota; Iota - &Phi; &phi; Phi <br>
+&Kappa; &kappa; Kappa - &Chi; &chi; Chi <br>
+&Lambda; &lambda; Lambda - &Psi; &psi; Psi <br>
+&Mu; &mu; Mu - &Omega; &omega; Omega </p>
+<p class="sectionheader"> <a name="part5"></a>Part 5.</p>
+  <p>&nbsp;    </p>
+  
+  <table width="99%" border="1" cellpadding="1" cellspacing="0" bgcolor="#FFFFCC">
+    <tr>
+      <td width="3%">5.1</td>
+      <td width="37%">Structural Models</td>
+      <td width="60%">xxx</td>
+    </tr>
+    <tr>
+      <td width="3%">5.2</td>
+      <td width="37%">Intensity Models</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="3%">5.3</td>
+      <td width="37%">Introduction to Credit Derivatives</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="3%">5.4</td>
+      <td width="37%">Credit Default Swaps</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="3%">5.5</td>
+      <td width="37%">Collateralized Debt Obligations</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="3%">5.6</td>
+      <td width="37%">Advanced Credit Derivatives</td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <p class="sectionheader"> <a name="part6"></a>Part 6.</p>
+  <p>&nbsp;    </p>
+  
+  <table width="99%" border="1" cellpadding="1" cellspacing="0" bgcolor="#CCFFFF">
+    <tr>
+      <td width="4%">6.1</td>
+      <td width="36%">Time Series in Financial Markets</td>
+      <td width="60%">xxx</td>
+    </tr>
+    <tr>
+      <td width="4%">6.2</td>
+      <td width="36%">Exotic Options</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="4%">6.3</td>
+      <td width="36%">Incomplete Markets: Jump Diffusion and Stochastic Volatility</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="4%">6.4</td>
+      <td width="36%"> 'Advanced' Volatility Modeling in Complete Markets</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="4%">6.5</td>
+      <td width="36%">Further Monte Carlo</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="4%">6.6</td>
+      <td width="36%">Martingales and PDEs: More &quot;Which, When and Why&quot; Part II</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="4%">6.7</td>
+      <td width="36%">Further Finite Difference Methods</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>6.8</td>
+      <td>Discrete Hedging and Transaction Costs</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>6.9</td>
+      <td>Correlation Sensitivity and State Dependence</td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <p>- <a href="http://en.wikipedia.org/wiki/Hedge_(finance)">http://en.wikipedia.org/wiki/Hedge_(finance)</a></p>
+  <p>- <a href="http://en.wikipedia.org/wiki/Pairs_trade">http://en.wikipedia.org/wiki/Pairs_trade</a></p>
+  <p>- <a href="http://en.wikipedia.org/wiki/Algorithmic_trading">http://en.wikipedia.org/wiki/Algorithmic_trading</a></p>
+  <p>- <a href="http://en.wikipedia.org/wiki/Volatility_smile">http://en.wikipedia.org/wiki/Volatility_smile</a> - the volatility smile is a long-observed pattern in which at-the-money options tend to have lower implied volatilities than in- or out-of-the-money options. The pattern displays different characteristics for different markets and results from the probability of extreme moves. Equity options traded in American markets did not show a volatility smile before the Crash of 1987 but began showing one afterwards.</p>
+  <p>Modelling the volatility smile is an active area of research in quantitative finance. Typically, a quantitative analyst will calculate the implied volatility from liquid vanilla options and use models of the smile to calculate the price of more exotic options.</p>
+  <p>A closely related concept is that of term structure of volatility, which refers to how implied volatility differs for related options with different maturities. An implied volatility surface is a 3-D plot that combines volatility smile and term structure of volatility into a consolidated view of all options for an underlier.</p>
+  <p><a href="http://en.wikipedia.org/wiki/Beta_coefficient">Beta</a> - Portfolio's Beta coefficient = correllation with the market = Covar(Ri,Rm)/Var(Rm).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;0 - not correllated, positive - follows the market, negative - inversely follows the market).</p>
+  <p><a href="http://en.wikipedia.org/wiki/Sharpe_ratio">Sharpe Ratio</a> <span class="style1">S = (R - Rf)/&sigma;</span>, where R - return, Rf - benchmark return, &sigma; - standard deviation of the asset</p>
+<p><a href="http://en.wikipedia.org/wiki/Jensen%27s_alpha">Jensen's alpha</a> = R - [RFR + Beta * (MR - RFR)]</p>
+  <p>where R - portfolio return, RFR (Risk Free Rate)  = rate of short-term treasuries, <a href="http://en.wikipedia.org/wiki/Beta_coefficient">Beta</a> - Portfolio's Beta, MR (Market Return) = return of a portfolio consisting of a weighted sum of every asset in the market, with weights in the proportions that they exist in the market </p>
+  <p><a href="http://en.wikipedia.org/wiki/Capital_Asset_Pricing_Model">CAPM (Capital Asset Pricing Model)</a> - a model for pricing an individual security or a portfolio. SML (Security Market Line) - how Asset Return depends on Beta.</p>
+  <p>&nbsp;</p>
+  <p class="sectionheader">Implied Volatility, Volatility Smile, Volatility Surface</p>
+  <p><span class="style1">implied volatility</span> - the value of volatility which makes the model price to fit the current market price. i.e.  if you use it in a particular pricing model, the price of the option predicted by this model should be the same as the current market price.</p>
+  <table width="99%" border="1" cellspacing="0" cellpadding="1">
+    <tr>
+      <td width="20%" valign="top"><span class="style1">implied volatility</span></td>
+      <td width="80%" valign="top"><p>the value of volatility which makes the model price to fit the current market price. i.e.  if you use it in a particular pricing model, the price of the option predicted by this model should be the same as the current market price.<br>
+        If we imply a BS model where &sigma; = const, and have S, X, r, (T-t), and current V - then we can compute implied volatility using iterative procedure (we can't simply invert the formulas).<br>
+        In real life &sigma; for options is different for different expirations and different strike prices:<br>
+&nbsp;&nbsp;      &sigma; = &sigma;(t,S).<br>
+      Thus surfaces are used.<br>
+      - <a href="http://en.wikipedia.org/wiki/Implied_volatility">http://en.wikipedia.org/wiki/Implied_volatility</a><br>
+        <span class="style1">Implied volatility</span> -  hypothetical volatility to be used from current time until maturity of the option.<br>
+        <span class="style1">Historical volatility</span> -  real volatility data  from the past.</p>      </td>
+    </tr>
+    <tr>
+      <td valign="top"><span class="style1">volatility smile</span></td>
+      <td valign="top"><p>graph of implied volatility of the option depending on the strike price tend to have a form of a smile, that is : At-the-money options tend to have lower implied volatilities than in- or out-of-the-money options.<br>
+        - <a href="http://en.wikipedia.org/wiki/Volatility_smile">http://en.wikipedia.org/wiki/Volatility_smile</a></p>
+        <p><img src="images/volatility_smile_svg.png" width="150" height="150"></p>
+      <p>Combining volatilty smiles for different maturities we get a volatility surface (see below)</p></td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">volatility skew</td>
+      <td valign="top">For some markets (such as equity options) the graph may be  a downward sloping (instead of a smile) - then the term  "<strong>volatility skew</strong>" is used.</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">volatility frown</td>
+      <td valign="top">inverted smile</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">Implied Volatility Surface</td>
+      <td valign="top"><p>We can calculate implied volatility for each strike price E and time to expiration T (using market prices for S,V and BS approximation). This will give us an implied volatlity surface - ploted as as a function of both E and T.<br>
+        <img src="images/implied_volatility_surface.gif" width="395" height="361"></p>        </td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1"> local volatility model<br></td>
+      <td valign="top"><p><img src="images/sde1.png" alt="" width="194" height="18"> </p>
+        <ul>
+          <li>in <span class="style1">local volatility model</span> the  volatility is considered as a function of (S,t): s<sub><i>t</i></sub> = s(<i>S</i><sub><i>t</i></sub>,<i>t</i>). This model is used to calculate values of exotic options which are consistent with observed prices of vanilla options.          </li>
+          <li>in <span class="style1">stochastic volatility model</span> the volatility is considered as a random process with a randomness of its own (and doesn't depend on price and time to expiration). This helps to better model derivatives, although doesn explain smiel and skew (which indicate that implied volatility does tend to vary with respect to strike price and expiration).</li>
+        </ul>
+      <p>- <a href="http://en.wikipedia.org/wiki/Local_volatility">http://en.wikipedia.org/wiki/Local_volatility</a><br>
+      - <a href="http://en.wikipedia.org/wiki/Stochastic_volatility">http://en.wikipedia.org/wiki/Stochastic_volatility</a></p>
+      <p>Two ways to do estimates:</p>
+      <p>1. from actual historical volatility -&gt; to implied volatlity<br>
+      2. from implied volatility -&gt; to local volatility.</p>
+      <p>For second approach Paul Wilmott has derived a formula (assuming that there is continuous market data on V=V(S,T)). The resulting expression gives big errors for far in/out the money options (because both numerator and denominator become small). To reduce errors, he provides another formula deducing local volatility from implied volatility.</p>
+      <p>In practice we have a limited set of descretely-spaced call prices. Thus the surface for implied/local volatility is presented by a set of dots. We fit this set with a surface using some model (parametrization) and some fitting procedure. A simple model: </p>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;&sigma;<sub>imp</sub>(E,T) = a(T)(E-S<sup>*</sup>) + b(T)</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">ATM, OTM, ITM</td>
+      <td valign="top">At The Money, Out of The Money, In The Money</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">ATMF</td>
+      <td valign="top">ATM Forward. <span class="style1">Forward price</span> is a  price for delivery in future, whereas  a <span class="style1">spot price</span> is a price for immediate delivery. For instance, if the spot price for USD/JPY is 120, and the forward price one year hence is 110, then a call struck at 110 is ATMF but not ATM.</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">volatility convexity</td>
+      <td valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">volatility surface dynamics</td>
+      <td valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">first and higher order risk measures of derivatives positions</td>
+      <td valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">volatility trading strategies</td>
+      <td valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">parametric volatility fitting process</td>
+      <td valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">data scrubbing</td>
+      <td valign="top">error correction technique (remove spikes)</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">volatility approximation concepts for illiquid listed options</td>
+      <td valign="top">midpoint</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">treatment of deep OTM volatility</td>
+      <td valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">Use of analytic libraries for volatility fitting</td>
+      <td valign="top">implied_volaility</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">fast calculation of parametric implied volatility surfaces</td>
+      <td valign="top"><p>parametric statistics (normal, log-normal)?</p>      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">Volatility Surface parametrization</td>
+      <td valign="top"><p>Overfitting is bad - loses valuable info.</p>      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">Volatility Trading</td>
+      <td valign="top"><p><span class="style1">VIX Option</span> - 
+        A volatility option is a call or put option where the underlying asset is a <span class="style1">volatility index</span>;<br>
+        <span class="style1">Volatility Index</span> is a compilation of implied volatilities of a series of call and put options. Typically a volatility index will take the implied volatilities from a stock index, however, more sophisticated volatility indices will take the implied vols from the component stocks that make up the index.<br>
+        <span class="style1">VIX</span> - the most recognized volatility index - based on S&amp;P 500,  traded on CBOE (Chicago Board of Options Exchange). Another one - VXO - based on S&amp;P 100. <br>
+        <span class="style1">VRO</span> - the CBOE listed futures on the VIX, probably the  most   actively traded contract on the exchange.<br>
+        <span class="style1">VXN</span> - NASDAQ volatility index.<br>
+        <span class="style1">VXD</span> - Dow Jones volatility index.</p>
+        <p>Trading strategies <span class="style1">bullish on volatility</span> - <span class="style1">long straddle, long strangle, short condor and short butterfly</span> - neutral trading strategies that are bullish on volatility profit when the underlying stock price experiences big moves upwards or downwards.</p>
+        <p>Trading strategies <span class="style1">bearish on volatility</span> - <span class="style1">short straddle, short strangle, ratio spreads, long condor and long butterfly</span> - neutral trading strategies that are bearish on volatility profit when the underlying stock price experiences little or no movement.<br>
+            <br>
+          <span class="style1">Butterfly</span> -  buy ATM call, buy OTM call, sell 2 ITM calls.<br>
+          <span class="style1">Condor</span> - sell OTM  call,  buy call with higher strike price, sell OTM put,  buy put with lower strike price.<br>
+            <span class="style1">Straddle</span> - buy call and put with same strike and expiration.<br>
+          <span class="style1">Strangle</span> - buy OTM cal and OTM put with the same expirations. Similar to the straddle, but with different strike prices.<br>
+          <span class="style1">Ratio-spread</span> -  buy N1 options, sell N2  other options. Same underlying, same (usually)  expiration, but  different strike price.</p>      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">Historical volatility</td>
+      <td valign="top">Estimate volatility as standard deviation of ln(Si/Si-1) , that is - logarithm of relative price</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">&nbsp;</td>
+      <td valign="top">&nbsp;</td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+<p class="sectionheader">Stochastic Volatility</p>
+<ul>
+  <li>Christian Kahl - Modelling and simulation of stochastic volatility in finance, 2007 (book based on his thesis).</li>
+  <li><a href="http://en.wikipedia.org/wiki/Ornstein%E2%80%93Uhlenbeck_process">Ornstein-Uhlenbeck model </a>- mean-reverting process<img src="images/mean_reverting_random_walk.jpg" width="217" height="25"></li>
+  <li>Affine diffusion stochastic volatility models  - characteristic function of underlying esset's marginal distribtion s known in clsed form. Example - <a href="http://en.wikipedia.org/wiki/Heston_model">Heston Model</a> :<img src="images/heston1.jpg" width="120" height="19">, where <img src="images/heston2.jpg" width="140" height="18"></li>
+  <li>Monte-Carlo</li>
+  <li>Path-construction methods - to generate sample paths using some kind of random walk.</li>
+  <li><a href="http://en.wikipedia.org/wiki/Fractional_Fourier_transform">Fractional Fourier transform</a> (FRFT) for spectral path construction (FRFT is a Fourier transform to the n-th power where n need not be an integer).</li>
+</ul>
+<p>&nbsp;</p>
+<p><span class="style1">GARCH</span> = <a href="http://en.wikipedia.org/wiki/Autoregressive_conditional_heteroskedasticity">Generalized Auto-Regressive Conditional Heteroskedasticity</a> - modeling of tme series to explain clustering (current changes are function of changes in the previous term(s)).</p>
+<p>&nbsp;</p>
+<p class="sectionheader">Yield</p>
+  <table width="99%" border="1" cellspacing="0" cellpadding="1">
+    <tr>
+      <td valign="top" class="style1">yield</td>
+      <td>The yield of a debt instrument is the overall rate of return available on the investment.</td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">yield to maturity (YTM)</td>
+      <td><a href="http://en.wikipedia.org/wiki/Yield_to_maturity">YTM</a> (aka <span class="style1">Redemption Rate</span>, or  <span class="style1">Internal Rate of Return</span> (<span class="style1">IRR</span>) -  an estimation of overall interest rate earned by an investor who buys the bond today at the market price, assuming that the bond will be held until maturity, and that all coupon and principal payments will be made on schedule - and will be reinvested (at the same rate). The YTM can be expressed in terms of anual (Annual Percentage Rate - APR), or semi-annually. 
+        YTM doesn't take into account taxes or dealing costs. If YTM is equal to CR (coupon rate) - then the bond is selling &quot;at par&quot;, if YTM &gt; CR - selling at a discont, YTM &lt; CR - selling at a premium<br>
+        - <a href="http://en.wikipedia.org/wiki/Yield_to_maturity">http://en.wikipedia.org/wiki/Yield_to_maturity</a></td>
+    </tr>
+    <tr>
+      <td valign="top" class="style1">yield curve</td>
+      <td> <p>graph of  interest rate (or cost of borrowing) vs  time to maturity<br>
+        - <a href="http://en.wikipedia.org/wiki/Yield_curve">http://en.wikipedia.org/wiki/Yield_curve</a><br>
+        <img src="images/yield_curve.jpg" width="250" height="150"><br>
+      (also called &quot;term structure of interest rates&quot;).</p>        </td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <p class="sectionheader">Risk Neutral</p>
+  <p><span class="style1">Expected value</span>: for example, if the probability of receiving $1 is 50%, the value is $0.50 - this is called <span class="style1">'expected value'</span>.</p>
+  <p>Pricing: take expected payoff value, discount back in time to today's date, adjust for risk.</p>
+  <p>Two ways to price an asset:</p>
+  <ol>
+    <li> Take an expected value - and adjust for risk. This is modeled using real world (physical) probabilities.</li>
+    <li> &quot;Risk-neutral pricing&quot; - adjust the probabilities of future outcomes so that they incorporate the   effects of risk. Use these  virtual probabilities to calculate expectation.  Those adjusted virtual probabilities  are called &quot;<span class="style1">risk-neutral probabilities</span>&quot;.</li>
+  </ol>
+  <p>Adjusting the probabilities in the 2nd method is a <span class="code">martingale measure transformation</span> (from physical measure <span class="style1">&quot;P&quot;</span> to  risk-neutral one <span class="style1">&quot;Q&quot;</span>). This transformation is possible if there are no arbitrage opportunities. If the markets are complete, <span class="code">the risk-neutral measure is unique</span>.</p>
+  <p>So, <span class="style1">Risk-neutral measure</span> = <span class="style1">Equivalent martingale measure</span> =  <span class="style1">Q-measure</span> -  a probability measure which allows us to calculate the value of assets in a simple way. Namely,  we simply take  the <span class="style1">expected value</span> of the future payoff - and  <span class="style1">discount it at the risk-free rate</span>. No risk-adjustment is needed.</p>
+  <p>Under the risk-neutral measure <span class="code">all assets have the same expected rate of return</span> -  the risk-free rate (or short rate). This is the <span class="style1">main benefit of using Q-measure</span>: once risk-neutral probabilities are found, every asset can be priced by simply taking its expected payoff. This is easier that using  the real-world  physical probabilities (P-measure) - where risk is different for   every security.</p>
+  <p><a href="http://en.wikipedia.org/wiki/Risk-neutral_measure">http://en.wikipedia.org/wiki/Risk-neutral_measure</a></p>
+  <p>Risk-neutral demonstrates that when pricing some assets, the real world probabilities assigned to future cash flows are irrelevant.</p>
+  <p>The fundamental assumption behind risk-neutral valuation is to use a replicating portfolio of assets with known prices to remove any risk. The amounts of assets needed to hedge determine the risk-neutral probabilities.</p>
+  <p class="sectionheader">Pricing</p>
+  <p><span class="style1">Forward price</span> = delivery price at future time T. F = S*exp(r*(T-t)), where r - rate, S - current price. Using Ito we get: dF = (&mu;-r)Sdt + &sigma;SdW.</p>
+  <p>Similar using Ito to find that function G(S,t) = ln(S) follows similar diff. equation. And solution is : ln(S(T)) = ln(S(t)) + K*N(m,s),</p>
+  <p>where K - some coefficient, N - normal distribution, m=(&mu;-&sigma;<sup>2</sup>/2)(T-t) - mean value, and s = &sigma;*sqrt(T-t) - standard deviation.</p>
+  <p>Put-Call Parity: <a href="http://en.wikipedia.org/wiki/Put-call_parity">http://en.wikipedia.org/wiki/Put-call_parity</a> : relationship between call and put (to avoid arbitrage opportunities) : buying a call  and selling d shares of stock =  buying a put and buying 1 &minus; d shares of stock.<br> 
+  Also  implied volatility of calls and puts must be identical (if no dividends or other complications).</p>
+  <p>Methods for option pricing: <a href="http://en.wikipedia.org/wiki/Option_pricing">http://en.wikipedia.org/wiki/Option_pricing</a></p>
+<ul>
+  <li><a href="http://en.wikipedia.org/wiki/Black-Scholes">Black-Scholes</a> - analytic solution (not very precise)</li>
+    <li>Methods approximating the stochastic process:
+      <ul>
+        <li><a href="http://en.wikipedia.org/wiki/Binomial_options_pricing_model">Binomial procedure</a> - 1) Build S prices tree going forward; 2) Fill-in  option-prices going backward in time.</li>
+        <li><a href="http://en.wikipedia.org/wiki/Monte_Carlo_option_model">Monte-Carlo Simulation</a> - randomly sample stock process to obtain distribution at maturity.  Then discount to present time using risk-free rate.</li>
+        <li>Jarrow-Rudd approximation - similar to Monte-Carlo. A distribution is obtained. The price is computed as the sum of Black-Scholes value and a series of adjustments which depend on difference between moments of lognormal distribtion and actual distribution.</li>
+      </ul>
+    </li>
+    <li>Methods approximating the PDE:
+      <ul>
+        <li><a href="http://en.wikipedia.org/wiki/Finite_difference_methods_for_option_pricing">Finite Difference methods</a> - (</li>
+        <li>Numerical Integration (M.Parkinson) - similar to binomial, but the option is written as an integral, which computed numerically.</li>
+      </ul>
+    </li>
+  </ul>
+<p>Other approaches include:</p>
+<UL>
+  <LI><A title="Barone-Adesi and Whaley American option approximation (page does not exist)" href="http://en.wikipedia.org/wiki/Barone-Adesi_and_Whaley_American_option_approximation">Barone-Adesi   and Whaley American option approximation</A>
+  <LI>Variance Gamma Model (see <A title="Variance gamma process" href="http://en.wikipedia.org/wiki/Variance_gamma_process">variance gamma process</A>)   
+  <LI><A title="Heath-Jarrow-Morton framework" href="http://en.wikipedia.org/wiki/Heath-Jarrow-Morton_framework">Heath-Jarrow-Morton framework</A>
+  ( &quot;HJM&quot; )<LI><A title="Heston model" href="http://en.wikipedia.org/wiki/Heston_model">Heston model</A> - model with stochastic volatility</LI>
+</UL>
+<p>&nbsp;</p>
+<p class="sectionheader">Black&ndash;Scholes model</p>
+  <p>dS = &mu;Sdt + &sigma;SdW</p>
+  <p>V = V(S,T) - value of the option</p>
+  <p>dV = ... (lemma Ito)</p>
+  <p>Compose a portfolio &Pi; = V - S(dV/dS) , that is we constantly trade (buy/sell) stock to hold the amount of stock equal to partial derivative of V over S at all times. This portfolio is called &quot;delta-hedged&quot;. The instantenous profit/loss for this portfolio contains no dW in it. So it is riskless, and its return should be equal to r&Pi;dt, where r - risk-free rate of return.</p>
+  <p>So profit/loss using  Ito's lemma =  r&Pi;dt</p>
+  <p>This gives us BS equation.<br>
+  <a href="http://en.wikipedia.org/wiki/Black%E2%80%93Scholes">http://en.wikipedia.org/wiki/Black%E2%80%93Scholes</a></p>
+  <p>Note: BS equation doesn't have &quot;&mu;&quot; - it drops out during the derivation.</p>
+  <p>Warren Buffett believes the BS model is wrong:<br>
+    <a href="http://seekingalpha.com/article/126614-improving-the-black-scholes-model">http://seekingalpha.com/article/126614-improving-the-black-scholes-model</a> - In his recent report to the shareholders of Berkshire Hathaway 
+    (BRK.A, BRK.B), Warren Buffett explains why he&rsquo;s buying 
+    and selling the very derivative securities he notoriously 
+    lambastes as weapons of financial mass destruction. It&rsquo;s simple really. He thinks the Black Scholes model is wrong, 
+    and lots of these derivatives are mispriced as a result. The guy&rsquo;s got a point. Under the Black Scholes Model, the longer 
+    the time to exercise, the higher the price of the option. That makes 
+    some sense in the short term, but suppose you are trying to price ...</p>
+  <p>&nbsp;</p>
+<p class="sectionheader">Lebesgue Iintegral</p>
+  <p>Intuitive comparison between Riemann and Lebesgue integration:</p>
+  <p>Problem: find a mountain's volume (above sea level).</p>
+  <p>The Riemann-Darboux approach: Divide the base of the mountain into a grid of 1 meter squares. Measure the altitude of the mountain at the center of each square. The volume on a single grid square is approximately 1x1x(altitude), so the total volume is the sum of the altitudes.</p>
+  <p>The Lebesgue approach: Draw a contour map of the mountain, where each contour is 1 meter of altitude apart. The volume of earth contained in a single contour is approximately that contour's area times its height. So the total volume is the sum of these volumes.</p>
+  <p>In other words, the difference between the Riemann and Lebesgue approaches is that to compute the Riemann integral of f(x) on x in [a, b], we subdivie [a,b] into many small pieces,  whereas  in the Lebesgue method we  partition the range of the function f(x).</p>
+  <p>Also note that Lebesgue approach can be applied to infinite and/or noncontinuous sets.</p>
+  <p><a href="http://en.wikipedia.org/wiki/Lebesgue_integration">http://en.wikipedia.org/wiki/Lebesgue_integration</a></p>
+  <p>xx</p>
+  <p class="sectionheader">Vasicek Model</p>
+  <p>Vasicek Model - used to model  interest rates.<br>
+  <a href="http://en.wikipedia.org/wiki/Vasicek_model">http://en.wikipedia.org/wiki/Vasicek_model</a><br>
+  <br>
+  <img src="images/mean_reverting_random_walk.jpg" alt="" width="217" height="25"></p>
+  <p>&nbsp;</p>
+  <p class="sectionheader">Cox-Ingersoll-Ross</p>
+  <p><span class="style1">Cox&ndash;Ingersoll&ndash;Ross</span> model (or <span class="style1">CIR model</span>) describes the evolution of interest rates. <br>
+  <a href="http://en.wikipedia.org/wiki/Cox-Ingersoll-Ross">http://en.wikipedia.org/wiki/Cox-Ingersoll-Ross</a></p>
+  <p><img src="images/cir_model.jpg" width="257" height="23"></p>
+  <p class="sectionheader">Jump Processes</p>
+  <p>Black Scholes model is based on  a traditional diffusion process, with small, continuous, random movements.</p>
+  <p><a href="http://en.wikipedia.org/wiki/Jump_process">Jump process</a> - a  stochastic process that has large discrete jumps, rather than small continuous movements.</p>
+  <p><a href="http://en.wikipedia.org/wiki/Jump-diffusion_models">Jump diffusion</a> - hybrid of small and large jumps (Robert C. Merton)<br>
+  </p>
+  <p>    dS<sub>t</sub> = S<sub>t-</sub>dt + S<sub>t-</sub>dZ<sub>t</sub> + S<sub>t-</sub>dJ<sub>t</sub><br>
+  </p>
+  <p>- <a href="http://en.wikipedia.org/wiki/Robert_C._Merton">Robert C. Merton</a> (MIT),  John Carrington Cox (MIT),  Stephen Ross ( MIT)<br>
+    - <a href="http://en.wikipedia.org/wiki/Nassim_Nicholas_Taleb">Nassim Nicholas Taleb</a> (Black Swan)<br>
+  </p>
+  <p>Black Swan Principles:</p>
+  <p>1. What is fragile should break early while it is still small. Nothing should ever become too big to fail.<br>
+  2. No socialisation of losses and privatisation of gains.<br>
+  3. People who were driving a school bus blindfolded (and crashed it) should never be given a new bus.<br>
+  4. Do not let someone making an &ldquo;incentive&rdquo; bonus manage a nuclear plant &ndash; or your financial risks.<br>
+  5. Counter-balance complexity with simplicity.<br>
+  6. Do not give children sticks of dynamite, even if they come with a warning.<br>
+  7. Only Ponzi schemes should depend on confidence. Governments should never need to &ldquo;restore confidence&rdquo;.<br>
+  8. Do not give an addict more drugs if he has withdrawal pains.<br>
+  9. Citizens should not depend on financial assets or fallible &ldquo;expert&rdquo; advice for their retirement.<br>
+  10. Make an omelette with the broken eggs.</p>
+  <p class="sectionheader">Feynman-Kac formula</p>
+  <p>The Feynman&ndash;Kac formula links PDE and stochastic processes. The idea is that the solution of a PDE may be  found as an expectation of a stochastic process (using random walk and Monte-Carlo).<br>
+  <a href="http://en.wikipedia.org/wiki/Feynman-Kac">http://en.wikipedia.org/wiki/Feynman-Kac</a></p>
+  <p><img src="images/Feynman-Kac.jpg" width="584" height="337"></p>
+<p class="sectionheader">Girsanov Theorem</p>
+  <p><span class="style1">Girsanov theorem</span> tells how stochastic processes change under changes in measure (especially when we convert to risk-neutral measure). <a href="http://en.wikipedia.org/wiki/Girsanov_theorem">http://en.wikipedia.org/wiki/Girsanov_theorem</a> . It enables the key result that if Q is a measure absolutely continuous with respect to P, then every P-semimartingale is a Q-semimartingale.<br>
+    <br>
+    <span class="style1">Semimartingale</span> - a process which can be presented as a sm of  a local martingale and an adapted finite-variation process:<br>
+    <br>
+  X<sub>t</sub> = M<sub>t</sub> + A<sub>t</sub></p>
+  <p><a href="http://www.wilmott.com/messageview.cfm?catid=19&threadid=5157">http://www.wilmott.com/messageview.cfm?catid=19&amp;threadid=5157</a> - good discussion</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+<p class="sectionheader">Large Deviations Theory</p>
+  <p><span class="style1">Large Deviations Theory</span> -  asymptotic behaviour of remote tails of sequences of probability distributions.<br>
+    <a href="http://en.wikipedia.org/wiki/Large_deviations_theory">http://en.wikipedia.org/wiki/Large_deviations_theory</a></p>
+  <p>&nbsp;</p>
+  <p class="sectionheader">Importance sampling</p>
+  <p><span class="style1">Importance sampling</span> - estimating properties of a particular distribution, while only having samples generated from a different distribution rather than the distribution of interest.<a href="http://en.wikipedia.org/wiki/Importance_sampling">http://en.wikipedia.org/wiki/Importance_sampling</a></p>
+  <p class="sectionheader">BLAS</p>
+  <p><span class="style1">BLAS</span> - <a href="http://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms">Basic_Linear_Algebra_Subprograms</a> - matrix &amp; vector operations. May be processor-specific libraries such as ATLAS and MKL, or dedicated hardware (designed primarily for graphic accelerators<br>
+    and signal processing). 
+  Level-3 BLAS has the potential of making special functions and Monte-Carlo methods obsolete in Finance.</p>
+  <p class="sectionheader">Brownian Bridge</p>
+  <p><span class="style1">Brownian Bridge</span> -  Brownian motion  pinned at both ends. <a href="http://en.wikipedia.org/wiki/Brownian_bridge">http://en.wikipedia.org/wiki/Brownian_bridge</a> . <br>
+    <br>
+  For example, stochastic (Wiener-like) process B(t) such as B(0) = B(1) = 0. The expected value of the bridge is zero, with variance t(1 &minus; t), implying that the most uncertainty is in the middle of the bridge, with zero uncertainty at the end-nodes. The covariance of B(s) and B(t) is s(1 &minus; t) if s &lt; t. The increments in a Brownian bridge are not independent.</p>
+  <p><span class="style1">Path Construction</span> (Monte Carlo) - a simulated discretised path of a standard Wiener process over a set of times t1,t2,...tn. </p>
+  <ul>
+    <li><span class="style1">Incremental</span> - regular Wiener process</li>
+    <li><span class="style1">Spectral</span> - switch from time domain (t1,t2,...tn) into frequency domain, use <span class="style1">Sobol numbers</span> (quasi-random low-discrepancy sequences - <a href="http://en.wikipedia.org/wiki/Sobol_sequence">http://en.wikipedia.org/wiki/Sobol_sequence</a> - first introduced in 1967 by I.Sobol. Efficient Gray code implementation for generating Sobol numbers was proposed by Antonov and Saleev).</li>
+    <li><span class="style1">Brownian bridge</span></li>
+  </ul>
+  <p>&nbsp;</p>
+<p class="sectionheader">Primitive Polynomial</p>
+  <p><span class="style1">Primitive Polynomial</span> - an  irreducible polynomial (greatest common divisor is 1). Can be used to generate pseudorandom bits. <br>
+    <a href="http://en.wikipedia.org/wiki/Primitive_polynomial">http://en.wikipedia.org/wiki/Primitive_polynomial</a><br>
+  For example, given the primitive polynomial x10 + x3 + 1, we start with a user-specified bit seed (it need not randomly be chosen, but it can be). We then take the 10th, 3rd, and 0th bits of it, starting from the least significant bit, and xor them together, obtaining a new bit. The seed is then shifted left and the new bit is made the least significant bit of the seed. This process can be repeated to generate 210&minus;1 = 1023 pseudo-random bits.</p>
+  <p class="sectionheader">Halton</p>
+  <p><span class="style1">Halton sequence</span> -  a sequence of nearly uniformly distributed numbers that appear to be random. <a href="http://en.wikipedia.org/wiki/Halton_sequence">http://en.wikipedia.org/wiki/Halton_sequence</a><br>
+    For example, we for base 2, we start by dividing the interval (0,1) in half, then in fourths, eighths, etc, which generates the sequence like this: 1/2, 1/4, 3/4, 1/8, 5/8, 3/8, 7/8, 1/16, 9/16,... . Similarly we can generate a sequence for the base of 3: 1/3, 2/3, 1/9, 4/9, 7/9, 2/9, 5/9, 8/9, 1/27,...  Then we can combine them to <br>
+    When we pair them up, we get a sequence of points in a unit square: (1/2, 1/3), (1/4, 2/3), (3/4, 1/9), (1/8, 4/9), (5/8, 7/9), (3/8, 2/9), (7/8, 5/9), (1/16, 8/9), (9/16, 1/27). <br>
+    <br>
+    Note: Even though standard Halton sequences perform very well in low dimensions, correlation problems have been noted between sequences generated from higher primes. <br>
+  </p>
+  <p class="sectionheader">adapted process</p>
+  <p><span class="style1">adapted process</span> (or non-anticipating process) is one that cannot &quot;see into the future&quot;, that is  for every realisation and every n, Xn is known at time n.</p>
+  <p class="sectionheader">cost of carry</p>
+  <p>cost of carry =  the cost of &quot;carrying&quot; or holding a position. - <a href="http://en.wikipedia.org/wiki/Cost_of_carry">http://en.wikipedia.org/wiki/Cost_of_carry</a> - <br>
+    - cost of interest paid on a margin account (for long position)<br>
+    -   cost of paying dividends (for short position)<br>
+    -  opportunity cost (cost of  purchasing some other security  rather than an alternative).<br>
+    - Generally refers to risk-free interest rate of some instrument (say, money-market) minus any future cash flows of investment into a similar product with similar risk.<br> 
+    - Storage costs (should be added to the cost of carry for physical commodities such as corn, wheat, or gold.)</p>
+  <p>The cost of carry model expresses the forward price (or, as an approximation, the futures price) as a function of the spot price and the cost of carry.<br>The same model in currency markets is known as interest rate parity.</p>
+  <p>For example, a US investor buying a Standard and Poor's 500 e-mini futures contract on the Chicago Mercantile Exchange could expect the cost of carry to be the prevailing risk-free interest rate (around 5% as of November, 2007) minus the expected dividends that one could earn from buying each of the stocks in the S&amp;P 500 and receiving any dividends that they might pay, since the e-mini futures contract is a proxy for the underlying stocks in the S&amp;P 500. Since the contract is a futures contract and settles at some forward date, the actual values of the dividends may not yet be known so the cost of carry must be estimated.</p>
+  <p class="sectionheader">CDO and CDS</p>
+  <p><span class="style1">CDO = Collateralized Debt Obligation</span> - <a href="http://en.wikipedia.org/wiki/Collateralized_debt_obligation">http://en.wikipedia.org/wiki/Collateralized_debt_obligation</a> -a structured Asset-Backed Security (ABS). Value and payment come from portfolio of fixed-income underlying assets. CDOs are split into tranches by risk. CDOs do not reduce risk of underlying assets - just spread the risk.</p>
+  <p><span class="style1">CDS = Credit Default Swap</span>. <a href="http://en.wikipedia.org/wiki/Credit_default_swap">http://en.wikipedia.org/wiki/Credit_default_swap</a><br>
+    Supposed to work like insurance. Buyer (a bank or a fund) buys protection from a seller by making regular payments to the seller. In case of a default, the seller is supposed to pay (like insurance). Problem - investors can buy and sell protection without owning any debt of the reference entity. These &ldquo;naked credit default swaps&rdquo; allow traders to speculate on debt issues and the creditworthiness of reference entities. Credit default swaps can be used to create synthetic long and short positions in the reference entity. [3] Naked CDS constitute most of the market in CDS. In addition, credit default swaps can also be used in capital structure arbitrage.<br>
+  </p>
+  <p><span class="style1">Synthetic CDO</span> (<span class="style1">SCDO</span>) = a CDO  in which the underlying credit exposures are taken on using a CDS rather than by buying physical assets. <a href="http://en.wikipedia.org/wiki/Synthetic_CDO">http://en.wikipedia.org/wiki/Synthetic_CDO</a> . A SCDO can be  single tranche or fully distributed, balance sheet CDO or arbitrage CDOs. SCDOs  generate income selling &quot;insurance&quot; against bond defaults in the form of CDSs, typically on a pool of 100 or more companies. </p>
+  <p class="sectionheader">Swap</p>
+  <p><span class="style1">Swap</span> - <a href="http://en.wikipedia.org/wiki/Swap_(finance)">http://en.wikipedia.org/wiki/Swap_(finance)</a> - a derivative contract when  two counterparties agree to exchange one stream of cash flows against another stream. These streams are called the <span class="style1">legs of the swap.</span> </p>
+  <ul>
+    <li><span class="style1"><a href="http://en.wikipedia.org/wiki/Interest_Rate_Swap">Interest rate swaps</a></span>. Ex:exchange of a fixed rate loan to a floating rate loan.</li>
+    <li> <span class="style1"><a href="http://en.wikipedia.org/wiki/Currency_swap">Currency swaps</a></span> - exchanging principal and fixed rate interest payments on a loan in one currency   for principal and fixed rate interest payments on an equal loan in another   currency</li>
+    <li><span class="style1"><a href="http://en.wikipedia.org/wiki/Commodity_swap">Commodity swaps</a></span> (mostly in oil):a floating (or market or spot) price is exchanged for a fixed price over a   specified period.</li>
+    <li>      Equity Swap - underlying asset is a stock, a basket of stocks, or a stock index.</li>
+    <li> <span class="style1"><a href="http://en.wikipedia.org/wiki/Credit_default_swap">Credit default swaps</a></span> - a swap contract in which the <em>buyer</em> of the CDS makes a series of payments   to the <em>seller</em> and, in exchange, receives a payoff if a credit instrument   - typically a <A title="Bond (finance)" href="/wiki/Bond_(finance)">bond</A> or <A title="Loan" href="/wiki/Loan">loan</A> - goes into <A title="Default (finance)" href="/wiki/Default_(finance)">default</A> (fails to   pay). </li>
+    <li>Other variations:
+      <ul>
+        <li><a href="http://en.wikipedia.org/wiki/Total_return_swap" target="_blank">Total Return Swap</a> - party A pays the total return of an asset, and party B makes periodic interest payments.</li>
+        <li><a href="http://en.wikipedia.org/wiki/Swaption">Swaption</a> - option on a swap (right to enter into a swap in the future).</li>
+        <li><a href="http://en.wikipedia.org/wiki/Variance_swap" target="_blank">variance swap</a> - one leg makes fixed payments, another leg makes payments which depend on the real volatility (variance). </li>
+        <li><a href="http://en.wikipedia.org/wiki/Constant_maturity_swap">constant maturity swap</a> (CMS) - allows the purchaser  to fix the duration of received flows on a swap.</li>
+        <li><a href="http://en.wikipedia.org/wiki/Amortising_swap" target="_blank">amortising swap</a> - usually an interest rate swap in which the notional principal for the interest payments declines during the life of the swap, perhaps at a rate tied to the prepayment of a mortgage or to an interest rate benchmark such LIBOR.</li>
+      </ul>
+    </li>
+  </ul>
+  <p class="sectionheader">Forex</p>
+  <p>The foreign exchange market (<a href="http://en.wikipedia.org/wiki/Forex" target="_blank">forex</a>, FX, or currency market) is a worldwide decentralized over-the-counter financial market for the trading of currencies. Typical transaction is exchanging 2 bags of money in different currencies. Each   party  purchases a quantity of one currency by paying a quantity of another currency.</p>
+  <p>FX operates  24 hours a day except weekends, i.e. trading from 20:15 UTC on Sunday until 22:00 UTC Friday.</p>
+  <p>Average daily turnover ~ 4 trillion $. About half of this is in <a href="http://en.wikipedia.org/wiki/Forex_swap" target="_blank" class="style1">foreign exchange swaps</a>.</p>
+  <p>In comparison, the daily trading volume for US <a href="http://en.wikipedia.org/wiki/Bond_market">bond market</a> is ~0.8 trillion (~500 bllion - treasures, ~250 - mbs agencies, ~75 - Fed.Agencies' securities, 23 minucipal, 23 corporate).</p>
+  <p><span class="style1">Forex swap</span> consists of 2 legs: a <span class="style1">spot</span>  FX transaction, and a <span class="style1">forward</span> FX transaction. These two legs are executed simultaneously for the same quantity, and   therefore offset each other. It is also common to trade <em>forward-forward</em>, where both transactions   are for (different) forward dates.</p>
+  <p>By far and away the most common use of FX swaps is for institutions to fund their foreign exchange balances.</p>
+  <p>Once a foreign exchange transaction settles, the holder is left with a positive (or long) position in one currency, and a negative (or short) position in another. In order to collect or pay any overnight interest due on these foreign balances, at the end of every day institutions will close out any foreign balances and re-institute them for the following day. To do this they typically use tom-next swaps, buying (selling) a foreign amount settling tomorrow, and selling (buying) it back settling the day after.</p>
+  <p>The interest collected or paid every night is referred to as the <span class="style1">cost of carry</span>. As currency traders know roughly how much holding a currency position will make or cost on a daily basis, specific trades are put on based on this; these are referred to as <span class="style1">carry trades</span>.<br>
+  </p>
+  <p class="sectionheader">Bivariate normal distribution &ndash; spreadsheet</p>
+  <p>by David Harper, CFA, FRM, CIPM</p>
+  <p><a href="http://www.bionicturtle.com/learn/article/bivariate_normal_distribution_spreadsheet/">http://www.bionicturtle.com/learn/article/bivariate_normal_distribution_spreadsheet/</a></p>
+  <p>Drezner Approximation, John Hull's technical note #5</p>
+  <p>&nbsp;</p>
+<p class="sectionheader">Greek Alphabet</p>
+<p>&Alpha; &alpha; Alpha - &Nu; &nu; Nu <br>
+&Beta; &beta; Beta - &Xi; &xi; Xi <br>
+&Gamma; &gamma; Gamma - &Omicron; &omicron; Omicron <br>
+&Delta; &delta; Delta - &Pi; &pi; Pi <br>
+&Epsilon; &epsilon; Epsilon - &Rho; &rho; Rho <br>
+&Zeta; &zeta; Zeta - &Sigma; &sigma; &sigmaf; Sigma <br>
+&Eta; &eta; Eta - &Tau; &tau; Tau <br>
+&Theta; &theta; Theta - &Upsilon; &upsilon; Upsilon <br>
+&Iota; &iota; Iota - &Phi; &phi; Phi <br>
+&Kappa; &kappa; Kappa - &Chi; &chi; Chi <br>
+&Lambda; &lambda; Lambda - &Psi; &psi; Psi <br>
+&Mu; &mu; Mu - &Omega; &omega; Omega </p>
+  <p> <br>
+  </p>
+</body>
+</html>

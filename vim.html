@@ -1,0 +1,682 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Description" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="KeyWords" content="Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <meta name="Author" content="ls">
+   <title>vim</title>
+<!-- "Machine Learning, AI, Data Science, Python, Jupyter, Linux, Cloud, SQL" -->
+<link REL="stylesheet" TYPE="text/css" HREF="style0.css" >
+</head>
+<body>
+<p><a NAME="top"></a> </p>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+  <tr>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+    <td ALIGN=LEFT><b><font color="#CC0000">LevSelector.com</font></b>
+        <spacer type=block width=1 height=1></td>
+    <td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1>
+        <b><font color="#CC0000">New
+          York</font></b></td>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+  <tr>
+    <td><spacer type=block width=1 height=1></td>
+  </tr>
+  <tr>
+    <td BGCOLOR="#66CCFF"><spacer type=block width=1 height=1></td>
+  </tr>
+  <tr>
+    <td><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#C4ECFF" >
+  <tr>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+    <td ALIGN=LEFT><spacer type=block width=1 height=1>
+        <b><a href="index.html">home</a> > Vim</b></td>
+    <td ALIGN=RIGHT VALIGN=BOTTOM><spacer type=block width=1 height=1>
+        <b></b></td>
+    <td ALIGN=LEFT WIDTH="1%"><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+  <tr>
+    <td><spacer type=block width=1 height=1></td>
+  </tr>
+  <tr>
+    <td BGCOLOR="#51C7FF"><spacer type=block width=1 height=1></td>
+  </tr>
+  <tr>
+    <td><spacer type=block width=1 height=1></td>
+  </tr>
+</table>
+<p><b><font color="#CC0000">Vim Tricks</font></b><b> </b>(from Steve Oualline and other places)
+<table BORDER=0 CELLSPACING=0 CELLPADDING=6 >
+  <tr>
+    <td><b><u><font color="#CC0000">On this page:</font></u></b></td>
+    <td><b><u><font color="#CC0000">Other pages:</font></u></b></td>
+  </tr>
+  <tr>
+    <td ALIGN=LEFT VALIGN=TOP><p>- <a href="#books">books</a><a href="#"></a><br>
+      - <a href="#resources">resources</a><br>
+      - <a href="#vim_101">vim 101</a><br>
+      - <a href="#ctags_taglist">ctags taglist</a><br>
+    - <a href="#multiple_files">multiple files</a><br>
+    - <a href="#vimdiff">vimdiff</a><br>
+    - <a href="#binary_hexadecimal">binary hexadecimal</a><br>
+    - <a href="#copy_paste">copy paste</a><br>
+    - <a href="#vim_for_perl">vim for perl</a><br></p>
+      </td>
+    <td ALIGN=LEFT VALIGN=TOP> <p>- <a href="vi.html">vi standard commands</a><br>
+      - <a href="vimrc_unix.txt">my .vimrc for unix</a><br>
+        - <a href="vimrc_windows.txt">my .vimrc for windows</a><br>
+        </p>
+      </p>
+      </td>
+  </tr>
+</table>
+<p class="sectionheader"><a name="books"></a>Books</p>
+<p> - Learning the vi Editor (6th Edition) -- by Linda Lamb, Arnold Robbins <br>
+  - Vi iMproved (VIM) -- by Steve Oualline </p>
+<p class="sectionheader"><a name="resources"></a>Resources:</p>
+<ul>
+  <li><a href="vim.html">vim</a> (<a href="vim_reference.doc">vim_reference.doc</a>)<br>
+  </li>
+  <li><font color="#000000"><a href="http://tnerual.eriogerg.free.fr/vimqrc.pdf">http://tnerual.eriogerg.free.fr/vimqrc.pdf </a>- vim reference card (2 pages pdf)</font></li>
+  <li><font color="#000000"><a href="http://vimdoc.sourceforge.net/dion/vimum.html">http://vimdoc.sourceforge.net/dion/vimum.html </a>- vim reference with examples</font> </li>
+  <li><a href="http://vim.sourceforge.net/">http://vim.sourceforge.net/</a>&nbsp;= <a href="http://www.vim.org">www.vim.org</a> - <br>
+  </li>
+</ul>
+<p> Steve Oualline:
+<ul>
+  <li><a href="http://www.oualline.com/vim/10/top_10.html">What every Vi user should know about Vim</a> </li>
+  <li><a href="http://www.oualline.com/vim/vim-cook.html">Vim Cookbook</a> ( local copy - <a href="vim-cook.html">vim-cook.html</a> )</li>
+  <li><a href="http://www.oualline.com/vim/10/.vimrc">http://www.oualline.com/vim/10/.vimrc</a> - </li>
+  <li><a href="http://www.oualline.com/vim/10/vimrc.html">http://www.oualline.com/vim/10/vimrc.html</a> - annotated .vimrc</li>
+</ul>
+<p class="sectionheader"><a name="vim_101"></a>Vim 101
+<p>&nbsp;</p>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+  <tr>
+    <td><p>:help<br>
+      .vimrc file<br>
+    Multiple undo:
+Pressing &quot;u&quot; repeatedly does mutiple undo-s.<br>
+    (Note if you accidentally moved away from your position in file - press '' (quote quote) to return to previous position. If you exted the file - press '0 (qote zero) to return to you laost position before close.)</p>
+      <p>Multiple windows:<br>
+        :split  (then use CTRL-Wj , CTRL-Wk to jump between them)<br>
+        :split file.txt - splits the window and opens file.txt</p>
+      <p> Visual mode:<br>
+        You enter the visual selection mode by pressing v, or shift-v, or ctrl-v.<br>
+        Then as you move - the block gets highlighted<br>
+        Then you give some command (d, y, &gt;, :..., etc.)<br>
+        Note: <br>
+-        v
+        - to select by char<br>
+        - shift-v - to select by whole lines<br>
+      - ctrl-v - to select by vertical blocks</p>
+      <p>:set incsearch   &ndash; search as you type<br>
+        :set hlsearch &ndash; search highlighting</p>
+      <p> :set cindent - turns on C style indentation</p>
+      <p>You can define abbreviations in .vimrc, for example:</p>
+      <p> :ab #b /******************************<br>
+        :ab #e ^V^H******************************/</p>
+      <p>This defines two abbreviations. <br>
+      By typing &quot;#b&quot; we type the top of a boxed comment. <br>
+      Typing &quot;#e&quot; types the bottom line. (We put the ^V^H^V^H in the file to backup over the comment leader.)</p>
+      <p>Word Completion - when your typing and you enter a partial word, you can cause Vim <br>
+      to search for a completion by using the ^P (search for previous marching word) <br>
+      and ^N (search for next match).</p>
+    <p>and much more ...</p>
+    <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<p><b><u>Example: copy/paste in vim using visual mode:</u></b> </p>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#99FFCC" NOSAVE >
+  <tr NOSAVE>
+    <td NOSAVE><b><font color="#FF0000">v</font></b><font color="#000000"> - mark first character of the block</font> <br>
+        <font color="#000000">move the cursor to the end</font> <br>
+      <b><font color="#FF0000">y</font></b><font color="#000000"> - mark
+        last character of the block and yank block to this point (or "</font><b><font color="#FF0000">d</font></b><font color="#000000">"
+          to delete to this point)</font> <br>
+      <font color="#000000">move the cursor to some other place</font> <br>
+      <b><font color="#FF0000">gp</font></b><font color="#000000"> - put
+        the block starting on the line immediately after the cursor&nbsp;</font> <br>
+      <font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (or use
+        "</font><b><font color="#FF0000">p</font></b><font color="#000000">"or
+          "</font><b><font color="#FF0000">P</font></b><font color="#000000">" to
+            put on the next/previous line - as in vi)</font>
+      <p><b><font color="#FF0000">vawy</font></b><font color="#000000"> - copy
+        a word</font> <br>
+        <b><font color="#FF0000">vaby</font></b><font color="#000000"> - copy
+          a ( .. ) block</font> <br>
+        <b><font color="#FF0000">vaBy</font></b><font color="#000000"> - copy
+          a { .. } block</font>      
+    <p><span class="style1">shift-v</span> - to start visual mode in &quot;whole lines&quot; mode.<br>
+      <span class="style1">ctrl-v</span> - to work in &quot;block&quot; (vertical rectangle) mode.
+    <p>Example: to comment out several lines:
+    <p>move to the beginning of the first line you want to comment - and press <span class="style1">ctrl-v</span> ,<br>
+      then move down to the last line you want to comment - and press <span class="style1">I# </span>, then <span class="style1">&lt;esc&gt;</span> key
+    <p>or move to the first line you want to comment - and press <span class="style1">shift-v</span>,    
+    
+    <p>then move to the last one and press :<span class="style1">s/^/#/</span> , and then press <span class="style1">&lt;enter&gt;</span> key.   
+    </td>
+  </tr>
+</table>
+<p>I am programming on Linux using vim. My favorite settings in the file&nbsp;&nbsp;
+.vimrc: </p>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+  <tr>
+    <td>:syntax on <br>
+      &quot; -------------------------------------<br>
+      &quot; use 2-space indentation<br>
+      set tabstop=2<br>
+      set softtabstop=2<br>
+      set shiftwidth=2<br>
+    set expandtab</td>
+  </tr>
+</table>
+<p>Here are some commands I use often:</p>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+  <tr>
+    <td><p>&quot; show/remove line numbers - set number<br>
+        <span class="style1">:se nu<br>
+      :se nonu</span></p>
+      <p>&quot;set/unset wraping<br>
+        <span class="style1">:set wrap<br>
+      :set nowrap</span></p>
+      <p>&quot; to wrap a piece of text (insert end-of-line) - select a piece of text, and then us <span class="style1">gq</span> command:<br>
+- <a href="http://www.vim.org/htmldoc/usr_25.html">http://www.vim.org/htmldoc/usr_25.html</a></p>
+      <p>&quot; search - set ignore case on/off<br>
+        <span class="style1">:se ic<br>
+        :se noic</span></p>
+      <p>&quot; search incrementally as you type<br>
+      <span class="style1"> :set incsearch</span></p>
+      <p>&quot; show/remove highlight after search<br>
+        <span class="style1">:set hls<br>
+      :set nohls</span></p>
+      <p>&quot; search for the whole word using boundary indicators \&lt;, \&gt;<br>
+        <span class="style1">/\&lt;myword\&gt;</span></p>
+      <p>&quot; to set / unset autoindent:<br>
+        <span class="style1">:se ai<br>
+      :se noai</span></p>
+      <p>&quot; to show all settings<br>
+      <span class="style1">:se all</span></p>
+      <p>&quot; insert &quot; - &quot; in front of several lines:<br>
+      press <span class="style1">ctrl-v</span> at the beginning of the first line to start in visual block mode, then move down to the last line, then press:<br>
+          <span class="style1">I - </span><br>
+      and then press <span class="style1">&lt;esc&gt;</span> key.</p>
+      <p>or another way to do the same:<br>
+      press <span class="style1">shift-v</span> to start selecting in &quot;whole lines&quot; mode, then move to the last line, then press:<br>
+          <span class="style1">:s/^/ - /</span><br>
+      and then press the <span class="style1">&lt;enter&gt;</span> key</p>
+      <p>&quot;ho to remove extra empty lines in all file:<br>
+        <span class="style1">:%s/\(\n\)\+/\1/g</span></p>
+      <p>&quot; -------------------------------------<br>
+&quot; here is an example of how to set your own custom status line<br>
+        set laststatus=2<br>
+      set statusline=%F%m%r%h%w\ %{&amp;ff}\ %Y\ ascii=\%03.3b\ hex=\%02.2B\ [%04l,%04v](%p%%\ of\ %L)</p>
+      </td>
+  </tr>
+</table>
+<p class="style1">Scrolling / Paging</p>
+<table border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td bgcolor="#CCFFFF"><p><a href="http://www.ph.unimelb.edu.au/~ssk/vim/scroll.html">http://www.ph.unimelb.edu.au/~ssk/vim/scroll.html</a></p>
+      <p> down  /  up</p>
+      <p><span class="style1">by line:</span> c-E      /  c-Y<br>
+        <span class="style1">by page:</span> c-D      /  c-U  (Dow / Up)<br>
+        shift-Down /  Shift-Up<br>
+        PageDown   /  PageUp <br>
+        c-F        /  c-B  (Forwards / Backwards)<br>
+        ------------------------------------------------------------------<br>
+        <span class="style1">z-commands</span> - scrolling while keeping cursor position on the screen<br>
+        (usually pressing 2 keys sequentially, like press &quot;z&quot;, then press &quot;.&quot;)<br>
+        ------------------------------------------------------------------<br>
+        scroll so that current line moves to:<br>
+        <span class="style1">z .</span> - to the center of window.<br>
+        z z - Like &quot;z.&quot;, but leave the cursor in the same column.<br>
+      Careful: If caps-lock is on, this commands becomes &quot;ZZ&quot;: write buffer and exit!  {not in Vi}</p>
+      <p>z &lt;CR&gt; - to the top of the window.<br>
+        zt Like &quot;z&lt;CR&gt;&quot;, but leave the cursor in the same column.  {not in Vi}</p>
+      <p>z- - to the bottom of the window<br>
+        zb Like &quot;z-&quot;, but leave the cursor in the same column. {not in Vi}<br>
+        --------------------------------------------------------------------------------<br>
+        4. Scrolling horizontally (not in Vi, works when :set nowrap)</p>
+      <p><span class="style1">z &lt;Right&gt;</span> or zl - text moves to the left showing text at far right (not in Vi)<br>
+        <span class="style1">z &lt;Left&gt;</span> or zh  - text moves to the right</p>
+      <p>z s - text &quot;pages&quot; to the left<br>
+        z e - text &quot;pages&quot; to the right<br>
+    </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="ctags_taglist"></a>Ctags and Taglist - jumping to procedures and back, showing tag list on the side</p>
+<p>On both Unix and MS Windows you can use utility  <span class="style1">ctags</span> to generate a  file with tags <br>
+which vim can use to  jump to function definitions and back (<a href="http://ctags.sourceforge.net">http://ctags.sourceforge.net</a> ). </p>
+<p>You can also use a vim plugin called &quot;<span class="style1">taglist</span>&quot; which creates a narrow vertical window<br> 
+  with the clickable list of your tags ( 
+  <a href="http://www.vim.org/scripts/script.php?script_id=273">http://www.vim.org/scripts/script.php?script_id=273</a> ).</p>
+<p>Note - this taglist window works both in gvim (graphical window) and in a  terminal window.</p>
+<p>Here are couple of tutorials on this subject (found them by googling for vim taglist tutorial):</p>
+<ul>
+  <li><a href="http://bgmerrell.blogspot.com/2008/02/first-of-all-let-me-introduce-ctags-and.html">http://bgmerrell.blogspot.com/2008/02/first-of-all-let-me-introduce-ctags-and.html</a></li>
+  <li><a href="http://www.thegeekstuff.com/2009/04/ctags-taglist-vi-vim-editor-as-sourece-code-browser/">http://www.thegeekstuff.com/2009/04/ctags-taglist-vi-vim-editor-as-sourece-code-browser/</a></li>
+</ul>
+<p>Here are short instructions:</p>
+<p>Install vim ( www.vim.org ), then ctags ( ctags.sourceforge.net ).</p>
+<p>Download taglist plugin zip file ( http://vim-taglist.sourceforge.net ), copy it into shared vim directory and unzip it there.<br>
+Vim shared files are here (for Vim version 7.2):</p>
+<ul>
+  <li>on Windows -  C:\Program Files\Vim\vim72 (make sure to add this directory to PATH in Control Panel &gt; System &gt; Advanced &gt; Environmental Variables</li>
+  <li>    on Linux box - /usr/local/share/vim/vim72</li>
+</ul>
+<p>Go into the shared directory in subdirectory &quot;doc&quot;, start vim - and run command &quot;:helptags .&quot;. This will create a taglist for the taglist help file.</p>
+<p>Open shared vimrc file (C:\Program Files\Vim\_vimrc on windows, or /etc/vimrc) and edit it as needed, for example:</p>
+<table BORDER=0 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFCC" >
+  <tr>
+    <td><p>filetype on &quot;for tuglist plugin to work properly</p>
+      <p>:map #8 :TlistToggle</p>
+    <p>let Tlist_Exit_OnlyWindow = 1</p></td>
+  </tr>
+</table>
+<p>OK, now go to the directory with your code and create the &quot;tags&quot; file by runnning command  (for perl) : ctags -R *.pl *.pm </p>
+<p>That's it ! </p>
+<p>Now open one of the scripts in vim, and execute command &quot;:TlistToggle&quot; to show the tag list. Use &lt;Ctrl-w&gt;&lt;Ctrl-w&gt; to jump between your file and tag list (or use mouse in gvim). Select the tag in taglist - and press enter (or use mouse) to jump to the tag (or open a file). The + and - keys expand and contract items in the taglist window respectively.</p>
+<p>Some commands:</p>
+<ul>
+  <li> &quot;:TlistAddFiles somepath/*.pl&quot; or &quot;:TlistAddFilesRecursive somepath/*.pl&quot; - to add files to the taglist window</li>
+  <li>:TlistSessionSave</li>
+  <li>:TlistSessionLoad</li>
+</ul>
+<p>In gvim you can use your mouse to switch between windows, expand/contract/select items in tag list, and even change the width of the taglist window by dragging the separation line with the mouse.</p>
+<p>ctags also allows to find function definitions - even in other files:</p>
+<ul>
+  <li> Put cursor on function/variable name - and press ctrl-] or g]  to go to its definition or show a list to choose from.</li>
+  <li>Press ctrl-t to step back  up the tag stack.</li>
+  <li>11. Use vim or gvim for your next coding project.</li>
+</ul>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="multiple_files"></a>How to work with multiple files (with/without tabs)</p>
+<p><a href="http://www.cyberciti.biz/faq/vim-editing-multiple-files-with-windows-buffers/">http://www.cyberciti.biz/faq/vim-editing-multiple-files-with-windows-buffers/</a></p>
+<ul>
+  <li>Open multiple files: vim file1 file2 file3
+    <ul>
+      <li>:ls - show list of open files with their numbering</li>
+      <li>:bn &ndash; go to next buffer (in this case, file2)</li>
+      <li> :bp &ndash; go to previous   buffer (will go backwards to file13.txt)</li>
+      <li> :bd &ndash; delete current buffer   (closes the file - can also  take a filename or number as an argument)</li>
+      <li> :b &ndash; go directly to a file
+        (can specify number or file) </li>
+    </ul>
+  </li>
+  <li>Open 2 files with split: vim -o file1 file2</li>
+  <li>Open another split with a file: :sp fname (split line is horizontal)</li>
+  <li>Open another split with a file: :vsp fname (split line is vertical)</li>
+  <li>Jump between windows via Ctrl-W Ctrl-W (or Ctrl-W followed by movement (arrow or hjkl)</li>
+  <li>Ctrl-W n - create new window (or :new fname)</li>
+  <li>Crel-W s - split window</li>
+  <li>Quit all windows
+    <ul>
+      <li> :qall </li>
+      <li>:qall!</li>
+    </ul>
+  </li>
+  <li>write and quit all - :wqall</li>
+  <li>Resize window:
+    <ul>
+      <li>Ctrl-W +</li>
+      <li>Ctrl-W -</li>
+    </ul>
+  </li>
+</ul>
+<p>Working with multiple tabs (starting with vim version 7): <a href="http://linux.com/archive/articles/59533">http://linux.com/archive/articles/59533</a> ,  <A href="http://vimdoc.sourceforge.net/htmldoc/tabpage.html">http://vimdoc.sourceforge.net/htmldoc/tabpage.html</A></p>
+<p></p>
+<ul>
+  <li><span class="style1">:tabnew</span> - open a new tab<br>
+    <span class="code">vim -p file1 file2 file3</span> - open several files in tabs<br>
+    <span class="style1">:tabf inven*</span> - open file(s) matiching criteria<br>
+  <span class="style1">:tabedit file1</span></li>
+  <li><span class="style1">:tabs</span> - show info about tabs</li>
+  <li><span class="style1">:tabn, :tabp</span> - move to next/previous tab, 
+  <span class="style1">:tabfirst (:tabfir), :tablast</span> - move to first/last tab</li>
+  <li><span class="code">set showtabline=2</span> - to force tabs to always show (even if only one file is opened)</li>
+  <li><span class="code">set tabpagemax=30</span> - set maximum number of tabs more than default 10.</li>
+  <li>In gvim you can use mouse to ve between tabs.<br>
+  </li>
+</ul>
+<p>Many Vim users like to rewrite the title of Xterm window wit hthe name of the file they are editing.<br>
+I believe it is better to use tabs instead.</p>
+<p>There are 2 problems with rewriting  the   window title is:</p>
+<ul>
+  <li>you have to backup the original title on file open - and restore it after you exit.</li>
+  <li> you have to change it   when you shift from one window to another inside   Vim (whether you are using tabs or split or simply have several buffers).</li>
+</ul>
+<p>Basic mechanics of   setting window title from  vim is simple:</p>
+<p>&nbsp; set   title<br>
+&nbsp; let   &amp;titlestring='some text'</p>
+<p>You can include the   file name by expanding the 't' variable:</p>
+<p>expand("%:t")</p>
+<p>for example:&nbsp; let   &amp;titlestring = hostname() . "[vim(" . expand("%:t") .   ")]"</p>
+<p>The problems of   detecting the change and changing/restoring title is&nbsp; discussed in many places,   for example:</p>
+<ul>
+  <li><a href="http://vim.wikia.com/wiki/Automatically_set_screen_title">http://vim.wikia.com/wiki/Automatically_set_screen_title</a></li>
+  <li><a href="http://www-vlsi.stanford.edu/~jsolomon/vim/">http://www-vlsi.stanford.edu/~jsolomon/vim/</a></li>
+</ul>
+<p>But again, I really   recommend to just start using version 7 and tabpage.</p>
+<p>================================</p>
+<p>Saving/restoring session:</p>
+<ul>
+  <li>:mksession your_session.vim</li>
+  <li>vim -S your_session.vim</li>
+</ul>
+<p><span class="style1">bufdo, windo,  tabdo</span> - commands to operate on all buffers or windows or tabs</p>
+<p>For example, you can do substitution in multiple files using this oneliner:<span class="style1"> find . -name "*.c" -exec perl -pi -e 's/foo/bar/g;' {} \;</span></p>
+<p>But you can also do it from vim: <span class="style1">:tabdo %s/foo/bar/ge</span> </p>
+<p class="sectionheader"><a name="vimdiff"></a>Compare files with vimdiff</p>
+<p><a href="http://www.vim.org/htmldoc/diff.html">http://www.vim.org/htmldoc/diff.html</a></p>
+<p>Starting diff from command line:</p>
+<ul>
+  <li>vimdiff file1 file2</li>
+  <li>vim -d file1 file2 [file3 [file4]] </li>
+  <li>gvimdiff or vim -g </li>
+  <li>viewdiff or gviewdiff </li>
+</ul>
+<p>Starting diff from within vim:</p>
+<ul>
+  <li>:vert diffsplit file2</li>
+  <li> :diffsplit file2</li>
+  <li>:diffthis	- make the current window a part of diff windows (sets options like vimdiff).</li>
+</ul>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="binary_hexadecimal"></a>How to view/edit as hexadecimal</p>
+<p>Vim comes with an executable utility xxd which converts file to hexadecimal representation. xxd can be used from inside vim to convert the file into hex dump format<br>
+  <span class="style1">:%!xxd<br>
+  </span>Result should look like this: <br>
+0000000: 6262 630a 6465 660a 6768 696b 0aab de0a  bbc.def.ghik....<br>
+There are two parts: hex part and printable character part.<br>
+Go back:<br>
+<span class="style1">:%!xxd -r</span><br>
+Note: when editing, only changes in hex part have effect. Changes in printable text part are ignored.<br>
+Note: you don't have to retype the whole command in &quot;:&quot; mode - just use up-arrow to restore previous command<br>
+Note:  tool xxd can be used independently in command line.</p>
+<p>Converting dos to unix and back</p>
+<table border="0" cellpadding="2" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>Vim auto-detects the type of the file - and doesn't show ^M for dos files. If you want to see ^M - do this:<br>
+      <span class="style1">:edit ++ff=unix</span> </p>
+      <p>To convert the file use fileformat command:<br>
+        <span class="style1">:set ff?<br>
+        :set ff=dos<br>
+        :set ff=unix</span><br>
+        </p></td>
+  </tr>
+</table>
+<p>About working with binary files:</p>
+<table border="0" cellpadding="2" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>Open a binary file:<br>
+  &nbsp;&nbsp;&nbsp; <span class="style1">vim -b datafile</span><br>
+      or<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;<span class="style1">:set binary</span><br>
+    </p>
+      <p>See the Hex format by using:<br>
+        <span class="style1">:set display=uhex</span><br>
+        Or you can use <span class="style1">ga</span> command to see the value of current character. <br>
+      </p>
+      <p>(3) To see current position, use<br>
+        <span class="style1">g CTRL-G</span><br>
+        The output is verbose:<br>
+        Col 6 of 38; Line 31 of 31; Word 94 of 96; Byte 747 of 780<br>
+      </p>
+      <p>To move to a specific byte offset:<br>
+        <span class="style1">234go</span></p></td>
+  </tr>
+</table>
+<p>Splitting a line</p>
+<table border="0" cellpadding="2" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>a,b,c,d<br>
+    shiftV   selection<br>
+    :s/,/ctrl-V   &lt;enter&gt;/g<br>
+    it shows ^M, but actually inserts 0a   (which is code 10) on unix, or 0d0a on windows</p>
+      <p>You can see this by doing   this:</p>
+      <p>:%!xxd</p>
+      <p>And then convert   back:</p>
+      <p>:%!xxd -r</p>
+    </td>
+  </tr>
+</table>
+<p>Inserting special characters:</p>
+<table border="0" cellpadding="2" cellspacing="0" bgcolor="#FFFFCC">
+  <tr>
+    <td><p>: help i_CTRL-V_digit</p>
+      <p>        With CTRL-V the decimal, octal or hexadecimal value of a character can be<br>
+        entered directly.  This way you can enter any character, except a line break<br>
+        (&lt;NL&gt;, value 10).  There are five ways to enter the character value:</p>
+      <table width="100%" border="1" cellpadding="2" cellspacing="0">
+        <tr>
+          <td>first char</td>
+          <td>mode</td>
+          <td>max nr of chars</td>
+          <td>max value</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>(none)</td>
+          <td>decimal</td>
+          <td>3</td>
+          <td>255</td>
+          <td>255</td>
+        </tr>
+        <tr>
+          <td>o or O</td>
+          <td>octal</td>
+          <td>3</td>
+          <td>377</td>
+          <td>255</td>
+        </tr>
+        <tr>
+          <td>x or X</td>
+          <td>hexadecimal</td>
+          <td>2</td>
+          <td>ff</td>
+          <td>255</td>
+        </tr>
+        <tr>
+          <td>u</td>
+          <td>hexadecimal</td>
+          <td>4</td>
+          <td>ffff</td>
+          <td>65535</td>
+        </tr>
+        <tr>
+          <td>U</td>
+          <td>hexadecimal</td>
+          <td>8</td>
+          <td>7fffffff</td>
+          <td>2147483647</td>
+        </tr>
+      </table>
+      <p>Normally you would type the maximum number of characters.  Thus to enter a<br>
+  space (value 32) you would type &lt;C-V&gt;032.  You can omit the leading zero, in<br>
+          which case the character typed after the number must be a non-digit.  This<br>
+          happens for the other modes as well: As soon as you type a character that is<br>
+          invalid for the mode, the value before it will be used and the &quot;invalid&quot;<br>
+      character is dealt with in the normal way.</p>
+      <p>If you enter a value of 10, it will end up in the file as a 0.  The 10 is a<br>
+  &lt;NL&gt;, which is used internally to represent the &lt;Nul&gt; character.  When writing<br>
+          the buffer to a file, the &lt;NL&gt; character is translated into &lt;Nul&gt;.  The &lt;NL&gt;<br>
+          character is written at the end of each line.  Thus if you want to insert a<br>
+  &lt;NL&gt; character in a file you will have to make a line break.</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p class="sectionheader"><a name="copy_paste"></a>Many ways of copy/pasting</p>
+<p>In vim you can use visual mode: <a href="http://www.vim.org/htmldoc/visual.html">http://www.vim.org/htmldoc/visual.html</a></p>
+<p>You mark the beginning by  pressing &quot;v&quot; for regular blocks,  &quot;V&quot; for line-blocks, and &quot;Ctrl-V&quot; for rectangular block</p>
+<p>You go to the end of the block (last character or line you want to include in the block) - and press &quot;y&quot; to copy, &quot;d&quot; to cut/delete, or any other command (you can do any command starting with &quot;:&quot;).</p>
+<p>If you did &quot;y&quot; or &quot;d&quot; - you then can move to any other place in file - and paste by pressing &quot;P&quot; or &quot;p&quot; or &quot;gp&quot;.</p>
+<p>Examples:</p>
+<ul>
+  <li>Copy/paste several lines: VjjjjyjjjjP</li>
+  <li>Cut/paste several lines: VjjjdkkkkP</li>
+  <li>Copy to the end of the line and paste it somewhere: v$y some_move P</li>
+  <li><strong>vawy</strong> - copy a   word <BR>
+    <strong>vaby</strong> -   copy a ( .. ) block <BR>
+    <strong>vaBy</strong> - copy a { .. } block</li>
+  <li>Cut a word - and then append it to the end of the line: vawd$p</li>
+</ul>
+<p class="sectionheader"><a name="vim_for_perl"></a>vim for perl</p>
+<p>from Vim for Perl Development - by G. Wade Johnson from Houston Perl Mongers (http://houston.pm.org)</p>
+<p><a href="http://houston.pm.org/talks/2009talks/0901Talk/vim_for_perl.html">http://houston.pm.org/talks/2009talks/0901Talk/vim_for_perl.html</a> - 19-page presentation summarized below<br>
+  <a href="http://houston.pm.org/talks/2009talks/0901Talk/_vimrc">http://houston.pm.org/talks/2009talks/0901Talk/_vimrc</a> - example of .vimrc<br>
+  <a href="http://houston.pm.org/talks/2009talks/0901Talk/perl_local.vim">http://houston.pm.org/talks/2009talks/0901Talk/perl_local.vim</a> - </p>
+<p>==================================</p>
+<ul>
+  <li>Simple Navigation: h j k l 0 ^ $ - +<br>
+    More Complex: gg G C-f C-b L M H zt zz zb<br>
+    Text Object: w W b B e E ( ) { } [[ ]] %<br>
+    Search: t f T F , ; * # n N</li>
+  <li>Repeated Movement<br>
+    10j - move down ten lines<br>
+    3f) - move to the third &quot;)&quot; to the right<br>
+    5W - move 5 groups of non-whitespace characters to the right<br>
+    3C-b - move 3 pages up<br>
+  235gg - move to line 235</li>
+  <li>Edit commands (to be followed by motion command): c d y p P &lt; &gt;  g~ gu gU gq (change, delete, yank, paste after, paste before, outdent, 
+indent, toggle case, lowercase, uppercase, and justify)</li>
+  <li>    Single character edits: x r ~ s J (delete, replace,
+toggle case, change, and join with next line) - can be preceeded by a number (to effect many chars)<br>
+    Line edits: cc dd yy &lt;&lt; &gt;&gt;<br>
+  End of line edits: C D</li>
+  <li>Registers (like having several clipboards):
+    <ul>
+      <li>Unnamed register &quot;</li>
+      <li>Numbered registers 0-9</li>
+      <li>Named registers a-z A-Z</li>
+      <li>Clipboard: +</li>
+    </ul>
+  </li>
+  <li>Anytime a yank, delete, or change 
+    is executed, the data goes into the unnamed register (and register 0), unless 
+    you specify a particular named register. Each time one of those commands is 
+    executed, the previous value of the 0 register is moved to the 1 register. 
+    This is repeated for each numbered register, up to register 9. If you want to hold onto a piece of text for longer than one cut/paste, 
+  you can use one of the 26 named registers, by prefixing the command with &quot; and the letter naming the register. So, &quot;byy yanks the 
+  current line into register b. Using an uppercase letter, appends to that 
+  register rather than just replacing. If you use name a register before the 
+  p or P command, it pastes the data from that register instead. One other special register is &quot;+&quot;. This register is mapped to the 
+  system clipboard. This feature allows easily moving data to and from other 
+  programs.</li>
+</ul>
+<p>Insert Mode</p>
+<ul>
+  <li>Insert: i I (start inserting at current position, or  before the 1st non-whitespace char on the line)</li>
+  <li> Append: a A (start appending after current char, or at the end of the line)</li>
+  <li> New Line: o O ( inserts a new line after/before the current line, moves there, 
+and enters insert mode)</li>
+  <li>Other ways to enter Insert mode: c C (change, change to the end of line), s S (substitute current char or entire line), R (Enter Insert mode, replacing characters rather than inserting)</li>
+</ul>
+<p><br>
+Visual Mode (selection mode)</p>
+<ul>
+  <li>Character selection: v</li>
+  <li>    Line selection: V</li>
+  <li>    Block selection: C-v</li>
+</ul>
+<p>  Any motion commands after 
+  entering visual mode extends the selection. The way the selection extends is 
+  determined by how visual mode was entered. Using a command such as y, c, or 
+  d applies to the entire selection. This selection can also specify the range 
+affected by one of the colon commands, like substitute.</p>
+<p>CmdLine Mode</p>
+<ul>
+  <li>File/Buffer commands: <span class="style1">:w :e :r :n :N :q :find</span> (writing a buffer, editing a
+new file, reading a file into the current buffer, moving to the next/previous 
+file from the commands line, quitting the current buffer, and find a file 
+from the path and edit it.)</li>
+  <li>Edit commands: :<span class="style1">s/// :co :m :d :c</span> (substitute (search/replace), copy, move, delete, and change)</li>
+  <li>Search commands: / ? (search forward/backward, use n or N to move to next/previous match)</li>
+  <li>Filter commands: ! (! is followed by a shell command. The selected text or 
+the specified range is supplied as standard input to the specified command. 
+The output from the command then replaces the selection. This allows any 
+filter-type command on the system to be used to modify text in the editor, 
+without leaving the editor.)</li>
+</ul>
+<p>In many cases, commands that take a motion can take a text object instead. Text object starts with i or a.</p>
+<ul>
+  <li>Inner or Outer: i or a (Inner - without delimiters, all - with delimiters (usually surrounding whitespace))</li>
+  <li>    Object: w W s p (words, non-whitespace characters, 
+sentences, and paragraphs)</li>
+  <li>    Matching: [ ] ( ) b { } B &lt; &gt;  t (The matching sets define a text object delimited 
+by the specified pairs of characters. You only need to specify one of them. 
+The b character is a synonym for the parentheses, B - for curlies, t  refers to tags (XML or HTML). So &quot;it&quot; refers to the text object delimited by 
+the nearest enclosing tags.)</li>
+  <li>    Quoted strings: &quot; ' `</li>
+</ul>
+<p>Repeated Edits</p>
+<ul>
+  <li>dot ( . ) - repeat last edit at the current cursor location (may be a complex thing like &quot;&lt;iB&quot; - indenting the enclosing code block)</li>
+  <li>    Recorded macros: q @ (press &quot;q&quot; followed by a register name - and then perform edits and motions. Finish with another &quot;q&quot;. Now you can execute this macro by typing &quot;@&quot; followed by the register name.</li>
+  <li>    vim script (a full programming language)</li>
+  <li>    perldo (execute perl commands on selected portions of text - only available if perl support was compiled into Vim)</li>
+</ul>
+<p>Word Completion</p>
+<p>Complete words: C-n C-p C-xC-i (list all of the keywords from the current file that match the 
+text typed so far or keywords from included files)<br>
+  Stop completion: C-xC-e (finish typing instead of selecting from list)<br>
+  Specific: C-xC-d C-xC-] C-xC-f (special purpose 
+  completions for definitions or macros, entries in the tags file 
+and filenames found on the path)</p>
+<p>Window Support (splits):</p>
+<ul>
+  <li>Window support: :sp (C-w s) :vs (C-w s)</li>
+  <li>    Close windows: :q :qall :on</li>
+  <li>    Navigating: C-w j C-w k C-w h C-w l</li>
+  <li>    Automation: :windo (apply a command to all open windows)</li>
+</ul>
+<p>Tabs for open files:</p>
+<ul>
+  <li>Create: :tabe[dit] :tabnew :tabf[ind] C-w gf (or start vim with &quot;-p&quot; option)</li>
+  <li>    Closing: :tabc[lose] :tabo[nly] (close current tab or all tabs except current)</li>
+  <li>    Navigation: :tabn :tabN :tabr[ewind] :tabfir[st] :tabl[ast]</li>
+  <li>    Automation: :tabdo<br>
+  </li>
+</ul>
+<p>Customizing Vim</p>
+<ul>
+  <li>_vimrc, .vimrc (config files from home dir, loaded when vim starts)</li>
+  <li>.vim directory (contains sudirectories with many more config files, script and docs)</li>
+  <li>vim script</li>
+  <li> syntax highlighting (implemented via vim script)</li>
+</ul>
+<p>Some Useful Scripts</p>
+<ul>
+  <li>DirDiff.vim - compare directory trees and files in them</li>
+  <li>    surround.vim - editing characters that surround other text (quotes,  parens, braces)</li>
+  <li>    vimballPlugin.vim - packaging and installing other scripts</li>
+  <li>    snippetsEmu.vim - system for 
+TextMate code snippets</li>
+  <li>    NERD_commenter.vim - script to comment/uncomment large portions of code at once</li>
+  <li>    taglist.vim - file created by the tags program</li>
+  <li>    vcscommand.vim - to use with version control systems (SVN, CVS, ..)<br>
+  </li>
+</ul>
+<p>Perl-Specific Customizations</p>
+<ul>
+  <li>gf command -  opens the file under cursor, recognizes &quot;use&quot; statements, converts module name into file name and opens it</li>
+  <li>make - support customized to do compile check for Perl code</li>
+  <li>Use ack instead of grep external files.</li>
+  <li>Mapped commands for perltidy, perlcritic, perldoc, compile/decompile, prove, etc. (,pt ,pc ,pD, etc. - see perl_local.vim)</li>
+  <li>Special templates for new files (using autocmd feature).</li>
+</ul>
+<p>&nbsp;</p>
+</body>
+</html>
